@@ -50,3 +50,9 @@ jobs:
           git add data/jobs.json index.html jobs/
           git commit -m "Publish jobs from HD Careers Admin"
           git push origin HEAD:main
+
+      - name: Post published jobs to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: python3 scripts/post_telegram.py "$GITHUB_EVENT_PATH"
