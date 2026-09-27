@@ -1,33 +1,34 @@
-name: Admin Job Generator
+name: Admin Direct Publish
 
 on:
-  push:
-    branches:
-      - "admin-jobs-*"
-    paths:
-      - "data/jobs.json"
+  repository_dispatch:
+    types:
+      - admin_publish_jobs
 
 permissions:
   contents: write
 
 concurrency:
-  group: admin-job-generator-${{ github.ref }}
+  group: admin-direct-publish
   cancel-in-progress: false
 
 jobs:
-  generate:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout publishing branch
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Add selected jobs
+        run: python3 scripts/admin_publish.py "$GITHUB_EVENT_PATH"
 
       - name: Generate homepage and job pages
         run: python3 generate.py
@@ -37,15 +38,15 @@ jobs:
           git diff --check
           python3 generate.py --dry-run
 
-      - name: Commit generated files
+      - name: Commit directly to main
         shell: bash
         run: |
           if git diff --quiet; then
-            echo "No generated changes to commit."
+            echo "No changes to publish."
             exit 0
           fi
           git config user.name "HD Careers Admin"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html jobs/
-          git commit -m "Generate published job pages"
-          git push
+          git add data/jobs.json index.html jobs/
+          git commit -m "Publish jobs from HD Careers Admin"
+          git push origin HEAD:main
