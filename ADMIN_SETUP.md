@@ -76,44 +76,40 @@ Reviewed jobs
 ```
 
 
-## GitHub publishing setup
+## Direct production publishing
 
-The admin now supports:
+The admin now uses this flow:
 
 ```
-Deploy Selected
+Deploy Live
 → authenticated serverless publish API
-→ new GitHub branch
+→ GitHub repository_dispatch
+→ GitHub Actions validates selected jobs
 → update data/jobs.json
-→ open pull request
-→ GitHub Actions runs generate.py
-→ Vercel creates a PR preview
-→ review
-→ merge to main
+→ run generate.py
+→ commit jobs.json + homepage + generated job pages together to main
+→ Vercel production deployment
 ```
+
+There is no publishing PR in this mode because the admin already provides editable card/full-page previews before deployment.
 
 ### Required Vercel variable
 
-Create a fine-grained GitHub personal access token and save it only in Vercel:
-
 ```
-GITHUB_PUBLISH_TOKEN=<GitHub token>
+GITHUB_PUBLISH_TOKEN=<GitHub fine-grained token>
 ```
 
-Recommended token scope:
+Repository access should be limited to `Chethan-Mns/Hdcareers`.
 
-- Repository access: only `Chethan-Mns/Hdcareers`
+Permissions required:
+
 - Contents: Read and write
-- Pull requests: Read and write
 - Metadata: Read-only
 
-Set the variable for Preview and Production.
+Pull requests permission is no longer required for direct publishing, but leaving it enabled is harmless.
 
-Optional repository/base overrides:
+The token stays server-side in Vercel and is never included in the admin HTML or browser response.
 
-```
-ADMIN_GITHUB_REPO=Chethan-Mns/Hdcareers
-ADMIN_GITHUB_BASE=main
-```
+### Safety
 
-The GitHub token must never be added to client-side HTML or committed to the repository.
+Direct publishing still validates required fields and duplicate URLs/company-role pairs. The GitHub workflow runs `generate.py` and `git diff --check` before it commits to `main`. If validation fails, nothing is pushed to production.
