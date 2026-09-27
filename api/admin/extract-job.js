@@ -7,6 +7,35 @@ const MAX_BYTES = 2_000_000;
 const MAX_REDIRECTS = 3;
 const TIMEOUT_MS = 9000;
 
+function normalizeKnownCareerUrl(input){
+  const u=new URL(input);
+  const host=u.hostname.toLowerCase();
+
+  if((host==="pwc.in"||host.endsWith(".pwc.in"))&&u.pathname.includes("/careers/experienced-jobs/description.html")){
+    const reqId=(u.searchParams.get("wdjobreqid")||"").trim();
+    const site=(u.searchParams.get("wdjobsite")||"Global_Experienced_Careers").trim();
+    const rawTitle=(u.searchParams.get("jobtitle")||"").trim();
+    const parts=rawTitle.split("|").map(x=>x.trim()).filter(Boolean);
+    const role=parts[0]||"";
+    const location=parts.slice(1).join(" / ");
+    if(reqId){
+      const workdayTitle=slugify(rawTitle||role||reqId);
+      const workdayUrl="https://pwc.wd3.myworkdayjobs.com/en-US/"+encodeURIComponent(site)+"/job/"+workdayTitle+"_"+encodeURIComponent(reqId);
+      return {
+        fetchUrl:workdayUrl,
+        applyUrl:workdayUrl,
+        companyHint:"PwC",
+        roleHint:role,
+        locationHint:location,
+        domainHint:"pwc.com",
+        allowPartial:true
+      };
+    }
+  }
+
+  return {fetchUrl:u.href,applyUrl:u.href,companyHint:"",roleHint:"",locationHint:"",domainHint:"",allowPartial:false};
+}
+
 function isPrivateIp(ip){
   if(net.isIP(ip)===4){
     const p=ip.split(".").map(Number);
@@ -240,6 +269,24 @@ function cleanDescription(s){
   return x.split(/\n+/).map(v=>v.trim()).filter(Boolean).slice(0,5).join(" ").slice(0,900);
 }
 
+function labeledValue(text,label){
+  const re=new RegExp(label+"\\s*[:\\-]\\s*([^\\n]{2,180})","i");
+  const m=String(text||"").match(re);
+  return m?m[1].replace(/\\s+/g," ").trim():"";
+}
+
+function pwcResponsibilities(text){
+  const src=String(text||"");
+  const out=[];
+  const re=/\([a-l]\)\s+([\s\S]*?)(?=\([a-l]\)\s+|Mandatory skill sets|Preferred skill sets|Year of experience|Qualifications\s*[-:]|$)/gi;
+  let m;
+  while((m=re.exec(src))&&out.length<6){
+    const item=m[1].replace(/\s+/g," ").trim();
+    if(item.length>=20&&item.length<=320)out.push(item);
+  }
+  return out;
+}
+
 export default async function handler(req,res){
   if(req.method!=="POST"){
     res.setHeader("Allow","POST");
@@ -253,23 +300,33 @@ export default async function handler(req,res){
     const input=req.body&&req.body.url;
     if(!input)return res.status(400).json({error:"Job URL is required."});
 
-    const page=await fetchHtml(input);
+    const hint=normalizeKnownCareerUrl(input);
+    let page;
+    try{
+      page=await fetchHtml(hint.fetchUrl);
+    }catch(error){
+      if(!hint.allowPartial)throw error;
+      page={html:"",url:hint.applyUrl};
+    }
     const jsonLd=collectJsonLd(page.html);
     let job=null;
     for(const item of jsonLd){job=findJobPosting(item);if(job)break;}
 
+    const pageText=stripHtml(page.html);
     const fallbackTitle=meta(page.html,null,"og:title")||titleTag(page.html);
     const fallbackDesc=meta(page.html,"description")||meta(page.html,null,"og:description");
-    const title=textValue(job&&job.title)||fallbackTitle.replace(/\s*[-|–].*$/,"").trim();
-    const company=getCompany(job)||meta(page.html,null,"og:site_name")||"";
-    const description=cleanDescription((job&&job.description)||fallbackDesc);
-    const responsibilities=splitResponsibilities((job&&job.responsibilities)||(job&&job.description)||"");
-    const location=getLocation(job);
+    const title=textValue(job&&job.title)||hint.roleHint||fallbackTitle.replace(/\s*[-|–].*$/,"").trim();
+    const company=getCompany(job)||hint.companyHint||meta(page.html,null,"og:site_name")||"";
+    const workdayDescription=(hint.companyHint==="PwC"&&pageText)?pageText:"";
+    const description=cleanDescription((job&&job.description)||fallbackDesc||workdayDescription);
+    let responsibilities=splitResponsibilities((job&&job.responsibilities)||(job&&job.description)||"");
+    if(!responsibilities.length&&hint.companyHint==="PwC")responsibilities=pwcResponsibilities(pageText);
+    const location=getLocation(job)||hint.locationHint||labeledValue(pageText,"Job Location");
     const salary=getSalary(job)||"Not Disclosed";
-    const domain=new URL(page.url).hostname.replace(/^www\./,"");
-    const exp=detectExperience(job,description);
+    const domain=hint.domainHint||new URL(page.url).hostname.replace(/^www\./,"");
+    const exp=detectExperience(job,[description,labeledValue(pageText,"Experience"),labeledValue(pageText,"Year of experience required")].filter(Boolean).join(" "));
     const category=inferCategory(title,description,domain,exp);
-    const eligibility=stripHtml(textValue(job&&job.qualifications)||textValue(job&&job.educationRequirements)||textValue(job&&job.experienceRequirements)||"");
+    const eligibility=stripHtml(textValue(job&&job.qualifications)||textValue(job&&job.educationRequirements)||textValue(job&&job.experienceRequirements)||labeledValue(pageText,"Qualifications")||"");
     const posted=textValue(job&&job.datePosted);
     const date=posted?new Date(posted):new Date();
     const safeDate=Number.isNaN(date.getTime())?new Date():date;
@@ -292,7 +349,7 @@ export default async function handler(req,res){
       date:formatted,
       desc:description||("Review the official "+(company||"company")+" job posting for role details."),
       resp:responsibilities.length?responsibilities:["Review the official job description and responsibilities before applying."],
-      apply:page.url,
+      apply:hint.applyUrl||page.url,
       page:"jobs/"+slugify((company||domain)+"-"+(title||"job"))+".html",
       logo:[initials(company||domain),"#0b6fe8"],
       extraction:{
