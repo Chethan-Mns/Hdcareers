@@ -45,7 +45,11 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <div><p class="font-black text-xl">HD Careers Admin</p><p class="text-xs text-slate-500 mt-1">Secure administrator access</p></div>
 </div>
 <div class="mt-7">
-<label class="text-xs font-bold text-slate-500">Admin password</label>
+<label class="text-xs font-bold text-slate-500">Username</label>
+<input id="loginUsername" type="text" class="field mt-1" placeholder="Enter admin username" autocomplete="username">
+</div>
+<div class="mt-4">
+<label class="text-xs font-bold text-slate-500">Password</label>
 <input id="loginPassword" type="password" class="field mt-1" placeholder="Enter admin password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginAdmin()">
 </div>
 <div id="loginError" class="hidden mt-3 rounded-xl px-3 py-2.5 text-sm bg-red-50 text-red-700 border border-red-200"></div>
@@ -388,13 +392,14 @@ document.getElementById('adminApp').classList.remove('hidden');
 document.getElementById('loginError').classList.add('hidden');
 }
 async function loginAdmin(){
+const username=document.getElementById('loginUsername').value.trim();
 const password=document.getElementById('loginPassword').value;
 const btn=document.getElementById('loginBtn');
 const err=document.getElementById('loginError');
-if(!password){err.textContent='Enter your admin password.';err.classList.remove('hidden');return}
+if(!username||!password){err.textContent='Enter your username and password.';err.classList.remove('hidden');return}
 btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Signing in...';
 try{
-const r=await fetch('/api/admin/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({password})});
+const r=await fetch('/api/admin/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({username,password})});
 const body=await r.json().catch(()=>({}));
 if(!r.ok){err.textContent=body.error||'Sign in failed.';err.classList.remove('hidden');return}
 document.getElementById('loginPassword').value='';

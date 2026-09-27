@@ -1,4 +1,4 @@
-import {authConfigured,createAdminSession,setAdminCookie,verifyAdminPassword} from "../../lib/admin-auth.js";
+import {authConfigured,createAdminSession,setAdminCookie,verifyAdminCredentials} from "../../lib/admin-auth.js";
 
 const attempts=new Map();
 const WINDOW_MS=10*60*1000;
@@ -38,12 +38,13 @@ export default async function handler(req,res){
     return res.status(429).json({error:"Too many failed attempts. Try again later."});
   }
 
+  const username=String(req.body&&req.body.username||"");
   const password=String(req.body&&req.body.password||"");
-  if(!password||!verifyAdminPassword(password)){
+  if(!username||!password||!verifyAdminCredentials(username,password)){
     state.count++;
     if(state.count>=MAX_ATTEMPTS)state.lockedUntil=now+LOCK_MS;
     attempts.set(key,state);
-    return res.status(401).json({error:"Invalid admin password."});
+    return res.status(401).json({error:"Invalid username or password."});
   }
 
   attempts.delete(key);
