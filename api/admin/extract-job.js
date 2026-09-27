@@ -165,6 +165,120 @@ function collectJsonLd(html){
   return out;
 }
 
+function collectNextData(html){
+  const m=html.match(/<script[^>]*id\s*=\s*["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
+  if(!m)return null;
+  try{return JSON.parse(m[1].trim());}catch{return null;}
+}
+
+function walkObjects(value,out=[]){
+  if(!value||typeof value!=="object")return out;
+  if(Array.isArray(value)){
+    for(const x of value)walkObjects(x,out);
+    return out;
+  }
+  out.push(value);
+  for(const v of Object.values(value))walkObjects(v,out);
+  return out;
+}
+
+function normKey(k){
+  return String(k||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+}
+
+function deepField(obj,names){
+  const wanted=new Set(names.map(normKey));
+  const seen=new Set();
+  function visit(v){
+    if(!v||typeof v!=="object"||seen.has(v))return "";
+    seen.add(v);
+    if(!Array.isArray(v)){
+      for(const [k,val] of Object.entries(v)){
+        if(wanted.has(normKey(k))){
+          const t=textValue(val);
+          if(t)return t;
+        }
+      }
+      for(const val of Object.values(v)){
+        const hit=visit(val);
+        if(hit)return hit;
+      }
+    }else{
+      for(const val of v){
+        const hit=visit(val);
+        if(hit)return hit;
+      }
+    }
+    return "";
+  }
+  return visit(obj);
+}
+
+function findNextJobObject(nextData,jobId){
+  if(!nextData)return null;
+  const id=String(jobId||"").trim();
+  let best=null;
+  let bestScore=0;
+  for(const obj of walkObjects(nextData,[])){
+    let score=0;
+    for(const [k,v] of Object.entries(obj)){
+      const nk=normKey(k);
+      const tv=textValue(v);
+      if(id&&tv===id){
+        score+=/jobid|requisitionid|reqid|jobnumber/.test(nk)?30:12;
+      }
+      if(/jobtitle|positiontitle|title/.test(nk)&&tv)score+=4;
+      if(/jobdescription|description/.test(nk)&&tv)score+=4;
+      if(/location|city|country/.test(nk)&&tv)score+=2;
+      if(/qualification|responsibil|requirement/.test(nk)&&tv)score+=2;
+    }
+    if(score>bestScore){bestScore=score;best=obj;}
+  }
+  return bestScore>=10?best:null;
+}
+
+function ibmFallback(nextData,input){
+  let u;
+  try{u=new URL(input);}catch{return null;}
+  const host=u.hostname.toLowerCase();
+  if(host!=="careers.ibm.com")return null;
+  const pathParts=u.pathname.split("/").filter(Boolean);
+  const queryId=(u.searchParams.get("jobId")||"").trim();
+  const pathId=(pathParts[pathParts.length-1]||"").match(/^\d+$/)?.[0]||"";
+  const jobId=queryId||pathId;
+  if(!jobId)return null;
+
+  const obj=findNextJobObject(nextData,jobId);
+  if(!obj)return {
+    jobId,
+    company:"IBM",
+    title:pathId&&pathParts.length>=2?decodeURIComponent(pathParts[pathParts.length-2]).replace(/-/g," "):"",
+    description:"",
+    location:"",
+    eligibility:"",
+    responsibilities:[],
+    posted:""
+  };
+
+  const title=deepField(obj,["jobTitle","positionTitle","title","jobName"]);
+  const description=deepField(obj,["jobDescription","description","jobDesc","descriptionHtml"]);
+  const location=deepField(obj,["primaryLocation","jobLocation","location","locations","city"]);
+  const eligibility=deepField(obj,["qualifications","requiredQualifications","minimumQualifications","educationRequirements","requirements"]);
+  const responsibilityText=deepField(obj,["responsibilities","jobResponsibilities","duties"]);
+  const posted=deepField(obj,["datePosted","postedDate","postingDate","createdDate"]);
+
+  return {
+    jobId,
+    company:"IBM",
+    title,
+    description,
+    location,
+    eligibility,
+    responsibilities:splitResponsibilities(responsibilityText||description),
+    posted
+  };
+}
+
 function findJobPosting(value){
   if(!value)return null;
   if(Array.isArray(value)){
@@ -311,23 +425,25 @@ export default async function handler(req,res){
     const jsonLd=collectJsonLd(page.html);
     let job=null;
     for(const item of jsonLd){job=findJobPosting(item);if(job)break;}
+    const nextData=collectNextData(page.html);
+    const ibm=ibmFallback(nextData,input);
 
     const pageText=stripHtml(page.html);
     const fallbackTitle=meta(page.html,null,"og:title")||titleTag(page.html);
     const fallbackDesc=meta(page.html,"description")||meta(page.html,null,"og:description");
-    const title=textValue(job&&job.title)||hint.roleHint||fallbackTitle.replace(/\s*[-|–].*$/,"").trim();
-    const company=getCompany(job)||hint.companyHint||meta(page.html,null,"og:site_name")||"";
+    const title=textValue(job&&job.title)||(ibm&&ibm.title)||hint.roleHint||fallbackTitle.replace(/\s*[-|–].*$/,"").trim();
+    const company=getCompany(job)||(ibm&&ibm.company)||hint.companyHint||meta(page.html,null,"og:site_name")||"";
     const workdayDescription=(hint.companyHint==="PwC"&&pageText)?pageText:"";
-    const description=cleanDescription((job&&job.description)||fallbackDesc||workdayDescription);
-    let responsibilities=splitResponsibilities((job&&job.responsibilities)||(job&&job.description)||"");
+    const description=cleanDescription((job&&job.description)||(ibm&&ibm.description)||fallbackDesc||workdayDescription);
+    let responsibilities=(ibm&&ibm.responsibilities&&ibm.responsibilities.length)?ibm.responsibilities:splitResponsibilities((job&&job.responsibilities)||(job&&job.description)||"");
     if(!responsibilities.length&&hint.companyHint==="PwC")responsibilities=pwcResponsibilities(pageText);
-    const location=getLocation(job)||hint.locationHint||labeledValue(pageText,"Job Location");
+    const location=getLocation(job)||(ibm&&ibm.location)||hint.locationHint||labeledValue(pageText,"Job Location");
     const salary=getSalary(job)||"Not Disclosed";
     const domain=hint.domainHint||new URL(page.url).hostname.replace(/^www\./,"");
     const exp=detectExperience(job,[description,labeledValue(pageText,"Experience"),labeledValue(pageText,"Year of experience required")].filter(Boolean).join(" "));
     const category=inferCategory(title,description,domain,exp);
-    const eligibility=stripHtml(textValue(job&&job.qualifications)||textValue(job&&job.educationRequirements)||textValue(job&&job.experienceRequirements)||labeledValue(pageText,"Qualifications")||"");
-    const posted=textValue(job&&job.datePosted);
+    const eligibility=stripHtml(textValue(job&&job.qualifications)||textValue(job&&job.educationRequirements)||textValue(job&&job.experienceRequirements)||(ibm&&ibm.eligibility)||labeledValue(pageText,"Qualifications")||"");
+    const posted=textValue(job&&job.datePosted)||(ibm&&ibm.posted)||"";
     const date=posted?new Date(posted):new Date();
     const safeDate=Number.isNaN(date.getTime())?new Date():date;
     const formatted=safeDate.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).replace(/^0/,"");
