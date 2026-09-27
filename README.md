@@ -1,29 +1,181 @@
 # HD Careers (hdcareers.in)
 
-A single-page, mobile-first job & internship alert website for India — built with HTML, Tailwind CSS (CDN) and vanilla JavaScript. No build step, no backend required.
+HD Careers is a mobile-first jobs and careers website for India, built with HTML, Tailwind CSS (CDN), vanilla JavaScript, and a lightweight Python generator.
+
+Production: https://hdcareers.in
+
+## Current Architecture
+
+```
+README.md
+PROJECT_CONTEXT.md
+HOW_TO_ADD_JOB.md
+assets/
+data/
+  jobs.json
+  job-template.json
+generate.py
+index.html
+jobs/
+.github/
+  workflows/
+    generator-check.yml
+```
 
 ## Features
-- Job listings with category filters (IT & Software, Internships, Off-Campus, Remote, Walk-in Drives) and live search
-- Job details modal with eligibility, responsibilities, perks, and application steps
-- Full "About" page view
-- WhatsApp / Instagram / Telegram channel links
-- Built-in WhatsApp channel post generator (admin utility)
-- Google AdSense-ready placeholder banner slots
-- Legal modals: Privacy Policy, Disclaimer, Contact Us
 
-## Deploying on GitHub Pages
-1. Create a new GitHub repository and upload the contents of this folder (just `index.html`) to it.
-2. Go to **Settings → Pages** in your repository.
-3. Under "Build and deployment", set **Source** to `Deploy from a branch`, choose the `main` branch and `/ (root)` folder, then **Save**.
-4. GitHub will publish your site at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
-5. To use your own domain (hdcareers.in), add a `CNAME` file with your domain name to the repo root and configure your domain's DNS as per [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+- Latest jobs, internships, apprenticeships, off-campus drives, remote roles, walk-ins, experienced jobs and government jobs
+- Search by role, company, skill and related job information
+- Filters for category, level, experience, role, company and location
+- Automatic scroll to updated job results after search/filter changes
+- Separate SEO-friendly job pages under `/jobs/`
+- Official company application links
+- Job sharing using HD Careers job-page URLs
+- Responsive mobile-first UI
+- WhatsApp, Instagram and Telegram links
+- About, Contact, Privacy Policy and Disclaimer views
+- Vercel Preview deployments before production merges
+- Generator validation workflow through GitHub Actions
 
-## Editing
-Everything — markup, styles and logic — lives in the single `index.html` file:
-- Job data is in the `JOBS` array near the bottom of the file — edit, add, or remove entries there.
-- Social links are set as plain `<a href="...">` tags — search for `whatsapp.com`, `instagram.com`, `t.me` to update them.
-- Colors are defined as CSS variables at the top of the `<style>` block (`--primary`, `--dark`, `--slate`).
+## Job Data
 
-## Notes
-- Replace the AdSense placeholder blocks (marked `ad-slot`) with your real AdSense `<ins>` code once your account is approved.
-- Company "logos" are colored initials since no external images are embedded except your HD Careers logo (already embedded as base64).
+`data/jobs.json` is the single source of truth for job listings.
+
+Do not manually maintain duplicate job content in multiple places.
+
+A reusable sample object is available at:
+
+```
+data/job-template.json
+```
+
+## Generate the Site
+
+Preview what would change:
+
+```bash
+python3 generate.py --dry-run
+```
+
+Generate/update the homepage job data and individual job pages:
+
+```bash
+python3 generate.py
+```
+
+The generator updates:
+
+- Job data inside `index.html`
+- Individual pages under `jobs/`
+
+## Add a New Job
+
+Recommended workflow:
+
+1. Verify the official company job posting.
+2. Create a new branch from `main`.
+3. Add the job to `data/jobs.json`.
+4. Run `python3 generate.py --dry-run`.
+5. Run `python3 generate.py`.
+6. Verify the homepage card and generated job page.
+7. Commit the changes.
+8. Open a pull request to `main`.
+9. Check the Vercel Preview deployment.
+10. Merge only after verification.
+
+Full instructions:
+
+```
+HOW_TO_ADD_JOB.md
+```
+
+## Deployment
+
+HD Careers is deployed through:
+
+```
+GitHub
+  ↓
+Vercel
+  ↓
+hdcareers.in
+```
+
+- Default branch: `main`
+- Production domain: `hdcareers.in`
+- `www.hdcareers.in` redirects to `hdcareers.in`
+- Vercel automatically creates preview deployments for pull requests
+
+## Supported Categories
+
+```
+it
+internship
+apprenticeship
+campus
+remote
+walkin
+experienced
+govt
+```
+
+Supported experience types:
+
+```
+fresher
+experienced
+```
+
+## Project Recovery / New Chat
+
+The full project context is stored in:
+
+```
+PROJECT_CONTEXT.md
+```
+
+If the previous ChatGPT conversation is unavailable, start a new chat and say:
+
+> Open the GitHub repository `Chethan-Mns/Hdcareers` and read `PROJECT_CONTEXT.md`. Continue working from that file and the current repository state.
+
+This keeps the project workflow independent of any single chat.
+
+## Content Rules
+
+- Prefer official company career links
+- Verify job details before publishing
+- Use original summaries instead of copying large sections from company pages
+- Use `Not Disclosed` when salary is not provided
+- Use `Not Specified` when batch information is unavailable
+- Every published job should have a dedicated HD Careers job page
+- Keep normal production changes behind a branch + pull request
+
+## Contact
+
+- Email: helpdeskinreallife@gmail.com
+- Telegram: https://t.me/HD_Careers
+- Instagram: https://instagram.com/hd_careers
+
+## Future Plan
+
+A protected `/admin` tool is planned so jobs can eventually be added through a form instead of editing JSON manually.
+
+The intended flow is:
+
+```
+Admin Login
+  ↓
+Add Job
+  ↓
+Preview
+  ↓
+Publish
+  ↓
+Update jobs.json
+  ↓
+Run generator
+  ↓
+Deploy
+```
+
+Any future admin tool must keep GitHub credentials or tokens on the server side and never expose them in client-side code.
