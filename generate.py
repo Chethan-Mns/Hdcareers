@@ -69,6 +69,9 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>$page_title</title>
+<link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
+<link rel="shortcut icon" href="/assets/hd-careers-logo.png">
+<link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <meta name="description" content="$meta_description">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
