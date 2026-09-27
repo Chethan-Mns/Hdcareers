@@ -1,5 +1,36 @@
 [
   {
+    "id": 18,
+    "page": "jobs/accenture-data-engineer-atci-5478225.html",
+    "domain": "accenture.com",
+    "company": "Accenture",
+    "salary": "Not Disclosed",
+    "logo": [
+      "AC",
+      "#a100ff"
+    ],
+    "role": "Data Engineer",
+    "roleTag": "Data Engineer",
+    "loc": "Pune / Bengaluru",
+    "locationFilter": "Pune / Bengaluru",
+    "batch": "15 years full-time education",
+    "elig": "Minimum 3 years of experience with AWS Glue and PySpark. Required technical skills include AWS Glue, PySpark, SQL, ETL, Unix, Iceberg, Astronomer and data warehousing concepts. Accenture specifies 15 years of full-time education.",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "3+ years",
+    "date": "26 Sep 2026",
+    "desc": "Accenture is hiring a Data Engineer to build and optimize cloud-based data migration pipelines. The role focuses on AWS-native ETL, PySpark and SQL, data quality, scalable processing and migration of high-volume datasets from legacy systems to AWS.",
+    "resp": [
+      "Build end-to-end ETL pipelines using AWS Step Functions, EventBridge, Glue, Lambda, PySpark and SQL",
+      "Migrate and transform high-volume datasets from legacy on-premise systems to AWS",
+      "Test data pipelines for performance and support deployment with DevOps engineers",
+      "Monitor and troubleshoot workflows using CloudWatch and optimize for cost and scalability",
+      "Support data-quality validation and incremental loads to maintain data integrity",
+      "Collaborate with solution designers and cross-functional teams to deliver reliable data solutions"
+    ],
+    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer"
+  },
+  {
     "id": 17,
     "page": "jobs/wipro-java-fullstack-developer-99036.html",
     "domain": "wipro.com",
