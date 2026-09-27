@@ -257,19 +257,21 @@ def render_job_page(job: dict) -> str:
 def update_index(jobs: list[dict], dry_run: bool) -> bool:
     source = INDEX_FILE.read_text(encoding="utf-8")
     start_marker = "const JOBS = ["
-    end_marker = "\n];\n\nconst CATS="
-
     start = source.find(start_marker)
     if start == -1:
         raise SystemExit("Could not find 'const JOBS = [' in index.html")
 
-    end = source.find(end_marker, start)
+    end = source.find("\n]\n\nconst CATS=", start)
+    skip = 2
+    if end == -1:
+        end = source.find("\n];\n\nconst CATS=", start)
+        skip = 3
     if end == -1:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
     jobs_json = json.dumps(jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
-    updated = source[:start] + replacement + source[end + 3:]
+    updated = source[:start] + replacement + source[end + skip:]
 
     if updated == source:
         return False
