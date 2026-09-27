@@ -1,5 +1,32 @@
 [
   {
+    "id": 999,
+    "page": "jobs/hd-careers-generator-test.html",
+    "domain": "example.com",
+    "company": "HD Careers",
+    "salary": "Test",
+    "logo": [
+      "HD",
+      "#0969da"
+    ],
+    "role": "Generator Test Role",
+    "roleTag": "Generator Test",
+    "loc": "Test Location",
+    "locationFilter": "Test Location",
+    "batch": "Test Batch",
+    "elig": "Temporary smoke-test record for generator verification.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "27 Sep 2026",
+    "desc": "Temporary test job used only to verify the HD Careers generator end to end.",
+    "resp": [
+      "Generate homepage job data",
+      "Generate individual job page"
+    ],
+    "apply": "https://example.com"
+  },
+  {
     "id": 1,
     "page": "jobs/infosys-system-engineer.html",
     "domain": "infosys.com",
