@@ -6,6 +6,9 @@
 <meta name="theme-color" content="#071a33">
 <meta name="description" content="HD Careers shares jobs, internships, off-campus drives, remote roles and walk-in opportunities for job seekers across India.">
 <title>HD Careers - Latest Jobs, Internships & Off-Campus Drives in India</title>
+<link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
+<link rel="shortcut icon" href="/assets/hd-careers-logo.png">
+<link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <style>
@@ -720,9 +723,11 @@ function syncLevelTone(){const el=document.getElementById('expTypeFilter');if(!e
 function scrollToResults(){const el=document.getElementById('resultsSection');if(!el)return;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;el.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})}
 function filterAndScrollNow(){clearTimeout(filterScrollTimer);renderJobs();requestAnimationFrame(scrollToResults)}
 function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(scrollToResults,450)}
-function companyLogoUrl(j){const d=COMPANY_DOMAINS[j.company];return d?`https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=128`:""}
-function localCompanyLogo(j){return LOCAL_LOGOS[j.company]?`assets/logos/${LOCAL_LOGOS[j.company]}`:""}
-function companyLogo(j,size='w-16 h-16'){const local=localCompanyLogo(j);return `<div class="company-logo ${size} shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden" style="--fallback:${j.logo[1]}"><img src="${companyLogoUrl(j)}" alt="${j.company} logo" class="w-[78%] h-[78%] object-contain" loading="lazy" onerror="this.onerror=null;if('${local}'){this.src='${local}';this.className='w-[90%] h-[90%] object-contain';}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><span class="hidden w-full h-full items-center justify-center rounded-xl text-white font-black text-base" style="background:${j.logo[1]}">${j.logo[0]}</span></div>`}
+function companyDomain(j){let d=String(j.domain||COMPANY_DOMAINS[j.company]||"").trim().toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"");if(/^(?:careers?|jobs?|usijobs|global)\./.test(d)&&d.split(".").length>2)d=d.split(".").slice(1).join(".");return d}
+function companyLogoUrl(j){const d=companyDomain(j);return d?`https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=128`:""}
+function localCompanyLogo(j){const name=Object.keys(LOCAL_LOGOS).find(k=>k.toLowerCase()===String(j.company||"").toLowerCase());return name?`assets/logos/${LOCAL_LOGOS[name]}`:""}
+function logoFallback(img){const backup=img.dataset.backup||"";if(backup){img.dataset.backup="";img.src=backup;img.className="w-[78%] h-[78%] object-contain";return}img.style.display="none";if(img.nextElementSibling)img.nextElementSibling.style.display="flex"}
+function companyLogo(j,size='w-16 h-16'){const local=localCompanyLogo(j);const remote=companyLogoUrl(j);const src=local||remote;const backup=local&&remote?remote:"";const initials=(j.logo&&j.logo[0])||String(j.company||"HD").slice(0,2).toUpperCase();const color=(j.logo&&j.logo[1])||"#0b6fe8";if(!src)return `<div class="company-logo ${size} shrink-0 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden text-white font-black text-base" style="background:${color}">${initials}</div>`;return `<div class="company-logo ${size} shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden"><img src="${src}" data-backup="${backup}" alt="${j.company} logo" class="w-[82%] h-[82%] object-contain" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)"><span class="hidden w-full h-full items-center justify-center rounded-xl text-white font-black text-base" style="background:${color}">${initials}</span></div>`}
 function parseJobDate(s){const m=s.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);if(!m)return 0;const months={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};return new Date(+m[3],months[m[2]]??0,+m[1]).getTime()}
 
 function jobCardAction(j){return `<a href="${j.page}" class="bg-[var(--primary)] text-white text-sm font-bold px-5 py-3 rounded-xl hover:bg-[var(--primary-2)] transition whitespace-nowrap">View & Apply <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a>`}
