@@ -1,269 +1,97 @@
-# HD Careers Admin V1 Setup
+# HD Careers Admin Setup
 
-The admin is available at `/admin/`.
+The admin is available at:
 
-## Current V1 features
+```
+/admin/
+```
 
-- Secure password login.
-- HttpOnly signed admin session cookie.
-- Multiple official job links per batch.
-- Up to 20 links per batch, processed three at a time.
-- Server-side job extraction.
-- Duplicate detection.
-- Editable/manual jobs.
-- Full-page desktop/mobile previews.
+## Admin authentication
 
-GitHub publishing is intentionally not connected yet.
+The admin uses a normal username and password, verified only on the server.
 
-## Vercel environment variables
-
-Admin authentication now uses a normal username + password login.
-
-Required variables:
+Required Vercel environment variables:
 
 ```
 ADMIN_USERNAME=<your chosen username>
-ADMIN_PASSWORD_HASH=<scrypt password hash>
-ADMIN_SESSION_SECRET=<long random session secret>
+ADMIN_PASSWORD=<your normal password>
+ADMIN_SESSION_SECRET=<long random random value>
 ```
 
-The old `ADMIN_EXTRACT_KEY` is no longer used for admin login.
+Set all three for:
 
-Generate a password hash locally on your Mac:
+- Production
+- Preview
 
-```bash
-node -e "const crypto=require('crypto');const p=process.argv[1];const s=crypto.randomBytes(16);const h=crypto.scryptSync(p,s,64);console.log('scrypt
+Use Vercel **Secret** variables for `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET`.
+
+The login password is never committed to GitHub and is never embedded in the admin HTML or client-side JavaScript.
+
+The older `ADMIN_PASSWORD_HASH` and `ADMIN_EXTRACT_KEY` values are not used by the current login flow.
+
 ## Authentication flow
 
 ```
 /admin/
-→ password login
+→ username + password
 → /api/admin/login
+→ server verifies Vercel secrets
 → signed HttpOnly + Secure + SameSite=Strict cookie
 → admin dashboard
 ```
 
-API routes:
+Sessions expire after 12 hours. Repeated failed logins receive a temporary in-memory lockout.
+
+Admin API routes:
 
 ```
 /api/admin/login
 /api/admin/session
 /api/admin/logout
 /api/admin/extract-job
+/api/admin/publish
 ```
 
-The extraction endpoint now requires the authenticated session instead of exposing the extraction secret in browser requests.
+## Job intake
 
-Sessions expire after 12 hours. Repeated failed logins get a temporary in-memory lockout.
+The admin supports:
 
-## Next version
-
-```
-Reviewed jobs
-→ protected publish API
-→ GitHub branch
-→ update data/jobs.json
-→ run generator
-→ PR
-→ Vercel Preview
-→ merge
-```
-
+- single or multiple official job links
+- up to 20 links per batch
+- server-side extraction
+- duplicate detection
+- editable/manual jobs
+- full-page desktop/mobile previews
 
 ## Direct production publishing
 
-The admin now uses this flow:
+The current publishing flow is:
 
 ```
 Deploy Live
-→ authenticated serverless publish API
+→ authenticated /api/admin/publish
 → GitHub repository_dispatch
 → GitHub Actions validates selected jobs
 → update data/jobs.json
 → run generate.py
-→ commit jobs.json + homepage + generated job pages together to main
+→ commit jobs.json + homepage + generated job pages to main
 → Vercel production deployment
 ```
 
-There is no publishing PR in this mode because the admin already provides editable card/full-page previews before deployment.
-
-### Required Vercel variable
+Required Vercel variable:
 
 ```
 GITHUB_PUBLISH_TOKEN=<GitHub fine-grained token>
 ```
 
-Repository access should be limited to `Chethan-Mns/Hdcareers`.
+Recommended repository access:
 
-Permissions required:
-
+- only `Chethan-Mns/Hdcareers`
 - Contents: Read and write
 - Metadata: Read-only
 
-Pull requests permission is no longer required for direct publishing, but leaving it enabled is harmless.
+The GitHub token remains server-side.
 
-The token stays server-side in Vercel and is never included in the admin HTML or browser response.
+## Safety
 
-### Safety
-
-Direct publishing still validates required fields and duplicate URLs/company-role pairs. The GitHub workflow runs `generate.py` and `git diff --check` before it commits to `main`. If validation fails, nothing is pushed to production.
-+s.toString('hex')+'
-## Authentication flow
-
-```
-/admin/
-→ password login
-→ /api/admin/login
-→ signed HttpOnly + Secure + SameSite=Strict cookie
-→ admin dashboard
-```
-
-API routes:
-
-```
-/api/admin/login
-/api/admin/session
-/api/admin/logout
-/api/admin/extract-job
-```
-
-The extraction endpoint now requires the authenticated session instead of exposing the extraction secret in browser requests.
-
-Sessions expire after 12 hours. Repeated failed logins get a temporary in-memory lockout.
-
-## Next version
-
-```
-Reviewed jobs
-→ protected publish API
-→ GitHub branch
-→ update data/jobs.json
-→ run generator
-→ PR
-→ Vercel Preview
-→ merge
-```
-
-
-## Direct production publishing
-
-The admin now uses this flow:
-
-```
-Deploy Live
-→ authenticated serverless publish API
-→ GitHub repository_dispatch
-→ GitHub Actions validates selected jobs
-→ update data/jobs.json
-→ run generate.py
-→ commit jobs.json + homepage + generated job pages together to main
-→ Vercel production deployment
-```
-
-There is no publishing PR in this mode because the admin already provides editable card/full-page previews before deployment.
-
-### Required Vercel variable
-
-```
-GITHUB_PUBLISH_TOKEN=<GitHub fine-grained token>
-```
-
-Repository access should be limited to `Chethan-Mns/Hdcareers`.
-
-Permissions required:
-
-- Contents: Read and write
-- Metadata: Read-only
-
-Pull requests permission is no longer required for direct publishing, but leaving it enabled is harmless.
-
-The token stays server-side in Vercel and is never included in the admin HTML or browser response.
-
-### Safety
-
-Direct publishing still validates required fields and duplicate URLs/company-role pairs. The GitHub workflow runs `generate.py` and `git diff --check` before it commits to `main`. If validation fails, nothing is pushed to production.
-+h.toString('hex'))" 'YOUR_PASSWORD'
-```
-
-Generate the session secret separately:
-
-```bash
-openssl rand -base64 48
-```
-
-Set all three variables for Preview and Production, then redeploy. Do not commit or share these values.
-
-## Authentication flow
-
-```
-/admin/
-→ password login
-→ /api/admin/login
-→ signed HttpOnly + Secure + SameSite=Strict cookie
-→ admin dashboard
-```
-
-API routes:
-
-```
-/api/admin/login
-/api/admin/session
-/api/admin/logout
-/api/admin/extract-job
-```
-
-The extraction endpoint now requires the authenticated session instead of exposing the extraction secret in browser requests.
-
-Sessions expire after 12 hours. Repeated failed logins get a temporary in-memory lockout.
-
-## Next version
-
-```
-Reviewed jobs
-→ protected publish API
-→ GitHub branch
-→ update data/jobs.json
-→ run generator
-→ PR
-→ Vercel Preview
-→ merge
-```
-
-
-## Direct production publishing
-
-The admin now uses this flow:
-
-```
-Deploy Live
-→ authenticated serverless publish API
-→ GitHub repository_dispatch
-→ GitHub Actions validates selected jobs
-→ update data/jobs.json
-→ run generate.py
-→ commit jobs.json + homepage + generated job pages together to main
-→ Vercel production deployment
-```
-
-There is no publishing PR in this mode because the admin already provides editable card/full-page previews before deployment.
-
-### Required Vercel variable
-
-```
-GITHUB_PUBLISH_TOKEN=<GitHub fine-grained token>
-```
-
-Repository access should be limited to `Chethan-Mns/Hdcareers`.
-
-Permissions required:
-
-- Contents: Read and write
-- Metadata: Read-only
-
-Pull requests permission is no longer required for direct publishing, but leaving it enabled is harmless.
-
-The token stays server-side in Vercel and is never included in the admin HTML or browser response.
-
-### Safety
-
-Direct publishing still validates required fields and duplicate URLs/company-role pairs. The GitHub workflow runs `generate.py` and `git diff --check` before it commits to `main`. If validation fails, nothing is pushed to production.
+Direct publishing validates required fields and duplicate URLs/company-role pairs. The GitHub workflow runs `generate.py` and `git diff --check` before committing to `main`. If validation fails, nothing is pushed to production.
