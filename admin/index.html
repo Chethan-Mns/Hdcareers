@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>HD Careers Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<style>
+:root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 30px rgba(15,23,42,.05)}
+.field{width:100%;border:1px solid #dbe3ee;background:#f8fafc;border-radius:12px;padding:11px 12px;outline:none}
+.field:focus{border-color:#60a5fa;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+label{font-size:12px;font-weight:800;color:#64748b;display:block;margin-bottom:6px}
+.btn{border-radius:12px;font-weight:800;transition:.18s ease}
+.btn:active{transform:scale(.98)}
+.tab.active{background:var(--primary);color:white;border-color:var(--primary)}
+.badge{font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px}
+.preview-card{background:linear-gradient(180deg,#fff,#fff);border:1px solid #e2e8f0;border-radius:18px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.2);z-index:80}
+</style>
+</head>
+<body>
+<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+<a href="/" class="flex items-center gap-3">
+<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 object-contain rounded-xl border border-slate-100 p-1">
+<div><p class="font-black leading-none">HD Careers Admin</p><p class="text-[11px] text-slate-500 mt-1">Job intake & review</p></div>
+</a>
+<span class="badge bg-amber-50 text-amber-700 border border-amber-200">V1 • Review before publish</span>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-7">
+<div class="grid xl:grid-cols-[1.1fr_.9fr] gap-6 items-start">
+
+<section class="space-y-5">
+<div class="card p-5 sm:p-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<p class="text-xs font-black uppercase tracking-[.14em] text-[var(--primary)]">Step 1</p>
+<h1 class="text-2xl font-black mt-1">Paste a job link</h1>
+<p class="text-sm text-slate-500 mt-2">We will try to read structured job data from the company page. You can edit every field afterwards.</p>
+</div>
+<div class="w-12 h-12 rounded-2xl bg-blue-50 text-[var(--primary)] flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-link"></i></div>
+</div>
+
+<div class="mt-5">
+<label>Admin extraction key</label>
+<div class="flex gap-2">
+<input id="adminKey" type="password" class="field" placeholder="Enter your admin key">
+<button type="button" onclick="toggleKey()" class="btn px-4 border border-slate-200 bg-white text-slate-600"><i class="fa-regular fa-eye"></i></button>
+</div>
+<p class="text-[11px] text-slate-400 mt-1.5">This key is kept only in this browser tab. It is not your GitHub token.</p>
+</div>
+
+<div class="mt-4">
+<label>Official job link</label>
+<div class="flex flex-col sm:flex-row gap-2">
+<input id="jobUrl" class="field flex-1" placeholder="https://company.com/careers/job/...">
+<button id="extractBtn" onclick="extractJob()" class="btn bg-[var(--primary)] hover:bg-blue-700 text-white px-5 py-3 shrink-0"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate fields</button>
+</div>
+<div id="extractStatus" class="hidden mt-3 rounded-xl px-3 py-2.5 text-sm"></div>
+</div>
+
+<div class="mt-5 flex items-center gap-3">
+<div class="h-px bg-slate-200 flex-1"></div>
+<span class="text-xs font-bold text-slate-400">OR</span>
+<div class="h-px bg-slate-200 flex-1"></div>
+</div>
+<button onclick="startManual()" class="btn w-full mt-4 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 py-3">
+<i class="fa-solid fa-keyboard mr-2"></i>Enter everything manually
+</button>
+</div>
+
+<div id="formCard" class="card p-5 sm:p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<p class="text-xs font-black uppercase tracking-[.14em] text-[var(--primary)]">Step 2</p>
+<h2 class="text-xl font-black mt-1">Review & edit job details</h2>
+</div>
+<div class="flex gap-2">
+<button onclick="fillDefaults()" class="btn border border-slate-200 bg-white px-3 py-2 text-sm text-slate-600">Fill defaults</button>
+<button onclick="clearForm()" class="btn border border-slate-200 bg-white px-3 py-2 text-sm text-slate-600">Clear</button>
+</div>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-4 mt-5">
+<div><label>Company *</label><input id="company" class="field" oninput="updatePreview()"></div>
+<div><label>Role *</label><input id="role" class="field" oninput="syncRole();updatePreview()"></div>
+<div><label>Role tag</label><input id="roleTag" class="field" oninput="updatePreview()"></div>
+<div><label>Company domain</label><input id="domain" class="field" placeholder="company.com"></div>
+<div><label>Location *</label><input id="loc" class="field" oninput="syncLocation();updatePreview()"></div>
+<div><label>Location filter</label><input id="locationFilter" class="field"></div>
+<div><label>Salary / stipend</label><input id="salary" class="field" value="Not Disclosed" oninput="updatePreview()"></div>
+<div><label>Eligible batch</label><input id="batch" class="field" value="Not Specified" oninput="updatePreview()"></div>
+<div>
+<label>Category *</label>
+<select id="cat" class="field" onchange="updatePreview()">
+<option value="it">IT / Software</option>
+<option value="internship">Internship</option>
+<option value="apprenticeship">Apprenticeship</option>
+<option value="campus">Off-Campus</option>
+<option value="remote">Remote / WFH</option>
+<option value="walkin">Walk-in</option>
+<option value="experienced">Experienced</option>
+<option value="govt">Government</option>
+</select>
+</div>
+<div>
+<label>Level *</label>
+<select id="expType" class="field" onchange="updatePreview()">
+<option value="fresher">Fresher</option>
+<option value="experienced">Experienced</option>
+</select>
+</div>
+<div><label>Experience</label><input id="expYears" class="field" value="0 years" oninput="updatePreview()"></div>
+<div><label>Posted date</label><input id="date" class="field" placeholder="27 Sep 2026" oninput="updatePreview()"></div>
+<div class="sm:col-span-2"><label>Official apply URL *</label><input id="apply" class="field"></div>
+<div class="sm:col-span-2"><label>Generated HD Careers page</label><input id="page" class="field" placeholder="jobs/company-role.html"></div>
+<div><label>Logo initials</label><input id="logoInitials" class="field" maxlength="3" placeholder="AC"></div>
+<div><label>Fallback logo color</label><input id="logoColor" class="field" value="#0b6fe8" placeholder="#0b6fe8"></div>
+<div class="sm:col-span-2"><label>Eligibility *</label><textarea id="elig" rows="3" class="field"></textarea></div>
+<div class="sm:col-span-2"><label>Description *</label><textarea id="desc" rows="5" class="field"></textarea></div>
+</div>
+
+<div class="mt-4">
+<div class="flex items-center justify-between gap-3">
+<label class="!mb-0">Responsibilities</label>
+<button onclick="addResponsibility()" class="text-sm font-bold text-[var(--primary)]"><i class="fa-solid fa-plus mr-1"></i>Add</button>
+</div>
+<div id="responsibilities" class="space-y-2 mt-2"></div>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-3 mt-5">
+<button onclick="previewJob()" class="btn bg-slate-900 hover:bg-slate-800 text-white py-3"><i class="fa-solid fa-eye mr-2"></i>Preview</button>
+<button onclick="showJson()" class="btn bg-[var(--primary)] hover:bg-blue-700 text-white py-3"><i class="fa-solid fa-code mr-2"></i>Generate JSON</button>
+</div>
+<p class="text-xs text-slate-400 text-center mt-3">V1 does not publish to GitHub yet. It prepares a reviewed job record first.</p>
+</div>
+</section>
+
+<aside class="space-y-5 xl:sticky xl:top-24">
+<div class="card p-5">
+<div class="flex items-center justify-between gap-3">
+<div><p class="text-xs font-black uppercase tracking-[.14em] text-[var(--primary)]">Live preview</p><h2 class="font-black text-lg mt-1">Homepage card</h2></div>
+<span id="previewLevel" class="badge bg-amber-50 text-amber-700">Fresher</span>
+</div>
+<div class="preview-card p-4 mt-4">
+<div class="flex items-start gap-4">
+<div id="previewLogo" class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black shrink-0">HD</div>
+<div class="min-w-0 flex-1">
+<div class="flex flex-wrap gap-2 mb-2"><span id="previewCat" class="badge bg-blue-50 text-blue-700">IT / Software</span><span id="previewSalary" class="badge bg-green-50 text-green-700">Not Disclosed</span></div>
+<h3 id="previewCompany" class="font-black text-lg truncate">Company</h3>
+<p id="previewRole" class="text-sm font-semibold text-slate-700 truncate">Role Name</p>
+<div class="mt-2 text-xs text-slate-500 space-y-1">
+<p><i class="fa-solid fa-location-dot w-4"></i><span id="previewLoc">Location</span></p>
+<p><i class="fa-solid fa-graduation-cap w-4"></i><span id="previewBatch">Not Specified</span></p>
+<p><i class="fa-solid fa-briefcase w-4"></i><span id="previewExp">0 years</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="qualityCard" class="card p-5">
+<h3 class="font-black">Extraction quality</h3>
+<p class="text-xs text-slate-500 mt-1">Automatic extraction is only a starting point. Always review fields before publishing.</p>
+<div id="qualityList" class="space-y-2 mt-4 text-sm">
+<p class="text-slate-400">Paste a job link to see extraction confidence.</p>
+</div>
+</div>
+
+<div id="jsonCard" class="card p-5 hidden">
+<div class="flex items-center justify-between gap-3">
+<h3 class="font-black">Generated jobs.json entry</h3>
+<button onclick="copyJson()" class="btn text-sm px-3 py-2 bg-slate-100 text-slate-700"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
+</div>
+<pre id="jsonOutput" class="mt-4 bg-slate-950 text-slate-100 rounded-xl p-4 text-xs overflow-auto max-h-[430px] whitespace-pre-wrap"></pre>
+</div>
+</aside>
+</div>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+
+<script>
+const CAT_LABEL={it:"IT / Software",internship:"Internship",apprenticeship:"Apprenticeship",campus:"Off-Campus",remote:"Remote / WFH",walkin:"Walk-in",experienced:"Experienced",govt:"Government"};
+const ids=["company","role","roleTag","domain","loc","locationFilter","salary","batch","cat","expType","expYears","date","apply","page","logoInitials","logoColor","elig","desc"];
+let lastExtraction=null;
+
+function val(id){return document.getElementById(id).value.trim()}
+function setVal(id,v){document.getElementById(id).value=v??""}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function slugify(s){return String(s||"job").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,80)||"job"}
+
+function toggleKey(){const el=document.getElementById("adminKey");el.type=el.type==="password"?"text":"password"}
+
+function showStatus(msg,type="info"){
+const el=document.getElementById("extractStatus");
+el.className="mt-3 rounded-xl px-3 py-2.5 text-sm "+(type==="error"?"bg-red-50 text-red-700 border border-red-200":type==="ok"?"bg-green-50 text-green-700 border border-green-200":"bg-blue-50 text-blue-700 border border-blue-200");
+el.textContent=msg;el.classList.remove("hidden");
+}
+
+async function extractJob(){
+const url=val("jobUrl");
+const key=val("adminKey");
+if(!key)return showStatus("Enter the admin extraction key first.","error");
+if(!url)return showStatus("Paste an official job link first.","error");
+sessionStorage.setItem("hdAdminExtractKey",key);
+const btn=document.getElementById("extractBtn");
+btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Reading job page...';
+showStatus("Reading the job page and looking for structured job details...");
+try{
+const res=await fetch("/api/admin/extract-job",{method:"POST",headers:{"content-type":"application/json","x-admin-key":key},body:JSON.stringify({url})});
+const body=await res.json().catch(()=>({}));
+if(!res.ok)throw new Error(body.error||"Could not extract the job page.");
+lastExtraction=body.data;
+applyExtracted(body.data);
+showStatus("Fields generated. Review everything below before using it.","ok");
+renderQuality(body.data.extraction||{});
+}catch(e){showStatus(e.message||"Could not extract this job link.","error")}
+finally{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate fields'}
+}
+
+function applyExtracted(d){
+setVal("company",d.company);
+setVal("role",d.role);
+setVal("roleTag",d.roleTag||d.role);
+setVal("domain",d.domain);
+setVal("loc",d.loc);
+setVal("locationFilter",d.locationFilter||d.loc);
+setVal("salary",d.salary||"Not Disclosed");
+setVal("batch",d.batch||"Not Specified");
+setVal("cat",d.cat||"it");
+setVal("expType",d.expType||"fresher");
+setVal("expYears",d.expYears||"0 years");
+setVal("date",d.date);
+setVal("apply",d.apply||d.sourceUrl);
+setVal("page",d.page);
+setVal("logoInitials",(d.logo&&d.logo[0])||"HD");
+setVal("logoColor",(d.logo&&d.logo[1])||"#0b6fe8");
+setVal("elig",d.elig);
+setVal("desc",d.desc);
+setResponsibilities(d.resp||[]);
+updatePreview();
+document.getElementById("formCard").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function startManual(){
+clearForm();
+fillDefaults();
+document.getElementById("formCard").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function fillDefaults(){
+if(!val("salary"))setVal("salary","Not Disclosed");
+if(!val("batch"))setVal("batch","Not Specified");
+if(!val("expYears"))setVal("expYears","0 years");
+if(!val("date")){
+const d=new Date();
+setVal("date",d.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).replace(/^0/,""));
+}
+if(!val("logoColor"))setVal("logoColor","#0b6fe8");
+if(!document.querySelector("#responsibilities input"))addResponsibility();
+updatePreview();
+}
+
+function clearForm(){
+ids.forEach(id=>setVal(id,""));
+setVal("salary","Not Disclosed");setVal("batch","Not Specified");setVal("cat","it");setVal("expType","fresher");setVal("expYears","0 years");setVal("logoColor","#0b6fe8");
+setResponsibilities([""]);
+document.getElementById("jsonCard").classList.add("hidden");
+updatePreview();
+}
+
+function syncRole(){if(!val("roleTag"))setVal("roleTag",val("role"));if(!val("page")&&val("company")&&val("role"))setVal("page","jobs/"+slugify(val("company")+"-"+val("role"))+".html")}
+function syncLocation(){if(!val("locationFilter"))setVal("locationFilter",val("loc"))}
+
+function addResponsibility(value=""){
+const row=document.createElement("div");
+row.className="flex gap-2 responsibility-row";
+row.innerHTML='<input class="field responsibility-input" placeholder="Responsibility" value="'+escapeHtml(value)+'" oninput="updatePreview()"><button type="button" class="btn w-11 shrink-0 border border-slate-200 bg-white text-slate-500" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>';
+document.getElementById("responsibilities").appendChild(row);
+}
+
+function setResponsibilities(items){
+const root=document.getElementById("responsibilities");root.innerHTML="";
+(items.length?items:[""]).forEach(addResponsibility);
+}
+
+function responsibilities(){
+return [...document.querySelectorAll(".responsibility-input")].map(x=>x.value.trim()).filter(Boolean);
+}
+
+function buildJob(){
+const company=val("company"),role=val("role");
+const logoInitials=val("logoInitials")||(company?company.slice(0,2).toUpperCase():"HD");
+return {
+id:null,
+page:val("page")||("jobs/"+slugify(company+"-"+role)+".html"),
+domain:val("domain"),
+company,
+salary:val("salary")||"Not Disclosed",
+logo:[logoInitials,val("logoColor")||"#0b6fe8"],
+role,
+roleTag:val("roleTag")||role,
+loc:val("loc")||"Not Specified",
+locationFilter:val("locationFilter")||val("loc"),
+batch:val("batch")||"Not Specified",
+elig:val("elig"),
+cat:val("cat")||"it",
+expType:val("expType")||"fresher",
+expYears:val("expYears")||"0 years",
+date:val("date"),
+desc:val("desc"),
+resp:responsibilities(),
+apply:val("apply")
+};
+}
+
+function validate(){
+const j=buildJob();
+const missing=[];
+if(!j.company)missing.push("Company");
+if(!j.role)missing.push("Role");
+if(!j.loc)missing.push("Location");
+if(!j.elig)missing.push("Eligibility");
+if(!j.desc)missing.push("Description");
+if(!j.apply)missing.push("Official Apply URL");
+if(!j.resp.length)missing.push("At least one responsibility");
+if(missing.length){showToast("Missing: "+missing.join(", "));return false}
+return true;
+}
+
+function updatePreview(){
+const j=buildJob();
+document.getElementById("previewCompany").textContent=j.company||"Company";
+document.getElementById("previewRole").textContent=j.role||"Role Name";
+document.getElementById("previewLoc").textContent=j.loc||"Location";
+document.getElementById("previewBatch").textContent=j.batch||"Not Specified";
+document.getElementById("previewExp").textContent=j.expYears||"0 years";
+document.getElementById("previewSalary").textContent=j.salary||"Not Disclosed";
+document.getElementById("previewCat").textContent=CAT_LABEL[j.cat]||j.cat;
+document.getElementById("previewLevel").textContent=j.expType==="experienced"?"Experienced":"Fresher";
+const logo=document.getElementById("previewLogo");
+logo.textContent=j.logo[0]||"HD";logo.style.background=j.logo[1]||"#0b6fe8";
+}
+
+function previewJob(){if(!validate())return;updatePreview();document.getElementById("previewCompany").scrollIntoView({behavior:"smooth",block:"center"})}
+
+function showJson(){
+if(!validate())return;
+const j=buildJob();
+document.getElementById("jsonOutput").textContent=JSON.stringify(j,null,2);
+document.getElementById("jsonCard").classList.remove("hidden");
+document.getElementById("jsonCard").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+async function copyJson(){
+const text=document.getElementById("jsonOutput").textContent;
+await navigator.clipboard.writeText(text);showToast("JSON copied");
+}
+
+function renderQuality(q){
+const labels=[["structuredJobPosting","Structured JobPosting data"],["title","Job title"],["company","Company"],["location","Location"],["salary","Salary"],["eligibility","Eligibility"]];
+document.getElementById("qualityList").innerHTML=labels.map(([k,l])=>'<div class="flex items-center justify-between gap-3"><span>'+l+'</span><span class="badge '+(q[k]?"bg-green-50 text-green-700":"bg-amber-50 text-amber-700")+'">'+(q[k]?"Found":"Review")+'</span></div>').join("");
+}
+
+function showToast(msg){
+const el=document.getElementById("toast");el.textContent=msg;el.classList.remove("hidden");clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.add("hidden"),2200)
+}
+
+const saved=sessionStorage.getItem("hdAdminExtractKey");
+if(saved)setVal("adminKey",saved);
+fillDefaults();setResponsibilities([""]);updatePreview();
+</script>
+</body>
+</html>
