@@ -1,11 +1,28 @@
 import {requireAdmin} from "../../lib/admin-auth.js";
 import dns from "node:dns/promises";
-import crypto from "node:crypto";
 import net from "node:net";
 
-const MAX_BYTES = 2_000_000;
-const MAX_REDIRECTS = 3;
-const TIMEOUT_MS = 9000;
+export const config={maxDuration:30};
+
+const MAX_BYTES=3_500_000;
+const MAX_READER_BYTES=2_500_000;
+const MAX_REDIRECTS=4;
+const TIMEOUT_MS=6500;
+const READER_TIMEOUT_MS=12000;
+
+const COMPANY_HOST_HINTS=[
+["deloitte","Deloitte"],["ibm","IBM"],["accenture","Accenture"],["pwc","PwC"],
+["infosys","Infosys"],["tcs","TCS"],["wipro","Wipro"],["cognizant","Cognizant"],
+["capgemini","Capgemini"],["microsoft","Microsoft"],["google","Google"],["amazon","Amazon"],
+["apple","Apple"],["oracle","Oracle"],["salesforce","Salesforce"],["adobe","Adobe"],
+["servicenow","ServiceNow"],["qualcomm","Qualcomm"],["intel","Intel"],["nvidia","NVIDIA"],
+["jpmorgan","JPMorgan Chase"],["jpmc","JPMorgan Chase"],["goldmansachs","Goldman Sachs"],
+["kpmg","KPMG"],["ltimindtree","LTIMindtree"],["hcltech","HCLTech"],["techmahindra","Tech Mahindra"],
+["zoho","Zoho"],["flipkart","Flipkart"],["paypal","PayPal"]
+];
+const ATS_HOSTS=["myworkdayjobs.com","workdayjobs.com","oraclecloud.com","greenhouse.io","lever.co","smartrecruiters.com","icims.com","taleo.net","successfactors.com","phenompeople.com"];
+const INDIA_CITIES=["hyderabad","bengaluru","bangalore","chennai","pune","mumbai","noida","gurugram","gurgaon","delhi","new delhi","kolkata","kochi","cochin","ahmedabad","jaipur","indore","coimbatore","trivandrum","thiruvananthapuram","bhubaneswar","mysuru","mysore","remote"];
+const ACTION_VERBS="Work|Develop|Design|Build|Create|Support|Collaborate|Execute|Prepare|Maintain|Analyze|Validate|Test|Assist|Manage|Deliver|Drive|Perform|Monitor|Ensure|Use|Translate|Document|Identify|Implement|Review|Coordinate|Troubleshoot|Participate|Contribute|Own|Lead|Configure|Automate|Debug|Deploy|Integrate|Optimize|Partner|Communicate|Research|Assess|Plan";
 
 function normalizeKnownCareerUrl(input){
   const u=new URL(input);
@@ -113,6 +130,44 @@ async function fetchHtml(input){
   throw new Error("Too many redirects.");
 }
 
+async function fetchReader(input){
+  const u=await assertPublicUrl(input);
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),READER_TIMEOUT_MS);
+  try{
+    const headers={"accept":"application/json","x-return-format":"markdown","x-engine":"browser","user-agent":"HD-Careers-Admin/2.0"};
+    if(process.env.JINA_API_KEY)headers.authorization="Bearer "+process.env.JINA_API_KEY;
+    const response=await fetch("https://r.jina.ai/"+u.href,{signal:controller.signal,headers});
+    if(!response.ok)throw new Error("Reader fallback returned HTTP "+response.status+".");
+    const raw=await readReaderBody(response);
+    try{
+      const body=JSON.parse(raw);
+      const data=body.data||body;
+      return {content:String(data.content||data.markdown||""),title:String(data.title||""),url:String(data.url||u.href)};
+    }catch{
+      return {content:raw,title:"",url:u.href};
+    }
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
+async function readReaderBody(response){
+  const reader=response.body&&response.body.getReader?response.body.getReader():null;
+  if(!reader)return await response.text();
+  const chunks=[];let total=0;
+  while(true){
+    const part=await reader.read();
+    if(part.done)break;
+    total+=part.value.byteLength;
+    if(total>MAX_READER_BYTES)throw new Error("Rendered job page is too large to process.");
+    chunks.push(part.value);
+  }
+  const bytes=new Uint8Array(total);let offset=0;
+  for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+  return new TextDecoder().decode(bytes);
+}
+
 function decodeEntities(s){
   return String(s||"")
     .replace(/&nbsp;/gi," ")
@@ -169,6 +224,22 @@ function collectNextData(html){
   const m=html.match(/<script[^>]*id\s*=\s*["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
   if(!m)return null;
   try{return JSON.parse(m[1].trim());}catch{return null;}
+}
+
+
+function collectEmbeddedJson(html){
+  const out=[];
+  const re=/<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+  let m;
+  while((m=re.exec(String(html||"")))&&out.length<40){
+    const attrs=m[1]||"";
+    const body=m[2].trim();
+    if(!body||body.length>1500000)continue;
+    if(/application\/(?:ld\+)?json|__NEXT_DATA__|__APOLLO_STATE__|application\/json/i.test(attrs)){
+      try{out.push(JSON.parse(body));}catch{}
+    }
+  }
+  return out;
 }
 
 function walkObjects(value,out=[]){
@@ -370,131 +441,235 @@ function inferCategory(title,desc,domain,exp){
   return "it";
 }
 
-function sentenceList(s){
-  return stripHtml(s)
-    .replace(/\s+/g," ")
-    .split(/(?<=[.!?])\s+(?=[A-Z0-9])/)
-    .map(x=>x.trim())
-    .filter(Boolean);
-}
 
+function normalizeSpace(s){return String(s||"").replace(/\s+/g," ").trim();}
+function escapeRegExp(s){return String(s||"").replace(/[.*+?^$\{\}()|[\]\\]/g,"\\$&");}
+function titleCase(s){return normalizeSpace(s).split(" ").map(w=>/^[A-Z0-9]{2,}$/.test(w)?w:(w?w[0].toUpperCase()+w.slice(1).toLowerCase():w)).join(" ");}
+
+function sentenceList(s){
+  return stripHtml(s).replace(/\s+/g," ").split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(x=>x.trim()).filter(Boolean);
+}
 function uniqueText(items){
-  const seen=new Set();
-  const out=[];
+  const seen=new Set(),out=[];
   for(const item of items){
-    const clean=String(item||"").replace(/\s+/g," ").replace(/^[-–—*•\d.)\s]+/,"").trim();
-    if(!clean)continue;
+    const clean=normalizeSpace(String(item||"").replace(/^[-–—*•\d.)\s]+/,""));
     const key=clean.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
-    if(!key||seen.has(key))continue;
-    seen.add(key);
-    out.push(clean);
+    if(clean&&key&&!seen.has(key)){seen.add(key);out.push(clean);}
   }
   return out;
 }
-
+function markdownTitle(md){
+  const m=String(md||"").match(/^#\s+(.+)$/m);
+  return m?normalizeSpace(m[1]):"";
+}
 function sectionText(text,headings){
-  const src=stripHtml(text);
+  const src=String(text||"");
   if(!src)return "";
-  const escaped=headings.map(x=>x.replace(/[.*+?^$\{\}()|[\]\\]/g,"\\function splitResponsibilities(s){
-  const text=stripHtml(s);
-  if(!text)return [];
-  const candidates=text.split(/\n|•|\u2022|;(?=\s+[A-Z])/).map(x=>x.replace(/^[-–—*\d.)\s]+/,"").trim()).filter(x=>x.length>=20&&x.length<=220);
-  return [...new Set(candidates)].slice(0,6);
-}
-
-function cleanDescription(s){
-  const x=stripHtml(s);
-  if(!x)return "";
-  return x.split(/\n+/).map(v=>v.trim()).filter(Boolean).slice(0,5).join(" ").slice(0,900);
-}
-")).join("|");
-  const re=new RegExp("(?:^|\\n|\\.\\s+)("+escaped+")\\s*:?\\s*","i");
+  const names=headings.map(escapeRegExp).join("|");
+  const re=new RegExp("(?:^|\\n|[.!?]\\s+)#{0,4}\\s*(?:"+names+")\\s*:?\\s*","i");
   const m=re.exec(src);
   if(!m)return "";
-  const after=src.slice(m.index+m[0].length);
-  const stop=after.search(/(?:\n|\.\s+)(?:qualifications?|requirements?|skills?|education|experience|about us|what we do|preferred|mandatory|benefits?|how to apply)\s*:?/i);
-  return (stop>=0?after.slice(0,stop):after).trim();
+  const rest=src.slice(m.index+m[0].length);
+  const stop=rest.search(/\n#{1,4}\s+[^\n]+|(?:\n|[.!?]\s+)(?:Qualifications?|Requirements?|Skills?|Education|Experience|Benefits?|About(?: us)?|How to apply|Job details?|Responsibilities?|What you(?:'ll| will) do)\s*:?/i);
+  return (stop>=0?rest.slice(0,stop):rest).trim();
 }
-
+function shortenBullet(s){
+  let x=normalizeSpace(s);
+  if(x.length>180){
+    const first=x.split(/(?<=[.!?])\s/)[0];
+    x=first.length>=35?first:x.slice(0,180).replace(/\s+\S*$/,"");
+  }
+  return x.replace(/[.;,:]+$/,"").trim();
+}
 function splitResponsibilities(s){
-  const text=stripHtml(s);
+  const text=String(s||"");
   if(!text)return [];
-
-  const focused=sectionText(text,[
-    "key job responsibilities",
-    "job responsibilities",
-    "responsibilities",
-    "what you will do",
-    "what you'll do",
-    "your role",
-    "duties"
-  ]);
-
+  const focused=sectionText(text,["Key job responsibilities","Job responsibilities","Responsibilities","What you will do","What you'll do","Your role","Duties","Key responsibilities"]);
   const source=focused||text;
-  let candidates=source
-    .split(/\n|•|\u2022|;(?=\s+[A-Z])|(?<=[.!?])\s+(?=(?:Work|Develop|Design|Build|Create|Support|Collaborate|Execute|Prepare|Maintain|Analyze|Validate|Test|Assist|Manage|Deliver|Drive|Perform|Monitor|Ensure|Use|Translate|Document|Identify|Implement|Review|Coordinate|Troubleshoot|Participate|Contribute)\b)/i)
-    .map(x=>x.replace(/^[-–—*\d.)\s]+/,"").trim())
-    .filter(x=>x.length>=20&&x.length<=260);
-
-  const action=/^(Work|Develop|Design|Build|Create|Support|Collaborate|Execute|Prepare|Maintain|Analyze|Validate|Test|Assist|Manage|Deliver|Drive|Perform|Monitor|Ensure|Use|Translate|Document|Identify|Implement|Review|Coordinate|Troubleshoot|Participate|Contribute)\b/i;
-  const actionItems=candidates.filter(x=>action.test(x));
-
-  if(actionItems.length>=3)candidates=actionItems;
-  return uniqueText(candidates).slice(0,6);
+  const splitter=new RegExp("\\n\\s*(?:[-*•]|\\d+[.)])\\s+|\\n+|;(?=\\s+[A-Z])|(?<=[.!?])\\s+(?=(?:"+ACTION_VERBS+")\\b)","i");
+  let items=source.split(splitter).map(shortenBullet).filter(x=>x.length>=20&&x.length<=220);
+  const action=new RegExp("^(?:"+ACTION_VERBS+")\\b","i");
+  const actionItems=items.filter(x=>action.test(x));
+  if(actionItems.length>=3)items=actionItems;
+  return uniqueText(items).slice(0,6);
 }
-
-function cleanDescription(s){
-  const x=stripHtml(s);
-  if(!x)return "";
-
-  const beforeResponsibilities=x.split(/(?:\n|\.\s+)(?:key job responsibilities|job responsibilities|responsibilities|what you will do|what you'll do)\s*:?/i)[0].trim();
-  const source=beforeResponsibilities||x;
-  const boilerplate=/^(about us|who we are|our purpose|our people|deloitte refers to|privacy|equal opportunity|accommodation|recruiting tips)/i;
-  const sentences=sentenceList(source)
-    .filter(x=>x.length>=35)
-    .filter(x=>!boilerplate.test(x))
-    .filter(x=>!/^(job description|description|position summary)\s*:?$/i.test(x));
-
-  let picked=[];
-  let total=0;
-  for(const sentence of uniqueText(sentences)){
+function cleanDescription(s,role="",company=""){
+  const src=stripHtml(s);
+  if(!src)return "";
+  const before=src.split(/(?:\n|\.\s+)(?:key job responsibilities|job responsibilities|responsibilities|what you will do|what you'll do|qualifications?|requirements?)\s*:?/i)[0].trim();
+  const source=before.length>=100?before:src;
+  const bad=/(privacy|cookie|equal opportunity|accommodation|recruiting tips|terms of use|copyright|join our talent|sign up|apply now|share this job)/i;
+  const roleWords=String(role||"").toLowerCase().split(/\W+/).filter(x=>x.length>3);
+  const scored=sentenceList(source).filter(x=>x.length>=35&&x.length<=360&&!bad.test(x)).map((x,i)=>{
+    const lower=x.toLowerCase();let score=Math.max(0,5-i);
+    if(/responsib|role|team|work|develop|design|build|test|engineer|analyt|support|deliver|client/.test(lower))score+=4;
+    for(const w of roleWords)if(lower.includes(w))score+=2;
+    return {x,score};
+  }).sort((a,b)=>b.score-a.score);
+  const picked=[];let total=0;
+  for(const row of scored){
     if(picked.length>=3)break;
-    if(total+sentence.length>520&&picked.length>=2)break;
-    picked.push(sentence);
-    total+=sentence.length;
+    if(picked.includes(row.x))continue;
+    if(total+row.x.length>520&&picked.length>=2)continue;
+    picked.push(row.x);total+=row.x.length;
   }
-
-  let summary=(picked.length?picked.join(" "):source).trim();
-  if(summary.length>560){
-    summary=summary.slice(0,560).replace(/\s+\S*$/,"").replace(/[,:;\-]+$/,"").trim();
-  }
+  let summary=normalizeSpace(picked.length?picked.join(" "):source.slice(0,520));
+  if(summary.length>560)summary=summary.slice(0,560).replace(/\s+\S*$/,"").trim();
   if(summary&&!/[.!?]$/.test(summary))summary+=".";
+  if(summary.length<45&&role)return (company||"The company")+" is hiring for "+role+". Review the official posting for complete role details.";
   return summary;
 }
-
 function cleanEligibility(raw,descriptionSource){
-  const text=stripHtml(raw);
-  const source=text||stripHtml(descriptionSource);
+  const explicit=stripHtml(raw);
+  const source=explicit||stripHtml(descriptionSource);
   if(!source)return "";
-
-  const signals=/(bachelor|master|degree|b\.e\.?|b\.tech|m\.tech|mba|graduate|qualification|minimum|at least|years? of experience|experience required|required skill|must have|preferred|proficien|knowledge of|familiarity with|sql|python|java|testing|analytics)/i;
-  const sentences=sentenceList(source);
-  const relevant=uniqueText(sentences.filter(x=>signals.test(x)&&x.length>=25&&x.length<=260));
-
-  if(relevant.length){
-    return relevant.slice(0,4).join(" ").slice(0,620);
+  const focused=sectionText(source,["Qualifications","Requirements","Required qualifications","Minimum qualifications","What you need","Eligibility","Education","Skills"])||source;
+  const signals=/(bachelor|master|degree|b\.e\.?|b\.tech|m\.tech|mba|graduate|qualification|minimum|years? of experience|experience required|required|must have|preferred|proficien|knowledge|familiarity|sql|python|java|testing|analytics|engineering|computer science)/i;
+  let lines=focused.split(/\n\s*(?:[-*•]|\d+[.)])\s+|\n+|(?<=[.!?])\s+(?=[A-Z0-9])/).map(shortenBullet).filter(x=>x.length>=20&&x.length<=240&&signals.test(x));
+  lines=uniqueText(lines).slice(0,5);
+  if(lines.length)return lines.join(" • ");
+  if(explicit)return normalizeSpace(explicit).slice(0,600);
+  return "";
+}
+function labeledValue(text,labels){
+  const list=Array.isArray(labels)?labels:[labels];
+  for(const label of list){
+    const re=new RegExp("(?:^|\\n|[|•])\\s*"+escapeRegExp(label)+"\\s*[:\\-]\\s*([^\\n|•]{2,220})","i");
+    const m=String(text||"").match(re);
+    if(m)return normalizeSpace(m[1]);
   }
-
-  if(text&&text.length<=420)return text;
   return "";
 }
 
-function labeledValue(text,label){
-  const re=new RegExp(label+"\\s*[:\\-]\\s*([^\\n]{2,180})","i");
-  const m=String(text||"").match(re);
-  return m?m[1].replace(/\\s+/g," ").trim():"";
-}
 
+function queryHint(u,names){
+  for(const n of names){
+    const v=u.searchParams.get(n);
+    if(v)return normalizeSpace(v.replace(/[+_]+/g," "));
+  }
+  return "";
+}
+function inferCompanyFromHost(host){
+  const h=String(host||"").toLowerCase().replace(/^www\./,"");
+  for(const [needle,name] of COMPANY_HOST_HINTS)if(h.includes(needle))return name;
+  for(const ats of ATS_HOSTS){
+    if(h.endsWith(ats)){
+      const first=h.split(".")[0].replace(/[-_]+/g," ");
+      if(first&&!/^(www|jobs|careers|wd\d+|hcm|myworkdayjobs)$/i.test(first))return titleCase(first);
+    }
+  }
+  const labels=h.split(".").filter(Boolean);
+  if(labels.length>=2){
+    let x=labels[labels.length-2];
+    if(["co","com","org","net"].includes(x)&&labels.length>=3)x=labels[labels.length-3];
+    if(x&&!/^(jobs|careers|career|recruiting|recruitment)$/i.test(x))return titleCase(x.replace(/[-_]+/g," "));
+  }
+  return "";
+}
+function inferLocationFromUrl(u){
+  const q=queryHint(u,["location","joblocation","city","jobLocation","locationName"]);
+  if(q)return q;
+  const raw=decodeURIComponent(u.pathname.replace(/[\/_-]+/g," ")).toLowerCase();
+  const hit=INDIA_CITIES.find(c=>raw.includes(c));
+  if(!hit)return "";
+  return titleCase(hit==="bangalore"?"Bengaluru":hit);
+}
+function inferRoleFromUrl(u){
+  const q=queryHint(u,["jobtitle","jobTitle","title","position","positionTitle","job_name","jobName"]);
+  if(q)return q.replace(/\|.*$/,"").trim();
+  const parts=u.pathname.split("/").map(x=>decodeURIComponent(x)).filter(Boolean);
+  const stop=/^(en|en-us|en_us|jobs?|careers?|career|jobdetail|job-details?|positions?|opportunities|search|apply|candidateexperience|sites?)$/i;
+  const candidates=parts.filter(p=>!stop.test(p)&&!/^\d{4,}$/.test(p)&&!/^[A-Z]*\d{4,}[A-Z0-9_-]*$/i.test(p));
+  let x=candidates[candidates.length-1]||"";
+  x=x.replace(/[_-]+/g," ").replace(/\b(?:job|opening|position)\b$/i,"").trim();
+  for(const city of INDIA_CITIES)x=x.replace(new RegExp("(?:[-,| ]+)?"+escapeRegExp(city).replace(/\\ /g,"[ -]")+"$","i"),"").trim();
+  return x?titleCase(x):"";
+}
+function extractJobId(u){
+  const q=queryHint(u,["jobId","jobid","job_id","reqId","reqid","requisitionId","requisitionid","postingId","id"]);
+  if(q&&/^[-A-Z0-9_]+$/i.test(q))return q;
+  const parts=u.pathname.split("/").filter(Boolean).reverse();
+  for(const p of parts){
+    const m=decodeURIComponent(p).match(/(?:^|[_-])([A-Z]*\d{4,}[A-Z0-9_-]*)$/i);
+    if(m)return m[1];
+    if(/^\d{5,}$/.test(p))return p;
+  }
+  return "";
+}
+function cleanTitle(raw,company){
+  let x=normalizeSpace(stripHtml(raw));
+  if(!x)return "";
+  x=x.replace(/\s+[|–—]\s+(?:careers?|jobs?|job search).*$/i,"").replace(/\s+-\s+(?:careers?|jobs?|job search).*$/i,"");
+  if(company)x=x.replace(new RegExp("\\s+[|–—-]\\s+"+escapeRegExp(company)+".*$","i"),"");
+  return x.trim();
+}
+function detectExperienceText(text){
+  const raw=stripHtml(text);
+  let m=raw.match(/(?:minimum(?: of)?|at least|more than|over)?\s*(\d+)\s*(?:\+|plus)?\s*(?:-|–|to)\s*(\d+)\s*years?(?:\s+of)?\s+experience/i);
+  if(!m)m=raw.match(/(\d+)\s*(?:-|–|to)\s*(\d+)\s*years?/i);
+  if(m)return {known:true,type:Number(m[1])>0?"experienced":"fresher",years:m[1]+"-"+m[2]+" years"};
+  m=raw.match(/(?:minimum(?: of)?|at least|more than|over)?\s*(\d+)\s*(?:\+|plus)?\s*years?(?:\s+of)?\s+experience/i);
+  if(m)return {known:true,type:Number(m[1])>0?"experienced":"fresher",years:m[1]+"+ years"};
+  if(/\b(fresher|freshers|entry[- ]level|no experience required|0\s*(?:-|to)\s*1\s*year)/i.test(raw))return {known:true,type:"fresher",years:"0 years"};
+  return {known:false,type:"fresher",years:"Not Specified"};
+}
+function readerFields(reader){
+  const md=reader&&reader.content||"";
+  return {
+    title:cleanTitle(reader&&reader.title||markdownTitle(md),""),
+    company:labeledValue(md,["Company","Organization","Employer"]),
+    location:labeledValue(md,["Location","Job Location","Primary Location","Locations","City"]),
+    experience:labeledValue(md,["Experience","Years of Experience","Experience Required"]),
+    salary:labeledValue(md,["Salary","Compensation","Salary / Stipend","Pay Range"]),
+    posted:labeledValue(md,["Date Posted","Posted","Posting Date"]),
+    eligibility:sectionText(md,["Qualifications","Requirements","Required qualifications","Minimum qualifications","Eligibility","What you need","Skills"]),
+    responsibilities:sectionText(md,["Key job responsibilities","Job responsibilities","Responsibilities","What you will do","What you'll do","Duties","Your role"]),
+    description:sectionText(md,["Job Description","Role overview","Position summary","About the role","The role","Job summary"])||md
+  };
+}
+function scoreJobObject(obj,jobId){
+  let score=0;
+  for(const [k,v] of Object.entries(obj||{})){
+    const nk=normKey(k),tv=textValue(v);
+    if(jobId&&tv===jobId)score+=/jobid|requisitionid|reqid|jobnumber|postingid/.test(nk)?35:12;
+    if(/jobtitle|positiontitle|postingtitle|jobname|title/.test(nk)&&tv)score+=7;
+    if(/jobdescription|description|jobdesc/.test(nk)&&tv.length>80)score+=7;
+    if(/location|city|country/.test(nk)&&tv)score+=3;
+    if(/qualification|responsibil|requirement|skill/.test(nk)&&tv)score+=3;
+  }
+  return score;
+}
+function findBestJobObject(values,jobId){
+  let best=null,bestScore=0;
+  for(const root of values){
+    for(const obj of walkObjects(root,[])){
+      const score=scoreJobObject(obj,jobId);
+      if(score>bestScore){bestScore=score;best=obj;}
+    }
+  }
+  return bestScore>=10?best:null;
+}
+function genericEmbedded(values,jobId){
+  const obj=findBestJobObject(values,jobId);
+  if(!obj)return null;
+  return {
+    title:deepField(obj,["jobTitle","positionTitle","postingTitle","title","jobName","name"]),
+    company:deepField(obj,["companyName","employerName","organizationName","hiringOrganization","brandName"]),
+    description:deepField(obj,["jobDescription","description","jobDesc","descriptionHtml","details"]),
+    location:deepField(obj,["primaryLocation","jobLocation","location","locations","city","locationName"]),
+    eligibility:deepField(obj,["qualifications","requiredQualifications","minimumQualifications","educationRequirements","requirements","skills"]),
+    responsibilities:deepField(obj,["responsibilities","jobResponsibilities","duties","keyResponsibilities"]),
+    posted:deepField(obj,["datePosted","postedDate","postingDate","createdDate","publishDate"]),
+    salary:deepField(obj,["salary","salaryText","compensation","baseSalary"])
+  };
+}
+function qualityScore(x){
+  let n=0;
+  if(x.title)n+=18;if(x.company)n+=14;if(x.location&&x.location!=="Not Specified")n+=12;
+  if(x.description&&x.description.length>100)n+=18;if(x.responsibilities&&x.responsibilities.length>=3)n+=16;
+  if(x.eligibility&&x.eligibility.length>30)n+=12;if(x.experience)n+=6;if(x.structured)n+=4;
+  return Math.min(100,n);
+}
 function pwcResponsibilities(text){
   const src=String(text||"");
   const out=[];
@@ -507,6 +682,7 @@ function pwcResponsibilities(text){
   return out;
 }
 
+
 export default async function handler(req,res){
   if(req.method!=="POST"){
     res.setHeader("Allow","POST");
@@ -517,72 +693,131 @@ export default async function handler(req,res){
   if(!requireAdmin(req,res))return;
 
   try{
-    const input=req.body&&req.body.url;
+    const input=String(req.body&&req.body.url||"").trim();
     if(!input)return res.status(400).json({error:"Job URL is required."});
 
-    const hint=normalizeKnownCareerUrl(input);
-    let page;
-    try{
-      page=await fetchHtml(hint.fetchUrl);
-    }catch(error){
-      if(!hint.allowPartial)throw error;
-      page={html:"",url:hint.applyUrl};
-    }
-    const jsonLd=collectJsonLd(page.html);
-    let job=null;
-    for(const item of jsonLd){job=findJobPosting(item);if(job)break;}
-    const nextData=collectNextData(page.html);
-    const ibm=ibmFallback(nextData,input);
+    const original=await assertPublicUrl(input);
+    const hint=normalizeKnownCareerUrl(original.href);
+    const sourceUrl=hint.applyUrl||original.href;
+    const sourceHost=new URL(sourceUrl).hostname.replace(/^www\./,"");
+    const urlCompany=hint.companyHint||inferCompanyFromHost(sourceHost);
+    const urlRole=hint.roleHint||inferRoleFromUrl(original);
+    const urlLocation=hint.locationHint||inferLocationFromUrl(original);
+    const jobId=extractJobId(original);
 
-    const pageText=stripHtml(page.html);
-    const fallbackTitle=meta(page.html,null,"og:title")||titleTag(page.html);
-    const fallbackDesc=meta(page.html,"description")||meta(page.html,null,"og:description");
-    const title=textValue(job&&job.title)||(ibm&&ibm.title)||hint.roleHint||fallbackTitle.replace(/\s*[-|–].*$/,"").trim();
-    const company=getCompany(job)||(ibm&&ibm.company)||hint.companyHint||meta(page.html,null,"og:site_name")||"";
-    const workdayDescription=(hint.companyHint==="PwC"&&pageText)?pageText:"";
-    const rawDescription=(job&&job.description)||(ibm&&ibm.description)||fallbackDesc||workdayDescription;
-    const description=cleanDescription(rawDescription);
-    let responsibilities=(ibm&&ibm.responsibilities&&ibm.responsibilities.length)?ibm.responsibilities:splitResponsibilities((job&&job.responsibilities)||(job&&job.description)||rawDescription||"");
-    if(!responsibilities.length&&hint.companyHint==="PwC")responsibilities=pwcResponsibilities(pageText);
-    const location=getLocation(job)||(ibm&&ibm.location)||hint.locationHint||labeledValue(pageText,"Job Location");
-    const salary=getSalary(job)||"Not Disclosed";
-    const domain=hint.domainHint||new URL(page.url).hostname.replace(/^www\./,"");
-    const exp=detectExperience(job,[description,labeledValue(pageText,"Experience"),labeledValue(pageText,"Year of experience required")].filter(Boolean).join(" "));
+    let page={html:"",url:hint.fetchUrl||sourceUrl};
+    let directError="";
+    try{
+      page=await fetchHtml(hint.fetchUrl||sourceUrl);
+    }catch(error){
+      directError=error&&error.message||"Direct fetch failed";
+    }
+
+    const html=page.html||"";
+    const pageText=stripHtml(html);
+    const jsonRoots=[...collectJsonLd(html),...collectEmbeddedJson(html)];
+    const nextData=collectNextData(html);
+    if(nextData)jsonRoots.push(nextData);
+
+    let structured=null;
+    for(const root of jsonRoots){structured=findJobPosting(root);if(structured)break;}
+    const ibm=ibmFallback(nextData,input);
+    const embedded=genericEmbedded(jsonRoots,jobId);
+
+    let company=getCompany(structured)||(ibm&&ibm.company)||(embedded&&embedded.company)||hint.companyHint||meta(html,null,"og:site_name")||urlCompany;
+    company=normalizeSpace(company).replace(/\s+(?:careers?|jobs?)$/i,"").trim();
+
+    let title=cleanTitle(textValue(structured&&structured.title)||(ibm&&ibm.title)||(embedded&&embedded.title)||headingOne(html)||meta(html,null,"og:title")||titleTag(html)||urlRole,company);
+    let location=getLocation(structured)||(ibm&&ibm.location)||(embedded&&embedded.location)||labeledValue(pageText,["Job Location","Primary Location","Location","City"])||urlLocation;
+
+    let rawDescription=textValue(structured&&structured.description)||(ibm&&ibm.description)||(embedded&&embedded.description)||meta(html,"description")||meta(html,null,"og:description")||"";
+    let rawEligibility=textValue(structured&&structured.qualifications)||textValue(structured&&structured.educationRequirements)||textValue(structured&&structured.experienceRequirements)||(ibm&&ibm.eligibility)||(embedded&&embedded.eligibility)||"";
+    let rawResponsibilities=textValue(structured&&structured.responsibilities)||(ibm&&ibm.responsibilities&&ibm.responsibilities.join("\n"))||(embedded&&embedded.responsibilities)||rawDescription;
+    let salary=getSalary(structured)||(embedded&&embedded.salary)||"";
+    let posted=textValue(structured&&structured.datePosted)||(ibm&&ibm.posted)||(embedded&&embedded.posted)||"";
+
+    let description=cleanDescription(rawDescription,title,company);
+    let responsibilities=splitResponsibilities(rawResponsibilities);
+    let eligibility=cleanEligibility(rawEligibility,rawDescription);
+    let exp=detectExperienceText([textValue(structured&&structured.experienceRequirements),rawEligibility,rawDescription,pageText.slice(0,25000)].filter(Boolean).join(" "));
+
+    const sparse=!(title&&company&&location&&description&&responsibilities.length>=3&&eligibility);
+    let reader=null;
+    let readerError="";
+    if(sparse){
+      try{
+        reader=await fetchReader(hint.fetchUrl||sourceUrl);
+      }catch(error){
+        readerError=error&&error.message||"Reader fallback failed";
+      }
+
+      if(reader){
+        const rf=readerFields(reader);
+        company=company||rf.company||urlCompany;
+        title=title||cleanTitle(rf.title,company)||urlRole;
+        location=(location&&location!=="Not Specified"?location:"")||rf.location||urlLocation;
+        if(!rawDescription||description.length<100)rawDescription=rf.description||rawDescription;
+        if(!rawEligibility)rawEligibility=rf.eligibility||rawEligibility;
+        if(!rawResponsibilities||responsibilities.length<3)rawResponsibilities=rf.responsibilities||rf.description||rawResponsibilities;
+        salary=salary||rf.salary;
+        posted=posted||rf.posted;
+        description=cleanDescription(rawDescription,title,company);
+        eligibility=cleanEligibility(rawEligibility,rawDescription);
+        responsibilities=splitResponsibilities(rawResponsibilities);
+        exp=detectExperienceText([rf.experience,rawEligibility,rawDescription].filter(Boolean).join(" "));
+      }
+    }
+
+    company=company||urlCompany||"Company Not Identified";
+    title=title||urlRole||"Job Opening";
+    location=normalizeSpace(location)||"Not Specified";
+    const domain=hint.domainHint||sourceHost;
+
+    description=description||((company!=="Company Not Identified"?company:"The company")+" is hiring for "+title+(location!=="Not Specified"?" in "+location:"")+". Review the official job posting for complete role details.");
+    eligibility=eligibility||"Review the official job posting for education, skills and experience requirements.";
+    if(!responsibilities.length)responsibilities=["Review the official job description for role-specific responsibilities before applying."];
+    salary=normalizeSpace(salary)||"Not Disclosed";
+
     const category=inferCategory(title,description,domain,exp);
-    const rawEligibility=textValue(job&&job.qualifications)||textValue(job&&job.educationRequirements)||textValue(job&&job.experienceRequirements)||(ibm&&ibm.eligibility)||labeledValue(pageText,"Qualifications")||"";
-    const eligibility=cleanEligibility(rawEligibility,rawDescription);
-    const posted=textValue(job&&job.datePosted)||(ibm&&ibm.posted)||"";
-    const date=posted?new Date(posted):new Date();
-    const safeDate=Number.isNaN(date.getTime())?new Date():date;
-    const formatted=safeDate.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).replace(/^0/,"");
+    const structuredOk=Boolean(structured);
+    const confidence=qualityScore({title:title!=="Job Opening",company:company!=="Company Not Identified",location,description,responsibilities,eligibility,experience:exp.known,structured:structuredOk});
 
     const data={
-      sourceUrl:page.url,
+      sourceUrl,
       domain,
       company,
+      salary,
+      logo:[initials(company),"#0b6fe8"],
       role:title,
       roleTag:title,
-      loc:location||"Not Specified",
-      locationFilter:location||"",
-      salary,
+      loc:location,
+      locationFilter:location==="Not Specified"?"":location,
       batch:"Not Specified",
-      elig:eligibility||"Review the official job posting for detailed eligibility requirements.",
+      elig:eligibility,
       cat:category,
       expType:exp.type,
       expYears:exp.years,
-      date:formatted,
-      desc:description||("Review the official "+(company||"company")+" job posting for role details."),
-      resp:responsibilities.length?responsibilities:["Review the official job description and responsibilities before applying."],
-      apply:hint.applyUrl||page.url,
-      page:"jobs/"+slugify((company||domain)+"-"+(title||"job"))+".html",
-      logo:[initials(company||domain),"#0b6fe8"],
+      date:formatDate(posted),
+      desc:description,
+      resp:responsibilities.slice(0,6),
+      apply:sourceUrl,
+      page:"jobs/"+slugify(company+"-"+title)+".html",
       extraction:{
-        structuredJobPosting:Boolean(job),
-        title:Boolean(title),
-        company:Boolean(company),
-        location:Boolean(location),
+        source:structuredOk?"structured":reader?"reader":embedded?"embedded":"url-fallback",
+        confidence,
+        structuredJobPosting:structuredOk,
+        title:Boolean(title&&title!=="Job Opening"),
+        company:Boolean(company&&company!=="Company Not Identified"),
+        location:location!=="Not Specified",
         salary:salary!=="Not Disclosed",
-        eligibility:Boolean(eligibility)
+        eligibility:!eligibility.startsWith("Review the official job posting"),
+        description:description.length>=80&&!description.includes("Review the official job posting for complete role details"),
+        responsibilities:responsibilities.length>=3&&!responsibilities[0].startsWith("Review the official job description"),
+        experience:exp.known,
+        directFetch:Boolean(html),
+        readerFallback:Boolean(reader),
+        directError,
+        readerError
       }
     };
 
