@@ -25,7 +25,7 @@ jobs:
         run: |
           if grep -q '"page": "jobs/hd-careers-generator-test.html"' data/jobs.json; then
             test -f jobs/hd-careers-generator-test.html
-            grep -q "HD Careers Generator Test Role" index.html
+            grep -q "jobs/hd-careers-generator-test.html" index.html
             grep -q "HD Careers Generator Test Role" jobs/hd-careers-generator-test.html
           fi
 
