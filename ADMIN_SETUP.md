@@ -74,3 +74,46 @@ Reviewed jobs
 → Vercel Preview
 → merge
 ```
+
+
+## GitHub publishing setup
+
+The admin now supports:
+
+```
+Deploy Selected
+→ authenticated serverless publish API
+→ new GitHub branch
+→ update data/jobs.json
+→ open pull request
+→ GitHub Actions runs generate.py
+→ Vercel creates a PR preview
+→ review
+→ merge to main
+```
+
+### Required Vercel variable
+
+Create a fine-grained GitHub personal access token and save it only in Vercel:
+
+```
+GITHUB_PUBLISH_TOKEN=<GitHub token>
+```
+
+Recommended token scope:
+
+- Repository access: only `Chethan-Mns/Hdcareers`
+- Contents: Read and write
+- Pull requests: Read and write
+- Metadata: Read-only
+
+Set the variable for Preview and Production.
+
+Optional repository/base overrides:
+
+```
+ADMIN_GITHUB_REPO=Chethan-Mns/Hdcareers
+ADMIN_GITHUB_BASE=main
+```
+
+The GitHub token must never be added to client-side HTML or committed to the repository.
