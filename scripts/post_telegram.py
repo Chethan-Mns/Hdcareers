@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -13,7 +14,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "jobs.json"
 SITE_BASE = "https://hdcareers.in/"
-MAX_WAIT_SECONDS = 180
+MAX_WAIT_SECONDS = 240
 POLL_SECONDS = 10
 
 DEGREE_TERMS = [
@@ -37,25 +38,73 @@ def normalize_url(value: str) -> str:
     return str(value or "").strip().rstrip("/").lower()
 
 
-def load_event(path: str) -> list[dict]:
-    event = json.loads(Path(path).read_text(encoding="utf-8"))
-    jobs = event.get("client_payload", {}).get("jobs", [])
-    return jobs if isinstance(jobs, list) else []
+def load_current_jobs() -> list[dict]:
+    data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    return data if isinstance(data, list) else []
 
 
-def match_published_jobs(incoming: list[dict]) -> list[dict]:
-    current = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+def load_event(path: str) -> dict:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def jobs_from_dispatch(event: dict, current: list[dict]) -> list[dict]:
+    incoming = event.get("client_payload", {}).get("jobs", [])
+    if not isinstance(incoming, list):
+        return []
     urls = {normalize_url(j.get("apply", "")) for j in incoming}
     pairs = {
         (str(j.get("company", "")).strip().lower(), str(j.get("role", "")).strip().lower())
         for j in incoming
     }
-    matched = []
+    return [
+        job for job in current
+        if normalize_url(job.get("apply", "")) in urls
+        or (str(job.get("company", "")).strip().lower(), str(job.get("role", "")).strip().lower()) in pairs
+    ]
+
+
+def old_jobs_from_git(before: str) -> list[dict]:
+    if not before or set(before) == {"0"}:
+        return []
+    result = subprocess.run(
+        ["git", "show", f"{before}:data/jobs.json"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        return []
+    try:
+        data = json.loads(result.stdout)
+        return data if isinstance(data, list) else []
+    except json.JSONDecodeError:
+        return []
+
+
+def jobs_from_push(event: dict, current: list[dict]) -> list[dict]:
+    before = str(event.get("before", "") or "").strip()
+    old = old_jobs_from_git(before)
+    old_urls = {normalize_url(j.get("apply", "")) for j in old}
+    old_pairs = {
+        (str(j.get("company", "")).strip().lower(), str(j.get("role", "")).strip().lower())
+        for j in old
+    }
+    added = []
     for job in current:
+        url = normalize_url(job.get("apply", ""))
         pair = (str(job.get("company", "")).strip().lower(), str(job.get("role", "")).strip().lower())
-        if normalize_url(job.get("apply", "")) in urls or pair in pairs:
-            matched.append(job)
-    return matched
+        if url not in old_urls and pair not in old_pairs:
+            added.append(job)
+    return added
+
+
+def jobs_for_event(event: dict, current: list[dict]) -> list[dict]:
+    if isinstance(event.get("client_payload", {}).get("jobs"), list):
+        return jobs_from_dispatch(event, current)
+    if "before" in event:
+        return jobs_from_push(event, current)
+    return []
 
 
 def compact_qualification(job: dict) -> str:
@@ -65,12 +114,12 @@ def compact_qualification(job: dict) -> str:
 
     elig = re.sub(r"\s+", " ", str(job.get("elig", "") or "")).strip()
     if not elig:
-        return "See official eligibility"
+        return "Refer official job eligibility"
 
     found = []
     for pattern in DEGREE_TERMS:
-        for m in re.finditer(pattern, elig, flags=re.I):
-            value = m.group(0).strip()
+        for match in re.finditer(pattern, elig, flags=re.I):
+            value = match.group(0).strip()
             if value.lower() not in {x.lower() for x in found}:
                 found.append(value)
     if found:
@@ -84,7 +133,7 @@ def should_include_batch(job: dict) -> bool:
     if str(job.get("expType", "")).lower() != "fresher":
         return False
     batch = str(job.get("batch", "") or "").strip()
-    return bool(batch and batch.lower() not in {"not specified", "n/a", "na", "any"})
+    return bool(batch and batch.lower() not in {"not specified", "n/a", "na"})
 
 
 def should_include_package(job: dict) -> bool:
@@ -190,16 +239,18 @@ def main() -> None:
         print("Telegram secrets are not configured in GitHub Actions. Skipping channel post.")
         return
 
-    incoming = load_event(sys.argv[1])
-    jobs = match_published_jobs(incoming)
+    event = load_event(sys.argv[1])
+    current = load_current_jobs()
+    jobs = jobs_for_event(event, current)
     if not jobs:
-        raise SystemExit("No published jobs matched the repository_dispatch payload.")
+        print("No newly published jobs found for Telegram.")
+        return
 
     first_page = str(jobs[0].get("page", "") or "")
     if not wait_for_live(first_page):
         raise SystemExit("HD Careers production page did not become live within the wait window. Telegram post skipped.")
 
-    for job in reversed(jobs):
+    for job in jobs:
         send_telegram(token, channel, message_for(job))
         print(f"Posted to Telegram: {job.get('company')} — {job.get('role')}")
 
