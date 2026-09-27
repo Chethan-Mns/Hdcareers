@@ -1,0 +1,27 @@
+{
+  "id": 12,
+  "page": "jobs/company-role.html",
+  "domain": "company.com",
+  "company": "Company",
+  "salary": "Not Disclosed",
+  "logo": [
+    "CO",
+    "#000000"
+  ],
+  "role": "Role Name",
+  "roleTag": "Role Name",
+  "loc": "Bangalore",
+  "locationFilter": "Bangalore",
+  "batch": "Not Specified",
+  "elig": "Eligibility details",
+  "cat": "it",
+  "expType": "fresher",
+  "expYears": "0 years",
+  "date": "27 Sep 2026",
+  "desc": "Short original summary of the role.",
+  "resp": [
+    "Responsibility 1",
+    "Responsibility 2"
+  ],
+  "apply": "https://official-company-job-link"
+}
