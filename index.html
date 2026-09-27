@@ -331,17 +331,314 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 
 <script>
 const JOBS = [
-{id:1,page:"jobs/infosys-system-engineer.html",domain:"infosys.com",company:"Infosys",salary:"3.6 LPA",logo:["IN","#007cc3"],role:"Walk-in Drive - System Engineer",roleTag:"System Engineer",loc:"Pune (Walk-in)",locationFilter:"Pune",batch:"2024/2025",elig:"B.E/B.Tech - 65%+, carry resume & ID proof",cat:"walkin",expType:"fresher",expYears:"0 years",date:"26 Sep 2026",desc:"On-the-spot walk-in interview drive for System Engineer trainee roles.",resp:["Attend aptitude + technical round","Client project onboarding post selection"],apply:"https://www.infosys.com/careers"},
-{id:2,page:"jobs/zoho-software-development-internship.html",domain:"zoho.com",company:"Zoho",salary:"₹25,000/month Stipend",logo:["ZO","#e42527"],role:"Internship - Software Development",roleTag:"Software Development Intern",loc:"Chennai (On-site)",locationFilter:"Chennai",batch:"Any",elig:"Diploma/BE/BTech/MCA - strong problem solving",cat:"internship",expType:"fresher",expYears:"0 years",date:"25 Sep 2026",desc:"Paid internship with mentorship, leading to potential full-time offer at Zoho.",resp:["Build product features","Write unit tests","Collaborate with senior engineers"],apply:"https://zoho.com/careers"},
-{id:3,page:"jobs/tcs-software-engineer.html",domain:"tcs.com",company:"TCS",salary:"3.36 LPA",logo:["TC","#004a93"],role:"Ninja / Digital Ninja - Software Engineer",roleTag:"Software Engineer",loc:"Pan India",locationFilter:"Pan India",batch:"2025/2026",elig:"B.E/B.Tech/M.E/M.Tech/MCA - 60%+, no active backlogs",cat:"it",expType:"fresher",expYears:"0 years",date:"24 Sep 2026",desc:"TCS is hiring freshers as Ninja and Digital Ninja for pan-India roles across service lines.",resp:["Software development & testing","Working with agile teams","Client communication & documentation"],apply:"https://www.tcs.com/careers"},
-{id:4,page:"jobs/amazon-support-associate.html",domain:"amazon.jobs",company:"Amazon",salary:"2.4 LPA",logo:["AZ","#ff9900"],role:"Support Associate (WFH)",roleTag:"Support Associate",loc:"Remote - India",locationFilter:"Remote",batch:"Any Graduate",elig:"Graduate, good communication, own laptop & internet",cat:"remote",expType:"fresher",expYears:"0 years",date:"23 Sep 2026",desc:"Fully remote customer support role with flexible shifts and Amazon benefits.",resp:["Handle customer queries","Resolve order issues","Maintain quality metrics"],apply:"https://www.amazon.jobs"},
-{id:5,page:"jobs/wipro-elite-national-talent-hunt.html",domain:"wipro.com",company:"Wipro",salary:"3.5 LPA",logo:["WI","#341f97"],role:"Elite National Talent Hunt",roleTag:"Software Engineer",loc:"Bangalore / Hyderabad",locationFilter:"Bangalore / Hyderabad",batch:"2026",elig:"B.E/B.Tech all streams - 60%+ throughout",cat:"campus",expType:"fresher",expYears:"0 years",date:"22 Sep 2026",desc:"Wipro Elite hiring for entry level software engineer roles with 6-month training program.",resp:["Coding & development","Project support","Continuous learning modules"],apply:"https://careers.wipro.com"},
-{id:6,page:"jobs/cognizant-genc-next.html",domain:"cognizant.com",company:"Cognizant",salary:"4 LPA",logo:["CO","#1a4fa0"],role:"GenC Next - Off Campus",roleTag:"Software Engineer",loc:"Multiple Cities",locationFilter:"Multiple Cities",batch:"2025/2026",elig:"B.E/B.Tech/MCA - 60%+, no standing arrears",cat:"campus",expType:"fresher",expYears:"0 years",date:"21 Sep 2026",desc:"Off-campus hiring drive for GenC Next program with focus on emerging tech.",resp:["Full-stack development","Cloud & AI project exposure"],apply:"https://careers.cognizant.com"},
-{id:7,page:"jobs/swiggy-data-analyst-intern.html",domain:"swiggy.com",company:"Swiggy",salary:"₹30,000/month Stipend",logo:["SW","#fc8019"],role:"Data Analyst Intern",roleTag:"Data Analyst",loc:"Remote / Bangalore",locationFilter:"Remote / Bangalore",batch:"2026 Pass-out",elig:"Any grad with SQL/Excel/Python basics",cat:"internship",expType:"fresher",expYears:"0 years",date:"20 Sep 2026",desc:"3-6 month internship in the analytics team working on real business problems.",resp:["Dashboarding & reporting","SQL query writing","Insights presentation"],apply:"https://careers.swiggy.com"},
-{id:8,page:"jobs/hcltech-software-engineer.html",domain:"hcltech.com",company:"HCLTech",salary:"3.2 LPA",logo:["HC","#0075c9"],role:"Freshers Hiring - Software Engineer",roleTag:"Software Engineer",loc:"Noida / Chennai",locationFilter:"Noida / Chennai",batch:"2025/2026",elig:"BE/BTech/MCA/MSc-CS - 60%+",cat:"it",expType:"fresher",expYears:"0 years",date:"19 Sep 2026",desc:"Large scale off-campus hiring for software engineering trainee roles.",resp:["Application development","Bug fixing & support","Training bootcamp for 4 weeks"],apply:"https://www.hcltech.com/careers"},
-{id:9,page:"jobs/deloitte-data-analyst.html",domain:"deloitte.com",company:"Deloitte",salary:"6 - 10 LPA",logo:["DE","#0c2340"],role:"Data Analyst - 2+ Years",roleTag:"Data Analyst",loc:"Hyderabad / Bangalore",locationFilter:"Hyderabad / Bangalore",batch:"Any Eligible Graduate",elig:"Graduate with SQL/BI skills and 2+ years of analytics experience",cat:"experienced",expType:"experienced",expYears:"2-5 years",date:"18 Sep 2026",desc:"Experienced hiring for analytics professionals with dashboards, reporting and stakeholder exposure.",resp:["Create dashboards and reports","Analyze data trends","Work with business stakeholders"],apply:"https://www2.deloitte.com/global/en/careers.html"},
-{id:10,page:"jobs/isro-technical-assistant.html",domain:"isro.gov.in",company:"ISRO",salary:"Level 7 Pay",logo:["IS","#0a67b1"],role:"Technical Assistant",roleTag:"Technical Assistant",loc:"Bengaluru",locationFilter:"Bengaluru",batch:"Diploma / BSc",elig:"Relevant diploma/degree, age and eligibility as per official notification",cat:"govt",expType:"experienced",expYears:"1-2 years",date:"17 Sep 2026",desc:"Government job opening for technical support and project execution roles. Check official notification before applying.",resp:["Support technical operations","Maintain project documentation","Assist engineering teams"],apply:"https://www.isro.gov.in"}
-];
+  {
+    "id": 11,
+    "page": "jobs/accenture-custom-software-engineer.html",
+    "domain": "accenture.com",
+    "company": "Accenture",
+    "salary": "Not Disclosed",
+    "logo": [
+      "AC",
+      "#a100ff"
+    ],
+    "role": "Custom Software Engineer",
+    "roleTag": "Custom Software Engineer",
+    "loc": "Chennai",
+    "locationFilter": "Chennai",
+    "batch": "Not Specified",
+    "elig": "15 years full-time education; minimum 3 years of experience in Data Engineering.",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "2-5 years",
+    "date": "27 Sep 2026",
+    "desc": "Accenture is hiring a Custom Software Engineer to design, build and improve tailored software solutions, with a focus on scalable data engineering systems and agile delivery.",
+    "resp": [
+      "Collaborate with cross-functional teams to translate business needs into technical solutions",
+      "Develop and improve scalable software and data engineering components",
+      "Optimize data workflows for performance and maintainability",
+      "Document software designs, processes and best practices to support knowledge sharing"
+    ],
+    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-R1-S2060661_en&title=Custom+Software+Engineer"
+  },
+  {
+    "id": 1,
+    "page": "jobs/infosys-system-engineer.html",
+    "domain": "infosys.com",
+    "company": "Infosys",
+    "salary": "3.6 LPA",
+    "logo": [
+      "IN",
+      "#007cc3"
+    ],
+    "role": "Walk-in Drive - System Engineer",
+    "roleTag": "System Engineer",
+    "loc": "Pune (Walk-in)",
+    "locationFilter": "Pune",
+    "batch": "2024/2025",
+    "elig": "B.E/B.Tech - 65%+, carry resume & ID proof",
+    "cat": "walkin",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "26 Sep 2026",
+    "desc": "On-the-spot walk-in interview drive for System Engineer trainee roles.",
+    "resp": [
+      "Attend aptitude + technical round",
+      "Client project onboarding post selection"
+    ],
+    "apply": "https://www.infosys.com/careers"
+  },
+  {
+    "id": 2,
+    "page": "jobs/zoho-software-development-internship.html",
+    "domain": "zoho.com",
+    "company": "Zoho",
+    "salary": "₹25,000/month Stipend",
+    "logo": [
+      "ZO",
+      "#e42527"
+    ],
+    "role": "Internship - Software Development",
+    "roleTag": "Software Development Intern",
+    "loc": "Chennai (On-site)",
+    "locationFilter": "Chennai",
+    "batch": "Any",
+    "elig": "Diploma/BE/BTech/MCA - strong problem solving",
+    "cat": "internship",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "25 Sep 2026",
+    "desc": "Paid internship with mentorship, leading to potential full-time offer at Zoho.",
+    "resp": [
+      "Build product features",
+      "Write unit tests",
+      "Collaborate with senior engineers"
+    ],
+    "apply": "https://zoho.com/careers"
+  },
+  {
+    "id": 3,
+    "page": "jobs/tcs-software-engineer.html",
+    "domain": "tcs.com",
+    "company": "TCS",
+    "salary": "3.36 LPA",
+    "logo": [
+      "TC",
+      "#004a93"
+    ],
+    "role": "Ninja / Digital Ninja - Software Engineer",
+    "roleTag": "Software Engineer",
+    "loc": "Pan India",
+    "locationFilter": "Pan India",
+    "batch": "2025/2026",
+    "elig": "B.E/B.Tech/M.E/M.Tech/MCA - 60%+, no active backlogs",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "24 Sep 2026",
+    "desc": "TCS is hiring freshers as Ninja and Digital Ninja for pan-India roles across service lines.",
+    "resp": [
+      "Software development & testing",
+      "Working with agile teams",
+      "Client communication & documentation"
+    ],
+    "apply": "https://www.tcs.com/careers"
+  },
+  {
+    "id": 4,
+    "page": "jobs/amazon-support-associate.html",
+    "domain": "amazon.jobs",
+    "company": "Amazon",
+    "salary": "2.4 LPA",
+    "logo": [
+      "AZ",
+      "#ff9900"
+    ],
+    "role": "Support Associate (WFH)",
+    "roleTag": "Support Associate",
+    "loc": "Remote - India",
+    "locationFilter": "Remote",
+    "batch": "Any Graduate",
+    "elig": "Graduate, good communication, own laptop & internet",
+    "cat": "remote",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "23 Sep 2026",
+    "desc": "Fully remote customer support role with flexible shifts and Amazon benefits.",
+    "resp": [
+      "Handle customer queries",
+      "Resolve order issues",
+      "Maintain quality metrics"
+    ],
+    "apply": "https://www.amazon.jobs"
+  },
+  {
+    "id": 5,
+    "page": "jobs/wipro-elite-national-talent-hunt.html",
+    "domain": "wipro.com",
+    "company": "Wipro",
+    "salary": "3.5 LPA",
+    "logo": [
+      "WI",
+      "#341f97"
+    ],
+    "role": "Elite National Talent Hunt",
+    "roleTag": "Software Engineer",
+    "loc": "Bangalore / Hyderabad",
+    "locationFilter": "Bangalore / Hyderabad",
+    "batch": "2026",
+    "elig": "B.E/B.Tech all streams - 60%+ throughout",
+    "cat": "campus",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "22 Sep 2026",
+    "desc": "Wipro Elite hiring for entry level software engineer roles with 6-month training program.",
+    "resp": [
+      "Coding & development",
+      "Project support",
+      "Continuous learning modules"
+    ],
+    "apply": "https://careers.wipro.com"
+  },
+  {
+    "id": 6,
+    "page": "jobs/cognizant-genc-next.html",
+    "domain": "cognizant.com",
+    "company": "Cognizant",
+    "salary": "4 LPA",
+    "logo": [
+      "CO",
+      "#1a4fa0"
+    ],
+    "role": "GenC Next - Off Campus",
+    "roleTag": "Software Engineer",
+    "loc": "Multiple Cities",
+    "locationFilter": "Multiple Cities",
+    "batch": "2025/2026",
+    "elig": "B.E/B.Tech/MCA - 60%+, no standing arrears",
+    "cat": "campus",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "21 Sep 2026",
+    "desc": "Off-campus hiring drive for GenC Next program with focus on emerging tech.",
+    "resp": [
+      "Full-stack development",
+      "Cloud & AI project exposure"
+    ],
+    "apply": "https://careers.cognizant.com"
+  },
+  {
+    "id": 7,
+    "page": "jobs/swiggy-data-analyst-intern.html",
+    "domain": "swiggy.com",
+    "company": "Swiggy",
+    "salary": "₹30,000/month Stipend",
+    "logo": [
+      "SW",
+      "#fc8019"
+    ],
+    "role": "Data Analyst Intern",
+    "roleTag": "Data Analyst",
+    "loc": "Remote / Bangalore",
+    "locationFilter": "Remote / Bangalore",
+    "batch": "2026 Pass-out",
+    "elig": "Any grad with SQL/Excel/Python basics",
+    "cat": "internship",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "20 Sep 2026",
+    "desc": "3-6 month internship in the analytics team working on real business problems.",
+    "resp": [
+      "Dashboarding & reporting",
+      "SQL query writing",
+      "Insights presentation"
+    ],
+    "apply": "https://careers.swiggy.com"
+  },
+  {
+    "id": 8,
+    "page": "jobs/hcltech-software-engineer.html",
+    "domain": "hcltech.com",
+    "company": "HCLTech",
+    "salary": "3.2 LPA",
+    "logo": [
+      "HC",
+      "#0075c9"
+    ],
+    "role": "Freshers Hiring - Software Engineer",
+    "roleTag": "Software Engineer",
+    "loc": "Noida / Chennai",
+    "locationFilter": "Noida / Chennai",
+    "batch": "2025/2026",
+    "elig": "BE/BTech/MCA/MSc-CS - 60%+",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0 years",
+    "date": "19 Sep 2026",
+    "desc": "Large scale off-campus hiring for software engineering trainee roles.",
+    "resp": [
+      "Application development",
+      "Bug fixing & support",
+      "Training bootcamp for 4 weeks"
+    ],
+    "apply": "https://www.hcltech.com/careers"
+  },
+  {
+    "id": 9,
+    "page": "jobs/deloitte-data-analyst.html",
+    "domain": "deloitte.com",
+    "company": "Deloitte",
+    "salary": "6 - 10 LPA",
+    "logo": [
+      "DE",
+      "#0c2340"
+    ],
+    "role": "Data Analyst - 2+ Years",
+    "roleTag": "Data Analyst",
+    "loc": "Hyderabad / Bangalore",
+    "locationFilter": "Hyderabad / Bangalore",
+    "batch": "Any Eligible Graduate",
+    "elig": "Graduate with SQL/BI skills and 2+ years of analytics experience",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "2-5 years",
+    "date": "18 Sep 2026",
+    "desc": "Experienced hiring for analytics professionals with dashboards, reporting and stakeholder exposure.",
+    "resp": [
+      "Create dashboards and reports",
+      "Analyze data trends",
+      "Work with business stakeholders"
+    ],
+    "apply": "https://www2.deloitte.com/global/en/careers.html"
+  },
+  {
+    "id": 10,
+    "page": "jobs/isro-technical-assistant.html",
+    "domain": "isro.gov.in",
+    "company": "ISRO",
+    "salary": "Level 7 Pay",
+    "logo": [
+      "IS",
+      "#0a67b1"
+    ],
+    "role": "Technical Assistant",
+    "roleTag": "Technical Assistant",
+    "loc": "Bengaluru",
+    "locationFilter": "Bengaluru",
+    "batch": "Diploma / BSc",
+    "elig": "Relevant diploma/degree, age and eligibility as per official notification",
+    "cat": "govt",
+    "expType": "experienced",
+    "expYears": "1-2 years",
+    "date": "17 Sep 2026",
+    "desc": "Government job opening for technical support and project execution roles. Check official notification before applying.",
+    "resp": [
+      "Support technical operations",
+      "Maintain project documentation",
+      "Assist engineering teams"
+    ],
+    "apply": "https://www.isro.gov.in"
+  }
+]
 
 const CATS=[{k:"all",l:"All Jobs"},{k:"it",l:"IT / Software"},{k:"internship",l:"Internships"},{k:"apprenticeship",l:"Apprenticeships"},{k:"campus",l:"Off-Campus"},{k:"remote",l:"Remote / WFH"},{k:"walkin",l:"Walk-ins"},{k:"experienced",l:"Experienced Jobs"},{k:"govt",l:"Government Jobs"}];
 const LOCAL_LOGOS={"Infosys":"infosys.svg","Zoho":"zoho.svg","TCS":"tcs.svg","Amazon":"amazon.svg","Wipro":"wipro.svg","Cognizant":"cognizant.svg","Swiggy":"swiggy.svg","HCLTech":"hcltech.svg","Deloitte":"deloitte.svg","ISRO":"isro.svg"};
