@@ -1,3 +1,4 @@
+import {requireAdmin} from "../../lib/admin-auth.js";
 import dns from "node:dns/promises";
 import crypto from "node:crypto";
 import net from "node:net";
@@ -5,13 +6,6 @@ import net from "node:net";
 const MAX_BYTES = 2_000_000;
 const MAX_REDIRECTS = 3;
 const TIMEOUT_MS = 9000;
-
-function safeEqual(a,b){
-  const aa=Buffer.from(String(a||""));
-  const bb=Buffer.from(String(b||""));
-  if(aa.length!==bb.length)return false;
-  return crypto.timingSafeEqual(aa,bb);
-}
 
 function isPrivateIp(ip){
   if(net.isIP(ip)===4){
@@ -252,9 +246,8 @@ export default async function handler(req,res){
     return res.status(405).json({error:"Method not allowed"});
   }
 
-  const expected=process.env.ADMIN_EXTRACT_KEY;
-  if(!expected)return res.status(503).json({error:"ADMIN_EXTRACT_KEY is not configured in Vercel yet."});
-  if(!safeEqual(req.headers["x-admin-key"],expected))return res.status(401).json({error:"Invalid admin key."});
+  res.setHeader("Cache-Control","no-store");
+  if(!requireAdmin(req,res))return;
 
   try{
     const input=req.body&&req.body.url;
