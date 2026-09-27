@@ -1,0 +1,33 @@
+name: Generator Check
+
+on:
+  pull_request:
+    branches:
+      - job-posting-system
+
+jobs:
+  generator-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run generator
+        run: python3 generate.py
+
+      - name: Verify generated test page when present
+        shell: bash
+        run: |
+          if grep -q '"page": "jobs/hd-careers-generator-test.html"' data/jobs.json; then
+            test -f jobs/hd-careers-generator-test.html
+            grep -q "HD Careers Generator Test Role" index.html
+            grep -q "HD Careers Generator Test Role" jobs/hd-careers-generator-test.html
+          fi
+
+      - name: Check generated output
+        run: git diff --check
