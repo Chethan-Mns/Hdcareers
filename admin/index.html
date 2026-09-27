@@ -32,10 +32,29 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 .preview-job-hero{background:radial-gradient(circle at 90% 10%,rgba(34,211,238,.18),transparent 28%),linear-gradient(135deg,#071a33,#0b2952 55%,#0758c9);color:#fff}
 .preview-section{border:1px solid #e2e8f0;border-radius:18px;background:#fff}
 .progress{height:7px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#22c55e);width:0;transition:width .35s ease}
+.auth-shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 15% 15%,rgba(59,130,246,.18),transparent 28%),radial-gradient(circle at 85% 15%,rgba(34,197,94,.12),transparent 26%),linear-gradient(135deg,#071a33,#0b2952 55%,#0758c9)}
+.auth-card{width:min(440px,100%);background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 80px rgba(7,26,51,.28)}
 @media(max-width:640px){.drawer-panel{width:100%}}
 </style>
 </head>
 <body>
+<section id="loginView" class="auth-shell">
+<div class="auth-card">
+<div class="flex items-center gap-3">
+<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-12 h-12 object-contain rounded-xl border border-slate-100 p-1">
+<div><p class="font-black text-xl">HD Careers Admin</p><p class="text-xs text-slate-500 mt-1">Secure administrator access</p></div>
+</div>
+<div class="mt-7">
+<label class="text-xs font-bold text-slate-500">Admin password</label>
+<input id="loginPassword" type="password" class="field mt-1" placeholder="Enter admin password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginAdmin()">
+</div>
+<div id="loginError" class="hidden mt-3 rounded-xl px-3 py-2.5 text-sm bg-red-50 text-red-700 border border-red-200"></div>
+<button id="loginBtn" onclick="loginAdmin()" class="btn w-full mt-5 bg-[var(--primary)] hover:bg-blue-700 text-white py-3.5"><i class="fa-solid fa-lock mr-2"></i>Sign In</button>
+<p class="text-[11px] text-slate-400 text-center mt-4">Authentication is verified on the server. Your password is not stored in this page.</p>
+</div>
+</section>
+
+<div id="adminApp" class="hidden">
 <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
 <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
 <div class="flex items-center gap-3">
@@ -43,7 +62,8 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <div><p class="font-black leading-none">HD Careers Admin</p><p class="text-[11px] text-slate-500 mt-1">Bulk job intake • review • preview</p></div>
 </div>
 <div class="flex items-center gap-2">
-<span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-shield-halved"></i> Secure Admin</span>
+<span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-shield-halved"></i> Authenticated</span>
+<button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket mr-1"></i>Logout</button>
 </div>
 </div>
 </header>
@@ -57,15 +77,6 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <p class="text-sm text-slate-500 mt-2">One link per line. HD Careers will process up to 20 links per batch, three at a time, then show every job as an editable preview before deployment.</p>
 </div>
 <div class="shrink-0 rounded-2xl bg-blue-50 text-blue-700 px-4 py-3 text-sm font-bold"><i class="fa-solid fa-layer-group mr-2"></i><span id="linkCount">0</span> links detected</div>
-</div>
-
-<div class="mt-5 max-w-xl">
-<label class="text-xs font-bold text-slate-500">Admin extraction key</label>
-<div class="flex gap-2 mt-1">
-<input id="adminKey" type="password" class="field" placeholder="Enter your ADMIN_EXTRACT_KEY">
-<button type="button" onclick="toggleKey()" class="btn px-4 border border-slate-200 bg-white text-slate-600" aria-label="Show or hide admin key"><i class="fa-regular fa-eye"></i></button>
-</div>
-<p class="text-[11px] text-slate-400 mt-1.5">Stored only in this browser tab. This is not your GitHub token.</p>
 </div>
 
 <div class="grid lg:grid-cols-[1fr_auto] gap-3 mt-5 items-stretch">
@@ -166,6 +177,8 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 </div>
 </div>
 
+</div>
+
 <div id="toast" class="toast hidden"></div>
 
 <script>
@@ -173,7 +186,6 @@ const CAT_LABEL={it:'IT / Software',internship:'Internship',apprenticeship:'Appr
 let jobs=[];let editIndex=-1;let existingJobs=[];
 
 function countLinks(){const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);document.getElementById('linkCount').textContent=lines.length}
-function toggleKey(){const el=document.getElementById('adminKey');el.type=el.type==='password'?'text':'password'}
 function normalizeUrl(s){try{const u=new URL(s);u.hash='';return u.href.replace(/\/$/,'')}catch{return String(s||'').trim().replace(/\/$/,'')}}
 async function loadExistingJobs(){try{const r=await fetch('/data/jobs.json',{cache:'no-store'});if(r.ok){const d=await r.json();existingJobs=Array.isArray(d)?d:[]}}catch(e){existingJobs=[]}}
 function isExistingDuplicate(url){const n=normalizeUrl(url);return existingJobs.some(j=>normalizeUrl(j.apply||'')===n)}
@@ -199,10 +211,11 @@ source:d,
 error:''
 }
 }
-async function extractOne(url,key){
+async function extractOne(url){
 try{
-const res=await fetch('/api/admin/extract-job',{method:'POST',headers:{'content-type':'application/json','x-admin-key':key},body:JSON.stringify({url})});
+const res=await fetch('/api/admin/extract-job',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({url})});
 const body=await res.json().catch(()=>({}));
+if(res.status===401){showLogin('Your admin session expired. Sign in again.');throw new Error('Admin session expired.');}
 if(!res.ok)throw new Error(body.error||'Could not extract the job page.');
 return mapExtracted(body.data||{},url)
 }catch(e){
@@ -210,12 +223,9 @@ return {company:'Extraction Failed',role:e.message||'Could not read this job lin
 }
 }
 async function generateAll(){
-const key=document.getElementById('adminKey').value.trim();
 let urls=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
-if(!key)return showToast('Enter the admin extraction key first');
 if(!urls.length)return showToast('Add at least one job link');
 if(urls.length>20)return showToast('Maximum 20 links per batch');
-sessionStorage.setItem('hdAdminExtractKey',key);
 const seen=new Set();urls=urls.filter(u=>{const n=normalizeUrl(u);if(seen.has(n))return false;seen.add(n);return true});
 await loadExistingJobs();
 document.getElementById('processing').classList.remove('hidden');
@@ -224,7 +234,7 @@ let cursor=0,done=0;const results=new Array(urls.length);
 async function worker(){
 while(true){
 const i=cursor++;if(i>=urls.length)return;
-results[i]=await extractOne(urls[i],key);
+results[i]=await extractOne(urls[i]);
 done++;
 const pct=Math.round(done/urls.length*100);
 document.getElementById('processingText').textContent='Processed '+done+' of '+urls.length+' links';
@@ -345,7 +355,45 @@ function openPreviewTab(){const i=window.__previewIndex;if(i===undefined||!jobs[
 function previewAll(){const selected=jobs.map((j,i)=>({j,i})).filter(x=>x.j.selected&&x.j.status!=='duplicate'&&x.j.status!=='failed');if(!selected.length)return showToast('Select at least one job');previewJob(selected[0].i);showToast(selected.length+' selected job(s) ready to preview')}
 function deploySelected(){const selected=jobs.filter(j=>j.selected&&j.status!=='duplicate'&&j.status!=='failed');if(!selected.length)return showToast('Select at least one job');const review=selected.filter(j=>j.status!=='ready').length;if(review)return showToast(review+' selected job(s) still need review');showToast('Jobs are ready. GitHub publish/deploy connection is the next admin step.')}
 function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.add('hidden'),2400)}
-const saved=sessionStorage.getItem('hdAdminExtractKey');if(saved)document.getElementById('adminKey').value=saved;loadExistingJobs();countLinks();
+function showLogin(message=''){
+document.getElementById('adminApp').classList.add('hidden');
+document.getElementById('loginView').classList.remove('hidden');
+document.body.style.overflow='';
+const err=document.getElementById('loginError');
+if(message){err.textContent=message;err.classList.remove('hidden')}else err.classList.add('hidden');
+}
+function showAdmin(){
+document.getElementById('loginView').classList.add('hidden');
+document.getElementById('adminApp').classList.remove('hidden');
+document.getElementById('loginError').classList.add('hidden');
+}
+async function loginAdmin(){
+const password=document.getElementById('loginPassword').value;
+const btn=document.getElementById('loginBtn');
+const err=document.getElementById('loginError');
+if(!password){err.textContent='Enter your admin password.';err.classList.remove('hidden');return}
+btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Signing in...';
+try{
+const r=await fetch('/api/admin/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({password})});
+const body=await r.json().catch(()=>({}));
+if(!r.ok){err.textContent=body.error||'Sign in failed.';err.classList.remove('hidden');return}
+document.getElementById('loginPassword').value='';
+showAdmin();await loadExistingJobs();countLinks();render();
+}catch{err.textContent='Could not reach the login service.';err.classList.remove('hidden')}
+finally{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-lock mr-2"></i>Sign In'}
+}
+async function logoutAdmin(){
+try{await fetch('/api/admin/logout',{method:'POST'})}catch{}
+jobs=[];existingJobs=[];showLogin();
+}
+async function initAdmin(){
+try{
+const r=await fetch('/api/admin/session',{cache:'no-store'});
+const body=await r.json().catch(()=>({authenticated:false}));
+if(r.ok&&body.authenticated){showAdmin();await loadExistingJobs();countLinks();render()}else showLogin();
+}catch{showLogin('Could not verify your admin session.')}
+}
+initAdmin();
 </script>
 </body>
 </html>
