@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -141,47 +142,43 @@ def should_include_package(job: dict) -> bool:
     return bool(salary and salary.lower() not in {"not disclosed", "not specified", "n/a", "na"})
 
 
-def markdown_escape(value: str) -> str:
-    text = str(value or "")
-    for ch in ("\\", "_", "*", "[", "]", "(", ")"):
-        text = text.replace(ch, "\\" + ch)
-    text = text.replace(chr(96), "\\" + chr(96))
-    return text
+def html_escape(value: str) -> str:
+    return html.escape(str(value or ""), quote=False)
 
 
 def message_for(job: dict) -> str:
-    company = markdown_escape(job.get("company", "Company"))
-    role = markdown_escape(job.get("role", ""))
-    qualification = markdown_escape(compact_qualification(job))
-    location = markdown_escape(job.get("loc", ""))
+    company = html_escape(job.get("company", "Company"))
+    role = html_escape(job.get("role", ""))
+    qualification = html_escape(compact_qualification(job))
+    location = html_escape(job.get("loc", ""))
 
     lines = [
         f"{company} is Hiring ✅",
         "",
-        f"*Role:* {role}",
+        f"<b>Role:</b> {role}",
     ]
 
     if should_include_batch(job):
-        lines.append(f"*Batch:* {markdown_escape(job.get('batch', ''))}")
+        lines.append(f"<b>Batch:</b> {html_escape(job.get('batch', ''))}")
 
-    lines.append(f"*Qualification:* {qualification}")
+    lines.append(f"<b>Qualification:</b> {qualification}")
 
     if str(job.get("expType", "")).lower() == "experienced":
         exp = str(job.get("expYears", "") or "").strip()
         if exp and exp.lower() not in {"not specified", "n/a", "na"}:
-            lines.append(f"*Experience:* {markdown_escape(exp)}")
+            lines.append(f"<b>Experience:</b> {html_escape(exp)}")
 
-    lines.append(f"*Location:* {location}")
+    lines.append(f"<b>Location:</b> {location}")
 
     if should_include_package(job):
-        lines.append(f"*Package:* {markdown_escape(job.get('salary', ''))}")
+        lines.append(f"<b>Package:</b> {html_escape(job.get('salary', ''))}")
 
     page = str(job.get("page", "") or "").lstrip("/")
     apply_url = SITE_BASE + page if page else str(job.get("apply", "") or "")
 
     lines.extend([
         "",
-        f"Apply Link: {apply_url}",
+        f"Apply Link: {html_escape(apply_url)}",
         "",
         "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
         "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers",
@@ -211,7 +208,7 @@ def send_telegram(token: str, channel: str, text: str) -> None:
     payload = urlencode({
         "chat_id": channel,
         "text": text,
-        "parse_mode": "Markdown",
+        "parse_mode": "HTML",
         "disable_web_page_preview": "false",
     }).encode("utf-8")
 
