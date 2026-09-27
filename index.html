@@ -49,6 +49,7 @@ a{text-decoration:none}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
+#resultsSection{scroll-margin-top:96px}
 .soft-enter{animation:softEnter .4s cubic-bezier(.22,1,.36,1) both}
 @keyframes softEnter{from{opacity:0;transform:translateY(10px) scale(.992)}to{opacity:1;transform:none}}
 .modal-card{animation:modalIn .26s cubic-bezier(.22,1,.36,1) both}
@@ -182,10 +183,10 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <div class="search-shell mt-7 flex flex-col sm:flex-row gap-2 max-w-2xl bg-white/10 border border-white/20 rounded-2xl p-2">
 <div class="relative flex-1">
 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-<input id="searchInput" oninput="renderJobs()" placeholder="Search role, company, skill..." class="w-full pl-11 pr-10 py-3.5 rounded-xl text-[var(--dark)] bg-white outline-none" autocomplete="off">
+<input id="searchInput" oninput="filterAndScrollDebounced()" onkeydown="if(event.key==='Enter'){event.preventDefault();filterAndScrollNow()}" placeholder="Search role, company, skill..." class="w-full pl-11 pr-10 py-3.5 rounded-xl text-[var(--dark)] bg-white outline-none" autocomplete="off">
 <button id="clearSearch" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
 </div>
-<button onclick="document.getElementById('searchInput').focus()" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3.5 rounded-xl shrink-0 transition">Search Jobs</button>
+<button onclick="filterAndScrollNow()" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3.5 rounded-xl shrink-0 transition">Search Jobs</button>
 </div>
 <div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 text-xs sm:text-sm text-slate-300">
 <span><i class="fa-solid fa-circle-check text-green-400 mr-1.5"></i> Free to use</span>
@@ -206,28 +207,11 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-4 mt-6">
-<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-<a href="https://whatsapp.com/channel/0029VamZKemKLaHrHF8Mwc3I" target="_blank" rel="noopener" class="channel-card bg-white border border-slate-200 rounded-2xl p-4 flex items-center gap-3">
-<div class="w-11 h-11 rounded-xl bg-green-500 text-white flex items-center justify-center text-xl"><i class="fa-brands fa-whatsapp"></i></div><div><p class="font-bold">WhatsApp 1</p><p class="text-xs text-slate-500">Main job alerts</p></div>
-</a>
-<a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" class="channel-card bg-white border border-slate-200 rounded-2xl p-4 flex items-center gap-3">
-<div class="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl"><i class="fa-brands fa-whatsapp"></i></div><div><p class="font-bold">WhatsApp 2</p><p class="text-xs text-slate-500">Extra updates</p></div>
-</a>
-<a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="channel-card bg-white border border-slate-200 rounded-2xl p-4 flex items-center gap-3">
-<div class="w-11 h-11 rounded-xl text-white flex items-center justify-center text-xl" style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)"><i class="fa-brands fa-instagram"></i></div><div><p class="font-bold">Instagram</p><p class="text-xs text-slate-500">@hd_careers</p></div>
-</a>
-<a href="https://t.me/HD_Careers" target="_blank" rel="noopener" class="channel-card bg-white border border-slate-200 rounded-2xl p-4 flex items-center gap-3">
-<div class="w-11 h-11 rounded-xl bg-sky-500 text-white flex items-center justify-center text-xl"><i class="fa-brands fa-telegram"></i></div><div><p class="font-bold">Telegram</p><p class="text-xs text-slate-500">HD Careers channel</p></div>
-</a>
-</div>
-</section>
-
-<main class="max-w-6xl mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
+<main id="resultsSection" class="max-w-6xl mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
 <div class="lg:col-span-2">
 <div class="reveal-card flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
 <div><p class="text-xs font-bold uppercase tracking-[.16em] text-[var(--primary)]">Latest openings</p><h2 class="text-2xl font-black tracking-tight">Jobs you can explore</h2><p id="jobCount" class="text-sm text-slate-500 mt-1"></p></div>
-<select id="sortSelect" onchange="renderJobs()" class="clean-select bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 outline-none focus:border-blue-400">
+<select id="sortSelect" onchange="filterAndScrollNow()" class="clean-select bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 outline-none focus:border-blue-400">
 <option value="latest">Latest first</option>
 <option value="company">Company A-Z</option>
 </select>
@@ -243,7 +227,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <div class="grid sm:grid-cols-2 xl:grid-cols-5 gap-3 mt-4">
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Level</label>
-<select id="expTypeFilter" onchange="syncLevelTone();renderJobs()" class="clean-select w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-400 outline-none focus:border-blue-400">
+<select id="expTypeFilter" onchange="syncLevelTone();filterAndScrollNow()" class="clean-select w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-400 outline-none focus:border-blue-400">
 <option value="all">All</option>
 <option value="fresher">Fresher</option>
 <option value="experienced">Experienced</option>
@@ -251,19 +235,19 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Experience</label>
-<input id="expYearsFilter" oninput="renderJobs()" placeholder="e.g. 0 or 2-5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
+<input id="expYearsFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. 0 or 2-5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Role</label>
-<input id="roleFilter" oninput="renderJobs()" placeholder="e.g. Developer" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
+<input id="roleFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. Developer" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Company</label>
-<input id="companyFilter" oninput="renderJobs()" placeholder="e.g. TCS" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
+<input id="companyFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. TCS" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Location</label>
-<input id="locationFilter" oninput="renderJobs()" placeholder="e.g. Bengaluru" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
+<input id="locationFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. Bengaluru" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 </div>
 </div>
@@ -646,11 +630,15 @@ const COMPANY_DOMAINS={"Infosys":"infosys.com","Zoho":"zoho.com","TCS":"tcs.com"
 const CAT_ICON={it:"fa-laptop-code",internship:"fa-user-graduate",apprenticeship:"fa-screwdriver-wrench",campus:"fa-building",remote:"fa-house-laptop",walkin:"fa-people-arrows",experienced:"fa-briefcase",govt:"fa-landmark"};
 const CAT_LABEL={it:"IT & Software",internship:"Internship",apprenticeship:"Apprenticeship",campus:"Off-Campus",remote:"Remote / WFH",walkin:"Walk-in",experienced:"Experienced",govt:"Government Job"};
 let activeCat="all";
+let filterScrollTimer=null;
 
 function scrollCategories(dir){const el=document.getElementById('filterTabs');if(!el)return;const amount=Math.max(240,Math.floor(el.clientWidth*.72));el.scrollBy({left:dir*amount,behavior:'smooth'})}
 function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l}</button>`).join('')}
-function setCat(k){activeCat=k;document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat===k));renderJobs()}
+function setCat(k){activeCat=k;document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat===k));renderJobs();requestAnimationFrame(scrollToResults)}
 function syncLevelTone(){const el=document.getElementById('expTypeFilter');if(!el)return;el.classList.toggle('text-slate-400',el.value==='all');el.classList.toggle('text-slate-700',el.value!=='all')}
+function scrollToResults(){const el=document.getElementById('resultsSection');if(!el)return;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;el.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})}
+function filterAndScrollNow(){clearTimeout(filterScrollTimer);renderJobs();requestAnimationFrame(scrollToResults)}
+function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(scrollToResults,450)}
 function companyLogoUrl(j){const d=COMPANY_DOMAINS[j.company];return d?`https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=128`:""}
 function localCompanyLogo(j){return LOCAL_LOGOS[j.company]?`assets/logos/${LOCAL_LOGOS[j.company]}`:""}
 function companyLogo(j,size='w-16 h-16'){const local=localCompanyLogo(j);return `<div class="company-logo ${size} shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden" style="--fallback:${j.logo[1]}"><img src="${companyLogoUrl(j)}" alt="${j.company} logo" class="w-[78%] h-[78%] object-contain" loading="lazy" onerror="this.onerror=null;if('${local}'){this.src='${local}';this.className='w-[90%] h-[90%] object-contain';}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><span class="hidden w-full h-full items-center justify-center rounded-xl text-white font-black text-base" style="background:${j.logo[1]}">${j.logo[0]}</span></div>`}
@@ -696,8 +684,8 @@ ${companyLogo(j)}
 </article>`).join('');observeReveals(grid)
 }
 
-function clearSearch(){const input=document.getElementById('searchInput');input.value='';renderJobs();input.focus()}
-function resetFilters(){activeCat='all';document.getElementById('searchInput').value='';document.getElementById('sortSelect').value='latest';document.getElementById('expTypeFilter').value='all';syncLevelTone();document.getElementById('expYearsFilter').value='';document.getElementById('roleFilter').value='';document.getElementById('companyFilter').value='';document.getElementById('locationFilter').value='';document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));renderJobs()}
+function clearSearch(){const input=document.getElementById('searchInput');input.value='';filterAndScrollNow()}
+function resetFilters(){activeCat='all';document.getElementById('searchInput').value='';document.getElementById('sortSelect').value='latest';document.getElementById('expTypeFilter').value='all';syncLevelTone();document.getElementById('expYearsFilter').value='';document.getElementById('roleFilter').value='';document.getElementById('companyFilter').value='';document.getElementById('locationFilter').value='';document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));renderJobs();requestAnimationFrame(scrollToResults)}
 
 const STEPS=["Open the official company career page","Review the role and eligibility","Complete the application on the official site","Save confirmation/details for your reference"];
 function openJob(id){const j=JOBS.find(x=>x.id===id);document.getElementById('jobModalBody').innerHTML=`
