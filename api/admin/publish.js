@@ -1,4 +1,3 @@
-import crypto from "node:crypto";
 import {requireAdmin} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO = "Chethan-Mns/Hdcareers";
@@ -26,15 +25,6 @@ function normalizeUrl(value){
   }catch{
     return String(value||"").trim().replace(/\/$/,"").toLowerCase();
   }
-}
-
-function slugify(value){
-  return String(value||"job")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[^a-z0-9]+/g,"-")
-    .replace(/^-+|-+$/g,"")
-    .slice(0,80)||"job";
 }
 
 function initials(company){
@@ -136,12 +126,6 @@ async function github(path,token,options={}){
   return data;
 }
 
-async function deleteBranch(branch,token){
-  try{
-    await github("/git/refs/heads/"+encodeURIComponent(branch),token,{method:"DELETE"});
-  }catch{}
-}
-
 export default async function handler(req,res){
   res.setHeader("Cache-Control","no-store");
 
@@ -160,24 +144,16 @@ export default async function handler(req,res){
   if(!submitted.length)return res.status(400).json({error:"Select at least one job to publish."});
   if(submitted.length>MAX_JOBS)return res.status(400).json({error:"Maximum "+MAX_JOBS+" jobs per deployment."});
 
-  let branch="";
-  let branchCreated=false;
-
   try{
     const incoming=submitted.map(canonicalJob);
     incoming.forEach(validateJob);
 
     const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
-    const ref=await github("/git/ref/heads/"+encodeURIComponent(base),token);
-    const baseSha=ref.object&&ref.object.sha;
-    if(!baseSha)throw new Error("Could not resolve the GitHub base branch.");
-
     const file=await github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token);
     const current=JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
     if(!Array.isArray(current))throw new Error("data/jobs.json is not a JSON array.");
 
     const existingUrls=new Set(current.map(j=>normalizeUrl(j.apply)));
-    const existingPages=new Set(current.map(j=>String(j.page||"").toLowerCase()));
     const existingPairs=new Set(current.map(j=>(String(j.company||"")+"\n"+String(j.role||"")).toLowerCase()));
     const incomingUrls=new Set();
     const incomingPairs=new Set();
@@ -193,71 +169,28 @@ export default async function handler(req,res){
       incomingPairs.add(pair);
     }
 
-    if(duplicates.length){
-      return res.status(409).json({error:"Duplicate job detected.",duplicates});
+    if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
+
+    const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming}});
+    if(Buffer.byteLength(payload,"utf8")>60000){
+      return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
     }
 
-    let nextId=current.reduce((max,j)=>Math.max(max,Number(j.id)||0),0)+1;
-    for(const job of incoming){
-      job.id=nextId++;
-      let basePage=job.page&&job.page.startsWith("jobs/")&&job.page.endsWith(".html")
-        ?job.page
-        :"jobs/"+slugify(job.company+"-"+job.role)+".html";
-      let page=basePage;
-      let n=2;
-      while(existingPages.has(page.toLowerCase())){
-        page=basePage.replace(/\.html$/,"-"+n+".html");
-        n++;
-      }
-      job.page=page;
-      existingPages.add(page.toLowerCase());
-    }
-
-    const updated=[...incoming,...current];
-    const stamp=new Date().toISOString().replace(/[-:TZ.]/g,"").slice(0,14);
-    branch="admin-jobs-"+stamp+"-"+crypto.randomBytes(3).toString("hex");
-
-    await github("/git/refs",token,{
+    await github("/dispatches",token,{
       method:"POST",
       headers:{"content-type":"application/json"},
-      body:JSON.stringify({ref:"refs/heads/"+branch,sha:baseSha})
-    });
-    branchCreated=true;
-
-    await github("/contents/data/jobs.json",token,{
-      method:"PUT",
-      headers:{"content-type":"application/json"},
-      body:JSON.stringify({
-        message:"Add "+incoming.length+" job"+(incoming.length===1?"":"s")+" from admin",
-        content:Buffer.from(JSON.stringify(updated,null,2)+"\n","utf8").toString("base64"),
-        sha:file.sha,
-        branch
-      })
+      body:payload
     });
 
-    const lines=incoming.map(j=>"- "+j.company+" — "+j.role+" ("+j.loc+")").join("\n");
-    const pr=await github("/pulls",token,{
-      method:"POST",
-      headers:{"content-type":"application/json"},
-      body:JSON.stringify({
-        title:"Publish "+incoming.length+" job"+(incoming.length===1?"":"s")+" from HD Careers Admin",
-        head:branch,
-        base,
-        body:"Created from the authenticated HD Careers admin.\n\nJobs:\n"+lines+"\n\nThe Admin Job Generator workflow will run generate.py on this branch and update the homepage plus individual job pages. Review the Vercel preview before merging."
-      })
-    });
-
-    return res.status(200).json({
+    return res.status(202).json({
       ok:true,
-      branch,
-      prNumber:pr.number,
-      prUrl:pr.html_url,
-      jobs:incoming.map(j=>({id:j.id,company:j.company,role:j.role,page:j.page}))
+      queued:true,
+      count:incoming.length,
+      message:"Production deployment started."
     });
   }catch(error){
-    if(branchCreated&&branch)await deleteBranch(branch,token);
     const status=Number(error&&error.status);
     const code=status===401||status===403?502:400;
-    return res.status(code).json({error:(error&&error.message)||"Could not create the publishing pull request."});
+    return res.status(code).json({error:(error&&error.message)||"Could not start the production deployment."});
   }
 }
