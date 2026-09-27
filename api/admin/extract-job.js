@@ -207,6 +207,23 @@ function titleTag(html){
   return decodeEntities((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[])[1]||"").replace(/\s+/g," ").trim();
 }
 
+function headingOne(html){
+  return stripHtml((String(html||"").match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)||[])[1]||"").replace(/\s+/g," ").trim();
+}
+
+function formatDate(value){
+  const raw=normalizeSpace(value);
+  let date=raw?new Date(raw):new Date();
+  if(Number.isNaN(date.getTime())){
+    const iso=raw.match(/\b(20\d{2})[-\/.](\d{1,2})[-\/.](\d{1,2})\b/);
+    const dmy=raw.match(/\b(\d{1,2})[-\/.](\d{1,2})[-\/.](20\d{2})\b/);
+    if(iso)date=new Date(Number(iso[1]),Number(iso[2])-1,Number(iso[3]));
+    else if(dmy)date=new Date(Number(dmy[3]),Number(dmy[2])-1,Number(dmy[1]));
+    else date=new Date();
+  }
+  return date.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).replace(/^0/,"");
+}
+
 function collectJsonLd(html){
   const out=[];
   const re=/<script[^>]+type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
