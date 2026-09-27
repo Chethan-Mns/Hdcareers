@@ -10,6 +10,10 @@ from string import Template
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "jobs.json"
 INDEX_FILE = ROOT / "index.html"
+WHATSAPP_DIR = ROOT / "whatsapp"
+SITE_BASE = "https://hdcareers.in/"
+WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z"
+TELEGRAM_CHANNEL = "https://t.me/HD_Careers"
 
 REQUIRED = [
     "id", "page", "domain", "company", "salary", "logo", "role", "roleTag",
@@ -284,6 +288,107 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     return True
 
 
+def disclosed(value) -> bool:
+    text = str(value or "").strip()
+    return bool(text and text.lower() not in {"not disclosed", "not specified", "n/a", "na"})
+
+
+def whatsapp_qualification(job: dict) -> str:
+    explicit = str(job.get("qualification", "") or "").strip()
+    if explicit:
+        return explicit
+
+    elig = re.sub(r"\s+", " ", str(job.get("elig", "") or "")).strip()
+    if not elig:
+        return "Not specified in official posting"
+
+    if re.search(r"does not specify (?:a )?(?:degree|qualification)|qualification (?:is )?not specified|degree (?:is )?not specified", elig, flags=re.I):
+        return "Not specified in official posting"
+
+    patterns = [
+        r"\bB\.?E\.?\s*/?\s*B\.?Tech\b",
+        r"\bB\.?Tech\b",
+        r"\bM\.?Tech\b",
+        r"\bMCA\b",
+        r"\bBCA\b",
+        r"\bMBA\b",
+        r"\bB\.?Sc\b",
+        r"\bM\.?Sc\b",
+        r"\bDiploma\b",
+        r"\bBachelor(?:'s)?(?: degree)?\b",
+        r"\bMaster(?:'s)?(?: degree)?\b",
+        r"\bGraduate\b",
+        r"\bPostgraduate\b",
+    ]
+    found = []
+    for pattern in patterns:
+        match = re.search(pattern, elig, flags=re.I)
+        if match:
+            value = match.group(0)
+            if value.lower() not in {x.lower() for x in found}:
+                found.append(value)
+    return " / ".join(found[:4]) if found else "Not specified in official posting"
+
+
+def whatsapp_message(job: dict) -> str:
+    lines = [
+        f"{job['company']} is Hiring ✅",
+        "",
+        f"*Role:* {job['role']}",
+    ]
+
+    if str(job.get("expType", "")).lower() == "fresher":
+        batch = str(job.get("batch", "") or "").strip()
+        if batch:
+            lines.append(f"*Batch:* {batch if disclosed(batch) else 'Not specified'}")
+
+    lines.append(f"*Qualification:* {whatsapp_qualification(job)}")
+
+    if str(job.get("expType", "")).lower() == "experienced" and disclosed(job.get("expYears")):
+        lines.append(f"*Experience:* {job['expYears']}")
+
+    lines.append(f"*Location:* {job.get('loc') or 'Not specified'}")
+
+    if disclosed(job.get("salary")):
+        lines.append(f"*Package:* {job['salary']}")
+
+    page = str(job.get("page", "")).lstrip("/")
+    apply_url = SITE_BASE + page if page else str(job.get("apply", "") or "")
+    lines.extend([
+        "",
+        f"Apply Link: {apply_url}",
+        "",
+        f"𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: {WHATSAPP_CHANNEL}",
+        f"𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: {TELEGRAM_CHANNEL}",
+    ])
+    return "\n".join(lines) + "\n"
+
+
+def write_whatsapp_feeds(jobs: list[dict], dry_run: bool) -> tuple[int, int]:
+    targets = {}
+    for offset, job in enumerate(jobs[:5]):
+        name = "latest.txt" if offset == 0 else f"{offset}.txt"
+        targets[name] = whatsapp_message(job)
+        targets[f"job-{job['id']}.txt"] = whatsapp_message(job)
+
+    created = 0
+    changed = 0
+    for name, output in targets.items():
+        target = WHATSAPP_DIR / name
+        if not target.exists():
+            created += 1
+            if not dry_run:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(output, encoding="utf-8")
+            continue
+        current = target.read_text(encoding="utf-8")
+        if current != output:
+            changed += 1
+            if not dry_run:
+                target.write_text(output, encoding="utf-8")
+    return created, changed
+
+
 def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int]:
     created = 0
     changed = 0
@@ -322,11 +427,13 @@ def main() -> None:
     jobs = load_jobs()
     index_changed = update_index(jobs, args.dry_run)
     created, changed = write_job_pages(jobs, args.dry_run)
+    wa_created, wa_changed = write_whatsapp_feeds(jobs, args.dry_run)
 
     mode = "DRY RUN" if args.dry_run else "DONE"
     print(f"[{mode}] {len(jobs)} jobs loaded")
     print(f"index.html: {'would update' if args.dry_run and index_changed else 'updated' if index_changed else 'no change'}")
     print(f"job pages: {created} new, {changed} updated")
+    print(f"whatsapp feeds: {wa_created} new, {wa_changed} updated")
 
     if not args.dry_run:
         print("Run: python3 generate.py")
