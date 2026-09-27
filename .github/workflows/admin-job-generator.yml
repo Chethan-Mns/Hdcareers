@@ -1,0 +1,51 @@
+name: Admin Job Generator
+
+on:
+  push:
+    branches:
+      - "admin-jobs-*"
+    paths:
+      - "data/jobs.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: admin-job-generator-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout publishing branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate homepage and job pages
+        run: python3 generate.py
+
+      - name: Validate generated output
+        run: |
+          git diff --check
+          python3 generate.py --dry-run
+
+      - name: Commit generated files
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "HD Careers Admin"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html jobs/
+          git commit -m "Generate published job pages"
+          git push
