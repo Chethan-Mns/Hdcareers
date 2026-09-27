@@ -120,7 +120,7 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <div class="card border-blue-200 shadow-xl p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
 <div class="flex items-start gap-3">
 <div class="w-11 h-11 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center"><i class="fa-solid fa-rocket"></i></div>
-<div><p class="font-black"><span id="selectedCount">0</span> jobs selected</p><p class="text-xs text-slate-500 mt-1">Selected jobs can be reviewed together. GitHub publishing will be connected in the next admin step.</p></div>
+<div><p class="font-black"><span id="selectedCount">0</span> jobs selected</p><p class="text-xs text-slate-500 mt-1">Selected jobs will be pushed to a new GitHub branch and pull request for preview before merge.</p></div>
 </div>
 <div class="flex flex-col sm:flex-row gap-2">
 <button onclick="previewAll()" class="btn border border-slate-200 bg-white px-5 py-3 text-slate-700"><i class="fa-solid fa-eye mr-2"></i>Preview All</button>
@@ -353,7 +353,25 @@ function closePreview(){document.getElementById('previewModal').classList.add('h
 function setPreviewDevice(mode){const frame=document.getElementById('previewFrame');frame.classList.toggle('mobile',mode==='mobile');document.getElementById('desktopBtn').className='btn '+(mode==='desktop'?'bg-slate-900 text-white':'border border-slate-200 bg-white text-slate-600')+' px-3 py-2 text-sm';document.getElementById('mobileBtn').className='btn '+(mode==='mobile'?'bg-slate-900 text-white':'border border-slate-200 bg-white text-slate-600')+' px-3 py-2 text-sm'}
 function openPreviewTab(){const i=window.__previewIndex;if(i===undefined||!jobs[i])return;const j=jobs[i];const doc='<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script src="https://cdn.tailwindcss.com"><\\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer><\\/script><style>body{margin:0;background:#f4f7fb;font-family:Inter,Segoe UI,system-ui,sans-serif;color:#071a33}.badge{font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;display:inline-flex;align-items:center}.preview-job-hero{background:radial-gradient(circle at 90% 10%,rgba(34,211,238,.18),transparent 28%),linear-gradient(135deg,#071a33,#0b2952 55%,#0758c9);color:#fff}.preview-section{border:1px solid #e2e8f0;border-radius:18px;background:#fff}</style></head><body>'+fullPreviewHtml(j)+'</body></html>';const blob=new Blob([doc],{type:'text/html'});window.open(URL.createObjectURL(blob),'_blank')}
 function previewAll(){const selected=jobs.map((j,i)=>({j,i})).filter(x=>x.j.selected&&x.j.status!=='duplicate'&&x.j.status!=='failed');if(!selected.length)return showToast('Select at least one job');previewJob(selected[0].i);showToast(selected.length+' selected job(s) ready to preview')}
-function deploySelected(){const selected=jobs.filter(j=>j.selected&&j.status!=='duplicate'&&j.status!=='failed');if(!selected.length)return showToast('Select at least one job');const review=selected.filter(j=>j.status!=='ready').length;if(review)return showToast(review+' selected job(s) still need review');showToast('Jobs are ready. GitHub publish/deploy connection is the next admin step.')}
+async function deploySelected(){
+const selected=jobs.filter(j=>j.selected&&j.status!=='duplicate'&&j.status!=='failed');
+if(!selected.length)return showToast('Select at least one job');
+const review=selected.filter(j=>j.status!=='ready').length;
+if(review)return showToast(review+' selected job(s) still need review');
+const btn=[...document.querySelectorAll('button')].find(b=>b.textContent.includes('Deploy Selected'));
+const original=btn?btn.innerHTML:'';
+if(btn){btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Creating PR...'}
+try{
+const r=await fetch('/api/admin/publish',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jobs:selected})});
+const body=await r.json().catch(()=>({}));
+if(r.status===401){showLogin('Your admin session expired. Sign in again.');return}
+if(!r.ok)throw new Error(body.error||'Could not publish selected jobs.');
+showToast('Pull request #'+body.prNumber+' created successfully');
+if(body.prUrl)window.open(body.prUrl,'_blank','noopener');
+await loadExistingJobs();
+}catch(e){showToast(e.message||'Could not publish selected jobs.')}
+finally{if(btn){btn.disabled=false;btn.innerHTML=original}}
+}
 function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.add('hidden'),2400)}
 function showLogin(message=''){
 document.getElementById('adminApp').classList.add('hidden');
