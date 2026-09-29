@@ -6,6 +6,8 @@ on:
       - adsense-readiness
     paths:
       - .github/workflows/adsense-branch-generate.yml
+      - generate.py
+      - data/jobs.json
 
 permissions:
   contents: write
