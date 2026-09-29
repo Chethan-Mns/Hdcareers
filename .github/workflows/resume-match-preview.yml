@@ -6,6 +6,9 @@ on:
       - resume-jd-match
     paths:
       - .github/workflows/resume-match-preview.yml
+      - generate.py
+      - privacy-policy.html
+      - preview/expired-job.html
 
 permissions:
   contents: write
