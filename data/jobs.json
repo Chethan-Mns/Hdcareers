@@ -159,7 +159,7 @@
       "Help resolve day-to-day operational issues in line with Citi processes"
     ],
     "apply": "https://jobs.citi.com/job/chennai/ops-sup-analyst-1-c09-chennai/287/101004977456",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "29 Sep 2026",
     "sourceName": "Official Citi Careers page",
     "skills": [
@@ -170,7 +170,14 @@
       "SQL and database query awareness"
     ],
     "who": "Graduates and entry-level candidates interested in banking operations, documentation and stakeholder coordination should review the official requirements. Prior relevant experience is listed as preferred rather than a strict minimum.",
-    "workMode": "Hybrid"
+    "workMode": "Hybrid",
+    "availabilityCheck": {
+      "id": 19,
+      "url": "https://jobs.citi.com/job/chennai/ops-sup-analyst-1-c09-chennai/287/101004977456",
+      "checkedAt": "2026-09-29T15:24:49.334431+00:00",
+      "state": "expired",
+      "reason": "Official job URL returned HTTP 404"
+    }
   },
   {
     "id": 18,
@@ -377,7 +384,7 @@
       "Work with stakeholders to improve the usefulness and reliability of analysis"
     ],
     "apply": "https://careers.nttdata.com/global/en/job/390777/Data-Analyst",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "29 Sep 2026",
     "sourceName": "Official NTT DATA Careers page",
     "skills": [
@@ -388,7 +395,14 @@
       "Business insights"
     ],
     "who": "Candidates interested in analytics, data quality and business insights can review this opening. The official posting does not state a minimum experience requirement, so applicants should compare their skills directly with the listed responsibilities.",
-    "workMode": "Remote"
+    "workMode": "Remote",
+    "availabilityCheck": {
+      "id": 14,
+      "url": "https://careers.nttdata.com/global/en/job/390777/Data-Analyst",
+      "checkedAt": "2026-09-29T15:24:54.501848+00:00",
+      "state": "expired",
+      "reason": "Official job URL returned HTTP 410"
+    }
   },
   {
     "id": 13,
