@@ -3,6 +3,8 @@ const {analyze,locate}=require('../assets/resume-keywords.js');
 let r=analyze({skills:['AWS data services','ETL pipelines'],description:'SQL and Python are required'},'Built ETL/ELT pipelines with AWS, SQL and Python.');
 assert.deepEqual(r.missing,[]);assert.equal(r.score,100);
 r=analyze({skills:['AWS','ETL']},'Amazon Web Services and extract, transform, load projects.');assert.equal(r.score,100);
+ r=analyze({skills:['Version control']},'Used Git and GitHub for source control.');assert.equal(r.score,100);
+ r=analyze({skills:['Git']},'Version control with GitLab and Bitbucket.');assert.equal(r.score,100);
 assert.equal(locate('JavaScript','Java'),-1);assert.equal(locate('NoSQL','SQL'),-1);
 assert.equal(locate('AWS. ETL, SQL/Python','AWS'),0);
 r=analyze({skills:['AWS Glue, S3 and Redshift']},'AWS');assert(r.missing.includes('AWS Glue'));assert(r.missing.includes('S3'));

@@ -51,6 +51,7 @@ function canonicalJob(input){
   const catRaw=String(input.cat||source.cat||"it").trim();
   const cat=CAT_FROM_LABEL[catRaw]||catRaw;
   const sourceLogo=Array.isArray(source.logo)&&source.logo.length===2?source.logo:null;
+  const publishStatus=String(input.publishStatus||input.status||source.status||"active").trim().toLowerCase();
   const expType=source.expType==="experienced"||source.expType==="fresher"
     ?source.expType
     :(/^0\s*years?$/i.test(expYears)||/fresher/i.test(expYears)?"fresher":"experienced");
@@ -61,6 +62,7 @@ function canonicalJob(input){
     company,
     salary:String(input.salary||source.salary||"Not Disclosed").trim()||"Not Disclosed",
     logo:sourceLogo||[initials(company),"#0b6fe8"],
+    logoUrl:String(input.logoUrl||source.logoUrl||"").trim(),
     role,
     roleTag:String(source.roleTag||input.roleTag||role).trim(),
     loc,
@@ -74,7 +76,7 @@ function canonicalJob(input){
     desc:String(input.desc||source.desc||"").trim(),
     resp:Array.isArray(input.resp)?input.resp.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.resp)?source.resp.map(x=>String(x).trim()).filter(Boolean):[],
     apply,
-    status:"active",
+    status:publishStatus,
     verifiedDate:String(input.verifiedDate||source.verifiedDate||today()).trim(),
     sourceName:String(input.sourceName||source.sourceName||(company+" official careers page")).trim(),
     skills:Array.isArray(input.skills)?input.skills.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.skills)?source.skills.map(x=>String(x).trim()).filter(Boolean):[],
@@ -98,6 +100,7 @@ function validateJob(job,index){
   if(!job.who)errors.push("who should apply");
   if(!job.sourceName)errors.push("source");
   if(!job.verifiedDate)errors.push("verified date");
+  if(job.status!=="active")errors.push("official source must be verified active before publishing");
   if(!CATS.has(job.cat))errors.push("category");
   if(!["fresher","experienced"].includes(job.expType))errors.push("experience type");
   if(/candidate experience|careers? page|job search page/i.test(job.company))errors.push("review company name");

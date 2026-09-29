@@ -22,6 +22,8 @@ jobs:
           python-version: '3.12'
       - name: Check official sources and close confirmed expired jobs
         run: python3 scripts/check_job_availability.py --write
+      - name: Audit listing content for review
+        run: python3 scripts/check_content_quality.py
       - name: Regenerate pages using existing expired design
         run: |
           python3 generate.py
@@ -41,6 +43,13 @@ jobs:
         with:
           name: job-availability-report
           path: availability-report.json
+          retention-days: 30
+      - name: Retain content quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-quality-report
+          path: content-quality-report.json
           retention-days: 30
       - name: Show review queue
         run: |

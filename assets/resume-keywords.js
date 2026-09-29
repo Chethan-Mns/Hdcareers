@@ -6,7 +6,7 @@ const groups = {
 'Java':[], 'JavaScript':['js','ecmascript'], 'TypeScript':['ts'], 'C++':['cpp'], 'C#':['c sharp','csharp'],
 '.NET':['dotnet','dot net'], 'React':['reactjs','react.js'], 'Angular':['angularjs'],
 'Node.js':['nodejs','node js'], 'Spring Boot':['springboot'], 'Spring':[],
-'HTML':['html5'], 'CSS':['css3'], 'Git':[], 'Linux':[], 'Unix':[],
+'HTML':['html5'], 'CSS':['css3'], 'Git':['version control','source control','github','gitlab','bitbucket','svn','mercurial'], 'Linux':[], 'Unix':[],
 'Azure':['microsoft azure'], 'GCP':['google cloud','google cloud platform'],
 'AWS Glue':['glue'], 'S3':['amazon s3'], 'Redshift':['amazon redshift'], 'EMR':['amazon emr'],
 'Lambda':['aws lambda'], 'Kinesis':[], 'EC2':[], 'PySpark':['py spark'], 'Spark':['apache spark'],

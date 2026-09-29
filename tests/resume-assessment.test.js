@@ -7,6 +7,8 @@ a=A.assess(p,"Sales manager with 10 years of experience. Skills: AWS and ETL. Ba
 a=A.assess(p,'Data Engineer with 24 months experience using AWS and ETL.');assert.equal(a.exp.score,67);assert.equal(a.qual.score,0);
 a=A.experience(p,'Data Engineer Jan 2022 - Jan 2024 built AWS ETL pipelines',new Date('2026-01-01'));assert.equal(a.years,2);assert.equal(a.score,67);
 a=A.experience(p,'Data Engineer Jan 2022 - Jan 2024 AWS ETL\nData Engineer Jan 2023 - Jan 2024 AWS ETL',new Date('2026-01-01'));assert.equal(a.years,2);
+ a=A.experience(p,'Data Engineer | 05/2023 - 07/2026 | AWS ETL pipelines',new Date('2026-09-29'));assert.equal(a.years,3.2);
+ a=A.experience(p,'Data Engineer | 2023-05 - Present | AWS ETL pipelines',new Date('2026-09-29'));assert.equal(a.years,3.4);
 assert.equal(A.qualification({education:"Bachelor's or Master's degree"},'B.Tech').score,100);
 assert.equal(A.qualification({education:"Master's degree"},'B.Tech').score,0);
 assert.equal(A.experience({experience:'Not Specified'},'2 years').score,null);

@@ -4,6 +4,7 @@ import argparse
 import html
 import json
 import re
+import urllib.parse
 from pathlib import Path
 from string import Template
 
@@ -62,6 +63,14 @@ LOCAL_LOGOS = {
     "HCLTech": "hcltech.svg",
     "Deloitte": "deloitte.svg",
     "ISRO": "isro.svg",
+}
+
+LOGO_DOMAINS = {
+    "Amazon.jobs": "amazon.com", "Amazon": "amazon.com", "NTT Data": "nttdata.com", "NTT DATA": "nttdata.com",
+    "IBM": "ibm.com", "PWC": "pwc.com", "PwC": "pwc.com", "PricewaterhouseCoopers Services LLP": "pwc.com",
+    "Accenture": "accenture.com", "Infosys": "infosys.com", "Zoho": "zoho.com", "TCS": "tcs.com",
+    "Wipro": "wipro.com", "Cognizant": "cognizant.com", "Swiggy": "swiggy.com", "HCLTech": "hcltech.com",
+    "Deloitte": "deloitte.com", "ISRO": "isro.gov.in", "Citi": "citi.com", "Cohere Health": "coherehealth.com"
 }
 
 PAGE_TEMPLATE = Template("""<!DOCTYPE html>
@@ -271,15 +280,25 @@ def render_skills(items: list[str]) -> str:
     )
 
 
-def logo_onerror(company: str) -> str:
+def logo_onerror(company: str, domain: str) -> str:
     filename = LOCAL_LOGOS.get(company)
+    _, duck = logo_sources(company, domain)
+    fallbacks = [duck]
     if filename:
-        return (
-            "onerror=\"this.onerror=null;"
-            f"this.src='../assets/logos/{esc(filename)}';"
-            "this.className='w-[90%] h-[90%] object-contain'\""
-        )
-    return "onerror=\"this.style.display='none'\""
+        fallbacks.append(f"../assets/logos/{filename}")
+    fallbacks.append("../assets/hd-careers-logo.png")
+    encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
+    return (
+        "onerror='const f=" + encoded + ";const i=+(this.dataset.fallback||0);"
+        "if(i<f.length){this.dataset.fallback=i+1;this.src=f[i];}else{this.onerror=null;this.style.display=\"none\";}'"
+    )
+
+
+def logo_sources(company: str, domain: str) -> tuple[str, str]:
+    selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
+    google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=128"
+    duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
+    return google, duck
 
 
 def render_related_jobs(job: dict, jobs: list[dict]) -> str:
@@ -319,7 +338,9 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
-    favicon_url = f"https://www.google.com/s2/favicons?domain={esc(job['domain'])}&sz=128"
+    favicon_url, _ = logo_sources(company, str(job["domain"]))
+    if str(job.get("logoUrl", "")).strip():
+        favicon_url = str(job["logoUrl"]).strip()
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
     share_text = f"{company} - {role}\\n{job['loc']}"
@@ -349,7 +370,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
         "company": esc(company),
-        "logo_onerror": logo_onerror(company),
+        "logo_onerror": logo_onerror(company, str(job["domain"])),
         "cat_icon": CAT_ICON[cat],
         "cat_label": esc(CAT_LABEL[cat]),
         "candidate": candidate,

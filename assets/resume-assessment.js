@@ -8,10 +8,19 @@ function relevant(profile,text){
  const ks=K.analyze(profile,text).matched;
  return ks.filter(x=>!['Communication','Excel','Testing','Automation'].includes(x)).length>=2;
 }
+function parseDateToken(raw,now){
+ const s=String(raw||'').trim().replace(/\./g,'');
+ let m=s.match(/^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{4})$/i);
+ if(m){const idx=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'].indexOf(m[1].slice(0,3).toLowerCase());return Date.UTC(+m[2],idx,1)}
+ m=s.match(/^(\d{1,2})[/-](\d{4})$/);if(m)return Date.UTC(+m[2],Math.max(0,Math.min(11,+m[1]-1)),1);
+ m=s.match(/^(\d{4})[/-](\d{1,2})$/);if(m)return Date.UTC(+m[1],Math.max(0,Math.min(11,+m[2]-1)),1);
+ m=s.match(/^(\d{4})$/);if(m)return Date.UTC(+m[1],0,1);
+ return NaN;
+}
 function experience(profile,text,now=new Date()){
- const required=minimum(profile.experience);const evidence=[];let stated=null;
- // A duration must be attached to relevant work, not just the largest number in a CV.
- for(const sentence of String(text).split(/[\n;]+|(?<=[.!?])\s+/)){
+ const required=minimum(profile.experience);const evidence=[];let stated=null;const raw=String(text);
+ // A duration is accepted only when it is attached to a relevant role, never from a random summary number.
+ for(const sentence of raw.split(/[\n;]+|(?<=[.!?])\s+/)){
   const m=sentence.match(/(\d+(?:\.\d+)?)\s*\+?\s*(years?|yrs?|months?)\b/i);
   if(m&&relevant(profile,sentence)&&/experience|worked|working|engineer|developer|analyst|built|developed/i.test(sentence)){
    const years=+m[1]/(/^month/i.test(m[2])?12:1);
@@ -19,12 +28,15 @@ function experience(profile,text,now=new Date()){
   }
  }
  const month='(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)';
- const date=month+'\\s+\\d{4}';const rx=new RegExp('('+date+')\\s*(?:-|–|—|to)\\s*('+date+'|present|current|now)','gi');
- const matches=[...String(text).matchAll(rx)], ranges=[];
- for(let i=0;i<matches.length;i++){
-  const m=matches[i],start=Date.parse('1 '+m[1]),end=/present|current|now/i.test(m[2])?now.getTime():Date.parse('1 '+m[2]);
-  const block=String(text).slice(Math.max(i?matches[i-1].index+matches[i-1][0].length:0,m.index-100),Math.min(matches[i+1]?.index??text.length,m.index+500));
-  if(Number.isFinite(start)&&Number.isFinite(end)&&end>start&&end<=now.getTime()&&relevant(profile,block)&&!/education|university|bachelor|master|college/i.test(block.slice(0,100))){ranges.push([start,end]);evidence.push(block.trim());}
+ const date='(?:'+month+'\\s+\\d{4}|\\d{1,2}[/-]\\d{4}|\\d{4}[/-]\\d{1,2}|\\d{4})';
+ const rx=new RegExp('('+date+')\\s*(?:-|–|—|to|until)\\s*('+date+'|present|current|now)','gi');
+ const matches=[...raw.matchAll(rx)], ranges=[];
+ for(const m of matches){
+  const start=parseDateToken(m[1],now),end=/present|current|now/i.test(m[2])?now.getTime():parseDateToken(m[2],now);
+  const block=raw.slice(Math.max(0,m.index-240),Math.min(raw.length,m.index+m[0].length+240));
+  if(Number.isFinite(start)&&Number.isFinite(end)&&end>start&&end<=now.getTime()&&relevant(profile,block)&&!/education|university|bachelor|master|college|graduat(?:e|ion)/i.test(block)){
+   ranges.push([start,end]);evidence.push(`${m[1]} - ${m[2]} • ${block.replace(/\s+/g,' ').trim()}`);
+  }
  }
  // Merge overlapping employment periods before counting relevant tenure.
  ranges.sort((a,b)=>a[0]-b[0]);const merged=[];
