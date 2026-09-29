@@ -269,7 +269,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     role = str(job["role"])
     heading = f"{company} {role}"
     page_title = f"{heading} | HD Careers"
-    candidate = "Fresher / Entry-level" if job["expType"] == "fresher" else "Experienced"
+    candidate = "Fresher" if job["expType"] == "fresher" else "Experienced"
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
