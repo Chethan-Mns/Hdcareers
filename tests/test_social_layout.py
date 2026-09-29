@@ -27,7 +27,7 @@ class SocialLayoutTests(unittest.TestCase):
                 self.assertEqual(text.count('id="resumeMatch"'), 1)
                 self.assertLess(text.index('Job Overview'), text.index('id="resumeMatch"'))
                 self.assertLess(text.index('id="resumeMatch"'), text.index('>Eligibility</h2>'))
-                self.assertIn('href="#resumeMatch"', text)
+                self.assertNotIn('href="#resumeMatch"', text)
                 self.assertIn('scroll-margin-top:88px', text)
                 self.assertIn('href="/telegram.html"', text)
 
