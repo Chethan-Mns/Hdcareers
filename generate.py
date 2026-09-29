@@ -365,13 +365,24 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     return True
 
 
-def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int]:
+def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int, int]:
     created = 0
     changed = 0
+    deleted = 0
+    expected = {str(job["page"]) for job in jobs}
+
+    jobs_dir = ROOT / "jobs"
+    if jobs_dir.exists():
+        for target in jobs_dir.glob("*.html"):
+            rel = target.relative_to(ROOT).as_posix()
+            if rel not in expected:
+                deleted += 1
+                if not dry_run:
+                    target.unlink()
 
     for job in jobs:
         target = ROOT / job["page"]
-        output = render_job_page(job)
+        output = render_job_page(job, jobs)
 
         if not target.exists():
             created += 1
@@ -386,28 +397,53 @@ def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int]:
             if not dry_run:
                 target.write_text(output, encoding="utf-8")
 
-    return created, changed
+    return created, changed, deleted
+
+
+def write_support_files(jobs: list[dict], dry_run: bool) -> int:
+    changed = 0
+    urls = [
+        "https://hdcareers.in/",
+        "https://hdcareers.in/about.html",
+        "https://hdcareers.in/contact.html",
+        "https://hdcareers.in/privacy-policy.html",
+        "https://hdcareers.in/terms.html",
+        "https://hdcareers.in/disclaimer.html",
+    ]
+    urls.extend(f"https://hdcareers.in/{job['page']}" for job in jobs)
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
+        f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls
+    ) + "</urlset>\n"
+    robots = "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: https://hdcareers.in/sitemap.xml\n"
+
+    for path, content in [(ROOT / "sitemap.xml", sitemap), (ROOT / "robots.txt", robots)]:
+        current = path.read_text(encoding="utf-8") if path.exists() else ""
+        if current != content:
+            changed += 1
+            if not dry_run:
+                path.write_text(content, encoding="utf-8")
+    return changed
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate HD Careers homepage job data and individual job pages from data/jobs.json."
+        description="Generate HD Careers homepage data, job pages, sitemap and robots files from data/jobs.json."
     )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would change without writing files.",
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Show what would change without writing files.")
     args = parser.parse_args()
 
     jobs = load_jobs()
     index_changed = update_index(jobs, args.dry_run)
-    created, changed = write_job_pages(jobs, args.dry_run)
+    created, changed, deleted = write_job_pages(jobs, args.dry_run)
+    support_changed = write_support_files(jobs, args.dry_run)
 
     mode = "DRY RUN" if args.dry_run else "DONE"
-    print(f"[{mode}] {len(jobs)} jobs loaded")
+    active = sum(1 for job in jobs if job.get("status") == "active")
+    expired = len(jobs) - active
+    print(f"[{mode}] {len(jobs)} jobs loaded ({active} active, {expired} expired)")
     print(f"index.html: {'would update' if args.dry_run and index_changed else 'updated' if index_changed else 'no change'}")
-    print(f"job pages: {created} new, {changed} updated")
+    print(f"job pages: {created} new, {changed} updated, {deleted} removed")
+    print(f"support files: {support_changed} changed")
 
     if not args.dry_run:
         print("Run: python3 generate.py")
