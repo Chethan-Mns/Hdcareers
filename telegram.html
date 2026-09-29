@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Join Telegram | HD Careers</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#071b35;font:16px/1.6 system-ui,sans-serif}header,main,footer{max-width:640px;margin:auto;padding:24px}header a{display:flex;align-items:center;gap:12px;color:#071b35;text-decoration:none;font-weight:800}header img{width:48px;height:48px;object-fit:contain}main{background:white;border:1px solid #dbe4ef;border-radius:24px;margin:16px auto;padding:32px}h1{line-height:1.2;font-size:30px}p{color:#475569}.actions{display:grid;gap:12px;margin:24px 0}a.button,button{display:block;text-align:center;border:1px solid #cbd5e1;border-radius:12px;padding:14px 18px;font:inherit;font-weight:700;text-decoration:none;color:#0b6fe8;background:white;cursor:pointer}.button.primary{background:#0b6fe8;color:white;border-color:#0b6fe8}a:focus-visible,button:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}code{font-size:18px;overflow-wrap:anywhere}.note{padding:16px;background:#eff6ff;border-radius:12px;font-size:14px}footer{font-size:14px}footer a{color:#0b6fe8}@media(max-width:680px){main{margin:12px 16px;padding:24px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<header><a href="/"><img src="/assets/hd-careers-logo.png" alt="">HD Careers</a></header>
+<main>
+<h1>Join HD Careers on Telegram</h1>
+<p>Get job updates through our channel <code>@HD_Careers</code>.</p>
+<div class="actions">
+<a class="button primary" href="tg://resolve?domain=HD_Careers">Open in Telegram app</a>
+<a class="button" href="https://t.me/HD_Careers" target="_blank" rel="noopener noreferrer">Open Telegram website</a>
+<button id="copyUsername" type="button">Copy channel username</button>
+</div>
+<p id="copyStatus" role="status" aria-live="polite"></p>
+<div class="note">The app button needs Telegram installed. If the website shows a secure-connection error, open Telegram and search for <strong>@HD_Careers</strong>. This page cannot repair a Telegram or network connection error.</div>
+<p>Prefer WhatsApp? <a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener noreferrer">Join our WhatsApp channel</a>.</p>
+</main>
+<footer><a href="/">Back to jobs</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/contact.html">Contact</a></footer>
+<script>
+document.getElementById('copyUsername').addEventListener('click',async function(){
+const status=document.getElementById('copyStatus');
+try{await navigator.clipboard.writeText('@HD_Careers');status.textContent='Copied! Search for @HD_Careers in Telegram.'}
+catch(error){status.textContent='Copy unavailable. Please select and copy this username: @HD_Careers'}
+});
+</script>
+</body>
+</html>
