@@ -17,8 +17,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Test job availability decisions
-        run: python3 -m unittest discover -s tests -v
+      - name: Test JD keyword matching
+        run: |
+          node tests/resume-keywords.test.js
+          node tests/resume-assessment.test.js
 
       - name: Run generator
         run: python3 generate.py

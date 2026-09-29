@@ -81,11 +81,15 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js" defer></script>
 <style>
 :root{--primary:#0b6fe8;--primary2:#0058c7;--dark:#071b35;--slate:#f4f7fb}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
 a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .18s ease}.card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(7,27,53,.08)}
 .hero{background:radial-gradient(circle at 90% 15%,rgba(40,145,255,.26),transparent 26%),linear-gradient(135deg,#071b35 0%,#0b3972 58%,#0b6fe8 100%)}
+.score-layout{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px}.overall-tile,.score-tile{border:1px solid #dbe4ef;border-radius:14px;padding:16px;min-width:0}.overall-tile{background:#eff6ff;display:flex;flex-direction:column;justify-content:center;gap:6px;text-align:center}.overall-tile strong{font-size:32px;line-height:1.15;white-space:nowrap;font-variant-numeric:tabular-nums}.score-caption{font-size:12px;line-height:1.4}.score-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.score-tile span{display:block;font-size:12px;min-height:34px}.score-tile strong{display:block;font-size:23px;line-height:1.3;white-space:nowrap}.score-track{height:5px;background:#e2e8f0;border-radius:8px;margin-top:10px;overflow:hidden}.score-track div{height:100%;background:#0b6fe8}@media(max-width:600px){.score-layout{grid-template-columns:1fr}.overall-tile{padding:12px}.score-parts{gap:6px}.score-tile{padding:10px}.score-tile strong{font-size:20px}}
+.match-ring{background:conic-gradient(var(--primary) calc(var(--score)*1%),#e2e8f0 0);position:relative}.match-ring:after{content:"";position:absolute;inset:8px;background:white;border-radius:999px}.match-score{position:relative;z-index:1}
 .reveal-on-scroll{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease}.reveal-on-scroll.is-visible{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}}
 </style>
@@ -118,6 +122,26 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-screwdriver-wrench text-[var(--primary)] mr-2"></i>Skills Mentioned</h2><div class="flex flex-wrap gap-2 mt-4">$skills</div></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
+<div id="resumeMatch" class="card bg-white border border-blue-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"><div><div class="inline-flex items-center gap-2 text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-wand-magic-sparkles"></i> Resume ↔ JD Match</div><h2 class="text-xl sm:text-2xl font-black mt-3">How well does your resume match this job?</h2><p class="text-sm text-slate-600 mt-2 max-w-2xl">Upload a PDF, DOCX or TXT resume. Your file is processed in your browser and is not uploaded to HD Careers. This is a JD match estimate, not the employer's ATS score.</p></div><span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full whitespace-nowrap"><i class="fa-solid fa-lock mr-1"></i> Local processing</span></div>
+<div class="mt-5 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/40 p-5 text-center"><input id="resumeFile" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" class="hidden"><label for="resumeFile" class="inline-flex cursor-pointer items-center justify-center bg-[var(--primary)] hover:bg-[var(--primary2)] text-white font-extrabold px-5 py-3 rounded-xl"><i class="fa-solid fa-file-arrow-up mr-2"></i> Upload Resume</label><button type="button" onclick="runSampleMatch()" class="ml-0 sm:ml-2 mt-2 sm:mt-0 inline-flex items-center justify-center border border-blue-200 bg-white text-blue-700 font-bold px-5 py-3 rounded-xl hover:bg-blue-50"><i class="fa-solid fa-flask mr-2"></i> See Sample</button><p id="resumeFileName" class="text-xs text-slate-500 mt-3">Max 5 MB • PDF, DOCX or TXT</p></div>
+<div id="matchLoading" class="hidden mt-5 rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-600"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Reading resume and comparing it with this job...</div>
+<div id="matchError" class="hidden mt-5 rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-800"></div>
+<details class="mt-4 text-sm"><summary class="cursor-pointer font-bold">Check extracted resume text</summary><textarea id="extractedResume" class="mt-3 w-full h-40 border border-slate-200 rounded-xl p-3" aria-label="Extracted resume text" placeholder="Upload a resume or paste its text here"></textarea><button type="button" onclick="matchPastedResume()" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Check this text</button></details>
+<div id="matchResult" class="hidden mt-6">
+<div class="score-layout">
+<div class="overall-tile"><span class="score-caption">Overall match</span><strong id="overallScore">0%</strong><span id="matchLabel" class="score-caption"></span></div>
+<div class="score-parts">
+<div class="score-tile"><span>Skills</span><strong id="skillsScore">0%</strong><div class="score-track"><div id="skillsBar"></div></div></div>
+<div class="score-tile"><span>Relevant experience</span><strong id="experienceScore">0%</strong><div class="score-track"><div id="experienceBar"></div></div></div>
+<div class="score-tile"><span>Qualification</span><strong id="educationScore">0%</strong><div class="score-track"><div id="educationBar"></div></div></div>
+</div></div>
+<div class="grid md:grid-cols-2 gap-4 mt-5"><div class="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4"><h3 class="font-black text-emerald-900"><i class="fa-solid fa-circle-check mr-1"></i> Keywords found in resume</h3><div id="matchedSkills" class="flex flex-wrap gap-2 mt-3"></div></div><div class="rounded-xl border border-amber-200 bg-amber-50/60 p-4"><h3 class="font-black text-amber-900"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Keywords not detected</h3><div id="missingSkills" class="flex flex-wrap gap-2 mt-3"></div></div></div>
+<div id="keywordEvidence" class="mt-4 space-y-2 text-sm"></div>
+<div class="grid md:grid-cols-2 gap-4 mt-4"><div class="rounded-xl border border-slate-200 p-4"><h3 class="font-black">Detected from resume</h3><div id="detectedSummary" class="text-sm text-slate-600 mt-2 space-y-1"></div></div><div class="rounded-xl border border-slate-200 p-4"><h3 class="font-black">Suggestions</h3><ul id="matchSuggestions" class="text-sm text-slate-600 mt-2 space-y-2"></ul></div></div>
+<p class="text-xs text-slate-400 mt-4">Overall weights: Skills 50% • Relevant experience 30% • Qualification 20%. Unspecified requirements are excluded and remaining weights are rescaled. Undetected required experience or qualification scores 0 pending review. These are text-based estimates, not an ATS score or eligibility decision.</p>
+</div>
+</div>
 $apply_section
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-shield-halved text-[var(--primary)] mr-2"></i>Source & Verification</h2><p class="mt-3 text-slate-600">Source: <strong>$source_name</strong></p><p class="mt-1 text-slate-600">Last checked by HD Careers: <strong>$verified_date</strong></p><a href="$apply" target="_blank" rel="noopener nofollow" class="mt-4 inline-flex items-center text-[var(--primary)] font-bold">Open official source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a><p class="mt-3 text-xs text-slate-500">Job information can change after publication. The employer's official page is the final source for eligibility, deadlines and application availability.</p></div>
 $related_jobs
@@ -132,9 +156,31 @@ $related_jobs
 </main>
 <footer class="bg-[var(--dark)] text-slate-300 mt-4"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col lg:flex-row justify-between gap-6"><div><p class="text-white font-black">HD Careers</p><p class="text-slate-400 text-xs mt-1 max-w-md">Independent job information platform helping candidates find and verify opportunities from official employer sources.</p></div><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href="../about.html" class="hover:text-white">About</a><a href="../contact.html" class="hover:text-white">Contact</a><a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="../terms.html" class="hover:text-white">Terms</a><a href="../disclaimer.html" class="hover:text-white">Disclaimer</a></div></div><p class="text-xs text-slate-500 mt-6">&copy; 2026 HD Careers. All rights reserved.</p></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 rounded-full shadow-2xl z-50"></div>
+<script src="/assets/resume-keywords.js"></script>
+<script src="/assets/resume-assessment.js"></script>
 <script>
 const revealObserver=('IntersectionObserver' in window)?new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}})},{threshold:.12}):null;
 document.querySelectorAll('.card, aside > div').forEach(el=>{el.classList.add('reveal-on-scroll');if(revealObserver)revealObserver.observe(el);else el.classList.add('is-visible')});
+const MATCH_PROFILE=$match_profile;
+const SAMPLE_RESUME=$sample_resume;
+if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
+const resumeFile=document.getElementById('resumeFile');
+if(resumeFile)resumeFile.addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;document.getElementById('resumeFileName').textContent=file.name+' • '+Math.max(1,Math.round(file.size/1024))+' KB';if(file.size>5*1024*1024){showMatchError('Please choose a resume smaller than 5 MB.');return}setMatchLoading(true);try{const text=await readResumeFile(file);if(text.trim().length<80)throw new Error('Could not read enough text from this resume. Try a text-based PDF, DOCX or TXT file.');renderMatch(analyzeResume(text))}catch(err){showMatchError(err&&err.message?err.message:'Could not read this resume.')}finally{setMatchLoading(false)}});
+async function readResumeFile(file){const name=file.name.toLowerCase();if(name.endsWith('.txt'))return await file.text();if(name.endsWith('.docx')){if(!window.mammoth)throw new Error('DOCX reader is still loading. Please try again in a moment.');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value||''}if(name.endsWith('.pdf')){if(!window.pdfjsLib)throw new Error('PDF reader is still loading. Please try again in a moment.');const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let text='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();text+=' '+content.items.map(x=>x.str).join(' ')}return text}throw new Error('Supported formats are PDF, DOCX and TXT.')}
+function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9+#.]+/g,' ').replace(/\\s+/g,' ').trim()}
+function requiredYears(s){const t=String(s||'').toLowerCase();if(/entry|fresher|0\\s*year/.test(t))return 0;const m=t.match(/(\\d+(?:\\.\\d+)?)\\s*(?:\\+|[-–]\\s*\\d+)?\\s*years?/);return m?Number(m[1]):null}
+function resumeYears(text){const vals=[...String(text).matchAll(/(\\d+(?:\\.\\d+)?)\\s*\\+?\\s*(?:years?|yrs?)/gi)].map(m=>Number(m[1])).filter(x=>x>=0&&x<50);return vals.length?Math.max(...vals):null}
+function educationNeed(){const x=norm(MATCH_PROFILE.education+' '+MATCH_PROFILE.eligibility);if(/master|mtech|m tech|mba|post graduate|postgraduate/.test(x))return'masters';if(/bachelor|btech|b tech|b\\.?e|graduate engineer|degree/.test(x))return'bachelors';return'not-specified'}
+function educationFound(text){const x=norm(text);if(/master|mtech|m tech|mba|mca|m sc|msc|post graduate|postgraduate/.test(x))return'masters';if(/bachelor|btech|b tech|b e |b\\.e\\.|bsc|b sc|bca|degree/.test(x))return'bachelors';return'not-detected'}
+function roleTerms(){const stop=new Set(['engineer','analyst','developer','associate','senior','junior','software','technology','support','data','role']);return norm(MATCH_PROFILE.role).split(' ').filter(x=>x.length>3&&!stop.has(x))}
+function analyzeResume(text){document.getElementById('extractedResume').value=text;const a=ResumeAssessment.assess(MATCH_PROFILE,text);return{assessment:a,keywordResult:a.keywords,overall:a.overall,skillsScore:a.keywords.score,experienceScore:a.exp.score,educationScore:a.qual.score,matched:a.keywords.matched,missing:a.keywords.missing,req:a.exp.required,got:a.exp.years}}
+function matchPastedResume(){const text=document.getElementById('extractedResume').value;if(text.trim().length<20){showMatchError('Paste more resume text to compare.');return}renderMatch(analyzeResume(text))}
+function runSampleMatch(){document.getElementById('resumeFileName').textContent='Sample resume • demonstration only';renderMatch(analyzeResume(SAMPLE_RESUME))}
+function setMatchLoading(on){document.getElementById('matchLoading').classList.toggle('hidden',!on);document.getElementById('matchError').classList.add('hidden');if(on)document.getElementById('matchResult').classList.add('hidden')}
+function showMatchError(msg){const el=document.getElementById('matchError');el.textContent=msg;el.classList.remove('hidden');document.getElementById('matchResult').classList.add('hidden')}
+function pill(text,cls){return '<span class="px-2.5 py-1 rounded-full text-xs font-bold '+cls+'">'+escapeHtml(text)+'</span>'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderMatch(r){document.getElementById('matchError').classList.add('hidden');document.getElementById('matchResult').classList.remove('hidden');document.getElementById('overallScore').textContent=r.overall===null?'N/A':r.overall+'%';document.getElementById('keywordEvidence').innerHTML='<p class="font-bold">'+r.matched.length+' of '+r.keywordResult.keywords.length+' JD keywords found</p>'+r.keywordResult.evidence.filter(x=>x.matched).map(x=>'<details class="rounded-lg border border-slate-200 p-3"><summary>'+escapeHtml(x.keyword)+' — found as '+escapeHtml(x.alias)+'</summary><p class="mt-2 text-slate-600">'+escapeHtml(x.excerpt)+'</p></details>').join('');document.getElementById('matchLabel').textContent=r.overall===null?'No keywords extracted':r.overall>=80?'Strong estimated match':r.overall>=60?'Good estimated match':r.overall>=40?'Partial estimated match':'Needs improvement';for(const [id,v] of [['skills',r.skillsScore],['experience',r.experienceScore],['education',r.educationScore]]){document.getElementById(id+'Score').textContent=v===null?'N/A':v+'%';document.getElementById(id+'Bar').style.width=(v??0)+'%'}document.getElementById('matchedSkills').innerHTML=r.matched.length?r.matched.map(x=>pill(x,'bg-white text-emerald-800 border border-emerald-200')).join(''):'<span class="text-sm text-emerald-800">No listed skill was confidently detected.</span>';document.getElementById('missingSkills').innerHTML=r.missing.length?r.missing.map(x=>pill(x,'bg-white text-amber-800 border border-amber-200')).join(''):'<span class="text-sm text-amber-800">All extracted JD keywords were found.</span>';document.getElementById('detectedSummary').innerHTML='<p><strong>Relevant experience:</strong> '+(r.got===null?'Not confidently detected':r.got+' years')+(r.req===null?' • No minimum specified':' • Required: '+r.req+' years')+'</p><p>'+escapeHtml(r.assessment.qual.note)+'</p>'+r.assessment.exp.evidence.map(x=>'<details><summary>Experience evidence</summary><p>'+escapeHtml(x)+'</p></details>').join('');const tips=[];if(r.missing.length)tips.push('If accurate, demonstrate '+r.missing.slice(0,3).join(', ')+' through real projects or experience.');if(r.experienceScore<80)tips.push('Make your relevant experience duration clearer in the resume.');if(r.educationScore<80)tips.push('State your degree or qualification clearly if you meet the requirement.');if(!tips.length)tips.push('Your resume covers the major published requirements. Keep claims specific and measurable.');document.getElementById('matchSuggestions').innerHTML=tips.map(x=>'<li class="flex gap-2"><span class="text-blue-600">•</span><span>'+escapeHtml(x)+'</span></li>').join('');document.getElementById('resumeMatch').scrollIntoView({behavior:'smooth',block:'start'})}
 async function shareJob(){const url=window.location.href;const title=$share_title;const text=$share_text+"\\nView job: "+url;try{if(navigator.share){await navigator.share({title,text,url})}else{await navigator.clipboard.writeText(text);showToast('Job link copied')}}catch(e){}}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),1700)}
 </script>
@@ -283,7 +329,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         hero_action = f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" class="flex-1 text-center bg-white text-[var(--primary)] font-extrabold px-5 py-3 rounded-xl hover:bg-blue-50">Official Apply <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>'
         status_notice = f'<div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-900"><strong>Verified active:</strong> HD Careers checked the official source on {esc(job["verifiedDate"])}. Availability can still change, so confirm once more before submitting.</div>'
         apply_section = (
-            '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-route text-[var(--primary)] mr-2"></i>How to Apply</h2>'
+            '<div class="card bg-white border border-blue-200 rounded-2xl p-5 sm:p-6 shadow-sm"><div class="flex items-start gap-3"><span class="w-11 h-11 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center shrink-0"><i class="fa-solid fa-paper-plane"></i></span><div><h2 class="text-xl font-black">Ready to Apply?</h2><p class="text-sm text-slate-500 mt-1">Review the requirements above, check your resume match if useful, and continue only through the official employer page.</p></div></div>'
             f'<div class="mt-4 space-y-3 text-slate-600"><p>1. Open the official {esc(company)} application page using the button below.</p><p>2. Re-check the current eligibility, location and any deadline on the employer site.</p><p>3. Complete the application only on the official employer or authorized recruitment portal.</p></div>'
             f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" class="mt-5 inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-extrabold px-6 py-3 rounded-xl">Continue to Official Website <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></a></div>'
         )
@@ -330,6 +376,26 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "apply_section": apply_section,
         "sidebar_action": sidebar_action,
         "related_jobs": render_related_jobs(job, jobs),
+        "match_profile": json.dumps({
+            "company": company,
+            "role": str(job["roleTag"]),
+            "experience": str(job["expYears"]),
+            "education": str(job["batch"]),
+            "eligibility": str(job["elig"]),
+            "description": str(job["desc"]),
+            "skills": [str(x) for x in job["skills"]],
+            "responsibilities": [str(x) for x in job["resp"]],
+        }, ensure_ascii=False),
+        "sample_resume": json.dumps(
+            (
+                f"{job['roleTag']} professional with "
+                + (str(job['expYears']) if job['expType'] == 'experienced' else "entry-level project experience")
+                + ". Skills: " + ", ".join(str(x) for x in job["skills"][:max(2, min(4, len(job["skills"])-1))])
+                + ". Education: " + str(job["batch"])
+                + ". Worked on projects related to " + ", ".join(str(x) for x in job["resp"][:2]) + "."
+            ),
+            ensure_ascii=False,
+        ),
         "share_title": json.dumps(page_title, ensure_ascii=False),
         "share_text": json.dumps(share_text, ensure_ascii=False),
     }
