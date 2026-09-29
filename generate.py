@@ -184,8 +184,17 @@ def load_jobs() -> list[dict]:
         if job["expType"] not in {"fresher", "experienced"}:
             raise SystemExit(f"Unsupported expType '{job['expType']}' for job id {job['id']}")
 
+        if job["status"] not in {"active", "expired"}:
+            raise SystemExit(f"Unsupported status '{job['status']}' for job id {job['id']}")
+
         if not isinstance(job["resp"], list) or not job["resp"]:
             raise SystemExit(f"Job id {job['id']} must have at least one responsibility")
+
+        if not isinstance(job["skills"], list) or not job["skills"]:
+            raise SystemExit(f"Job id {job['id']} must have at least one skill")
+
+        if not str(job["who"]).strip() or not str(job["sourceName"]).strip() or not str(job["verifiedDate"]).strip():
+            raise SystemExit(f"Job id {job['id']} requires who, sourceName and verifiedDate")
 
         if not isinstance(job["logo"], list) or len(job["logo"]) != 2:
             raise SystemExit(f"Job id {job['id']} logo must be [initials, color]")
@@ -209,6 +218,13 @@ def render_responsibilities(items: list[str]) -> str:
     return "".join(rows)
 
 
+def render_skills(items: list[str]) -> str:
+    return "".join(
+        f'<span class="px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-800">{esc(item)}</span>'
+        for item in items
+    )
+
+
 def logo_onerror(company: str) -> str:
     filename = LOCAL_LOGOS.get(company)
     if filename:
@@ -220,22 +236,69 @@ def logo_onerror(company: str) -> str:
     return "onerror=\"this.style.display='none'\""
 
 
-def render_job_page(job: dict) -> str:
+def render_related_jobs(job: dict, jobs: list[dict]) -> str:
+    active = [j for j in jobs if j["id"] != job["id"] and j.get("status") == "active"]
+    ranked = sorted(
+        active,
+        key=lambda j: (
+            0 if j.get("cat") == job.get("cat") else 1,
+            0 if j.get("expType") == job.get("expType") else 1,
+            -int(j.get("id", 0)),
+        ),
+    )[:4]
+    if not ranked:
+        return ""
+    cards = []
+    for other in ranked:
+        href = Path(str(other["page"])).name
+        cards.append(
+            '<a class="block rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40" '
+            f'href="{esc(href)}"><p class="font-black">{esc(other["company"])}</p>'
+            f'<p class="text-sm text-slate-600 mt-1">{esc(other["role"])}</p>'
+            f'<p class="text-xs text-slate-400 mt-2">{esc(other["loc"])}</p></a>'
+        )
+    return (
+        '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+        '<h2 class="text-xl font-black"><i class="fa-solid fa-link text-[var(--primary)] mr-2"></i>Related Jobs</h2>'
+        '<div class="grid sm:grid-cols-2 gap-3 mt-4">' + "".join(cards) + '</div></div>'
+    )
+
+
+def render_job_page(job: dict, jobs: list[dict]) -> str:
     company = str(job["company"])
     role = str(job["role"])
     heading = f"{company} {role}"
     page_title = f"{heading} | HD Careers"
-    candidate = "Fresher" if job["expType"] == "fresher" else "Experienced"
+    candidate = "Fresher / Entry-level" if job["expType"] == "fresher" else "Experienced"
     cat = str(job["cat"])
+    status = str(job.get("status", "active"))
+    status_label = "Active" if status == "active" else "Expired / Closed"
     favicon_url = f"https://www.google.com/s2/favicons?domain={esc(job['domain'])}&sz=128"
-    meta_description = (
-        f"{heading} - location, eligibility, experience and official application link on HD Careers."
-    )
+    canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
+    meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
     share_text = f"{company} - {role}\\n{job['loc']}"
+
+    if status == "active":
+        status_badge = '<span class="bg-green-400/20 border border-green-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Active</span>'
+        hero_action = f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" class="flex-1 text-center bg-white text-[var(--primary)] font-extrabold px-5 py-3 rounded-xl hover:bg-blue-50">Official Apply <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>'
+        status_notice = f'<div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-900"><strong>Verified active:</strong> HD Careers checked the official source on {esc(job["verifiedDate"])}. Availability can still change, so confirm once more before submitting.</div>'
+        apply_section = (
+            '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-route text-[var(--primary)] mr-2"></i>How to Apply</h2>'
+            f'<div class="mt-4 space-y-3 text-slate-600"><p>1. Open the official {esc(company)} application page using the button below.</p><p>2. Re-check the current eligibility, location and any deadline on the employer site.</p><p>3. Complete the application only on the official employer or authorized recruitment portal.</p></div>'
+            f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" class="mt-5 inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-extrabold px-6 py-3 rounded-xl">Continue to Official Website <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></a></div>'
+        )
+        sidebar_action = f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" class="mt-4 block text-center bg-[var(--primary)] hover:bg-[var(--primary2)] text-white font-extrabold py-3 rounded-xl">Apply on Official Site</a>'
+    else:
+        status_badge = '<span class="bg-red-400/20 border border-red-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-circle-xmark mr-1"></i> Expired</span>'
+        hero_action = '<span class="flex-1 text-center bg-white/20 text-white font-extrabold px-5 py-3 rounded-xl cursor-not-allowed">Application Closed</span>'
+        status_notice = f'<div class="rounded-2xl bg-red-50 border border-red-200 p-4 text-sm text-red-900"><strong>Application status:</strong> This listing was marked expired or closed when last checked on {esc(job["verifiedDate"])}. The page remains available for reference; use Latest Jobs for current openings.</div>'
+        apply_section = '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black">Application Closed</h2><p class="mt-3 text-slate-600">This job is no longer treated as an active opening on HD Careers. Browse current jobs instead of relying on an old application link.</p><a href="../index.html#jobs" class="mt-5 inline-flex bg-[var(--primary)] text-white font-bold px-5 py-3 rounded-xl">Browse Latest Jobs</a></div>'
+        sidebar_action = '<a href="../index.html#jobs" class="mt-4 block text-center bg-slate-900 text-white font-extrabold py-3 rounded-xl">Browse Active Jobs</a>'
 
     values = {
         "page_title": esc(page_title),
         "meta_description": esc(meta_description),
+        "canonical": esc(canonical),
         "breadcrumb": esc(CAT_BREADCRUMB[cat]),
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
@@ -244,18 +307,29 @@ def render_job_page(job: dict) -> str:
         "cat_icon": CAT_ICON[cat],
         "cat_label": esc(CAT_LABEL[cat]),
         "candidate": candidate,
+        "status_badge": status_badge,
+        "status_label": status_label,
         "salary": esc(job["salary"]),
         "heading": esc(heading),
         "loc": esc(job["loc"]),
+        "work_mode": esc(job["workMode"]),
         "batch": esc(job["batch"]),
         "date": esc(job["date"]),
+        "verified_date": esc(job["verifiedDate"]),
         "apply": esc(job["apply"]),
         "desc": esc(job["desc"]),
         "role_tag": esc(job["roleTag"]),
         "exp_years": esc(job["expYears"]),
         "elig": esc(job["elig"]),
+        "skills": render_skills(job["skills"]),
+        "who": esc(job["who"]),
         "responsibilities": render_responsibilities(job["resp"]),
-        "location_filter": esc(job["locationFilter"]),
+        "source_name": esc(job["sourceName"]),
+        "hero_action": hero_action,
+        "status_notice": status_notice,
+        "apply_section": apply_section,
+        "sidebar_action": sidebar_action,
+        "related_jobs": render_related_jobs(job, jobs),
         "share_title": json.dumps(page_title, ensure_ascii=False),
         "share_text": json.dumps(share_text, ensure_ascii=False),
     }
@@ -278,7 +352,8 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if end == -1:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
-    jobs_json = json.dumps(jobs, ensure_ascii=False, indent=2)
+    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
 
