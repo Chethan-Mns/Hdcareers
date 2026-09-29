@@ -3,7 +3,7 @@ name: Generator Check
 on:
   pull_request:
     branches:
-      - job-posting-system
+      - main
 
 jobs:
   generator-smoke-test:
