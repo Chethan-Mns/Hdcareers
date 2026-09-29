@@ -856,6 +856,11 @@ export default async function handler(req,res){
       skills:extractSkills([rawEligibility,rawDescription].filter(Boolean).join(" ")),
       who:whoShouldApply(exp,eligibility),
       workMode:inferWorkMode([rawDescription,pageText.slice(0,12000)].filter(Boolean).join(" "),location),
+      contentPlan:{
+        version:"expanded-job-page-v1",
+        generatedSections:["Job overview","Eligibility","Skills","Responsibilities","Who should apply","HD Careers guidance","Resume guidance","Preparation guide","Application checklist"],
+        targetWords:1000
+      },
       extraction:{
         source:structuredOk?"structured":reader?"reader":embedded?"embedded":"url-fallback",
         confidence,
