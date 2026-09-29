@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Traffic | HD Careers Admin</title>
+<link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<style>
+:root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
+*{box-sizing:border-box}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 30px rgba(15,23,42,.05)}
+.btn{border-radius:12px;font-weight:800;transition:.18s ease}.btn:active{transform:scale(.98)}
+.bar{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#22c55e);border-radius:999px}
+</style>
+</head>
+<body>
+<div id="loading" class="min-h-screen flex items-center justify-center text-slate-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Checking admin session...</div>
+<div id="app" class="hidden">
+<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">HD</div><div><p class="font-black leading-none">Traffic Analytics</p><p class="text-[11px] text-slate-500 mt-1">HD Careers Admin</p></div></div>
+<div class="flex items-center gap-2"><a href="/admin/" class="btn border border-slate-200 bg-white text-slate-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left mr-1"></i>Jobs</a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket mr-1"></i>Logout</button></div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-7 space-y-6">
+<section class="card p-5 sm:p-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Vercel Web Analytics...</p></div>
+<div class="flex gap-2"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-4 py-2 text-sm">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-3 py-2 text-sm" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div></div>
+</section>
+<div id="errorBox" class="hidden card p-5 border-amber-200 bg-amber-50 text-amber-900"></div>
+<section id="stats" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Visitors</p><p id="visitors" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Unique visitors</p></div>
+<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Page Views</p><p id="pageviews" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Total page loads</p></div>
+<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
+<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><p id="topPage" class="text-lg font-black mt-2 break-all">—</p><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
+</section>
+<section class="grid lg:grid-cols-2 gap-5">
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><div id="pages" class="mt-5 space-y-4"></div></div>
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-arrow-up-right-from-square text-blue-600 mr-2"></i>Traffic Sources</h2><div id="referrers" class="mt-5 space-y-4"></div></div>
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Countries</h2><div id="countries" class="mt-5 space-y-4"></div></div>
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-mobile-screen text-blue-600 mr-2"></i>Devices</h2><div id="devices" class="mt-5 space-y-4"></div></div>
+</section>
+<p class="text-xs text-slate-400 text-center pb-5">Production traffic only. Data is read securely through the authenticated admin API from Vercel Web Analytics.</p>
+</main>
+</div>
+<script>
+let currentDays=7;
+const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function metric(row){return Number(row.pageviews??row.count??row.visits??0)}
+function label(row,key){return row[key]||row.dimension||row.name||'(Direct / Unknown)'}
+function renderRows(id,rows,key){
+ const el=document.getElementById(id); const data=Array.isArray(rows)?rows:[];
+ if(!data.length){el.innerHTML='<p class="text-sm text-slate-400">No traffic data for this period yet.</p>';return}
+ const max=Math.max(...data.map(metric),1);
+ el.innerHTML=data.slice(0,10).map(r=>{const n=metric(r),name=label(r,key);return '<div><div class="flex justify-between gap-3 text-sm"><span class="font-semibold text-slate-700 truncate" title="'+esc(name)+'">'+esc(name)+'</span><span class="font-black">'+fmt(n)+'</span></div><div class="bar mt-2"><span style="width:'+Math.max(2,n/max*100)+'%"></span></div></div>'}).join('');
+}
+async function loadTraffic(days=7){
+ currentDays=days;
+ document.querySelectorAll('.range').forEach(b=>{const on=Number(b.dataset.days)===days;b.className='range btn px-4 py-2 text-sm '+(on?'bg-blue-600 text-white':'border border-slate-200 bg-white')});
+ const e=document.getElementById('errorBox');e.classList.add('hidden');
+ try{
+  const r=await fetch('/api/admin/traffic?days='+days,{cache:'no-store'});
+  const d=await r.json().catch(()=>({}));
+  if(r.status===401){location.href='/admin/';return}
+  if(!r.ok)throw new Error(d.error+(d.missing?.length?' Missing: '+d.missing.join(', '):''));
+  const v=Number(d.totals?.visitors||0),p=Number(d.totals?.pageviews||0);
+  document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('ratio').textContent=v?(p/v).toFixed(2):'0.00';
+  const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
+  document.getElementById('topPage').textContent=top?label(top,'requestPath'):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
+  document.getElementById('periodText').textContent='Last '+(days===1?'24 hours':days+' days')+' • refreshed '+new Date().toLocaleTimeString();
+  renderRows('pages',d.pages,'requestPath');renderRows('referrers',d.referrers,'referrerHostname');renderRows('countries',d.countries,'country');renderRows('devices',d.devices,'deviceType');
+ }catch(err){e.textContent=err.message||'Could not load traffic analytics.';e.classList.remove('hidden')}
+}
+async function logoutAdmin(){await fetch('/api/admin/logout',{method:'POST'}).catch(()=>{});location.href='/admin/'}
+(async()=>{try{const r=await fetch('/api/admin/session',{cache:'no-store'});const d=await r.json();if(!d.authenticated){location.href='/admin/';return}document.getElementById('loading').classList.add('hidden');document.getElementById('app').classList.remove('hidden');loadTraffic(7)}catch{location.href='/admin/'}})();
+</script>
+</body>
+</html>
