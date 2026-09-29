@@ -12,7 +12,7 @@ DATA_FILE = ROOT / "data" / "jobs.json"
 REQUIRED = [
     "page", "domain", "company", "salary", "logo", "role", "roleTag", "loc",
     "locationFilter", "batch", "elig", "cat", "expType", "expYears", "date",
-    "desc", "resp", "apply"
+    "desc", "resp", "apply", "status", "verifiedDate", "sourceName", "skills", "who", "workMode"
 ]
 CATS = {"it", "internship", "apprenticeship", "campus", "remote", "walkin", "experienced", "govt"}
 EXP_TYPES = {"fresher", "experienced"}
@@ -42,8 +42,14 @@ def validate(job: dict, pos: int) -> None:
         raise SystemExit(f"Job #{pos} has unsupported category")
     if job["expType"] not in EXP_TYPES:
         raise SystemExit(f"Job #{pos} has unsupported experience type")
+    if job["status"] not in {"active", "expired"}:
+        raise SystemExit(f"Job #{pos} has unsupported status")
     if not isinstance(job["resp"], list) or not job["resp"]:
         raise SystemExit(f"Job #{pos} requires responsibilities")
+    if not isinstance(job["skills"], list) or not job["skills"]:
+        raise SystemExit(f"Job #{pos} requires skills")
+    if not str(job["who"]).strip() or not str(job["sourceName"]).strip() or not str(job["verifiedDate"]).strip():
+        raise SystemExit(f"Job #{pos} requires source, verification date and who-should-apply text")
     if not isinstance(job["logo"], list) or len(job["logo"]) != 2:
         raise SystemExit(f"Job #{pos} logo must be [initials, color]")
 

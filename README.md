@@ -33,7 +33,7 @@ jobs/
 - Job sharing using HD Careers job-page URLs
 - Responsive mobile-first UI
 - WhatsApp, Instagram and Telegram links
-- About, Contact, Privacy Policy and Disclaimer views
+- Crawlable About, Contact, Privacy Policy, Terms and Disclaimer pages
 - Vercel Preview deployments before production merges
 - Generator validation workflow through GitHub Actions
 
@@ -65,8 +65,10 @@ python3 generate.py
 
 The generator updates:
 
-- Job data inside `index.html`
-- Individual pages under `jobs/`
+- Active job data inside `index.html`
+- Individual verified pages under `jobs/`
+- `robots.txt`
+- `sitemap.xml`
 
 ## Add a New Job
 
@@ -148,6 +150,9 @@ This keeps the project workflow independent of any single chat.
 - Use `Not Disclosed` when salary is not provided
 - Use `Not Specified` when batch information is unavailable
 - Every published job should have a dedicated HD Careers job page
+- Keep a source name and last-verified date for every job
+- Mark closed jobs as `expired` instead of continuing to present them as active
+- Remove generic/unverified seed records rather than padding the site with thin content
 - Keep normal production changes behind a branch + pull request
 
 ## Contact
@@ -158,7 +163,7 @@ This keeps the project workflow independent of any single chat.
 
 ## Future Plan
 
-A protected `/admin` tool is planned so jobs can eventually be added through a form instead of editing JSON manually.
+A protected `/admin` tool is available for reviewing and publishing verified jobs without exposing GitHub credentials to the browser.
 
 The intended flow is:
 

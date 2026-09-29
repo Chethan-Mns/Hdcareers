@@ -1,27 +1,36 @@
 {
-  "id": 12,
+  "id": 21,
   "page": "jobs/company-role.html",
   "domain": "company.com",
   "company": "Company",
   "salary": "Not Disclosed",
   "logo": [
     "CO",
-    "#000000"
+    "#0b6fe8"
   ],
   "role": "Role Name",
   "roleTag": "Role Name",
-  "loc": "Bangalore",
-  "locationFilter": "Bangalore",
+  "loc": "Bengaluru",
+  "locationFilter": "Bengaluru",
   "batch": "Not Specified",
-  "elig": "Eligibility details",
+  "elig": "Verified eligibility details from the official employer posting.",
   "cat": "it",
   "expType": "fresher",
-  "expYears": "0 years",
-  "date": "27 Sep 2026",
-  "desc": "Short original summary of the role.",
+  "expYears": "0 years / Entry-level",
+  "date": "29 Sep 2026",
+  "desc": "Original HD Careers summary based only on the official employer posting.",
   "resp": [
     "Responsibility 1",
     "Responsibility 2"
   ],
-  "apply": "https://official-company-job-link"
+  "apply": "https://official-company-job-link",
+  "status": "active",
+  "verifiedDate": "29 Sep 2026",
+  "sourceName": "Official company careers page",
+  "skills": [
+    "Skill 1",
+    "Skill 2"
+  ],
+  "who": "A short factual explanation of who matches the official requirements.",
+  "workMode": "Not Specified"
 }

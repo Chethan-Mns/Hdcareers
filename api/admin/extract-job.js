@@ -700,6 +700,37 @@ function pwcResponsibilities(text){
 }
 
 
+function extractSkills(text){
+  const raw=stripHtml(text||"");
+  const defs=[
+    ["Java",/\bjava\b/i],["Python",/\bpython\b/i],["SQL",/\bsql\b/i],["JavaScript",/\bjavascript\b|\bjs\b/i],
+    ["React",/\breact(?:\.js)?\b/i],["Angular",/\bangular\b/i],["Spring Boot",/\bspring\s*boot\b/i],
+    ["AWS",/\baws\b|amazon web services/i],["Azure",/\bazure\b/i],["Google Cloud",/\bgcp\b|google cloud/i],
+    ["ETL",/\betl\b|extract[, ]+transform[, ]+load/i],["Snowflake",/\bsnowflake\b/i],["Databricks",/\bdatabricks\b/i],
+    ["Linux",/\blinux\b/i],["Docker",/\bdocker\b/i],["Kubernetes",/\bkubernetes\b|\bk8s\b/i],
+    ["Excel",/\bexcel\b/i],["Power BI",/\bpower\s*bi\b/i],["Tableau",/\btableau\b/i],
+    ["Data Analysis",/\bdata analy(?:sis|tics)\b/i],["Data Engineering",/\bdata engineering\b/i],
+    ["Communication",/\bcommunication\b/i],["Problem Solving",/\bproblem[- ]solving\b/i]
+  ];
+  const out=[];
+  for(const [label,re] of defs){if(re.test(raw)&&!out.includes(label))out.push(label);if(out.length>=7)break;}
+  return out.length?out:["Role-specific skills from the official posting"];
+}
+function inferWorkMode(text,location){
+  const raw=(stripHtml(text||"")+" "+String(location||"")).toLowerCase();
+  if(/\bhybrid\b/.test(raw))return "Hybrid";
+  if(/\bremote\b|work from home|\bwfh\b/.test(raw))return "Remote";
+  if(/\bon[- ]site\b|\bonsite\b|work from office|\bwfo\b/.test(raw))return "On-site";
+  return "Not Specified";
+}
+function whoShouldApply(exp,eligibility){
+  const years=String(exp&&exp.years||"Not Specified");
+  if(exp&&exp.type==="fresher"){
+    return "Freshers and early-career candidates who match the education and skill requirements in the official posting should review this opportunity. Experience listed: "+years+".";
+  }
+  return "Experienced candidates whose background matches the official education, skill and experience requirements should review this opportunity. Experience listed: "+years+".";
+}
+
 export default async function handler(req,res){
   if(req.method!=="POST"){
     res.setHeader("Allow","POST");
@@ -819,6 +850,12 @@ export default async function handler(req,res){
       resp:responsibilities.slice(0,6),
       apply:sourceUrl,
       page:"jobs/"+slugify(company+"-"+title)+".html",
+      status:"active",
+      verifiedDate:formatDate(new Date().toISOString()),
+      sourceName:"Official "+company+" careers page",
+      skills:extractSkills([rawEligibility,rawDescription].filter(Boolean).join(" ")),
+      who:whoShouldApply(exp,eligibility),
+      workMode:inferWorkMode([rawDescription,pageText.slice(0,12000)].filter(Boolean).join(" "),location),
       extraction:{
         source:structuredOk?"structured":reader?"reader":embedded?"embedded":"url-fallback",
         confidence,
