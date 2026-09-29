@@ -1,0 +1,64 @@
+name: Resume Match Preview Build
+
+on:
+  push:
+    branches:
+      - resume-jd-match
+    paths:
+      - .github/workflows/resume-match-preview.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: resume-jd-match
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile generator
+        run: python3 -m py_compile generate.py
+
+      - name: Generate preview site
+        run: python3 generate.py
+
+      - name: Validate generated output
+        run: |
+          git diff --check
+          python3 generate.py --dry-run
+          grep -q "Resume ↔ JD Match" jobs/amazon-jobs-data-engineer-i-cmt.html
+          grep -q "Ready to Apply?" jobs/amazon-jobs-data-engineer-i-cmt.html
+          grep -q "Application Closed" preview/expired-job.html
+
+      - name: Check generated matcher JavaScript syntax
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path("jobs/amazon-jobs-data-engineer-i-cmt.html").read_text()
+          blocks=re.findall(r"<script>([\s\S]*?)</script>",s)
+          Path("/tmp/matcher.js").write_text(blocks[-1])
+          PY
+          node --check /tmp/matcher.js
+
+      - name: Commit generated preview files
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "Preview already generated."
+            exit 0
+          fi
+          git config user.name "HD Careers Preview Build"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html jobs/ robots.txt sitemap.xml
+          git commit -m "Generate resume match preview"
+          git push origin HEAD:resume-jd-match
