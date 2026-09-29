@@ -3,8 +3,14 @@
 const K=typeof module!=='undefined'&&module.exports?require('./resume-keywords.js'):root.ResumeKeywords;
 function minimum(text){const s=String(text||'');if(/not specified/i.test(s))return null;const m=s.match(/(\d+(?:\.\d+)?)\s*(?:\+|[-–]\s*\d+)?\s*(?:years?|yrs?)/i);return m?+m[1]:/fresher|entry.level/i.test(s)?0:null;}
 function relevant(profile,text){
- const role=K.normalize(profile.role).replace(/\b(senior|junior|associate|lead| i| ii)\b/g,'').trim();
- if(role.length>4&&K.locate(text,role)>=0)return true;
+ const normalized=K.normalize(text);
+ const role=K.normalize(profile.role).replace(/\b(senior|junior|associate|lead| i| ii| iii| iv)\b/g,' ').trim();
+ if(role.length>4&&K.locate(normalized,role)>=0)return true;
+ const generic=new Set(['engineer','developer','analyst','associate','senior','junior','lead','role','technology','support','data','software']);
+ const roleTerms=role.split(/\s+/).filter(x=>x.length>2&&!generic.has(x));
+ const coreTerms=role.split(/\s+/).filter(x=>x.length>2&&!['senior','junior','associate','lead'].includes(x));
+ if(coreTerms.length&&coreTerms.filter(x=>normalized.includes(x)).length>=Math.min(2,coreTerms.length))return true;
+ if(roleTerms.length&&roleTerms.filter(x=>normalized.includes(x)).length>=Math.min(1,roleTerms.length))return true;
  const ks=K.analyze(profile,text).matched;
  return ks.filter(x=>!['Communication','Excel','Testing','Automation'].includes(x)).length>=2;
 }
@@ -19,7 +25,6 @@ function parseDateToken(raw,now){
 }
 function experience(profile,text,now=new Date()){
  const required=minimum(profile.experience);const evidence=[];let stated=null;const raw=String(text);
- // A duration is accepted only when it is attached to a relevant role, never from a random summary number.
  for(const sentence of raw.split(/[\n;]+|(?<=[.!?])\s+/)){
   const m=sentence.match(/(\d+(?:\.\d+)?)\s*\+?\s*(years?|yrs?|months?)\b/i);
   if(m&&relevant(profile,sentence)&&/experience|worked|working|engineer|developer|analyst|built|developed/i.test(sentence)){
@@ -38,7 +43,6 @@ function experience(profile,text,now=new Date()){
    ranges.push([start,end]);evidence.push(`${m[1]} - ${m[2]} • ${block.replace(/\s+/g,' ').trim()}`);
   }
  }
- // Merge overlapping employment periods before counting relevant tenure.
  ranges.sort((a,b)=>a[0]-b[0]);const merged=[];
  for(const r of ranges){const last=merged[merged.length-1];if(last&&r[0]<=last[1])last[1]=Math.max(last[1],r[1]);else merged.push([...r]);}
  const dated=merged.length?merged.reduce((n,r)=>n+r[1]-r[0],0)/(365.25*86400000):null;
@@ -55,11 +59,9 @@ function degree(text){
 function qualification(profile,text){
  const requirement=[profile.education,profile.eligibility].join(' ');
  const need=degree(requirement),found=degree(text);
- // Alternatives: a bachelor's OR master's permits either degree level.
  const alternatives=/\bor\b|\//i.test(requirement)&&/bachelor|b\.?\s?tech/i.test(requirement);
  const minimumDegree=alternatives?1:need;
- return {score:minimumDegree?found>=minimumDegree?100:0:null,need:minimumDegree,found,
- note:minimumDegree?(found>=minimumDegree?'Degree level detected; check field, grades and other conditions.':'Required degree level not detected.'): 'No supported degree requirement detected; excluded from overall.'};
+ return {score:minimumDegree?found>=minimumDegree?100:0:null,need:minimumDegree,found,note:minimumDegree?(found>=minimumDegree?'Degree level detected; check field, grades and other conditions.':'Required degree level not detected.'): 'No supported degree requirement detected; excluded from overall.'};
 }
 function assess(profile,text){
  const keywords=K.analyze(profile,text),exp=experience(profile,text),qual=qualification(profile,text);
@@ -67,5 +69,6 @@ function assess(profile,text){
  const weight=parts.reduce((n,x)=>n+x[1],0);
  return {keywords,exp,qual,overall:weight?Math.round(parts.reduce((n,x)=>n+x[0]*x[1],0)/weight):null};
 }
-const api={assess,experience,qualification,minimum};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.ResumeAssessment=api;
+const api={assess,experience,qualification,minimum};if(typeof module!=='undefined'&&module.exports)module.exports=api;
+root.ResumeAssessment=api;
 })(typeof window!=='undefined'?window:globalThis);
