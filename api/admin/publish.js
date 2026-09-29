@@ -79,6 +79,7 @@ function canonicalJob(input){
     sourceName:String(input.sourceName||source.sourceName||(company+" official careers page")).trim(),
     skills:Array.isArray(input.skills)?input.skills.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.skills)?source.skills.map(x=>String(x).trim()).filter(Boolean):[],
     who:String(input.who||source.who||"Review the official requirements and apply if your education, experience and skills match the role.").trim(),
+    closingAt:String(input.closingAt||source.closingAt||" ").trim(),
     workMode:String(input.workMode||source.workMode||"Not Specified").trim()||"Not Specified"
   };
 }

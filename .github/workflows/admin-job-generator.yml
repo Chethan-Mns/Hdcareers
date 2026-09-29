@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: admin-direct-publish
+  group: main-job-data-publish
   cancel-in-progress: false
 
 jobs:
