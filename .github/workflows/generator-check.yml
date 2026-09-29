@@ -29,5 +29,19 @@ jobs:
             grep -q "HD Careers Generator Test Role" jobs/hd-careers-generator-test.html
           fi
 
+      - name: Verify trust and crawl files
+        run: |
+          test -f about.html
+          test -f contact.html
+          test -f privacy-policy.html
+          test -f terms.html
+          test -f disclaimer.html
+          test -f robots.txt
+          test -f sitemap.xml
+          grep -q "Sitemap: https://hdcareers.in/sitemap.xml" robots.txt
+          grep -q "https://hdcareers.in/privacy-policy.html" sitemap.xml
+
       - name: Check generated output
-        run: git diff --check
+        run: |
+          git diff --check
+          git diff --exit-code
