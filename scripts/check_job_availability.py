@@ -1,0 +1,116 @@
+"""Conservative official-page checks shared by monitoring and publishing."""
+from __future__ import annotations
+import argparse
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+import ipaddress
+import json
+from pathlib import Path
+import re
+import socket
+import subprocess
+from urllib.error import HTTPError
+from urllib.parse import urlsplit
+from urllib.request import Request, HTTPRedirectHandler, build_opener
+
+ROOT = Path(__file__).resolve().parents[1]
+CLOSED = re.compile(r'\b(?:this (?:job|position|vacancy) (?:is no longer available|has been filled|has expired|is closed)|no longer accepting applications|applications (?:are |have )?closed|job not found)\b', re.I)
+APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit application)\b', re.I)
+BLOCKED = re.compile(r'captcha|access denied|verify (?:that )?you are human|checking your browser', re.I)
+
+class Visible(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.parts = []; self.skip = 0
+    def handle_starttag(self, tag, attrs):
+        if tag in {'script', 'style', 'template', 'noscript'}: self.skip += 1
+    def handle_endtag(self, tag):
+        if tag in {'script', 'style', 'template', 'noscript'}: self.skip = max(0, self.skip - 1)
+    def handle_data(self, data):
+        if not self.skip: self.parts.append(data)
+
+def safe_url(url):
+    p = urlsplit(url)
+    if p.scheme != 'https' or not p.hostname or p.username or p.password or p.port not in (None, 443):
+        raise ValueError('Only public HTTPS career URLs are supported')
+    addresses = socket.getaddrinfo(p.hostname, 443, type=socket.SOCK_STREAM)
+    if not addresses or any(not ipaddress.ip_address(a[4][0]).is_global for a in addresses):
+        raise ValueError('Non-public destination refused')
+
+class Redirects(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        safe_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+def deadline_passed(job, now):
+    raw = job.get('closingAt')
+    if not raw: return False
+    dt = datetime.fromisoformat(raw.replace('Z', '+00:00'))
+    if dt.tzinfo is None: raise ValueError('closingAt requires an explicit timezone')
+    return now >= dt
+
+def classify(job, body, final_url, status=200):
+    if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
+    p = Visible(); p.feed(body)
+    text = re.sub(r'\s+', ' ', ' '.join(p.parts)).strip()
+    if BLOCKED.search(text): return 'review', 'Access challenge; availability unconfirmed'
+    # Redirects may lead to a generic careers page, unrelated job or regional selector.
+    if final_url.rstrip('/') != job['apply'].rstrip('/'):
+        return 'review', 'Redirected source requires manual verification'
+    closed = CLOSED.search(text)
+    if closed: return 'expired', closed.group(0)
+    role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
+    if role and role in text.casefold() and APPLY.search(text):
+        return 'active', 'Exact role and application call-to-action found on official URL'
+    return 'review', 'Specific role and current application route could not both be confirmed'
+
+def check(job, now=None):
+    now = now or datetime.now(timezone.utc)
+    result = {'id': job.get('id'), 'url': job.get('apply'), 'checkedAt': now.isoformat()}
+    try:
+        if deadline_passed(job, now):
+            state, reason = 'expired', 'Official closingAt deadline passed'
+        else:
+            safe_url(job['apply'])
+            req = Request(job['apply'], headers={'User-Agent': 'HD-Careers-Availability/1.0', 'Accept': 'text/html'})
+            with build_opener(Redirects()).open(req, timeout=20) as res:
+                body = res.read(2_000_001)
+                if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
+                state, reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
+    except HTTPError as exc:
+        state, reason = 'review', f'HTTP {exc.code}; do not infer closure from access errors'
+    except Exception as exc:
+        state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
+    return dict(result, state=state, reason=reason)
+
+def require_active(job):
+    if job.get('status') != 'active': raise SystemExit('Publication blocked: job is not active')
+    result = check(job)
+    if result['state'] != 'active':
+        raise SystemExit(f"Publication blocked for {job.get('company')} / {job.get('role')}: {result['reason']}")
+    return result
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--write', action='store_true')
+    parser.add_argument('--before', help='Verify new/reopened/changed-source jobs against this Git ref')
+    args = parser.parse_args()
+    path = ROOT / 'data/jobs.json'
+    jobs = json.loads(path.read_text())
+    selected = [j for j in jobs if j.get('status') == 'active']
+    if args.before:
+        old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
+        known = {j['id']: j for j in old}
+        selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt'))]
+    results = []; changed = False
+    for job in selected:
+        result = check(job); results.append(result)
+        print(f"{job['id']}: {result['state']} — {result['reason']}")
+        if args.write and result['state'] == 'expired':
+            job['status'] = 'expired'; job['availabilityCheck'] = result
+            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+    report = ROOT / 'availability-report.json'
+    report.write_text(json.dumps(results, indent=2) + '\n')
+    if changed: path.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + '\n')
+    if args.before and any(r['state'] != 'active' for r in results): raise SystemExit('New job verification failed; publishing stopped')
+
+if __name__ == '__main__': main()

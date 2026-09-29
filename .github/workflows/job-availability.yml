@@ -1,0 +1,57 @@
+name: Check published job availability
+on:
+  schedule:
+    # 08:15 and 20:15 Asia/Kolkata. GitHub may delay scheduled runs.
+    - cron: '45 2,14 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check official sources and close confirmed expired jobs
+        run: python3 scripts/check_job_availability.py --write
+      - name: Regenerate pages using existing expired design
+        run: |
+          python3 generate.py
+          git diff --check
+      - name: Save closure updates only when content changes
+        run: |
+          git add data/jobs.json index.html jobs/ robots.txt sitemap.xml
+          if ! git diff --cached --quiet; then
+            git config user.name 'HD Careers Automation'
+            git config user.email 'actions@users.noreply.github.com'
+            git commit -m 'Close confirmed expired job listings'
+            git push origin HEAD:main
+          fi
+      - name: Retain check evidence and uncertain sources
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: job-availability-report
+          path: availability-report.json
+          retention-days: 30
+      - name: Show review queue
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          rows = json.loads(Path('availability-report.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write('## Job availability checks\n')
+              for row in rows:
+                  out.write(f"- Job {row['id']}: {row['state']} — {row['reason']}\n")
+          if any(r['state'] == 'review' for r in rows):
+              print('::warning::Some official sources require manual review. See job-availability-report.')
+          PY

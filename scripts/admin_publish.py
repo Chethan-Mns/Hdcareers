@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from check_job_availability import require_active
 import re
 import sys
 from pathlib import Path
@@ -73,6 +74,7 @@ def main() -> None:
         if not isinstance(job, dict):
             raise SystemExit(f"Job #{pos} must be an object")
         validate(job, pos)
+        require_active(job)
 
     existing_urls = {normalize_url(j.get("apply", "")) for j in current}
     existing_pairs = {(str(j.get("company", "")).lower(), str(j.get("role", "")).lower()) for j in current}

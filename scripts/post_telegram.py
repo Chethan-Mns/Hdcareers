@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import html
 import json
+from check_job_availability import require_active
 import os
 import re
 import subprocess
@@ -248,6 +249,9 @@ def main() -> None:
         raise SystemExit("HD Careers production page did not become live within the wait window. Telegram post skipped.")
 
     for job in jobs:
+        require_active(job)
+        if not wait_for_live(str(job.get("page", ""))):
+            raise SystemExit("Job page is not live; sharing stopped")
         send_telegram(token, channel, message_for(job))
         print(f"Posted to Telegram: {job.get('company')} — {job.get('role')}")
 

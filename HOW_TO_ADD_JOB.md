@@ -64,3 +64,37 @@ Remove records that cannot be tied to a specific, trustworthy job posting, espec
 - no reliable official source
 
 `data/jobs.json` remains the single source of truth. Do not manually maintain duplicate job data in generated pages.
+
+
+## Availability checks
+
+Use discovery sites only as leads. Verify the exact employer-owned job page or
+employer-linked ATS tenant during discovery, immediately before publishing, and
+again before sharing. A successful HTTP response alone does not prove an opening.
+Do not substitute a generic careers page or bypass uncertain checks.
+
+Run `python3 scripts/check_job_availability.py --before <base-commit>` before
+publishing new, reopened or changed-source jobs. Admin publishing and both Telegram
+entry points also require the same active result. A failed check stops the batch.
+Inspect the failure rather than changing a job's metadata to bypass it.
+
+Optional `closingAt` must be an official application deadline, expressed as ISO
+8601 with a timezone, e.g. `2026-10-10T23:59:00+05:30`. Never infer it from the
+posting date. Unknown deadlines remain absent.
+
+The scheduled availability workflow runs around 08:15 and 20:15 IST (GitHub may
+delay runs). It checks active jobs and expires only explicit closure messages or
+passed official deadlines, then regenerates the existing closed-page UI and
+active listings in one commit. Historical job URLs remain accessible. It does
+not send new-job Telegram posts for closure updates or reopen expired jobs.
+
+Each run uploads availability-report.json for 30 days and displays a review queue
+in its Actions summary. DNS failures, timeouts, HTTP errors (including 404),
+redirects, blocked pages and JavaScript-only pages require review; they do not
+change an existing listing's status or verification date. This conservative
+checker cannot verify every ATS: those sources need an adapter or manual review
+and cannot be published through the automated gate until supported.
+
+Status changes require a successful Git push and Vercel deployment to reach
+production. Check the deployment after a closure commit; a scheduled run is not
+a guarantee of an immediate website update.
