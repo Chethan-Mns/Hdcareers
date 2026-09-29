@@ -73,7 +73,13 @@ function canonicalJob(input){
     date:String(source.date||input.date||today()).trim(),
     desc:String(input.desc||source.desc||"").trim(),
     resp:Array.isArray(input.resp)?input.resp.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.resp)?source.resp.map(x=>String(x).trim()).filter(Boolean):[],
-    apply
+    apply,
+    status:"active",
+    verifiedDate:String(input.verifiedDate||source.verifiedDate||today()).trim(),
+    sourceName:String(input.sourceName||source.sourceName||(company+" official careers page")).trim(),
+    skills:Array.isArray(input.skills)?input.skills.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.skills)?source.skills.map(x=>String(x).trim()).filter(Boolean):[],
+    who:String(input.who||source.who||"Review the official requirements and apply if your education, experience and skills match the role.").trim(),
+    workMode:String(input.workMode||source.workMode||"Not Specified").trim()||"Not Specified"
   };
 }
 
@@ -87,6 +93,10 @@ function validateJob(job,index){
   if(!job.apply)errors.push("official apply URL");
   if(!job.domain)errors.push("domain");
   if(!job.resp.length)errors.push("responsibilities");
+  if(!job.skills.length)errors.push("skills");
+  if(!job.who)errors.push("who should apply");
+  if(!job.sourceName)errors.push("source");
+  if(!job.verifiedDate)errors.push("verified date");
   if(!CATS.has(job.cat))errors.push("category");
   if(!["fresher","experienced"].includes(job.expType))errors.push("experience type");
   if(/candidate experience|careers? page|job search page/i.test(job.company))errors.push("review company name");
