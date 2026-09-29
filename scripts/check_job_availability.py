@@ -49,6 +49,7 @@ def deadline_passed(job, now):
     return now >= dt
 
 def classify(job, body, final_url, status=200):
+    if status in (404, 410): return 'expired', f'Official job URL returned HTTP {status}'
     if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
     p = Visible(); p.feed(body)
     text = re.sub(r'\s+', ' ', ' '.join(p.parts)).strip()
@@ -77,7 +78,10 @@ def check(job, now=None):
                 if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
                 state, reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
     except HTTPError as exc:
-        state, reason = 'review', f'HTTP {exc.code}; do not infer closure from access errors'
+        if exc.code in (404, 410):
+            state, reason = 'expired', f'Official job URL returned HTTP {exc.code}'
+        else:
+            state, reason = 'review', f'HTTP {exc.code}; availability unconfirmed'
     except Exception as exc:
         state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)
