@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const A=require('../assets/resume-assessment.js');
+const p={role:'Data Engineer',experience:'3+ years',education:"Bachelor's degree",skills:['AWS','ETL']};
+let a=A.assess(p,"Data Engineer with 2 years of experience building AWS and ETL pipelines. Bachelor's degree.");
+assert.equal(a.exp.score,67);assert.equal(a.keywords.score,100);assert.equal(a.qual.score,100);assert.equal(a.overall,90);
+a=A.assess(p,"Sales manager with 10 years of experience. Skills: AWS and ETL. Bachelor's degree.");assert.equal(a.exp.years,null);assert.equal(a.exp.score,0);
+a=A.assess(p,'Data Engineer with 24 months experience using AWS and ETL.');assert.equal(a.exp.score,67);assert.equal(a.qual.score,0);
+a=A.experience(p,'Data Engineer Jan 2022 - Jan 2024 built AWS ETL pipelines',new Date('2026-01-01'));assert.equal(a.years,2);assert.equal(a.score,67);
+a=A.experience(p,'Data Engineer Jan 2022 - Jan 2024 AWS ETL\nData Engineer Jan 2023 - Jan 2024 AWS ETL',new Date('2026-01-01'));assert.equal(a.years,2);
+assert.equal(A.qualification({education:"Bachelor's or Master's degree"},'B.Tech').score,100);
+assert.equal(A.qualification({education:"Master's degree"},'B.Tech').score,0);
+assert.equal(A.experience({experience:'Not Specified'},'2 years').score,null);
+console.log('8 assessment regression cases passed');
