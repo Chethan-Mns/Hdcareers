@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#071a33">
 <meta name="description" content="HD Careers shares jobs, internships, off-campus drives, remote roles and walk-in opportunities for job seekers across India.">
 <title>HD Careers - Latest Jobs, Internships & Off-Campus Drives in India</title>
+<link rel="canonical" href="https://hdcareers.in/">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="shortcut icon" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
@@ -144,8 +146,8 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <button onclick="showHome();setCat('govt');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-landmark text-slate-400 w-5"></i> Government Jobs</button>
 </div>
 </div>
-<button onclick="showAbout()" class="nav-link">About Us</button>
-<button onclick="openLegal('contact')" class="nav-link">Contact Us</button>
+<a href="about.html" class="nav-link">About Us</a>
+<a href="contact.html" class="nav-link">Contact Us</a>
 </nav>
 
 <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -161,8 +163,8 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <div class="max-w-6xl mx-auto grid grid-cols-2 gap-2 text-sm font-semibold pt-3">
 <a href="#top" onclick="goHome(event);closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-house w-5 text-slate-400"></i> Home</a>
 <a href="#jobs" onclick="showHome();setCat('all');closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-briefcase w-5 text-slate-400"></i> Latest Jobs</a>
-<button onclick="showAbout();closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3 text-left"><i class="fa-solid fa-circle-info w-5 text-slate-400"></i> About Us</button>
-<button onclick="openLegal('contact');closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3 text-left"><i class="fa-solid fa-envelope w-5 text-slate-400"></i> Contact Us</button>
+<a href="about.html" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-circle-info w-5 text-slate-400"></i> About Us</a>
+<a href="contact.html" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-envelope w-5 text-slate-400"></i> Contact Us</a>
 </div>
 <div class="grid grid-cols-4 gap-2 mt-3">
 <a href="https://whatsapp.com/channel/0029VamZKemKLaHrHF8Mwc3I" target="_blank" rel="noopener" class="social-icon h-11 rounded-xl bg-green-500 text-white flex items-center justify-center" aria-label="WhatsApp 1"><i class="fa-brands fa-whatsapp"></i></a>
@@ -303,7 +305,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <footer class="bg-[var(--dark)] text-slate-300 py-8 mt-2">
 <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-6">
 <div><button onclick="showHome();window.scrollTo({top:0,behavior:'smooth'})" class="text-left"><p class="text-white font-extrabold text-lg">HD Careers</p><p class="text-xs mt-1 max-w-sm text-slate-400">Jobs, internships, off-campus drives & career updates for job seekers across India.</p></button><div class="flex gap-2 mt-4"><a href="https://whatsapp.com/channel/0029VamZKemKLaHrHF8Mwc3I" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-green-500"><i class="fa-brands fa-whatsapp"></i></a><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-pink-500"><i class="fa-brands fa-instagram"></i></a><a href="https://t.me/HD_Careers" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sky-500"><i class="fa-brands fa-telegram"></i></a></div></div>
-<div class="flex flex-wrap gap-x-6 gap-y-2 text-sm self-start sm:self-center"><button onclick="openLegal('privacy')" class="hover:text-white">Privacy Policy</button><button onclick="openLegal('disclaimer')" class="hover:text-white">Disclaimer</button></div>
+<div class="flex flex-wrap gap-x-6 gap-y-2 text-sm self-start sm:self-center"><a href="about.html" class="hover:text-white">About</a><a href="contact.html" class="hover:text-white">Contact</a><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="terms.html" class="hover:text-white">Terms</a><a href="disclaimer.html" class="hover:text-white">Disclaimer</a></div>
 </div>
 <p class="text-center text-xs text-slate-500 mt-7">&copy; 2026 HD Careers (hdcareers.in). All rights reserved.</p>
 </footer>
@@ -333,21 +335,33 @@ const JOBS = [
     "loc": "Hyderabad, Telangana, India",
     "locationFilter": "Hyderabad",
     "batch": "Not Specified",
-    "elig": "Bachelor's degree or higher in Computer Science, Software Engineering, or equivalent experience. 0-3 years of full-time software development lifecycle experience. Proficiency in Java or Python; exposure to React and JavaScript; familiarity with version control, unit testing, CI/CD, AWS/Azure, and relational or NoSQL databases.",
+    "elig": "Bachelor's degree or higher in Computer Science, Software Engineering, or equivalent experience. The role lists 0-3 years of full-time software development lifecycle experience, proficiency in Java or Python, exposure to React and JavaScript, familiarity with version control, unit testing and CI/CD, cloud development on AWS or Azure, and relational or NoSQL databases.",
     "cat": "it",
     "expType": "fresher",
     "expYears": "0-3 years",
     "date": "28 Sep 2026",
-    "desc": "Cohere Health is hiring an Associate Software Engineer in Hyderabad for its Clinical Intelligence team. The role focuses on building cloud-based healthcare applications and AI-driven automation across the stack, from databases and backend services to frontend experiences.",
+    "desc": "Cohere Health is hiring an Associate Software Engineer in Hyderabad for its Clinical Intelligence team. The role focuses on building cloud-based healthcare applications and AI-driven automation, with work spanning databases, backend services, APIs and frontend experiences.",
     "resp": [
-      "Contribute to technical roadmaps and AI-driven healthcare automation solutions",
+      "Contribute to the functional and technical roadmap for healthcare automation solutions",
       "Support technical design and data-driven engineering decisions",
       "Build, test and deliver features for cloud platforms and web applications",
       "Work across the stack from databases and backend services to frontend applications",
       "Collaborate with product, design and engineering teammates",
       "Support releases and production systems as part of the software development lifecycle"
     ],
-    "apply": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003"
+    "apply": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Cohere Health application page",
+    "skills": [
+      "Java or Python",
+      "React and JavaScript",
+      "AWS or Azure",
+      "Relational and NoSQL databases",
+      "Version control, testing and CI/CD"
+    ],
+    "who": "Early-career software engineers with a relevant technical degree or equivalent experience who are comfortable learning across backend, frontend and cloud technologies should review this role. The official posting allows 0-3 years of experience.",
+    "workMode": "On-site"
   },
   {
     "id": 19,
@@ -361,24 +375,36 @@ const JOBS = [
     ],
     "role": "Ops Sup Analyst 1 - C09",
     "roleTag": "Operations Support Analyst",
-    "loc": "Chennai, Tamil Nadu",
+    "loc": "Chennai, Tamil Nadu, India",
     "locationFilter": "Chennai",
     "batch": "Not Specified",
-    "elig": "Bachelor’s degree/University degree or equivalent experience. This is an entry-level Operations Support role. Previous relevant experience is preferred, with Microsoft Office, communication, organization and problem-solving skills plus working knowledge of SQL environments and database queries.",
+    "elig": "Bachelor's degree, university degree or equivalent experience. Citi describes this as an entry-level Operations Support position. Previous relevant experience is preferred, with Microsoft Office, communication, organization and problem-solving skills plus working knowledge of SQL environments and database queries.",
     "cat": "campus",
     "expType": "fresher",
     "expYears": "Entry-level",
     "date": "22 Sep 2026",
-    "desc": "Citi is hiring an entry-level Operations Support Analyst in Chennai to support client reporting, documentation, regulatory deliverables and cross-functional operations. The role is suited to graduates starting their career in banking operations, with prior relevant experience listed as preferred rather than mandatory.",
+    "desc": "Citi is hiring an entry-level Operations Support Analyst in Chennai. The role supports day-to-day operations, documentation, client and stakeholder coordination, project tracking and regulatory deliverables within Citi's operations support processes.",
     "resp": [
-      "Support business analysis and documentation for client reports, advices and communications",
-      "Provide project status updates and prepare presentations for stakeholder reviews",
-      "Coordinate with Legal and Compliance teams on regulatory business requirements",
-      "Act as a liaison between business stakeholders and technology teams",
-      "Maintain project plans and follow up across departments",
-      "Support multiple regulatory client deliverables while maintaining service quality and risk controls"
+      "Support operations analysis, documentation and client reporting activities",
+      "Maintain records and support account or operational documentation processes",
+      "Coordinate with operations staff, managers, project teams, custodians and clients",
+      "Prepare status updates and support project tracking across stakeholders",
+      "Assist with regulatory and business deliverables while following risk controls",
+      "Help resolve day-to-day operational issues in line with Citi processes"
     ],
-    "apply": "https://jobs.citi.com/job/chennai/ops-sup-analyst-1-c09-chennai/287/101004977440"
+    "apply": "https://jobs.citi.com/job/chennai/ops-sup-analyst-1-c09-chennai/287/101004977440",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Citi Careers page",
+    "skills": [
+      "Microsoft Office",
+      "Communication",
+      "Organization",
+      "Problem solving",
+      "SQL and database query awareness"
+    ],
+    "who": "Graduates and entry-level candidates interested in banking operations, documentation and stakeholder coordination should review the official requirements. Prior relevant experience is listed as preferred rather than a strict minimum.",
+    "workMode": "Hybrid"
   },
   {
     "id": 18,
@@ -395,21 +421,33 @@ const JOBS = [
     "loc": "Pune / Bengaluru",
     "locationFilter": "Pune / Bengaluru",
     "batch": "15 years full-time education",
-    "elig": "Minimum 3 years of experience with AWS Glue and PySpark. Required technical skills include AWS Glue, PySpark, SQL, ETL, Unix, Iceberg, Astronomer and data warehousing concepts. Accenture specifies 15 years of full-time education.",
+    "elig": "Minimum 3 years of experience is required. Must-have skills are AWS Glue and PySpark. The posting also references SQL, ETL and cloud-based data pipeline work. Accenture specifies 15 years of full-time education.",
     "cat": "experienced",
     "expType": "experienced",
     "expYears": "3+ years",
     "date": "26 Sep 2026",
-    "desc": "Accenture is hiring a Data Engineer to build and optimize cloud-based data migration pipelines. The role focuses on AWS-native ETL, PySpark and SQL, data quality, scalable processing and migration of high-volume datasets from legacy systems to AWS.",
+    "desc": "Accenture is hiring a Data Engineer to design, develop and maintain data solutions for generation, collection and processing. The role focuses on building data pipelines, ensuring data quality and implementing ETL processes across cloud-based systems.",
     "resp": [
-      "Build end-to-end ETL pipelines using AWS Step Functions, EventBridge, Glue, Lambda, PySpark and SQL",
-      "Migrate and transform high-volume datasets from legacy on-premise systems to AWS",
-      "Test data pipelines for performance and support deployment with DevOps engineers",
-      "Monitor and troubleshoot workflows using CloudWatch and optimize for cost and scalability",
-      "Support data-quality validation and incremental loads to maintain data integrity",
-      "Collaborate with solution designers and cross-functional teams to deliver reliable data solutions"
+      "Design and maintain scalable data solutions and processing pipelines",
+      "Build ETL workflows to migrate and deploy data across systems",
+      "Use AWS Glue and PySpark for data transformation and processing",
+      "Apply data-quality checks to improve reliability and accessibility",
+      "Collaborate with cross-functional teams to understand data requirements",
+      "Support performance, maintainability and operational reliability of data workflows"
     ],
-    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer"
+    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Accenture Careers page",
+    "skills": [
+      "AWS Glue",
+      "PySpark",
+      "SQL",
+      "ETL",
+      "Cloud data pipelines"
+    ],
+    "who": "Data engineers with at least three years of relevant experience and hands-on AWS Glue and PySpark skills are the closest match to the official requirements.",
+    "workMode": "Office-based / as specified by Accenture"
   },
   {
     "id": 17,
@@ -426,163 +464,38 @@ const JOBS = [
     "loc": "Bengaluru / Hyderabad / Chennai",
     "locationFilter": "Bengaluru / Hyderabad / Chennai",
     "batch": "Not Specified",
-    "elig": "5–7 years of experience. Core Java / Java 8, Angular 8+, Spring Boot, Spring Data JPA/Hibernate, HTML5, CSS3, JavaScript and SQL are required or preferred. The official posting does not specify a degree qualification.",
+    "elig": "The official Wipro posting lists 5-7 years of experience, Core Java / Java 8, Angular 8 or higher, Spring Boot, Spring Data JPA/Hibernate, HTML5, CSS3, JavaScript and SQL. The posting does not specify a degree qualification.",
     "cat": "experienced",
     "expType": "experienced",
     "expYears": "5-7 years",
     "date": "14 Nov 2025",
-    "desc": "Wipro is hiring a Java Fullstack Developer for enterprise application development. The role focuses on Java and Angular full-stack development, Spring-based backend services, SQL, technical design and translating business requirements into production-ready solutions.",
+    "desc": "Wipro is hiring a Java Fullstack Developer for enterprise application development. The role combines Java and Spring-based backend development with Angular frontend work, SQL and technical design responsibilities.",
     "resp": [
-      "Develop and maintain full-stack applications using Core Java, Java 8 and Angular 8+",
+      "Develop and maintain full-stack applications using Core Java and Angular",
       "Build backend services with Spring Boot and Spring Data JPA/Hibernate",
       "Develop frontend components using HTML5, CSS3 and JavaScript",
       "Write SQL queries and support application data requirements",
-      "Translate business requirements into technical design specifications and documentation",
-      "Execute development work from design through delivery in a dynamic environment"
+      "Translate business requirements into technical design specifications",
+      "Deliver development work from design through implementation in a dynamic environment"
     ],
-    "apply": "https://careers.wipro.com/job/Java-Fullstack-Developer/99036-en_US"
+    "apply": "https://careers.wipro.com/job/Java-Fullstack-Developer/99036-en_US",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Wipro Careers page",
+    "skills": [
+      "Core Java / Java 8",
+      "Angular 8+",
+      "Spring Boot",
+      "Spring Data JPA / Hibernate",
+      "HTML5, CSS3 and JavaScript",
+      "SQL"
+    ],
+    "who": "Experienced full-stack engineers with strong Java, Spring and Angular experience should review this role. The official page lists 5-7 years of experience.",
+    "workMode": "Not Specified"
   },
   {
-    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
-    "batch": "Not Specified",
-    "cat": "experienced",
-    "company": "Accenture",
-    "date": "25 Sept 2026",
-    "desc": "Project Role : Technology Support Engineer Project Role Description : Resolve incidents and problems across multiple business system components and ensure operational stability. Create and implement Requests for Change (RFC) and update knowledge base articles to support effective troubleshooting. Collaborate with vendors and help service management teams with issue analysis and resolution.",
-    "domain": "accenture.com",
-    "elig": "No one is ever required to pay for employment at Accenture",
-    "expType": "experienced",
-    "expYears": "3+ years",
-    "loc": "Bengaluru, unavailable, India",
-    "locationFilter": "Bengaluru, unavailable, India",
-    "logo": [
-      "AC",
-      "#0b6fe8"
-    ],
+    "id": 16,
     "page": "jobs/accenture-technology-support-engineer.html",
-    "resp": [
-      "Check Official Careers page"
-    ],
-    "role": "Technology Support Engineer",
-    "roleTag": "Technology Support Engineer",
-    "salary": "unavailable unavailable unavailable",
-    "id": 16
-  },
-  {
-    "apply": "https://www.amazon.jobs/en/jobs/10499657/data-engineer-i-cmt",
-    "batch": "Not Specified",
-    "cat": "internship",
-    "company": "Amazon.jobs",
-    "date": "27 Sept 2026",
-    "desc": "Explore corporate jobs and career programs at Amazon, from full-time roles to internships. Join our global teams and create a better future for our customers.",
-    "domain": "amazon.jobs",
-    "elig": "Review the official job posting for education, skills and experience requirements.",
-    "expType": "fresher",
-    "expYears": "1 year",
-    "loc": "Bangalore",
-    "locationFilter": "Bangalore",
-    "logo": [
-      "AM",
-      "#0b6fe8"
-    ],
-    "page": "jobs/amazon-jobs-data-engineer-i-cmt.html",
-    "resp": [
-      "Build semantic layers enabling intelligent query routing and context-aware data access",
-      "Develop infrastructure for AI-powered automated workflows and orchestration",
-      "Implement AI-driven data quality, entity resolution, and metadata management solutions",
-      "Own end-to-end accountability for data products from ingestion to consumption",
-      "Deliver data products with clear SLAs, quality metrics, and customer satisfaction measures",
-      "Build self-service platforms with embedded governance, lineage, and discovery capabilities"
-    ],
-    "role": "Data Engineer I",
-    "roleTag": "Data Engineer I, CMT",
-    "salary": "Not Disclosed",
-    "id": 15
-  },
-  {
-    "apply": "https://careers.nttdata.com/global/en/job/390777/Data-Analyst",
-    "batch": "Not Specified",
-    "cat": "remote",
-    "company": "NTT Data",
-    "date": "24 Sept 2026",
-    "desc": "We are currently seeking a Data Analyst to join our team in Remote, Karnātaka (IN-KA), India (IN). Explore and profile source data Analyze Chemille usage and performance Identify trends, patterns, and data-quality issues Support KPI definition and validation Develop and validate business insights About NTT DATA NTT DATA is a $30 billion business and technology services leader, serving 75% of the Fortune Global 100. Whenever possible, we hire locally to NTT DATA offices or client sites.",
-    "domain": "careers.nttdata.com",
-    "elig": "For employees near an NTT DATA office or client site, in-office attendance may be required for meetings or events, depending on business needs",
-    "expType": "fresher",
-    "expYears": "Not Specified",
-    "loc": "Remote, IN-KA, India",
-    "locationFilter": "Remote, IN-KA, India",
-    "logo": [
-      "NI",
-      "#0b6fe8"
-    ],
-    "page": "jobs/nttd-info-pro-ser-pte-ltd-data-analyst.html",
-    "resp": [
-      "Analyze Chemille usage and performance",
-      "Identify trends, patterns, and data-quality issues",
-      "Support KPI definition and validation",
-      "Develop and validate business insights"
-    ],
-    "role": "Data Analyst",
-    "roleTag": "Data Analyst",
-    "salary": "Not Disclosed",
-    "id": 14
-  },
-  {
-    "apply": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895&source=WEB_Search_INDIA",
-    "batch": "Not Specified",
-    "cat": "it",
-    "company": "IBM",
-    "date": "27 Sept 2026",
-    "desc": "Review the official IBM job posting for role details.",
-    "domain": "careers.ibm.com",
-    "elig": "Review the official job posting for detailed eligibility requirements.",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "loc": "Pan India",
-    "locationFilter": "Pan India",
-    "logo": [
-      "IB",
-      "#0b6fe8"
-    ],
-    "page": "jobs/ibm-job.html",
-    "resp": [
-      "Review the official job description and responsibilities before applying."
-    ],
-    "role": "Software Engineer",
-    "roleTag": "Software Engineer",
-    "salary": "Not Disclosed",
-    "id": 13
-  },
-  {
-    "apply": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/aws-data-engineer-bangalore_546858WD",
-    "batch": "Not Specified",
-    "cat": "it",
-    "company": "PWC",
-    "date": "3 Oct 2024",
-    "desc": "Line of Service Advisory Industry/Sector Not Applicable Specialism Data, Analytics & AI Management Level Senior Associate Job Description & Summary A career within Data and Analytics services will provide you with the opportunity to help organisations uncover enterprise insights and drive business results using smarter data analytics. We focus on a collection of organisational technology capabilities, including business intelligence, data management, and data assurance that help our clients drive innovation, growth, and change within their organisations in order to keep up with the changing nature of customers and technology. We make impactful decisions by mixing mind and machine to leverage data, understand and navigate risk, and help our clients gain a competitive edge. Creating business intelligence from data requires an understanding of the business, the data, and the technology used",
-    "domain": "pwc.com",
-    "elig": "Review the official job posting for detailed eligibility requirements.",
-    "expType": "fresher",
-    "expYears": "4 - 8 Years",
-    "loc": "Bengaluru Millenia, India",
-    "locationFilter": "Bengaluru Millenia, India",
-    "logo": [
-      "PS",
-      "#0b6fe8"
-    ],
-    "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
-    "resp": [
-      "Review the official job description and responsibilities before applying."
-    ],
-    "role": "AWS Data Engineer",
-    "roleTag": "AWS Data Engineer|Bangalore",
-    "salary": "Not Disclosed",
-    "id": 12
-  },
-  {
-    "id": 11,
-    "page": "jobs/accenture-custom-software-engineer.html",
     "domain": "accenture.com",
     "company": "Accenture",
     "salary": "Not Disclosed",
@@ -590,302 +503,212 @@ const JOBS = [
       "AC",
       "#a100ff"
     ],
-    "role": "Custom Software Engineer",
-    "roleTag": "Custom Software Engineer",
-    "loc": "Chennai",
-    "locationFilter": "Chennai",
-    "batch": "Not Specified",
-    "elig": "15 years full-time education; minimum 3 years of experience in Data Engineering.",
-    "cat": "experienced",
-    "expType": "experienced",
-    "expYears": "2-5 years",
-    "date": "27 Sep 2026",
-    "desc": "Accenture is hiring a Custom Software Engineer to design, build and improve tailored software solutions, with a focus on scalable data engineering systems and agile delivery.",
-    "resp": [
-      "Collaborate with cross-functional teams to translate business needs into technical solutions",
-      "Develop and improve scalable software and data engineering components",
-      "Optimize data workflows for performance and maintainability",
-      "Document software designs, processes and best practices to support knowledge sharing"
-    ],
-    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-R1-S2060661_en&title=Custom+Software+Engineer"
-  },
-  {
-    "id": 1,
-    "page": "jobs/infosys-system-engineer.html",
-    "domain": "infosys.com",
-    "company": "Infosys",
-    "salary": "3.6 LPA",
-    "logo": [
-      "IN",
-      "#007cc3"
-    ],
-    "role": "Walk-in Drive - System Engineer",
-    "roleTag": "System Engineer",
-    "loc": "Pune (Walk-in)",
-    "locationFilter": "Pune",
-    "batch": "2024/2025",
-    "elig": "B.E/B.Tech - 65%+, carry resume & ID proof",
-    "cat": "walkin",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "26 Sep 2026",
-    "desc": "On-the-spot walk-in interview drive for System Engineer trainee roles.",
-    "resp": [
-      "Attend aptitude + technical round",
-      "Client project onboarding post selection"
-    ],
-    "apply": "https://www.infosys.com/careers"
-  },
-  {
-    "id": 2,
-    "page": "jobs/zoho-software-development-internship.html",
-    "domain": "zoho.com",
-    "company": "Zoho",
-    "salary": "₹25,000/month Stipend",
-    "logo": [
-      "ZO",
-      "#e42527"
-    ],
-    "role": "Internship - Software Development",
-    "roleTag": "Software Development Intern",
-    "loc": "Chennai (On-site)",
-    "locationFilter": "Chennai",
-    "batch": "Any",
-    "elig": "Diploma/BE/BTech/MCA - strong problem solving",
-    "cat": "internship",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "25 Sep 2026",
-    "desc": "Paid internship with mentorship, leading to potential full-time offer at Zoho.",
-    "resp": [
-      "Build product features",
-      "Write unit tests",
-      "Collaborate with senior engineers"
-    ],
-    "apply": "https://zoho.com/careers"
-  },
-  {
-    "id": 3,
-    "page": "jobs/tcs-software-engineer.html",
-    "domain": "tcs.com",
-    "company": "TCS",
-    "salary": "3.36 LPA",
-    "logo": [
-      "TC",
-      "#004a93"
-    ],
-    "role": "Ninja / Digital Ninja - Software Engineer",
-    "roleTag": "Software Engineer",
-    "loc": "Pan India",
-    "locationFilter": "Pan India",
-    "batch": "2025/2026",
-    "elig": "B.E/B.Tech/M.E/M.Tech/MCA - 60%+, no active backlogs",
-    "cat": "it",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "24 Sep 2026",
-    "desc": "TCS is hiring freshers as Ninja and Digital Ninja for pan-India roles across service lines.",
-    "resp": [
-      "Software development & testing",
-      "Working with agile teams",
-      "Client communication & documentation"
-    ],
-    "apply": "https://www.tcs.com/careers"
-  },
-  {
-    "id": 4,
-    "page": "jobs/amazon-support-associate.html",
-    "domain": "amazon.jobs",
-    "company": "Amazon",
-    "salary": "2.4 LPA",
-    "logo": [
-      "AZ",
-      "#ff9900"
-    ],
-    "role": "Support Associate (WFH)",
-    "roleTag": "Support Associate",
-    "loc": "Remote - India",
-    "locationFilter": "Remote",
-    "batch": "Any Graduate",
-    "elig": "Graduate, good communication, own laptop & internet",
-    "cat": "remote",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "23 Sep 2026",
-    "desc": "Fully remote customer support role with flexible shifts and Amazon benefits.",
-    "resp": [
-      "Handle customer queries",
-      "Resolve order issues",
-      "Maintain quality metrics"
-    ],
-    "apply": "https://www.amazon.jobs"
-  },
-  {
-    "id": 5,
-    "page": "jobs/wipro-elite-national-talent-hunt.html",
-    "domain": "wipro.com",
-    "company": "Wipro",
-    "salary": "3.5 LPA",
-    "logo": [
-      "WI",
-      "#341f97"
-    ],
-    "role": "Elite National Talent Hunt",
-    "roleTag": "Software Engineer",
-    "loc": "Bangalore / Hyderabad",
-    "locationFilter": "Bangalore / Hyderabad",
-    "batch": "2026",
-    "elig": "B.E/B.Tech all streams - 60%+ throughout",
-    "cat": "campus",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "22 Sep 2026",
-    "desc": "Wipro Elite hiring for entry level software engineer roles with 6-month training program.",
-    "resp": [
-      "Coding & development",
-      "Project support",
-      "Continuous learning modules"
-    ],
-    "apply": "https://careers.wipro.com"
-  },
-  {
-    "id": 6,
-    "page": "jobs/cognizant-genc-next.html",
-    "domain": "cognizant.com",
-    "company": "Cognizant",
-    "salary": "4 LPA",
-    "logo": [
-      "CO",
-      "#1a4fa0"
-    ],
-    "role": "GenC Next - Off Campus",
-    "roleTag": "Software Engineer",
-    "loc": "Multiple Cities",
-    "locationFilter": "Multiple Cities",
-    "batch": "2025/2026",
-    "elig": "B.E/B.Tech/MCA - 60%+, no standing arrears",
-    "cat": "campus",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "21 Sep 2026",
-    "desc": "Off-campus hiring drive for GenC Next program with focus on emerging tech.",
-    "resp": [
-      "Full-stack development",
-      "Cloud & AI project exposure"
-    ],
-    "apply": "https://careers.cognizant.com"
-  },
-  {
-    "id": 7,
-    "page": "jobs/swiggy-data-analyst-intern.html",
-    "domain": "swiggy.com",
-    "company": "Swiggy",
-    "salary": "₹30,000/month Stipend",
-    "logo": [
-      "SW",
-      "#fc8019"
-    ],
-    "role": "Data Analyst Intern",
-    "roleTag": "Data Analyst",
-    "loc": "Remote / Bangalore",
-    "locationFilter": "Remote / Bangalore",
-    "batch": "2026 Pass-out",
-    "elig": "Any grad with SQL/Excel/Python basics",
-    "cat": "internship",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "20 Sep 2026",
-    "desc": "3-6 month internship in the analytics team working on real business problems.",
-    "resp": [
-      "Dashboarding & reporting",
-      "SQL query writing",
-      "Insights presentation"
-    ],
-    "apply": "https://careers.swiggy.com"
-  },
-  {
-    "id": 8,
-    "page": "jobs/hcltech-software-engineer.html",
-    "domain": "hcltech.com",
-    "company": "HCLTech",
-    "salary": "3.2 LPA",
-    "logo": [
-      "HC",
-      "#0075c9"
-    ],
-    "role": "Freshers Hiring - Software Engineer",
-    "roleTag": "Software Engineer",
-    "loc": "Noida / Chennai",
-    "locationFilter": "Noida / Chennai",
-    "batch": "2025/2026",
-    "elig": "BE/BTech/MCA/MSc-CS - 60%+",
-    "cat": "it",
-    "expType": "fresher",
-    "expYears": "0 years",
-    "date": "19 Sep 2026",
-    "desc": "Large scale off-campus hiring for software engineering trainee roles.",
-    "resp": [
-      "Application development",
-      "Bug fixing & support",
-      "Training bootcamp for 4 weeks"
-    ],
-    "apply": "https://www.hcltech.com/careers"
-  },
-  {
-    "id": 9,
-    "page": "jobs/deloitte-data-analyst.html",
-    "domain": "deloitte.com",
-    "company": "Deloitte",
-    "salary": "6 - 10 LPA",
-    "logo": [
-      "DE",
-      "#0c2340"
-    ],
-    "role": "Data Analyst - 2+ Years",
-    "roleTag": "Data Analyst",
-    "loc": "Hyderabad / Bangalore",
-    "locationFilter": "Hyderabad / Bangalore",
-    "batch": "Any Eligible Graduate",
-    "elig": "Graduate with SQL/BI skills and 2+ years of analytics experience",
-    "cat": "experienced",
-    "expType": "experienced",
-    "expYears": "2-5 years",
-    "date": "18 Sep 2026",
-    "desc": "Experienced hiring for analytics professionals with dashboards, reporting and stakeholder exposure.",
-    "resp": [
-      "Create dashboards and reports",
-      "Analyze data trends",
-      "Work with business stakeholders"
-    ],
-    "apply": "https://www2.deloitte.com/global/en/careers.html"
-  },
-  {
-    "id": 10,
-    "page": "jobs/isro-technical-assistant.html",
-    "domain": "isro.gov.in",
-    "company": "ISRO",
-    "salary": "Level 7 Pay",
-    "logo": [
-      "IS",
-      "#0a67b1"
-    ],
-    "role": "Technical Assistant",
-    "roleTag": "Technical Assistant",
+    "role": "Technology Support Engineer",
+    "roleTag": "Technology Support Engineer",
     "loc": "Bengaluru",
     "locationFilter": "Bengaluru",
-    "batch": "Diploma / BSc",
-    "elig": "Relevant diploma/degree, age and eligibility as per official notification",
-    "cat": "govt",
+    "batch": "15 years full-time education",
+    "elig": "Minimum 3 years of experience in VMware Virtualization Administration is required. Accenture also lists strong virtualization knowledge, troubleshooting of virtual infrastructure, storage and network integration, scripting or automation, and backup and disaster-recovery awareness. A 15 years full-time education is required.",
+    "cat": "experienced",
     "expType": "experienced",
-    "expYears": "1-2 years",
-    "date": "17 Sep 2026",
-    "desc": "Government job opening for technical support and project execution roles. Check official notification before applying.",
+    "expYears": "3+ years",
+    "date": "25 Sep 2026",
+    "desc": "Accenture is hiring a Technology Support Engineer in Bengaluru to resolve infrastructure incidents, maintain operational stability and support VMware-based environments. The position also contributes to change requests, knowledge documentation, performance monitoring and operational improvements.",
     "resp": [
-      "Support technical operations",
-      "Maintain project documentation",
-      "Assist engineering teams"
+      "Resolve incidents and problems affecting business system components",
+      "Implement change requests and update troubleshooting knowledge articles",
+      "Monitor system performance and identify potential issues before downtime",
+      "Troubleshoot virtual infrastructure and related storage or network integrations",
+      "Automate routine administration tasks where appropriate",
+      "Share technical knowledge and support continuous improvement of operations"
     ],
-    "apply": "https://www.isro.gov.in"
+    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Accenture Careers page",
+    "skills": [
+      "VMware Virtualization Administration",
+      "Virtual machine lifecycle management",
+      "Infrastructure troubleshooting",
+      "Storage and network integration",
+      "Scripting / automation",
+      "Backup and disaster recovery"
+    ],
+    "who": "Infrastructure and virtualization professionals with at least three years of hands-on VMware administration experience should review the role.",
+    "workMode": "Office-based / as specified by Accenture"
+  },
+  {
+    "id": 15,
+    "page": "jobs/amazon-jobs-data-engineer-i-cmt.html",
+    "domain": "amazon.jobs",
+    "company": "Amazon",
+    "salary": "Not Disclosed",
+    "logo": [
+      "AM",
+      "#ff9900"
+    ],
+    "role": "Data Engineer I, CMT",
+    "roleTag": "Data Engineer I",
+    "loc": "Bengaluru, Karnataka",
+    "locationFilter": "Bengaluru",
+    "batch": "Bachelor's degree",
+    "elig": "Bachelor's degree plus 1+ years of data engineering experience. Amazon lists SQL, data modeling, data warehousing, ETL pipeline development, a query language such as SQL or SparkSQL, and a scripting language such as Python as basic qualifications.",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "1+ years",
+    "date": "27 Sep 2026",
+    "desc": "Amazon is hiring a Data Engineer I in Bengaluru for the Data Platform and Analytics team. The role builds modern data infrastructure, real-time processing systems, AWS-native pipelines and governed data products that support analytics and AI/ML workloads.",
+    "resp": [
+      "Build modern data infrastructure for real-time analytics and AI/ML workloads",
+      "Develop reliable data pipelines for analysts, data scientists and downstream consumers",
+      "Manage AWS resources such as S3, Redshift, EMR, Lambda and EC2",
+      "Implement data quality, metadata and governance capabilities",
+      "Support event-driven and change-data-capture architectures",
+      "Deliver data products with clear reliability and quality expectations"
+    ],
+    "apply": "https://www.amazon.jobs/en/jobs/10499657/data-engineer-i-cmt",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official Amazon Jobs page",
+    "skills": [
+      "SQL",
+      "Data modeling and warehousing",
+      "ETL pipelines",
+      "Python or another scripting language",
+      "AWS data services",
+      "Big data technologies"
+    ],
+    "who": "Candidates with a bachelor's degree and at least one year of data engineering experience who have worked with SQL, ETL and scripting are aligned with the basic qualifications.",
+    "workMode": "Not Specified"
+  },
+  {
+    "id": 14,
+    "page": "jobs/nttd-info-pro-ser-pte-ltd-data-analyst.html",
+    "domain": "careers.nttdata.com",
+    "company": "NTT DATA",
+    "salary": "Not Disclosed",
+    "logo": [
+      "NT",
+      "#0050A4"
+    ],
+    "role": "Data Analyst",
+    "roleTag": "Data Analyst",
+    "loc": "Remote, Karnataka, India",
+    "locationFilter": "Remote / Karnataka",
+    "batch": "Not Specified",
+    "elig": "The official posting does not state a specific degree, batch or minimum years of experience. It focuses on source-data exploration and profiling, analysis of usage and performance, identifying trends and data-quality issues, KPI definition and validation, and development of business insights.",
+    "cat": "remote",
+    "expType": "fresher",
+    "expYears": "Not Specified",
+    "date": "24 Sep 2026",
+    "desc": "NTT DATA is hiring a remote Data Analyst in Karnataka. The role focuses on exploring and profiling source data, assessing trends and data quality, supporting KPI definition and validating business insights.",
+    "resp": [
+      "Explore and profile source data",
+      "Analyze usage and performance patterns",
+      "Identify trends, patterns and data-quality issues",
+      "Support KPI definition and validation",
+      "Develop and validate business insights",
+      "Work with stakeholders to improve the usefulness and reliability of analysis"
+    ],
+    "apply": "https://careers.nttdata.com/global/en/job/390777/Data-Analyst",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official NTT DATA Careers page",
+    "skills": [
+      "Data profiling",
+      "Trend and pattern analysis",
+      "Data-quality analysis",
+      "KPI definition and validation",
+      "Business insights"
+    ],
+    "who": "Candidates interested in analytics, data quality and business insights can review this opening. The official posting does not state a minimum experience requirement, so applicants should compare their skills directly with the listed responsibilities.",
+    "workMode": "Remote"
+  },
+  {
+    "id": 13,
+    "page": "jobs/ibm-job.html",
+    "domain": "careers.ibm.com",
+    "company": "IBM",
+    "salary": "Not Disclosed",
+    "logo": [
+      "IB",
+      "#0f62fe"
+    ],
+    "role": "Software Engineer",
+    "roleTag": "Software Engineer",
+    "loc": "Bengaluru / Pune / Hyderabad",
+    "locationFilter": "Bengaluru / Pune / Hyderabad",
+    "batch": "Bachelor's degree",
+    "elig": "The opening is listed as entry level with 0 years of experience and requires a bachelor's degree. Depending on the assigned engineering area, the work may involve systems software, Linux, cloud platforms, storage, firmware, AI, Java, Python, C/C++, Go, React, containers or related infrastructure technologies.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0 years / Entry-level",
+    "date": "27 Sep 2026",
+    "desc": "IBM is hiring entry-level Software Engineers for its India Systems Development Lab across Bengaluru, Pune and Hyderabad. The role can span different engineering areas in enterprise systems, cloud software, infrastructure, AI and product development depending on team assignment.",
+    "resp": [
+      "Design, develop and test software components for enterprise technology products",
+      "Troubleshoot technical issues and contribute to product quality",
+      "Work with engineering teams across systems, cloud or infrastructure domains",
+      "Write maintainable code and participate in reviews and testing",
+      "Learn the technologies used by the assigned product or platform team",
+      "Support development activities across the software product lifecycle"
+    ],
+    "apply": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official IBM Careers application link",
+    "skills": [
+      "Programming fundamentals",
+      "Linux / systems concepts",
+      "Java, Python, C/C++ or Go depending on team",
+      "Cloud and container technologies depending on team",
+      "Testing and troubleshooting"
+    ],
+    "who": "Fresh graduates and entry-level candidates with a bachelor's degree and strong programming fundamentals should review the official job description to match themselves with the relevant IBM engineering area.",
+    "workMode": "Hybrid"
+  },
+  {
+    "id": 12,
+    "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
+    "domain": "pwc.com",
+    "company": "PwC",
+    "salary": "Not Disclosed",
+    "logo": [
+      "PW",
+      "#d04a02"
+    ],
+    "role": "AWS Data Engineer",
+    "roleTag": "AWS Data Engineer",
+    "loc": "Bengaluru Millenia, India",
+    "locationFilter": "Bengaluru",
+    "batch": "Graduate Engineer or Management Graduate",
+    "elig": "The official PwC posting lists 4-8 years of experience. Mandatory skills include AWS technologies such as EMR, Redshift, S3, Glue, Kinesis and Lambda, along with SQL, ETL and Python or Java. The stated qualification is Graduate Engineer or Management Graduate.",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "4-8 years",
+    "date": "3 Oct 2024",
+    "desc": "PwC is hiring an AWS Data Engineer in Bengaluru for its Data, Analytics & AI practice. The role focuses on large-scale data extraction, ingestion and processing using AWS services, SQL, ETL and reusable engineering scripts.",
+    "resp": [
+      "Design and build distributed data extraction, ingestion and processing solutions",
+      "Use AWS services including EMR, Redshift, S3, Glue, Kinesis and Lambda",
+      "Write SQL and data-warehousing queries for analytics use cases",
+      "Develop reusable scripts or programs using Python, Java or Unix shell",
+      "Build and support ETL integrations and analytical data infrastructure",
+      "Maintain technical documentation and support testing and defect resolution"
+    ],
+    "apply": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
+    "status": "active",
+    "verifiedDate": "29 Sep 2026",
+    "sourceName": "Official PwC Workday careers page",
+    "skills": [
+      "AWS EMR, Redshift, S3, Glue, Kinesis and Lambda",
+      "SQL",
+      "ETL",
+      "Python or Java",
+      "Data warehousing"
+    ],
+    "who": "Experienced data engineers with 4-8 years of relevant experience and hands-on AWS, SQL and ETL skills are the intended audience for this posting.",
+    "workMode": "Not Specified"
   }
 ]
 
