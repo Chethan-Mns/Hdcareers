@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {analyze,locate}=require('../assets/resume-keywords.js');
+let r=analyze({skills:['AWS data services','ETL pipelines'],description:'SQL and Python are required'},'Built ETL/ELT pipelines with AWS, SQL and Python.');
+assert.deepEqual(r.missing,[]);assert.equal(r.score,100);
+r=analyze({skills:['AWS','ETL']},'Amazon Web Services and extract, transform, load projects.');assert.equal(r.score,100);
+assert.equal(locate('JavaScript','Java'),-1);assert.equal(locate('NoSQL','SQL'),-1);
+assert.equal(locate('AWS. ETL, SQL/Python','AWS'),0);
+r=analyze({skills:['AWS Glue, S3 and Redshift']},'AWS');assert(r.missing.includes('AWS Glue'));assert(r.missing.includes('S3'));
+r=analyze({skills:['SQL','SQL','Python'],description:'SQL SQL SQL'},'SQL');assert.equal(r.score,50);
+r=analyze({description:'Build ETL pipelines in Snowflake using Python',skills:[]},'Python ETL Snowflake');assert.equal(r.score,100);
+assert.equal(analyze({skills:[]},'AWS').score,null);
+assert.equal(locate('C++ developer','C++'),0);
+assert.equal(locate('AWS\nETL','ETL'),4);
+assert.equal(analyze({skills:['StarRocks']},'StarRocks engineer').score,100);
+console.log('11 keyword regression cases passed');

@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Test JD keyword matching
+        run: node tests/resume-keywords.test.js
+
       - name: Run generator
         run: python3 generate.py
 
