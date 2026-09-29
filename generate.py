@@ -193,6 +193,10 @@ function renderMatch(r){document.getElementById('matchError').classList.add('hid
 async function shareJob(){const url=window.location.href;const title=$share_title;const text=$share_text+"\\nView job: "+url;try{if(navigator.share){await navigator.share({title,text,url})}else{await navigator.clipboard.writeText(text);showToast('Job link copied')}}catch(e){}}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),1700)}
 </script>
+<script>
+window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 """)
@@ -443,6 +447,9 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
+    if "/_vercel/insights/script.js" not in updated:
+        analytics = '<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script>'
+        updated = updated.replace("</body>", analytics + "</body>")
 
     if updated == source:
         return False
