@@ -118,5 +118,5 @@ function renderMatch(r){document.getElementById('matchError').classList.add('hid
 async function shareJob(){const url=window.location.href;const title="Citi Ops Sup Analyst 1 - C09 | HD Careers";const text="Citi - Ops Sup Analyst 1 - C09\\nChennai, Tamil Nadu, India"+"\nView job: "+url;try{if(navigator.share){await navigator.share({title,text,url})}else{await navigator.clipboard.writeText(text);showToast('Job link copied')}}catch(e){}}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),1700)}
 </script>
-</body>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script></body>
 </html>
