@@ -580,8 +580,8 @@
       "Support development activities across the software product lifecycle"
     ],
     "apply": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895",
-    "status": "active",
-    "verifiedDate": "29 Sep 2026",
+    "status": "expired",
+    "verifiedDate": "30 Sep 2026",
     "sourceName": "Official IBM Careers application link",
     "skills": [
       "Programming fundamentals",
@@ -591,7 +591,14 @@
       "Testing and troubleshooting"
     ],
     "who": "Fresh graduates and entry-level candidates with a bachelor's degree and strong programming fundamentals should review the official job description to match themselves with the relevant IBM engineering area.",
-    "workMode": "Hybrid"
+    "workMode": "Hybrid",
+    "availabilityCheck": {
+      "id": 13,
+      "url": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895",
+      "checkedAt": "2026-09-30T09:05:00Z",
+      "state": "expired",
+      "reason": "Manual review confirmed the IBM opening is no longer active"
+    }
   },
   {
     "id": 12,
