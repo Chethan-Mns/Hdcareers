@@ -24,12 +24,17 @@ jobs:
           import json, os, sys
           sys.path.insert(0, 'scripts')
           from post_telegram import DATA_FILE, message_for, send_telegram, wait_for_live
-          from check_job_availability import require_active
+          from urllib.request import Request, urlopen
           jobs=json.loads(DATA_FILE.read_text())
           job=next((j for j in jobs if j.get('id')==24), None)
           if not job:
               raise SystemExit('Infosys job 24 not found')
-          require_active(job)
+          if job.get('status')!='active':
+              raise SystemExit('Infosys job is not active')
+          req=Request(job['apply'],headers={'User-Agent':'HD-Careers-Telegram-Publisher/1.0'})
+          with urlopen(req,timeout=20) as res:
+              if not (200 <= res.status < 400):
+                  raise SystemExit('Official Infosys registration form is not reachable')
           if not wait_for_live(job.get('page','')):
               raise SystemExit('Infosys HD Careers page is not live')
           send_telegram(os.environ['TELEGRAM_BOT_TOKEN'], os.environ['TELEGRAM_CHANNEL_ID'], message_for(job))
