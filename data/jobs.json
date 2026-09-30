@@ -1,5 +1,58 @@
 [
   {
+    "id": 26,
+    "page": "jobs/priceline-senior-software-engineer-backend-mumbai-r5631.html",
+    "domain": "careers.priceline.com",
+    "company": "Priceline",
+    "salary": "Not Disclosed",
+    "logo": [
+      "PR",
+      "#0068EF"
+    ],
+    "role": "Senior Software Engineer – Backend",
+    "roleTag": "Senior Software Engineer – Backend",
+    "loc": "Mumbai, Maharashtra, India",
+    "locationFilter": "Mumbai",
+    "batch": "Bachelor's degree or higher in Computer Science or related field",
+    "elig": "Priceline requires a bachelor's degree or higher in Computer Science or a related field and 6+ years of software engineering and development experience. The official posting asks for Core Java or a similar language, SQL, Spring Frameworks, web services and APIs, cloud development with emphasis on GCP, microservices, Kubernetes, Docker, and scalable application design and architecture.",
+    "cat": "experienced",
+    "expType": "experienced",
+    "expYears": "6+ years",
+    "date": "Not Specified",
+    "desc": "Priceline is hiring a Senior Software Engineer – Backend in Mumbai for its Payments team. This hybrid role focuses on secure, fault-tolerant payment architectures, distributed systems, real-time decisioning, risk integrations, refunds, reconciliation, reporting and high-scale attribution APIs.",
+    "resp": [
+      "Design resilient payment architectures for authorization, capture, settlement, refunds and reconciliation",
+      "Build high-performance distributed systems and real-time data flows at scale",
+      "Use Kafka and NoSQL technologies for low-latency attribution services",
+      "Define security and durability models for data-ingestion systems",
+      "Collaborate with cross-functional agile teams on new product objectives",
+      "Mentor engineers and communicate technical decisions to business stakeholders"
+    ],
+    "apply": "https://careers.priceline.com/job/r5631/",
+    "status": "active",
+    "verifiedDate": "30 Sep 2026",
+    "sourceName": "Official Priceline Careers job page",
+    "skills": [
+      "Core Java",
+      "Spring Frameworks",
+      "Web Services and APIs",
+      "SQL",
+      "GCP",
+      "Microservices, Kubernetes and Docker",
+      "Kafka and NoSQL databases",
+      "Distributed-system architecture"
+    ],
+    "who": "Experienced backend engineers with 6+ years of software-development experience, strong Java and distributed-systems skills, and hands-on cloud or microservices exposure should review this opening. The role also expects architecture ownership, mentoring and stakeholder communication.",
+    "workMode": "Hybrid – two days in office",
+    "availabilityCheck": {
+      "id": 26,
+      "url": "https://careers.priceline.com/job/r5631/",
+      "checkedAt": "2026-09-30T09:40:00+00:00",
+      "state": "active",
+      "reason": "Exact role, Mumbai location, 6+ years requirement and active Apply Now route confirmed on the official Priceline Careers page"
+    }
+  },
+  {
     "id": 25,
     "page": "jobs/accenture-procure-to-pay-operations-associate-bengaluru-aioc-s01659105.html",
     "domain": "accenture.com",
