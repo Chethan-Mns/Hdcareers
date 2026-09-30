@@ -1,5 +1,60 @@
 [
   {
+    "id": 28,
+    "page": "jobs/hevo-data-associate-software-development-engineer-bangalore.html",
+    "domain": "jobs.lever.co",
+    "company": "Hevo Data",
+    "salary": "Not Disclosed",
+    "logo": [
+      "HE",
+      "#5B46F6"
+    ],
+    "role": "Associate Software Development Engineer (SDE)",
+    "roleTag": "Associate Software Development Engineer",
+    "loc": "Bangalore, Karnataka, India",
+    "locationFilter": "Bengaluru",
+    "batch": "B.Tech in Computer Science or equivalent",
+    "elig": "Hevo Data is seeking freshers with software-development experience, ideally through internships involving integrations or data tools. The official posting asks for a B.Tech in Computer Science or equivalent, basic object-oriented programming and design principles, foundational REST API and JSON knowledge, and proficiency in Java, TypeScript or Python with data-structures and algorithms problem solving.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "Fresher / Entry-level",
+    "date": "Not Specified",
+    "desc": "Hevo Data is hiring an on-site Associate Software Development Engineer for its Backend team in Bangalore. The entry-level role works on SaaS connectors, REST APIs, data-pipeline code and AI-enabled internal tools with mentorship.",
+    "resp": [
+      "Implement SaaS connectors and learn application-specific authentication and data-extraction patterns",
+      "Assist in building and testing simple REST API components",
+      "Debug and optimize data-pipeline code under mentorship",
+      "Contribute to feature breakdown, coding and documentation for smaller engineering tasks",
+      "Solve integration issues and help improve component quality",
+      "Build AI-enabled internal tools for business teams"
+    ],
+    "apply": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
+    "status": "active",
+    "verifiedDate": "30 Sep 2026",
+    "sourceName": "Official Hevo Data careers page hosted by Lever",
+    "skills": [
+      "Java, TypeScript or Python",
+      "Object-oriented programming",
+      "Data structures and algorithms",
+      "REST APIs and JSON",
+      "Data pipelines and integrations",
+      "Problem solving"
+    ],
+    "who": "Fresh graduates with a Computer Science B.Tech or equivalent, software-development exposure and foundational backend skills should review this role. Internship experience in integrations or data tools is described as ideal rather than mandatory.",
+    "workMode": "On-site",
+    "verificationTerms": [
+      "Associate Software Development Engineer (SDE)",
+      "Freshers with experience in software development"
+    ],
+    "availabilityCheck": {
+      "id": 28,
+      "url": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
+      "checkedAt": "2026-09-30T15:34:26+00:00",
+      "state": "active",
+      "reason": "Official Hevo Data job page shows the exact Associate SDE role, Bangalore location, fresher candidate profile and a public Apply for this job route"
+    }
+  },
+  {
     "id": 27,
     "page": "jobs/drdo-pxe-graduate-technician-apprentices-balasore-2026.html",
     "domain": "drdo.gov.in",
