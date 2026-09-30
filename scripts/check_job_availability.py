@@ -15,7 +15,7 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 CLOSED = re.compile(r'\b(?:this (?:job|position|vacancy) (?:is no longer available|has been filled|has expired|is closed)|no longer accepting applications|applications (?:are |have )?closed|job not found)\b', re.I)
-APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit application)\b', re.I)
+APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit(?: application| response| form)?)\b', re.I)
 BLOCKED = re.compile(r'captcha|access denied|verify (?:that )?you are human|checking your browser', re.I)
 
 class Visible(HTMLParser):
@@ -59,8 +59,14 @@ def classify(job, body, final_url, status=200):
         return 'review', 'Redirected source requires manual verification'
     closed = CLOSED.search(text)
     if closed: return 'expired', closed.group(0)
+    raw = re.sub(r'\s+', ' ', body).casefold()
+    haystack = (text + ' ' + raw).casefold()
+    terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
     role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
-    if role and role in text.casefold() and APPLY.search(text):
+    matched = all(term in haystack for term in terms) if terms else bool(role and role in haystack)
+    if matched and APPLY.search(text + ' ' + body):
+        if terms:
+            return 'active', 'Verification terms and application/submit control found on official URL'
         return 'active', 'Exact role and application call-to-action found on official URL'
     return 'review', 'Specific role and current application route could not both be confirmed'
 
