@@ -60,7 +60,7 @@ def classify(job, body, final_url, status=200):
     closed = CLOSED.search(text)
     if closed: return 'expired', closed.group(0)
     raw = re.sub(r'\s+', ' ', body).casefold()
-    haystack = (text + ' ' + raw).casefold()
+    haystack = (text + ' ' + raw + ' ' + final_url).casefold()
     terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
     role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
     matched = all(term in haystack for term in terms) if terms else bool(role and role in haystack)
