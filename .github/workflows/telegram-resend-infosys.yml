@@ -1,0 +1,37 @@
+name: Resend Infosys Telegram Post
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/telegram-resend-infosys.yml
+permissions:
+  contents: read
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Send Infosys 2027 post to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          sys.path.insert(0, 'scripts')
+          from post_telegram import DATA_FILE, message_for, send_telegram, wait_for_live
+          from check_job_availability import require_active
+          jobs=json.loads(DATA_FILE.read_text())
+          job=next((j for j in jobs if j.get('id')==24), None)
+          if not job:
+              raise SystemExit('Infosys job 24 not found')
+          require_active(job)
+          if not wait_for_live(job.get('page','')):
+              raise SystemExit('Infosys HD Careers page is not live')
+          send_telegram(os.environ['TELEGRAM_BOT_TOKEN'], os.environ['TELEGRAM_CHANNEL_ID'], message_for(job))
+          print('Posted to Telegram: Infosys — Specialist Programmer 2027')
+          PY
