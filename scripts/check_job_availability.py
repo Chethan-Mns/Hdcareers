@@ -64,11 +64,11 @@ def classify(job, body, final_url, status=200):
     terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
     role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
     matched = all(term in haystack for term in terms) if terms else bool(role and role in haystack)
-    if matched and APPLY.search(text + ' ' + body):
+    registration_control = bool(re.search(r'<form\\b|type=[\"\\\']submit[\"\\\']|\\bsubmit\\b', body, re.I))
+    if matched and (APPLY.search(text + ' ' + body) or (terms and registration_control)):
         if terms:
-            return 'active', 'Verification terms and application/submit control found on official URL'
+            return 'active', 'Verification terms and registration/submit control found on official URL'
         return 'active', 'Exact role and application call-to-action found on official URL'
-    return 'review', 'Specific role and current application route could not both be confirmed'
 
 def check(job, now=None):
     now = now or datetime.now(timezone.utc)
@@ -110,7 +110,7 @@ def main():
     if args.before:
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
-        selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt'))]
+        selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
     results = []; changed = False
     for job in selected:
         result = check(job); results.append(result)
