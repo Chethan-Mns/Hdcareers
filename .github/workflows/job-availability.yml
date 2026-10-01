@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/job-availability.yml
       - scripts/check_job_availability.py
+      - data/availability-trigger.json
   schedule:
     # Primary: 08:15 and 20:15 Asia/Kolkata.
     - cron: '45 2,14 * * *'
