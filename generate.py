@@ -80,12 +80,13 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>$page_title</title>
 <meta name="description" content="$meta_description">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="$robots_meta">
 <link rel="canonical" href="$canonical">
 <meta property="og:type" content="article">
 <meta property="og:title" content="$page_title">
 <meta property="og:description" content="$meta_description">
 <meta property="og:url" content="$canonical">
+$structured_data
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
@@ -343,6 +344,62 @@ def render_related_jobs(job: dict, jobs: list[dict]) -> str:
     )
 
 
+def schema_date(value: str) -> str:
+    raw = str(value or "").strip()
+    if not raw or raw.lower() in {"not specified", "n/a"}:
+        return ""
+    for fmt in ("%d %b %Y", "%d %B %Y", "%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y"):
+        try:
+            return datetime.strptime(raw, fmt).date().isoformat()
+        except ValueError:
+            pass
+    return ""
+
+
+def job_posting_schema(job: dict, canonical: str) -> str:
+    if str(job.get("status", "active")) != "active":
+        return ""
+    posted = schema_date(str(job.get("date", ""))) or schema_date(str(job.get("verifiedDate", "")))
+    closing_raw = str(job.get("closingAt", "")).strip()
+    valid_through = ""
+    if closing_raw:
+        try:
+            dt = datetime.fromisoformat(closing_raw.replace("Z", "+00:00"))
+            valid_through = dt.isoformat()
+        except ValueError:
+            valid_through = schema_date(closing_raw)
+    description_parts = [
+        str(job.get("desc", "")).strip(),
+        "Eligibility: " + str(job.get("elig", "")).strip() if job.get("elig") else "",
+        "Responsibilities: " + "; ".join(str(x) for x in job.get("resp", []) if str(x).strip()),
+        "Skills: " + ", ".join(str(x) for x in job.get("skills", []) if str(x).strip()),
+    ]
+    data = {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": str(job.get("role", "")),
+        "description": "\n\n".join(x for x in description_parts if x),
+        "datePosted": posted,
+        "directApply": False,
+        "url": canonical,
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": str(job.get("company", "")),
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": str(job.get("loc", "")),
+                "addressCountry": "IN",
+            },
+        },
+    }
+    if valid_through:
+        data["validThrough"] = valid_through
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+
+
 def render_job_page(job: dict, jobs: list[dict]) -> str:
     company = str(job["company"])
     role = str(job["role"])
@@ -380,6 +437,8 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "page_title": esc(page_title),
         "meta_description": esc(meta_description),
         "canonical": esc(canonical),
+        "robots_meta": esc(robots_meta),
+        "structured_data": structured_data,
         "breadcrumb": esc(CAT_BREADCRUMB[cat]),
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
@@ -513,10 +572,14 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/terms.html",
         "https://hdcareers.in/disclaimer.html",
     ]
-    urls.extend(f"https://hdcareers.in/{job['page']}" for job in jobs)
-    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
-        f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls
-    ) + "</urlset>\n"
+    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
+    for job in active_jobs:
+        url = f"https://hdcareers.in/{job['page']}"
+        lastmod = schema_date(str(job.get("verifiedDate", ""))) or schema_date(str(job.get("date", "")))
+        lastmod_xml = f"<lastmod>{html.escape(lastmod)}</lastmod>" if lastmod else ""
+        sitemap_rows.append(f"  <url><loc>{html.escape(url)}</loc>{lastmod_xml}</url>\n")
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(sitemap_rows) + "</urlset>\n"
     robots = "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: https://hdcareers.in/sitemap.xml\n"
 
     for path, content in [(ROOT / "sitemap.xml", sitemap), (ROOT / "robots.txt", robots)]:
