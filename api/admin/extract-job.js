@@ -207,6 +207,80 @@ function titleTag(html){
   return decodeEntities((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[])[1]||"").replace(/\s+/g," ").trim();
 }
 
+function absoluteHttpUrl(value,base){
+  try{
+    const u=new URL(String(value||""),base);
+    return /^https?:$/.test(u.protocol)?u.href:"";
+  }catch{return "";}
+}
+
+function logoValue(value,base){
+  if(!value)return "";
+  if(typeof value==="string")return absoluteHttpUrl(value,base);
+  if(Array.isArray(value)){
+    for(const item of value){
+      const hit=logoValue(item,base);
+      if(hit)return hit;
+    }
+    return "";
+  }
+  if(typeof value==="object"){
+    for(const key of ["url","contentUrl","@id","src"]){
+      const hit=absoluteHttpUrl(value[key],base);
+      if(hit)return hit;
+    }
+  }
+  return "";
+}
+
+function documentIcon(html,base){
+  const links=String(html||"").match(/<link\b[^>]*>/gi)||[];
+  const ranked=[];
+  for(const tag of links){
+    const rel=(tag.match(/\brel\s*=\s*["']([^"']+)["']/i)||[])[1]||"";
+    const href=(tag.match(/\bhref\s*=\s*["']([^"']+)["']/i)||[])[1]||"";
+    if(!href||!/(?:apple-touch-icon|icon)/i.test(rel))continue;
+    const url=absoluteHttpUrl(decodeEntities(href),base);
+    if(!url)continue;
+    const score=/apple-touch-icon/i.test(rel)?3:/icon/i.test(rel)?2:1;
+    ranked.push({url,score});
+  }
+  ranked.sort((a,b)=>b.score-a.score);
+  return ranked[0]?.url||"";
+}
+
+function organizationLogo(jsonRoots,structured,company,html,base){
+  const direct=[
+    structured&&structured.hiringOrganization&&structured.hiringOrganization.logo,
+    structured&&structured.hiringOrganization&&structured.hiringOrganization.image,
+    structured&&structured.logo,
+    structured&&structured.image
+  ];
+  for(const value of direct){
+    const hit=logoValue(value,base);
+    if(hit)return hit;
+  }
+
+  const companyKey=normalizeSpace(company).toLowerCase();
+  for(const root of jsonRoots){
+    for(const obj of walkObjects(root,[])){
+      const types=Array.isArray(obj&&obj["@type"])?obj["@type"]:[obj&&obj["@type"]];
+      if(!types.some(x=>/organization/i.test(String(x||""))))continue;
+      const name=normalizeSpace(textValue(obj&&obj.name)).toLowerCase();
+      if(companyKey&&name&&name!==companyKey&&!name.includes(companyKey)&&!companyKey.includes(name))continue;
+      const hit=logoValue(obj&&obj.logo,base)||logoValue(obj&&obj.image,base);
+      if(hit)return hit;
+    }
+  }
+
+  const icon=documentIcon(html,base);
+  if(icon)return icon;
+
+  const og=absoluteHttpUrl(meta(html,null,"og:image"),base);
+  return /(?:logo|brand|icon|favicon)/i.test(og)?og:"";
+}
+
+
 function headingOne(html){
   return stripHtml((String(html||"").match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)||[])[1]||"").replace(/\s+/g," ").trim();
 }
@@ -820,6 +894,7 @@ export default async function handler(req,res){
     title=title||urlRole||"Job Opening";
     location=normalizeSpace(location)||"Not Specified";
     const domain=hint.domainHint||sourceHost;
+    const logoUrl=organizationLogo(jsonRoots,structured,company,html,page.url||sourceUrl);
 
     description=description||((company!=="Company Not Identified"?company:"The company")+" is hiring for "+title+(location!=="Not Specified"?" in "+location:"")+". Review the official job posting for complete role details.");
     eligibility=eligibility||"Review the official job posting for education, skills and experience requirements.";
@@ -836,6 +911,7 @@ export default async function handler(req,res){
       company,
       salary,
       logo:[initials(company),"#0b6fe8"],
+      logoUrl,
       role:title,
       roleTag:title,
       loc:location,
