@@ -415,6 +415,8 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         favicon_url = str(job["logoUrl"]).strip()
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
+    robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
+    structured_data = job_posting_schema(job, canonical)
     share_text = f"{company} - {role}\\n{job['loc']}"
 
     if status == "active":
