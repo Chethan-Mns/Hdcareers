@@ -44,6 +44,20 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 .checker-result-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:14px;border:1px solid #e5eaf1;background:#fff}
 .checker-result-row a{min-width:0;overflow-wrap:anywhere}
 .checker-result-row .reason{font-size:11px;color:#64748b;margin-top:3px;line-height:1.4}
+.link-intake-shell{border:1px solid #dbeafe;background:linear-gradient(180deg,#f8fbff,#fff);border-radius:18px;padding:12px}
+.link-intake-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.link-preview{display:grid;gap:8px;margin-top:10px}
+.link-preview-item{display:flex;align-items:center;gap:10px;padding:10px 11px;border:1px solid #e2e8f0;background:#fff;border-radius:14px;transition:.18s ease;min-width:0}
+.link-preview-item:hover{border-color:#bfdbfe;box-shadow:0 8px 22px rgba(15,23,42,.055);transform:translateY(-1px)}
+.link-preview-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#eff6ff;color:#2563eb;flex-shrink:0}
+.link-preview-copy{min-width:0;flex:1}
+.link-preview-domain{font-size:13px;font-weight:900;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-preview-path{font-size:11px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.link-preview-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.link-preview-item.is-invalid{border-color:#fecaca;background:#fff7f7}
+.link-preview-item.is-duplicate{border-color:#fde68a;background:#fffdf5}
+.link-summary-pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900}
+.link-preview-empty{border:1px dashed #cbd5e1;border-radius:14px;padding:18px;text-align:center;color:#94a3b8;background:#fff}
 @media(max-width:640px){
 .drawer-panel{width:100%}
 .card{border-radius:16px}
@@ -56,6 +70,11 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 .metric-card>p:last-child{font-size:1.65rem}
 .mobile-full{width:100%;justify-content:center}
 .preview-frame-wrap{padding:8px}
+.link-intake-shell{padding:10px}
+.link-intake-head{align-items:flex-start;flex-direction:column}
+.link-preview-item{align-items:flex-start}
+.link-preview-actions{margin-left:auto}
+.link-preview-actions .open-text{display:none}
 .toast{bottom:14px;max-width:calc(100% - 24px);text-align:center}
 }
 </style>
@@ -204,18 +223,31 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-5">
 <div class="max-w-3xl">
 <p class="text-xs font-black uppercase tracking-[.14em] text-[var(--primary)]">Step 1</p>
-<h1 class="text-2xl sm:text-3xl font-black mt-1">Paste one or multiple official job links</h1>
-<p class="text-sm text-slate-500 mt-2">One link per line. HD Careers will process up to 20 links per batch, three at a time, then show every job as an editable preview before deployment.</p>
+<h1 class="text-2xl sm:text-3xl font-black mt-1">Add official job links</h1>
+<p class="text-sm text-slate-500 mt-2">Paste up to 20 official job URLs — one per line. You'll see a live preview before HD Careers extracts anything.</p>
 </div>
-<div class="shrink-0 rounded-2xl bg-blue-50 text-blue-700 px-4 py-3 text-sm font-bold"><i class="fa-solid fa-layer-group mr-2"></i><span id="linkCount">0</span> links detected</div>
+<div id="linkSummaryBadge" class="link-summary-pill bg-slate-100 text-slate-600"><i class="fa-solid fa-link"></i><span><strong id="linkCount">0</strong> ready</span></div>
 </div>
 
-<div class="grid lg:grid-cols-[1fr_auto] gap-3 mt-5 items-stretch">
-<textarea id="linksInput" rows="6" class="field resize-y" placeholder="https://company1.com/careers/job/123\nhttps://company2.com/jobs/456\nhttps://company3.com/job/789" oninput="countLinks()"></textarea>
-<div class="flex flex-col sm:flex-row lg:flex-col gap-2 lg:w-48">
-<button id="generateBtn" onclick="generateAll()" class="btn flex-1 bg-[var(--primary)] hover:bg-blue-700 text-white px-5 py-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate All</button>
+<div class="grid lg:grid-cols-[1fr_190px] gap-3 mt-5 items-stretch">
+<div class="link-intake-shell min-w-0">
+<div class="link-intake-head">
+<div>
+<p class="text-sm font-black text-slate-800"><i class="fa-solid fa-link text-blue-600 mr-2"></i>Job link intake</p>
+<p id="linkCountMeta" class="text-xs text-slate-400 mt-1">Paste links below to preview them.</p>
+</div>
+<button type="button" onclick="clearLinkInput()" class="btn border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 px-3 py-2 text-xs"><i class="fa-solid fa-broom mr-1"></i>Clear links</button>
+</div>
+<textarea id="linksInput" rows="5" class="field resize-y bg-white" placeholder="https://company.com/careers/job/123\nhttps://company.com/jobs/456" oninput="countLinks()"></textarea>
+<div id="linkPreview" class="link-preview">
+<div class="link-preview-empty"><i class="fa-solid fa-link-slash text-lg mb-2"></i><p class="text-xs font-bold">No links pasted yet</p></div>
+</div>
+</div>
+
+<div class="flex flex-col sm:flex-row lg:flex-col gap-2 lg:w-[190px]">
+<button id="generateBtn" onclick="generateAll()" disabled class="btn flex-1 bg-[var(--primary)] hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-5 py-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i><span id="generateBtnText">Generate jobs</span></button>
 <button onclick="addManual()" class="btn flex-1 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-5 py-3"><i class="fa-solid fa-plus mr-2"></i>Manual Job</button>
-<button onclick="clearBatch()" class="btn flex-1 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 px-5 py-3"><i class="fa-solid fa-rotate-left mr-2"></i>Clear</button>
+<button onclick="clearBatch()" class="btn flex-1 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 px-5 py-3"><i class="fa-solid fa-rotate-left mr-2"></i>Clear batch</button>
 </div>
 </div>
 
@@ -496,7 +528,60 @@ btn.disabled=false;btn.classList.remove('opacity-60');btn.innerHTML='<i class="f
 }
 }
 async function refreshDashboard(){await Promise.all([loadExistingJobs(),loadDashboardTraffic(),loadAvailabilityStatus()])}
-function countLinks(){const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);document.getElementById('linkCount').textContent=lines.length}
+function parseInputLinks(){
+const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+const seen=new Set();
+return lines.map((url,index)=>{
+let valid=false,domain='Invalid URL',path=url,normalized='';
+try{
+const u=new URL(url);
+valid=u.protocol==='https:'&&Boolean(u.hostname);
+domain=u.hostname.replace(/^www\./,'');
+path=(u.pathname||'/')+(u.search||'');
+normalized=normalizeUrl(url)
+}catch{}
+const duplicate=valid&&seen.has(normalized);
+if(valid&&!duplicate)seen.add(normalized);
+return{url,index,valid,duplicate,domain,path,normalized}
+})
+}
+function removeInputLink(index){
+const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+lines.splice(index,1);
+document.getElementById('linksInput').value=lines.join('\n');
+countLinks()
+}
+function clearLinkInput(){
+document.getElementById('linksInput').value='';
+countLinks()
+}
+function countLinks(){
+const items=parseInputLinks();
+const ready=items.filter(x=>x.valid&&!x.duplicate);
+const issues=items.length-ready.length;
+const count=document.getElementById('linkCount');if(count)count.textContent=ready.length;
+const meta=document.getElementById('linkCountMeta');
+if(meta)meta.textContent=!items.length?'Paste links below to preview them.':ready.length+' valid unique link'+(ready.length===1?'':'s')+(issues?' · '+issues+' issue'+(issues===1?'':'s'):' · ready to generate');
+const badge=document.getElementById('linkSummaryBadge');
+if(badge){
+badge.className='link-summary-pill '+(issues?'bg-amber-50 text-amber-700 border border-amber-200':ready.length?'bg-emerald-50 text-emerald-700 border border-emerald-200':'bg-slate-100 text-slate-600');
+badge.innerHTML='<i class="fa-solid '+(issues?'fa-triangle-exclamation':ready.length?'fa-circle-check':'fa-link')+'"></i><span><strong id="linkCount">'+ready.length+'</strong> ready'+(issues?' · '+issues+' issue'+(issues===1?'':'s'):'')+'</span>'
+}
+const preview=document.getElementById('linkPreview');
+if(preview){
+if(!items.length)preview.innerHTML='<div class="link-preview-empty"><i class="fa-solid fa-link-slash text-lg mb-2"></i><p class="text-xs font-bold">No links pasted yet</p><p class="text-[11px] mt-1">Official employer job URLs will appear here instantly.</p></div>';
+else preview.innerHTML=items.map(x=>{
+const state=!x.valid?'invalid':x.duplicate?'duplicate':'ready';
+const stateBadge=state==='ready'?'<span class="badge bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check"></i>Ready</span>':state==='duplicate'?'<span class="badge bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-copy"></i>Duplicate</span>':'<span class="badge bg-red-50 text-red-700 border border-red-200"><i class="fa-solid fa-circle-xmark"></i>Invalid</span>';
+return '<div class="link-preview-item '+(state==='invalid'?'is-invalid':state==='duplicate'?'is-duplicate':'')+'"><div class="link-preview-icon"><i class="fa-solid '+(state==='ready'?'fa-link':'fa-triangle-exclamation')+'"></i></div><div class="link-preview-copy"><div class="flex items-center gap-2 min-w-0">'+stateBadge+'</div><p class="link-preview-domain mt-1">'+esc(x.domain)+'</p><p class="link-preview-path" title="'+esc(x.url)+'">'+esc(x.path)+'</p></div><div class="link-preview-actions">'+(x.valid?'<a href="'+esc(x.url)+'" target="_blank" rel="noopener" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-2.5 py-2 text-xs" title="Open link"><i class="fa-solid fa-arrow-up-right-from-square"></i><span class="open-text ml-1">Open</span></a>':'')+'<button type="button" onclick="removeInputLink('+x.index+')" class="btn border border-slate-200 bg-white hover:bg-red-50 hover:text-red-600 px-2.5 py-2 text-xs" title="Remove link"><i class="fa-solid fa-xmark"></i></button></div></div>'
+}).join('')
+}
+const btn=document.getElementById('generateBtn');
+const btnText=document.getElementById('generateBtnText');
+if(btn)btn.disabled=!ready.length;
+if(btnText)btnText.textContent=ready.length?'Generate '+ready.length+' job'+(ready.length===1?'':'s'):'Generate jobs'
+return{items,ready,issues}
+}
 function normalizeUrl(s){try{const u=new URL(s);u.hash='';return u.href.replace(/\/$/,'')}catch{return String(s||'').trim().replace(/\/$/,'')}}
 async function loadExistingJobs(){try{const r=await fetch('/data/jobs.json',{cache:'no-store'});if(r.ok){const d=await r.json();existingJobs=Array.isArray(d)?d:[]}}catch(e){existingJobs=[]}renderDashboard()}
 function isExistingDuplicate(url){const n=normalizeUrl(url);return existingJobs.some(j=>normalizeUrl(j.apply||'')===n)}
@@ -543,10 +628,10 @@ return {company:'Extraction Failed',role:e.message||'Could not read this job lin
 }
 }
 async function generateAll(){
-let urls=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
-if(!urls.length)return showToast('Add at least one job link');
-if(urls.length>20)return showToast('Maximum 20 links per batch');
-const seen=new Set();urls=urls.filter(u=>{const n=normalizeUrl(u);if(seen.has(n))return false;seen.add(n);return true});
+const parsed=parseInputLinks();
+let urls=parsed.filter(x=>x.valid&&!x.duplicate).map(x=>x.url);
+if(!urls.length)return showToast('Add at least one valid official job link');
+if(parsed.length>20)return showToast('Maximum 20 links per batch');
 await loadExistingJobs();
 document.getElementById('processing').classList.remove('hidden');
 const btn=document.getElementById('generateBtn');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Generating...';
@@ -566,7 +651,7 @@ try{
 await Promise.all(Array.from({length:Math.min(3,urls.length)},worker));
 jobs=results;render();showToast(urls.length+' job(s) generated — review before deploy')
 }finally{
-btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate All';
+btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles mr-2"></i><span id="generateBtnText">Generate jobs</span>';countLinks();
 setTimeout(()=>document.getElementById('processing').classList.add('hidden'),450)
 }
 }
