@@ -109,19 +109,6 @@ struct CompanyLogoView: View {
     let job: Job
     var size: CGFloat = 46
 
-    private let localLogos: [String: String] = [
-        "Infosys": "infosys.svg",
-        "Zoho": "zoho.svg",
-        "TCS": "tcs.svg",
-        "Amazon": "amazon.svg",
-        "Wipro": "wipro.svg",
-        "Cognizant": "cognizant-mark.svg",
-        "Swiggy": "swiggy.svg",
-        "HCLTech": "hcltech.svg",
-        "Deloitte": "deloitte-mark.svg",
-        "ISRO": "isro.svg"
-    ]
-
     private let directLogos: [String: String] = [
         "DRDO – VRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
         "DRDO – LRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
@@ -156,6 +143,15 @@ struct CompanyLogoView: View {
         "IndiGo": "goindigo.in"
     ]
 
+    private var nativeBrand: String? {
+        switch job.company {
+        case "Amazon": return "amazon"
+        case "Wipro": return "wipro"
+        case "Deloitte": return "deloitte"
+        default: return nil
+        }
+    }
+
     private var mark: String {
         if let logo = job.logo, let first = logo.first, !first.isEmpty {
             return first
@@ -181,10 +177,6 @@ struct CompanyLogoView: View {
             return url
         }
 
-        if let company = job.company, let file = localLogos[company] {
-            return URL(string: "https://hdcareers.in/assets/logos/\(file)")
-        }
-
         if let company = job.company, let direct = directLogos[company] {
             return URL(string: direct)
         }
@@ -200,19 +192,39 @@ struct CompanyLogoView: View {
 
         guard !domain.isEmpty else { return nil }
         let encoded = ("https://" + domain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? domain
-        return URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=128")
+        return URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256")
     }
 
     var body: some View {
         Group {
-            if let url = remoteURL {
+            if let nativeBrand {
+                switch nativeBrand {
+                case "amazon":
+                    AmazonCompactMark()
+                case "wipro":
+                    Text("wipro")
+                        .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
+                        .foregroundStyle(Color(red: 0.42, green: 0.10, blue: 0.60))
+                case "deloitte":
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text("D")
+                            .font(.system(size: size * 0.58, weight: .black, design: .rounded))
+                            .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
+                        Circle()
+                            .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
+                            .frame(width: size * 0.10, height: size * 0.10)
+                    }
+                default:
+                    fallback
+                }
+            } else if let url = remoteURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
                         image
                             .resizable()
                             .scaledToFit()
-                            .padding(3)
+                            .padding(2)
                     default:
                         fallback
                     }
@@ -239,6 +251,35 @@ struct CompanyLogoView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
                 .padding(.horizontal, 4)
+        }
+    }
+}
+
+struct AmazonCompactMark: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                Text("a")
+                    .font(.system(size: geo.size.width * 0.62, weight: .bold, design: .rounded))
+                    .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
+                    .offset(y: -geo.size.height * 0.05)
+
+                Path { p in
+                    p.move(to: CGPoint(x: geo.size.width * 0.24, y: geo.size.height * 0.70))
+                    p.addQuadCurve(
+                        to: CGPoint(x: geo.size.width * 0.74, y: geo.size.height * 0.72),
+                        control: CGPoint(x: geo.size.width * 0.50, y: geo.size.height * 0.84)
+                    )
+                }
+                .stroke(Color(red: 1.0, green: 0.60, blue: 0.0), style: StrokeStyle(lineWidth: 3, lineCap: .round))
+
+                Path { p in
+                    p.move(to: CGPoint(x: geo.size.width * 0.68, y: geo.size.height * 0.67))
+                    p.addLine(to: CGPoint(x: geo.size.width * 0.77, y: geo.size.height * 0.70))
+                    p.addLine(to: CGPoint(x: geo.size.width * 0.72, y: geo.size.height * 0.78))
+                }
+                .stroke(Color(red: 1.0, green: 0.60, blue: 0.0), style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+            }
         }
     }
 }
