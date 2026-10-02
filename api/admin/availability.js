@@ -4,6 +4,7 @@ const DEFAULT_REPO="Chethan-Mns/Hdcareers";
 const DEFAULT_BASE="main";
 const WORKFLOW="job-availability.yml";
 const TRIGGER_PATH="data/availability-trigger.json";
+const STATUS_PATH="data/availability-status.json";
 
 function sameOrigin(req){
   const origin=String(req.headers.origin||"");
@@ -104,14 +105,19 @@ export default async function handler(req,res){
       });
     }
 
-    const [file,runs]=await Promise.all([
+    const [file,statusFile,runs]=await Promise.all([
       github("/contents/"+TRIGGER_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
+      github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token)
     ]);
     const trigger=file?decodeFile(file):{};
+    const checker=statusFile?decodeFile(statusFile):{};
     const list=Array.isArray(runs.workflow_runs)?runs.workflow_runs:[];
     const latest=list[0]||null;
     const lastCompleted=list.find(x=>x.status==="completed")||null;
+    const latestSummary=runSummary(latest,trigger);
+    const summaryTime=checker.checkedAt?new Date(checker.checkedAt).getTime():0;
+    const runTime=latestSummary?.createdAt?new Date(latestSummary.createdAt).getTime():0;
 
     return res.status(200).json({
       configured:Boolean(token),
@@ -119,8 +125,18 @@ export default async function handler(req,res){
         requestedAt:trigger.requestedAt||null,
         reason:trigger.reason||null
       },
-      latestRun:runSummary(latest,trigger),
-      lastCompletedRun:runSummary(lastCompleted,trigger)
+      latestRun:latestSummary,
+      lastCompletedRun:runSummary(lastCompleted,trigger),
+      results:{
+        checkedAt:checker.checkedAt||null,
+        checked:Number(checker.checked||0),
+        active:Number(checker.active||0),
+        expired:Number(checker.expired||0),
+        review:Number(checker.review||0),
+        changedExpired:Number(checker.changedExpired||checker.expired||0),
+        items:Array.isArray(checker.items)?checker.items:[],
+        current:!latestSummary||latestSummary.status!=="completed"||summaryTime>=runTime
+      }
     });
   }catch(error){
     const status=Number(error&&error.status);
