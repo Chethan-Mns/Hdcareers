@@ -31,7 +31,9 @@ targets:
           set -e
           SRC="$SRCROOT/../assets/hd-careers-logo.png"
           DEST="$SRCROOT/HDCareersAdmin/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png"
+          LOGO="$SRCROOT/HDCareersAdmin/Assets.xcassets/HDLogo.imageset/HDLogo.png"
           if [ -f "$SRC" ]; then
+            cp "$SRC" "$LOGO"
             cp "$SRC" "$DEST"
             /usr/bin/sips -Z 824 "$DEST" >/dev/null
             /usr/bin/sips -p 1024 1024 --padColor F7FAFF "$DEST" >/dev/null
