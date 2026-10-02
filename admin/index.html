@@ -335,6 +335,14 @@ Object.entries(values).forEach(([id,value])=>{const el=document.getElementById(i
 const updated=document.getElementById('dashUpdated');
 if(updated)updated.textContent='Updated '+new Date().toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
 }
+function prettyTrafficPage(path){
+const p=String(path||'/').split('?')[0];
+if(p==='/'||p==='/index.html')return'HD Careers Home';
+const normalized=p.replace(/^\/+/, '');
+const job=existingJobs.find(j=>String(j.page||'').replace(/^\/+/, '')===normalized);
+if(job)return job.company+' — '+job.role;
+return normalized.replace(/^jobs\//,'').replace(/\.html$/,'').replace(/[-_]+/g,' ').replace(/\b\w/g,m=>m.toUpperCase())||p
+}
 async function loadDashboardTraffic(){
 const status=document.getElementById('trafficStatus');
 if(status){status.className='badge bg-white text-blue-700 border border-blue-200';status.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Loading'}
@@ -347,7 +355,7 @@ const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 document.getElementById('dashRealtime').textContent=fmt(d.realtimeUsers);
 document.getElementById('dashVisitors').textContent=fmt(d.totals?.visitors);
 document.getElementById('dashPageviews').textContent=fmt(d.totals?.pageviews);
-document.getElementById('dashTopPage').textContent=d.pages?.[0]?.requestPath||'No data yet';
+const topPath=d.pages?.[0]?.requestPath||'';const topEl=document.getElementById('dashTopPage');topEl.innerHTML=topPath?'<a href="'+escapeHtml(topPath)+'" target="_blank" rel="noopener" class="hover:underline">'+escapeHtml(prettyTrafficPage(topPath))+' <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>':'No data yet';topEl.title=topPath;
 if(status){status.className='badge bg-green-50 text-green-700 border border-green-200';status.innerHTML='<i class="fa-solid fa-circle-check"></i> Live'}
 }catch(e){
 ['dashRealtime','dashVisitors','dashPageviews'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='—'});
