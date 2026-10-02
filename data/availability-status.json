@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-02T11:25:50.012Z",
+  "checkedAt": "2026-10-02T11:26:18.470Z",
   "checked": 33,
   "active": 30,
-  "expired": 0,
-  "review": 3,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 2,
+  "changedExpired": 1,
   "items": [
     {
       "id": 47,
@@ -294,9 +294,11 @@
       "role": "Data Engineer",
       "page": "jobs/accenture-data-engineer-atci-5478225.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer",
-      "state": "review",
-      "reason": "Redirected source requires manual verification",
-      "checkedAt": "2026-10-02T11:09:54.797632+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-02T11:26:18.470Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-02T11:26:18.470Z"
     },
     {
       "id": 17,
