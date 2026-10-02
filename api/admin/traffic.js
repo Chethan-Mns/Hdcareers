@@ -69,6 +69,32 @@ function rows(report,key,metricName){
   return (report?.rows||[]).map(r=>({[key]:dim(r),[metricName]:metric(r)}));
 }
 
+function sleep(ms){
+  return new Promise(resolve=>setTimeout(resolve,ms));
+}
+
+async function loadReports(cfg,startDate){
+  let lastError;
+  for(let attempt=1;attempt<=2;attempt++){
+    try{
+      const token=await accessToken(cfg);
+      const reports=await Promise.all([
+        ga(token,cfg.propertyId,"runRealtimeReport",{metrics:[{name:"activeUsers"}]}),
+        ga(token,cfg.propertyId,"runReport",{dateRanges:[{startDate,endDate:"today"}],metrics:[{name:"activeUsers"},{name:"screenPageViews"},{name:"sessions"}]}),
+        ga(token,cfg.propertyId,"runReport",{dateRanges:[{startDate,endDate:"today"}],dimensions:[{name:"pagePath"}],metrics:[{name:"screenPageViews"}],orderBys:[{metric:{metricName:"screenPageViews"},desc:true}],limit:"10"}),
+        ga(token,cfg.propertyId,"runReport",{dateRanges:[{startDate,endDate:"today"}],dimensions:[{name:"sessionSourceMedium"}],metrics:[{name:"sessions"}],orderBys:[{metric:{metricName:"sessions"},desc:true}],limit:"10"}),
+        ga(token,cfg.propertyId,"runReport",{dateRanges:[{startDate,endDate:"today"}],dimensions:[{name:"country"}],metrics:[{name:"activeUsers"}],orderBys:[{metric:{metricName:"activeUsers"},desc:true}],limit:"10"}),
+        ga(token,cfg.propertyId,"runReport",{dateRanges:[{startDate,endDate:"today"}],dimensions:[{name:"deviceCategory"}],metrics:[{name:"activeUsers"}],orderBys:[{metric:{metricName:"activeUsers"},desc:true}],limit:"10"})
+      ]);
+      return reports;
+    }catch(error){
+      lastError=error;
+      if(attempt<2)await sleep(650);
+    }
+  }
+  throw lastError;
+}
+
 export default async function handler(req,res){
   res.setHeader("Cache-Control","private, max-age=0, no-store");
   if(!requireAdmin(req,res))return;
@@ -89,7 +115,6 @@ export default async function handler(req,res){
 
   const startDate=days===1?"today":(days-1)+"daysAgo";
   try{
-    const token=await accessToken(cfg);
     const [
       realtime,
       totals,
@@ -97,43 +122,7 @@ export default async function handler(req,res){
       sources,
       countries,
       devices
-    ]=await Promise.all([
-      ga(token,cfg.propertyId,"runRealtimeReport",{
-        metrics:[{name:"activeUsers"}]
-      }),
-      ga(token,cfg.propertyId,"runReport",{
-        dateRanges:[{startDate,endDate:"today"}],
-        metrics:[{name:"activeUsers"},{name:"screenPageViews"},{name:"sessions"}]
-      }),
-      ga(token,cfg.propertyId,"runReport",{
-        dateRanges:[{startDate,endDate:"today"}],
-        dimensions:[{name:"pagePath"}],
-        metrics:[{name:"screenPageViews"}],
-        orderBys:[{metric:{metricName:"screenPageViews"},desc:true}],
-        limit:"10"
-      }),
-      ga(token,cfg.propertyId,"runReport",{
-        dateRanges:[{startDate,endDate:"today"}],
-        dimensions:[{name:"sessionSourceMedium"}],
-        metrics:[{name:"sessions"}],
-        orderBys:[{metric:{metricName:"sessions"},desc:true}],
-        limit:"10"
-      }),
-      ga(token,cfg.propertyId,"runReport",{
-        dateRanges:[{startDate,endDate:"today"}],
-        dimensions:[{name:"country"}],
-        metrics:[{name:"activeUsers"}],
-        orderBys:[{metric:{metricName:"activeUsers"},desc:true}],
-        limit:"10"
-      }),
-      ga(token,cfg.propertyId,"runReport",{
-        dateRanges:[{startDate,endDate:"today"}],
-        dimensions:[{name:"deviceCategory"}],
-        metrics:[{name:"activeUsers"}],
-        orderBys:[{metric:{metricName:"activeUsers"},desc:true}],
-        limit:"10"
-      })
-    ]);
+    ]=await loadReports(cfg,startDate);
 
     const totalRow=totals?.rows?.[0];
     return res.status(200).json({
