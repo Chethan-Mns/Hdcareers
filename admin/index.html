@@ -429,6 +429,18 @@ btn.innerHTML=running?'<i class="fa-solid fa-spinner fa-spin mr-2"></i>Checker r
 if(startPolling&&running)startAvailabilityPolling();
 return d;
 }catch(e){
+try{
+const sr=await fetch('/data/availability-status.json',{cache:'no-store'});
+if(sr.ok){
+const saved=await sr.json();
+const results={...saved,current:false};
+renderAvailabilityResults(results);
+statusEl.className='badge bg-amber-50 text-amber-700 border border-amber-200';
+statusEl.innerHTML='<i class="fa-solid fa-clock-rotate-left"></i> Saved result';
+document.getElementById('availabilityCompleted').textContent=formatAdminTime(saved.checkedAt)+' · saved';
+return{latestRun:null,results};
+}
+}catch{}
 statusEl.className='badge bg-red-50 text-red-700 border border-red-200';
 statusEl.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i> Unavailable';
 return null;
