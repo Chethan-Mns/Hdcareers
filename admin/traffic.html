@@ -10,33 +10,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <style>
 :root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
-*{box-sizing:border-box}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark)}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 30px rgba(15,23,42,.05)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f8fbff 0,#f4f7fb 260px);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 34px rgba(15,23,42,.055);transition:transform .2s ease,box-shadow .2s ease}.card:hover{box-shadow:0 14px 36px rgba(15,23,42,.075)}
 .btn{border-radius:12px;font-weight:800;transition:.18s ease}.btn:active{transform:scale(.98)}
 .bar{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#22c55e);border-radius:999px}
+@media(max-width:640px){
+.traffic-header{min-height:64px;height:auto;padding-top:8px;padding-bottom:8px}
+.traffic-main{padding-left:12px;padding-right:12px;padding-top:16px;padding-bottom:24px}
+.card{border-radius:16px}
+.range-wrap{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
+.range-wrap .btn{padding-left:8px!important;padding-right:8px!important}
+.traffic-title{font-size:1.55rem!important;line-height:1.15}
+}
 </style>
 </head>
 <body>
 <div id="loading" class="min-h-screen flex items-center justify-center text-slate-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Checking admin session...</div>
 <div id="app" class="hidden">
-<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
-<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">HD</div><div><p class="font-black leading-none">Traffic Analytics</p><p class="text-[11px] text-slate-500 mt-1">HD Careers Admin</p></div></div>
-<div class="flex items-center gap-2"><a href="/admin/" class="btn border border-slate-200 bg-white text-slate-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left mr-1"></i>Jobs</a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket mr-1"></i>Logout</button></div>
+<header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+<div class="traffic-header max-w-7xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-xl bg-white border border-slate-200 p-1 shadow-sm shrink-0">
+<div class="min-w-0"><p class="font-black leading-none truncate">Traffic Analytics</p><p class="text-[11px] text-slate-500 mt-1 hidden sm:block">HD Careers Admin</p></div>
+</div>
+<div class="flex items-center gap-2 shrink-0"><a href="/admin/" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left"></i><span class="hidden md:inline ml-1">Dashboard</span></a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button></div>
 </div>
 </header>
-<main class="max-w-7xl mx-auto px-4 py-7 space-y-6">
+<main class="traffic-main max-w-7xl mx-auto px-4 py-7 space-y-6">
 <section class="card p-5 sm:p-6">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Google Analytics 4...</p></div>
-<div class="flex gap-2"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-4 py-2 text-sm">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-3 py-2 text-sm" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="traffic-title text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Google Analytics 4...</p></div>
+<div class="range-wrap flex flex-wrap gap-2"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-4 py-2 text-sm">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-3 py-2 text-sm" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div></div>
 </section>
 <div id="errorBox" class="hidden card p-5 border-amber-200 bg-amber-50 text-amber-900"></div>
 <section id="stats" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Live Now</p><p id="realtime" class="text-3xl font-black text-green-600 mt-2">—</p><p class="text-xs text-slate-400 mt-2">Active users in last 30 minutes</p></div>
-<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Visitors</p><p id="visitors" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Unique visitors</p></div>
-<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Page Views</p><p id="pageviews" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Total page loads</p></div>
-<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
-<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><p id="topPage" class="text-lg font-black mt-2 break-all">—</p><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
+<div class="card p-5 border-green-100 bg-green-50/40"><div class="flex items-center justify-between"><p class="text-xs font-bold text-green-700 uppercase">Live Now</p><i class="fa-solid fa-signal text-green-500"></i></div><p id="realtime" class="text-3xl font-black text-green-600 mt-2">—</p><p class="text-xs text-slate-400 mt-2">Active users in last 30 minutes</p></div>
+<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Visitors</p><i class="fa-solid fa-users text-blue-500"></i></div><p id="visitors" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Unique visitors</p></div>
+<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Page Views</p><i class="fa-solid fa-eye text-violet-500"></i></div><p id="pageviews" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Total page loads</p></div>
+<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><i class="fa-solid fa-chart-simple text-amber-500"></i></div><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
+<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><i class="fa-solid fa-arrow-trend-up text-emerald-500"></i></div><p id="topPage" class="text-lg font-black mt-2 break-all">—</p><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
 </section>
 <section class="grid lg:grid-cols-2 gap-5">
 <div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><div id="pages" class="mt-5 space-y-4"></div></div>
