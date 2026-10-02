@@ -1,0 +1,60 @@
+{
+  "updatedAt": "2026-10-02T09:30:00Z",
+  "slots": [
+    {
+      "id": "it-9am",
+      "title": "Fresher IT",
+      "time": "09:00",
+      "timezone": "Asia/Kolkata",
+      "automationId": "6aba9b6828308191a8e5c95839c9d9be",
+      "enabled": true,
+      "lastRunAt": "2026-10-02T03:33:46.693513Z",
+      "outcome": "ran",
+      "detail": "Awaiting outcome tracking from next run."
+    },
+    {
+      "id": "nonit-12pm",
+      "title": "Fresher Non-IT",
+      "time": "12:00",
+      "timezone": "Asia/Kolkata",
+      "automationId": "6aba9c10b38c819187f7bc5ae26add48",
+      "enabled": true,
+      "lastRunAt": "2026-10-02T06:31:25.165432Z",
+      "outcome": "ran",
+      "detail": "Awaiting outcome tracking from next run."
+    },
+    {
+      "id": "experienced-3pm",
+      "title": "Experienced IT",
+      "time": "15:00",
+      "timezone": "Asia/Kolkata",
+      "automationId": "6aba9c1a592081918894d08be3c668df",
+      "enabled": true,
+      "lastRunAt": "2026-10-02T09:26:21.975494Z",
+      "outcome": "ran",
+      "detail": "Awaiting outcome tracking from next run."
+    },
+    {
+      "id": "govt-6pm",
+      "title": "Government / PSU",
+      "time": "18:00",
+      "timezone": "Asia/Kolkata",
+      "automationId": "6aba9c27b0548191b91c7e2b7ff29cac",
+      "enabled": true,
+      "lastRunAt": "2026-10-01T12:28:29.924740Z",
+      "outcome": "ran",
+      "detail": "Awaiting outcome tracking from next run."
+    },
+    {
+      "id": "walkin-9pm",
+      "title": "Walk-in",
+      "time": "21:00",
+      "timezone": "Asia/Kolkata",
+      "automationId": "6aba9c326f6881918f4816c3c511c960",
+      "enabled": true,
+      "lastRunAt": "2026-10-01T15:33:39.155386Z",
+      "outcome": "ran",
+      "detail": "Awaiting outcome tracking from next run."
+    }
+  ]
+}
