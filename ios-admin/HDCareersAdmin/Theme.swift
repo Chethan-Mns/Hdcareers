@@ -90,3 +90,79 @@ struct EmptyState: View {
         .padding(.vertical, 34)
     }
 }
+
+
+extension Color {
+    init?(hex: String) {
+        var value = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value.hasPrefix("#") { value.removeFirst() }
+        guard value.count == 6, let rgb = Int(value, radix: 16) else { return nil }
+        self.init(
+            red: Double((rgb >> 16) & 0xFF) / 255.0,
+            green: Double((rgb >> 8) & 0xFF) / 255.0,
+            blue: Double(rgb & 0xFF) / 255.0
+        )
+    }
+}
+
+struct CompanyLogoView: View {
+    let job: Job
+    var size: CGFloat = 46
+
+    private var mark: String {
+        if let logo = job.logo, let first = logo.first, !first.isEmpty {
+            return first
+        }
+        let parts = (job.company ?? "HD").split(separator: " ")
+        if parts.count >= 2 {
+            return (String(parts[0].prefix(1)) + String(parts[1].prefix(1))).uppercased()
+        }
+        return String((job.company ?? "HD").prefix(2)).uppercased()
+    }
+
+    private var brandColor: Color {
+        if let logo = job.logo, logo.count > 1, let color = Color(hex: logo[1]) {
+            return color
+        }
+        return HDTheme.blue
+    }
+
+    var body: some View {
+        Group {
+            if let raw = job.logoUrl, let url = URL(string: raw), !raw.isEmpty {
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .padding(5)
+                    default:
+                        fallback
+                    }
+                }
+            } else {
+                fallback
+            }
+        }
+        .frame(width: size, height: size)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(Color.black.opacity(0.06))
+        }
+    }
+
+    private var fallback: some View {
+        ZStack {
+            brandColor.opacity(0.12)
+            Text(mark)
+                .font(.system(size: mark.count > 4 ? 9 : 12, weight: .black, design: .rounded))
+                .foregroundStyle(brandColor)
+                .minimumScaleFactor(0.6)
+                .lineLimit(1)
+                .padding(.horizontal, 4)
+        }
+    }
+}
