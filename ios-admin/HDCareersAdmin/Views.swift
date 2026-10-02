@@ -568,14 +568,7 @@ struct JobRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(HDTheme.blue.opacity(0.10))
-                .frame(width: 46, height: 46)
-                .overlay {
-                    Text(initials(job.company ?? "HD"))
-                        .font(.caption.weight(.black))
-                        .foregroundStyle(HDTheme.blue)
-                }
+            CompanyLogoView(job: job, size: 46)
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .top) {
@@ -617,13 +610,6 @@ struct JobRow: View {
         .hdCard(14)
     }
 
-    private func initials(_ company: String) -> String {
-        let parts = company.split(separator: " ")
-        if parts.count >= 2 {
-            return (String(parts[0].prefix(1)) + String(parts[1].prefix(1))).uppercased()
-        }
-        return String(company.prefix(2)).uppercased()
-    }
 }
 
 struct ParsedAdminLink: Identifiable {
@@ -999,6 +985,8 @@ struct DraftJobRow: View {
                     .font(.title3)
             }
             .buttonStyle(.plain)
+
+            CompanyLogoView(job: job, size: 42)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(job.company ?? "Company")
