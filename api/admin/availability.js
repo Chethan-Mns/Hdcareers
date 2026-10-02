@@ -108,7 +108,7 @@ export default async function handler(req,res){
     const [file,statusFile,runs]=await Promise.all([
       github("/contents/"+TRIGGER_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
-      github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token)
+      github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token).catch(()=>({workflow_runs:[]}))
     ]);
     const trigger=file?decodeFile(file):{};
     const checker=statusFile?decodeFile(statusFile):{};
