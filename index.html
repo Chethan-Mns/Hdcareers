@@ -1253,9 +1253,19 @@ function scrollCategories(dir){const el=document.getElementById('filterTabs');if
 function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l}</button>`).join('')}
 function setCat(k){activeCat=k;document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat===k));renderJobs();requestAnimationFrame(scrollToResults)}
 function syncLevelTone(){const el=document.getElementById('expTypeFilter');if(!el)return;el.classList.toggle('text-slate-400',el.value==='all');el.classList.toggle('text-slate-700',el.value!=='all')}
-function scrollToResults(){const grid=document.getElementById('jobGrid');const noResults=document.getElementById('noResults');const firstCard=grid?.querySelector('.job-card');const target=firstCard||(noResults&&!noResults.classList.contains('hidden')?noResults:document.getElementById('resultsSection'));if(!target)return;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})}
+function resultScrollTarget(){const grid=document.getElementById('jobGrid');const noResults=document.getElementById('noResults');return grid?.querySelector('.job-card')||(noResults&&!noResults.classList.contains('hidden')?noResults:document.getElementById('resultsSection'))}
+function scrollToResults(){
+const target=resultScrollTarget();if(!target)return;
+const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile=window.matchMedia&&window.matchMedia('(max-width: 767px)').matches;
+const active=document.activeElement;
+const filterIds=new Set(['searchInput','expYearsFilter','roleFilter','companyFilter','locationFilter','expTypeFilter','sortSelect']);
+if(mobile&&active&&filterIds.has(active.id)&&typeof active.blur==='function')active.blur();
+const move=()=>{const el=resultScrollTarget();if(!el)return;const header=document.querySelector('header');const offset=(header?.getBoundingClientRect().height||64)+14;const top=Math.max(0,window.scrollY+el.getBoundingClientRect().top-offset);window.scrollTo({top,behavior:reduced?'auto':'smooth'})};
+if(mobile){setTimeout(move,280);setTimeout(()=>{const el=resultScrollTarget();if(!el)return;const header=document.querySelector('header');const offset=(header?.getBoundingClientRect().height||64)+14;const delta=el.getBoundingClientRect().top-offset;if(Math.abs(delta)>24)window.scrollTo({top:Math.max(0,window.scrollY+delta),behavior:'auto'})},620)}else requestAnimationFrame(move)
+}
 function filterAndScrollNow(){clearTimeout(filterScrollTimer);renderJobs();requestAnimationFrame(scrollToResults)}
-function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(()=>requestAnimationFrame(scrollToResults),350)}
+function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(scrollToResults,600)}
 function companyDomain(j){const company=String(j.company||"").trim();let d=String(COMPANY_LOGO_DOMAINS[company]||j.domain||"").trim().toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"");if(/^(?:careers?|jobs?|usijobs|global|careersglobal)\./.test(d)&&d.split(".").length>2)d=d.split(".").slice(1).join(".");return d}
 function companyInternetLogos(j){const d=companyDomain(j);if(!d)return[];return[`https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F${encodeURIComponent(d)}&sz=128`,`https://icons.duckduckgo.com/ip3/${encodeURIComponent(d)}.ico`]}
 function localCompanyLogo(j){const name=Object.keys(LOCAL_LOGOS).find(k=>k.toLowerCase()===String(j.company||"").toLowerCase());return name?`assets/logos/${LOCAL_LOGOS[name]}`:""}
