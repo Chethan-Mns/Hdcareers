@@ -31,7 +31,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html,body{width:100%;max-width:100%;overflow-x:clip}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
 button,a,input,select{font:inherit}
 a{text-decoration:none}
 .header-safe{padding-top:env(safe-area-inset-top,0px)}
@@ -58,7 +58,14 @@ a{text-decoration:none}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
+#homeView{width:100%;max-width:100%;min-width:0;overflow-x:clip}
+#jobs,#resultsSection{width:100%;max-width:100%;min-width:0}
 #resultsSection{scroll-margin-top:96px}
+#resultsSection>*{min-width:0;max-width:100%}
+#jobGrid{width:100%;max-width:100%;min-width:0}
+.job-card{width:100%;max-width:100%;min-width:0;overflow:hidden}
+.job-card>*,.job-card .flex-1{min-width:0}
+.job-card .flex-wrap>span{max-width:100%;overflow-wrap:anywhere}
 .job-card,#noResults{scroll-margin-top:104px}
 .soft-enter{animation:softEnter .4s cubic-bezier(.22,1,.36,1) both}
 @keyframes softEnter{from{opacity:0;transform:translateY(10px) scale(.992)}to{opacity:1;transform:none}}
@@ -96,6 +103,15 @@ padding-right:2.65rem!important;
 .category-edge.left{left:0;background:linear-gradient(90deg,var(--slate),rgba(244,247,251,0))}
 .category-edge.right{right:0;background:linear-gradient(270deg,var(--slate),rgba(244,247,251,0))}
 @media(max-width:640px){
+header{width:100%;max-width:100%;inset-inline:0}
+#jobs,#resultsSection{padding-left:12px!important;padding-right:12px!important}
+.hero-shell{width:100%;max-width:100%;padding-left:20px!important;padding-right:20px!important}
+#resultsSection{display:block!important}
+#resultsSection>div,#resultsSection>aside{width:100%;max-width:100%;min-width:0}
+#resultsSection>aside{margin-top:20px}
+.job-card{padding:14px!important}
+.job-card h3,.job-card p{max-width:100%}
+.job-card .shrink-0:last-child{max-width:100%;flex-wrap:wrap}
 .cat-arrow{display:none}
 .category-shell{margin-left:0;margin-right:0}
 .category-track-wrap{gap:0}
@@ -143,13 +159,11 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <div id="catMenu" class="dropdown absolute left-1/2 -translate-x-1/2 top-full mt-5 w-60 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 z-50">
 <button onclick="showHome();setCat('all');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-border-all text-slate-400 w-5"></i> All Jobs</button>
 <button onclick="showHome();setCat('it');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-laptop-code text-slate-400 w-5"></i> IT & Software</button>
+<button onclick="showHome();setCat('nonit');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-briefcase text-slate-400 w-5"></i> Non-IT</button>
 <button onclick="showHome();setCat('internship');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-user-graduate text-slate-400 w-5"></i> Internships</button>
-<button onclick="showHome();setCat('campus');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-building text-slate-400 w-5"></i> Off-Campus Freshers</button>
-<button onclick="showHome();setCat('remote');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-house-laptop text-slate-400 w-5"></i> Remote / WFH</button>
-<button onclick="showHome();setCat('walkin');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-people-arrows text-slate-400 w-5"></i> Walk-in Drives</button>
 <button onclick="showHome();setCat('apprenticeship');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-screwdriver-wrench text-slate-400 w-5"></i> Apprenticeships</button>
-<button onclick="showHome();setCat('experienced');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-briefcase text-slate-400 w-5"></i> Experienced Jobs</button>
 <button onclick="showHome();setCat('govt');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-landmark text-slate-400 w-5"></i> Government Jobs</button>
+<button onclick="showHome();setCat('walkin');closeCatMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm hover:bg-slate-50"><i class="fa-solid fa-people-arrows text-slate-400 w-5"></i> Walk-ins</button>
 </div>
 </div>
 <a href="about.html" class="nav-link">About Us</a>
