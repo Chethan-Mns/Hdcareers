@@ -88,13 +88,7 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <meta property="og:url" content="$canonical">
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
-<script>
-window.va = window.va || function () {
-  (window.vaq = window.vaq || []).push(arguments);
-};
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js" defer></script>
