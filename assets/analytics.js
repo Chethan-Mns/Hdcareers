@@ -1,6 +1,6 @@
 (() => {
   const GA4_ID = "G-0QQR0MNHJR";
-  const CLARITY_ID = "";
+  const CLARITY_ID = "yrcbz82zju";
 
   if (/^G-[A-Z0-9]+$/i.test(GA4_ID)) {
     const s = document.createElement("script");
