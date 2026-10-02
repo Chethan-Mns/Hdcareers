@@ -1,58 +1,158 @@
+import crypto from "node:crypto";
 import {requireAdmin} from "../../lib/admin-auth.js";
 
 const ALLOWED_DAYS=new Set([1,7,30]);
+const TOKEN_URL="https://oauth2.googleapis.com/token";
+const SCOPE="https://www.googleapis.com/auth/analytics.readonly";
 
-function envConfig(){
+function config(){
   return {
-    token:String(process.env.VERCEL_ANALYTICS_TOKEN||process.env.VERCEL_API_TOKEN||""),
-    projectId:String(process.env.HD_VERCEL_PROJECT_ID||process.env.VERCEL_PROJECT_ID||""),
-    teamId:String(process.env.HD_VERCEL_TEAM_ID||process.env.VERCEL_TEAM_ID||process.env.VERCEL_ORG_ID||"")
+    propertyId:String(process.env.GA4_PROPERTY_ID||"").trim(),
+    clientEmail:String(process.env.GA4_CLIENT_EMAIL||"").trim(),
+    privateKey:String(process.env.GA4_PRIVATE_KEY||"").replace(/\\n/g,"\n").trim()
   };
 }
 
-async function query(path,{token,projectId,teamId},since,until,by){
-  const u=new URL("https://api.vercel.com"+path);
-  u.searchParams.set("projectId",projectId);
-  u.searchParams.set("since",since);
-  u.searchParams.set("until",until);
-  if(teamId)u.searchParams.set("teamId",teamId);
-  if(by){
-    u.searchParams.append("by",by);
-    u.searchParams.set("limit","12");
-  }
-  const r=await fetch(u,{headers:{Authorization:"Bearer "+token,Accept:"application/json"}});
-  const body=await r.json().catch(()=>({}));
-  if(!r.ok)throw new Error(body.error?.message||body.message||("Vercel Analytics request failed ("+r.status+")"));
-  return body.data;
+function b64url(input){
+  return Buffer.from(input).toString("base64url");
+}
+
+async function accessToken(cfg){
+  const now=Math.floor(Date.now()/1000);
+  const header=b64url(JSON.stringify({alg:"RS256",typ:"JWT"}));
+  const payload=b64url(JSON.stringify({
+    iss:cfg.clientEmail,
+    scope:SCOPE,
+    aud:TOKEN_URL,
+    iat:now,
+    exp:now+3600
+  }));
+  const unsigned=header+"."+payload;
+  const signer=crypto.createSign("RSA-SHA256");
+  signer.update(unsigned);
+  signer.end();
+  const assertion=unsigned+"."+signer.sign(cfg.privateKey,"base64url");
+  const body=new URLSearchParams({
+    grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer",
+    assertion
+  });
+  const r=await fetch(TOKEN_URL,{
+    method:"POST",
+    headers:{"content-type":"application/x-www-form-urlencoded"},
+    body
+  });
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok||!data.access_token)throw new Error(data.error_description||data.error||"Could not authorize Google Analytics.");
+  return data.access_token;
+}
+
+async function ga(token,propertyId,method,body){
+  const r=await fetch("https://analyticsdata.googleapis.com/v1beta/properties/"+encodeURIComponent(propertyId)+":"+method,{
+    method:"POST",
+    headers:{Authorization:"Bearer "+token,"content-type":"application/json"},
+    body:JSON.stringify(body)
+  });
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(data.error?.message||("Google Analytics request failed ("+r.status+")"));
+  return data;
+}
+
+function metric(row,index=0){
+  return Number(row?.metricValues?.[index]?.value||0);
+}
+
+function dim(row,index=0){
+  return String(row?.dimensionValues?.[index]?.value||"");
+}
+
+function rows(report,key,metricName){
+  return (report?.rows||[]).map(r=>({[key]:dim(r),[metricName]:metric(r)}));
 }
 
 export default async function handler(req,res){
-  res.setHeader("Cache-Control","no-store");
+  res.setHeader("Cache-Control","private, max-age=0, no-store");
   if(!requireAdmin(req,res))return;
   if(req.method!=="GET"){
     res.setHeader("Allow","GET");
     return res.status(405).json({error:"Method not allowed."});
   }
+
   const days=Number(req.query?.days||7);
   if(!ALLOWED_DAYS.has(days))return res.status(400).json({error:"days must be 1, 7 or 30."});
-  const cfg=envConfig();
-  const missing=[];
-  if(!cfg.token)missing.push("VERCEL_ANALYTICS_TOKEN");
-  if(!cfg.projectId)missing.push("HD_VERCEL_PROJECT_ID");
-  if(missing.length)return res.status(503).json({configured:false,missing,error:"Traffic dashboard needs Vercel Analytics API credentials."});
 
-  const until=new Date().toISOString();
-  const since=new Date(Date.now()-days*86400000).toISOString();
+  const cfg=config();
+  const missing=[];
+  if(!cfg.propertyId)missing.push("GA4_PROPERTY_ID");
+  if(!cfg.clientEmail)missing.push("GA4_CLIENT_EMAIL");
+  if(!cfg.privateKey)missing.push("GA4_PRIVATE_KEY");
+  if(missing.length)return res.status(503).json({configured:false,missing,error:"Google Analytics API credentials are incomplete."});
+
+  const startDate=days===1?"today":(days-1)+"daysAgo";
   try{
-    const [totals,pages,referrers,countries,devices]=await Promise.all([
-      query("/v1/query/web-analytics/visits/count",cfg,since,until),
-      query("/v1/query/web-analytics/visits/aggregate",cfg,since,until,"requestPath"),
-      query("/v1/query/web-analytics/visits/aggregate",cfg,since,until,"referrerHostname"),
-      query("/v1/query/web-analytics/visits/aggregate",cfg,since,until,"country"),
-      query("/v1/query/web-analytics/visits/aggregate",cfg,since,until,"deviceType")
+    const token=await accessToken(cfg);
+    const [
+      realtime,
+      totals,
+      pages,
+      sources,
+      countries,
+      devices
+    ]=await Promise.all([
+      ga(token,cfg.propertyId,"runRealtimeReport",{
+        metrics:[{name:"activeUsers"}]
+      }),
+      ga(token,cfg.propertyId,"runReport",{
+        dateRanges:[{startDate,endDate:"today"}],
+        metrics:[{name:"activeUsers"},{name:"screenPageViews"},{name:"sessions"}]
+      }),
+      ga(token,cfg.propertyId,"runReport",{
+        dateRanges:[{startDate,endDate:"today"}],
+        dimensions:[{name:"pagePath"}],
+        metrics:[{name:"screenPageViews"}],
+        orderBys:[{metric:{metricName:"screenPageViews"},desc:true}],
+        limit:"10"
+      }),
+      ga(token,cfg.propertyId,"runReport",{
+        dateRanges:[{startDate,endDate:"today"}],
+        dimensions:[{name:"sessionSourceMedium"}],
+        metrics:[{name:"sessions"}],
+        orderBys:[{metric:{metricName:"sessions"},desc:true}],
+        limit:"10"
+      }),
+      ga(token,cfg.propertyId,"runReport",{
+        dateRanges:[{startDate,endDate:"today"}],
+        dimensions:[{name:"country"}],
+        metrics:[{name:"activeUsers"}],
+        orderBys:[{metric:{metricName:"activeUsers"},desc:true}],
+        limit:"10"
+      }),
+      ga(token,cfg.propertyId,"runReport",{
+        dateRanges:[{startDate,endDate:"today"}],
+        dimensions:[{name:"deviceCategory"}],
+        metrics:[{name:"activeUsers"}],
+        orderBys:[{metric:{metricName:"activeUsers"},desc:true}],
+        limit:"10"
+      })
     ]);
-    return res.status(200).json({configured:true,days,since,until,totals:totals||{},pages:pages||[],referrers:referrers||[],countries:countries||[],devices:devices||[]});
+
+    const totalRow=totals?.rows?.[0];
+    return res.status(200).json({
+      configured:true,
+      provider:"ga4",
+      days,
+      realtimeUsers:metric(realtime?.rows?.[0]),
+      totals:{
+        visitors:metric(totalRow,0),
+        pageviews:metric(totalRow,1),
+        sessions:metric(totalRow,2)
+      },
+      pages:rows(pages,"requestPath","pageviews"),
+      referrers:rows(sources,"referrerHostname","sessions"),
+      countries:rows(countries,"country","visitors"),
+      devices:rows(devices,"deviceType","visitors"),
+      refreshedAt:new Date().toISOString()
+    });
   }catch(err){
-    return res.status(502).json({configured:true,error:err.message||"Could not load Vercel Web Analytics."});
+    return res.status(502).json({configured:true,provider:"ga4",error:err.message||"Could not load Google Analytics data."});
   }
 }
