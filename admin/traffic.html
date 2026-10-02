@@ -27,11 +27,12 @@
 </header>
 <main class="max-w-7xl mx-auto px-4 py-7 space-y-6">
 <section class="card p-5 sm:p-6">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Vercel Web Analytics...</p></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Google Analytics 4...</p></div>
 <div class="flex gap-2"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-4 py-2 text-sm">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-3 py-2 text-sm" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div></div>
 </section>
 <div id="errorBox" class="hidden card p-5 border-amber-200 bg-amber-50 text-amber-900"></div>
-<section id="stats" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<section id="stats" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+<div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Live Now</p><p id="realtime" class="text-3xl font-black text-green-600 mt-2">—</p><p class="text-xs text-slate-400 mt-2">Active users in last 30 minutes</p></div>
 <div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Visitors</p><p id="visitors" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Unique visitors</p></div>
 <div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Page Views</p><p id="pageviews" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Total page loads</p></div>
 <div class="card p-5"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
@@ -43,14 +44,14 @@
 <div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Countries</h2><div id="countries" class="mt-5 space-y-4"></div></div>
 <div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-mobile-screen text-blue-600 mr-2"></i>Devices</h2><div id="devices" class="mt-5 space-y-4"></div></div>
 </section>
-<p class="text-xs text-slate-400 text-center pb-5">Production traffic only. Data is read securely through the authenticated admin API from Vercel Web Analytics.</p>
+<p class="text-xs text-slate-400 text-center pb-5">Production traffic only. Data is read securely through the authenticated admin API from Google Analytics 4.</p>
 </main>
 </div>
 <script>
 let currentDays=7;
 const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function metric(row){return Number(row.pageviews??row.count??row.visits??0)}
+function metric(row){return Number(row.pageviews??row.sessions??row.visitors??row.count??row.visits??0)}
 function label(row,key){return row[key]||row.dimension||row.name||'(Direct / Unknown)'}
 function renderRows(id,rows,key){
  const el=document.getElementById(id); const data=Array.isArray(rows)?rows:[];
@@ -67,7 +68,7 @@ async function loadTraffic(days=7){
   const d=await r.json().catch(()=>({}));
   if(r.status===401){location.href='/admin/';return}
   if(!r.ok)throw new Error(d.error+(d.missing?.length?' Missing: '+d.missing.join(', '):''));
-  const v=Number(d.totals?.visitors||0),p=Number(d.totals?.pageviews||0);
+  const v=Number(d.totals?.visitors||0),p=Number(d.totals?.pageviews||0);document.getElementById('realtime').textContent=fmt(d.realtimeUsers||0);
   document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('ratio').textContent=v?(p/v).toFixed(2):'0.00';
   const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
   document.getElementById('topPage').textContent=top?label(top,'requestPath'):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
