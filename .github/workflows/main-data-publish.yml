@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - data/jobs.json
+      - generate.py
 
 permissions:
   contents: write
