@@ -66,6 +66,16 @@ LOCAL_LOGOS = {
     "ISRO": "isro.svg",
 }
 
+DIRECT_LOGOS = {
+    "DRDO – VRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+    "DRDO – LRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+    "DRDO – DYSL-SM": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+    "DRDO – Research Centre Imarat (RCI)": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+    "DRDO – Proof & Experimental Establishment (PXE)": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+    "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "https://actrec.gov.in/themes/actrec/images/SSA/Images/ACTREC_LOGO.png",
+    "Electronics Corporation of India Limited (ECIL)": "https://www.ecil.co.in/images/ECIL_NewLogos2.png",
+}
+
 LOGO_DOMAINS = {
     "Amazon.jobs": "amazon.com", "Amazon": "amazon.com", "NTT Data": "nttdata.com", "NTT DATA": "nttdata.com",
     "IBM": "ibm.com", "PWC": "pwc.com", "PwC": "pwc.com", "PricewaterhouseCoopers Services LLP": "pwc.com",
@@ -304,10 +314,13 @@ def render_expanded_guidance(job: dict) -> str:
 
 def logo_onerror(company: str, domain: str) -> str:
     filename = LOCAL_LOGOS.get(company)
+    direct = DIRECT_LOGOS.get(company)
     google, duck = logo_sources(company, domain)
     fallbacks = []
     if filename:
         fallbacks.append(f"../assets/logos/{filename}")
+    if direct:
+        fallbacks.append(direct)
     fallbacks.extend([google, duck, "../assets/hd-careers-logo.png"])
     encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
     return (
@@ -417,6 +430,9 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
     favicon_url, _ = logo_sources(company, str(job["domain"]))
+    direct_logo = DIRECT_LOGOS.get(company)
+    if direct_logo:
+        favicon_url = direct_logo
     local_logo = LOCAL_LOGOS.get(company)
     if local_logo:
         favicon_url = f"../assets/logos/{local_logo}"
