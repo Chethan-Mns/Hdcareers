@@ -35,7 +35,7 @@ struct HDLogoView: View {
     var size: CGFloat = 48
 
     var body: some View {
-        Image("hd-careers-logo")
+        Image("HDLogo")
             .resizable()
             .scaledToFit()
             .frame(width: size, height: size)
