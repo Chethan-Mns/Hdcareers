@@ -441,6 +441,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
 
 def update_index(jobs: list[dict], dry_run: bool) -> bool:
     source = INDEX_FILE.read_text(encoding="utf-8")
+    source = source.replace('</script>\\n</head>', '</script>\n</head>')
     start_marker = "const JOBS = ["
     start = source.find(start_marker)
     if start == -1:
