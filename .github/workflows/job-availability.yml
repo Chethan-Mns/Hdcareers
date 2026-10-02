@@ -41,7 +41,7 @@ jobs:
           git diff --check
       - name: Save closure updates only when content changes
         run: |
-          git add data/jobs.json index.html jobs/ robots.txt sitemap.xml
+          git add data/jobs.json data/availability-status.json index.html jobs/ robots.txt sitemap.xml
           if ! git diff --cached --quiet; then
             git config user.name 'HD Careers Automation'
             git config user.email 'actions@users.noreply.github.com'
