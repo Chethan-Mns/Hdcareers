@@ -14,13 +14,15 @@
 :root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1;--green:#16a34a;--amber:#d97706;--red:#dc2626}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 30px rgba(15,23,42,.05)}
+body{margin:0;background:linear-gradient(180deg,#f8fbff 0,#f4f7fb 260px);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
+.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 34px rgba(15,23,42,.055)}
 .field{width:100%;border:1px solid #dbe3ee;background:#f8fafc;border-radius:12px;padding:11px 12px;outline:none;transition:.18s ease}
 .field:focus{border-color:#60a5fa;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
 .btn{border-radius:12px;font-weight:800;transition:.18s ease}
 .btn:active{transform:scale(.98)}
 .badge{font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;display:inline-flex;align-items:center;gap:5px}
+.metric-card{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}.metric-card:after{content:"";position:absolute;width:78px;height:78px;border-radius:999px;right:-28px;top:-30px;background:currentColor;opacity:.055}.metric-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.08)}
+.integration-card{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.integration-card:hover{transform:translateY(-2px);border-color:#bfdbfe;box-shadow:0 12px 26px rgba(15,23,42,.06)}
 .job-card{transition:.2s ease}
 .job-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(15,23,42,.08)}
 .drawer{position:fixed;inset:0;background:rgba(7,26,51,.55);backdrop-filter:blur(4px);z-index:60;display:flex;justify-content:flex-end}
@@ -37,7 +39,20 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 .progress{height:7px;background:#e2e8f0;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#22c55e);width:0;transition:width .35s ease}
 .auth-shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 15% 15%,rgba(59,130,246,.18),transparent 28%),radial-gradient(circle at 85% 15%,rgba(34,197,94,.12),transparent 26%),linear-gradient(135deg,#071a33,#0b2952 55%,#0758c9)}
 .auth-card{width:min(440px,100%);background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 80px rgba(7,26,51,.28)}
-@media(max-width:640px){.drawer-panel{width:100%}}
+@media(max-width:640px){
+.drawer-panel{width:100%}
+.card{border-radius:16px}
+.auth-card{padding:22px}
+.admin-header{min-height:64px;height:auto;padding-top:8px;padding-bottom:8px}
+.admin-brand-sub{display:none}
+.admin-main{padding-left:12px;padding-right:12px;padding-top:16px;padding-bottom:24px}
+.dashboard-title{font-size:1.55rem;line-height:1.15}
+.metric-card{padding:14px!important}
+.metric-card p:last-child{font-size:1.65rem}
+.mobile-full{width:100%;justify-content:center}
+.preview-frame-wrap{padding:8px}
+.toast{bottom:14px;max-width:calc(100% - 24px);text-align:center}
+}
 </style>
 </head>
 <body>
@@ -62,40 +77,41 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 </section>
 
 <div id="adminApp" class="hidden">
-<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">HD</div>
-<div><p class="font-black leading-none">HD Careers Admin</p><p class="text-[11px] text-slate-500 mt-1">Bulk job intake • review • preview</p></div>
+<header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+<div class="admin-header max-w-7xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-xl bg-white border border-slate-200 p-1 shadow-sm shrink-0">
+<div class="min-w-0"><p class="font-black leading-none truncate">HD Careers Admin</p><p class="admin-brand-sub text-[11px] text-slate-500 mt-1">Dashboard • job publishing • analytics</p></div>
 </div>
-<div class="flex items-center gap-2">
-<span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-shield-halved"></i> Authenticated</span>
-<button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket mr-1"></i>Logout</button>
+<div class="flex items-center gap-2 shrink-0">
+<a href="/admin/traffic.html" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm" title="Traffic analytics"><i class="fa-solid fa-chart-line"></i><span class="hidden md:inline ml-1">Traffic</span></a>
+<span class="hidden sm:inline-flex badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-shield-halved"></i> Authenticated</span>
+<button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm" title="Logout"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button>
 </div>
 </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 py-7 space-y-6">
-<section id="analyticsDashboard" class="card p-5 sm:p-6">
+<main class="admin-main max-w-7xl mx-auto px-4 py-7 space-y-6">
+<section id="analyticsDashboard" class="card p-5 sm:p-6 overflow-hidden">
 <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
 <div>
 <p class="text-xs font-black uppercase tracking-[.14em] text-[var(--primary)]">Dashboard</p>
-<h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers overview</h1>
+<h1 class="dashboard-title text-2xl sm:text-3xl font-black mt-1">HD Careers overview</h1>
 <p class="text-sm text-slate-500 mt-2">Publishing health, job inventory and analytics connections in one place.</p>
 </div>
-<button onclick="refreshDashboard()" class="btn border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button>
+<button onclick="refreshDashboard()" class="mobile-full btn border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button>
 </div>
 
 <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-5">
-<div class="rounded-2xl border border-slate-200 bg-slate-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-slate-400">Published</p><p id="dashTotal" class="text-2xl sm:text-3xl font-black mt-1">—</p></div>
-<div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-emerald-600">Active</p><p id="dashActive" class="text-2xl sm:text-3xl font-black text-emerald-700 mt-1">—</p></div>
-<div class="rounded-2xl border border-red-200 bg-red-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-red-500">Expired</p><p id="dashExpired" class="text-2xl sm:text-3xl font-black text-red-700 mt-1">—</p></div>
-<div class="rounded-2xl border border-blue-200 bg-blue-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-blue-500">Freshers</p><p id="dashFreshers" class="text-2xl sm:text-3xl font-black text-blue-700 mt-1">—</p></div>
-<div class="rounded-2xl border border-violet-200 bg-violet-50 p-4 col-span-2 lg:col-span-1"><p class="text-[11px] font-black uppercase tracking-wide text-violet-500">Experienced</p><p id="dashExperienced" class="text-2xl sm:text-3xl font-black text-violet-700 mt-1">—</p></div>
+<div class="metric-card rounded-2xl border border-slate-200 bg-slate-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-slate-400">Published</p><p id="dashTotal" class="text-2xl sm:text-3xl font-black mt-1">—</p></div>
+<div class="metric-card rounded-2xl border border-emerald-200 bg-emerald-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-emerald-600">Active</p><p id="dashActive" class="text-2xl sm:text-3xl font-black text-emerald-700 mt-1">—</p></div>
+<div class="metric-card rounded-2xl border border-red-200 bg-red-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-red-500">Expired</p><p id="dashExpired" class="text-2xl sm:text-3xl font-black text-red-700 mt-1">—</p></div>
+<div class="metric-card rounded-2xl border border-blue-200 bg-blue-50 p-4"><p class="text-[11px] font-black uppercase tracking-wide text-blue-500">Freshers</p><p id="dashFreshers" class="text-2xl sm:text-3xl font-black text-blue-700 mt-1">—</p></div>
+<div class="metric-card rounded-2xl border border-violet-200 bg-violet-50 p-4 col-span-2 lg:col-span-1"><p class="text-[11px] font-black uppercase tracking-wide text-violet-500">Experienced</p><p id="dashExperienced" class="text-2xl sm:text-3xl font-black text-violet-700 mt-1">—</p></div>
 </div>
 
 <div class="grid lg:grid-cols-3 gap-3 mt-4">
-<div class="rounded-2xl border border-slate-200 bg-white p-4">
+<div class="integration-card rounded-2xl border border-slate-200 bg-white p-4">
 <div class="flex items-start justify-between gap-3">
 <div><p class="font-black">Google Analytics 4</p><p class="text-xs text-slate-500 mt-1">Realtime users, page views, sources and devices</p></div>
 <span id="gaStatus" class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-circle-check"></i> Connected</span>
@@ -103,7 +119,7 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-sm">Open Google Analytics <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
 </div>
 
-<div class="rounded-2xl border border-slate-200 bg-white p-4">
+<div class="integration-card rounded-2xl border border-slate-200 bg-white p-4">
 <div class="flex items-start justify-between gap-3">
 <div><p class="font-black">Microsoft Clarity</p><p class="text-xs text-slate-500 mt-1">Recordings, heatmaps, clicks and scroll behavior</p></div>
 <span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-circle-check"></i> Connected</span>
@@ -111,7 +127,7 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <a href="https://clarity.microsoft.com/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-sm">Open Clarity <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
 </div>
 
-<div class="rounded-2xl border border-blue-200 bg-blue-50 p-4">
+<div class="metric-card rounded-2xl border border-blue-200 bg-blue-50 p-4">
 <div class="flex items-start justify-between gap-3">
 <div><p class="font-black text-blue-950">Website traffic</p><p class="text-xs text-blue-700 mt-1">Live GA4 data from the secure Admin API</p></div>
 <span id="trafficStatus" class="badge bg-white text-blue-700 border border-blue-200"><i class="fa-solid fa-spinner fa-spin"></i> Loading</span>
@@ -141,7 +157,7 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 
 <div class="grid lg:grid-cols-[1fr_auto] gap-3 mt-5 items-stretch">
 <textarea id="linksInput" rows="6" class="field resize-y" placeholder="https://company1.com/careers/job/123\nhttps://company2.com/jobs/456\nhttps://company3.com/job/789" oninput="countLinks()"></textarea>
-<div class="flex lg:flex-col gap-2 lg:w-48">
+<div class="flex flex-col sm:flex-row lg:flex-col gap-2 lg:w-48">
 <button id="generateBtn" onclick="generateAll()" class="btn flex-1 bg-[var(--primary)] hover:bg-blue-700 text-white px-5 py-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate All</button>
 <button onclick="addManual()" class="btn flex-1 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-5 py-3"><i class="fa-solid fa-plus mr-2"></i>Manual Job</button>
 <button onclick="clearBatch()" class="btn flex-1 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 px-5 py-3"><i class="fa-solid fa-rotate-left mr-2"></i>Clear</button>
