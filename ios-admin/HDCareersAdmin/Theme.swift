@@ -109,6 +109,43 @@ struct CompanyLogoView: View {
     let job: Job
     var size: CGFloat = 46
 
+    private let localLogos: [String: String] = [
+        "Infosys": "infosys.svg",
+        "Zoho": "zoho.svg",
+        "TCS": "tcs.svg",
+        "Amazon": "amazon.svg",
+        "Wipro": "wipro.svg",
+        "Cognizant": "cognizant.svg",
+        "Swiggy": "swiggy.svg",
+        "HCLTech": "hcltech.svg",
+        "Deloitte": "deloitte.svg",
+        "ISRO": "isro.svg"
+    ]
+
+    private let companyDomains: [String: String] = [
+        "Amazon.jobs": "amazon.com",
+        "Amazon": "amazon.com",
+        "IBM": "ibm.com",
+        "PwC": "pwc.com",
+        "PWC": "pwc.com",
+        "Accenture": "accenture.com",
+        "Infosys": "infosys.com",
+        "Zoho": "zoho.com",
+        "TCS": "tcs.com",
+        "Wipro": "wipro.com",
+        "Cognizant": "cognizant.com",
+        "HCLTech": "hcltech.com",
+        "Deloitte": "deloitte.com",
+        "ISRO": "isro.gov.in",
+        "Cohere Health": "coherehealth.com",
+        "Hevo Data": "hevodata.com",
+        "Qualcomm": "qualcomm.com",
+        "SAP": "sap.com",
+        "Priceline": "priceline.com",
+        "Canonical": "canonical.com",
+        "IndiGo": "goindigo.in"
+    ]
+
     private var mark: String {
         if let logo = job.logo, let first = logo.first, !first.isEmpty {
             return first
@@ -127,9 +164,34 @@ struct CompanyLogoView: View {
         return HDTheme.blue
     }
 
+    private var remoteURL: URL? {
+        if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !raw.isEmpty,
+           let url = URL(string: raw) {
+            return url
+        }
+
+        if let company = job.company, let file = localLogos[company] {
+            return URL(string: "https://hdcareers.in/assets/logos/\(file)")
+        }
+
+        let company = job.company ?? ""
+        var domain = companyDomains[company] ?? job.domain ?? ""
+        domain = domain
+            .replacingOccurrences(of: "https://", with: "")
+            .replacingOccurrences(of: "http://", with: "")
+            .split(separator: "/")
+            .first
+            .map(String.init) ?? ""
+
+        guard !domain.isEmpty else { return nil }
+        let encoded = ("https://" + domain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? domain
+        return URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=128")
+    }
+
     var body: some View {
         Group {
-            if let raw = job.logoUrl, let url = URL(string: raw), !raw.isEmpty {
+            if let url = remoteURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
