@@ -71,7 +71,13 @@ LOGO_DOMAINS = {
     "IBM": "ibm.com", "PWC": "pwc.com", "PwC": "pwc.com", "PricewaterhouseCoopers Services LLP": "pwc.com",
     "Accenture": "accenture.com", "Infosys": "infosys.com", "Zoho": "zoho.com", "TCS": "tcs.com",
     "Wipro": "wipro.com", "Cognizant": "cognizant.com", "Swiggy": "swiggy.com", "HCLTech": "hcltech.com",
-    "Deloitte": "deloitte.com", "ISRO": "isro.gov.in", "Citi": "citi.com", "Cohere Health": "coherehealth.com"
+    "Deloitte": "deloitte.com", "ISRO": "isro.gov.in", "Citi": "citi.com", "Cohere Health": "coherehealth.com",
+    "Hevo Data": "hevodata.com", "Qualcomm": "qualcomm.com", "SAP": "sap.com", "Priceline": "priceline.com",
+    "Canonical": "canonical.com", "IndiGo": "goindigo.in", "DRDO – VRDE": "drdo.gov.in", "DRDO – LRDE": "drdo.gov.in",
+    "DRDO – DYSL-SM": "drdo.gov.in", "DRDO – Research Centre Imarat (RCI)": "drdo.gov.in",
+    "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "actrec.gov.in",
+    "Electronics Corporation of India Limited (ECIL)": "ecil.co.in", "Cochin Shipyard Limited": "cochinshipyard.in",
+    "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
 
 PAGE_TEMPLATE = Template("""<!DOCTYPE html>
