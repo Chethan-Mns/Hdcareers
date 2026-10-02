@@ -153,13 +153,18 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 
 <div class="metric-card rounded-2xl border border-blue-200 bg-blue-50 p-4">
 <div class="flex items-start justify-between gap-3">
-<div><p class="font-black text-blue-950">Website traffic</p><p class="text-xs text-blue-700 mt-1">Live GA4 data from the secure Admin API</p></div>
+<div><p class="font-black text-blue-950">Website traffic</p><p id="trafficPeriodText" class="text-xs text-blue-700 mt-1">Last 7 days · GA4</p></div>
 <span id="trafficStatus" class="badge bg-white text-blue-700 border border-blue-200"><i class="fa-solid fa-spinner fa-spin"></i> Loading</span>
+</div>
+<div class="flex gap-1.5 mt-3" id="dashTrafficRanges">
+<button data-days="1" onclick="setDashboardTrafficDays(1)" class="btn border border-blue-200 bg-white text-blue-700 px-2.5 py-1.5 text-[11px]">24H</button>
+<button data-days="7" onclick="setDashboardTrafficDays(7)" class="btn bg-blue-700 text-white px-2.5 py-1.5 text-[11px]">7D</button>
+<button data-days="30" onclick="setDashboardTrafficDays(30)" class="btn border border-blue-200 bg-white text-blue-700 px-2.5 py-1.5 text-[11px]">30D</button>
 </div>
 <div class="grid grid-cols-3 gap-2 mt-4">
 <div><p class="text-[10px] uppercase font-black text-blue-500">Live now</p><p id="dashRealtime" class="text-xl font-black text-blue-950">—</p></div>
-<div><p class="text-[10px] uppercase font-black text-blue-500">7D users</p><p id="dashVisitors" class="text-xl font-black text-blue-950">—</p></div>
-<div><p class="text-[10px] uppercase font-black text-blue-500">7D views</p><p id="dashPageviews" class="text-xl font-black text-blue-950">—</p></div>
+<div><p id="dashVisitorsLabel" class="text-[10px] uppercase font-black text-blue-500">7D users</p><p id="dashVisitors" class="text-xl font-black text-blue-950">—</p></div>
+<div><p id="dashViewsLabel" class="text-[10px] uppercase font-black text-blue-500">7D views</p><p id="dashPageviews" class="text-xl font-black text-blue-950">—</p></div>
 </div>
 <p class="text-xs text-blue-800 mt-3 truncate">Top page: <strong id="dashTopPage">—</strong></p>
 <a href="/admin/traffic.html" class="btn mt-4 inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-sm">View traffic dashboard <i class="fa-solid fa-chart-line ml-2"></i></a>
@@ -390,11 +395,21 @@ const job=existingJobs.find(j=>String(j.page||'').replace(/^\/+/, '')===normaliz
 if(job)return job.company+' — '+job.role;
 return normalized.replace(/^jobs\//,'').replace(/\.html$/,'').replace(/[-_]+/g,' ').replace(/\b\w/g,m=>m.toUpperCase())||p
 }
-async function loadDashboardTraffic(){
+let dashboardTrafficDays=7;
+function setDashboardTrafficDays(days){
+dashboardTrafficDays=days;
+document.querySelectorAll('#dashTrafficRanges [data-days]').forEach(btn=>{
+const active=Number(btn.dataset.days)===days;
+btn.className='btn '+(active?'bg-blue-700 text-white':'border border-blue-200 bg-white text-blue-700')+' px-2.5 py-1.5 text-[11px]'
+});
+loadDashboardTraffic(days)
+}
+async function loadDashboardTraffic(days=dashboardTrafficDays){
+dashboardTrafficDays=days;
 const status=document.getElementById('trafficStatus');
 if(status){status.className='badge bg-white text-blue-700 border border-blue-200';status.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Loading'}
 try{
-const r=await fetch('/api/admin/traffic?days=7',{cache:'no-store'});
+const r=await fetch('/api/admin/traffic?days='+days,{cache:'no-store'});
 const d=await r.json().catch(()=>({}));
 if(r.status===401){showLogin('Your admin session expired. Sign in again.');return}
 if(!r.ok)throw new Error(d.error||'Could not load GA4 traffic');
@@ -402,6 +417,10 @@ const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 document.getElementById('dashRealtime').textContent=fmt(d.realtimeUsers);
 document.getElementById('dashVisitors').textContent=fmt(d.totals?.visitors);
 document.getElementById('dashPageviews').textContent=fmt(d.totals?.pageviews);
+const period=days===1?'24H':days+'D';
+document.getElementById('dashVisitorsLabel').textContent=period+' users';
+document.getElementById('dashViewsLabel').textContent=period+' views';
+document.getElementById('trafficPeriodText').textContent=(days===1?'Today':'Last '+days+' days')+' · GA4';
 const topPath=d.pages?.[0]?.requestPath||'';const topEl=document.getElementById('dashTopPage');topEl.innerHTML=topPath?'<a href="'+esc(topPath)+'" target="_blank" rel="noopener" class="hover:underline">'+esc(prettyTrafficPage(topPath))+' <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>':'No data yet';topEl.title=topPath;
 if(status){status.className='badge bg-green-50 text-green-700 border border-green-200';status.innerHTML='<i class="fa-solid fa-circle-check"></i> Live'}
 }catch(e){
