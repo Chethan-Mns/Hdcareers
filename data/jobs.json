@@ -1597,8 +1597,8 @@
       "Support performance, maintainability and operational reliability of data workflows"
     ],
     "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer",
-    "status": "active",
-    "verifiedDate": "29 Sep 2026",
+    "status": "expired",
+    "verifiedDate": "2 Oct 2026",
     "sourceName": "Official Accenture Careers page",
     "skills": [
       "AWS Glue",
@@ -1608,7 +1608,14 @@
       "Cloud data pipelines"
     ],
     "who": "Data engineers with at least three years of relevant experience and hands-on AWS Glue and PySpark skills are the closest match to the official requirements.",
-    "workMode": "Office-based / as specified by Accenture"
+    "workMode": "Office-based / as specified by Accenture",
+    "availabilityCheck": {
+      "id": 18,
+      "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5478225-S2003141_en&title=Data+Engineer",
+      "checkedAt": "2026-10-02T11:26:18.470Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review."
+    }
   },
   {
     "id": 17,
