@@ -298,11 +298,11 @@ def render_expanded_guidance(job: dict) -> str:
 
 def logo_onerror(company: str, domain: str) -> str:
     filename = LOCAL_LOGOS.get(company)
-    _, duck = logo_sources(company, domain)
-    fallbacks = [duck]
+    google, duck = logo_sources(company, domain)
+    fallbacks = []
     if filename:
         fallbacks.append(f"../assets/logos/{filename}")
-    fallbacks.append("../assets/hd-careers-logo.png")
+    fallbacks.extend([google, duck, "../assets/hd-careers-logo.png"])
     encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
     return (
         "onerror='const f=" + encoded + ";const i=+(this.dataset.fallback||0);"
@@ -411,6 +411,9 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
     favicon_url, _ = logo_sources(company, str(job["domain"]))
+    local_logo = LOCAL_LOGOS.get(company)
+    if local_logo:
+        favicon_url = f"../assets/logos/{local_logo}"
     if str(job.get("logoUrl", "")).strip():
         favicon_url = str(job["logoUrl"]).strip()
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
