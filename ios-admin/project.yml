@@ -33,7 +33,8 @@ targets:
           DEST="$SRCROOT/HDCareersAdmin/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png"
           if [ -f "$SRC" ]; then
             cp "$SRC" "$DEST"
-            /usr/bin/sips -Z 824 "$DEST" >/dev/null\n            /usr/bin/sips -p 1024 1024 --padColor F7FAFF "$DEST" >/dev/null
+            /usr/bin/sips -Z 824 "$DEST" >/dev/null
+            /usr/bin/sips -p 1024 1024 --padColor F7FAFF "$DEST" >/dev/null
           fi
 schemes:
   HDCareersAdmin:
