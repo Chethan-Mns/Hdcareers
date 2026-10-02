@@ -46,7 +46,7 @@ struct LoginView: View {
     @EnvironmentObject private var state: AppState
     @State private var username = ""
     @State private var password = ""
-    @State private var rememberWithFaceID = true
+    @State private var rememberWithFaceID = false
 
     private var canUseFaceID: Bool {
         BiometricAuth.isAvailable
@@ -103,6 +103,16 @@ struct LoginView: View {
                                 .foregroundStyle(.secondary)
                             SecureField("Password", text: $password)
                                 .textContentType(.password)
+                                .submitLabel(.go)
+                                .onSubmit {
+                                    Task {
+                                        await state.login(
+                                            username: username,
+                                            password: password,
+                                            rememberWithFaceID: rememberWithFaceID
+                                        )
+                                    }
+                                }
                         }
                         .padding()
                         .background(Color.white)
@@ -110,6 +120,20 @@ struct LoginView: View {
                         .overlay {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .stroke(Color.black.opacity(0.08))
+                        }
+
+                        if let loginStatus = state.loginStatus, !loginStatus.isEmpty {
+                            HStack(alignment: .top, spacing: 8) {
+                                Image(systemName: "exclamationmark.circle.fill")
+                                    .foregroundStyle(HDTheme.red)
+                                Text(loginStatus)
+                                    .font(.footnote.weight(.semibold))
+                                    .foregroundStyle(HDTheme.red)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(11)
+                            .background(HDTheme.red.opacity(0.08))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
 
                         if canUseFaceID {
