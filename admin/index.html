@@ -83,7 +83,7 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <h1 class="text-2xl sm:text-3xl font-black mt-1">HD Careers overview</h1>
 <p class="text-sm text-slate-500 mt-2">Publishing health, job inventory and analytics connections in one place.</p>
 </div>
-<button onclick="loadExistingJobs()" class="btn border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button>
+<button onclick="refreshDashboard()" class="btn border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button>
 </div>
 
 <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-5">
@@ -98,10 +98,9 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <div class="rounded-2xl border border-slate-200 bg-white p-4">
 <div class="flex items-start justify-between gap-3">
 <div><p class="font-black">Google Analytics 4</p><p class="text-xs text-slate-500 mt-1">Realtime users, page views, sources and devices</p></div>
-<span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-circle-check"></i> Connected</span>
+<span id="gaStatus" class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-circle-check"></i> Connected</span>
 </div>
-<p class="text-xs font-mono text-slate-500 mt-4">G-0QQR0MNHJR</p>
-<a href="https://analytics.google.com/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-sm">Open GA Realtime <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
+<a href="https://analytics.google.com/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-sm">Open Google Analytics <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
 </div>
 
 <div class="rounded-2xl border border-slate-200 bg-white p-4">
@@ -109,16 +108,21 @@ body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-ap
 <div><p class="font-black">Microsoft Clarity</p><p class="text-xs text-slate-500 mt-1">Recordings, heatmaps, clicks and scroll behavior</p></div>
 <span class="badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-circle-check"></i> Connected</span>
 </div>
-<p class="text-xs font-mono text-slate-500 mt-4">yrcbz82zju</p>
-<a href="https://clarity.microsoft.com/projects/view/yrcbz82zju/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-sm">Open Clarity <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
+<a href="https://clarity.microsoft.com/" target="_blank" rel="noopener" class="btn mt-4 inline-flex items-center bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-sm">Open Clarity <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
 </div>
 
-<div class="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+<div class="rounded-2xl border border-blue-200 bg-blue-50 p-4">
 <div class="flex items-start justify-between gap-3">
-<div><p class="font-black text-amber-950">Traffic inside Admin</p><p class="text-xs text-amber-800 mt-1">GA4 tracking is live, but private traffic totals require the secure GA4 Data API.</p></div>
-<span class="badge bg-white text-amber-700 border border-amber-200">API pending</span>
+<div><p class="font-black text-blue-950">Website traffic</p><p class="text-xs text-blue-700 mt-1">Live GA4 data from the secure Admin API</p></div>
+<span id="trafficStatus" class="badge bg-white text-blue-700 border border-blue-200"><i class="fa-solid fa-spinner fa-spin"></i> Loading</span>
 </div>
-<p class="text-xs text-amber-800 mt-4 leading-relaxed">The dashboard is ready for visitor/page-view cards once GA4 API credentials are connected. Tracking IDs alone cannot securely read private analytics data.</p>
+<div class="grid grid-cols-3 gap-2 mt-4">
+<div><p class="text-[10px] uppercase font-black text-blue-500">Live now</p><p id="dashRealtime" class="text-xl font-black text-blue-950">—</p></div>
+<div><p class="text-[10px] uppercase font-black text-blue-500">7D users</p><p id="dashVisitors" class="text-xl font-black text-blue-950">—</p></div>
+<div><p class="text-[10px] uppercase font-black text-blue-500">7D views</p><p id="dashPageviews" class="text-xl font-black text-blue-950">—</p></div>
+</div>
+<p class="text-xs text-blue-800 mt-3 truncate">Top page: <strong id="dashTopPage">—</strong></p>
+<a href="/admin/traffic.html" class="btn mt-4 inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-sm">View traffic dashboard <i class="fa-solid fa-chart-line ml-2"></i></a>
 </div>
 </div>
 
@@ -260,6 +264,27 @@ Object.entries(values).forEach(([id,value])=>{const el=document.getElementById(i
 const updated=document.getElementById('dashUpdated');
 if(updated)updated.textContent='Updated '+new Date().toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
 }
+async function loadDashboardTraffic(){
+const status=document.getElementById('trafficStatus');
+if(status){status.className='badge bg-white text-blue-700 border border-blue-200';status.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Loading'}
+try{
+const r=await fetch('/api/admin/traffic?days=7',{cache:'no-store'});
+const d=await r.json().catch(()=>({}));
+if(r.status===401){showLogin('Your admin session expired. Sign in again.');return}
+if(!r.ok)throw new Error(d.error||'Could not load GA4 traffic');
+const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
+document.getElementById('dashRealtime').textContent=fmt(d.realtimeUsers);
+document.getElementById('dashVisitors').textContent=fmt(d.totals?.visitors);
+document.getElementById('dashPageviews').textContent=fmt(d.totals?.pageviews);
+document.getElementById('dashTopPage').textContent=d.pages?.[0]?.requestPath||'No data yet';
+if(status){status.className='badge bg-green-50 text-green-700 border border-green-200';status.innerHTML='<i class="fa-solid fa-circle-check"></i> Live'}
+}catch(e){
+['dashRealtime','dashVisitors','dashPageviews'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='—'});
+const top=document.getElementById('dashTopPage');if(top)top.textContent='Unavailable';
+if(status){status.className='badge bg-red-50 text-red-700 border border-red-200';status.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i> Error'}
+}
+}
+async function refreshDashboard(){await Promise.all([loadExistingJobs(),loadDashboardTraffic()])}
 function countLinks(){const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);document.getElementById('linkCount').textContent=lines.length}
 function normalizeUrl(s){try{const u=new URL(s);u.hash='';return u.href.replace(/\/$/,'')}catch{return String(s||'').trim().replace(/\/$/,'')}}
 async function loadExistingJobs(){try{const r=await fetch('/data/jobs.json',{cache:'no-store'});if(r.ok){const d=await r.json();existingJobs=Array.isArray(d)?d:[]}}catch(e){existingJobs=[]}renderDashboard()}
@@ -510,7 +535,7 @@ const r=await fetch('/api/admin/login',{method:'POST',headers:{'content-type':'a
 const body=await r.json().catch(()=>({}));
 if(!r.ok){err.textContent=body.error||'Sign in failed.';err.classList.remove('hidden');return}
 document.getElementById('loginPassword').value='';
-showAdmin();await loadExistingJobs();countLinks();render();
+showAdmin();await refreshDashboard();countLinks();render();
 }catch{err.textContent='Could not reach the login service.';err.classList.remove('hidden')}
 finally{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-lock mr-2"></i>Sign In'}
 }
@@ -522,7 +547,7 @@ async function initAdmin(){
 try{
 const r=await fetch('/api/admin/session',{cache:'no-store'});
 const body=await r.json().catch(()=>({authenticated:false}));
-if(r.ok&&body.authenticated){showAdmin();await loadExistingJobs();countLinks();render()}else showLogin();
+if(r.ok&&body.authenticated){showAdmin();await refreshDashboard();countLinks();render()}else showLogin();
 }catch{showLogin('Could not verify your admin session.')}
 }
 initAdmin();
