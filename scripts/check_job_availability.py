@@ -120,6 +120,34 @@ def main():
             job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
+    if args.write:
+        by_id = {j.get('id'): j for j in jobs}
+        checked_at = datetime.now(timezone.utc).isoformat()
+        details = []
+        for result in results:
+            job = by_id.get(result.get('id'), {})
+            details.append({
+                'id': result.get('id'),
+                'company': job.get('company', ''),
+                'role': job.get('role', ''),
+                'page': job.get('page', ''),
+                'url': result.get('url', ''),
+                'state': result.get('state', 'review'),
+                'reason': result.get('reason', ''),
+                'checkedAt': result.get('checkedAt', checked_at),
+            })
+        states = [x.get('state') for x in details]
+        summary = {
+            'checkedAt': checked_at,
+            'checked': len(details),
+            'active': states.count('active'),
+            'expired': states.count('expired'),
+            'review': states.count('review'),
+            'changedExpired': states.count('expired'),
+            'items': details,
+        }
+        status_path = ROOT / 'data' / 'availability-status.json'
+        status_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
     if changed: path.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + '\n')
     if args.before and any(r['state'] != 'active' for r in results): raise SystemExit('New job verification failed; publishing stopped')
 
