@@ -1253,12 +1253,13 @@ function scrollCategories(dir){const el=document.getElementById('filterTabs');if
 function jobCategories(j){
 const explicit=Array.isArray(j.categories)?j.categories:[];
 const out=new Set(explicit);
-const text=(String(j.role||'')+' '+String(j.roleTag||'')+' '+String(j.desc||'')+' '+String(j.elig||'')+' '+String((j.skills||[]).join(' '))).toLowerCase();
-if(j.cat==='govt'||/government|public sector|psu|drdo|isro|railway|bank recruitment/.test(text))out.add('govt');
-if(j.cat==='internship'||/intern(ship)?|trainee intern/.test(text))out.add('internship');
-if(j.cat==='apprenticeship'||/apprentice|apprenticeship/.test(text))out.add('apprenticeship');
-if(j.cat==='walkin'||/walk[- ]?in|walk in interview/.test(text))out.add('walkin');
-const tech=/software|developer|engineer|data|cloud|java|python|\.net|dotnet|machine learning|ai\b|analytics|devops|cyber|security|vlsi|hardware|soc\b|network|database|sql|technology|technical support|application development|fullstack|backend|frontend|programmer/.test(text);
+const roleText=(String(j.role||'')+' '+String(j.roleTag||'')+' '+String((j.skills||[]).join(' '))).toLowerCase();
+const fullText=(roleText+' '+String(j.desc||'')+' '+String(j.elig||'')).toLowerCase();
+if(j.cat==='govt'||/\bgovernment\b|\bpublic sector\b|\bpsu\b|\bdrdo\b|\bisro\b|\brailway\b|\bbank recruitment\b/.test(fullText))out.add('govt');
+if(j.cat==='internship'||/\binternship\b|\bintern\b/.test(roleText))out.add('internship');
+if(j.cat==='apprenticeship'||/\bapprentice(ship)?\b/.test(roleText))out.add('apprenticeship');
+if(j.cat==='walkin'||/\bwalk[- ]?in\b|\bwalk in interview\b/.test(fullText))out.add('walkin');
+const tech=/\bsoftware\b|\bdeveloper\b|\bengineer\b|\bcloud\b|\bjava\b|\bpython\b|\.net\b|\bdotnet\b|\bmachine learning\b|\bdata engineer\b|\bdata architect\b|\bdevops\b|\bcyber\b|\bsecurity engineer\b|\bvlsi\b|\bhardware\b|\bsoc\b|\bdatabase\b|\bsql\b|\btechnical support\b|\bapplication development\b|\bfullstack\b|\bbackend\b|\bfrontend\b|\bprogrammer\b/.test(roleText);
 if(j.cat==='it'||tech)out.add('it');else out.add('nonit');
 return [...out]
 }
