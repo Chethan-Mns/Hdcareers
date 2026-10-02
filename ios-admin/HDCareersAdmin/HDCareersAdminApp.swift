@@ -6,6 +6,7 @@ final class AppState: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isBusy = false
     @Published var alertMessage: String?
+    @Published var loginStatus: String?
     @Published var jobs: [Job] = []
     @Published var traffic: TrafficResponse?
     @Published var automationHealth: AutomationHealth?
@@ -32,9 +33,11 @@ final class AppState: ObservableObject {
     }
 
     func login(username: String, password: String, rememberWithFaceID: Bool) async {
-        guard !username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-              !password.isEmpty else {
-            alertMessage = "Enter your admin username and password."
+        loginStatus = nil
+        let user = username.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !user.isEmpty, !password.isEmpty else {
+            loginStatus = "Enter your admin username and password."
             return
         }
 
@@ -42,14 +45,20 @@ final class AppState: ObservableObject {
         defer { isBusy = false }
 
         do {
-            try await api.login(username: username, password: password)
-            if rememberWithFaceID && BiometricAuth.isAvailable {
-                try CredentialVault.save(username: username, password: password)
-            }
+            try await api.login(username: user, password: password)
             isAuthenticated = true
+
+            if rememberWithFaceID && BiometricAuth.isAvailable {
+                do {
+                    try CredentialVault.save(username: user, password: password)
+                } catch {
+                    alertMessage = "Signed in successfully, but Face ID could not be enabled on this iPhone."
+                }
+            }
+
             await refreshAll()
         } catch {
-            alertMessage = error.localizedDescription
+            loginStatus = error.localizedDescription
         }
     }
 
