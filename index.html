@@ -59,6 +59,7 @@ a{text-decoration:none}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
 #resultsSection{scroll-margin-top:96px}
+.job-card,#noResults{scroll-margin-top:104px}
 .soft-enter{animation:softEnter .4s cubic-bezier(.22,1,.36,1) both}
 @keyframes softEnter{from{opacity:0;transform:translateY(10px) scale(.992)}to{opacity:1;transform:none}}
 .modal-card{animation:modalIn .26s cubic-bezier(.22,1,.36,1) both}
@@ -111,7 +112,8 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 ::-webkit-scrollbar-thumb{background:#9aa8ba;border-radius:999px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal-on-scroll{opacity:1!important;transform:none!important}}
 </style>
-<script defer src="/assets/analytics.js"></script>\n</head>
+<script defer src="/assets/analytics.js"></script>
+</head>
 <body id="top">
 
 <div class="header-safe text-white text-xs sm:text-sm" style="background:linear-gradient(90deg,#0758c9,#0b6fde)">
@@ -1251,9 +1253,9 @@ function scrollCategories(dir){const el=document.getElementById('filterTabs');if
 function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l}</button>`).join('')}
 function setCat(k){activeCat=k;document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat===k));renderJobs();requestAnimationFrame(scrollToResults)}
 function syncLevelTone(){const el=document.getElementById('expTypeFilter');if(!el)return;el.classList.toggle('text-slate-400',el.value==='all');el.classList.toggle('text-slate-700',el.value!=='all')}
-function scrollToResults(){const el=document.getElementById('resultsSection');if(!el)return;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;el.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})}
+function scrollToResults(){const grid=document.getElementById('jobGrid');const noResults=document.getElementById('noResults');const firstCard=grid?.querySelector('.job-card');const target=firstCard||(noResults&&!noResults.classList.contains('hidden')?noResults:document.getElementById('resultsSection'));if(!target)return;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})}
 function filterAndScrollNow(){clearTimeout(filterScrollTimer);renderJobs();requestAnimationFrame(scrollToResults)}
-function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(scrollToResults,450)}
+function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(()=>requestAnimationFrame(scrollToResults),350)}
 function companyDomain(j){const company=String(j.company||"").trim();let d=String(COMPANY_LOGO_DOMAINS[company]||j.domain||"").trim().toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"");if(/^(?:careers?|jobs?|usijobs|global|careersglobal)\./.test(d)&&d.split(".").length>2)d=d.split(".").slice(1).join(".");return d}
 function companyInternetLogos(j){const d=companyDomain(j);if(!d)return[];return[`https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F${encodeURIComponent(d)}&sz=128`,`https://icons.duckduckgo.com/ip3/${encodeURIComponent(d)}.ico`]}
 function localCompanyLogo(j){const name=Object.keys(LOCAL_LOGOS).find(k=>k.toLowerCase()===String(j.company||"").toLowerCase());return name?`assets/logos/${LOCAL_LOGOS[name]}`:""}
