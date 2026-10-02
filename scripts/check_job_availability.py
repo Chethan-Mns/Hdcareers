@@ -16,7 +16,7 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 ROOT = Path(__file__).resolve().parents[1]
 CLOSED = re.compile(r'\b(?:this (?:job|position|vacancy) (?:is no longer available|has been filled|has expired|is closed)|no longer accepting applications|applications (?:are |have )?closed|job not found)\b', re.I)
 APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit(?: application| response| form)?)\b', re.I)
-BLOCKED = re.compile(r'captcha|access denied|verify (?:that )?you are human|checking your browser', re.I)
+BLOCKED = re.compile(r'\b(?:access denied|verify (?:that )?you are human|checking your browser|complete (?:the )?captcha|captcha (?:required|challenge)|security verification required)\b', re.I)
 
 class Visible(HTMLParser):
     def __init__(self):
