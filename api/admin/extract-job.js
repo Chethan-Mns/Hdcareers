@@ -262,6 +262,12 @@ function organizationLogo(jsonRoots,structured,company,html,base){
   }
 
   const companyKey=normalizeSpace(company).toLowerCase();
+  let organizationSite="";
+  const directOrg=structured&&structured.hiringOrganization;
+  if(directOrg){
+    organizationSite=logoValue(directOrg.url,base)||logoValue(directOrg.sameAs,base);
+  }
+
   for(const root of jsonRoots){
     for(const obj of walkObjects(root,[])){
       const types=Array.isArray(obj&&obj["@type"])?obj["@type"]:[obj&&obj["@type"]];
@@ -270,7 +276,19 @@ function organizationLogo(jsonRoots,structured,company,html,base){
       if(companyKey&&name&&name!==companyKey&&!name.includes(companyKey)&&!companyKey.includes(name))continue;
       const hit=logoValue(obj&&obj.logo,base)||logoValue(obj&&obj.image,base);
       if(hit)return hit;
+      if(!organizationSite){
+        organizationSite=logoValue(obj&&obj.url,base)||logoValue(obj&&obj.sameAs,base);
+      }
     }
+  }
+
+  if(organizationSite){
+    try{
+      const host=new URL(organizationSite).hostname.replace(/^www\./,"");
+      if(host){
+        return "https://www.google.com/s2/favicons?domain_url="+encodeURIComponent("https://"+host)+"&sz=128";
+      }
+    }catch{}
   }
 
   const icon=documentIcon(html,base);
