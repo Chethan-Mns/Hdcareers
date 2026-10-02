@@ -596,7 +596,7 @@ struct JobRow: View {
     private func initials(_ company: String) -> String {
         let parts = company.split(separator: " ")
         if parts.count >= 2 {
-            return String(parts[0].prefix(1) + parts[1].prefix(1)).uppercased()
+            return (String(parts[0].prefix(1)) + String(parts[1].prefix(1))).uppercased()
         }
         return String(company.prefix(2)).uppercased()
     }
@@ -635,7 +635,7 @@ struct PublishView: View {
 
     private var parsedLinks: [ParsedAdminLink] {
         let lines = rawLinks
-            .split(whereSeparator: \ .isNewline)
+            .split(whereSeparator: \.isNewline)
             .map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
 
@@ -673,7 +673,7 @@ struct PublishView: View {
                                 Spacer()
                                 StatusPill(
                                     text: "\(readyLinks.count) ready",
-                                    color: readyLinks.isEmpty ? .secondary : HDTheme.green,
+                                    color: readyLinks.isEmpty ? Color.gray : HDTheme.green,
                                     icon: readyLinks.isEmpty ? "link" : "checkmark.circle.fill"
                                 )
                             }
@@ -815,7 +815,7 @@ struct PublishView: View {
 
     private func removeLink(at index: Int) {
         var lines = rawLinks
-            .split(whereSeparator: \ .isNewline)
+            .split(whereSeparator: \.isNewline)
             .map(String.init)
             .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
