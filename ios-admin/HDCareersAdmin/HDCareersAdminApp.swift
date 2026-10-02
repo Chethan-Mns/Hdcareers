@@ -185,6 +185,7 @@ struct HDCareersAdminApp: App {
             }
             .environmentObject(state)
             .tint(HDTheme.blue)
+            .preferredColorScheme(.light)
             .task {
                 if state.isBootstrapping {
                     await state.bootstrap()
