@@ -1241,16 +1241,29 @@ const JOBS = [
   }
 ]
 
-const CATS=[{k:"all",l:"All Jobs"},{k:"it",l:"IT / Software"},{k:"internship",l:"Internships"},{k:"apprenticeship",l:"Apprenticeships"},{k:"campus",l:"Off-Campus"},{k:"remote",l:"Remote / WFH"},{k:"walkin",l:"Walk-ins"},{k:"experienced",l:"Experienced Jobs"},{k:"govt",l:"Government Jobs"}];
+const CATS=[{k:"all",l:"All Jobs"},{k:"it",l:"IT / Software"},{k:"nonit",l:"Non-IT"},{k:"internship",l:"Internships"},{k:"apprenticeship",l:"Apprenticeships"},{k:"govt",l:"Government Jobs"},{k:"walkin",l:"Walk-ins"}];
 const LOCAL_LOGOS={"Infosys":"infosys.svg","Zoho":"zoho.svg","TCS":"tcs.svg","Amazon":"amazon.svg","Wipro":"wipro.svg","Cognizant":"cognizant.svg","Swiggy":"swiggy.svg","HCLTech":"hcltech.svg","Deloitte":"deloitte.svg","ISRO":"isro.svg"};
 const COMPANY_LOGO_DOMAINS={"Amazon.jobs":"amazon.com","Amazon":"amazon.com","NTT Data":"nttdata.com","NTT DATA":"nttdata.com","IBM":"ibm.com","PWC":"pwc.com","PwC":"pwc.com","PricewaterhouseCoopers Services LLP":"pwc.com","Accenture":"accenture.com","Infosys":"infosys.com","Zoho":"zoho.com","TCS":"tcs.com","Wipro":"wipro.com","Cognizant":"cognizant.com","Swiggy":"swiggy.com","HCLTech":"hcltech.com","Deloitte":"deloitte.com","ISRO":"isro.gov.in"};
-const CAT_ICON={it:"fa-laptop-code",internship:"fa-user-graduate",apprenticeship:"fa-screwdriver-wrench",campus:"fa-building",remote:"fa-house-laptop",walkin:"fa-people-arrows",experienced:"fa-briefcase",govt:"fa-landmark"};
-const CAT_LABEL={it:"IT & Software",internship:"Internship",apprenticeship:"Apprenticeship",campus:"Off-Campus",remote:"Remote / WFH",walkin:"Walk-in",experienced:"Experienced",govt:"Government Job"};
+const CAT_ICON={it:"fa-laptop-code",nonit:"fa-briefcase",internship:"fa-user-graduate",apprenticeship:"fa-screwdriver-wrench",campus:"fa-building",remote:"fa-house-laptop",walkin:"fa-people-arrows",experienced:"fa-briefcase",govt:"fa-landmark"};
+const CAT_LABEL={it:"IT & Software",nonit:"Non-IT",internship:"Internship",apprenticeship:"Apprenticeship",campus:"Off-Campus",remote:"Remote / WFH",walkin:"Walk-in",experienced:"Experienced",govt:"Government Job"};
 let activeCat="all";
 let filterScrollTimer=null;
 
 function scrollCategories(dir){const el=document.getElementById('filterTabs');if(!el)return;const amount=Math.max(240,Math.floor(el.clientWidth*.72));el.scrollBy({left:dir*amount,behavior:'smooth'})}
-function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l}</button>`).join('')}
+function jobCategories(j){
+const explicit=Array.isArray(j.categories)?j.categories:[];
+const out=new Set(explicit);
+const text=(String(j.role||'')+' '+String(j.roleTag||'')+' '+String(j.desc||'')+' '+String(j.elig||'')+' '+String((j.skills||[]).join(' '))).toLowerCase();
+if(j.cat==='govt'||/government|public sector|psu|drdo|isro|railway|bank recruitment/.test(text))out.add('govt');
+if(j.cat==='internship'||/intern(ship)?|trainee intern/.test(text))out.add('internship');
+if(j.cat==='apprenticeship'||/apprentice|apprenticeship/.test(text))out.add('apprenticeship');
+if(j.cat==='walkin'||/walk[- ]?in|walk in interview/.test(text))out.add('walkin');
+const tech=/software|developer|engineer|data|cloud|java|python|\.net|dotnet|machine learning|ai\b|analytics|devops|cyber|security|vlsi|hardware|soc\b|network|database|sql|technology|technical support|application development|fullstack|backend|frontend|programmer/.test(text);
+if(j.cat==='it'||tech)out.add('it');else out.add('nonit');
+return [...out]
+}
+function categoryCount(k){if(k==='all')return JOBS.filter(j=>j.status!=='expired').length;return JOBS.filter(j=>j.status!=='expired'&&jobCategories(j).includes(k)).length}
+function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l} <span class="ml-1 opacity-70">(${categoryCount(c.k)})</span></button>`).join('')}
 function setCat(k){activeCat=k;document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat===k));renderJobs();requestAnimationFrame(scrollToResults)}
 function syncLevelTone(){const el=document.getElementById('expTypeFilter');if(!el)return;el.classList.toggle('text-slate-400',el.value==='all');el.classList.toggle('text-slate-700',el.value!=='all')}
 function resultScrollTarget(){const grid=document.getElementById('jobGrid');const noResults=document.getElementById('noResults');return grid?.querySelector('.job-card')||(noResults&&!noResults.classList.contains('hidden')?noResults:document.getElementById('resultsSection'))}
@@ -1285,7 +1298,7 @@ const role=(document.getElementById('roleFilter')?.value||'').trim().toLowerCase
 const company=(document.getElementById('companyFilter')?.value||'').trim().toLowerCase();
 const location=(document.getElementById('locationFilter')?.value||'').trim().toLowerCase();
 let filtered=JOBS.filter(j=>{
-const catOk=activeCat==='all'||j.cat===activeCat;
+const catOk=activeCat==='all'||jobCategories(j).includes(activeCat);
 const text=(j.role+' '+j.roleTag+' '+j.company+' '+j.elig+' '+j.loc+' '+j.batch+' '+j.expType+' '+j.expYears).toLowerCase();
 const termOk=term===''||text.includes(term);
 const expTypeOk=expType==='all'||j.expType===expType;
