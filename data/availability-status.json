@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-02T11:26:39.024Z",
+  "checkedAt": "2026-10-02T11:27:08.784Z",
   "checked": 33,
   "active": 31,
-  "expired": 1,
-  "review": 1,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 0,
+  "changedExpired": 2,
   "items": [
     {
       "id": 47,
@@ -182,9 +182,11 @@
       "role": "Analyst Accounting",
       "page": "jobs/cargill-analyst-accounting-bengaluru-334797.html",
       "url": "https://careers.cargill.com/en/job/bengaluru/analyst-accounting/23251/101319943344",
-      "state": "review",
-      "reason": "Redirected source requires manual verification",
-      "checkedAt": "2026-10-02T11:09:44.964104+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-02T11:27:08.784Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-02T11:27:08.784Z"
     },
     {
       "id": 29,
