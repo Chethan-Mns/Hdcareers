@@ -115,11 +115,21 @@ struct CompanyLogoView: View {
         "TCS": "tcs.svg",
         "Amazon": "amazon.svg",
         "Wipro": "wipro.svg",
-        "Cognizant": "cognizant.svg",
+        "Cognizant": "cognizant-mark.svg",
         "Swiggy": "swiggy.svg",
         "HCLTech": "hcltech.svg",
-        "Deloitte": "deloitte.svg",
+        "Deloitte": "deloitte-mark.svg",
         "ISRO": "isro.svg"
+    ]
+
+    private let directLogos: [String: String] = [
+        "DRDO – VRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+        "DRDO – LRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+        "DRDO – DYSL-SM": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+        "DRDO – Research Centre Imarat (RCI)": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+        "DRDO – Proof & Experimental Establishment (PXE)": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
+        "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "https://actrec.gov.in/themes/actrec/images/SSA/Images/ACTREC_LOGO.png",
+        "Electronics Corporation of India Limited (ECIL)": "https://www.ecil.co.in/images/ECIL_NewLogos2.png"
     ]
 
     private let companyDomains: [String: String] = [
@@ -175,6 +185,10 @@ struct CompanyLogoView: View {
             return URL(string: "https://hdcareers.in/assets/logos/\(file)")
         }
 
+        if let company = job.company, let direct = directLogos[company] {
+            return URL(string: direct)
+        }
+
         let company = job.company ?? ""
         var domain = companyDomains[company] ?? job.domain ?? ""
         domain = domain
@@ -198,7 +212,7 @@ struct CompanyLogoView: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .padding(5)
+                            .padding(3)
                     default:
                         fallback
                     }
