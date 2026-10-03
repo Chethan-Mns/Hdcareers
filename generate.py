@@ -23,6 +23,7 @@ REQUIRED = [
 
 CAT_LABEL = {
     "it": "IT & Software",
+    "nonit": "Non-IT",
     "internship": "Internship",
     "apprenticeship": "Apprenticeship",
     "campus": "Off-Campus",
