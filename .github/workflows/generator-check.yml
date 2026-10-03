@@ -25,6 +25,22 @@ jobs:
       - name: Run generator
         run: python3 generate.py
 
+      - name: Verify resume checker script escaping
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          pages = list(Path("jobs").glob("*.html"))
+          assert pages, "No generated job pages found"
+          bad = "text+='\n'"
+          good = "text+='\\n'"
+          for page in pages:
+              body = page.read_text(encoding="utf-8")
+              assert bad not in body, f"Broken inline JavaScript newline in {page}"
+              if "async function readResumeFile" in body:
+                  assert good in body, f"Missing escaped PDF newline in {page}"
+          print(f"Checked {len(pages)} generated job pages")
+          PY
+
       - name: Verify generated test page when present
         shell: bash
         run: |
