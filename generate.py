@@ -559,13 +559,17 @@ def career_favicon_url(job: dict) -> str:
     if not _career_host_is_trusted(job):
         return ""
     direct = str(job.get("careerIconUrl", "")).strip()
-    if direct.startswith("https://"):
-        return direct
+    return direct if direct.startswith("https://") else ""
+
+
+def career_domain_favicon(job: dict) -> str:
+    if not _career_host_is_trusted(job):
+        return ""
     apply_url = str(job.get("apply", "")).strip()
-    if apply_url.startswith("https://"):
-        encoded = urllib.parse.quote(apply_url, safe="")
-        return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
-    return ""
+    if not apply_url.startswith("https://"):
+        return ""
+    encoded = urllib.parse.quote(apply_url, safe="")
+    return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
 
 
 def logo_sources(company: str, domain: str) -> tuple[str, str]:
@@ -586,13 +590,16 @@ def logo_candidates(job: dict) -> list[str]:
     google, duck = logo_sources(company, domain)
 
     ordered = []
-    if career:
-        ordered.append(career)
     if compact:
         ordered.append(f"../assets/logos/{compact}")
     if direct:
         ordered.append(direct)
+    if career:
+        ordered.append(career)
     ordered.append(google)
+    career_domain = career_domain_favicon(job)
+    if career_domain:
+        ordered.append(career_domain)
     if full.startswith("https://"):
         ordered.append(full)
     if local:
