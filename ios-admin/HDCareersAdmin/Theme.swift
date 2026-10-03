@@ -148,7 +148,6 @@ struct CompanyLogoView: View {
         case "Amazon": return "amazon"
         case "Wipro": return "wipro"
         case "Deloitte": return "deloitte"
-        case "Cognizant": return "cognizant"
         case "Qualcomm": return "qualcomm"
         case "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": return "actrec"
         case "Electronics Corporation of India Limited (ECIL)": return "ecil"
@@ -296,10 +295,6 @@ struct CompanyLogoView: View {
                         .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
                         .frame(width: size * 0.10, height: size * 0.10)
                 }
-            case "cognizant":
-                Text("C")
-                    .font(.system(size: size * 0.50, weight: .black, design: .rounded))
-                    .foregroundStyle(Color(red: 0.10, green: 0.31, blue: 0.63))
             case "qualcomm":
                 Text("Q")
                     .font(.system(size: size * 0.52, weight: .black, design: .rounded))
