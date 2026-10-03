@@ -419,25 +419,26 @@ struct AutomationHealthCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
             HStack {
-                Text("Automation Health")
-                    .font(.headline.weight(.black))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Daily Publishing Batch")
+                        .font(.headline.weight(.black))
+                    Text("One 9 AM run · verify first · deploy once · Telegram")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
                 Spacer()
                 if let slots = state.automationHealth?.slots {
+                    let active = slots.filter(\.enabled).count
                     StatusPill(
-                        text: "\(slots.filter(\.enabled).count)/\(slots.count) running",
-                        color: HDTheme.green,
+                        text: active == 1 ? "1 daily batch" : "\(active) running",
+                        color: active > 0 ? HDTheme.green : Color.gray,
                         icon: "bolt.fill"
                     )
                 }
             }
 
-            if let slots = state.automationHealth?.slots, !slots.isEmpty {
-                ForEach(slots) { slot in
-                    AutomationRow(slot: slot)
-                    if slot.id != slots.last?.id {
-                        Divider()
-                    }
-                }
+            if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+                AutomationRow(slot: slot)
             } else {
                 Text("Automation status will appear after refresh.")
                     .font(.subheadline)
@@ -454,30 +455,72 @@ struct AutomationRow: View {
     private var outcomeColor: Color {
         switch slot.outcome {
         case "published": return HDTheme.green
+        case "partial": return HDTheme.amber
         case "error": return HDTheme.red
         case "no_publish": return HDTheme.amber
+        case "scheduled": return HDTheme.blue
         default: return HDTheme.blue
         }
     }
 
+    private var outcomeLabel: String {
+        if slot.outcome == "scheduled" { return "Ready" }
+        return slot.outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
+    }
+
     var body: some View {
-        HStack(spacing: 10) {
-            Circle()
-                .fill(slot.enabled ? outcomeColor : Color.gray)
-                .frame(width: 9, height: 9)
-            VStack(alignment: .leading, spacing: 2) {
-                Text("\(slot.time) · \(slot.title)")
-                    .font(.subheadline.weight(.bold))
-                Text(slot.lastRunAt.map { "Last: \(formatAdminDate($0))" } ?? "Next scheduled run")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+        VStack(alignment: .leading, spacing: 11) {
+            HStack(spacing: 10) {
+                Circle()
+                    .fill(slot.enabled ? outcomeColor : Color.gray)
+                    .frame(width: 9, height: 9)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("\(slot.time) · \(slot.title)")
+                        .font(.subheadline.weight(.black))
+                    if let target = slot.target, !target.isEmpty {
+                        Text(target)
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(HDTheme.blue)
+                    }
+                }
+                Spacer()
+                StatusPill(text: outcomeLabel, color: outcomeColor)
             }
-            Spacer()
-            if let outcome = slot.outcome {
-                StatusPill(text: outcome.replacingOccurrences(of: "_", with: " ").capitalized, color: outcomeColor)
+
+            if let mix = slot.mix, !mix.isEmpty {
+                Text(mix.joined(separator: "  •  "))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let delivery = slot.delivery, !delivery.isEmpty {
+                Label(delivery, systemImage: "arrow.triangle.branch")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(HDTheme.green)
+            }
+
+            HStack {
+                if let next = slot.nextRunAt {
+                    Label("Next \(formatAdminDate(next))", systemImage: "calendar.badge.clock")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                if let last = slot.lastRunAt {
+                    Text("Previous \(formatAdminDate(last))")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
+        .padding(12)
+        .background(HDTheme.blue.opacity(0.045))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(HDTheme.blue.opacity(0.12), lineWidth: 1)
+        )
     }
 }
 
@@ -1377,7 +1420,7 @@ struct MoreView: View {
                             NavigationLink {
                                 AutomationDetailsView()
                             } label: {
-                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Automation Health", color: HDTheme.green)
+                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Publishing Automation", color: HDTheme.green)
                             }
                             Divider().padding(.leading, 48)
                             if let adminURL = URL(string: "https://hdcareers.in/admin/") {
@@ -1623,56 +1666,94 @@ struct AnalyticsListCard: View {
 struct AutomationDetailsView: View {
     @EnvironmentObject private var state: AppState
 
+    private func statusColor(_ outcome: String?) -> Color {
+        switch outcome {
+        case "published": return HDTheme.green
+        case "partial", "no_publish": return HDTheme.amber
+        case "error": return HDTheme.red
+        case "scheduled": return HDTheme.blue
+        default: return HDTheme.blue
+        }
+    }
+
+    private func statusLabel(_ outcome: String?) -> String {
+        if outcome == "scheduled" { return "Ready" }
+        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
+    }
+
     var body: some View {
         ZStack {
             HDTheme.background.ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 12) {
-                    if let slots = state.automationHealth?.slots {
-                        ForEach(slots) { slot in
-                            VStack(alignment: .leading, spacing: 10) {
-                                HStack {
-                                    Circle()
-                                        .fill(slot.enabled ? HDTheme.green : Color.gray)
-                                        .frame(width: 10, height: 10)
+                    if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+                        VStack(alignment: .leading, spacing: 14) {
+                            HStack {
+                                Circle()
+                                    .fill(statusColor(slot.outcome))
+                                    .frame(width: 10, height: 10)
+                                VStack(alignment: .leading, spacing: 2) {
                                     Text("\(slot.time) — \(slot.title)")
                                         .font(.headline.weight(.black))
-                                    Spacer()
-                                    if let outcome = slot.outcome {
-                                        StatusPill(
-                                            text: outcome.replacingOccurrences(of: "_", with: " ").capitalized,
-                                            color: outcome == "error" ? HDTheme.red : outcome == "no_publish" ? HDTheme.amber : HDTheme.green
-                                        )
+                                    if let target = slot.target {
+                                        Text(target)
+                                            .font(.caption.weight(.bold))
+                                            .foregroundStyle(HDTheme.blue)
                                     }
                                 }
+                                Spacer()
+                                StatusPill(text: statusLabel(slot.outcome), color: statusColor(slot.outcome))
+                            }
 
-                                Text("Last run: \(formatAdminDate(slot.lastRunAt))")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-
-                                if let detail = slot.detail, !detail.isEmpty {
-                                    Text(detail)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-
-                                if let page = siteURL(slot.page) {
-                                    Link("Open published job ↗", destination: page)
-                                        .font(.caption.weight(.bold))
+                            if let mix = slot.mix, !mix.isEmpty {
+                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 118), spacing: 8)], alignment: .leading, spacing: 8) {
+                                    ForEach(mix, id: \.self) { item in
+                                        Text(item)
+                                            .font(.caption2.weight(.bold))
+                                            .foregroundStyle(HDTheme.navy)
+                                            .padding(.horizontal, 9)
+                                            .padding(.vertical, 7)
+                                            .background(HDTheme.blue.opacity(0.07))
+                                            .clipShape(Capsule())
+                                    }
                                 }
                             }
-                            .hdCard()
+
+                            if let delivery = slot.delivery, !delivery.isEmpty {
+                                Label(delivery, systemImage: "arrow.triangle.branch")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(HDTheme.green)
+                            }
+
+                            if let next = slot.nextRunAt {
+                                Label("Next run: \(formatAdminDate(next))", systemImage: "calendar.badge.clock")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            if let last = slot.lastRunAt {
+                                Text("Previous run: \(formatAdminDate(last))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            if let detail = slot.detail, !detail.isEmpty {
+                                Text(detail)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .hdCard()
                     } else {
-                        EmptyState(icon: "bolt.slash", title: "No automation status", message: "Refresh the dashboard to load automation health.")
+                        EmptyState(icon: "bolt.slash", title: "No active publishing automation", message: "Refresh the dashboard to load the current daily batch.")
                             .hdCard()
                     }
                 }
                 .padding(16)
             }
         }
-        .navigationTitle("Automation Health")
+        .navigationTitle("Daily Publishing Batch")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
