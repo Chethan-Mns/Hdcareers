@@ -171,6 +171,19 @@ struct CompanyLogoView: View {
     }
 
     private var remoteURL: URL? {
+        if let raw = job.careerIconUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           raw.hasPrefix("https://"),
+           let url = URL(string: raw) {
+            return url
+        }
+
+        if let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
+           apply.hasPrefix("https://"),
+           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+            return url
+        }
+
         if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
            !raw.isEmpty,
            let url = URL(string: raw) {
@@ -197,27 +210,7 @@ struct CompanyLogoView: View {
 
     var body: some View {
         Group {
-            if let nativeBrand {
-                switch nativeBrand {
-                case "amazon":
-                    AmazonCompactMark()
-                case "wipro":
-                    Text("wipro")
-                        .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
-                        .foregroundStyle(Color(red: 0.42, green: 0.10, blue: 0.60))
-                case "deloitte":
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Text("D")
-                            .font(.system(size: size * 0.58, weight: .black, design: .rounded))
-                            .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
-                        Circle()
-                            .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
-                            .frame(width: size * 0.10, height: size * 0.10)
-                    }
-                default:
-                    fallback
-                }
-            } else if let url = remoteURL {
+            if let url = remoteURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
@@ -242,7 +235,34 @@ struct CompanyLogoView: View {
         }
     }
 
+    @ViewBuilder
     private var fallback: some View {
+        if let nativeBrand {
+            switch nativeBrand {
+            case "amazon":
+                AmazonCompactMark()
+            case "wipro":
+                Text("wipro")
+                    .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
+                    .foregroundStyle(Color(red: 0.42, green: 0.10, blue: 0.60))
+            case "deloitte":
+                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    Text("D")
+                        .font(.system(size: size * 0.58, weight: .black, design: .rounded))
+                        .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
+                    Circle()
+                        .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
+                        .frame(width: size * 0.10, height: size * 0.10)
+                }
+            default:
+                initialsFallback
+            }
+        } else {
+            initialsFallback
+        }
+    }
+
+    private var initialsFallback: some View {
         ZStack {
             brandColor.opacity(0.12)
             Text(mark)
@@ -253,6 +273,7 @@ struct CompanyLogoView: View {
                 .padding(.horizontal, 4)
         }
     }
+
 }
 
 struct AmazonCompactMark: View {
