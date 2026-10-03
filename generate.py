@@ -71,6 +71,11 @@ COMPACT_LOCAL_LOGOS = {
     "Amazon": "amazon-mark.svg",
     "Wipro": "wipro-mark.svg",
     "Cognizant": "cognizant-mark.svg",
+    "Qualcomm": "qualcomm-mark.svg",
+    "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "actrec-mark.svg",
+    "Electronics Corporation of India Limited (ECIL)": "ecil-mark.svg",
+    "Cochin Shipyard Limited": "cochin-shipyard-mark.svg",
+    "Cochin Shipyard Limited – CMSRU": "cochin-shipyard-mark.svg",
 }
 
 DIRECT_LOGOS = {
