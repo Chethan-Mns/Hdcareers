@@ -148,6 +148,10 @@ struct CompanyLogoView: View {
         case "Amazon": return "amazon"
         case "Wipro": return "wipro"
         case "Deloitte": return "deloitte"
+        case "Qualcomm": return "qualcomm"
+        case "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": return "actrec"
+        case "Electronics Corporation of India Limited (ECIL)": return "ecil"
+        case "Cochin Shipyard Limited", "Cochin Shipyard Limited – CMSRU": return "csl"
         default: return nil
         }
     }
@@ -170,17 +174,23 @@ struct CompanyLogoView: View {
         return HDTheme.blue
     }
 
-    private var remoteURL: URL? {
-        if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
-           !raw.isEmpty,
-           let url = URL(string: raw) {
-            return url
-        }
+    private let genericRecruitingHosts = [
+        "myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co",
+        "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com",
+        "smartrecruiters.com", "workable.com", "infosysapps.com"
+    ]
 
-        if let company = job.company, let direct = directLogos[company] {
-            return URL(string: direct)
-        }
+    private func host(_ value: String?) -> String {
+        guard let value, let url = URL(string: value), let host = url.host?.lowercased() else { return "" }
+        return host.hasPrefix("www.") ? String(host.dropFirst(4)) : host
+    }
 
+    private func genericRecruitingHost(_ value: String?) -> Bool {
+        let valueHost = host(value)
+        return genericRecruitingHosts.contains { valueHost == $0 || valueHost.hasSuffix("." + $0) }
+    }
+
+    private var companyDomain: String {
         let company = job.company ?? ""
         var domain = companyDomains[company] ?? job.domain ?? ""
         domain = domain
@@ -189,34 +199,58 @@ struct CompanyLogoView: View {
             .split(separator: "/")
             .first
             .map(String.init) ?? ""
+        if domain.hasPrefix("www.") { domain = String(domain.dropFirst(4)) }
+        return domain.lowercased()
+    }
 
-        guard !domain.isEmpty else { return nil }
-        let encoded = ("https://" + domain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? domain
-        return URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256")
+    private var careerHostIsTrusted: Bool {
+        let applyHost = host(job.apply)
+        guard !applyHost.isEmpty, !genericRecruitingHost(job.apply) else { return false }
+        if applyHost == "amazon.jobs" || applyHost.hasSuffix(".amazon.jobs") { return true }
+        guard !companyDomain.isEmpty else { return true }
+        return applyHost == companyDomain || applyHost.hasSuffix("." + companyDomain)
+    }
+
+    private var remoteURL: URL? {
+        if let company = job.company, let direct = directLogos[company], let url = URL(string: direct) {
+            return url
+        }
+
+        if careerHostIsTrusted,
+           let raw = job.careerIconUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           raw.hasPrefix("https://"),
+           let url = URL(string: raw) {
+            return url
+        }
+
+        if !companyDomain.isEmpty {
+            let encoded = ("https://" + companyDomain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? companyDomain
+            if let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+                return url
+            }
+        }
+
+        if careerHostIsTrusted,
+           let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
+           apply.hasPrefix("https://"),
+           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+            return url
+        }
+
+        if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !raw.isEmpty,
+           let url = URL(string: raw) {
+            return url
+        }
+
+        return nil
     }
 
     var body: some View {
         Group {
-            if let nativeBrand {
-                switch nativeBrand {
-                case "amazon":
-                    AmazonCompactMark()
-                case "wipro":
-                    Text("wipro")
-                        .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
-                        .foregroundStyle(Color(red: 0.42, green: 0.10, blue: 0.60))
-                case "deloitte":
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Text("D")
-                            .font(.system(size: size * 0.58, weight: .black, design: .rounded))
-                            .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
-                        Circle()
-                            .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
-                            .frame(width: size * 0.10, height: size * 0.10)
-                    }
-                default:
-                    fallback
-                }
+            if nativeBrand != nil {
+                fallback
             } else if let url = remoteURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
@@ -242,7 +276,56 @@ struct CompanyLogoView: View {
         }
     }
 
+    @ViewBuilder
     private var fallback: some View {
+        if let nativeBrand {
+            switch nativeBrand {
+            case "amazon":
+                AmazonCompactMark()
+            case "wipro":
+                Text("wipro")
+                    .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
+                    .foregroundStyle(Color(red: 0.42, green: 0.10, blue: 0.60))
+            case "deloitte":
+                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    Text("D")
+                        .font(.system(size: size * 0.58, weight: .black, design: .rounded))
+                        .foregroundStyle(Color(red: 0.07, green: 0.09, blue: 0.12))
+                    Circle()
+                        .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
+                        .frame(width: size * 0.10, height: size * 0.10)
+                }
+            case "qualcomm":
+                Text("Q")
+                    .font(.system(size: size * 0.52, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.20, green: 0.33, blue: 0.86))
+            case "actrec":
+                Text("ACTREC")
+                    .font(.system(size: size * 0.19, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.65, green: 0.12, blue: 0.24))
+                    .minimumScaleFactor(0.7)
+            case "ecil":
+                Text("ECIL")
+                    .font(.system(size: size * 0.26, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.04, green: 0.37, blue: 0.66))
+            case "csl":
+                VStack(spacing: 1) {
+                    Text("CSL")
+                        .font(.system(size: size * 0.30, weight: .black, design: .rounded))
+                        .foregroundStyle(Color(red: 0.09, green: 0.23, blue: 0.40))
+                    Capsule()
+                        .fill(Color(red: 0.95, green: 0.55, blue: 0.16))
+                        .frame(width: size * 0.48, height: max(2, size * 0.07))
+                }
+            default:
+                initialsFallback
+            }
+        } else {
+            initialsFallback
+        }
+    }
+
+    private var initialsFallback: some View {
         ZStack {
             brandColor.opacity(0.12)
             Text(mark)
@@ -253,6 +336,7 @@ struct CompanyLogoView: View {
                 .padding(.horizontal, 4)
         }
     }
+
 }
 
 struct AmazonCompactMark: View {

@@ -1076,6 +1076,12 @@ struct JobEditSheet: View {
                     TextField("Verified date", text: binding(\.verifiedDate))
                     TextField("Closing date", text: binding(\.closingAt))
                     TextField("Job / Requisition ID", text: binding(\.externalJobId))
+                    TextField("Careers favicon URL", text: binding(\.careerIconUrl))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    TextField("Full logo URL (fallback)", text: binding(\.logoUrl))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
                 }
 
                 Section {

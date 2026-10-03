@@ -5,6 +5,7 @@ import html
 import json
 import re
 import urllib.parse
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from string import Template
@@ -22,6 +23,7 @@ REQUIRED = [
 
 CAT_LABEL = {
     "it": "IT & Software",
+    "nonit": "Non-IT",
     "internship": "Internship",
     "apprenticeship": "Apprenticeship",
     "campus": "Off-Campus",
@@ -66,6 +68,17 @@ LOCAL_LOGOS = {
     "ISRO": "isro.svg",
 }
 
+COMPACT_LOCAL_LOGOS = {
+    "Deloitte": "deloitte-mark.svg",
+    "Amazon": "amazon-mark.svg",
+    "Wipro": "wipro-mark.svg",
+    "Qualcomm": "qualcomm-mark.svg",
+    "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "actrec-mark.svg",
+    "Electronics Corporation of India Limited (ECIL)": "ecil-mark.svg",
+    "Cochin Shipyard Limited": "cochin-shipyard-mark.svg",
+    "Cochin Shipyard Limited – CMSRU": "cochin-shipyard-mark.svg",
+}
+
 DIRECT_LOGOS = {
     "DRDO – VRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
     "DRDO – LRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
@@ -89,6 +102,9 @@ LOGO_DOMAINS = {
     "Electronics Corporation of India Limited (ECIL)": "ecil.co.in", "Cochin Shipyard Limited": "cochinshipyard.in",
     "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
+
+GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com")
+TRUSTED_STANDALONE_CAREER_HOSTS = ("amazon.jobs",)
 
 PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <html lang="en">
@@ -127,7 +143,7 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
 <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
 <a href="../index.html" class="flex items-center gap-3 min-w-0"><img src="../assets/hd-careers-logo.png" alt="HD Careers logo" class="w-11 h-11 object-contain rounded-xl bg-white border border-slate-100 p-1"><div><p class="font-black leading-none text-lg">HD Careers</p><p class="text-[10px] text-slate-500 mt-1">Jobs • Internships • Career updates</p></div></a>
-<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600"><a href="../index.html">Home</a><a href="../index.html#jobs">Latest Jobs</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
+<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600"><a href="../index.html">Home</a><a href="../index.html#jobs">Latest Jobs</a><a href="../insights.html">Insights</a><a href="../career-resources.html">Resources</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
 <div class="flex items-center gap-2"><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a></div>
 </div>
 </header>
@@ -172,6 +188,15 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
 $job_content_sections
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">HD Careers original resources</p>
+<h2 class="text-xl font-black mt-2">Useful Before You Apply</h2>
+<div class="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
+<a href="../resources/how-to-check-job-genuine.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">Check if the job is genuine</p><p class="text-slate-500 mt-1">Six verification checks for domains, job IDs and application links.</p></a>
+<a href="../resources/resume-matcher-methodology.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">Understand your match score</p><p class="text-slate-500 mt-1">What skills, experience and qualification scores actually mean.</p></a>
+<a href="../editorial-policy.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">How we verify jobs</p><p class="text-slate-500 mt-1">See our source, validation, freshness and correction workflow.</p></a>
+</div>
+</div>
 $apply_section
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-shield-halved text-[var(--primary)] mr-2"></i>Source & Verification</h2><p class="mt-3 text-slate-600">Source: <strong>$source_name</strong></p><p class="mt-1 text-slate-600">Last checked by HD Careers: <strong>$verified_date</strong></p><a href="$apply" target="_blank" rel="noopener nofollow" class="mt-4 inline-flex items-center text-[var(--primary)] font-bold">Open official source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a><p class="mt-3 text-xs text-slate-500">Job information can change after publication. The employer's official page is the final source for eligibility, deadlines and application availability.</p></div>
 $related_jobs
@@ -184,7 +209,7 @@ $related_jobs
 </aside>
 </section>
 </main>
-<footer class="bg-[var(--dark)] text-slate-300 mt-4"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col lg:flex-row justify-between gap-6"><div><p class="text-white font-black">HD Careers</p><p class="text-slate-400 text-xs mt-1 max-w-md">Independent job information platform helping candidates find and verify opportunities from official employer sources.</p></div><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href="../about.html" class="hover:text-white">About</a><a href="../contact.html" class="hover:text-white">Contact</a><a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="../terms.html" class="hover:text-white">Terms</a><a href="../disclaimer.html" class="hover:text-white">Disclaimer</a></div></div><p class="text-xs text-slate-500 mt-6">&copy; 2026 HD Careers. All rights reserved.</p></div></footer>
+<footer class="bg-[var(--dark)] text-slate-300 mt-4"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col lg:flex-row justify-between gap-6"><div><p class="text-white font-black">HD Careers</p><p class="text-slate-400 text-xs mt-1 max-w-md">Independent job information platform helping candidates find and verify opportunities from official employer sources.</p></div><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href="../insights.html" class="hover:text-white">Insights</a><a href="../career-resources.html" class="hover:text-white">Career Resources</a><a href="../editorial-policy.html" class="hover:text-white">Verification Policy</a><a href="../about.html" class="hover:text-white">About</a><a href="../contact.html" class="hover:text-white">Contact</a><a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="../terms.html" class="hover:text-white">Terms</a><a href="../disclaimer.html" class="hover:text-white">Disclaimer</a></div></div><p class="text-xs text-slate-500 mt-6">&copy; 2026 HD Careers. All rights reserved.</p></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 rounded-full shadow-2xl z-50"></div>
 <script src="/assets/resume-keywords.js"></script>
 <script src="/assets/resume-assessment.js"></script>
@@ -513,28 +538,110 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 
 
 
-def logo_onerror(company: str, domain: str) -> str:
-    filename = LOCAL_LOGOS.get(company)
-    direct = DIRECT_LOGOS.get(company)
-    google, duck = logo_sources(company, domain)
-    fallbacks = []
-    if filename:
-        fallbacks.append(f"../assets/logos/{filename}")
-    if direct:
-        fallbacks.append(direct)
-    fallbacks.extend([google, duck, "../assets/hd-careers-logo.png"])
-    encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
-    return (
-        "onerror='const f=" + encoded + ";const i=+(this.dataset.fallback||0);"
-        "if(i<f.length){this.dataset.fallback=i+1;this.src=f[i];}else{this.onerror=null;this.style.display=\"none\";}'"
-    )
+def _host(value: str) -> str:
+    raw = str(value or "").strip()
+    try:
+        host = urllib.parse.urlparse(raw if "://" in raw else "https://" + raw).hostname or ""
+        return host.lower().removeprefix("www.")
+    except Exception:
+        return ""
+
+
+def _company_logo_domain(job: dict) -> str:
+    company = str(job.get("company", ""))
+    fallback = str(job.get("domain", ""))
+    return _host(LOGO_DOMAINS.get(company, fallback))
+
+
+def _is_generic_recruiting_host(host: str) -> bool:
+    clean = _host(host)
+    return any(clean == item or clean.endswith("." + item) for item in GENERIC_RECRUITING_HOSTS)
+
+
+def _career_host_is_trusted(job: dict) -> bool:
+    apply_host = _host(str(job.get("apply", "")))
+    if not apply_host or _is_generic_recruiting_host(apply_host):
+        return False
+    if any(apply_host == item or apply_host.endswith("." + item) for item in TRUSTED_STANDALONE_CAREER_HOSTS):
+        return True
+    official = _company_logo_domain(job)
+    if not official:
+        return True
+    return apply_host == official or apply_host.endswith("." + official)
+
+
+def career_favicon_url(job: dict) -> str:
+    if not _career_host_is_trusted(job):
+        return ""
+    direct = str(job.get("careerIconUrl", "")).strip()
+    return direct if direct.startswith("https://") else ""
+
+
+def career_domain_favicon(job: dict) -> str:
+    if not _career_host_is_trusted(job):
+        return ""
+    apply_url = str(job.get("apply", "")).strip()
+    if not apply_url.startswith("https://"):
+        return ""
+    encoded = urllib.parse.quote(apply_url, safe="")
+    return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
 
 
 def logo_sources(company: str, domain: str) -> tuple[str, str]:
     selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
-    google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=128"
+    google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=256"
     duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
     return google, duck
+
+
+def logo_candidates(job: dict) -> list[str]:
+    company = str(job.get("company", ""))
+    domain = str(job.get("domain", ""))
+    career = career_favicon_url(job)
+    compact = COMPACT_LOCAL_LOGOS.get(company)
+    direct = DIRECT_LOGOS.get(company)
+    full = str(job.get("logoUrl", "")).strip()
+    local = LOCAL_LOGOS.get(company)
+    google, duck = logo_sources(company, domain)
+
+    ordered = []
+    if compact:
+        ordered.append(f"../assets/logos/{compact}")
+    if direct:
+        ordered.append(direct)
+    if career:
+        ordered.append(career)
+    ordered.append(google)
+    career_domain = career_domain_favicon(job)
+    if career_domain:
+        ordered.append(career_domain)
+    if full.startswith("https://"):
+        ordered.append(full)
+    if local:
+        ordered.append(f"../assets/logos/{local}")
+    ordered.append(duck)
+
+    unique = []
+    for item in ordered:
+        if item and item not in unique:
+            unique.append(item)
+    return unique
+
+
+def logo_onerror(job: dict) -> str:
+    candidates = logo_candidates(job)
+    fallbacks = candidates[1:] if candidates else []
+    encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
+    company = str(job.get("company", ""))
+    mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:8]
+    mark_js = json.dumps(mark, ensure_ascii=False)
+    return (
+        "onerror='const f=" + encoded + ";const i=+(this.dataset.fallback||0);"
+        "if(i<f.length){this.dataset.fallback=i+1;this.src=f[i];}"
+        "else{this.onerror=null;const p=this.parentElement;if(p){this.remove();"
+        "const s=document.createElement(\"span\");s.textContent=" + mark_js + ";"
+        "s.style.fontWeight=\"900\";s.style.color=\"#0b6fe8\";p.appendChild(s);}}'"
+    )
 
 
 def render_related_jobs(job: dict, jobs: list[dict]) -> str:
@@ -630,15 +737,8 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
-    favicon_url, _ = logo_sources(company, str(job["domain"]))
-    direct_logo = DIRECT_LOGOS.get(company)
-    if direct_logo:
-        favicon_url = direct_logo
-    local_logo = LOCAL_LOGOS.get(company)
-    if local_logo:
-        favicon_url = f"../assets/logos/{local_logo}"
-    if str(job.get("logoUrl", "")).strip():
-        favicon_url = str(job["logoUrl"]).strip()
+    candidates = logo_candidates(job)
+    favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
@@ -672,7 +772,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
         "company": esc(company),
-        "logo_onerror": logo_onerror(company, str(job["domain"])),
+        "logo_onerror": logo_onerror(job),
         "cat_icon": CAT_ICON[cat],
         "cat_label": esc(CAT_LABEL[cat]),
         "candidate": candidate,
@@ -791,6 +891,138 @@ def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int, int]:
     return created, changed, deleted
 
 
+def _snapshot_date(active_jobs: list[dict]) -> str:
+    dates = []
+    for job in active_jobs:
+        raw = str(job.get("verifiedDate", "")).strip()
+        for fmt in ("%d %b %Y", "%d %B %Y", "%Y-%m-%d"):
+            try:
+                dates.append(datetime.strptime(raw, fmt))
+                break
+            except ValueError:
+                pass
+    return max(dates).strftime("%-d %B %Y") if dates else "Current snapshot"
+
+
+def _rank_rows(counter: Counter, limit: int = 8) -> str:
+    rows = counter.most_common(limit)
+    peak = rows[0][1] if rows else 1
+    return "".join(
+        f'<div class="rank"><div class="rank-label">{esc(label)}</div>'
+        f'<div class="bar"><i style="width:{max(8, round(value / peak * 100))}%"></i></div>'
+        f'<div class="rank-value">{value}</div></div>'
+        for label, value in rows
+    )
+
+
+def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
+    active = [job for job in jobs if job.get("status") == "active"]
+    companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
+    locations = Counter(str(job.get("locationFilter") or job.get("loc") or "Other").strip() for job in active)
+    skills = Counter(
+        str(skill).strip()
+        for job in active
+        for skill in job.get("skills", [])
+        if str(skill).strip()
+    )
+    categories = Counter()
+    for job in active:
+        cats = job.get("categories") if isinstance(job.get("categories"), list) else []
+        if not cats and job.get("cat"):
+            cats = [job.get("cat")]
+        for cat in cats:
+            label = CAT_LABEL.get(str(cat), str(cat).replace("-", " ").title())
+            categories[label] += 1
+
+    fresher = sum(1 for job in active if job.get("expType") == "fresher")
+    experienced = sum(1 for job in active if job.get("expType") == "experienced")
+    govt = sum(1 for job in active if "govt" in (job.get("categories") or []) or job.get("cat") == "govt")
+    snapshot = _snapshot_date(active)
+    prefix = "../" if detailed else ""
+    canonical = "https://hdcareers.in/insights/weekly-hiring-insights.html" if detailed else "https://hdcareers.in/insights.html"
+    title = "HD Careers Weekly Hiring Insights" if detailed else "HD Careers Hiring Insights"
+    subtitle = (
+        "A detailed snapshot calculated from the active listings in the HD Careers database."
+        if detailed else
+        "Original analysis calculated from active HD Careers job listings. Counts describe our current database, not the entire employment market."
+    )
+    top_company = companies.most_common(1)[0][0] if companies else "Not enough data"
+    top_location = locations.most_common(1)[0][0] if locations else "Not enough data"
+    top_skill = skills.most_common(1)[0][0] if skills else "Not enough data"
+
+    extra = ""
+    if detailed:
+        extra = f'''
+<section class="section">
+<div class="grid cols-2">
+<div class="card"><h2 class="section-title">What this snapshot says</h2>
+<p class="section-copy">Within the active HD Careers database, the most frequently represented employer is <strong>{esc(top_company)}</strong>, the most common location tag is <strong>{esc(top_location)}</strong>, and the most frequently listed skill phrase is <strong>{esc(top_skill)}</strong>. These observations can change as jobs are added or expire.</p>
+<p class="section-copy">Fresher-tagged listings: <strong>{fresher}</strong>. Experienced listings: <strong>{experienced}</strong>. Government-tagged listings: <strong>{govt}</strong>.</p></div>
+<div class="note good"><strong>Methodology</strong><br>Only jobs currently marked active are counted. Company names, locations, categories and skill phrases come from the structured HD Careers job records. We do not estimate national hiring volume from this sample and we do not treat a listing count as the number of vacancies.</div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">How candidates can use this</h2>
+<div class="grid cols-3">
+<div class="card resource-card"><h3>Choose what to learn</h3><p>Repeated skill phrases can help you identify technologies worth researching, but only add a skill to your resume when you genuinely have evidence for it.</p></div>
+<div class="card resource-card"><h3>Compare locations</h3><p>Location counts show where our current active listings are concentrated. They are useful for browsing, not as a claim about the whole job market.</p></div>
+<div class="card resource-card"><h3>Find related jobs</h3><p>Use the categories and employer patterns as a starting point, then verify each role on its official application source.</p></div>
+</div>
+</section>'''
+
+    link_block = (
+        '<a href="../career-resources.html" class="badge">Career Resources</a>'
+        if detailed else
+        '<a href="insights/weekly-hiring-insights.html" class="badge">Open detailed weekly snapshot →</a>'
+    )
+
+    return f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)} | HD Careers</title>
+<meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
+<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><script defer src="{prefix}assets/analytics.js"></script>
+<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
+</head><body>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">HD Careers own-data analysis</div><h1>{esc(title)}</h1><p>{esc(subtitle)}</p><p style="font-size:12px;margin-top:15px;color:#93c5fd">Snapshot based on listings verified through {esc(snapshot)}.</p></div></section>
+<main class="wrap section">
+<div class="grid cols-4">
+<div class="card metric"><span>Active listings</span><strong>{len(active)}</strong><p>Jobs currently marked active in our database.</p></div>
+<div class="card metric"><span>Employers</span><strong>{len(companies)}</strong><p>Unique employer names represented by active listings.</p></div>
+<div class="card metric"><span>Fresher listings</span><strong>{fresher}</strong><p>Active jobs tagged as fresher opportunities.</p></div>
+<div class="card metric"><span>Experienced listings</span><strong>{experienced}</strong><p>Active jobs tagged as experienced opportunities.</p></div>
+</div>
+<section class="section grid cols-3">
+<div class="card"><h2 class="section-title">Most-mentioned skills</h2><p class="section-copy">Exact skill phrases appearing across active listings.</p>{_rank_rows(skills)}</div>
+<div class="card"><h2 class="section-title">Top location tags</h2><p class="section-copy">Location filters attached to current active jobs.</p>{_rank_rows(locations)}</div>
+<div class="card"><h2 class="section-title">Listing categories</h2><p class="section-copy">A job can belong to more than one category.</p>{_rank_rows(categories)}</div>
+</section>
+<div class="note"><strong>Important:</strong> this is an analysis of the HD Careers database, not a survey of the entire Indian or global labour market. Counts change as jobs are published, expire or are corrected.</div>
+<div style="margin-top:18px">{link_block}</div>
+{extra}
+<section class="section"><div class="grid cols-2"><div class="card resource-card"><span class="badge">Transparency</span><h3>How HD Careers verifies jobs</h3><p>See how source links, extraction, validation, expiry checks and corrections are handled.</p><a href="{prefix}editorial-policy.html">Read the policy →</a></div><div class="card resource-card"><span class="badge">Job safety</span><h3>How to check if a job is genuine</h3><p>Use our six-step verification checklist before sharing personal information or applying.</p><a href="{prefix}resources/how-to-check-job-genuine.html">Read the guide →</a></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-links"><a href="{prefix}index.html">Jobs</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}privacy-policy.html">Privacy</a><a href="{prefix}contact.html">Contact</a></div><small>© 2026 HD Careers. Insights are derived from our current listing database and should not be interpreted as complete market statistics.</small></div></footer>
+</body></html>'''
+
+
+def write_insights_files(jobs: list[dict], dry_run: bool) -> int:
+    changed = 0
+    targets = [
+        (ROOT / "insights.html", render_insights_page(jobs, detailed=False)),
+        (ROOT / "insights" / "weekly-hiring-insights.html", render_insights_page(jobs, detailed=True)),
+    ]
+    for path, content in targets:
+        current = path.read_text(encoding="utf-8") if path.exists() else ""
+        if current != content:
+            changed += 1
+            if not dry_run:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content, encoding="utf-8")
+    return changed
+
+
 def write_support_files(jobs: list[dict], dry_run: bool) -> int:
     changed = 0
     urls = [
@@ -800,6 +1032,17 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/privacy-policy.html",
         "https://hdcareers.in/terms.html",
         "https://hdcareers.in/disclaimer.html",
+        "https://hdcareers.in/insights.html",
+        "https://hdcareers.in/insights/weekly-hiring-insights.html",
+        "https://hdcareers.in/career-resources.html",
+        "https://hdcareers.in/editorial-policy.html",
+        "https://hdcareers.in/resources/how-to-check-job-genuine.html",
+        "https://hdcareers.in/resources/job-scam-red-flags.html",
+        "https://hdcareers.in/resources/how-to-find-official-careers-page.html",
+        "https://hdcareers.in/resources/resume-matcher-methodology.html",
+        "https://hdcareers.in/resources/online-assessment-preparation.html",
+        "https://hdcareers.in/resources/resume-tips-for-freshers.html",
+        "https://hdcareers.in/resources/job-application-checklist.html",
     ]
     active_jobs = [job for job in jobs if job.get("status") == "active"]
     sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
@@ -830,6 +1073,7 @@ def main() -> None:
     jobs = load_jobs()
     index_changed = update_index(jobs, args.dry_run)
     created, changed, deleted = write_job_pages(jobs, args.dry_run)
+    insights_changed = write_insights_files(jobs, args.dry_run)
     support_changed = write_support_files(jobs, args.dry_run)
 
     mode = "DRY RUN" if args.dry_run else "DONE"
@@ -838,6 +1082,7 @@ def main() -> None:
     print(f"[{mode}] {len(jobs)} jobs loaded ({active} active, {expired} expired)")
     print(f"index.html: {'would update' if args.dry_run and index_changed else 'updated' if index_changed else 'no change'}")
     print(f"job pages: {created} new, {changed} updated, {deleted} removed")
+    print(f"insights pages: {insights_changed} changed")
     print(f"support files: {support_changed} changed")
 
     if not args.dry_run:

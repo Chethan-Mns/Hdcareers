@@ -7,6 +7,7 @@ struct Job: Codable, Hashable, Identifiable {
     var company: String?
     var salary: String?
     var logo: [String]?
+    var careerIconUrl: String?
     var logoUrl: String?
     var role: String?
     var roleTag: String?
@@ -54,7 +55,7 @@ struct Job: Codable, Hashable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case jobId = "id"
-        case page, domain, company, salary, logo, logoUrl, role, roleTag, loc, locationFilter
+        case page, domain, company, salary, logo, careerIconUrl, logoUrl, role, roleTag, loc, locationFilter
         case batch, elig, cat, expType, expYears, date, desc, resp, apply, status
         case verifiedDate, sourceName, skills, who, closingAt, workMode, categories
         case companyOverview, industry, headquarters, foundedYear, companyWebsite, careersUrl
