@@ -94,6 +94,31 @@ struct TrafficResponse: Decodable {
         var id: String { deviceType ?? UUID().uuidString }
     }
 
+    struct Conversions: Decodable {
+        let jobPageViews: Int?
+        let jobOpens: Int?
+        let applyClicks: Int?
+        let applyUsers: Int?
+        let resumeChecks: Int?
+        let resumeUsers: Int?
+        let resumeSamples: Int?
+        let shares: Int?
+        let socialClicks: Int?
+        let applyRate: Double?
+    }
+
+    struct ConversionPage: Decodable, Identifiable {
+        let requestPath: String?
+        let count: Int?
+        var id: String { requestPath ?? UUID().uuidString }
+    }
+
+    struct ConversionSource: Decodable, Identifiable {
+        let referrerHostname: String?
+        let count: Int?
+        var id: String { referrerHostname ?? UUID().uuidString }
+    }
+
     let configured: Bool?
     let provider: String?
     let days: Int?
@@ -103,6 +128,10 @@ struct TrafficResponse: Decodable {
     let referrers: [Referrer]?
     let countries: [Country]?
     let devices: [Device]?
+    let conversions: Conversions?
+    let applyJobs: [ConversionPage]?
+    let resumeJobs: [ConversionPage]?
+    let applySources: [ConversionSource]?
     let refreshedAt: String?
 }
 
