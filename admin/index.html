@@ -766,19 +766,23 @@ function saveEdit(){if(editIndex<0)return;const j=jobs[editIndex];j.company=docu
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 const PREVIEW_COMPANY_LOGO_DOMAINS={"Amazon":"amazon.com","PwC":"pwc.com","PWC":"pwc.com","Accenture":"accenture.com","Infosys":"infosys.com","Wipro":"wipro.com","Cognizant":"cognizant.com","HCLTech":"hcltech.com","Deloitte":"deloitte.com","Cohere Health":"coherehealth.com","Hevo Data":"hevodata.com","Qualcomm":"qualcomm.com","SAP":"sap.com","Priceline":"priceline.com","Canonical":"canonical.com","IndiGo":"goindigo.in"};
 const PREVIEW_COMPACT_LOGOS={"Deloitte":"../assets/logos/deloitte-mark.svg","Amazon":"../assets/logos/amazon-mark.svg","Wipro":"../assets/logos/wipro-mark.svg","Cognizant":"../assets/logos/cognizant-mark.svg"};
+const PREVIEW_DIRECT_LOGOS={"DRDO – VRDE":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – LRDE":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – DYSL-SM":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – Research Centre Imarat (RCI)":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – Proof & Experimental Establishment (PXE)":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)":"https://actrec.gov.in/themes/actrec/images/SSA/Images/ACTREC_LOGO.png","Electronics Corporation of India Limited (ECIL)":"https://www.ecil.co.in/images/ECIL_NewLogos2.png"};
 const PREVIEW_GENERIC_RECRUITERS=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com"];
 function previewHost(value){try{return new URL(String(value||""),location.href).hostname.toLowerCase().replace(/^www\./,"")}catch{return""}}
 function previewCompanyDomain(j){return String(PREVIEW_COMPANY_LOGO_DOMAINS[j.company]||j.domain||j.source?.domain||"").toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"")}
 function previewTrustedCareer(j){const h=previewHost(j.apply);if(!h)return false;if(PREVIEW_GENERIC_RECRUITERS.some(d=>h===d||h.endsWith("."+d)))return false;if(h==="amazon.jobs"||h.endsWith(".amazon.jobs"))return true;const d=previewCompanyDomain(j);return !d||h===d||h.endsWith("."+d)}
 function careerFaviconUrl(j){
+const compact=PREVIEW_COMPACT_LOGOS[j.company];if(compact)return compact;
+const officialDirect=PREVIEW_DIRECT_LOGOS[j.company];if(officialDirect)return officialDirect;
 if(previewTrustedCareer(j)){
  const direct=String(j.careerIconUrl||'').trim();
  if(/^https:\/\//i.test(direct))return direct;
+}
+const d=previewCompanyDomain(j);if(d)return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent('https://'+d)+'&sz=256';
+if(previewTrustedCareer(j)){
  const apply=String(j.apply||'').trim();
  if(/^https:\/\//i.test(apply))return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent(apply)+'&sz=256';
 }
-const compact=PREVIEW_COMPACT_LOGOS[j.company];if(compact)return compact;
-const d=previewCompanyDomain(j);if(d)return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent('https://'+d)+'&sz=256';
 return String(j.logoUrl||'').trim();
 }
 function fullPreviewHtml(j){
