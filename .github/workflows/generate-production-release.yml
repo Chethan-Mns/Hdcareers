@@ -1,0 +1,50 @@
+name: Generate Production Release
+
+on:
+  push:
+    branches:
+      - release/adsense-editorial-logo-prod
+    paths:
+      - generate.py
+      - data/jobs.json
+      - index.html
+      - career-resources.html
+      - editorial-policy.html
+      - resources/**
+      - assets/editorial.css
+      - assets/logos/**
+      - .github/workflows/generate-production-release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-production-release
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/adsense-editorial-logo-prod
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate site
+        run: python3 generate.py
+      - name: Commit generated release
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "Generated release is already current."
+            exit 0
+          fi
+          git config user.name "HD Careers Release"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html jobs/ insights.html insights/ sitemap.xml robots.txt
+          git commit -m "Generate production editorial and logo release"
+          git push origin HEAD:release/adsense-editorial-logo-prod
