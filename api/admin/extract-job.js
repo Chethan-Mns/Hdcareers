@@ -488,6 +488,38 @@ function getCompany(j){
   return textValue(j&&j.hiringOrganization&&j.hiringOrganization.name)||"";
 }
 
+function firstHttps(value){
+  const values=Array.isArray(value)?value:[value];
+  for(const raw of values){
+    const text=textValue(raw).trim();
+    if(!text)continue;
+    for(const part of text.split(/\s*,\s*/)){
+      try{const u=new URL(part);if(u.protocol==="https:")return u.href;}catch{}
+    }
+  }
+  return "";
+}
+
+function organizationDetails(j){
+  const org=j&&j.hiringOrganization&&typeof j.hiringOrganization==="object"?j.hiringOrganization:{};
+  const website=firstHttps(org.sameAs)||firstHttps(org.url);
+  const overview=normalizeSpace(stripHtml(textValue(org.description)));
+  const founded=normalizeSpace(textValue(org.foundingDate));
+  return {
+    companyOverview:overview.length>=40?overview.slice(0,800):"",
+    industry:normalizeSpace(textValue(j&&j.industry)),
+    headquarters:"",
+    foundedYear:(founded.match(/\b(18|19|20)\d{2}\b/)||[])[0]||"",
+    companyWebsite:website
+  };
+}
+
+function selectionDetails(text){
+  const selected=sectionText(text,["Selection Process","Hiring Process","Recruitment Process","Interview Process"]);
+  if(!selected)return [];
+  return splitResponsibilities(selected).slice(0,6);
+}
+
 function getLocation(j){
   if(!j)return "";
   if(String(j.jobLocationType||"").toUpperCase().includes("TELECOMMUTE"))return "Remote";
@@ -913,6 +945,12 @@ export default async function handler(req,res){
     location=normalizeSpace(location)||"Not Specified";
     const domain=hint.domainHint||sourceHost;
     const logoUrl=organizationLogo(jsonRoots,structured,company,html,page.url||sourceUrl);
+    const orgDetails=organizationDetails(structured);
+    const validThrough=textValue(structured&&structured.validThrough);
+    const selectionProcess=selectionDetails([rawDescription,pageText.slice(0,30000),reader&&reader.content||""].filter(Boolean).join("\n"));
+    const importantDates=[];
+    if(posted)importantDates.push("Posted: "+formatDate(posted));
+    if(validThrough)importantDates.push("Apply by: "+formatDate(validThrough));
 
     description=description||((company!=="Company Not Identified"?company:"The company")+" is hiring for "+title+(location!=="Not Specified"?" in "+location:"")+". Review the official job posting for complete role details.");
     eligibility=eligibility||"Review the official job posting for education, skills and experience requirements.";
@@ -950,10 +988,20 @@ export default async function handler(req,res){
       skills:extractSkills([rawEligibility,rawDescription].filter(Boolean).join(" ")),
       who:whoShouldApply(exp,eligibility),
       workMode:inferWorkMode([rawDescription,pageText.slice(0,12000)].filter(Boolean).join(" "),location),
+      companyOverview:orgDetails.companyOverview,
+      industry:orgDetails.industry,
+      headquarters:orgDetails.headquarters,
+      foundedYear:orgDetails.foundedYear,
+      companyWebsite:orgDetails.companyWebsite,
+      careersUrl:sourceUrl,
+      jobId:jobId||textValue(structured&&structured.identifier&&structured.identifier.value)||textValue(structured&&structured.identifier),
+      selectionProcess,
+      importantDates:[...new Set(importantDates.filter(Boolean))],
+      closingAt:validThrough||"",
       contentPlan:{
-        version:"expanded-job-page-v1",
-        generatedSections:["Job overview","Eligibility","Skills","Responsibilities","Who should apply","HD Careers guidance","Resume guidance","Preparation guide","Application checklist"],
-        targetWords:1000
+        version:"expanded-job-page-v2",
+        generatedSections:["Job overview","Eligibility at a glance","Role breakdown","Employer information","Skills to demonstrate","Responsibilities","Who should apply","Preparation","Job FAQ","Selection process when verified","Important dates when verified"],
+        targetWords:1200
       },
       extraction:{
         source:structuredOk?"structured":reader?"reader":embedded?"embedded":"url-fallback",
