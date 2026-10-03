@@ -5,6 +5,7 @@ import html
 import json
 import re
 import urllib.parse
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from string import Template
@@ -880,6 +881,138 @@ def write_job_pages(jobs: list[dict], dry_run: bool) -> tuple[int, int, int]:
     return created, changed, deleted
 
 
+def _snapshot_date(active_jobs: list[dict]) -> str:
+    dates = []
+    for job in active_jobs:
+        raw = str(job.get("verifiedDate", "")).strip()
+        for fmt in ("%d %b %Y", "%d %B %Y", "%Y-%m-%d"):
+            try:
+                dates.append(datetime.strptime(raw, fmt))
+                break
+            except ValueError:
+                pass
+    return max(dates).strftime("%-d %B %Y") if dates else "Current snapshot"
+
+
+def _rank_rows(counter: Counter, limit: int = 8) -> str:
+    rows = counter.most_common(limit)
+    peak = rows[0][1] if rows else 1
+    return "".join(
+        f'<div class="rank"><div class="rank-label">{esc(label)}</div>'
+        f'<div class="bar"><i style="width:{max(8, round(value / peak * 100))}%"></i></div>'
+        f'<div class="rank-value">{value}</div></div>'
+        for label, value in rows
+    )
+
+
+def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
+    active = [job for job in jobs if job.get("status") == "active"]
+    companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
+    locations = Counter(str(job.get("locationFilter") or job.get("loc") or "Other").strip() for job in active)
+    skills = Counter(
+        str(skill).strip()
+        for job in active
+        for skill in job.get("skills", [])
+        if str(skill).strip()
+    )
+    categories = Counter()
+    for job in active:
+        cats = job.get("categories") if isinstance(job.get("categories"), list) else []
+        if not cats and job.get("cat"):
+            cats = [job.get("cat")]
+        for cat in cats:
+            label = CAT_LABEL.get(str(cat), str(cat).replace("-", " ").title())
+            categories[label] += 1
+
+    fresher = sum(1 for job in active if job.get("expType") == "fresher")
+    experienced = sum(1 for job in active if job.get("expType") == "experienced")
+    govt = sum(1 for job in active if "govt" in (job.get("categories") or []) or job.get("cat") == "govt")
+    snapshot = _snapshot_date(active)
+    prefix = "../" if detailed else ""
+    canonical = "https://hdcareers.in/insights/weekly-hiring-insights.html" if detailed else "https://hdcareers.in/insights.html"
+    title = "HD Careers Weekly Hiring Insights" if detailed else "HD Careers Hiring Insights"
+    subtitle = (
+        "A detailed snapshot calculated from the active listings in the HD Careers database."
+        if detailed else
+        "Original analysis calculated from active HD Careers job listings. Counts describe our current database, not the entire employment market."
+    )
+    top_company = companies.most_common(1)[0][0] if companies else "Not enough data"
+    top_location = locations.most_common(1)[0][0] if locations else "Not enough data"
+    top_skill = skills.most_common(1)[0][0] if skills else "Not enough data"
+
+    extra = ""
+    if detailed:
+        extra = f'''
+<section class="section">
+<div class="grid cols-2">
+<div class="card"><h2 class="section-title">What this snapshot says</h2>
+<p class="section-copy">Within the active HD Careers database, the most frequently represented employer is <strong>{esc(top_company)}</strong>, the most common location tag is <strong>{esc(top_location)}</strong>, and the most frequently listed skill phrase is <strong>{esc(top_skill)}</strong>. These observations can change as jobs are added or expire.</p>
+<p class="section-copy">Fresher-tagged listings: <strong>{fresher}</strong>. Experienced listings: <strong>{experienced}</strong>. Government-tagged listings: <strong>{govt}</strong>.</p></div>
+<div class="note good"><strong>Methodology</strong><br>Only jobs currently marked active are counted. Company names, locations, categories and skill phrases come from the structured HD Careers job records. We do not estimate national hiring volume from this sample and we do not treat a listing count as the number of vacancies.</div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">How candidates can use this</h2>
+<div class="grid cols-3">
+<div class="card resource-card"><h3>Choose what to learn</h3><p>Repeated skill phrases can help you identify technologies worth researching, but only add a skill to your resume when you genuinely have evidence for it.</p></div>
+<div class="card resource-card"><h3>Compare locations</h3><p>Location counts show where our current active listings are concentrated. They are useful for browsing, not as a claim about the whole job market.</p></div>
+<div class="card resource-card"><h3>Find related jobs</h3><p>Use the categories and employer patterns as a starting point, then verify each role on its official application source.</p></div>
+</div>
+</section>'''
+
+    link_block = (
+        '<a href="../career-resources.html" class="badge">Career Resources</a>'
+        if detailed else
+        '<a href="insights/weekly-hiring-insights.html" class="badge">Open detailed weekly snapshot →</a>'
+    )
+
+    return f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)} | HD Careers</title>
+<meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
+<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><script defer src="{prefix}assets/analytics.js"></script>
+<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
+</head><body>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">HD Careers own-data analysis</div><h1>{esc(title)}</h1><p>{esc(subtitle)}</p><p style="font-size:12px;margin-top:15px;color:#93c5fd">Snapshot based on listings verified through {esc(snapshot)}.</p></div></section>
+<main class="wrap section">
+<div class="grid cols-4">
+<div class="card metric"><span>Active listings</span><strong>{len(active)}</strong><p>Jobs currently marked active in our database.</p></div>
+<div class="card metric"><span>Employers</span><strong>{len(companies)}</strong><p>Unique employer names represented by active listings.</p></div>
+<div class="card metric"><span>Fresher listings</span><strong>{fresher}</strong><p>Active jobs tagged as fresher opportunities.</p></div>
+<div class="card metric"><span>Experienced listings</span><strong>{experienced}</strong><p>Active jobs tagged as experienced opportunities.</p></div>
+</div>
+<section class="section grid cols-3">
+<div class="card"><h2 class="section-title">Most-mentioned skills</h2><p class="section-copy">Exact skill phrases appearing across active listings.</p>{_rank_rows(skills)}</div>
+<div class="card"><h2 class="section-title">Top location tags</h2><p class="section-copy">Location filters attached to current active jobs.</p>{_rank_rows(locations)}</div>
+<div class="card"><h2 class="section-title">Listing categories</h2><p class="section-copy">A job can belong to more than one category.</p>{_rank_rows(categories)}</div>
+</section>
+<div class="note"><strong>Important:</strong> this is an analysis of the HD Careers database, not a survey of the entire Indian or global labour market. Counts change as jobs are published, expire or are corrected.</div>
+<div style="margin-top:18px">{link_block}</div>
+{extra}
+<section class="section"><div class="grid cols-2"><div class="card resource-card"><span class="badge">Transparency</span><h3>How HD Careers verifies jobs</h3><p>See how source links, extraction, validation, expiry checks and corrections are handled.</p><a href="{prefix}editorial-policy.html">Read the policy →</a></div><div class="card resource-card"><span class="badge">Job safety</span><h3>How to check if a job is genuine</h3><p>Use our six-step verification checklist before sharing personal information or applying.</p><a href="{prefix}resources/how-to-check-job-genuine.html">Read the guide →</a></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-links"><a href="{prefix}index.html">Jobs</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}privacy-policy.html">Privacy</a><a href="{prefix}contact.html">Contact</a></div><small>© 2026 HD Careers. Insights are derived from our current listing database and should not be interpreted as complete market statistics.</small></div></footer>
+</body></html>'''
+
+
+def write_insights_files(jobs: list[dict], dry_run: bool) -> int:
+    changed = 0
+    targets = [
+        (ROOT / "insights.html", render_insights_page(jobs, detailed=False)),
+        (ROOT / "insights" / "weekly-hiring-insights.html", render_insights_page(jobs, detailed=True)),
+    ]
+    for path, content in targets:
+        current = path.read_text(encoding="utf-8") if path.exists() else ""
+        if current != content:
+            changed += 1
+            if not dry_run:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content, encoding="utf-8")
+    return changed
+
+
 def write_support_files(jobs: list[dict], dry_run: bool) -> int:
     changed = 0
     urls = [
@@ -889,6 +1022,14 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/privacy-policy.html",
         "https://hdcareers.in/terms.html",
         "https://hdcareers.in/disclaimer.html",
+        "https://hdcareers.in/insights.html",
+        "https://hdcareers.in/insights/weekly-hiring-insights.html",
+        "https://hdcareers.in/career-resources.html",
+        "https://hdcareers.in/editorial-policy.html",
+        "https://hdcareers.in/resources/how-to-check-job-genuine.html",
+        "https://hdcareers.in/resources/job-scam-red-flags.html",
+        "https://hdcareers.in/resources/how-to-find-official-careers-page.html",
+        "https://hdcareers.in/resources/resume-matcher-methodology.html",
     ]
     active_jobs = [job for job in jobs if job.get("status") == "active"]
     sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
@@ -919,6 +1060,7 @@ def main() -> None:
     jobs = load_jobs()
     index_changed = update_index(jobs, args.dry_run)
     created, changed, deleted = write_job_pages(jobs, args.dry_run)
+    insights_changed = write_insights_files(jobs, args.dry_run)
     support_changed = write_support_files(jobs, args.dry_run)
 
     mode = "DRY RUN" if args.dry_run else "DONE"
@@ -927,6 +1069,7 @@ def main() -> None:
     print(f"[{mode}] {len(jobs)} jobs loaded ({active} active, {expired} expired)")
     print(f"index.html: {'would update' if args.dry_run and index_changed else 'updated' if index_changed else 'no change'}")
     print(f"job pages: {created} new, {changed} updated, {deleted} removed")
+    print(f"insights pages: {insights_changed} changed")
     print(f"support files: {support_changed} changed")
 
     if not args.dry_run:
