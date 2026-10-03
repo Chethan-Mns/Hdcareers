@@ -15,7 +15,7 @@ Private SwiftUI admin application for **Chethan** to manage HD Careers from an i
 - Run the Expired Job Checker
 - Review uncertain jobs with Official / HD Careers / Remove / No Change actions
 - 24H / 7D / 30D traffic analytics
-- Automation health details for 9AM / 12PM / 3PM / 6PM / 9PM
+- Consolidated 9 AM publishing-batch health, daily job mix, next run and delivery status
 
 ## Security
 
