@@ -56,6 +56,28 @@
 <div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><i class="fa-solid fa-chart-simple text-amber-500"></i></div><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
 <div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><i class="fa-solid fa-arrow-trend-up text-emerald-500"></i></div><div id="topPage" class="mt-3">—</div><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
 </section>
+
+<section class="card p-5 sm:p-6">
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+<div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Conversion analytics</p><h2 class="text-xl sm:text-2xl font-black mt-1">Job views → resume checks → apply clicks</h2><p class="text-sm text-slate-500 mt-2">Conversion events start accumulating from the analytics release onward; older page-view data remains available above.</p></div>
+<button id="internalTrackingBtn" onclick="toggleInternalTracking()" class="btn border border-slate-200 bg-white px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-user-shield mr-2"></i><span id="internalTrackingText">Checking this browser…</span></button>
+</div>
+<div class="grid sm:grid-cols-2 xl:grid-cols-6 gap-3 mt-5">
+<div class="rounded-2xl border border-slate-200 bg-slate-50 p-4"><p class="text-[10px] uppercase font-black text-slate-400">Job page views</p><p id="jobPageViews" class="text-2xl font-black mt-1">—</p></div>
+<div class="rounded-2xl border border-cyan-200 bg-cyan-50 p-4"><p class="text-[10px] uppercase font-black text-cyan-600">Resume checks</p><p id="resumeChecks" class="text-2xl font-black text-cyan-800 mt-1">—</p></div>
+<div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4"><p class="text-[10px] uppercase font-black text-emerald-600">Apply clicks</p><p id="applyClicks" class="text-2xl font-black text-emerald-800 mt-1">—</p></div>
+<div class="rounded-2xl border border-green-200 bg-green-50 p-4"><p class="text-[10px] uppercase font-black text-green-600">Apply users</p><p id="applyUsers" class="text-2xl font-black text-green-800 mt-1">—</p></div>
+<div class="rounded-2xl border border-violet-200 bg-violet-50 p-4"><p class="text-[10px] uppercase font-black text-violet-600">Apply rate</p><p id="applyRate" class="text-2xl font-black text-violet-800 mt-1">—</p></div>
+<div class="rounded-2xl border border-amber-200 bg-amber-50 p-4"><p class="text-[10px] uppercase font-black text-amber-600">Social + shares</p><p id="socialShares" class="text-2xl font-black text-amber-800 mt-1">—</p></div>
+</div>
+</section>
+
+<section class="grid lg:grid-cols-3 gap-5">
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 mr-2"></i>Top Apply Jobs</h2><p class="text-xs text-slate-400 mt-1">Jobs generating official-apply clicks.</p><div id="applyJobs" class="mt-5 space-y-4"></div></div>
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-circle-check text-cyan-600 mr-2"></i>Resume Checker Usage</h2><p class="text-xs text-slate-400 mt-1">Successful resume checks by job page.</p><div id="resumeJobs" class="mt-5 space-y-4"></div></div>
+<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-filter-circle-dollar text-violet-600 mr-2"></i>Apply Conversion Sources</h2><p class="text-xs text-slate-400 mt-1">Traffic sources attached to apply-click events.</p><div id="applySources" class="mt-5 space-y-4"></div></div>
+</section>
+
 <section class="grid lg:grid-cols-2 gap-5">
 <div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><div id="pages" class="mt-5 space-y-4"></div></div>
 <div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-arrow-up-right-from-square text-blue-600 mr-2"></i>Traffic Sources</h2><div id="referrers" class="mt-5 space-y-4"></div></div>
@@ -71,6 +93,10 @@ let jobByPath=new Map();
 const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function metric(row){return Number(row.pageviews??row.sessions??row.visitors??row.count??row.visits??0)}
+const OPT_OUT_KEY='hd_analytics_optout';
+function isInternalOptOut(){try{return localStorage.getItem(OPT_OUT_KEY)==='1'}catch{return false}}
+function renderInternalTracking(){const off=isInternalOptOut();const btn=document.getElementById('internalTrackingBtn');const text=document.getElementById('internalTrackingText');if(!btn||!text)return;text.textContent=off?'This browser is excluded':'Exclude this browser';btn.className='btn px-4 py-2.5 text-sm shrink-0 '+(off?'border border-emerald-200 bg-emerald-50 text-emerald-700':'border border-slate-200 bg-white text-slate-700')}
+function toggleInternalTracking(){try{if(isInternalOptOut())localStorage.removeItem(OPT_OUT_KEY);else localStorage.setItem(OPT_OUT_KEY,'1')}catch{}renderInternalTracking()}
 function label(row,key){return row[key]||row.dimension||row.name||'(Direct / Unknown)'}
 function normPath(p){let x=String(p||'/').split('?')[0];if(!x.startsWith('/'))x='/'+x;return x}
 function humanizePath(path){
@@ -104,7 +130,7 @@ function renderRows(id,rows,key){
  if(!data.length){el.innerHTML='<p class="text-sm text-slate-400">No traffic data for this period yet.</p>';return}
  const max=Math.max(...data.map(metric),1);
  el.innerHTML=data.slice(0,10).map(r=>{
-  const n=metric(r),raw=label(r,key),isPage=id==='pages',name=isPage?humanizePath(raw):(id==='referrers'?sourceLabel(raw):raw);
+  const n=metric(r),raw=label(r,key),isPage=['pages','applyJobs','resumeJobs'].includes(id),isSource=['referrers','applySources'].includes(id),name=isPage?humanizePath(raw):(isSource?sourceLabel(raw):raw);
   const head=isPage?pageLink(raw):'<span class="font-semibold text-slate-700 min-w-0 overflow-wrap-anywhere">'+esc(name)+'</span>';
   return '<div><div class="flex justify-between items-start gap-3 text-sm min-w-0"><div class="min-w-0 flex-1">'+head+'</div><span class="font-black shrink-0">'+fmt(n)+'</span></div><div class="bar mt-2"><span style="width:'+Math.max(2,n/max*100)+'%"></span></div></div>'
  }).join('');
@@ -122,12 +148,20 @@ async function loadTraffic(days=7){
   document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('ratio').textContent=v?(p/v).toFixed(2):'0.00';
   const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
   document.getElementById('topPage').innerHTML=top?pageLink(label(top,'requestPath'),true):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
+  const c=d.conversions||{};
+  document.getElementById('jobPageViews').textContent=fmt(c.jobPageViews||0);
+  document.getElementById('resumeChecks').textContent=fmt(c.resumeChecks||0);
+  document.getElementById('applyClicks').textContent=fmt(c.applyClicks||0);
+  document.getElementById('applyUsers').textContent=fmt(c.applyUsers||0);
+  document.getElementById('applyRate').textContent=Number(c.applyRate||0).toFixed(1)+'%';
+  document.getElementById('socialShares').textContent=fmt(Number(c.socialClicks||0)+Number(c.shares||0));
   document.getElementById('periodText').textContent='Last '+(days===1?'24 hours':days+' days')+' • refreshed '+new Date().toLocaleTimeString();
+  renderRows('applyJobs',d.applyJobs,'requestPath');renderRows('resumeJobs',d.resumeJobs,'requestPath');renderRows('applySources',d.applySources,'referrerHostname');
   renderRows('pages',d.pages,'requestPath');renderRows('referrers',d.referrers,'referrerHostname');renderRows('countries',d.countries,'country');renderRows('devices',d.devices,'deviceType');
  }catch(err){e.textContent=err.message||'Could not load traffic analytics.';e.classList.remove('hidden')}
 }
 async function logoutAdmin(){await fetch('/api/admin/logout',{method:'POST'}).catch(()=>{});location.href='/admin/'}
-(async()=>{try{const r=await fetch('/api/admin/session',{cache:'no-store'});const d=await r.json();if(!d.authenticated){location.href='/admin/';return}document.getElementById('loading').classList.add('hidden');document.getElementById('app').classList.remove('hidden');await loadJobMap();loadTraffic(7)}catch{location.href='/admin/'}})();
+(async()=>{try{const r=await fetch('/api/admin/session',{cache:'no-store'});const d=await r.json();if(!d.authenticated){location.href='/admin/';return}document.getElementById('loading').classList.add('hidden');document.getElementById('app').classList.remove('hidden');renderInternalTracking();await loadJobMap();loadTraffic(7)}catch{location.href='/admin/'}})();
 </script>
 </body>
 </html>
