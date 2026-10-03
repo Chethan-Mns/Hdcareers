@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T09:30:00Z",
+  "updatedAt": "2026-10-03T03:36:22.389Z",
   "slots": [
     {
       "id": "it-9am",
@@ -8,9 +8,12 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-02T03:33:46.693513Z",
-      "outcome": "ran",
-      "detail": "Awaiting outcome tracking from next run."
+      "lastRunAt": "2026-10-03T03:36:22.389Z",
+      "outcome": "published",
+      "detail": "Published the requested Deloitte Senior Consultant Data Analytics role after official-source verification, repository availability gate, deployment, live-page check and Telegram posting.",
+      "company": "Deloitte",
+      "role": "Senior Consultant | Data Analytics | Delhi | Artificial Intelligence & Data | AI Insights & Engagement",
+      "page": "https://hdcareers.in/jobs/deloitte-senior-consultant-data-analytics-delhi-59869044.html"
     },
     {
       "id": "nonit-12pm",
