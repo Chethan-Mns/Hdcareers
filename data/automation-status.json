@@ -22,9 +22,12 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9c10b38c819187f7bc5ae26add48",
       "enabled": true,
-      "lastRunAt": "2026-10-02T06:31:25.165432Z",
-      "outcome": "ran",
-      "detail": "Awaiting outcome tracking from next run."
+      "lastRunAt": "2026-10-03T06:44:38.653Z",
+      "outcome": "error",
+      "detail": "Amazon Advocacy Operations Associate passed official-source and repository availability checks, but Vercel hit its build-rate limit; the HD Careers page stayed 404 and Telegram posting was skipped.",
+      "company": "",
+      "role": "",
+      "page": ""
     },
     {
       "id": "experienced-3pm",
