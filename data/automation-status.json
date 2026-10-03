@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T03:36:22.389Z",
+  "updatedAt": "2026-10-03T09:37:49.949Z",
   "slots": [
     {
       "id": "it-9am",
@@ -36,9 +36,12 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9c1a592081918894d08be3c668df",
       "enabled": true,
-      "lastRunAt": "2026-10-02T09:26:21.975494Z",
-      "outcome": "ran",
-      "detail": "Awaiting outcome tracking from next run."
+      "lastRunAt": "2026-10-03T09:37:49.949Z",
+      "outcome": "published",
+      "detail": "Published Amazon Software Development Engineer II, Workplace Productivity after official-source verification, repository availability gate, deployment, live-page check and Telegram posting.",
+      "company": "Amazon",
+      "role": "Software Development Engineer II, Workplace Productivity",
+      "page": "https://hdcareers.in/jobs/amazon-software-development-engineer-ii-workplace-productivity-hyderabad-10564385.html"
     },
     {
       "id": "govt-6pm",
