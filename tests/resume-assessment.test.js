@@ -13,4 +13,8 @@ a=A.experience({role:'Data Engineer I, CMT',experience:'1+ years',skills:['AWS',
 assert.equal(A.qualification({education:"Bachelor's or Master's degree"},'B.Tech').score,100);
 assert.equal(A.qualification({education:"Master's degree"},'B.Tech').score,0);
 assert.equal(A.experience({experience:'Not Specified'},'2 years').score,null);
-console.log('9 assessment regression cases passed');
+assert.equal(A.experience({role:'Software Engineer',experience:'Fresher / Entry-level',skills:['Java']},'WORK EXPERIENCE\nSoftware Engineer Intern Jan 2026 - Jun 2026 Java',new Date('2026-09-29')).score,null);
+let edu=A.experience(p,'EDUCATION\nB.Tech Computer Science 2020 - 2024\nUniversity\nSkills: AWS ETL',new Date('2026-09-29'));assert.equal(edu.years,null);
+let mixed=A.experience(p,'WORK EXPERIENCE\nData Engineer Jan 2025 - Jan 2026 AWS ETL\nEDUCATION\nB.Tech Computer Science 2020 - 2024\nUniversity',new Date('2026-09-29'));assert.equal(mixed.years,1);
+let fourYearDegree=A.experience(p,'B.Tech is a 4 years degree. Skills include AWS and ETL.',new Date('2026-09-29'));assert.equal(fourYearDegree.years,null);
+console.log('13 assessment regression cases passed');
