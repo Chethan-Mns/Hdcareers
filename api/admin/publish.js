@@ -81,8 +81,17 @@ function canonicalJob(input){
     sourceName:String(input.sourceName||source.sourceName||(company+" official careers page")).trim(),
     skills:Array.isArray(input.skills)?input.skills.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.skills)?source.skills.map(x=>String(x).trim()).filter(Boolean):[],
     who:String(input.who||source.who||"Review the official requirements and apply if your education, experience and skills match the role.").trim(),
-    closingAt:String(input.closingAt||source.closingAt||" ").trim(),
-    workMode:String(input.workMode||source.workMode||"Not Specified").trim()||"Not Specified"
+    closingAt:String(input.closingAt||source.closingAt||"").trim(),
+    workMode:String(input.workMode||source.workMode||"Not Specified").trim()||"Not Specified",
+    companyOverview:String(input.companyOverview||source.companyOverview||"").trim(),
+    industry:String(input.industry||source.industry||"").trim(),
+    headquarters:String(input.headquarters||source.headquarters||"").trim(),
+    foundedYear:String(input.foundedYear||source.foundedYear||"").trim(),
+    companyWebsite:String(input.companyWebsite||source.companyWebsite||"").trim(),
+    careersUrl:String(input.careersUrl||source.careersUrl||"").trim(),
+    jobId:String(input.jobId||source.jobId||"").trim(),
+    selectionProcess:Array.isArray(input.selectionProcess)?input.selectionProcess.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.selectionProcess)?source.selectionProcess.map(x=>String(x).trim()).filter(Boolean):[],
+    importantDates:Array.isArray(input.importantDates)?input.importantDates.map(x=>String(x).trim()).filter(Boolean):Array.isArray(source.importantDates)?source.importantDates.map(x=>String(x).trim()).filter(Boolean):[]
   };
 }
 

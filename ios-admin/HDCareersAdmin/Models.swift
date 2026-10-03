@@ -29,6 +29,15 @@ struct Job: Codable, Hashable, Identifiable {
     var closingAt: String?
     var workMode: String?
     var categories: [String]?
+    var companyOverview: String?
+    var industry: String?
+    var headquarters: String?
+    var foundedYear: String?
+    var companyWebsite: String?
+    var careersUrl: String?
+    var externalJobId: String?
+    var selectionProcess: [String]?
+    var importantDates: [String]?
 
     var id: String {
         page ?? apply ?? "\(company ?? "job")-\(role ?? "role")-\(jobId ?? 0)"
@@ -48,6 +57,9 @@ struct Job: Codable, Hashable, Identifiable {
         case page, domain, company, salary, logo, logoUrl, role, roleTag, loc, locationFilter
         case batch, elig, cat, expType, expYears, date, desc, resp, apply, status
         case verifiedDate, sourceName, skills, who, closingAt, workMode, categories
+        case companyOverview, industry, headquarters, foundedYear, companyWebsite, careersUrl
+        case externalJobId = "jobId"
+        case selectionProcess, importantDates
     }
 }
 

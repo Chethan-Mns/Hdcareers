@@ -326,6 +326,19 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
     source_host = domain or "the employer's official recruitment site"
     skills = [str(x).strip() for x in job.get("skills", []) if str(x).strip()]
     responsibilities = [str(x).strip() for x in job.get("resp", []) if str(x).strip()]
+    company_overview = str(job.get("companyOverview", "")).strip()
+    industry = str(job.get("industry", "")).strip()
+    headquarters = str(job.get("headquarters", "")).strip()
+    founded_year = str(job.get("foundedYear", "")).strip()
+    company_website = str(job.get("companyWebsite", "")).strip()
+    careers_url = str(job.get("careersUrl", "")).strip()
+    job_ref = str(job.get("jobId", "")).strip()
+    selection_process = [str(x).strip() for x in job.get("selectionProcess", []) if str(x).strip()]
+    important_dates = [str(x).strip() for x in job.get("importantDates", []) if str(x).strip()]
+    if company_website and not company_website.startswith("https://"):
+        company_website = ""
+    if careers_url and not careers_url.startswith("https://"):
+        careers_url = ""
 
     same_company = [
         other for other in jobs
@@ -361,10 +374,32 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
     if not task_html:
         task_html = '<li class="text-slate-500">Review the official source for the employer-published responsibilities.</li>'
 
-    if domain:
+    if company_website:
+        company_domain = f'<a href="{esc(company_website)}" target="_blank" rel="noopener nofollow" class="font-bold text-[var(--primary)] break-all">Official website <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>'
+    elif domain:
         company_domain = f'<a href="https://{esc(domain)}" target="_blank" rel="noopener nofollow" class="font-bold text-[var(--primary)] break-all">{esc(domain)} <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>'
     else:
         company_domain = '<span class="font-bold">Official source linked on this page</span>'
+
+    company_fact_items = [
+        ("Industry", industry),
+        ("Headquarters", headquarters),
+        ("Founded", founded_year),
+        ("Job / Requisition ID", job_ref),
+    ]
+    company_fact_html = "".join(
+        f'<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">{esc(label)}</p><p class="font-extrabold mt-1">{esc(value)}</p></div>'
+        for label, value in company_fact_items if value
+    )
+    company_overview_html = (
+        f'<p class="text-slate-600 leading-relaxed mt-4">{esc(company_overview)}</p>'
+        if company_overview else
+        f'<p class="text-slate-600 leading-relaxed mt-4">{esc(company)} is the employer named on the official source used for this job. HD Careers verified this listing against <strong>{esc(source_host)}</strong>. This section only shows facts available from the verified job record.</p>'
+    )
+    careers_link = (
+        f'<a href="{esc(careers_url)}" target="_blank" rel="noopener nofollow" class="inline-flex items-center font-bold text-[var(--primary)]">Open official careers source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>'
+        if careers_url else ""
+    )
 
     if same_company:
         same_cards = "".join(
@@ -391,6 +426,24 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
     ])
     prep_html = "".join(f'<li class="flex gap-3"><span class="w-6 h-6 rounded-full bg-blue-50 text-blue-700 text-xs font-black flex items-center justify-center shrink-0">{i}</span><span>{esc(item)}</span></li>' for i, item in enumerate(prep_items, 1))
 
+    selection_html = ""
+    if selection_process:
+        rows = "".join(f'<li class="flex gap-3"><span class="w-6 h-6 rounded-full bg-violet-50 text-violet-700 text-xs font-black flex items-center justify-center shrink-0">{i}</span><span>{esc(item)}</span></li>' for i, item in enumerate(selection_process, 1))
+        selection_html = f'''<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-violet-700">Employer-published process</p>
+<h2 class="text-xl font-black mt-2">Selection / Hiring Process</h2>
+<ul class="mt-5 space-y-4 text-slate-600">{rows}</ul>
+</div>'''
+
+    dates_html = ""
+    if important_dates:
+        rows = "".join(f'<li class="flex gap-3"><i class="fa-solid fa-calendar-day text-blue-600 mt-1"></i><span>{esc(item)}</span></li>' for item in important_dates)
+        dates_html = f'''<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Timeline</p>
+<h2 class="text-xl font-black mt-2">Important Dates</h2>
+<ul class="mt-5 space-y-3 text-slate-600">{rows}</ul>
+</div>'''
+
     faq = [
         ("Which company is hiring for this role?", f"{company} is the employer listed for this opportunity."),
         ("What role is this application for?", f"The role is {role}."),
@@ -399,6 +452,8 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
         ("What qualification or batch is mentioned?", qualification),
         ("Where should I apply?", f"Apply only through the official employer link on this page. HD Careers verified this listing using {source_name}."),
     ]
+    if job_ref:
+        faq.insert(2, ("What is the job or requisition ID?", job_ref))
     faq_html = "".join(
         f'<details class="rounded-xl border border-slate-200 bg-white p-4"><summary class="cursor-pointer font-extrabold text-slate-900">{esc(q)}</summary><p class="text-sm text-slate-600 mt-2 leading-relaxed">{esc(a)}</p></details>'
         for q, a in faq
@@ -422,13 +477,15 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
 <p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Employer information</p>
 <h2 class="text-xl font-black mt-2">About {esc(company)} on This Listing</h2>
-<p class="text-slate-600 leading-relaxed mt-4">{esc(company)} is the employer named on the official source used for this job. HD Careers verified this listing against <strong>{esc(source_host)}</strong>. We keep this section limited to facts available from the verified job record instead of adding unsupported company claims.</p>
+{company_overview_html}
 <div class="grid sm:grid-cols-2 gap-3 mt-5">
 <div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Employer</p><p class="font-extrabold mt-1">{esc(company)}</p></div>
-<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Official hiring domain</p><p class="mt-1">{company_domain}</p></div>
+<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Official website / hiring domain</p><p class="mt-1">{company_domain}</p></div>
 <div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Role location</p><p class="font-extrabold mt-1">{esc(location)}</p></div>
 <div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Active HD Careers listings</p><p class="font-extrabold mt-1">{len(same_company) + (1 if job.get("status") == "active" else 0)}</p></div>
+{company_fact_html}
 </div>
+<div class="mt-4">{careers_link}</div>
 {company_jobs}
 </div>
 
@@ -444,6 +501,9 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 <h2 class="text-xl font-black mt-2">Before You Apply</h2>
 <ul class="mt-5 space-y-4 text-slate-600">{prep_html}</ul>
 </div>
+
+{selection_html}
+{dates_html}
 
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
 <p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Common questions</p>
