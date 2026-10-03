@@ -66,6 +66,12 @@ LOCAL_LOGOS = {
     "ISRO": "isro.svg",
 }
 
+COMPACT_LOCAL_LOGOS = {
+    "Deloitte": "deloitte-mark.svg",
+    "Amazon": "amazon-mark.svg",
+    "Wipro": "wipro-mark.svg",
+}
+
 DIRECT_LOGOS = {
     "DRDO – VRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
     "DRDO – LRDE": "https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png",
@@ -513,20 +519,48 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 
 
 
-def logo_onerror(company: str, domain: str) -> str:
-    filename = LOCAL_LOGOS.get(company)
+def career_favicon_url(job: dict) -> str:
+    direct = str(job.get("careerIconUrl", "")).strip()
+    if direct.startswith("https://"):
+        return direct
+    apply_url = str(job.get("apply", "")).strip()
+    if apply_url.startswith("https://"):
+        encoded = urllib.parse.quote(apply_url, safe="")
+        return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
+    return ""
+
+
+def logo_onerror(job: dict) -> str:
+    company = str(job.get("company", ""))
+    domain = str(job.get("domain", ""))
+    compact = COMPACT_LOCAL_LOGOS.get(company)
+    local = LOCAL_LOGOS.get(company)
     direct = DIRECT_LOGOS.get(company)
+    full = str(job.get("logoUrl", "")).strip()
     google, duck = logo_sources(company, domain)
     fallbacks = []
-    if filename:
-        fallbacks.append(f"../assets/logos/{filename}")
+    if full.startswith("https://"):
+        fallbacks.append(full)
+    if compact:
+        fallbacks.append(f"../assets/logos/{compact}")
     if direct:
         fallbacks.append(direct)
-    fallbacks.extend([google, duck, "../assets/hd-careers-logo.png"])
-    encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
+    if local:
+        fallbacks.append(f"../assets/logos/{local}")
+    fallbacks.extend([google, duck])
+    unique = []
+    for item in fallbacks:
+        if item and item not in unique:
+            unique.append(item)
+    encoded = json.dumps(unique, ensure_ascii=False).replace("'", "\\'")
+    mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:8]
+    mark_js = json.dumps(mark, ensure_ascii=False)
     return (
         "onerror='const f=" + encoded + ";const i=+(this.dataset.fallback||0);"
-        "if(i<f.length){this.dataset.fallback=i+1;this.src=f[i];}else{this.onerror=null;this.style.display=\"none\";}'"
+        "if(i<f.length){this.dataset.fallback=i+1;this.src=f[i];}"
+        "else{this.onerror=null;const p=this.parentElement;if(p){this.remove();"
+        "const s=document.createElement(\"span\");s.textContent=" + mark_js + ";"
+        "s.style.fontWeight=\"900\";s.style.color=\"#0b6fe8\";p.appendChild(s);}}'"
     )
 
 
@@ -630,15 +664,9 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
-    favicon_url, _ = logo_sources(company, str(job["domain"]))
-    direct_logo = DIRECT_LOGOS.get(company)
-    if direct_logo:
-        favicon_url = direct_logo
-    local_logo = LOCAL_LOGOS.get(company)
-    if local_logo:
-        favicon_url = f"../assets/logos/{local_logo}"
-    if str(job.get("logoUrl", "")).strip():
-        favicon_url = str(job["logoUrl"]).strip()
+    favicon_url = career_favicon_url(job)
+    if not favicon_url:
+        favicon_url, _ = logo_sources(company, str(job["domain"]))
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
@@ -672,7 +700,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
         "company": esc(company),
-        "logo_onerror": logo_onerror(company, str(job["domain"])),
+        "logo_onerror": logo_onerror(job),
         "cat_icon": CAT_ICON[cat],
         "cat_label": esc(CAT_LABEL[cat]),
         "candidate": candidate,
