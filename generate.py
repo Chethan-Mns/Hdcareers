@@ -523,7 +523,41 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 
 
 
+def _host(value: str) -> str:
+    raw = str(value or "").strip()
+    try:
+        host = urllib.parse.urlparse(raw if "://" in raw else "https://" + raw).hostname or ""
+        return host.lower().removeprefix("www.")
+    except Exception:
+        return ""
+
+
+def _company_logo_domain(job: dict) -> str:
+    company = str(job.get("company", ""))
+    fallback = str(job.get("domain", ""))
+    return _host(LOGO_DOMAINS.get(company, fallback))
+
+
+def _is_generic_recruiting_host(host: str) -> bool:
+    clean = _host(host)
+    return any(clean == item or clean.endswith("." + item) for item in GENERIC_RECRUITING_HOSTS)
+
+
+def _career_host_is_trusted(job: dict) -> bool:
+    apply_host = _host(str(job.get("apply", "")))
+    if not apply_host or _is_generic_recruiting_host(apply_host):
+        return False
+    if any(apply_host == item or apply_host.endswith("." + item) for item in TRUSTED_STANDALONE_CAREER_HOSTS):
+        return True
+    official = _company_logo_domain(job)
+    if not official:
+        return True
+    return apply_host == official or apply_host.endswith("." + official)
+
+
 def career_favicon_url(job: dict) -> str:
+    if not _career_host_is_trusted(job):
+        return ""
     direct = str(job.get("careerIconUrl", "")).strip()
     if direct.startswith("https://"):
         return direct
