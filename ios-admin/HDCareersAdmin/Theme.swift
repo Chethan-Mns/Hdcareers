@@ -170,30 +170,23 @@ struct CompanyLogoView: View {
         return HDTheme.blue
     }
 
-    private var remoteURL: URL? {
-        if let raw = job.careerIconUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
-           raw.hasPrefix("https://"),
-           let url = URL(string: raw) {
-            return url
-        }
+    private let genericRecruitingHosts = [
+        "myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co",
+        "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com",
+        "smartrecruiters.com", "workable.com", "infosysapps.com"
+    ]
 
-        if let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
-           apply.hasPrefix("https://"),
-           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
-            return url
-        }
+    private func host(_ value: String?) -> String {
+        guard let value, let url = URL(string: value), let host = url.host?.lowercased() else { return "" }
+        return host.hasPrefix("www.") ? String(host.dropFirst(4)) : host
+    }
 
-        if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
-           !raw.isEmpty,
-           let url = URL(string: raw) {
-            return url
-        }
+    private func genericRecruitingHost(_ value: String?) -> Bool {
+        let valueHost = host(value)
+        return genericRecruitingHosts.contains { valueHost == $0 || valueHost.hasSuffix("." + $0) }
+    }
 
-        if let company = job.company, let direct = directLogos[company] {
-            return URL(string: direct)
-        }
-
+    private var companyDomain: String {
         let company = job.company ?? ""
         var domain = companyDomains[company] ?? job.domain ?? ""
         domain = domain
@@ -202,10 +195,52 @@ struct CompanyLogoView: View {
             .split(separator: "/")
             .first
             .map(String.init) ?? ""
+        if domain.hasPrefix("www.") { domain = String(domain.dropFirst(4)) }
+        return domain.lowercased()
+    }
 
-        guard !domain.isEmpty else { return nil }
-        let encoded = ("https://" + domain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? domain
-        return URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256")
+    private var careerHostIsTrusted: Bool {
+        let applyHost = host(job.apply)
+        guard !applyHost.isEmpty, !genericRecruitingHost(job.apply) else { return false }
+        if applyHost == "amazon.jobs" || applyHost.hasSuffix(".amazon.jobs") { return true }
+        guard !companyDomain.isEmpty else { return true }
+        return applyHost == companyDomain || applyHost.hasSuffix("." + companyDomain)
+    }
+
+    private var remoteURL: URL? {
+        if careerHostIsTrusted,
+           let raw = job.careerIconUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           raw.hasPrefix("https://"),
+           let url = URL(string: raw) {
+            return url
+        }
+
+        if careerHostIsTrusted,
+           let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
+           apply.hasPrefix("https://"),
+           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+            return url
+        }
+
+        if let company = job.company, let direct = directLogos[company], let url = URL(string: direct) {
+            return url
+        }
+
+        if !companyDomain.isEmpty {
+            let encoded = ("https://" + companyDomain).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? companyDomain
+            if let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+                return url
+            }
+        }
+
+        if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !raw.isEmpty,
+           let url = URL(string: raw) {
+            return url
+        }
+
+        return nil
     }
 
     var body: some View {
