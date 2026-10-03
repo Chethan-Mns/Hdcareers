@@ -83,6 +83,7 @@ function canonicalJob(input){
     who:String(input.who||source.who||"Review the official requirements and apply if your education, experience and skills match the role.").trim(),
     closingAt:String(input.closingAt||source.closingAt||"").trim(),
     workMode:String(input.workMode||source.workMode||"Not Specified").trim()||"Not Specified",
+    careerIconUrl:String(input.careerIconUrl||source.careerIconUrl||"").trim(),
     companyOverview:String(input.companyOverview||source.companyOverview||"").trim(),
     industry:String(input.industry||source.industry||"").trim(),
     headquarters:String(input.headquarters||source.headquarters||"").trim(),
