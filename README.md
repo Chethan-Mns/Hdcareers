@@ -66,7 +66,7 @@ This section is the working TODO list for the HD Careers website.
 - [ ] **Job pages — company section:** research and add useful company information such as company overview, industry, headquarters, official website, careers page and other source-backed details
 - [ ] **Analytics cleanup:** combine duplicate homepage paths such as `/` and `/index.html` in traffic reporting
 - [ ] **Traffic quality:** exclude or reduce admin/self-testing traffic where practical
-- [ ] **Automation health:** ensure every scheduled slot records `published`, `no_publish` or `error` and notifies the admin
+- [ ] **Automation health:** ensure the consolidated daily batch records `published`, `partial`, `no_publish` or `error` and notifies the admin
 - [ ] **Vercel deployment reliability:** retry/verify pending production deployments when the build-rate limit clears
 - [ ] **AdSense readiness:** continue improving useful original content, job-page depth, trust signals and crawlability
 - [ ] **Company logos:** continue improving missing, blurry or incorrect company logos dynamically
@@ -153,15 +153,16 @@ hdcareers.in
 
 ## Automation Schedule
 
-The active HD Careers publishing slots are:
+HD Careers uses one consolidated daily publishing batch:
 
-- 9:00 AM — Fresher IT
-- 12:00 PM — Fresher Non-IT
-- 3:00 PM — Experienced IT
-- 6:00 PM — Government / PSU
-- 9:00 PM — Walk-in
+- 9:00 AM IST — target 9–10 verified jobs
+- 3–4 Fresher IT
+- 2 Fresher Non-IT
+- 1 Experienced IT / technical
+- 1 Government / PSU
+- 2 Walk-ins
 
-Each automation should verify the exact official job source before publishing and update `data/automation-status.json` with its final outcome.
+The batch verifies the full mix first, rejects duplicates/expired/unverifiable roles, updates `data/jobs.json` once, triggers one generation/deployment cycle, and then lets the existing workflow post the live HD Careers links to Telegram. The final batch outcome is written to `data/automation-status.json`.
 
 ## Analytics
 

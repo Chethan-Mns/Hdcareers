@@ -150,6 +150,10 @@ struct AutomationHealth: Decodable {
         let company: String?
         let role: String?
         let page: String?
+        let target: String?
+        let mix: [String]?
+        let delivery: String?
+        let nextRunAt: String?
     }
 
     let updatedAt: String?
