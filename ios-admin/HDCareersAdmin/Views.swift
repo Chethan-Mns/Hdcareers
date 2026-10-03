@@ -269,7 +269,6 @@ struct AdminHeader: View {
 
 struct DashboardView: View {
     @EnvironmentObject private var state: AppState
-    private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         NavigationStack {
@@ -277,27 +276,22 @@ struct DashboardView: View {
                 HDTheme.background.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 12) {
                         AdminHeader(
                             title: "HD Careers Admin",
-                            subtitle: "Welcome back, Chethan",
+                            subtitle: "Jobs, publishing and traffic",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshAll() }
                         }
 
-                        LazyVGrid(columns: columns, spacing: 12) {
-                            MetricTile(title: "Total Jobs", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
-                            MetricTile(title: "Active", value: state.activeJobs.count, icon: "checkmark.circle.fill", color: HDTheme.green)
-                            MetricTile(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
-                            MetricTile(title: "Freshers", value: state.fresherJobs.count, icon: "person.crop.circle.badge.checkmark", color: .purple)
-                        }
-
+                        DashboardStatsCard()
                         TrafficSummaryCard()
                         AutomationHealthCard()
                     }
-                    .padding(16)
-                    .padding(.bottom, 14)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 12)
+                    .padding(.bottom, 18)
                 }
                 .refreshable { await state.refreshAll() }
             }
@@ -306,41 +300,78 @@ struct DashboardView: View {
     }
 }
 
-struct MetricTile: View {
+struct DashboardStatsCard: View {
+    @EnvironmentObject private var state: AppState
+    private let columns = [GridItem(.flexible()), GridItem(.flexible())]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Jobs overview")
+                        .font(.headline.weight(.black))
+                    Text("Current website inventory")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                StatusPill(text: "\(state.activeJobs.count) active", color: HDTheme.green, icon: "checkmark.circle.fill")
+            }
+
+            LazyVGrid(columns: columns, spacing: 8) {
+                DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
+                DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.crop.circle.badge.checkmark", color: .purple)
+                DashboardStat(title: "Active", value: state.activeJobs.count, icon: "checkmark.circle.fill", color: HDTheme.green)
+                DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
+            }
+        }
+        .hdCard()
+    }
+}
+
+struct DashboardStat: View {
     let title: String
     let value: Int
     let icon: String
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundStyle(color)
-                Spacer()
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundStyle(color)
+                .frame(width: 30, height: 30)
+                .background(color.opacity(0.09))
+                .clipShape(Circle())
+
+            VStack(alignment: .leading, spacing: 1) {
+                Text(numberText(value))
+                    .font(.system(size: 20, weight: .black, design: .rounded))
+                    .foregroundStyle(HDTheme.navy)
+                Text(title)
+                    .font(.caption2.weight(.bold))
+                    .foregroundStyle(.secondary)
             }
-            Text(numberText(value))
-                .font(.system(size: 28, weight: .black, design: .rounded))
-                .foregroundStyle(HDTheme.navy)
-            Text(title)
-                .font(.caption.weight(.bold))
-                .foregroundStyle(.secondary)
+            Spacer(minLength: 0)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .hdCard(14)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 9)
+        .background(Color.black.opacity(0.022))
+        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
     }
 }
 
 struct TrafficSummaryCard: View {
     @EnvironmentObject private var state: AppState
+    @State private var showMore = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 13) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Website Traffic")
+                    Text("Website traffic")
                         .font(.headline.weight(.black))
-                    Text("Live GA4 data")
+                    Text("Live GA4 snapshot")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -358,37 +389,132 @@ struct TrafficSummaryCard: View {
             }
             .pickerStyle(.segmented)
 
-            HStack(spacing: 10) {
-                SmallMetric(title: "Live now", value: state.traffic?.realtimeUsers ?? 0, color: HDTheme.green)
-                SmallMetric(title: "Users", value: state.traffic?.totals?.visitors ?? 0, color: HDTheme.blue)
-                SmallMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, color: .purple)
+            HStack(spacing: 0) {
+                TrafficMetric(
+                    title: "Live",
+                    value: state.traffic?.realtimeUsers ?? 0,
+                    icon: "dot.radiowaves.left.and.right",
+                    color: HDTheme.green
+                )
+                Divider().frame(height: 42)
+                TrafficMetric(
+                    title: "Users",
+                    value: state.traffic?.totals?.visitors ?? 0,
+                    icon: "person.2.fill",
+                    color: HDTheme.blue
+                )
+                Divider().frame(height: 42)
+                TrafficMetric(
+                    title: "Views",
+                    value: state.traffic?.totals?.pageviews ?? 0,
+                    icon: "eye.fill",
+                    color: .purple
+                )
             }
+            .padding(.vertical, 3)
 
-            HStack(spacing: 10) {
-                SmallMetric(title: "Job views", value: state.traffic?.conversions?.jobPageViews ?? 0, color: .indigo)
-                SmallMetric(title: "Resume", value: state.traffic?.conversions?.resumeChecks ?? 0, color: .cyan)
-                SmallMetric(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0, color: HDTheme.green)
+            Button {
+                withAnimation(.easeInOut(duration: 0.18)) {
+                    showMore.toggle()
+                }
+            } label: {
+                HStack {
+                    Label(showMore ? "Hide activity" : "More activity", systemImage: "chart.bar.fill")
+                        .font(.caption.weight(.bold))
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .font(.caption2.weight(.bold))
+                        .rotationEffect(.degrees(showMore ? 180 : 0))
+                }
+                .foregroundStyle(HDTheme.blue)
+                .padding(.horizontal, 11)
+                .padding(.vertical, 9)
+                .background(HDTheme.blue.opacity(0.055))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
+            .buttonStyle(.plain)
 
-            if let page = state.traffic?.pages?.first {
-                Divider()
-                Text("Top page")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.secondary)
-                if let url = siteURL(page.requestPath) {
-                    Link(destination: url) {
-                        HStack {
-                            Text(jobDisplayName(path: page.requestPath, jobs: state.jobs))
-                                .font(.subheadline.weight(.semibold))
-                                .lineLimit(2)
-                            Spacer()
-                            Image(systemName: "arrow.up.right")
+            if showMore {
+                VStack(spacing: 11) {
+                    HStack(spacing: 8) {
+                        ActivityChip(title: "Job views", value: state.traffic?.conversions?.jobPageViews ?? 0)
+                        ActivityChip(title: "Resume", value: state.traffic?.conversions?.resumeChecks ?? 0)
+                        ActivityChip(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0)
+                    }
+
+                    if let page = state.traffic?.pages?.first,
+                       let url = siteURL(page.requestPath) {
+                        Divider()
+                        Link(destination: url) {
+                            HStack(spacing: 10) {
+                                Image(systemName: "doc.text.fill")
+                                    .foregroundStyle(HDTheme.blue)
+                                    .frame(width: 30, height: 30)
+                                    .background(HDTheme.blue.opacity(0.08))
+                                    .clipShape(Circle())
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Top page")
+                                        .font(.caption2.weight(.bold))
+                                        .foregroundStyle(.secondary)
+                                    Text(jobDisplayName(path: page.requestPath, jobs: state.jobs))
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(HDTheme.navy)
+                                        .lineLimit(2)
+                                }
+                                Spacer()
+                                Image(systemName: "arrow.up.right")
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(HDTheme.blue)
+                            }
                         }
                     }
                 }
+                .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
         .hdCard()
+    }
+}
+
+struct TrafficMetric: View {
+    let title: String
+    let value: Int
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        VStack(spacing: 5) {
+            Image(systemName: icon)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(color)
+            Text(numberText(value))
+                .font(.system(size: 21, weight: .black, design: .rounded))
+                .foregroundStyle(HDTheme.navy)
+            Text(title)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct ActivityChip: View {
+    let title: String
+    let value: Int
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(numberText(value))
+                .font(.subheadline.weight(.black))
+                .foregroundStyle(HDTheme.navy)
+            Text(title)
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(10)
+        .background(Color.black.opacity(0.025))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
 
@@ -416,66 +542,82 @@ struct SmallMetric: View {
 struct AutomationHealthCard: View {
     @EnvironmentObject private var state: AppState
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 13) {
-            HStack {
-                Text("Automation Health")
-                    .font(.headline.weight(.black))
-                Spacer()
-                if let slots = state.automationHealth?.slots {
-                    StatusPill(
-                        text: "\(slots.filter(\.enabled).count)/\(slots.count) running",
-                        color: HDTheme.green,
-                        icon: "bolt.fill"
-                    )
-                }
-            }
-
-            if let slots = state.automationHealth?.slots, !slots.isEmpty {
-                ForEach(slots) { slot in
-                    AutomationRow(slot: slot)
-                    if slot.id != slots.last?.id {
-                        Divider()
-                    }
-                }
-            } else {
-                Text("Automation status will appear after refresh.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .hdCard()
-    }
-}
-
-struct AutomationRow: View {
-    let slot: AutomationHealth.Slot
-
-    private var outcomeColor: Color {
-        switch slot.outcome {
+    private func outcomeColor(_ outcome: String?) -> Color {
+        switch outcome {
         case "published": return HDTheme.green
+        case "partial", "no_publish": return HDTheme.amber
         case "error": return HDTheme.red
-        case "no_publish": return HDTheme.amber
+        case "scheduled": return HDTheme.blue
         default: return HDTheme.blue
         }
     }
 
+    private func outcomeLabel(_ outcome: String?) -> String {
+        if outcome == "scheduled" { return "Ready" }
+        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
+    }
+
     var body: some View {
-        HStack(spacing: 10) {
-            Circle()
-                .fill(slot.enabled ? outcomeColor : Color.gray)
-                .frame(width: 9, height: 9)
-            VStack(alignment: .leading, spacing: 2) {
-                Text("\(slot.time) · \(slot.title)")
-                    .font(.subheadline.weight(.bold))
-                Text(slot.lastRunAt.map { "Last: \(formatAdminDate($0))" } ?? "Next scheduled run")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
-            Spacer()
-            if let outcome = slot.outcome {
-                StatusPill(text: outcome.replacingOccurrences(of: "_", with: " ").capitalized, color: outcomeColor)
+        Group {
+            if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+                NavigationLink {
+                    AutomationDetailsView()
+                } label: {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 11) {
+                            Image(systemName: "bolt.fill")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundStyle(HDTheme.blue)
+                                .frame(width: 36, height: 36)
+                                .background(HDTheme.blue.opacity(0.08))
+                                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Daily publishing")
+                                    .font(.headline.weight(.black))
+                                    .foregroundStyle(HDTheme.navy)
+                                Text("Every day at 9:00 AM IST")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Spacer()
+                            StatusPill(text: outcomeLabel(slot.outcome), color: outcomeColor(slot.outcome))
+                        }
+
+                        HStack(alignment: .firstTextBaseline) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(slot.target ?? "9–10 verified jobs/day")
+                                    .font(.subheadline.weight(.bold))
+                                    .foregroundStyle(HDTheme.navy)
+                                if let next = slot.nextRunAt {
+                                    Text("Next: \(formatAdminDate(next))")
+                                        .font(.caption2)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            Spacer()
+                            HStack(spacing: 5) {
+                                Text("View plan")
+                                    .font(.caption.weight(.bold))
+                                Image(systemName: "chevron.right")
+                                    .font(.caption2.weight(.bold))
+                            }
+                            .foregroundStyle(HDTheme.blue)
+                        }
+                    }
+                }
+                .buttonStyle(.plain)
+                .hdCard()
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    Label("Publishing automation", systemImage: "bolt.slash")
+                        .font(.headline.weight(.black))
+                    Text("Refresh to load the active daily publishing schedule.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .hdCard()
             }
         }
     }
@@ -1377,7 +1519,7 @@ struct MoreView: View {
                             NavigationLink {
                                 AutomationDetailsView()
                             } label: {
-                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Automation Health", color: HDTheme.green)
+                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Publishing Automation", color: HDTheme.green)
                             }
                             Divider().padding(.leading, 48)
                             if let adminURL = URL(string: "https://hdcareers.in/admin/") {
@@ -1623,56 +1765,94 @@ struct AnalyticsListCard: View {
 struct AutomationDetailsView: View {
     @EnvironmentObject private var state: AppState
 
+    private func statusColor(_ outcome: String?) -> Color {
+        switch outcome {
+        case "published": return HDTheme.green
+        case "partial", "no_publish": return HDTheme.amber
+        case "error": return HDTheme.red
+        case "scheduled": return HDTheme.blue
+        default: return HDTheme.blue
+        }
+    }
+
+    private func statusLabel(_ outcome: String?) -> String {
+        if outcome == "scheduled" { return "Ready" }
+        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
+    }
+
     var body: some View {
         ZStack {
             HDTheme.background.ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 12) {
-                    if let slots = state.automationHealth?.slots {
-                        ForEach(slots) { slot in
-                            VStack(alignment: .leading, spacing: 10) {
-                                HStack {
-                                    Circle()
-                                        .fill(slot.enabled ? HDTheme.green : Color.gray)
-                                        .frame(width: 10, height: 10)
+                    if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+                        VStack(alignment: .leading, spacing: 14) {
+                            HStack {
+                                Circle()
+                                    .fill(statusColor(slot.outcome))
+                                    .frame(width: 10, height: 10)
+                                VStack(alignment: .leading, spacing: 2) {
                                     Text("\(slot.time) — \(slot.title)")
                                         .font(.headline.weight(.black))
-                                    Spacer()
-                                    if let outcome = slot.outcome {
-                                        StatusPill(
-                                            text: outcome.replacingOccurrences(of: "_", with: " ").capitalized,
-                                            color: outcome == "error" ? HDTheme.red : outcome == "no_publish" ? HDTheme.amber : HDTheme.green
-                                        )
+                                    if let target = slot.target {
+                                        Text(target)
+                                            .font(.caption.weight(.bold))
+                                            .foregroundStyle(HDTheme.blue)
                                     }
                                 }
+                                Spacer()
+                                StatusPill(text: statusLabel(slot.outcome), color: statusColor(slot.outcome))
+                            }
 
-                                Text("Last run: \(formatAdminDate(slot.lastRunAt))")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-
-                                if let detail = slot.detail, !detail.isEmpty {
-                                    Text(detail)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-
-                                if let page = siteURL(slot.page) {
-                                    Link("Open published job ↗", destination: page)
-                                        .font(.caption.weight(.bold))
+                            if let mix = slot.mix, !mix.isEmpty {
+                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 118), spacing: 8)], alignment: .leading, spacing: 8) {
+                                    ForEach(mix, id: \.self) { item in
+                                        Text(item)
+                                            .font(.caption2.weight(.bold))
+                                            .foregroundStyle(HDTheme.navy)
+                                            .padding(.horizontal, 9)
+                                            .padding(.vertical, 7)
+                                            .background(HDTheme.blue.opacity(0.07))
+                                            .clipShape(Capsule())
+                                    }
                                 }
                             }
-                            .hdCard()
+
+                            if let delivery = slot.delivery, !delivery.isEmpty {
+                                Label(delivery, systemImage: "arrow.triangle.branch")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(HDTheme.green)
+                            }
+
+                            if let next = slot.nextRunAt {
+                                Label("Next run: \(formatAdminDate(next))", systemImage: "calendar.badge.clock")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            if let last = slot.lastRunAt {
+                                Text("Previous run: \(formatAdminDate(last))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            if let detail = slot.detail, !detail.isEmpty {
+                                Text(detail)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .hdCard()
                     } else {
-                        EmptyState(icon: "bolt.slash", title: "No automation status", message: "Refresh the dashboard to load automation health.")
+                        EmptyState(icon: "bolt.slash", title: "No active publishing automation", message: "Refresh the dashboard to load the current daily batch.")
                             .hdCard()
                     }
                 }
                 .padding(16)
             }
         }
-        .navigationTitle("Automation Health")
+        .navigationTitle("Daily Publishing Batch")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

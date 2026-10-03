@@ -1,72 +1,29 @@
 {
-  "updatedAt": "2026-10-03T12:41:46.732Z",
+  "updatedAt": "2026-10-03T15:06:00.000Z",
   "slots": [
     {
       "id": "it-9am",
-      "title": "Fresher IT",
+      "title": "Daily Publishing Batch",
       "time": "09:00",
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-03T03:36:22.389Z",
-      "outcome": "published",
-      "detail": "Published the requested Deloitte Senior Consultant Data Analytics role after official-source verification, repository availability gate, deployment, live-page check and Telegram posting.",
-      "company": "Deloitte",
-      "role": "Senior Consultant | Data Analytics | Delhi | Artificial Intelligence & Data | AI Insights & Engagement",
-      "page": "https://hdcareers.in/jobs/deloitte-senior-consultant-data-analytics-delhi-59869044.html"
-    },
-    {
-      "id": "nonit-12pm",
-      "title": "Fresher Non-IT",
-      "time": "12:00",
-      "timezone": "Asia/Kolkata",
-      "automationId": "6aba9c10b38c819187f7bc5ae26add48",
-      "enabled": true,
-      "lastRunAt": "2026-10-03T06:44:38.653Z",
-      "outcome": "error",
-      "detail": "Amazon Advocacy Operations Associate passed official-source and repository availability checks, but Vercel hit its build-rate limit; the HD Careers page stayed 404 and Telegram posting was skipped.",
+      "lastRunAt": "2026-10-03T03:36:42.515Z",
+      "nextRunAt": "2026-10-04T03:30:00.000Z",
+      "outcome": "scheduled",
+      "detail": "Consolidated schedule starts 4 Oct 2026. The run verifies the requested category mix first, publishes only supported active jobs, batches the repository update, deploys once, and then hands the live HD Careers links to Telegram.",
+      "target": "9–10 verified jobs/day",
+      "mix": [
+        "3–4 Fresher IT",
+        "2 Fresher Non-IT",
+        "1 Experienced",
+        "1 Government / PSU",
+        "2 Walk-ins"
+      ],
+      "delivery": "Verify all → one GitHub batch → one deployment → Telegram",
       "company": "",
       "role": "",
       "page": ""
-    },
-    {
-      "id": "experienced-3pm",
-      "title": "Experienced IT",
-      "time": "15:00",
-      "timezone": "Asia/Kolkata",
-      "automationId": "6aba9c1a592081918894d08be3c668df",
-      "enabled": true,
-      "lastRunAt": "2026-10-03T09:37:49.949Z",
-      "outcome": "published",
-      "detail": "Published Amazon Software Development Engineer II, Workplace Productivity after official-source verification, repository availability gate, deployment, live-page check and Telegram posting.",
-      "company": "Amazon",
-      "role": "Software Development Engineer II, Workplace Productivity",
-      "page": "https://hdcareers.in/jobs/amazon-software-development-engineer-ii-workplace-productivity-hyderabad-10564385.html"
-    },
-    {
-      "id": "govt-6pm",
-      "title": "Government / PSU",
-      "time": "18:00",
-      "timezone": "Asia/Kolkata",
-      "automationId": "6aba9c27b0548191b91c7e2b7ff29cac",
-      "enabled": true,
-      "lastRunAt": "2026-10-03T12:41:46.732Z",
-      "outcome": "error",
-      "detail": "DRDO DIPR ITI apprenticeship passed official-source and availability checks, but Vercel hit its build-rate-limit; the live page stayed 404, Telegram was skipped and the unpublished record was removed.",
-      "company": "",
-      "role": "",
-      "page": ""
-    },
-    {
-      "id": "walkin-9pm",
-      "title": "Walk-in",
-      "time": "21:00",
-      "timezone": "Asia/Kolkata",
-      "automationId": "6aba9c326f6881918f4816c3c511c960",
-      "enabled": true,
-      "lastRunAt": "2026-10-01T15:33:39.155386Z",
-      "outcome": "ran",
-      "detail": "Awaiting outcome tracking from next run."
     }
   ]
 }
