@@ -130,7 +130,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <body id="top">
 
 <div class="header-safe text-white text-xs sm:text-sm" style="background:linear-gradient(90deg,#0758c9,#0b6fde)">
-<div class="max-w-[1440px] mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center">
+<div class="max-w-[1240px] mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center">
 <span class="ticker-dot w-2 h-2 rounded-full bg-green-400 shrink-0"></span>
 <span class="truncate">Daily job alerts across WhatsApp, Telegram & Instagram</span>
 <a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" class="font-bold underline underline-offset-2 shrink-0">Join now</a>
@@ -138,7 +138,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 
 <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80">
-<div class="max-w-[1440px] mx-auto px-4">
+<div class="max-w-[1240px] mx-auto px-4">
 <div class="flex items-center justify-between min-h-[70px] gap-3">
 <a href="#top" onclick="goHome(event)" class="logo-home flex items-center gap-2.5 min-w-0" aria-label="HD Careers home">
 <img id="siteLogo" src="assets/hd-careers-logo.png" alt="HD Careers" class="w-11 h-11 object-contain rounded-xl bg-white border border-slate-100 p-1 shrink-0">
@@ -176,7 +176,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 
 <div id="mobileMenu" class="drawer lg:hidden absolute left-0 right-0 bg-white border-b border-slate-200 shadow-xl px-4 pb-4">
-<div class="max-w-[1440px] mx-auto grid grid-cols-2 gap-2 text-sm font-semibold pt-3">
+<div class="max-w-[1240px] mx-auto grid grid-cols-2 gap-2 text-sm font-semibold pt-3">
 <a href="#top" onclick="goHome(event);closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-house w-5 text-slate-400"></i> Home</a>
 <a href="#jobs" onclick="showHome();setCat('all');closeMobileMenu()" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-briefcase w-5 text-slate-400"></i> Latest Jobs</a>
 <a href="about.html" class="rounded-xl bg-slate-50 px-3 py-3"><i class="fa-solid fa-circle-info w-5 text-slate-400"></i> About Us</a>
@@ -192,7 +192,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </header>
 
 <div id="homeView" class="soft-enter">
-<section id="jobs" class="max-w-[1440px] mx-auto px-4 pt-6">
+<section id="jobs" class="max-w-[1240px] mx-auto px-4 pt-6">
 <div class="hero-shell relative overflow-hidden rounded-[28px] text-white px-6 sm:px-10 py-10 sm:py-14">
 <div class="hero-orb -top-12 -right-12 w-44 h-44 bg-blue-300/30"></div>
 <div class="hero-orb two -bottom-16 right-1/3 w-36 h-36 bg-cyan-300/20"></div>
@@ -227,7 +227,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 </section>
 
-<main id="resultsSection" class="max-w-[1440px] mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
+<main id="resultsSection" class="max-w-[1240px] mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
 <div class="lg:col-span-2">
 <div class="reveal-card flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
 <div><p class="text-xs font-bold uppercase tracking-[.16em] text-[var(--primary)]">Latest openings</p><h2 class="text-2xl font-black tracking-tight">Jobs you can explore</h2><p id="jobCount" class="text-sm text-slate-500 mt-1"></p></div>
@@ -297,7 +297,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 
 <footer class="bg-[var(--dark)] text-slate-300 py-8 mt-2">
-<div class="max-w-[1440px] mx-auto px-4 flex flex-col sm:flex-row justify-between gap-6">
+<div class="max-w-[1240px] mx-auto px-4 flex flex-col sm:flex-row justify-between gap-6">
 <div><button onclick="showHome();window.scrollTo({top:0,behavior:'smooth'})" class="text-left"><p class="text-white font-extrabold text-lg">HD Careers</p><p class="text-xs mt-1 max-w-sm text-slate-400">Jobs, internships, off-campus drives & career updates for job seekers across India.</p></button><div class="flex gap-2 mt-4"><a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-green-500"><i class="fa-brands fa-whatsapp"></i></a><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-pink-500"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sky-500"><i class="fa-brands fa-telegram"></i></a></div></div>
 <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm self-start sm:self-center"><a href="about.html" class="hover:text-white">About</a><a href="contact.html" class="hover:text-white">Contact</a><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="terms.html" class="hover:text-white">Terms</a><a href="disclaimer.html" class="hover:text-white">Disclaimer</a></div>
 </div>
