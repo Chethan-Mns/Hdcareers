@@ -1,0 +1,36 @@
+name: Generate Global Public Header
+
+on:
+  push:
+    branches:
+      - feature/global-public-header
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/global-public-header
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate public pages
+        run: python3 generate.py
+      - name: Validate generated diff
+        run: git diff --check
+      - name: Commit generated pages
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html jobs insights.html insights sitemap.xml robots.txt
+          git commit -m "Regenerate pages for shared public header [skip ci]"
+          git push
