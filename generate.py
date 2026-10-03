@@ -171,7 +171,7 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-screwdriver-wrench text-[var(--primary)] mr-2"></i>Skills Mentioned</h2><div class="flex flex-wrap gap-2 mt-4">$skills</div></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
-$expanded_guidance
+$job_content_sections
 $apply_section
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-shield-halved text-[var(--primary)] mr-2"></i>Source & Verification</h2><p class="mt-3 text-slate-600">Source: <strong>$source_name</strong></p><p class="mt-1 text-slate-600">Last checked by HD Careers: <strong>$verified_date</strong></p><a href="$apply" target="_blank" rel="noopener nofollow" class="mt-4 inline-flex items-center text-[var(--primary)] font-bold">Open official source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a><p class="mt-3 text-xs text-slate-500">Job information can change after publication. The employer's official page is the final source for eligibility, deadlines and application availability.</p></div>
 $related_jobs
@@ -310,6 +310,147 @@ def render_expanded_guidance(job: dict) -> str:
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Resume guidance</p><h2 class="text-xl font-black mt-2">Show evidence for the important skills</h2><p class="mt-4 text-slate-600 leading-relaxed">For this listing, the main terms include {skills_html}. Include a skill only when you can support it with work, an academic project or a clearly labelled personal project. For each important skill, connect the technology to a task and an outcome. For example, describe the source and destination of a data flow, the checks you performed, or the issue you resolved.</p><p class="mt-4 text-slate-600 leading-relaxed">Use specific examples instead of repeating keywords. Mention the tools you actually used, your level of responsibility and results you can explain. Use numbers only when you can support them. Keep employer data, credentials and internal code private, and never add experience that is not true.</p></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Preparation guide</p><h2 class="text-xl font-black mt-2">Prepare one end-to-end example</h2><p class="mt-4 text-slate-600 leading-relaxed">Choose one relevant project and practise explaining its purpose, inputs, processing steps, outputs and users. Explain how you handled a missing field, duplicate record, late input or failed run. If you have not implemented a solution, describe it as a proposed approach rather than claiming it as professional experience.</p><p class="mt-4 text-slate-600 leading-relaxed">Review basic quality checks, such as missing identifiers, unexpected row counts, duplicate keys and invalid dates. Think about which issues should stop processing and which should create an alert. This helps you explain your reasoning clearly during an employer conversation.</p></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Application checklist</p><h2 class="text-xl font-black mt-2">Before you submit</h2><p class="mt-4 text-slate-600 leading-relaxed">Open the official application page and confirm the title, location, job ID and current status. Re-check any closing date and requirements there because a listing can change after HD Careers verifies it. Review the resume that the employer portal reads, especially dates, qualification and contact details, before submitting.</p><p class="mt-4 text-slate-600 leading-relaxed">The resume matcher on this page is a text-based comparison aid. Its skills, relevant experience and qualification percentages do not predict an interview, replace an employer ATS or decide eligibility. Applications are handled by the employer.</p></div>'''
+
+
+def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
+    """Render useful job-specific content using only verified fields already stored for the listing."""
+    company = str(job["company"])
+    role = str(job["roleTag"])
+    location = str(job["loc"])
+    work_mode = str(job["workMode"])
+    experience = str(job["expYears"])
+    qualification = str(job["batch"])
+    salary = str(job["salary"])
+    source_name = str(job["sourceName"])
+    domain = str(job.get("domain", "")).strip().lower().replace("https://", "").replace("http://", "").split("/")[0]
+    source_host = domain or "the employer's official recruitment site"
+    skills = [str(x).strip() for x in job.get("skills", []) if str(x).strip()]
+    responsibilities = [str(x).strip() for x in job.get("resp", []) if str(x).strip()]
+
+    same_company = [
+        other for other in jobs
+        if other["id"] != job["id"]
+        and other.get("status") == "active"
+        and str(other.get("company", "")).strip().lower() == company.strip().lower()
+    ]
+
+    glance = [
+        ("Qualification / Batch", qualification),
+        ("Experience", experience),
+        ("Location", location),
+        ("Work mode", work_mode),
+        ("Salary / Stipend", salary),
+        ("Status", "Active" if job.get("status") == "active" else "Expired / Closed"),
+    ]
+    glance_html = "".join(
+        f'<div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4"><p class="text-[11px] font-bold uppercase tracking-wide text-slate-500">{esc(label)}</p><p class="font-extrabold mt-1 text-slate-800">{esc(value)}</p></div>'
+        for label, value in glance
+    )
+
+    focus_skills = skills[:6]
+    skills_html = "".join(
+        f'<li class="rounded-xl border border-slate-200 bg-white p-4"><p class="font-extrabold text-slate-900">{esc(skill)}</p><p class="text-sm text-slate-600 mt-1 leading-relaxed">This skill is mentioned for the role. If you include it on your resume, connect it to a real work, internship or project example you can explain.</p></li>'
+        for skill in focus_skills
+    )
+    if not skills_html:
+        skills_html = '<li class="text-sm text-slate-500">The employer did not publish a detailed skills list for this role.</li>'
+
+    role_focus = ", ".join(focus_skills[:4]) if focus_skills else "the responsibilities listed by the employer"
+    first_tasks = responsibilities[:3]
+    task_html = "".join(f'<li class="flex gap-2"><i class="fa-solid fa-check text-blue-600 mt-1 text-xs"></i><span>{esc(item)}</span></li>' for item in first_tasks)
+    if not task_html:
+        task_html = '<li class="text-slate-500">Review the official source for the employer-published responsibilities.</li>'
+
+    if domain:
+        company_domain = f'<a href="https://{esc(domain)}" target="_blank" rel="noopener nofollow" class="font-bold text-[var(--primary)] break-all">{esc(domain)} <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>'
+    else:
+        company_domain = '<span class="font-bold">Official source linked on this page</span>'
+
+    if same_company:
+        same_cards = "".join(
+            '<a class="block rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40" '
+            f'href="{esc(Path(str(other["page"])).name)}"><p class="font-black">{esc(other["role"])}</p>'
+            f'<p class="text-xs text-slate-500 mt-2">{esc(other["loc"])}</p></a>'
+            for other in same_company[:3]
+        )
+        company_jobs = (
+            '<div class="mt-5"><p class="text-sm font-black text-slate-800">More active jobs from this company on HD Careers</p>'
+            f'<div class="grid sm:grid-cols-2 gap-3 mt-3">{same_cards}</div></div>'
+        )
+    else:
+        company_jobs = '<p class="text-sm text-slate-500 mt-4">No other active listings from this company are currently published on HD Careers.</p>'
+
+    prep_items = []
+    if focus_skills:
+        prep_items.append(f"Review your hands-on examples for {', '.join(focus_skills[:3])}.")
+    if responsibilities:
+        prep_items.append(f"Prepare one clear example related to this responsibility: {responsibilities[0]}.")
+    prep_items.extend([
+        "Keep your employment dates, degree details and contact information consistent across your resume and the employer application form.",
+        "Use the official employer page as the final source if any requirement, deadline or application step changes.",
+    ])
+    prep_html = "".join(f'<li class="flex gap-3"><span class="w-6 h-6 rounded-full bg-blue-50 text-blue-700 text-xs font-black flex items-center justify-center shrink-0">{i}</span><span>{esc(item)}</span></li>' for i, item in enumerate(prep_items, 1))
+
+    faq = [
+        ("Which company is hiring for this role?", f"{company} is the employer listed for this opportunity."),
+        ("What role is this application for?", f"The role is {role}."),
+        ("Where is the job located?", location),
+        ("What experience is listed?", experience),
+        ("What qualification or batch is mentioned?", qualification),
+        ("Where should I apply?", f"Apply only through the official employer link on this page. HD Careers verified this listing using {source_name}."),
+    ]
+    faq_html = "".join(
+        f'<details class="rounded-xl border border-slate-200 bg-white p-4"><summary class="cursor-pointer font-extrabold text-slate-900">{esc(q)}</summary><p class="text-sm text-slate-600 mt-2 leading-relaxed">{esc(a)}</p></details>'
+        for q, a in faq
+    )
+
+    return f'''
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Quick eligibility check</p>
+<h2 class="text-xl font-black mt-2">Eligibility at a Glance</h2>
+<p class="text-sm text-slate-500 mt-2">These values come from the verified job record. Re-check the employer page before applying because requirements can change.</p>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">{glance_html}</div>
+</div>
+
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Role breakdown</p>
+<h2 class="text-xl font-black mt-2">What This Role Involves</h2>
+<p class="text-slate-600 leading-relaxed mt-4">The official listing is for <strong>{esc(role)}</strong> at <strong>{esc(company)}</strong> in <strong>{esc(location)}</strong>. Based on the published information, the main areas to review include {esc(role_focus)}.</p>
+<ul class="mt-4 space-y-3 text-slate-600">{task_html}</ul>
+</div>
+
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Employer information</p>
+<h2 class="text-xl font-black mt-2">About {esc(company)} on This Listing</h2>
+<p class="text-slate-600 leading-relaxed mt-4">{esc(company)} is the employer named on the official source used for this job. HD Careers verified this listing against <strong>{esc(source_host)}</strong>. We keep this section limited to facts available from the verified job record instead of adding unsupported company claims.</p>
+<div class="grid sm:grid-cols-2 gap-3 mt-5">
+<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Employer</p><p class="font-extrabold mt-1">{esc(company)}</p></div>
+<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Official hiring domain</p><p class="mt-1">{company_domain}</p></div>
+<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Role location</p><p class="font-extrabold mt-1">{esc(location)}</p></div>
+<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Active HD Careers listings</p><p class="font-extrabold mt-1">{len(same_company) + (1 if job.get("status") == "active" else 0)}</p></div>
+</div>
+{company_jobs}
+</div>
+
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Resume & interview focus</p>
+<h2 class="text-xl font-black mt-2">Skills to Demonstrate</h2>
+<p class="text-sm text-slate-500 mt-2">Use these as evidence prompts, not as keywords to add without real experience.</p>
+<ul class="grid sm:grid-cols-2 gap-3 mt-5">{skills_html}</ul>
+</div>
+
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Preparation</p>
+<h2 class="text-xl font-black mt-2">Before You Apply</h2>
+<ul class="mt-5 space-y-4 text-slate-600">{prep_html}</ul>
+</div>
+
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Common questions</p>
+<h2 class="text-xl font-black mt-2">Job FAQ</h2>
+<div class="mt-5 space-y-3">{faq_html}</div>
+</div>'''
+
 
 
 def logo_onerror(company: str, domain: str) -> str:
@@ -492,7 +633,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "skills": render_skills(job["skills"]),
         "who": esc(job["who"]),
         "responsibilities": render_responsibilities(job["resp"]),
-        "expanded_guidance": render_expanded_guidance(job),
+        "job_content_sections": render_job_content_sections(job, jobs),
         "source_name": esc(job["sourceName"]),
         "hero_action": hero_action,
         "status_notice": status_notice,
