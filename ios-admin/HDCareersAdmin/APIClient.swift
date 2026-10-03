@@ -105,7 +105,22 @@ final class APIClient {
     }
 
     func automationHealth() async throws -> AutomationHealth {
-        try await request("/data/automation-status.json")
+        let url = URL(string: "https://raw.githubusercontent.com/Chethan-Mns/Hdcareers/preview/careers-favicon-logo-system/data/automation-status.json")!
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let (data, response) = try await session.data(for: request)
+        guard let http = response as? HTTPURLResponse else {
+            throw APIClientError.invalidResponse
+        }
+        guard (200...299).contains(http.statusCode) else {
+            throw APIClientError.server("Preview automation status returned HTTP \(http.statusCode).")
+        }
+        do {
+            return try decoder.decode(AutomationHealth.self, from: data)
+        } catch {
+            throw APIClientError.decoding(error.localizedDescription)
+        }
     }
 
     func availability() async throws -> AvailabilityResponse {
