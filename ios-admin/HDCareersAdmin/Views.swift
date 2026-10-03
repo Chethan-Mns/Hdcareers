@@ -364,6 +364,12 @@ struct TrafficSummaryCard: View {
                 SmallMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, color: .purple)
             }
 
+            HStack(spacing: 10) {
+                SmallMetric(title: "Job views", value: state.traffic?.conversions?.jobPageViews ?? 0, color: .indigo)
+                SmallMetric(title: "Resume", value: state.traffic?.conversions?.resumeChecks ?? 0, color: .cyan)
+                SmallMetric(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0, color: HDTheme.green)
+            }
+
             if let page = state.traffic?.pages?.first {
                 Divider()
                 Text("Top page")
@@ -1461,6 +1467,32 @@ struct AnalyticsView: View {
                     }
                     .hdCard(10)
 
+                    ConversionSummaryCard()
+
+                    AnalyticsListCard(
+                        title: "Top Apply Jobs",
+                        icon: "arrow.up.right.square.fill",
+                        rows: (state.traffic?.applyJobs ?? []).map {
+                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
+                        }
+                    )
+
+                    AnalyticsListCard(
+                        title: "Resume Checker Usage",
+                        icon: "doc.text.magnifyingglass",
+                        rows: (state.traffic?.resumeJobs ?? []).map {
+                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
+                        }
+                    )
+
+                    AnalyticsListCard(
+                        title: "Apply Conversion Sources",
+                        icon: "point.3.connected.trianglepath.dotted",
+                        rows: (state.traffic?.applySources ?? []).map {
+                            (($0.referrerHostname?.isEmpty == false ? $0.referrerHostname! : "Direct / Unknown"), $0.count ?? 0)
+                        }
+                    )
+
                     AnalyticsListCard(
                         title: "Top Pages",
                         icon: "doc.text.fill",
@@ -1498,6 +1530,47 @@ struct AnalyticsView: View {
         }
         .navigationTitle("Analytics")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct ConversionSummaryCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var conversions: TrafficResponse.Conversions? { state.traffic?.conversions }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Conversion Funnel")
+                        .font(.headline.weight(.black))
+                    Text("Job views → resume checks → official apply clicks")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(String(format: "%.1f%%", conversions?.applyRate ?? 0))
+                    .font(.title3.weight(.black))
+                    .foregroundStyle(.purple)
+            }
+
+            HStack(spacing: 10) {
+                SmallMetric(title: "Job views", value: conversions?.jobPageViews ?? 0, color: .indigo)
+                SmallMetric(title: "Resume checks", value: conversions?.resumeChecks ?? 0, color: .cyan)
+                SmallMetric(title: "Apply clicks", value: conversions?.applyClicks ?? 0, color: HDTheme.green)
+            }
+
+            HStack(spacing: 10) {
+                SmallMetric(title: "Apply users", value: conversions?.applyUsers ?? 0, color: HDTheme.green)
+                SmallMetric(title: "Shares", value: conversions?.shares ?? 0, color: .orange)
+                SmallMetric(title: "Social clicks", value: conversions?.socialClicks ?? 0, color: .pink)
+            }
+
+            Text("Conversion events accumulate from the analytics release onward.")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+        }
+        .hdCard()
     }
 }
 

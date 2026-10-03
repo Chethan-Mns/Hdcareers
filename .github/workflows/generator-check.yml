@@ -22,10 +22,12 @@ jobs:
           node tests/resume-keywords.test.js
           node tests/resume-assessment.test.js
 
-      - name: Validate admin API syntax
+      - name: Validate admin and analytics JavaScript
         run: |
           node --check api/admin/extract-job.js
           node --check api/admin/publish.js
+          node --check api/admin/traffic.js
+          node --check assets/analytics.js
 
       - name: Run generator
         run: python3 generate.py
