@@ -16,12 +16,12 @@ struct HDCard: ViewModifier {
         content
             .padding(padding)
             .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(Color.black.opacity(0.06), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
             }
-            .shadow(color: .black.opacity(0.045), radius: 14, y: 6)
+            .shadow(color: .black.opacity(0.025), radius: 8, y: 3)
     }
 }
 
