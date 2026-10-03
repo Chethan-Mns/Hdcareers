@@ -22,6 +22,11 @@ jobs:
           node tests/resume-keywords.test.js
           node tests/resume-assessment.test.js
 
+      - name: Validate admin API syntax
+        run: |
+          node --check api/admin/extract-job.js
+          node --check api/admin/publish.js
+
       - name: Run generator
         run: python3 generate.py
 
