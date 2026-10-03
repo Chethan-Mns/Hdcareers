@@ -208,22 +208,14 @@ struct CompanyLogoView: View {
     }
 
     private var remoteURL: URL? {
+        if let company = job.company, let direct = directLogos[company], let url = URL(string: direct) {
+            return url
+        }
+
         if careerHostIsTrusted,
            let raw = job.careerIconUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
            raw.hasPrefix("https://"),
            let url = URL(string: raw) {
-            return url
-        }
-
-        if careerHostIsTrusted,
-           let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
-           apply.hasPrefix("https://"),
-           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
-            return url
-        }
-
-        if let company = job.company, let direct = directLogos[company], let url = URL(string: direct) {
             return url
         }
 
@@ -232,6 +224,14 @@ struct CompanyLogoView: View {
             if let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
                 return url
             }
+        }
+
+        if careerHostIsTrusted,
+           let apply = job.apply?.trimmingCharacters(in: .whitespacesAndNewlines),
+           apply.hasPrefix("https://"),
+           let encoded = apply.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let url = URL(string: "https://www.google.com/s2/favicons?domain_url=\(encoded)&sz=256") {
+            return url
         }
 
         if let raw = job.logoUrl?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -245,7 +245,9 @@ struct CompanyLogoView: View {
 
     var body: some View {
         Group {
-            if let url = remoteURL {
+            if nativeBrand != nil {
+                fallback
+            } else if let url = remoteURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
