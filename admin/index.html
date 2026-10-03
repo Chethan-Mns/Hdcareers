@@ -832,6 +832,10 @@ ${j.jobId?'<div class="rounded-xl bg-slate-50 p-3"><p class="text-xs text-slate-
 <ul class="text-sm sm:text-base text-slate-600 leading-7 mt-3 space-y-2">${items||'<li>Responsibilities will appear here.</li>'}</ul>
 </section>
 
+${(j.selectionProcess||[]).length?'<section class="preview-section p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-wider text-violet-600">Employer-published process</p><h2 class="font-black text-xl mt-2">Selection / Hiring Process</h2><ol class="text-sm sm:text-base text-slate-600 leading-7 mt-3 space-y-2">'+(j.selectionProcess||[]).map((x,n)=>'<li><strong>'+(n+1)+'.</strong> '+esc(x)+'</li>').join('')+'</ol></section>':''}
+
+${(j.importantDates||[]).length?'<section class="preview-section p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-wider text-blue-600">Timeline</p><h2 class="font-black text-xl mt-2">Important Dates</h2><ul class="text-sm sm:text-base text-slate-600 leading-7 mt-3 space-y-2">'+(j.importantDates||[]).map(x=>'<li><i class="fa-solid fa-calendar-day text-blue-600 mr-2"></i>'+esc(x)+'</li>').join('')+'</ul></section>':''}
+
 <section class="preview-section p-5 sm:p-6">
 <h2 class="font-black text-xl"><i class="fa-solid fa-route text-blue-600 mr-2"></i>How to Apply</h2>
 <div class="mt-4 space-y-3 text-sm text-slate-600">
