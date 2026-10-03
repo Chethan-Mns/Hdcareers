@@ -83,7 +83,7 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 <section id="loginView" class="auth-shell">
 <div class="auth-card">
 <div class="flex items-center gap-3">
-<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-12 h-12 object-contain rounded-xl border border-slate-100 p-1">
+<img src="../assets/hd-careers-logo.png" alt="HD Careers" class="w-12 h-12 object-contain rounded-xl border border-slate-100 p-1">
 <div><p class="font-black text-xl">HD Careers Admin</p><p class="text-xs text-slate-500 mt-1">Secure administrator access</p></div>
 </div>
 <div class="mt-7">
@@ -104,16 +104,19 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 <header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 shadow-sm">
 <div class="admin-header max-w-7xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-3">
 <div class="flex items-center gap-3 min-w-0">
-<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-xl bg-white border border-slate-200 p-1 shadow-sm shrink-0">
+<img src="../assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-xl bg-white border border-slate-200 p-1 shadow-sm shrink-0">
 <div class="min-w-0"><p class="font-black leading-none truncate">HD Careers Admin</p><p class="admin-brand-sub text-[11px] text-slate-500 mt-1">Dashboard • daily batch publishing • analytics</p></div>
 </div>
 <div class="flex items-center gap-2 shrink-0">
-<a href="/admin/traffic.html" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm" title="Traffic analytics"><i class="fa-solid fa-chart-line"></i><span class="hidden md:inline ml-1">Traffic</span></a>
+<a href="traffic.html" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm" title="Traffic analytics"><i class="fa-solid fa-chart-line"></i><span class="hidden md:inline ml-1">Traffic</span></a>
 <span class="hidden sm:inline-flex badge bg-green-50 text-green-700 border border-green-200"><i class="fa-solid fa-shield-halved"></i> Authenticated</span>
 <button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm" title="Logout"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button>
 </div>
 </div>
 </header>
+<div id="githubPreviewBanner" class="hidden max-w-7xl mx-auto px-4 pt-4">
+<div class="rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800 flex items-start gap-3"><i class="fa-solid fa-eye mt-0.5"></i><div><strong>GitHub Pages preview</strong><p class="text-xs mt-1 text-blue-700">Read-only UI preview. Job publishing, analytics APIs and checker actions remain connected only on the production domain.</p></div></div>
+</div>
 
 <main class="admin-main max-w-7xl mx-auto px-4 py-7 space-y-6">
 <section id="analyticsDashboard" class="card p-5 sm:p-6 overflow-hidden">
@@ -172,7 +175,7 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 <div><p class="text-[10px] uppercase font-black text-blue-500">Apply</p><p id="dashApplyClicks" class="text-lg font-black text-blue-950">—</p></div>
 </div>
 <p class="text-xs text-blue-800 mt-3 truncate">Top page: <strong id="dashTopPage">—</strong></p>
-<a href="/admin/traffic.html" class="btn mt-4 inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-sm">View traffic dashboard <i class="fa-solid fa-chart-line ml-2"></i></a>
+<a href="traffic.html" class="btn mt-4 inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-sm">View traffic dashboard <i class="fa-solid fa-chart-line ml-2"></i></a>
 </div>
 </div>
 
@@ -398,6 +401,7 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 
 <script>
 const CAT_LABEL={it:'IT / Software',internship:'Internship',apprenticeship:'Apprenticeship',campus:'Off-Campus',remote:'Remote / WFH',walkin:'Walk-in',experienced:'Experienced',govt:'Government'};
+const IS_GITHUB_PREVIEW=location.hostname.endsWith('github.io');
 let jobs=[];let editIndex=-1;let existingJobs=[];
 
 function renderDashboard(){
@@ -526,7 +530,7 @@ if(startPolling&&running)startAvailabilityPolling();
 return d;
 }catch(e){
 try{
-const sr=await fetch('/data/availability-status.json',{cache:'no-store'});
+const sr=await fetch('../data/availability-status.json',{cache:'no-store'});
 if(sr.ok){
 const saved=await sr.json();
 const results={...saved,current:false};
@@ -606,7 +610,7 @@ async function loadAutomationHealth(){
 const grid=document.getElementById('automationHealthGrid');
 const updated=document.getElementById('automationHealthUpdated');
 try{
-const r=await fetch('/data/automation-status.json',{cache:'no-store'});
+const r=await fetch('../data/automation-status.json',{cache:'no-store'});
 if(!r.ok)throw new Error('Could not load automation status');
 const d=await r.json();
 const slots=(Array.isArray(d.slots)?d.slots:[]).filter(s=>s.enabled!==false);
@@ -626,7 +630,7 @@ grid.innerHTML='<div class="rounded-2xl border border-red-200 bg-red-50 p-4 text
 updated.textContent=''
 }
 }
-async function refreshDashboard(){await Promise.all([loadExistingJobs(),loadDashboardTraffic(),loadAvailabilityStatus(),loadAutomationHealth()])}
+async function refreshDashboard(){if(IS_GITHUB_PREVIEW){await Promise.all([loadExistingJobs(),loadAutomationHealth()]);return}await Promise.all([loadExistingJobs(),loadDashboardTraffic(),loadAvailabilityStatus(),loadAutomationHealth()])}
 function parseInputLinks(){
 const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
 const seen=new Set();
@@ -682,7 +686,7 @@ if(btnText)btnText.textContent=ready.length?'Generate '+ready.length+' job'+(rea
 return{items,ready,issues}
 }
 function normalizeUrl(s){try{const u=new URL(s);u.hash='';return u.href.replace(/\/$/,'')}catch{return String(s||'').trim().replace(/\/$/,'')}}
-async function loadExistingJobs(){try{const r=await fetch('/data/jobs.json',{cache:'no-store'});if(r.ok){const d=await r.json();existingJobs=Array.isArray(d)?d:[]}}catch(e){existingJobs=[]}renderDashboard()}
+async function loadExistingJobs(){try{const r=await fetch('../data/jobs.json',{cache:'no-store'});if(r.ok){const d=await r.json();existingJobs=Array.isArray(d)?d:[]}}catch(e){existingJobs=[]}renderDashboard()}
 function isExistingDuplicate(url){const n=normalizeUrl(url);return existingJobs.some(j=>normalizeUrl(j.apply||'')===n)}
 function mapExtracted(d,url){
 const q=d.extraction||{};
@@ -982,6 +986,13 @@ try{await fetch('/api/admin/logout',{method:'POST'})}catch{}
 jobs=[];existingJobs=[];showLogin();
 }
 async function initAdmin(){
+if(IS_GITHUB_PREVIEW){
+showAdmin();
+document.getElementById('githubPreviewBanner')?.classList.remove('hidden');
+const availability=document.getElementById('availabilityStatus');
+if(availability){availability.className='badge bg-blue-50 text-blue-700 border border-blue-200';availability.innerHTML='<i class="fa-solid fa-eye"></i> Preview'}
+await refreshDashboard();countLinks();render();return
+}
 try{
 const r=await fetch('/api/admin/session',{cache:'no-store'});
 const body=await r.json().catch(()=>({authenticated:false}));
