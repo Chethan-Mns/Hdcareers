@@ -257,10 +257,20 @@ function documentIcon(html,base){
   return ranked[0]?.url||"";
 }
 
+const GENERIC_RECRUITING_HOSTS=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com"];
+
+function genericRecruitingHost(value){
+  try{
+    const host=new URL(String(value||"")).hostname.toLowerCase().replace(/^www\./,"");
+    return GENERIC_RECRUITING_HOSTS.some(domain=>host===domain||host.endsWith("."+domain));
+  }catch{return false}
+}
+
 function careersFavicon(html,base,sourceUrl){
+  const target=String(sourceUrl||base||"").trim();
+  if(genericRecruitingHost(target))return "";
   const direct=documentIcon(html,base);
   if(direct)return direct;
-  const target=String(sourceUrl||base||"").trim();
   if(!/^https:\/\//i.test(target))return "";
   return "https://www.google.com/s2/favicons?domain_url="+encodeURIComponent(target)+"&sz=256";
 }
