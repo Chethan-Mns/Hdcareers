@@ -122,6 +122,8 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 $structured_data
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
+<link rel="stylesheet" href="../assets/public-header.css">
+<script defer src="../assets/public-header.js"></script>
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
@@ -981,7 +983,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 <title>{esc(title)} | HD Careers</title>
 <meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><script defer src="{prefix}assets/analytics.js"></script>
+<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script>
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
 </head><body>
 <header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
