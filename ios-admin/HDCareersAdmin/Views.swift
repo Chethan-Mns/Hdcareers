@@ -1031,6 +1031,24 @@ struct JobEditSheet: View {
         )
     }
 
+    private func listBinding(_ keyPath: WritableKeyPath<Job, [String]?>, commaSeparated: Bool = false) -> Binding<String> {
+        Binding(
+            get: {
+                let values = job[keyPath: keyPath] ?? []
+                return values.joined(separator: commaSeparated ? ", " : "\n")
+            },
+            set: { raw in
+                let values: [String]
+                if commaSeparated {
+                    values = raw.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+                } else {
+                    values = raw.components(separatedBy: .newlines).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+                }
+                job[keyPath: keyPath] = values
+            }
+        )
+    }
+
     var body: some View {
         NavigationStack {
             Form {
@@ -1039,25 +1057,72 @@ struct JobEditSheet: View {
                     TextField("Role", text: binding(\.role))
                     TextField("Location", text: binding(\.loc))
                     TextField("Experience", text: binding(\.expYears))
-                    TextField("Batch", text: binding(\.batch))
+                    TextField("Batch / Qualification", text: binding(\.batch))
                     TextField("Salary", text: binding(\.salary))
+                    TextField("Work mode", text: binding(\.workMode))
                 }
 
                 Section("Official source") {
-                    TextField("Official URL", text: binding(\.apply))
+                    TextField("Official apply URL", text: binding(\.apply))
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                     TextField("Source name", text: binding(\.sourceName))
+                    TextField("Verified date", text: binding(\.verifiedDate))
+                    TextField("Closing date", text: binding(\.closingAt))
+                    TextField("Job / Requisition ID", text: binding(\.externalJobId))
+                }
+
+                Section {
+                    TextField("Industry", text: binding(\.industry))
+                    TextField("Headquarters", text: binding(\.headquarters))
+                    TextField("Founded year", text: binding(\.foundedYear))
+                    TextField("Company website", text: binding(\.companyWebsite))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    TextField("Careers URL", text: binding(\.careersUrl))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    TextEditor(text: binding(\.companyOverview))
+                        .frame(minHeight: 100)
+                } header: {
+                    Text("Optional company details")
+                } footer: {
+                    Text("Use only information supported by the official source. Blank fields are allowed.")
                 }
 
                 Section("Eligibility") {
                     TextEditor(text: binding(\.elig))
-                        .frame(minHeight: 110)
+                        .frame(minHeight: 100)
                 }
 
                 Section("Description") {
                     TextEditor(text: binding(\.desc))
-                        .frame(minHeight: 150)
+                        .frame(minHeight: 130)
+                }
+
+                Section("Skills") {
+                    TextEditor(text: listBinding(\.skills, commaSeparated: true))
+                        .frame(minHeight: 90)
+                }
+
+                Section("Responsibilities") {
+                    TextEditor(text: listBinding(\.resp))
+                        .frame(minHeight: 120)
+                }
+
+                Section("Who should apply") {
+                    TextEditor(text: binding(\.who))
+                        .frame(minHeight: 90)
+                }
+
+                Section("Selection process") {
+                    TextEditor(text: listBinding(\.selectionProcess))
+                        .frame(minHeight: 100)
+                }
+
+                Section("Important dates") {
+                    TextEditor(text: listBinding(\.importantDates))
+                        .frame(minHeight: 90)
                 }
             }
             .navigationTitle("Edit Job")
