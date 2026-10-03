@@ -242,11 +242,27 @@ function documentIcon(html,base){
     if(!href||!/(?:apple-touch-icon|icon)/i.test(rel))continue;
     const url=absoluteHttpUrl(decodeEntities(href),base);
     if(!url)continue;
-    const score=/apple-touch-icon/i.test(rel)?3:/icon/i.test(rel)?2:1;
+    const sizes=(tag.match(/\bsizes\s*=\s*["']([^"']+)["']/i)||[])[1]||"";
+    const type=(tag.match(/\btype\s*=\s*["']([^"']+)["']/i)||[])[1]||"";
+    const nums=[...sizes.matchAll(/(\d+)x(\d+)/gi)].map(m=>Math.min(Number(m[1]),Number(m[2]))).filter(Boolean);
+    const px=nums.length?Math.max(...nums):0;
+    let score=/apple-touch-icon/i.test(rel)?100:/shortcut\s+icon/i.test(rel)?65:/icon/i.test(rel)?60:20;
+    score+=Math.min(px,512)/8;
+    if(/svg/i.test(type)||/\.svg(?:$|[?#])/i.test(url))score+=25;
+    else if(/png/i.test(type)||/\.png(?:$|[?#])/i.test(url))score+=18;
+    else if(/\.ico(?:$|[?#])/i.test(url))score+=5;
     ranked.push({url,score});
   }
   ranked.sort((a,b)=>b.score-a.score);
   return ranked[0]?.url||"";
+}
+
+function careersFavicon(html,base,sourceUrl){
+  const direct=documentIcon(html,base);
+  if(direct)return direct;
+  const target=String(sourceUrl||base||"").trim();
+  if(!/^https:\/\//i.test(target))return "";
+  return "https://www.google.com/s2/favicons?domain_url="+encodeURIComponent(target)+"&sz=256";
 }
 
 function organizationLogo(jsonRoots,structured,company,html,base){
@@ -944,6 +960,7 @@ export default async function handler(req,res){
     title=title||urlRole||"Job Opening";
     location=normalizeSpace(location)||"Not Specified";
     const domain=hint.domainHint||sourceHost;
+    const careerIconUrl=careersFavicon(html,page.url||sourceUrl,sourceUrl);
     const logoUrl=organizationLogo(jsonRoots,structured,company,html,page.url||sourceUrl);
     const orgDetails=organizationDetails(structured);
     const validThrough=textValue(structured&&structured.validThrough);
@@ -967,6 +984,7 @@ export default async function handler(req,res){
       company,
       salary,
       logo:[initials(company),"#0b6fe8"],
+      careerIconUrl,
       logoUrl,
       role:title,
       roleTag:title,
