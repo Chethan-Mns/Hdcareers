@@ -675,6 +675,7 @@ const complete=q.title&&q.company&&q.location&&q.eligibility&&q.description&&q.r
 const status=isExistingDuplicate(d.apply||url)?'duplicate':(complete?'ready':'review');
 return {
 company:d.company||'',
+domain:d.domain||'',
 role:d.role||'',
 loc:d.loc||'',
 salary:d.salary||'Not Disclosed',
@@ -763,11 +764,21 @@ function editJob(i){editIndex=i;const j=jobs[i],s=j.source||{};document.getEleme
 function closeDrawer(){document.getElementById('drawer').classList.add('hidden');document.body.style.overflow=''}
 function saveEdit(){if(editIndex<0)return;const j=jobs[editIndex];j.company=document.getElementById('eCompany').value.trim();j.role=document.getElementById('eRole').value.trim();j.loc=document.getElementById('eLoc').value.trim();j.salary=document.getElementById('eSalary').value.trim();j.exp=document.getElementById('eExp').value.trim();j.batch=document.getElementById('eBatch').value.trim();j.workMode=document.getElementById('eWorkMode').value.trim()||'Not Specified';j.publishStatus=document.getElementById('eStatus').value;j.apply=document.getElementById('eApply').value.trim();j.sourceName=document.getElementById('eSourceName').value.trim();j.verifiedDate=document.getElementById('eVerifiedDate').value.trim();j.closingAt=document.getElementById('eClosingAt').value.trim();j.careerIconUrl=document.getElementById('eCareerIconUrl').value.trim();j.logoUrl=document.getElementById('eLogoUrl').value.trim();j.jobId=document.getElementById('eJobId').value.trim();j.industry=document.getElementById('eIndustry').value.trim();j.headquarters=document.getElementById('eHeadquarters').value.trim();j.foundedYear=document.getElementById('eFoundedYear').value.trim();j.companyWebsite=document.getElementById('eCompanyWebsite').value.trim();j.careersUrl=document.getElementById('eCareersUrl').value.trim();j.companyOverview=document.getElementById('eCompanyOverview').value.trim();j.selectionProcess=document.getElementById('eSelectionProcess').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);j.importantDates=document.getElementById('eImportantDates').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);j.skills=document.getElementById('eSkills').value.split(',').map(x=>x.trim()).filter(Boolean);j.elig=document.getElementById('eElig').value.trim();j.desc=document.getElementById('eDesc').value.trim();j.resp=document.getElementById('eResp').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);j.who=document.getElementById('eWho').value.trim();j.status=(j.company&&j.role&&j.loc&&j.apply&&j.elig&&j.desc&&j.skills.length&&j.sourceName&&j.verifiedDate&&j.who&&j.publishStatus!=='review')?'ready':'review';j.selected=j.status!=='duplicate';closeDrawer();render();showToast(j.status==='ready'?'Job updated and ready for verification':'Job updated — manual review required')}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const PREVIEW_COMPANY_LOGO_DOMAINS={"Amazon":"amazon.com","PwC":"pwc.com","PWC":"pwc.com","Accenture":"accenture.com","Infosys":"infosys.com","Wipro":"wipro.com","Cognizant":"cognizant.com","HCLTech":"hcltech.com","Deloitte":"deloitte.com","Cohere Health":"coherehealth.com","Hevo Data":"hevodata.com","Qualcomm":"qualcomm.com","SAP":"sap.com","Priceline":"priceline.com","Canonical":"canonical.com","IndiGo":"goindigo.in"};
+const PREVIEW_COMPACT_LOGOS={"Deloitte":"../assets/logos/deloitte-mark.svg","Amazon":"../assets/logos/amazon-mark.svg","Wipro":"../assets/logos/wipro-mark.svg","Cognizant":"../assets/logos/cognizant-mark.svg"};
+const PREVIEW_GENERIC_RECRUITERS=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com"];
+function previewHost(value){try{return new URL(String(value||""),location.href).hostname.toLowerCase().replace(/^www\./,"")}catch{return""}}
+function previewCompanyDomain(j){return String(PREVIEW_COMPANY_LOGO_DOMAINS[j.company]||j.domain||j.source?.domain||"").toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"")}
+function previewTrustedCareer(j){const h=previewHost(j.apply);if(!h)return false;if(PREVIEW_GENERIC_RECRUITERS.some(d=>h===d||h.endsWith("."+d)))return false;if(h==="amazon.jobs"||h.endsWith(".amazon.jobs"))return true;const d=previewCompanyDomain(j);return !d||h===d||h.endsWith("."+d)}
 function careerFaviconUrl(j){
-const direct=String(j.careerIconUrl||'').trim();
-if(/^https:\/\//i.test(direct))return direct;
-const apply=String(j.apply||'').trim();
-if(/^https:\/\//i.test(apply))return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent(apply)+'&sz=256';
+if(previewTrustedCareer(j)){
+ const direct=String(j.careerIconUrl||'').trim();
+ if(/^https:\/\//i.test(direct))return direct;
+ const apply=String(j.apply||'').trim();
+ if(/^https:\/\//i.test(apply))return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent(apply)+'&sz=256';
+}
+const compact=PREVIEW_COMPACT_LOGOS[j.company];if(compact)return compact;
+const d=previewCompanyDomain(j);if(d)return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent('https://'+d)+'&sz=256';
 return String(j.logoUrl||'').trim();
 }
 function fullPreviewHtml(j){
