@@ -70,7 +70,6 @@ COMPACT_LOCAL_LOGOS = {
     "Deloitte": "deloitte-mark.svg",
     "Amazon": "amazon-mark.svg",
     "Wipro": "wipro-mark.svg",
-    "Cognizant": "cognizant-mark.svg",
     "Qualcomm": "qualcomm-mark.svg",
     "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": "actrec-mark.svg",
     "Electronics Corporation of India Limited (ECIL)": "ecil-mark.svg",
