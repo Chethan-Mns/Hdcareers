@@ -2060,7 +2060,7 @@ function logoFallback(img){let backups=[];try{backups=JSON.parse(img.dataset.bac
 function companyLogo(j,size='w-16 h-16'){const internet=companyInternetLogos(j);const compact=cardCompanyLogo(j);const local=localCompanyLogo(j);const direct=directCompanyLogo(j);const official=String(j.logoUrl||"").trim();const sources=[...(official?[official]:[]),...(compact?[compact]:[]),...(direct?[direct]:[]),...internet,...(local?[local]:[])];const unique=[...new Set(sources.filter(Boolean))];const first=unique.shift()||"";const backups=JSON.stringify(unique).replace(/"/g,"&quot;");const mark=String((j.logo&&j.logo[0])||String(j.company||"HD").slice(0,2)).replace(/"/g,"&quot;");const color=String((j.logo&&j.logo[1])||"#0b6fe8").replace(/"/g,"&quot;");return `<div class="company-logo ${size} shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden"><img src="${first}" data-backups="${backups}" data-mark="${mark}" data-color="${color}" alt="${j.company} logo" class="w-[88%] h-[88%] object-contain" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)"></div>`}
 function parseJobDate(s){const m=s.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);if(!m)return 0;const months={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};return new Date(+m[3],months[m[2]]??0,+m[1]).getTime()}
 
-function jobCardAction(j){return `<a href="${j.page}" class="bg-[var(--primary)] text-white text-sm font-bold px-5 py-3 rounded-xl hover:bg-[var(--primary-2)] transition whitespace-nowrap">View & Apply <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a>`}
+function jobCardAction(j){return `<a href="${j.page}" data-hd-track="job_open" class="bg-[var(--primary)] text-white text-sm font-bold px-5 py-3 rounded-xl hover:bg-[var(--primary-2)] transition whitespace-nowrap">View & Apply <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a>`}
 
 function renderJobs(){
 const input=document.getElementById('searchInput');
@@ -2096,7 +2096,7 @@ ${companyLogo(j)}
 <p class="text-sm font-semibold text-slate-700 truncate mt-0.5">${j.role}</p>
 <div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-2 text-xs text-slate-500"><span><i class="fa-solid fa-location-dot mr-1 text-slate-400"></i>${j.loc}</span><span><i class="fa-solid fa-graduation-cap mr-1 text-slate-400"></i>${j.batch}</span><span><i class="fa-solid fa-briefcase mr-1 text-slate-400"></i>${j.expYears}</span><span><i class="fa-regular fa-clock mr-1 text-slate-400"></i>${j.date}</span></div>
 </div>
-<div class="flex items-center gap-2 shrink-0 sm:self-center">${jobCardAction(j)}<button onclick="shareJob(${j.id})" class="w-11 h-11 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 shrink-0" aria-label="Share ${j.company} job"><i class="fa-solid fa-share-nodes"></i></button></div>
+<div class="flex items-center gap-2 shrink-0 sm:self-center">${jobCardAction(j)}<button data-hd-track="share_click" onclick="shareJob(${j.id})" class="w-11 h-11 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 shrink-0" aria-label="Share ${j.company} job"><i class="fa-solid fa-share-nodes"></i></button></div>
 </article>`).join('');observeReveals(grid)
 }
 
