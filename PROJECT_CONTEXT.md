@@ -185,3 +185,5 @@ If this ChatGPT conversation is unavailable, start a new chat and say:
 "Open the GitHub repository Chethan-Mns/Hdcareers and read PROJECT_CONTEXT.md. Continue working from that file and the current repository state."
 
 Then inspect the current branch and latest files before making changes.
+
+<!-- Vercel deployment retry: 2026-10-03 16:29 IST -->
