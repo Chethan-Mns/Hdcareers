@@ -568,29 +568,49 @@ def career_favicon_url(job: dict) -> str:
     return ""
 
 
-def logo_onerror(job: dict) -> str:
+def logo_sources(company: str, domain: str) -> tuple[str, str]:
+    selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
+    google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=256"
+    duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
+    return google, duck
+
+
+def logo_candidates(job: dict) -> list[str]:
     company = str(job.get("company", ""))
     domain = str(job.get("domain", ""))
+    career = career_favicon_url(job)
     compact = COMPACT_LOCAL_LOGOS.get(company)
-    local = LOCAL_LOGOS.get(company)
     direct = DIRECT_LOGOS.get(company)
     full = str(job.get("logoUrl", "")).strip()
+    local = LOCAL_LOGOS.get(company)
     google, duck = logo_sources(company, domain)
-    fallbacks = []
-    if full.startswith("https://"):
-        fallbacks.append(full)
+
+    ordered = []
+    if career:
+        ordered.append(career)
     if compact:
-        fallbacks.append(f"../assets/logos/{compact}")
+        ordered.append(f"../assets/logos/{compact}")
     if direct:
-        fallbacks.append(direct)
+        ordered.append(direct)
+    ordered.append(google)
+    if full.startswith("https://"):
+        ordered.append(full)
     if local:
-        fallbacks.append(f"../assets/logos/{local}")
-    fallbacks.extend([google, duck])
+        ordered.append(f"../assets/logos/{local}")
+    ordered.append(duck)
+
     unique = []
-    for item in fallbacks:
+    for item in ordered:
         if item and item not in unique:
             unique.append(item)
-    encoded = json.dumps(unique, ensure_ascii=False).replace("'", "\\'")
+    return unique
+
+
+def logo_onerror(job: dict) -> str:
+    candidates = logo_candidates(job)
+    fallbacks = candidates[1:] if candidates else []
+    encoded = json.dumps(fallbacks, ensure_ascii=False).replace("'", "\\'")
+    company = str(job.get("company", ""))
     mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:8]
     mark_js = json.dumps(mark, ensure_ascii=False)
     return (
@@ -600,13 +620,6 @@ def logo_onerror(job: dict) -> str:
         "const s=document.createElement(\"span\");s.textContent=" + mark_js + ";"
         "s.style.fontWeight=\"900\";s.style.color=\"#0b6fe8\";p.appendChild(s);}}'"
     )
-
-
-def logo_sources(company: str, domain: str) -> tuple[str, str]:
-    selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
-    google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=128"
-    duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
-    return google, duck
 
 
 def render_related_jobs(job: dict, jobs: list[dict]) -> str:
@@ -702,9 +715,8 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
-    favicon_url = career_favicon_url(job)
-    if not favicon_url:
-        favicon_url, _ = logo_sources(company, str(job["domain"]))
+    candidates = logo_candidates(job)
+    favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
