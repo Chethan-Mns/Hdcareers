@@ -4,26 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Careers Favicon Logo Preview | HD Careers</title>
+<title>Careers Logo Preview | HD Careers</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f7fb;color:#071b35}
 .card{transition:.18s ease}.card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,23,42,.10)}
-.logo-box{width:72px;height:72px;border-radius:18px;background:white;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 6px 18px rgba(15,23,42,.06)}
+.logo-box{width:72px;height:72px;border-radius:18px;background:#fff;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 6px 18px rgba(15,23,42,.06)}
 .logo-box img{width:82%;height:82%;object-fit:contain}
+.source{font-size:11px;font-weight:800}
 </style>
 </head>
 <body>
 <header class="bg-slate-950 text-white">
 <div class="max-w-6xl mx-auto px-4 py-8">
 <p class="text-xs font-black uppercase tracking-[.18em] text-cyan-300">HD Careers • Preview only</p>
-<h1 class="text-3xl sm:text-4xl font-black mt-2">Careers Portal Favicon Logo System</h1>
-<p class="text-slate-300 mt-3 max-w-3xl">This preview uses each job's official careers/application portal favicon as the first-choice compact company mark. Full logos, local marks and initials remain fallbacks.</p>
+<h1 class="text-3xl sm:text-4xl font-black mt-2">Company Logo Fallback Preview</h1>
+<p class="text-slate-300 mt-3 max-w-3xl">ATS-provider favicons are rejected. High-confidence compact marks and official logos come first, then a verified careers favicon, then the company-domain favicon, then lower-confidence fallbacks.</p>
 </div>
 </header>
 <main class="max-w-6xl mx-auto px-4 py-8">
 <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
-<strong>What you are checking:</strong> logos should look compact and clear inside the square card. This is the same priority being implemented for homepage cards, job pages, Web Admin and the iOS Admin app.
+<strong>Review focus:</strong> PwC should no longer show the Workday W, Hevo should not show Lever, Cohere should not show Greenhouse, and Infosys should not rely on the survey-site favicon. Government employers prefer their official emblems.
 </div>
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-7">
 <div><h2 class="text-2xl font-black">Active companies</h2><p id="count" class="text-sm text-slate-500 mt-1">Loading current jobs…</p></div>
@@ -32,18 +33,37 @@ body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",san
 <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5"></div>
 </main>
 <script>
+const COMPANY_DOMAINS={"Amazon":"amazon.com","Amazon.jobs":"amazon.com","PwC":"pwc.com","PWC":"pwc.com","Accenture":"accenture.com","Infosys":"infosys.com","Wipro":"wipro.com","Cognizant":"cognizant.com","HCLTech":"hcltech.com","Deloitte":"deloitte.com","Cohere Health":"coherehealth.com","Hevo Data":"hevodata.com","Qualcomm":"qualcomm.com","SAP":"sap.com","Priceline":"priceline.com","Canonical":"canonical.com","IndiGo":"goindigo.in","Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)":"actrec.gov.in","Electronics Corporation of India Limited (ECIL)":"ecil.co.in","Cochin Shipyard Limited":"cochinshipyard.in","Cochin Shipyard Limited – CMSRU":"cochinshipyard.in","DRDO – VRDE":"drdo.gov.in","DRDO – LRDE":"drdo.gov.in","DRDO – DYSL-SM":"drdo.gov.in","DRDO – Research Centre Imarat (RCI)":"drdo.gov.in","DRDO – Proof & Experimental Establishment (PXE)":"drdo.gov.in"};
+const COMPACT={"Deloitte":"assets/logos/deloitte-mark.svg","Amazon":"assets/logos/amazon-mark.svg","Wipro":"assets/logos/wipro-mark.svg","Cognizant":"assets/logos/cognizant-mark.svg"};
+const DIRECT={"DRDO – VRDE":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – LRDE":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – DYSL-SM":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – Research Centre Imarat (RCI)":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","DRDO – Proof & Experimental Establishment (PXE)":"https://drdo.gov.in/drdo/sites/default/files/inline-images/logo_0.png","Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)":"https://actrec.gov.in/themes/actrec/images/SSA/Images/ACTREC_LOGO.png","Electronics Corporation of India Limited (ECIL)":"https://www.ecil.co.in/images/ECIL_NewLogos2.png"};
+const LOCAL={"Infosys":"assets/logos/infosys.svg","HCLTech":"assets/logos/hcltech.svg","ISRO":"assets/logos/isro.svg","TCS":"assets/logos/tcs.svg","Zoho":"assets/logos/zoho.svg","Swiggy":"assets/logos/swiggy.svg"};
+const GENERIC=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com"];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function initials(name){const p=String(name||'HD').split(/\s+/).filter(Boolean);return (p.length>1?p[0][0]+p[1][0]:String(name||'HD').slice(0,2)).toUpperCase()}
-function careerIcon(j){const direct=String(j.careerIconUrl||'').trim();if(/^https:\/\//i.test(direct))return direct;const apply=String(j.apply||'').trim();if(/^https:\/\//i.test(apply))return 'https://www.google.com/s2/favicons?domain_url='+encodeURIComponent(apply)+'&sz=256';return String(j.logoUrl||'').trim()}
-function host(url){try{return new URL(url).hostname.replace(/^www\./,'')}catch{return 'Unknown portal'}}
-function logo(j){const icon=careerIcon(j),fallback=String(j.logoUrl||'').trim(),mark=initials(j.company);const backups=[];if(fallback&&fallback!==icon)backups.push(fallback);return '<div class="logo-box"><img src="'+esc(icon)+'" data-backups="'+esc(JSON.stringify(backups))+'" alt="'+esc(j.company)+' icon" referrerpolicy="no-referrer" onerror="logoFail(this)"><span class="hidden font-black text-blue-700">'+esc(mark)+'</span></div>'}
-function logoFail(img){let b=[];try{b=JSON.parse(img.dataset.backups||'[]')}catch{}const n=b.shift();if(n){img.dataset.backups=JSON.stringify(b);img.src=n;return}img.classList.add('hidden');img.nextElementSibling.classList.remove('hidden')}
+function host(url){try{return new URL(String(url||''),location.href).hostname.toLowerCase().replace(/^www\./,'')}catch{return''}}
+function domain(j){return String(COMPANY_DOMAINS[j.company]||j.domain||'').toLowerCase().replace(/^https?:\/\//,'').replace(/\/.*$/,'').replace(/^www\./,'')}
+function generic(h){return GENERIC.some(d=>h===d||h.endsWith('.'+d))}
+function trustedCareer(j){const h=host(j.apply);if(!h||generic(h))return false;if(h==='amazon.jobs'||h.endsWith('.amazon.jobs'))return true;const d=domain(j);return !d||h===d||h.endsWith('.'+d)}
+function candidates(j){
+ const out=[];
+ const push=(url,label)=>{if(url&&!out.some(x=>x.url===url))out.push({url,label})};
+ push(COMPACT[j.company],'Curated compact mark');
+ push(DIRECT[j.company],'Official direct logo');
+ if(trustedCareer(j)&&/^https:\/\//i.test(String(j.careerIconUrl||'')))push(String(j.careerIconUrl),'Verified careers favicon');
+ const d=domain(j);if(d)push('https://www.google.com/s2/favicons?domain_url='+encodeURIComponent('https://'+d)+'&sz=256','Company-domain favicon');
+ if(trustedCareer(j)&&/^https:\/\//i.test(String(j.apply||'')))push('https://www.google.com/s2/favicons?domain_url='+encodeURIComponent(j.apply)+'&sz=256','Careers favicon fallback');
+ if(/^https:\/\//i.test(String(j.logoUrl||'')))push(String(j.logoUrl),'Extracted company logo');
+ push(LOCAL[j.company],'Local full logo fallback');
+ return out;
+}
+function logo(j){const list=candidates(j);const first=list.shift()||null;const mark=initials(j.company);if(!first)return {html:'<div class="logo-box"><span class="font-black text-blue-700">'+esc(mark)+'</span></div>',label:'Initials fallback'};return {html:'<div class="logo-box"><img src="'+esc(first.url)+'" data-label="'+esc(first.label)+'" data-backups="'+esc(JSON.stringify(list))+'" alt="'+esc(j.company)+' icon" referrerpolicy="no-referrer" onerror="logoFail(this)"><span class="hidden font-black text-blue-700">'+esc(mark)+'</span></div>',label:first.label}}
+function logoFail(img){let b=[];try{b=JSON.parse(img.dataset.backups||'[]')}catch{}const n=b.shift();if(n){img.dataset.backups=JSON.stringify(b);img.dataset.label=n.label;img.src=n.url;const l=img.closest('article')?.querySelector('[data-source]');if(l)l.textContent=n.label;return}img.classList.add('hidden');img.nextElementSibling.classList.remove('hidden');const l=img.closest('article')?.querySelector('[data-source]');if(l)l.textContent='Initials fallback'}
 fetch('data/jobs.json',{cache:'no-store'}).then(r=>r.json()).then(jobs=>{
  const active=jobs.filter(j=>j.status==='active');
- const seen=new Set();const unique=[];
+ const seen=new Set(),unique=[];
  for(const j of active){const k=String(j.company||'').toLowerCase();if(!seen.has(k)){seen.add(k);unique.push(j)}}
  document.getElementById('count').textContent=unique.length+' unique employers from current active listings';
- document.getElementById('grid').innerHTML=unique.map(j=>'<article class="card bg-white border border-slate-200 rounded-2xl p-4"><div class="flex items-center gap-4">'+logo(j)+'<div class="min-w-0"><h3 class="font-black truncate">'+esc(j.company)+'</h3><p class="text-xs text-slate-500 mt-1 truncate">'+esc(host(j.apply))+'</p><p class="text-[11px] font-bold text-blue-600 mt-2">Careers favicon first</p></div></div><div class="mt-4 pt-3 border-t border-slate-100"><p class="text-xs text-slate-500 line-clamp-2">'+esc(j.role)+'</p></div></article>').join('');
+ document.getElementById('grid').innerHTML=unique.map(j=>{const l=logo(j);const h=host(j.apply)||'Unknown portal';const blocked=generic(h);return '<article class="card bg-white border border-slate-200 rounded-2xl p-4"><div class="flex items-center gap-4">'+l.html+'<div class="min-w-0"><h3 class="font-black truncate">'+esc(j.company)+'</h3><p class="text-xs text-slate-500 mt-1 truncate">'+esc(h)+'</p><p data-source class="source mt-2 '+(blocked?'text-amber-700':'text-blue-600')+'">'+esc(l.label)+'</p></div></div><div class="mt-4 pt-3 border-t border-slate-100"><p class="text-xs text-slate-500 line-clamp-2">'+esc(j.role)+'</p>'+(blocked?'<p class="text-[10px] font-black text-amber-700 mt-2">ATS favicon rejected</p>':'')+'</div></article>'}).join('');
 }).catch(e=>{document.getElementById('count').textContent='Could not load jobs';document.getElementById('grid').innerHTML='<p class="text-red-600">'+esc(e.message)+'</p>'});
 </script>
 </body>
