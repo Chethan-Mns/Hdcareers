@@ -70,6 +70,7 @@ COMPACT_LOCAL_LOGOS = {
     "Deloitte": "deloitte-mark.svg",
     "Amazon": "amazon-mark.svg",
     "Wipro": "wipro-mark.svg",
+    "Cognizant": "cognizant-mark.svg",
 }
 
 DIRECT_LOGOS = {
@@ -95,6 +96,9 @@ LOGO_DOMAINS = {
     "Electronics Corporation of India Limited (ECIL)": "ecil.co.in", "Cochin Shipyard Limited": "cochinshipyard.in",
     "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
+
+GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com")
+TRUSTED_STANDALONE_CAREER_HOSTS = ("amazon.jobs",)
 
 PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <html lang="en">
