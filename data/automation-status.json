@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T09:37:49.949Z",
+  "updatedAt": "2026-10-03T12:41:46.732Z",
   "slots": [
     {
       "id": "it-9am",
@@ -50,9 +50,12 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9c27b0548191b91c7e2b7ff29cac",
       "enabled": true,
-      "lastRunAt": "2026-10-01T12:28:29.924740Z",
-      "outcome": "ran",
-      "detail": "Awaiting outcome tracking from next run."
+      "lastRunAt": "2026-10-03T12:41:46.732Z",
+      "outcome": "error",
+      "detail": "DRDO DIPR ITI apprenticeship passed official-source and availability checks, but Vercel hit its build-rate-limit; the live page stayed 404, Telegram was skipped and the unpublished record was removed.",
+      "company": "",
+      "role": "",
+      "page": ""
     },
     {
       "id": "walkin-9pm",
