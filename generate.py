@@ -142,7 +142,7 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
 <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
 <a href="../index.html" class="flex items-center gap-3 min-w-0"><img src="../assets/hd-careers-logo.png" alt="HD Careers logo" class="w-11 h-11 object-contain rounded-xl bg-white border border-slate-100 p-1"><div><p class="font-black leading-none text-lg">HD Careers</p><p class="text-[10px] text-slate-500 mt-1">Jobs • Internships • Career updates</p></div></a>
-<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600"><a href="../index.html">Home</a><a href="../index.html#jobs">Latest Jobs</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
+<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600"><a href="../index.html">Home</a><a href="../index.html#jobs">Latest Jobs</a><a href="../insights.html">Insights</a><a href="../career-resources.html">Resources</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
 <div class="flex items-center gap-2"><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a></div>
 </div>
 </header>
@@ -187,6 +187,15 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
 $job_content_sections
+<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
+<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">HD Careers original resources</p>
+<h2 class="text-xl font-black mt-2">Useful Before You Apply</h2>
+<div class="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
+<a href="../resources/how-to-check-job-genuine.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">Check if the job is genuine</p><p class="text-slate-500 mt-1">Six verification checks for domains, job IDs and application links.</p></a>
+<a href="../resources/resume-matcher-methodology.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">Understand your match score</p><p class="text-slate-500 mt-1">What skills, experience and qualification scores actually mean.</p></a>
+<a href="../editorial-policy.html" class="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40"><p class="font-extrabold">How we verify jobs</p><p class="text-slate-500 mt-1">See our source, validation, freshness and correction workflow.</p></a>
+</div>
+</div>
 $apply_section
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-shield-halved text-[var(--primary)] mr-2"></i>Source & Verification</h2><p class="mt-3 text-slate-600">Source: <strong>$source_name</strong></p><p class="mt-1 text-slate-600">Last checked by HD Careers: <strong>$verified_date</strong></p><a href="$apply" target="_blank" rel="noopener nofollow" class="mt-4 inline-flex items-center text-[var(--primary)] font-bold">Open official source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a><p class="mt-3 text-xs text-slate-500">Job information can change after publication. The employer's official page is the final source for eligibility, deadlines and application availability.</p></div>
 $related_jobs
@@ -199,7 +208,7 @@ $related_jobs
 </aside>
 </section>
 </main>
-<footer class="bg-[var(--dark)] text-slate-300 mt-4"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col lg:flex-row justify-between gap-6"><div><p class="text-white font-black">HD Careers</p><p class="text-slate-400 text-xs mt-1 max-w-md">Independent job information platform helping candidates find and verify opportunities from official employer sources.</p></div><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href="../about.html" class="hover:text-white">About</a><a href="../contact.html" class="hover:text-white">Contact</a><a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="../terms.html" class="hover:text-white">Terms</a><a href="../disclaimer.html" class="hover:text-white">Disclaimer</a></div></div><p class="text-xs text-slate-500 mt-6">&copy; 2026 HD Careers. All rights reserved.</p></div></footer>
+<footer class="bg-[var(--dark)] text-slate-300 mt-4"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col lg:flex-row justify-between gap-6"><div><p class="text-white font-black">HD Careers</p><p class="text-slate-400 text-xs mt-1 max-w-md">Independent job information platform helping candidates find and verify opportunities from official employer sources.</p></div><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm"><a href="../insights.html" class="hover:text-white">Insights</a><a href="../career-resources.html" class="hover:text-white">Career Resources</a><a href="../editorial-policy.html" class="hover:text-white">Verification Policy</a><a href="../about.html" class="hover:text-white">About</a><a href="../contact.html" class="hover:text-white">Contact</a><a href="../privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="../terms.html" class="hover:text-white">Terms</a><a href="../disclaimer.html" class="hover:text-white">Disclaimer</a></div></div><p class="text-xs text-slate-500 mt-6">&copy; 2026 HD Careers. All rights reserved.</p></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 rounded-full shadow-2xl z-50"></div>
 <script src="/assets/resume-keywords.js"></script>
 <script src="/assets/resume-assessment.js"></script>
