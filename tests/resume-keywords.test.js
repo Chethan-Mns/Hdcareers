@@ -14,4 +14,6 @@ assert.equal(analyze({skills:[]},'AWS').score,null);
 assert.equal(locate('C++ developer','C++'),0);
 assert.equal(locate('AWS\nETL','ETL'),4);
 assert.equal(analyze({skills:['StarRocks']},'StarRocks engineer').score,100);
-console.log('11 keyword regression cases passed');
+r=analyze({skills:['Object-oriented programming','JSON','Data structures']},'Used OOP, JSON and DSA in Java projects.');assert.equal(r.score,100);
+r=analyze({skills:['APIs']},'Built application programming interface integrations.');assert.equal(r.score,100);
+console.log('13 keyword regression cases passed');
