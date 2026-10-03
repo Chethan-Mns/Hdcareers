@@ -148,6 +148,11 @@ struct CompanyLogoView: View {
         case "Amazon": return "amazon"
         case "Wipro": return "wipro"
         case "Deloitte": return "deloitte"
+        case "Cognizant": return "cognizant"
+        case "Qualcomm": return "qualcomm"
+        case "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": return "actrec"
+        case "Electronics Corporation of India Limited (ECIL)": return "ecil"
+        case "Cochin Shipyard Limited", "Cochin Shipyard Limited – CMSRU": return "csl"
         default: return nil
         }
     }
@@ -290,6 +295,32 @@ struct CompanyLogoView: View {
                     Circle()
                         .fill(Color(red: 0.53, green: 0.74, blue: 0.15))
                         .frame(width: size * 0.10, height: size * 0.10)
+                }
+            case "cognizant":
+                Text("C")
+                    .font(.system(size: size * 0.50, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.10, green: 0.31, blue: 0.63))
+            case "qualcomm":
+                Text("Q")
+                    .font(.system(size: size * 0.52, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.20, green: 0.33, blue: 0.86))
+            case "actrec":
+                Text("ACTREC")
+                    .font(.system(size: size * 0.19, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.65, green: 0.12, blue: 0.24))
+                    .minimumScaleFactor(0.7)
+            case "ecil":
+                Text("ECIL")
+                    .font(.system(size: size * 0.26, weight: .black, design: .rounded))
+                    .foregroundStyle(Color(red: 0.04, green: 0.37, blue: 0.66))
+            case "csl":
+                VStack(spacing: 1) {
+                    Text("CSL")
+                        .font(.system(size: size * 0.30, weight: .black, design: .rounded))
+                        .foregroundStyle(Color(red: 0.09, green: 0.23, blue: 0.40))
+                    Capsule()
+                        .fill(Color(red: 0.95, green: 0.55, blue: 0.16))
+                        .frame(width: size * 0.48, height: max(2, size * 0.07))
                 }
             default:
                 initialsFallback
