@@ -122,6 +122,8 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 $structured_data
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
+<link rel="stylesheet" href="../assets/public-header.css">
+<script defer src="../assets/public-header.js"></script>
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
