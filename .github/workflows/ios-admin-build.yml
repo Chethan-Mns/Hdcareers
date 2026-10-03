@@ -8,6 +8,13 @@ on:
       - ios-admin/**
       - assets/hd-careers-logo.png
       - .github/workflows/ios-admin-build.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ios-admin/**
+      - assets/hd-careers-logo.png
+      - .github/workflows/ios-admin-build.yml
   workflow_dispatch:
 
 permissions:
