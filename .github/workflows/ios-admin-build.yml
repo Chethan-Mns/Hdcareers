@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - preview/careers-favicon-logo-system
     paths:
       - ios-admin/**
       - assets/hd-careers-logo.png
