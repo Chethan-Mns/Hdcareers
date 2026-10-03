@@ -187,3 +187,5 @@ If this ChatGPT conversation is unavailable, start a new chat and say:
 Then inspect the current branch and latest files before making changes.
 
 <!-- Vercel deployment retry: 2026-10-03 16:29 IST -->
+
+<!-- Vercel deployment retry: global public header rollout -->
