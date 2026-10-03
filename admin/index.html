@@ -166,6 +166,11 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 <div><p id="dashVisitorsLabel" class="text-[10px] uppercase font-black text-blue-500">7D users</p><p id="dashVisitors" class="text-xl font-black text-blue-950">—</p></div>
 <div><p id="dashViewsLabel" class="text-[10px] uppercase font-black text-blue-500">7D views</p><p id="dashPageviews" class="text-xl font-black text-blue-950">—</p></div>
 </div>
+<div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-blue-200/70">
+<div><p class="text-[10px] uppercase font-black text-blue-500">Job views</p><p id="dashJobViews" class="text-lg font-black text-blue-950">—</p></div>
+<div><p class="text-[10px] uppercase font-black text-blue-500">Resume</p><p id="dashResumeChecks" class="text-lg font-black text-blue-950">—</p></div>
+<div><p class="text-[10px] uppercase font-black text-blue-500">Apply</p><p id="dashApplyClicks" class="text-lg font-black text-blue-950">—</p></div>
+</div>
 <p class="text-xs text-blue-800 mt-3 truncate">Top page: <strong id="dashTopPage">—</strong></p>
 <a href="/admin/traffic.html" class="btn mt-4 inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-sm">View traffic dashboard <i class="fa-solid fa-chart-line ml-2"></i></a>
 </div>
@@ -427,6 +432,9 @@ const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 document.getElementById('dashRealtime').textContent=fmt(d.realtimeUsers);
 document.getElementById('dashVisitors').textContent=fmt(d.totals?.visitors);
 document.getElementById('dashPageviews').textContent=fmt(d.totals?.pageviews);
+document.getElementById('dashJobViews').textContent=fmt(d.conversions?.jobPageViews);
+document.getElementById('dashResumeChecks').textContent=fmt(d.conversions?.resumeChecks);
+document.getElementById('dashApplyClicks').textContent=fmt(d.conversions?.applyClicks);
 const period=days===1?'24H':days+'D';
 document.getElementById('dashVisitorsLabel').textContent=period+' users';
 document.getElementById('dashViewsLabel').textContent=period+' views';
@@ -434,7 +442,7 @@ document.getElementById('trafficPeriodText').textContent=(days===1?'Today':'Last
 const topPath=d.pages?.[0]?.requestPath||'';const topEl=document.getElementById('dashTopPage');topEl.innerHTML=topPath?'<a href="'+esc(topPath)+'" target="_blank" rel="noopener" class="hover:underline">'+esc(prettyTrafficPage(topPath))+' <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>':'No data yet';topEl.title=topPath;
 if(status){status.className='badge bg-green-50 text-green-700 border border-green-200';status.innerHTML='<i class="fa-solid fa-circle-check"></i> Live'}
 }catch(e){
-['dashRealtime','dashVisitors','dashPageviews'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='—'});
+['dashRealtime','dashVisitors','dashPageviews','dashJobViews','dashResumeChecks','dashApplyClicks'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='—'});
 const top=document.getElementById('dashTopPage');if(top){top.textContent=e.message||'Unavailable';top.title=e.message||''}
 if(status){status.className='badge bg-red-50 text-red-700 border border-red-200';status.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i> Error'}
 }
