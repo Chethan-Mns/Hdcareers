@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from check_job_availability import classify, check, require_active
+from check_job_availability import classify, check, require_active, prune_unverified_new_jobs
 
 JOB = {'id': 1, 'role': 'Data Engineer', 'company': 'Example', 'apply': 'https://careers.example.com/jobs/123', 'status': 'active'}
 
@@ -35,5 +35,24 @@ class AvailabilityTests(unittest.TestCase):
         with patch('check_job_availability.check', return_value={'state': 'review', 'reason': 'Unknown'}):
             with self.assertRaises(SystemExit): require_active(JOB)
         with self.assertRaises(SystemExit): require_active(dict(JOB, status='expired'))
+
+    def test_partial_batch_prunes_only_new_unverified_jobs(self):
+        old = [dict(JOB, id=1)]
+        jobs = [dict(JOB, id=1), dict(JOB, id=2), dict(JOB, id=3)]
+        results = [
+            {'id': 2, 'state': 'active'},
+            {'id': 3, 'state': 'review'},
+        ]
+        kept, pruned = prune_unverified_new_jobs(jobs, old, results)
+        self.assertEqual([j['id'] for j in kept], [1, 2])
+        self.assertEqual(pruned, [3])
+
+    def test_partial_batch_does_not_prune_existing_jobs(self):
+        old = [dict(JOB, id=1)]
+        jobs = [dict(JOB, id=1)]
+        results = [{'id': 1, 'state': 'review'}]
+        kept, pruned = prune_unverified_new_jobs(jobs, old, results)
+        self.assertEqual([j['id'] for j in kept], [1])
+        self.assertEqual(pruned, [])
 
 if __name__ == '__main__': unittest.main()

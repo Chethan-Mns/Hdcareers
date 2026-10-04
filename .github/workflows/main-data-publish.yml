@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   publish:
-    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin'
+    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin' && github.event.head_commit.message != 'Generate website for verified jobs'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -34,7 +34,7 @@ jobs:
       - name: Verify new job availability
         env:
           BEFORE_SHA: ${{ github.event.before }}
-        run: python3 scripts/check_job_availability.py --before "$BEFORE_SHA"
+        run: python3 scripts/check_job_availability.py --before "$BEFORE_SHA" --prune-unverified-new
 
       - name: Generate homepage and job pages
         run: python3 generate.py
@@ -52,8 +52,8 @@ jobs:
           else
             git config user.name "HD Careers Automation"
             git config user.email "actions@users.noreply.github.com"
-            git add index.html jobs/ robots.txt sitemap.xml
-            git commit -m "Generate website for published jobs"
+            git add data/jobs.json index.html jobs/ robots.txt sitemap.xml
+            git commit -m "Generate website for verified jobs"
             git push origin HEAD:main
           fi
 

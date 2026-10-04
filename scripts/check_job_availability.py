@@ -100,14 +100,27 @@ def require_active(job):
         raise SystemExit(f"Publication blocked for {job.get('company')} / {job.get('role')}: {result['reason']}")
     return result
 
+def prune_unverified_new_jobs(jobs, old_jobs, results):
+    known_ids = {j.get('id') for j in old_jobs}
+    rejected = {
+        r.get('id') for r in results
+        if r.get('id') not in known_ids and r.get('state') != 'active'
+    }
+    if not rejected:
+        return jobs, []
+    return [j for j in jobs if j.get('id') not in rejected], sorted(rejected)
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
     parser.add_argument('--before', help='Verify new/reopened/changed-source jobs against this Git ref')
+    parser.add_argument('--prune-unverified-new', action='store_true', help='Drop only newly added jobs that fail verification and continue publishing verified jobs')
     args = parser.parse_args()
     path = ROOT / 'data/jobs.json'
     jobs = json.loads(path.read_text())
     selected = [j for j in jobs if j.get('status') == 'active']
+    old = []
+    known = {}
     if args.before:
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
@@ -149,7 +162,17 @@ def main():
         }
         status_path = ROOT / 'data' / 'availability-status.json'
         status_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
-    if changed: path.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + '\n')
-    if args.before and any(r['state'] != 'active' for r in results): raise SystemExit('New job verification failed; publishing stopped')
+    if args.before and args.prune_unverified_new:
+        jobs, pruned = prune_unverified_new_jobs(jobs, old, results)
+        if pruned:
+            path.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + '\n')
+            print('Pruned unverified new job IDs: ' + ', '.join(str(x) for x in pruned))
+        blocking = [r for r in results if r['state'] != 'active' and r.get('id') not in set(pruned)]
+        if blocking:
+            raise SystemExit('Verification failed for an existing/changed job; publishing stopped')
+    elif args.before and any(r['state'] != 'active' for r in results):
+        raise SystemExit('New job verification failed; publishing stopped')
+    if changed:
+        path.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + '\n')
 
 if __name__ == '__main__': main()
