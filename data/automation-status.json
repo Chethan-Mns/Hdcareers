@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T15:06:00.000Z",
+  "updatedAt": "2026-10-04T03:46:21.124Z",
   "slots": [
     {
       "id": "it-9am",
@@ -8,10 +8,10 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-03T03:36:42.515Z",
+      "lastRunAt": "2026-10-04T03:46:21.124Z",
       "nextRunAt": "2026-10-04T03:30:00.000Z",
-      "outcome": "scheduled",
-      "detail": "Consolidated schedule starts 4 Oct 2026. The run verifies the requested category mix first, publishes only supported active jobs, batches the repository update, deploys once, and then hands the live HD Careers links to Telegram.",
+      "outcome": "error",
+      "detail": "No publish. Candidate batch verified from official pages: Fresher IT 3, Fresher Non-IT 2, Experienced IT 1, Government/PSU 1, Walk-in 2 (9 total). Repository availability checker returned review for all nine because its runner could not resolve external hosts (gaierror).",
       "target": "9–10 verified jobs/day",
       "mix": [
         "3–4 Fresher IT",
