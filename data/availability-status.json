@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-04T18:08:08.079Z",
+  "checkedAt": "2026-10-04T18:08:31.233Z",
   "checked": 36,
   "active": 33,
-  "expired": 0,
-  "review": 3,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 2,
+  "changedExpired": 1,
   "items": [
     {
       "id": 50,
@@ -32,9 +32,11 @@
       "role": "Graduate Engineer Trainee",
       "page": "jobs/wipro-graduate-engineer-trainee-52.html",
       "url": "https://careers.wipro.com/job/Gurugram-Graduate-Engineer-Trainee-IND-122016/201955-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-04T11:10:29.816917+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-04T18:08:31.233Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-04T18:08:31.233Z"
     },
     {
       "id": 49,
