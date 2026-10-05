@@ -12,9 +12,7 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: HDCareersAdmin
-    resources:
-      - path: ../assets/hd-careers-logo.png
+      - path: HDCareersAdmin/HDCareersAdminApp.swift
     info:
       path: HDCareersAdmin/Info.plist
     settings:
@@ -24,20 +22,6 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         CODE_SIGN_STYLE: Automatic
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-    preBuildScripts:
-      - name: Prepare HD Careers App Icon
-        basedOnDependencyAnalysis: false
-        script: |
-          set -e
-          SRC="$SRCROOT/../assets/hd-careers-logo.png"
-          DEST="$SRCROOT/HDCareersAdmin/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png"
-          LOGO="$SRCROOT/HDCareersAdmin/Assets.xcassets/HDLogo.imageset/HDLogo.png"
-          if [ -f "$SRC" ]; then
-            cp "$SRC" "$LOGO"
-            cp "$SRC" "$DEST"
-            /usr/bin/sips -Z 824 "$DEST" >/dev/null
-            /usr/bin/sips -p 1024 1024 --padColor F7FAFF "$DEST" >/dev/null
-          fi
 schemes:
   HDCareersAdmin:
     build:
