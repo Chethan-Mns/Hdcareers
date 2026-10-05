@@ -568,47 +568,93 @@ struct DashboardHeroCard: View {
         state.availability?.results?.items?.filter { $0.state == "review" }.count ?? 0
     }
 
+    private var publishingTime: String {
+        state.automationHealth?.slots.first(where: { $0.enabled })?.time ?? "09:00"
+    }
+
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack {
             LinearGradient(
-                colors: [HDTheme.navy, HDTheme.blue],
+                colors: [HDTheme.navy, Color(red: 0.04, green: 0.25, blue: 0.55), HDTheme.blue],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .frame(height: 178)
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
 
             Circle()
-                .fill(Color.white.opacity(0.10))
-                .frame(width: 150, height: 150)
-                .offset(x: 245, y: -55)
+                .fill(Color.white.opacity(0.08))
+                .frame(width: 180, height: 180)
+                .offset(x: 140, y: -72)
 
-            VStack(alignment: .leading, spacing: 9) {
+            Circle()
+                .fill(HDTheme.cyan.opacity(0.12))
+                .frame(width: 120, height: 120)
+                .offset(x: -145, y: 85)
+
+            VStack(alignment: .leading, spacing: 15) {
                 HStack {
-                    Image(systemName: "sparkles")
-                    Text("HD CAREERS CONTROL CENTER")
-                        .font(.caption2.weight(.black))
-                        .tracking(1.1)
-                }
-                .foregroundStyle(.white.opacity(0.78))
+                    HStack(spacing: 7) {
+                        Circle()
+                            .fill(HDTheme.green)
+                            .frame(width: 7, height: 7)
+                        Text("OPERATIONS LIVE")
+                            .font(.system(size: 10, weight: .black))
+                            .tracking(1.1)
+                    }
+                    .foregroundStyle(.white.opacity(0.84))
 
-                Text("Everything important,\nright here.")
-                    .font(.system(size: 28, weight: .black, design: .rounded))
-                    .foregroundStyle(.white)
+                    Spacer()
+
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundStyle(.white.opacity(0.9))
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Everything important,")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.78))
+                    Text("under control.")
+                        .font(.system(size: 31, weight: .black, design: .rounded))
+                        .foregroundStyle(.white)
+                }
 
                 HStack(spacing: 8) {
-                    Label("\(state.activeJobs.count) live jobs", systemImage: "briefcase.fill")
-                    if reviewCount > 0 {
-                        Label("\(reviewCount) to review", systemImage: "exclamationmark.triangle.fill")
-                    } else {
-                        Label("All clear", systemImage: "checkmark.shield.fill")
-                    }
+                    heroStat(icon: "briefcase.fill", value: "(state.activeJobs.count)", label: "Live")
+                    heroStat(icon: reviewCount > 0 ? "exclamationmark.triangle.fill" : "checkmark.shield.fill", value: "(reviewCount)", label: "Review")
+                    heroStat(icon: "clock.fill", value: publishingTime, label: "Publish")
                 }
-                .font(.caption.weight(.bold))
-                .foregroundStyle(.white.opacity(0.9))
             }
             .padding(20)
         }
+        .frame(height: 202)
+        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 26, style: .continuous)
+                .stroke(Color.white.opacity(0.12))
+        }
+        .shadow(color: HDTheme.navy.opacity(0.16), radius: 18, x: 0, y: 10)
+    }
+
+    private func heroStat(icon: String, value: String, label: String) -> some View {
+        HStack(spacing: 7) {
+            Image(systemName: icon)
+                .font(.system(size: 10, weight: .bold))
+                .foregroundStyle(.white.opacity(0.9))
+            VStack(alignment: .leading, spacing: 0) {
+                Text(value)
+                    .font(.caption.weight(.black))
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                Text(label)
+                    .font(.system(size: 8.5, weight: .semibold))
+                    .foregroundStyle(.white.opacity(0.62))
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.10))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
 
@@ -664,26 +710,20 @@ struct DashboardStatsCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Jobs overview")
-                        .font(.headline.weight(.black))
-                    Text("Current website inventory")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-                StatusPill(text: "\(state.activeJobs.count) active", color: HDTheme.green, icon: "checkmark.circle.fill")
-            }
+            PremiumSectionTitle(
+                icon: "square.grid.2x2.fill",
+                title: "Jobs overview",
+                subtitle: "Current publishing inventory"
+            )
 
-            LazyVGrid(columns: columns, spacing: 8) {
-                DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
-                DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.crop.circle.badge.checkmark", color: .purple)
-                DashboardStat(title: "Active", value: state.activeJobs.count, icon: "checkmark.circle.fill", color: HDTheme.green)
-                DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
+            LazyVGrid(columns: columns, spacing: 9) {
+                PremiumMetricTile(title: "Total jobs", value: numberText(state.jobs.count), icon: "briefcase.fill", color: HDTheme.blue)
+                PremiumMetricTile(title: "Freshers", value: numberText(state.fresherJobs.count), icon: "person.crop.circle.badge.checkmark", color: HDTheme.violet)
+                PremiumMetricTile(title: "Active", value: numberText(state.activeJobs.count), icon: "checkmark.circle.fill", color: HDTheme.green)
+                PremiumMetricTile(title: "Expired", value: numberText(state.expiredJobs.count), icon: "xmark.circle.fill", color: HDTheme.red)
             }
         }
-        .hdCard()
+        .premiumCard()
     }
 }
 
@@ -724,78 +764,67 @@ struct TrafficSummaryCard: View {
 
     private var periodLabel: String {
         switch state.trafficDays {
-        case 1: return "Last 24 hours"
-        case 30: return "Last 30 days"
-        default: return "Last 7 days"
+        case 1: return "24H"
+        case 30: return "30D"
+        default: return "7D"
         }
+    }
+
+    private var maxActivity: Int {
+        max(
+            state.traffic?.totals?.visitors ?? 0,
+            state.traffic?.totals?.pageviews ?? 0,
+            state.traffic?.conversions?.applyClicks ?? 0,
+            state.traffic?.conversions?.resumeChecks ?? 0,
+            1
+        )
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Website traffic")
-                        .font(.headline.weight(.black))
-                    Text("Live GA4 snapshot · \(periodLabel)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                PremiumSectionTitle(
+                    icon: "chart.line.uptrend.xyaxis",
+                    title: "Website traffic",
+                    subtitle: "Live GA4 snapshot",
+                    color: HDTheme.cyan
+                )
+
+                Picker("Period", selection: Binding(
+                    get: { state.trafficDays },
+                    set: { days in Task { await state.loadTraffic(days: days) } }
+                )) {
+                    Text("24H").tag(1)
+                    Text("7D").tag(7)
+                    Text("30D").tag(30)
                 }
-                Spacer()
-                StatusPill(text: "Live", color: HDTheme.green, icon: "circle.fill")
-            }
-
-            Picker("Period", selection: Binding(
-                get: { state.trafficDays },
-                set: { days in Task { await state.loadTraffic(days: days) } }
-            )) {
-                Text("24H").tag(1)
-                Text("7D").tag(7)
-                Text("30D").tag(30)
-            }
-            .pickerStyle(.segmented)
-
-            HStack(spacing: 0) {
-                TrafficMetric(
-                    title: "Live",
-                    value: state.traffic?.realtimeUsers ?? 0,
-                    icon: "dot.radiowaves.left.and.right",
-                    color: HDTheme.green
-                )
-                Divider().frame(height: 44)
-                TrafficMetric(
-                    title: "Users",
-                    value: state.traffic?.totals?.visitors ?? 0,
-                    icon: "person.2.fill",
-                    color: HDTheme.blue
-                )
-                Divider().frame(height: 44)
-                TrafficMetric(
-                    title: "Views",
-                    value: state.traffic?.totals?.pageviews ?? 0,
-                    icon: "eye.fill",
-                    color: .purple
-                )
+                .pickerStyle(.segmented)
+                .frame(width: 150)
             }
 
             HStack(spacing: 8) {
-                AnalyticsMiniMetric(
-                    title: "Sessions",
-                    value: numberText(state.traffic?.totals?.sessions),
-                    icon: "rectangle.stack.fill"
-                )
-                AnalyticsMiniMetric(
-                    title: "Views / user",
-                    value: String(format: "%.2f", state.traffic?.totals?.viewsPerUser ?? 0),
-                    icon: "chart.line.uptrend.xyaxis"
-                )
-                AnalyticsMiniMetric(
-                    title: "Engagement",
-                    value: String(format: "%.1f%%", state.traffic?.totals?.engagementRate ?? 0),
-                    icon: "bolt.heart.fill"
+                PremiumMetricTile(title: "Live", value: numberText(state.traffic?.realtimeUsers), icon: "dot.radiowaves.left.and.right", color: HDTheme.green)
+                PremiumMetricTile(title: "Users", value: numberText(state.traffic?.totals?.visitors), icon: "person.2.fill", color: HDTheme.blue)
+                PremiumMetricTile(title: "Views", value: numberText(state.traffic?.totals?.pageviews), icon: "eye.fill", color: HDTheme.violet)
+            }
+
+            VStack(spacing: 9) {
+                PremiumBarRow(title: "Users", value: state.traffic?.totals?.visitors ?? 0, maxValue: maxActivity, color: HDTheme.blue)
+                PremiumBarRow(title: "Page views", value: state.traffic?.totals?.pageviews ?? 0, maxValue: maxActivity, color: HDTheme.violet)
+                PremiumBarRow(title: "Apply clicks", value: state.traffic?.conversions?.applyClicks ?? 0, maxValue: maxActivity, color: HDTheme.green)
+                PremiumBarRow(title: "Resume checks", value: state.traffic?.conversions?.resumeChecks ?? 0, maxValue: maxActivity, color: HDTheme.cyan)
+            }
+
+            if let top = state.traffic?.pages?.first {
+                PremiumInfoBox(
+                    icon: "flame.fill",
+                    title: "Top page · (periodLabel)",
+                    text: "(jobDisplayName(path: top.requestPath, jobs: state.jobs)) · (numberText(top.pageviews)) views",
+                    color: HDTheme.amber
                 )
             }
         }
-        .hdCard()
+        .premiumCard()
     }
 }
 
@@ -1604,38 +1633,52 @@ struct JobsView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
+
                 ScrollView {
-                    VStack(spacing: 14) {
+                    VStack(spacing: 13) {
                         AdminHeader(
-                            title: "All Jobs",
-                            subtitle: "\(state.jobs.count) published jobs",
+                            title: "Jobs",
+                            subtitle: "(state.jobs.count) published openings",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshJobs() }
                         }
 
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(.secondary)
-                            TextField("Search title, company or location", text: $search)
-                                .textInputAutocapitalization(.never)
+                        HStack(spacing: 8) {
+                            PremiumMetricTile(title: "Active", value: numberText(state.activeJobs.count), icon: "checkmark.circle.fill", color: HDTheme.green)
+                            PremiumMetricTile(title: "Freshers", value: numberText(state.fresherJobs.count), icon: "person.fill", color: HDTheme.violet)
+                            PremiumMetricTile(title: "Expired", value: numberText(state.expiredJobs.count), icon: "xmark.circle.fill", color: HDTheme.red)
                         }
-                        .padding(12)
+
+                        HStack(spacing: 10) {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundStyle(HDTheme.blue)
+                            TextField("Search company, role or location", text: $search)
+                                .textInputAutocapitalization(.never)
+                                .font(.subheadline)
+                        }
+                        .padding(.horizontal, 13)
+                        .frame(height: 46)
                         .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .stroke(HDTheme.blue.opacity(0.10))
+                        }
+                        .shadow(color: HDTheme.navy.opacity(0.035), radius: 8, y: 3)
 
                         Picker("Status", selection: $filter) {
                             ForEach(JobListFilter.allCases) { item in
-                                Text("\(item.rawValue) \(count(for: item))").tag(item)
+                                Text("(item.rawValue) (count(for: item))").tag(item)
                             }
                         }
                         .pickerStyle(.segmented)
 
                         if filteredJobs.isEmpty {
                             EmptyState(icon: "briefcase", title: "No jobs found", message: "Try changing your search or status filter.")
-                                .hdCard()
+                                .premiumCard()
                         } else {
-                            LazyVStack(spacing: 10) {
+                            LazyVStack(spacing: 9) {
                                 ForEach(filteredJobs) { job in
                                     JobRow(job: job)
                                 }
@@ -1643,7 +1686,7 @@ struct JobsView: View {
                         }
                     }
                     .padding(16)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 18)
                 }
                 .refreshable { await state.refreshJobs() }
             }
@@ -1665,48 +1708,68 @@ struct JobRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            CompanyLogoView(job: job, size: 46)
+            CompanyLogoView(job: job, size: 50)
 
-            VStack(alignment: .leading, spacing: 5) {
-                HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 7) {
+                HStack(alignment: .top, spacing: 8) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(job.company ?? "Company")
                             .font(.headline.weight(.black))
+                            .foregroundStyle(HDTheme.navy)
+                            .lineLimit(1)
+
                         Text(job.role ?? "Job Opening")
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(.secondary)
                             .lineLimit(2)
                     }
-                    Spacer(minLength: 8)
+
+                    Spacer(minLength: 5)
+
                     StatusPill(
                         text: job.isExpired ? "Expired" : "Active",
-                        color: job.isExpired ? HDTheme.red : HDTheme.green
+                        color: job.isExpired ? HDTheme.red : HDTheme.green,
+                        icon: job.isExpired ? "xmark" : "checkmark"
                     )
                 }
 
-                HStack(spacing: 8) {
-                    Label(job.loc ?? "Not specified", systemImage: "mappin.and.ellipse")
-                    Label(job.expType?.capitalized ?? "Job", systemImage: "person.fill")
+                HStack(spacing: 6) {
+                    PremiumMetaChip(text: job.loc ?? "Location", icon: "mappin.and.ellipse", color: HDTheme.blue)
+                    PremiumMetaChip(text: job.expType?.capitalized ?? "Job", icon: "person.fill", color: HDTheme.violet)
+                    if let mode = job.workMode, !mode.isEmpty {
+                        PremiumMetaChip(text: mode, icon: "laptopcomputer", color: HDTheme.cyan)
+                    }
                 }
-                .font(.caption2)
-                .foregroundStyle(.secondary)
                 .lineLimit(1)
 
-                HStack(spacing: 12) {
-                    if let site = job.siteURL {
-                        Link("HD Careers", destination: site)
+                HStack {
+                    if let salary = job.salary, !salary.isEmpty {
+                        Label(salary, systemImage: "indianrupeesign.circle")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
                     }
+
+                    Spacer()
+
+                    if let site = job.siteURL {
+                        Link(destination: site) {
+                            Image(systemName: "eye")
+                        }
+                    }
+
                     if let official = job.officialURL {
-                        Link("Official ↗", destination: official)
+                        Link(destination: official) {
+                            Label("Official", systemImage: "arrow.up.right")
+                        }
                     }
                 }
                 .font(.caption.weight(.bold))
                 .foregroundStyle(HDTheme.blue)
             }
         }
-        .hdCard(14)
+        .premiumCard(13)
     }
-
 }
 
 struct ParsedAdminLink: Identifiable {
