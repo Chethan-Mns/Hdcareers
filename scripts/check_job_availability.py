@@ -56,7 +56,7 @@ def manual_verification_fresh(job, now):
     try:
         dt = datetime.fromisoformat(str(raw).replace('Z', '+00:00'))
         if dt.tzinfo is None: dt = dt.replace(tzinfo=timezone.utc)
-        return now - dt <= timedelta(days=7)
+        return timedelta(0) <= now - dt <= timedelta(hours=24)
     except Exception:
         return False
 
@@ -95,18 +95,20 @@ def check(job, now=None):
                 body = res.read(2_000_001)
                 if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
                 state, reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
-                if state == 'review' and manual_verification_fresh(job, now):
-                    state, reason = 'active', f'Automation was inconclusive, but this exact official job page was manually verified at {job["browserVerifiedAt"]}'
+                if state != 'active' and manual_verification_fresh(job, now):
+                    automated_state, automated_reason = state, reason
+                    state = 'active'
+                    reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
     except HTTPError as exc:
         if manual_verification_fresh(job, now):
-            state, reason = 'active', f'Automated check returned HTTP {exc.code}, but this exact official job page was manually verified at {job["browserVerifiedAt"]}'
+            state, reason = 'active', f'Fresh manual browser verification overrides automated HTTP {exc.code} result for 24 hours; verified at {job["browserVerifiedAt"]}'
         elif exc.code in (404, 410):
             state, reason = 'review', f'HTTP {exc.code} from automated request; exact job page requires browser verification before expiry'
         else:
             state, reason = 'review', f'HTTP {exc.code}; availability unconfirmed'
     except Exception as exc:
         if manual_verification_fresh(job, now):
-            state, reason = 'active', f'Automated check was inconclusive, but this exact official job page was manually verified at {job["browserVerifiedAt"]}'
+            state, reason = 'active', f'Fresh manual browser verification overrides the inconclusive automated result for 24 hours; verified at {job["browserVerifiedAt"]}'
         else:
             state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)
