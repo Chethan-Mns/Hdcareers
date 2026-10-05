@@ -1,11 +1,21 @@
 {
-  "checkedAt": "2026-10-05T07:29:38.326Z",
+  "checkedAt": "2026-10-05T07:33:42.697364+00:00",
   "checked": 42,
   "active": 40,
-  "expired": 1,
-  "review": 1,
-  "changedExpired": 1,
+  "expired": 0,
+  "review": 2,
+  "changedExpired": 0,
   "items": [
+    {
+      "id": 62,
+      "company": "Cisco",
+      "role": "Software Engineer Trainee – Technical Graduate Apprentice",
+      "page": "jobs/cisco-software-engineer-trainee-technical-graduate-apprentice-2014481.html",
+      "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
+      "state": "active",
+      "reason": "Verification terms and registration/submit control found on official URL",
+      "checkedAt": "2026-10-05T07:32:49.156268+00:00"
+    },
     {
       "id": 61,
       "company": "ACTREC",
@@ -14,7 +24,7 @@
       "url": "https://actrec.gov.in/node/13339",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:41.959052+00:00"
+      "checkedAt": "2026-10-05T07:32:50.004781+00:00"
     },
     {
       "id": 60,
@@ -24,7 +34,7 @@
       "url": "https://nitm.ac.in/beta/news_details.php?p=1794",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:44.357733+00:00"
+      "checkedAt": "2026-10-05T07:32:52.270901+00:00"
     },
     {
       "id": 59,
@@ -34,7 +44,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/dipr-delhi-invites-eligible-candidates-engagement-iti-pass-out-aprentices",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:46.224954+00:00"
+      "checkedAt": "2026-10-05T07:32:53.647232+00:00"
     },
     {
       "id": 58,
@@ -44,7 +54,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10498234/software-dev-engineer-ii-infra-supply-chain-automation",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:48.685690+00:00"
+      "checkedAt": "2026-10-05T07:32:56.474887+00:00"
     },
     {
       "id": 55,
@@ -54,7 +64,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/164704-en_US/",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:49.452790+00:00"
+      "checkedAt": "2026-10-05T07:32:57.416623+00:00"
     },
     {
       "id": 54,
@@ -64,7 +74,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/156839-en_US/",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:50.900148+00:00"
+      "checkedAt": "2026-10-05T07:32:59.144612+00:00"
     },
     {
       "id": 53,
@@ -74,19 +84,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/154180-en_US",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:51.775786+00:00"
-    },
-    {
-      "id": 50,
-      "company": "Flex",
-      "role": "Associate Software Engineer",
-      "page": "jobs/flex-associate-software-engineer-50.html",
-      "url": "https://flextronics.wd1.myworkdayjobs.com/en-US/Careers/job/Associate-Software-Engineer_WD230588",
-      "state": "expired",
-      "reason": "Marked expired manually from HD Careers Admin review.",
-      "checkedAt": "2026-10-05T07:29:26.241Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-05T07:29:26.241Z"
+      "checkedAt": "2026-10-05T07:33:00.170383+00:00"
     },
     {
       "id": 51,
@@ -96,7 +94,7 @@
       "url": "https://careers.jio.com/frmjobdescription.aspx?JBTITLE=VqySuCrFow14eZ2rOn+yig%3D%3D&funcCode=ni4dknKJ6TY%3D&jbID=BUxHArlZOX+6OKUYqwb4og%3D%3D",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:53.089609+00:00"
+      "checkedAt": "2026-10-05T07:33:01.187035+00:00"
     },
     {
       "id": 49,
@@ -106,7 +104,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10564385/software-development-engineer-ii-workplace-productivity",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:55.749545+00:00"
+      "checkedAt": "2026-10-05T07:33:04.069773+00:00"
     },
     {
       "id": 48,
@@ -116,7 +114,7 @@
       "url": "https://southasiacareers.deloitte.com/job/Delhi-Senior-Consultant-Data-Analytics-Delhi-Artificial-Intelligence-&-Data-AI-Insights-&-Engageme/59869044/",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:56.315104+00:00"
+      "checkedAt": "2026-10-05T07:33:04.605129+00:00"
     },
     {
       "id": 47,
@@ -126,7 +124,7 @@
       "url": "https://www.goindigo.in/careers/hiringevents/airportoperationscustomerservicesevents.html",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:57.591515+00:00"
+      "checkedAt": "2026-10-05T07:33:06.621604+00:00"
     },
     {
       "id": 46,
@@ -136,7 +134,7 @@
       "url": "https://www.actrec.gov.in/jobs",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:27:57.935739+00:00"
+      "checkedAt": "2026-10-05T07:33:06.983159+00:00"
     },
     {
       "id": 45,
@@ -146,7 +144,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/vrde-ahilyanagar-invites-eligible-candidates-walk-interview-post-junior",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:00.223010+00:00"
+      "checkedAt": "2026-10-05T07:33:09.264557+00:00"
     },
     {
       "id": 44,
@@ -156,7 +154,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/lrde-bengaluru-invites-eligible-candidates-walk-interview-post-junior-research",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:02.718138+00:00"
+      "checkedAt": "2026-10-05T07:33:12.370180+00:00"
     },
     {
       "id": 43,
@@ -166,7 +164,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/dysl-sm-hyderabad-invites-eligible-candidates-walk-interview-award-junior",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:04.618270+00:00"
+      "checkedAt": "2026-10-05T07:33:14.369452+00:00"
     },
     {
       "id": 42,
@@ -176,7 +174,7 @@
       "url": "https://www.ecil.co.in/jobopenings",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:06.676089+00:00"
+      "checkedAt": "2026-10-05T07:33:16.670943+00:00"
     },
     {
       "id": 41,
@@ -186,7 +184,7 @@
       "url": "https://cochinshipyard.in/career/career_locations/2",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:08.808564+00:00"
+      "checkedAt": "2026-10-05T07:33:18.815633+00:00"
     },
     {
       "id": 40,
@@ -196,7 +194,7 @@
       "url": "https://cochinshipyard.in/careerdetail/career_locations/815",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:10.474340+00:00"
+      "checkedAt": "2026-10-05T07:33:20.496077+00:00"
     },
     {
       "id": 39,
@@ -206,7 +204,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/Skill-Seeker",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:12.222745+00:00"
+      "checkedAt": "2026-10-05T07:33:22.114242+00:00"
     },
     {
       "id": 38,
@@ -216,7 +214,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10502000/front-end-engineer-intern-2027",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:14.989457+00:00"
+      "checkedAt": "2026-10-05T07:33:24.977731+00:00"
     },
     {
       "id": 37,
@@ -226,7 +224,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:15.539686+00:00"
+      "checkedAt": "2026-10-05T07:33:25.502877+00:00"
     },
     {
       "id": 36,
@@ -236,7 +234,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10498163/support-engineer-intern-2027",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:16.416900+00:00"
+      "checkedAt": "2026-10-05T07:33:26.021105+00:00"
     },
     {
       "id": 35,
@@ -246,7 +244,7 @@
       "url": "https://www.amazon.jobs/en-gb/jobs/10498161/systems-development-engineer-intern-2027",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:16.870327+00:00"
+      "checkedAt": "2026-10-05T07:33:26.514661+00:00"
     },
     {
       "id": 34,
@@ -256,7 +254,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:17.340656+00:00"
+      "checkedAt": "2026-10-05T07:33:26.994967+00:00"
     },
     {
       "id": 33,
@@ -266,7 +264,7 @@
       "url": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:17.864110+00:00"
+      "checkedAt": "2026-10-05T07:33:27.522677+00:00"
     },
     {
       "id": 32,
@@ -276,7 +274,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/165612-en_US/",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:18.530672+00:00"
+      "checkedAt": "2026-10-05T07:33:28.084530+00:00"
     },
     {
       "id": 31,
@@ -286,7 +284,7 @@
       "url": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:19.343874+00:00"
+      "checkedAt": "2026-10-05T07:33:29.026534+00:00"
     },
     {
       "id": 29,
@@ -296,7 +294,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/168116-en_US",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:19.631433+00:00"
+      "checkedAt": "2026-10-05T07:33:29.404511+00:00"
     },
     {
       "id": 28,
@@ -306,7 +304,7 @@
       "url": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:20.524066+00:00"
+      "checkedAt": "2026-10-05T07:33:30.361019+00:00"
     },
     {
       "id": 27,
@@ -316,7 +314,7 @@
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/pxe-balasore-invites-eligible-candidates-engagement-apprentices-under",
       "state": "active",
       "reason": "Verification terms and registration/submit control found on official URL",
-      "checkedAt": "2026-10-05T07:28:20.831634+00:00"
+      "checkedAt": "2026-10-05T07:33:30.609196+00:00"
     },
     {
       "id": 26,
@@ -326,7 +324,7 @@
       "url": "https://careers.priceline.com/job/r5631/",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:22.791876+00:00"
+      "checkedAt": "2026-10-05T07:33:33.427310+00:00"
     },
     {
       "id": 25,
@@ -336,7 +334,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:23.168511+00:00"
+      "checkedAt": "2026-10-05T07:33:33.782403+00:00"
     },
     {
       "id": 24,
@@ -344,11 +342,9 @@
       "role": "Specialist Programmer (Trainee) – L1 / L2 / L3",
       "page": "jobs/infosys-specialist-programmer-2027-campus.html",
       "url": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-      "state": "active",
-      "reason": "Manually reviewed in HD Careers Admin — no change requested.",
-      "checkedAt": "2026-10-05T07:29:38.326Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-05T07:29:38.326Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-05T07:33:35.554701+00:00"
     },
     {
       "id": 23,
@@ -358,7 +354,7 @@
       "url": "https://canonical.com/careers/8142329",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:24.530151+00:00"
+      "checkedAt": "2026-10-05T07:33:35.873516+00:00"
     },
     {
       "id": 22,
@@ -368,7 +364,7 @@
       "url": "https://southasiacareers.deloitte.com/job/Ahmedabad-Analyst-Onestream-All-Ahmedabad-Finance-Transformation-Business-Finance/59843244/",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:25.456665+00:00"
+      "checkedAt": "2026-10-05T07:33:36.984821+00:00"
     },
     {
       "id": 21,
@@ -378,7 +374,7 @@
       "url": "https://careers.cognizant.com/india-en/jobs/00070744381/data-engineer-data-architect/",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:26.618056+00:00"
+      "checkedAt": "2026-10-05T07:33:37.999190+00:00"
     },
     {
       "id": 20,
@@ -388,7 +384,7 @@
       "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:26.840883+00:00"
+      "checkedAt": "2026-10-05T07:33:38.236340+00:00"
     },
     {
       "id": 17,
@@ -398,7 +394,7 @@
       "url": "https://careers.wipro.com/job/Java-Fullstack-Developer/99036-en_US",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:27.269898+00:00"
+      "checkedAt": "2026-10-05T07:33:38.424016+00:00"
     },
     {
       "id": 16,
@@ -408,7 +404,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:28.210190+00:00"
+      "checkedAt": "2026-10-05T07:33:39.562323+00:00"
     },
     {
       "id": 15,
@@ -418,7 +414,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10499657/data-engineer-i-cmt",
       "state": "active",
       "reason": "Exact role and application call-to-action found on official URL",
-      "checkedAt": "2026-10-05T07:28:29.515324+00:00"
+      "checkedAt": "2026-10-05T07:33:41.224930+00:00"
     },
     {
       "id": 12,
@@ -428,7 +424,7 @@
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
       "state": "review",
       "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-05T07:28:29.986500+00:00"
+      "checkedAt": "2026-10-05T07:33:41.712846+00:00"
     }
   ]
 }
