@@ -21,18 +21,18 @@ final class AppState: ObservableObject {
     var experiencedJobs: [Job] { activeJobs.filter { !$0.isFresher } }
 
     func bootstrap() async {
-        do {
-            isAuthenticated = try await api.sessionStatus()
-        } catch {
-            isAuthenticated = false
-        }
-
         isBootstrapping = false
 
-        if isAuthenticated {
-            Task { @MainActor in
-                await refreshAll()
+        do {
+            let authenticated = try await api.sessionStatus()
+            if authenticated {
+                isAuthenticated = true
+                Task { @MainActor in
+                    await refreshAll()
+                }
             }
+        } catch {
+            isAuthenticated = false
         }
     }
 
@@ -60,7 +60,9 @@ final class AppState: ObservableObject {
                 }
             }
 
-            await refreshAll()
+            Task { @MainActor in
+                await refreshAll()
+            }
         } catch {
             loginStatus = error.localizedDescription
         }
@@ -79,7 +81,9 @@ final class AppState: ObservableObject {
             try await BiometricAuth.authenticate()
             try await api.login(username: credential.username, password: credential.password)
             isAuthenticated = true
-            await refreshAll()
+            Task { @MainActor in
+                await refreshAll()
+            }
         } catch {
             alertMessage = error.localizedDescription
         }
