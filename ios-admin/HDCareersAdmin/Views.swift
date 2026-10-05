@@ -297,11 +297,11 @@ struct DashboardHeroCard: View {
                     .textCase(.uppercase)
                     .tracking(0.8)
 
-                Text("(state.activeJobs.count) live jobs")
+                Text("\(state.activeJobs.count) live jobs")
                     .font(.system(size: 26, weight: .black, design: .rounded))
                     .foregroundStyle(HDTheme.navy)
 
-                Text(reviewCount == 0 ? "Everything looks good" : "(reviewCount) item(reviewCount == 1 ? "" : "s") need review")
+                Text(reviewCount == 0 ? "Everything looks good" : "\(reviewCount) item\(reviewCount == 1 ? "" : "s") need review")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(reviewCount == 0 ? HDTheme.green : HDTheme.amber)
             }
@@ -998,7 +998,7 @@ struct AutomationHealthCard: View {
                         Text("Daily publishing")
                             .font(.subheadline.weight(.black))
                             .foregroundStyle(HDTheme.navy)
-                        Text("(slot.time) · (slot.target ?? slot.title)")
+                        Text("\(slot.time) · \(slot.target ?? slot.title)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .lineLimit(1)
@@ -1084,7 +1084,7 @@ struct JobsView: View {
                     VStack(spacing: 10) {
                         AdminHeader(
                             title: "Jobs",
-                            subtitle: "(state.activeJobs.count) active · (state.expiredJobs.count) expired",
+                            subtitle: "\(state.activeJobs.count) active · \(state.expiredJobs.count) expired",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshJobs() }
@@ -1106,7 +1106,7 @@ struct JobsView: View {
 
                         Picker("Status", selection: $filter) {
                             ForEach(JobListFilter.allCases) { item in
-                                Text("(item.rawValue) (count(for: item))").tag(item)
+                                Text("\(item.rawValue) \(count(for: item))").tag(item)
                             }
                         }
                         .pickerStyle(.segmented)
