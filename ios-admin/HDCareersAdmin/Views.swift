@@ -285,11 +285,6 @@ struct DashboardView: View {
                         ReviewAlertCard()
                         DashboardStatsCard()
                         TrafficSummaryCard()
-                        TrafficTrendCard()
-                        AudienceAnalyticsCard()
-                        AcquisitionAnalyticsCard()
-                        ConversionAnalyticsCard()
-                        TopContentAnalyticsCard()
                         AutomationHealthCard()
                     }
                     .padding(.horizontal, 16)
