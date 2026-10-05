@@ -69,6 +69,13 @@ struct TrafficResponse: Decodable {
         let visitors: Int?
         let pageviews: Int?
         let sessions: Int?
+        let newUsers: Int?
+        let returningUsers: Int?
+        let engagedSessions: Int?
+        let engagementRate: Double?
+        let averageSessionDuration: Double?
+        let viewsPerUser: Double?
+        let viewsPerSession: Double?
     }
 
     struct Page: Decodable, Identifiable {
@@ -93,6 +100,37 @@ struct TrafficResponse: Decodable {
         let deviceType: String?
         let visitors: Int?
         var id: String { deviceType ?? UUID().uuidString }
+    }
+
+    struct Channel: Decodable, Identifiable {
+        let channel: String?
+        let sessions: Int?
+        var id: String { channel ?? UUID().uuidString }
+    }
+
+    struct TrendPoint: Decodable, Identifiable {
+        let date: String?
+        let users: Int?
+        let pageviews: Int?
+        let sessions: Int?
+        var id: String { date ?? UUID().uuidString }
+    }
+
+    struct RealtimeBreakdown: Decodable {
+        struct Device: Decodable, Identifiable {
+            let deviceType: String?
+            let users: Int?
+            var id: String { deviceType ?? UUID().uuidString }
+        }
+
+        struct Country: Decodable, Identifiable {
+            let country: String?
+            let users: Int?
+            var id: String { country ?? UUID().uuidString }
+        }
+
+        let devices: [Device]?
+        let countries: [Country]?
     }
 
     struct Conversions: Decodable {
@@ -124,7 +162,10 @@ struct TrafficResponse: Decodable {
     let provider: String?
     let days: Int?
     let realtimeUsers: Int?
+    let realtime: RealtimeBreakdown?
     let totals: Totals?
+    let trend: [TrendPoint]?
+    let channels: [Channel]?
     let pages: [Page]?
     let referrers: [Referrer]?
     let countries: [Country]?
