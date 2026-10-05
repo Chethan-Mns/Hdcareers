@@ -31,20 +31,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Resolve publish batch baseline
-        shell: bash
-        env:
-          EVENT_BEFORE_SHA: ${{ github.event.before }}
-        run: |
-          BASE_SHA="$(git log "$EVENT_BEFORE_SHA" --first-parent --format='%H%x09%s' | awk -F '\t' '$2 == "Generate website for verified jobs" && !found {print $1; found=1} END {exit 0}')"
-          if [ -z "$BASE_SHA" ]; then
-            BASE_SHA="$EVENT_BEFORE_SHA"
-          fi
-          echo "BATCH_BASE_SHA=$BASE_SHA" >> "$GITHUB_ENV"
-          echo "Publishing jobs added since $BASE_SHA"
-
       - name: Verify new job availability
-        run: python3 scripts/check_job_availability.py --before "$BATCH_BASE_SHA" --prune-unverified-new
+        run: python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
+
+      - name: Queue new jobs for Telegram
+        run: python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
 
       - name: Generate homepage and job pages
         run: python3 generate.py
@@ -54,7 +45,7 @@ jobs:
           git diff --check
           python3 generate.py --dry-run
 
-      - name: Commit generated website files
+      - name: Commit generated website and Telegram queue
         shell: bash
         run: |
           if git diff --quiet; then
@@ -62,13 +53,7 @@ jobs:
           else
             git config user.name "HD Careers Automation"
             git config user.email "actions@users.noreply.github.com"
-            git add data/jobs.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+            git add data/jobs.json data/telegram-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
             git commit -m "Generate website for verified jobs"
             git push origin HEAD:main
           fi
-
-      - name: Post new jobs to Telegram
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-        run: python3 scripts/post_telegram_from_push.py "$BATCH_BASE_SHA"
