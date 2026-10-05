@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install logo quality dependency
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+
       - name: Verify new job availability
         run: python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
 
