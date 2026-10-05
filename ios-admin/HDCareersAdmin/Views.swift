@@ -285,6 +285,8 @@ struct DashboardView: View {
                             Task { await state.refreshAll() }
                         }
 
+                        DashboardHeroCard()
+                        ReviewAlertCard()
                         DashboardStatsCard()
                         TrafficSummaryCard()
                         AutomationHealthCard()
@@ -296,6 +298,103 @@ struct DashboardView: View {
                 .refreshable { await state.refreshAll() }
             }
             .toolbar(.hidden, for: .navigationBar)
+        }
+    }
+}
+
+struct DashboardHeroCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var reviewCount: Int {
+        state.availability?.results?.items?.filter { $0.state == "review" }.count ?? 0
+    }
+
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            LinearGradient(
+                colors: [HDTheme.navy, HDTheme.blue],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 178)
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+
+            Circle()
+                .fill(Color.white.opacity(0.10))
+                .frame(width: 150, height: 150)
+                .offset(x: 245, y: -55)
+
+            VStack(alignment: .leading, spacing: 9) {
+                HStack {
+                    Image(systemName: "sparkles")
+                    Text("HD CAREERS CONTROL CENTER")
+                        .font(.caption2.weight(.black))
+                        .tracking(1.1)
+                }
+                .foregroundStyle(.white.opacity(0.78))
+
+                Text("Everything important,\nright here.")
+                    .font(.system(size: 28, weight: .black, design: .rounded))
+                    .foregroundStyle(.white)
+
+                HStack(spacing: 8) {
+                    Label("\(state.activeJobs.count) live jobs", systemImage: "briefcase.fill")
+                    if reviewCount > 0 {
+                        Label("\(reviewCount) to review", systemImage: "exclamationmark.triangle.fill")
+                    } else {
+                        Label("All clear", systemImage: "checkmark.shield.fill")
+                    }
+                }
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.white.opacity(0.9))
+            }
+            .padding(20)
+        }
+    }
+}
+
+struct ReviewAlertCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var reviewItems: [AvailabilityItem] {
+        state.availability?.results?.items?.filter { $0.state == "review" } ?? []
+    }
+
+    var body: some View {
+        if !reviewItems.isEmpty {
+            NavigationLink {
+                CheckerView()
+            } label: {
+                HStack(spacing: 14) {
+                    Image(systemName: "bell.badge.fill")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundStyle(HDTheme.amber)
+                        .frame(width: 46, height: 46)
+                        .background(HDTheme.amber.opacity(0.12))
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("\(reviewItems.count) job\(reviewItems.count == 1 ? "" : "s") need your review")
+                            .font(.headline.weight(.black))
+                            .foregroundStyle(HDTheme.navy)
+                        Text("Open the official page, verify it, then keep active or mark expired.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.leading)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(HDTheme.amber)
+                }
+                .padding(15)
+                .background(HDTheme.amber.opacity(0.07))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(HDTheme.amber.opacity(0.22))
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+            .buttonStyle(.plain)
         }
     }
 }
