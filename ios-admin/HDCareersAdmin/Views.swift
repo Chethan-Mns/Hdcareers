@@ -640,6 +640,7 @@ struct SmallMetric: View {
 
 struct AutomationHealthCard: View {
     @EnvironmentObject private var state: AppState
+    @State private var showLastRun = false
 
     private func outcomeColor(_ outcome: String?) -> Color {
         switch outcome {
@@ -656,58 +657,212 @@ struct AutomationHealthCard: View {
         return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
     }
 
+    private func nextRunText(_ slot: AutomationHealth.Slot) -> String {
+        let iso = ISO8601DateFormatter()
+        iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        var stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
+        if stored == nil {
+            iso.formatOptions = [.withInternetDateTime]
+            stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
+        }
+
+        if let stored, stored > Date() {
+            return formatAdminDate(slot.nextRunAt)
+        }
+
+        let zone = TimeZone(identifier: slot.timezone ?? "Asia/Kolkata") ?? .current
+        let parts = slot.time.split(separator: ":")
+        let hour = parts.first.flatMap { Int($0) } ?? 9
+        let minute = parts.dropFirst().first.flatMap { Int($0) } ?? 0
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = zone
+        var components = calendar.dateComponents([.year, .month, .day], from: Date())
+        components.hour = hour
+        components.minute = minute
+        components.second = 0
+        var next = calendar.date(from: components) ?? Date()
+        if next <= Date() {
+            next = calendar.date(byAdding: .day, value: 1, to: next) ?? next
+        }
+
+        let display = DateFormatter()
+        display.locale = Locale(identifier: "en_IN")
+        display.timeZone = zone
+        display.dateFormat = "dd MMM, h:mm a"
+        return display.string(from: next) + " IST"
+    }
+
     var body: some View {
         Group {
             if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
-                NavigationLink {
-                    AutomationDetailsView()
-                } label: {
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack(spacing: 11) {
-                            Image(systemName: "bolt.fill")
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundStyle(HDTheme.blue)
-                                .frame(width: 36, height: 36)
-                                .background(HDTheme.blue.opacity(0.08))
-                                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                VStack(spacing: 0) {
+                    ZStack(alignment: .bottomLeading) {
+                        LinearGradient(
+                            colors: [HDTheme.navy, HDTheme.blue],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        .frame(height: 142)
 
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Daily publishing")
-                                    .font(.headline.weight(.black))
-                                    .foregroundStyle(HDTheme.navy)
-                                Text("Every day at 9:00 AM IST")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+                        Circle()
+                            .fill(Color.white.opacity(0.09))
+                            .frame(width: 130, height: 130)
+                            .offset(x: 245, y: -48)
+
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "bolt.fill")
+                                    Text("DAILY PUBLISHING")
+                                        .tracking(1)
+                                }
+                                .font(.caption2.weight(.black))
+                                .foregroundStyle(.white.opacity(0.78))
+
+                                Spacer()
+
+                                StatusPill(
+                                    text: outcomeLabel(slot.outcome),
+                                    color: outcomeColor(slot.outcome)
+                                )
                             }
 
-                            Spacer()
-                            StatusPill(text: outcomeLabel(slot.outcome), color: outcomeColor(slot.outcome))
+                            Text("9:00 AM Batch")
+                                .font(.system(size: 25, weight: .black, design: .rounded))
+                                .foregroundStyle(.white)
+
+                            HStack(spacing: 8) {
+                                Label(slot.target ?? "9–10 verified jobs/day", systemImage: "target")
+                                Spacer()
+                                Label(nextRunText(slot), systemImage: "clock.fill")
+                            }
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.white.opacity(0.9))
+                        }
+                        .padding(18)
+                    }
+
+                    VStack(alignment: .leading, spacing: 15) {
+                        VStack(alignment: .leading, spacing: 9) {
+                            Text("Today’s publishing mix")
+                                .font(.subheadline.weight(.black))
+                                .foregroundStyle(HDTheme.navy)
+
+                            if let mix = slot.mix, !mix.isEmpty {
+                                LazyVGrid(
+                                    columns: [GridItem(.adaptive(minimum: 130), spacing: 8)],
+                                    alignment: .leading,
+                                    spacing: 8
+                                ) {
+                                    ForEach(Array(mix.enumerated()), id: \.offset) { index, item in
+                                        HStack(spacing: 6) {
+                                            Image(systemName: publishingIcon(index))
+                                                .font(.caption2.weight(.bold))
+                                                .foregroundStyle(HDTheme.blue)
+                                            Text(item)
+                                                .font(.caption2.weight(.bold))
+                                                .foregroundStyle(HDTheme.navy)
+                                                .lineLimit(1)
+                                        }
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 8)
+                                        .background(HDTheme.blue.opacity(0.07))
+                                        .clipShape(Capsule())
+                                    }
+                                }
+                            }
                         }
 
-                        HStack(alignment: .firstTextBaseline) {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(slot.target ?? "9–10 verified jobs/day")
-                                    .font(.subheadline.weight(.bold))
-                                    .foregroundStyle(HDTheme.navy)
-                                if let next = slot.nextRunAt {
-                                    Text("Next: \(formatAdminDate(next))")
-                                        .font(.caption2)
+                        HStack(spacing: 5) {
+                            PublishingStep(icon: "magnifyingglass", title: "Find")
+                            PipelineArrow()
+                            PublishingStep(icon: "checkmark.shield.fill", title: "Verify")
+                            PipelineArrow()
+                            PublishingStep(icon: "arrow.up.circle.fill", title: "Publish")
+                            PipelineArrow()
+                            PublishingStep(icon: "paperplane.fill", title: "Telegram")
+                        }
+
+                        if let delivery = slot.delivery, !delivery.isEmpty {
+                            Text(delivery)
+                                .font(.caption2.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                                .lineLimit(2)
+                        }
+
+                        Button {
+                            withAnimation(.snappy(duration: 0.28)) {
+                                showLastRun.toggle()
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemName: showLastRun ? "chart.bar.fill" : "clock.arrow.circlepath")
+                                    .foregroundStyle(HDTheme.blue)
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(showLastRun ? "Hide last run" : "Show last run")
+                                        .font(.subheadline.weight(.bold))
+                                        .foregroundStyle(HDTheme.navy)
+                                    if let last = slot.lastRunAt {
+                                        Text("Previous: \(formatAdminDate(last))")
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.down")
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(HDTheme.blue)
+                                    .rotationEffect(.degrees(showLastRun ? 180 : 0))
+                            }
+                            .padding(12)
+                            .background(HDTheme.blue.opacity(0.055))
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
+
+                        if showLastRun {
+                            VStack(alignment: .leading, spacing: 9) {
+                                HStack {
+                                    Label("Last run result", systemImage: "waveform.path.ecg")
+                                        .font(.caption.weight(.black))
+                                        .foregroundStyle(HDTheme.navy)
+                                    Spacer()
+                                    StatusPill(
+                                        text: outcomeLabel(slot.outcome),
+                                        color: outcomeColor(slot.outcome)
+                                    )
+                                }
+
+                                if let detail = slot.detail, !detail.isEmpty {
+                                    Text(detail)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                } else {
+                                    Text("No run details are available yet.")
+                                        .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
                             }
-                            Spacer()
-                            HStack(spacing: 5) {
-                                Text("View plan")
-                                    .font(.caption.weight(.bold))
-                                Image(systemName: "chevron.right")
-                                    .font(.caption2.weight(.bold))
+                            .padding(13)
+                            .background(outcomeColor(slot.outcome).opacity(0.055))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .stroke(outcomeColor(slot.outcome).opacity(0.16))
                             }
-                            .foregroundStyle(HDTheme.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            .transition(.opacity.combined(with: .move(edge: .top)))
                         }
                     }
+                    .padding(16)
+                    .background(Color.white)
                 }
-                .buttonStyle(.plain)
-                .hdCard()
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                        .stroke(Color.black.opacity(0.06))
+                }
+                .shadow(color: Color.black.opacity(0.045), radius: 12, x: 0, y: 5)
             } else {
                 VStack(alignment: .leading, spacing: 8) {
                     Label("Publishing automation", systemImage: "bolt.slash")
@@ -719,6 +874,44 @@ struct AutomationHealthCard: View {
                 .hdCard()
             }
         }
+    }
+
+    private func publishingIcon(_ index: Int) -> String {
+        switch index {
+        case 0: return "laptopcomputer"
+        case 1: return "person.crop.circle.badge.plus"
+        case 2: return "briefcase.fill"
+        case 3: return "building.columns.fill"
+        default: return "figure.walk"
+        }
+    }
+}
+
+struct PublishingStep: View {
+    let icon: String
+    let title: String
+
+    var body: some View {
+        VStack(spacing: 5) {
+            Image(systemName: icon)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(HDTheme.blue)
+                .frame(width: 28, height: 28)
+                .background(HDTheme.blue.opacity(0.08))
+                .clipShape(Circle())
+            Text(title)
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct PipelineArrow: View {
+    var body: some View {
+        Image(systemName: "chevron.right")
+            .font(.system(size: 9, weight: .black))
+            .foregroundStyle(.tertiary)
     }
 }
 
