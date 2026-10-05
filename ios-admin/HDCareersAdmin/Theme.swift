@@ -3,30 +3,32 @@ import SwiftUI
 enum HDTheme {
     static let blue = Color(red: 0.035, green: 0.412, blue: 0.855)
     static let navy = Color(red: 0.027, green: 0.102, blue: 0.200)
-    static let background = Color(red: 0.965, green: 0.976, blue: 0.992)
+    static let background = Color(red: 0.972, green: 0.976, blue: 0.984)
+    static let surface = Color.white
+    static let line = Color.black.opacity(0.055)
+    static let muted = Color(red: 0.39, green: 0.45, blue: 0.54)
     static let green = Color(red: 0.086, green: 0.639, blue: 0.290)
     static let amber = Color(red: 0.957, green: 0.620, blue: 0.035)
     static let red = Color(red: 0.862, green: 0.149, blue: 0.149)
 }
 
 struct HDCard: ViewModifier {
-    var padding: CGFloat = 16
+    var padding: CGFloat = 14
 
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .background(HDTheme.surface)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
             .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .stroke(HDTheme.line, lineWidth: 1)
             }
-            .shadow(color: .black.opacity(0.025), radius: 8, y: 3)
     }
 }
 
 extension View {
-    func hdCard(_ padding: CGFloat = 16) -> some View {
+    func hdCard(_ padding: CGFloat = 14) -> some View {
         modifier(HDCard(padding: padding))
     }
 }
@@ -40,11 +42,7 @@ struct HDLogoView: View {
             .scaledToFit()
             .frame(width: size, height: size)
             .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: size * 0.22, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: size * 0.22, style: .continuous)
-                    .stroke(Color.black.opacity(0.06))
-            }
+            .clipShape(RoundedRectangle(cornerRadius: size * 0.20, style: .continuous))
     }
 }
 
@@ -60,11 +58,11 @@ struct StatusPill: View {
             }
             Text(text)
         }
-        .font(.caption2.weight(.bold))
+        .font(.system(size: 10, weight: .bold))
         .foregroundStyle(color)
-        .padding(.horizontal, 9)
-        .padding(.vertical, 6)
-        .background(color.opacity(0.10))
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(color.opacity(0.09))
         .clipShape(Capsule())
     }
 }
@@ -77,7 +75,7 @@ struct EmptyState: View {
     var body: some View {
         VStack(spacing: 10) {
             Image(systemName: icon)
-                .font(.system(size: 28, weight: .semibold))
+                .font(.system(size: 24, weight: .semibold))
                 .foregroundStyle(.secondary)
             Text(title)
                 .font(.headline)
@@ -87,7 +85,7 @@ struct EmptyState: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 34)
+        .padding(.vertical, 24)
     }
 }
 
