@@ -367,6 +367,21 @@ struct ReviewAlertCard: View {
     }
 }
 
+struct DashboardStatsCard: View {
+    @EnvironmentObject private var state: AppState
+
+    var body: some View {
+        HStack(spacing: 0) {
+            DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
+            Divider().frame(height: 42)
+            DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.fill", color: .purple)
+            Divider().frame(height: 42)
+            DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
+        }
+        .hdCard(10)
+    }
+}
+
 struct DashboardStat: View {
     let title: String
     let value: Int
