@@ -39,10 +39,6 @@ function decode(file){
   return JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
 }
 
-function encode(value){
-  return Buffer.from(JSON.stringify(value,null,2)+"\n","utf8").toString("base64");
-}
-
 function recompute(summary){
   const items=Array.isArray(summary.items)?summary.items:[];
   summary.checked=items.length;
@@ -63,8 +59,7 @@ function today(){
 
 function prepareApprovedJob(raw,jobs,now){
   const job={...(raw||{})};
-  const nextId=Math.max(0,...jobs.map(x=>Number(x.id)||0))+1;
-  job.id=nextId;
+  job.id=Math.max(0,...jobs.map(x=>Number(x.id)||0))+1;
   job.status="active";
   job.browserVerifiedAt=now;
   job.verifiedDate=today();
@@ -84,17 +79,60 @@ function prepareApprovedJob(raw,jobs,now){
   return job;
 }
 
-async function updateFile(path,file,value,message,base,token){
-  return github("/contents/"+path,token,{
-    method:"PUT",
+async function readState(base,token){
+  const ref=await github("/git/ref/heads/"+encodeURIComponent(base),token);
+  const headSha=ref.object?.sha;
+  if(!headSha)throw new Error("Could not read the current main commit.");
+
+  const [jobsFile,statusFile,reviewFile]=await Promise.all([
+    github("/contents/"+JOBS_PATH+"?ref="+encodeURIComponent(headSha),token),
+    github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(headSha),token),
+    github("/contents/"+REVIEW_PATH+"?ref="+encodeURIComponent(headSha),token)
+  ]);
+
+  return {
+    headSha,
+    jobs:decode(jobsFile),
+    summary:decode(statusFile),
+    reviewQueue:decode(reviewFile)
+  };
+}
+
+async function commitJsonFiles(base,headSha,changes,message,token){
+  const parent=await github("/git/commits/"+headSha,token);
+  const treeEntries=[];
+
+  for(const [path,value] of Object.entries(changes)){
+    const blob=await github("/git/blobs",token,{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        content:JSON.stringify(value,null,2)+"\n",
+        encoding:"utf-8"
+      })
+    });
+    treeEntries.push({path,mode:"100644",type:"blob",sha:blob.sha});
+  }
+
+  const tree=await github("/git/trees",token,{
+    method:"POST",
     headers:{"content-type":"application/json"},
-    body:JSON.stringify({
-      message,
-      content:encode(value),
-      sha:file.sha,
-      branch:base
-    })
+    body:JSON.stringify({base_tree:parent.tree.sha,tree:treeEntries})
   });
+
+  const commit=await github("/git/commits",token,{
+    method:"POST",
+    headers:{"content-type":"application/json"},
+    body:JSON.stringify({message,tree:tree.sha,parents:[headSha]})
+  });
+
+  await github("/git/refs/heads/"+encodeURIComponent(base),token,{
+    method:"PATCH",
+    headers:{"content-type":"application/json"},
+    body:JSON.stringify({sha:commit.sha,force:false})
+  });
+
+  return commit.sha;
 }
 
 export default async function handler(req,res){
@@ -115,158 +153,133 @@ export default async function handler(req,res){
   if(!["expire","keep"].includes(action))return res.status(400).json({error:"action must be expire or keep."});
 
   const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
-  try{
-    const [jobsFile,statusFile,reviewFile]=await Promise.all([
-      github("/contents/"+JOBS_PATH+"?ref="+encodeURIComponent(base),token),
-      github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token),
-      github("/contents/"+REVIEW_PATH+"?ref="+encodeURIComponent(base),token)
-    ]);
-    const jobs=decode(jobsFile);
-    const summary=decode(statusFile);
-    const reviewQueue=decode(reviewFile);
-    if(!Array.isArray(jobs))throw new Error("data/jobs.json is not a JSON array.");
-    if(!Array.isArray(reviewQueue))throw new Error("data/review-queue.json is not a JSON array.");
-    if(!Array.isArray(summary.items))summary.items=[];
 
-    const pendingIndex=reviewQueue.findIndex(x=>Number(x.reviewId)===jobId&&x.state==="review");
-    const now=new Date().toISOString();
+  for(let attempt=1;attempt<=5;attempt++){
+    try{
+      const {headSha,jobs,summary,reviewQueue}=await readState(base,token);
+      if(!Array.isArray(jobs))throw new Error("data/jobs.json is not a JSON array.");
+      if(!Array.isArray(reviewQueue))throw new Error("data/review-queue.json is not a JSON array.");
+      if(!Array.isArray(summary.items))summary.items=[];
 
-    if(pendingIndex>=0){
-      const pending=reviewQueue[pendingIndex];
-      if(action==="expire"){
+      const pendingIndex=reviewQueue.findIndex(x=>Number(x.reviewId)===jobId&&x.state==="review");
+      const now=new Date().toISOString();
+
+      if(pendingIndex>=0){
+        const pending=reviewQueue[pendingIndex];
+
+        if(action==="expire"){
+          reviewQueue.splice(pendingIndex,1);
+          await commitJsonFiles(
+            base,
+            headSha,
+            {[REVIEW_PATH]:reviewQueue},
+            "Reject review job: "+(pending.company||"Job")+" — "+(pending.role||"Opening"),
+            token
+          );
+          return res.status(200).json({
+            ok:true,
+            action,
+            jobId,
+            company:pending.company||pending.job?.company||"",
+            role:pending.role||pending.job?.role||"",
+            status:"rejected",
+            message:"Job rejected and removed from Needs Review. It was not published."
+          });
+        }
+
+        const approved=prepareApprovedJob(pending.job,jobs,now);
         reviewQueue.splice(pendingIndex,1);
-        await updateFile(
-          REVIEW_PATH,
-          reviewFile,
-          reviewQueue,
-          "Reject review job: "+(pending.company||"Job")+" — "+(pending.role||"Opening"),
+        await commitJsonFiles(
           base,
+          headSha,
+          {
+            [JOBS_PATH]:[approved,...jobs],
+            [REVIEW_PATH]:reviewQueue
+          },
+          "Manual publish: "+(approved.company||"Job")+" — "+(approved.role||"Opening"),
           token
         );
         return res.status(200).json({
           ok:true,
           action,
-          jobId,
-          company:pending.company||pending.job?.company||"",
-          role:pending.role||pending.job?.role||"",
-          status:"rejected",
-          message:"Job rejected and removed from Needs Review. It was not published."
+          jobId:approved.id,
+          company:approved.company,
+          role:approved.role,
+          status:"active",
+          message:"Approved. The job has been moved back into the publishing flow."
         });
       }
 
-      const approved=prepareApprovedJob(pending.job,jobs,now);
-      reviewQueue.splice(pendingIndex,1);
+      const job=jobs.find(x=>Number(x.id)===jobId);
+      if(!job)return res.status(404).json({error:"Review item not found."});
+      const result=summary.items.find(x=>Number(x.id)===jobId);
 
-      await updateFile(
-        REVIEW_PATH,
-        reviewFile,
-        reviewQueue,
-        "Approve review job: "+(approved.company||"Job")+" — "+(approved.role||"Opening"),
-        base,
-        token
-      );
+      if(action==="expire"){
+        job.status="expired";
+        job.verifiedDate=today();
+        job.availabilityCheck={
+          ...(job.availabilityCheck||{}),
+          id:job.id,
+          url:job.apply,
+          checkedAt:now,
+          state:"expired",
+          reason:"Marked expired manually from HD Careers Admin review."
+        };
+        if(result){
+          result.state="expired";
+          result.reason="Marked expired manually from HD Careers Admin review.";
+          result.checkedAt=now;
+          result.manualReview="expire";
+          result.manualReviewedAt=now;
+        }
+        summary.checkedAt=now;
+        recompute(summary);
 
-      const latestJobs=await github("/contents/"+JOBS_PATH+"?ref="+encodeURIComponent(base),token);
-      const currentJobs=decode(latestJobs);
-      const finalJob=prepareApprovedJob(pending.job,currentJobs,now);
-      await updateFile(
-        JOBS_PATH,
-        latestJobs,
-        [finalJob,...currentJobs],
-        "Manual publish: "+(finalJob.company||"Job")+" — "+(finalJob.role||"Opening"),
-        base,
-        token
-      );
+        await commitJsonFiles(
+          base,
+          headSha,
+          {[JOBS_PATH]:jobs,[STATUS_PATH]:summary},
+          "Manual expire: "+job.company+" — "+job.role,
+          token
+        );
+      }else{
+        job.browserVerifiedAt=now;
+        job.verifiedDate=today();
+        if(result){
+          result.state="active";
+          result.reason="Manually browser-verified in HD Careers Admin.";
+          result.checkedAt=now;
+          result.manualReview="keep";
+          result.manualReviewedAt=now;
+        }
+        summary.checkedAt=now;
+        recompute(summary);
+
+        await commitJsonFiles(
+          base,
+          headSha,
+          {[JOBS_PATH]:jobs,[STATUS_PATH]:summary},
+          "Admin review active: "+job.company+" — "+job.role,
+          token
+        );
+      }
 
       return res.status(200).json({
         ok:true,
         action,
-        jobId:finalJob.id,
-        company:finalJob.company,
-        role:finalJob.role,
-        status:"active",
-        message:"Approved. The job has been moved back into the publishing flow."
+        jobId,
+        company:job.company,
+        role:job.role,
+        status:action==="expire"?"expired":"active",
+        results:summary,
+        message:action==="expire"?"Job marked expired. Site regeneration will follow automatically.":"Job manually verified active and removed from Needs Review."
       });
+    }catch(error){
+      const status=Number(error&&error.status);
+      if((status===409||status===422)&&attempt<5)continue;
+      return res.status(status===401||status===403?502:500).json({error:(error&&error.message)||"Could not resolve this review item."});
     }
-
-    const job=jobs.find(x=>Number(x.id)===jobId);
-    if(!job)return res.status(404).json({error:"Review item not found."});
-
-    const result=summary.items.find(x=>Number(x.id)===jobId);
-
-    if(action==="expire"){
-      job.status="expired";
-      job.verifiedDate=today();
-      job.availabilityCheck={
-        ...(job.availabilityCheck||{}),
-        id:job.id,
-        url:job.apply,
-        checkedAt:now,
-        state:"expired",
-        reason:"Marked expired manually from HD Careers Admin review."
-      };
-
-      await updateFile(
-        JOBS_PATH,
-        jobsFile,
-        jobs,
-        "Mark "+job.company+" — "+job.role+" expired from admin review",
-        base,
-        token
-      );
-
-      if(result){
-        result.state="expired";
-        result.reason="Marked expired manually from HD Careers Admin review.";
-        result.checkedAt=now;
-        result.manualReview="expire";
-        result.manualReviewedAt=now;
-      }
-    }else{
-      job.browserVerifiedAt=now;
-      job.verifiedDate=today();
-      await updateFile(
-        JOBS_PATH,
-        jobsFile,
-        jobs,
-        "Confirm "+job.company+" — "+job.role+" active from admin review",
-        base,
-        token
-      );
-      if(result){
-        result.state="active";
-        result.reason="Manually browser-verified in HD Careers Admin.";
-        result.checkedAt=now;
-        result.manualReview="keep";
-        result.manualReviewedAt=now;
-      }
-    }
-
-    summary.checkedAt=now;
-    recompute(summary);
-
-    const latestStatus=await github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token);
-    await updateFile(
-      STATUS_PATH,
-      latestStatus,
-      summary,
-      (action==="expire"?"Resolve expired":"Keep active")+" job review #"+jobId,
-      base,
-      token
-    );
-
-    return res.status(200).json({
-      ok:true,
-      action,
-      jobId,
-      company:job.company,
-      role:job.role,
-      status:action==="expire"?"expired":"active",
-      results:summary,
-      message:action==="expire"?"Job marked expired. Site regeneration will follow automatically.":"Job manually verified active and removed from Needs Review."
-    });
-  }catch(error){
-    const status=Number(error&&error.status);
-    return res.status(status===401||status===403?502:500).json({error:(error&&error.message)||"Could not resolve this review item."});
   }
+
+  return res.status(409).json({error:"The review changed while it was being saved. Please try again."});
 }
