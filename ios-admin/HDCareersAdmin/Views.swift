@@ -386,38 +386,6 @@ struct DashboardStat: View {
     }
 }
 
-struct DashboardStat: View {
-    let title: String
-    let value: Int
-    let icon: String
-    let color: Color
-
-    var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: icon)
-                .font(.system(size: 13, weight: .bold))
-                .foregroundStyle(color)
-                .frame(width: 30, height: 30)
-                .background(color.opacity(0.09))
-                .clipShape(Circle())
-
-            VStack(alignment: .leading, spacing: 1) {
-                Text(numberText(value))
-                    .font(.system(size: 20, weight: .black, design: .rounded))
-                    .foregroundStyle(HDTheme.navy)
-                Text(title)
-                    .font(.caption2.weight(.bold))
-                    .foregroundStyle(.secondary)
-            }
-            Spacer(minLength: 0)
-        }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 9)
-        .background(Color.black.opacity(0.022))
-        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
-    }
-}
-
 struct TrafficSummaryCard: View {
     @EnvironmentObject private var state: AppState
 
