@@ -369,15 +369,19 @@ def main() -> None:
         cached = manifest.get(company, {}) if isinstance(manifest.get(company), dict) else {}
         cached_path = str(cached.get("localPath", "")).strip()
         target_exists = bool(cached_path and (ROOT / cached_path).exists())
+        direct_url = str(direct_assets.get(company, "")).strip()
+        local_vector = str(quality_fallbacks.get(company, "")).strip()
+        cached_source = str(cached.get("sourceType", "")).lower()
+        quality_upgrade_needed = bool(local_vector) or bool(direct_url and "high-resolution" not in cached_source)
 
-        if not args.refresh and target_exists and str(cached.get("officialDomain", "")) == domain:
+        if not args.refresh and target_exists and str(cached.get("officialDomain", "")) == domain and not quality_upgrade_needed:
             return company, domain, ("cache", cached_path, cached), ""
 
         result = resolve_icon(
             company,
             domain,
-            str(direct_assets.get(company, "")).strip(),
-            str(quality_fallbacks.get(company, "")).strip(),
+            direct_url,
+            local_vector,
         )
         if result:
             return company, domain, ("resolved", result, cached), ""
