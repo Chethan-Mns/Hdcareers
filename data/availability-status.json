@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-05T12:00:17.430287+00:00",
+  "checkedAt": "2026-10-05T12:01:40.071Z",
   "checked": 43,
-  "active": 40,
+  "active": 41,
   "expired": 0,
-  "review": 3,
+  "review": 2,
   "changedExpired": 0,
   "items": [
     {
@@ -352,9 +352,11 @@
       "role": "Specialist Programmer (Trainee) – L1 / L2 / L3",
       "page": "jobs/infosys-specialist-programmer-2027-campus.html",
       "url": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-05T12:00:11.577123+00:00"
+      "state": "active",
+      "reason": "Manually reviewed in HD Careers Admin — no change requested.",
+      "checkedAt": "2026-10-05T12:01:40.071Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-05T12:01:40.071Z"
     },
     {
       "id": 23,
