@@ -217,7 +217,8 @@ def clean_svg(body: bytes) -> bytes | None:
     if "<svg" not in text.lower():
         return None
     text = re.sub(r"<script\b[^>]*>.*?</script\s*>", "", text, flags=re.I | re.S)
-    text = re.sub(r"\son[a-z]+\s*=\s*(["']).*?\1", "", text, flags=re.I | re.S)
+    text = re.sub(r'\\son[a-z]+\\s*=\\s*"[^"]*"', "", text, flags=re.I | re.S)
+    text = re.sub(r"\\son[a-z]+\\s*=\\s*'[^']*'", "", text, flags=re.I | re.S)
     return text.encode("utf-8")
 
 
