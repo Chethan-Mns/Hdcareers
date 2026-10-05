@@ -1,10 +1,10 @@
 {
   "ACTREC": {
     "officialDomain": "actrec.gov.in",
-    "sourceUrl": "https://actrec.gov.in/sites/default/files/favicon_0.ico",
-    "sourceType": "shortcut icon",
-    "localPath": "assets/company-icons/actrec-217b242.ico",
-    "bytes": 113836
+    "sourceUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://actrec.gov.in/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/actrec-217b242.png",
+    "bytes": 14234
   },
   "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": {
     "officialDomain": "actrec.gov.in",
@@ -194,5 +194,40 @@
     "sourceType": "apple-touch-icon",
     "localPath": "assets/company-icons/wipro-6507802.png",
     "bytes": 5525
+  },
+  "Accenture": {
+    "officialDomain": "accenture.com",
+    "sourceUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://accenture.com/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/accenture-05dffab.png",
+    "bytes": 1264
+  },
+  "Cisco": {
+    "officialDomain": "cisco.com",
+    "sourceUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cisco.com/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/cisco-a23ff87.png",
+    "bytes": 201
+  },
+  "Deloitte": {
+    "officialDomain": "deloitte.com",
+    "sourceUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://deloitte.com/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/deloitte-b9f6b19.png",
+    "bytes": 553
+  },
+  "Jio": {
+    "officialDomain": "jio.com",
+    "sourceUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jio.com/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/jio-084adea.png",
+    "bytes": 2278
+  },
+  "SAP": {
+    "officialDomain": "sap.com",
+    "sourceUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sap.com/&size=256",
+    "sourceType": "official-domain favicon cache fallback",
+    "localPath": "assets/company-icons/sap-1d72097.png",
+    "bytes": 1262
   }
 }
