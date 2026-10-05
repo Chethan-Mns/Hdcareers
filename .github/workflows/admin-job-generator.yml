@@ -41,15 +41,36 @@ jobs:
       - name: Commit directly to main
         shell: bash
         run: |
-          if git diff --quiet; then
-            echo "No changes to publish."
-            exit 0
-          fi
+          set -euo pipefail
           git config user.name "HD Careers Admin"
           git config user.email "actions@users.noreply.github.com"
-          git add data/jobs.json data/review-queue.json index.html jobs/ robots.txt sitemap.xml
-          git commit -m "Publish jobs from HD Careers Admin"
-          git push origin HEAD:main
+
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git add data/jobs.json data/review-queue.json index.html jobs/ robots.txt sitemap.xml
+
+            if git diff --cached --quiet; then
+              echo "No changes to publish."
+              exit 0
+            fi
+
+            git commit -m "Publish jobs from HD Careers Admin"
+
+            if git push origin HEAD:main; then
+              echo "Admin publishing changes saved."
+              exit 0
+            fi
+
+            echo "::warning::main changed during admin publishing. Rebuilding from latest main (attempt ${attempt}/8)."
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/admin_publish.py "$GITHUB_EVENT_PATH"
+            python3 generate.py
+            git diff --check
+            sleep 3
+          done
+
+          echo "::error::Could not save admin publishing changes after 8 safe retries because main kept changing."
+          exit 1
 
       - name: Post published jobs to Telegram
         env:
