@@ -35,7 +35,7 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
 
       - name: Resolve and cache official company favicons
-        run: python3 scripts/resolve_company_logos.py --refresh
+        run: python3 scripts/resolve_company_logos.py
 
       - name: Regenerate preview website
         run: |
