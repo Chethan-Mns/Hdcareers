@@ -313,20 +313,16 @@ def evaluate_local_vector(path_value: str):
 
 
 def resolve_icon(company: str, domain: str, direct_url: str = "", local_vector: str = ""):
-    candidates = []
+    local = evaluate_local_vector(local_vector)
+    if local:
+        return local
+
     for base_score, url, label in candidate_urls(domain, direct_url):
         result = evaluate_remote_candidate(base_score, url, label)
         if result:
-            candidates.append(result)
+            return result
 
-    local = evaluate_local_vector(local_vector)
-    if local:
-        candidates.append(local)
-
-    if not candidates:
-        return None
-    candidates.sort(key=lambda row: row[0], reverse=True)
-    return candidates[0]
+    return None
 
 
 def load_json(path: Path, default):
