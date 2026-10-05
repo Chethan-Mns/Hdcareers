@@ -3181,74 +3181,159 @@ struct AutomationDetailsView: View {
             HDTheme.background.ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 12) {
+                VStack(spacing: 13) {
                     if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
-                        VStack(alignment: .leading, spacing: 14) {
-                            HStack {
-                                Circle()
-                                    .fill(statusColor(slot.outcome))
-                                    .frame(width: 10, height: 10)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("\(slot.time) — \(slot.title)")
-                                        .font(.headline.weight(.black))
-                                    if let target = slot.target {
-                                        Text(target)
-                                            .font(.caption.weight(.bold))
-                                            .foregroundStyle(HDTheme.blue)
-                                    }
-                                }
-                                Spacer()
-                                StatusPill(text: statusLabel(slot.outcome), color: statusColor(slot.outcome))
-                            }
+                        ZStack {
+                            LinearGradient(
+                                colors: [HDTheme.navy, HDTheme.blue, HDTheme.cyan.opacity(0.85)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
 
-                            if let mix = slot.mix, !mix.isEmpty {
+                            Circle()
+                                .fill(Color.white.opacity(0.08))
+                                .frame(width: 145, height: 145)
+                                .offset(x: 145, y: -55)
+
+                            VStack(alignment: .leading, spacing: 13) {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 3) {
+                                        Text("DAILY PUBLISHING")
+                                            .font(.system(size: 10, weight: .black))
+                                            .tracking(1.0)
+                                            .foregroundStyle(.white.opacity(0.70))
+                                        Text("\(slot.time) · \(slot.title)")
+                                            .font(.title3.weight(.black))
+                                            .foregroundStyle(.white)
+                                    }
+
+                                    Spacer()
+
+                                    HStack(spacing: 6) {
+                                        Circle()
+                                            .fill(statusColor(slot.outcome))
+                                            .frame(width: 7, height: 7)
+                                        Text(statusLabel(slot.outcome))
+                                            .font(.caption2.weight(.black))
+                                    }
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 9)
+                                    .padding(.vertical, 6)
+                                    .background(Color.white.opacity(0.12))
+                                    .clipShape(Capsule())
+                                }
+
+                                if let target = slot.target {
+                                    Label(target, systemImage: "target")
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(.white.opacity(0.82))
+                                }
+
+                                HStack(spacing: 8) {
+                                    miniAutomationStat(icon: "checkmark.shield.fill", title: "Verify")
+                                    miniAutomationStat(icon: "arrow.triangle.branch", title: "Batch")
+                                    miniAutomationStat(icon: "paperplane.fill", title: "Deliver")
+                                }
+                            }
+                            .padding(18)
+                        }
+                        .frame(height: 175)
+                        .clipShape(RoundedRectangle(cornerRadius: 23, style: .continuous))
+                        .shadow(color: HDTheme.navy.opacity(0.13), radius: 16, x: 0, y: 8)
+
+                        if let mix = slot.mix, !mix.isEmpty {
+                            VStack(alignment: .leading, spacing: 11) {
+                                PremiumSectionTitle(
+                                    icon: "square.grid.2x2.fill",
+                                    title: "Publishing mix",
+                                    subtitle: "Target distribution for the daily batch",
+                                    color: HDTheme.violet
+                                )
+
                                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 118), spacing: 8)], alignment: .leading, spacing: 8) {
                                     ForEach(mix, id: \.self) { item in
-                                        Text(item)
-                                            .font(.caption2.weight(.bold))
-                                            .foregroundStyle(HDTheme.navy)
-                                            .padding(.horizontal, 9)
-                                            .padding(.vertical, 7)
-                                            .background(HDTheme.blue.opacity(0.07))
-                                            .clipShape(Capsule())
+                                        PremiumMetaChip(text: item, icon: "checkmark.circle.fill", color: HDTheme.violet)
                                     }
                                 }
                             }
+                            .premiumCard()
+                        }
+
+                        VStack(alignment: .leading, spacing: 10) {
+                            PremiumSectionTitle(
+                                icon: "arrow.triangle.branch",
+                                title: "Workflow status",
+                                subtitle: "One controlled path from verification to delivery",
+                                color: HDTheme.green
+                            )
 
                             if let delivery = slot.delivery, !delivery.isEmpty {
-                                Label(delivery, systemImage: "arrow.triangle.branch")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(HDTheme.green)
+                                PremiumInfoBox(
+                                    icon: "paperplane.fill",
+                                    title: "Delivery",
+                                    text: delivery,
+                                    color: HDTheme.green
+                                )
                             }
 
                             if let next = slot.nextRunAt {
-                                Label("Next run: \(formatAdminDate(next))", systemImage: "calendar.badge.clock")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+                                PremiumInfoBox(
+                                    icon: "calendar.badge.clock",
+                                    title: "Next run",
+                                    text: formatAdminDate(next),
+                                    color: HDTheme.blue
+                                )
                             }
 
                             if let last = slot.lastRunAt {
-                                Text("Previous run: \(formatAdminDate(last))")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+                                PremiumInfoBox(
+                                    icon: "clock.arrow.circlepath",
+                                    title: "Previous run",
+                                    text: formatAdminDate(last),
+                                    color: HDTheme.violet
+                                )
                             }
 
                             if let detail = slot.detail, !detail.isEmpty {
-                                Text(detail)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                                PremiumInfoBox(
+                                    icon: "doc.text.fill",
+                                    title: "Last run result",
+                                    text: detail,
+                                    color: statusColor(slot.outcome)
+                                )
                             }
                         }
-                        .hdCard()
+                        .premiumCard()
                     } else {
-                        EmptyState(icon: "bolt.slash", title: "No active publishing automation", message: "Refresh the dashboard to load the current daily batch.")
-                            .hdCard()
+                        EmptyState(
+                            icon: "bolt.slash",
+                            title: "No active publishing automation",
+                            message: "Refresh the dashboard to load the current daily batch."
+                        )
+                        .premiumCard()
                     }
                 }
                 .padding(16)
+                .padding(.bottom, 18)
             }
         }
-        .navigationTitle("Daily Publishing Batch")
+        .navigationTitle("Daily Publishing")
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    private func miniAutomationStat(icon: String, title: String) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 9, weight: .bold))
+            Text(title)
+                .font(.system(size: 9, weight: .bold))
+        }
+        .foregroundStyle(.white.opacity(0.88))
+        .padding(.horizontal, 9)
+        .padding(.vertical, 7)
+        .frame(maxWidth: .infinity)
+        .background(Color.white.opacity(0.10))
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
 }
+
