@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-04T18:41:07.914105+00:00",
+  "checkedAt": "2026-10-05T04:57:07.714Z",
   "checked": 35,
-  "active": 32,
+  "active": 33,
   "expired": 0,
-  "review": 3,
+  "review": 2,
   "changedExpired": 0,
   "items": [
     {
@@ -12,9 +12,11 @@
       "role": "Associate Software Engineer",
       "page": "jobs/flex-associate-software-engineer-50.html",
       "url": "https://flextronics.wd1.myworkdayjobs.com/en-US/Careers/job/Associate-Software-Engineer_WD230588",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-04T18:40:09.575119+00:00"
+      "state": "active",
+      "reason": "Manually reviewed in HD Careers Admin — no change requested.",
+      "checkedAt": "2026-10-05T04:57:07.714Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-05T04:57:07.714Z"
     },
     {
       "id": 51,
