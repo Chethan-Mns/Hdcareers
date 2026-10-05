@@ -1689,14 +1689,14 @@ struct CheckerView: View {
             }
             .toolbar(.hidden, for: .navigationBar)
             .confirmationDialog(
-                "Mark this job expired?",
+                pendingRemove?.pendingNew == true ? "Reject this unpublished job?" : "Mark this job expired?",
                 isPresented: Binding(
                     get: { pendingRemove != nil },
                     set: { if !$0 { pendingRemove = nil } }
                 ),
                 titleVisibility: .visible
             ) {
-                Button("Remove / Mark Expired", role: .destructive) {
+                Button(pendingRemove?.pendingNew == true ? "Reject / Do Not Publish" : "Remove / Mark Expired", role: .destructive) {
                     if let item = pendingRemove {
                         Task { await state.resolveReview(item, action: "expire") }
                     }
@@ -1704,7 +1704,9 @@ struct CheckerView: View {
                 }
                 Button("Cancel", role: .cancel) { pendingRemove = nil }
             } message: {
-                Text("This will mark the job expired in HD Careers and trigger the normal website regeneration.")
+                Text(pendingRemove?.pendingNew == true
+                     ? "This job is still unpublished. Rejecting it removes it from Needs Review and it will not be published."
+                     : "This will mark the job expired in HD Careers and trigger the normal website regeneration.")
             }
         }
     }
@@ -1726,7 +1728,7 @@ struct ReviewItemCard: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-                StatusPill(text: "Needs Review", color: HDTheme.amber)
+                StatusPill(text: item.pendingNew == true ? "Review to Publish" : "Needs Review", color: HDTheme.amber)
             }
 
             Text(item.reason ?? "Availability could not be confirmed.")
@@ -1742,7 +1744,7 @@ struct ReviewItemCard: View {
                     .buttonStyle(.bordered)
                 }
 
-                if let hd = siteURL(item.page) {
+                if item.pendingNew != true, let hd = siteURL(item.page) {
                     Link(destination: hd) {
                         Label("HD Careers", systemImage: "eye")
                             .frame(maxWidth: .infinity)
@@ -1753,13 +1755,13 @@ struct ReviewItemCard: View {
 
             HStack(spacing: 8) {
                 Button(role: .destructive, action: remove) {
-                    Label("Remove", systemImage: "trash.fill")
+                    Label(item.pendingNew == true ? "Reject" : "Remove", systemImage: "trash.fill")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
 
                 Button(action: keep) {
-                    Label("No Change", systemImage: "checkmark")
+                    Label(item.pendingNew == true ? "Approve & Publish" : "Keep Active", systemImage: item.pendingNew == true ? "paperplane.fill" : "checkmark")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
