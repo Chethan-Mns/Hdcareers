@@ -1,4 +1,5 @@
 import SwiftUI
+import Charts
 
 private func numberText(_ value: Int?) -> String {
     NumberFormatter.localizedString(from: NSNumber(value: value ?? 0), number: .decimal)
@@ -289,6 +290,11 @@ struct DashboardView: View {
                         ReviewAlertCard()
                         DashboardStatsCard()
                         TrafficSummaryCard()
+                        TrafficTrendCard()
+                        AudienceAnalyticsCard()
+                        AcquisitionAnalyticsCard()
+                        ConversionAnalyticsCard()
+                        TopContentAnalyticsCard()
                         AutomationHealthCard()
                     }
                     .padding(.horizontal, 16)
@@ -462,15 +468,22 @@ struct DashboardStat: View {
 
 struct TrafficSummaryCard: View {
     @EnvironmentObject private var state: AppState
-    @State private var showMore = false
+
+    private var periodLabel: String {
+        switch state.trafficDays {
+        case 1: return "Last 24 hours"
+        case 30: return "Last 30 days"
+        default: return "Last 7 days"
+        }
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 13) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Website traffic")
                         .font(.headline.weight(.black))
-                    Text("Live GA4 snapshot")
+                    Text("Live GA4 snapshot · \(periodLabel)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -495,14 +508,14 @@ struct TrafficSummaryCard: View {
                     icon: "dot.radiowaves.left.and.right",
                     color: HDTheme.green
                 )
-                Divider().frame(height: 42)
+                Divider().frame(height: 44)
                 TrafficMetric(
                     title: "Users",
                     value: state.traffic?.totals?.visitors ?? 0,
                     icon: "person.2.fill",
                     color: HDTheme.blue
                 )
-                Divider().frame(height: 42)
+                Divider().frame(height: 44)
                 TrafficMetric(
                     title: "Views",
                     value: state.traffic?.totals?.pageviews ?? 0,
@@ -510,65 +523,23 @@ struct TrafficSummaryCard: View {
                     color: .purple
                 )
             }
-            .padding(.vertical, 3)
 
-            Button {
-                withAnimation(.easeInOut(duration: 0.18)) {
-                    showMore.toggle()
-                }
-            } label: {
-                HStack {
-                    Label(showMore ? "Hide activity" : "More activity", systemImage: "chart.bar.fill")
-                        .font(.caption.weight(.bold))
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                        .font(.caption2.weight(.bold))
-                        .rotationEffect(.degrees(showMore ? 180 : 0))
-                }
-                .foregroundStyle(HDTheme.blue)
-                .padding(.horizontal, 11)
-                .padding(.vertical, 9)
-                .background(HDTheme.blue.opacity(0.055))
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            }
-            .buttonStyle(.plain)
-
-            if showMore {
-                VStack(spacing: 11) {
-                    HStack(spacing: 8) {
-                        ActivityChip(title: "Job views", value: state.traffic?.conversions?.jobPageViews ?? 0)
-                        ActivityChip(title: "Resume", value: state.traffic?.conversions?.resumeChecks ?? 0)
-                        ActivityChip(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0)
-                    }
-
-                    if let page = state.traffic?.pages?.first,
-                       let url = siteURL(page.requestPath) {
-                        Divider()
-                        Link(destination: url) {
-                            HStack(spacing: 10) {
-                                Image(systemName: "doc.text.fill")
-                                    .foregroundStyle(HDTheme.blue)
-                                    .frame(width: 30, height: 30)
-                                    .background(HDTheme.blue.opacity(0.08))
-                                    .clipShape(Circle())
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("Top page")
-                                        .font(.caption2.weight(.bold))
-                                        .foregroundStyle(.secondary)
-                                    Text(jobDisplayName(path: page.requestPath, jobs: state.jobs))
-                                        .font(.caption.weight(.semibold))
-                                        .foregroundStyle(HDTheme.navy)
-                                        .lineLimit(2)
-                                }
-                                Spacer()
-                                Image(systemName: "arrow.up.right")
-                                    .font(.caption.weight(.bold))
-                                    .foregroundStyle(HDTheme.blue)
-                            }
-                        }
-                    }
-                }
-                .transition(.opacity.combined(with: .move(edge: .top)))
+            HStack(spacing: 8) {
+                AnalyticsMiniMetric(
+                    title: "Sessions",
+                    value: numberText(state.traffic?.totals?.sessions),
+                    icon: "rectangle.stack.fill"
+                )
+                AnalyticsMiniMetric(
+                    title: "Views / user",
+                    value: String(format: "%.2f", state.traffic?.totals?.viewsPerUser ?? 0),
+                    icon: "chart.line.uptrend.xyaxis"
+                )
+                AnalyticsMiniMetric(
+                    title: "Engagement",
+                    value: String(format: "%.1f%%", state.traffic?.totals?.engagementRate ?? 0),
+                    icon: "bolt.heart.fill"
+                )
             }
         }
         .hdCard()
@@ -597,44 +568,455 @@ struct TrafficMetric: View {
     }
 }
 
-struct ActivityChip: View {
+struct AnalyticsMiniMetric: View {
     let title: String
-    let value: Int
+    let value: String
+    let icon: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(numberText(value))
+        VStack(alignment: .leading, spacing: 5) {
+            Image(systemName: icon)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(HDTheme.blue)
+            Text(value)
                 .font(.subheadline.weight(.black))
                 .foregroundStyle(HDTheme.navy)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
             Text(title)
-                .font(.caption2.weight(.semibold))
+                .font(.system(size: 9, weight: .bold))
                 .foregroundStyle(.secondary)
+                .lineLimit(1)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
-        .background(Color.black.opacity(0.025))
+        .background(HDTheme.blue.opacity(0.045))
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
 
-struct SmallMetric: View {
+struct TrafficTrendCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var points: [TrafficResponse.TrendPoint] {
+        state.traffic?.trend ?? []
+    }
+
+    private func compactDate(_ raw: String?) -> String {
+        guard let raw, raw.count == 8 else { return raw ?? "" }
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyyMMdd"
+        guard let date = formatter.date(from: raw) else { return raw }
+        formatter.dateFormat = "d MMM"
+        return formatter.string(from: date)
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            AnalyticsSectionHeader(
+                title: "Traffic trend",
+                subtitle: "Users and page views over the selected period",
+                icon: "chart.xyaxis.line"
+            )
+
+            if points.isEmpty {
+                AnalyticsEmptyState(text: "Trend data will appear as GA4 accumulates daily traffic.")
+            } else {
+                Chart(points) { point in
+                    LineMark(
+                        x: .value("Date", compactDate(point.date)),
+                        y: .value("Users", point.users ?? 0)
+                    )
+                    .foregroundStyle(HDTheme.blue)
+                    .interpolationMethod(.catmullRom)
+
+                    PointMark(
+                        x: .value("Date", compactDate(point.date)),
+                        y: .value("Users", point.users ?? 0)
+                    )
+                    .foregroundStyle(HDTheme.blue)
+
+                    LineMark(
+                        x: .value("Date", compactDate(point.date)),
+                        y: .value("Views", point.pageviews ?? 0)
+                    )
+                    .foregroundStyle(.purple)
+                    .interpolationMethod(.catmullRom)
+                }
+                .chartLegend(position: .bottom, alignment: .leading)
+                .chartForegroundStyleScale([
+                    "Users": HDTheme.blue,
+                    "Views": Color.purple
+                ])
+                .frame(height: 190)
+            }
+        }
+        .hdCard()
+    }
+}
+
+struct AudienceAnalyticsCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var newUsers: Int { state.traffic?.totals?.newUsers ?? 0 }
+    private var returningUsers: Int { state.traffic?.totals?.returningUsers ?? 0 }
+    private var total: Int { max(1, newUsers + returningUsers) }
+
+    private var slices: [AnalyticsSlice] {
+        [
+            AnalyticsSlice(name: "New", value: newUsers),
+            AnalyticsSlice(name: "Returning", value: returningUsers)
+        ].filter { $0.value > 0 }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            AnalyticsSectionHeader(
+                title: "Audience",
+                subtitle: "New vs returning visitors",
+                icon: "person.3.fill"
+            )
+
+            if slices.isEmpty {
+                AnalyticsEmptyState(text: "Audience split is not available yet.")
+            } else {
+                HStack(spacing: 18) {
+                    Chart(slices) { item in
+                        SectorMark(
+                            angle: .value("Users", item.value),
+                            innerRadius: .ratio(0.62),
+                            angularInset: 2
+                        )
+                        .foregroundStyle(by: .value("Audience", item.name))
+                        .cornerRadius(4)
+                    }
+                    .chartLegend(.hidden)
+                    .frame(width: 126, height: 126)
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        AudienceLegendRow(
+                            title: "New visitors",
+                            value: newUsers,
+                            percent: Double(newUsers) / Double(total) * 100,
+                            color: HDTheme.blue
+                        )
+                        AudienceLegendRow(
+                            title: "Returning",
+                            value: returningUsers,
+                            percent: Double(returningUsers) / Double(total) * 100,
+                            color: .purple
+                        )
+                        Divider()
+                        HStack {
+                            Text("Avg. session")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Text(durationText(state.traffic?.totals?.averageSessionDuration ?? 0))
+                                .font(.caption.weight(.black))
+                                .foregroundStyle(HDTheme.navy)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+
+            if let devices = state.traffic?.realtime?.devices, !devices.isEmpty {
+                Divider()
+                Text("Live devices")
+                    .font(.caption.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+                AnalyticsBarRows(
+                    rows: devices.prefix(3).map { AnalyticsBarItem(name: ($0.deviceType ?? "Unknown").capitalized, value: $0.users ?? 0) }
+                )
+            }
+        }
+        .hdCard()
+    }
+
+    private func durationText(_ seconds: Double) -> String {
+        let rounded = Int(seconds.rounded())
+        if rounded < 60 { return "\(rounded)s" }
+        return "\(rounded / 60)m \(rounded % 60)s"
+    }
+}
+
+struct AcquisitionAnalyticsCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var channelItems: [AnalyticsBarItem] {
+        (state.traffic?.channels ?? []).prefix(6).map {
+            AnalyticsBarItem(name: $0.channel ?? "Other", value: $0.sessions ?? 0)
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            AnalyticsSectionHeader(
+                title: "Acquisition",
+                subtitle: "Where sessions are coming from",
+                icon: "arrow.triangle.branch"
+            )
+
+            if channelItems.isEmpty {
+                AnalyticsEmptyState(text: "Acquisition channels will appear once GA4 has enough data.")
+            } else {
+                Chart(channelItems) { item in
+                    BarMark(
+                        x: .value("Sessions", item.value),
+                        y: .value("Channel", item.name)
+                    )
+                    .foregroundStyle(HDTheme.blue.gradient)
+                    .cornerRadius(5)
+                }
+                .chartLegend(.hidden)
+                .frame(height: CGFloat(max(160, channelItems.count * 34)))
+            }
+
+            if let countries = state.traffic?.countries, !countries.isEmpty {
+                Divider()
+                Text("Top countries")
+                    .font(.caption.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+                AnalyticsBarRows(
+                    rows: countries.prefix(5).map { AnalyticsBarItem(name: $0.country ?? "Unknown", value: $0.visitors ?? 0) }
+                )
+            }
+        }
+        .hdCard()
+    }
+}
+
+struct ConversionAnalyticsCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var items: [AnalyticsBarItem] {
+        let c = state.traffic?.conversions
+        return [
+            AnalyticsBarItem(name: "Job views", value: c?.jobPageViews ?? 0),
+            AnalyticsBarItem(name: "Resume checks", value: c?.resumeChecks ?? 0),
+            AnalyticsBarItem(name: "Apply clicks", value: c?.applyClicks ?? 0),
+            AnalyticsBarItem(name: "Apply users", value: c?.applyUsers ?? 0)
+        ]
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            AnalyticsSectionHeader(
+                title: "Conversion funnel",
+                subtitle: "How visitors move from job page to application",
+                icon: "point.3.connected.trianglepath.dotted"
+            )
+
+            HStack(spacing: 8) {
+                AnalyticsMiniMetric(
+                    title: "Apply rate",
+                    value: String(format: "%.1f%%", state.traffic?.conversions?.applyRate ?? 0),
+                    icon: "cursorarrow.click.2"
+                )
+                AnalyticsMiniMetric(
+                    title: "Resume users",
+                    value: numberText(state.traffic?.conversions?.resumeUsers),
+                    icon: "doc.text.magnifyingglass"
+                )
+                AnalyticsMiniMetric(
+                    title: "Social",
+                    value: numberText((state.traffic?.conversions?.socialClicks ?? 0) + (state.traffic?.conversions?.shares ?? 0)),
+                    icon: "square.and.arrow.up.fill"
+                )
+            }
+
+            Chart(items) { item in
+                BarMark(
+                    x: .value("Stage", item.name),
+                    y: .value("Count", item.value)
+                )
+                .foregroundStyle(HDTheme.green.gradient)
+                .cornerRadius(6)
+            }
+            .chartLegend(.hidden)
+            .frame(height: 175)
+        }
+        .hdCard()
+    }
+}
+
+struct TopContentAnalyticsCard: View {
+    @EnvironmentObject private var state: AppState
+
+    private var pages: [TrafficResponse.Page] {
+        Array((state.traffic?.pages ?? []).prefix(5))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            AnalyticsSectionHeader(
+                title: "Top content",
+                subtitle: "Most-viewed pages in this period",
+                icon: "flame.fill"
+            )
+
+            if pages.isEmpty {
+                AnalyticsEmptyState(text: "Top pages will appear once traffic is recorded.")
+            } else {
+                VStack(spacing: 12) {
+                    ForEach(Array(pages.enumerated()), id: \.element.id) { index, page in
+                        HStack(spacing: 10) {
+                            Text("\(index + 1)")
+                                .font(.caption.weight(.black))
+                                .foregroundStyle(HDTheme.blue)
+                                .frame(width: 26, height: 26)
+                                .background(HDTheme.blue.opacity(0.08))
+                                .clipShape(Circle())
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(jobDisplayName(path: page.requestPath, jobs: state.jobs))
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(HDTheme.navy)
+                                    .lineLimit(2)
+                                Text(page.requestPath ?? "/")
+                                    .font(.system(size: 9))
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(1)
+                            }
+
+                            Spacer()
+
+                            Text(numberText(page.pageviews))
+                                .font(.subheadline.weight(.black))
+                                .foregroundStyle(HDTheme.navy)
+                        }
+
+                        if index < pages.count - 1 {
+                            Divider()
+                        }
+                    }
+                }
+            }
+        }
+        .hdCard()
+    }
+}
+
+struct AnalyticsSectionHeader: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+
+    var body: some View {
+        HStack(spacing: 11) {
+            Image(systemName: icon)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(HDTheme.blue)
+                .frame(width: 34, height: 34)
+                .background(HDTheme.blue.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.headline.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+struct AnalyticsSlice: Identifiable {
+    let name: String
+    let value: Int
+    var id: String { name }
+}
+
+struct AnalyticsBarItem: Identifiable {
+    let name: String
+    let value: Int
+    var id: String { name }
+}
+
+struct AnalyticsBarRows: View {
+    let rows: [AnalyticsBarItem]
+
+    private var maxValue: Int {
+        max(1, rows.map(\.value).max() ?? 1)
+    }
+
+    var body: some View {
+        VStack(spacing: 10) {
+            ForEach(rows) { item in
+                VStack(spacing: 5) {
+                    HStack {
+                        Text(item.name)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(HDTheme.navy)
+                            .lineLimit(1)
+                        Spacer()
+                        Text(numberText(item.value))
+                            .font(.caption.weight(.black))
+                            .foregroundStyle(HDTheme.navy)
+                    }
+
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            Capsule()
+                                .fill(Color.black.opacity(0.055))
+                            Capsule()
+                                .fill(HDTheme.blue.opacity(0.75))
+                                .frame(width: geo.size.width * CGFloat(item.value) / CGFloat(maxValue))
+                        }
+                    }
+                    .frame(height: 7)
+                }
+            }
+        }
+    }
+}
+
+struct AudienceLegendRow: View {
     let title: String
     let value: Int
+    let percent: Double
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        HStack(spacing: 9) {
+            Circle()
+                .fill(color)
+                .frame(width: 9, height: 9)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(title)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(HDTheme.navy)
+                Text(String(format: "%.1f%%", percent))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
             Text(numberText(value))
-                .font(.title3.weight(.black))
+                .font(.subheadline.weight(.black))
                 .foregroundStyle(HDTheme.navy)
-            Text(title)
-                .font(.caption2.weight(.bold))
-                .foregroundStyle(color)
         }
+    }
+}
+
+struct AnalyticsEmptyState: View {
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 9) {
+            Image(systemName: "chart.bar.xaxis")
+                .foregroundStyle(.secondary)
+            Text(text)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(11)
-        .background(color.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .background(Color.black.opacity(0.025))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
 
