@@ -205,12 +205,15 @@ struct AvailabilityItem: Codable, Identifiable, Hashable {
     let state: String?
     let reason: String?
     let checkedAt: String?
+    let reviewType: String?
+    let pendingNew: Bool?
+    let source: String?
 
     var id: String { "\(jobId ?? 0)-\(page ?? role ?? "review")" }
 
     enum CodingKeys: String, CodingKey {
         case jobId = "id"
-        case company, role, page, url, state, reason, checkedAt
+        case company, role, page, url, state, reason, checkedAt, reviewType, pendingNew, source
     }
 }
 
