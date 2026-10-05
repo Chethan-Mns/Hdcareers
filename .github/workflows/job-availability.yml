@@ -10,10 +10,6 @@ on:
   schedule:
     # Primary: 08:15 and 20:15 Asia/Kolkata.
     - cron: '45 2,14 * * *'
-    # Backup 1: 08:35 and 20:35 Asia/Kolkata.
-    - cron: '5 3,15 * * *'
-    # Backup 2: 08:55 and 20:55 Asia/Kolkata.
-    - cron: '25 3,15 * * *'
   workflow_dispatch:
 permissions:
   contents: write
