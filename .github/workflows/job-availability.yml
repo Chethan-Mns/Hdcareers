@@ -8,7 +8,7 @@ on:
       - scripts/check_job_availability.py
       - data/availability-trigger.json
   schedule:
-    # Primary: 08:15 and 20:15 Asia/Kolkata.
+    # 08:15 and 20:15 Asia/Kolkata.
     - cron: '45 2,14 * * *'
   workflow_dispatch:
 permissions:
@@ -35,15 +35,40 @@ jobs:
         run: |
           python3 generate.py
           git diff --check
-      - name: Save closure updates only when content changes
+      - name: Save closure updates safely
+        shell: bash
         run: |
-          git add data/jobs.json data/availability-status.json index.html jobs/ robots.txt sitemap.xml
-          if ! git diff --cached --quiet; then
-            git config user.name 'HD Careers Automation'
-            git config user.email 'actions@users.noreply.github.com'
+          set -euo pipefail
+          git config user.name 'HD Careers Automation'
+          git config user.email 'actions@users.noreply.github.com'
+
+          for attempt in 1 2 3; do
+            git add data/jobs.json data/availability-status.json index.html jobs/ robots.txt sitemap.xml
+
+            if git diff --cached --quiet; then
+              echo "No website changes to publish."
+              exit 0
+            fi
+
             git commit -m 'Close confirmed expired job listings'
-            git push origin HEAD:main
-          fi
+
+            if git push origin HEAD:main; then
+              echo "Availability updates published."
+              exit 0
+            fi
+
+            echo "::warning::main changed while the checker was running. Refreshing from the latest main and retrying safely (attempt ${attempt}/3)."
+            git fetch origin main
+            git reset --hard origin/main
+
+            python3 scripts/check_job_availability.py --write
+            python3 scripts/check_content_quality.py
+            python3 generate.py
+            git diff --check
+          done
+
+          echo "::error::Could not publish checker updates after 3 safe retries because main kept changing."
+          exit 1
       - name: Retain check evidence and uncertain sources
         if: always()
         uses: actions/upload-artifact@v4
