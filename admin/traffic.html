@@ -18,6 +18,17 @@
 #app,.traffic-main{width:100%;max-width:100%}
 .page-link{display:flex;align-items:flex-start;gap:9px;min-width:0;color:#0f172a}.page-link:hover{color:#0969da}.page-link .page-copy{min-width:0}.page-link .page-title{display:block;font-weight:800;line-height:1.35;overflow-wrap:anywhere}.page-link .page-path{display:block;font-size:10px;color:#94a3b8;margin-top:2px;overflow-wrap:anywhere}
 .open-chip{font-size:10px;font-weight:800;color:#2563eb;background:#eff6ff;border:1px solid #bfdbfe;border-radius:999px;padding:4px 7px;white-space:nowrap;flex-shrink:0}
+.compact-card{padding:16px!important;border-radius:17px!important}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));overflow:hidden;padding:0!important}
+.kpi{padding:14px 15px;min-width:0;border-right:1px solid #eef2f7}.kpi:last-child{border-right:0}.kpi-label{font-size:9px;line-height:1.15;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8}.kpi-value{font-size:24px;line-height:1.05;font-weight:950;letter-spacing:-.035em;margin-top:6px;color:#071a33}.kpi-note{font-size:9px;color:#94a3b8;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.mini-section-head h2{font-size:15px;font-weight:950;letter-spacing:-.02em}.mini-section-head p{font-size:10px;color:#94a3b8;margin-top:2px}
+.snapshot-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(250px,.75fr);gap:14px;align-items:start}.compact-chart{height:150px;margin-top:10px}.audience-mini{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}.audience-chart{height:120px}.audience-stat{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #f1f5f9}.audience-stat:last-child{border-bottom:0}.audience-stat span{font-size:10px;color:#64748b;font-weight:800}.audience-stat strong{font-size:14px}
+.conversion-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:12px}.conversion-pill{border:1px solid #e7edf5;border-radius:13px;background:#fbfdff;padding:10px 11px}.conversion-pill span{display:block;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8}.conversion-pill strong{display:block;font-size:18px;line-height:1.1;margin-top:4px;letter-spacing:-.025em}
+.compact-grid{display:grid;gap:14px;align-items:start}.compact-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.compact-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.compact-list{margin-top:12px!important;display:grid;gap:10px!important}.compact-list>div{min-width:0}.compact-list .bar{height:5px;margin-top:5px!important}.compact-list .page-title{font-size:12px;line-height:1.3}.compact-list .page-path{font-size:8.5px;margin-top:1px}.compact-list .open-chip{font-size:0;width:25px;height:25px;padding:0;display:grid;place-items:center}.compact-list .open-chip i{font-size:9px;margin:0!important}.compact-list .font-semibold{font-size:12px}.compact-list .font-black{font-size:12px}
+.breakdown-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.breakdown{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:17px;box-shadow:0 8px 24px rgba(15,23,42,.04);overflow:hidden}.breakdown summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:900}.breakdown summary::-webkit-details-marker{display:none}.breakdown summary i.chev{transition:transform .18s ease;color:#94a3b8}.breakdown[open] summary i.chev{transform:rotate(180deg)}.breakdown-body{border-top:1px solid #eef2f7;padding:12px 16px 15px}
+.card:hover{transform:none!important}
+
+@media(max-width:900px){.kpi-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi:nth-child(3){border-right:0}.kpi:nth-child(-n+3){border-bottom:1px solid #eef2f7}.snapshot-grid,.compact-grid.three{grid-template-columns:1fr}.conversion-strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:640px){
 .traffic-header{min-height:64px;height:auto;padding-top:8px;padding-bottom:8px}
 .traffic-main{padding-left:12px;padding-right:12px;padding-top:16px;padding-bottom:24px}
@@ -26,7 +37,7 @@
 .range-wrap .btn{padding-left:8px!important;padding-right:8px!important}
 .traffic-title{font-size:1.55rem!important;line-height:1.15}
 .traffic-main{padding-left:10px!important;padding-right:10px!important}
-#stats{grid-template-columns:1fr!important}
+.kpi-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(2n){border-right:0}.kpi:nth-child(-n+4){border-bottom:1px solid #eef2f7}.snapshot-grid,.compact-grid.two,.breakdown-grid{grid-template-columns:1fr}.conversion-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.audience-mini{grid-template-columns:96px 1fr}.audience-chart{height:96px}.compact-chart{height:135px}
 .card{min-width:0;max-width:100%}
 }
 
@@ -44,77 +55,79 @@
 <div class="flex items-center gap-2 shrink-0"><a href="/admin/" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left"></i><span class="hidden md:inline ml-1">Dashboard</span></a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button></div>
 </div>
 </header>
-<main class="traffic-main max-w-7xl mx-auto px-4 py-7 space-y-6">
-<section class="card p-5 sm:p-6">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="traffic-title text-2xl sm:text-3xl font-black mt-1">HD Careers performance</h1><p id="periodText" class="text-sm text-slate-500 mt-2">Loading Google Analytics 4...</p></div>
-<div class="range-wrap flex flex-wrap gap-2"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-4 py-2 text-sm">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-4 py-2 text-sm">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-3 py-2 text-sm" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div></div>
-</section>
-<div id="errorBox" class="hidden card p-5 border-amber-200 bg-amber-50 text-amber-900"></div>
-<section id="stats" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-<div class="card p-5 border-green-100 bg-green-50/40"><div class="flex items-center justify-between"><p class="text-xs font-bold text-green-700 uppercase">Live Now</p><i class="fa-solid fa-signal text-green-500"></i></div><p id="realtime" class="text-3xl font-black text-green-600 mt-2">—</p><p class="text-xs text-slate-400 mt-2">Active users in last 30 minutes</p></div>
-<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Visitors</p><i class="fa-solid fa-users text-blue-500"></i></div><p id="visitors" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Unique visitors</p></div>
-<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Page Views</p><i class="fa-solid fa-eye text-violet-500"></i></div><p id="pageviews" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Total page loads</p></div>
-<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Views / Visitor</p><i class="fa-solid fa-chart-simple text-amber-500"></i></div><p id="ratio" class="text-3xl font-black mt-2">—</p><p class="text-xs text-slate-400 mt-2">Engagement indicator</p></div>
-<div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><i class="fa-solid fa-arrow-trend-up text-emerald-500"></i></div><div id="topPage" class="mt-3">—</div><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
-</section>
-
-<section class="grid xl:grid-cols-2 gap-5">
-<div class="card p-5 sm:p-6">
-<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Traffic trend</p><h2 class="text-xl font-black mt-1">Users & page views</h2><p class="text-xs text-slate-400 mt-1">Daily movement across the selected period.</p></div><i class="fa-solid fa-chart-line text-blue-500 text-xl"></i></div>
-<div class="mt-5 h-64"><canvas id="trendChart"></canvas></div>
-</div>
-<div class="card p-5 sm:p-6">
-<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-violet-600">Audience</p><h2 class="text-xl font-black mt-1">New vs returning</h2><p class="text-xs text-slate-400 mt-1">Understand whether visitors are coming back.</p></div><i class="fa-solid fa-user-group text-violet-500 text-xl"></i></div>
-<div class="grid sm:grid-cols-2 gap-5 mt-5 items-center">
-<div class="h-56"><canvas id="audienceChart"></canvas></div>
-<div class="space-y-3">
-<div class="rounded-2xl bg-blue-50 border border-blue-100 p-4"><p class="text-[10px] uppercase font-black text-blue-500">New users</p><p id="newUsers" class="text-2xl font-black text-blue-900 mt-1">—</p></div>
-<div class="rounded-2xl bg-violet-50 border border-violet-100 p-4"><p class="text-[10px] uppercase font-black text-violet-500">Returning users</p><p id="returningUsers" class="text-2xl font-black text-violet-900 mt-1">—</p></div>
-<div class="rounded-2xl bg-slate-50 border border-slate-200 p-4"><p class="text-[10px] uppercase font-black text-slate-400">Engagement rate</p><p id="engagementRate" class="text-2xl font-black mt-1">—</p><p id="avgSession" class="text-xs text-slate-400 mt-1">Avg. session —</p></div>
-</div>
-</div>
+<main class="traffic-main max-w-7xl mx-auto px-4 py-5 space-y-4">
+<section class="card compact-card">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div><p class="text-[10px] font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="traffic-title text-xl sm:text-2xl font-black mt-0.5">HD Careers performance</h1><p id="periodText" class="text-xs text-slate-500 mt-1">Loading Google Analytics 4...</p></div>
+<div class="range-wrap flex flex-wrap gap-1.5"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-3 py-1.5 text-xs">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-3 py-1.5 text-xs">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-3 py-1.5 text-xs">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-2.5 py-1.5 text-xs" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div>
 </div>
 </section>
 
-<section class="grid xl:grid-cols-2 gap-5">
-<div class="card p-5 sm:p-6">
-<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-emerald-600">Acquisition</p><h2 class="text-xl font-black mt-1">Sessions by channel</h2><p class="text-xs text-slate-400 mt-1">Direct, organic, social, referral and other channels.</p></div><i class="fa-solid fa-route text-emerald-500 text-xl"></i></div>
-<div class="mt-5 h-72"><canvas id="channelChart"></canvas></div>
+<div id="errorBox" class="hidden card compact-card border-amber-200 bg-amber-50 text-amber-900"></div>
+
+<section class="card kpi-strip">
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Live now</span><i class="fa-solid fa-signal text-green-500 text-xs"></i></div><div id="realtime" class="kpi-value text-green-600">—</div><div class="kpi-note">last 30 min</div></div>
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Users</span><i class="fa-solid fa-users text-blue-500 text-xs"></i></div><div id="visitors" class="kpi-value">—</div><div class="kpi-note">active users</div></div>
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Views</span><i class="fa-solid fa-eye text-violet-500 text-xs"></i></div><div id="pageviews" class="kpi-value">—</div><div class="kpi-note">page loads</div></div>
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Sessions</span><i class="fa-solid fa-layer-group text-cyan-500 text-xs"></i></div><div id="sessions" class="kpi-value">—</div><div class="kpi-note">visits</div></div>
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Views / user</span><i class="fa-solid fa-chart-simple text-amber-500 text-xs"></i></div><div id="ratio" class="kpi-value">—</div><div class="kpi-note">engagement</div></div>
+<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Apply rate</span><i class="fa-solid fa-arrow-up-right-dots text-emerald-500 text-xs"></i></div><div id="applyRateTop" class="kpi-value text-emerald-700">—</div><div class="kpi-note">clicks / job views</div></div>
+</section>
+
+<section class="snapshot-grid">
+<div class="card compact-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-chart-line text-blue-500 mr-2"></i>Traffic trend</h2><p>Users and page views</p></div><span id="topPageViews" class="text-[10px] text-slate-400"></span></div>
+<div class="compact-chart"><canvas id="trendChart"></canvas></div>
 </div>
-<div class="card p-5 sm:p-6">
-<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-amber-600">Devices</p><h2 class="text-xl font-black mt-1">Audience device mix</h2><p class="text-xs text-slate-400 mt-1">How visitors access HD Careers.</p></div><i class="fa-solid fa-mobile-screen-button text-amber-500 text-xl"></i></div>
-<div class="mt-5 h-72"><canvas id="deviceChart"></canvas></div>
+<div class="card compact-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-user-group text-violet-500 mr-2"></i>Audience</h2><p>New vs returning</p></div></div>
+<div class="audience-mini mt-2">
+<div class="audience-chart"><canvas id="audienceChart"></canvas></div>
+<div>
+<div class="audience-stat"><span>New users</span><strong id="newUsers">—</strong></div>
+<div class="audience-stat"><span>Returning</span><strong id="returningUsers">—</strong></div>
+<div class="audience-stat"><span>Engagement</span><strong id="engagementRate">—</strong></div>
+<div class="audience-stat"><span>Avg session</span><strong id="avgSession">—</strong></div>
+</div>
+</div>
 </div>
 </section>
 
-<section class="card p-5 sm:p-6">
-<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-<div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Conversion analytics</p><h2 class="text-xl sm:text-2xl font-black mt-1">Job views → resume checks → apply clicks</h2><p class="text-sm text-slate-500 mt-2">Conversion events start accumulating from the analytics release onward; older page-view data remains available above.</p></div>
-<button id="internalTrackingBtn" onclick="toggleInternalTracking()" class="btn border border-slate-200 bg-white px-4 py-2.5 text-sm shrink-0"><i class="fa-solid fa-user-shield mr-2"></i><span id="internalTrackingText">Checking this browser…</span></button>
+<section class="card compact-card">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-filter text-emerald-500 mr-2"></i>Conversion snapshot</h2><p>Job view → resume → apply</p></div></div>
+<button id="internalTrackingBtn" onclick="toggleInternalTracking()" class="btn border border-slate-200 bg-white px-3 py-1.5 text-[10px] shrink-0"><i class="fa-solid fa-user-shield mr-1"></i><span id="internalTrackingText">Checking…</span></button>
 </div>
-<div class="grid sm:grid-cols-2 xl:grid-cols-6 gap-3 mt-5">
-<div class="rounded-2xl border border-slate-200 bg-slate-50 p-4"><p class="text-[10px] uppercase font-black text-slate-400">Job page views</p><p id="jobPageViews" class="text-2xl font-black mt-1">—</p></div>
-<div class="rounded-2xl border border-cyan-200 bg-cyan-50 p-4"><p class="text-[10px] uppercase font-black text-cyan-600">Resume checks</p><p id="resumeChecks" class="text-2xl font-black text-cyan-800 mt-1">—</p></div>
-<div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4"><p class="text-[10px] uppercase font-black text-emerald-600">Apply clicks</p><p id="applyClicks" class="text-2xl font-black text-emerald-800 mt-1">—</p></div>
-<div class="rounded-2xl border border-green-200 bg-green-50 p-4"><p class="text-[10px] uppercase font-black text-green-600">Apply users</p><p id="applyUsers" class="text-2xl font-black text-green-800 mt-1">—</p></div>
-<div class="rounded-2xl border border-violet-200 bg-violet-50 p-4"><p class="text-[10px] uppercase font-black text-violet-600">Apply rate</p><p id="applyRate" class="text-2xl font-black text-violet-800 mt-1">—</p></div>
-<div class="rounded-2xl border border-amber-200 bg-amber-50 p-4"><p class="text-[10px] uppercase font-black text-amber-600">Social + shares</p><p id="socialShares" class="text-2xl font-black text-amber-800 mt-1">—</p></div>
+<div class="conversion-strip">
+<div class="conversion-pill"><span>Job views</span><strong id="jobPageViews">—</strong></div>
+<div class="conversion-pill"><span>Resume checks</span><strong id="resumeChecks" class="text-cyan-700">—</strong></div>
+<div class="conversion-pill"><span>Apply clicks</span><strong id="applyClicks" class="text-emerald-700">—</strong></div>
+<div class="conversion-pill"><span>Apply users</span><strong id="applyUsers" class="text-green-700">—</strong></div>
+<div class="conversion-pill"><span>Apply rate</span><strong id="applyRate" class="text-violet-700">—</strong></div>
+<div class="conversion-pill"><span>Social + shares</span><strong id="socialShares" class="text-amber-700">—</strong></div>
 </div>
 </section>
 
-<section class="grid lg:grid-cols-3 gap-5">
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 mr-2"></i>Top Apply Jobs</h2><p class="text-xs text-slate-400 mt-1">Jobs generating official-apply clicks.</p><div id="applyJobs" class="mt-5 space-y-4"></div></div>
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-circle-check text-cyan-600 mr-2"></i>Resume Checker Usage</h2><p class="text-xs text-slate-400 mt-1">Successful resume checks by job page.</p><div id="resumeJobs" class="mt-5 space-y-4"></div></div>
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-filter-circle-dollar text-violet-600 mr-2"></i>Apply Conversion Sources</h2><p class="text-xs text-slate-400 mt-1">Traffic sources attached to apply-click events.</p><div id="applySources" class="mt-5 space-y-4"></div></div>
+<section class="compact-grid three">
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 mr-2"></i>Top Apply Jobs</h2><p>Highest apply-click activity</p></div></div><div id="applyJobs" class="compact-list"></div></div>
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-circle-check text-cyan-600 mr-2"></i>Resume Usage</h2><p>Most checked job pages</p></div></div><div id="resumeJobs" class="compact-list"></div></div>
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-filter-circle-dollar text-violet-600 mr-2"></i>Apply Sources</h2><p>Sources attached to apply clicks</p></div></div><div id="applySources" class="compact-list"></div></div>
 </section>
 
-<section class="grid lg:grid-cols-2 gap-5">
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><div id="pages" class="mt-5 space-y-4"></div></div>
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-arrow-up-right-from-square text-blue-600 mr-2"></i>Traffic Sources</h2><div id="referrers" class="mt-5 space-y-4"></div></div>
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Countries</h2><div id="countries" class="mt-5 space-y-4"></div></div>
-<div class="card p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-mobile-screen text-blue-600 mr-2"></i>Devices</h2><div id="devices" class="mt-5 space-y-4"></div></div>
+<section class="compact-grid two">
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><p>Most viewed content</p></div><div id="topPage" class="max-w-[44%]"></div></div><div id="pages" class="compact-list"></div></div>
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-route text-blue-600 mr-2"></i>Traffic Sources</h2><p>Session source / medium</p></div></div><div id="referrers" class="compact-list"></div></div>
 </section>
-<p class="text-xs text-slate-400 text-center pb-5">Production traffic only. Data is read securely through the authenticated admin API from Google Analytics 4.</p>
+
+<section class="compact-grid two">
+<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-shuffle text-emerald-600 mr-2"></i>Channels</h2><p>How sessions are classified</p></div></div><div id="channels" class="compact-list"></div></div>
+<div class="breakdown-grid">
+<details class="breakdown"><summary><span><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Countries</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="breakdown-body"><div id="countries" class="compact-list"></div></div></details>
+<details class="breakdown"><summary><span><i class="fa-solid fa-mobile-screen text-blue-600 mr-2"></i>Devices</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="breakdown-body"><div id="devices" class="compact-list"></div></div></details>
+</div>
+</section>
+
+<p class="text-[10px] text-slate-400 text-center pb-3">Production traffic only · Google Analytics 4 · authenticated admin data</p>
 </main>
 </div>
 <script>
@@ -157,10 +170,11 @@ async function loadJobMap(){
  }catch{}
 }
 function renderRows(id,rows,key){
- const el=document.getElementById(id); const data=Array.isArray(rows)?rows:[];
- if(!data.length){el.innerHTML='<p class="text-sm text-slate-400">No traffic data for this period yet.</p>';return}
+ const el=document.getElementById(id); if(!el)return; const data=Array.isArray(rows)?rows:[];
+ if(!data.length){el.innerHTML='<p class="text-xs text-slate-400">No data for this period yet.</p>';return}
  const max=Math.max(...data.map(metric),1);
- el.innerHTML=data.slice(0,10).map(r=>{
+ const limits={applyJobs:5,resumeJobs:5,applySources:5,pages:6,referrers:6,channels:6,countries:6,devices:4};
+ el.innerHTML=data.slice(0,limits[id]||5).map(r=>{
   const n=metric(r),raw=label(r,key),isPage=['pages','applyJobs','resumeJobs'].includes(id),isSource=['referrers','applySources'].includes(id),name=isPage?humanizePath(raw):(isSource?sourceLabel(raw):raw);
   const head=isPage?pageLink(raw):'<span class="font-semibold text-slate-700 min-w-0 overflow-wrap-anywhere">'+esc(name)+'</span>';
   return '<div><div class="flex justify-between items-start gap-3 text-sm min-w-0"><div class="min-w-0 flex-1">'+head+'</div><span class="font-black shrink-0">'+fmt(n)+'</span></div><div class="bar mt-2"><span style="width:'+Math.max(2,n/max*100)+'%"></span></div></div>'
@@ -184,18 +198,10 @@ function renderVisualCharts(d){
  destroyChart('audience');
  const aud=document.getElementById('audienceChart');
  if(aud){analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New','Returning'],datasets:[{data:[nu,ru],backgroundColor:['#0969da','#7c3aed'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom'}}}})}
- const channels=Array.isArray(d.channels)?d.channels.slice(0,7):[];
- destroyChart('channel');
- const channelEl=document.getElementById('channelChart');
- if(channelEl){analyticsCharts.channel=new Chart(channelEl,{type:'bar',data:{labels:channels.map(x=>x.channel||'Other'),datasets:[{label:'Sessions',data:channels.map(x=>Number(x.sessions||0)),backgroundColor:'rgba(5,150,105,.78)',borderRadius:7}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}},y:{grid:{display:false}}}}})}
- const devices=Array.isArray(d.devices)?d.devices.slice(0,6):[];
- destroyChart('device');
- const dev=document.getElementById('deviceChart');
- if(dev){analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:['#0ea5e9','#8b5cf6','#f59e0b','#10b981','#64748b','#ec4899'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom'}}}})}
-}
+ }
 async function loadTraffic(days=7){
  currentDays=days;
- document.querySelectorAll('.range').forEach(b=>{const on=Number(b.dataset.days)===days;b.className='range btn px-4 py-2 text-sm '+(on?'bg-blue-600 text-white':'border border-slate-200 bg-white')});
+ document.querySelectorAll('.range').forEach(b=>{const on=Number(b.dataset.days)===days;b.className='range btn px-3 py-1.5 text-xs '+(on?'bg-blue-600 text-white':'border border-slate-200 bg-white')});
  const e=document.getElementById('errorBox');e.classList.add('hidden');
  try{
   const r=await fetch('/api/admin/traffic?days='+days,{cache:'no-store'});
@@ -208,7 +214,7 @@ async function loadTraffic(days=7){
   document.getElementById('engagementRate').textContent=Number(d.totals?.engagementRate||0).toFixed(1)+'%';
   const sec=Math.round(Number(d.totals?.averageSessionDuration||0));document.getElementById('avgSession').textContent='Avg. session '+(sec<60?sec+'s':Math.floor(sec/60)+'m '+(sec%60)+'s');
   renderVisualCharts(d);
-  document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('ratio').textContent=v?(p/v).toFixed(2):'0.00';
+  document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('sessions').textContent=fmt(d.totals?.sessions||0);document.getElementById('ratio').textContent=Number(d.totals?.viewsPerUser||(v?p/v:0)).toFixed(2);
   const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
   document.getElementById('topPage').innerHTML=top?pageLink(label(top,'requestPath'),true):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
   const c=d.conversions||{};
@@ -216,11 +222,11 @@ async function loadTraffic(days=7){
   document.getElementById('resumeChecks').textContent=fmt(c.resumeChecks||0);
   document.getElementById('applyClicks').textContent=fmt(c.applyClicks||0);
   document.getElementById('applyUsers').textContent=fmt(c.applyUsers||0);
-  document.getElementById('applyRate').textContent=Number(c.applyRate||0).toFixed(1)+'%';
+  document.getElementById('applyRate').textContent=Number(c.applyRate||0).toFixed(1)+'%';document.getElementById('applyRateTop').textContent=Number(c.applyRate||0).toFixed(1)+'%';
   document.getElementById('socialShares').textContent=fmt(Number(c.socialClicks||0)+Number(c.shares||0));
-  document.getElementById('periodText').textContent='Last '+(days===1?'24 hours':days+' days')+' • refreshed '+new Date().toLocaleTimeString();
+  document.getElementById('periodText').textContent=(days===1?'Last 24 hours':'Last '+days+' days')+' · refreshed '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
   renderRows('applyJobs',d.applyJobs,'requestPath');renderRows('resumeJobs',d.resumeJobs,'requestPath');renderRows('applySources',d.applySources,'referrerHostname');
-  renderRows('pages',d.pages,'requestPath');renderRows('referrers',d.referrers,'referrerHostname');renderRows('countries',d.countries,'country');renderRows('devices',d.devices,'deviceType');
+  renderRows('pages',d.pages,'requestPath');renderRows('referrers',d.referrers,'referrerHostname');renderRows('channels',d.channels,'channel');renderRows('countries',d.countries,'country');renderRows('devices',d.devices,'deviceType');
  }catch(err){e.textContent=err.message||'Could not load traffic analytics.';e.classList.remove('hidden')}
 }
 async function logoutAdmin(){await fetch('/api/admin/logout',{method:'POST'}).catch(()=>{});location.href='/admin/'}
