@@ -14,19 +14,9 @@
   <true/>
   <key>NSFaceIDUsageDescription</key>
   <string>Use Face ID to securely unlock your HD Careers Admin credentials on this iPhone.</string>
-  <key>UILaunchScreen</key>
-  <dict>
-    <key>UIColorName</key>
-    <string>LaunchBackground</string>
-  </dict>
   <key>UISupportedInterfaceOrientations</key>
   <array>
     <string>UIInterfaceOrientationPortrait</string>
   </array>
-  <key>UIApplicationSceneManifest</key>
-  <dict>
-    <key>UIApplicationSupportsMultipleScenes</key>
-    <false/>
-  </dict>
 </dict>
 </plist>
