@@ -49,59 +49,48 @@ struct LoginView: View {
     @State private var password = ""
     @State private var rememberWithFaceID = false
 
-    private var canUseFaceID: Bool {
-        BiometricAuth.isAvailable
-    }
-
-    private var hasSavedCredential: Bool {
-        CredentialVault.load() != nil
-    }
+    private var canUseFaceID: Bool { BiometricAuth.isAvailable }
+    private var hasSavedCredential: Bool { CredentialVault.load() != nil }
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [.white, HDTheme.background, HDTheme.blue.opacity(0.08)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
+            HDTheme.background.ignoresSafeArea()
 
-            ScrollView {
-                VStack(spacing: 28) {
-                    Spacer(minLength: 64)
+            VStack(spacing: 0) {
+                Spacer()
 
-                    VStack(spacing: 14) {
-                        HDLogoView(size: 92)
-                        Text("HD Careers Admin")
-                            .font(.system(size: 28, weight: .black, design: .rounded))
+                VStack(spacing: 18) {
+                    HDLogoView(size: 66)
+
+                    VStack(spacing: 5) {
+                        Text("HD Careers")
+                            .font(.system(size: 25, weight: .black, design: .rounded))
                             .foregroundStyle(HDTheme.navy)
-                        Text("Private control center for jobs, automations and analytics.")
-                            .font(.subheadline)
-                            .multilineTextAlignment(.center)
+                        Text("Admin")
+                            .font(.caption.weight(.bold))
                             .foregroundStyle(.secondary)
-                            .padding(.horizontal)
                     }
 
-                    VStack(spacing: 14) {
-                        HStack {
-                            Image(systemName: "person.fill")
+                    VStack(spacing: 10) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "person")
                                 .foregroundStyle(.secondary)
-                            TextField("Admin username", text: $username)
+                                .frame(width: 18)
+                            TextField("Username", text: $username)
                                 .textInputAutocapitalization(.never)
                                 .autocorrectionDisabled()
                                 .textContentType(.username)
                         }
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(Color.black.opacity(0.08))
-                        }
+                        .padding(.horizontal, 13)
+                        .frame(height: 48)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
 
-                        HStack {
-                            Image(systemName: "lock.fill")
+                        HStack(spacing: 10) {
+                            Image(systemName: "lock")
                                 .foregroundStyle(.secondary)
+                                .frame(width: 18)
                             SecureField("Password", text: $password)
                                 .textContentType(.password)
                                 .submitLabel(.go)
@@ -115,34 +104,24 @@ struct LoginView: View {
                                     }
                                 }
                         }
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(Color.black.opacity(0.08))
-                        }
+                        .padding(.horizontal, 13)
+                        .frame(height: 48)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
 
                         if let loginStatus = state.loginStatus, !loginStatus.isEmpty {
-                            HStack(alignment: .top, spacing: 8) {
-                                Image(systemName: "exclamationmark.circle.fill")
-                                    .foregroundStyle(HDTheme.red)
-                                Text(loginStatus)
-                                    .font(.footnote.weight(.semibold))
-                                    .foregroundStyle(HDTheme.red)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .padding(11)
-                            .background(HDTheme.red.opacity(0.08))
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            Text(loginStatus)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(HDTheme.red)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 2)
                         }
 
                         if canUseFaceID {
-                            Toggle(isOn: $rememberWithFaceID) {
-                                Label("Enable Face ID on this iPhone", systemImage: "faceid")
-                                    .font(.footnote.weight(.semibold))
-                            }
-                            .tint(HDTheme.blue)
+                            Toggle("Use Face ID", isOn: $rememberWithFaceID)
+                                .font(.caption.weight(.semibold))
+                                .tint(HDTheme.blue)
                         }
 
                         Button {
@@ -154,46 +133,44 @@ struct LoginView: View {
                                 )
                             }
                         } label: {
-                            HStack {
-                                if state.isBusy {
-                                    ProgressView().tint(.white)
-                                }
-                                Text(state.isBusy ? "Signing in…" : "Sign In")
-                                    .fontWeight(.bold)
+                            HStack(spacing: 8) {
+                                if state.isBusy { ProgressView().tint(.white) }
+                                Text(state.isBusy ? "Signing in…" : "Sign in")
+                                    .font(.subheadline.weight(.bold))
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 15)
+                            .frame(height: 48)
                         }
                         .buttonStyle(.plain)
                         .foregroundStyle(.white)
-                        .background(HDTheme.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .background(HDTheme.navy)
+                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
                         .disabled(state.isBusy)
 
                         if canUseFaceID && hasSavedCredential {
                             Button {
                                 Task { await state.faceIDLogin() }
                             } label: {
-                                Label("Unlock with Face ID", systemImage: "faceid")
-                                    .fontWeight(.bold)
+                                Label("Face ID", systemImage: "faceid")
+                                    .font(.subheadline.weight(.bold))
                                     .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 14)
+                                    .frame(height: 46)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(HDTheme.blue)
-                            .background(HDTheme.blue.opacity(0.08))
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .background(HDTheme.blue.opacity(0.07))
+                            .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
                         }
                     }
-                    .hdCard(18)
-
-                    Label("Private Admin Access", systemImage: "lock.shield")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
-
-                    Spacer(minLength: 30)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
+
+                Spacer()
+
+                Label("Private access", systemImage: "lock.shield")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .padding(.bottom, 18)
             }
         }
     }
@@ -206,19 +183,19 @@ struct RootTabView: View {
     var body: some View {
         TabView(selection: $selection) {
             DashboardView()
-                .tabItem { Label("Dashboard", systemImage: "house.fill") }
+                .tabItem { Label("Home", systemImage: "house") }
                 .tag(0)
 
             JobsView()
-                .tabItem { Label("Jobs", systemImage: "briefcase.fill") }
+                .tabItem { Label("Jobs", systemImage: "briefcase") }
                 .tag(1)
 
             PublishView()
-                .tabItem { Label("Publish", systemImage: "wand.and.stars") }
+                .tabItem { Label("Publish", systemImage: "plus.circle") }
                 .tag(2)
 
             CheckerView()
-                .tabItem { Label("Checker", systemImage: "checkmark.shield.fill") }
+                .tabItem { Label("Checker", systemImage: "checkmark.shield") }
                 .tag(3)
 
             MoreView()
@@ -236,26 +213,32 @@ struct AdminHeader: View {
     var trailingAction: (() -> Void)? = nil
 
     var body: some View {
-        HStack(spacing: 12) {
-            HDLogoView(size: 42)
-            VStack(alignment: .leading, spacing: 2) {
+        HStack(spacing: 10) {
+            HDLogoView(size: 34)
+
+            VStack(alignment: .leading, spacing: 1) {
                 Text(title)
-                    .font(.headline.weight(.black))
+                    .font(.system(size: 18, weight: .black, design: .rounded))
                     .foregroundStyle(HDTheme.navy)
                 if let subtitle {
                     Text(subtitle)
-                        .font(.caption)
+                        .font(.system(size: 10.5, weight: .medium))
                         .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
             }
+
             Spacer()
+
             if let trailingSystemImage, let trailingAction {
                 Button(action: trailingAction) {
                     Image(systemName: trailingSystemImage)
-                        .font(.system(size: 16, weight: .bold))
-                        .frame(width: 38, height: 38)
-                        .background(HDTheme.blue.opacity(0.08))
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(HDTheme.navy)
+                        .frame(width: 34, height: 34)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                        .overlay { RoundedRectangle(cornerRadius: 11).stroke(HDTheme.line) }
                 }
                 .buttonStyle(.plain)
             }
@@ -306,46 +289,35 @@ struct DashboardHeroCard: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            LinearGradient(
-                colors: [HDTheme.navy, HDTheme.blue],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .frame(height: 178)
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Overview")
+                    .font(.system(size: 10, weight: .black))
+                    .foregroundStyle(HDTheme.blue)
+                    .textCase(.uppercase)
+                    .tracking(0.8)
 
-            Circle()
-                .fill(Color.white.opacity(0.10))
-                .frame(width: 150, height: 150)
-                .offset(x: 245, y: -55)
+                Text("(state.activeJobs.count) live jobs")
+                    .font(.system(size: 26, weight: .black, design: .rounded))
+                    .foregroundStyle(HDTheme.navy)
 
-            VStack(alignment: .leading, spacing: 9) {
-                HStack {
-                    Image(systemName: "sparkles")
-                    Text("HD CAREERS CONTROL CENTER")
-                        .font(.caption2.weight(.black))
-                        .tracking(1.1)
-                }
-                .foregroundStyle(.white.opacity(0.78))
-
-                Text("Everything important,\nright here.")
-                    .font(.system(size: 28, weight: .black, design: .rounded))
-                    .foregroundStyle(.white)
-
-                HStack(spacing: 8) {
-                    Label("\(state.activeJobs.count) live jobs", systemImage: "briefcase.fill")
-                    if reviewCount > 0 {
-                        Label("\(reviewCount) to review", systemImage: "exclamationmark.triangle.fill")
-                    } else {
-                        Label("All clear", systemImage: "checkmark.shield.fill")
-                    }
-                }
-                .font(.caption.weight(.bold))
-                .foregroundStyle(.white.opacity(0.9))
+                Text(reviewCount == 0 ? "Everything looks good" : "(reviewCount) item(reviewCount == 1 ? "" : "s") need review")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(reviewCount == 0 ? HDTheme.green : HDTheme.amber)
             }
-            .padding(20)
+
+            Spacer()
+
+            ZStack {
+                Circle()
+                    .fill((reviewCount == 0 ? HDTheme.green : HDTheme.amber).opacity(0.10))
+                    .frame(width: 50, height: 50)
+                Image(systemName: reviewCount == 0 ? "checkmark" : "exclamationmark")
+                    .font(.system(size: 18, weight: .black))
+                    .foregroundStyle(reviewCount == 0 ? HDTheme.green : HDTheme.amber)
+            }
         }
+        .hdCard()
     }
 }
 
@@ -395,32 +367,22 @@ struct ReviewAlertCard: View {
     }
 }
 
-struct DashboardStatsCard: View {
-    @EnvironmentObject private var state: AppState
-    private let columns = [GridItem(.flexible()), GridItem(.flexible())]
+struct DashboardStat: View {
+    let title: String
+    let value: Int
+    let icon: String
+    let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 13) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Jobs overview")
-                        .font(.headline.weight(.black))
-                    Text("Current website inventory")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-                StatusPill(text: "\(state.activeJobs.count) active", color: HDTheme.green, icon: "checkmark.circle.fill")
-            }
-
-            LazyVGrid(columns: columns, spacing: 8) {
-                DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
-                DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.crop.circle.badge.checkmark", color: .purple)
-                DashboardStat(title: "Active", value: state.activeJobs.count, icon: "checkmark.circle.fill", color: HDTheme.green)
-                DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
-            }
+        VStack(spacing: 3) {
+            Text(numberText(value))
+                .font(.system(size: 19, weight: .black, design: .rounded))
+                .foregroundStyle(HDTheme.navy)
+            Text(title)
+                .font(.system(size: 9.5, weight: .bold))
+                .foregroundStyle(.secondary)
         }
-        .hdCard()
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -459,77 +421,50 @@ struct DashboardStat: View {
 struct TrafficSummaryCard: View {
     @EnvironmentObject private var state: AppState
 
-    private var periodLabel: String {
-        switch state.trafficDays {
-        case 1: return "Last 24 hours"
-        case 30: return "Last 30 days"
-        default: return "Last 7 days"
-        }
-    }
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(spacing: 11) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Website traffic")
-                        .font(.headline.weight(.black))
-                    Text("Live GA4 snapshot · \(periodLabel)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+                Text("Traffic")
+                    .font(.subheadline.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
                 Spacer()
-                StatusPill(text: "Live", color: HDTheme.green, icon: "circle.fill")
+                Picker("Period", selection: Binding(
+                    get: { state.trafficDays },
+                    set: { days in Task { await state.loadTraffic(days: days) } }
+                )) {
+                    Text("24H").tag(1)
+                    Text("7D").tag(7)
+                    Text("30D").tag(30)
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 165)
             }
-
-            Picker("Period", selection: Binding(
-                get: { state.trafficDays },
-                set: { days in Task { await state.loadTraffic(days: days) } }
-            )) {
-                Text("24H").tag(1)
-                Text("7D").tag(7)
-                Text("30D").tag(30)
-            }
-            .pickerStyle(.segmented)
 
             HStack(spacing: 0) {
-                TrafficMetric(
-                    title: "Live",
-                    value: state.traffic?.realtimeUsers ?? 0,
-                    icon: "dot.radiowaves.left.and.right",
-                    color: HDTheme.green
-                )
-                Divider().frame(height: 44)
-                TrafficMetric(
-                    title: "Users",
-                    value: state.traffic?.totals?.visitors ?? 0,
-                    icon: "person.2.fill",
-                    color: HDTheme.blue
-                )
-                Divider().frame(height: 44)
-                TrafficMetric(
-                    title: "Views",
-                    value: state.traffic?.totals?.pageviews ?? 0,
-                    icon: "eye.fill",
-                    color: .purple
-                )
+                TrafficMetric(title: "Live", value: state.traffic?.realtimeUsers ?? 0, icon: "dot.radiowaves.left.and.right", color: HDTheme.green)
+                Divider().frame(height: 36)
+                TrafficMetric(title: "Users", value: state.traffic?.totals?.visitors ?? 0, icon: "person.2.fill", color: HDTheme.blue)
+                Divider().frame(height: 36)
+                TrafficMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, icon: "eye.fill", color: .purple)
+                Divider().frame(height: 36)
+                TrafficMetric(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0, icon: "cursorarrow.click.2", color: HDTheme.green)
             }
 
-            HStack(spacing: 8) {
-                AnalyticsMiniMetric(
-                    title: "Sessions",
-                    value: numberText(state.traffic?.totals?.sessions),
-                    icon: "rectangle.stack.fill"
-                )
-                AnalyticsMiniMetric(
-                    title: "Views / user",
-                    value: String(format: "%.2f", state.traffic?.totals?.viewsPerUser ?? 0),
-                    icon: "chart.line.uptrend.xyaxis"
-                )
-                AnalyticsMiniMetric(
-                    title: "Engagement",
-                    value: String(format: "%.1f%%", state.traffic?.totals?.engagementRate ?? 0),
-                    icon: "bolt.heart.fill"
-                )
+            if let top = state.traffic?.pages?.first {
+                HStack(spacing: 7) {
+                    Image(systemName: "arrow.up.right")
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(HDTheme.blue)
+                    Text(jobDisplayName(path: top.requestPath, jobs: state.jobs))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    Spacer()
+                    Text(numberText(top.pageviews))
+                        .font(.caption.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
+                }
+                .padding(.top, 1)
             }
         }
         .hdCard()
@@ -543,16 +478,13 @@ struct TrafficMetric: View {
     let color: Color
 
     var body: some View {
-        VStack(spacing: 5) {
-            Image(systemName: icon)
-                .font(.caption.weight(.bold))
-                .foregroundStyle(color)
+        VStack(spacing: 2) {
             Text(numberText(value))
-                .font(.system(size: 21, weight: .black, design: .rounded))
+                .font(.system(size: 17, weight: .black, design: .rounded))
                 .foregroundStyle(HDTheme.navy)
             Text(title)
-                .font(.caption2.weight(.bold))
-                .foregroundStyle(.secondary)
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(color)
         }
         .frame(maxWidth: .infinity)
     }
