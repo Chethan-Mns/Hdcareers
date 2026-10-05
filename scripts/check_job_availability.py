@@ -49,7 +49,7 @@ def deadline_passed(job, now):
     return now >= dt
 
 def classify(job, body, final_url, status=200):
-    if status in (404, 410): return 'expired', f'Official job URL returned HTTP {status}'
+    if status in (404, 410): return 'review', f'HTTP {status} from automated request; exact job page requires browser verification before expiry'
     if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
     p = Visible(); p.feed(body)
     text = re.sub(r'\s+', ' ', ' '.join(p.parts)).strip()
@@ -88,7 +88,7 @@ def check(job, now=None):
         if exc.code in (404, 410) and job.get('browserVerifiedAt'):
             state, reason = 'active', f'Automated check returned HTTP {exc.code}, but the exact official job page and Apply control were manually browser-verified at {job["browserVerifiedAt"]}'
         elif exc.code in (404, 410):
-            state, reason = 'expired', f'Official job URL returned HTTP {exc.code}'
+            state, reason = 'review', f'HTTP {exc.code} from automated request; exact job page requires browser verification before expiry'
         else:
             state, reason = 'review', f'HTTP {exc.code}; availability unconfirmed'
     except Exception as exc:
