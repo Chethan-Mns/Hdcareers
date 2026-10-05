@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   publish:
-    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin' && github.event.head_commit.message != 'Generate website for verified jobs' && github.event.head_commit.message != 'Update Telegram posting queue'
+    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin' && github.event.head_commit.message != 'Generate website for verified jobs' && github.event.head_commit.message != 'Update Telegram posting queue' && !startsWith(github.event.head_commit.message, 'Admin review active:')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -48,15 +48,37 @@ jobs:
       - name: Commit and deploy generated website
         shell: bash
         run: |
-          if git diff --quiet; then
-            echo "Generated website is already current."
-          else
-            git config user.name "HD Careers Automation"
-            git config user.email "actions@users.noreply.github.com"
+          set -euo pipefail
+          git config user.name "HD Careers Automation"
+          git config user.email "actions@users.noreply.github.com"
+
+          for attempt in 1 2 3 4 5 6 7 8; do
             git add data/jobs.json data/review-queue.json data/telegram-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+
+            if git diff --cached --quiet; then
+              echo "Generated website is already current."
+              exit 0
+            fi
+
             git commit -m "Generate website for verified jobs"
-            git push origin HEAD:main
-          fi
+
+            if git push origin HEAD:main; then
+              echo "Generated website published."
+              exit 0
+            fi
+
+            echo "::warning::main changed during website generation. Rebuilding from the latest main (attempt ${attempt}/8)."
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
+            python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
+            python3 generate.py
+            git diff --check
+            sleep 3
+          done
+
+          echo "::error::Could not publish generated website after 8 safe retries because main kept changing."
+          exit 1
 
       - name: Post manual job to Telegram after deployment
         if: startsWith(github.event.head_commit.message, 'Manual publish:')
