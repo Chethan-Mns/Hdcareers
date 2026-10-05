@@ -194,6 +194,15 @@ def resolve_icon(company: str, domain: str) -> tuple[bytes, str, str, str] | Non
             return body, ext, final_url, label
         except (HTTPError, URLError, ValueError, TimeoutError, OSError):
             continue
+
+    proxy = "https://www.google.com/s2/favicons?domain_url=" + urljoin("https://" + domain, "/") + "&sz=256"
+    try:
+        body, content_type, final_url = fetch(proxy, MAX_ICON)
+        ext = sniff_ext(body, content_type, final_url)
+        if ext and len(body) >= 64:
+            return body, ext, final_url, "official-domain favicon cache fallback"
+    except (HTTPError, URLError, ValueError, TimeoutError, OSError):
+        pass
     return None
 
 
