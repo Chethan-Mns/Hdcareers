@@ -58,6 +58,8 @@ function trustedCareer(j){const h=host(j.apply);if(!h||generic(h))return false;i
 function candidates(j){
  const out=[];
  const push=(url,label)=>{if(url&&!out.some(x=>x.url===url))out.push({url,label})};
+ const cached=String(j.logoPath||'').trim();
+ if(cached.startsWith('assets/company-icons/'))push(cached,'Cached official favicon');
  push(COMPACT[j.company],'Curated compact mark');
  push(DIRECT[j.company],'Official direct logo');
  if(trustedCareer(j)&&/^https:\/\//i.test(String(j.careerIconUrl||'')))push(String(j.careerIconUrl),'Verified careers favicon');
