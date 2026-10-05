@@ -1792,6 +1792,61 @@ struct EditSelection: Identifiable {
     let id: Int
 }
 
+
+struct PublishHeroCard: View {
+    let readyCount: Int
+    let draftCount: Int
+    let selectedCount: Int
+    let isGenerating: Bool
+
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [HDTheme.navy, Color(red: 0.18, green: 0.12, blue: 0.50), HDTheme.blue],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            Circle()
+                .fill(Color.white.opacity(0.08))
+                .frame(width: 150, height: 150)
+                .offset(x: 150, y: -60)
+
+            VStack(alignment: .leading, spacing: 15) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("PUBLISHING WORKSPACE")
+                            .font(.system(size: 10, weight: .black))
+                            .tracking(1.1)
+                            .foregroundStyle(.white.opacity(0.72))
+                        Text("Official link → live job")
+                            .font(.system(size: 24, weight: .black, design: .rounded))
+                            .foregroundStyle(.white)
+                    }
+                    Spacer()
+                    Image(systemName: "wand.and.stars")
+                        .font(.system(size: 23, weight: .bold))
+                        .foregroundStyle(.white.opacity(0.92))
+                }
+
+                HStack(spacing: 4) {
+                    PublishWorkflowStep(number: "1", title: "Links", icon: "link", active: readyCount > 0)
+                    Image(systemName: "chevron.right").font(.caption2.weight(.black)).foregroundStyle(.white.opacity(0.35))
+                    PublishWorkflowStep(number: "2", title: "Generate", icon: "sparkles", active: isGenerating || draftCount > 0)
+                    Image(systemName: "chevron.right").font(.caption2.weight(.black)).foregroundStyle(.white.opacity(0.35))
+                    PublishWorkflowStep(number: "3", title: "Review", icon: "checklist", active: draftCount > 0)
+                    Image(systemName: "chevron.right").font(.caption2.weight(.black)).foregroundStyle(.white.opacity(0.35))
+                    PublishWorkflowStep(number: "4", title: "Publish", icon: "paperplane.fill", active: selectedCount > 0)
+                }
+            }
+            .padding(18)
+        }
+        .frame(height: 170)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .shadow(color: HDTheme.navy.opacity(0.14), radius: 16, x: 0, y: 8)
+    }
+}
+
 struct PublishView: View {
     @EnvironmentObject private var state: AppState
     @State private var rawLinks = ""
@@ -1833,36 +1888,58 @@ struct PublishView: View {
                 HDTheme.background.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 16) {
-                        AdminHeader(title: "Add / Publish Jobs", subtitle: "Private publishing workflow")
+                    VStack(spacing: 14) {
+                        AdminHeader(title: "Publish", subtitle: "Create verified job posts")
+
+                        PublishHeroCard(
+                            readyCount: readyLinks.count,
+                            draftCount: drafts.count,
+                            selectedCount: selectedDrafts.count,
+                            isGenerating: isGenerating
+                        )
 
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
-                                Label("Paste Official Job Links", systemImage: "link")
-                                    .font(.headline.weight(.black))
-                                Spacer()
+                                PremiumSectionTitle(
+                                    icon: "link.badge.plus",
+                                    title: "Official job links",
+                                    subtitle: "Paste up to 20 employer URLs",
+                                    color: HDTheme.blue
+                                )
                                 StatusPill(
-                                    text: "\(readyLinks.count) ready",
+                                    text: "(readyLinks.count) ready",
                                     color: readyLinks.isEmpty ? Color.gray : HDTheme.green,
                                     icon: readyLinks.isEmpty ? "link" : "checkmark.circle.fill"
                                 )
                             }
 
-                            Text("Paste up to 20 official employer URLs, one per line.")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            PremiumInfoBox(
+                                icon: "checkmark.shield.fill",
+                                title: "Official sources only",
+                                text: "Use employer careers pages or official ATS links. Each link is extracted, validated and reviewed before publishing.",
+                                color: HDTheme.green
+                            )
 
-                            TextEditor(text: $rawLinks)
-                                .frame(minHeight: 120)
-                                .padding(9)
-                                .scrollContentBackground(.hidden)
-                                .background(Color(.secondarySystemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            ZStack(alignment: .topLeading) {
+                                if rawLinks.isEmpty {
+                                    Text("https://company.com/careers/job/123\nhttps://jobs.company.com/opening/456")
+                                        .font(.caption)
+                                        .foregroundStyle(.tertiary)
+                                        .padding(.horizontal, 14)
+                                        .padding(.vertical, 16)
+                                        .allowsHitTesting(false)
+                                }
 
-                            if parsedLinks.isEmpty {
-                                EmptyState(icon: "link", title: "No links yet", message: "Paste official job URLs above to preview them.")
-                                    .padding(.vertical, -6)
-                            } else {
+                                TextEditor(text: $rawLinks)
+                                    .font(.caption)
+                                    .frame(minHeight: 118)
+                                    .padding(8)
+                                    .scrollContentBackground(.hidden)
+                                    .background(Color(.secondarySystemBackground))
+                                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            }
+
+                            if !parsedLinks.isEmpty {
                                 VStack(spacing: 8) {
                                     ForEach(parsedLinks) { item in
                                         LinkPreviewRow(item: item) {
@@ -1872,52 +1949,82 @@ struct PublishView: View {
                                 }
                             }
 
+                            if isGenerating {
+                                VStack(spacing: 7) {
+                                    HStack {
+                                        Text("Extracting job details")
+                                            .font(.caption.weight(.bold))
+                                        Spacer()
+                                        Text("(processed)/(readyLinks.count)")
+                                            .font(.caption.weight(.black))
+                                    }
+                                    ProgressView(value: Double(processed), total: Double(max(readyLinks.count, 1)))
+                                        .tint(HDTheme.blue)
+                                }
+                                .padding(11)
+                                .background(HDTheme.blue.opacity(0.05))
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            }
+
                             Button {
                                 Task { await generateJobs() }
                             } label: {
-                                HStack {
+                                HStack(spacing: 8) {
                                     if isGenerating {
                                         ProgressView().tint(.white)
                                     } else {
-                                        Image(systemName: "wand.and.stars")
+                                        Image(systemName: "sparkles")
                                     }
-                                    Text(isGenerating ? "Generating \(processed)/\(readyLinks.count)…" : "Generate \(readyLinks.count) job\(readyLinks.count == 1 ? "" : "s")")
-                                        .fontWeight(.bold)
+                                    Text(isGenerating ? "Generating…" : "Generate (readyLinks.count) job(readyLinks.count == 1 ? "" : "s")")
+                                        .font(.subheadline.weight(.black))
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(.white)
-                            .background(readyLinks.isEmpty || isGenerating ? Color.gray.opacity(0.5) : HDTheme.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                            .background(
+                                LinearGradient(
+                                    colors: readyLinks.isEmpty || isGenerating ? [Color.gray, Color.gray] : [HDTheme.navy, HDTheme.blue],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                             .disabled(readyLinks.isEmpty || isGenerating)
                         }
-                        .hdCard()
+                        .premiumCard()
 
                         if !extractionIssues.isEmpty {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label("Extraction issues", systemImage: "exclamationmark.triangle.fill")
-                                    .font(.headline)
-                                    .foregroundStyle(HDTheme.amber)
+                            VStack(alignment: .leading, spacing: 9) {
+                                PremiumSectionTitle(
+                                    icon: "exclamationmark.triangle.fill",
+                                    title: "Needs attention",
+                                    subtitle: "(extractionIssues.count) extraction issue(extractionIssues.count == 1 ? "" : "s")",
+                                    color: HDTheme.amber
+                                )
                                 ForEach(extractionIssues, id: \.self) { issue in
-                                    Text("• \(issue)")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
+                                    PremiumInfoBox(
+                                        icon: "exclamationmark.circle",
+                                        title: "Could not extract",
+                                        text: issue,
+                                        color: HDTheme.amber
+                                    )
                                 }
                             }
-                            .hdCard()
+                            .premiumCard()
                         }
 
                         if !drafts.isEmpty {
                             VStack(alignment: .leading, spacing: 12) {
                                 HStack {
-                                    Text("Generated Preview")
-                                        .font(.headline.weight(.black))
-                                    Spacer()
-                                    Text("\(selectedDrafts.count) selected")
-                                        .font(.caption.weight(.bold))
-                                        .foregroundStyle(.secondary)
+                                    PremiumSectionTitle(
+                                        icon: "doc.text.magnifyingglass",
+                                        title: "Generated preview",
+                                        subtitle: "Review content before it goes live",
+                                        color: HDTheme.violet
+                                    )
+                                    StatusPill(text: "(selectedDrafts.count) selected", color: HDTheme.violet)
                                 }
 
                                 ForEach(Array(drafts.enumerated()), id: \.element.id) { index, job in
@@ -1935,24 +2042,37 @@ struct PublishView: View {
                                     )
                                 }
 
+                                PremiumInfoBox(
+                                    icon: "arrow.triangle.branch",
+                                    title: "What happens next",
+                                    text: "Selected jobs run through validation, website generation, deployment and the existing Telegram publishing workflow.",
+                                    color: HDTheme.cyan
+                                )
+
                                 Button {
                                     showPublishConfirmation = true
                                 } label: {
                                     Label(
-                                        "Publish \(selectedDrafts.count) to HD Careers",
-                                        systemImage: "arrow.up.circle.fill"
+                                        "Publish (selectedDrafts.count) selected",
+                                        systemImage: "paperplane.fill"
                                     )
-                                    .fontWeight(.bold)
+                                    .font(.subheadline.weight(.black))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 14)
                                 }
                                 .buttonStyle(.plain)
                                 .foregroundStyle(.white)
-                                .background(selectedDrafts.isEmpty ? Color.gray.opacity(0.5) : HDTheme.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                                .background(
+                                    LinearGradient(
+                                        colors: selectedDrafts.isEmpty ? [Color.gray, Color.gray] : [HDTheme.green, Color(red: 0.02, green: 0.46, blue: 0.35)],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                                 .disabled(selectedDrafts.isEmpty || state.isBusy)
                             }
-                            .hdCard()
+                            .premiumCard()
                         }
                     }
                     .padding(16)
@@ -1973,12 +2093,12 @@ struct PublishView: View {
                 isPresented: $showPublishConfirmation,
                 titleVisibility: .visible
             ) {
-                Button("Publish \(selectedDrafts.count) jobs") {
+                Button("Publish (selectedDrafts.count) jobs") {
                     Task { await publishSelected() }
                 }
                 Button("Cancel", role: .cancel) {}
             } message: {
-                Text("The existing HD Careers validation, generation, Vercel deployment and Telegram workflow will run.")
+                Text("The existing HD Careers validation, generation, deployment and Telegram workflow will run.")
             }
         }
     }
@@ -2023,7 +2143,7 @@ struct PublishView: View {
                             let job = try await APIClient.shared.extractJob(url: link.raw)
                             return (index, job, nil)
                         } catch {
-                            return (index, nil, "\(link.domain): \(error.localizedDescription)")
+                            return (index, nil, "(link.domain): (error.localizedDescription)")
                         }
                     }
                 }
@@ -2081,52 +2201,59 @@ struct LinkPreviewRow: View {
     private var status: String {
         if !item.valid { return "Invalid" }
         if item.duplicate { return "Duplicate" }
-        return "Ready"
+        return "Verified"
     }
 
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
-            Image(systemName: item.valid ? "link" : "exclamationmark.triangle.fill")
+        HStack(alignment: .center, spacing: 11) {
+            Image(systemName: item.valid ? "link.circle.fill" : "exclamationmark.triangle.fill")
+                .font(.system(size: 16, weight: .bold))
                 .foregroundStyle(color)
-                .frame(width: 34, height: 34)
-                .background(color.opacity(0.10))
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .frame(width: 38, height: 38)
+                .background(color.opacity(0.09))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 
             VStack(alignment: .leading, spacing: 3) {
-                HStack {
+                HStack(spacing: 6) {
                     Text(item.domain)
-                        .font(.subheadline.weight(.black))
+                        .font(.caption.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
                         .lineLimit(1)
                     StatusPill(text: status, color: color)
                 }
+
                 Text(item.path)
-                    .font(.caption2)
+                    .font(.system(size: 9.5))
                     .foregroundStyle(.secondary)
-                    .lineLimit(2)
+                    .lineLimit(1)
             }
 
             Spacer(minLength: 4)
 
-            HStack(spacing: 8) {
-                if let url = item.url, item.valid {
-                    Link(destination: url) {
-                        Image(systemName: "arrow.up.right")
-                    }
+            if let url = item.url, item.valid {
+                Link(destination: url) {
+                    Image(systemName: "arrow.up.right")
+                        .frame(width: 30, height: 30)
+                        .background(HDTheme.blue.opacity(0.08))
+                        .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
                 }
-                Button(action: remove) {
-                    Image(systemName: "xmark")
-                }
-                .buttonStyle(.plain)
-                .foregroundStyle(.secondary)
             }
-            .font(.caption.weight(.bold))
+
+            Button(action: remove) {
+                Image(systemName: "xmark")
+                    .frame(width: 30, height: 30)
+                    .background(Color.black.opacity(0.035))
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(.secondary)
         }
         .padding(10)
-        .background(color.opacity(0.035))
-        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .background(Color.white.opacity(0.78))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: 13, style: .continuous)
-                .stroke(color.opacity(0.18))
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(color.opacity(0.14))
         }
     }
 }
@@ -2138,45 +2265,52 @@ struct DraftJobRow: View {
     let edit: () -> Void
 
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .top, spacing: 11) {
             Button(action: toggle) {
                 Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(selected ? HDTheme.blue : .secondary)
+                    .foregroundStyle(selected ? HDTheme.green : .secondary)
                     .font(.title3)
             }
             .buttonStyle(.plain)
 
-            CompanyLogoView(job: job, size: 42)
+            CompanyLogoView(job: job, size: 46)
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(job.company ?? "Company")
-                    .font(.headline.weight(.black))
+                    .font(.subheadline.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+
                 Text(job.role ?? "Job Opening")
-                    .font(.subheadline.weight(.semibold))
+                    .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
-                HStack {
-                    StatusPill(text: job.cat?.capitalized ?? "Job", color: HDTheme.blue)
-                    Text(job.loc ?? "Location not specified")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
+                    .lineLimit(2)
+
+                HStack(spacing: 6) {
+                    PremiumMetaChip(text: job.cat?.capitalized ?? "Job", icon: "briefcase.fill", color: HDTheme.violet)
+                    PremiumMetaChip(text: job.loc ?? "Location", icon: "mappin", color: HDTheme.blue)
                 }
+                .lineLimit(1)
             }
 
-            Spacer()
+            Spacer(minLength: 5)
 
             Button(action: edit) {
-                Image(systemName: "pencil")
+                Image(systemName: "slider.horizontal.3")
                     .font(.caption.weight(.bold))
-                    .padding(9)
+                    .foregroundStyle(HDTheme.blue)
+                    .frame(width: 34, height: 34)
                     .background(HDTheme.blue.opacity(0.08))
                     .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
             .buttonStyle(.plain)
         }
         .padding(12)
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .background(selected ? HDTheme.green.opacity(0.035) : Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(selected ? HDTheme.green.opacity(0.18) : Color.black.opacity(0.045))
+        }
     }
 }
 
@@ -2211,84 +2345,133 @@ struct JobEditSheet: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section("Basics") {
-                    TextField("Company", text: binding(\.company))
-                    TextField("Role", text: binding(\.role))
-                    TextField("Location", text: binding(\.loc))
-                    TextField("Experience", text: binding(\.expYears))
-                    TextField("Batch / Qualification", text: binding(\.batch))
-                    TextField("Salary", text: binding(\.salary))
-                    TextField("Work mode", text: binding(\.workMode))
-                }
+            ZStack {
+                HDTheme.background.ignoresSafeArea()
 
-                Section("Official source") {
-                    TextField("Official apply URL", text: binding(\.apply))
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                    TextField("Source name", text: binding(\.sourceName))
-                    TextField("Verified date", text: binding(\.verifiedDate))
-                    TextField("Closing date", text: binding(\.closingAt))
-                    TextField("Job / Requisition ID", text: binding(\.externalJobId))
-                    TextField("Careers favicon URL", text: binding(\.careerIconUrl))
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                    TextField("Full logo URL (fallback)", text: binding(\.logoUrl))
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                }
+                ScrollView {
+                    VStack(spacing: 13) {
+                        HStack(spacing: 12) {
+                            CompanyLogoView(job: job, size: 52)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(job.company ?? "Company")
+                                    .font(.headline.weight(.black))
+                                    .foregroundStyle(HDTheme.navy)
+                                Text(job.role ?? "Job Opening")
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(2)
+                            }
+                            Spacer()
+                        }
+                        .premiumCard()
 
-                Section {
-                    TextField("Industry", text: binding(\.industry))
-                    TextField("Headquarters", text: binding(\.headquarters))
-                    TextField("Founded year", text: binding(\.foundedYear))
-                    TextField("Company website", text: binding(\.companyWebsite))
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                    TextField("Careers URL", text: binding(\.careersUrl))
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                    TextEditor(text: binding(\.companyOverview))
-                        .frame(minHeight: 100)
-                } header: {
-                    Text("Optional company details")
-                } footer: {
-                    Text("Use only information supported by the official source. Blank fields are allowed.")
-                }
+                        VStack(alignment: .leading, spacing: 11) {
+                            PremiumSectionTitle(icon: "briefcase.fill", title: "Job basics", subtitle: "Candidate-facing summary")
+                            PremiumField(title: "Company", icon: "building.2", text: binding(\.company))
+                            PremiumField(title: "Role", icon: "person.crop.rectangle", text: binding(\.role))
+                            PremiumField(title: "Location", icon: "mappin.and.ellipse", text: binding(\.loc))
+                            PremiumField(title: "Experience", icon: "clock", text: binding(\.expYears))
+                            PremiumField(title: "Batch / Qualification", icon: "graduationcap", text: binding(\.batch))
+                            PremiumField(title: "Salary", icon: "indianrupeesign.circle", text: binding(\.salary))
+                            PremiumField(title: "Work mode", icon: "laptopcomputer", text: binding(\.workMode))
+                        }
+                        .premiumCard()
 
-                Section("Eligibility") {
-                    TextEditor(text: binding(\.elig))
-                        .frame(minHeight: 100)
-                }
+                        VStack(alignment: .leading, spacing: 11) {
+                            PremiumSectionTitle(icon: "checkmark.seal.fill", title: "Official source", subtitle: "Verification and application metadata", color: HDTheme.green)
+                            PremiumField(title: "Official apply URL", icon: "link", text: binding(\.apply))
+                            PremiumField(title: "Source name", icon: "building.columns", text: binding(\.sourceName))
+                            PremiumField(title: "Verified date", icon: "calendar.badge.checkmark", text: binding(\.verifiedDate))
+                            PremiumField(title: "Closing date", icon: "calendar.badge.exclamationmark", text: binding(\.closingAt))
+                            PremiumField(title: "Job / Requisition ID", icon: "number", text: binding(\.externalJobId))
+                            PremiumField(title: "Careers favicon URL", icon: "photo", text: binding(\.careerIconUrl))
+                            PremiumField(title: "Full logo URL", icon: "photo.stack", text: binding(\.logoUrl))
+                        }
+                        .premiumCard()
 
-                Section("Description") {
-                    TextEditor(text: binding(\.desc))
-                        .frame(minHeight: 130)
-                }
+                        VStack(alignment: .leading, spacing: 11) {
+                            PremiumSectionTitle(icon: "building.2.crop.circle.fill", title: "Company details", subtitle: "Optional employer context", color: HDTheme.violet)
+                            PremiumField(title: "Industry", icon: "square.grid.2x2", text: binding(\.industry))
+                            PremiumField(title: "Headquarters", icon: "location.circle", text: binding(\.headquarters))
+                            PremiumField(title: "Founded year", icon: "calendar", text: binding(\.foundedYear))
+                            PremiumField(title: "Company website", icon: "globe", text: binding(\.companyWebsite))
+                            PremiumField(title: "Careers URL", icon: "person.2.badge.gearshape", text: binding(\.careersUrl))
+                            PremiumTextEditorField(
+                                title: "Company overview",
+                                icon: "building.2",
+                                hint: "Short factual company context from an official source.",
+                                text: binding(\.companyOverview),
+                                minHeight: 100,
+                                color: HDTheme.violet
+                            )
+                        }
+                        .premiumCard()
 
-                Section("Skills") {
-                    TextEditor(text: listBinding(\.skills, commaSeparated: true))
-                        .frame(minHeight: 90)
-                }
+                        PremiumTextEditorField(
+                            title: "Eligibility",
+                            icon: "checkmark.circle.fill",
+                            hint: "Keep requirements readable. One idea per line or short paragraph.",
+                            text: binding(\.elig),
+                            minHeight: 110,
+                            color: HDTheme.green
+                        )
 
-                Section("Responsibilities") {
-                    TextEditor(text: listBinding(\.resp))
-                        .frame(minHeight: 120)
-                }
+                        PremiumTextEditorField(
+                            title: "Job description",
+                            icon: "doc.text.fill",
+                            hint: "Use short paragraphs with clear spacing. Avoid one dense text wall.",
+                            text: binding(\.desc),
+                            minHeight: 150,
+                            color: HDTheme.blue
+                        )
 
-                Section("Who should apply") {
-                    TextEditor(text: binding(\.who))
-                        .frame(minHeight: 90)
-                }
+                        PremiumTextEditorField(
+                            title: "Skills",
+                            icon: "sparkles",
+                            hint: "Comma-separated skills are shown as clean skill tags on the job page.",
+                            text: listBinding(\.skills, commaSeparated: true),
+                            minHeight: 90,
+                            color: HDTheme.cyan
+                        )
 
-                Section("Selection process") {
-                    TextEditor(text: listBinding(\.selectionProcess))
-                        .frame(minHeight: 100)
-                }
+                        PremiumTextEditorField(
+                            title: "Responsibilities",
+                            icon: "checklist",
+                            hint: "Use one responsibility per line so the public page becomes easy to scan.",
+                            text: listBinding(\.resp),
+                            minHeight: 130,
+                            color: HDTheme.violet
+                        )
 
-                Section("Important dates") {
-                    TextEditor(text: listBinding(\.importantDates))
-                        .frame(minHeight: 90)
+                        PremiumTextEditorField(
+                            title: "Who should apply",
+                            icon: "person.crop.circle.badge.checkmark",
+                            hint: "A concise candidate-fit paragraph works best.",
+                            text: binding(\.who),
+                            minHeight: 105,
+                            color: HDTheme.green
+                        )
+
+                        PremiumTextEditorField(
+                            title: "Selection process",
+                            icon: "arrow.triangle.branch",
+                            hint: "One stage per line: assessment, interview, HR, offer.",
+                            text: listBinding(\.selectionProcess),
+                            minHeight: 105,
+                            color: HDTheme.amber
+                        )
+
+                        PremiumTextEditorField(
+                            title: "Important dates",
+                            icon: "calendar.badge.clock",
+                            hint: "One date or deadline per line for a clean public timeline.",
+                            text: listBinding(\.importantDates),
+                            minHeight: 95,
+                            color: HDTheme.red
+                        )
+                    }
+                    .padding(16)
+                    .padding(.bottom, 28)
                 }
             }
             .navigationTitle("Edit Job")
@@ -2296,7 +2479,7 @@ struct JobEditSheet: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
-                        .fontWeight(.bold)
+                        .fontWeight(.black)
                 }
             }
         }
