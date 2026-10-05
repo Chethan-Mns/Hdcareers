@@ -966,249 +966,56 @@ struct SmallMetric: View {
 
 struct AutomationHealthCard: View {
     @EnvironmentObject private var state: AppState
-    @State private var showLastRun = false
 
-    private func outcomeColor(_ outcome: String?) -> Color {
+    private func color(_ outcome: String?) -> Color {
         switch outcome {
         case "published": return HDTheme.green
         case "partial", "no_publish": return HDTheme.amber
         case "error": return HDTheme.red
-        case "scheduled": return HDTheme.blue
         default: return HDTheme.blue
         }
     }
 
-    private func outcomeLabel(_ outcome: String?) -> String {
+    private func label(_ outcome: String?) -> String {
         if outcome == "scheduled" { return "Ready" }
-        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
-    }
-
-    private func nextRunText(_ slot: AutomationHealth.Slot) -> String {
-        let iso = ISO8601DateFormatter()
-        iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        var stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
-        if stored == nil {
-            iso.formatOptions = [.withInternetDateTime]
-            stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
-        }
-
-        if let stored, stored > Date() {
-            return formatAdminDate(slot.nextRunAt)
-        }
-
-        let zone = TimeZone(identifier: slot.timezone ?? "Asia/Kolkata") ?? .current
-        let parts = slot.time.split(separator: ":")
-        let hour = parts.first.flatMap { Int($0) } ?? 9
-        let minute = parts.dropFirst().first.flatMap { Int($0) } ?? 0
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = zone
-        var components = calendar.dateComponents([.year, .month, .day], from: Date())
-        components.hour = hour
-        components.minute = minute
-        components.second = 0
-        var next = calendar.date(from: components) ?? Date()
-        if next <= Date() {
-            next = calendar.date(byAdding: .day, value: 1, to: next) ?? next
-        }
-
-        let display = DateFormatter()
-        display.locale = Locale(identifier: "en_IN")
-        display.timeZone = zone
-        display.dateFormat = "dd MMM, h:mm a"
-        return display.string(from: next) + " IST"
+        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Ready"
     }
 
     var body: some View {
-        Group {
-            if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
-                VStack(spacing: 0) {
-                    ZStack(alignment: .bottomLeading) {
-                        LinearGradient(
-                            colors: [HDTheme.navy, HDTheme.blue],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                        .frame(height: 142)
+        if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+            NavigationLink {
+                AutomationDetailsView()
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "bolt.fill")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(HDTheme.blue)
+                        .frame(width: 38, height: 38)
+                        .background(HDTheme.blue.opacity(0.08))
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 
-                        Circle()
-                            .fill(Color.white.opacity(0.09))
-                            .frame(width: 130, height: 130)
-                            .offset(x: 245, y: -48)
-
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "bolt.fill")
-                                    Text("DAILY PUBLISHING")
-                                        .tracking(1)
-                                }
-                                .font(.caption2.weight(.black))
-                                .foregroundStyle(.white.opacity(0.78))
-
-                                Spacer()
-
-                                StatusPill(
-                                    text: outcomeLabel(slot.outcome),
-                                    color: outcomeColor(slot.outcome)
-                                )
-                            }
-
-                            Text("9:00 AM Batch")
-                                .font(.system(size: 25, weight: .black, design: .rounded))
-                                .foregroundStyle(.white)
-
-                            HStack(spacing: 8) {
-                                Label(slot.target ?? "9–10 verified jobs/day", systemImage: "target")
-                                Spacer()
-                                Label(nextRunText(slot), systemImage: "clock.fill")
-                            }
-                            .font(.caption.weight(.bold))
-                            .foregroundStyle(.white.opacity(0.9))
-                        }
-                        .padding(18)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("Daily publishing")
+                            .font(.subheadline.weight(.black))
+                            .foregroundStyle(HDTheme.navy)
+                        Text("(slot.time) · (slot.target ?? slot.title)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
                     }
 
-                    VStack(alignment: .leading, spacing: 15) {
-                        VStack(alignment: .leading, spacing: 9) {
-                            Text("Today’s publishing mix")
-                                .font(.subheadline.weight(.black))
-                                .foregroundStyle(HDTheme.navy)
+                    Spacer()
 
-                            if let mix = slot.mix, !mix.isEmpty {
-                                LazyVGrid(
-                                    columns: [GridItem(.adaptive(minimum: 130), spacing: 8)],
-                                    alignment: .leading,
-                                    spacing: 8
-                                ) {
-                                    ForEach(Array(mix.enumerated()), id: \.offset) { index, item in
-                                        HStack(spacing: 6) {
-                                            Image(systemName: publishingIcon(index))
-                                                .font(.caption2.weight(.bold))
-                                                .foregroundStyle(HDTheme.blue)
-                                            Text(item)
-                                                .font(.caption2.weight(.bold))
-                                                .foregroundStyle(HDTheme.navy)
-                                                .lineLimit(1)
-                                        }
-                                        .padding(.horizontal, 10)
-                                        .padding(.vertical, 8)
-                                        .background(HDTheme.blue.opacity(0.07))
-                                        .clipShape(Capsule())
-                                    }
-                                }
-                            }
-                        }
-
-                        HStack(spacing: 5) {
-                            PublishingStep(icon: "magnifyingglass", title: "Find")
-                            PipelineArrow()
-                            PublishingStep(icon: "checkmark.shield.fill", title: "Verify")
-                            PipelineArrow()
-                            PublishingStep(icon: "arrow.up.circle.fill", title: "Publish")
-                            PipelineArrow()
-                            PublishingStep(icon: "paperplane.fill", title: "Telegram")
-                        }
-
-                        if let delivery = slot.delivery, !delivery.isEmpty {
-                            Text(delivery)
-                                .font(.caption2.weight(.semibold))
-                                .foregroundStyle(.secondary)
-                                .lineLimit(2)
-                        }
-
-                        Button {
-                            withAnimation(.snappy(duration: 0.28)) {
-                                showLastRun.toggle()
-                            }
-                        } label: {
-                            HStack {
-                                Image(systemName: showLastRun ? "chart.bar.fill" : "clock.arrow.circlepath")
-                                    .foregroundStyle(HDTheme.blue)
-                                VStack(alignment: .leading, spacing: 1) {
-                                    Text(showLastRun ? "Hide last run" : "Show last run")
-                                        .font(.subheadline.weight(.bold))
-                                        .foregroundStyle(HDTheme.navy)
-                                    if let last = slot.lastRunAt {
-                                        Text("Previous: \(formatAdminDate(last))")
-                                            .font(.caption2)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                                Spacer()
-                                Image(systemName: "chevron.down")
-                                    .font(.caption.weight(.bold))
-                                    .foregroundStyle(HDTheme.blue)
-                                    .rotationEffect(.degrees(showLastRun ? 180 : 0))
-                            }
-                            .padding(12)
-                            .background(HDTheme.blue.opacity(0.055))
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                        }
-                        .buttonStyle(.plain)
-
-                        if showLastRun {
-                            VStack(alignment: .leading, spacing: 9) {
-                                HStack {
-                                    Label("Last run result", systemImage: "waveform.path.ecg")
-                                        .font(.caption.weight(.black))
-                                        .foregroundStyle(HDTheme.navy)
-                                    Spacer()
-                                    StatusPill(
-                                        text: outcomeLabel(slot.outcome),
-                                        color: outcomeColor(slot.outcome)
-                                    )
-                                }
-
-                                if let detail = slot.detail, !detail.isEmpty {
-                                    Text(detail)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                } else {
-                                    Text("No run details are available yet.")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                            .padding(13)
-                            .background(outcomeColor(slot.outcome).opacity(0.055))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .stroke(outcomeColor(slot.outcome).opacity(0.16))
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                            .transition(.opacity.combined(with: .move(edge: .top)))
-                        }
+                    VStack(alignment: .trailing, spacing: 5) {
+                        StatusPill(text: label(slot.outcome), color: color(slot.outcome))
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundStyle(.tertiary)
                     }
-                    .padding(16)
-                    .background(Color.white)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(Color.black.opacity(0.06))
-                }
-                .shadow(color: Color.black.opacity(0.045), radius: 12, x: 0, y: 5)
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    Label("Publishing automation", systemImage: "bolt.slash")
-                        .font(.headline.weight(.black))
-                    Text("Refresh to load the active daily publishing schedule.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
                 }
                 .hdCard()
             }
-        }
-    }
-
-    private func publishingIcon(_ index: Int) -> String {
-        switch index {
-        case 0: return "laptopcomputer"
-        case 1: return "person.crop.circle.badge.plus"
-        case 2: return "briefcase.fill"
-        case 3: return "building.columns.fill"
-        default: return "figure.walk"
+            .buttonStyle(.plain)
         }
     }
 }
@@ -1261,7 +1068,6 @@ struct JobsView: View {
             case .active: matchesFilter = job.isActive
             case .expired: matchesFilter = job.isExpired
             }
-
             guard matchesFilter else { return false }
             guard !search.isEmpty else { return true }
             let haystack = [job.company, job.role, job.loc, job.cat].compactMap { $0 }.joined(separator: " ").lowercased()
@@ -1273,45 +1079,51 @@ struct JobsView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
+
                 ScrollView {
-                    VStack(spacing: 14) {
+                    VStack(spacing: 10) {
                         AdminHeader(
-                            title: "All Jobs",
-                            subtitle: "\(state.jobs.count) published jobs",
+                            title: "Jobs",
+                            subtitle: "(state.activeJobs.count) active · (state.expiredJobs.count) expired",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshJobs() }
                         }
 
-                        HStack {
+                        HStack(spacing: 9) {
                             Image(systemName: "magnifyingglass")
+                                .font(.caption)
                                 .foregroundStyle(.secondary)
-                            TextField("Search title, company or location", text: $search)
+                            TextField("Search jobs", text: $search)
                                 .textInputAutocapitalization(.never)
+                                .font(.subheadline)
                         }
-                        .padding(12)
+                        .padding(.horizontal, 12)
+                        .frame(height: 42)
                         .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay { RoundedRectangle(cornerRadius: 12).stroke(HDTheme.line) }
 
                         Picker("Status", selection: $filter) {
                             ForEach(JobListFilter.allCases) { item in
-                                Text("\(item.rawValue) \(count(for: item))").tag(item)
+                                Text("(item.rawValue) (count(for: item))").tag(item)
                             }
                         }
                         .pickerStyle(.segmented)
 
                         if filteredJobs.isEmpty {
-                            EmptyState(icon: "briefcase", title: "No jobs found", message: "Try changing your search or status filter.")
+                            EmptyState(icon: "briefcase", title: "No jobs", message: "Try another search or filter.")
                                 .hdCard()
                         } else {
-                            LazyVStack(spacing: 10) {
+                            LazyVStack(spacing: 7) {
                                 ForEach(filteredJobs) { job in
                                     JobRow(job: job)
                                 }
                             }
                         }
                     }
-                    .padding(16)
+                    .padding(.horizontal, 14)
+                    .padding(.top, 10)
                     .padding(.bottom, 16)
                 }
                 .refreshable { await state.refreshJobs() }
@@ -1333,49 +1145,47 @@ struct JobRow: View {
     let job: Job
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            CompanyLogoView(job: job, size: 46)
+        HStack(spacing: 10) {
+            CompanyLogoView(job: job, size: 39)
 
-            VStack(alignment: .leading, spacing: 5) {
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(job.company ?? "Company")
-                            .font(.headline.weight(.black))
-                        Text(job.role ?? "Job Opening")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(2)
-                    }
-                    Spacer(minLength: 8)
-                    StatusPill(
-                        text: job.isExpired ? "Expired" : "Active",
-                        color: job.isExpired ? HDTheme.red : HDTheme.green
-                    )
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 6) {
+                    Text(job.company ?? "Company")
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
+                        .lineLimit(1)
+                    Spacer()
+                    Circle()
+                        .fill(job.isExpired ? HDTheme.red : HDTheme.green)
+                        .frame(width: 7, height: 7)
                 }
 
-                HStack(spacing: 8) {
-                    Label(job.loc ?? "Not specified", systemImage: "mappin.and.ellipse")
-                    Label(job.expType?.capitalized ?? "Job", systemImage: "person.fill")
-                }
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
+                Text(job.role ?? "Job Opening")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
 
-                HStack(spacing: 12) {
-                    if let site = job.siteURL {
-                        Link("HD Careers", destination: site)
-                    }
+                HStack(spacing: 7) {
+                    Text(job.loc ?? "Not specified")
+                    Text("•")
+                    Text(job.expType?.capitalized ?? "Job")
+                    Spacer()
                     if let official = job.officialURL {
-                        Link("Official ↗", destination: official)
+                        Link(destination: official) {
+                            Image(systemName: "arrow.up.right")
+                                .font(.caption2.weight(.bold))
+                        }
                     }
                 }
-                .font(.caption.weight(.bold))
-                .foregroundStyle(HDTheme.blue)
+                .font(.system(size: 9.5, weight: .medium))
+                .foregroundStyle(.secondary)
             }
         }
-        .hdCard(14)
+        .padding(11)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
     }
-
 }
 
 struct ParsedAdminLink: Identifiable {
@@ -1913,10 +1723,7 @@ struct CheckerView: View {
     @EnvironmentObject private var state: AppState
     @State private var pendingRemove: AvailabilityItem?
 
-    private var results: AvailabilityResponse.Results? {
-        state.availability?.results
-    }
-
+    private var results: AvailabilityResponse.Results? { state.availability?.results }
     private var reviewItems: [AvailabilityItem] {
         results?.items?.filter { $0.state == "review" } ?? []
     }
@@ -1925,90 +1732,95 @@ struct CheckerView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
+
                 ScrollView {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 10) {
                         AdminHeader(
-                            title: "Expired Job Checker",
-                            subtitle: "Conservative official-link verification",
+                            title: "Checker",
+                            subtitle: "Official-link verification",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshChecker() }
                         }
 
-                        VStack(alignment: .leading, spacing: 14) {
+                        VStack(spacing: 10) {
                             HStack {
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text("Last Run")
-                                        .font(.caption.weight(.bold))
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Last check")
+                                        .font(.system(size: 9.5, weight: .bold))
                                         .foregroundStyle(.secondary)
                                     Text(formatAdminDate(results?.checkedAt))
-                                        .font(.subheadline.weight(.black))
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(HDTheme.navy)
+                                        .lineLimit(1)
                                 }
                                 Spacer()
                                 StatusPill(
-                                    text: state.availability?.latestRun?.status?.capitalized ?? "Saved",
-                                    color: HDTheme.green,
-                                    icon: "checkmark.circle.fill"
+                                    text: reviewItems.isEmpty ? "Clear" : "(reviewItems.count) review",
+                                    color: reviewItems.isEmpty ? HDTheme.green : HDTheme.amber,
+                                    icon: reviewItems.isEmpty ? "checkmark" : "exclamationmark"
                                 )
                             }
 
-                            HStack(spacing: 10) {
+                            HStack(spacing: 7) {
+                                SmallMetric(title: "Active", value: results?.active ?? 0, color: HDTheme.green)
                                 SmallMetric(title: "Expired", value: results?.expired ?? 0, color: HDTheme.red)
-                                SmallMetric(title: "Needs Review", value: results?.review ?? 0, color: HDTheme.amber)
-                                SmallMetric(title: "No Change", value: results?.active ?? 0, color: HDTheme.green)
+                                SmallMetric(title: "Review", value: results?.review ?? 0, color: HDTheme.amber)
                             }
 
                             Button {
                                 Task { await state.runChecker() }
                             } label: {
-                                HStack {
+                                HStack(spacing: 7) {
                                     if state.isBusy { ProgressView().tint(.white) }
                                     Image(systemName: "play.fill")
-                                    Text("Run Checker Now").fontWeight(.bold)
+                                        .font(.caption)
+                                    Text("Run checker")
+                                        .font(.subheadline.weight(.bold))
                                 }
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 14)
+                                .frame(height: 43)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(.white)
-                            .background(HDTheme.amber)
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                            .background(HDTheme.navy)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                             .disabled(state.isBusy)
                         }
                         .hdCard()
 
                         if reviewItems.isEmpty {
-                            VStack(spacing: 8) {
-                                Image(systemName: "checkmark.shield.fill")
-                                    .font(.system(size: 30))
+                            HStack(spacing: 10) {
+                                Image(systemName: "checkmark.circle.fill")
                                     .foregroundStyle(HDTheme.green)
-                                Text("No jobs need review")
-                                    .font(.headline.weight(.black))
-                                Text("The current checker result has no unresolved review items.")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .multilineTextAlignment(.center)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("No review required")
+                                        .font(.subheadline.weight(.black))
+                                    Text("All current checker results are resolved.")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
                             }
-                            .frame(maxWidth: .infinity)
                             .hdCard()
                         } else {
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text("Needs Review (\(reviewItems.count))")
-                                    .font(.headline.weight(.black))
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Needs review")
+                                    .font(.subheadline.weight(.black))
+                                    .padding(.horizontal, 2)
 
                                 ForEach(reviewItems) { item in
                                     ReviewItemCard(
                                         item: item,
                                         remove: { pendingRemove = item },
-                                        keep: {
-                                            Task { await state.resolveReview(item, action: "keep") }
-                                        }
+                                        keep: { Task { await state.resolveReview(item, action: "keep") } }
                                     )
                                 }
                             }
                         }
                     }
-                    .padding(16)
+                    .padding(.horizontal, 14)
+                    .padding(.top, 10)
                     .padding(.bottom, 16)
                 }
                 .refreshable { await state.refreshChecker() }
@@ -2022,17 +1834,13 @@ struct CheckerView: View {
                 ),
                 titleVisibility: .visible
             ) {
-                Button(pendingRemove?.pendingNew == true ? "Reject / Do Not Publish" : "Remove / Mark Expired", role: .destructive) {
+                Button(pendingRemove?.pendingNew == true ? "Reject" : "Mark Expired", role: .destructive) {
                     if let item = pendingRemove {
                         Task { await state.resolveReview(item, action: "expire") }
                     }
                     pendingRemove = nil
                 }
                 Button("Cancel", role: .cancel) { pendingRemove = nil }
-            } message: {
-                Text(pendingRemove?.pendingNew == true
-                     ? "This job is still unpublished. Rejecting it removes it from Needs Review and it will not be published."
-                     : "This will mark the job expired in HD Careers and trigger the normal website regeneration.")
             }
         }
     }
@@ -2044,57 +1852,53 @@ struct ReviewItemCard: View {
     let keep: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 3) {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(alignment: .top, spacing: 8) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(item.company ?? "Company")
-                        .font(.headline.weight(.black))
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
                     Text(item.role ?? "Job Opening")
-                        .font(.subheadline.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
+                        .lineLimit(2)
                 }
                 Spacer()
-                StatusPill(text: item.pendingNew == true ? "Review to Publish" : "Needs Review", color: HDTheme.amber)
+                StatusPill(text: item.pendingNew == true ? "New" : "Review", color: HDTheme.amber)
             }
 
             Text(item.reason ?? "Availability could not be confirmed.")
-                .font(.caption)
+                .font(.system(size: 10.5))
                 .foregroundStyle(.secondary)
+                .lineLimit(3)
 
-            HStack(spacing: 8) {
+            HStack(spacing: 7) {
                 if let official = item.url.flatMap(URL.init(string:)) {
                     Link(destination: official) {
-                        Label("Official", systemImage: "arrow.up.right.square")
+                        Label("Official", systemImage: "arrow.up.right")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
+                    .controlSize(.small)
                 }
-
-                if item.pendingNew != true, let hd = siteURL(item.page) {
-                    Link(destination: hd) {
-                        Label("HD Careers", systemImage: "eye")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                }
-            }
-
-            HStack(spacing: 8) {
-                Button(role: .destructive, action: remove) {
-                    Label(item.pendingNew == true ? "Reject" : "Remove", systemImage: "trash.fill")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
 
                 Button(action: keep) {
-                    Label(item.pendingNew == true ? "Approve & Publish" : "Keep Active", systemImage: item.pendingNew == true ? "paperplane.fill" : "checkmark")
+                    Label(item.pendingNew == true ? "Approve" : "Keep", systemImage: "checkmark")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
+                .controlSize(.small)
                 .tint(HDTheme.green)
+
+                Button(role: .destructive, action: remove) {
+                    Image(systemName: "trash")
+                        .frame(width: 20)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
             }
         }
-        .hdCard(14)
+        .hdCard(12)
     }
 }
 
