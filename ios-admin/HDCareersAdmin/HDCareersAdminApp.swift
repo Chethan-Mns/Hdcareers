@@ -2,7 +2,7 @@ import SwiftUI
 
 @MainActor
 final class AppState: ObservableObject {
-    @Published var isBootstrapping = true
+    @Published var isBootstrapping = false
     @Published var isAuthenticated = false
     @Published var isBusy = false
     @Published var alertMessage: String?
@@ -191,10 +191,9 @@ struct HDCareersAdminApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                if state.isBootstrapping {
-                    LaunchView()
-                } else if state.isAuthenticated {
+            ZStack {
+                HDTheme.background.ignoresSafeArea()
+                if state.isAuthenticated {
                     RootTabView()
                 } else {
                     LoginView()
@@ -204,9 +203,7 @@ struct HDCareersAdminApp: App {
             .tint(HDTheme.blue)
             .preferredColorScheme(.light)
             .task {
-                if state.isBootstrapping {
-                    await state.bootstrap()
-                }
+                await state.bootstrap()
             }
             .alert("HD Careers Admin", isPresented: Binding(
                 get: { state.alertMessage != nil },
