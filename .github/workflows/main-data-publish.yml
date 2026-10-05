@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: hd-careers-publishing
+  group: main-job-data-publish
   cancel-in-progress: false
 
 jobs:
