@@ -1,0 +1,48 @@
+name: Hourly Telegram Publish
+
+on:
+  schedule:
+    - cron: "30 4-23 * * *"
+    - cron: "30 0-3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hourly-telegram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publish one queued job
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: python3 scripts/telegram_queue.py publish-one
+
+      - name: Save Telegram queue state
+        shell: bash
+        run: |
+          if git diff --quiet -- data/telegram-queue.json; then
+            echo "No queue state change."
+          else
+            git config user.name "HD Careers Automation"
+            git config user.email "actions@users.noreply.github.com"
+            git add data/telegram-queue.json
+            git commit -m "Update Telegram posting queue"
+            git push origin HEAD:main
+          fi
