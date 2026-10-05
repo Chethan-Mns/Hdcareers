@@ -4,8 +4,6 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/job-availability.yml
-      - scripts/check_job_availability.py
       - data/availability-trigger.json
   schedule:
     # 08:15 and 20:15 Asia/Kolkata.
@@ -42,7 +40,7 @@ jobs:
           git config user.name 'HD Careers Automation'
           git config user.email 'actions@users.noreply.github.com'
 
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4 5 6 7 8; do
             git add data/jobs.json data/availability-status.json data/review-queue.json index.html jobs/ robots.txt sitemap.xml
 
             if git diff --cached --quiet; then
@@ -57,7 +55,7 @@ jobs:
               exit 0
             fi
 
-            echo "::warning::main changed while the checker was running. Refreshing from the latest main and retrying safely (attempt ${attempt}/3)."
+            echo "::warning::main changed while the checker was running. Refreshing from the latest main and retrying safely (attempt ${attempt}/8)."
             git fetch origin main
             git reset --hard origin/main
 
@@ -65,9 +63,10 @@ jobs:
             python3 scripts/check_content_quality.py
             python3 generate.py
             git diff --check
+            sleep 3
           done
 
-          echo "::error::Could not publish checker updates after 3 safe retries because main kept changing."
+          echo "::error::Could not publish checker updates after 8 safe retries because main kept changing."
           exit 1
       - name: Retain check evidence and uncertain sources
         if: always()
