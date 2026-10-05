@@ -49,48 +49,59 @@ struct LoginView: View {
     @State private var password = ""
     @State private var rememberWithFaceID = false
 
-    private var canUseFaceID: Bool { BiometricAuth.isAvailable }
-    private var hasSavedCredential: Bool { CredentialVault.load() != nil }
+    private var canUseFaceID: Bool {
+        BiometricAuth.isAvailable
+    }
+
+    private var hasSavedCredential: Bool {
+        CredentialVault.load() != nil
+    }
 
     var body: some View {
         ZStack {
-            HDTheme.background.ignoresSafeArea()
+            LinearGradient(
+                colors: [.white, HDTheme.background, HDTheme.blue.opacity(0.08)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                Spacer()
+            ScrollView {
+                VStack(spacing: 28) {
+                    Spacer(minLength: 64)
 
-                VStack(spacing: 18) {
-                    HDLogoView(size: 66)
-
-                    VStack(spacing: 5) {
-                        Text("HD Careers")
-                            .font(.system(size: 25, weight: .black, design: .rounded))
+                    VStack(spacing: 14) {
+                        HDLogoView(size: 92)
+                        Text("HD Careers Admin")
+                            .font(.system(size: 28, weight: .black, design: .rounded))
                             .foregroundStyle(HDTheme.navy)
-                        Text("Admin")
-                            .font(.caption.weight(.bold))
+                        Text("Private control center for jobs, automations and analytics.")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
                             .foregroundStyle(.secondary)
+                            .padding(.horizontal)
                     }
 
-                    VStack(spacing: 10) {
-                        HStack(spacing: 10) {
-                            Image(systemName: "person")
+                    VStack(spacing: 14) {
+                        HStack {
+                            Image(systemName: "person.fill")
                                 .foregroundStyle(.secondary)
-                                .frame(width: 18)
-                            TextField("Username", text: $username)
+                            TextField("Admin username", text: $username)
                                 .textInputAutocapitalization(.never)
                                 .autocorrectionDisabled()
                                 .textContentType(.username)
                         }
-                        .padding(.horizontal, 13)
-                        .frame(height: 48)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
-                        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(Color.black.opacity(0.08))
+                        }
 
-                        HStack(spacing: 10) {
-                            Image(systemName: "lock")
+                        HStack {
+                            Image(systemName: "lock.fill")
                                 .foregroundStyle(.secondary)
-                                .frame(width: 18)
                             SecureField("Password", text: $password)
                                 .textContentType(.password)
                                 .submitLabel(.go)
@@ -104,24 +115,34 @@ struct LoginView: View {
                                     }
                                 }
                         }
-                        .padding(.horizontal, 13)
-                        .frame(height: 48)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
-                        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(Color.black.opacity(0.08))
+                        }
 
                         if let loginStatus = state.loginStatus, !loginStatus.isEmpty {
-                            Text(loginStatus)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(HDTheme.red)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.horizontal, 2)
+                            HStack(alignment: .top, spacing: 8) {
+                                Image(systemName: "exclamationmark.circle.fill")
+                                    .foregroundStyle(HDTheme.red)
+                                Text(loginStatus)
+                                    .font(.footnote.weight(.semibold))
+                                    .foregroundStyle(HDTheme.red)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(11)
+                            .background(HDTheme.red.opacity(0.08))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
 
                         if canUseFaceID {
-                            Toggle("Use Face ID", isOn: $rememberWithFaceID)
-                                .font(.caption.weight(.semibold))
-                                .tint(HDTheme.blue)
+                            Toggle(isOn: $rememberWithFaceID) {
+                                Label("Enable Face ID on this iPhone", systemImage: "faceid")
+                                    .font(.footnote.weight(.semibold))
+                            }
+                            .tint(HDTheme.blue)
                         }
 
                         Button {
@@ -133,44 +154,46 @@ struct LoginView: View {
                                 )
                             }
                         } label: {
-                            HStack(spacing: 8) {
-                                if state.isBusy { ProgressView().tint(.white) }
-                                Text(state.isBusy ? "Signing in…" : "Sign in")
-                                    .font(.subheadline.weight(.bold))
+                            HStack {
+                                if state.isBusy {
+                                    ProgressView().tint(.white)
+                                }
+                                Text(state.isBusy ? "Signing in…" : "Sign In")
+                                    .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity)
-                            .frame(height: 48)
+                            .padding(.vertical, 15)
                         }
                         .buttonStyle(.plain)
                         .foregroundStyle(.white)
-                        .background(HDTheme.navy)
-                        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                        .background(HDTheme.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         .disabled(state.isBusy)
 
                         if canUseFaceID && hasSavedCredential {
                             Button {
                                 Task { await state.faceIDLogin() }
                             } label: {
-                                Label("Face ID", systemImage: "faceid")
-                                    .font(.subheadline.weight(.bold))
+                                Label("Unlock with Face ID", systemImage: "faceid")
+                                    .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .frame(height: 46)
+                                    .padding(.vertical, 14)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(HDTheme.blue)
-                            .background(HDTheme.blue.opacity(0.07))
-                            .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                            .background(HDTheme.blue.opacity(0.08))
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         }
                     }
+                    .hdCard(18)
+
+                    Label("Private Admin Access", systemImage: "lock.shield")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+
+                    Spacer(minLength: 30)
                 }
-                .padding(.horizontal, 24)
-
-                Spacer()
-
-                Label("Private access", systemImage: "lock.shield")
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .padding(.bottom, 18)
+                .padding(.horizontal, 20)
             }
         }
     }
@@ -183,19 +206,19 @@ struct RootTabView: View {
     var body: some View {
         TabView(selection: $selection) {
             DashboardView()
-                .tabItem { Label("Home", systemImage: "house") }
+                .tabItem { Label("Dashboard", systemImage: "house.fill") }
                 .tag(0)
 
             JobsView()
-                .tabItem { Label("Jobs", systemImage: "briefcase") }
+                .tabItem { Label("Jobs", systemImage: "briefcase.fill") }
                 .tag(1)
 
             PublishView()
-                .tabItem { Label("Publish", systemImage: "plus.circle") }
+                .tabItem { Label("Publish", systemImage: "wand.and.stars") }
                 .tag(2)
 
             CheckerView()
-                .tabItem { Label("Checker", systemImage: "checkmark.shield") }
+                .tabItem { Label("Checker", systemImage: "checkmark.shield.fill") }
                 .tag(3)
 
             MoreView()
@@ -213,32 +236,26 @@ struct AdminHeader: View {
     var trailingAction: (() -> Void)? = nil
 
     var body: some View {
-        HStack(spacing: 10) {
-            HDLogoView(size: 34)
-
-            VStack(alignment: .leading, spacing: 1) {
+        HStack(spacing: 12) {
+            HDLogoView(size: 42)
+            VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.system(size: 18, weight: .black, design: .rounded))
+                    .font(.headline.weight(.black))
                     .foregroundStyle(HDTheme.navy)
                 if let subtitle {
                     Text(subtitle)
-                        .font(.system(size: 10.5, weight: .medium))
+                        .font(.caption)
                         .foregroundStyle(.secondary)
-                        .lineLimit(1)
                 }
             }
-
             Spacer()
-
             if let trailingSystemImage, let trailingAction {
                 Button(action: trailingAction) {
                     Image(systemName: trailingSystemImage)
-                        .font(.system(size: 13, weight: .bold))
-                        .foregroundStyle(HDTheme.navy)
-                        .frame(width: 34, height: 34)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
-                        .overlay { RoundedRectangle(cornerRadius: 11).stroke(HDTheme.line) }
+                        .font(.system(size: 16, weight: .bold))
+                        .frame(width: 38, height: 38)
+                        .background(HDTheme.blue.opacity(0.08))
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 }
                 .buttonStyle(.plain)
             }
@@ -255,7 +272,7 @@ struct DashboardView: View {
                 HDTheme.background.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 12) {
                         AdminHeader(
                             title: "HD Careers Admin",
                             subtitle: "Jobs, publishing and traffic",
@@ -270,8 +287,8 @@ struct DashboardView: View {
                         TrafficSummaryCard()
                         AutomationHealthCard()
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 10)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 12)
                     .padding(.bottom, 18)
                 }
                 .refreshable { await state.refreshAll() }
@@ -289,35 +306,46 @@ struct DashboardHeroCard: View {
     }
 
     var body: some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Overview")
-                    .font(.system(size: 10, weight: .black))
-                    .foregroundStyle(HDTheme.blue)
-                    .textCase(.uppercase)
-                    .tracking(0.8)
+        ZStack(alignment: .bottomLeading) {
+            LinearGradient(
+                colors: [HDTheme.navy, HDTheme.blue],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 178)
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
 
-                Text("\(state.activeJobs.count) live jobs")
-                    .font(.system(size: 26, weight: .black, design: .rounded))
-                    .foregroundStyle(HDTheme.navy)
+            Circle()
+                .fill(Color.white.opacity(0.10))
+                .frame(width: 150, height: 150)
+                .offset(x: 245, y: -55)
 
-                Text(reviewCount == 0 ? "Everything looks good" : "\(reviewCount) item\(reviewCount == 1 ? "" : "s") need review")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(reviewCount == 0 ? HDTheme.green : HDTheme.amber)
+            VStack(alignment: .leading, spacing: 9) {
+                HStack {
+                    Image(systemName: "sparkles")
+                    Text("HD CAREERS CONTROL CENTER")
+                        .font(.caption2.weight(.black))
+                        .tracking(1.1)
+                }
+                .foregroundStyle(.white.opacity(0.78))
+
+                Text("Everything important,\nright here.")
+                    .font(.system(size: 28, weight: .black, design: .rounded))
+                    .foregroundStyle(.white)
+
+                HStack(spacing: 8) {
+                    Label("\(state.activeJobs.count) live jobs", systemImage: "briefcase.fill")
+                    if reviewCount > 0 {
+                        Label("\(reviewCount) to review", systemImage: "exclamationmark.triangle.fill")
+                    } else {
+                        Label("All clear", systemImage: "checkmark.shield.fill")
+                    }
+                }
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.white.opacity(0.9))
             }
-
-            Spacer()
-
-            ZStack {
-                Circle()
-                    .fill((reviewCount == 0 ? HDTheme.green : HDTheme.amber).opacity(0.10))
-                    .frame(width: 50, height: 50)
-                Image(systemName: reviewCount == 0 ? "checkmark" : "exclamationmark")
-                    .font(.system(size: 18, weight: .black))
-                    .foregroundStyle(reviewCount == 0 ? HDTheme.green : HDTheme.amber)
-            }
+            .padding(20)
         }
-        .hdCard()
     }
 }
 
@@ -369,16 +397,30 @@ struct ReviewAlertCard: View {
 
 struct DashboardStatsCard: View {
     @EnvironmentObject private var state: AppState
+    private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
-        HStack(spacing: 0) {
-            DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
-            Divider().frame(height: 42)
-            DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.fill", color: .purple)
-            Divider().frame(height: 42)
-            DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
+        VStack(alignment: .leading, spacing: 13) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Jobs overview")
+                        .font(.headline.weight(.black))
+                    Text("Current website inventory")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                StatusPill(text: "\(state.activeJobs.count) active", color: HDTheme.green, icon: "checkmark.circle.fill")
+            }
+
+            LazyVGrid(columns: columns, spacing: 8) {
+                DashboardStat(title: "Total", value: state.jobs.count, icon: "briefcase.fill", color: HDTheme.blue)
+                DashboardStat(title: "Freshers", value: state.fresherJobs.count, icon: "person.crop.circle.badge.checkmark", color: .purple)
+                DashboardStat(title: "Active", value: state.activeJobs.count, icon: "checkmark.circle.fill", color: HDTheme.green)
+                DashboardStat(title: "Expired", value: state.expiredJobs.count, icon: "xmark.circle.fill", color: HDTheme.red)
+            }
         }
-        .hdCard(10)
+        .hdCard()
     }
 }
 
@@ -389,65 +431,105 @@ struct DashboardStat: View {
     let color: Color
 
     var body: some View {
-        VStack(spacing: 3) {
-            Text(numberText(value))
-                .font(.system(size: 19, weight: .black, design: .rounded))
-                .foregroundStyle(HDTheme.navy)
-            Text(title)
-                .font(.system(size: 9.5, weight: .bold))
-                .foregroundStyle(.secondary)
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundStyle(color)
+                .frame(width: 30, height: 30)
+                .background(color.opacity(0.09))
+                .clipShape(Circle())
+
+            VStack(alignment: .leading, spacing: 1) {
+                Text(numberText(value))
+                    .font(.system(size: 20, weight: .black, design: .rounded))
+                    .foregroundStyle(HDTheme.navy)
+                Text(title)
+                    .font(.caption2.weight(.bold))
+                    .foregroundStyle(.secondary)
+            }
+            Spacer(minLength: 0)
         }
-        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 9)
+        .background(Color.black.opacity(0.022))
+        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
     }
 }
 
 struct TrafficSummaryCard: View {
     @EnvironmentObject private var state: AppState
 
+    private var periodLabel: String {
+        switch state.trafficDays {
+        case 1: return "Last 24 hours"
+        case 30: return "Last 30 days"
+        default: return "Last 7 days"
+        }
+    }
+
     var body: some View {
-        VStack(spacing: 11) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text("Traffic")
-                    .font(.subheadline.weight(.black))
-                    .foregroundStyle(HDTheme.navy)
-                Spacer()
-                Picker("Period", selection: Binding(
-                    get: { state.trafficDays },
-                    set: { days in Task { await state.loadTraffic(days: days) } }
-                )) {
-                    Text("24H").tag(1)
-                    Text("7D").tag(7)
-                    Text("30D").tag(30)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Website traffic")
+                        .font(.headline.weight(.black))
+                    Text("Live GA4 snapshot · \(periodLabel)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-                .pickerStyle(.segmented)
-                .frame(width: 165)
+                Spacer()
+                StatusPill(text: "Live", color: HDTheme.green, icon: "circle.fill")
             }
+
+            Picker("Period", selection: Binding(
+                get: { state.trafficDays },
+                set: { days in Task { await state.loadTraffic(days: days) } }
+            )) {
+                Text("24H").tag(1)
+                Text("7D").tag(7)
+                Text("30D").tag(30)
+            }
+            .pickerStyle(.segmented)
 
             HStack(spacing: 0) {
-                TrafficMetric(title: "Live", value: state.traffic?.realtimeUsers ?? 0, icon: "dot.radiowaves.left.and.right", color: HDTheme.green)
-                Divider().frame(height: 36)
-                TrafficMetric(title: "Users", value: state.traffic?.totals?.visitors ?? 0, icon: "person.2.fill", color: HDTheme.blue)
-                Divider().frame(height: 36)
-                TrafficMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, icon: "eye.fill", color: .purple)
-                Divider().frame(height: 36)
-                TrafficMetric(title: "Apply", value: state.traffic?.conversions?.applyClicks ?? 0, icon: "cursorarrow.click.2", color: HDTheme.green)
+                TrafficMetric(
+                    title: "Live",
+                    value: state.traffic?.realtimeUsers ?? 0,
+                    icon: "dot.radiowaves.left.and.right",
+                    color: HDTheme.green
+                )
+                Divider().frame(height: 44)
+                TrafficMetric(
+                    title: "Users",
+                    value: state.traffic?.totals?.visitors ?? 0,
+                    icon: "person.2.fill",
+                    color: HDTheme.blue
+                )
+                Divider().frame(height: 44)
+                TrafficMetric(
+                    title: "Views",
+                    value: state.traffic?.totals?.pageviews ?? 0,
+                    icon: "eye.fill",
+                    color: .purple
+                )
             }
 
-            if let top = state.traffic?.pages?.first {
-                HStack(spacing: 7) {
-                    Image(systemName: "arrow.up.right")
-                        .font(.caption2.weight(.bold))
-                        .foregroundStyle(HDTheme.blue)
-                    Text(jobDisplayName(path: top.requestPath, jobs: state.jobs))
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                    Spacer()
-                    Text(numberText(top.pageviews))
-                        .font(.caption.weight(.black))
-                        .foregroundStyle(HDTheme.navy)
-                }
-                .padding(.top, 1)
+            HStack(spacing: 8) {
+                AnalyticsMiniMetric(
+                    title: "Sessions",
+                    value: numberText(state.traffic?.totals?.sessions),
+                    icon: "rectangle.stack.fill"
+                )
+                AnalyticsMiniMetric(
+                    title: "Views / user",
+                    value: String(format: "%.2f", state.traffic?.totals?.viewsPerUser ?? 0),
+                    icon: "chart.line.uptrend.xyaxis"
+                )
+                AnalyticsMiniMetric(
+                    title: "Engagement",
+                    value: String(format: "%.1f%%", state.traffic?.totals?.engagementRate ?? 0),
+                    icon: "bolt.heart.fill"
+                )
             }
         }
         .hdCard()
@@ -461,13 +543,16 @@ struct TrafficMetric: View {
     let color: Color
 
     var body: some View {
-        VStack(spacing: 2) {
+        VStack(spacing: 5) {
+            Image(systemName: icon)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(color)
             Text(numberText(value))
-                .font(.system(size: 17, weight: .black, design: .rounded))
+                .font(.system(size: 21, weight: .black, design: .rounded))
                 .foregroundStyle(HDTheme.navy)
             Text(title)
-                .font(.system(size: 9, weight: .bold))
-                .foregroundStyle(color)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
     }
@@ -931,74 +1016,267 @@ struct SmallMetric: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(numberText(value))
-                .font(.system(size: 16, weight: .black, design: .rounded))
+                .font(.title3.weight(.black))
                 .foregroundStyle(HDTheme.navy)
             Text(title)
-                .font(.system(size: 8.5, weight: .bold))
+                .font(.caption2.weight(.bold))
                 .foregroundStyle(color)
-                .lineLimit(1)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(9)
-        .background(color.opacity(0.065))
-        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+        .padding(11)
+        .background(color.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
+
 struct AutomationHealthCard: View {
     @EnvironmentObject private var state: AppState
+    @State private var showLastRun = false
 
-    private func color(_ outcome: String?) -> Color {
+    private func outcomeColor(_ outcome: String?) -> Color {
         switch outcome {
         case "published": return HDTheme.green
         case "partial", "no_publish": return HDTheme.amber
         case "error": return HDTheme.red
+        case "scheduled": return HDTheme.blue
         default: return HDTheme.blue
         }
     }
 
-    private func label(_ outcome: String?) -> String {
+    private func outcomeLabel(_ outcome: String?) -> String {
         if outcome == "scheduled" { return "Ready" }
-        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Ready"
+        return outcome?.replacingOccurrences(of: "_", with: " ").capitalized ?? "Scheduled"
+    }
+
+    private func nextRunText(_ slot: AutomationHealth.Slot) -> String {
+        let iso = ISO8601DateFormatter()
+        iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        var stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
+        if stored == nil {
+            iso.formatOptions = [.withInternetDateTime]
+            stored = slot.nextRunAt.flatMap { iso.date(from: $0) }
+        }
+
+        if let stored, stored > Date() {
+            return formatAdminDate(slot.nextRunAt)
+        }
+
+        let zone = TimeZone(identifier: slot.timezone ?? "Asia/Kolkata") ?? .current
+        let parts = slot.time.split(separator: ":")
+        let hour = parts.first.flatMap { Int($0) } ?? 9
+        let minute = parts.dropFirst().first.flatMap { Int($0) } ?? 0
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = zone
+        var components = calendar.dateComponents([.year, .month, .day], from: Date())
+        components.hour = hour
+        components.minute = minute
+        components.second = 0
+        var next = calendar.date(from: components) ?? Date()
+        if next <= Date() {
+            next = calendar.date(byAdding: .day, value: 1, to: next) ?? next
+        }
+
+        let display = DateFormatter()
+        display.locale = Locale(identifier: "en_IN")
+        display.timeZone = zone
+        display.dateFormat = "dd MMM, h:mm a"
+        return display.string(from: next) + " IST"
     }
 
     var body: some View {
-        if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
-            NavigationLink {
-                AutomationDetailsView()
-            } label: {
-                HStack(spacing: 12) {
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundStyle(HDTheme.blue)
-                        .frame(width: 38, height: 38)
-                        .background(HDTheme.blue.opacity(0.08))
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        Group {
+            if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
+                VStack(spacing: 0) {
+                    ZStack(alignment: .bottomLeading) {
+                        LinearGradient(
+                            colors: [HDTheme.navy, HDTheme.blue],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        .frame(height: 142)
 
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Daily publishing")
-                            .font(.subheadline.weight(.black))
-                            .foregroundStyle(HDTheme.navy)
-                        Text("\(slot.time) · \(slot.target ?? slot.title)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
+                        Circle()
+                            .fill(Color.white.opacity(0.09))
+                            .frame(width: 130, height: 130)
+                            .offset(x: 245, y: -48)
+
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "bolt.fill")
+                                    Text("DAILY PUBLISHING")
+                                        .tracking(1)
+                                }
+                                .font(.caption2.weight(.black))
+                                .foregroundStyle(.white.opacity(0.78))
+
+                                Spacer()
+
+                                StatusPill(
+                                    text: outcomeLabel(slot.outcome),
+                                    color: outcomeColor(slot.outcome)
+                                )
+                            }
+
+                            Text("9:00 AM Batch")
+                                .font(.system(size: 25, weight: .black, design: .rounded))
+                                .foregroundStyle(.white)
+
+                            HStack(spacing: 8) {
+                                Label(slot.target ?? "9–10 verified jobs/day", systemImage: "target")
+                                Spacer()
+                                Label(nextRunText(slot), systemImage: "clock.fill")
+                            }
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.white.opacity(0.9))
+                        }
+                        .padding(18)
                     }
 
-                    Spacer()
+                    VStack(alignment: .leading, spacing: 15) {
+                        VStack(alignment: .leading, spacing: 9) {
+                            Text("Today’s publishing mix")
+                                .font(.subheadline.weight(.black))
+                                .foregroundStyle(HDTheme.navy)
 
-                    VStack(alignment: .trailing, spacing: 5) {
-                        StatusPill(text: label(slot.outcome), color: color(slot.outcome))
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 9, weight: .bold))
-                            .foregroundStyle(.tertiary)
+                            if let mix = slot.mix, !mix.isEmpty {
+                                LazyVGrid(
+                                    columns: [GridItem(.adaptive(minimum: 130), spacing: 8)],
+                                    alignment: .leading,
+                                    spacing: 8
+                                ) {
+                                    ForEach(Array(mix.enumerated()), id: \.offset) { index, item in
+                                        HStack(spacing: 6) {
+                                            Image(systemName: publishingIcon(index))
+                                                .font(.caption2.weight(.bold))
+                                                .foregroundStyle(HDTheme.blue)
+                                            Text(item)
+                                                .font(.caption2.weight(.bold))
+                                                .foregroundStyle(HDTheme.navy)
+                                                .lineLimit(1)
+                                        }
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 8)
+                                        .background(HDTheme.blue.opacity(0.07))
+                                        .clipShape(Capsule())
+                                    }
+                                }
+                            }
+                        }
+
+                        HStack(spacing: 5) {
+                            PublishingStep(icon: "magnifyingglass", title: "Find")
+                            PipelineArrow()
+                            PublishingStep(icon: "checkmark.shield.fill", title: "Verify")
+                            PipelineArrow()
+                            PublishingStep(icon: "arrow.up.circle.fill", title: "Publish")
+                            PipelineArrow()
+                            PublishingStep(icon: "paperplane.fill", title: "Telegram")
+                        }
+
+                        if let delivery = slot.delivery, !delivery.isEmpty {
+                            Text(delivery)
+                                .font(.caption2.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                                .lineLimit(2)
+                        }
+
+                        Button {
+                            withAnimation(.snappy(duration: 0.28)) {
+                                showLastRun.toggle()
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemName: showLastRun ? "chart.bar.fill" : "clock.arrow.circlepath")
+                                    .foregroundStyle(HDTheme.blue)
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(showLastRun ? "Hide last run" : "Show last run")
+                                        .font(.subheadline.weight(.bold))
+                                        .foregroundStyle(HDTheme.navy)
+                                    if let last = slot.lastRunAt {
+                                        Text("Previous: \(formatAdminDate(last))")
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.down")
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(HDTheme.blue)
+                                    .rotationEffect(.degrees(showLastRun ? 180 : 0))
+                            }
+                            .padding(12)
+                            .background(HDTheme.blue.opacity(0.055))
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
+
+                        if showLastRun {
+                            VStack(alignment: .leading, spacing: 9) {
+                                HStack {
+                                    Label("Last run result", systemImage: "waveform.path.ecg")
+                                        .font(.caption.weight(.black))
+                                        .foregroundStyle(HDTheme.navy)
+                                    Spacer()
+                                    StatusPill(
+                                        text: outcomeLabel(slot.outcome),
+                                        color: outcomeColor(slot.outcome)
+                                    )
+                                }
+
+                                if let detail = slot.detail, !detail.isEmpty {
+                                    Text(detail)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                } else {
+                                    Text("No run details are available yet.")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .padding(13)
+                            .background(outcomeColor(slot.outcome).opacity(0.055))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .stroke(outcomeColor(slot.outcome).opacity(0.16))
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
                     }
+                    .padding(16)
+                    .background(Color.white)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                        .stroke(Color.black.opacity(0.06))
+                }
+                .shadow(color: Color.black.opacity(0.045), radius: 12, x: 0, y: 5)
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    Label("Publishing automation", systemImage: "bolt.slash")
+                        .font(.headline.weight(.black))
+                    Text("Refresh to load the active daily publishing schedule.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
                 .hdCard()
             }
-            .buttonStyle(.plain)
+        }
+    }
+
+    private func publishingIcon(_ index: Int) -> String {
+        switch index {
+        case 0: return "laptopcomputer"
+        case 1: return "person.crop.circle.badge.plus"
+        case 2: return "briefcase.fill"
+        case 3: return "building.columns.fill"
+        default: return "figure.walk"
         }
     }
 }
@@ -1051,6 +1329,7 @@ struct JobsView: View {
             case .active: matchesFilter = job.isActive
             case .expired: matchesFilter = job.isExpired
             }
+
             guard matchesFilter else { return false }
             guard !search.isEmpty else { return true }
             let haystack = [job.company, job.role, job.loc, job.cat].compactMap { $0 }.joined(separator: " ").lowercased()
@@ -1062,30 +1341,25 @@ struct JobsView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
-
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 14) {
                         AdminHeader(
-                            title: "Jobs",
-                            subtitle: "\(state.activeJobs.count) active · \(state.expiredJobs.count) expired",
+                            title: "All Jobs",
+                            subtitle: "\(state.jobs.count) published jobs",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshJobs() }
                         }
 
-                        HStack(spacing: 9) {
+                        HStack {
                             Image(systemName: "magnifyingglass")
-                                .font(.caption)
                                 .foregroundStyle(.secondary)
-                            TextField("Search jobs", text: $search)
+                            TextField("Search title, company or location", text: $search)
                                 .textInputAutocapitalization(.never)
-                                .font(.subheadline)
                         }
-                        .padding(.horizontal, 12)
-                        .frame(height: 42)
+                        .padding(12)
                         .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay { RoundedRectangle(cornerRadius: 12).stroke(HDTheme.line) }
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                         Picker("Status", selection: $filter) {
                             ForEach(JobListFilter.allCases) { item in
@@ -1095,18 +1369,17 @@ struct JobsView: View {
                         .pickerStyle(.segmented)
 
                         if filteredJobs.isEmpty {
-                            EmptyState(icon: "briefcase", title: "No jobs", message: "Try another search or filter.")
+                            EmptyState(icon: "briefcase", title: "No jobs found", message: "Try changing your search or status filter.")
                                 .hdCard()
                         } else {
-                            LazyVStack(spacing: 7) {
+                            LazyVStack(spacing: 10) {
                                 ForEach(filteredJobs) { job in
                                     JobRow(job: job)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 10)
+                    .padding(16)
                     .padding(.bottom, 16)
                 }
                 .refreshable { await state.refreshJobs() }
@@ -1128,47 +1401,49 @@ struct JobRow: View {
     let job: Job
 
     var body: some View {
-        HStack(spacing: 10) {
-            CompanyLogoView(job: job, size: 39)
+        HStack(alignment: .top, spacing: 12) {
+            CompanyLogoView(job: job, size: 46)
 
-            VStack(alignment: .leading, spacing: 3) {
-                HStack(spacing: 6) {
-                    Text(job.company ?? "Company")
-                        .font(.subheadline.weight(.black))
-                        .foregroundStyle(HDTheme.navy)
-                        .lineLimit(1)
-                    Spacer()
-                    Circle()
-                        .fill(job.isExpired ? HDTheme.red : HDTheme.green)
-                        .frame(width: 7, height: 7)
+            VStack(alignment: .leading, spacing: 5) {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(job.company ?? "Company")
+                            .font(.headline.weight(.black))
+                        Text(job.role ?? "Job Opening")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                    }
+                    Spacer(minLength: 8)
+                    StatusPill(
+                        text: job.isExpired ? "Expired" : "Active",
+                        color: job.isExpired ? HDTheme.red : HDTheme.green
+                    )
                 }
 
-                Text(job.role ?? "Job Opening")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
+                HStack(spacing: 8) {
+                    Label(job.loc ?? "Not specified", systemImage: "mappin.and.ellipse")
+                    Label(job.expType?.capitalized ?? "Job", systemImage: "person.fill")
+                }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
 
-                HStack(spacing: 7) {
-                    Text(job.loc ?? "Not specified")
-                    Text("•")
-                    Text(job.expType?.capitalized ?? "Job")
-                    Spacer()
+                HStack(spacing: 12) {
+                    if let site = job.siteURL {
+                        Link("HD Careers", destination: site)
+                    }
                     if let official = job.officialURL {
-                        Link(destination: official) {
-                            Image(systemName: "arrow.up.right")
-                                .font(.caption2.weight(.bold))
-                        }
+                        Link("Official ↗", destination: official)
                     }
                 }
-                .font(.system(size: 9.5, weight: .medium))
-                .foregroundStyle(.secondary)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(HDTheme.blue)
             }
         }
-        .padding(11)
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
-        .overlay { RoundedRectangle(cornerRadius: 13).stroke(HDTheme.line) }
+        .hdCard(14)
     }
+
 }
 
 struct ParsedAdminLink: Identifiable {
@@ -1232,8 +1507,8 @@ struct PublishView: View {
                 HDTheme.background.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 10) {
-                        AdminHeader(title: "Publish", subtitle: "Add official job links")
+                    VStack(spacing: 16) {
+                        AdminHeader(title: "Add / Publish Jobs", subtitle: "Private publishing workflow")
 
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
@@ -1252,7 +1527,7 @@ struct PublishView: View {
                                 .foregroundStyle(.secondary)
 
                             TextEditor(text: $rawLinks)
-                                .frame(minHeight: 88)
+                                .frame(minHeight: 120)
                                 .padding(9)
                                 .scrollContentBackground(.hidden)
                                 .background(Color(.secondarySystemBackground))
@@ -1284,7 +1559,7 @@ struct PublishView: View {
                                         .fontWeight(.bold)
                                 }
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 11)
+                                .padding(.vertical, 14)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(.white)
@@ -1343,7 +1618,7 @@ struct PublishView: View {
                                     )
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 11)
+                                    .padding(.vertical, 14)
                                 }
                                 .buttonStyle(.plain)
                                 .foregroundStyle(.white)
@@ -1354,8 +1629,7 @@ struct PublishView: View {
                             .hdCard()
                         }
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 10)
+                    .padding(16)
                     .padding(.bottom, 18)
                 }
             }
@@ -1707,7 +1981,10 @@ struct CheckerView: View {
     @EnvironmentObject private var state: AppState
     @State private var pendingRemove: AvailabilityItem?
 
-    private var results: AvailabilityResponse.Results? { state.availability?.results }
+    private var results: AvailabilityResponse.Results? {
+        state.availability?.results
+    }
+
     private var reviewItems: [AvailabilityItem] {
         results?.items?.filter { $0.state == "review" } ?? []
     }
@@ -1716,95 +1993,90 @@ struct CheckerView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
-
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 16) {
                         AdminHeader(
-                            title: "Checker",
-                            subtitle: "Official-link verification",
+                            title: "Expired Job Checker",
+                            subtitle: "Conservative official-link verification",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshChecker() }
                         }
 
-                        VStack(spacing: 10) {
+                        VStack(alignment: .leading, spacing: 14) {
                             HStack {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("Last check")
-                                        .font(.system(size: 9.5, weight: .bold))
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("Last Run")
+                                        .font(.caption.weight(.bold))
                                         .foregroundStyle(.secondary)
                                     Text(formatAdminDate(results?.checkedAt))
-                                        .font(.caption.weight(.semibold))
-                                        .foregroundStyle(HDTheme.navy)
-                                        .lineLimit(1)
+                                        .font(.subheadline.weight(.black))
                                 }
                                 Spacer()
                                 StatusPill(
-                                    text: reviewItems.isEmpty ? "Clear" : "(reviewItems.count) review",
-                                    color: reviewItems.isEmpty ? HDTheme.green : HDTheme.amber,
-                                    icon: reviewItems.isEmpty ? "checkmark" : "exclamationmark"
+                                    text: state.availability?.latestRun?.status?.capitalized ?? "Saved",
+                                    color: HDTheme.green,
+                                    icon: "checkmark.circle.fill"
                                 )
                             }
 
-                            HStack(spacing: 7) {
-                                SmallMetric(title: "Active", value: results?.active ?? 0, color: HDTheme.green)
+                            HStack(spacing: 10) {
                                 SmallMetric(title: "Expired", value: results?.expired ?? 0, color: HDTheme.red)
-                                SmallMetric(title: "Review", value: results?.review ?? 0, color: HDTheme.amber)
+                                SmallMetric(title: "Needs Review", value: results?.review ?? 0, color: HDTheme.amber)
+                                SmallMetric(title: "No Change", value: results?.active ?? 0, color: HDTheme.green)
                             }
 
                             Button {
                                 Task { await state.runChecker() }
                             } label: {
-                                HStack(spacing: 7) {
+                                HStack {
                                     if state.isBusy { ProgressView().tint(.white) }
                                     Image(systemName: "play.fill")
-                                        .font(.caption)
-                                    Text("Run checker")
-                                        .font(.subheadline.weight(.bold))
+                                    Text("Run Checker Now").fontWeight(.bold)
                                 }
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 43)
+                                .padding(.vertical, 14)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(.white)
-                            .background(HDTheme.navy)
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            .background(HDTheme.amber)
+                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                             .disabled(state.isBusy)
                         }
                         .hdCard()
 
                         if reviewItems.isEmpty {
-                            HStack(spacing: 10) {
-                                Image(systemName: "checkmark.circle.fill")
+                            VStack(spacing: 8) {
+                                Image(systemName: "checkmark.shield.fill")
+                                    .font(.system(size: 30))
                                     .foregroundStyle(HDTheme.green)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("No review required")
-                                        .font(.subheadline.weight(.black))
-                                    Text("All current checker results are resolved.")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
+                                Text("No jobs need review")
+                                    .font(.headline.weight(.black))
+                                Text("The current checker result has no unresolved review items.")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .multilineTextAlignment(.center)
                             }
+                            .frame(maxWidth: .infinity)
                             .hdCard()
                         } else {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Needs review")
-                                    .font(.subheadline.weight(.black))
-                                    .padding(.horizontal, 2)
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Needs Review (\(reviewItems.count))")
+                                    .font(.headline.weight(.black))
 
                                 ForEach(reviewItems) { item in
                                     ReviewItemCard(
                                         item: item,
                                         remove: { pendingRemove = item },
-                                        keep: { Task { await state.resolveReview(item, action: "keep") } }
+                                        keep: {
+                                            Task { await state.resolveReview(item, action: "keep") }
+                                        }
                                     )
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 10)
+                    .padding(16)
                     .padding(.bottom, 16)
                 }
                 .refreshable { await state.refreshChecker() }
@@ -1818,13 +2090,17 @@ struct CheckerView: View {
                 ),
                 titleVisibility: .visible
             ) {
-                Button(pendingRemove?.pendingNew == true ? "Reject" : "Mark Expired", role: .destructive) {
+                Button(pendingRemove?.pendingNew == true ? "Reject / Do Not Publish" : "Remove / Mark Expired", role: .destructive) {
                     if let item = pendingRemove {
                         Task { await state.resolveReview(item, action: "expire") }
                     }
                     pendingRemove = nil
                 }
                 Button("Cancel", role: .cancel) { pendingRemove = nil }
+            } message: {
+                Text(pendingRemove?.pendingNew == true
+                     ? "This job is still unpublished. Rejecting it removes it from Needs Review and it will not be published."
+                     : "This will mark the job expired in HD Careers and trigger the normal website regeneration.")
             }
         }
     }
@@ -1836,53 +2112,57 @@ struct ReviewItemCard: View {
     let keep: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 9) {
-            HStack(alignment: .top, spacing: 8) {
-                VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 3) {
                     Text(item.company ?? "Company")
-                        .font(.subheadline.weight(.black))
-                        .foregroundStyle(HDTheme.navy)
+                        .font(.headline.weight(.black))
                     Text(item.role ?? "Job Opening")
-                        .font(.caption.weight(.semibold))
+                        .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.secondary)
-                        .lineLimit(2)
                 }
                 Spacer()
-                StatusPill(text: item.pendingNew == true ? "New" : "Review", color: HDTheme.amber)
+                StatusPill(text: item.pendingNew == true ? "Review to Publish" : "Needs Review", color: HDTheme.amber)
             }
 
             Text(item.reason ?? "Availability could not be confirmed.")
-                .font(.system(size: 10.5))
+                .font(.caption)
                 .foregroundStyle(.secondary)
-                .lineLimit(3)
 
-            HStack(spacing: 7) {
+            HStack(spacing: 8) {
                 if let official = item.url.flatMap(URL.init(string:)) {
                     Link(destination: official) {
-                        Label("Official", systemImage: "arrow.up.right")
+                        Label("Official", systemImage: "arrow.up.right.square")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
-                    .controlSize(.small)
                 }
 
+                if item.pendingNew != true, let hd = siteURL(item.page) {
+                    Link(destination: hd) {
+                        Label("HD Careers", systemImage: "eye")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                }
+            }
+
+            HStack(spacing: 8) {
+                Button(role: .destructive, action: remove) {
+                    Label(item.pendingNew == true ? "Reject" : "Remove", systemImage: "trash.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+
                 Button(action: keep) {
-                    Label(item.pendingNew == true ? "Approve" : "Keep", systemImage: "checkmark")
+                    Label(item.pendingNew == true ? "Approve & Publish" : "Keep Active", systemImage: item.pendingNew == true ? "paperplane.fill" : "checkmark")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .controlSize(.small)
                 .tint(HDTheme.green)
-
-                Button(role: .destructive, action: remove) {
-                    Image(systemName: "trash")
-                        .frame(width: 20)
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.small)
             }
         }
-        .hdCard(12)
+        .hdCard(14)
     }
 }
 
@@ -1893,68 +2173,80 @@ struct MoreView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
-
                 ScrollView {
-                    VStack(spacing: 10) {
-                        AdminHeader(title: "More", subtitle: "Admin tools")
+                    VStack(spacing: 16) {
+                        AdminHeader(title: "More", subtitle: "HD Careers Admin")
+
+                        HStack(spacing: 14) {
+                            Circle()
+                                .fill(HDTheme.blue.opacity(0.12))
+                                .frame(width: 58, height: 58)
+                                .overlay {
+                                    Text("C")
+                                        .font(.title2.weight(.black))
+                                        .foregroundStyle(HDTheme.blue)
+                                }
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text("Chethan")
+                                    .font(.title3.weight(.black))
+                                Text("Private administrator")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                        }
+                        .hdCard()
 
                         VStack(spacing: 0) {
                             NavigationLink {
                                 AnalyticsView()
                             } label: {
-                                MoreRow(icon: "chart.bar", title: "Analytics", color: HDTheme.blue)
+                                MoreRow(icon: "chart.bar.fill", title: "Website Analytics", color: HDTheme.blue)
                             }
-
-                            Divider().padding(.leading, 46)
-
+                            Divider().padding(.leading, 48)
                             NavigationLink {
                                 AutomationDetailsView()
                             } label: {
-                                MoreRow(icon: "bolt", title: "Automation", color: HDTheme.green)
+                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Publishing Automation", color: HDTheme.green)
                             }
-
-                            Divider().padding(.leading, 46)
-
+                            Divider().padding(.leading, 48)
                             if let adminURL = URL(string: "https://hdcareers.in/admin/") {
                                 Link(destination: adminURL) {
-                                    MoreRow(icon: "safari", title: "Web admin", color: .purple)
+                                    MoreRow(icon: "safari.fill", title: "Open Web Admin", color: .purple)
                                 }
                             }
-
-                            Divider().padding(.leading, 46)
-
+                            Divider().padding(.leading, 48)
                             if let site = URL(string: "https://hdcareers.in") {
                                 Link(destination: site) {
-                                    MoreRow(icon: "globe", title: "HD Careers", color: HDTheme.blue)
+                                    MoreRow(icon: "globe", title: "Open HD Careers", color: HDTheme.blue)
                                 }
                             }
                         }
                         .hdCard(0)
 
-                        VStack(spacing: 0) {
-                            if CredentialVault.load() != nil {
-                                Button {
-                                    state.removeSavedFaceID()
-                                } label: {
-                                    MoreRow(icon: "faceid", title: "Remove Face ID login", color: HDTheme.red)
-                                }
-                                .buttonStyle(.plain)
-
-                                Divider().padding(.leading, 46)
-                            }
-
+                        if CredentialVault.load() != nil {
                             Button(role: .destructive) {
-                                Task { await state.logout() }
+                                state.removeSavedFaceID()
                             } label: {
-                                MoreRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign out", color: HDTheme.red)
+                                Label("Remove saved Face ID login", systemImage: "faceid")
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 13)
                             }
-                            .buttonStyle(.plain)
+                            .buttonStyle(.bordered)
                         }
-                        .hdCard(0)
+
+                        Button(role: .destructive) {
+                            Task { await state.logout() }
+                        } label: {
+                            Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
+                                .fontWeight(.bold)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 13)
+                        }
+                        .buttonStyle(.bordered)
                     }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 10)
-                    .padding(.bottom, 18)
+                    .padding(16)
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
@@ -1968,26 +2260,19 @@ struct MoreRow: View {
     let color: Color
 
     var body: some View {
-        HStack(spacing: 11) {
+        HStack(spacing: 12) {
             Image(systemName: icon)
-                .font(.system(size: 13, weight: .bold))
                 .foregroundStyle(color)
-                .frame(width: 32, height: 32)
-                .background(color.opacity(0.08))
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-
+                .frame(width: 26)
             Text(title)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(HDTheme.navy)
-
             Spacer()
-
             Image(systemName: "chevron.right")
-                .font(.system(size: 9, weight: .bold))
+                .font(.caption.weight(.bold))
                 .foregroundStyle(.tertiary)
         }
-        .padding(.horizontal, 12)
-        .frame(height: 52)
+        .padding(15)
         .contentShape(Rectangle())
     }
 }
@@ -2000,7 +2285,7 @@ struct AnalyticsView: View {
             HDTheme.background.ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 10) {
+                VStack(spacing: 14) {
                     Picker("Period", selection: Binding(
                         get: { state.trafficDays },
                         set: { days in Task { await state.loadTraffic(days: days) } }
@@ -2011,60 +2296,72 @@ struct AnalyticsView: View {
                     }
                     .pickerStyle(.segmented)
 
-                    HStack(spacing: 7) {
-                        SmallMetric(title: "Live", value: state.traffic?.realtimeUsers ?? 0, color: HDTheme.green)
+                    HStack(spacing: 10) {
+                        SmallMetric(title: "Live now", value: state.traffic?.realtimeUsers ?? 0, color: HDTheme.green)
                         SmallMetric(title: "Users", value: state.traffic?.totals?.visitors ?? 0, color: HDTheme.blue)
                         SmallMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, color: .purple)
-                        SmallMetric(title: "Sessions", value: state.traffic?.totals?.sessions ?? 0, color: .cyan)
                     }
+                    .hdCard(10)
 
                     ConversionSummaryCard()
 
                     AnalyticsListCard(
-                        title: "Top pages",
-                        icon: "doc.text",
-                        rows: (state.traffic?.pages ?? []).map {
-                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.pageviews ?? 0)
-                        }
-                    )
-
-                    AnalyticsListCard(
-                        title: "Apply jobs",
-                        icon: "arrow.up.right.square",
+                        title: "Top Apply Jobs",
+                        icon: "arrow.up.right.square.fill",
                         rows: (state.traffic?.applyJobs ?? []).map {
                             (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
                         }
                     )
 
                     AnalyticsListCard(
-                        title: "Traffic sources",
+                        title: "Resume Checker Usage",
+                        icon: "doc.text.magnifyingglass",
+                        rows: (state.traffic?.resumeJobs ?? []).map {
+                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
+                        }
+                    )
+
+                    AnalyticsListCard(
+                        title: "Apply Conversion Sources",
                         icon: "point.3.connected.trianglepath.dotted",
+                        rows: (state.traffic?.applySources ?? []).map {
+                            (($0.referrerHostname?.isEmpty == false ? $0.referrerHostname! : "Direct / Unknown"), $0.count ?? 0)
+                        }
+                    )
+
+                    AnalyticsListCard(
+                        title: "Top Pages",
+                        icon: "doc.text.fill",
+                        rows: (state.traffic?.pages ?? []).map {
+                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.pageviews ?? 0)
+                        }
+                    )
+
+                    AnalyticsListCard(
+                        title: "Traffic Sources",
+                        icon: "arrow.up.right.square.fill",
                         rows: (state.traffic?.referrers ?? []).map {
                             (($0.referrerHostname?.isEmpty == false ? $0.referrerHostname! : "Direct / Unknown"), $0.sessions ?? 0)
                         }
                     )
 
-                    HStack(alignment: .top, spacing: 8) {
-                        AnalyticsListCard(
-                            title: "Countries",
-                            icon: "globe.asia.australia",
-                            rows: (state.traffic?.countries ?? []).map {
-                                ($0.country ?? "Unknown", $0.visitors ?? 0)
-                            }
-                        )
+                    AnalyticsListCard(
+                        title: "Countries",
+                        icon: "globe.asia.australia.fill",
+                        rows: (state.traffic?.countries ?? []).map {
+                            ($0.country ?? "Unknown", $0.visitors ?? 0)
+                        }
+                    )
 
-                        AnalyticsListCard(
-                            title: "Devices",
-                            icon: "iphone",
-                            rows: (state.traffic?.devices ?? []).map {
-                                (($0.deviceType ?? "Unknown").capitalized, $0.visitors ?? 0)
-                            }
-                        )
-                    }
+                    AnalyticsListCard(
+                        title: "Devices",
+                        icon: "iphone",
+                        rows: (state.traffic?.devices ?? []).map {
+                            (($0.deviceType ?? "Unknown").capitalized, $0.visitors ?? 0)
+                        }
+                    )
                 }
-                .padding(.horizontal, 14)
-                .padding(.top, 10)
-                .padding(.bottom, 18)
+                .padding(16)
             }
         }
         .navigationTitle("Analytics")
@@ -2078,23 +2375,36 @@ struct ConversionSummaryCard: View {
     private var conversions: TrafficResponse.Conversions? { state.traffic?.conversions }
 
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Conversion")
-                    .font(.subheadline.weight(.black))
-                    .foregroundStyle(HDTheme.navy)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Conversion Funnel")
+                        .font(.headline.weight(.black))
+                    Text("Job views → resume checks → official apply clicks")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
                 Spacer()
                 Text(String(format: "%.1f%%", conversions?.applyRate ?? 0))
-                    .font(.subheadline.weight(.black))
+                    .font(.title3.weight(.black))
                     .foregroundStyle(.purple)
             }
 
-            HStack(spacing: 7) {
+            HStack(spacing: 10) {
                 SmallMetric(title: "Job views", value: conversions?.jobPageViews ?? 0, color: .indigo)
-                SmallMetric(title: "Resume", value: conversions?.resumeChecks ?? 0, color: .cyan)
-                SmallMetric(title: "Apply", value: conversions?.applyClicks ?? 0, color: HDTheme.green)
-                SmallMetric(title: "Users", value: conversions?.applyUsers ?? 0, color: .purple)
+                SmallMetric(title: "Resume checks", value: conversions?.resumeChecks ?? 0, color: .cyan)
+                SmallMetric(title: "Apply clicks", value: conversions?.applyClicks ?? 0, color: HDTheme.green)
             }
+
+            HStack(spacing: 10) {
+                SmallMetric(title: "Apply users", value: conversions?.applyUsers ?? 0, color: HDTheme.green)
+                SmallMetric(title: "Shares", value: conversions?.shares ?? 0, color: .orange)
+                SmallMetric(title: "Social clicks", value: conversions?.socialClicks ?? 0, color: .pink)
+            }
+
+            Text("Conversion events accumulate from the analytics release onward.")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
         }
         .hdCard()
     }
@@ -2105,45 +2415,33 @@ struct AnalyticsListCard: View {
     let icon: String
     let rows: [(String, Int)]
 
-    private var visibleRows: [(String, Int)] { Array(rows.prefix(5)) }
-    private var maximum: Int { max(visibleRows.map(\.1).max() ?? 1, 1) }
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 12) {
             Label(title, systemImage: icon)
-                .font(.subheadline.weight(.black))
-                .foregroundStyle(HDTheme.navy)
+                .font(.headline.weight(.black))
 
-            if visibleRows.isEmpty {
+            if rows.isEmpty {
                 Text("No data for this period.")
-                    .font(.caption)
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
-                ForEach(Array(visibleRows.enumerated()), id: \.offset) { index, row in
-                    VStack(spacing: 4) {
-                        HStack(spacing: 8) {
-                            Text(row.0)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(HDTheme.navy)
-                                .lineLimit(1)
-                            Spacer()
-                            Text(numberText(row.1))
-                                .font(.caption.weight(.black))
-                        }
-
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                Capsule().fill(Color.black.opacity(0.045))
-                                Capsule()
-                                    .fill(HDTheme.blue.opacity(0.72))
-                                    .frame(width: geo.size.width * CGFloat(row.1) / CGFloat(maximum))
-                            }
-                        }
-                        .frame(height: 4)
+                ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
+                    HStack(alignment: .top) {
+                        Text("\(index + 1)")
+                            .font(.caption.weight(.black))
+                            .foregroundStyle(HDTheme.blue)
+                            .frame(width: 22, height: 22)
+                            .background(HDTheme.blue.opacity(0.08))
+                            .clipShape(Circle())
+                        Text(row.0)
+                            .font(.subheadline.weight(.semibold))
+                            .lineLimit(2)
+                        Spacer()
+                        Text(numberText(row.1))
+                            .font(.subheadline.weight(.black))
                     }
-
-                    if index != visibleRows.count - 1 {
-                        Divider().opacity(0.45)
+                    if index != rows.count - 1 {
+                        Divider()
                     }
                 }
             }
