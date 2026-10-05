@@ -7,7 +7,8 @@
 <title>Traffic | HD Careers Admin</title>
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>\n<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 :root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
 *{box-sizing:border-box}html{scroll-behavior:smooth;width:100%;max-width:100%;overflow-x:hidden}body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-gradient(180deg,#f8fbff 0,#f4f7fb 260px);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
@@ -117,7 +118,8 @@
 </main>
 </div>
 <script>
-let currentDays=7;\nconst analyticsCharts={};
+let currentDays=7;
+const analyticsCharts={};
 let jobByPath=new Map();
 const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
