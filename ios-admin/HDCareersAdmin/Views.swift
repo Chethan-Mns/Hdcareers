@@ -226,11 +226,6 @@ struct RootTabView: View {
                 .tag(4)
         }
         .tint(HDTheme.blue)
-        .task {
-            if state.jobs.isEmpty {
-                await state.refreshAll()
-            }
-        }
     }
 }
 
