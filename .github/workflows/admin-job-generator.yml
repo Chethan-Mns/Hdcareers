@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install logo quality dependency
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+
       - name: Add selected jobs
         run: python3 scripts/admin_publish.py "$GITHUB_EVENT_PATH"
 
