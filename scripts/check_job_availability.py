@@ -85,7 +85,9 @@ def check(job, now=None):
                 if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
                 state, reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
     except HTTPError as exc:
-        if exc.code in (404, 410):
+        if exc.code in (404, 410) and job.get('browserVerifiedAt'):
+            state, reason = 'active', f'Automated check returned HTTP {exc.code}, but the exact official job page and Apply control were manually browser-verified at {job["browserVerifiedAt"]}'
+        elif exc.code in (404, 410):
             state, reason = 'expired', f'Official job URL returned HTTP {exc.code}'
         else:
             state, reason = 'review', f'HTTP {exc.code}; availability unconfirmed'
