@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 from html.parser import HTMLParser
 import ipaddress
@@ -115,7 +116,7 @@ def fetch(url: str, limit: int) -> tuple[bytes, str, str]:
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,image/avif,image/webp,image/png,image/jpeg,image/x-icon,*/*;q=0.7",
     })
-    with build_opener().open(req, timeout=18) as res:
+    with build_opener().open(req, timeout=7) as res:
         body = res.read(limit + 1)
         if len(body) > limit:
             raise ValueError("response too large")
@@ -184,7 +185,7 @@ def candidate_urls(domain: str) -> list[tuple[int, str, str]]:
 
 
 def resolve_icon(company: str, domain: str) -> tuple[bytes, str, str, str] | None:
-    for _, url, label in candidate_urls(domain):
+    for _, url, label in candidate_urls(domain)[:5]:
         try:
             body, content_type, final_url = fetch(url, MAX_ICON)
             ext = sniff_ext(body, content_type, final_url)
@@ -227,23 +228,45 @@ def main() -> None:
     resolved = 0
     failed = 0
 
-    for company, sample in sorted(companies.items(), key=lambda x: x[0].lower()):
+    def work(item):
+        company, sample = item
         domain = official_domain(sample, overrides)
         if not domain:
-            print(f"[SKIP] {company}: no trusted official domain")
-            failed += 1
-            continue
-
+            return company, domain, None, "no trusted official domain"
         cached = manifest.get(company, {}) if isinstance(manifest.get(company), dict) else {}
         cached_path = str(cached.get("localPath", "")).strip()
         target_exists = bool(cached_path and (ROOT / cached_path).exists())
-        result = None
-
-        if args.refresh or not target_exists or str(cached.get("officialDomain", "")) != domain:
-            result = resolve_icon(company, domain)
-
+        if not args.refresh and target_exists and str(cached.get("officialDomain", "")) == domain:
+            return company, domain, ("cache", cached_path, cached), ""
+        result = resolve_icon(company, domain)
         if result:
-            body, ext, source_url, source_type = result
+            return company, domain, ("resolved", result, cached), ""
+        if target_exists:
+            return company, domain, ("cache", cached_path, cached), ""
+        return company, domain, None, "no usable official icon found"
+
+    items = sorted(companies.items(), key=lambda x: x[0].lower())
+    results = {}
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {pool.submit(work, item): item[0] for item in items}
+        for future in as_completed(futures):
+            company = futures[future]
+            try:
+                results[company] = future.result()
+            except Exception as exc:
+                results[company] = (company, "", None, type(exc).__name__)
+
+    for company, sample in items:
+        _, domain, payload, error = results[company]
+        cached_path = ""
+        if not payload:
+            failed += 1
+            print(f"[MISS] {company}: {error}")
+            continue
+
+        kind = payload[0]
+        if kind == "resolved":
+            body, ext, source_url, source_type = payload[1]
             stem = slugify(company)
             for old in ASSET_DIR.glob(stem + ".*"):
                 old.unlink()
@@ -261,19 +284,20 @@ def main() -> None:
             changed = True
             resolved += 1
             print(f"[OK] {company}: {source_url} -> {local_path}")
-        elif target_exists:
+        else:
+            cached_path = payload[1]
             resolved += 1
             print(f"[CACHE] {company}: {cached_path}")
-        else:
-            failed += 1
-            print(f"[MISS] {company}: no usable official icon found at {domain}")
 
         if cached_path:
             for job in jobs:
-                if str(job.get("company", "")).strip() == company and job.get("logoPath") != cached_path:
-                    job["logoPath"] = cached_path
-                    job["logoSourceDomain"] = domain
-                    changed = True
+                if str(job.get("company", "")).strip() == company:
+                    if job.get("logoPath") != cached_path:
+                        job["logoPath"] = cached_path
+                        changed = True
+                    if domain and job.get("logoSourceDomain") != domain:
+                        job["logoSourceDomain"] = domain
+                        changed = True
 
     MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     JOBS_PATH.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
