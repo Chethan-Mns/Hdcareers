@@ -229,5 +229,12 @@
     "sourceType": "official-domain favicon cache fallback",
     "localPath": "assets/company-icons/sap-1d72097.png",
     "bytes": 1262
+  },
+  "Electronics Corporation of India Limited (ECIL)": {
+    "officialDomain": "ecil.co.in",
+    "sourceUrl": "https://www.ecil.co.in/images/ECIL_NewLogos2.png",
+    "sourceType": "official logo fallback",
+    "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b.png",
+    "bytes": 224834
   }
 }
