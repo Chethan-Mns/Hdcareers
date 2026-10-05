@@ -7,7 +7,7 @@
 <title>Traffic | HD Careers Admin</title>
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>\n<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 :root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
 *{box-sizing:border-box}html{scroll-behavior:smooth;width:100%;max-width:100%;overflow-x:hidden}body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-gradient(180deg,#f8fbff 0,#f4f7fb 260px);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
@@ -57,6 +57,35 @@
 <div class="card p-5"><div class="flex items-center justify-between"><p class="text-xs font-bold text-slate-400 uppercase">Top Page</p><i class="fa-solid fa-arrow-trend-up text-emerald-500"></i></div><div id="topPage" class="mt-3">—</div><p id="topPageViews" class="text-xs text-slate-400 mt-2">No data yet</p></div>
 </section>
 
+<section class="grid xl:grid-cols-2 gap-5">
+<div class="card p-5 sm:p-6">
+<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Traffic trend</p><h2 class="text-xl font-black mt-1">Users & page views</h2><p class="text-xs text-slate-400 mt-1">Daily movement across the selected period.</p></div><i class="fa-solid fa-chart-line text-blue-500 text-xl"></i></div>
+<div class="mt-5 h-64"><canvas id="trendChart"></canvas></div>
+</div>
+<div class="card p-5 sm:p-6">
+<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-violet-600">Audience</p><h2 class="text-xl font-black mt-1">New vs returning</h2><p class="text-xs text-slate-400 mt-1">Understand whether visitors are coming back.</p></div><i class="fa-solid fa-user-group text-violet-500 text-xl"></i></div>
+<div class="grid sm:grid-cols-2 gap-5 mt-5 items-center">
+<div class="h-56"><canvas id="audienceChart"></canvas></div>
+<div class="space-y-3">
+<div class="rounded-2xl bg-blue-50 border border-blue-100 p-4"><p class="text-[10px] uppercase font-black text-blue-500">New users</p><p id="newUsers" class="text-2xl font-black text-blue-900 mt-1">—</p></div>
+<div class="rounded-2xl bg-violet-50 border border-violet-100 p-4"><p class="text-[10px] uppercase font-black text-violet-500">Returning users</p><p id="returningUsers" class="text-2xl font-black text-violet-900 mt-1">—</p></div>
+<div class="rounded-2xl bg-slate-50 border border-slate-200 p-4"><p class="text-[10px] uppercase font-black text-slate-400">Engagement rate</p><p id="engagementRate" class="text-2xl font-black mt-1">—</p><p id="avgSession" class="text-xs text-slate-400 mt-1">Avg. session —</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="grid xl:grid-cols-2 gap-5">
+<div class="card p-5 sm:p-6">
+<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-emerald-600">Acquisition</p><h2 class="text-xl font-black mt-1">Sessions by channel</h2><p class="text-xs text-slate-400 mt-1">Direct, organic, social, referral and other channels.</p></div><i class="fa-solid fa-route text-emerald-500 text-xl"></i></div>
+<div class="mt-5 h-72"><canvas id="channelChart"></canvas></div>
+</div>
+<div class="card p-5 sm:p-6">
+<div class="flex items-start justify-between gap-3"><div><p class="text-xs font-black uppercase tracking-[.14em] text-amber-600">Devices</p><h2 class="text-xl font-black mt-1">Audience device mix</h2><p class="text-xs text-slate-400 mt-1">How visitors access HD Careers.</p></div><i class="fa-solid fa-mobile-screen-button text-amber-500 text-xl"></i></div>
+<div class="mt-5 h-72"><canvas id="deviceChart"></canvas></div>
+</div>
+</section>
+
 <section class="card p-5 sm:p-6">
 <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
 <div><p class="text-xs font-black uppercase tracking-[.14em] text-blue-600">Conversion analytics</p><h2 class="text-xl sm:text-2xl font-black mt-1">Job views → resume checks → apply clicks</h2><p class="text-sm text-slate-500 mt-2">Conversion events start accumulating from the analytics release onward; older page-view data remains available above.</p></div>
@@ -88,7 +117,7 @@
 </main>
 </div>
 <script>
-let currentDays=7;
+let currentDays=7;\nconst analyticsCharts={};
 let jobByPath=new Map();
 const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -135,6 +164,33 @@ function renderRows(id,rows,key){
   return '<div><div class="flex justify-between items-start gap-3 text-sm min-w-0"><div class="min-w-0 flex-1">'+head+'</div><span class="font-black shrink-0">'+fmt(n)+'</span></div><div class="bar mt-2"><span style="width:'+Math.max(2,n/max*100)+'%"></span></div></div>'
  }).join('');
 }
+
+function destroyChart(name){if(analyticsCharts[name]){analyticsCharts[name].destroy();delete analyticsCharts[name]}}
+function shortDate(raw){const s=String(raw||'');if(s.length!==8)return s;const d=new Date(Date.UTC(Number(s.slice(0,4)),Number(s.slice(4,6))-1,Number(s.slice(6,8))));return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',timeZone:'UTC'})}
+function renderVisualCharts(d){
+ if(typeof Chart==='undefined')return;
+ const trend=Array.isArray(d.trend)?d.trend:[];
+ destroyChart('trend');
+ const trendEl=document.getElementById('trendChart');
+ if(trendEl){
+  analyticsCharts.trend=new Chart(trendEl,{type:'line',data:{labels:trend.map(x=>shortDate(x.date)),datasets:[
+   {label:'Users',data:trend.map(x=>Number(x.users||0)),borderColor:'#0969da',backgroundColor:'rgba(9,105,218,.10)',tension:.35,fill:true,pointRadius:2},
+   {label:'Views',data:trend.map(x=>Number(x.pageviews||0)),borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.06)',tension:.35,fill:false,pointRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{precision:0}}}}});
+ }
+ const totals=d.totals||{},nu=Number(totals.newUsers||0),ru=Number(totals.returningUsers||0);
+ destroyChart('audience');
+ const aud=document.getElementById('audienceChart');
+ if(aud){analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New','Returning'],datasets:[{data:[nu,ru],backgroundColor:['#0969da','#7c3aed'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom'}}}})}
+ const channels=Array.isArray(d.channels)?d.channels.slice(0,7):[];
+ destroyChart('channel');
+ const channelEl=document.getElementById('channelChart');
+ if(channelEl){analyticsCharts.channel=new Chart(channelEl,{type:'bar',data:{labels:channels.map(x=>x.channel||'Other'),datasets:[{label:'Sessions',data:channels.map(x=>Number(x.sessions||0)),backgroundColor:'rgba(5,150,105,.78)',borderRadius:7}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}},y:{grid:{display:false}}}}})}
+ const devices=Array.isArray(d.devices)?d.devices.slice(0,6):[];
+ destroyChart('device');
+ const dev=document.getElementById('deviceChart');
+ if(dev){analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:['#0ea5e9','#8b5cf6','#f59e0b','#10b981','#64748b','#ec4899'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom'}}}})}
+}
 async function loadTraffic(days=7){
  currentDays=days;
  document.querySelectorAll('.range').forEach(b=>{const on=Number(b.dataset.days)===days;b.className='range btn px-4 py-2 text-sm '+(on?'bg-blue-600 text-white':'border border-slate-200 bg-white')});
@@ -145,6 +201,11 @@ async function loadTraffic(days=7){
   if(r.status===401){location.href='/admin/';return}
   if(!r.ok)throw new Error(d.error+(d.missing?.length?' Missing: '+d.missing.join(', '):''));
   const v=Number(d.totals?.visitors||0),p=Number(d.totals?.pageviews||0);document.getElementById('realtime').textContent=fmt(d.realtimeUsers||0);
+  document.getElementById('newUsers').textContent=fmt(d.totals?.newUsers||0);
+  document.getElementById('returningUsers').textContent=fmt(d.totals?.returningUsers||0);
+  document.getElementById('engagementRate').textContent=Number(d.totals?.engagementRate||0).toFixed(1)+'%';
+  const sec=Math.round(Number(d.totals?.averageSessionDuration||0));document.getElementById('avgSession').textContent='Avg. session '+(sec<60?sec+'s':Math.floor(sec/60)+'m '+(sec%60)+'s');
+  renderVisualCharts(d);
   document.getElementById('visitors').textContent=fmt(v);document.getElementById('pageviews').textContent=fmt(p);document.getElementById('ratio').textContent=v?(p/v).toFixed(2):'0.00';
   const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
   document.getElementById('topPage').innerHTML=top?pageLink(label(top,'requestPath'),true):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
