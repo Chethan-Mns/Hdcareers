@@ -5,6 +5,7 @@ const DEFAULT_BASE="main";
 const WORKFLOW="job-availability.yml";
 const TRIGGER_PATH="data/availability-trigger.json";
 const STATUS_PATH="data/availability-status.json";
+const REVIEW_PATH="data/review-queue.json";
 
 function sameOrigin(req){
   const origin=String(req.headers.origin||"");
@@ -105,13 +106,30 @@ export default async function handler(req,res){
       });
     }
 
-    const [file,statusFile,runs]=await Promise.all([
+    const [file,statusFile,reviewFile,runs]=await Promise.all([
       github("/contents/"+TRIGGER_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
+      github("/contents/"+REVIEW_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token).catch(()=>({workflow_runs:[]}))
     ]);
     const trigger=file?decodeFile(file):{};
     const checker=statusFile?decodeFile(statusFile):{};
+    const reviewQueue=reviewFile?decodeFile(reviewFile):[];
+    const pendingReviews=(Array.isArray(reviewQueue)?reviewQueue:[])
+      .filter(x=>x&&x.state==="review")
+      .map(x=>({
+        id:Number(x.reviewId),
+        company:x.company||x.job?.company||"",
+        role:x.role||x.job?.role||"",
+        page:x.page||x.job?.page||"",
+        url:x.url||x.job?.apply||"",
+        state:"review",
+        reason:x.reason||"Manual verification required before publishing.",
+        checkedAt:x.checkedAt||x.queuedAt||null,
+        reviewType:"new_job",
+        pendingNew:true,
+        source:x.source||"publishing"
+      }));
     const list=Array.isArray(runs.workflow_runs)?runs.workflow_runs:[];
     const latest=list[0]||null;
     const lastCompleted=list.find(x=>x.status==="completed")||null;
@@ -129,12 +147,12 @@ export default async function handler(req,res){
       lastCompletedRun:runSummary(lastCompleted,trigger),
       results:{
         checkedAt:checker.checkedAt||null,
-        checked:Number(checker.checked||0),
+        checked:Number(checker.checked||0)+pendingReviews.length,
         active:Number(checker.active||0),
         expired:Number(checker.expired||0),
-        review:Number(checker.review||0),
+        review:Number(checker.review||0)+pendingReviews.length,
         changedExpired:Number(checker.changedExpired||checker.expired||0),
-        items:Array.isArray(checker.items)?checker.items:[],
+        items:[...(Array.isArray(checker.items)?checker.items:[]),...pendingReviews],
         current:!latestSummary||latestSummary.status!=="completed"||summaryTime>=runTime
       }
     });
