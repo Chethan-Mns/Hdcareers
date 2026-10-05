@@ -40,6 +40,12 @@ jobs:
       - name: Generate homepage and job pages
         run: python3 generate.py
 
+      - name: Post newly submitted job to Telegram immediately
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/post_telegram_from_push.py "${{ github.event.before }}"
+
       - name: Validate generated output
         run: |
           git diff --check
