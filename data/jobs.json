@@ -128,9 +128,10 @@
     "locationFilter": "Delhi",
     "batch": "ITI pass-outs; batch not stated",
     "elig": "ITI pass-outs in the relevant SCVT/NCVET-recognized trade. Registration on the Apprenticeship India portal is mandatory; DIPR establishment code E08260700022.",
-    "cat": "government",
+    "cat": "apprenticeship",
     "categories": [
-      "government",
+      "apprenticeship",
+      "govt",
       "fresher"
     ],
     "expType": "fresher",
@@ -224,120 +225,6 @@
       "checkedAt": "2026-10-05T03:33:04.174Z",
       "state": "active",
       "reason": "Official Amazon.jobs page shows the exact Bengaluru role, Job ID 10498234, qualifications and active Apply now route."
-    }
-  },
-  {
-    "id": 57,
-    "page": "jobs/ey-analyst-transfer-pricing-mumbai-1738768.html",
-    "domain": "careers.ey.com",
-    "company": "EY",
-    "salary": "Not Disclosed",
-    "logo": [
-      "EY",
-      "#FFE600"
-    ],
-    "role": "Analyst – Tax – Transfer Pricing",
-    "roleTag": "Transfer Pricing Analyst",
-    "loc": "Mumbai, Maharashtra, India",
-    "locationFilter": "Mumbai",
-    "batch": "Graduate; batch not stated",
-    "elig": "Graduate, preferably in Economics, Finance or Statistics, or semi-qualified Chartered Accountant, with 0–1 years of experience.",
-    "cat": "non-it",
-    "categories": [
-      "non-it",
-      "fresher"
-    ],
-    "expType": "fresher",
-    "expYears": "0–1 years",
-    "date": "24 Sep 2026",
-    "desc": "EY is hiring an entry-level Transfer Pricing Analyst in Mumbai under requisition 1738768.",
-    "resp": [
-      "Support transfer-pricing engagements and related research",
-      "Assist with financial and economic analysis",
-      "Prepare documentation and coordinate with engagement teams"
-    ],
-    "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
-    "status": "active",
-    "verifiedDate": "05 Oct 2026",
-    "sourceName": "Official EY Careers – Requisition 1738768",
-    "skills": [
-      "Transfer pricing",
-      "Economics",
-      "Finance",
-      "Statistics",
-      "Research",
-      "Documentation"
-    ],
-    "who": "Graduates in the preferred disciplines or semi-qualified CAs with 0–1 years of experience.",
-    "workMode": "Not Specified",
-    "verificationTerms": [
-      "Requisition ID: 1738768",
-      "0-1 years of experience",
-      "Location:  Mumbai",
-      "Apply now"
-    ],
-    "availabilityCheck": {
-      "id": 57,
-      "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
-      "checkedAt": "2026-10-05T03:33:04.174Z",
-      "state": "active",
-      "reason": "Official EY page lists requisition 1738768, Mumbai location, 0–1 years experience, qualifications, and an active Apply now route."
-    }
-  },
-  {
-    "id": 56,
-    "page": "jobs/concentrix-customer-service-representative-chennai-r1727859.html",
-    "domain": "jobs.concentrix.com",
-    "company": "Concentrix",
-    "salary": "Not Disclosed",
-    "logo": [
-      "CX",
-      "#E11D48"
-    ],
-    "role": "Customer Service Representative",
-    "roleTag": "Customer Service Representative",
-    "loc": "Chennai, Tamil Nadu, India",
-    "locationFilter": "Chennai",
-    "batch": "Graduate or undergraduate; batch not stated",
-    "elig": "Graduate or undergraduate in any discipline with 0–3 years of relevant experience.",
-    "cat": "non-it",
-    "categories": [
-      "non-it",
-      "fresher"
-    ],
-    "expType": "fresher",
-    "expYears": "0–3 years",
-    "date": "Not Specified",
-    "desc": "Concentrix is hiring a Customer Service Representative in Chennai to support customers and resolve service requests.",
-    "resp": [
-      "Handle customer interactions and service requests",
-      "Provide accurate information and resolve issues",
-      "Document interactions and follow defined support processes"
-    ],
-    "apply": "https://jobs.concentrix.com/job/?id=R1727859",
-    "status": "active",
-    "verifiedDate": "05 Oct 2026",
-    "sourceName": "Official Concentrix Careers – R1727859",
-    "skills": [
-      "Customer service",
-      "Communication",
-      "Issue resolution",
-      "Process adherence"
-    ],
-    "who": "Graduates or undergraduates in any discipline with 0–3 years of relevant experience.",
-    "workMode": "Not Specified",
-    "verificationTerms": [
-      "Customer Service Representative",
-      "Chennai, India",
-      "0 to 3 years of relevant experience",
-      "Apply"
-    ],
-    "availabilityCheck": {
-      "id": 56,
-      "url": "https://jobs.concentrix.com/job/?id=R1727859",
-      "checkedAt": "2026-10-05T03:33:04.174Z",
-      "state": "active",
-      "reason": "Official Concentrix page shows role R1727859 in Chennai, 0–3 years eligibility and a current Apply route."
     }
   },
   {
