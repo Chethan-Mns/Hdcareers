@@ -99,6 +99,9 @@ def check(job, now=None):
                     automated_state, automated_reason = state, reason
                     state = 'active'
                     reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
+                elif state == 'expired' and job.get('browserVerifiedAt'):
+                    state = 'review'
+                    reason = f'Automated closure conflicts with a previous manual browser verification ({job["browserVerifiedAt"]}); re-review required before expiry'
     except HTTPError as exc:
         if manual_verification_fresh(job, now):
             state, reason = 'active', f'Fresh manual browser verification overrides automated HTTP {exc.code} result for 24 hours; verified at {job["browserVerifiedAt"]}'
