@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/resolve_company_logos.py
       - data/company-logo-domains.json
+      - data/company-logo-direct.json
       - .github/workflows/logo-preview-refresh.yml
   workflow_dispatch:
 
@@ -30,7 +31,7 @@ jobs:
           python-version: "3.12"
 
       - name: Resolve and cache official company favicons
-        run: python3 scripts/resolve_company_logos.py --refresh
+        run: python3 scripts/resolve_company_logos.py
 
       - name: Regenerate preview website
         run: |
