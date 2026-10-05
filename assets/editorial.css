@@ -61,12 +61,15 @@ a:focus-visible,button:focus-visible{outline:3px solid rgba(11,111,232,.28);outl
 .resource-section-head p{margin:5px 0 0;color:#64748b;font-size:13px}
 .resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .resource-card.interactive{display:flex;flex-direction:column;min-height:270px;padding:0;overflow:hidden}
-.resource-card.interactive:before{width:100%;height:4px;right:0;bottom:auto}
-.resource-card.interactive .resource-link{display:flex;flex-direction:column;flex:1;padding:22px;color:inherit;position:relative;z-index:1}
+.resource-card.interactive:before{content:none!important;display:none!important}
+.resource-card.interactive .resource-link{display:flex;flex-direction:column;flex:1;padding:22px;color:inherit;position:relative;z-index:1;text-decoration:none!important;background-image:none!important;outline:none}
+.resource-card.interactive .resource-link:hover,.resource-card.interactive .resource-link:active,.resource-card.interactive .resource-link:visited{text-decoration:none!important;color:inherit}
+.resource-card.interactive .resource-link:hover *,.resource-card.interactive .resource-link:active *,.resource-card.interactive .resource-link:visited *{text-decoration:none!important}
+.resource-card.interactive .resource-link:focus-visible{outline:2px solid rgba(11,111,232,.35);outline-offset:-2px;border-radius:22px}
 .resource-card.interactive:after{content:"";position:absolute;width:135px;height:135px;border-radius:50%;right:-70px;top:-70px;background:rgba(11,111,232,.055);transition:.25s ease}
 .resource-card.interactive:hover:after{transform:scale(1.35);background:rgba(11,111,232,.09)}
 .resource-card.interactive:hover .resource-arrow{transform:translate(3px,-3px);background:#0b6fe8;color:#fff;border-color:#0b6fe8}
-.resource-card.interactive:hover h3{color:#0b5fc8}
+.resource-card.interactive:hover h3{color:#0b5fc8;text-decoration:none!important}
 .resource-card.interactive .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .resource-arrow{width:36px;height:36px;display:grid;place-items:center;border:1px solid #dbe5f0;border-radius:11px;color:#0b6fe8;background:#f8fbff;font-size:17px;font-weight:900;transition:.2s ease;flex:0 0 auto}
 .resource-card.interactive h3{font-size:19px;line-height:1.25;margin:15px 0 8px;transition:.18s ease}
