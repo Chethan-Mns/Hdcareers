@@ -43,6 +43,269 @@ private func jobDisplayName(path: String?, jobs: [Job]) -> String {
         .capitalized
 }
 
+
+struct PremiumSectionTitle: View {
+    let icon: String
+    let title: String
+    let subtitle: String?
+    var color: Color = HDTheme.blue
+
+    init(icon: String, title: String, subtitle: String? = nil, color: Color = HDTheme.blue) {
+        self.icon = icon
+        self.title = title
+        self.subtitle = subtitle
+        self.color = color
+    }
+
+    var body: some View {
+        HStack(spacing: 11) {
+            Image(systemName: icon)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundStyle(color)
+                .frame(width: 34, height: 34)
+                .background(color.opacity(0.10))
+                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.subheadline.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+                if let subtitle {
+                    Text(subtitle)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Spacer()
+        }
+    }
+}
+
+struct PremiumMetricTile: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundStyle(color)
+                    .frame(width: 30, height: 30)
+                    .background(color.opacity(0.10))
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                Spacer()
+            }
+
+            Text(value)
+                .font(.system(size: 22, weight: .black, design: .rounded))
+                .foregroundStyle(HDTheme.navy)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+
+            Text(title)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(color.opacity(0.055))
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(color.opacity(0.10))
+        }
+    }
+}
+
+struct PremiumMetaChip: View {
+    let text: String
+    let icon: String
+    var color: Color = HDTheme.blue
+
+    var body: some View {
+        Label(text, systemImage: icon)
+            .font(.system(size: 9.5, weight: .bold))
+            .foregroundStyle(color)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+            .background(color.opacity(0.08))
+            .clipShape(Capsule())
+    }
+}
+
+struct PremiumBarRow: View {
+    let title: String
+    let value: Int
+    let maxValue: Int
+    var color: Color = HDTheme.blue
+
+    var body: some View {
+        VStack(spacing: 5) {
+            HStack {
+                Text(title)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(HDTheme.navy)
+                    .lineLimit(1)
+                Spacer()
+                Text(numberText(value))
+                    .font(.caption.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+            }
+
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(Color.black.opacity(0.055))
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [color, color.opacity(0.55)],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(width: geo.size.width * CGFloat(value) / CGFloat(max(maxValue, 1)))
+                }
+            }
+            .frame(height: 5)
+        }
+    }
+}
+
+struct PremiumInfoBox: View {
+    let icon: String
+    let title: String
+    let text: String
+    var color: Color = HDTheme.blue
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 12, weight: .bold))
+                .foregroundStyle(color)
+                .frame(width: 30, height: 30)
+                .background(color.opacity(0.10))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                    .font(.caption.weight(.black))
+                    .foregroundStyle(HDTheme.navy)
+                Text(text)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Spacer(minLength: 0)
+        }
+        .padding(11)
+        .background(color.opacity(0.045))
+        .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 13, style: .continuous)
+                .stroke(color.opacity(0.12))
+        }
+    }
+}
+
+struct PublishWorkflowStep: View {
+    let number: String
+    let title: String
+    let icon: String
+    let active: Bool
+
+    var body: some View {
+        VStack(spacing: 7) {
+            ZStack {
+                Circle()
+                    .fill(active ? HDTheme.blue : Color.white.opacity(0.18))
+                    .frame(width: 36, height: 36)
+                Image(systemName: icon)
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundStyle(.white)
+            }
+
+            Text(title)
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.white.opacity(active ? 0.98 : 0.70))
+                .lineLimit(1)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct PremiumField: View {
+    let title: String
+    let icon: String
+    @Binding var text: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Label(title, systemImage: icon)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(.secondary)
+
+            TextField(title, text: $text)
+                .textInputAutocapitalization(.sentences)
+                .padding(.horizontal, 12)
+                .frame(height: 44)
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+    }
+}
+
+struct PremiumTextEditorField: View {
+    let title: String
+    let icon: String
+    let hint: String
+    @Binding var text: String
+    var minHeight: CGFloat = 104
+    var color: Color = HDTheme.blue
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(spacing: 9) {
+                Image(systemName: icon)
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(color)
+                    .frame(width: 28, height: 28)
+                    .background(color.opacity(0.10))
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(title)
+                        .font(.caption.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
+                    Text(hint)
+                        .font(.system(size: 9.5))
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            TextEditor(text: $text)
+                .font(.subheadline)
+                .frame(minHeight: minHeight)
+                .padding(9)
+                .scrollContentBackground(.hidden)
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+        .padding(12)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(Color.black.opacity(0.055))
+        }
+    }
+}
+
 struct LoginView: View {
     @EnvironmentObject private var state: AppState
     @State private var username = ""
