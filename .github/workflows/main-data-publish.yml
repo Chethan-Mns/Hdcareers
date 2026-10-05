@@ -36,7 +36,7 @@ jobs:
         env:
           EVENT_BEFORE_SHA: ${{ github.event.before }}
         run: |
-          BASE_SHA="$(git log "$EVENT_BEFORE_SHA" --first-parent --format='%H%x09%s' | awk -F '\t' '$2 == "Generate website for verified jobs" {print $1; exit}')"
+          BASE_SHA="$(git log "$EVENT_BEFORE_SHA" --first-parent --format='%H%x09%s' | awk -F '\t' '$2 == "Generate website for verified jobs" && !found {print $1; found=1} END {exit 0}')"
           if [ -z "$BASE_SHA" ]; then
             BASE_SHA="$EVENT_BEFORE_SHA"
           fi
