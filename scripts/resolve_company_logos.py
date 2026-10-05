@@ -16,6 +16,7 @@ from urllib.request import Request, build_opener
 ROOT = Path(__file__).resolve().parents[1]
 JOBS_PATH = ROOT / "data" / "jobs.json"
 DOMAIN_PATH = ROOT / "data" / "company-logo-domains.json"
+DIRECT_PATH = ROOT / "data" / "company-logo-direct.json"
 MANIFEST_PATH = ROOT / "data" / "company-logos.json"
 ASSET_DIR = ROOT / "assets" / "company-icons"
 
@@ -184,7 +185,7 @@ def candidate_urls(domain: str) -> list[tuple[int, str, str]]:
     return out
 
 
-def resolve_icon(company: str, domain: str) -> tuple[bytes, str, str, str] | None:
+def resolve_icon(company: str, domain: str, direct_url: str = "") -> tuple[bytes, str, str, str] | None:
     for _, url, label in candidate_urls(domain)[:5]:
         try:
             body, content_type, final_url = fetch(url, MAX_ICON)
@@ -194,6 +195,15 @@ def resolve_icon(company: str, domain: str) -> tuple[bytes, str, str, str] | Non
             return body, ext, final_url, label
         except (HTTPError, URLError, ValueError, TimeoutError, OSError):
             continue
+
+    if direct_url:
+        try:
+            body, content_type, final_url = fetch(direct_url, MAX_ICON)
+            ext = sniff_ext(body, content_type, final_url)
+            if ext and len(body) >= 64:
+                return body, ext, final_url, "official logo fallback"
+        except (HTTPError, URLError, ValueError, TimeoutError, OSError):
+            pass
 
     proxy = "https://www.google.com/s2/favicons?domain_url=" + urljoin("https://" + domain, "/") + "&sz=256"
     try:
@@ -222,6 +232,7 @@ def main() -> None:
     if not isinstance(jobs, list):
         raise SystemExit("data/jobs.json must be a JSON array")
     overrides = load_json(DOMAIN_PATH, {})
+    direct_assets = load_json(DIRECT_PATH, {})
     manifest = load_json(MANIFEST_PATH, {})
     if not isinstance(manifest, dict):
         manifest = {}
@@ -247,7 +258,7 @@ def main() -> None:
         target_exists = bool(cached_path and (ROOT / cached_path).exists())
         if not args.refresh and target_exists and str(cached.get("officialDomain", "")) == domain:
             return company, domain, ("cache", cached_path, cached), ""
-        result = resolve_icon(company, domain)
+        result = resolve_icon(company, domain, str(direct_assets.get(company, "")).strip())
         if result:
             return company, domain, ("resolved", result, cached), ""
         if target_exists:
