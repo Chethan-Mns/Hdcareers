@@ -21,14 +21,18 @@ final class AppState: ObservableObject {
     var experiencedJobs: [Job] { activeJobs.filter { !$0.isFresher } }
 
     func bootstrap() async {
-        defer { isBootstrapping = false }
         do {
             isAuthenticated = try await api.sessionStatus()
-            if isAuthenticated {
-                await refreshAll()
-            }
         } catch {
             isAuthenticated = false
+        }
+
+        isBootstrapping = false
+
+        if isAuthenticated {
+            Task { @MainActor in
+                await refreshAll()
+            }
         }
     }
 
