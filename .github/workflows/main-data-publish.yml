@@ -12,12 +12,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: main-job-data-publish
+  group: hd-careers-publishing
   cancel-in-progress: false
 
 jobs:
   publish:
-    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin' && github.event.head_commit.message != 'Generate website for verified jobs'
+    if: github.event.head_commit.message != 'Publish jobs from HD Careers Admin' && github.event.head_commit.message != 'Generate website for verified jobs' && github.event.head_commit.message != 'Update Telegram posting queue'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -40,18 +40,12 @@ jobs:
       - name: Generate homepage and job pages
         run: python3 generate.py
 
-      - name: Post newly submitted job to Telegram immediately
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 scripts/post_telegram_from_push.py "${{ github.event.before }}"
-
       - name: Validate generated output
         run: |
           git diff --check
           python3 generate.py --dry-run
 
-      - name: Commit generated website and Telegram queue
+      - name: Commit and deploy generated website
         shell: bash
         run: |
           if git diff --quiet; then
@@ -61,5 +55,28 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add data/jobs.json data/telegram-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
             git commit -m "Generate website for verified jobs"
+            git push origin HEAD:main
+          fi
+
+      - name: Post manual job to Telegram after deployment
+        if: startsWith(github.event.head_commit.message, 'Manual publish:')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/telegram_queue.py publish-new "${{ github.event.before }}"
+
+      - name: Save immediate Telegram state
+        if: startsWith(github.event.head_commit.message, 'Manual publish:')
+        shell: bash
+        run: |
+          if git diff --quiet -- data/telegram-queue.json; then
+            echo "No Telegram queue state change."
+          else
+            git config user.name "HD Careers Automation"
+            git config user.email "actions@users.noreply.github.com"
+            git add data/telegram-queue.json
+            git commit -m "Update Telegram posting queue"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
