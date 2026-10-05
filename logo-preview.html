@@ -18,8 +18,8 @@ body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",san
 <header class="bg-slate-950 text-white">
 <div class="max-w-6xl mx-auto px-4 py-8">
 <p class="text-xs font-black uppercase tracking-[.18em] text-cyan-300">HD Careers • Preview only</p>
-<h1 class="text-3xl sm:text-4xl font-black mt-2">Company Logo Fallback Preview</h1>
-<p class="text-slate-300 mt-3 max-w-3xl">ATS-provider favicons are rejected. High-confidence compact marks and official logos come first, then a verified careers favicon, then the company-domain favicon, then lower-confidence fallbacks.</p>
+<h1 class="text-3xl sm:text-4xl font-black mt-2">Company Logo Quality Preview</h1>
+<p class="text-slate-300 mt-3 max-w-3xl">ATS-provider favicons are rejected. Official site icons are quality-checked before use. Tiny raster favicons are rejected; high-resolution assets and crisp vector fallbacks are preferred.</p>
 </div>
 </header>
 <main class="max-w-6xl mx-auto px-4 py-8">
@@ -59,7 +59,7 @@ function candidates(j){
  const out=[];
  const push=(url,label)=>{if(url&&!out.some(x=>x.url===url))out.push({url,label})};
  const cached=String(j.logoPath||'').trim();
- if(cached.startsWith('assets/company-icons/'))push(cached,'Cached official favicon');
+ if(cached.startsWith('assets/company-icons/'))push(cached,'Quality-approved cached logo');
  push(COMPACT[j.company],'Curated compact mark');
  push(DIRECT[j.company],'Official direct logo');
  if(trustedCareer(j)&&/^https:\/\//i.test(String(j.careerIconUrl||'')))push(String(j.careerIconUrl),'Verified careers favicon');
