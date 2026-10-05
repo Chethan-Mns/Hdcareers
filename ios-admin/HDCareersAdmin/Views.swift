@@ -2502,76 +2502,126 @@ struct CheckerView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
+
                 ScrollView {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 14) {
                         AdminHeader(
-                            title: "Expired Job Checker",
-                            subtitle: "Conservative official-link verification",
+                            title: "Checker",
+                            subtitle: "Official-link verification",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshChecker() }
                         }
 
-                        VStack(alignment: .leading, spacing: 14) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text("Last Run")
-                                        .font(.caption.weight(.bold))
-                                        .foregroundStyle(.secondary)
-                                    Text(formatAdminDate(results?.checkedAt))
-                                        .font(.subheadline.weight(.black))
-                                }
-                                Spacer()
-                                StatusPill(
-                                    text: state.availability?.latestRun?.status?.capitalized ?? "Saved",
-                                    color: HDTheme.green,
-                                    icon: "checkmark.circle.fill"
-                                )
-                            }
+                        ZStack {
+                            LinearGradient(
+                                colors: [
+                                    reviewItems.isEmpty ? Color(red: 0.02, green: 0.46, blue: 0.35) : Color(red: 0.64, green: 0.37, blue: 0.03),
+                                    reviewItems.isEmpty ? HDTheme.green : HDTheme.amber
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
 
-                            HStack(spacing: 10) {
-                                SmallMetric(title: "Expired", value: results?.expired ?? 0, color: HDTheme.red)
-                                SmallMetric(title: "Needs Review", value: results?.review ?? 0, color: HDTheme.amber)
-                                SmallMetric(title: "No Change", value: results?.active ?? 0, color: HDTheme.green)
+                            Circle()
+                                .fill(Color.white.opacity(0.10))
+                                .frame(width: 145, height: 145)
+                                .offset(x: 145, y: -55)
+
+                            HStack(spacing: 16) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.white.opacity(0.15))
+                                        .frame(width: 78, height: 78)
+                                    Image(systemName: reviewItems.isEmpty ? "checkmark.shield.fill" : "exclamationmark.triangle.fill")
+                                        .font(.system(size: 32, weight: .bold))
+                                        .foregroundStyle(.white)
+                                }
+
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(reviewItems.isEmpty ? "All clear" : "(reviewItems.count) need review")
+                                        .font(.system(size: 24, weight: .black, design: .rounded))
+                                        .foregroundStyle(.white)
+
+                                    Text(reviewItems.isEmpty
+                                         ? "No unresolved job availability checks."
+                                         : "Open the official source before approving or expiring.")
+                                        .font(.caption)
+                                        .foregroundStyle(.white.opacity(0.82))
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
+
+                                Spacer()
                             }
+                            .padding(18)
+                        }
+                        .frame(height: 140)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .shadow(color: HDTheme.navy.opacity(0.10), radius: 14, x: 0, y: 7)
+
+                        HStack(spacing: 8) {
+                            PremiumMetricTile(title: "Active", value: numberText(results?.active), icon: "checkmark.circle.fill", color: HDTheme.green)
+                            PremiumMetricTile(title: "Expired", value: numberText(results?.expired), icon: "xmark.circle.fill", color: HDTheme.red)
+                            PremiumMetricTile(title: "Review", value: numberText(results?.review), icon: "exclamationmark.triangle.fill", color: HDTheme.amber)
+                        }
+
+                        VStack(alignment: .leading, spacing: 12) {
+                            PremiumSectionTitle(
+                                icon: "clock.arrow.circlepath",
+                                title: "Checker controls",
+                                subtitle: "Last run · (formatAdminDate(results?.checkedAt))",
+                                color: HDTheme.blue
+                            )
+
+                            PremiumInfoBox(
+                                icon: "hand.raised.fill",
+                                title: "Conservative verification",
+                                text: "Ambiguous links stay in review. Jobs are only expired when the official source clearly confirms closure or removal.",
+                                color: HDTheme.blue
+                            )
 
                             Button {
                                 Task { await state.runChecker() }
                             } label: {
-                                HStack {
+                                HStack(spacing: 8) {
                                     if state.isBusy { ProgressView().tint(.white) }
                                     Image(systemName: "play.fill")
-                                    Text("Run Checker Now").fontWeight(.bold)
+                                    Text("Run checker now")
+                                        .font(.subheadline.weight(.black))
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(.white)
-                            .background(HDTheme.amber)
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                            .background(
+                                LinearGradient(
+                                    colors: [HDTheme.navy, HDTheme.blue],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                             .disabled(state.isBusy)
                         }
-                        .hdCard()
+                        .premiumCard()
 
                         if reviewItems.isEmpty {
-                            VStack(spacing: 8) {
-                                Image(systemName: "checkmark.shield.fill")
-                                    .font(.system(size: 30))
-                                    .foregroundStyle(HDTheme.green)
-                                Text("No jobs need review")
-                                    .font(.headline.weight(.black))
-                                Text("The current checker result has no unresolved review items.")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .hdCard()
+                            PremiumInfoBox(
+                                icon: "checkmark.circle.fill",
+                                title: "No action required",
+                                text: "The latest checker result has no unresolved review items.",
+                                color: HDTheme.green
+                            )
+                            .premiumCard(10)
                         } else {
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text("Needs Review (\(reviewItems.count))")
-                                    .font(.headline.weight(.black))
+                            VStack(alignment: .leading, spacing: 10) {
+                                PremiumSectionTitle(
+                                    icon: "tray.full.fill",
+                                    title: "Review queue",
+                                    subtitle: "Verify against the official employer page",
+                                    color: HDTheme.amber
+                                )
 
                                 ForEach(reviewItems) { item in
                                     ReviewItemCard(
@@ -2586,7 +2636,7 @@ struct CheckerView: View {
                         }
                     }
                     .padding(16)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 18)
                 }
                 .refreshable { await state.refreshChecker() }
             }
@@ -2606,10 +2656,6 @@ struct CheckerView: View {
                     pendingRemove = nil
                 }
                 Button("Cancel", role: .cancel) { pendingRemove = nil }
-            } message: {
-                Text(pendingRemove?.pendingNew == true
-                     ? "This job is still unpublished. Rejecting it removes it from Needs Review and it will not be published."
-                     : "This will mark the job expired in HD Careers and trigger the normal website regeneration.")
             }
         }
     }
@@ -2621,22 +2667,39 @@ struct ReviewItemCard: View {
     let keep: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .top) {
+        VStack(alignment: .leading, spacing: 11) {
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: "questionmark.diamond.fill")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(HDTheme.amber)
+                    .frame(width: 38, height: 38)
+                    .background(HDTheme.amber.opacity(0.10))
+                    .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+
                 VStack(alignment: .leading, spacing: 3) {
                     Text(item.company ?? "Company")
-                        .font(.headline.weight(.black))
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(HDTheme.navy)
                     Text(item.role ?? "Job Opening")
-                        .font(.subheadline.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
+                        .lineLimit(2)
                 }
+
                 Spacer()
-                StatusPill(text: item.pendingNew == true ? "Review to Publish" : "Needs Review", color: HDTheme.amber)
+
+                StatusPill(
+                    text: item.pendingNew == true ? "Review to publish" : "Needs review",
+                    color: HDTheme.amber
+                )
             }
 
-            Text(item.reason ?? "Availability could not be confirmed.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            PremiumInfoBox(
+                icon: "info.circle.fill",
+                title: "Why this needs review",
+                text: item.reason ?? "Availability could not be confirmed.",
+                color: HDTheme.amber
+            )
 
             HStack(spacing: 8) {
                 if let official = item.url.flatMap(URL.init(string:)) {
@@ -2658,20 +2721,20 @@ struct ReviewItemCard: View {
 
             HStack(spacing: 8) {
                 Button(role: .destructive, action: remove) {
-                    Label(item.pendingNew == true ? "Reject" : "Remove", systemImage: "trash.fill")
+                    Label(item.pendingNew == true ? "Reject" : "Expire", systemImage: "xmark")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
 
                 Button(action: keep) {
-                    Label(item.pendingNew == true ? "Approve & Publish" : "Keep Active", systemImage: item.pendingNew == true ? "paperplane.fill" : "checkmark")
+                    Label(item.pendingNew == true ? "Approve & publish" : "Keep active", systemImage: "checkmark")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(HDTheme.green)
             }
         }
-        .hdCard(14)
+        .premiumCard(13)
     }
 }
 
@@ -2682,80 +2745,108 @@ struct MoreView: View {
         NavigationStack {
             ZStack {
                 HDTheme.background.ignoresSafeArea()
-                ScrollView {
-                    VStack(spacing: 16) {
-                        AdminHeader(title: "More", subtitle: "HD Careers Admin")
 
-                        HStack(spacing: 14) {
+                ScrollView {
+                    VStack(spacing: 14) {
+                        AdminHeader(title: "More", subtitle: "Tools and account")
+
+                        ZStack {
+                            LinearGradient(
+                                colors: [HDTheme.navy, HDTheme.violet],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+
                             Circle()
-                                .fill(HDTheme.blue.opacity(0.12))
-                                .frame(width: 58, height: 58)
-                                .overlay {
+                                .fill(Color.white.opacity(0.08))
+                                .frame(width: 130, height: 130)
+                                .offset(x: 145, y: -50)
+
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.white.opacity(0.14))
+                                        .frame(width: 62, height: 62)
                                     Text("C")
                                         .font(.title2.weight(.black))
-                                        .foregroundStyle(HDTheme.blue)
+                                        .foregroundStyle(.white)
                                 }
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text("Chethan")
-                                    .font(.title3.weight(.black))
-                                Text("Private administrator")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("Chethan")
+                                        .font(.title3.weight(.black))
+                                        .foregroundStyle(.white)
+                                    Text("Private administrator")
+                                        .font(.caption)
+                                        .foregroundStyle(.white.opacity(0.72))
+                                    HStack(spacing: 5) {
+                                        Circle().fill(HDTheme.green).frame(width: 6, height: 6)
+                                        Text("Admin session active")
+                                            .font(.caption2.weight(.semibold))
+                                            .foregroundStyle(.white.opacity(0.82))
+                                    }
+                                }
+
+                                Spacer()
                             }
-                            Spacer()
+                            .padding(18)
                         }
-                        .hdCard()
+                        .frame(height: 116)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .shadow(color: HDTheme.navy.opacity(0.12), radius: 14, x: 0, y: 7)
 
                         VStack(spacing: 0) {
                             NavigationLink {
                                 AnalyticsView()
                             } label: {
-                                MoreRow(icon: "chart.bar.fill", title: "Website Analytics", color: HDTheme.blue)
+                                MoreRow(icon: "chart.bar.fill", title: "Website analytics", subtitle: "Traffic, conversions and content", color: HDTheme.blue)
                             }
-                            Divider().padding(.leading, 48)
+                            Divider().padding(.leading, 58)
+
                             NavigationLink {
                                 AutomationDetailsView()
                             } label: {
-                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Publishing Automation", color: HDTheme.green)
+                                MoreRow(icon: "bolt.horizontal.circle.fill", title: "Publishing automation", subtitle: "Daily batch and workflow status", color: HDTheme.green)
                             }
-                            Divider().padding(.leading, 48)
+                            Divider().padding(.leading, 58)
+
                             if let adminURL = URL(string: "https://hdcareers.in/admin/") {
                                 Link(destination: adminURL) {
-                                    MoreRow(icon: "safari.fill", title: "Open Web Admin", color: .purple)
+                                    MoreRow(icon: "safari.fill", title: "Web admin", subtitle: "Open the browser control center", color: HDTheme.violet)
                                 }
                             }
-                            Divider().padding(.leading, 48)
+                            Divider().padding(.leading, 58)
+
                             if let site = URL(string: "https://hdcareers.in") {
                                 Link(destination: site) {
-                                    MoreRow(icon: "globe", title: "Open HD Careers", color: HDTheme.blue)
+                                    MoreRow(icon: "globe", title: "HD Careers website", subtitle: "View the public site", color: HDTheme.cyan)
                                 }
                             }
                         }
-                        .hdCard(0)
+                        .premiumCard(0)
 
-                        if CredentialVault.load() != nil {
-                            Button(role: .destructive) {
-                                state.removeSavedFaceID()
-                            } label: {
-                                Label("Remove saved Face ID login", systemImage: "faceid")
-                                    .fontWeight(.semibold)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 13)
+                        VStack(spacing: 0) {
+                            if CredentialVault.load() != nil {
+                                Button(role: .destructive) {
+                                    state.removeSavedFaceID()
+                                } label: {
+                                    MoreRow(icon: "faceid", title: "Face ID", subtitle: "Remove saved biometric login", color: HDTheme.amber)
+                                }
+                                .buttonStyle(.plain)
+                                Divider().padding(.leading, 58)
                             }
-                            .buttonStyle(.bordered)
-                        }
 
-                        Button(role: .destructive) {
-                            Task { await state.logout() }
-                        } label: {
-                            Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
-                                .fontWeight(.bold)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 13)
+                            Button(role: .destructive) {
+                                Task { await state.logout() }
+                            } label: {
+                                MoreRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign out", subtitle: "End this admin session", color: HDTheme.red)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.bordered)
+                        .premiumCard(0)
                     }
                     .padding(16)
+                    .padding(.bottom, 18)
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
@@ -2766,22 +2857,44 @@ struct MoreView: View {
 struct MoreRow: View {
     let icon: String
     let title: String
+    let subtitle: String?
     let color: Color
+
+    init(icon: String, title: String, subtitle: String? = nil, color: Color) {
+        self.icon = icon
+        self.title = title
+        self.subtitle = subtitle
+        self.color = color
+    }
 
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
+                .font(.system(size: 14, weight: .bold))
                 .foregroundStyle(color)
-                .frame(width: 26)
-            Text(title)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(HDTheme.navy)
+                .frame(width: 38, height: 38)
+                .background(color.opacity(0.09))
+                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(HDTheme.navy)
+                if let subtitle {
+                    Text(subtitle)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+            }
+
             Spacer()
+
             Image(systemName: "chevron.right")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(.tertiary)
         }
-        .padding(15)
+        .padding(14)
         .contentShape(Rectangle())
     }
 }
@@ -2789,12 +2902,58 @@ struct MoreRow: View {
 struct AnalyticsView: View {
     @EnvironmentObject private var state: AppState
 
+    private var topPageName: String {
+        guard let top = state.traffic?.pages?.first else { return "No data yet" }
+        return jobDisplayName(path: top.requestPath, jobs: state.jobs)
+    }
+
     var body: some View {
         ZStack {
             HDTheme.background.ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 14) {
+                VStack(spacing: 13) {
+                    ZStack {
+                        LinearGradient(
+                            colors: [HDTheme.navy, HDTheme.blue, HDTheme.violet],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+
+                        Circle()
+                            .fill(Color.white.opacity(0.08))
+                            .frame(width: 150, height: 150)
+                            .offset(x: 145, y: -55)
+
+                        VStack(alignment: .leading, spacing: 13) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("ANALYTICS")
+                                        .font(.system(size: 10, weight: .black))
+                                        .tracking(1.1)
+                                        .foregroundStyle(.white.opacity(0.70))
+                                    Text("Performance at a glance")
+                                        .font(.system(size: 23, weight: .black, design: .rounded))
+                                        .foregroundStyle(.white)
+                                }
+                                Spacer()
+                                Image(systemName: "chart.bar.xaxis")
+                                    .font(.system(size: 24, weight: .bold))
+                                    .foregroundStyle(.white.opacity(0.9))
+                            }
+
+                            HStack(spacing: 8) {
+                                analyticsHeroMetric("Live", numberText(state.traffic?.realtimeUsers))
+                                analyticsHeroMetric("Users", numberText(state.traffic?.totals?.visitors))
+                                analyticsHeroMetric("Views", numberText(state.traffic?.totals?.pageviews))
+                            }
+                        }
+                        .padding(18)
+                    }
+                    .frame(height: 170)
+                    .clipShape(RoundedRectangle(cornerRadius: 23, style: .continuous))
+                    .shadow(color: HDTheme.navy.opacity(0.13), radius: 15, x: 0, y: 8)
+
                     Picker("Period", selection: Binding(
                         get: { state.trafficDays },
                         set: { days in Task { await state.loadTraffic(days: days) } }
@@ -2805,17 +2964,18 @@ struct AnalyticsView: View {
                     }
                     .pickerStyle(.segmented)
 
-                    HStack(spacing: 10) {
-                        SmallMetric(title: "Live now", value: state.traffic?.realtimeUsers ?? 0, color: HDTheme.green)
-                        SmallMetric(title: "Users", value: state.traffic?.totals?.visitors ?? 0, color: HDTheme.blue)
-                        SmallMetric(title: "Views", value: state.traffic?.totals?.pageviews ?? 0, color: .purple)
-                    }
-                    .hdCard(10)
-
                     ConversionSummaryCard()
 
+                    PremiumInfoBox(
+                        icon: "flame.fill",
+                        title: "Top content",
+                        text: topPageName,
+                        color: HDTheme.amber
+                    )
+                    .premiumCard(10)
+
                     AnalyticsListCard(
-                        title: "Top Apply Jobs",
+                        title: "Top apply jobs",
                         icon: "arrow.up.right.square.fill",
                         rows: (state.traffic?.applyJobs ?? []).map {
                             (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
@@ -2823,7 +2983,7 @@ struct AnalyticsView: View {
                     )
 
                     AnalyticsListCard(
-                        title: "Resume Checker Usage",
+                        title: "Resume checker usage",
                         icon: "doc.text.magnifyingglass",
                         rows: (state.traffic?.resumeJobs ?? []).map {
                             (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.count ?? 0)
@@ -2831,50 +2991,53 @@ struct AnalyticsView: View {
                     )
 
                     AnalyticsListCard(
-                        title: "Apply Conversion Sources",
+                        title: "Traffic sources",
                         icon: "point.3.connected.trianglepath.dotted",
-                        rows: (state.traffic?.applySources ?? []).map {
-                            (($0.referrerHostname?.isEmpty == false ? $0.referrerHostname! : "Direct / Unknown"), $0.count ?? 0)
-                        }
-                    )
-
-                    AnalyticsListCard(
-                        title: "Top Pages",
-                        icon: "doc.text.fill",
-                        rows: (state.traffic?.pages ?? []).map {
-                            (jobDisplayName(path: $0.requestPath, jobs: state.jobs), $0.pageviews ?? 0)
-                        }
-                    )
-
-                    AnalyticsListCard(
-                        title: "Traffic Sources",
-                        icon: "arrow.up.right.square.fill",
                         rows: (state.traffic?.referrers ?? []).map {
                             (($0.referrerHostname?.isEmpty == false ? $0.referrerHostname! : "Direct / Unknown"), $0.sessions ?? 0)
                         }
                     )
 
-                    AnalyticsListCard(
-                        title: "Countries",
-                        icon: "globe.asia.australia.fill",
-                        rows: (state.traffic?.countries ?? []).map {
-                            ($0.country ?? "Unknown", $0.visitors ?? 0)
-                        }
-                    )
+                    HStack(alignment: .top, spacing: 10) {
+                        AnalyticsListCard(
+                            title: "Countries",
+                            icon: "globe.asia.australia.fill",
+                            rows: (state.traffic?.countries ?? []).map {
+                                ($0.country ?? "Unknown", $0.visitors ?? 0)
+                            }
+                        )
 
-                    AnalyticsListCard(
-                        title: "Devices",
-                        icon: "iphone",
-                        rows: (state.traffic?.devices ?? []).map {
-                            (($0.deviceType ?? "Unknown").capitalized, $0.visitors ?? 0)
-                        }
-                    )
+                        AnalyticsListCard(
+                            title: "Devices",
+                            icon: "iphone",
+                            rows: (state.traffic?.devices ?? []).map {
+                                (($0.deviceType ?? "Unknown").capitalized, $0.visitors ?? 0)
+                            }
+                        )
+                    }
                 }
                 .padding(16)
+                .padding(.bottom, 18)
             }
         }
         .navigationTitle("Analytics")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func analyticsHeroMetric(_ title: String, _ value: String) -> some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(value)
+                .font(.headline.weight(.black))
+                .foregroundStyle(.white)
+            Text(title)
+                .font(.system(size: 8.5, weight: .semibold))
+                .foregroundStyle(.white.opacity(0.65))
+        }
+        .padding(.horizontal, 11)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.10))
+        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
     }
 }
 
@@ -2882,40 +3045,44 @@ struct ConversionSummaryCard: View {
     @EnvironmentObject private var state: AppState
 
     private var conversions: TrafficResponse.Conversions? { state.traffic?.conversions }
+    private var maxValue: Int {
+        max(
+            conversions?.jobPageViews ?? 0,
+            conversions?.resumeChecks ?? 0,
+            conversions?.applyClicks ?? 0,
+            conversions?.applyUsers ?? 0,
+            1
+        )
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 13) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Conversion Funnel")
-                        .font(.headline.weight(.black))
-                    Text("Job views → resume checks → official apply clicks")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
+                PremiumSectionTitle(
+                    icon: "point.3.connected.trianglepath.dotted",
+                    title: "Conversion funnel",
+                    subtitle: "Job view → resume → official apply",
+                    color: HDTheme.violet
+                )
                 Text(String(format: "%.1f%%", conversions?.applyRate ?? 0))
                     .font(.title3.weight(.black))
-                    .foregroundStyle(.purple)
+                    .foregroundStyle(HDTheme.violet)
             }
 
-            HStack(spacing: 10) {
-                SmallMetric(title: "Job views", value: conversions?.jobPageViews ?? 0, color: .indigo)
-                SmallMetric(title: "Resume checks", value: conversions?.resumeChecks ?? 0, color: .cyan)
-                SmallMetric(title: "Apply clicks", value: conversions?.applyClicks ?? 0, color: HDTheme.green)
+            HStack(spacing: 8) {
+                PremiumMetricTile(title: "Job views", value: numberText(conversions?.jobPageViews), icon: "eye.fill", color: HDTheme.blue)
+                PremiumMetricTile(title: "Resume", value: numberText(conversions?.resumeChecks), icon: "doc.text.magnifyingglass", color: HDTheme.cyan)
+                PremiumMetricTile(title: "Apply", value: numberText(conversions?.applyClicks), icon: "cursorarrow.click.2", color: HDTheme.green)
             }
 
-            HStack(spacing: 10) {
-                SmallMetric(title: "Apply users", value: conversions?.applyUsers ?? 0, color: HDTheme.green)
-                SmallMetric(title: "Shares", value: conversions?.shares ?? 0, color: .orange)
-                SmallMetric(title: "Social clicks", value: conversions?.socialClicks ?? 0, color: .pink)
+            VStack(spacing: 8) {
+                PremiumBarRow(title: "Job views", value: conversions?.jobPageViews ?? 0, maxValue: maxValue, color: HDTheme.blue)
+                PremiumBarRow(title: "Resume checks", value: conversions?.resumeChecks ?? 0, maxValue: maxValue, color: HDTheme.cyan)
+                PremiumBarRow(title: "Apply clicks", value: conversions?.applyClicks ?? 0, maxValue: maxValue, color: HDTheme.green)
+                PremiumBarRow(title: "Apply users", value: conversions?.applyUsers ?? 0, maxValue: maxValue, color: HDTheme.violet)
             }
-
-            Text("Conversion events accumulate from the analytics release onward.")
-                .font(.caption2)
-                .foregroundStyle(.secondary)
         }
-        .hdCard()
+        .premiumCard()
     }
 }
 
@@ -2924,38 +3091,70 @@ struct AnalyticsListCard: View {
     let icon: String
     let rows: [(String, Int)]
 
+    private var visibleRows: [(String, Int)] {
+        Array(rows.prefix(6))
+    }
+
+    private var maxValue: Int {
+        max(visibleRows.map(\.1).max() ?? 1, 1)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label(title, systemImage: icon)
-                .font(.headline.weight(.black))
+            PremiumSectionTitle(icon: icon, title: title, subtitle: visibleRows.isEmpty ? "No data yet" : "Top (visibleRows.count)")
 
-            if rows.isEmpty {
+            if visibleRows.isEmpty {
                 Text("No data for this period.")
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             } else {
-                ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
-                    HStack(alignment: .top) {
-                        Text("\(index + 1)")
-                            .font(.caption.weight(.black))
-                            .foregroundStyle(HDTheme.blue)
-                            .frame(width: 22, height: 22)
-                            .background(HDTheme.blue.opacity(0.08))
-                            .clipShape(Circle())
-                        Text(row.0)
-                            .font(.subheadline.weight(.semibold))
-                            .lineLimit(2)
-                        Spacer()
-                        Text(numberText(row.1))
-                            .font(.subheadline.weight(.black))
+                ForEach(Array(visibleRows.enumerated()), id: \.offset) { index, row in
+                    VStack(spacing: 6) {
+                        HStack(spacing: 8) {
+                            Text("(index + 1)")
+                                .font(.system(size: 9, weight: .black))
+                                .foregroundStyle(HDTheme.blue)
+                                .frame(width: 24, height: 24)
+                                .background(HDTheme.blue.opacity(0.08))
+                                .clipShape(Circle())
+
+                            Text(row.0)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(HDTheme.navy)
+                                .lineLimit(2)
+
+                            Spacer()
+
+                            Text(numberText(row.1))
+                                .font(.caption.weight(.black))
+                                .foregroundStyle(HDTheme.navy)
+                        }
+
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                Capsule().fill(Color.black.opacity(0.05))
+                                Capsule()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [HDTheme.blue, HDTheme.cyan],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .frame(width: geo.size.width * CGFloat(row.1) / CGFloat(maxValue))
+                            }
+                        }
+                        .frame(height: 4)
                     }
-                    if index != rows.count - 1 {
-                        Divider()
+
+                    if index != visibleRows.count - 1 {
+                        Divider().opacity(0.45)
                     }
                 }
             }
         }
-        .hdCard()
+        .premiumCard()
     }
 }
 
