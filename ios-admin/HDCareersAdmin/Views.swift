@@ -619,8 +619,8 @@ struct DashboardHeroCard: View {
                 }
 
                 HStack(spacing: 8) {
-                    heroStat(icon: "briefcase.fill", value: "\\(state.activeJobs.count)", label: "Live")
-                    heroStat(icon: reviewCount > 0 ? "exclamationmark.triangle.fill" : "checkmark.shield.fill", value: "\\(reviewCount)", label: "Review")
+                    heroStat(icon: "briefcase.fill", value: "\(state.activeJobs.count)", label: "Live")
+                    heroStat(icon: reviewCount > 0 ? "exclamationmark.triangle.fill" : "checkmark.shield.fill", value: "\(reviewCount)", label: "Review")
                     heroStat(icon: "clock.fill", value: publishingTime, label: "Publish")
                 }
             }
@@ -818,8 +818,8 @@ struct TrafficSummaryCard: View {
             if let top = state.traffic?.pages?.first {
                 PremiumInfoBox(
                     icon: "flame.fill",
-                    title: "Top page · \\(periodLabel)",
-                    text: "\\(jobDisplayName(path: top.requestPath, jobs: state.jobs)) · \\(numberText(top.pageviews)) views",
+                    title: "Top page · \(periodLabel)",
+                    text: "\(jobDisplayName(path: top.requestPath, jobs: state.jobs)) · \(numberText(top.pageviews)) views",
                     color: HDTheme.amber
                 )
             }
@@ -1638,7 +1638,7 @@ struct JobsView: View {
                     VStack(spacing: 13) {
                         AdminHeader(
                             title: "Jobs",
-                            subtitle: "\\(state.jobs.count) published openings",
+                            subtitle: "\(state.jobs.count) published openings",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshJobs() }
@@ -1669,7 +1669,7 @@ struct JobsView: View {
 
                         Picker("Status", selection: $filter) {
                             ForEach(JobListFilter.allCases) { item in
-                                Text("\\(item.rawValue) \\(count(for: item))").tag(item)
+                                Text("\(item.rawValue) \(count(for: item))").tag(item)
                             }
                         }
                         .pickerStyle(.segmented)
@@ -1907,7 +1907,7 @@ struct PublishView: View {
                                     color: HDTheme.blue
                                 )
                                 StatusPill(
-                                    text: "\\(readyLinks.count) ready",
+                                    text: "\(readyLinks.count) ready",
                                     color: readyLinks.isEmpty ? Color.gray : HDTheme.green,
                                     icon: readyLinks.isEmpty ? "link" : "checkmark.circle.fill"
                                 )
@@ -1955,7 +1955,7 @@ struct PublishView: View {
                                         Text("Extracting job details")
                                             .font(.caption.weight(.bold))
                                         Spacer()
-                                        Text("\\(processed)/\\(readyLinks.count)")
+                                        Text("\(processed)/\(readyLinks.count)")
                                             .font(.caption.weight(.black))
                                     }
                                     ProgressView(value: Double(processed), total: Double(max(readyLinks.count, 1)))
@@ -1975,7 +1975,7 @@ struct PublishView: View {
                                     } else {
                                         Image(systemName: "sparkles")
                                     }
-                                    Text(isGenerating ? "Generating…" : "Generate \\(readyLinks.count) job\\(readyLinks.count == 1 ? "" : "s")")
+                                    Text(isGenerating ? "Generating…" : "Generate \(readyLinks.count) job\(readyLinks.count == 1 ? "" : "s")")
                                         .font(.subheadline.weight(.black))
                                 }
                                 .frame(maxWidth: .infinity)
@@ -2000,7 +2000,7 @@ struct PublishView: View {
                                 PremiumSectionTitle(
                                     icon: "exclamationmark.triangle.fill",
                                     title: "Needs attention",
-                                    subtitle: "\\(extractionIssues.count) extraction issue\\(extractionIssues.count == 1 ? "" : "s")",
+                                    subtitle: "\(extractionIssues.count) extraction issue\(extractionIssues.count == 1 ? "" : "s")",
                                     color: HDTheme.amber
                                 )
                                 ForEach(extractionIssues, id: \.self) { issue in
@@ -2024,7 +2024,7 @@ struct PublishView: View {
                                         subtitle: "Review content before it goes live",
                                         color: HDTheme.violet
                                     )
-                                    StatusPill(text: "\\(selectedDrafts.count) selected", color: HDTheme.violet)
+                                    StatusPill(text: "\(selectedDrafts.count) selected", color: HDTheme.violet)
                                 }
 
                                 ForEach(Array(drafts.enumerated()), id: \.element.id) { index, job in
@@ -2053,7 +2053,7 @@ struct PublishView: View {
                                     showPublishConfirmation = true
                                 } label: {
                                     Label(
-                                        "Publish \\(selectedDrafts.count) selected",
+                                        "Publish \(selectedDrafts.count) selected",
                                         systemImage: "paperplane.fill"
                                     )
                                     .font(.subheadline.weight(.black))
@@ -2093,7 +2093,7 @@ struct PublishView: View {
                 isPresented: $showPublishConfirmation,
                 titleVisibility: .visible
             ) {
-                Button("Publish \\(selectedDrafts.count) jobs") {
+                Button("Publish \(selectedDrafts.count) jobs") {
                     Task { await publishSelected() }
                 }
                 Button("Cancel", role: .cancel) {}
@@ -2143,7 +2143,7 @@ struct PublishView: View {
                             let job = try await APIClient.shared.extractJob(url: link.raw)
                             return (index, job, nil)
                         } catch {
-                            return (index, nil, "\\(link.domain): \\(error.localizedDescription)")
+                            return (index, nil, "\(link.domain): \(error.localizedDescription)")
                         }
                     }
                 }
@@ -2539,7 +2539,7 @@ struct CheckerView: View {
                                 }
 
                                 VStack(alignment: .leading, spacing: 5) {
-                                    Text(reviewItems.isEmpty ? "All clear" : "\\(reviewItems.count) need review")
+                                    Text(reviewItems.isEmpty ? "All clear" : "\(reviewItems.count) need review")
                                         .font(.system(size: 24, weight: .black, design: .rounded))
                                         .foregroundStyle(.white)
 
@@ -2569,7 +2569,7 @@ struct CheckerView: View {
                             PremiumSectionTitle(
                                 icon: "clock.arrow.circlepath",
                                 title: "Checker controls",
-                                subtitle: "Last run · \\(formatAdminDate(results?.checkedAt))",
+                                subtitle: "Last run · \(formatAdminDate(results?.checkedAt))",
                                 color: HDTheme.blue
                             )
 
@@ -3101,7 +3101,7 @@ struct AnalyticsListCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            PremiumSectionTitle(icon: icon, title: title, subtitle: visibleRows.isEmpty ? "No data yet" : "Top \\(visibleRows.count)")
+            PremiumSectionTitle(icon: icon, title: title, subtitle: visibleRows.isEmpty ? "No data yet" : "Top \(visibleRows.count)")
 
             if visibleRows.isEmpty {
                 Text("No data for this period.")
@@ -3112,7 +3112,7 @@ struct AnalyticsListCard: View {
                 ForEach(Array(visibleRows.enumerated()), id: \.offset) { index, row in
                     VStack(spacing: 6) {
                         HStack(spacing: 8) {
-                            Text("\\(index + 1)")
+                            Text("\(index + 1)")
                                 .font(.system(size: 9, weight: .black))
                                 .foregroundStyle(HDTheme.blue)
                                 .frame(width: 24, height: 24)
