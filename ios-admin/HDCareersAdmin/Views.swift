@@ -1020,6 +1020,28 @@ struct AnalyticsEmptyState: View {
     }
 }
 
+struct SmallMetric: View {
+    let title: String
+    let value: Int
+    let color: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(numberText(value))
+                .font(.title3.weight(.black))
+                .foregroundStyle(HDTheme.navy)
+            Text(title)
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(color)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(11)
+        .background(color.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+}
+
+
 struct AutomationHealthCard: View {
     @EnvironmentObject private var state: AppState
     @State private var showLastRun = false
