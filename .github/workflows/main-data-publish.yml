@@ -31,11 +31,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install logo quality dependency
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+
       - name: Verify new job availability
         run: python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
 
       - name: Queue new jobs for Telegram
         run: python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
+
+      - name: Resolve official company favicons
+        run: python3 scripts/resolve_company_logos.py
 
       - name: Generate homepage and job pages
         run: python3 generate.py
@@ -53,7 +59,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/review-queue.json data/telegram-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+            git add data/jobs.json data/company-logos.json data/review-queue.json data/telegram-queue.json assets/company-icons index.html jobs/ insights.html insights/ robots.txt sitemap.xml
 
             if git diff --cached --quiet; then
               echo "Generated website is already current."
@@ -72,6 +78,7 @@ jobs:
             git reset --hard origin/main
             python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
             python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
+            python3 scripts/resolve_company_logos.py
             python3 generate.py
             git diff --check
             sleep 3

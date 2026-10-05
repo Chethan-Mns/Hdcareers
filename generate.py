@@ -599,6 +599,7 @@ def logo_sources(company: str, domain: str) -> tuple[str, str]:
 def logo_candidates(job: dict) -> list[str]:
     company = str(job.get("company", ""))
     domain = str(job.get("domain", ""))
+    cached = str(job.get("logoPath", "")).strip()
     career = career_favicon_url(job)
     compact = COMPACT_LOCAL_LOGOS.get(company)
     direct = DIRECT_LOGOS.get(company)
@@ -607,6 +608,8 @@ def logo_candidates(job: dict) -> list[str]:
     google, duck = logo_sources(company, domain)
 
     ordered = []
+    if cached.startswith("assets/company-icons/"):
+        ordered.append("../" + cached)
     if compact:
         ordered.append(f"../assets/logos/{compact}")
     if direct:
