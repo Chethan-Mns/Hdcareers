@@ -27,7 +27,7 @@ jobs:
       - name: Install browser fallback
         run: |
           python3 -m pip install playwright
-          python3 -m playwright install --with-deps chromium
+          python3 -m playwright install chromium
       - name: Run V2 unit tests
         run: python3 -m unittest tests/test_job_verifier_v2.py
       - name: Verify current production-supported jobs in shadow mode
