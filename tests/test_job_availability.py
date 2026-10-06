@@ -34,7 +34,7 @@ class AvailabilityTests(unittest.TestCase):
 
     def test_smartrecruiters_inventory_can_confirm_live_job(self):
         job = dict(JOB, apply='https://jobs.smartrecruiters.com/acme/744000123456789-data-engineer')
-        with patch('check_job_availability.fetch_json', return_value={'id': '744000123456789-data-engineer', 'active': True}):
+        with patch('check_job_availability.fetch_json', return_value={'id': '744000123456789', 'active': True}):
             self.assertEqual(official_inventory_probe(job)[0], 'active')
 
     def test_ashby_inventory_can_confirm_live_job(self):
