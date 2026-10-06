@@ -176,7 +176,7 @@ def structured_jobposting(body, job, now=None):
                 except Exception:
                     pass
             if item.get('directApply') is True or item.get('url') or item.get('identifier'):
-                return 'active', 'Exact official JobPosting structured data is present on the job page'
+                return 'review', 'Exact official JobPosting structured data exists, but a live application route is still required'
     return None
 
 def classify(job, body, final_url, status=200):
