@@ -17,18 +17,11 @@ def probe(job):
             if not RX.search(r.url):
                 return
             item={"status":r.status,"url":r.url}
-            try:
-                ct=r.headers.get("content-type","")
-                if "json" in ct or "text" in ct or "javascript" in ct:
-                    raw=r.text()
-                    item["body"]=raw[:5000]
-            except Exception as exc:
-                item["body_error"]=type(exc).__name__
             hits.append(item)
         page.on("response",on_response)
         try:
             page.goto(job["apply"],wait_until="domcontentloaded",timeout=30000)
-            page.wait_for_timeout(4000)
+            page.wait_for_timeout(1800)
             body=page.locator("body").inner_text(timeout=5000)
             final=page.url
         except Exception as exc:
