@@ -4,46 +4,29 @@
     "company": "Thermo Fisher Scientific",
     "role": "Intern – IT",
     "apply": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
-    "manualGroundTruth": "active",
-    "verificationTerms": [
-      "Intern - IT",
-      "R-01368644",
-      "Bangalore",
-      "Apply Now"
-    ]
+    "storedStatus": "active",
+    "manualGroundTruth": "active"
   },
   {
     "id": 76,
     "company": "GE HealthCare",
     "role": "Early Career Trainee – Service",
     "apply": "https://careers.gehealthcare.com/global/en/job/R4046659/Early-Career-Trainee-Service",
-    "manualGroundTruth": "active",
-    "verificationTerms": [
-      "Early Career Trainee",
-      "Service",
-      "R4046659",
-      "India"
-    ]
+    "storedStatus": "active",
+    "manualGroundTruth": "active"
   },
   {
-    "id": 75,
-    "company": "Deloitte USI",
-    "role": "Associate Analyst – Business Operation Support",
-    "apply": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
-    "manualGroundTruth": "active",
-    "verificationTerms": [
-      "Associate Analyst",
-      "Business Operation Support",
-      "Hyderabad",
-      "369345"
-    ]
+    "id": 62,
+    "company": "Cisco",
+    "role": "Software Engineer Trainee – Technical Graduate Apprentice",
+    "apply": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
+    "storedStatus": "active"
   },
   {
-    "id": 13,
-    "company": "IBM",
-    "role": "Software Engineer",
-    "apply": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895",
-    "manualGroundTruth": "active",
-    "verificationTerms": []
+    "id": 14,
+    "company": "NTT DATA",
+    "role": "Data Analyst",
+    "apply": "https://careers.nttdata.com/global/en/job/390777/Data-Analyst",
+    "storedStatus": "expired"
   }
 ]
