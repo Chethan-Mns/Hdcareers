@@ -5,6 +5,7 @@ on:
       - job-verifier-v2-shadow
     paths:
       - 'scripts/portal_fingerprint.py'
+      - 'scripts/successfactors_network_probe.py'
       - 'tests/fixtures/v2_universal_portal_manual_10.json'
       - '.github/workflows/portal-fingerprint-shadow.yml'
   workflow_dispatch:
@@ -23,6 +24,8 @@ jobs:
         run: |
           python3 -m pip install playwright
           python3 -m playwright install chromium
+      - name: Probe SuccessFactors HCL/Wipro controls
+        run: python3 scripts/successfactors_network_probe.py tests/fixtures/v2_universal_portal_manual_10.json
       - name: Fingerprint manual 10-job validation set
         run: python3 scripts/portal_fingerprint.py --jobs tests/fixtures/v2_universal_portal_manual_10.json --output shadow-portal-manual-10.json --timeout-ms 10000
       - name: Fingerprint all HD Careers job portals
