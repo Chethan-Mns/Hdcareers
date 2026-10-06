@@ -42,6 +42,21 @@ class V2Tests(unittest.TestCase):
         self.assertEqual(v.state, "UNCONFIRMED")
         self.assertIn("provider_review_only", v.reasons)
 
+    @patch("job_verifier_v2.oracle_browser_probe")
+    def test_oracle_exact_requisition_absent_is_expired(self, bp):
+        bp.return_value = ("closed", "https://example.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails", "no items")
+        v = verify_url("https://example.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/123", NOW)
+        self.assertEqual(v.state, "EXPIRED")
+        self.assertIn("oracle.exact_requisition_absent", v.reasons)
+
+    @patch("job_verifier_v2.oracle_browser_probe")
+    def test_oracle_exact_requisition_present_stays_review_only(self, bp):
+        bp.return_value = ("open", "https://example.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails", "exact current requisition")
+        v = verify_url("https://example.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/123", NOW)
+        self.assertEqual(v.state, "UNCONFIRMED")
+        self.assertIn("provider_review_only", v.reasons)
+        self.assertIn("oracle.exact_requisition_present", v.reasons)
+
     def test_unknown_provider_is_unconfirmed(self):
         self.assertEqual(verify_url("https://careers.example.com/jobs/1", NOW).state, "UNCONFIRMED")
 
