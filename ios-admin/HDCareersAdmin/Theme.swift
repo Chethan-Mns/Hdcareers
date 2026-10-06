@@ -1,17 +1,19 @@
 import SwiftUI
 
 enum HDTheme {
-    static let blue = Color(red: 0.035, green: 0.412, blue: 0.855)
-    static let navy = Color(red: 0.027, green: 0.102, blue: 0.200)
-    static let background = Color(red: 0.965, green: 0.976, blue: 0.992)
-    static let green = Color(red: 0.086, green: 0.639, blue: 0.290)
-    static let amber = Color(red: 0.957, green: 0.620, blue: 0.035)
-    static let red = Color(red: 0.862, green: 0.149, blue: 0.149)
-    static let violet = Color(red: 0.42, green: 0.24, blue: 0.88)
-    static let cyan = Color(red: 0.02, green: 0.62, blue: 0.78)
-    static let pink = Color(red: 0.88, green: 0.22, blue: 0.52)
+    static let blue = Color(red: 0.055, green: 0.365, blue: 0.820)
+    static let navy = Color(red: 0.035, green: 0.075, blue: 0.145)
+    static let background = Color(red: 0.963, green: 0.968, blue: 0.978)
+    static let green = Color(red: 0.055, green: 0.565, blue: 0.325)
+    static let amber = Color(red: 0.875, green: 0.500, blue: 0.055)
+    static let red = Color(red: 0.820, green: 0.155, blue: 0.180)
+    static let violet = Color(red: 0.390, green: 0.285, blue: 0.820)
+    static let cyan = Color(red: 0.035, green: 0.540, blue: 0.700)
+    static let pink = Color(red: 0.820, green: 0.245, blue: 0.480)
     static let surface = Color.white
-    static let softBlue = Color(red: 0.935, green: 0.962, blue: 1.0)
+    static let softBlue = Color(red: 0.948, green: 0.963, blue: 0.990)
+    static let border = Color.black.opacity(0.055)
+    static let softShadow = Color(red: 0.03, green: 0.08, blue: 0.16).opacity(0.055)
 }
 
 struct HDCard: ViewModifier {
@@ -20,13 +22,13 @@ struct HDCard: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(.white)
+            .background(HDTheme.surface)
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
+                    .stroke(HDTheme.border, lineWidth: 1)
             }
-            .shadow(color: .black.opacity(0.025), radius: 8, y: 3)
+            .shadow(color: HDTheme.softShadow, radius: 10, x: 0, y: 4)
     }
 }
 
@@ -38,26 +40,13 @@ extension View {
     func premiumCard(_ padding: CGFloat = 16) -> some View {
         self
             .padding(padding)
-            .background(
-                LinearGradient(
-                    colors: [Color.white, HDTheme.softBlue.opacity(0.42)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            .background(HDTheme.surface)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(
-                        LinearGradient(
-                            colors: [Color.white.opacity(0.95), HDTheme.blue.opacity(0.13)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
+                    .stroke(HDTheme.border, lineWidth: 1)
             }
-            .shadow(color: HDTheme.navy.opacity(0.055), radius: 14, x: 0, y: 7)
+            .shadow(color: HDTheme.softShadow, radius: 14, x: 0, y: 6)
     }
 }
 
@@ -73,8 +62,9 @@ struct HDLogoView: View {
             .clipShape(RoundedRectangle(cornerRadius: size * 0.22, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: size * 0.22, style: .continuous)
-                    .stroke(Color.black.opacity(0.06))
+                    .stroke(HDTheme.border)
             }
+            .shadow(color: HDTheme.softShadow, radius: 5, y: 2)
     }
 }
 
@@ -90,12 +80,15 @@ struct StatusPill: View {
             }
             Text(text)
         }
-        .font(.caption2.weight(.bold))
+        .font(.system(size: 10, weight: .bold))
         .foregroundStyle(color)
         .padding(.horizontal, 9)
-        .padding(.vertical, 6)
-        .background(color.opacity(0.10))
+        .padding(.vertical, 5)
+        .background(color.opacity(0.085))
         .clipShape(Capsule())
+        .overlay {
+            Capsule().stroke(color.opacity(0.10), lineWidth: 1)
+        }
     }
 }
 
