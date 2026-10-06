@@ -27,6 +27,10 @@ class V2Tests(unittest.TestCase):
         r = resolve("https://jobs.ashbyhq.com/kognitos/a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5")
         self.assertEqual((r.provider, r.tenant, r.requisition_id), ("ashby", "kognitos", "a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5"))
 
+    def test_resolves_workday(self):
+        r = resolve("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("workday", "redhat", "R-058560"))
+
     def test_unknown_provider_is_unconfirmed(self):
         self.assertEqual(verify_url("https://careers.example.com/jobs/1", NOW).state, "UNCONFIRMED")
 
@@ -97,6 +101,27 @@ class V2Tests(unittest.TestCase):
         rid = "a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5"
         fj.return_value = (200, "https://api.ashbyhq.com/posting-api/job-board/acme", {}, {"jobs": []})
         self.assertEqual(verify_url(f"https://jobs.ashbyhq.com/acme/{rid}", NOW).state, "EXPIRED")
+
+    @patch("job_verifier_v2.workday_browser_probe")
+    @patch("job_verifier_v2.fetch_json")
+    def test_workday_cxs_alone_cannot_make_live(self, fj, bp):
+        fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560"}})
+        bp.return_value = ("neutral", "https://redhat.wd5.myworkdayjobs.com/x", "")
+        self.assertEqual(verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW).state, "UNCONFIRMED")
+
+    @patch("job_verifier_v2.workday_browser_probe")
+    @patch("job_verifier_v2.fetch_json")
+    def test_workday_browser_application_flow_makes_live(self, fj, bp):
+        fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560"}})
+        bp.return_value = ("open", "https://redhat.wd5.myworkdayjobs.com/application", "Create Account")
+        self.assertEqual(verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW).state, "LIVE")
+
+    @patch("job_verifier_v2.workday_browser_probe")
+    @patch("job_verifier_v2.fetch_json")
+    def test_workday_browser_closed_beats_stale_cxs(self, fj, bp):
+        fj.return_value = (200, "https://marmon.wd501.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "JR0000043944"}})
+        bp.return_value = ("closed", "https://marmon.wd501.myworkdayjobs.com/x", "position has been filled")
+        self.assertEqual(verify_url("https://marmon.wd501.myworkdayjobs.com/en-US/Marmon_Careers/job/Karnataka-IN/Graduate-Engineer-Trainee_JR0000043944", NOW).state, "EXPIRED")
 
 if __name__ == "__main__":
     unittest.main()
