@@ -471,31 +471,41 @@ def oracle_browser_probe(url: str, requisition_id: str):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page(user_agent=UA)
+            requisition_detail = []
+
+            def capture_response(response):
+                if "recruitingCEJobRequisitionDetails" not in response.url:
+                    return
+                try:
+                    data = response.json()
+                    items = data.get("items", []) if isinstance(data, dict) else []
+                    if not items:
+                        requisition_detail.append(("closed", response.url, "exact Oracle CE requisition details returned no items"))
+                        return
+                    blob = json.dumps(items, ensure_ascii=False)
+                    if requisition_id.casefold() in blob.casefold():
+                        requisition_detail.append(("open", response.url, "exact Oracle CE requisition details returned current requisition"))
+                    else:
+                        requisition_detail.append(("mismatch", response.url, "Oracle CE requisition details returned a different requisition"))
+                except Exception as exc:
+                    requisition_detail.append(("error", response.url, type(exc).__name__))
+
+            page.on("response", capture_response)
             page.goto(url, wait_until="domcontentloaded", timeout=25000)
-            page.wait_for_timeout(1200)
+            page.wait_for_timeout(1800)
             text = page.locator("body").inner_text(timeout=5000)
             final_url = page.url
-            exact = requisition_id.casefold() in (final_url + " " + text).casefold()
+
+            exact_states = [x for x in requisition_detail if x[0] in ("open", "closed", "mismatch")]
+            if exact_states:
+                state, endpoint, detail = exact_states[-1]
+                browser.close()
+                return state, endpoint, detail
+
             if CLOSED.search(text):
                 browser.close()
                 return "closed", final_url, text[:500]
-            apply = page.get_by_text(re.compile(r"^apply( now)?$", re.I))
-            if exact and apply.count():
-                try:
-                    apply.first.click(timeout=5000)
-                    page.wait_for_timeout(1000)
-                    text2 = page.locator("body").inner_text(timeout=5000)
-                    final2 = page.url
-                    fields = page.locator("input, textarea, select").count()
-                    auth = re.search(r"sign in|create account|email|candidate", text2, re.I) is not None
-                    browser.close()
-                    if CLOSED.search(text2):
-                        return "closed", final2, text2[:500]
-                    if fields >= 2 or auth:
-                        return "open", final2, text2[:500]
-                    return "neutral", final2, text2[:500]
-                except Exception:
-                    pass
+
             browser.close()
             return "neutral", final_url, text[:500]
     except Exception as exc:
@@ -507,9 +517,9 @@ def oracle_collect(ref: ProviderRef, observed_at: datetime):
     p = urlsplit(ref.source_url)
     bstate, bfinal, bdetail = oracle_browser_probe(ref.source_url, ref.requisition_id)
     if bstate == "closed":
-        out.append(ev(ref, "browser", "A", "closed", "oracle.browser_closed", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+        out.append(ev(ref, "browser", "A", "closed", "oracle.exact_requisition_absent", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
     elif bstate == "open":
-        out.append(ev(ref, "browser", "A", "open", "oracle.application_flow", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+        out.append(ev(ref, "browser", "A", "open", "oracle.exact_requisition_present", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
     else:
         out.append(ev(ref, "browser", "B", "neutral" if bstate in ("neutral", "unavailable") else "error",
                       f"oracle.browser_{bstate}", ref.source_url, observed_at, None, bfinal, detail=bdetail))
