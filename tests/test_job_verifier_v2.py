@@ -78,14 +78,14 @@ class V2Tests(unittest.TestCase):
         fj.side_effect = HTTPError("x", 404, "Not found", {}, None)
         self.assertEqual(verify_url("https://job-boards.greenhouse.io/acme/jobs/123", NOW).state, "EXPIRED")
 
-    @patch("job_verifier_v2.browser_form_probe")
+    @patch("job_verifier_v2.smartrecruiters_browser_probe")
     @patch("job_verifier_v2.fetch_json")
     def test_smartrecruiters_application_form_is_live(self, fj, bp):
         fj.return_value = (200, "https://api.smartrecruiters.com/v1/companies/Acme/postings/123", {}, {"id": "123", "active": True, "applyUrl": "https://jobs.smartrecruiters.com/Acme/123-role?oga=true"})
         bp.return_value = ("open", "https://jobs.smartrecruiters.com/Acme/123-role?oga=true", "")
         self.assertEqual(verify_url("https://jobs.smartrecruiters.com/Acme/123-role", NOW).state, "LIVE")
 
-    @patch("job_verifier_v2.browser_form_probe")
+    @patch("job_verifier_v2.smartrecruiters_browser_probe")
     @patch("job_verifier_v2.fetch_json")
     def test_smartrecruiters_api_alone_cannot_make_live(self, fj, bp):
         fj.return_value = (200, "https://api.smartrecruiters.com/v1/companies/Acme/postings/123", {}, {"id": "123", "active": True})
