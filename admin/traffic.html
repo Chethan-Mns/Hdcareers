@@ -102,17 +102,17 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 }
 
 
-/* Preview v4: clearer chart differentiation */
+/* Preview v4: GA-inspired chart differentiation */
 .analytics-chart-card,.donut-card{position:relative;overflow:hidden}
-.analytics-chart-card::before,.donut-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#2563eb,#14b8a6,#8b5cf6)}
-.analytics-chart-grid.three>.analytics-chart-card:nth-child(1)::before{background:#2563eb}
-.analytics-chart-grid.three>.analytics-chart-card:nth-child(2)::before{background:#14b8a6}
-.analytics-chart-grid.three>.analytics-chart-card:nth-child(3)::before{background:#8b5cf6}
-.analytics-chart-grid.two>.analytics-chart-card:nth-child(1)::before{background:#f59e0b}
-.analytics-chart-grid.two>.analytics-chart-card:nth-child(2)::before{background:#22c55e}
-.analytics-donut-grid>.donut-card:nth-child(1)::before{background:#8b5cf6}
-.analytics-donut-grid>.donut-card:nth-child(2)::before{background:#14b8a6}
-.analytics-donut-grid>.donut-card:nth-child(3)::before{background:#f59e0b}
+.analytics-chart-card::before,.donut-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#1A73E8}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(1)::before{background:#1A73E8}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(2)::before{background:#34A853}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(3)::before{background:#F9AB00}
+.analytics-chart-grid.two>.analytics-chart-card:nth-child(1)::before{background:#1A73E8}
+.analytics-chart-grid.two>.analytics-chart-card:nth-child(2)::before{background:#34A853}
+.analytics-donut-grid>.donut-card:nth-child(1)::before{background:#1A73E8}
+.analytics-donut-grid>.donut-card:nth-child(2)::before{background:#34A853}
+.analytics-donut-grid>.donut-card:nth-child(3)::before{background:#F9AB00}
 
 </style>
 </head>
@@ -312,8 +312,9 @@ function renderVisualCharts(d){
  if(typeof Chart==='undefined')return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const baseAnim=reduced?false:{duration:760,easing:'easeOutQuart'};
- const palette=['#2563eb','#14b8a6','#8b5cf6','#f59e0b','#ef4444','#22c55e','#06b6d4','#f97316'];
- const paletteSoft=['rgba(37,99,235,.88)','rgba(20,184,166,.88)','rgba(139,92,246,.88)','rgba(245,158,11,.90)','rgba(239,68,68,.86)','rgba(34,197,94,.88)','rgba(6,182,212,.88)','rgba(249,115,22,.88)'];
+ const ga={blue:'#1A73E8',lightBlue:'#4285F4',green:'#34A853',amber:'#F9AB00',gray:'#E8EAED',dark:'#202124',slate:'#5F6368'};
+ const blueScale=['#174EA6','#1A73E8','#4285F4','#669DF6','#8AB4F8','#AECBFA','#D2E3FC'];
+ const blueBars=['rgba(26,115,232,.96)','rgba(26,115,232,.86)','rgba(66,133,244,.80)','rgba(66,133,244,.72)','rgba(102,157,246,.72)','rgba(138,180,248,.78)','rgba(174,203,250,.92)'];
  const legend={position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:7,boxHeight:7,padding:12,font:{size:9,weight:'700'},color:'#64748b'}};
  const barOptions=(tooltipTitle)=>({responsive:true,maintainAspectRatio:false,indexAxis:'y',animation:baseAnim,plugins:{legend:{display:false},tooltip:{displayColors:false,callbacks:tooltipTitle?{title:tooltipTitle}:undefined}},scales:{x:{beginAtZero:true,grid:{color:'rgba(148,163,184,.13)'},border:{display:false},ticks:{precision:0,color:'#94a3b8',font:{size:9}}},y:{grid:{display:false},border:{display:false},ticks:{color:'#475569',font:{size:10,weight:'700'},autoSkip:false}}}});
 
@@ -331,45 +332,45 @@ function renderVisualCharts(d){
  const totals=d.totals||{},nu=Number(totals.newUsers||0),ru=Number(totals.returningUsers||0),audTotal=nu+ru;
  destroyChart('audience');
  const aud=document.getElementById('audienceChart');
- if(aud)analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New users','Returning'],datasets:[{data:[nu,ru],backgroundColor:[palette[0],palette[2]],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(audTotal),subtext:'users'}}}});
+ if(aud)analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New users','Returning'],datasets:[{data:[nu,ru],backgroundColor:[ga.blue,ga.lightBlue],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(audTotal),subtext:'users'}}}});
 
  const devices=Array.isArray(d.devices)?d.devices.slice(0,5):[],deviceTotal=devices.reduce((a,x)=>a+Number(x.visitors||0),0);
  destroyChart('device');
  const dev=document.getElementById('deviceChart');
- if(dev)analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:[palette[1],palette[3],palette[2],palette[6],palette[5]],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(deviceTotal),subtext:'visitors'}}}});
+ if(dev)analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:[ga.blue,ga.green,ga.amber,ga.lightBlue,'#9AA0A6'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(deviceTotal),subtext:'visitors'}}}});
  const deviceSummary=document.getElementById('deviceSummary');if(deviceSummary)deviceSummary.textContent=devices.length?(devices[0].deviceType||'Unknown')+' leads with '+fmt(devices[0].visitors||0)+' visitors':'No device data yet';
 
  const countries=Array.isArray(d.countries)?d.countries.slice(0,6):[],countryTotal=countries.reduce((a,x)=>a+Number(x.visitors||0),0);
  destroyChart('country');
  const countryCanvas=document.getElementById('countryChart');
- if(countryCanvas)analyticsCharts.country=new Chart(countryCanvas,{type:'doughnut',data:{labels:countries.map(x=>x.country||'Unknown'),datasets:[{data:countries.map(x=>Number(x.visitors||0)),backgroundColor:[palette[0],palette[5],palette[3],palette[2],palette[4],palette[6]],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(countryTotal),subtext:'visitors'}}}});
+ if(countryCanvas)analyticsCharts.country=new Chart(countryCanvas,{type:'doughnut',data:{labels:countries.map(x=>x.country||'Unknown'),datasets:[{data:countries.map(x=>Number(x.visitors||0)),backgroundColor:[ga.blue,ga.lightBlue,ga.green,ga.amber,'#9AA0A6','#DADCE0'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(countryTotal),subtext:'visitors'}}}});
  const countrySummary=document.getElementById('countrySummary');if(countrySummary)countrySummary.textContent=countries.length?(countries[0].country||'Unknown')+' leads with '+fmt(countries[0].visitors||0)+' visitors':'No country data yet';
 
  const applyJobs=Array.isArray(d.applyJobs)?d.applyJobs.slice(0,6):[];
  destroyChart('applyJobs');
  const applyCanvas=document.getElementById('applyJobsChart');
- if(applyCanvas)analyticsCharts.applyJobs=new Chart(applyCanvas,{type:'bar',data:{labels:applyJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:applyJobs.map(x=>Number(x.count||0)),backgroundColor:paletteSoft.slice(0,applyJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(applyJobs[i]?.requestPath||'')})});
+ if(applyCanvas)analyticsCharts.applyJobs=new Chart(applyCanvas,{type:'bar',data:{labels:applyJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:applyJobs.map(x=>Number(x.count||0)),backgroundColor:blueBars.slice(0,applyJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(applyJobs[i]?.requestPath||'')})});
 
  const resumeJobs=Array.isArray(d.resumeJobs)?d.resumeJobs.slice(0,6):[];
  destroyChart('resumeJobs');
  const resumeCanvas=document.getElementById('resumeJobsChart');
- if(resumeCanvas)analyticsCharts.resumeJobs=new Chart(resumeCanvas,{type:'bar',data:{labels:resumeJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:resumeJobs.map(x=>Number(x.count||0)),backgroundColor:[paletteSoft[6],paletteSoft[1],paletteSoft[5],paletteSoft[3],paletteSoft[2],paletteSoft[0]].slice(0,resumeJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(resumeJobs[i]?.requestPath||'')})});
+ if(resumeCanvas)analyticsCharts.resumeJobs=new Chart(resumeCanvas,{type:'bar',data:{labels:resumeJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:resumeJobs.map(x=>Number(x.count||0)),backgroundColor:[ga.green,ga.green,'#5BB974','#78C78C',ga.lightBlue,'#8AB4F8'].slice(0,resumeJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(resumeJobs[i]?.requestPath||'')})});
 
  const applySources=Array.isArray(d.applySources)?d.applySources.slice(0,6):[],applySourceTotal=applySources.reduce((a,x)=>a+Number(x.count||0),0);
  destroyChart('applySources');
  const applySourceCanvas=document.getElementById('applySourcesChart');
- if(applySourceCanvas)analyticsCharts.applySources=new Chart(applySourceCanvas,{type:'doughnut',data:{labels:applySources.map(x=>sourceLabel(x.referrerHostname||x.dimension||x.name)),datasets:[{data:applySources.map(x=>Number(x.count||0)),backgroundColor:[palette[0],palette[3],palette[2],palette[1],palette[5],palette[4]],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(applySourceTotal),subtext:'apply clicks'}}}});
+ if(applySourceCanvas)analyticsCharts.applySources=new Chart(applySourceCanvas,{type:'doughnut',data:{labels:applySources.map(x=>sourceLabel(x.referrerHostname||x.dimension||x.name)),datasets:[{data:applySources.map(x=>Number(x.count||0)),backgroundColor:[ga.blue,ga.amber,ga.lightBlue,ga.green,'#9AA0A6','#DADCE0'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(applySourceTotal),subtext:'apply clicks'}}}});
  const applySourceSummary=document.getElementById('applySourceSummary');if(applySourceSummary)applySourceSummary.textContent=applySources.length?sourceLabel(applySources[0].referrerHostname||applySources[0].dimension||applySources[0].name)+' is the leading apply source':'No apply-source data yet';
 
  const pages=Array.isArray(d.pages)?d.pages.slice(0,7):[];
  destroyChart('page');
  const pageCanvas=document.getElementById('pageChart');
- if(pageCanvas)analyticsCharts.page=new Chart(pageCanvas,{type:'bar',data:{labels:pages.map(x=>shortChartLabel(humanizePath(x.requestPath),34)),datasets:[{data:pages.map(x=>Number(x.pageviews||0)),backgroundColor:[paletteSoft[0],paletteSoft[2],paletteSoft[1],paletteSoft[5],paletteSoft[3],paletteSoft[6],paletteSoft[4]].slice(0,pages.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(pages[i]?.requestPath||'')})});
+ if(pageCanvas)analyticsCharts.page=new Chart(pageCanvas,{type:'bar',data:{labels:pages.map(x=>shortChartLabel(humanizePath(x.requestPath),34)),datasets:[{data:pages.map(x=>Number(x.pageviews||0)),backgroundColor:blueBars.slice(0,pages.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(pages[i]?.requestPath||'')})});
 
  const refs=Array.isArray(d.referrers)?d.referrers.slice(0,7):[];
  destroyChart('trafficSource');
  const sourceCanvas=document.getElementById('trafficSourceChart');
- if(sourceCanvas)analyticsCharts.trafficSource=new Chart(sourceCanvas,{type:'bar',data:{labels:refs.map(x=>shortChartLabel(sourceLabel(x.referrerHostname),27)),datasets:[{data:refs.map(x=>Number(x.sessions||0)),backgroundColor:[paletteSoft[0],paletteSoft[3],paletteSoft[2],paletteSoft[5],paletteSoft[6],paletteSoft[4],paletteSoft[7]].slice(0,refs.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions()});
+ if(sourceCanvas)analyticsCharts.trafficSource=new Chart(sourceCanvas,{type:'bar',data:{labels:refs.map(x=>shortChartLabel(sourceLabel(x.referrerHostname),27)),datasets:[{data:refs.map(x=>Number(x.sessions||0)),backgroundColor:[ga.blue,ga.amber,ga.lightBlue,ga.green,'#8AB4F8','#9AA0A6','#DADCE0'].slice(0,refs.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions()});
 }
 async function loadTraffic(days=7){
  currentDays=days;
