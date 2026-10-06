@@ -12,6 +12,8 @@ on:
       - 'tests/fixtures/v2_workday_live_jobs.json'
       - 'tests/fixtures/v2_workday_expired_jobs.json'
       - 'tests/fixtures/v2_provider_expired_candidates.json'
+      - 'tests/fixtures/v2_oracle_live_candidates.json'
+      - 'tests/fixtures/v2_oracle_old_candidates.json'
       - '.github/workflows/job-verifier-v2-shadow.yml'
   workflow_dispatch:
 permissions:
@@ -41,6 +43,10 @@ jobs:
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_live_jobs.json --output shadow-provider-live-report.json
       - name: Verify provider negative candidates
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_expired_candidates.json --output shadow-provider-negative-report.json
+      - name: Verify Oracle HCM live candidates
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_oracle_live_candidates.json --output shadow-oracle-live-report.json
+      - name: Verify Oracle HCM old candidates
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_oracle_old_candidates.json --output shadow-oracle-old-report.json
       - name: Verify Workday live set
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_workday_live_jobs.json --output shadow-workday-live-report.json
       - name: Verify Workday expired regression set
@@ -56,6 +62,8 @@ jobs:
             shadow-expired-validation-report.json
             shadow-provider-live-report.json
             shadow-provider-negative-report.json
+            shadow-oracle-live-report.json
+            shadow-oracle-old-report.json
             shadow-workday-live-report.json
             shadow-workday-expired-report.json
           retention-days: 30
