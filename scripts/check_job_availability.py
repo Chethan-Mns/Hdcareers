@@ -98,7 +98,9 @@ def official_inventory_probe(job):
             endpoint = f'https://api.lever.co/v0/postings/{site}/{expected_id}'
             provider = 'Lever'
         elif host == 'jobs.smartrecruiters.com' and len(parts) >= 2:
-            company, expected_id = parts[0], parts[1]
+            company = parts[0]
+            m = re.match(r'(\\d+)', parts[1])
+            expected_id = m.group(1) if m else parts[1]
             endpoint = f'https://api.smartrecruiters.com/v1/companies/{company}/postings/{expected_id}'
             provider = 'SmartRecruiters'
         elif host == 'jobs.ashbyhq.com' and len(parts) >= 2:
