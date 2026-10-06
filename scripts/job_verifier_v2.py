@@ -132,6 +132,12 @@ def resolve(url: str) -> ProviderRef | None:
             return ProviderRef("greenhouse", parts[i - 1], parts[i + 1], url)
     if host == "jobs.lever.co" and len(parts) >= 2:
         return ProviderRef("lever", parts[0], parts[1], url)
+    if host == "jobs.smartrecruiters.com" and len(parts) >= 2:
+        posting_id = parts[1].split("-", 1)[0]
+        if posting_id:
+            return ProviderRef("smartrecruiters", parts[0], posting_id, url)
+    if host == "jobs.ashbyhq.com" and len(parts) >= 2:
+        return ProviderRef("ashby", parts[0], parts[1], url)
     return None
 
 
@@ -226,6 +232,69 @@ def lever_collect(ref: ProviderRef, observed_at: datetime):
     return out
 
 
+
+def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    api = f"https://api.smartrecruiters.com/v1/companies/{ref.tenant}/postings/{ref.requisition_id}"
+    try:
+        status, final_url, _, data = fetch_json(api)
+        found = str(data.get("id") or data.get("uuid") or "") if isinstance(data, dict) else None
+        if status == 200 and found and found.casefold() == ref.requisition_id.casefold():
+            out.append(ev(ref, "api", "A", "open", "smartrecruiters.active_public_posting", api, observed_at, found, final_url, status,
+                          "Official Posting API documents this endpoint as an active published posting."))
+        else:
+            out.append(ev(ref, "api", "B", "neutral", "smartrecruiters.unexpected_record", api, observed_at, found, final_url, status))
+    except HTTPError as exc:
+        if exc.code in (404, 410):
+            out.append(ev(ref, "api", "A", "closed", f"smartrecruiters.api_{exc.code}", api, observed_at, ref.requisition_id, api, exc.code))
+        else:
+            out.append(ev(ref, "api", "B", "error", f"smartrecruiters.api_{exc.code}", api, observed_at, status=exc.code))
+    except Exception as exc:
+        out.append(ev(ref, "api", "B", "error", "smartrecruiters.api_error", api, observed_at, detail=type(exc).__name__))
+    return out
+
+
+def ashby_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    api = f"https://api.ashbyhq.com/posting-api/job-board/{ref.tenant}"
+    try:
+        status, final_url, _, data = fetch_json(api)
+        jobs = data.get("jobs", []) if isinstance(data, dict) else []
+        exact = None
+        for item in jobs:
+            blob = " ".join(str(item.get(k, "")) for k in ("jobUrl", "applyUrl"))
+            if ref.requisition_id.casefold() in blob.casefold():
+                exact = item
+                break
+        if exact is None:
+            out.append(ev(ref, "api", "A", "closed", "ashby.absent_from_current_board", api, observed_at, ref.requisition_id, final_url, status,
+                          "Exact requisition is absent from Ashby's official currently-published job board API."))
+            return out
+        out.append(ev(ref, "api", "B", "open", "ashby.current_public_posting", api, observed_at, ref.requisition_id, final_url, status))
+        apply_url = str(exact.get("applyUrl") or "")
+        if not apply_url:
+            out.append(ev(ref, "api", "B", "neutral", "ashby.no_apply_url", api, observed_at, ref.requisition_id, final_url, status))
+            return out
+        try:
+            hstatus, hfinal, _, body = fetch_html(apply_url)
+            text = visible_text(body)
+            same = ref.requisition_id.casefold() in (hfinal + " " + body).casefold()
+            if CLOSED.search(text):
+                out.append(ev(ref, "http", "A", "closed", "ashby.apply_closed", apply_url, observed_at, ref.requisition_id, hfinal, hstatus))
+            elif hstatus == 200 and FORM.search(body + " " + text) and same:
+                out.append(ev(ref, "http", "A", "open", "ashby.apply_form", apply_url, observed_at, ref.requisition_id, hfinal, hstatus))
+            else:
+                out.append(ev(ref, "http", "B", "neutral", "ashby.apply_unproven", apply_url, observed_at, None, hfinal, hstatus))
+        except HTTPError as exc:
+            out.append(ev(ref, "http", "B", "error", f"ashby.apply_http_{exc.code}", apply_url, observed_at, status=exc.code))
+        except Exception as exc:
+            out.append(ev(ref, "http", "B", "error", "ashby.apply_error", apply_url, observed_at, detail=type(exc).__name__))
+    except HTTPError as exc:
+        out.append(ev(ref, "api", "B", "error", f"ashby.board_http_{exc.code}", api, observed_at, status=exc.code))
+    except Exception as exc:
+        out.append(ev(ref, "api", "B", "error", "ashby.board_error", api, observed_at, detail=type(exc).__name__))
+    return out
+
 def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datetime | None = None):
     t = observed_at or now_utc()
     if ref is None:
@@ -247,7 +316,7 @@ def verify_url(url: str, observed_at: datetime | None = None):
     ref = resolve(url)
     if ref is None:
         return decide(None, [], t)
-    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect}[ref.provider]
+    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect}[ref.provider]
     return decide(ref, collector(ref, t), t)
 
 
