@@ -58,26 +58,27 @@ struct PremiumSectionTitle: View {
     }
 
     var body: some View {
-        HStack(spacing: 11) {
+        HStack(spacing: 10) {
             Image(systemName: icon)
-                .font(.system(size: 13, weight: .bold))
+                .font(.system(size: 12, weight: .bold))
                 .foregroundStyle(color)
-                .frame(width: 34, height: 34)
-                .background(color.opacity(0.10))
-                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                .frame(width: 32, height: 32)
+                .background(color.opacity(0.085))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.subheadline.weight(.black))
+                    .font(.system(size: 15, weight: .black))
                     .foregroundStyle(HDTheme.navy)
                 if let subtitle {
                     Text(subtitle)
-                        .font(.caption2)
+                        .font(.system(size: 10.5, weight: .medium))
                         .foregroundStyle(.secondary)
+                        .lineLimit(2)
                 }
             }
 
-            Spacer()
+            Spacer(minLength: 4)
         }
     }
 }
@@ -89,35 +90,36 @@ struct PremiumMetricTile: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
+        VStack(alignment: .leading, spacing: 7) {
+            HStack(spacing: 6) {
                 Image(systemName: icon)
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 11, weight: .bold))
                     .foregroundStyle(color)
-                    .frame(width: 30, height: 30)
-                    .background(color.opacity(0.10))
-                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                Spacer()
+                    .frame(width: 27, height: 27)
+                    .background(color.opacity(0.085))
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+
+                Text(title)
+                    .font(.system(size: 9.5, weight: .bold))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+
+                Spacer(minLength: 0)
             }
 
             Text(value)
-                .font(.system(size: 22, weight: .black, design: .rounded))
+                .font(.system(size: 23, weight: .black, design: .rounded))
                 .foregroundStyle(HDTheme.navy)
                 .lineLimit(1)
-                .minimumScaleFactor(0.75)
-
-            Text(title)
-                .font(.caption2.weight(.bold))
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
+                .minimumScaleFactor(0.65)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(color.opacity(0.055))
-        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .padding(11)
+        .background(color.opacity(0.04))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .stroke(color.opacity(0.10))
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(color.opacity(0.085))
         }
     }
 }
@@ -129,12 +131,13 @@ struct PremiumMetaChip: View {
 
     var body: some View {
         Label(text, systemImage: icon)
-            .font(.system(size: 9.5, weight: .bold))
-            .foregroundStyle(color)
+            .font(.system(size: 9.5, weight: .semibold))
+            .foregroundStyle(HDTheme.navy.opacity(0.76))
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            .background(color.opacity(0.08))
+            .background(color.opacity(0.055))
             .clipShape(Capsule())
+            .lineLimit(1)
     }
 }
 
@@ -185,18 +188,18 @@ struct PremiumInfoBox: View {
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: icon)
-                .font(.system(size: 12, weight: .bold))
+                .font(.system(size: 11, weight: .bold))
                 .foregroundStyle(color)
-                .frame(width: 30, height: 30)
-                .background(color.opacity(0.10))
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .frame(width: 29, height: 29)
+                .background(color.opacity(0.085))
+                .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.caption.weight(.black))
+                    .font(.system(size: 11.5, weight: .black))
                     .foregroundStyle(HDTheme.navy)
                 Text(text)
-                    .font(.caption2)
+                    .font(.system(size: 10.5, weight: .regular))
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -204,11 +207,11 @@ struct PremiumInfoBox: View {
             Spacer(minLength: 0)
         }
         .padding(11)
-        .background(color.opacity(0.045))
+        .background(color.opacity(0.035))
         .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 13, style: .continuous)
-                .stroke(color.opacity(0.12))
+                .stroke(color.opacity(0.085))
         }
     }
 }
@@ -469,19 +472,19 @@ struct RootTabView: View {
     var body: some View {
         TabView(selection: $selection) {
             DashboardView()
-                .tabItem { Label("Dashboard", systemImage: "house.fill") }
+                .tabItem { Label("Home", systemImage: selection == 0 ? "house.fill" : "house") }
                 .tag(0)
 
             JobsView()
-                .tabItem { Label("Jobs", systemImage: "briefcase.fill") }
+                .tabItem { Label("Jobs", systemImage: selection == 1 ? "briefcase.fill" : "briefcase") }
                 .tag(1)
 
             PublishView()
-                .tabItem { Label("Publish", systemImage: "wand.and.stars") }
+                .tabItem { Label("Publish", systemImage: selection == 2 ? "plus.circle.fill" : "plus.circle") }
                 .tag(2)
 
             CheckerView()
-                .tabItem { Label("Checker", systemImage: "checkmark.shield.fill") }
+                .tabItem { Label("Checker", systemImage: selection == 3 ? "checkmark.shield.fill" : "checkmark.shield") }
                 .tag(3)
 
             MoreView()
@@ -489,6 +492,8 @@ struct RootTabView: View {
                 .tag(4)
         }
         .tint(HDTheme.blue)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarBackground(Color.white, for: .tabBar)
     }
 }
 
@@ -499,26 +504,37 @@ struct AdminHeader: View {
     var trailingAction: (() -> Void)? = nil
 
     var body: some View {
-        HStack(spacing: 12) {
-            HDLogoView(size: 42)
-            VStack(alignment: .leading, spacing: 2) {
+        HStack(spacing: 11) {
+            HDLogoView(size: 38)
+
+            VStack(alignment: .leading, spacing: 1) {
                 Text(title)
-                    .font(.headline.weight(.black))
+                    .font(.system(size: 20, weight: .black, design: .rounded))
                     .foregroundStyle(HDTheme.navy)
+                    .lineLimit(1)
                 if let subtitle {
                     Text(subtitle)
-                        .font(.caption)
+                        .font(.system(size: 10.5, weight: .medium))
                         .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
             }
+
             Spacer()
+
             if let trailingSystemImage, let trailingAction {
                 Button(action: trailingAction) {
                     Image(systemName: trailingSystemImage)
-                        .font(.system(size: 16, weight: .bold))
-                        .frame(width: 38, height: 38)
-                        .background(HDTheme.blue.opacity(0.08))
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(HDTheme.navy)
+                        .frame(width: 36, height: 36)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 11, style: .continuous)
+                                .stroke(HDTheme.border)
+                        }
+                        .shadow(color: HDTheme.softShadow, radius: 6, y: 2)
                 }
                 .buttonStyle(.plain)
             }
