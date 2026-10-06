@@ -254,6 +254,33 @@ def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
     return out
 
 
+
+def browser_form_probe(url: str, requisition_id: str):
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return "unavailable", url, ""
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            page.wait_for_timeout(1200)
+            final_url = page.url
+            text = page.locator("body").inner_text(timeout=5000)
+            has_form = page.locator("form").count() > 0
+            has_fields = page.locator("input, textarea, select").count() >= 2
+            has_submit = page.get_by_text(re.compile(r"submit application|apply", re.I)).count() > 0
+            browser.close()
+        if CLOSED.search(text):
+            return "closed", final_url, text[:500]
+        if requisition_id.casefold() in final_url.casefold() and (has_form or (has_fields and has_submit)):
+            return "open", final_url, text[:500]
+        return "neutral", final_url, text[:500]
+    except Exception as exc:
+        return "error", url, type(exc).__name__
+
 def ashby_collect(ref: ProviderRef, observed_at: datetime):
     out = []
     api = f"https://api.ashbyhq.com/posting-api/job-board/{ref.tenant}"
@@ -285,6 +312,14 @@ def ashby_collect(ref: ProviderRef, observed_at: datetime):
                 out.append(ev(ref, "http", "A", "open", "ashby.apply_form", apply_url, observed_at, ref.requisition_id, hfinal, hstatus))
             else:
                 out.append(ev(ref, "http", "B", "neutral", "ashby.apply_unproven", apply_url, observed_at, None, hfinal, hstatus))
+                bstate, bfinal, bdetail = browser_form_probe(apply_url, ref.requisition_id)
+                if bstate == "open":
+                    out.append(ev(ref, "browser", "A", "open", "ashby.browser_apply_form", apply_url, observed_at, ref.requisition_id, bfinal, 200))
+                elif bstate == "closed":
+                    out.append(ev(ref, "browser", "A", "closed", "ashby.browser_apply_closed", apply_url, observed_at, ref.requisition_id, bfinal, 200))
+                else:
+                    out.append(ev(ref, "browser", "B", "neutral" if bstate in ("neutral", "unavailable") else "error",
+                                  f"ashby.browser_{bstate}", apply_url, observed_at, None, bfinal, detail=bdetail))
         except HTTPError as exc:
             out.append(ev(ref, "http", "B", "error", f"ashby.apply_http_{exc.code}", apply_url, observed_at, status=exc.code))
         except Exception as exc:
