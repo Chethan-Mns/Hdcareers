@@ -41,4 +41,35 @@
   document.addEventListener('click',e=>{if(!header.contains(e.target))close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   addEventListener('resize',()=>{if(innerWidth>900)close()},{passive:true});
+
+  document.body.classList.add('hd-public-page');
+
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const candidates=[
+    ...document.querySelectorAll(
+      'main > section, main > div, .hero .wrap > *, .article > *, .card, .featured-resource, .resource-controls, .resource-section-head, .policy-card, .policy-assurance, .policy-original, .policy-faq, .note'
+    )
+  ].filter((el,index,arr)=>el&&el!==header&&arr.indexOf(el)===index&&!el.closest('.hd-public-header')&&!el.classList.contains('reveal-on-scroll'));
+
+  candidates.forEach((el,index)=>{
+    el.classList.add('hd-motion');
+    el.style.setProperty('--hd-delay',Math.min(index%5,4)*42+'ms');
+    if(el.matches('.card,.featured-resource,.policy-card,.policy-assurance,.note'))el.classList.add('hd-hover-lift');
+  });
+
+  if(reduced){
+    candidates.forEach(el=>el.classList.add('is-visible'));
+  }else if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -7% 0px'});
+    candidates.forEach(el=>observer.observe(el));
+  }else{
+    candidates.forEach(el=>el.classList.add('is-visible'));
+  }
 })();
