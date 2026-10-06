@@ -57,6 +57,13 @@ class V2Tests(unittest.TestCase):
         b = Evidence("lever", "lever-v1", "api", "A", NOW.isoformat(), "abc", "abc", "exact", "closed", "lever.api_404", ref.source_url)
         self.assertEqual(decide(ref, [a, b], NOW).state, "UNCONFIRMED")
 
+    def test_review_only_provider_cannot_become_live(self):
+        ref = ProviderRef("workday", "acme", "R-1", "https://acme.wd5.myworkdayjobs.com/en-US/jobs/job/Test_R-1")
+        e = Evidence("workday", "workday-v1", "browser", "A", NOW.isoformat(), "R-1", "R-1", "exact", "open", "workday.application_flow", ref.source_url)
+        v = decide(ref, [e], NOW)
+        self.assertEqual(v.state, "UNCONFIRMED")
+        self.assertIn("provider_review_only", v.reasons)
+
     @patch("job_verifier_v2.fetch_html")
     @patch("job_verifier_v2.fetch_json")
     def test_greenhouse_requires_application_form(self, fj, fh):
