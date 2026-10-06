@@ -249,7 +249,10 @@ def check(job, now=None):
                 if bot and bot[1] == 'expired':
                     reason += f'; bot-only render reported closure ({bot[2]}) and was ignored'
             elif browser and bot and browser[1] == 'expired' and bot[1] == 'expired':
-                state, reason = 'expired', f'Closure confirmed by browser and bot renders ({browser[2]})'
+                if 'validThrough deadline has passed' in browser[2] and 'validThrough deadline has passed' in bot[2]:
+                    state, reason = 'expired', 'Official JobPosting structured-data deadline has passed'
+                else:
+                    state, reason = 'review', f'Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry ({browser[2]})'
             elif browser and bot and browser[1] != bot[1]:
                 state, reason = 'review', f'Official page renders disagree: browser={browser[1]} ({browser[2]}); bot={bot[1]} ({bot[2]})'
             elif browser:
