@@ -306,6 +306,416 @@ struct PremiumTextEditorField: View {
     }
 }
 
+
+private func durationText(_ seconds: Double?) -> String {
+    let total = Int((seconds ?? 0).rounded())
+    if total < 60 { return "\(total)s" }
+    return "\(total / 60)m \(total % 60)s"
+}
+
+private struct GAChartDatum: Identifiable {
+    let id = UUID()
+    let label: String
+    let value: Int
+    let color: Color
+}
+
+private struct GARevealModifier: ViewModifier {
+    let delay: Double
+    @State private var visible = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(visible ? 1 : 0)
+            .offset(y: visible ? 0 : 14)
+            .scaleEffect(visible ? 1 : 0.992)
+            .onAppear {
+                withAnimation(.easeOut(duration: 0.48).delay(delay)) {
+                    visible = true
+                }
+            }
+    }
+}
+
+private extension View {
+    func gaReveal(_ delay: Double = 0) -> some View {
+        modifier(GARevealModifier(delay: delay))
+    }
+}
+
+struct GAAnimatedNumber: View {
+    let value: Int
+    var suffix: String = ""
+    var color: Color = HDTheme.navy
+    var font: Font = .system(size: 24, weight: .black, design: .rounded)
+
+    @State private var shown = 0
+
+    var body: some View {
+        Text(numberText(shown) + suffix)
+            .font(font)
+            .foregroundStyle(color)
+            .contentTransition(.numericText())
+            .onAppear {
+                withAnimation(.easeOut(duration: 0.7)) {
+                    shown = value
+                }
+            }
+            .onChange(of: value) { _, newValue in
+                withAnimation(.snappy(duration: 0.45)) {
+                    shown = newValue
+                }
+            }
+    }
+}
+
+struct GADashboardMetric: View {
+    let title: String
+    let value: Int
+    let icon: String
+    let color: Color
+    var suffix: String = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(spacing: 7) {
+                Image(systemName: icon)
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(color)
+                    .frame(width: 28, height: 28)
+                    .background(color.opacity(0.09))
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+                Text(title.uppercased())
+                    .font(.system(size: 9, weight: .black))
+                    .tracking(0.45)
+                    .foregroundStyle(HDTheme.slate)
+                    .lineLimit(1)
+            }
+
+            GAAnimatedNumber(value: value, suffix: suffix)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(HDTheme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(HDTheme.line)
+        }
+    }
+}
+
+struct GADashboardTextMetric: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            HStack(spacing: 7) {
+                Image(systemName: icon)
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(color)
+                    .frame(width: 28, height: 28)
+                    .background(color.opacity(0.09))
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+                Text(title.uppercased())
+                    .font(.system(size: 9, weight: .black))
+                    .tracking(0.45)
+                    .foregroundStyle(HDTheme.slate)
+                    .lineLimit(1)
+            }
+
+            Text(value)
+                .font(.system(size: 22, weight: .black, design: .rounded))
+                .foregroundStyle(HDTheme.navy)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(HDTheme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(HDTheme.line)
+        }
+    }
+}
+
+struct GAAnalyticsHeader: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    var accent: Color = HDTheme.blue
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 12, weight: .bold))
+                .foregroundStyle(accent)
+                .frame(width: 32, height: 32)
+                .background(accent.opacity(0.09))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 15, weight: .black))
+                    .foregroundStyle(HDTheme.navy)
+                Text(subtitle)
+                    .font(.system(size: 10.5, weight: .medium))
+                    .foregroundStyle(HDTheme.slate)
+            }
+
+            Spacer(minLength: 0)
+        }
+    }
+}
+
+struct GADonutChartCard: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    let items: [GAChartDatum]
+    let centerValue: String
+    let centerLabel: String
+    var accent: Color = HDTheme.blue
+    var footer: String? = nil
+
+    @State private var reveal = false
+
+    private var data: [GAChartDatum] {
+        items.filter { $0.value > 0 }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            GAAnalyticsHeader(title: title, subtitle: subtitle, icon: icon, accent: accent)
+
+            if data.isEmpty {
+                EmptyState(icon: "chart.pie", title: "No data yet", message: "No analytics data is available for this period.")
+                    .frame(height: 190)
+            } else {
+                Chart(data) { item in
+                    SectorMark(
+                        angle: .value("Value", reveal ? item.value : 0),
+                        innerRadius: .ratio(0.72),
+                        angularInset: 1.8
+                    )
+                    .foregroundStyle(item.color)
+                    .cornerRadius(3)
+                }
+                .chartLegend(.hidden)
+                .frame(height: 220)
+                .overlay {
+                    VStack(spacing: 1) {
+                        Text(centerValue)
+                            .font(.system(size: 26, weight: .black, design: .rounded))
+                            .foregroundStyle(HDTheme.navy)
+                        Text(centerLabel.uppercased())
+                            .font(.system(size: 9, weight: .black))
+                            .tracking(0.6)
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .onAppear {
+                    withAnimation(.easeOut(duration: 0.8)) {
+                        reveal = true
+                    }
+                }
+
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 118), spacing: 7)], alignment: .leading, spacing: 7) {
+                    ForEach(data.prefix(6)) { item in
+                        HStack(spacing: 6) {
+                            Circle()
+                                .fill(item.color)
+                                .frame(width: 7, height: 7)
+                            Text(item.label)
+                                .font(.system(size: 9.5, weight: .semibold))
+                                .foregroundStyle(HDTheme.slate)
+                                .lineLimit(1)
+                            Spacer(minLength: 2)
+                            Text(numberText(item.value))
+                                .font(.system(size: 9.5, weight: .black))
+                                .foregroundStyle(HDTheme.navy)
+                        }
+                    }
+                }
+
+                if let footer {
+                    Text(footer)
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundStyle(HDTheme.slate)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .background(HDTheme.background)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                }
+            }
+        }
+        .gaCard(accent: accent)
+        .gaReveal()
+    }
+}
+
+struct GABarChartCard: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    let items: [GAChartDatum]
+    var accent: Color = HDTheme.blue
+
+    @State private var reveal = false
+
+    private var data: [GAChartDatum] {
+        Array(items.filter { $0.value > 0 }.prefix(7))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            GAAnalyticsHeader(title: title, subtitle: subtitle, icon: icon, accent: accent)
+
+            if data.isEmpty {
+                EmptyState(icon: "chart.bar", title: "No data yet", message: "No analytics data is available for this period.")
+                    .frame(height: 180)
+            } else {
+                Chart(data) { item in
+                    BarMark(
+                        x: .value("Value", reveal ? item.value : 0),
+                        y: .value("Label", item.label)
+                    )
+                    .foregroundStyle(item.color)
+                    .cornerRadius(6)
+                    .annotation(position: .trailing, alignment: .leading, spacing: 5) {
+                        Text(numberText(item.value))
+                            .font(.system(size: 9, weight: .black))
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .chartLegend(.hidden)
+                .chartXAxis {
+                    AxisMarks(position: .bottom) { value in
+                        AxisGridLine(stroke: StrokeStyle(lineWidth: 0.6))
+                            .foregroundStyle(HDTheme.line)
+                        AxisValueLabel()
+                            .font(.system(size: 8))
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks(position: .leading) { _ in
+                        AxisValueLabel()
+                            .font(.system(size: 8.5, weight: .semibold))
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .frame(height: CGFloat(max(220, data.count * 38)))
+                .onAppear {
+                    withAnimation(.easeOut(duration: 0.75)) {
+                        reveal = true
+                    }
+                }
+            }
+        }
+        .gaCard(accent: accent)
+        .gaReveal()
+    }
+}
+
+struct GATrendChartCard: View {
+    let points: [TrafficResponse.TrendPoint]
+
+    private struct TrendSeriesPoint: Identifiable {
+        let id = UUID()
+        let date: String
+        let series: String
+        let value: Int
+        let color: Color
+    }
+
+    private var data: [TrendSeriesPoint] {
+        points.flatMap { point in
+            let date = point.date ?? ""
+            return [
+                TrendSeriesPoint(date: date, series: "Users", value: point.users ?? 0, color: HDTheme.blue),
+                TrendSeriesPoint(date: date, series: "Views", value: point.pageviews ?? 0, color: HDTheme.green),
+                TrendSeriesPoint(date: date, series: "Sessions", value: point.sessions ?? 0, color: HDTheme.amber)
+            ]
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            GAAnalyticsHeader(
+                title: "Traffic trend",
+                subtitle: "Users, page views and sessions over time",
+                icon: "chart.xyaxis.line",
+                accent: HDTheme.blue
+            )
+
+            if data.isEmpty {
+                EmptyState(icon: "chart.xyaxis.line", title: "No trend yet", message: "Trend data will appear when analytics is available.")
+                    .frame(height: 190)
+            } else {
+                Chart(data) { item in
+                    LineMark(
+                        x: .value("Date", item.date),
+                        y: .value("Value", item.value),
+                        series: .value("Series", item.series)
+                    )
+                    .foregroundStyle(item.color)
+                    .interpolationMethod(.catmullRom)
+                    .lineStyle(StrokeStyle(lineWidth: 2.2))
+
+                    PointMark(
+                        x: .value("Date", item.date),
+                        y: .value("Value", item.value)
+                    )
+                    .foregroundStyle(item.color)
+                    .symbolSize(18)
+                }
+                .chartLegend(.hidden)
+                .chartXAxis {
+                    AxisMarks { _ in
+                        AxisGridLine().foregroundStyle(.clear)
+                        AxisValueLabel()
+                            .font(.system(size: 8))
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine(stroke: StrokeStyle(lineWidth: 0.6))
+                            .foregroundStyle(HDTheme.line)
+                        AxisValueLabel()
+                            .font(.system(size: 8))
+                            .foregroundStyle(HDTheme.slate)
+                    }
+                }
+                .frame(height: 230)
+
+                HStack(spacing: 14) {
+                    legendDot("Users", HDTheme.blue)
+                    legendDot("Views", HDTheme.green)
+                    legendDot("Sessions", HDTheme.amber)
+                }
+            }
+        }
+        .gaCard(accent: HDTheme.blue)
+        .gaReveal()
+    }
+
+    private func legendDot(_ title: String, _ color: Color) -> some View {
+        HStack(spacing: 5) {
+            Circle().fill(color).frame(width: 7, height: 7)
+            Text(title)
+                .font(.system(size: 9.5, weight: .semibold))
+                .foregroundStyle(HDTheme.slate)
+        }
+    }
+}
+
 struct LoginView: View {
     @EnvironmentObject private var state: AppState
     @State private var username = ""
