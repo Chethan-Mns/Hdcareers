@@ -45,7 +45,7 @@
 /* Premium analytics visual system */
 body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 28%),radial-gradient(circle at 92% 12%,rgba(124,58,237,.055),transparent 24%),linear-gradient(180deg,#f8fbff 0,#f4f7fb 300px)}
 .card{border-color:#e7ebf2;box-shadow:0 10px 30px rgba(15,23,42,.05);transition:transform .24s cubic-bezier(.22,1,.36,1),box-shadow .24s ease,border-color .24s ease}
-@media(hover:hover) and (pointer:fine){.card:hover{transform:translateY(-3px);border-color:#d8e2f0;box-shadow:0 18px 44px rgba(15,23,42,.085)}}
+@media(hover:hover) and (pointer:fine){.card:hover{transform:translateY(-3px)!important;border-color:#d8e2f0;box-shadow:0 18px 44px rgba(15,23,42,.085)}}
 .analytics-trend-card{padding:20px;border-radius:22px}.trend-chart-large{height:270px;margin-top:15px}
 .analytics-donut-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .donut-card{padding:18px;border-radius:22px;min-width:0;overflow:hidden}
@@ -68,11 +68,7 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 #loading{background:radial-gradient(circle at 50% 38%,rgba(37,99,235,.10),transparent 20%),#f8fbff;font-weight:750}
 #loading svg,#loading i{color:#2563eb}
 @media(max-width:1000px){.analytics-donut-grid{grid-template-columns:1fr 1fr}.analytics-donut-grid .donut-card:first-child{grid-column:1/-1}.donut-stage{height:225px}}
-@media(max-width:640px){
-.analytics-trend-card{padding:15px;border-radius:17px}.trend-chart-large{height:220px;margin-top:10px}
-.analytics-donut-grid{grid-template-columns:1fr}.analytics-donut-grid .donut-card:first-child{grid-column:auto}.donut-card{padding:15px;border-radius:17px}.donut-stage{height:245px}.donut-stats{grid-template-columns:1fr 1fr}
-.metric-row{grid-template-columns:28px minmax(0,1fr) auto;padding:8px}.metric-chip{min-width:38px}
-}
+@media(max-width:640px){.analytics-trend-card{padding:15px;border-radius:17px}.trend-chart-large{height:220px;margin-top:10px}.analytics-donut-grid{grid-template-columns:1fr}.analytics-donut-grid .donut-card:first-child{grid-column:auto}.donut-card{padding:15px;border-radius:17px}.donut-stage{height:245px}.donut-stats{grid-template-columns:1fr 1fr}.metric-row{grid-template-columns:28px minmax(0,1fr) auto;padding:8px}.metric-chip{min-width:38px}}
 @media(prefers-reduced-motion:reduce){.admin-reveal{opacity:1!important;transform:none!important;transition:none!important}.card,.conversion-pill,.metric-row{transition:none!important}}
 
 </style>
@@ -124,13 +120,11 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 <div><span>Avg session</span><strong id="avgSession">—</strong></div>
 </div>
 </div>
-
 <div class="card donut-card">
 <div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-cyan-600 mr-2"></i>Device mix</h2><p>Where visitors browse from</p></div></div>
 <div class="donut-stage"><canvas id="deviceChart"></canvas></div>
 <div id="deviceSummary" class="donut-caption">Loading device distribution…</div>
 </div>
-
 <div class="card donut-card">
 <div class="mini-section-head"><div><h2><i class="fa-solid fa-shuffle text-emerald-600 mr-2"></i>Channels</h2><p>How sessions reach HD Careers</p></div></div>
 <div class="donut-stage"><canvas id="channelChart"></canvas></div>
@@ -249,6 +243,7 @@ function revealAdmin(){
  els.forEach((el,i)=>{el.classList.add('admin-reveal');el.style.transitionDelay=Math.min(i,6)*45+'ms'});
  requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(el=>el.classList.add('is-visible'))));
 }
+function destroyChart
 function destroyChart(name){if(analyticsCharts[name]){analyticsCharts[name].destroy();delete analyticsCharts[name]}}
 function shortDate(raw){const s=String(raw||'');if(s.length!==8)return s;const d=new Date(Date.UTC(Number(s.slice(0,4)),Number(s.slice(4,6))-1,Number(s.slice(6,8))));return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',timeZone:'UTC'})}
 function renderVisualCharts(d){
@@ -265,292 +260,22 @@ function renderVisualCharts(d){
    {label:'Sessions',data:trend.map(x=>Number(x.sessions||0)),borderColor:'#059669',backgroundColor:'rgba(5,150,105,.04)',tension:.38,fill:false,pointRadius:1.5,pointHoverRadius:4,borderWidth:1.8}
   ]},options:{responsive:true,maintainAspectRatio:false,animation:baseAnim,interaction:{mode:'index',intersect:false},plugins:{legend},scales:{x:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:10}}},y:{beginAtZero:true,grid:{color:'rgba(148,163,184,.12)'},ticks:{precision:0,color:'#94a3b8',font:{size:10}}}}}});
  }
-
  const totals=d.totals||{},nu=Number(totals.newUsers||0),ru=Number(totals.returningUsers||0),audTotal=nu+ru;
  destroyChart('audience');
  const aud=document.getElementById('audienceChart');
  if(aud){analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New users','Returning'],datasets:[{data:[nu,ru],backgroundColor:['#2563eb','#7c3aed'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(audTotal),subtext:'users'}}}})}
-
  const devices=Array.isArray(d.devices)?d.devices.slice(0,5):[],deviceTotal=devices.reduce((a,x)=>a+Number(x.visitors||0),0);
  destroyChart('device');
  const dev=document.getElementById('deviceChart');
  if(dev){analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:['#0ea5e9','#2563eb','#8b5cf6','#14b8a6','#64748b'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(deviceTotal),subtext:'visitors'}}}})}
  const deviceSummary=document.getElementById('deviceSummary');if(deviceSummary)deviceSummary.textContent=devices.length?(devices[0].deviceType||'Unknown')+' leads with '+fmt(devices[0].visitors||0)+' visitors':'No device data yet';
-
  const channels=Array.isArray(d.channels)?d.channels.slice(0,6):[],channelTotal=channels.reduce((a,x)=>a+Number(x.sessions||0),0);
  destroyChart('channel');
  const ch=document.getElementById('channelChart');
  if(ch){analyticsCharts.channel=new Chart(ch,{type:'doughnut',data:{labels:channels.map(x=>x.channel||'Other'),datasets:[{data:channels.map(x=>Number(x.sessions||0)),backgroundColor:['#059669','#2563eb','#f59e0b','#7c3aed','#0ea5e9','#64748b'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(channelTotal),subtext:'sessions'}}}})}
  const channelSummary=document.getElementById('channelSummary');if(channelSummary)channelSummary.textContent=channels.length?(channels[0].channel||'Other')+' is the top channel with '+fmt(channels[0].sessions||0)+' sessions':'No channel data yet';
-}!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<title>Traffic | HD Careers Admin</title>
-<link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<style>
-:root{--primary:#0969da;--dark:#071a33;--slate:#f4f7fb;--line:#e5eaf1}
-*{box-sizing:border-box}html{scroll-behavior:smooth;width:100%;max-width:100%;overflow-x:hidden}body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-gradient(180deg,#f8fbff 0,#f4f7fb 260px);font-family:Inter,'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
-.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 34px rgba(15,23,42,.055);transition:transform .2s ease,box-shadow .2s ease}.card:hover{box-shadow:0 14px 36px rgba(15,23,42,.075)}
-.btn{border-radius:12px;font-weight:800;transition:.18s ease}.btn:active{transform:scale(.98)}
-.bar{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#22c55e);border-radius:999px}
-#app,.traffic-main{width:100%;max-width:100%}
-.page-link{display:flex;align-items:flex-start;gap:9px;min-width:0;color:#0f172a}.page-link:hover{color:#0969da}.page-link .page-copy{min-width:0}.page-link .page-title{display:block;font-weight:800;line-height:1.35;overflow-wrap:anywhere}.page-link .page-path{display:block;font-size:10px;color:#94a3b8;margin-top:2px;overflow-wrap:anywhere}
-.open-chip{font-size:10px;font-weight:800;color:#2563eb;background:#eff6ff;border:1px solid #bfdbfe;border-radius:999px;padding:4px 7px;white-space:nowrap;flex-shrink:0}
-.compact-card{padding:16px!important;border-radius:17px!important}
-.kpi-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));overflow:hidden;padding:0!important}
-.kpi{padding:14px 15px;min-width:0;border-right:1px solid #eef2f7}.kpi:last-child{border-right:0}.kpi-label{font-size:9px;line-height:1.15;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8}.kpi-value{font-size:24px;line-height:1.05;font-weight:950;letter-spacing:-.035em;margin-top:6px;color:#071a33}.kpi-note{font-size:9px;color:#94a3b8;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mini-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.mini-section-head h2{font-size:15px;font-weight:950;letter-spacing:-.02em}.mini-section-head p{font-size:10px;color:#94a3b8;margin-top:2px}
-.snapshot-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(250px,.75fr);gap:14px;align-items:start}.compact-chart{height:150px;margin-top:10px}.audience-mini{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}.audience-chart{height:120px}.audience-stat{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #f1f5f9}.audience-stat:last-child{border-bottom:0}.audience-stat span{font-size:10px;color:#64748b;font-weight:800}.audience-stat strong{font-size:14px}
-.conversion-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:12px}.conversion-pill{border:1px solid #e7edf5;border-radius:13px;background:#fbfdff;padding:10px 11px}.conversion-pill span{display:block;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8}.conversion-pill strong{display:block;font-size:18px;line-height:1.1;margin-top:4px;letter-spacing:-.025em}
-.compact-grid{display:grid;gap:14px;align-items:start}.compact-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.compact-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.compact-list{margin-top:12px!important;display:grid;gap:10px!important}.compact-list>div{min-width:0}.compact-list .bar{height:5px;margin-top:5px!important}.compact-list .page-title{font-size:12px;line-height:1.3}.compact-list .page-path{font-size:8.5px;margin-top:1px}.compact-list .open-chip{font-size:0;width:25px;height:25px;padding:0;display:grid;place-items:center}.compact-list .open-chip i{font-size:9px;margin:0!important}.compact-list .font-semibold{font-size:12px}.compact-list .font-black{font-size:12px}
-.breakdown-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.breakdown{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:17px;box-shadow:0 8px 24px rgba(15,23,42,.04);overflow:hidden}.breakdown summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:900}.breakdown summary::-webkit-details-marker{display:none}.breakdown summary i.chev{transition:transform .18s ease;color:#94a3b8}.breakdown[open] summary i.chev{transform:rotate(180deg)}.breakdown-body{border-top:1px solid #eef2f7;padding:12px 16px 15px}
-.card:hover{transform:none!important}
-
-@media(max-width:900px){.kpi-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi:nth-child(3){border-right:0}.kpi:nth-child(-n+3){border-bottom:1px solid #eef2f7}.snapshot-grid,.compact-grid.three{grid-template-columns:1fr}.conversion-strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:640px){
-.traffic-header{min-height:64px;height:auto;padding-top:8px;padding-bottom:8px}
-.traffic-main{padding-left:12px;padding-right:12px;padding-top:16px;padding-bottom:24px}
-.card{border-radius:16px}
-.range-wrap{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
-.range-wrap .btn{padding-left:8px!important;padding-right:8px!important}
-.traffic-title{font-size:1.55rem!important;line-height:1.15}
-.traffic-main{padding-left:10px!important;padding-right:10px!important}
-.kpi-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(2n){border-right:0}.kpi:nth-child(-n+4){border-bottom:1px solid #eef2f7}.snapshot-grid,.compact-grid.two,.breakdown-grid{grid-template-columns:1fr}.conversion-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.audience-mini{grid-template-columns:96px 1fr}.audience-chart{height:96px}.compact-chart{height:135px}
-.card{min-width:0;max-width:100%}
 }
-
-
-/* Premium analytics visual system */
-body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 28%),radial-gradient(circle at 92% 12%,rgba(124,58,237,.055),transparent 24%),linear-gradient(180deg,#f8fbff 0,#f4f7fb 300px)}
-.card{border-color:#e7ebf2;box-shadow:0 10px 30px rgba(15,23,42,.05);transition:transform .24s cubic-bezier(.22,1,.36,1),box-shadow .24s ease,border-color .24s ease}
-@media(hover:hover) and (pointer:fine){.card:hover{transform:translateY(-3px);border-color:#d8e2f0;box-shadow:0 18px 44px rgba(15,23,42,.085)}}
-.analytics-trend-card{padding:20px;border-radius:22px}.trend-chart-large{height:270px;margin-top:15px}
-.analytics-donut-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.donut-card{padding:18px;border-radius:22px;min-width:0;overflow:hidden}
-.donut-stage{height:235px;margin:8px auto 4px;position:relative}
-.donut-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:6px}
-.donut-stats>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border:1px solid #edf1f6;background:#fafcff;border-radius:11px}
-.donut-stats span{font-size:9px;font-weight:850;color:#8290a5;text-transform:uppercase;letter-spacing:.045em}.donut-stats strong{font-size:13px;color:#0f172a}
-.donut-caption{margin-top:5px;padding:9px 10px;border-radius:11px;background:#f8fafc;border:1px solid #edf1f6;color:#64748b;font-size:10px;font-weight:750;line-height:1.45;text-align:center}
-.kpi{transition:background .2s ease}.kpi:hover{background:#fbfdff}.kpi-value,.conversion-pill strong{font-variant-numeric:tabular-nums}
-.conversion-pill{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;background:linear-gradient(180deg,#fff,#fbfdff)}
-@media(hover:hover) and (pointer:fine){.conversion-pill:hover{transform:translateY(-2px);border-color:#cddbec;box-shadow:0 9px 20px rgba(15,23,42,.055)}}
-.compact-list{gap:8px!important}.metric-row{display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:9px;padding:9px 10px;border:1px solid #edf1f6;border-radius:12px;background:#fff;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-.metric-row.level-5{background:#f4f8ff;border-color:#d9e6f8}.metric-row.level-4{background:#f8fbff}.metric-row.level-3{background:#fbfcfe}
-@media(hover:hover) and (pointer:fine){.metric-row:hover{transform:translateX(3px);border-color:#cbd9eb}}
-.rank-badge{width:26px;height:26px;display:grid;place-items:center;border-radius:9px;background:#eff6ff;color:#2563eb;font-size:10px;font-weight:950}
-.metric-content{min-width:0}.metric-content .page-link{width:100%}.metric-content>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:750;color:#334155}
-.metric-chip{min-width:42px;padding:5px 8px;border-radius:999px;background:#0f172a;color:white;font-size:10px;font-weight:900;text-align:center;font-variant-numeric:tabular-nums}
-.admin-reveal{opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
-.admin-reveal.is-visible{opacity:1;transform:none}
-#loading{background:radial-gradient(circle at 50% 38%,rgba(37,99,235,.10),transparent 20%),#f8fbff;font-weight:750}
-#loading svg,#loading i{color:#2563eb}
-@media(max-width:1000px){.analytics-donut-grid{grid-template-columns:1fr 1fr}.analytics-donut-grid .donut-card:first-child{grid-column:1/-1}.donut-stage{height:225px}}
-@media(max-width:640px){
-.analytics-trend-card{padding:15px;border-radius:17px}.trend-chart-large{height:220px;margin-top:10px}
-.analytics-donut-grid{grid-template-columns:1fr}.analytics-donut-grid .donut-card:first-child{grid-column:auto}.donut-card{padding:15px;border-radius:17px}.donut-stage{height:245px}.donut-stats{grid-template-columns:1fr 1fr}
-.metric-row{grid-template-columns:28px minmax(0,1fr) auto;padding:8px}.metric-chip{min-width:38px}
-}
-@media(prefers-reduced-motion:reduce){.admin-reveal{opacity:1!important;transform:none!important;transition:none!important}.card,.conversion-pill,.metric-row{transition:none!important}}
-
-</style>
-</head>
-<body>
-<div id="loading" class="min-h-screen flex items-center justify-center text-slate-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Checking admin session...</div>
-<div id="app" class="hidden">
-<header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-<div class="traffic-header max-w-7xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-3">
-<div class="flex items-center gap-3 min-w-0">
-<img src="/assets/hd-careers-logo.png" alt="HD Careers" class="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-xl bg-white border border-slate-200 p-1 shadow-sm shrink-0">
-<div class="min-w-0"><p class="font-black leading-none truncate">Traffic Analytics</p><p class="text-[11px] text-slate-500 mt-1 hidden sm:block">HD Careers Admin</p></div>
-</div>
-<div class="flex items-center gap-2 shrink-0"><a href="/admin/" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left"></i><span class="hidden md:inline ml-1">Dashboard</span></a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button></div>
-</div>
-</header>
-<main class="traffic-main max-w-7xl mx-auto px-4 py-5 space-y-4">
-<section class="card compact-card">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
-<div><p class="text-[10px] font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="traffic-title text-xl sm:text-2xl font-black mt-0.5">HD Careers performance</h1><p id="periodText" class="text-xs text-slate-500 mt-1">Loading Google Analytics 4...</p></div>
-<div class="range-wrap flex flex-wrap gap-1.5"><button data-days="1" onclick="loadTraffic(1)" class="range btn border border-slate-200 bg-white px-3 py-1.5 text-xs">24H</button><button data-days="7" onclick="loadTraffic(7)" class="range btn bg-blue-600 text-white px-3 py-1.5 text-xs">7D</button><button data-days="30" onclick="loadTraffic(30)" class="range btn border border-slate-200 bg-white px-3 py-1.5 text-xs">30D</button><button onclick="loadTraffic(currentDays)" class="btn border border-slate-200 bg-white px-2.5 py-1.5 text-xs" title="Refresh"><i class="fa-solid fa-rotate"></i></button></div>
-</div>
-</section>
-
-<div id="errorBox" class="hidden card compact-card border-amber-200 bg-amber-50 text-amber-900"></div>
-
-<section class="card kpi-strip">
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Live now</span><i class="fa-solid fa-signal text-green-500 text-xs"></i></div><div id="realtime" class="kpi-value text-green-600">—</div><div class="kpi-note">last 30 min</div></div>
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Users</span><i class="fa-solid fa-users text-blue-500 text-xs"></i></div><div id="visitors" class="kpi-value">—</div><div class="kpi-note">active users</div></div>
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Views</span><i class="fa-solid fa-eye text-violet-500 text-xs"></i></div><div id="pageviews" class="kpi-value">—</div><div class="kpi-note">page loads</div></div>
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Sessions</span><i class="fa-solid fa-layer-group text-cyan-500 text-xs"></i></div><div id="sessions" class="kpi-value">—</div><div class="kpi-note">visits</div></div>
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Views / user</span><i class="fa-solid fa-chart-simple text-amber-500 text-xs"></i></div><div id="ratio" class="kpi-value">—</div><div class="kpi-note">engagement</div></div>
-<div class="kpi"><div class="flex items-center justify-between"><span class="kpi-label">Apply rate</span><i class="fa-solid fa-arrow-up-right-dots text-emerald-500 text-xs"></i></div><div id="applyRateTop" class="kpi-value text-emerald-700">—</div><div class="kpi-note">clicks / job views</div></div>
-</section>
-
-<section class="card analytics-trend-card admin-reveal">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-chart-line text-blue-500 mr-2"></i>Traffic trend</h2><p>Users, page views and sessions over time</p></div><span id="topPageViews" class="text-[10px] text-slate-400"></span></div>
-<div class="trend-chart-large"><canvas id="trendChart"></canvas></div>
-</section>
-
-<section class="analytics-donut-grid admin-reveal">
-<div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-user-group text-violet-500 mr-2"></i>Audience</h2><p>New vs returning visitors</p></div></div>
-<div class="donut-stage"><canvas id="audienceChart"></canvas></div>
-<div class="donut-stats">
-<div><span>New users</span><strong id="newUsers">—</strong></div>
-<div><span>Returning</span><strong id="returningUsers">—</strong></div>
-<div><span>Engagement</span><strong id="engagementRate">—</strong></div>
-<div><span>Avg session</span><strong id="avgSession">—</strong></div>
-</div>
-</div>
-
-<div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-cyan-600 mr-2"></i>Device mix</h2><p>Where visitors browse from</p></div></div>
-<div class="donut-stage"><canvas id="deviceChart"></canvas></div>
-<div id="deviceSummary" class="donut-caption">Loading device distribution…</div>
-</div>
-
-<div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-shuffle text-emerald-600 mr-2"></i>Channels</h2><p>How sessions reach HD Careers</p></div></div>
-<div class="donut-stage"><canvas id="channelChart"></canvas></div>
-<div id="channelSummary" class="donut-caption">Loading channel distribution…</div>
-</div>
-</section>
-
-<section class="card compact-card">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-filter text-emerald-500 mr-2"></i>Conversion snapshot</h2><p>Job view → resume → apply</p></div></div>
-<button id="internalTrackingBtn" onclick="toggleInternalTracking()" class="btn border border-slate-200 bg-white px-3 py-1.5 text-[10px] shrink-0"><i class="fa-solid fa-user-shield mr-1"></i><span id="internalTrackingText">Checking…</span></button>
-</div>
-<div class="conversion-strip">
-<div class="conversion-pill"><span>Job views</span><strong id="jobPageViews">—</strong></div>
-<div class="conversion-pill"><span>Resume checks</span><strong id="resumeChecks" class="text-cyan-700">—</strong></div>
-<div class="conversion-pill"><span>Apply clicks</span><strong id="applyClicks" class="text-emerald-700">—</strong></div>
-<div class="conversion-pill"><span>Apply users</span><strong id="applyUsers" class="text-green-700">—</strong></div>
-<div class="conversion-pill"><span>Apply rate</span><strong id="applyRate" class="text-violet-700">—</strong></div>
-<div class="conversion-pill"><span>Social + shares</span><strong id="socialShares" class="text-amber-700">—</strong></div>
-</div>
-</section>
-
-<section class="compact-grid three">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 mr-2"></i>Top Apply Jobs</h2><p>Highest apply-click activity</p></div></div><div id="applyJobs" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-circle-check text-cyan-600 mr-2"></i>Resume Usage</h2><p>Most checked job pages</p></div></div><div id="resumeJobs" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-filter-circle-dollar text-violet-600 mr-2"></i>Apply Sources</h2><p>Sources attached to apply clicks</p></div></div><div id="applySources" class="compact-list"></div></div>
-</section>
-
-<section class="compact-grid two">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><p>Most viewed content</p></div><div id="topPage" class="max-w-[44%]"></div></div><div id="pages" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-route text-blue-600 mr-2"></i>Traffic Sources</h2><p>Session source / medium</p></div></div><div id="referrers" class="compact-list"></div></div>
-</section>
-
-<section class="compact-grid two admin-reveal">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Top Countries</h2><p>Visitor distribution by country</p></div></div><div id="countries" class="compact-list premium-ranked-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-cyan-600 mr-2"></i>Device Details</h2><p>Visitors by device category</p></div></div><div id="devices" class="compact-list premium-ranked-list"></div></div>
-</section>
-
-<p class="text-[10px] text-slate-400 text-center pb-3">Production traffic only · Google Analytics 4 · authenticated admin data</p>
-</main>
-</div>
-<script>
-let currentDays=7;
-const analyticsCharts={};
-let jobByPath=new Map();
-const fmt=n=>new Intl.NumberFormat('en-IN').format(Number(n||0));
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function metric(row){return Number(row.pageviews??row.sessions??row.visitors??row.count??row.visits??0)}
-const OPT_OUT_KEY='hd_analytics_optout';
-function isInternalOptOut(){try{return localStorage.getItem(OPT_OUT_KEY)==='1'}catch{return false}}
-function renderInternalTracking(){const off=isInternalOptOut();const btn=document.getElementById('internalTrackingBtn');const text=document.getElementById('internalTrackingText');if(!btn||!text)return;text.textContent=off?'This browser is excluded':'Exclude this browser';btn.className='btn px-4 py-2.5 text-sm shrink-0 '+(off?'border border-emerald-200 bg-emerald-50 text-emerald-700':'border border-slate-200 bg-white text-slate-700')}
-function toggleInternalTracking(){try{if(isInternalOptOut())localStorage.removeItem(OPT_OUT_KEY);else localStorage.setItem(OPT_OUT_KEY,'1')}catch{}renderInternalTracking()}
-function label(row,key){return row[key]||row.dimension||row.name||'(Direct / Unknown)'}
-function normPath(p){let x=String(p||'/').split('?')[0];if(!x.startsWith('/'))x='/'+x;return x}
-function humanizePath(path){
- const p=normPath(path);
- if(p==='/'||p==='/index.html')return'HD Careers Home';
- const job=jobByPath.get(p);
- if(job)return job.company+' — '+job.role;
- const slug=p.replace(/^\/jobs\//,'').replace(/\.html$/,'').replace(/[-_]+/g,' ').trim();
- return slug?slug.replace(/\b\w/g,m=>m.toUpperCase()):p;
-}
-function sourceLabel(name){
- const s=String(name||'').trim().toLowerCase();
- if(!s||s==='(not set)')return'Unattributed / pending';
- if(s==='(direct) / (none)')return'Direct traffic';
- if(s==='(data not available)')return'Data unavailable';
- return name;
-}
-function pageLink(path,compact=false){
- const p=normPath(path);const title=humanizePath(p);
- return '<a class="page-link" href="'+esc(p)+'" target="_blank" rel="noopener"><span class="page-copy"><span class="page-title">'+esc(title)+'</span>'+(compact?'':'<span class="page-path">'+esc(p)+'</span>')+'</span><span class="open-chip">Open <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span></a>'
-}
-async function loadJobMap(){
- try{
-  const r=await fetch('/data/jobs.json',{cache:'no-store'});if(!r.ok)return;
-  const jobs=await r.json();
-  jobByPath=new Map((Array.isArray(jobs)?jobs:[]).map(j=>['/'+String(j.page||'').replace(/^\/+/,''),j]));
- }catch{}
-}
-function renderRows(id,rows,key){
- const el=document.getElementById(id); if(!el)return; const data=Array.isArray(rows)?rows:[];
- if(!data.length){el.innerHTML='<p class="text-xs text-slate-400">No data for this period yet.</p>';return}
- const max=Math.max(...data.map(metric),1);
- const limits={applyJobs:5,resumeJobs:5,applySources:5,pages:6,referrers:6,countries:6,devices:5};
- el.innerHTML=data.slice(0,limits[id]||5).map((r,index)=>{
-  const n=metric(r),raw=label(r,key),isPage=['pages','applyJobs','resumeJobs'].includes(id),isSource=['referrers','applySources'].includes(id),name=isPage?humanizePath(raw):(isSource?sourceLabel(raw):raw);
-  const head=isPage?pageLink(raw):'<span>'+esc(name)+'</span>';
-  const level=Math.max(1,Math.min(5,Math.ceil((n/max)*5)));
-  return '<div class="metric-row level-'+level+'"><span class="rank-badge">'+(index+1)+'</span><div class="metric-content">'+head+'</div><span class="metric-chip">'+fmt(n)+'</span></div>'
- }).join('');
-}
-
-const centerTextPlugin={
- id:'centerText',
- afterDraw(chart,args,opts){
-  if(!opts||!opts.text)return;
-  const area=chart.chartArea;if(!area)return;
-  const ctx=chart.ctx,x=(area.left+area.right)/2,y=(area.top+area.bottom)/2;
-  ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#0f172a';ctx.font='900 22px Inter, system-ui, sans-serif';ctx.fillText(opts.text,x,y-5);
-  if(opts.subtext){ctx.fillStyle='#94a3b8';ctx.font='700 9px Inter, system-ui, sans-serif';ctx.fillText(opts.subtext.toUpperCase(),x,y+16)}
-  ctx.restore();
- }
-};
-if(typeof Chart!=='undefined')Chart.register(centerTextPlugin);
-function animateMetric(id,target,{suffix='',decimals=0,duration=650}={}){
- const el=document.getElementById(id);if(!el)return;
- const end=Number(target||0);if(!Number.isFinite(end)){el.textContent=String(target??'—');return}
- if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=(decimals?end.toFixed(decimals):fmt(end))+suffix;return}
- const start=performance.now();
- const tick=now=>{const p=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-p,3),v=end*eased;el.textContent=(decimals?v.toFixed(decimals):fmt(Math.round(v)))+suffix;if(p<1)requestAnimationFrame(tick)};
- requestAnimationFrame(tick);
-}
-function revealAdmin(){
- const els=[...document.querySelectorAll('.traffic-main > section,.traffic-main > .compact-grid')];
- els.forEach((el,i)=>{el.classList.add('admin-reveal');el.style.transitionDelay=Math.min(i,6)*45+'ms'});
- requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(el=>el.classList.add('is-visible'))));
-}
-function destroyChart(name){if(analyticsCharts[name]){analyticsCharts[name].destroy();delete analyticsCharts[name]}}
-function shortDate(raw){const s=String(raw||'');if(s.length!==8)return s;const d=new Date(Date.UTC(Number(s.slice(0,4)),Number(s.slice(4,6))-1,Number(s.slice(6,8))));return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',timeZone:'UTC'})}
-function renderVisualCharts(d){
- if(typeof Chart==='undefined')return;
- const trend=Array.isArray(d.trend)?d.trend:[];
- destroyChart('trend');
- const trendEl=document.getElementById('trendChart');
- if(trendEl){
-  analyticsCharts.trend=new Chart(trendEl,{type:'line',data:{labels:trend.map(x=>shortDate(x.date)),datasets:[
-   {label:'Users',data:trend.map(x=>Number(x.users||0)),borderColor:'#0969da',backgroundColor:'rgba(9,105,218,.10)',tension:.35,fill:true,pointRadius:2},
-   {label:'Views',data:trend.map(x=>Number(x.pageviews||0)),borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.06)',tension:.35,fill:false,pointRadius:2}
-  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{precision:0}}}}});
- }
- const totals=d.totals||{},nu=Number(totals.newUsers||0),ru=Number(totals.returningUsers||0);
- destroyChart('audience');
- const aud=document.getElementById('audienceChart');
- if(aud){analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New','Returning'],datasets:[{data:[nu,ru],backgroundColor:['#0969da','#7c3aed'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom'}}}})}
- }
+async function loadTraffic
 async function loadTraffic(days=7){
  currentDays=days;
  document.querySelectorAll('.range').forEach(b=>{const on=Number(b.dataset.days)===days;b.className='range btn px-3 py-1.5 text-xs '+(on?'bg-blue-600 text-white':'border border-slate-200 bg-white')});
