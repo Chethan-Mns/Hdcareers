@@ -1,0 +1,49 @@
+[
+  {
+    "id": 77,
+    "company": "Thermo Fisher Scientific",
+    "role": "Intern – IT",
+    "apply": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
+    "manualGroundTruth": "active",
+    "verificationTerms": [
+      "Intern - IT",
+      "R-01368644",
+      "Bangalore",
+      "Apply Now"
+    ]
+  },
+  {
+    "id": 76,
+    "company": "GE HealthCare",
+    "role": "Early Career Trainee – Service",
+    "apply": "https://careers.gehealthcare.com/global/en/job/R4046659/Early-Career-Trainee-Service",
+    "manualGroundTruth": "active",
+    "verificationTerms": [
+      "Early Career Trainee",
+      "Service",
+      "R4046659",
+      "India"
+    ]
+  },
+  {
+    "id": 75,
+    "company": "Deloitte USI",
+    "role": "Associate Analyst – Business Operation Support",
+    "apply": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
+    "manualGroundTruth": "active",
+    "verificationTerms": [
+      "Associate Analyst",
+      "Business Operation Support",
+      "Hyderabad",
+      "369345"
+    ]
+  },
+  {
+    "id": 13,
+    "company": "IBM",
+    "role": "Software Engineer",
+    "apply": "https://careers.ibm.com/en_US/careers/JobDetail?jobId=132895",
+    "manualGroundTruth": "active",
+    "verificationTerms": []
+  }
+]
