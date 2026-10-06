@@ -551,10 +551,10 @@ struct DashboardView: View {
                 HDTheme.background.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 12) {
+                    VStack(spacing: 14) {
                         AdminHeader(
-                            title: "HD Careers Admin",
-                            subtitle: "Jobs, publishing and traffic",
+                            title: "HD Careers",
+                            subtitle: "Admin control center",
                             trailingSystemImage: "arrow.clockwise"
                         ) {
                             Task { await state.refreshAll() }
@@ -566,9 +566,9 @@ struct DashboardView: View {
                         TrafficSummaryCard()
                         AutomationHealthCard()
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.top, 12)
-                    .padding(.bottom, 18)
+                    .padding(.horizontal, 15)
+                    .padding(.top, 10)
+                    .padding(.bottom, 22)
                 }
                 .refreshable { await state.refreshAll() }
             }
@@ -591,86 +591,77 @@ struct DashboardHeroCard: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [HDTheme.navy, Color(red: 0.04, green: 0.25, blue: 0.55), HDTheme.blue],
+                colors: [HDTheme.navy, Color(red: 0.055, green: 0.245, blue: 0.50)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
 
             Circle()
-                .fill(Color.white.opacity(0.08))
-                .frame(width: 180, height: 180)
-                .offset(x: 140, y: -72)
+                .fill(Color.white.opacity(0.07))
+                .frame(width: 160, height: 160)
+                .offset(x: 145, y: -60)
 
-            Circle()
-                .fill(HDTheme.cyan.opacity(0.12))
-                .frame(width: 120, height: 120)
-                .offset(x: -145, y: 85)
-
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     HStack(spacing: 7) {
                         Circle()
                             .fill(HDTheme.green)
                             .frame(width: 7, height: 7)
-                        Text("OPERATIONS LIVE")
-                            .font(.system(size: 10, weight: .black))
-                            .tracking(1.1)
+                        Text("SYSTEM HEALTHY")
+                            .font(.system(size: 9.5, weight: .black))
+                            .tracking(1.0)
                     }
-                    .foregroundStyle(.white.opacity(0.84))
+                    .foregroundStyle(.white.opacity(0.78))
 
                     Spacer()
 
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(.white.opacity(0.9))
+                    Image(systemName: "shield.checkered")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.82))
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Everything important,")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.78))
-                    Text("under control.")
-                        .font(.system(size: 31, weight: .black, design: .rounded))
+                    Text("Your publishing")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.72))
+                    Text("control center")
+                        .font(.system(size: 30, weight: .black, design: .rounded))
                         .foregroundStyle(.white)
                 }
 
                 HStack(spacing: 8) {
-                    heroStat(icon: "briefcase.fill", value: "\(state.activeJobs.count)", label: "Live")
-                    heroStat(icon: reviewCount > 0 ? "exclamationmark.triangle.fill" : "checkmark.shield.fill", value: "\(reviewCount)", label: "Review")
-                    heroStat(icon: "clock.fill", value: publishingTime, label: "Publish")
+                    heroStat(value: "\(state.activeJobs.count)", label: "Live jobs")
+                    heroStat(value: "\(reviewCount)", label: "Review")
+                    heroStat(value: publishingTime, label: "Next batch")
                 }
             }
-            .padding(20)
+            .padding(19)
         }
-        .frame(height: 202)
-        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .frame(height: 188)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: 26, style: .continuous)
-                .stroke(Color.white.opacity(0.12))
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(Color.white.opacity(0.08))
         }
-        .shadow(color: HDTheme.navy.opacity(0.16), radius: 18, x: 0, y: 10)
+        .shadow(color: HDTheme.navy.opacity(0.14), radius: 16, x: 0, y: 9)
     }
 
-    private func heroStat(icon: String, value: String, label: String) -> some View {
-        HStack(spacing: 7) {
-            Image(systemName: icon)
-                .font(.system(size: 10, weight: .bold))
-                .foregroundStyle(.white.opacity(0.9))
-            VStack(alignment: .leading, spacing: 0) {
-                Text(value)
-                    .font(.caption.weight(.black))
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                Text(label)
-                    .font(.system(size: 8.5, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.62))
-            }
+    private func heroStat(value: String, label: String) -> some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(value)
+                .font(.system(size: 15, weight: .black, design: .rounded))
+                .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+            Text(label)
+                .font(.system(size: 8.5, weight: .semibold))
+                .foregroundStyle(.white.opacity(0.60))
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 11)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white.opacity(0.10))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .background(Color.white.opacity(0.085))
+        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
     }
 }
 
@@ -686,34 +677,30 @@ struct ReviewAlertCard: View {
             NavigationLink {
                 CheckerView()
             } label: {
-                HStack(spacing: 14) {
-                    Image(systemName: "bell.badge.fill")
-                        .font(.system(size: 22, weight: .bold))
+                HStack(spacing: 12) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 14, weight: .bold))
                         .foregroundStyle(HDTheme.amber)
-                        .frame(width: 46, height: 46)
-                        .background(HDTheme.amber.opacity(0.12))
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .frame(width: 38, height: 38)
+                        .background(HDTheme.amber.opacity(0.085))
+                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
 
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("\(reviewItems.count) job\(reviewItems.count == 1 ? "" : "s") need your review")
-                            .font(.headline.weight(.black))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("\(reviewItems.count) job\(reviewItems.count == 1 ? "" : "s") need review")
+                            .font(.subheadline.weight(.black))
                             .foregroundStyle(HDTheme.navy)
-                        Text("Open the official page, verify it, then keep active or mark expired.")
-                            .font(.caption)
+                        Text("Verify the official source before taking action.")
+                            .font(.caption2)
                             .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.leading)
                     }
+
                     Spacer()
+
                     Image(systemName: "chevron.right")
-                        .foregroundStyle(HDTheme.amber)
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.tertiary)
                 }
-                .padding(15)
-                .background(HDTheme.amber.opacity(0.07))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(HDTheme.amber.opacity(0.22))
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .premiumCard(13)
             }
             .buttonStyle(.plain)
         }
@@ -797,26 +784,23 @@ struct TrafficSummaryCard: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack {
-                PremiumSectionTitle(
-                    icon: "chart.line.uptrend.xyaxis",
-                    title: "Website traffic",
-                    subtitle: "Live GA4 snapshot",
-                    color: HDTheme.cyan
-                )
+        VStack(alignment: .leading, spacing: 13) {
+            PremiumSectionTitle(
+                icon: "chart.line.uptrend.xyaxis",
+                title: "Website traffic",
+                subtitle: "Live Google Analytics snapshot",
+                color: HDTheme.cyan
+            )
 
-                Picker("Period", selection: Binding(
-                    get: { state.trafficDays },
-                    set: { days in Task { await state.loadTraffic(days: days) } }
-                )) {
-                    Text("24H").tag(1)
-                    Text("7D").tag(7)
-                    Text("30D").tag(30)
-                }
-                .pickerStyle(.segmented)
-                .frame(width: 150)
+            Picker("Period", selection: Binding(
+                get: { state.trafficDays },
+                set: { days in Task { await state.loadTraffic(days: days) } }
+            )) {
+                Text("24H").tag(1)
+                Text("7D").tag(7)
+                Text("30D").tag(30)
             }
+            .pickerStyle(.segmented)
 
             HStack(spacing: 8) {
                 PremiumMetricTile(title: "Live", value: numberText(state.traffic?.realtimeUsers), icon: "dot.radiowaves.left.and.right", color: HDTheme.green)
@@ -832,12 +816,20 @@ struct TrafficSummaryCard: View {
             }
 
             if let top = state.traffic?.pages?.first {
-                PremiumInfoBox(
-                    icon: "flame.fill",
-                    title: "Top page · \(periodLabel)",
-                    text: "\(jobDisplayName(path: top.requestPath, jobs: state.jobs)) · \(numberText(top.pageviews)) views",
-                    color: HDTheme.amber
-                )
+                HStack(spacing: 8) {
+                    Image(systemName: "flame.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(HDTheme.amber)
+                    Text(jobDisplayName(path: top.requestPath, jobs: state.jobs))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(HDTheme.navy)
+                        .lineLimit(1)
+                    Spacer()
+                    Text("\(numberText(top.pageviews)) views")
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.top, 1)
             }
         }
         .premiumCard()
