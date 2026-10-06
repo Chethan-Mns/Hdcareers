@@ -99,3 +99,73 @@ a:focus-visible,button:focus-visible{outline:3px solid rgba(11,111,232,.28);outl
 @media(max-width:980px){.policy-steps{grid-template-columns:repeat(4,minmax(0,1fr))}.policy-assurance-grid{grid-template-columns:1fr 1fr}.policy-assurance:last-child{grid-column:1/-1}.policy-faq{grid-template-columns:1fr}.policy-original{grid-template-columns:1fr}}
 @media(max-width:900px){.mobile-nav-btn{display:block}.mobile-nav.is-open{display:block}.policy-hero-inner{padding-top:48px;padding-bottom:46px}.policy-grid{grid-template-columns:1fr}.policy-intro{align-items:start;flex-direction:column}.policy-status{white-space:normal}}
 @media(max-width:650px){.policy-page{padding-top:26px}.policy-steps{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:5px}.policy-step{min-width:176px;scroll-snap-align:start}.policy-detail{grid-template-columns:1fr}.policy-grid,.policy-assurance-grid{grid-template-columns:1fr}.policy-assurance:last-child{grid-column:auto}.policy-card{grid-template-columns:1fr}.policy-original{padding:22px}.policy-hero h1{font-size:40px}.policy-hero p{font-size:15px}.policy-trust-row{gap:7px}}
+
+/* 2026 premium mobile editorial pass */
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;letter-spacing:-.005em}
+.hero h1,.section-title,.article h1,.article h2,.article h3,.resource-section-head h2,.featured-resource h2{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.card,.article,.resource-controls,.featured-resource,.policy-card,.policy-assurance{transform:translateZ(0)}
+.card{transition:transform .24s cubic-bezier(.22,1,.36,1),box-shadow .24s ease,border-color .24s ease}
+@media(hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(15,23,42,.095)}
+  .resource-card.interactive:hover{border-color:#cbd9eb}
+  .hero-action:hover,.featured-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(3,15,35,.16)}
+}
+.resource-filter{transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease}
+.resource-filter:active{transform:scale(.97)}
+.featured-resource,.resource-controls{transition:transform .25s ease,box-shadow .25s ease}
+.article p,.article li{max-width:74ch}
+.article p{margin-top:0;margin-bottom:1.05em}
+.article h2{scroll-margin-top:94px}
+@media(max-width:620px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .hero .wrap{padding-top:38px;padding-bottom:38px}
+  .hero h1{font-size:34px;line-height:1.04;letter-spacing:-.04em;margin-top:9px;margin-bottom:12px}
+  .hero p{font-size:15.5px;line-height:1.67}
+  .eyebrow{font-size:10px;letter-spacing:.145em}
+  .section{padding:30px 0}
+  .section-title{font-size:25px;line-height:1.15}
+  .section-copy{font-size:14.5px;line-height:1.65;margin-bottom:17px}
+  .article{padding:23px 19px;border-radius:20px}
+  .article h1{font-size:31px;line-height:1.08;margin-bottom:12px}
+  .article h2{font-size:22px;line-height:1.2;margin-top:29px;margin-bottom:10px}
+  .article h3{font-size:18px;line-height:1.25}
+  .article p,.article li{font-size:15.5px;line-height:1.75;color:#42526a}
+  .article ul,.article ol{padding-left:20px}
+  .byline{gap:6px;margin-top:14px;margin-bottom:22px}
+  .byline span{padding:6px 9px;font-size:10.5px}
+  .note{padding:16px;border-radius:16px;font-size:14px}
+  .checklist li{padding:14px 14px 14px 48px;border-radius:15px}
+  .checklist li:before{left:12px;top:13px}
+  .resource-hub-hero .wrap{gap:18px}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:20px}
+  .hero-action{width:100%;min-height:46px;border-radius:12px}
+  #resource-library.section{padding-top:28px;padding-bottom:36px}
+  .resource-controls{padding:13px;border-radius:18px;margin-bottom:26px}
+  .resource-search input{height:48px;font-size:15px}
+  .resource-count{font-size:11px}
+  .resource-filter-row{gap:8px;padding-top:12px;margin-left:-2px;margin-right:-2px}
+  .resource-filter{min-height:38px;padding:0 13px;font-size:11.5px}
+  .featured-resource{border-radius:20px}
+  .featured-resource-copy{padding:23px 19px 21px}
+  .featured-resource h2{font-size:27px;line-height:1.12;margin:14px 0 12px}
+  .featured-resource p{font-size:15px;line-height:1.66}
+  .featured-meta{margin-top:17px}
+  .featured-meta span{font-size:10.5px;padding:6px 9px}
+  .featured-cta{width:100%;justify-content:center;min-height:45px;margin-top:19px}
+  .featured-visual{padding:18px 19px 21px;gap:9px}
+  .featured-step{padding:11px 12px}
+  .resource-section-head{margin:34px 0 16px}
+  .resource-section-head h2{font-size:26px;line-height:1.15}
+  .resource-section-head p{font-size:13.5px;line-height:1.55;margin-top:6px}
+  .resource-grid{gap:15px}
+  .resource-card.interactive{border-radius:18px}
+  .resource-card.interactive .resource-link{padding:18px 17px 17px}
+  .resource-card.interactive h3{font-size:18.5px;line-height:1.3;margin:14px 0 8px}
+  .resource-card.interactive p{font-size:14.5px;line-height:1.64}
+  .resource-card.interactive .meta{margin-top:15px;padding-top:11px;font-size:10.5px}
+  .resource-arrow{width:33px;height:33px;border-radius:10px;font-size:15px}
+  .badge{font-size:10.5px;padding:5px 9px}
+  .policy-page{padding-top:26px;padding-bottom:34px}
+  .policy-intro,.policy-grid,.policy-assurance-grid,.policy-original{gap:14px}
+  .policy-card,.policy-assurance{border-radius:18px}
+}
