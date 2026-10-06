@@ -5,6 +5,7 @@ on:
       - job-verifier-v2-shadow
     paths:
       - 'scripts/successfactors_network_probe.py'
+      - 'scripts/job_verifier_v2.py'
       - 'tests/fixtures/v2_universal_portal_manual_10.json'
       - '.github/workflows/successfactors-shadow.yml'
   workflow_dispatch:
@@ -25,3 +26,17 @@ jobs:
           python3 -m playwright install chromium
       - name: Probe HCL and Wipro controls
         run: python3 scripts/successfactors_network_probe.py tests/fixtures/v2_universal_portal_manual_10.json
+      - name: Verify HCL and Wipro through V2
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, "scripts")
+          from job_verifier_v2 import verify_url
+          jobs=json.load(open("tests/fixtures/v2_universal_portal_manual_10.json"))
+          for j in jobs:
+              if j.get("company") in {"HCLTech","Wipro"}:
+                  v=verify_url(j["apply"])
+                  print(j["company"], j["manualGroundTruth"], v.state, v.reasons)
+                  expected="EXPIRED" if j["manualGroundTruth"]=="expired" else "UNCONFIRMED"
+                  assert v.state==expected, (j["company"], expected, v.state, v.reasons)
+          PY
