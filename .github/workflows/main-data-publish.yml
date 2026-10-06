@@ -37,9 +37,6 @@ jobs:
       - name: Verify new job availability
         run: python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
 
-      - name: Queue new jobs for Telegram
-        run: python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
-
       - name: Resolve official company favicons
         run: python3 scripts/resolve_company_logos.py
 
@@ -50,6 +47,10 @@ jobs:
         run: |
           git diff --check
           python3 generate.py --dry-run
+
+      - name: Queue verified batch jobs for Telegram
+        if: ${{ !startsWith(github.event.head_commit.message, 'Manual publish:') }}
+        run: python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
 
       - name: Commit and deploy generated website
         shell: bash
@@ -77,10 +78,12 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python3 scripts/check_job_availability.py --before "${{ github.event.before }}" --prune-unverified-new
-            python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
             python3 scripts/resolve_company_logos.py
             python3 generate.py
             git diff --check
+            if [[ "${{ github.event.head_commit.message }}" != Manual\ publish:* ]]; then
+              python3 scripts/telegram_queue.py enqueue "${{ github.event.before }}"
+            fi
             sleep 3
           done
 
