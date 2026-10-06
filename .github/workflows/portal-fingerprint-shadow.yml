@@ -1,0 +1,33 @@
+name: Portal fingerprint shadow scan
+on:
+  push:
+    branches:
+      - job-verifier-v2-shadow
+    paths:
+      - 'scripts/portal_fingerprint.py'
+      - '.github/workflows/portal-fingerprint-shadow.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install chromium
+      - name: Fingerprint all HD Careers job portals
+        run: python3 scripts/portal_fingerprint.py --jobs data/jobs.json --output shadow-portal-fingerprints.json --timeout-ms 12000
+      - name: Upload portal fingerprint evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-fingerprint-shadow-report
+          path: shadow-portal-fingerprints.json
+          retention-days: 30
