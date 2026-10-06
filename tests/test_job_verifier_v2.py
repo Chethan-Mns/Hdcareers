@@ -125,6 +125,22 @@ class V2Tests(unittest.TestCase):
 
     @patch("job_verifier_v2.workday_browser_probe")
     @patch("job_verifier_v2.fetch_json")
+    def test_workday_can_apply_false_is_expired(self, fj, bp):
+        fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560", "canApply": False}})
+        bp.return_value = ("neutral", "https://redhat.wd5.myworkdayjobs.com/x", "")
+        self.assertEqual(verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW).state, "EXPIRED")
+
+    @patch("job_verifier_v2.workday_browser_probe")
+    @patch("job_verifier_v2.fetch_json")
+    def test_workday_can_apply_true_stays_review_only(self, fj, bp):
+        fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560", "canApply": True}})
+        bp.return_value = ("open", "https://redhat.wd5.myworkdayjobs.com/application", "Create Account")
+        v = verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW)
+        self.assertEqual(v.state, "UNCONFIRMED")
+        self.assertIn("provider_review_only", v.reasons)
+
+    @patch("job_verifier_v2.workday_browser_probe")
+    @patch("job_verifier_v2.fetch_json")
     def test_workday_cxs_alone_cannot_make_live(self, fj, bp):
         fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560"}})
         bp.return_value = ("neutral", "https://redhat.wd5.myworkdayjobs.com/x", "")
