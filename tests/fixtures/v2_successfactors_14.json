@@ -124,7 +124,8 @@
       "reason": "Exact official role or event page re-opened on 06 Oct 2026; specific role/event details and current application, registration, notification or walk-in instructions were present."
     },
     "logoPath": "assets/company-icons/hcltech-4735861.png",
-    "logoSourceDomain": "hcltech.com"
+    "logoSourceDomain": "hcltech.com",
+    "manualGroundTruth": "active"
   },
   {
     "page": "jobs/hcltech-monitoring-fresher-noida-154178.html",
@@ -310,7 +311,8 @@
       "reason": "Official HCLTech page shows the Chennai Campus-Beginner cybersecurity role and an active Apply now route."
     },
     "logoPath": "assets/company-icons/hcltech-4735861.png",
-    "logoSourceDomain": "hcltech.com"
+    "logoSourceDomain": "hcltech.com",
+    "manualGroundTruth": "active"
   },
   {
     "id": 54,
@@ -553,7 +555,8 @@
       "reason": "Official Deloitte South Asia Careers page shows the exact Senior Consultant Data Analytics role, Delhi location, B.E./B.Tech qualification, technical strengths and active Apply now links."
     },
     "logoPath": "assets/company-icons/deloitte-b9f6b19.png",
-    "logoSourceDomain": "deloitte.com"
+    "logoSourceDomain": "deloitte.com",
+    "manualGroundTruth": "active"
   },
   {
     "id": 32,
@@ -666,7 +669,9 @@
       "reason": "Marked expired manually from HD Careers Admin review."
     },
     "logoPath": "assets/company-icons/cargill-bef71f0.ico",
-    "logoSourceDomain": "cargill.com"
+    "logoSourceDomain": "cargill.com",
+    "manualGroundTruth": "expired",
+    "manualNote": "Exact job URL redirects/lands on main careers site; requisition not available."
   },
   {
     "id": 29,
@@ -769,7 +774,8 @@
     "who": "Freshers and graduates who meet Deloitte's stated Education - ANY UGC requirement can review this opening. Candidates should compare their skills with the OneStream, Fullstack and React requirements listed on the official posting.",
     "workMode": "Not Specified",
     "logoPath": "assets/company-icons/deloitte-b9f6b19.png",
-    "logoSourceDomain": "deloitte.com"
+    "logoSourceDomain": "deloitte.com",
+    "manualGroundTruth": "active"
   },
   {
     "id": 17,
@@ -815,6 +821,7 @@
     "who": "Experienced full-stack engineers with strong Java, Spring and Angular experience should review this role. The official page lists 5-7 years of experience.",
     "workMode": "Not Specified",
     "logoPath": "assets/company-icons/wipro-6507802.png",
-    "logoSourceDomain": "wipro.com"
+    "logoSourceDomain": "wipro.com",
+    "manualGroundTruth": "active"
   }
 ]
