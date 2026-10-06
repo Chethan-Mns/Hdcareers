@@ -138,6 +138,10 @@ def resolve(url: str) -> ProviderRef | None:
             return ProviderRef("smartrecruiters", parts[0], posting_id, url)
     if host == "jobs.ashbyhq.com" and len(parts) >= 2:
         return ProviderRef("ashby", parts[0], parts[1], url)
+    if host.endswith(".myworkdayjobs.com") and "job" in parts:
+        rid = parts[-1].rsplit("_", 1)[-1] if "_" in parts[-1] else ""
+        if rid:
+            return ProviderRef("workday", host.split(".", 1)[0], rid, url)
     return None
 
 
@@ -330,6 +334,97 @@ def ashby_collect(ref: ProviderRef, observed_at: datetime):
         out.append(ev(ref, "api", "B", "error", "ashby.board_error", api, observed_at, detail=type(exc).__name__))
     return out
 
+
+def workday_browser_probe(url: str, requisition_id: str):
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return "unavailable", url, ""
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            page.goto(url, wait_until="domcontentloaded", timeout=25000)
+            page.wait_for_timeout(1500)
+            initial = page.locator("body").inner_text(timeout=5000)
+            identity = requisition_id.casefold() in (page.url + " " + initial).casefold()
+            if CLOSED.search(initial):
+                final_url = page.url
+                browser.close()
+                return "closed", final_url, initial[:500]
+            if not identity:
+                final_url = page.url
+                browser.close()
+                return "neutral", final_url, initial[:500]
+            buttons = page.get_by_role("button", name=re.compile(r"^apply$", re.I))
+            if buttons.count() == 0:
+                links = page.get_by_role("link", name=re.compile(r"^apply$", re.I))
+                if links.count() == 0:
+                    final_url = page.url
+                    browser.close()
+                    return "neutral", final_url, initial[:500]
+                links.first.click(timeout=5000)
+            else:
+                buttons.first.click(timeout=5000)
+            page.wait_for_timeout(1200)
+            for label in (r"apply manually", r"start application"):
+                nxt = page.get_by_role("button", name=re.compile(label, re.I))
+                if nxt.count():
+                    try:
+                        nxt.first.click(timeout=3000)
+                        page.wait_for_timeout(1000)
+                    except Exception:
+                        pass
+                    break
+            text = page.locator("body").inner_text(timeout=5000)
+            final_url = page.url
+            has_fields = page.locator("input, textarea, select").count() >= 2
+            has_auth = re.search(r"create account|sign in|email address|password", text, re.I) is not None
+            has_application = re.search(r"my information|application|resume|experience", text, re.I) is not None
+            browser.close()
+        if CLOSED.search(text):
+            return "closed", final_url, text[:500]
+        if identity and (has_fields or has_auth or has_application):
+            return "open", final_url, text[:500]
+        return "neutral", final_url, text[:500]
+    except Exception as exc:
+        return "error", url, type(exc).__name__
+
+
+def workday_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    p = urlsplit(ref.source_url)
+    parts = [x for x in p.path.split("/") if x]
+    try:
+        i = parts.index("job")
+        board = parts[i - 1]
+        tail = "/".join(parts[i:])
+        cxs = f"https://{p.hostname}/wday/cxs/{ref.tenant}/{board}/{tail}"
+        try:
+            status, final_url, _, data = fetch_json(cxs)
+            blob = json.dumps(data, ensure_ascii=False)
+            if status == 200 and ref.requisition_id.casefold() in blob.casefold():
+                out.append(ev(ref, "cxs", "B", "open", "workday.cxs_exact_record", cxs, observed_at, ref.requisition_id, final_url, status))
+            else:
+                out.append(ev(ref, "cxs", "B", "neutral", "workday.cxs_unproven", cxs, observed_at, None, final_url, status))
+        except HTTPError as exc:
+            out.append(ev(ref, "cxs", "B", "neutral", f"workday.cxs_http_{exc.code}", cxs, observed_at, status=exc.code))
+        except Exception as exc:
+            out.append(ev(ref, "cxs", "B", "error", "workday.cxs_error", cxs, observed_at, detail=type(exc).__name__))
+    except (ValueError, IndexError):
+        out.append(ev(ref, "cxs", "B", "error", "workday.cxs_unresolved", ref.source_url, observed_at))
+
+    bstate, bfinal, bdetail = workday_browser_probe(ref.source_url, ref.requisition_id)
+    if bstate == "open":
+        out.append(ev(ref, "browser", "A", "open", "workday.application_flow", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+    elif bstate == "closed":
+        out.append(ev(ref, "browser", "A", "closed", "workday.browser_closed", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+    else:
+        out.append(ev(ref, "browser", "B", "neutral" if bstate in ("neutral", "unavailable") else "error",
+                      f"workday.browser_{bstate}", ref.source_url, observed_at, None, bfinal, detail=bdetail))
+    return out
+
 def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datetime | None = None):
     t = observed_at or now_utc()
     if ref is None:
@@ -351,7 +446,7 @@ def verify_url(url: str, observed_at: datetime | None = None):
     ref = resolve(url)
     if ref is None:
         return decide(None, [], t)
-    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect}[ref.provider]
+    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect}[ref.provider]
     return decide(ref, collector(ref, t), t)
 
 
