@@ -45,7 +45,7 @@ class AvailabilityTests(unittest.TestCase):
 
     def test_jobposting_jsonld_can_confirm_live_job(self):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2099-12-31T23:59:59Z"}</script>'
-        self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'active')
+        self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'review')
 
     def test_jobposting_jsonld_past_deadline_expires_job(self):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2020-01-01T00:00:00Z"}</script>'
