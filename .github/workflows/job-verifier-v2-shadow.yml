@@ -1,5 +1,12 @@
 name: V2 shadow job verifier
 on:
+  push:
+    branches:
+      - job-verifier-v2-shadow
+    paths:
+      - 'scripts/job_verifier_v2.py'
+      - 'tests/test_job_verifier_v2.py'
+      - '.github/workflows/job-verifier-v2-shadow.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -9,8 +16,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: job-verifier-v2-shadow
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
