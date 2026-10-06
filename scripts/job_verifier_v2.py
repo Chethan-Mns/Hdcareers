@@ -427,7 +427,14 @@ def workday_collect(ref: ProviderRef, observed_at: datetime):
             status, final_url, _, data = fetch_json(cxs)
             blob = json.dumps(data, ensure_ascii=False)
             if status == 200 and ref.requisition_id.casefold() in blob.casefold():
-                out.append(ev(ref, "cxs", "B", "open", "workday.cxs_exact_record", cxs, observed_at, ref.requisition_id, final_url, status))
+                info = data.get("jobPostingInfo", {}) if isinstance(data, dict) else {}
+                can_apply = info.get("canApply") if isinstance(info, dict) else None
+                if can_apply is True:
+                    out.append(ev(ref, "cxs", "A", "open", "workday.cxs_can_apply_true", cxs, observed_at, ref.requisition_id, final_url, status))
+                elif can_apply is False:
+                    out.append(ev(ref, "cxs", "A", "closed", "workday.cxs_can_apply_false", cxs, observed_at, ref.requisition_id, final_url, status))
+                else:
+                    out.append(ev(ref, "cxs", "B", "open", "workday.cxs_exact_record", cxs, observed_at, ref.requisition_id, final_url, status))
             else:
                 out.append(ev(ref, "cxs", "B", "neutral", "workday.cxs_unproven", cxs, observed_at, None, final_url, status))
         except HTTPError as exc:
