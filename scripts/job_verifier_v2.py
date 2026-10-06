@@ -26,6 +26,8 @@ FORM = re.compile(r"<form\\b|apply for this job|submit application|application f
 CLOSED = re.compile(r"no longer (?:available|posted|accepting applications)|position has been filled|job has been filled|applications? (?:are |is )?closed", re.I)
 
 State = Literal["LIVE", "EXPIRED", "UNCONFIRMED"]
+AUTO_LIVE_PROVIDERS = frozenset({"greenhouse", "lever", "ashby", "smartrecruiters"})
+REVIEW_ONLY_PROVIDERS = frozenset({"workday"})
 Polarity = Literal["open", "closed", "neutral", "blocked", "error"]
 Tier = Literal["A", "B", "C"]
 
@@ -458,6 +460,9 @@ def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datet
     if exact_a_closed:
         return Verdict("EXPIRED", "proven", ref.provider, ref.requisition_id, t.isoformat(), None, [x.code for x in exact_a_closed], evidence)
     if exact_a_open and not mismatch:
+        if ref.provider in REVIEW_ONLY_PROVIDERS or ref.provider not in AUTO_LIVE_PROVIDERS:
+            return Verdict("UNCONFIRMED", "weak", ref.provider, ref.requisition_id, t.isoformat(), None,
+                           ["provider_review_only", *[x.code for x in exact_a_open]], evidence)
         return Verdict("LIVE", "proven", ref.provider, ref.requisition_id, t.isoformat(), (t + timedelta(minutes=30)).isoformat(), [x.code for x in exact_a_open], evidence)
     return Verdict("UNCONFIRMED", "weak", ref.provider, ref.requisition_id, t.isoformat(), None, [x.code for x in evidence] or ["no_evidence"], evidence)
 
