@@ -243,11 +243,23 @@ def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
     try:
         status, final_url, _, data = fetch_json(api)
         found = str(data.get("id") or data.get("uuid") or "") if isinstance(data, dict) else None
-        if status == 200 and found and found.casefold() == ref.requisition_id.casefold():
-            out.append(ev(ref, "api", "A", "open", "smartrecruiters.active_public_posting", api, observed_at, found, final_url, status,
-                          "Official Posting API documents this endpoint as an active published posting."))
-        else:
+        if status != 200 or not found or found.casefold() != ref.requisition_id.casefold():
             out.append(ev(ref, "api", "B", "neutral", "smartrecruiters.unexpected_record", api, observed_at, found, final_url, status))
+            return out
+        blob = json.dumps(data, ensure_ascii=False)
+        if data.get("active") is False or CLOSED.search(blob):
+            out.append(ev(ref, "api", "A", "closed", "smartrecruiters.explicit_closed", api, observed_at, found, final_url, status))
+            return out
+        out.append(ev(ref, "api", "B", "open", "smartrecruiters.current_posting", api, observed_at, found, final_url, status))
+        apply_url = str(data.get("applyUrl") or ref.source_url)
+        bstate, bfinal, bdetail = browser_form_probe(apply_url, ref.requisition_id)
+        if bstate == "open":
+            out.append(ev(ref, "browser", "A", "open", "smartrecruiters.apply_form", apply_url, observed_at, ref.requisition_id, bfinal, 200))
+        elif bstate == "closed":
+            out.append(ev(ref, "browser", "A", "closed", "smartrecruiters.apply_closed", apply_url, observed_at, ref.requisition_id, bfinal, 200))
+        else:
+            out.append(ev(ref, "browser", "B", "neutral" if bstate in ("neutral", "unavailable") else "error",
+                          f"smartrecruiters.browser_{bstate}", apply_url, observed_at, None, bfinal, detail=bdetail))
     except HTTPError as exc:
         if exc.code in (404, 410):
             out.append(ev(ref, "api", "A", "closed", f"smartrecruiters.api_{exc.code}", api, observed_at, ref.requisition_id, api, exc.code))
@@ -256,8 +268,6 @@ def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
     except Exception as exc:
         out.append(ev(ref, "api", "B", "error", "smartrecruiters.api_error", api, observed_at, detail=type(exc).__name__))
     return out
-
-
 
 def browser_form_probe(url: str, requisition_id: str):
     safe_url(url)
