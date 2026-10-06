@@ -2404,7 +2404,8 @@ struct PublishView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                             .disabled(readyLinks.isEmpty || isGenerating)
                         }
-                        .premiumCard()
+                        .gaCard(accent: HDTheme.blue)
+                        .gaReveal(0.04)
 
                         if !extractionIssues.isEmpty {
                             VStack(alignment: .leading, spacing: 9) {
@@ -2423,7 +2424,8 @@ struct PublishView: View {
                                     )
                                 }
                             }
-                            .premiumCard()
+                            .gaCard(accent: HDTheme.amber)
+                            .gaReveal(0.07)
                         }
 
                         if !drafts.isEmpty {
@@ -2483,11 +2485,13 @@ struct PublishView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                                 .disabled(selectedDrafts.isEmpty || state.isBusy)
                             }
-                            .premiumCard()
+                            .gaCard(accent: HDTheme.green)
+                            .gaReveal(0.09)
                         }
                     }
-                    .padding(16)
-                    .padding(.bottom, 18)
+                    .padding(.horizontal, 15)
+                    .padding(.top, 10)
+                    .padding(.bottom, 22)
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
@@ -2666,6 +2670,7 @@ struct LinkPreviewRow: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(color.opacity(0.14))
         }
+        .gaReveal()
     }
 }
 
@@ -2720,8 +2725,10 @@ struct DraftJobRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .stroke(selected ? HDTheme.green.opacity(0.18) : Color.black.opacity(0.045))
+                .stroke(selected ? HDTheme.green.opacity(0.18) : HDTheme.line)
         }
+        .animation(.snappy(duration: 0.24), value: selected)
+        .gaReveal()
     }
 }
 
