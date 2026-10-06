@@ -62,6 +62,121 @@ def manual_verification_fresh(job, now):
     except Exception:
         return False
 
+
+def fetch_json(url):
+    safe_url(url)
+    req = Request(url, headers={
+        'User-Agent': BROWSER_UA,
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+    })
+    with build_opener(Redirects()).open(req, timeout=20) as res:
+        if res.status != 200:
+            raise HTTPError(url, res.status, 'Unexpected status', res.headers, None)
+        raw = res.read(2_000_001)
+        if len(raw) > 2_000_000: raise ValueError('JSON response exceeds inspection size limit')
+        return json.loads(raw.decode('utf-8', errors='replace'))
+
+def official_inventory_probe(job):
+    """Use public ATS inventories when the URL identifies a supported provider."""
+    url = str(job.get('apply', '')).strip()
+    p = urlsplit(url)
+    host = (p.hostname or '').lower()
+    parts = [x for x in p.path.split('/') if x]
+
+    provider = endpoint = None
+    expected_id = None
+    try:
+        if host.endswith('greenhouse.io') and 'jobs' in parts:
+            i = parts.index('jobs')
+            if i >= 1 and i + 1 < len(parts):
+                board, expected_id = parts[i - 1], parts[i + 1]
+                endpoint = f'https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{expected_id}'
+                provider = 'Greenhouse'
+        elif host == 'jobs.lever.co' and len(parts) >= 2:
+            site, expected_id = parts[0], parts[1]
+            endpoint = f'https://api.lever.co/v0/postings/{site}/{expected_id}'
+            provider = 'Lever'
+        elif host == 'jobs.smartrecruiters.com' and len(parts) >= 2:
+            company, expected_id = parts[0], parts[1]
+            endpoint = f'https://api.smartrecruiters.com/v1/companies/{company}/postings/{expected_id}'
+            provider = 'SmartRecruiters'
+        elif host == 'jobs.ashbyhq.com' and len(parts) >= 2:
+            board, expected_id = parts[0], parts[1]
+            endpoint = f'https://api.ashbyhq.com/posting-api/job-board/{board}'
+            provider = 'Ashby'
+        else:
+            return None
+
+        data = fetch_json(endpoint)
+        if provider == 'Ashby':
+            jobs = data.get('jobs', []) if isinstance(data, dict) else []
+            needle = expected_id.casefold()
+            match = next((x for x in jobs if needle in str(x.get('jobUrl', '')).casefold() or needle in str(x.get('applyUrl', '')).casefold()), None)
+            if match:
+                return 'active', f'{provider} public posting inventory contains the exact published job'
+            return 'expired', f'{provider} public posting inventory no longer contains the exact job'
+
+        if not isinstance(data, dict):
+            return 'review', f'{provider} public posting inventory returned an unexpected response'
+        actual = str(data.get('id') or data.get('uuid') or '')
+        active_flag = data.get('active')
+        if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
+            return 'review', f'{provider} public posting inventory returned a different posting'
+        if active_flag is False:
+            return 'expired', f'{provider} public posting inventory marks the exact job inactive'
+        return 'active', f'{provider} public posting inventory contains the exact published job'
+    except HTTPError as exc:
+        if exc.code in (404, 410):
+            return 'expired', f'{provider} public posting inventory returned HTTP {exc.code} for the exact posting'
+        return 'review', f'{provider} public posting inventory returned HTTP {exc.code}'
+    except Exception as exc:
+        return 'review', f'{provider} public posting inventory check was inconclusive ({type(exc).__name__})'
+
+def structured_jobposting(body, job, now=None):
+    """Read first-party JobPosting JSON-LD as an additional official signal."""
+    now = now or datetime.now(timezone.utc)
+    blocks = re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', body, re.I | re.S)
+    role = re.sub(r'\s+', ' ', str(job.get('role', ''))).strip().casefold()
+    terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
+
+    def walk(value):
+        if isinstance(value, dict):
+            yield value
+            for v in value.values():
+                yield from walk(v)
+        elif isinstance(value, list):
+            for v in value:
+                yield from walk(v)
+
+    for raw in blocks:
+        try:
+            payload = json.loads(raw)
+        except Exception:
+            continue
+        for item in walk(payload):
+            kinds = item.get('@type')
+            kinds = kinds if isinstance(kinds, list) else [kinds]
+            if 'JobPosting' not in kinds:
+                continue
+            blob = json.dumps(item, ensure_ascii=False).casefold()
+            title = re.sub(r'\s+', ' ', str(item.get('title', ''))).strip().casefold()
+            matched = bool((role and (role in blob or title in role or role in title)) or (terms and sum(t in blob for t in terms) >= min(2, len(terms))))
+            if not matched:
+                continue
+            valid = item.get('validThrough')
+            if valid:
+                try:
+                    dt = datetime.fromisoformat(str(valid).replace('Z', '+00:00'))
+                    if dt.tzinfo is None: dt = dt.replace(tzinfo=timezone.utc)
+                    if now >= dt:
+                        return 'expired', 'Official JobPosting structured data validThrough deadline has passed'
+                except Exception:
+                    pass
+            if item.get('directApply') is True or item.get('url') or item.get('identifier'):
+                return 'active', 'Exact official JobPosting structured data is present on the job page'
+    return None
+
 def classify(job, body, final_url, status=200):
     if status in (404, 410): return 'review', f'HTTP {status} from automated request; exact job page requires browser verification before expiry'
     if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
@@ -96,8 +211,13 @@ def check(job, now=None):
             state, reason = 'expired', 'Official closingAt deadline passed'
         else:
             safe_url(job['apply'])
-            probes = []
-            for label, user_agent in (('browser', BROWSER_UA), ('bot', BOT_UA)):
+            inventory = official_inventory_probe(job)
+            if inventory and inventory[0] in {'active', 'expired'}:
+                state, reason = inventory
+                probes = []
+            else:
+                probes = []
+            for label, user_agent in (() if (inventory and inventory[0] in {'active', 'expired'}) else (('browser', BROWSER_UA), ('bot', BOT_UA))):
                 try:
                     req = Request(job['apply'], headers={
                         'User-Agent': user_agent,
@@ -117,7 +237,9 @@ def check(job, now=None):
             browser = next((p for p in probes if p[0] == 'browser'), None)
             bot = next((p for p in probes if p[0] == 'bot'), None)
 
-            if browser and browser[1] == 'active':
+            if inventory and inventory[0] in {'active', 'expired'}:
+                state, reason = inventory
+            elif browser and browser[1] == 'active':
                 state, reason = 'active', f'Browser-compatible official-page render is active ({browser[2]})'
                 if bot and bot[1] == 'expired':
                     reason += f'; bot-only render reported closure ({bot[2]}) and was ignored'
