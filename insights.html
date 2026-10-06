@@ -3,81 +3,27 @@
 <title>HD Careers Hiring Insights | HD Careers</title>
 <meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="https://hdcareers.in/insights.html">
-<link rel="icon" href="assets/hd-careers-logo.png"><link rel="stylesheet" href="assets/editorial.css"><link rel="stylesheet" href="assets/public-header.css"><script defer src="assets/public-header.js"></script><script defer src="assets/analytics.js"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<style>
-.insight-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.insight-charts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:28px}
-.insight-chart-card{padding:20px!important;min-width:0}
-.insight-chart-head h2{font-size:22px;margin:0;letter-spacing:-.025em}.insight-chart-head p{font-size:13px;color:#64748b;line-height:1.55;margin:6px 0 0}
-.insight-chart-wrap{height:340px;margin-top:16px;position:relative}
-.insight-chart-note{font-size:10px;color:#94a3b8;margin-top:9px;text-align:right}
-@media(max-width:900px){.insight-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.insight-charts{grid-template-columns:1fr}}
-@media(max-width:620px){
- .insight-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .insight-metrics .metric{min-height:128px}
- .insight-charts{gap:12px;padding-top:20px}
- .insight-chart-card{padding:16px!important}
- .insight-chart-head h2{font-size:20px}.insight-chart-head p{font-size:12.5px}
- .insight-chart-wrap{height:300px;margin-top:12px}
-}
-</style>
+<link rel="icon" href="assets/hd-careers-logo.png"><link rel="stylesheet" href="assets/editorial.css"><link rel="stylesheet" href="assets/public-header.css"><script defer src="assets/public-header.js"></script><script defer src="assets/analytics.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "HD Careers Hiring Insights", "author": {"@type": "Organization", "name": "HD Careers"}, "publisher": {"@type": "Organization", "name": "HD Careers"}, "dateModified": "6 October 2026", "mainEntityOfPage": "https://hdcareers.in/insights.html"}</script>
 </head><body>
 <header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><img src="assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="index.html">Jobs</a><a class="active" href="insights.html">Insights</a><a href="career-resources.html">Career Resources</a><a href="editorial-policy.html">Verification Policy</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="eyebrow">HD Careers own-data analysis</div><h1>HD Careers Hiring Insights</h1><p>Original analysis calculated from active HD Careers job listings. Counts describe our current database, not the entire employment market.</p><p style="font-size:12px;margin-top:15px;color:#93c5fd">Snapshot based on listings verified through 6 October 2026.</p></div></section>
 <main class="wrap section">
-<div class="insight-metrics">
-<div class="card metric"><span>Active listings</span><strong>55</strong><p>Jobs currently marked active in our database.</p></div>
-<div class="card metric"><span>Employers</span><strong>36</strong><p>Unique employer names represented by active listings.</p></div>
-<div class="card metric"><span>Fresher listings</span><strong>38</strong><p>Active jobs tagged as fresher opportunities.</p></div>
+<div class="grid cols-4">
+<div class="card metric"><span>Active listings</span><strong>56</strong><p>Jobs currently marked active in our database.</p></div>
+<div class="card metric"><span>Employers</span><strong>37</strong><p>Unique employer names represented by active listings.</p></div>
+<div class="card metric"><span>Fresher listings</span><strong>39</strong><p>Active jobs tagged as fresher opportunities.</p></div>
 <div class="card metric"><span>Experienced listings</span><strong>17</strong><p>Active jobs tagged as experienced opportunities.</p></div>
 </div>
-
-<section class="insight-charts">
-<div class="card insight-chart-card">
-<div class="insight-chart-head"><h2>Most-mentioned skills</h2><p>Exact skill phrases appearing across active listings.</p></div>
-<div class="insight-chart-wrap"><canvas id="skillsChart"></canvas></div>
-<div class="insight-chart-note">Mentions in active listings</div>
-</div>
-<div class="card insight-chart-card">
-<div class="insight-chart-head"><h2>Top location tags</h2><p>Location filters attached to current active jobs.</p></div>
-<div class="insight-chart-wrap"><canvas id="locationsChart"></canvas></div>
-<div class="insight-chart-note">Active listing count</div>
-</div>
-<div class="card insight-chart-card">
-<div class="insight-chart-head"><h2>Listing categories</h2><p>A job can belong to more than one category.</p></div>
-<div class="insight-chart-wrap"><canvas id="categoriesChart"></canvas></div>
-<div class="insight-chart-note">Category tags across active listings</div>
-</div>
+<section class="section grid cols-3">
+<div class="card"><h2 class="section-title">Most-mentioned skills</h2><p class="section-copy">Exact skill phrases appearing across active listings.</p><div class="rank"><div class="rank-label">Problem solving</div><div class="bar"><i style="width:100%"></i></div><div class="rank-value">7</div></div><div class="rank"><div class="rank-label">Python</div><div class="bar"><i style="width:86%"></i></div><div class="rank-value">6</div></div><div class="rank"><div class="rank-label">Java</div><div class="bar"><i style="width:86%"></i></div><div class="rank-value">6</div></div><div class="rank"><div class="rank-label">Communication</div><div class="bar"><i style="width:71%"></i></div><div class="rank-value">5</div></div><div class="rank"><div class="rank-label">Troubleshooting</div><div class="bar"><i style="width:71%"></i></div><div class="rank-value">5</div></div><div class="rank"><div class="rank-label">Documentation</div><div class="bar"><i style="width:71%"></i></div><div class="rank-value">5</div></div><div class="rank"><div class="rank-label">SQL</div><div class="bar"><i style="width:71%"></i></div><div class="rank-value">5</div></div><div class="rank"><div class="rank-label">Networking</div><div class="bar"><i style="width:57%"></i></div><div class="rank-value">4</div></div></div>
+<div class="card"><h2 class="section-title">Top location tags</h2><p class="section-copy">Location filters attached to current active jobs.</p><div class="rank"><div class="rank-label">Bengaluru</div><div class="bar"><i style="width:100%"></i></div><div class="rank-value">12</div></div><div class="rank"><div class="rank-label">Hyderabad</div><div class="bar"><i style="width:75%"></i></div><div class="rank-value">9</div></div><div class="rank"><div class="rank-label">Pan India</div><div class="bar"><i style="width:33%"></i></div><div class="rank-value">4</div></div><div class="rank"><div class="rank-label">Mumbai</div><div class="bar"><i style="width:33%"></i></div><div class="rank-value">4</div></div><div class="rank"><div class="rank-label">Noida</div><div class="bar"><i style="width:25%"></i></div><div class="rank-value">3</div></div><div class="rank"><div class="rank-label">Delhi</div><div class="bar"><i style="width:17%"></i></div><div class="rank-value">2</div></div><div class="rank"><div class="rank-label">Chennai</div><div class="bar"><i style="width:17%"></i></div><div class="rank-value">2</div></div><div class="rank"><div class="rank-label">Madurai</div><div class="bar"><i style="width:17%"></i></div><div class="rank-value">2</div></div></div>
+<div class="card"><h2 class="section-title">Listing categories</h2><p class="section-copy">A job can belong to more than one category.</p><div class="rank"><div class="rank-label">IT &amp; Software</div><div class="bar"><i style="width:100%"></i></div><div class="rank-value">28</div></div><div class="rank"><div class="rank-label">Fresher</div><div class="bar"><i style="width:64%"></i></div><div class="rank-value">18</div></div><div class="rank"><div class="rank-label">Government Job</div><div class="bar"><i style="width:43%"></i></div><div class="rank-value">12</div></div><div class="rank"><div class="rank-label">Experienced</div><div class="bar"><i style="width:39%"></i></div><div class="rank-value">11</div></div><div class="rank"><div class="rank-label">Non-IT</div><div class="bar"><i style="width:32%"></i></div><div class="rank-value">9</div></div><div class="rank"><div class="rank-label">Walk-in</div><div class="bar"><i style="width:32%"></i></div><div class="rank-value">9</div></div><div class="rank"><div class="rank-label">Apprenticeship</div><div class="bar"><i style="width:25%"></i></div><div class="rank-value">7</div></div><div class="rank"><div class="rank-label">Internship</div><div class="bar"><i style="width:18%"></i></div><div class="rank-value">5</div></div></div>
 </section>
-
 <div class="note"><strong>Important:</strong> this is an analysis of the HD Careers database, not a survey of the entire Indian or global labour market. Counts change as jobs are published, expire or are corrected.</div>
 <div style="margin-top:18px"><a href="insights/weekly-hiring-insights.html" class="badge">Open detailed weekly snapshot →</a></div>
 
 <section class="section"><div class="grid cols-2"><div class="card resource-card"><span class="badge">Transparency</span><h3>How HD Careers verifies jobs</h3><p>See how source links, extraction, validation, expiry checks and corrections are handled.</p><a href="editorial-policy.html">Read the policy →</a></div><div class="card resource-card"><span class="badge">Job safety</span><h3>How to check if a job is genuine</h3><p>Use our six-step verification checklist before sharing personal information or applying.</p><a href="resources/how-to-check-job-genuine.html">Read the guide →</a></div></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-links"><a href="index.html">Jobs</a><a href="career-resources.html">Career Resources</a><a href="editorial-policy.html">Verification Policy</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a></div><small>© 2026 HD Careers. Insights are derived from our current listing database and should not be interpreted as complete market statistics.</small></div></footer><script>
-(function(){
-if(typeof Chart==='undefined')return;
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const gridColor='rgba(148,163,184,.16)';
-const tickColor='#64748b';
-const base=(labels,values)=>({
- type:'bar',
- data:{labels,datasets:[{data:values,borderRadius:7,borderSkipped:false,maxBarThickness:28}]},
- options:{
-  responsive:true,maintainAspectRatio:false,indexAxis:'y',
-  animation:reduced?false:{duration:700,easing:'easeOutQuart'},
-  plugins:{legend:{display:false},tooltip:{displayColors:false}},
-  scales:{
-   x:{beginAtZero:true,grid:{color:gridColor},border:{display:false},ticks:{precision:0,color:tickColor,font:{size:10}}},
-   y:{grid:{display:false},border:{display:false},ticks:{color:'#334155',font:{size:11,weight:'700'},autoSkip:false}}
-  }
- }
-});
-new Chart(document.getElementById('skillsChart'),base(['Problem solving','Python','Java','Troubleshooting','Documentation','SQL','Networking','Communication'],[7,6,6,5,5,5,4,4]));
-new Chart(document.getElementById('locationsChart'),base(['Bengaluru','Hyderabad','Pan India','Mumbai','Noida','Delhi','Chennai','Madurai'],[12,9,4,4,3,2,2,2]));
-new Chart(document.getElementById('categoriesChart'),base(['IT & Software','Fresher','Government Job','Experienced','Non-IT','Walk-in','Apprenticeship','Internship'],[27,17,12,11,9,9,7,5]));
-})();
-</script>
+<footer class="footer"><div class="wrap"><div class="footer-links"><a href="index.html">Jobs</a><a href="career-resources.html">Career Resources</a><a href="editorial-policy.html">Verification Policy</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a></div><small>© 2026 HD Careers. Insights are derived from our current listing database and should not be interpreted as complete market statistics.</small></div></footer>
 </body></html>
