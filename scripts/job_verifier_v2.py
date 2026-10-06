@@ -392,7 +392,8 @@ def workday_collect(ref: ProviderRef, observed_at: datetime):
 
     bstate, bfinal, bdetail = workday_browser_probe(ref.source_url, ref.requisition_id)
     if bstate == "open":
-        out.append(ev(ref, "browser", "A", "open", "workday.application_flow", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+        out.append(ev(ref, "browser", "B", "open", "workday.generic_application_flow", ref.source_url, observed_at, ref.requisition_id, bfinal, 200,
+                      "Workday may expose a generic application/login flow for stale requisitions; this signal cannot prove LIVE."))
     elif bstate == "closed":
         out.append(ev(ref, "browser", "A", "closed", "workday.browser_closed", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
     else:
