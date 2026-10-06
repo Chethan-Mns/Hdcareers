@@ -45,8 +45,19 @@ def old_jobs(before: str) -> list[dict]:
 def added_jobs(before: str) -> list[dict]:
     current = json.loads(DATA_FILE.read_text(encoding="utf-8"))
     old = old_jobs(before)
-    old_keys = {key(j) for j in old}
-    return [j for j in current if key(j) not in old_keys]
+    old_by_key = {key(j): j for j in old}
+    selected = []
+    for job in current:
+        k = key(job)
+        previous = old_by_key.get(k)
+        if previous is None:
+            selected.append(job)
+            continue
+        request = str(job.get("manualPublishRequestedAt", "") or "").strip()
+        old_request = str(previous.get("manualPublishRequestedAt", "") or "").strip()
+        if request and request != old_request:
+            selected.append(job)
+    return selected
 
 
 def enqueue(before: str) -> None:
