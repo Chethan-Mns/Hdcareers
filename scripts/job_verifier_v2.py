@@ -337,6 +337,8 @@ def ashby_collect(ref: ProviderRef, observed_at: datetime):
 
 def workday_browser_probe(url: str, requisition_id: str):
     safe_url(url)
+    apply_url = url.split("?", 1)[0].rstrip("/") + "/apply/applyManually"
+    safe_url(apply_url)
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
@@ -345,52 +347,25 @@ def workday_browser_probe(url: str, requisition_id: str):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page(user_agent=UA)
-            page.goto(url, wait_until="domcontentloaded", timeout=25000)
+            page.goto(apply_url, wait_until="domcontentloaded", timeout=25000)
             page.wait_for_timeout(1500)
-            initial = page.locator("body").inner_text(timeout=5000)
-            identity = requisition_id.casefold() in (page.url + " " + initial).casefold()
-            if CLOSED.search(initial):
-                final_url = page.url
-                browser.close()
-                return "closed", final_url, initial[:500]
-            if not identity:
-                final_url = page.url
-                browser.close()
-                return "neutral", final_url, initial[:500]
-            buttons = page.get_by_role("button", name=re.compile(r"^apply$", re.I))
-            if buttons.count() == 0:
-                links = page.get_by_role("link", name=re.compile(r"^apply$", re.I))
-                if links.count() == 0:
-                    final_url = page.url
-                    browser.close()
-                    return "neutral", final_url, initial[:500]
-                links.first.click(timeout=5000)
-            else:
-                buttons.first.click(timeout=5000)
-            page.wait_for_timeout(1200)
-            for label in (r"apply manually", r"start application"):
-                nxt = page.get_by_role("button", name=re.compile(label, re.I))
-                if nxt.count():
-                    try:
-                        nxt.first.click(timeout=3000)
-                        page.wait_for_timeout(1000)
-                    except Exception:
-                        pass
-                    break
             text = page.locator("body").inner_text(timeout=5000)
             final_url = page.url
             has_fields = page.locator("input, textarea, select").count() >= 2
             has_auth = re.search(r"create account|sign in|email address|password", text, re.I) is not None
-            has_application = re.search(r"my information|application|resume|experience", text, re.I) is not None
+            has_start = re.search(r"start your application|autofill with resume|apply manually|use my last application", text, re.I) is not None
+            has_application = re.search(r"my information|my experience|application questions|resume|review", text, re.I) is not None
+            exact = requisition_id.casefold() in (final_url + " " + text).casefold()
             browser.close()
         if CLOSED.search(text):
             return "closed", final_url, text[:500]
-        if identity and (has_fields or has_auth or has_application):
+        if has_auth or has_start or has_application or (exact and has_fields):
             return "open", final_url, text[:500]
+        if not exact:
+            return "closed", final_url, text[:500]
         return "neutral", final_url, text[:500]
     except Exception as exc:
-        return "error", url, type(exc).__name__
-
+        return "error", apply_url, type(exc).__name__
 
 def workday_collect(ref: ProviderRef, observed_at: datetime):
     out = []
