@@ -1131,7 +1131,7 @@ struct DashboardStatsCard: View {
 
             LazyVGrid(columns: columns, spacing: 9) {
                 PremiumMetricTile(title: "Total jobs", value: numberText(state.jobs.count), icon: "briefcase.fill", color: HDTheme.blue)
-                PremiumMetricTile(title: "Freshers", value: numberText(state.fresherJobs.count), icon: "person.crop.circle.badge.checkmark", color: HDTheme.violet)
+                PremiumMetricTile(title: "Freshers", value: numberText(state.fresherJobs.count), icon: "person.crop.circle.badge.checkmark", color: HDTheme.lightBlue)
                 PremiumMetricTile(title: "Active", value: numberText(state.activeJobs.count), icon: "checkmark.circle.fill", color: HDTheme.green)
                 PremiumMetricTile(title: "Expired", value: numberText(state.expiredJobs.count), icon: "xmark.circle.fill", color: HDTheme.red)
             }
@@ -2433,9 +2433,9 @@ struct PublishView: View {
                                         icon: "doc.text.magnifyingglass",
                                         title: "Generated preview",
                                         subtitle: "Review content before it goes live",
-                                        color: HDTheme.violet
+                                        color: HDTheme.lightBlue
                                     )
-                                    StatusPill(text: "\(selectedDrafts.count) selected", color: HDTheme.violet)
+                                    StatusPill(text: "\(selectedDrafts.count) selected", color: HDTheme.lightBlue)
                                 }
 
                                 ForEach(Array(drafts.enumerated()), id: \.element.id) { index, job in
@@ -2457,7 +2457,7 @@ struct PublishView: View {
                                     icon: "arrow.triangle.branch",
                                     title: "What happens next",
                                     text: "Selected jobs run through validation, website generation, deployment and the existing Telegram publishing workflow.",
-                                    color: HDTheme.cyan
+                                    color: HDTheme.green
                                 )
 
                                 Button {
@@ -2697,7 +2697,7 @@ struct DraftJobRow: View {
                     .lineLimit(2)
 
                 HStack(spacing: 6) {
-                    PremiumMetaChip(text: job.cat?.capitalized ?? "Job", icon: "briefcase.fill", color: HDTheme.violet)
+                    PremiumMetaChip(text: job.cat?.capitalized ?? "Job", icon: "briefcase.fill", color: HDTheme.lightBlue)
                     PremiumMetaChip(text: job.loc ?? "Location", icon: "mappin", color: HDTheme.blue)
                 }
                 .lineLimit(1)
@@ -2801,7 +2801,7 @@ struct JobEditSheet: View {
                         .premiumCard()
 
                         VStack(alignment: .leading, spacing: 11) {
-                            PremiumSectionTitle(icon: "building.2.crop.circle.fill", title: "Company details", subtitle: "Optional employer context", color: HDTheme.violet)
+                            PremiumSectionTitle(icon: "building.2.crop.circle.fill", title: "Company details", subtitle: "Optional employer context", color: HDTheme.lightBlue)
                             PremiumField(title: "Industry", icon: "square.grid.2x2", text: binding(\.industry))
                             PremiumField(title: "Headquarters", icon: "location.circle", text: binding(\.headquarters))
                             PremiumField(title: "Founded year", icon: "calendar", text: binding(\.foundedYear))
@@ -2813,7 +2813,7 @@ struct JobEditSheet: View {
                                 hint: "Short factual company context from an official source.",
                                 text: binding(\.companyOverview),
                                 minHeight: 100,
-                                color: HDTheme.violet
+                                color: HDTheme.lightBlue
                             )
                         }
                         .premiumCard()
@@ -2842,7 +2842,7 @@ struct JobEditSheet: View {
                             hint: "Comma-separated skills are shown as clean skill tags on the job page.",
                             text: listBinding(\.skills, commaSeparated: true),
                             minHeight: 90,
-                            color: HDTheme.cyan
+                            color: HDTheme.green
                         )
 
                         PremiumTextEditorField(
@@ -2851,7 +2851,7 @@ struct JobEditSheet: View {
                             hint: "Use one responsibility per line so the public page becomes easy to scan.",
                             text: listBinding(\.resp),
                             minHeight: 130,
-                            color: HDTheme.violet
+                            color: HDTheme.lightBlue
                         )
 
                         PremiumTextEditorField(
@@ -3634,7 +3634,7 @@ struct AnalyticsListCard: View {
                                 Capsule()
                                     .fill(
                                         LinearGradient(
-                                            colors: [HDTheme.blue, HDTheme.cyan],
+                                            colors: [HDTheme.blue, HDTheme.green],
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
@@ -3682,7 +3682,7 @@ struct AutomationDetailsView: View {
                     if let slot = state.automationHealth?.slots.first(where: { $0.enabled }) {
                         ZStack {
                             LinearGradient(
-                                colors: [HDTheme.navy, HDTheme.blue, HDTheme.cyan.opacity(0.85)],
+                                colors: [HDTheme.navy, HDTheme.blue, HDTheme.green.opacity(0.85)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
@@ -3744,12 +3744,12 @@ struct AutomationDetailsView: View {
                                     icon: "square.grid.2x2.fill",
                                     title: "Publishing mix",
                                     subtitle: "Target distribution for the daily batch",
-                                    color: HDTheme.violet
+                                    color: HDTheme.lightBlue
                                 )
 
                                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 118), spacing: 8)], alignment: .leading, spacing: 8) {
                                     ForEach(mix, id: \.self) { item in
-                                        PremiumMetaChip(text: item, icon: "checkmark.circle.fill", color: HDTheme.violet)
+                                        PremiumMetaChip(text: item, icon: "checkmark.circle.fill", color: HDTheme.lightBlue)
                                     }
                                 }
                             }
@@ -3787,7 +3787,7 @@ struct AutomationDetailsView: View {
                                     icon: "clock.arrow.circlepath",
                                     title: "Previous run",
                                     text: formatAdminDate(last),
-                                    color: HDTheme.violet
+                                    color: HDTheme.lightBlue
                                 )
                             }
 
