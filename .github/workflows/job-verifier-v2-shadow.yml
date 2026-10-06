@@ -43,6 +43,8 @@ jobs:
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_live_jobs.json --output shadow-provider-live-report.json
       - name: Verify provider negative candidates
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_expired_candidates.json --output shadow-provider-negative-report.json
+      - name: Probe Oracle Candidate Experience network
+        run: python3 scripts/oracle_ce_network_probe.py tests/fixtures/v2_oracle_live_candidates.json
       - name: Verify Oracle HCM live candidates
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_oracle_live_candidates.json --output shadow-oracle-live-report.json
       - name: Verify Oracle HCM old candidates
