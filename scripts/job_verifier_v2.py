@@ -227,7 +227,17 @@ def phenom_ref(url: str) -> ProviderRef | None:
 
 
 def resolve_dynamic(url: str) -> ProviderRef | None:
-    return resolve(url) or successfactors_ref(url) or phenom_ref(url)
+    direct = resolve(url)
+    if direct:
+        return direct
+    for detector in (successfactors_ref, phenom_ref):
+        try:
+            ref = detector(url)
+        except Exception:
+            ref = None
+        if ref:
+            return ref
+    return None
 
 
 def ev(ref: ProviderRef, method: str, tier: Tier, polarity: Polarity, code: str, url: str,
