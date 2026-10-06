@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Shadow diagnostic: no production writes.
 import json, re, sys
 from pathlib import Path
 from urllib.parse import urlsplit
