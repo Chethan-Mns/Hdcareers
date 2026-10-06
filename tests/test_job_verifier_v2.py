@@ -19,6 +19,14 @@ class V2Tests(unittest.TestCase):
         r = resolve("https://jobs.lever.co/acme/abc-123")
         self.assertEqual((r.provider, r.tenant, r.requisition_id), ("lever", "acme", "abc-123"))
 
+    def test_resolves_smartrecruiters(self):
+        r = resolve("https://jobs.smartrecruiters.com/AristaNetworks/744000152369329-software-engineer-intern")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("smartrecruiters", "AristaNetworks", "744000152369329"))
+
+    def test_resolves_ashby(self):
+        r = resolve("https://jobs.ashbyhq.com/kognitos/a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("ashby", "kognitos", "a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5"))
+
     def test_unknown_provider_is_unconfirmed(self):
         self.assertEqual(verify_url("https://careers.example.com/jobs/1", NOW).state, "UNCONFIRMED")
 
@@ -65,6 +73,30 @@ class V2Tests(unittest.TestCase):
     def test_greenhouse_api_404_is_expired(self, fj):
         fj.side_effect = HTTPError("x", 404, "Not found", {}, None)
         self.assertEqual(verify_url("https://job-boards.greenhouse.io/acme/jobs/123", NOW).state, "EXPIRED")
+
+    @patch("job_verifier_v2.fetch_json")
+    def test_smartrecruiters_active_api_is_live(self, fj):
+        fj.return_value = (200, "https://api.smartrecruiters.com/v1/companies/Acme/postings/123", {}, {"id": "123"})
+        self.assertEqual(verify_url("https://jobs.smartrecruiters.com/Acme/123-role", NOW).state, "LIVE")
+
+    @patch("job_verifier_v2.fetch_json")
+    def test_smartrecruiters_404_is_expired(self, fj):
+        fj.side_effect = HTTPError("x", 404, "Not found", {}, None)
+        self.assertEqual(verify_url("https://jobs.smartrecruiters.com/Acme/123-role", NOW).state, "EXPIRED")
+
+    @patch("job_verifier_v2.fetch_html")
+    @patch("job_verifier_v2.fetch_json")
+    def test_ashby_apply_form_is_live(self, fj, fh):
+        rid = "a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5"
+        fj.return_value = (200, "https://api.ashbyhq.com/posting-api/job-board/acme", {}, {"jobs": [{"jobUrl": f"https://jobs.ashbyhq.com/acme/{rid}", "applyUrl": f"https://jobs.ashbyhq.com/acme/{rid}/application"}]})
+        fh.return_value = (200, f"https://jobs.ashbyhq.com/acme/{rid}/application", {}, f'<form action="/{rid}">Submit application</form>')
+        self.assertEqual(verify_url(f"https://jobs.ashbyhq.com/acme/{rid}", NOW).state, "LIVE")
+
+    @patch("job_verifier_v2.fetch_json")
+    def test_ashby_absent_current_board_is_expired(self, fj):
+        rid = "a3c5bd4c-f6fb-4eb0-b943-e0e1a1d878c5"
+        fj.return_value = (200, "https://api.ashbyhq.com/posting-api/job-board/acme", {}, {"jobs": []})
+        self.assertEqual(verify_url(f"https://jobs.ashbyhq.com/acme/{rid}", NOW).state, "EXPIRED")
 
 if __name__ == "__main__":
     unittest.main()
