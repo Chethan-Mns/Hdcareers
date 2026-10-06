@@ -8,6 +8,7 @@ on:
       - 'tests/test_job_verifier_v2.py'
       - 'tests/fixtures/v2_live_jobs.json'
       - 'tests/fixtures/v2_expired_jobs.json'
+      - 'tests/fixtures/v2_provider_live_jobs.json'
       - '.github/workflows/job-verifier-v2-shadow.yml'
   workflow_dispatch:
 permissions:
@@ -29,6 +30,8 @@ jobs:
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_live_jobs.json --output shadow-live-validation-report.json
       - name: Verify known-expired validation set
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_expired_jobs.json --output shadow-expired-validation-report.json
+      - name: Verify SmartRecruiters and Ashby live set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_live_jobs.json --output shadow-provider-live-report.json
       - name: Upload shadow evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -38,4 +41,5 @@ jobs:
             shadow-production-report.json
             shadow-live-validation-report.json
             shadow-expired-validation-report.json
+            shadow-provider-live-report.json
           retention-days: 30
