@@ -237,6 +237,41 @@ def lever_collect(ref: ProviderRef, observed_at: datetime):
 
 
 
+
+def smartrecruiters_browser_probe(url: str, requisition_id: str):
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return "unavailable", url, ""
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            page.wait_for_timeout(800)
+            before = page.locator("body").inner_text(timeout=5000)
+            if CLOSED.search(before):
+                final_url = page.url
+                browser.close()
+                return "closed", final_url, before[:500]
+            interested = page.get_by_text(re.compile(r"^I'm interested$", re.I))
+            if interested.count():
+                interested.first.click(timeout=5000)
+                page.wait_for_timeout(1000)
+            text = page.locator("body").inner_text(timeout=5000)
+            final_url = page.url
+            fields = page.locator("input, textarea, select").count()
+            application_words = re.search(r"first name|last name|email|phone|resume|upload|submit", text, re.I) is not None
+            browser.close()
+        if CLOSED.search(text):
+            return "closed", final_url, text[:500]
+        if fields >= 2 and application_words:
+            return "open", final_url, text[:500]
+        return "neutral", final_url, text[:500]
+    except Exception as exc:
+        return "error", url, type(exc).__name__
+
 def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
     out = []
     api = f"https://api.smartrecruiters.com/v1/companies/{ref.tenant}/postings/{ref.requisition_id}"
@@ -252,7 +287,7 @@ def smartrecruiters_collect(ref: ProviderRef, observed_at: datetime):
             return out
         out.append(ev(ref, "api", "B", "open", "smartrecruiters.current_posting", api, observed_at, found, final_url, status))
         apply_url = str(data.get("applyUrl") or ref.source_url)
-        bstate, bfinal, bdetail = browser_form_probe(apply_url, ref.requisition_id)
+        bstate, bfinal, bdetail = smartrecruiters_browser_probe(apply_url, ref.requisition_id)
         if bstate == "open":
             out.append(ev(ref, "browser", "A", "open", "smartrecruiters.apply_form", apply_url, observed_at, ref.requisition_id, bfinal, 200))
         elif bstate == "closed":
