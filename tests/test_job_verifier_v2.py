@@ -1,0 +1,70 @@
+import sys
+import unittest
+from datetime import datetime, timezone
+from pathlib import Path
+from unittest.mock import patch
+from urllib.error import HTTPError
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from job_verifier_v2 import ProviderRef, Evidence, decide, resolve, verify_url
+
+NOW = datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc)
+
+class V2Tests(unittest.TestCase):
+    def test_resolves_greenhouse(self):
+        r = resolve("https://job-boards.greenhouse.io/cloudsek/jobs/12345")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("greenhouse", "cloudsek", "12345"))
+
+    def test_resolves_lever(self):
+        r = resolve("https://jobs.lever.co/acme/abc-123")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("lever", "acme", "abc-123"))
+
+    def test_unknown_provider_is_unconfirmed(self):
+        self.assertEqual(verify_url("https://careers.example.com/jobs/1", NOW).state, "UNCONFIRMED")
+
+    def test_tier_b_inventory_alone_cannot_make_live(self):
+        ref = ProviderRef("greenhouse", "acme", "123", "https://job-boards.greenhouse.io/acme/jobs/123")
+        e = Evidence("greenhouse", "greenhouse-v1", "api", "B", NOW.isoformat(), "123", "123", "exact", "open", "greenhouse.exact_record", "https://api.example")
+        self.assertEqual(decide(ref, [e], NOW).state, "UNCONFIRMED")
+
+    def test_exact_tier_a_apply_form_makes_live(self):
+        ref = ProviderRef("lever", "acme", "abc", "https://jobs.lever.co/acme/abc")
+        e = Evidence("lever", "lever-v1", "http", "A", NOW.isoformat(), "abc", "abc", "exact", "open", "lever.apply_form", ref.source_url)
+        v = decide(ref, [e], NOW)
+        self.assertEqual(v.state, "LIVE")
+        self.assertIsNotNone(v.valid_until)
+
+    def test_exact_tier_a_closed_makes_expired(self):
+        ref = ProviderRef("lever", "acme", "abc", "https://jobs.lever.co/acme/abc")
+        e = Evidence("lever", "lever-v1", "http", "A", NOW.isoformat(), "abc", "abc", "exact", "closed", "lever.apply_closed", ref.source_url)
+        self.assertEqual(decide(ref, [e], NOW).state, "EXPIRED")
+
+    def test_conflicting_tier_a_is_unconfirmed(self):
+        ref = ProviderRef("lever", "acme", "abc", "https://jobs.lever.co/acme/abc")
+        a = Evidence("lever", "lever-v1", "http", "A", NOW.isoformat(), "abc", "abc", "exact", "open", "lever.apply_form", ref.source_url)
+        b = Evidence("lever", "lever-v1", "api", "A", NOW.isoformat(), "abc", "abc", "exact", "closed", "lever.api_404", ref.source_url)
+        self.assertEqual(decide(ref, [a, b], NOW).state, "UNCONFIRMED")
+
+    @patch("job_verifier_v2.fetch_html")
+    @patch("job_verifier_v2.fetch_json")
+    def test_greenhouse_requires_application_form(self, fj, fh):
+        fj.return_value = (200, "https://boards-api.greenhouse.io/v1/boards/acme/jobs/123", {}, {"id": 123, "absolute_url": "https://job-boards.greenhouse.io/acme/jobs/123"})
+        fh.return_value = (200, "https://job-boards.greenhouse.io/acme/jobs/123", {}, "<h1>Job</h1>")
+        self.assertEqual(verify_url("https://job-boards.greenhouse.io/acme/jobs/123", NOW).state, "UNCONFIRMED")
+        fh.return_value = (200, "https://job-boards.greenhouse.io/acme/jobs/123", {}, '<form action="/123">Submit application</form>')
+        self.assertEqual(verify_url("https://job-boards.greenhouse.io/acme/jobs/123", NOW).state, "LIVE")
+
+    @patch("job_verifier_v2.fetch_html")
+    @patch("job_verifier_v2.fetch_json")
+    def test_lever_dead_apply_destination_beats_inventory(self, fj, fh):
+        fj.return_value = (200, "https://api.lever.co/v0/postings/acme/abc", {}, {"id": "abc", "applyUrl": "https://jobs.lever.co/acme/abc/apply"})
+        fh.return_value = (200, "https://jobs.lever.co/acme/abc/apply", {}, "<main>This position is no longer posted</main>")
+        self.assertEqual(verify_url("https://jobs.lever.co/acme/abc", NOW).state, "EXPIRED")
+
+    @patch("job_verifier_v2.fetch_json")
+    def test_greenhouse_api_404_is_expired(self, fj):
+        fj.side_effect = HTTPError("x", 404, "Not found", {}, None)
+        self.assertEqual(verify_url("https://job-boards.greenhouse.io/acme/jobs/123", NOW).state, "EXPIRED")
+
+if __name__ == "__main__":
+    unittest.main()
