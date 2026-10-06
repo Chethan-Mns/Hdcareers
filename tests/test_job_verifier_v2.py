@@ -31,6 +31,17 @@ class V2Tests(unittest.TestCase):
         r = resolve("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560")
         self.assertEqual((r.provider, r.tenant, r.requisition_id), ("workday", "redhat", "R-058560"))
 
+    def test_resolves_oracle_hcm(self):
+        r = resolve("https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/jobsearch/job/344317")
+        self.assertEqual((r.provider, r.tenant, r.requisition_id), ("oracle_hcm", "eeho.fa.us2.oraclecloud.com|jobsearch", "344317"))
+
+    def test_oracle_hcm_is_review_only_even_with_open_flow(self):
+        ref = ProviderRef("oracle_hcm", "example.oraclecloud.com|CX_1", "123", "https://example.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/123")
+        e = Evidence("oracle_hcm", "oracle_hcm-v1", "browser", "A", NOW.isoformat(), "123", "123", "exact", "open", "oracle.application_flow", ref.source_url)
+        v = decide(ref, [e], NOW)
+        self.assertEqual(v.state, "UNCONFIRMED")
+        self.assertIn("provider_review_only", v.reasons)
+
     def test_unknown_provider_is_unconfirmed(self):
         self.assertEqual(verify_url("https://careers.example.com/jobs/1", NOW).state, "UNCONFIRMED")
 
