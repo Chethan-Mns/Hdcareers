@@ -47,9 +47,9 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const candidates=[
     ...document.querySelectorAll(
-      'main > section, main > div, .hero .wrap > *, .article > *, .card, .featured-resource, .resource-controls, .resource-section-head, .policy-card, .policy-assurance, .policy-original, .policy-faq, .note'
+      'main > section, .hero .wrap > *, .article > *, .resource-card, .metric, .featured-resource, .resource-controls, .resource-section-head, .policy-card, .policy-assurance, .policy-original, .policy-faq, .note'
     )
-  ].filter((el,index,arr)=>el&&el!==header&&arr.indexOf(el)===index&&!el.closest('.hd-public-header')&&!el.classList.contains('reveal-on-scroll'));
+  ].filter((el,index,arr)=>el&&el!==header&&arr.indexOf(el)===index&&!el.closest('.hd-public-header')&&!el.classList.contains('reveal-on-scroll')&&!el.classList.contains('job-card'));
 
   candidates.forEach((el,index)=>{
     el.classList.add('hd-motion');
