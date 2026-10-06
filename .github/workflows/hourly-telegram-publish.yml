@@ -2,8 +2,7 @@ name: Hourly Telegram Publish
 
 on:
   schedule:
-    - cron: "30 4-23 * * *"
-    - cron: "30 0-2 * * *"
+    - cron: "30 4-14 * * *"
   workflow_dispatch:
 
 permissions:
