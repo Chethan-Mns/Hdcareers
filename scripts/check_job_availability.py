@@ -184,7 +184,10 @@ def classify(job, body, final_url, status=200):
     text = re.sub(r'\s+', ' ', ' '.join(p.parts)).strip()
     if BLOCKED.search(text): return 'review', 'Access challenge; availability unconfirmed'
     if final_url.rstrip('/') != job['apply'].rstrip('/'):
-        return 'review', 'Redirected source requires manual verification'
+        return 'review', 'Redirected source requires browser/ATS verification'
+    structured = structured_jobposting(body, job)
+    if structured:
+        return structured
     closed = CLOSED.search(text)
     raw = re.sub(r'\s+', ' ', body).casefold()
     haystack = (text + ' ' + raw + ' ' + final_url).casefold()
@@ -254,11 +257,11 @@ def check(job, now=None):
             else:
                 state, reason = 'review', 'No successful official-page probe'
 
-            if state != 'active' and manual_verification_fresh(job, now):
+            if state != 'active' and not (inventory and inventory[0] == 'expired') and manual_verification_fresh(job, now):
                 automated_state, automated_reason = state, reason
                 state = 'active'
                 reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
-            elif state == 'expired' and job.get('browserVerifiedAt'):
+            elif state == 'expired' and not (inventory and inventory[0] == 'expired') and job.get('browserVerifiedAt'):
                 state = 'review'
                 reason = f'Automated closure conflicts with a previous manual browser verification ({job["browserVerifiedAt"]}); re-review required before expiry'
     except HTTPError as exc:
