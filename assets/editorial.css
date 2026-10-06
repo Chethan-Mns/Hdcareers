@@ -217,3 +217,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Robot
   .policy-page{padding-top:22px}
   .policy-card,.policy-assurance,.policy-original,.policy-faq details{border-radius:16px}
 }
+
+/* Preview v3: true mobile gutters + refined type */
+@media(max-width:620px){
+  .hero>.wrap,
+  main.wrap,
+  .footer>.wrap{
+    width:auto!important;
+    max-width:none!important;
+    margin-left:20px!important;
+    margin-right:20px!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  .resource-hub-hero>.wrap{margin-left:20px!important;margin-right:20px!important}
+  .resource-controls,.featured-resource,.resource-grid,.resource-section-head{width:100%;max-width:100%}
+  .insight-metrics{gap:10px}
+  .metric strong{
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif!important;
+    font-size:27px!important;
+    font-weight:800!important;
+    letter-spacing:-.055em!important;
+    font-variant-numeric:tabular-nums lining-nums;
+  }
+}
+@media(max-width:380px){
+  .hero>.wrap,main.wrap,.footer>.wrap,.resource-hub-hero>.wrap{margin-left:18px!important;margin-right:18px!important}
+}
