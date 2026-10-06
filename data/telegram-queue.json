@@ -1,14 +1,5 @@
 {
-  "pending": [
-    {
-      "key": "75",
-      "job_id": 75,
-      "company": "Deloitte USI",
-      "role": "Associate Analyst – Business Operation Support",
-      "page": "jobs/deloitte-associate-analyst-business-operation-support-hyderabad-369345.html",
-      "queued_at": "2026-10-06T04:38:58.350351+00:00"
-    }
-  ],
+  "pending": [],
   "posted": [
     {
       "key": "64",
@@ -19,6 +10,16 @@
       "queued_at": "2026-10-05T15:56:25.185307+00:00",
       "status": "posted",
       "posted_at": "2026-10-05T15:56:54.126639+00:00"
+    },
+    {
+      "key": "75",
+      "job_id": 75,
+      "company": "Deloitte USI",
+      "role": "Associate Analyst – Business Operation Support",
+      "page": "jobs/deloitte-associate-analyst-business-operation-support-hyderabad-369345.html",
+      "queued_at": "2026-10-06T04:38:58.350351+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-06T06:44:56.968345+00:00"
     }
   ]
 }
