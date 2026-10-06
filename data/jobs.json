@@ -13,7 +13,7 @@
     "loc": "Bangalore, Karnataka, India",
     "locationFilter": "Bangalore",
     "batch": "Not Specified",
-    "elig": "This official Thermo Fisher Scientific opening is listed under Students & Internships. The current browser-rendered official page shows the Intern – IT role and an active Apply Now control. Candidates should review the official application flow for the complete education and eligibility requirements.",
+    "elig": "Recent indexing of the exact requisition describes this as a Graduate/Fresher Engineer internship. The role calls for a relevant bachelor's degree, programming fundamentals preferably in Python, basic SQL/database knowledge, problem solving, and interest in data engineering, automation, AI and Generative AI. The official browser-rendered page currently shows the exact requisition and an Apply Now action; applicants should confirm all requirements during application.",
     "cat": "it",
     "categories": [
       "it",
@@ -22,14 +22,29 @@
     "expType": "fresher",
     "expYears": "Entry-level / Internship",
     "date": "Not Specified",
-    "desc": "Thermo Fisher Scientific is hiring an Intern – IT in Bangalore, Karnataka, India. The official careers page lists requisition R-01368644 as a full-time, fully onsite Students & Internships opportunity and currently presents an Apply Now action in the browser-rendered experience.",
-    "resp": [],
+    "desc": "Thermo Fisher Scientific is hiring an Intern – IT in Bangalore, Karnataka, India. The official careers page lists requisition R-01368644 as a full-time, fully onsite Students & Internships opportunity. The role is focused on building early-career experience across data, automation and AI while working with experienced team members.",
+    "resp": [
+      "Work with data using Python and SQL for preparation, analysis, transformation and basic data-quality checks",
+      "Develop scripts, utilities and automation solutions for repetitive or manual processes",
+      "Contribute to data-pipeline and data-engineering work using Python, PySpark, Databricks and cloud platforms",
+      "Explore Generative AI prototypes using LLMs, APIs and prompt engineering",
+      "Assist with APIs, software-component integration, testing, validation, debugging and documentation"
+    ],
     "apply": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
     "status": "active",
     "verifiedDate": "06 Oct 2026",
     "sourceName": "Official Thermo Fisher Scientific Careers – Requisition R-01368644",
-    "skills": [],
-    "who": "Students and early-career candidates interested in an IT internship should review the official Thermo Fisher Scientific application page for the complete role requirements before applying.",
+    "skills": [
+      "Python",
+      "SQL",
+      "Data Engineering",
+      "Automation",
+      "Generative AI",
+      "APIs",
+      "PySpark",
+      "Databricks"
+    ],
+    "who": "Recent graduates with a relevant technical bachelor's degree and strong programming fundamentals who want hands-on exposure to data engineering, automation, cloud and Generative AI.",
     "workMode": "Fully Onsite",
     "verificationTerms": [
       "Intern - IT",
@@ -45,7 +60,9 @@
       "checkedAt": "2026-10-06T12:36:00.000Z",
       "state": "active",
       "reason": "Manual browser verification on 06 Oct 2026 showed the exact official Thermo Fisher Scientific role Intern – IT, requisition R-01368644, Bangalore, Students & Internships, Fully Onsite, and an Apply Now control. Automated crawler rendering conflicted by showing a filled-job fallback, so browser evidence is authoritative for the 24-hour verification window."
-    }
+    },
+    "qualification": "Bachelor's degree in Computer Science, Information Technology, Data Science, Artificial Intelligence, Engineering, or a related field",
+    "manualPublishRequestedAt": "2026-10-06T12:41:00.000Z"
   },
   {
     "page": "jobs/ge-healthcare-early-career-trainee-service-r4046659.html",
