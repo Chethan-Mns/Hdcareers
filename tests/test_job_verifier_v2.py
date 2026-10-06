@@ -111,10 +111,10 @@ class V2Tests(unittest.TestCase):
 
     @patch("job_verifier_v2.workday_browser_probe")
     @patch("job_verifier_v2.fetch_json")
-    def test_workday_browser_application_flow_makes_live(self, fj, bp):
+    def test_workday_generic_application_flow_cannot_make_live(self, fj, bp):
         fj.return_value = (200, "https://redhat.wd5.myworkdayjobs.com/x", {}, {"jobPostingInfo": {"jobReqId": "R-058560"}})
         bp.return_value = ("open", "https://redhat.wd5.myworkdayjobs.com/application", "Create Account")
-        self.assertEqual(verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW).state, "LIVE")
+        self.assertEqual(verify_url("https://redhat.wd5.myworkdayjobs.com/en-US/Jobs/job/Software-Engineering-Intern_R-058560", NOW).state, "UNCONFIRMED")
 
     @patch("job_verifier_v2.workday_browser_probe")
     @patch("job_verifier_v2.fetch_json")
