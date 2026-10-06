@@ -1,0 +1,24 @@
+name: Phenom shadow validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [job-verifier-v2-shadow]
+    paths:
+      - 'scripts/phenom_network_probe.py'
+      - 'tests/fixtures/v2_phenom_live_controls.json'
+      - '.github/workflows/phenom-shadow.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Probe Phenom live controls
+        run: python3 scripts/phenom_network_probe.py tests/fixtures/v2_phenom_live_controls.json
