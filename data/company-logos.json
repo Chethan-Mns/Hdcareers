@@ -290,5 +290,26 @@
     ],
     "qualityScore": 596,
     "bytes": 12081
+  },
+  "Bosch Rexroth India": {
+    "officialDomain": "bosch.com",
+    "sourceUrl": "https://www.bosch.com/media/tech/tech_images/favicon.svg",
+    "sourceType": "icon",
+    "localPath": "assets/company-icons/bosch-rexroth-india-b2b62b8.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1090,
+    "bytes": 3947
+  },
+  "ServiceNow": {
+    "officialDomain": "servicenow.com",
+    "sourceUrl": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/images/apple-touch-icon/180x180.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/servicenow-290680b.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 21561
   }
 }
