@@ -35,6 +35,7 @@ CAT_LABEL = {
 
 CAT_BREADCRUMB = {
     "it": "IT / Software Jobs",
+    "nonit": "Non-IT Jobs",
     "internship": "Internships",
     "apprenticeship": "Apprenticeships",
     "campus": "Off-Campus Jobs",
@@ -46,6 +47,7 @@ CAT_BREADCRUMB = {
 
 CAT_ICON = {
     "it": "fa-laptop-code",
+    "nonit": "fa-briefcase",
     "internship": "fa-user-graduate",
     "apprenticeship": "fa-screwdriver-wrench",
     "campus": "fa-building",
