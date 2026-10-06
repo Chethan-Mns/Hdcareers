@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T03:37:11.340Z",
+  "updatedAt": "2026-10-06T03:42:20.269Z",
   "slots": [
     {
       "id": "it-9am",
@@ -8,10 +8,10 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-05T03:37:11.340Z",
+      "lastRunAt": "2026-10-06T03:42:20.269Z",
       "nextRunAt": "2026-10-04T03:30:00.000Z",
-      "outcome": "partial",
-      "detail": "Published 7 jobs: Fresher IT 3, Fresher Non-IT 0, Experienced IT 1, Government/PSU 1, Walk-in 2. Skipped 2 non-IT jobs after the repository checker returned review. Deployment succeeded; Telegram sent 0 because the recovery commit contained no newly added IDs.",
+      "outcome": "published",
+      "detail": "Published 10 jobs: Fresher IT 4, Fresher Non-IT 2, Experienced IT 1, Government/PSU 1, Walk-in 2. Skipped/pruned 0. Production deployment succeeded and all 10 HD Careers pages were live-verified. Telegram posted 0 because the recovery workflow saw no newly added IDs after the generator fix.",
       "target": "9–10 verified jobs/day",
       "mix": [
         "3–4 Fresher IT",
