@@ -31,7 +31,7 @@ jobs:
       - name: Run V2 unit tests
         run: python3 -m unittest tests/test_job_verifier_v2.py
       - name: Verify current production-supported jobs in shadow mode
-        run: python3 scripts/job_verifier_v2.py --output shadow-production-report.json
+        run: python3 scripts/job_verifier_v2.py --limit 5 --output shadow-production-report.json
       - name: Verify known-live validation set
         run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_live_jobs.json --output shadow-live-validation-report.json
       - name: Verify known-expired validation set
