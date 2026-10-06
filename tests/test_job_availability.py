@@ -19,7 +19,7 @@ class AvailabilityTests(unittest.TestCase):
     def test_redirect_never_active(self):
         self.assertEqual(classify(JOB, 'Data Engineer Apply now', 'https://careers.example.com/')[0], 'review')
     def test_access_errors_not_expired(self):
-        for code in (403, 404, 429, 500):
+        for code in (403, 404, 410, 429, 500):
             self.assertEqual(classify(JOB, 'Job not found', JOB['apply'], code)[0], 'review')
         self.assertEqual(classify(JOB, 'Verify you are human', JOB['apply'])[0], 'review')
     def test_deadline(self):
@@ -43,16 +43,18 @@ class AvailabilityTests(unittest.TestCase):
             {'id': 2, 'state': 'active'},
             {'id': 3, 'state': 'review'},
         ]
-        kept, pruned = prune_unverified_new_jobs(jobs, old, results)
+        kept, pruned, removed = prune_unverified_new_jobs(jobs, old, results)
         self.assertEqual([j['id'] for j in kept], [1, 2])
         self.assertEqual(pruned, [3])
+        self.assertEqual([j['id'] for j in removed], [3])
 
     def test_partial_batch_does_not_prune_existing_jobs(self):
         old = [dict(JOB, id=1)]
         jobs = [dict(JOB, id=1)]
         results = [{'id': 1, 'state': 'review'}]
-        kept, pruned = prune_unverified_new_jobs(jobs, old, results)
+        kept, pruned, removed = prune_unverified_new_jobs(jobs, old, results)
         self.assertEqual([j['id'] for j in kept], [1])
         self.assertEqual(pruned, [])
+        self.assertEqual(removed, [])
 
 if __name__ == '__main__': unittest.main()
