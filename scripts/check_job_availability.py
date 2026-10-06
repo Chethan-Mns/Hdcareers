@@ -19,6 +19,8 @@ REVIEW_QUEUE = ROOT / 'data' / 'review-queue.json'
 CLOSED = re.compile(r'\b(?:this (?:job|position|vacancy) (?:is no longer available|has been filled|has expired|is closed)|no longer accepting applications|applications (?:are |have )?closed|job not found)\b', re.I)
 APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit(?: application| response| form)?)\b', re.I)
 BLOCKED = re.compile(r'\b(?:access denied|verify (?:that )?you are human|checking your browser|complete (?:the )?captcha|captcha (?:required|challenge)|security verification required)\b', re.I)
+BROWSER_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+BOT_UA = 'HD-Careers-Availability/1.0'
 
 class Visible(HTMLParser):
     def __init__(self):
@@ -69,14 +71,18 @@ def classify(job, body, final_url, status=200):
     if final_url.rstrip('/') != job['apply'].rstrip('/'):
         return 'review', 'Redirected source requires manual verification'
     closed = CLOSED.search(text)
-    if closed: return 'expired', closed.group(0)
     raw = re.sub(r'\s+', ' ', body).casefold()
     haystack = (text + ' ' + raw + ' ' + final_url).casefold()
     terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
     role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
     matched = all(term in haystack for term in terms) if terms else bool(role and role in haystack)
     registration_control = bool(re.search(r'<form\\b|type=["\\\']submit["\\\']|\\bsubmit\\b', body, re.I))
-    if matched and (APPLY.search(text + ' ' + body) or (terms and registration_control)):
+    has_apply = bool(APPLY.search(text + ' ' + body) or (terms and registration_control))
+    if closed and matched and has_apply:
+        return 'review', f'Conflicting page evidence: closure text ({closed.group(0)}) and an exact role/application control are both present'
+    if closed:
+        return 'expired', closed.group(0)
+    if matched and has_apply:
         if terms:
             return 'active', 'Verification terms and registration/submit control found on official URL'
         return 'active', 'Exact role and application call-to-action found on official URL'
@@ -90,18 +96,49 @@ def check(job, now=None):
             state, reason = 'expired', 'Official closingAt deadline passed'
         else:
             safe_url(job['apply'])
-            req = Request(job['apply'], headers={'User-Agent': 'HD-Careers-Availability/1.0', 'Accept': 'text/html'})
-            with build_opener(Redirects()).open(req, timeout=20) as res:
-                body = res.read(2_000_001)
-                if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
-                state, reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
-                if state != 'active' and manual_verification_fresh(job, now):
-                    automated_state, automated_reason = state, reason
-                    state = 'active'
-                    reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
-                elif state == 'expired' and job.get('browserVerifiedAt'):
-                    state = 'review'
-                    reason = f'Automated closure conflicts with a previous manual browser verification ({job["browserVerifiedAt"]}); re-review required before expiry'
+            probes = []
+            for label, user_agent in (('browser', BROWSER_UA), ('bot', BOT_UA)):
+                try:
+                    req = Request(job['apply'], headers={
+                        'User-Agent': user_agent,
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.9',
+                    })
+                    with build_opener(Redirects()).open(req, timeout=20) as res:
+                        body = res.read(2_000_001)
+                        if len(body) > 2_000_000: raise ValueError('Page exceeds inspection size limit')
+                        probe_state, probe_reason = classify(job, body.decode('utf-8', errors='replace'), res.url, res.status)
+                        probes.append((label, probe_state, probe_reason))
+                except HTTPError as exc:
+                    probes.append((label, 'review', f'HTTP {exc.code}; availability unconfirmed'))
+                except Exception as exc:
+                    probes.append((label, 'review', f'{type(exc).__name__}; availability unconfirmed'))
+
+            browser = next((p for p in probes if p[0] == 'browser'), None)
+            bot = next((p for p in probes if p[0] == 'bot'), None)
+
+            if browser and browser[1] == 'active':
+                state, reason = 'active', f'Browser-compatible official-page render is active ({browser[2]})'
+                if bot and bot[1] == 'expired':
+                    reason += f'; bot-only render reported closure ({bot[2]}) and was ignored'
+            elif browser and bot and browser[1] == 'expired' and bot[1] == 'expired':
+                state, reason = 'expired', f'Closure confirmed by browser and bot renders ({browser[2]})'
+            elif browser and bot and browser[1] != bot[1]:
+                state, reason = 'review', f'Official page renders disagree: browser={browser[1]} ({browser[2]}); bot={bot[1]} ({bot[2]})'
+            elif browser:
+                state, reason = browser[1], browser[2]
+            elif bot:
+                state, reason = bot[1], bot[2]
+            else:
+                state, reason = 'review', 'No successful official-page probe'
+
+            if state != 'active' and manual_verification_fresh(job, now):
+                automated_state, automated_reason = state, reason
+                state = 'active'
+                reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
+            elif state == 'expired' and job.get('browserVerifiedAt'):
+                state = 'review'
+                reason = f'Automated closure conflicts with a previous manual browser verification ({job["browserVerifiedAt"]}); re-review required before expiry'
     except HTTPError as exc:
         if manual_verification_fresh(job, now):
             state, reason = 'active', f'Fresh manual browser verification overrides automated HTTP {exc.code} result for 24 hours; verified at {job["browserVerifiedAt"]}'
