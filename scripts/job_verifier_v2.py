@@ -27,7 +27,7 @@ CLOSED = re.compile(r"no longer (?:available|posted|accepting applications)|posi
 
 State = Literal["LIVE", "EXPIRED", "UNCONFIRMED"]
 AUTO_LIVE_PROVIDERS = frozenset({"greenhouse", "lever", "ashby", "smartrecruiters"})
-REVIEW_ONLY_PROVIDERS = frozenset({"workday", "oracle_hcm"})
+REVIEW_ONLY_PROVIDERS = frozenset({"workday", "oracle_hcm", "successfactors"})
 Polarity = Literal["open", "closed", "neutral", "blocked", "error"]
 Tier = Literal["A", "B", "C"]
 
@@ -150,6 +150,48 @@ def resolve(url: str) -> ProviderRef | None:
         if i + 1 < len(parts) and j + 1 < len(parts):
             return ProviderRef("oracle_hcm", f"{host}|{parts[i + 1]}", parts[j + 1], url)
     return None
+
+
+def successfactors_ref(url: str) -> ProviderRef | None:
+    """Recognize branded SAP SuccessFactors Career Site Builder pages without company allowlists."""
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return None
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            signals = []
+            page.on("response", lambda r: signals.append(r.url) if ("successfactors" in r.url.lower() or "/platform/js/j2w/" in r.url.lower()) else None)
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            page.wait_for_timeout(700)
+            final_url = page.url
+            html = page.content()
+            browser.close()
+        blob = " ".join([url, final_url, html[:300000], *signals])
+        if not re.search(r"successfactors|/platform/js/j2w/|rmkcdn\.successfactors\.com", blob, re.I):
+            return None
+        parts = [x for x in urlsplit(final_url).path.split("/") if x]
+        rid = None
+        for part in reversed(parts):
+            m = re.fullmatch(r"(\d{4,})-(?:en_[A-Z]{2}|[a-z]{2}_[A-Z]{2})", part)
+            if m:
+                rid = m.group(1)
+                break
+            if re.fullmatch(r"\d{4,}", part):
+                rid = part
+                break
+        if not rid:
+            return None
+        return ProviderRef("successfactors", (urlsplit(final_url).hostname or "").lower(), rid, url)
+    except Exception:
+        return None
+
+
+def resolve_dynamic(url: str) -> ProviderRef | None:
+    return resolve(url) or successfactors_ref(url)
 
 
 def ev(ref: ProviderRef, method: str, tier: Tier, polarity: Polarity, code: str, url: str,
@@ -525,6 +567,36 @@ def oracle_collect(ref: ProviderRef, observed_at: datetime):
                       f"oracle.browser_{bstate}", ref.source_url, observed_at, None, bfinal, detail=bdetail))
     return out
 
+def successfactors_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return [ev(ref, "browser", "B", "error", "successfactors.browser_unavailable", ref.source_url, observed_at)]
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            page.goto(ref.source_url, wait_until="domcontentloaded", timeout=25000)
+            page.wait_for_timeout(900)
+            text = page.locator("body").inner_text(timeout=5000)
+            final_url = page.url
+            browser.close()
+        exact = ref.requisition_id.casefold() in final_url.casefold()
+        unavailable = re.search(r"you can['’]?t view this job because it['’]?s not available at this time|job is not available at this time|position is no longer available", text, re.I)
+        apply_now = re.search(r"\bapply now\b", text, re.I)
+        if unavailable and exact:
+            out.append(ev(ref, "browser", "A", "closed", "successfactors.exact_job_unavailable", ref.source_url, observed_at, ref.requisition_id, final_url, 200))
+        elif exact and apply_now and len(text) > 500:
+            out.append(ev(ref, "browser", "A", "open", "successfactors.exact_job_apply_present", ref.source_url, observed_at, ref.requisition_id, final_url, 200,
+                          "Exact SuccessFactors job renders role content and Apply now; provider remains review-only until calibrated."))
+        else:
+            out.append(ev(ref, "browser", "B", "neutral", "successfactors.unproven", ref.source_url, observed_at, ref.requisition_id if exact else None, final_url, 200))
+    except Exception as exc:
+        out.append(ev(ref, "browser", "B", "error", "successfactors.browser_error", ref.source_url, observed_at, detail=type(exc).__name__))
+    return out
+
+
 def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datetime | None = None):
     t = observed_at or now_utc()
     if ref is None:
@@ -546,10 +618,10 @@ def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datet
 
 def verify_url(url: str, observed_at: datetime | None = None):
     t = observed_at or now_utc()
-    ref = resolve(url)
+    ref = resolve_dynamic(url)
     if ref is None:
         return decide(None, [], t)
-    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect, "oracle_hcm": oracle_collect}[ref.provider]
+    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect, "oracle_hcm": oracle_collect, "successfactors": successfactors_collect}[ref.provider]
     return decide(ref, collector(ref, t), t)
 
 
@@ -562,7 +634,7 @@ def main():
     jobs = json.loads(Path(args.jobs).read_text())
     supported = []
     for job in jobs:
-        if job.get("status") == "active" and resolve(str(job.get("apply", ""))):
+        if job.get("status") == "active" and resolve_dynamic(str(job.get("apply", ""))):
             supported.append(job)
     if args.limit:
         supported = supported[:args.limit]
