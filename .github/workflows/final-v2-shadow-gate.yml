@@ -1,0 +1,34 @@
+name: Final V2 shadow gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [job-verifier-v2-shadow]
+    paths:
+      - 'scripts/final_shadow_gate.py'
+      - 'scripts/job_verifier_v2.py'
+      - 'tests/fixtures/v2_final_fresh_30.json'
+      - '.github/workflows/final-v2-shadow-gate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install chromium
+      - name: Run final 30-job shadow gate
+        run: python3 scripts/final_shadow_gate.py --top 10
+      - name: Upload final shadow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-v2-shadow-gate-report
+          path: shadow-final-gate-report.json
+          retention-days: 30
