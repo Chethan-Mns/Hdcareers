@@ -1,17 +1,25 @@
 import SwiftUI
 
 enum HDTheme {
-    static let blue = Color(red: 0.035, green: 0.412, blue: 0.855)
-    static let navy = Color(red: 0.027, green: 0.102, blue: 0.200)
-    static let background = Color(red: 0.965, green: 0.976, blue: 0.992)
-    static let green = Color(red: 0.086, green: 0.639, blue: 0.290)
-    static let amber = Color(red: 0.957, green: 0.620, blue: 0.035)
-    static let red = Color(red: 0.862, green: 0.149, blue: 0.149)
-    static let violet = Color(red: 0.42, green: 0.24, blue: 0.88)
-    static let cyan = Color(red: 0.02, green: 0.62, blue: 0.78)
-    static let pink = Color(red: 0.88, green: 0.22, blue: 0.52)
+    // Google Analytics inspired visual language used on the HD Careers web admin.
+    static let blue = Color(red: 26/255, green: 115/255, blue: 232/255)
+    static let lightBlue = Color(red: 66/255, green: 133/255, blue: 244/255)
+    static let green = Color(red: 52/255, green: 168/255, blue: 83/255)
+    static let amber = Color(red: 249/255, green: 171/255, blue: 0/255)
+    static let red = Color(red: 217/255, green: 48/255, blue: 37/255)
+    static let navy = Color(red: 32/255, green: 33/255, blue: 36/255)
+    static let slate = Color(red: 95/255, green: 99/255, blue: 104/255)
+    static let line = Color(red: 232/255, green: 234/255, blue: 237/255)
     static let surface = Color.white
-    static let softBlue = Color(red: 0.935, green: 0.962, blue: 1.0)
+    static let background = Color(red: 248/255, green: 250/255, blue: 253/255)
+    static let softBlue = Color(red: 241/255, green: 246/255, blue: 255/255)
+
+    // Compatibility accents used by a few existing screens.
+    static let violet = Color(red: 104/255, green: 78/255, blue: 202/255)
+    static let cyan = Color(red: 18/255, green: 156/255, blue: 199/255)
+    static let pink = Color(red: 209/255, green: 72/255, blue: 117/255)
+
+    static let gaPalette: [Color] = [blue, lightBlue, green, amber, slate, violet]
 }
 
 struct HDCard: ViewModifier {
@@ -20,13 +28,13 @@ struct HDCard: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(.white)
+            .background(HDTheme.surface)
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
+                    .stroke(HDTheme.line, lineWidth: 1)
             }
-            .shadow(color: .black.opacity(0.025), radius: 8, y: 3)
+            .shadow(color: HDTheme.navy.opacity(0.045), radius: 12, x: 0, y: 5)
     }
 }
 
@@ -38,26 +46,33 @@ extension View {
     func premiumCard(_ padding: CGFloat = 16) -> some View {
         self
             .padding(padding)
-            .background(
-                LinearGradient(
-                    colors: [Color.white, HDTheme.softBlue.opacity(0.42)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            .background(HDTheme.surface)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(
-                        LinearGradient(
-                            colors: [Color.white.opacity(0.95), HDTheme.blue.opacity(0.13)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
+                    .stroke(HDTheme.line, lineWidth: 1)
             }
-            .shadow(color: HDTheme.navy.opacity(0.055), radius: 14, x: 0, y: 7)
+            .shadow(color: HDTheme.navy.opacity(0.045), radius: 14, x: 0, y: 6)
+    }
+
+    func gaCard(_ padding: CGFloat = 16, accent: Color? = nil) -> some View {
+        self
+            .padding(padding)
+            .background(HDTheme.surface)
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay(alignment: .leading) {
+                if let accent {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(accent)
+                        .frame(width: 3)
+                        .padding(.vertical, 12)
+                }
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(HDTheme.line, lineWidth: 1)
+            }
+            .shadow(color: HDTheme.navy.opacity(0.04), radius: 10, x: 0, y: 4)
     }
 }
 
@@ -73,7 +88,7 @@ struct HDLogoView: View {
             .clipShape(RoundedRectangle(cornerRadius: size * 0.22, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: size * 0.22, style: .continuous)
-                    .stroke(Color.black.opacity(0.06))
+                    .stroke(HDTheme.line)
             }
     }
 }
@@ -94,7 +109,7 @@ struct StatusPill: View {
         .foregroundStyle(color)
         .padding(.horizontal, 9)
         .padding(.vertical, 6)
-        .background(color.opacity(0.10))
+        .background(color.opacity(0.085))
         .clipShape(Capsule())
     }
 }
