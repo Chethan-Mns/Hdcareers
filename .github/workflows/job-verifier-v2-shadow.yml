@@ -1,4 +1,5 @@
 name: V2 shadow job verifier
+# Oracle CE diagnostics enabled
 on:
   push:
     branches:
