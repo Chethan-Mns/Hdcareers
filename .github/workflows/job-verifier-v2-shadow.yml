@@ -1,0 +1,27 @@
+name: V2 shadow job verifier
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: job-verifier-v2-shadow
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run V2 unit tests
+        run: python3 -m unittest tests/test_job_verifier_v2.py
+      - name: Verify supported active jobs in shadow mode
+        run: python3 scripts/job_verifier_v2.py
+      - name: Upload shadow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-shadow-verification-report
+          path: shadow-verification-report.json
+          retention-days: 30
