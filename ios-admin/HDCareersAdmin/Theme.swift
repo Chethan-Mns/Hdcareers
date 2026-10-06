@@ -7,6 +7,11 @@ enum HDTheme {
     static let green = Color(red: 0.086, green: 0.639, blue: 0.290)
     static let amber = Color(red: 0.957, green: 0.620, blue: 0.035)
     static let red = Color(red: 0.862, green: 0.149, blue: 0.149)
+    static let violet = Color(red: 0.42, green: 0.24, blue: 0.88)
+    static let cyan = Color(red: 0.02, green: 0.62, blue: 0.78)
+    static let pink = Color(red: 0.88, green: 0.22, blue: 0.52)
+    static let surface = Color.white
+    static let softBlue = Color(red: 0.935, green: 0.962, blue: 1.0)
 }
 
 struct HDCard: ViewModifier {
@@ -28,6 +33,31 @@ struct HDCard: ViewModifier {
 extension View {
     func hdCard(_ padding: CGFloat = 16) -> some View {
         modifier(HDCard(padding: padding))
+    }
+
+    func premiumCard(_ padding: CGFloat = 16) -> some View {
+        self
+            .padding(padding)
+            .background(
+                LinearGradient(
+                    colors: [Color.white, HDTheme.softBlue.opacity(0.42)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(
+                        LinearGradient(
+                            colors: [Color.white.opacity(0.95), HDTheme.blue.opacity(0.13)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            }
+            .shadow(color: HDTheme.navy.opacity(0.055), radius: 14, x: 0, y: 7)
     }
 }
 
