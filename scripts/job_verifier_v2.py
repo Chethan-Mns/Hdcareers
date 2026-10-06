@@ -27,7 +27,7 @@ CLOSED = re.compile(r"no longer (?:available|posted|accepting applications)|posi
 
 State = Literal["LIVE", "EXPIRED", "UNCONFIRMED"]
 AUTO_LIVE_PROVIDERS = frozenset({"greenhouse", "lever", "ashby", "smartrecruiters"})
-REVIEW_ONLY_PROVIDERS = frozenset({"workday"})
+REVIEW_ONLY_PROVIDERS = frozenset({"workday", "oracle_hcm"})
 Polarity = Literal["open", "closed", "neutral", "blocked", "error"]
 Tier = Literal["A", "B", "C"]
 
@@ -144,6 +144,11 @@ def resolve(url: str) -> ProviderRef | None:
         rid = parts[-1].rsplit("_", 1)[-1] if "_" in parts[-1] else ""
         if rid:
             return ProviderRef("workday", host.split(".", 1)[0], rid, url)
+    if host.endswith("oraclecloud.com") and "CandidateExperience" in parts and "sites" in parts and "job" in parts:
+        i = parts.index("sites")
+        j = parts.index("job")
+        if i + 1 < len(parts) and j + 1 < len(parts):
+            return ProviderRef("oracle_hcm", f"{host}|{parts[i + 1]}", parts[j + 1], url)
     return None
 
 
@@ -455,6 +460,61 @@ def workday_collect(ref: ProviderRef, observed_at: datetime):
                       f"workday.browser_{bstate}", ref.source_url, observed_at, None, bfinal, detail=bdetail))
     return out
 
+
+def oracle_browser_probe(url: str, requisition_id: str):
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return "unavailable", url, ""
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            page.goto(url, wait_until="domcontentloaded", timeout=25000)
+            page.wait_for_timeout(1200)
+            text = page.locator("body").inner_text(timeout=5000)
+            final_url = page.url
+            exact = requisition_id.casefold() in (final_url + " " + text).casefold()
+            if CLOSED.search(text):
+                browser.close()
+                return "closed", final_url, text[:500]
+            apply = page.get_by_text(re.compile(r"^apply( now)?$", re.I))
+            if exact and apply.count():
+                try:
+                    apply.first.click(timeout=5000)
+                    page.wait_for_timeout(1000)
+                    text2 = page.locator("body").inner_text(timeout=5000)
+                    final2 = page.url
+                    fields = page.locator("input, textarea, select").count()
+                    auth = re.search(r"sign in|create account|email|candidate", text2, re.I) is not None
+                    browser.close()
+                    if CLOSED.search(text2):
+                        return "closed", final2, text2[:500]
+                    if fields >= 2 or auth:
+                        return "open", final2, text2[:500]
+                    return "neutral", final2, text2[:500]
+                except Exception:
+                    pass
+            browser.close()
+            return "neutral", final_url, text[:500]
+    except Exception as exc:
+        return "error", url, type(exc).__name__
+
+
+def oracle_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    p = urlsplit(ref.source_url)
+    bstate, bfinal, bdetail = oracle_browser_probe(ref.source_url, ref.requisition_id)
+    if bstate == "closed":
+        out.append(ev(ref, "browser", "A", "closed", "oracle.browser_closed", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+    elif bstate == "open":
+        out.append(ev(ref, "browser", "A", "open", "oracle.application_flow", ref.source_url, observed_at, ref.requisition_id, bfinal, 200))
+    else:
+        out.append(ev(ref, "browser", "B", "neutral" if bstate in ("neutral", "unavailable") else "error",
+                      f"oracle.browser_{bstate}", ref.source_url, observed_at, None, bfinal, detail=bdetail))
+    return out
+
 def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datetime | None = None):
     t = observed_at or now_utc()
     if ref is None:
@@ -479,7 +539,7 @@ def verify_url(url: str, observed_at: datetime | None = None):
     ref = resolve(url)
     if ref is None:
         return decide(None, [], t)
-    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect}[ref.provider]
+    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect, "oracle_hcm": oracle_collect}[ref.provider]
     return decide(ref, collector(ref, t), t)
 
 
