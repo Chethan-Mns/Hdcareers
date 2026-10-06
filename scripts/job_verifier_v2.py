@@ -27,7 +27,7 @@ CLOSED = re.compile(r"no longer (?:available|posted|accepting applications)|posi
 
 State = Literal["LIVE", "EXPIRED", "UNCONFIRMED"]
 AUTO_LIVE_PROVIDERS = frozenset({"greenhouse", "lever", "ashby", "smartrecruiters"})
-REVIEW_ONLY_PROVIDERS = frozenset({"workday", "oracle_hcm", "successfactors"})
+REVIEW_ONLY_PROVIDERS = frozenset({"workday", "oracle_hcm", "successfactors", "phenom"})
 Polarity = Literal["open", "closed", "neutral", "blocked", "error"]
 Tier = Literal["A", "B", "C"]
 
@@ -190,8 +190,44 @@ def successfactors_ref(url: str) -> ProviderRef | None:
         return None
 
 
+def phenom_ref(url: str) -> ProviderRef | None:
+    """Recognize Phenom-backed branded career pages from live network evidence."""
+    safe_url(url)
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return None
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            signals = []
+            page.on("response", lambda r: signals.append(r.url) if "phenompeople" in r.url.lower() else None)
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            page.wait_for_timeout(700)
+            final_url = page.url
+            browser.close()
+        if not signals:
+            return None
+        path = [x for x in urlsplit(final_url).path.split("/") if x]
+        rid = None
+        if "job" in [x.lower() for x in path]:
+            i = [x.lower() for x in path].index("job")
+            if i + 1 < len(path):
+                rid = path[i + 1]
+        if not rid:
+            q = urlsplit(final_url).query
+            m = re.search(r"(?:jobId|jobid)=([^&]+)", q, re.I)
+            rid = m.group(1) if m else None
+        if not rid:
+            return None
+        return ProviderRef("phenom", (urlsplit(final_url).hostname or "").lower(), rid, url)
+    except Exception:
+        return None
+
+
 def resolve_dynamic(url: str) -> ProviderRef | None:
-    return resolve(url) or successfactors_ref(url)
+    return resolve(url) or successfactors_ref(url) or phenom_ref(url)
 
 
 def ev(ref: ProviderRef, method: str, tier: Tier, polarity: Polarity, code: str, url: str,
@@ -597,6 +633,45 @@ def successfactors_collect(ref: ProviderRef, observed_at: datetime):
     return out
 
 
+def phenom_collect(ref: ProviderRef, observed_at: datetime):
+    out = []
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return [ev(ref, "browser", "B", "error", "phenom.browser_unavailable", ref.source_url, observed_at)]
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=UA)
+            phenom_signals = []
+            page.on("response", lambda r: phenom_signals.append(r.url) if "phenompeople" in r.url.lower() else None)
+            response = page.goto(ref.source_url, wait_until="domcontentloaded", timeout=25000)
+            page.wait_for_timeout(900)
+            status = response.status if response else None
+            final_url = page.url
+            try:
+                text = page.locator("body").inner_text(timeout=5000)
+            except Exception:
+                text = ""
+            browser.close()
+        if not phenom_signals:
+            out.append(ev(ref, "browser", "B", "neutral", "phenom.provider_not_proven", ref.source_url, observed_at, final_url=final_url, http_status=status))
+            return out
+        exact_url = ref.requisition_id.casefold() in final_url.casefold()
+        exact_body = ref.requisition_id.casefold() in text.casefold()
+        if status in {404, 410} and exact_url:
+            out.append(ev(ref, "browser", "A", "closed", "phenom.exact_requisition_gone", ref.source_url, observed_at, ref.requisition_id, final_url, status,
+                          "Exact Phenom-backed requisition returned HTTP 404/410."))
+        elif status == 200 and exact_url and exact_body and re.search(r"\\bapply now\\b", text, re.I) and len(text) > 500:
+            out.append(ev(ref, "browser", "A", "open", "phenom.exact_job_apply_present", ref.source_url, observed_at, ref.requisition_id, final_url, status,
+                          "Exact Phenom-backed job renders matching requisition, role content and Apply Now; provider remains review-only."))
+        else:
+            out.append(ev(ref, "browser", "B", "neutral", "phenom.unproven", ref.source_url, observed_at, ref.requisition_id if exact_url else None, final_url, status))
+    except Exception as exc:
+        out.append(ev(ref, "browser", "B", "error", "phenom.browser_error", ref.source_url, observed_at, detail=type(exc).__name__))
+    return out
+
+
 def decide(ref: ProviderRef | None, evidence: list[Evidence], observed_at: datetime | None = None):
     t = observed_at or now_utc()
     if ref is None:
@@ -621,7 +696,7 @@ def verify_url(url: str, observed_at: datetime | None = None):
     ref = resolve_dynamic(url)
     if ref is None:
         return decide(None, [], t)
-    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect, "oracle_hcm": oracle_collect, "successfactors": successfactors_collect}[ref.provider]
+    collector = {"greenhouse": greenhouse_collect, "lever": lever_collect, "smartrecruiters": smartrecruiters_collect, "ashby": ashby_collect, "workday": workday_collect, "oracle_hcm": oracle_collect, "successfactors": successfactors_collect, "phenom": phenom_collect}[ref.provider]
     return decide(ref, collector(ref, t), t)
 
 
