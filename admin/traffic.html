@@ -71,6 +71,49 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 @media(max-width:640px){.analytics-trend-card{padding:15px;border-radius:17px}.trend-chart-large{height:220px;margin-top:10px}.analytics-donut-grid{grid-template-columns:1fr}.analytics-donut-grid .donut-card:first-child{grid-column:auto}.donut-card{padding:15px;border-radius:17px}.donut-stage{height:245px}.donut-stats{grid-template-columns:1fr 1fr}.metric-row{grid-template-columns:28px minmax(0,1fr) auto;padding:8px}.metric-chip{min-width:38px}}
 @media(prefers-reduced-motion:reduce){.admin-reveal{opacity:1!important;transform:none!important;transition:none!important}.card,.conversion-pill,.metric-row{transition:none!important}}
 
+
+.chart-detail-card{min-width:0}.detail-chart-wrap{height:285px;margin-top:14px}.country-chart-wrap{height:250px;margin:8px auto 2px}
+@media(max-width:640px){.detail-chart-wrap{height:260px}.country-chart-wrap{height:245px}}
+
+
+/* Preview v3: GA-inspired dense analytics cards */
+.traffic-main{display:flex;flex-direction:column;gap:14px}
+.analytics-chart-grid{display:grid;gap:14px;align-items:stretch}
+.analytics-chart-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.analytics-chart-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.analytics-chart-card{padding:18px;border-radius:20px;min-width:0;display:flex;flex-direction:column}
+.dashboard-chart-wrap{height:270px;margin-top:12px;position:relative;min-width:0}
+.dashboard-chart-wrap.large{height:310px}
+.dashboard-donut-wrap{height:235px;margin:8px 0 0;position:relative}
+.analytics-donut-grid .donut-card{height:100%;display:flex;flex-direction:column}
+.analytics-donut-grid .donut-stage{flex:1;min-height:220px}
+.kpi-strip,.conversion-strip{box-shadow:none}
+@media(max-width:1050px){
+ .analytics-chart-grid.three{grid-template-columns:1fr 1fr}
+ .analytics-chart-grid.three>.analytics-chart-card:last-child{grid-column:1/-1}
+}
+@media(max-width:720px){
+ .traffic-main{gap:12px;padding-left:14px!important;padding-right:14px!important}
+ .analytics-chart-grid.three,.analytics-chart-grid.two{grid-template-columns:1fr}
+ .analytics-chart-grid.three>.analytics-chart-card:last-child{grid-column:auto}
+ .analytics-chart-card{padding:15px;border-radius:17px}
+ .dashboard-chart-wrap,.dashboard-chart-wrap.large{height:275px}
+ .dashboard-donut-wrap{height:250px}
+}
+
+
+/* Preview v4: GA-inspired chart differentiation */
+.analytics-chart-card,.donut-card{position:relative;overflow:hidden}
+.analytics-chart-card::before,.donut-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#1A73E8}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(1)::before{background:#1A73E8}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(2)::before{background:#34A853}
+.analytics-chart-grid.three>.analytics-chart-card:nth-child(3)::before{background:#F9AB00}
+.analytics-chart-grid.two>.analytics-chart-card:nth-child(1)::before{background:#1A73E8}
+.analytics-chart-grid.two>.analytics-chart-card:nth-child(2)::before{background:#34A853}
+.analytics-donut-grid>.donut-card:nth-child(1)::before{background:#1A73E8}
+.analytics-donut-grid>.donut-card:nth-child(2)::before{background:#34A853}
+.analytics-donut-grid>.donut-card:nth-child(3)::before{background:#F9AB00}
+
 </style>
 </head>
 <body>
@@ -85,7 +128,7 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 <div class="flex items-center gap-2 shrink-0"><a href="/admin/" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-sm"><i class="fa-solid fa-arrow-left"></i><span class="hidden md:inline ml-1">Dashboard</span></a><button onclick="logoutAdmin()" class="btn border border-slate-200 bg-white text-slate-600 px-3 py-2 text-sm"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden md:inline ml-1">Logout</span></button></div>
 </div>
 </header>
-<main class="traffic-main max-w-7xl mx-auto px-4 py-5 space-y-4">
+<main class="traffic-main max-w-7xl mx-auto px-4 py-4">
 <section class="card compact-card">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
 <div><p class="text-[10px] font-black uppercase tracking-[.14em] text-blue-600">Website traffic</p><h1 class="traffic-title text-xl sm:text-2xl font-black mt-0.5">HD Careers performance</h1><p id="periodText" class="text-xs text-slate-500 mt-1">Loading Google Analytics 4...</p></div>
@@ -111,7 +154,7 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 
 <section class="analytics-donut-grid admin-reveal">
 <div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-user-group text-violet-500 mr-2"></i>Audience</h2><p>New vs returning visitors</p></div></div>
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-user-group text-blue-600 mr-2"></i>Audience</h2><p>New vs returning visitors</p></div></div>
 <div class="donut-stage"><canvas id="audienceChart"></canvas></div>
 <div class="donut-stats">
 <div><span>New users</span><strong id="newUsers">—</strong></div>
@@ -120,15 +163,17 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 <div><span>Avg session</span><strong id="avgSession">—</strong></div>
 </div>
 </div>
+
 <div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-cyan-600 mr-2"></i>Device mix</h2><p>Where visitors browse from</p></div></div>
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-blue-600 mr-2"></i>Devices</h2><p>Where visitors browse from</p></div></div>
 <div class="donut-stage"><canvas id="deviceChart"></canvas></div>
 <div id="deviceSummary" class="donut-caption">Loading device distribution…</div>
 </div>
+
 <div class="card donut-card">
-<div class="mini-section-head"><div><h2><i class="fa-solid fa-shuffle text-emerald-600 mr-2"></i>Channels</h2><p>How sessions reach HD Careers</p></div></div>
-<div class="donut-stage"><canvas id="channelChart"></canvas></div>
-<div id="channelSummary" class="donut-caption">Loading channel distribution…</div>
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Countries</h2><p>Visitor distribution</p></div></div>
+<div class="donut-stage"><canvas id="countryChart"></canvas></div>
+<div id="countrySummary" class="donut-caption">Loading country distribution…</div>
 </div>
 </section>
 
@@ -147,20 +192,34 @@ body{background:radial-gradient(circle at 12% 0,rgba(37,99,235,.07),transparent 
 </div>
 </section>
 
-<section class="compact-grid three">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 mr-2"></i>Top Apply Jobs</h2><p>Highest apply-click activity</p></div></div><div id="applyJobs" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-circle-check text-cyan-600 mr-2"></i>Resume Usage</h2><p>Most checked job pages</p></div></div><div id="resumeJobs" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-filter-circle-dollar text-violet-600 mr-2"></i>Apply Sources</h2><p>Sources attached to apply clicks</p></div></div><div id="applySources" class="compact-list"></div></div>
+<section class="analytics-chart-grid three admin-reveal">
+<div class="card analytics-chart-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-arrow-up-right-from-square text-blue-600 mr-2"></i>Top Apply Jobs</h2><p>Jobs driving official-apply clicks</p></div></div>
+<div class="dashboard-chart-wrap"><canvas id="applyJobsChart"></canvas></div>
+</div>
+
+<div class="card analytics-chart-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-file-circle-check text-blue-600 mr-2"></i>Resume Usage</h2><p>Jobs checked most against resumes</p></div></div>
+<div class="dashboard-chart-wrap"><canvas id="resumeJobsChart"></canvas></div>
+</div>
+
+<div class="card analytics-chart-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-filter-circle-dollar text-blue-600 mr-2"></i>Apply Sources</h2><p>Source attached to apply-click events</p></div></div>
+<div class="dashboard-donut-wrap"><canvas id="applySourcesChart"></canvas></div>
+<div id="applySourceSummary" class="donut-caption">Loading apply-source mix…</div>
+</div>
 </section>
 
-<section class="compact-grid two">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><p>Most viewed content</p></div><div id="topPage" class="max-w-[44%]"></div></div><div id="pages" class="compact-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-route text-blue-600 mr-2"></i>Traffic Sources</h2><p>Session source / medium</p></div></div><div id="referrers" class="compact-list"></div></div>
-</section>
+<section class="analytics-chart-grid two admin-reveal">
+<div class="card analytics-chart-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-file-lines text-blue-600 mr-2"></i>Top Pages</h2><p>Most viewed content</p></div></div>
+<div class="dashboard-chart-wrap large"><canvas id="pageChart"></canvas></div>
+</div>
 
-<section class="compact-grid two admin-reveal">
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-earth-asia text-blue-600 mr-2"></i>Top Countries</h2><p>Visitor distribution by country</p></div></div><div id="countries" class="compact-list premium-ranked-list"></div></div>
-<div class="card compact-card"><div class="mini-section-head"><div><h2><i class="fa-solid fa-mobile-screen text-cyan-600 mr-2"></i>Device Details</h2><p>Visitors by device category</p></div></div><div id="devices" class="compact-list premium-ranked-list"></div></div>
+<div class="card analytics-chart-card">
+<div class="mini-section-head"><div><h2><i class="fa-solid fa-route text-blue-600 mr-2"></i>Traffic Sources</h2><p>Session source / medium</p></div></div>
+<div class="dashboard-chart-wrap large"><canvas id="trafficSourceChart"></canvas></div>
+</div>
 </section>
 
 <p class="text-[10px] text-slate-400 text-center pb-3">Production traffic only · Google Analytics 4 · authenticated admin data</p>
@@ -245,34 +304,73 @@ function revealAdmin(){
 }
 function destroyChart(name){if(analyticsCharts[name]){analyticsCharts[name].destroy();delete analyticsCharts[name]}}
 function shortDate(raw){const s=String(raw||'');if(s.length!==8)return s;const d=new Date(Date.UTC(Number(s.slice(0,4)),Number(s.slice(4,6))-1,Number(s.slice(6,8))));return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',timeZone:'UTC'})}
+function shortChartLabel(value,max=30){
+ const s=String(value||'');
+ return s.length>max?s.slice(0,max-1)+'…':s;
+}
 function renderVisualCharts(d){
  if(typeof Chart==='undefined')return;
- const baseAnim={duration:900,easing:'easeOutQuart'};
- const legend={position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:8,boxHeight:8,padding:14,font:{size:10,weight:'700'},color:'#64748b'}};
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const baseAnim=reduced?false:{duration:760,easing:'easeOutQuart'};
+ const ga={blue:'#1A73E8',lightBlue:'#4285F4',green:'#34A853',amber:'#F9AB00',gray:'#E8EAED',dark:'#202124',slate:'#5F6368'};
+ const blueScale=['#174EA6','#1A73E8','#4285F4','#669DF6','#8AB4F8','#AECBFA','#D2E3FC'];
+ const blueBars=['rgba(26,115,232,.96)','rgba(26,115,232,.86)','rgba(66,133,244,.80)','rgba(66,133,244,.72)','rgba(102,157,246,.72)','rgba(138,180,248,.78)','rgba(174,203,250,.92)'];
+ const legend={position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:7,boxHeight:7,padding:12,font:{size:9,weight:'700'},color:'#64748b'}};
+ const barOptions=(tooltipTitle)=>({responsive:true,maintainAspectRatio:false,indexAxis:'y',animation:baseAnim,plugins:{legend:{display:false},tooltip:{displayColors:false,callbacks:tooltipTitle?{title:tooltipTitle}:undefined}},scales:{x:{beginAtZero:true,grid:{color:'rgba(148,163,184,.13)'},border:{display:false},ticks:{precision:0,color:'#94a3b8',font:{size:9}}},y:{grid:{display:false},border:{display:false},ticks:{color:'#475569',font:{size:10,weight:'700'},autoSkip:false}}}});
+
  const trend=Array.isArray(d.trend)?d.trend:[];
  destroyChart('trend');
  const trendEl=document.getElementById('trendChart');
  if(trendEl){
   analyticsCharts.trend=new Chart(trendEl,{type:'line',data:{labels:trend.map(x=>shortDate(x.date)),datasets:[
-   {label:'Users',data:trend.map(x=>Number(x.users||0)),borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.11)',tension:.38,fill:true,pointRadius:2,pointHoverRadius:5,borderWidth:2.2},
-   {label:'Views',data:trend.map(x=>Number(x.pageviews||0)),borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.05)',tension:.38,fill:false,pointRadius:2,pointHoverRadius:5,borderWidth:2.2},
-   {label:'Sessions',data:trend.map(x=>Number(x.sessions||0)),borderColor:'#059669',backgroundColor:'rgba(5,150,105,.04)',tension:.38,fill:false,pointRadius:1.5,pointHoverRadius:4,borderWidth:1.8}
+   {label:'Users',data:trend.map(x=>Number(x.users||0)),borderColor:'#1a73e8',backgroundColor:'rgba(26,115,232,.10)',tension:.35,fill:true,pointRadius:2,pointHoverRadius:4,borderWidth:2},
+   {label:'Views',data:trend.map(x=>Number(x.pageviews||0)),borderColor:'#34a853',backgroundColor:'rgba(52,168,83,.03)',tension:.35,fill:false,pointRadius:1.5,pointHoverRadius:4,borderWidth:1.8},
+   {label:'Sessions',data:trend.map(x=>Number(x.sessions||0)),borderColor:'#f9ab00',backgroundColor:'rgba(249,171,0,.03)',tension:.35,fill:false,pointRadius:1.5,pointHoverRadius:4,borderWidth:1.8}
   ]},options:{responsive:true,maintainAspectRatio:false,animation:baseAnim,interaction:{mode:'index',intersect:false},plugins:{legend},scales:{x:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:10}}},y:{beginAtZero:true,grid:{color:'rgba(148,163,184,.12)'},ticks:{precision:0,color:'#94a3b8',font:{size:10}}}}}});
  }
+
  const totals=d.totals||{},nu=Number(totals.newUsers||0),ru=Number(totals.returningUsers||0),audTotal=nu+ru;
  destroyChart('audience');
  const aud=document.getElementById('audienceChart');
- if(aud){analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New users','Returning'],datasets:[{data:[nu,ru],backgroundColor:['#2563eb','#7c3aed'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(audTotal),subtext:'users'}}}})}
+ if(aud)analyticsCharts.audience=new Chart(aud,{type:'doughnut',data:{labels:['New users','Returning'],datasets:[{data:[nu,ru],backgroundColor:[ga.blue,ga.lightBlue],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(audTotal),subtext:'users'}}}});
+
  const devices=Array.isArray(d.devices)?d.devices.slice(0,5):[],deviceTotal=devices.reduce((a,x)=>a+Number(x.visitors||0),0);
  destroyChart('device');
  const dev=document.getElementById('deviceChart');
- if(dev){analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:['#0ea5e9','#2563eb','#8b5cf6','#14b8a6','#64748b'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(deviceTotal),subtext:'visitors'}}}})}
+ if(dev)analyticsCharts.device=new Chart(dev,{type:'doughnut',data:{labels:devices.map(x=>(x.deviceType||'Unknown').replace(/^./,m=>m.toUpperCase())),datasets:[{data:devices.map(x=>Number(x.visitors||0)),backgroundColor:[ga.blue,ga.green,ga.amber,ga.lightBlue,'#9AA0A6'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(deviceTotal),subtext:'visitors'}}}});
  const deviceSummary=document.getElementById('deviceSummary');if(deviceSummary)deviceSummary.textContent=devices.length?(devices[0].deviceType||'Unknown')+' leads with '+fmt(devices[0].visitors||0)+' visitors':'No device data yet';
- const channels=Array.isArray(d.channels)?d.channels.slice(0,6):[],channelTotal=channels.reduce((a,x)=>a+Number(x.sessions||0),0);
- destroyChart('channel');
- const ch=document.getElementById('channelChart');
- if(ch){analyticsCharts.channel=new Chart(ch,{type:'doughnut',data:{labels:channels.map(x=>x.channel||'Other'),datasets:[{data:channels.map(x=>Number(x.sessions||0)),backgroundColor:['#059669','#2563eb','#f59e0b','#7c3aed','#0ea5e9','#64748b'],borderColor:'#fff',borderWidth:5,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(channelTotal),subtext:'sessions'}}}})}
- const channelSummary=document.getElementById('channelSummary');if(channelSummary)channelSummary.textContent=channels.length?(channels[0].channel||'Other')+' is the top channel with '+fmt(channels[0].sessions||0)+' sessions':'No channel data yet';
+
+ const countries=Array.isArray(d.countries)?d.countries.slice(0,6):[],countryTotal=countries.reduce((a,x)=>a+Number(x.visitors||0),0);
+ destroyChart('country');
+ const countryCanvas=document.getElementById('countryChart');
+ if(countryCanvas)analyticsCharts.country=new Chart(countryCanvas,{type:'doughnut',data:{labels:countries.map(x=>x.country||'Unknown'),datasets:[{data:countries.map(x=>Number(x.visitors||0)),backgroundColor:[ga.blue,ga.lightBlue,ga.green,ga.amber,'#9AA0A6','#DADCE0'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'73%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(countryTotal),subtext:'visitors'}}}});
+ const countrySummary=document.getElementById('countrySummary');if(countrySummary)countrySummary.textContent=countries.length?(countries[0].country||'Unknown')+' leads with '+fmt(countries[0].visitors||0)+' visitors':'No country data yet';
+
+ const applyJobs=Array.isArray(d.applyJobs)?d.applyJobs.slice(0,6):[];
+ destroyChart('applyJobs');
+ const applyCanvas=document.getElementById('applyJobsChart');
+ if(applyCanvas)analyticsCharts.applyJobs=new Chart(applyCanvas,{type:'bar',data:{labels:applyJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:applyJobs.map(x=>Number(x.count||0)),backgroundColor:blueBars.slice(0,applyJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(applyJobs[i]?.requestPath||'')})});
+
+ const resumeJobs=Array.isArray(d.resumeJobs)?d.resumeJobs.slice(0,6):[];
+ destroyChart('resumeJobs');
+ const resumeCanvas=document.getElementById('resumeJobsChart');
+ if(resumeCanvas)analyticsCharts.resumeJobs=new Chart(resumeCanvas,{type:'bar',data:{labels:resumeJobs.map(x=>shortChartLabel(humanizePath(x.requestPath),28)),datasets:[{data:resumeJobs.map(x=>Number(x.count||0)),backgroundColor:[ga.green,ga.green,'#5BB974','#78C78C',ga.lightBlue,'#8AB4F8'].slice(0,resumeJobs.length),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(resumeJobs[i]?.requestPath||'')})});
+
+ const applySources=Array.isArray(d.applySources)?d.applySources.slice(0,6):[],applySourceTotal=applySources.reduce((a,x)=>a+Number(x.count||0),0);
+ destroyChart('applySources');
+ const applySourceCanvas=document.getElementById('applySourcesChart');
+ if(applySourceCanvas)analyticsCharts.applySources=new Chart(applySourceCanvas,{type:'doughnut',data:{labels:applySources.map(x=>sourceLabel(x.referrerHostname||x.dimension||x.name)),datasets:[{data:applySources.map(x=>Number(x.count||0)),backgroundColor:[ga.blue,ga.amber,ga.lightBlue,ga.green,'#9AA0A6','#DADCE0'],borderColor:'#fff',borderWidth:5,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',animation:baseAnim,plugins:{legend,centerText:{text:fmt(applySourceTotal),subtext:'apply clicks'}}}});
+ const applySourceSummary=document.getElementById('applySourceSummary');if(applySourceSummary)applySourceSummary.textContent=applySources.length?sourceLabel(applySources[0].referrerHostname||applySources[0].dimension||applySources[0].name)+' is the leading apply source':'No apply-source data yet';
+
+ const pages=Array.isArray(d.pages)?d.pages.slice(0,7):[];
+ destroyChart('page');
+ const pageCanvas=document.getElementById('pageChart');
+ if(pageCanvas)analyticsCharts.page=new Chart(pageCanvas,{type:'bar',data:{labels:pages.map(x=>shortChartLabel(humanizePath(x.requestPath),34)),datasets:[{data:pages.map(x=>Number(x.pageviews||0)),backgroundColor:blueBars.slice(0,pages.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions(items=>{const i=items[0]?.dataIndex??0;return humanizePath(pages[i]?.requestPath||'')})});
+
+ const refs=Array.isArray(d.referrers)?d.referrers.slice(0,7):[];
+ destroyChart('trafficSource');
+ const sourceCanvas=document.getElementById('trafficSourceChart');
+ if(sourceCanvas)analyticsCharts.trafficSource=new Chart(sourceCanvas,{type:'bar',data:{labels:refs.map(x=>shortChartLabel(sourceLabel(x.referrerHostname),27)),datasets:[{data:refs.map(x=>Number(x.sessions||0)),backgroundColor:[ga.blue,ga.amber,ga.lightBlue,ga.green,'#8AB4F8','#9AA0A6','#DADCE0'].slice(0,refs.length),borderRadius:6,borderSkipped:false,maxBarThickness:23}]},options:barOptions()});
 }
 async function loadTraffic(days=7){
  currentDays=days;
@@ -292,7 +390,7 @@ async function loadTraffic(days=7){
   renderVisualCharts(d);
   animateMetric('visitors',v);animateMetric('pageviews',p);animateMetric('sessions',d.totals?.sessions||0);animateMetric('ratio',d.totals?.viewsPerUser||(v?p/v:0),{decimals:2});
   const top=Array.isArray(d.pages)&&d.pages.length?d.pages[0]:null;
-  document.getElementById('topPage').innerHTML=top?pageLink(label(top,'requestPath'),true):'—';document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
+  document.getElementById('topPageViews').textContent=top?fmt(metric(top))+' views':'No data yet';
   const c=d.conversions||{};
   animateMetric('jobPageViews',c.jobPageViews||0);
   animateMetric('resumeChecks',c.resumeChecks||0);
@@ -301,8 +399,6 @@ async function loadTraffic(days=7){
   animateMetric('applyRate',c.applyRate||0,{suffix:'%',decimals:1});animateMetric('applyRateTop',c.applyRate||0,{suffix:'%',decimals:1});
   animateMetric('socialShares',Number(c.socialClicks||0)+Number(c.shares||0));
   document.getElementById('periodText').textContent=(days===1?'Last 24 hours':'Last '+days+' days')+' · refreshed '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-  renderRows('applyJobs',d.applyJobs,'requestPath');renderRows('resumeJobs',d.resumeJobs,'requestPath');renderRows('applySources',d.applySources,'referrerHostname');
-  renderRows('pages',d.pages,'requestPath');renderRows('referrers',d.referrers,'referrerHostname');renderRows('countries',d.countries,'country');renderRows('devices',d.devices,'deviceType');
  }catch(err){e.textContent=err.message||'Could not load traffic analytics.';e.classList.remove('hidden')}
 }
 async function logoutAdmin(){await fetch('/api/admin/logout',{method:'POST'}).catch(()=>{});location.href='/admin/'}
