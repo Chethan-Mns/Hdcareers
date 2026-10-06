@@ -54,4 +54,15 @@ jobs:
               counts[v.state]=counts.get(v.state,0)+1
               print(f'{j["id"]} | {j["company"]} | {j["role"]} | stored={j.get("status")} | V2={v.state} | {",".join(v.reasons)}')
           print("SUMMARY", counts)
+          for j in jobs:
+              truth=j.get("manualGroundTruth")
+              if not truth:
+                  continue
+              v=verify_url(j["apply"])
+              if j["id"] == 30:
+                  assert v.state == "UNCONFIRMED", (j["company"], v.state, v.reasons)
+              elif truth == "expired":
+                  assert v.state == "EXPIRED", (j["company"], v.state, v.reasons)
+              else:
+                  assert v.state == "UNCONFIRMED", (j["company"], v.state, v.reasons)
           PY
