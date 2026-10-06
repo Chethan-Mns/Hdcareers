@@ -313,7 +313,7 @@ private func durationText(_ seconds: Double?) -> String {
     return "\(total / 60)m \(total % 60)s"
 }
 
-private struct GAChartDatum: Identifiable {
+struct GAChartDatum: Identifiable {
     let id = UUID()
     let label: String
     let value: Int
