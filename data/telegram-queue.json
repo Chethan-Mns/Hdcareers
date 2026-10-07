@@ -1,14 +1,6 @@
 {
   "pending": [
     {
-      "key": "78",
-      "job_id": 78,
-      "company": "Google",
-      "role": "Software Engineering PhD Intern – Summer 2027",
-      "page": "jobs/google-software-engineering-phd-intern-summer-2027-india-109976286780105414.html",
-      "queued_at": "2026-10-07T03:56:32.135731+00:00"
-    },
-    {
       "key": "79",
       "job_id": 79,
       "company": "Rubrik",
@@ -81,5 +73,16 @@
       "queued_at": "2026-10-07T03:56:32.135765+00:00"
     }
   ],
-  "posted": []
+  "posted": [
+    {
+      "key": "78",
+      "job_id": 78,
+      "company": "Google",
+      "role": "Software Engineering PhD Intern – Summer 2027",
+      "page": "jobs/google-software-engineering-phd-intern-summer-2027-india-109976286780105414.html",
+      "queued_at": "2026-10-07T03:56:32.135731+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T06:02:25.458046+00:00"
+    }
+  ]
 }
