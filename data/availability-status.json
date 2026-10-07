@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-07T07:44:54.505Z",
+  "checkedAt": "2026-10-07T07:45:15.433Z",
   "checked": 57,
   "active": 54,
-  "expired": 0,
-  "review": 3,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 2,
+  "changedExpired": 1,
   "items": [
     {
       "id": 77,
@@ -518,9 +518,11 @@
       "role": "Graduate Software Engineer, Open Source and Linux, Canonical Ubuntu",
       "page": "jobs/canonical-graduate-software-engineer-open-source-linux-8142329.html",
       "url": "https://canonical.com/careers/8142329",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-06T19:50:48.489845+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-07T07:45:15.433Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-07T07:45:15.433Z"
     },
     {
       "id": 22,
