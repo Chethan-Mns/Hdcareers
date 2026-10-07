@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-06T19:50:57.497464+00:00",
+  "checkedAt": "2026-10-07T07:43:34.365Z",
   "checked": 57,
-  "active": 46,
+  "active": 47,
   "expired": 0,
-  "review": 11,
+  "review": 10,
   "changedExpired": 0,
   "items": [
     {
@@ -142,9 +142,11 @@
       "role": "Associate – Software Testing Engineer",
       "page": "jobs/virtusa-associate-software-testing-engineer-creq260022.html",
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-06T19:49:13.525390+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-07T07:43:34.365Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-07T07:43:34.365Z"
     },
     {
       "id": 63,
