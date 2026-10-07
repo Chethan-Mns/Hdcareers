@@ -1,78 +1,5 @@
 {
-  "pending": [
-    {
-      "key": "79",
-      "job_id": 79,
-      "company": "Rubrik",
-      "role": "Software Engineer – Winter Intern",
-      "page": "jobs/rubrik-software-engineer-winter-intern-bangalore-8166523.html",
-      "queued_at": "2026-10-07T03:56:32.135745+00:00"
-    },
-    {
-      "key": "80",
-      "job_id": 80,
-      "company": "Concentrix",
-      "role": "Associate Java Full Stack Developer",
-      "page": "jobs/concentrix-associate-java-full-stack-developer-hyderabad-r1768581.html",
-      "queued_at": "2026-10-07T03:56:32.135749+00:00"
-    },
-    {
-      "key": "81",
-      "job_id": 81,
-      "company": "GE Vernova",
-      "role": "Digital Technology Development Program Intern – India 2027",
-      "page": "jobs/ge-vernova-digital-technology-development-program-intern-india-2027-r5052743.html",
-      "queued_at": "2026-10-07T03:56:32.135751+00:00"
-    },
-    {
-      "key": "82",
-      "job_id": 82,
-      "company": "NielsenIQ",
-      "role": "Associate Software Engineer",
-      "page": "jobs/nielseniq-associate-software-engineer-744000152930140.html",
-      "queued_at": "2026-10-07T03:56:32.135754+00:00"
-    },
-    {
-      "key": "83",
-      "job_id": 83,
-      "company": "Tecnots",
-      "role": "Software Developer Intern",
-      "page": "jobs/tecnots-software-developer-intern-bengaluru-muur08j1.html",
-      "queued_at": "2026-10-07T03:56:32.135756+00:00"
-    },
-    {
-      "key": "84",
-      "job_id": 84,
-      "company": "Accenture",
-      "role": "Procurement Operations New Associate",
-      "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
-      "queued_at": "2026-10-07T03:56:32.135758+00:00"
-    },
-    {
-      "key": "85",
-      "job_id": 85,
-      "company": "Needl.ai",
-      "role": "Software Engineering Intern",
-      "page": "jobs/needl-ai-software-engineering-intern-bengaluru.html",
-      "queued_at": "2026-10-07T03:56:32.135760+00:00"
-    },
-    {
-      "key": "86",
-      "job_id": 86,
-      "company": "DRDO – CAIR",
-      "role": "Junior Research Fellowship – Walk-in Interview",
-      "page": "jobs/drdo-cair-junior-research-fellow-walkin-bengaluru-november-2026.html",
-      "queued_at": "2026-10-07T03:56:32.135763+00:00"
-    },
-    {
-      "key": "87",
-      "job_id": 87,
-      "company": "IndiGo",
-      "role": "Engineering Walk-in Events – October 2026",
-      "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
-      "queued_at": "2026-10-07T03:56:32.135765+00:00"
-    }
-  ],
+  "pending": [],
   "posted": [
     {
       "key": "78",
@@ -83,6 +10,96 @@
       "queued_at": "2026-10-07T03:56:32.135731+00:00",
       "status": "posted",
       "posted_at": "2026-10-07T06:02:25.458046+00:00"
+    },
+    {
+      "key": "79",
+      "job_id": 79,
+      "company": "Rubrik",
+      "role": "Software Engineer – Winter Intern",
+      "page": "jobs/rubrik-software-engineer-winter-intern-bangalore-8166523.html",
+      "queued_at": "2026-10-07T03:56:32.135745+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:34.397199+00:00"
+    },
+    {
+      "key": "80",
+      "job_id": 80,
+      "company": "Concentrix",
+      "role": "Associate Java Full Stack Developer",
+      "page": "jobs/concentrix-associate-java-full-stack-developer-hyderabad-r1768581.html",
+      "queued_at": "2026-10-07T03:56:32.135749+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:38.269624+00:00"
+    },
+    {
+      "key": "81",
+      "job_id": 81,
+      "company": "GE Vernova",
+      "role": "Digital Technology Development Program Intern – India 2027",
+      "page": "jobs/ge-vernova-digital-technology-development-program-intern-india-2027-r5052743.html",
+      "queued_at": "2026-10-07T03:56:32.135751+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:39.786698+00:00"
+    },
+    {
+      "key": "82",
+      "job_id": 82,
+      "company": "NielsenIQ",
+      "role": "Associate Software Engineer",
+      "page": "jobs/nielseniq-associate-software-engineer-744000152930140.html",
+      "queued_at": "2026-10-07T03:56:32.135754+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:41.424912+00:00"
+    },
+    {
+      "key": "83",
+      "job_id": 83,
+      "company": "Tecnots",
+      "role": "Software Developer Intern",
+      "page": "jobs/tecnots-software-developer-intern-bengaluru-muur08j1.html",
+      "queued_at": "2026-10-07T03:56:32.135756+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:43.025099+00:00"
+    },
+    {
+      "key": "84",
+      "job_id": 84,
+      "company": "Accenture",
+      "role": "Procurement Operations New Associate",
+      "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
+      "queued_at": "2026-10-07T03:56:32.135758+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:45.517364+00:00"
+    },
+    {
+      "key": "85",
+      "job_id": 85,
+      "company": "Needl.ai",
+      "role": "Software Engineering Intern",
+      "page": "jobs/needl-ai-software-engineering-intern-bengaluru.html",
+      "queued_at": "2026-10-07T03:56:32.135760+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:47.344618+00:00"
+    },
+    {
+      "key": "86",
+      "job_id": 86,
+      "company": "DRDO – CAIR",
+      "role": "Junior Research Fellowship – Walk-in Interview",
+      "page": "jobs/drdo-cair-junior-research-fellow-walkin-bengaluru-november-2026.html",
+      "queued_at": "2026-10-07T03:56:32.135763+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:48:54.493646+00:00"
+    },
+    {
+      "key": "87",
+      "job_id": 87,
+      "company": "IndiGo",
+      "role": "Engineering Walk-in Events – October 2026",
+      "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
+      "queued_at": "2026-10-07T03:56:32.135765+00:00",
+      "status": "posted",
+      "posted_at": "2026-10-07T07:49:17.131600+00:00"
     }
   ]
 }
