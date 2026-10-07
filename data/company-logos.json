@@ -323,5 +323,65 @@
     ],
     "qualityScore": 1108,
     "bytes": 82590
+  },
+  "Concentrix": {
+    "officialDomain": "concentrix.com",
+    "sourceUrl": "https://www.concentrix.com/wp-content/uploads/2022/10/favicon-195x195.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/concentrix-9565c54.png",
+    "sourceDimensions": [
+      195,
+      195
+    ],
+    "qualityScore": 635,
+    "bytes": 8274
+  },
+  "Google": {
+    "officialDomain": "google.com",
+    "sourceUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://google.com/&size=256",
+    "sourceType": "official-domain favicon proxy fallback",
+    "localPath": "assets/company-icons/google-2b681c0.png",
+    "sourceDimensions": [
+      144,
+      144
+    ],
+    "qualityScore": 219,
+    "bytes": 7786
+  },
+  "NielsenIQ": {
+    "officialDomain": "nielseniq.com",
+    "sourceUrl": "https://nielseniq.com/wp-content/uploads/sites/4/2023/03/cropped-favicon-512x512-1.png?w=180",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/nielseniq-481974c.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 620,
+    "bytes": 4926
+  },
+  "Rubrik": {
+    "officialDomain": "rubrik.com",
+    "sourceUrl": "https://www.rubrik.com/etc.clientlibs/rubrik/clientlibs/clientlib-base/resources/images/favicon/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/rubrik-c33fd7a.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 9945
+  },
+  "Tecnots": {
+    "officialDomain": "tecnots.com",
+    "sourceUrl": "https://tecnots.com/icon.png?icon.2962wb3ldo1-7.png",
+    "sourceType": "icon",
+    "localPath": "assets/company-icons/tecnots-a003c0a.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "qualityScore": 1108,
+    "bytes": 23358
   }
 }
