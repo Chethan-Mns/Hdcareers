@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-07T07:44:10.482Z",
+  "checkedAt": "2026-10-07T07:44:21.135Z",
   "checked": 57,
-  "active": 50,
+  "active": 51,
   "expired": 0,
-  "review": 7,
+  "review": 6,
   "changedExpired": 0,
   "items": [
     {
@@ -420,9 +420,11 @@
       "role": "2027 Campus Hire_ Engineer_ HW",
       "page": "jobs/qualcomm-2027-campus-hire-engineer-hw-bangalore-446719783487.html",
       "url": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-06T19:50:37.427975+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-07T07:44:21.135Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-07T07:44:21.135Z"
     },
     {
       "id": 32,
