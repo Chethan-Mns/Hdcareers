@@ -158,15 +158,50 @@ def publish_one() -> None:
     print("No publishable Telegram job found in queue.")
 
 
+
+def publish_all() -> None:
+    token, channel = telegram_credentials()
+    q = load_queue()
+    jobs = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    by_key = {key(j): j for j in jobs}
+    failed = []
+
+    for item in list(q.get("pending", [])):
+        job = by_key.get(str(item.get("key")))
+        if not job:
+            item["status"] = "missing"
+            item["finished_at"] = datetime.now(timezone.utc).isoformat()
+            q.setdefault("posted", []).append(item)
+            q["pending"] = [x for x in q.get("pending", []) if str(x.get("key")) != str(item.get("key"))]
+            save_queue(q)
+            continue
+        try:
+            if not publish_job(job, q, token, channel):
+                failed.append(str(item.get("key")))
+        except Exception as exc:
+            item["last_error"] = str(exc)[:500]
+            item["last_attempt_at"] = datetime.now(timezone.utc).isoformat()
+            save_queue(q)
+            failed.append(str(item.get("key")))
+            print(f"Telegram publish failed for queued job {item.get('key')}: {exc}")
+
+    if failed:
+        raise SystemExit("Telegram catch-up failed for job(s): " + ", ".join(failed))
+    print("Published all pending Telegram jobs.")
+
+
+
 def main() -> None:
-    if len(sys.argv) < 2 or sys.argv[1] not in {"enqueue", "publish-one", "publish-new"}:
-        raise SystemExit("Usage: telegram_queue.py enqueue <before-sha> | publish-new <before-sha> | publish-one")
+    if len(sys.argv) < 2 or sys.argv[1] not in {"enqueue", "publish-one", "publish-new", "publish-all"}:
+        raise SystemExit("Usage: telegram_queue.py enqueue <before-sha> | publish-new <before-sha> | publish-one | publish-all")
     if sys.argv[1] in {"enqueue", "publish-new"}:
         if len(sys.argv) != 3:
             raise SystemExit(f"Usage: telegram_queue.py {sys.argv[1]} <before-sha>")
         globals()[sys.argv[1].replace("-", "_")](sys.argv[2])
-    else:
+    elif sys.argv[1] == "publish-one":
         publish_one()
+    else:
+        publish_all()
 
 
 if __name__ == "__main__":
