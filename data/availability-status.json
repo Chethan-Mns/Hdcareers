@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-07T07:45:31.594Z",
+  "checkedAt": "2026-10-07T07:45:38.306Z",
   "checked": 57,
-  "active": 55,
+  "active": 56,
   "expired": 1,
-  "review": 1,
+  "review": 0,
   "changedExpired": 1,
   "items": [
     {
@@ -592,9 +592,11 @@
       "role": "AWS Data Engineer",
       "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-06T19:50:55.953781+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-07T07:45:38.306Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-07T07:45:38.306Z"
     }
   ]
 }
