@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-07T12:41:28.141Z",
+  "checkedAt": "2026-10-07T12:41:39.366Z",
   "checked": 66,
   "active": 63,
-  "expired": 0,
-  "review": 3,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 2,
+  "changedExpired": 1,
   "items": [
     {
       "id": 78,
@@ -204,9 +204,11 @@
       "role": "Software Engineer",
       "page": "jobs/servicenow-software-engineer-hyderabad-jb0075721.html",
       "url": "https://careers.servicenow.com/jobs/744000153520549/software-engineer/",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-07T09:14:11.540117+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-07T12:41:39.366Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-07T12:41:39.366Z"
     },
     {
       "id": 67,
