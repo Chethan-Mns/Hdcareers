@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T03:38:48.998Z",
+  "updatedAt": "2026-10-07T04:00:00.000Z",
   "slots": [
     {
       "id": "it-9am",
@@ -8,10 +8,10 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-07T03:38:48.998Z",
+      "lastRunAt": "2026-10-07T04:00:00.000Z",
       "nextRunAt": "2026-10-04T03:30:00.000Z",
-      "outcome": "no_publish",
-      "detail": "Discovery review completed: 39 candidates screened; proposed 10 (Fresher IT 6, Fresher Non-IT 2, Government/PSU 1, Walk-in 1), across 10 employers. Expired 6; review/unconfirmed 6. Nothing published pending user approval.",
+      "outcome": "published",
+      "detail": "User approved the reviewed batch. Published 10 verified jobs in one batch: 7 fresher/early-career IT, 1 fresher non-IT, 1 government/PSU research walk-in, and 1 walk-in. Brandix was excluded due to the user's insecure-connection report; Needl.ai replaced it. The already-published Amazon candidate was deduplicated and replaced by Google. Availability verification, generation and validation succeeded; Vercel deployment succeeded. All 10 jobs were queued for Telegram.",
       "target": "9–10 verified jobs/day",
       "mix": [
         "3–4 Fresher IT",
