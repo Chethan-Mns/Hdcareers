@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-07T12:41:51.773Z",
+  "checkedAt": "2026-10-07T12:42:04.958Z",
   "checked": 66,
   "active": 64,
-  "expired": 1,
-  "review": 1,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 0,
+  "changedExpired": 2,
   "items": [
     {
       "id": 78,
@@ -468,9 +468,11 @@
       "role": "Front-End Engineer Intern – 2027",
       "page": "jobs/amazon-front-end-engineer-intern-2027-10502000.html",
       "url": "https://www.amazon.jobs/en/jobs/10502000/front-end-engineer-intern-2027",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-07T09:16:17.087869+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-07T12:42:04.958Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-07T12:42:04.958Z"
     },
     {
       "id": 37,
