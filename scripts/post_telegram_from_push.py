@@ -40,7 +40,7 @@ def main() -> None:
         raise SystemExit("Usage: post_telegram_from_push.py <before-sha>")
 
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-    channel = os.environ.get("TELEGRAM_CHANNEL_ID", "").strip()
+    channel = os.environ.get("TELEGRAM_CHANNEL_ID", "").strip() or os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     if not token or not channel:
         print("Telegram secrets are not configured in GitHub Actions. Skipping channel post.")
         return

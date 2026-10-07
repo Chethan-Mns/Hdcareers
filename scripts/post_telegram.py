@@ -154,7 +154,7 @@ def message_for(job: dict) -> str:
     location = html_escape(job.get("loc", ""))
 
     lines = [
-        f"{company} is Hiring ✅",
+        f"<b>{company} is Hiring ✅</b>",
         "",
         f"<b>Role:</b> {role}",
     ]
@@ -232,7 +232,7 @@ def main() -> None:
         raise SystemExit("Usage: post_telegram.py <github-event-path>")
 
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-    channel = os.environ.get("TELEGRAM_CHANNEL_ID", "").strip()
+    channel = os.environ.get("TELEGRAM_CHANNEL_ID", "").strip() or os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     if not token or not channel:
         print("Telegram secrets are not configured in GitHub Actions. Skipping channel post.")
         return

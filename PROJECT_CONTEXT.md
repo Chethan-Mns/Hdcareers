@@ -72,14 +72,17 @@ Always use this flow:
 
 1. Verify the official job posting.
 2. Create a new branch from main.
-3. Add/update the job in data/jobs.json.
+3. Add/update the approved job batch in data/jobs.json.
 4. Run generate.py.
-5. Verify index.html and the generated job page.
+5. Verify index.html and the generated job pages.
 6. Commit changes.
 7. Create a pull request to main.
 8. Check the Vercel Preview deployment.
 9. Merge only after verification.
 10. Confirm production deployment succeeds.
+11. After the website pages are live, publish every job in that approved batch to Telegram immediately as separate messages.
+
+Telegram publishing is immediate after deployment. There is no hourly Telegram queue. A single newly approved job is treated as a VIP publish and uses the same deploy-then-Telegram path with no waiting queue.
 
 Do not edit main directly for normal changes.
 

@@ -1,16 +1,17 @@
-name: Hourly Telegram Publish
+name: Telegram Catch-up Once
 
 on:
-  schedule:
-    # 10:00 AM–7:00 PM Asia/Kolkata
-    - cron: "30 4-13 * * *"
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/telegram-catchup-once.yml
 
 permissions:
   contents: write
 
 concurrency:
-  group: main-job-data-publish
+  group: telegram-immediate-publish
   cancel-in-progress: false
 
 jobs:
@@ -28,23 +29,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Publish one queued job
+      - name: Publish every legacy pending job now
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 scripts/telegram_queue.py publish-one
+        run: python3 scripts/telegram_queue.py publish-all
 
-      - name: Save Telegram queue state
+      - name: Save catch-up state
         shell: bash
         run: |
           if git diff --quiet -- data/telegram-queue.json; then
-            echo "No queue state change."
+            echo "No legacy queue state change."
           else
             git config user.name "HD Careers Automation"
             git config user.email "actions@users.noreply.github.com"
             git add data/telegram-queue.json
-            git commit -m "Update Telegram posting queue"
+            git commit -m "Complete Telegram catch-up"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
