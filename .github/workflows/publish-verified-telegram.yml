@@ -1,15 +1,19 @@
 name: Publish verified jobs to Telegram
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/telegram-approved-batch.json'
   workflow_dispatch:
     inputs:
       pages:
-        description: 'Comma-separated jobs/*.html paths to publish'
-        required: true
+        description: 'Approved comma-separated jobs/*.html paths (optional if approval manifest exists)'
+        required: false
         type: string
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: telegram-publishing
@@ -18,13 +22,44 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Publish verified live jobs
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Verify approved batch and deliver Telegram messages
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           JOB_PAGES: ${{ inputs.pages }}
-        run: python3 scripts/publish_verified_telegram.py
+        run: python3 scripts/publish_approved_telegram.py
+      - name: Persist Telegram message IDs even when a batch stops
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f data/telegram-deliveries.json ]; then
+            echo 'No Telegram deliveries to save.'
+            exit 0
+          fi
+          git config user.name "HD Careers Telegram"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/telegram-deliveries.json
+          if git diff --cached --quiet; then
+            echo 'Telegram delivery ledger unchanged.'
+            exit 0
+          fi
+          git commit -m "Record Telegram delivery receipts"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Store delivery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-delivery-evidence
+          path: data/telegram-deliveries.json
+          if-no-files-found: ignore
+          retention-days: 30
