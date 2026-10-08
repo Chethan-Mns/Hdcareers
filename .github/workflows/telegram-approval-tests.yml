@@ -1,0 +1,28 @@
+name: Telegram approval delivery tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/publish_approved_telegram.py'
+      - 'scripts/post_telegram.py'
+      - 'scripts/admin_publish.py'
+      - 'tests/test_telegram_approval.py'
+      - '.github/workflows/telegram-approval-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Telegram scripts
+        run: python3 -m py_compile scripts/post_telegram.py scripts/publish_approved_telegram.py scripts/admin_publish.py
+      - name: Run approval, preflight and delivery-retry tests
+        run: python3 -m unittest discover -s tests -p test_telegram_approval.py -v
