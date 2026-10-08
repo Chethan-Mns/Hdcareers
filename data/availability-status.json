@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:59:02.685Z",
+  "checkedAt": "2026-10-08T11:59:23.040Z",
   "checked": 70,
-  "active": 54,
+  "active": 55,
   "expired": 4,
-  "review": 12,
+  "review": 11,
   "changedExpired": 4,
   "items": [
     {
@@ -170,9 +170,11 @@
       "role": "Software Engineering Intern",
       "page": "jobs/needl-ai-software-engineering-intern-bengaluru.html",
       "url": "https://needl.ai/careers/software-engineering-intern",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-08T09:27:00.826849+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:59:23.040Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:59:23.040Z"
     },
     {
       "id": 86,
