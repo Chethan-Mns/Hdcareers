@@ -83,9 +83,5 @@ jobs:
           echo "::error::Could not publish generated website after 8 safe retries because main kept changing."
           exit 1
 
-      - name: Post all newly published jobs to Telegram immediately
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 scripts/post_telegram_from_push.py "${{ github.event.before }}"
+      - name: Confirm website generation is separate from Telegram approval
+        run: echo "Website data generated. Only an explicitly approved Telegram batch may be delivered."
