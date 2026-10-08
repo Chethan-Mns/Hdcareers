@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:57:59.671Z",
+  "checkedAt": "2026-10-08T11:58:08.595Z",
   "checked": 70,
-  "active": 50,
+  "active": 51,
   "expired": 2,
-  "review": 18,
+  "review": 17,
   "changedExpired": 2,
   "items": [
     {
@@ -98,9 +98,11 @@
       "role": "Software Engineer – Winter Intern",
       "page": "jobs/rubrik-software-engineer-winter-intern-bangalore-8166523.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8166523?gh_jid=8166523",
-      "state": "review",
-      "reason": "Official page renders disagree: browser=review (HTTP 403; availability unconfirmed); bot=active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-08T09:26:55.220869+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:58:08.595Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:58:08.595Z"
     },
     {
       "id": 80,
