@@ -49,5 +49,5 @@
       "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
     }
   },
-  "retryReason": "Retry after exact official source evidence gate and passing Telegram tests"
+  "retryReason": "Retry with extra-department-token title match after passing unit tests"
 }
