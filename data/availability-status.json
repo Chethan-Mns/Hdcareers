@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:58:51.908Z",
+  "checkedAt": "2026-10-08T11:58:59.726Z",
   "checked": 70,
-  "active": 53,
+  "active": 54,
   "expired": 4,
-  "review": 13,
+  "review": 12,
   "changedExpired": 4,
   "items": [
     {
@@ -158,9 +158,11 @@
       "role": "Procurement Operations New Associate",
       "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01661115_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:26:59.168587+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:58:59.726Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:58:59.726Z"
     },
     {
       "id": 85,
