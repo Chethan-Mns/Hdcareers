@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T12:00:09.504Z",
+  "checkedAt": "2026-10-08T12:00:16.333Z",
   "checked": 70,
-  "active": 60,
+  "active": 61,
   "expired": 4,
-  "review": 6,
+  "review": 5,
   "changedExpired": 4,
   "items": [
     {
@@ -602,9 +602,11 @@
       "role": "Senior Machine Learning Engineer - INT ABS – API Business Services",
       "page": "jobs/sap-senior-machine-learning-engineer-bangalore-ref1744y.html",
       "url": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:29:50.293598+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T12:00:16.333Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T12:00:16.333Z"
     },
     {
       "id": 29,
