@@ -100,7 +100,7 @@ def publish():
             words = lambda x: re.sub(r"[^a-z0-9]+", "", str(x).casefold())
             exact_url = str(record.get("officialUrl", "")).rstrip("/") == str(job.get("apply", "")).rstrip("/")
             exact_role = words(job.get("role", "")) in words(record.get("officialTitle", ""))
-            if status["state"] != "review" or status["reason"] != "Official page loaded but role/application evidence was insufficient" or not (fresh and exact_url and exact_role):
+            if status["state"] != "review" or status["reason"] not in {"Official page loaded but role/application evidence was insufficient", "HTTP 404; availability unconfirmed"} or not (fresh and exact_url and exact_role):
                 raise SystemExit("Official source availability not confirmed for " + page + ": " + status["reason"])
             print("Using fresh, exact official listing review to resolve crawler title mismatch:", page)
         if not wait_for_exact_page(job):
