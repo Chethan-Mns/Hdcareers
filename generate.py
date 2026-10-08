@@ -285,7 +285,7 @@ def load_jobs() -> list[dict]:
         if job["cat"] not in CAT_LABEL:
             raise SystemExit(f"Unsupported category '{job['cat']}' for job id {job['id']}")
 
-        if job["expType"] not in {"fresher", "experienced"}:
+        if job["expType"] not in {"fresher", "experienced", "not-specified"}:
             raise SystemExit(f"Unsupported expType '{job['expType']}' for job id {job['id']}")
 
         if job["status"] not in {"active", "expired"}:
@@ -294,7 +294,7 @@ def load_jobs() -> list[dict]:
         if not isinstance(job["resp"], list) or not job["resp"]:
             raise SystemExit(f"Job id {job['id']} must have at least one responsibility")
 
-        if not isinstance(job["skills"], list) or not job["skills"]:
+        if not isinstance(job["skills"], list):
             raise SystemExit(f"Job id {job['id']} must have at least one skill")
 
         if not str(job["who"]).strip() or not str(job["sourceName"]).strip() or not str(job["verifiedDate"]).strip():
@@ -323,6 +323,8 @@ def render_responsibilities(items: list[str]) -> str:
 
 
 def render_skills(items: list[str]) -> str:
+    if not items:
+        return '<span class="text-sm text-slate-600">Skills are not listed here. Refer to the official employer job description.</span>'
     return "".join(
         f'<span class="px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-800">{esc(item)}</span>'
         for item in items
@@ -740,7 +742,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     role = str(job["role"])
     heading = f"{company} {role}"
     page_title = f"{heading} | HD Careers"
-    candidate = "Fresher" if job["expType"] == "fresher" else "Experienced"
+    candidate = {"fresher": "Fresher", "experienced": "Experienced", "not-specified": "Experience not specified"}[job["expType"]]
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     status_label = "Active" if status == "active" else "Expired / Closed"
