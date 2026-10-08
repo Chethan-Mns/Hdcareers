@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import html
+import re
 import os
 import sys
 from pathlib import Path
@@ -23,7 +25,18 @@ def live_job(job: dict) -> bool:
             if response.status != 200:
                 return False
             body = response.read(400000).decode("utf-8", errors="replace").lower()
-        return "<html" in body and ("jobposting" in body or "apply" in body) and str(job.get("company", "")).lower() in body
+        title_match = re.search(r"<title[^>]*>(.*?)</title>", body, flags=re.I | re.S)
+        title = html.unescape(title_match.group(1)) if title_match else ""
+        company = str(job.get("company", "")).lower().strip()
+        role = str(job.get("role", "")).lower().strip()
+        canonical = BASE + page
+        return (
+            "<html" in body
+            and "jobposting" in body
+            and bool(company and company in title)
+            and bool(role and role in title)
+            and ('href="' + canonical.lower() + '"') in body
+        )
     except Exception:
         return False
 
