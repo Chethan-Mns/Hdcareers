@@ -225,6 +225,10 @@ def send_telegram(token: str, channel: str, text: str) -> None:
 
     if not body.get("ok"):
         raise RuntimeError("Telegram API rejected the message: " + json.dumps(body))
+    message_id = body.get("result", {}).get("message_id")
+    if not isinstance(message_id, int):
+        raise RuntimeError("Telegram did not confirm a message ID")
+    return message_id
 
 
 def main() -> None:
