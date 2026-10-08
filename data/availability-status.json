@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T12:00:01.245Z",
+  "checkedAt": "2026-10-08T12:00:04.245Z",
   "checked": 70,
-  "active": 58,
+  "active": 59,
   "expired": 4,
-  "review": 8,
+  "review": 7,
   "changedExpired": 4,
   "items": [
     {
@@ -338,9 +338,11 @@
       "role": "Software Engineer Trainee – Technical Graduate Apprentice",
       "page": "jobs/cisco-software-engineer-trainee-technical-graduate-apprentice-2014481.html",
       "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:28:15.011138+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T12:00:04.245Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T12:00:04.245Z"
     },
     {
       "id": 61,
