@@ -1,0 +1,30 @@
+name: Publish verified jobs to Telegram
+
+on:
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: 'Comma-separated jobs/*.html paths to publish'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telegram-publishing
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish verified live jobs
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          JOB_PAGES: ${{ inputs.pages }}
+        run: python3 scripts/publish_verified_telegram.py
