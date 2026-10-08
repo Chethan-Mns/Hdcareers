@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:59:39.232Z",
+  "checkedAt": "2026-10-08T11:59:47.852Z",
   "checked": 70,
-  "active": 57,
+  "active": 58,
   "expired": 4,
-  "review": 9,
+  "review": 8,
   "changedExpired": 4,
   "items": [
     {
@@ -326,9 +326,11 @@
       "role": "Custom Software Engineer",
       "page": "jobs/accenture-custom-software-engineer-atci-5637353-s2059863.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5637353-S2059863_en&title=Custom+Software+Engineer",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:28:14.704184+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:59:47.852Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:59:47.852Z"
     },
     {
       "id": 62,
