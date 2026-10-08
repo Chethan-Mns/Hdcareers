@@ -383,5 +383,29 @@
     ],
     "qualityScore": 1108,
     "bytes": 23358
+  },
+  "Sanofi": {
+    "officialDomain": "sanofi.com",
+    "sourceUrl": "https://www.sanofi.com/icons/favicon-180x180.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/sanofi-551135a.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 9432
+  },
+  "Zycus": {
+    "officialDomain": "zycus.sensehq.com",
+    "sourceUrl": "https://zycus.sensehq.com/favicon.ico",
+    "sourceType": "icon",
+    "localPath": "assets/company-icons/zycus-f324297.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 596,
+    "bytes": 6099
   }
 }
