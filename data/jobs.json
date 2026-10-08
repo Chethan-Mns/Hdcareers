@@ -4243,8 +4243,8 @@
       "Support releases and production systems as part of the software development lifecycle"
     ],
     "apply": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
-    "status": "active",
-    "verifiedDate": "29 Sep 2026",
+    "status": "expired",
+    "verifiedDate": "08 Oct 2026",
     "sourceName": "Official Cohere Health application page",
     "skills": [
       "Java or Python",
@@ -4256,7 +4256,14 @@
     "who": "Early-career software engineers with a relevant technical degree or equivalent experience who are comfortable learning across backend, frontend and cloud technologies should review this role. The official posting allows 0-3 years of experience.",
     "workMode": "On-site",
     "logoPath": "assets/company-icons/cohere-health-fa5a07c.png",
-    "logoSourceDomain": "coherehealth.com"
+    "logoSourceDomain": "coherehealth.com",
+    "availabilityCheck": {
+      "id": 20,
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
+      "checkedAt": "2026-10-08T09:30:11.289412+00:00",
+      "state": "expired",
+      "reason": "Greenhouse public posting inventory returned HTTP 404 for the exact posting"
+    }
   },
   {
     "id": 19,
