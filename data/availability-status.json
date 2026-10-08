@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-08T05:35:44.127Z",
+  "checkedAt": "2026-10-08T05:35:53.963Z",
   "checked": 64,
   "active": 63,
-  "expired": 0,
-  "review": 1,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 0,
+  "changedExpired": 1,
   "items": [
     {
       "id": 78,
@@ -124,9 +124,11 @@
       "role": "Early Career Trainee – Service",
       "page": "jobs/ge-healthcare-early-career-trainee-service-r4046659.html",
       "url": "https://careers.gehealthcare.com/global/en/job/R4046659/Early-Career-Trainee-Service",
-      "state": "review",
-      "reason": "HTTP 410; availability unconfirmed",
-      "checkedAt": "2026-10-07T20:08:50.906716+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-08T05:35:53.963Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-08T05:35:53.963Z"
     },
     {
       "id": 75,
