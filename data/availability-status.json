@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-08T11:58:37.927Z",
+  "checkedAt": "2026-10-08T11:58:51.908Z",
   "checked": 70,
   "active": 53,
-  "expired": 3,
-  "review": 14,
-  "changedExpired": 3,
+  "expired": 4,
+  "review": 13,
+  "changedExpired": 4,
   "items": [
     {
       "id": 95,
@@ -126,9 +126,11 @@
       "role": "Digital Technology Development Program Intern – India 2027",
       "page": "jobs/ge-vernova-digital-technology-development-program-intern-india-2027-r5052743.html",
       "url": "https://careers.gevernova.com/digital-technology-development-program-intern-india-2027/job/R5052743",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:26:57.841310+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-08T11:58:51.908Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-08T11:58:51.908Z"
     },
     {
       "id": 82,
