@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T12:00:37.352Z",
+  "checkedAt": "2026-10-08T12:00:43.896Z",
   "checked": 70,
-  "active": 62,
+  "active": 63,
   "expired": 5,
-  "review": 3,
+  "review": 2,
   "changedExpired": 5,
   "items": [
     {
@@ -716,9 +716,11 @@
       "role": "Technology Support Engineer",
       "page": "jobs/accenture-technology-support-engineer.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:30:13.073414+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T12:00:43.896Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T12:00:43.896Z"
     },
     {
       "id": 15,
