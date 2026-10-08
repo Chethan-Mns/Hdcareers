@@ -26,7 +26,7 @@ class TelegramApprovalTests(unittest.TestCase):
             patch.object(pub, "LEDGER", self.ledger),
             patch.object(pub, "load_current_jobs", return_value=self.jobs),
             patch.object(pub, "wait_for_exact_page", return_value=True),
-            patch.object(pub, "require_active", return_value={"state": "active"}),
+            patch.object(pub, "check", return_value={"state": "active"}),
             patch.object(pub, "message_for", side_effect=lambda j: j["page"]),
             patch.dict(os.environ, {"TELEGRAM_BOT_TOKEN": "test-bot-token", "TELEGRAM_CHANNEL_ID": "@HD_Careers", "JOB_PAGES": ""}),
         ]
