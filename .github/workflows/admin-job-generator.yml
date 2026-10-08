@@ -52,7 +52,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/company-logos.json data/review-queue.json assets/company-icons index.html jobs/ robots.txt sitemap.xml
+            git add data/jobs.json data/company-logos.json data/review-queue.json assets/company-icons index.html jobs/ robots.txt sitemap.xml data/telegram-approved-batch.json
 
             if git diff --cached --quiet; then
               echo "No changes to publish."
@@ -79,9 +79,36 @@ jobs:
           echo "::error::Could not save admin publishing changes after 8 safe retries because main kept changing."
           exit 1
 
-      - name: Post every published job to Telegram immediately
+      - name: Deliver admin-approved jobs to Telegram after deployment
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 scripts/post_telegram.py "$GITHUB_EVENT_PATH"
+        run: |
+          if python3 -c 'import json,os; p=json.load(open("data/telegram-approved-batch.json")); exit(0 if p.get("batchId") == "admin-"+os.environ["GITHUB_RUN_ID"] else 1)'; then
+            python3 scripts/publish_approved_telegram.py
+          else
+            echo "No newly approved jobs to send."
+          fi
+      - name: Save confirmed Telegram delivery receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f data/telegram-deliveries.json ]; then exit 0; fi
+          git config user.name "HD Careers Telegram"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/telegram-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record admin Telegram delivery receipts"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Upload Telegram delivery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin-telegram-delivery-evidence
+          path: data/telegram-deliveries.json
+          if-no-files-found: ignore
+          retention-days: 30
