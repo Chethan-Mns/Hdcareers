@@ -97,9 +97,11 @@ def publish():
                 fresh = stamp.tzinfo is not None and timedelta(0) <= datetime.now(timezone.utc) - stamp <= timedelta(hours=2)
             except ValueError:
                 fresh = False
-            words = lambda x: re.sub(r"[^a-z0-9]+", "", str(x).casefold())
+            role_terms = re.findall(r"[a-z0-9]+", str(job.get("role", "")).casefold())
+            source_terms = re.findall(r"[a-z0-9]+", str(record.get("officialTitle", "")).casefold())
+            source_iter = iter(source_terms)
             exact_url = str(record.get("officialUrl", "")).rstrip("/") == str(job.get("apply", "")).rstrip("/")
-            exact_role = words(job.get("role", "")) in words(record.get("officialTitle", ""))
+            exact_role = len(role_terms) >= 2 and source_terms[:2] == role_terms[:2] and all(any(term == candidate for candidate in source_iter) for term in role_terms)
             if status["state"] != "review" or status["reason"] not in {"Official page loaded but role/application evidence was insufficient", "HTTP 404; availability unconfirmed"} or not (fresh and exact_url and exact_role):
                 raise SystemExit("Official source availability not confirmed for " + page + ": " + status["reason"])
             print("Using fresh, exact official listing review to resolve crawler title mismatch:", page)
