@@ -2,14 +2,15 @@
   "batchId": "manual-catchup-2026-10-08-reviewed-six",
   "approved": true,
   "approvedBy": "HD Careers owner via chat",
-  "scope": "Six recent published pages with exact official job listings; IndianOil and ACTREC held for further verification",
+  "scope": "Seven currently supported recent postings; IndianOil Western Region advertisement excluded because closed 26 March 2026",
   "pages": [
     "jobs/amazon-software-development-engineer-rbs-tech.html",
     "jobs/sanofi-transactional-procurement-analyst.html",
     "jobs/ey-associate-analyst-tax-gcr.html",
     "jobs/synopsys-computational-fluid-dynamics-cfd-internship.html",
     "jobs/ion-group-software-developer-2027-leadership-development-program.html",
-    "jobs/zycus-software-engineer-graduates-2026.html"
+    "jobs/zycus-software-engineer-graduates-2026.html",
+    "jobs/actrec-lab-technician-microbiology-lab-walk-in.html"
   ],
   "sourceEvidence": {
     "jobs/amazon-software-development-engineer-rbs-tech.html": {
@@ -47,7 +48,13 @@
       "officialTitle": "Software Engineer - Graduates 2026",
       "checkedAt": "2026-10-08T06:09:32.119Z",
       "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
+    },
+    "jobs/actrec-lab-technician-microbiology-lab-walk-in.html": {
+      "officialUrl": "https://www.actrec.gov.in/node/13369",
+      "officialTitle": "Walk in Interview for the post of Lab Technician Microbiology Lab",
+      "checkedAt": "2026-10-08T06:16:55.922Z",
+      "method": "Exact ACTREC official posting OS-A/121/2026, walk-in on 16 October 2026"
     }
   },
-  "retryReason": "Retry with extra-department-token title match after passing unit tests"
+  "retryReason": "ACTREC now has an exact official 16 October walk-in notice; already delivered six receipts must be skipped"
 }
