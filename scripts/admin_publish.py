@@ -20,8 +20,8 @@ REQUIRED = [
     "locationFilter", "batch", "elig", "cat", "expType", "expYears", "date",
     "desc", "resp", "apply", "status", "verifiedDate", "sourceName", "skills", "who", "workMode"
 ]
-CATS = {"it", "internship", "apprenticeship", "campus", "remote", "walkin", "experienced", "govt"}
-EXP_TYPES = {"fresher", "experienced"}
+CATS = {"it", "nonit", "internship", "apprenticeship", "campus", "remote", "walkin", "experienced", "govt"}
+EXP_TYPES = {"fresher", "experienced", "not-specified"}
 
 
 def normalize_url(value: str) -> str:
@@ -52,7 +52,7 @@ def validate(job: dict, pos: int) -> None:
         raise SystemExit(f"Job #{pos} has unsupported status")
     if not isinstance(job["resp"], list) or not job["resp"]:
         raise SystemExit(f"Job #{pos} requires responsibilities")
-    if not isinstance(job["skills"], list) or not job["skills"]:
+    if not isinstance(job["skills"], list):
         raise SystemExit(f"Job #{pos} requires skills")
     if not str(job["who"]).strip() or not str(job["sourceName"]).strip() or not str(job["verifiedDate"]).strip():
         raise SystemExit(f"Job #{pos} requires source, verification date and who-should-apply text")
@@ -129,6 +129,7 @@ def main() -> None:
     verified = []
     held = []
     closed = []
+    verdicts = []
 
     for pos, job in enumerate(incoming, start=1):
         if not isinstance(job, dict):
@@ -144,6 +145,7 @@ def main() -> None:
         batch_urls.add(url); batch_pairs.add(pair)
 
         result = check(job)
+        verdicts.append(dict(result, apply=job.get("apply")))
         print(f"{job['company']} — {job['role']}: {result['state']} — {result['reason']}")
         if result["state"] == "active":
             verified.append(job)
@@ -154,6 +156,20 @@ def main() -> None:
             held.append(job)
         else:
             closed.append(job)
+
+    if held or closed:
+        lines = [
+            f"{j.get('company', '')} — {j.get('role', '')}: "
+            + next((check_result['state'] + ' — ' + check_result['reason']
+                    for check_result in verdicts if check_result.get('apply') == j.get('apply')), 'Not verified')
+            for j in held + closed
+        ]
+        raise SystemExit(
+            "Approved batch blocked; nothing was published. "
+            f"{len(verified)} of {len(incoming)} passed, {len(held)} need manual review, {len(closed)} were closed. "
+            "Resolve or replace every failed candidate and reapprove the complete batch. "
+            + " | ".join(lines)
+        )
 
     next_id = max([int(j.get("id", 0) or 0) for j in current] + [0]) + 1
     used_pages = {str(j.get("page", "")).lower() for j in current}
