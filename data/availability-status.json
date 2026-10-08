@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:57:52.976Z",
+  "checkedAt": "2026-10-08T11:57:59.671Z",
   "checked": 70,
-  "active": 49,
+  "active": 50,
   "expired": 2,
-  "review": 19,
+  "review": 18,
   "changedExpired": 2,
   "items": [
     {
@@ -76,9 +76,11 @@
       "role": "Software Engineer – Graduates 2026",
       "page": "jobs/zycus-software-engineer-graduates-2026.html",
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-08T09:26:53.389461+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:57:59.671Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:57:59.671Z"
     },
     {
       "id": 78,
