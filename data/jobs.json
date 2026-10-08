@@ -69,16 +69,16 @@
       "Apply through the official employer career portal"
     ],
     "apply": "https://iocl.com/apprenticeships",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "08 Oct 2026",
     "sourceName": "Official employer career portal",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
     "availabilityCheck": {
-      "url": "https://iocl.com/apprenticeships",
+      "url": "https://iocl.com/admin/img/Apprenticeships/Files/b2f1aa3dfa1a4ab7b2fc92ab6af4a339.pdf",
       "checkedAt": "2026-10-08",
-      "state": "active",
-      "reason": "Official employer job listing reviewed; user approved publication."
+      "state": "expired",
+      "reason": "Official advertisement IOCL/MKTG/WR/APPR/3/2025-26 applications closed 26 March 2026 at 5 PM IST."
     },
     "logo": [
       "I",
@@ -89,12 +89,12 @@
   {
     "id": 93,
     "page": "jobs/actrec-lab-technician-microbiology-lab-walk-in.html",
-    "domain": "ns2.actrec.gov.in",
+    "domain": "www.actrec.gov.in",
     "company": "ACTREC",
     "role": "Lab Technician – Microbiology Lab Walk-in",
     "roleTag": "Lab Technician – Microbiology Lab Walk-in",
-    "loc": "Not Specified",
-    "locationFilter": "Not Specified",
+    "loc": "Kharghar, Navi Mumbai",
+    "locationFilter": "Navi Mumbai",
     "cat": "nonit",
     "categories": [
       "nonit"
@@ -110,17 +110,17 @@
       "Review the official job description and eligibility requirements",
       "Apply through the official employer career portal"
     ],
-    "apply": "https://ns2.actrec.gov.in/jobs",
+    "apply": "https://www.actrec.gov.in/node/13369",
     "status": "active",
     "verifiedDate": "08 Oct 2026",
-    "sourceName": "Official employer career portal",
+    "sourceName": "Official ACTREC walk-in advertisement OS-A/121/2026",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
     "availabilityCheck": {
-      "url": "https://ns2.actrec.gov.in/jobs",
+      "url": "https://www.actrec.gov.in/node/13369",
       "checkedAt": "2026-10-08",
       "state": "active",
-      "reason": "Official employer job listing reviewed; user approved publication."
+      "reason": "Official ACTREC notice OS-A/121/2026 posted 7 October; walk-in scheduled 16 October 2026"
     },
     "logo": [
       "A",
