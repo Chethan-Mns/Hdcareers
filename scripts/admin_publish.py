@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from check_job_availability import check
 import re
 import sys
@@ -12,6 +13,7 @@ from urllib.parse import urlsplit, urlunsplit
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "jobs.json"
 REVIEW_FILE = ROOT / "data" / "review-queue.json"
+APPROVED_BATCH = ROOT / "data" / "telegram-approved-batch.json"
 
 REQUIRED = [
     "page", "domain", "company", "salary", "logo", "role", "roleTag", "loc",
@@ -177,6 +179,8 @@ def main() -> None:
 
     if prepared:
         DATA_FILE.write_text(json.dumps(prepared + current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        manifest = {"approved": True, "batchId": "admin-" + os.environ.get("GITHUB_RUN_ID", str(int(time.time()))), "pages": [j["page"] for j in prepared], "approvedBy": "HD Careers Admin"}
+        APPROVED_BATCH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     REVIEW_FILE.write_text(json.dumps(review_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(f"Prepared {len(prepared)} verified job(s) for production publish")
