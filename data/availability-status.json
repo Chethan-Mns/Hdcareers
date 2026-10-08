@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:58:08.595Z",
+  "checkedAt": "2026-10-08T11:58:11.438Z",
   "checked": 70,
-  "active": 51,
+  "active": 52,
   "expired": 2,
-  "review": 17,
+  "review": 16,
   "changedExpired": 2,
   "items": [
     {
@@ -46,9 +46,11 @@
       "role": "Associate Analyst – Tax GCR",
       "page": "jobs/ey-associate-analyst-tax-gcr.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-08T09:26:50.552535+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:58:11.438Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:58:11.438Z"
     },
     {
       "id": 90,
