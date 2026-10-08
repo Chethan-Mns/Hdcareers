@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T12:00:48.495Z",
+  "checkedAt": "2026-10-08T12:00:56.629Z",
   "checked": 70,
-  "active": 63,
+  "active": 64,
   "expired": 5,
-  "review": 2,
+  "review": 1,
   "changedExpired": 5,
   "items": [
     {
@@ -654,9 +654,11 @@
       "role": "Procure to Pay Operations Associate",
       "page": "jobs/accenture-procure-to-pay-operations-associate-bengaluru-aioc-s01659105.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-08T09:30:06.891420+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T12:00:56.629Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T12:00:56.629Z"
     },
     {
       "id": 24,
