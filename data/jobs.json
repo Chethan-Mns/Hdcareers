@@ -165,16 +165,17 @@
       "Apply through the official employer career portal"
     ],
     "apply": "https://jobs.sanofi.com/en/job/hyderabad/transactional-procurement-analyst/2649/45414750720",
-    "status": "active",
-    "verifiedDate": "08 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "8 Oct 2026",
     "sourceName": "Official employer career portal",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
     "availabilityCheck": {
       "url": "https://jobs.sanofi.com/en/job/hyderabad/transactional-procurement-analyst/2649/45414750720",
-      "checkedAt": "2026-10-08",
-      "state": "active",
-      "reason": "Official employer job listing reviewed; user approved publication."
+      "checkedAt": "2026-10-08T11:57:52.976Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "id": 92
     },
     "logo": [
       "S",

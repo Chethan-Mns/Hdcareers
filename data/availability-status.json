@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-08T11:57:41.237Z",
+  "checkedAt": "2026-10-08T11:57:52.976Z",
   "checked": 70,
   "active": 49,
-  "expired": 1,
-  "review": 20,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 19,
+  "changedExpired": 2,
   "items": [
     {
       "id": 95,
@@ -34,9 +34,11 @@
       "role": "Transactional Procurement Analyst",
       "page": "jobs/sanofi-transactional-procurement-analyst.html",
       "url": "https://jobs.sanofi.com/en/job/hyderabad/transactional-procurement-analyst/2649/45414750720",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-08T09:26:49.956903+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-08T11:57:52.976Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-08T11:57:52.976Z"
     },
     {
       "id": 91,
