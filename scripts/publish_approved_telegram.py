@@ -99,9 +99,15 @@ def publish():
                 fresh = False
             role_terms = re.findall(r"[a-z0-9]+", str(job.get("role", "")).casefold())
             source_terms = re.findall(r"[a-z0-9]+", str(record.get("officialTitle", "")).casefold())
-            source_iter = iter(source_terms)
             exact_url = str(record.get("officialUrl", "")).rstrip("/") == str(job.get("apply", "")).rstrip("/")
-            exact_role = len(role_terms) >= 2 and source_terms[:2] == role_terms[:2] and all(any(term == candidate for candidate in source_iter) for term in role_terms)
+            from collections import Counter
+            role_counts = Counter(role_terms)
+            title_counts = Counter(source_terms)
+            exact_role = (
+                len(role_terms) >= 2
+                and any(source_terms[i:i + 2] == role_terms[:2] for i in range(len(source_terms) - 1))
+                and all(title_counts[word] >= count for word, count in role_counts.items())
+            )
             if status["state"] != "review" or status["reason"] not in {"Official page loaded but role/application evidence was insufficient", "HTTP 404; availability unconfirmed"} or not (fresh and exact_url and exact_role):
                 raise SystemExit("Official source availability not confirmed for " + page + ": " + status["reason"])
             print("Using fresh, exact official listing review to resolve crawler title mismatch:", page)
