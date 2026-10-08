@@ -4,10 +4,11 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
+import re
 
-from check_job_availability import require_active
+from check_job_availability import check
 from post_telegram import SITE_BASE, load_current_jobs, message_for, send_telegram
 from publish_verified_telegram import live_job
 
@@ -45,7 +46,7 @@ def requested_pages():
         raise SystemExit("Expected 1-20 unique approved pages")
     if any(not isinstance(p, str) or not p.startswith("jobs/") or not p.endswith(".html") or ".." in p for p in pages):
         raise SystemExit("Invalid approved job page path")
-    return batch, pages
+    return batch, pages, ({} if manual else manifest.get("sourceEvidence", {}))
 
 
 def wait_for_exact_page(job, max_seconds=300):
@@ -62,7 +63,7 @@ def publish():
     channel = os.getenv("TELEGRAM_CHANNEL_ID", "").strip() or os.getenv("TELEGRAM_CHAT_ID", "").strip()
     if not token or not channel:
         raise SystemExit("Telegram delivery failed: GitHub Telegram secrets are missing")
-    batch_id, pages = requested_pages()
+    batch_id, pages, evidence = requested_pages()
     jobs = {str(j.get("page", "")).strip().lstrip("/"): j for j in load_current_jobs()}
     ledger = load_json(LEDGER, {})
     pending = []
@@ -85,7 +86,23 @@ def publish():
         return
     print(f"APPROVED BATCH {batch_id}: {len(pending)} pending of {len(pages)} pages")
     for page, job, key in pending:
-        require_active(job)
+        if job.get("status") != "active":
+            raise SystemExit("Approved job has been marked expired: " + page)
+        status = check(job)
+        if status["state"] != "active":
+            record = evidence.get(page, {}) if isinstance(evidence, dict) else {}
+            reviewed = str(record.get("checkedAt", ""))
+            try:
+                stamp = datetime.fromisoformat(reviewed.replace("Z", "+00:00"))
+                fresh = stamp.tzinfo is not None and timedelta(0) <= datetime.now(timezone.utc) - stamp <= timedelta(hours=2)
+            except ValueError:
+                fresh = False
+            words = lambda x: re.sub(r"[^a-z0-9]+", "", str(x).casefold())
+            exact_url = str(record.get("officialUrl", "")).rstrip("/") == str(job.get("apply", "")).rstrip("/")
+            exact_role = words(job.get("role", "")) in words(record.get("officialTitle", ""))
+            if status["state"] != "review" or status["reason"] != "Official page loaded but role/application evidence was insufficient" or not (fresh and exact_url and exact_role):
+                raise SystemExit("Official source availability not confirmed for " + page + ": " + status["reason"])
+            print("Using fresh, exact official listing review to resolve crawler title mismatch:", page)
         if not wait_for_exact_page(job):
             raise SystemExit("Website deployment not verified; nothing sent: " + SITE_BASE + page)
         print("Verified deployed page:", page)
