@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-08T11:59:23.040Z",
+  "checkedAt": "2026-10-08T11:59:29.722Z",
   "checked": 70,
-  "active": 55,
+  "active": 56,
   "expired": 4,
-  "review": 11,
+  "review": 10,
   "changedExpired": 4,
   "items": [
     {
@@ -192,9 +192,11 @@
       "role": "Engineering Walk-in Events – October 2026",
       "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/engineeringevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-08T09:27:09.256980+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-08T11:59:29.722Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-08T11:59:29.722Z"
     },
     {
       "id": 77,
