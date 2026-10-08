@@ -3,10 +3,13 @@ import {requireAdmin} from "../../lib/admin-auth.js";
 const DEFAULT_REPO = "Chethan-Mns/Hdcareers";
 const DEFAULT_BASE = "main";
 const MAX_JOBS = 20;
-const CATS = new Set(["it","internship","apprenticeship","campus","remote","walkin","experienced","govt"]);
+const CATS = new Set(["it","nonit","internship","apprenticeship","campus","remote","walkin","experienced","govt"]);
 const CAT_FROM_LABEL = {
   "IT / Software":"it",
   "IT & Software":"it",
+  "Non-IT":"nonit",
+  "Non-IT Jobs":"nonit",
+  "Non IT":"nonit",
   "Internship":"internship",
   "Apprenticeship":"apprenticeship",
   "Off-Campus":"campus",
@@ -52,7 +55,7 @@ function canonicalJob(input){
   const cat=CAT_FROM_LABEL[catRaw]||catRaw;
   const sourceLogo=Array.isArray(source.logo)&&source.logo.length===2?source.logo:null;
   const publishStatus=String(input.publishStatus||input.status||source.status||"active").trim().toLowerCase();
-  const expType=source.expType==="experienced"||source.expType==="fresher"
+  const expType=["experienced","fresher","not-specified"].includes(source.expType)
     ?source.expType
     :(/^0\s*years?$/i.test(expYears)||/fresher/i.test(expYears)?"fresher":"experienced");
 
@@ -106,13 +109,13 @@ function validateJob(job,index){
   if(!job.apply)errors.push("official apply URL");
   if(!job.domain)errors.push("domain");
   if(!job.resp.length)errors.push("responsibilities");
-  if(!job.skills.length)errors.push("skills");
+  if(!Array.isArray(job.skills))errors.push("skills");
   if(!job.who)errors.push("who should apply");
   if(!job.sourceName)errors.push("source");
   if(!job.verifiedDate)errors.push("verified date");
   if(job.status!=="active")errors.push("official source must be verified active before publishing");
   if(!CATS.has(job.cat))errors.push("category");
-  if(!["fresher","experienced"].includes(job.expType))errors.push("experience type");
+  if(!["fresher","experienced","not-specified"].includes(job.expType))errors.push("experience type");
   if(/candidate experience|careers? page|job search page/i.test(job.company))errors.push("review company name");
   try{
     const u=new URL(job.apply);
