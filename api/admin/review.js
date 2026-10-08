@@ -5,6 +5,7 @@ const DEFAULT_BASE="main";
 const JOBS_PATH="data/jobs.json";
 const STATUS_PATH="data/availability-status.json";
 const REVIEW_PATH="data/review-queue.json";
+const APPROVED_BATCH_PATH="data/telegram-approved-batch.json";
 
 function sameOrigin(req){
   const origin=String(req.headers.origin||"");
@@ -194,7 +195,8 @@ export default async function handler(req,res){
           headSha,
           {
             [JOBS_PATH]:[approved,...jobs],
-            [REVIEW_PATH]:reviewQueue
+            [REVIEW_PATH]:reviewQueue,
+            [APPROVED_BATCH_PATH]:{approved:true,batchId:"admin-review-"+jobId+"-"+Date.now(),pages:[approved.page],approvedBy:"HD Careers Admin review"}
           },
           "Manual publish: "+(approved.company||"Job")+" — "+(approved.role||"Opening"),
           token
