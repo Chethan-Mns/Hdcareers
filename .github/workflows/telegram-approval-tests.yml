@@ -9,6 +9,8 @@ on:
       - 'scripts/publish_verified_telegram.py'
       - 'scripts/admin_publish.py'
       - 'tests/test_telegram_approval.py'
+      - 'tests/test_admin_batch_handoff.py'
+      - 'api/admin/publish.js'
       - '.github/workflows/telegram-approval-tests.yml'
   workflow_dispatch:
 
@@ -25,5 +27,9 @@ jobs:
           python-version: '3.12'
       - name: Compile Telegram scripts
         run: python3 -m py_compile scripts/post_telegram.py scripts/publish_approved_telegram.py scripts/publish_verified_telegram.py scripts/admin_publish.py
-      - name: Run approval, preflight and delivery-retry tests
+      - name: Validate admin intake JavaScript
+        run: node --check api/admin/publish.js
+      - name: Run Telegram receipt and retry tests
         run: python3 -m unittest discover -s tests -p test_telegram_approval.py -v
+      - name: Dry-run ten-job approval to manifest handoff
+        run: python3 -m unittest discover -s tests -p test_admin_batch_handoff.py -v
