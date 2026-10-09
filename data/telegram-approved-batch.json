@@ -1,60 +1,13 @@
 {
-  "batchId": "manual-catchup-2026-10-08-reviewed-six",
+  "batchId": "reviewed-2026-10-09-565aa143-verified-four",
   "approved": true,
-  "approvedBy": "HD Careers owner via chat",
-  "scope": "Seven currently supported recent postings; IndianOil Western Region advertisement excluded because closed 26 March 2026",
+  "approvedBy": "HD Careers user approval in conversation",
+  "sourceCommit": "565aa143cb0723069f7fa50cef478dd032f02094",
   "pages": [
-    "jobs/amazon-software-development-engineer-rbs-tech.html",
-    "jobs/sanofi-transactional-procurement-analyst.html",
-    "jobs/ey-associate-analyst-tax-gcr.html",
-    "jobs/synopsys-computational-fluid-dynamics-cfd-internship.html",
-    "jobs/ion-group-software-developer-2027-leadership-development-program.html",
-    "jobs/zycus-software-engineer-graduates-2026.html",
-    "jobs/actrec-lab-technician-microbiology-lab-walk-in.html"
+    "jobs/servicenow-senior-software-engineer.html",
+    "jobs/enterpret-backend-software-engineering-intern.html",
+    "jobs/google-software-engineer-phd-early-career-2026.html",
+    "jobs/amazon-software-dev-engineer-i-l4.html"
   ],
-  "sourceEvidence": {
-    "jobs/amazon-software-development-engineer-rbs-tech.html": {
-      "officialUrl": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-      "officialTitle": "Software Development Engineer, RBS Tech",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/sanofi-transactional-procurement-analyst.html": {
-      "officialUrl": "https://jobs.sanofi.com/en/job/hyderabad/transactional-procurement-analyst/2649/45414750720",
-      "officialTitle": "Transactional Procurement Analyst",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/ey-associate-analyst-tax-gcr.html": {
-      "officialUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
-      "officialTitle": "Associate Analyst - TAX - FS - TAX - GCR - Global Compliance & Reporting - Mumbai",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/synopsys-computational-fluid-dynamics-cfd-internship.html": {
-      "officialUrl": "https://careers.synopsys.com/job/pune/computational-fluid-dynamics-cfd-internship/44408/101580799728",
-      "officialTitle": "Computational Fluid Dynamics(CFD) Internship",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/ion-group-software-developer-2027-leadership-development-program.html": {
-      "officialUrl": "https://jobs.lever.co/ion/6f66cbb4-c882-4234-b84e-68baea56e1ea",
-      "officialTitle": "Software Developer, 2027 Leadership Development Program, ION Group, India",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/zycus-software-engineer-graduates-2026.html": {
-      "officialUrl": "https://zycus.sensehq.com/careers/jobs/57681",
-      "officialTitle": "Software Engineer - Graduates 2026",
-      "checkedAt": "2026-10-08T06:09:32.119Z",
-      "method": "Official employer job listing reviewed for exact requisition; source display shows current job information"
-    },
-    "jobs/actrec-lab-technician-microbiology-lab-walk-in.html": {
-      "officialUrl": "https://www.actrec.gov.in/node/13369",
-      "officialTitle": "Walk in Interview for the post of Lab Technician Microbiology Lab",
-      "checkedAt": "2026-10-08T06:16:55.922Z",
-      "method": "Exact ACTREC official posting OS-A/121/2026, walk-in on 16 October 2026"
-    }
-  },
-  "retryReason": "ACTREC now has an exact official 16 October walk-in notice; already delivered six receipts must be skipped"
+  "note": "Partial eligible set: user approved ten, original commit inserted nine; five held for unconfirmed official source; never post unconfirmed job automatically"
 }
