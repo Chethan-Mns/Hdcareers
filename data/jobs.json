@@ -40,92 +40,9 @@
       "checkedAt": "2026-10-09",
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
-  },
-  {
-    "id": 103,
-    "page": "jobs/microsoft-software-engineer-ii.html",
-    "domain": "apply.careers.microsoft.com",
-    "company": "Microsoft",
-    "role": "Software Engineer II",
-    "roleTag": "Software Engineer II",
-    "loc": "Bengaluru",
-    "locationFilter": "Bengaluru",
-    "cat": "it",
-    "categories": [
-      "it",
-      "experienced"
-    ],
-    "expType": "experienced",
-    "expYears": "4+ years",
-    "batch": "Not Specified",
-    "elig": "Refer to the exact official listing for eligibility.",
-    "salary": "Not Disclosed",
-    "date": "Not Specified",
-    "desc": "Microsoft is recruiting for Software Engineer II in Bengaluru. Refer to the exact official listing for eligibility and application instructions.",
-    "resp": [
-      "Review the exact official job description and eligibility requirements",
-      "Apply through the official application page"
-    ],
-    "apply": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
-    "status": "active",
-    "verifiedDate": "9 Oct 2026",
-    "sourceName": "Official employer careers or recognized application provider",
-    "who": "Refer to the official listing for eligibility.",
-    "workMode": "Not Specified",
-    "logo": [
-      "M",
-      "#374151"
-    ],
-    "skills": [],
-    "availabilityCheck": {
-      "url": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
-      "checkedAt": "2026-10-09",
-      "state": "review",
-      "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
-  },
-  {
-    "id": 102,
-    "page": "jobs/deloitte-analyst-sap-analytics.html",
-    "domain": "southasiacareers.deloitte.com",
-    "company": "Deloitte",
-    "role": "Analyst – SAP Analytics",
-    "roleTag": "Analyst – SAP Analytics",
-    "loc": "Goa",
-    "locationFilter": "Goa",
-    "cat": "it",
-    "categories": [
-      "it"
-    ],
-    "expType": "fresher",
-    "expYears": "Not Specified",
-    "batch": "Not Specified",
-    "elig": "Refer to the exact official listing for eligibility.",
-    "salary": "Not Disclosed",
-    "date": "Not Specified",
-    "desc": "Deloitte is recruiting for Analyst – SAP Analytics in Goa. Refer to the exact official listing for eligibility and application instructions.",
-    "resp": [
-      "Review the exact official job description and eligibility requirements",
-      "Apply through the official application page"
-    ],
-    "apply": "https://southasiacareers.deloitte.com/job/Goa-Analyst-SAP-Analytics-Goa-SAP-DSA-Oil,-Gas-and-Utilities/60507544/",
-    "status": "active",
-    "verifiedDate": "9 Oct 2026",
-    "sourceName": "Official employer careers or recognized application provider",
-    "who": "Refer to the official listing for eligibility.",
-    "workMode": "Not Specified",
-    "logo": [
-      "D",
-      "#374151"
-    ],
-    "skills": [],
-    "availabilityCheck": {
-      "url": "https://southasiacareers.deloitte.com/job/Goa-Analyst-SAP-Analytics-Goa-SAP-DSA-Oil,-Gas-and-Utilities/60507544/",
-      "checkedAt": "2026-10-09",
-      "state": "review",
-      "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
+    },
+    "logoPath": "assets/company-icons/servicenow-290680b.png",
+    "logoSourceDomain": "servicenow.com"
   },
   {
     "id": 101,
@@ -164,48 +81,6 @@
     "skills": [],
     "availabilityCheck": {
       "url": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003",
-      "checkedAt": "2026-10-09",
-      "state": "review",
-      "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
-  },
-  {
-    "id": 100,
-    "page": "jobs/visa-new-grad-software-engineer-evergreen-ppo.html",
-    "domain": "jobs.smartrecruiters.com",
-    "company": "Visa",
-    "role": "New Grad – Software Engineer (Evergreen PPO)",
-    "roleTag": "New Grad – Software Engineer (Evergreen PPO)",
-    "loc": "Bengaluru",
-    "locationFilter": "Bengaluru",
-    "cat": "it",
-    "categories": [
-      "it"
-    ],
-    "expType": "fresher",
-    "expYears": "New graduate",
-    "batch": "Not Specified",
-    "elig": "Refer to the exact official listing for eligibility.",
-    "salary": "Not Disclosed",
-    "date": "Not Specified",
-    "desc": "Visa is recruiting for New Grad – Software Engineer (Evergreen PPO) in Bengaluru. Refer to the exact official listing for eligibility and application instructions.",
-    "resp": [
-      "Review the exact official job description and eligibility requirements",
-      "Apply through the official application page"
-    ],
-    "apply": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-    "status": "active",
-    "verifiedDate": "9 Oct 2026",
-    "sourceName": "Official employer careers or recognized application provider",
-    "who": "Refer to the official listing for eligibility.",
-    "workMode": "Not Specified",
-    "logo": [
-      "V",
-      "#374151"
-    ],
-    "skills": [],
-    "availabilityCheck": {
-      "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
       "checkedAt": "2026-10-09",
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
@@ -251,7 +126,9 @@
       "checkedAt": "2026-10-09",
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
+    },
+    "logoPath": "assets/company-icons/google-2b681c0.png",
+    "logoSourceDomain": "google.com"
   },
   {
     "id": 98,
@@ -293,91 +170,9 @@
       "checkedAt": "2026-10-09",
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
-  },
-  {
-    "id": 97,
-    "page": "jobs/rubrik-software-engineer-saas-o365.html",
-    "domain": "www.rubrik.com",
-    "company": "Rubrik",
-    "role": "Software Engineer – SaaS O365",
-    "roleTag": "Software Engineer – SaaS O365",
-    "loc": "Bengaluru",
-    "locationFilter": "Bengaluru",
-    "cat": "it",
-    "categories": [
-      "it"
-    ],
-    "expType": "fresher",
-    "expYears": "0–2 years",
-    "batch": "Not Specified",
-    "elig": "Refer to the exact official listing for eligibility.",
-    "salary": "Not Disclosed",
-    "date": "Not Specified",
-    "desc": "Rubrik is recruiting for Software Engineer – SaaS O365 in Bengaluru. Refer to the exact official listing for eligibility and application instructions.",
-    "resp": [
-      "Review the exact official job description and eligibility requirements",
-      "Apply through the official application page"
-    ],
-    "apply": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
-    "status": "active",
-    "verifiedDate": "9 Oct 2026",
-    "sourceName": "Official employer careers or recognized application provider",
-    "who": "Refer to the official listing for eligibility.",
-    "workMode": "Not Specified",
-    "logo": [
-      "R",
-      "#374151"
-    ],
-    "skills": [],
-    "availabilityCheck": {
-      "url": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
-      "checkedAt": "2026-10-09",
-      "state": "review",
-      "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
-  },
-  {
-    "id": 96,
-    "page": "jobs/rubrik-software-engineer-cloud-azure.html",
-    "domain": "www.rubrik.com",
-    "company": "Rubrik",
-    "role": "Software Engineer – Cloud: Azure",
-    "roleTag": "Software Engineer – Cloud: Azure",
-    "loc": "Bengaluru",
-    "locationFilter": "Bengaluru",
-    "cat": "it",
-    "categories": [
-      "it"
-    ],
-    "expType": "fresher",
-    "expYears": "0–2 years",
-    "batch": "Not Specified",
-    "elig": "Refer to the exact official listing for eligibility.",
-    "salary": "Not Disclosed",
-    "date": "Not Specified",
-    "desc": "Rubrik is recruiting for Software Engineer – Cloud: Azure in Bengaluru. Refer to the exact official listing for eligibility and application instructions.",
-    "resp": [
-      "Review the exact official job description and eligibility requirements",
-      "Apply through the official application page"
-    ],
-    "apply": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-    "status": "active",
-    "verifiedDate": "9 Oct 2026",
-    "sourceName": "Official employer careers or recognized application provider",
-    "who": "Refer to the official listing for eligibility.",
-    "workMode": "Not Specified",
-    "logo": [
-      "R",
-      "#374151"
-    ],
-    "skills": [],
-    "availabilityCheck": {
-      "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "checkedAt": "2026-10-09",
-      "state": "review",
-      "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
-    }
+    },
+    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoSourceDomain": "amazon.jobs"
   },
   {
     "id": 95,
