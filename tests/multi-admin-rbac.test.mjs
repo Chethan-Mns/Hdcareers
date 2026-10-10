@@ -7,6 +7,8 @@ import auditHandler from "../api/admin/audit.js";
 import trafficHandler from "../api/admin/traffic.js";
 import publishHandler from "../api/admin/publish.js";
 import availabilityHandler from "../api/admin/availability.js";
+import ownerPasswordHandler from "../api/admin/owner-password.js";
+import {ownerPasswordOverride} from "../lib/admin-store.js";
 
 process.env.ADMIN_USERNAME="owner";
 process.env.ADMIN_PASSWORD="test-owner-placeholder";
@@ -156,5 +158,56 @@ test("Job Editor checker trigger is server-authorized, GitHub-backed and audited
    else process.env.VERCEL_ENV=previousEnv;
    if(previousPublishToken===undefined)delete process.env.GITHUB_PUBLISH_TOKEN;
    else process.env.GITHUB_PUBLISH_TOKEN=previousPublishToken;
+ }
+});
+
+
+test("Only Owner can change Owner credentials and wrong current password is rejected",async()=>{
+ const editor=await issueSession("job.friend","job_editor");
+ const owner=await issueSession("owner","owner");
+ const rEditor=res();
+ await ownerPasswordHandler({...req(editor),method:"POST",body:{currentPassword:"test-owner-placeholder",newPassword:"NeverAllowedFromEditor-123"}},rEditor);
+ assert.equal(rEditor.statusCode,403);
+ const rWrong=res();
+ await ownerPasswordHandler({...req(owner),method:"POST",body:{currentPassword:"incorrect-credential",newPassword:"FreshOwnerPassphrase-012345"}},rWrong);
+ assert.equal(rWrong.statusCode,403);
+ assert.equal(await ownerPasswordOverride(),null);
+ assert.equal((await lookupSession(owner)).role,"owner");
+ const rCrossSite=res();
+ await ownerPasswordHandler({...req(owner),method:"POST",headers:{...req(owner).headers,origin:"https://untrusted.example"},body:{currentPassword:"test-owner-placeholder",newPassword:"FreshOwnerPassphrase-012345"}},rCrossSite);
+ assert.equal(rCrossSite.statusCode,403);
+});
+
+test("Owner can rotate password in Preview; old environment password and all previous Owner sessions stop working",async()=>{
+ const originalEnv=process.env.VERCEL_ENV;
+ process.env.VERCEL_ENV="preview";
+ try{
+  const owner=await issueSession("owner","owner");
+  const secondOwnerDevice=await issueSession("owner","owner");
+  const editor=await issueSession("job.friend","job_editor");
+  const updated=res();
+  await ownerPasswordHandler({...req(owner),method:"POST",body:{currentPassword:"test-owner-placeholder",newPassword:"FreshOwnerPassphrase-012345"}},updated);
+  assert.equal(updated.statusCode,200);
+  assert.equal(updated.body.ok,true);
+  assert.match(updated.headers["Set-Cookie"],/Max-Age=0/);
+  assert.equal(await lookupSession(owner),null);
+  assert.equal(await lookupSession(secondOwnerDevice),null);
+  assert.equal((await lookupSession(editor)).role,"job_editor");
+  assert.equal(await verifyCredentials("owner","test-owner-placeholder"),null);
+  assert.equal((await verifyCredentials("owner","FreshOwnerPassphrase-012345")).role,"owner");
+  const record=await ownerPasswordOverride();
+  assert.equal(record.algorithm,"scrypt-16384");
+  assert.equal(JSON.stringify(record).includes("FreshOwnerPassphrase-012345"),false);
+  const auditRows=await auditEntries(30);
+  assert(auditRows.some(row=>row.action==="owner.password.change"&&row.result==="success"));
+  const newOwner=await issueSession("owner","owner");
+  const secondUpdate=res();
+  await ownerPasswordHandler({...req(newOwner),method:"POST",body:{currentPassword:"FreshOwnerPassphrase-012345",newPassword:"FinalOwnerPassphrase-0123456"}},secondUpdate);
+  assert.equal(secondUpdate.statusCode,200);
+  assert.equal(await verifyCredentials("owner","FreshOwnerPassphrase-012345"),null);
+  assert.equal((await verifyCredentials("owner","FinalOwnerPassphrase-0123456")).role,"owner");
+ }finally{
+  if(originalEnv===undefined)delete process.env.VERCEL_ENV;
+  else process.env.VERCEL_ENV=originalEnv;
  }
 });
