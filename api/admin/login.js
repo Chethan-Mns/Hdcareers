@@ -1,54 +1,28 @@
-import {authConfigured,createAdminSession,setAdminCookie,verifyAdminCredentials} from "../../lib/admin-auth.js";
-
-const attempts=new Map();
-const WINDOW_MS=10*60*1000;
-const LOCK_MS=15*60*1000;
-const MAX_ATTEMPTS=5;
-
-function clientKey(req){
-  const forwarded=String(req.headers["x-forwarded-for"]||"").split(",")[0].trim();
-  return forwarded||String(req.socket&&req.socket.remoteAddress||"unknown");
-}
-
-function stateFor(key){
-  const now=Date.now();
-  const current=attempts.get(key);
-  if(!current||now-current.first>WINDOW_MS){
-    const next={count:0,first:now,lockedUntil:0};
-    attempts.set(key,next);
-    return next;
-  }
-  return current;
-}
+import {authConfigured,createAdminSession,setAdminCookie,verifyCredentials} from "../../lib/admin-auth.js";
+import {audit,loginAllowed} from "../../lib/admin-store.js";
 
 export default async function handler(req,res){
   res.setHeader("Cache-Control","no-store");
-  if(req.method!=="POST"){
-    res.setHeader("Allow","POST");
-    return res.status(405).json({error:"Method not allowed."});
+  if(req.method!=="POST"){res.setHeader("Allow","POST");return res.status(405).json({error:"Method not allowed."});}
+  if(!authConfigured())return res.status(503).json({error:"Secure admin authentication is not configured."});
+  const username=String(req.body?.username||"");
+  const password=String(req.body?.password||"");
+  const ip=String(req.headers["x-vercel-forwarded-for"]||req.headers["x-forwarded-for"]||req.socket?.remoteAddress||"unknown").split(",")[0];
+  try{
+    if(!await loginAllowed(username,ip)){
+      res.setHeader("Retry-After","900");
+      return res.status(429).json({error:"Too many attempts. Please try again later."});
+    }
+    const user=await verifyCredentials(username,password);
+    if(!user){
+      await audit({username,role:"",action:"login",result:"denied"});
+      return res.status(401).json({error:"Invalid username or password."});
+    }
+    await audit({...user,action:"login",result:"success"});
+    const token=await createAdminSession(user);
+    setAdminCookie(res,token);
+    return res.status(200).json({ok:true,authenticated:true,username:user.username,role:user.role});
+  }catch{
+    return res.status(503).json({error:"Secure admin sign-in temporarily unavailable."});
   }
-  if(!authConfigured())return res.status(503).json({error:"Admin authentication is not configured in Vercel."});
-
-  const key=clientKey(req);
-  const state=stateFor(key);
-  const now=Date.now();
-  if(state.lockedUntil>now){
-    const seconds=Math.ceil((state.lockedUntil-now)/1000);
-    res.setHeader("Retry-After",String(seconds));
-    return res.status(429).json({error:"Too many failed attempts. Try again later."});
-  }
-
-  const username=String(req.body&&req.body.username||"");
-  const password=String(req.body&&req.body.password||"");
-  if(!username||!password||!verifyAdminCredentials(username,password)){
-    state.count++;
-    if(state.count>=MAX_ATTEMPTS)state.lockedUntil=now+LOCK_MS;
-    attempts.set(key,state);
-    return res.status(401).json({error:"Invalid username or password."});
-  }
-
-  attempts.delete(key);
-  const token=createAdminSession();
-  setAdminCookie(res,token);
-  return res.status(200).json({ok:true,authenticated:true});
 }
