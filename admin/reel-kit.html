@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Instagram Reel Kit · HD Careers Admin</title>
+<link rel="icon" href="/assets/hd-careers-logo.png">
+<style>
+:root{color-scheme:light;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f3f6fb;color:#152a44;--blue:#1063df;--ink:#10233e;--muted:#617189;--line:#e1e8f2}
+*{box-sizing:border-box}body{margin:0}a{color:#0c61c9;text-decoration:none}a:hover{text-decoration:underline}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top{max-width:1260px;margin:auto;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:800}.brand img{height:42px;width:42px;border-radius:13px;border:1px solid var(--line);object-fit:contain;padding:4px}
+nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn,button{font:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1px solid #ccd9e9;background:#fff;color:#1151a7;padding:10px 14px;border-radius:12px;transition:background .15s,border-color .15s}
+button:hover,.btn:hover{background:#f3f7fd;text-decoration:none}button:disabled{opacity:.48;cursor:not-allowed}
+.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.primary:hover{background:#0756ca}.danger{color:#b42318;border-color:#fed0ca}.success{background:#e9fbf3;border-color:#b4ebd3;color:#057652}
+main{max-width:1260px;margin:auto;padding:26px 20px 60px}.eyebrow{font-size:11px;font-weight:850;color:#2c69b1;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:30px;line-height:1.15;margin:7px 0 9px}h2{font-size:18px;margin:0 0 11px}h3{font-size:13px;letter-spacing:.02em;margin:0 0 8px}
+p{font-size:13px;color:var(--muted);line-height:1.65;margin:7px 0}.shell{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:18px;margin-top:23px;align-items:start}
+.card{border:1px solid var(--line);background:#fff;border-radius:22px;padding:20px;box-shadow:0 12px 32px rgba(14,39,68,.035)}
+.jobs-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.counter{font-size:11px;font-weight:850;border-radius:999px;padding:6px 10px;background:#ebf4ff;color:#1355aa}
+.search{display:flex;margin-top:13px;gap:8px}.search input{width:100%;border:1px solid #d1deed;border-radius:12px;padding:12px;font:inherit;font-size:14px;outline-color:#86b4ef}
+.tabs{display:flex;gap:7px;margin:10px 0 12px}.tab{flex:1;border:1px solid var(--line);font-weight:800}.tab.on{border-color:#acd0fd;background:#eaf3ff;color:#0754b8}
+.list{display:grid;gap:8px;max-height:600px;overflow-y:auto;overscroll-behavior:contain;padding-right:2px}
+.job{display:flex;gap:11px;text-align:left;align-items:center;width:100%;background:#fff;border:1px solid #e1e8f1;border-radius:14px;padding:12px;color:var(--ink)}
+.job.selected{background:#f0f7ff;border:2px solid #1b6fe1;padding:11px}
+.job:hover{border-color:#83b4f5}.avatar{width:47px;height:47px;object-fit:contain;border:1px solid #eef2f8;border-radius:12px;background:#fff;padding:5px;flex-shrink:0}
+.avatar-fallback{width:47px;height:47px;border-radius:12px;background:#eaf0fc;color:#2855a9;display:grid;place-items:center;flex-shrink:0;font-weight:900}
+.job-text{min-width:0;flex:1}.job strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.job span{display:block;font-size:12px;color:#63738c;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.job small{display:block;color:#397b71;font-size:11px;margin-top:4px}.job mark{background:#e9f3ff;color:#2358b6;border-radius:7px;padding:4px;font-size:10px;font-weight:900}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px}
+.muted{color:var(--muted)}.status{border-radius:12px;padding:12px;font-size:12px;line-height:1.6;background:#f1f6ff;border:1px solid #dbe9ff;color:#275e9d}
+.status.error{background:#fff3f1;border-color:#ffd4cd;color:#b42318}.status.ok{background:#ebfaf2;border-color:#b4ebd3;color:#067647}
+.kit{display:grid;gap:16px}.kit-empty{padding:43px 14px;text-align:center;color:#617189}
+.kit-head{display:flex;gap:14px;align-items:start;justify-content:space-between}
+.kit-head strong{display:block;font-size:20px;line-height:1.3}.meta{font-size:12px;color:#66768b;margin-top:6px}.pill{display:inline-flex;align-items:center;border-radius:999px;background:#e9f7f0;color:#167049;font-weight:850;font-size:11px;padding:6px 10px;white-space:nowrap}
+.pill.posted{background:#f0eaff;color:#6649b6}
+.field-label{display:block;font-size:12px;font-weight:850;margin-bottom:7px;color:#334967}
+textarea{width:100%;min-height:120px;border:1px solid #d3dfef;border-radius:12px;background:#fff;padding:13px;font:13px/1.65 Inter,system-ui,sans-serif;color:#20334d;resize:vertical}
+.storyboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.scene{padding:12px;border:1px solid #e0e7f3;border-radius:13px;background:#f9fbfe;min-width:0}
+.scene b{display:block;font-size:12px;color:#1f58ad;margin-bottom:7px}.scene p{font-size:11px;margin:0}
+.sep{border:0;border-top:1px solid #edf1f7;margin:0}.note{background:#f8f9fc;border:1px solid #e8edf5;border-radius:12px;padding:12px;font-size:12px;line-height:1.6;color:#5d6d82}
+.shot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+pre{white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,monospace;background:#f3f7fc;border-radius:10px;padding:12px;margin:8px 0}
+.hidden{display:none!important}
+@media(max-width:890px){.shell{grid-template-columns:1fr}.list{max-height:380px}}
+@media(max-width:620px){main{padding:20px 12px 45px}.top{padding:11px 12px}h1{font-size:24px}.card{padding:16px;border-radius:16px}.storyboard{grid-template-columns:repeat(2,1fr)}.kit-head{flex-wrap:wrap}.job{padding:10px}.job.selected{padding:9px}}
+</style></head><body>
+<header><div class="top"><div class="brand"><img src="/assets/hd-careers-logo.png" alt="HD Careers logo"><span>HD Careers · Instagram Reel Kit</span></div>
+<nav><a class="btn" href="/admin/">Dashboard</a><a class="btn" href="/admin/review-batch.html">Review Jobs</a></nav></div></header>
+<main>
+<div class="eyebrow">Creator workflow · You choose the job</div>
+<h1>Instagram Reel Kit</h1>
+<p>Select one verified, published job; get a short voiceover, edit-ready captions, a transparent title overlay and the exact HD Careers page link for SuperProfile Auto DM. No Reel or DM is published automatically.</p>
+<div id="notice" class="status">Checking your admin session and loading published jobs…</div>
+<div id="workspace" class="shell hidden">
+ <section class="card">
+  <div class="jobs-head"><h2>Choose your Reel job</h2><span id="jobCount" class="counter">—</span></div>
+  <p>Your selection is saved for all admins. Recent jobs are shown first, or search the complete active list.</p>
+  <div class="search"><input id="search" type="search" placeholder="Search company, role, location…" autocomplete="off" aria-label="Search published jobs"></div>
+  <div class="tabs"><button id="recentTab" class="tab on" type="button">Recent 10</button><button id="allTab" class="tab" type="button">All active jobs</button></div>
+  <div class="list" id="jobList"></div>
+  <div class="actions"><button id="saveSelection" class="primary" disabled type="button">Save this Reel job</button><button id="refresh" type="button">Refresh</button></div>
+  <p class="note">“Active” and “verified” reflect the last recorded job review, not a live careers-site check. Reopen the employer listing before uploading a Reel.</p>
+ </section>
+ <section class="kit">
+  <div id="empty" class="card kit-empty"><h2>Pick a job to prepare your Reel</h2><p>Select any active job on the left and click “Save this Reel job.”</p></div>
+  <div id="kitCard" class="card hidden">
+   <div class="kit-head">
+    <div><div class="eyebrow">Selected Reel candidate</div><strong id="jobTitle">—</strong><div id="jobMeta" class="meta"></div></div><span id="pickStatus" class="pill">Selected</span>
+   </div>
+   <div class="actions"><button id="markPosted" class="success" type="button">Mark Reel as posted</button><button id="clearPick" class="danger" type="button">Clear selection</button></div>
+   <p class="note" id="verification">Check that the employer's original application is still accepting applications before posting.</p>
+   <hr class="sep" style="margin:18px 0">
+   <h2>15-second voiceover</h2><label class="field-label" for="voiceover">Edit the wording to match your voice</label><textarea id="voiceover" spellcheck="true"></textarea>
+   <div class="shot"><span id="wordCount" class="meta">Estimated duration</span><div class="actions"><button id="copyScript" type="button">Copy script</button></div></div>
+   <hr class="sep" style="margin:18px 0">
+   <h2>Instagram Reel description</h2><label class="field-label" for="caption">5 hashtags, role details and a Comment LINK CTA</label><textarea id="caption" style="min-height:240px" spellcheck="true"></textarea>
+   <div class="actions"><button id="copyCaption" type="button">Copy caption</button><button id="copyAll" type="button">Download full Reel Kit (.txt)</button></div>
+   <hr class="sep" style="margin:18px 0">
+   <h2>SuperProfile Auto DM</h2><p>Copy the HD Careers job page below; paste this exact URL into the SuperProfile automation for the Reel you're publishing.</p>
+   <div id="jobUrl" class="note" style="word-break:break-all"></div>
+   <div class="actions"><button id="copyLink" class="primary" type="button">Copy job page link</button><a id="openJob" class="btn" target="_blank" rel="noopener noreferrer">Open job</a><a id="openOfficial" class="btn" target="_blank" rel="noopener noreferrer">Check employer link</a></div>
+   <hr class="sep" style="margin:18px 0">
+   <h2>Editing guide + title overlay</h2>
+   <div class="storyboard">
+     <div class="scene"><b>0–3 sec</b><p>Real office entrance / campus footage. Bold company name at top.</p></div>
+     <div class="scene"><b>3–7 sec</b><p>Office walkthrough. Show role and “freshers” only when applicable.</p></div>
+     <div class="scene"><b>7–11 sec</b><p>Indoor workspace. Show location and verified eligibility.</p></div>
+     <div class="scene"><b>11–15 sec</b><p>Comment LINK CTA. White subtitles with magenta word highlight.</p></div>
+   </div>
+   <div class="actions"><button id="downloadOverlay" type="button">Download transparent overlay PNG</button><a id="downloadLogo" class="btn hidden" target="_blank" rel="noopener">Company logo asset</a></div>
+   <p class="meta">Use your own or licensed footage; don't present another employer's office as this company's campus. The overlay contains no HD Careers watermark.</p>
+  </div>
+ </section>
+</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let jobs=[],selection=null,candidate=null,tab="recent",logoMap={},savedId=null,busy=false;
+const url=j=>"https://hdcareers.in/"+String(j.page||"").replace(/^\/+/, "");
+function textNode(tag,text,cls){const e=document.createElement(tag);if(cls)e.className=cls;e.textContent=String(text??"");return e}
+function notice(message,kind=""){const e=$("notice");e.textContent=message;e.className="status "+kind;e.classList.remove("hidden")}
+function logoUrl(j){const k=String(j.company||"").toLowerCase().trim();const result=logoMap[k]||(k.startsWith("drdo")?logoMap.drdo:null)||j.logoPath;return result?"/"+String(result).replace(/^\/+/, ""):null}
+function showLogo(j){const src=logoUrl(j);if(!src)return textNode("div",String(j.company||"?").slice(0,2).toUpperCase(),"avatar-fallback");const img=document.createElement("img");img.className="avatar";img.src=src;img.alt=j.company+" logo";img.loading="lazy";img.onerror=()=>img.replaceWith(textNode("div",String(j.company||"?").slice(0,2).toUpperCase(),"avatar-fallback"));return img}
+function experience(j){return j.expType==="fresher"?"Fresher":(j.expYears||"Experienced")}
+function shownJobs(){
+ const q=$("search").value.trim().toLowerCase();
+ const pool=tab==="recent"&&!q?jobs.slice(0,10):jobs;
+ return pool.filter(j=>!q||[j.company,j.role,j.loc,j.expYears,j.jobId].join(" ").toLowerCase().includes(q)).slice(0,80)
+}
+function drawJobs(){
+ $("recentTab").classList.toggle("on",tab==="recent");$("allTab").classList.toggle("on",tab==="all");
+ $("jobCount").textContent=jobs.length+" active";
+ const root=$("jobList");root.replaceChildren();
+ const shown=shownJobs();
+ if(!shown.length){root.append(textNode("p","No matching active published jobs."));return}
+ for(const j of shown){
+  const btn=document.createElement("button");btn.type="button";btn.className="job"+(candidate?.id===j.id?" selected":"");btn.setAttribute("aria-pressed",String(candidate?.id===j.id));
+  btn.append(showLogo(j));
+  const info=textNode("div","","job-text");
+  info.append(textNode("strong",j.company),textNode("span",j.role),textNode("span",[j.loc,experience(j)].filter(Boolean).join(" · ")));
+  if(Number(selection?.jobId)===Number(j.id))info.append(textNode("small",selection?.status==="posted"?"✓ Last Reel marked posted":"✓ Saved Reel job"));
+  btn.append(info);
+  if(candidate?.id===j.id)btn.append(textNode("mark","PICKED"));
+  btn.addEventListener("click",()=>{candidate=j;drawJobs();renderKit();$("saveSelection").disabled=busy||Number(j.id)===Number(selection?.jobId)});
+  root.append(btn);
+ }
+}
+function roleLabel(j){return String(j.role||"Job opening").replace(/\s+/g," ").trim()}
+function scriptFor(j){
+ const company=String(j.company||"").trim(),role=roleLabel(j),location=String(j.loc||"").trim();
+ const fresher=j.expType==="fresher";
+ const first="Hey guys! "+company+" is hiring "+(fresher?"freshers for ":"for ")+"a "+role+" role.";
+ const loc=location&&location.toLowerCase()!=="not specified"?" Location is "+location+".":"";
+ const elig=String(j.elig||"");
+ let qualification="";
+ if(/(?:b\.?tech|b\.?e\b)/i.test(elig))qualification=" BE or BTech graduates can apply.";
+ else if(fresher)qualification=" Fresh graduates can check eligibility.";
+ else if(j.expYears&&j.expYears!=="Not Specified")qualification=" Experience required: "+j.expYears+".";
+ let script=first+loc+qualification+" Interested? Comment LINK below for the apply link!";
+ if(script.trim().split(/\s+/).length>46)script=first+loc+" Interested? Comment LINK below for the apply link!";
+ return script.replace(/\s+/g," ").trim()
+}
+function hashtags(j){
+ const fresher=j.expType==="fresher";
+ const names=[String(j.company||"").replace(/[^A-Za-z0-9]/g,""),fresher?"FresherJobs":"ExperiencedJobs","JobAlert",j.cat==="it"?"ITJobs":"CareerOpportunities","HDCareers"];
+ return [...new Set(names.map(x=>"#"+x).filter(x=>x.length>1))].slice(0,5).join(" ")
+}
+function captionFor(j){
+ const lines=["🚨 "+String(j.company||"").toUpperCase()+" IS HIRING"+(j.expType==="fresher"?" FRESHERS":"")+"!","","💼 Role: "+j.role];
+ if(j.loc&&j.loc.toLowerCase()!=="not specified")lines.push("📍 Location: "+j.loc);
+ if(j.expYears&&j.expYears.toLowerCase()!=="not specified")lines.push("📌 Experience: "+j.expYears);
+ if(j.skills?.length)lines.push("🛠️ Skills: "+j.skills.slice(0,4).join(", "));
+ lines.push("","💬 Interested? Comment LINK below for the apply link!","","🔗 "+url(j),"",hashtags(j));
+ return lines.join("\n")
+}
+function renderKit(){
+ const j=candidate;
+ if(!j){$("empty").classList.remove("hidden");$("kitCard").classList.add("hidden");$("saveSelection").disabled=true;return}
+ $("empty").classList.add("hidden");$("kitCard").classList.remove("hidden");
+ $("jobTitle").textContent=j.company+" — "+j.role;
+ $("jobMeta").textContent=[j.loc,experience(j),j.jobId?"Req. "+j.jobId:""].filter(Boolean).join(" · ");
+ const picked=Number(selection?.jobId)===Number(j.id),posted=picked&&selection?.status==="posted";
+ $("pickStatus").textContent=posted?"Marked posted":picked?"Saved selection":"Unsaved selection";
+ $("pickStatus").classList.toggle("posted",posted);
+ $("saveSelection").disabled=busy||picked;
+ $("markPosted").disabled=busy||!picked;$("clearPick").disabled=busy||!picked;
+ $("markPosted").textContent=posted?"Mark not posted":"Mark Reel as posted";
+ $("verification").textContent="Last recorded verification: "+(j.manualLiveVerifiedAt?new Date(j.manualLiveVerifiedAt).toLocaleDateString("en-IN"):j.verifiedDate||"Not recorded")+". Please confirm the official careers link is still accepting applications before publishing.";
+ $("voiceover").value=scriptFor(j);$("caption").value=captionFor(j);
+ $("jobUrl").textContent=url(j);$("openJob").href=url(j);$("openOfficial").href=j.apply;
+ const img=logoUrl(j);$("downloadLogo").classList.toggle("hidden",!img);
+ if(img)$("downloadLogo").href=img;
+ updateCount();
+}
+function updateCount(){const n=$("voiceover").value.trim().split(/\s+/).filter(Boolean).length;$("wordCount").textContent=n+" words · approx. "+Math.round(n/2.8)+" sec at 168 WPM. Edit shorter if needed."}
+async function copy(value){try{await navigator.clipboard.writeText(value);notice("Copied to clipboard.","ok")}catch{notice("Copy unavailable in this browser. Select and copy the text manually.","error")}}
+function download(data,name,type){const blob=new Blob([data],{type});const anchor=document.createElement("a");anchor.href=URL.createObjectURL(blob);anchor.download=name;anchor.click();setTimeout(()=>URL.revokeObjectURL(anchor.href),3000)}
+function fullKit(){const j=candidate;return [
+ "HD CAREERS REEL KIT",j.company+" — "+j.role,"", "JOB PAGE",url(j),"",
+ "OFFICIAL EMPLOYER PAGE",j.apply,"", "15-SECOND VOICEOVER", $("voiceover").value,"",
+ "INSTAGRAM CAPTION", $("caption").value,"",
+ "EDITING TIMELINE","0–3: Real office entrance + company hiring hook","3–7: Office walking footage + exact job role",
+ "7–11: Workstations + verified eligibility/location","11–15: Comment LINK ending, white/magenta karaoke captions","",
+ "SUPERPROFILE","Comment keyword: LINK","DM destination: "+url(j),"",
+ "IMPORTANT","Recheck official employer Apply link before uploading. No fabricated packages. Video remains manually created and published."
+ ].join("\n")}
+async function request(method="GET",body){
+ const r=await fetch("/api/admin/reel-kit",{method,credentials:"same-origin",cache:"no-store",headers:{"content-type":"application/json"},body:body?JSON.stringify(body):undefined});
+ const data=await r.json().catch(()=>({}));
+ if(r.status===401){location.assign("/admin/");throw Error("Please sign in to Admin again.")}
+ if(!r.ok)throw Error(data.error||"Reel Kit service unavailable.");
+ return data;
+}
+async function reload(){
+ const d=await request();jobs=d.jobs||[];selection=d.selection||null;
+ const selected=jobs.find(j=>Number(j.id)===Number(selection?.jobId));
+ if(selected)candidate=selected;
+ else if(!candidate||!jobs.some(j=>j.id===candidate.id))candidate=null;
+ drawJobs();renderKit();notice("Ready. Select a job and save it to prepare your Reel.","ok");
+}
+async function change(action){
+ if(busy)return;
+ if(action==="clear"&&!confirm("Clear the saved Instagram Reel selection?"))return;
+ if(action==="mark_posted"&&!confirm("Confirm you already uploaded this Reel to Instagram?"))return;
+ busy=true;$("saveSelection").disabled=true;$("markPosted").disabled=true;
+ try{
+  const d=await request("POST",{action,...(action==="select"?{jobId:Number(candidate?.id)}:{})});
+  selection=d.selection;
+  if(action==="clear")candidate=null;
+  drawJobs();renderKit();
+  notice(action==="select"?"Reel job saved for Admin and your team.":action==="mark_posted"?"Reel marked posted manually.":action==="clear"?"Selection cleared.":"Reel marked not posted.","ok");
+ }catch(e){notice(e.message,"error");await reload().catch(()=>{})}
+ finally{busy=false;renderKit()}
+}
+function makeOverlay(){
+ const j=candidate;if(!j)return;
+ const canvas=document.createElement("canvas");canvas.width=1080;canvas.height=330;
+ const g=canvas.getContext("2d");
+ g.fillStyle="rgba(7,20,39,0.87)";g.beginPath();g.roundRect(0,0,1080,330,34);g.fill();
+ g.fillStyle="#ffffff";g.font="bold 64px Arial";
+ const name=String(j.company||"HIRING").toUpperCase();
+ g.fillText(name.length>20?name.slice(0,20)+"…":name,48,96);
+ g.fillStyle="#5df6ae";g.fillRect(48,120,345,10);
+ g.fillStyle="#ffffff";g.font="bold 43px Arial";
+ const role=String(j.role||"Open position");const lines=[];
+ let current="";
+ for(const token of role.split(" ")){const trial=(current?current+" ":"")+token;if(g.measureText(trial).width>970&&current){lines.push(current);current=token;}else current=trial;}
+ if(current)lines.push(current);
+ for(let i=0;i<Math.min(2,lines.length);i++)g.fillText(lines[i],48,195+i*59);
+ g.fillStyle="#84e4e4";g.font="bold 26px Arial";
+ g.fillText([j.loc,j.expType==="fresher"?"FRESHER JOB":j.expYears].filter(Boolean).join("  ·  ").slice(0,55),48,309);
+ canvas.toBlob(blob=>{if(blob)download(blob,"HD_Careers_"+String(j.company||"Company").replace(/\W+/g,"_")+"_Reel_Overlay.png","image/png")});
+}
+async function init(){
+ try{
+  const auth=await fetch("/api/admin/session",{credentials:"same-origin",cache:"no-store"}).then(r=>r.json());
+  if(!auth.authenticated){notice("Sign in to HD Careers Admin before opening Reel Kit.","error");return}
+  $("workspace").classList.remove("hidden");
+  const logos=fetch("/data/approved-company-logos.json").then(r=>r.ok?r.json():{}).then(data=>Object.fromEntries(Object.entries(data).map(([k,v])=>[k.toLowerCase().trim(),v]))).catch(()=>({}));
+  await reload();logoMap=await logos;drawJobs();
+ }catch(e){notice(e.message,"error")}
+}
+$("recentTab").onclick=()=>{tab="recent";drawJobs()};
+$("allTab").onclick=()=>{tab="all";drawJobs()};
+$("search").oninput=()=>drawJobs();
+$("refresh").onclick=()=>reload().catch(e=>notice(e.message,"error"));
+$("saveSelection").onclick=()=>change("select");
+$("markPosted").onclick=()=>change(selection?.status==="posted"?"mark_unposted":"mark_posted");
+$("clearPick").onclick=()=>change("clear");
+$("voiceover").oninput=updateCount;
+$("copyScript").onclick=()=>copy($("voiceover").value);
+$("copyCaption").onclick=()=>copy($("caption").value);
+$("copyLink").onclick=()=>copy(url(candidate));
+$("copyAll").onclick=()=>{if(candidate)download(fullKit(),"HD_Careers_Reel_Kit_"+candidate.id+".txt","text/plain;charset=utf-8")};
+$("downloadOverlay").onclick=makeOverlay;
+init();
+</script></body></html>
