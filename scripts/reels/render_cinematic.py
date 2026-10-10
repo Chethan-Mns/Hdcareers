@@ -37,7 +37,7 @@ def city(path):
                 if rng.random()<0.52:
                     d.rectangle((wx,y,wx+4,y+6),fill=rng.choice([(238,162,75),(55,165,202),(151,190,210)]))
     im.save(path)
-def plate(path,scene,name):
+def plate(path,scene,name,logo_path=None):
     im=Image.new("RGBA",(W,H),(0,0,0,0));d=ImageDraw.Draw(im)
     for y in range(H):
         opacity=int(85+min(120,max(0,(y-340)*.3)))
@@ -49,6 +49,13 @@ def plate(path,scene,name):
     d.rounded_rectangle((34,305,506,754),radius=27,fill=(3,11,26,226),outline=(67,143,183,155),width=2)
     d.rectangle((62,338,70,389),fill=(48,217,207))
     d.text((93,340),name.upper(),font=ft(33),fill="white")
+    if logo_path and Path(logo_path).is_file():
+        try:
+            logo=Image.open(logo_path).convert("RGBA")
+            logo.thumbnail((53,53))
+            d.rounded_rectangle((417,334,487,404),radius=12,fill=(255,255,255,241))
+            im.alpha_composite(logo,(452-logo.width//2,369-logo.height//2))
+        except OSError:pass
     titles=["IS HIRING!","BENGALURU","WANT TO APPLY?"]
     details=[["AI / ML COMPUTATIONAL","SCIENCE ASSOCIATE"],["BE / BTECH","GRADUATES"],["COMMENT","LINK"]]
     badges=["FRESHERS • 0–1 YEAR","0–1 YEAR EXPERIENCE","JOB DETAILS IN YOUR DMs"]
@@ -78,7 +85,8 @@ def main():
     out=Path(a.output);out.mkdir(parents=True,exist_ok=True)
     work=out/"work";work.mkdir(exist_ok=True);base=f"reel-{a.job_id}"
     city(work/"city.png")
-    for i in range(3):plate(work/f"panel{i}.png",i,j["company"])
+    logo=ROOT/str(j.get("logoPath","")) if j.get("logoPath") else None
+    for i in range(3):plate(work/f"panel{i}.png",i,j["company"],logo)
     script="Hey guys! Accenture is hiring freshers for an AI and ML Associate role. The job is in Bengaluru. B E or B Tech graduates with zero to one year experience can apply. Interested? Comment link below for the application details!"
     (out/f"{base}-script.txt").write_text(script+"\n",encoding="utf-8")
     captions=["Hey guys! Accenture is hiring freshers\nfor an AI and ML Associate role.","The job is in Bengaluru. BE or BTech\ngraduates with 0–1 year can apply.","Interested? Comment LINK below\nfor the application details!"]
