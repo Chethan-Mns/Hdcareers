@@ -131,11 +131,12 @@ function roleLabel(j){return String(j.role||"Job opening").replace(/\s+/g," ").t
 function scriptFor(j){
  const company=String(j.company||"").trim(),role=roleLabel(j),location=String(j.loc||"").trim();
  const fresher=j.expType==="fresher";
- const first="Hey guys! "+company+" is hiring "+(fresher?"freshers for ":"for ")+"a "+role+" role.";
+ const first="Hey guys! "+company+" is hiring "+(fresher?"freshers for ":"for ")+(/^[aeiou]/i.test(role)?"an ":"a ")+role+" role.";
  const loc=location&&location.toLowerCase()!=="not specified"?" Location is "+location+".":"";
  const elig=String(j.elig||"");
  let qualification="";
- if(/(?:b\.?tech|b\.?e\b)/i.test(elig))qualification=" BE or BTech graduates can apply.";
+ if(/\bBE\s*(?:or|and|\/)\s*B\.?Tech\b/i.test(elig))qualification=" BE or BTech graduates can check eligibility.";
+ else if(/\bB\.?Tech\b/i.test(elig))qualification=" BTech graduates can check eligibility.";
  else if(fresher)qualification=" Fresh graduates can check eligibility.";
  else if(j.expYears&&j.expYears!=="Not Specified")qualification=" Experience required: "+j.expYears+".";
  let script=first+loc+qualification+" Interested? Comment LINK below for the apply link!";
