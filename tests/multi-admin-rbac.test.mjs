@@ -88,3 +88,15 @@ test("Vercel preview cannot mutate production job data",async()=>{
     delete process.env.VERCEL_ENV;
   }
 });
+
+test("Existing Owner usernames with email-style characters remain accepted",async()=>{
+ const original=process.env.ADMIN_USERNAME;
+ try{
+  process.env.ADMIN_USERNAME="owner@example.com";
+  const who=await verifyCredentials("OWNER@EXAMPLE.COM","test-owner-placeholder");
+  assert.equal(who.username,"owner@example.com");
+  assert.equal(who.role,"owner");
+  const token=await createAdminSession(who);
+  assert.equal((await lookupSession(token)).role,"owner");
+ }finally{process.env.ADMIN_USERNAME=original}
+});
