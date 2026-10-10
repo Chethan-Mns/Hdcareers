@@ -123,32 +123,34 @@ def official(name,domain):
                 return save_raster(name,raw,real)
         except Exception: continue
     raise ValueError("No suitable official logo file detected")
-results={}
-for name in REPLACEMENTS:
-    domain=FAVICON[name]["domain"]
-    record={"name":name,"domain":domain}
-    try:
-        if name=="Amazon Operations":
-            file=ROOT/"assets/logos/amazon-mark.svg"
-            record.update(save_svg(name,file.read_bytes(),None,"repository:assets/logos/amazon-mark.svg"))
-            record["status"]="existing_compact_mark_candidate"
-        elif name in VECTORS:
-            url,color=VECTORS[name]
-            try:
-                raw,final,_=fetch(url)
-                record.update(save_svg(name,raw,color,final))
-            except Exception as exc:
+if __name__ == '__main__':
+    results={}
+    for name in REPLACEMENTS:
+        domain=FAVICON[name]["domain"]
+        record={"name":name,"domain":domain}
+        try:
+            if name=="Amazon Operations":
+                file=ROOT/"assets/logos/amazon-mark.svg"
+                record.update(save_svg(name,file.read_bytes(),None,"repository:assets/logos/amazon-mark.svg"))
+                record["status"]="existing_compact_mark_candidate"
+            elif name in VECTORS:
+                url,color=VECTORS[name]
+                try:
+                    raw,final,_=fetch(url)
+                    record.update(save_svg(name,raw,color,final))
+                except Exception as exc:
+                    record.update(official(name,domain))
+                    record["fallbackReason"]=str(exc)[:180]
+            else:
                 record.update(official(name,domain))
-                record["fallbackReason"]=str(exc)[:180]
-        else:
-            record.update(official(name,domain))
-    except Exception as exc:
-        prev=FAVICON[name]
-        if prev["status"]=="candidate_needs_brand_review" and (ROOT/prev["path"]).is_file():
-            record.update(status="existing_local_candidate",path=prev["path"],source="existing 256px cached icon",note="Official compact mark still needs verification")
-        else:
-            record.update(status="needs_official_asset",path=None,note=str(exc)[:170])
-    results[name]=record
-    print(f"{name}: {record['status']} {record.get('path')}",flush=True)
-MANIFEST.write_text(json.dumps(results,ensure_ascii=False,indent=2)+"\n")
-print("READY",sum(bool(x.get("path")) for x in results.values()),"of",len(results),flush=True)
+        except Exception as exc:
+            prev=FAVICON[name]
+            if prev["status"]=="candidate_needs_brand_review" and (ROOT/prev["path"]).is_file():
+                record.update(status="existing_local_candidate",path=prev["path"],source="existing 256px cached icon",note="Official compact mark still needs verification")
+            else:
+                record.update(status="needs_official_asset",path=None,note=str(exc)[:170])
+        results[name]=record
+        print(f"{name}: {record['status']} {record.get('path')}",flush=True)
+    MANIFEST.write_text(json.dumps(results,ensure_ascii=False,indent=2)+"\n")
+    print("READY",sum(bool(x.get("path")) for x in results.values()),"of",len(results),flush=True)
+    
