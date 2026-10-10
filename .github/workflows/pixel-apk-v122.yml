@@ -5,6 +5,7 @@ on:
       - fix/android-analytics-push-preview-20261010
     paths:
       - .github/workflows/pixel-apk-v122.yml
+      - android-admin/**
   workflow_dispatch:
 
 permissions:
