@@ -1,6 +1,11 @@
 name: Generate missing job pages
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/jobs.json'
+      - '.github/workflows/generate-job-pages.yml'
   workflow_dispatch:
 
 permissions:
