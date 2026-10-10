@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-10T09:17:30.200Z",
+  "checkedAt": "2026-10-10T09:17:34.127Z",
   "checked": 76,
-  "active": 75,
+  "active": 76,
   "expired": 0,
-  "review": 1,
+  "review": 0,
   "changedExpired": 0,
   "items": [
     {
@@ -364,9 +364,11 @@
       "role": "Inflight Services Hiring Events – October 2026",
       "page": "jobs/indigo-inflight-services-hiring-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/inflightservicesevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-10T08:59:42.200639+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-10T09:17:34.127Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-10T09:17:34.127Z"
     },
     {
       "id": 65,
