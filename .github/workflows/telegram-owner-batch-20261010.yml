@@ -1,0 +1,48 @@
+name: One-time owner approved Telegram batch October 10
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/telegram-owner-batch-20261010.yml
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Send all 10 approved jobs to Telegram (duplicates allowed)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          from post_telegram import load_current_jobs, message_for, send_telegram, wait_for_live
+          from check_job_availability import require_active
+          import os
+          ids = [112,113,114,115,116,117,118,110,111,109]
+          jobs = {int(j["id"]):j for j in load_current_jobs()}
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          channel = os.environ.get("TELEGRAM_CHANNEL_ID", "").strip() or os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          if not token or not channel:
+              raise SystemExit("Telegram secrets missing")
+          for n in ids:
+              job = jobs.get(n)
+              if not job:
+                  raise SystemExit(f"Missing approved job {n}")
+              require_active(job)
+              if not wait_for_live(job.get("page", "")):
+                  raise SystemExit(f"Job page not live: {n}")
+              message_id = send_telegram(token, channel, message_for(job))
+              print(f"TELEGRAM_SENT id={n} message_id={message_id} company={job['company']}", flush=True)
+          PY
