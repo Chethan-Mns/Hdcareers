@@ -1,0 +1,99 @@
+name: Cinematic Reel shadow prototype
+on:
+  push:
+    branches:
+      - feature/cinematic-reel-shadow-20261010
+    paths:
+      - scripts/reels/**
+      - admin/reel-shadow.html
+      - .github/workflows/cinematic-reel-shadow.yml
+      - data/jobs.json
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/reels/**
+      - admin/reel-shadow.html
+      - .github/workflows/cinematic-reel-shadow.yml
+      - data/jobs.json
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cinematic-reel-shadow-prototype
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/cinematic-reel-shadow-20261010
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install free video rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg espeak fonts-dejavu-core
+          python -m pip install --quiet pillow
+      - name: Download attributed, CC BY 3.0 moving skyline clip when available
+        run: |
+          mkdir -p reel-shadow/media
+          curl -fsSL --retry 2 --connect-timeout 10 --max-time 60 "https://upload.wikimedia.org/wikipedia/commons/d/d5/City_skyline_%28time_lapse%29.webm" -o reel-shadow/media/city-skyline.webm || true
+          if [ -s reel-shadow/media/city-skyline.webm ]; then
+            if ! ffprobe -v error reel-shadow/media/city-skyline.webm >/dev/null 2>&1; then
+              rm -f reel-shadow/media/city-skyline.webm
+            fi
+          fi
+      - name: Render verified Accenture job without publishing it
+        run: |
+          if [ -s reel-shadow/media/city-skyline.webm ]; then
+            python scripts/reels/render_cinematic.py --job-id 112 --background reel-shadow/media/city-skyline.webm
+          else
+            python scripts/reels/render_cinematic.py --job-id 112
+          fi
+      - name: Verify 15 second Reel, caption and no invented salary
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          folder=Path('reel-shadow/output')
+          data=json.loads((folder/'reel-112.json').read_text())
+          assert data['jobId']==112 and data['company']=='Accenture'
+          assert data['status']=='shadow-only'
+          video=folder/data['video']
+          assert video.stat().st_size>100000
+          probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_name,width,height','-of','json',str(video)]))
+          assert abs(float(probe['format']['duration'])-15)<.1,probe
+          assert any(s['codec_name']=='h264' and s.get('width')==1080 and s.get('height')==1920 for s in probe['streams'])
+          assert any(s['codec_name']=='aac' for s in probe['streams'])
+          caption=(folder/'reel-112-caption.txt').read_text()
+          assert 'https://hdcareers.in/jobs/' in caption
+          assert 'LPA' not in caption and '₹' not in caption
+          assert 'LINK' in caption
+          print('Cinematic Reel shadow checks passed')
+          PY
+      - name: Keep reel preview strictly on shadow branch
+        run: |
+          rm -rf reel-shadow/media reel-shadow/output/work
+          git config user.name 'HD Careers Shadow Reel Bot'
+          git config user.email 'hd-careers-shadow@users.noreply.github.com'
+          git add reel-shadow/output/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Render shadow Accenture hiring Reel for Owner preview'
+          git push origin HEAD:feature/cinematic-reel-shadow-20261010
+      - name: Save downloadable video build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-careers-cinematic-reel-preview
+          path: |
+            reel-shadow/output/reel-112.mp4
+            reel-shadow/output/reel-112-cover.jpg
+            reel-shadow/output/reel-112-caption.txt
+            reel-shadow/output/reel-112-script.txt
+            reel-shadow/output/reel-112.srt
+            reel-shadow/output/reel-112.json
+          retention-days: 14

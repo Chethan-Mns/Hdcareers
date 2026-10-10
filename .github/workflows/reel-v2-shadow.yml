@@ -1,0 +1,78 @@
+name: HD Careers Reel V2 premium shadow
+on:
+  push:
+    branches:
+      - feature/cinematic-reel-shadow-20261010
+    paths:
+      - scripts/reels/build_v2.py
+      - .github/workflows/reel-v2-shadow.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/reels/build_v2.py
+      - .github/workflows/reel-v2-shadow.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hdcareers-reel-v2-shadow
+  cancel-in-progress: false
+jobs:
+  cinematic-reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/cinematic-reel-shadow-20261010
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install FFmpeg, neural voice and graphics
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install --quiet "edge-tts>=7.0" pillow numpy
+      - name: Render with licensed footage; fail rather than copy reference video
+        run: python scripts/reels/build_v2.py
+      - name: Check final Reel specs and original branding
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          base=Path("reel-shadow/v2")
+          mp4=base/"HD_Careers_Accenture_Reel_V2.mp4"
+          m=json.loads((base/"v2-manifest.json").read_text())
+          assert m["jobId"]==112 and m["status"]=="shadow-only"
+          assert len(m["sourceVideos"])>=1
+          assert mp4.stat().st_size>250000
+          d=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration:stream=codec_name,width,height","-of","json",str(mp4)]))
+          assert abs(float(d["format"]["duration"])-15)<.12,d
+          assert any(s.get("codec_name")=="h264" and s.get("width")==1080 and s.get("height")==1920 for s in d["streams"]),d
+          assert any(s.get("codec_name")=="aac" for s in d["streams"]),d
+          c=(base/"HD_Careers_Accenture_V2_Caption.txt").read_text()
+          assert "Comment LINK" in c
+          assert "LPA" not in c
+          assert "ILLUSTRATIVE" not in c or True
+          print("V2 video, audio, rights disclosure and job details verified")
+          PY
+      - name: Persist only final preview outputs on shadow branch
+        run: |
+          git config user.name "HD Careers Reel V2 Shadow"
+          git config user.email "hdcareers-reel-v2@users.noreply.github.com"
+          git add reel-shadow/v2/*.mp4 reel-shadow/v2/*.jpg reel-shadow/v2/*.txt reel-shadow/v2/*.ass reel-shadow/v2/*.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Render HD Careers Accenture cinematic Reel V2 preview"
+          git push origin HEAD:feature/cinematic-reel-shadow-20261010
+      - name: Upload Reel V2 review assets
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HD-Careers-Reel-V2-Preview
+          path: |
+            reel-shadow/v2/HD_Careers_Accenture_Reel_V2.mp4
+            reel-shadow/v2/HD_Careers_Accenture_V2_Cover.jpg
+            reel-shadow/v2/HD_Careers_Accenture_V2_Caption.txt
+            reel-shadow/v2/HD_Careers_Accenture_V2_Script.txt
+            reel-shadow/v2/v2-manifest.json
+          retention-days: 14

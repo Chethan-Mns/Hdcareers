@@ -1,0 +1,47 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 1280
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Words,DejaVu Sans,31,&H00FFFFFF,&H00FFFFFF,&H00040C13,&H80000000,1,0,0,0,100,100,0,0,1,3,1,2,35,35,340,1
+Style: CTA,DejaVu Sans,34,&H0000FFBF,&H0000FFBF,&H0005140F,&H80000000,1,0,0,0,100,100,0,0,1,3,1,2,35,35,160,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.43,Words,,0,0,0,,{\c&H00E560F5&}Hey{\c&H00FFFFFF&} guys! Accenture is hiring freshers
+Dialogue: 0,0:00:00.43,0:00:00.86,Words,,0,0,0,,Hey {\c&H00E560F5&}guys!{\c&H00FFFFFF&} Accenture is hiring freshers
+Dialogue: 0,0:00:00.86,0:00:01.30,Words,,0,0,0,,Hey guys! {\c&H00E560F5&}Accenture{\c&H00FFFFFF&} is hiring freshers
+Dialogue: 0,0:00:01.30,0:00:01.73,Words,,0,0,0,,Hey guys! Accenture {\c&H00E560F5&}is{\c&H00FFFFFF&} hiring freshers
+Dialogue: 0,0:00:01.73,0:00:02.16,Words,,0,0,0,,Hey guys! Accenture is {\c&H00E560F5&}hiring{\c&H00FFFFFF&} freshers
+Dialogue: 0,0:00:02.16,0:00:02.60,Words,,0,0,0,,Hey guys! Accenture is hiring {\c&H00E560F5&}freshers{\c&H00FFFFFF&}
+Dialogue: 0,0:00:02.60,0:00:03.03,Words,,0,0,0,,{\c&H00E560F5&}for{\c&H00FFFFFF&} an AI and M L
+Dialogue: 0,0:00:03.03,0:00:03.46,Words,,0,0,0,,for {\c&H00E560F5&}an{\c&H00FFFFFF&} AI and M L
+Dialogue: 0,0:00:03.46,0:00:03.90,Words,,0,0,0,,for an {\c&H00E560F5&}AI{\c&H00FFFFFF&} and M L
+Dialogue: 0,0:00:03.90,0:00:04.33,Words,,0,0,0,,for an AI {\c&H00E560F5&}and{\c&H00FFFFFF&} M L
+Dialogue: 0,0:00:04.33,0:00:04.76,Words,,0,0,0,,for an AI and {\c&H00E560F5&}M{\c&H00FFFFFF&} L
+Dialogue: 0,0:00:04.76,0:00:05.20,Words,,0,0,0,,for an AI and M {\c&H00E560F5&}L{\c&H00FFFFFF&}
+Dialogue: 0,0:00:05.20,0:00:05.63,Words,,0,0,0,,{\c&H00E560F5&}Associate{\c&H00FFFFFF&} role in Bengaluru. B E
+Dialogue: 0,0:00:05.63,0:00:06.06,Words,,0,0,0,,Associate {\c&H00E560F5&}role{\c&H00FFFFFF&} in Bengaluru. B E
+Dialogue: 0,0:00:06.06,0:00:06.50,Words,,0,0,0,,Associate role {\c&H00E560F5&}in{\c&H00FFFFFF&} Bengaluru. B E
+Dialogue: 0,0:00:06.50,0:00:06.93,Words,,0,0,0,,Associate role in {\c&H00E560F5&}Bengaluru.{\c&H00FFFFFF&} B E
+Dialogue: 0,0:00:06.93,0:00:07.36,Words,,0,0,0,,Associate role in Bengaluru. {\c&H00E560F5&}B{\c&H00FFFFFF&} E
+Dialogue: 0,0:00:07.36,0:00:07.80,Words,,0,0,0,,Associate role in Bengaluru. B {\c&H00E560F5&}E{\c&H00FFFFFF&}
+Dialogue: 0,0:00:07.80,0:00:08.23,Words,,0,0,0,,{\c&H00E560F5&}or{\c&H00FFFFFF&} B Tech graduates with up
+Dialogue: 0,0:00:08.23,0:00:08.66,Words,,0,0,0,,or {\c&H00E560F5&}B{\c&H00FFFFFF&} Tech graduates with up
+Dialogue: 0,0:00:08.66,0:00:09.10,Words,,0,0,0,,or B {\c&H00E560F5&}Tech{\c&H00FFFFFF&} graduates with up
+Dialogue: 0,0:00:09.10,0:00:09.53,Words,,0,0,0,,or B Tech {\c&H00E560F5&}graduates{\c&H00FFFFFF&} with up
+Dialogue: 0,0:00:09.53,0:00:09.96,Words,,0,0,0,,or B Tech graduates {\c&H00E560F5&}with{\c&H00FFFFFF&} up
+Dialogue: 0,0:00:09.96,0:00:10.40,Words,,0,0,0,,or B Tech graduates with {\c&H00E560F5&}up{\c&H00FFFFFF&}
+Dialogue: 0,0:00:10.40,0:00:10.83,Words,,0,0,0,,{\c&H00E560F5&}to{\c&H00FFFFFF&} one year experience can apply.
+Dialogue: 0,0:00:10.83,0:00:11.26,Words,,0,0,0,,to {\c&H00E560F5&}one{\c&H00FFFFFF&} year experience can apply.
+Dialogue: 0,0:00:11.26,0:00:11.70,Words,,0,0,0,,to one {\c&H00E560F5&}year{\c&H00FFFFFF&} experience can apply.
+Dialogue: 0,0:00:11.70,0:00:12.13,Words,,0,0,0,,to one year {\c&H00E560F5&}experience{\c&H00FFFFFF&} can apply.
+Dialogue: 0,0:00:12.13,0:00:12.56,Words,,0,0,0,,to one year experience {\c&H00E560F5&}can{\c&H00FFFFFF&} apply.
+Dialogue: 0,0:00:12.56,0:00:13.00,Words,,0,0,0,,to one year experience can {\c&H00E560F5&}apply.{\c&H00FFFFFF&}
+Dialogue: 0,0:00:13.00,0:00:13.43,Words,,0,0,0,,{\c&H00E560F5&}Interested?{\c&H00FFFFFF&} Comment LINK below!
+Dialogue: 0,0:00:13.43,0:00:13.86,Words,,0,0,0,,Interested? {\c&H00E560F5&}Comment{\c&H00FFFFFF&} LINK below!
+Dialogue: 0,0:00:13.86,0:00:14.30,Words,,0,0,0,,Interested? Comment {\c&H00E560F5&}LINK{\c&H00FFFFFF&} below!
+Dialogue: 0,0:00:14.30,0:00:14.73,Words,,0,0,0,,Interested? Comment LINK {\c&H00E560F5&}below!{\c&H00FFFFFF&}
+Dialogue: 1,0:00:12.10,0:00:14.85,CTA,,0,0,0,,COMMENT LINK ↓
