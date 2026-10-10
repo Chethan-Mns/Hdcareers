@@ -8,6 +8,14 @@ on:
       - admin/reel-shadow.html
       - .github/workflows/cinematic-reel-shadow.yml
       - data/jobs.json
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/reels/**
+      - admin/reel-shadow.html
+      - .github/workflows/cinematic-reel-shadow.yml
+      - data/jobs.json
   workflow_dispatch:
 permissions:
   contents: write
