@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T03:32:20Z",
+  "updatedAt": "2026-10-10T03:38:16Z",
   "slots": [
     {
       "id": "it-9am",
@@ -8,10 +8,10 @@
       "timezone": "Asia/Kolkata",
       "automationId": "6aba9b6828308191a8e5c95839c9d9be",
       "enabled": true,
-      "lastRunAt": "2026-10-09T03:32:20Z",
+      "lastRunAt": "2026-10-10T03:38:16Z",
       "nextRunAt": "2026-10-04T03:30:00.000Z",
       "outcome": "no_publish",
-      "detail": "Review-only discovery completed: 36 candidates screened; proposed 10 across 10 employers (Fresher/Early-career IT 6, technical IT with experience not stated 1, Experienced IT 2, Government/PSU 1). Expired 2; review/unconfirmed 8. Nothing published or queued to Telegram pending explicit user approval.",
+      "detail": "Review-only discovery completed: 44 candidates screened after repository dedupe; proposed 10 across 9 employers (Fresher/Early-career IT 5, technical/IT with experience not stated 2, Experienced IT 2, Experienced Non-IT 1). Expired/closed 2; review/unconfirmed 10. Nothing published or queued to Telegram pending explicit user approval.",
       "target": "9–10 verified jobs/day",
       "mix": [
         "3–4 Fresher IT",
