@@ -48,10 +48,24 @@ button:disabled{opacity:.55;cursor:wait}.actions{display:flex;gap:8px;flex-wrap:
   </section>
   <section class="panel"><h2>Permissions</h2>
     <p><strong>Owner</strong> — all admin features, job publishing, analytics, team accounts, session revocation and audit logs.</p>
-    <p><strong>Job Editor</strong> — view/create/review/publish jobs and prepare daily batches. No access to team accounts, account secrets, traffic analytics or global checker controls.</p>
+    <p><strong>Job Editor</strong> — view/create/review/publish jobs, prepare daily batches and manually run the expired-job checker. No access to team accounts, account secrets, traffic analytics or security settings.</p>
     <p class="notice">Disabling an editor or revoking sessions takes effect across all devices on the next authenticated request. The Owner account is protected from team-level changes.</p>
   </section>
  </div>
+ <section class="panel" id="ownerSecurity">
+  <div class="row"><div><h2>Change Owner Password</h2><p>Update your own admin password without changing Vercel settings. Your current password is required. Your new password is stored securely as a salted hash; all Owner sessions will be signed out.</p></div><span class="status">Owner only</span></div>
+  <form id="ownerPasswordForm" class="fields" autocomplete="off">
+   <div class="cols">
+    <label>Current password <input id="ownerCurrentPassword" type="password" required autocomplete="current-password" maxlength="128" placeholder="Enter your current password"></label>
+    <label>New password <input id="ownerNewPassword" type="password" required autocomplete="new-password" minlength="14" maxlength="128" placeholder="At least 14 characters"></label>
+   </div>
+   <div class="cols">
+    <label>Confirm new password <input id="ownerConfirmPassword" type="password" required autocomplete="new-password" minlength="14" maxlength="128" placeholder="Repeat your new password"></label>
+    <div><p class="notice">After saving, all Owner devices will be signed out. Job Editor accounts and scheduled jobs are unaffected.</p></div>
+   </div>
+   <div class="actions"><button class="primary" id="saveOwnerPassword" type="submit">Update Owner Password</button><button id="toggleOwnerPassword" type="button">Show / hide passwords</button></div>
+  </form>
+ </section>
  <section class="panel">
    <div class="row"><h2>Active accounts</h2><button id="reload">Refresh</button></div>
    <div id="accounts"></div>
@@ -102,6 +116,29 @@ async function reload(){
  }));
  if(!audit.items.length)logs.append(text("p","No recorded events yet."));
 }
+$("ownerPasswordForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const currentPassword=$("ownerCurrentPassword").value;
+ const newPassword=$("ownerNewPassword").value;
+ const confirmPassword=$("ownerConfirmPassword").value;
+ if(newPassword.length<14||newPassword.length>128){message("The new password must contain 14–128 characters.",true);return}
+ if(newPassword!==confirmPassword){message("New password and confirmation do not match.",true);return}
+ if(newPassword===currentPassword){message("Choose a new password different from the current one.",true);return}
+ if(!window.confirm("Change your Owner password and sign out every Owner device?"))return;
+ const button=$("saveOwnerPassword");button.disabled=true;
+ try{
+  await api("/api/admin/owner-password","POST",{currentPassword,newPassword});
+  $("ownerCurrentPassword").value="";
+  $("ownerNewPassword").value="";
+  $("ownerConfirmPassword").value="";
+  location.replace("/admin/?passwordChanged=1");
+ }catch(err){message(err.message,true)}finally{button.disabled=false}
+});
+$("toggleOwnerPassword").onclick=()=>{
+ const inputs=["ownerCurrentPassword","ownerNewPassword","ownerConfirmPassword"].map($);
+ const type=inputs[0].type==="password"?"text":"password";
+ inputs.forEach(input=>{input.type=type});
+};
 $("createForm").addEventListener("submit",async e=>{
  e.preventDefault();
  const button=e.submitter;button.disabled=true;
