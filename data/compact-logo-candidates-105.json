@@ -1,0 +1,422 @@
+[
+  {
+    "name": "Accenture",
+    "domain": "accenture.com"
+  },
+  {
+    "name": "TCS",
+    "domain": "tcs.com"
+  },
+  {
+    "name": "Infosys",
+    "domain": "infosys.com"
+  },
+  {
+    "name": "Wipro",
+    "domain": "wipro.com"
+  },
+  {
+    "name": "HCLTech",
+    "domain": "hcltech.com"
+  },
+  {
+    "name": "Tech Mahindra",
+    "domain": "techmahindra.com"
+  },
+  {
+    "name": "Cognizant",
+    "domain": "cognizant.com"
+  },
+  {
+    "name": "Capgemini",
+    "domain": "capgemini.com"
+  },
+  {
+    "name": "LTIMindtree",
+    "domain": "ltimindtree.com"
+  },
+  {
+    "name": "IBM",
+    "domain": "ibm.com"
+  },
+  {
+    "name": "NTT DATA",
+    "domain": "nttdata.com"
+  },
+  {
+    "name": "DXC Technology",
+    "domain": "dxc.com"
+  },
+  {
+    "name": "Mphasis",
+    "domain": "mphasis.com"
+  },
+  {
+    "name": "Persistent Systems",
+    "domain": "persistent.com"
+  },
+  {
+    "name": "Coforge",
+    "domain": "coforge.com"
+  },
+  {
+    "name": "Hexaware",
+    "domain": "hexaware.com"
+  },
+  {
+    "name": "CGI",
+    "domain": "cgi.com"
+  },
+  {
+    "name": "UST",
+    "domain": "ust.com"
+  },
+  {
+    "name": "EPAM Systems",
+    "domain": "epam.com"
+  },
+  {
+    "name": "Virtusa",
+    "domain": "virtusa.com"
+  },
+  {
+    "name": "Brillio",
+    "domain": "brillio.com"
+  },
+  {
+    "name": "Zensar Technologies",
+    "domain": "zensar.com"
+  },
+  {
+    "name": "Nagarro",
+    "domain": "nagarro.com"
+  },
+  {
+    "name": "Sopra Steria",
+    "domain": "soprasteria.com"
+  },
+  {
+    "name": "Kyndryl",
+    "domain": "kyndryl.com"
+  },
+  {
+    "name": "Atos",
+    "domain": "atos.net"
+  },
+  {
+    "name": "Genpact",
+    "domain": "genpact.com"
+  },
+  {
+    "name": "Deloitte",
+    "domain": "deloitte.com"
+  },
+  {
+    "name": "EY",
+    "domain": "ey.com"
+  },
+  {
+    "name": "PwC",
+    "domain": "pwc.com"
+  },
+  {
+    "name": "KPMG",
+    "domain": "kpmg.com"
+  },
+  {
+    "name": "Google",
+    "domain": "google.com"
+  },
+  {
+    "name": "Microsoft",
+    "domain": "microsoft.com"
+  },
+  {
+    "name": "Amazon",
+    "domain": "amazon.com"
+  },
+  {
+    "name": "Adobe",
+    "domain": "adobe.com"
+  },
+  {
+    "name": "Oracle",
+    "domain": "oracle.com"
+  },
+  {
+    "name": "SAP",
+    "domain": "sap.com"
+  },
+  {
+    "name": "Salesforce",
+    "domain": "salesforce.com"
+  },
+  {
+    "name": "Cisco",
+    "domain": "cisco.com"
+  },
+  {
+    "name": "Intel",
+    "domain": "intel.com"
+  },
+  {
+    "name": "NVIDIA",
+    "domain": "nvidia.com"
+  },
+  {
+    "name": "Qualcomm",
+    "domain": "qualcomm.com"
+  },
+  {
+    "name": "Dell Technologies",
+    "domain": "dell.com"
+  },
+  {
+    "name": "HP",
+    "domain": "hp.com"
+  },
+  {
+    "name": "HPE",
+    "domain": "hpe.com"
+  },
+  {
+    "name": "ServiceNow",
+    "domain": "servicenow.com"
+  },
+  {
+    "name": "Red Hat",
+    "domain": "redhat.com"
+  },
+  {
+    "name": "Autodesk",
+    "domain": "autodesk.com"
+  },
+  {
+    "name": "Broadcom",
+    "domain": "broadcom.com"
+  },
+  {
+    "name": "Atlassian",
+    "domain": "atlassian.com"
+  },
+  {
+    "name": "NetApp",
+    "domain": "netapp.com"
+  },
+  {
+    "name": "Freshworks",
+    "domain": "freshworks.com"
+  },
+  {
+    "name": "Zoho",
+    "domain": "zoho.com"
+  },
+  {
+    "name": "Flipkart",
+    "domain": "flipkart.com"
+  },
+  {
+    "name": "Walmart Global Tech",
+    "domain": "walmart.com"
+  },
+  {
+    "name": "PhonePe",
+    "domain": "phonepe.com"
+  },
+  {
+    "name": "Razorpay",
+    "domain": "razorpay.com"
+  },
+  {
+    "name": "Paytm",
+    "domain": "paytm.com"
+  },
+  {
+    "name": "Meesho",
+    "domain": "meesho.com"
+  },
+  {
+    "name": "Swiggy",
+    "domain": "swiggy.com"
+  },
+  {
+    "name": "Zomato",
+    "domain": "zomato.com"
+  },
+  {
+    "name": "Uber",
+    "domain": "uber.com"
+  },
+  {
+    "name": "PayPal",
+    "domain": "paypal.com"
+  },
+  {
+    "name": "JPMorgan Chase",
+    "domain": "jpmorganchase.com"
+  },
+  {
+    "name": "Goldman Sachs",
+    "domain": "goldmansachs.com"
+  },
+  {
+    "name": "Morgan Stanley",
+    "domain": "morganstanley.com"
+  },
+  {
+    "name": "Wells Fargo",
+    "domain": "wellsfargo.com"
+  },
+  {
+    "name": "Citi",
+    "domain": "citi.com"
+  },
+  {
+    "name": "Barclays",
+    "domain": "barclays.com"
+  },
+  {
+    "name": "HSBC",
+    "domain": "hsbc.com"
+  },
+  {
+    "name": "Deutsche Bank",
+    "domain": "db.com"
+  },
+  {
+    "name": "Bank of America",
+    "domain": "bankofamerica.com"
+  },
+  {
+    "name": "American Express",
+    "domain": "americanexpress.com"
+  },
+  {
+    "name": "Visa",
+    "domain": "visa.com"
+  },
+  {
+    "name": "Mastercard",
+    "domain": "mastercard.com"
+  },
+  {
+    "name": "State Street",
+    "domain": "statestreet.com"
+  },
+  {
+    "name": "Siemens",
+    "domain": "siemens.com"
+  },
+  {
+    "name": "Bosch",
+    "domain": "bosch.com"
+  },
+  {
+    "name": "Honeywell",
+    "domain": "honeywell.com"
+  },
+  {
+    "name": "GE HealthCare",
+    "domain": "gehealthcare.com"
+  },
+  {
+    "name": "GE Vernova",
+    "domain": "gevernova.com"
+  },
+  {
+    "name": "Philips",
+    "domain": "philips.com"
+  },
+  {
+    "name": "Schneider Electric",
+    "domain": "se.com"
+  },
+  {
+    "name": "Ericsson",
+    "domain": "ericsson.com"
+  },
+  {
+    "name": "Nokia",
+    "domain": "nokia.com"
+  },
+  {
+    "name": "Samsung R&D",
+    "domain": "samsung.com"
+  },
+  {
+    "name": "Texas Instruments",
+    "domain": "ti.com"
+  },
+  {
+    "name": "ABB",
+    "domain": "abb.com"
+  },
+  {
+    "name": "L&T Technology Services",
+    "domain": "ltts.com"
+  },
+  {
+    "name": "Continental",
+    "domain": "continental.com"
+  },
+  {
+    "name": "Micron Technology",
+    "domain": "micron.com"
+  },
+  {
+    "name": "Applied Materials",
+    "domain": "appliedmaterials.com"
+  },
+  {
+    "name": "Reliance Industries",
+    "domain": "ril.com"
+  },
+  {
+    "name": "Tata Motors",
+    "domain": "tatamotors.com"
+  },
+  {
+    "name": "Tata Steel",
+    "domain": "tatasteel.com"
+  },
+  {
+    "name": "Larsen & Toubro",
+    "domain": "larsentoubro.com"
+  },
+  {
+    "name": "Aditya Birla Group",
+    "domain": "adityabirla.com"
+  },
+  {
+    "name": "ITC",
+    "domain": "itcportal.com"
+  },
+  {
+    "name": "Hindustan Unilever",
+    "domain": "hul.co.in"
+  },
+  {
+    "name": "Procter & Gamble",
+    "domain": "pg.com"
+  },
+  {
+    "name": "Nestlé",
+    "domain": "nestle.com"
+  },
+  {
+    "name": "Asian Paints",
+    "domain": "asianpaints.com"
+  },
+  {
+    "name": "IndiGo",
+    "domain": "goindigo.in"
+  },
+  {
+    "name": "DHL",
+    "domain": "dhl.com"
+  },
+  {
+    "name": "Amazon Operations",
+    "domain": "amazon.com"
+  }
+]
