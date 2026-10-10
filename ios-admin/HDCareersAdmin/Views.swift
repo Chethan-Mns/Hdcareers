@@ -464,7 +464,7 @@ struct LoginView: View {
 
 struct RootTabView: View {
     @EnvironmentObject private var state: AppState
-    @State private var selection = 0
+
 
     var body: some View {
         TabView(selection: $selection) {
