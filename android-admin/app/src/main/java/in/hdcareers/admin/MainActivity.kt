@@ -5,20 +5,19 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import android.content.pm.PackageManager
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity:FragmentActivity() {
-    private val permission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
     private lateinit var vm: AdminViewModel
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        if(Build.VERSION.SDK_INT >= 33) permission.launch(Manifest.permission.POST_NOTIFICATIONS)
         setContent {
             vm=viewModel()
             if(intent?.getBooleanExtra("open_review",false)==true) vm.tab=1
@@ -26,7 +25,7 @@ class MainActivity:FragmentActivity() {
                 onBiometricSignIn={authenticate { vm.biometricSignIn() }},
                 onEnableBiometric={authenticate { vm.enableBiometric() }},
                 onRequestNotificationPermission={
-                    if(Build.VERSION.SDK_INT>=33) permission.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    requestNotificationPermission()
                 })
         }
     }
@@ -35,6 +34,13 @@ class MainActivity:FragmentActivity() {
         setIntent(intent)
         if(intent.getBooleanExtra("open_review",false) && ::vm.isInitialized) vm.tab=1
     }
+    private fun requestNotificationPermission() {
+        if(Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.POST_NOTIFICATIONS),1001)
+        }
+    }
+
     private fun authenticate(onSuccess:()->Unit) {
         val available=BiometricManager.from(this).canAuthenticate(
             BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
