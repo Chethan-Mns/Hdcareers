@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const ALLOWED_DAYS=new Set([1,7,30]);
 const TOKEN_URL="https://oauth2.googleapis.com/token";
@@ -179,7 +179,7 @@ function realtimeRows(report,key){
 
 export default async function handler(req,res){
   res.setHeader("Cache-Control","private, max-age=0, no-store");
-  if(!requireAdmin(req,res))return;
+  if(!await requireAdmin(req,res,["owner"]))return;
   if(req.method!=="GET"){
     res.setHeader("Allow","GET");
     return res.status(405).json({error:"Method not allowed."});

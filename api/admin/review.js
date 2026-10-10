@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO="Chethan-Mns/Hdcareers";
 const DEFAULT_BASE="main";
@@ -142,7 +142,8 @@ export default async function handler(req,res){
     res.setHeader("Allow","POST");
     return res.status(405).json({error:"Method not allowed."});
   }
-  if(!requireAdmin(req,res))return;
+  if(!await requireAdmin(req,res))return;
+  if(process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only. Production job changes are disabled."});
   if(!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
@@ -154,6 +155,9 @@ export default async function handler(req,res){
   if(!["expire","keep"].includes(action))return res.status(400).json({error:"action must be expire or keep."});
 
   const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
+
+  try{await auditMutation(req,"job.review."+action,String(jobId));}
+  catch{return res.status(503).json({error:"Audit logging unavailable. Review was not changed."});}
 
   for(let attempt=1;attempt<=5;attempt++){
     try{

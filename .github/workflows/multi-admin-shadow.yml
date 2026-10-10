@@ -1,0 +1,25 @@
+name: Multi-admin RBAC shadow tests
+on:
+  push:
+    branches:
+      - feature/multi-admin-rbac
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  security-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check authentication and admin API syntax
+        run: |
+          for file in lib/admin-auth.js lib/admin-store.js api/admin/*.js; do node --check "$file"; done
+      - name: Run isolated authentication and RBAC regressions
+        run: node --test tests/multi-admin-rbac.test.mjs

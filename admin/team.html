@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Team Access · HD Careers</title>
+<link rel="icon" href="/assets/hd-careers-logo.png">
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#102542;background:#f3f6fb}*{box-sizing:border-box}
+body{margin:0;min-height:100vh}header{background:#fff;border-bottom:1px solid #dce5f1;position:sticky;top:0;z-index:5}
+nav,main{max-width:1090px;margin:auto;padding:18px}nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{height:40px;width:40px;object-fit:contain;border:1px solid #e4e9f3;border-radius:12px;padding:4px}
+.brand{display:flex;align-items:center;gap:12px}h1{font-size:27px;margin:0 0 5px}h2{font-size:18px;margin:0 0 14px}
+p{color:#64748b;font-size:13px;line-height:1.55}main{padding-top:30px;display:grid;gap:18px}
+.panel{background:#fff;border:1px solid #e0e8f2;border-radius:20px;padding:23px;box-shadow:0 8px 30px rgba(15,23,42,.035)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.fields{display:grid;gap:12px}
+label{font-size:12px;font-weight:700;color:#475569;display:grid;gap:7px}input{font:inherit;border:1px solid #cbd5e1;border-radius:12px;padding:12px;width:100%;min-width:0}
+input:focus{outline:2px solid #a8d0ff;border-color:#2563eb}
+button,.link{font:inherit;font-size:13px;font-weight:700;border:1px solid #c9d7ed;background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;text-decoration:none;color:#1e40af}
+button.primary{background:#0969da;color:#fff;border-color:#0969da}
+button.danger{background:#fff7f7;color:#b42318;border-color:#fecaca}
+button:disabled{opacity:.55;cursor:wait}.actions{display:flex;gap:8px;flex-wrap:wrap}.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.status{font-size:11px;font-weight:800;border-radius:999px;padding:6px 9px;background:#dcfce7;color:#166534}.status.off{background:#fee2e2;color:#991b1b}
+.account{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-top:1px solid #e5eaf1}
+.account small{color:#64748b;display:block;margin-top:5px}.muted{color:#64748b}.notice{padding:12px;border-radius:12px;background:#eff6ff;color:#1d4ed8;font-size:12px;line-height:1.5}
+#feedback{display:none;padding:12px;border-radius:12px;background:#eff6ff;color:#1e40af;font-size:13px}#feedback.error{background:#fef2f2;color:#b91c1c}
+.audits{display:grid;gap:8px;max-height:420px;overflow:auto}.audit{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid #edf2f7;padding:9px 0;font-size:12px}
+.audit span{color:#64748b}.small{font-size:12px}.hidden{display:none!important}@media(max-width:770px){.cols{grid-template-columns:1fr}.account{align-items:flex-start;flex-direction:column}nav,main{padding:14px}.panel{padding:17px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><nav>
+ <div class="brand"><img src="/assets/hd-careers-logo.png" class="logo" alt="HD Careers"><div><strong>HD Careers</strong><div class="muted small">Owner · Team & Security</div></div></div>
+ <div class="actions"><a class="link" href="/admin/">Dashboard</a><button id="signout">Logout</button></div>
+</nav></header>
+<main id="loading"><div class="panel">Verifying Owner access…</div></main>
+<main id="app" class="hidden">
+ <section><h1>Team access</h1><p>Give each colleague a separate account. Job Editors can manage jobs, but cannot manage other users or access private analytics.</p></section>
+ <div id="feedback" role="alert" aria-live="polite"></div>
+ <div class="cols">
+  <section class="panel"><h2>Add Job Editor</h2><p>Choose a unique username and a strong temporary password. Share the password privately; it is never stored in plaintext.</p>
+   <form id="createForm" class="fields">
+    <label>Username <input id="username" required autocomplete="off" minlength="3" maxlength="40" placeholder="friend.editor" pattern="[A-Za-z][A-Za-z0-9._-]{2,39}"></label>
+    <label>Password <input id="password" required type="password" autocomplete="new-password" minlength="14" maxlength="128" placeholder="At least 14 characters"></label>
+    <div class="actions"><button type="button" id="generate">Generate strong password</button><button type="button" id="toggle">Show / hide</button></div>
+    <button class="primary" type="submit">Create Job Editor</button>
+   </form>
+   <p class="notice">Owner login stays as it is. Editor passwords are not added to Vercel as separate environment variables.</p>
+  </section>
+  <section class="panel"><h2>Permissions</h2>
+    <p><strong>Owner</strong> — all admin features, job publishing, analytics, team accounts, session revocation and audit logs.</p>
+    <p><strong>Job Editor</strong> — view/create/review/publish jobs, prepare daily batches and manually run the expired-job checker. No access to team accounts, account secrets, traffic analytics or security settings.</p>
+    <p class="notice">Disabling an editor or revoking sessions takes effect across all devices on the next authenticated request. The Owner account is protected from team-level changes.</p>
+  </section>
+ </div>
+ <section class="panel" id="ownerSecurity">
+  <div class="row"><div><h2>Change Owner Password</h2><p>Update your own admin password without changing Vercel settings. Your current password is required. Your new password is stored securely as a salted hash; all Owner sessions will be signed out.</p></div><span class="status">Owner only</span></div>
+  <form id="ownerPasswordForm" class="fields" autocomplete="off">
+   <div class="cols">
+    <label>Current password <input id="ownerCurrentPassword" type="password" required autocomplete="current-password" maxlength="128" placeholder="Enter your current password"></label>
+    <label>New password <input id="ownerNewPassword" type="password" required autocomplete="new-password" minlength="14" maxlength="128" placeholder="At least 14 characters"></label>
+   </div>
+   <div class="cols">
+    <label>Confirm new password <input id="ownerConfirmPassword" type="password" required autocomplete="new-password" minlength="14" maxlength="128" placeholder="Repeat your new password"></label>
+    <div><p class="notice">After saving, all Owner devices will be signed out. Job Editor accounts and scheduled jobs are unaffected.</p></div>
+   </div>
+   <div class="actions"><button class="primary" id="saveOwnerPassword" type="submit">Update Owner Password</button><button id="toggleOwnerPassword" type="button">Show / hide passwords</button></div>
+  </form>
+ </section>
+ <section class="panel">
+   <div class="row"><h2>Active accounts</h2><button id="reload">Refresh</button></div>
+   <div id="accounts"></div>
+ </section>
+ <section class="panel"><div class="row"><h2>Audit history</h2><span class="muted small">Latest 100 events</span></div><div id="audits" class="audits"></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function message(text,error=false){const el=$("feedback");el.style.display="block";el.textContent=text;el.classList.toggle("error",error);window.scrollTo({top:0,behavior:"smooth"})}
+async function api(url,method="GET",body){
+ const r=await fetch(url,{method,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined,cache:"no-store"});
+ const data=await r.json().catch(()=>({}));
+ if(!r.ok)throw Error(data.error||("HTTP "+r.status));
+ return data;
+}
+const text=(tag,content,cls)=>{const el=document.createElement(tag);el.textContent=content;if(cls)el.className=cls;return el};
+function accountRow(u){
+ const el=document.createElement("div");el.className="account";
+ const info=document.createElement("div");info.append(text("strong",u.username),text("small",u.role==="owner"?"Owner account":"Job Editor"));
+ const pill=text("span",u.active?"Active":"Disabled","status"+(u.active?"":" off"));info.append(pill);el.append(info);
+ if(u.role!=="owner"){
+  const controls=document.createElement("div");controls.className="actions";
+  for(const [action,label,klass] of [[u.active?"disable":"enable",u.active?"Disable":"Enable",u.active?"danger":""],["revoke_sessions","Sign out all devices",""],["reset_password","Reset password",""]]){
+    const btn=text("button",label);btn.className=klass;btn.addEventListener("click",()=>manage(action,u.username));controls.append(btn);
+  }
+  el.append(controls);
+ }
+ return el;
+}
+async function manage(action,username){
+ let password;
+ if(action==="reset_password"){
+  password=window.prompt("Enter a NEW strong password (at least 14 characters) for "+username+":");
+  if(password===null)return;
+  if(password.length<14){message("New password must be at least 14 characters.",true);return}
+ }else if(!window.confirm(action.replaceAll("_"," ")+" for "+username+"?"))return;
+ try{await api("/api/admin/team","POST",{action,username,...(password?{password}:{})});password=undefined;message("Updated "+username+": "+action.replaceAll("_"," "));await reload()}
+ catch(e){message(e.message,true)}
+}
+async function reload(){
+ const [team,audit]=await Promise.all([api("/api/admin/team"),api("/api/admin/audit")]);
+ const accounts=$("accounts");accounts.replaceChildren(accountRow(team.owner),...team.editors.map(accountRow));
+ const logs=$("audits");logs.replaceChildren(...audit.items.map(e=>{
+  const el=document.createElement("div");el.className="audit";
+  const first=text("div",e.username+" · "+e.action+" · "+e.result);
+  const last=text("span",new Date(e.at).toLocaleString()+" · "+e.target);
+  el.append(first,last);return el;
+ }));
+ if(!audit.items.length)logs.append(text("p","No recorded events yet."));
+}
+$("ownerPasswordForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const currentPassword=$("ownerCurrentPassword").value;
+ const newPassword=$("ownerNewPassword").value;
+ const confirmPassword=$("ownerConfirmPassword").value;
+ if(newPassword.length<14||newPassword.length>128){message("The new password must contain 14–128 characters.",true);return}
+ if(newPassword!==confirmPassword){message("New password and confirmation do not match.",true);return}
+ if(newPassword===currentPassword){message("Choose a new password different from the current one.",true);return}
+ if(!window.confirm("Change your Owner password and sign out every Owner device?"))return;
+ const button=$("saveOwnerPassword");button.disabled=true;
+ try{
+  await api("/api/admin/owner-password","POST",{currentPassword,newPassword});
+  $("ownerCurrentPassword").value="";
+  $("ownerNewPassword").value="";
+  $("ownerConfirmPassword").value="";
+  location.replace("/admin/?passwordChanged=1");
+ }catch(err){message(err.message,true)}finally{button.disabled=false}
+});
+$("toggleOwnerPassword").onclick=()=>{
+ const inputs=["ownerCurrentPassword","ownerNewPassword","ownerConfirmPassword"].map($);
+ const type=inputs[0].type==="password"?"text":"password";
+ inputs.forEach(input=>{input.type=type});
+};
+$("createForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=e.submitter;button.disabled=true;
+ try{
+  const username=$("username").value.trim();const password=$("password").value;
+  await api("/api/admin/team","POST",{action:"create",username,password});
+  $("password").value="";$("username").value="";
+  message("Editor "+username+" created. Share their password privately; it cannot be viewed later.");
+  await reload();
+ }catch(err){message(err.message,true)}finally{button.disabled=false}
+});
+$("toggle").onclick=()=>{$("password").type=$("password").type==="password"?"text":"password"};
+$("generate").onclick=()=>{
+ const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*";
+ const values=new Uint32Array(28);crypto.getRandomValues(values);
+ $("password").value=Array.from(values,x=>chars[x%chars.length]).join("");
+ $("password").type="text";
+};
+$("reload").onclick=()=>reload().catch(err=>message(err.message,true));
+$("signout").onclick=async()=>{await api("/api/admin/logout","POST").catch(()=>{});location.href="/admin/"};
+(async()=>{try{
+ const session=await api("/api/admin/session");
+ if(!session.authenticated||session.role!=="owner"){location.replace("/admin/");return}
+ $("loading").classList.add("hidden");$("app").classList.remove("hidden");await reload();
+}catch(e){$("loading").textContent="Owner access could not be verified: "+e.message}})();
+</script>
+</body></html>

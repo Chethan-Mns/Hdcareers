@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import dns from "node:dns/promises";
 import net from "node:net";
 
@@ -888,7 +888,7 @@ export default async function handler(req,res){
   }
 
   res.setHeader("Cache-Control","no-store");
-  if(!requireAdmin(req,res))return;
+  if(!await requireAdmin(req,res))return;
 
   try{
     const input=String(req.body&&req.body.url||"").trim();

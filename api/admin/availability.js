@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO="Chethan-Mns/Hdcareers";
 const DEFAULT_BASE="main";
@@ -61,11 +61,12 @@ function runSummary(run,trigger){
 
 export default async function handler(req,res){
   res.setHeader("Cache-Control","private, max-age=0, no-store");
-  if(!requireAdmin(req,res))return;
+  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
   if(!["GET","POST"].includes(req.method)){
     res.setHeader("Allow","GET, POST");
     return res.status(405).json({error:"Method not allowed."});
   }
+  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only. Production job changes are disabled."});
   if(req.method==="POST"&&!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
@@ -92,6 +93,7 @@ export default async function handler(req,res){
         sha:file.sha,
         branch:base
       };
+      await auditMutation(req,"checker.trigger",WORKFLOW);
       const update=await github("/contents/"+TRIGGER_PATH,token,{
         method:"PUT",
         headers:{"content-type":"application/json"},
