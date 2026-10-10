@@ -112,6 +112,7 @@ export default async function handler(req, res) {
     return res.status(405).json({error: "Method not allowed."});
   }
   if(!await requireAdmin(req,res))return;
+  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only. Production job changes are disabled."});
   if (!originAllowed(req)) return res.status(403).json({error: "Invalid request origin."});
   const token = process.env.GITHUB_PUBLISH_TOKEN;
   if (!token) return res.status(503).json({error: "GitHub publishing credentials are not configured."});
