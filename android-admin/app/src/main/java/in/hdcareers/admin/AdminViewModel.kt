@@ -19,6 +19,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var tab by androidx.compose.runtime.mutableIntStateOf(0)
     var batch by androidx.compose.runtime.mutableStateOf(DailyBatch("","waiting",emptyList(),emptyList()))
     var jobs by androidx.compose.runtime.mutableStateOf<List<Job>>(emptyList())
+    var companyLogos by androidx.compose.runtime.mutableStateOf<Map<String,CompanyLogoSource>>(emptyMap())
     var traffic by androidx.compose.runtime.mutableStateOf(Traffic())
     var days by androidx.compose.runtime.mutableIntStateOf(7)
     var checker by androidx.compose.runtime.mutableStateOf(JSONObject())
@@ -82,6 +83,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         val errors= mutableListOf<String>()
         try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
+        try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
         try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
         try { checker=api.checker() } catch(e:Exception){errors+="Checker: "+e.message}
         try { automation=api.automation() } catch(e:Exception){errors+="Automation: "+e.message}
