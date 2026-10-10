@@ -1,0 +1,61 @@
+name: HD Careers V3 Autopilot SHADOW
+
+on:
+  push:
+    branches:
+      - autopilot-v3-shadow
+    paths:
+      - 'scripts/job_radar_v3.py'
+      - 'tests/test_job_radar_v3.py'
+      - 'config/autopilot-v3-sources.json'
+      - '.github/workflows/autopilot-v3-shadow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hd-careers-v3-shadow
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm V3 files are shadow-only
+        run: |
+          test -f scripts/job_radar_v3.py
+          test -f scripts/job_verifier_v2.py
+          python3 -m py_compile scripts/job_radar_v3.py
+      - name: Run inventory and lifecycle regression tests
+        run: python3 -m unittest tests/test_job_radar_v3.py -v
+      - name: Restore prior shadow inventory history
+        uses: actions/cache/restore@v4
+        with:
+          path: shadow-v3-state.json
+          key: ${{ runner.os }}-v3-snapshot-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-v3-snapshot-
+      - name: Test real public ATS inventories and source-bound verification
+        run: python3 scripts/job_radar_v3.py --max-sources 3 --max-verify 6
+      - name: Save inventory history (isolated from production)
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: shadow-v3-state.json
+          key: ${{ runner.os }}-v3-snapshot-${{ github.run_id }}
+      - name: Upload full shadow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v3-shadow-inventory-report
+          path: |
+            shadow-v3-state.json
+            shadow-v3-report.json
+          if-no-files-found: ignore
+          retention-days: 30
