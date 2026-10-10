@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.decode.SvgDecoder
@@ -28,6 +29,16 @@ import org.json.JSONObject
 import java.util.Locale
 
 private const val WEBSITE = "https://hdcareers.in/"
+
+private object ImageLoaderCache {
+    @Volatile private var instance:ImageLoader?=null
+    fun get(context:android.content.Context):ImageLoader =
+        instance ?: synchronized(this) {
+            instance ?: ImageLoader.Builder(context.applicationContext)
+                .components { add(SvgDecoder.Factory()) }
+                .build().also { instance=it }
+        }
+}
 
 data class CompanyLogoSource(val path: String = "", val officialDomain: String = "")
 
@@ -100,8 +111,8 @@ fun CompanyMark(
         if(current.isNotBlank()&&!failed) {
             val context=LocalContext.current
             AsyncImage(
-                model=ImageRequest.Builder(context).data(current)
-                    .decoderFactory(SvgDecoder.Factory()).crossfade(true).build(),
+                model=ImageRequest.Builder(context).data(current).crossfade(true).build(),
+                imageLoader=ImageLoaderCache.get(context),
                 contentDescription="$name company logo",
                 modifier=Modifier.size((size-12).dp),
                 onError={
