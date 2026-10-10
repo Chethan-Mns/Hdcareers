@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>HD Careers — Review Center</title>
+<link rel="icon" href="/assets/hd-careers-logo.png">
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#10223a;background:#f4f7fc}
+*{box-sizing:border-box}body{margin:0}button,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
+a{color:#0969da}header{background:linear-gradient(115deg,#071a33,#0f4bb8);color:white;padding:22px max(18px,calc((100vw - 1100px)/2));}
+header .heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}.brand img{width:44px;height:44px;object-fit:contain;background:#fff;border-radius:12px;padding:4px}
+h1{margin:0;font-size:1.4rem}header p{margin:6px 0 0;color:#d7e8ff;font-size:.88rem}
+header a{color:white;text-decoration:none;font-size:.88rem;font-weight:700}
+main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile,.card,.banner{background:white;border:1px solid #e2e9f2;border-radius:19px;box-shadow:0 9px 28px #132b4409}
+.tile{padding:16px}.tile .value{font-size:1.75rem;font-weight:900;color:#09305e}.tile .label{font-size:.77rem;color:#687b90;margin-top:3px}
+.bar{height:7px;background:#e7eff9;border-radius:9px;overflow:hidden;margin-top:14px}.bar div{height:100%;background:#0f69df;transition:width .2s}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0;flex-wrap:wrap}
+.segment{display:inline-flex;gap:4px;background:#e6edfa;padding:4px;border-radius:13px}
+.segment button{border:0;padding:10px 17px;border-radius:10px;background:transparent;font-weight:750;color:#526782}
+.segment button.active{background:#fff;color:#0a3d87;box-shadow:0 2px 7px #12345613}
+.primary{background:#0969da;color:#fff;border:0;padding:11px 17px;border-radius:12px;font-weight:750}
+.secondary{background:#f1f6ff;color:#0757b7;border:1px solid #cbdefb;padding:10px 13px;border-radius:11px;font-weight:750}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{padding:17px;min-width:0}.card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.card h3{margin:5px 0 4px;font-size:1rem;line-height:1.35;overflow-wrap:anywhere}
+.company{font-weight:850;font-size:.82rem;color:#0b63bb}.meta{font-size:.8rem;color:#61768e;line-height:1.5}
+.pill{border-radius:999px;font-size:.68rem;padding:5px 8px;background:#eaf2ff;color:#075eb8;font-weight:800;white-space:nowrap}
+.pill.live{background:#e5f8ed;color:#147442}.pill.expired{background:#ffe6e7;color:#bb223b}.pill.unsure{background:#fff3db;color:#915c00}
+.apply{display:inline-flex;margin:12px 0;gap:5px;font-size:.84rem;font-weight:750;overflow-wrap:anywhere}
+.actions{display:flex;gap:7px;flex-wrap:wrap}.actions button{border:1px solid #e0e8f2;border-radius:10px;background:#f8fbff;padding:9px 11px;font-size:.79rem;font-weight:750;color:#456078}
+.actions button.chosen.live{border-color:#16a36a;background:#e6f7ee;color:#117442}
+.actions button.chosen.expired{border-color:#d0394b;background:#fff0f0;color:#ae2540}
+.actions button.chosen.unsure{border-color:#e6ad42;background:#fff5e3;color:#8c5900}
+.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
+.footer{margin-top:18px;padding:20px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.footer p{font-size:.84rem;color:#63758a;max-width:600px}.message{margin:15px 0;padding:13px;border-radius:12px;background:#ebf3ff;color:#164678;font-size:.85rem;display:none}
+.banner{padding:34px 22px;text-align:center;color:#59708d}.banner h2{color:#123d76}
+@media(max-width:720px){header{padding:16px}main{margin:14px auto;padding:0 12px 40px}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.segment{width:100%;display:flex}.segment button{flex:1}.footer{flex-direction:column;align-items:stretch}.primary{width:100%}.tile{padding:13px}}
+</style>
+</head>
+<body>
+<header><div class="heading"><div class="brand"><img src="/assets/hd-careers-logo.png" alt=""><div><h1>Daily Review Center</h1><p>20 jobs · 10 employers · Your approval controls publishing</p></div></div><a href="/admin/">← Back to Admin</a></div></header>
+<main>
+<div id="message" class="message" role="status"></div>
+<section class="summary" aria-label="Review counts">
+<div class="tile"><div class="value" id="priorityCount">0</div><div class="label">Priority jobs</div></div>
+<div class="tile"><div class="value" id="backupCount">0</div><div class="label">Backup jobs</div></div>
+<div class="tile"><div class="value" id="reviewedCount">0</div><div class="label">Reviewed jobs</div></div>
+<div class="tile"><div class="value" id="liveCount">0</div><div class="label">Verified Live</div></div>
+</section>
+<div class="bar"><div id="progress" style="width:0"></div></div>
+<div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority 10</button><button id="backupTab" onclick="switchTab('backup')">Backup 10</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
+<div id="cards" class="grid"></div>
+<section id="footer" class="card footer" hidden><div><strong>Publish reviewed jobs</strong><p>Ten different employers. Only jobs manually confirmed Live, with complete descriptions, are eligible. The website and Telegram status must still be checked after submission.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish priority 10</button></section>
+</main>
+<script>
+let batch=null;
+let tab="priority";
+let busy=false;
+const el=id=>document.getElementById(id);
+function notify(message){el("message").style.display="block";el("message").textContent=message}
+function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+function bucket(j){const c=String(j.cat||j.job?.cat||"it").toLowerCase();return c==="nonit"?"nonit":(c==="internship"||c==="apprenticeship"?"training":"it")}
+function cat(j){const b=bucket(j);return b==="nonit"?"Non-IT":b==="training"?"Internship / Apprenticeship":"Fresher IT"}
+function isComplete(c){const j=c.job||{};return !!(j.company&&j.role&&j.loc&&j.elig&&j.desc&&j.apply&&Array.isArray(j.resp)&&j.resp.length)}
+function ready(){return batch&&batch.priority.length===10&&batch.priority.every(x=>x.reviewedStatus==="live"&&isComplete(x))&&batch.status!=="submitted"}
+async function api(method,body){const r=await fetch("/api/admin/daily-batch",{method,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||("HTTP "+r.status));return data}
+async function load(){try{batch=await api("GET");draw()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
+function switchTab(next){tab=next;draw()}
+async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
+function draw(){
+ if(!batch)return;
+ const all=[...batch.priority,...batch.backup],checked=all.filter(j=>j.reviewedStatus&&!["unreviewed"].includes(j.reviewedStatus)).length;
+ el("priorityCount").textContent=batch.priority.length;el("backupCount").textContent=batch.backup.length;
+ el("reviewedCount").textContent=checked;el("liveCount").textContent=all.filter(j=>j.reviewedStatus==="live").length;
+ el("progress").style.width=(all.length?checked/all.length*100:0)+"%";
+ el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");
+ const root=el("cards");root.replaceChildren();
+ if(!batch.batchId){const empty=node("div","banner");empty.style.gridColumn="1/-1";empty.append(node("h2",null,"Waiting for the daily discovery batch"),node("p",null,"The job discovery pipeline must first populate the server-side priority and backup list. No jobs have been invented for this preview."));root.append(empty);el("footer").hidden=true;return}
+ const items=tab==="priority"?batch.priority:batch.backup;
+ for(const item of items){
+  const card=node("article","card"),head=node("div","head"),description=node("div");
+  description.append(node("div","company",item.company||"Unknown employer"),node("h3",null,item.role||"Role not provided"),node("div","meta",[item.loc||item.job?.loc,item.expYears||item.job?.expYears].filter(Boolean).join(" · ")));
+  const pill=node("span","pill "+(item.reviewedStatus||""),item.reviewedStatus==="live"?"Live":item.reviewedStatus==="expired"?"Expired":item.reviewedStatus==="unsure"?"Unsure":"Needs review");
+  head.append(description,pill);card.append(head,node("div","meta",cat(item)));
+  const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
+  const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
+  if(tab==="priority"){
+   const options=batch.backup.filter(x=>x.reviewedStatus==="live"&&bucket(x)===bucket(item)&&!batch.priority.some(p=>p.id!==item.id&&(p.company||"").toLowerCase()===(x.company||"").toLowerCase()));
+   const row=node("div","replace"),select=node("select");select.append(new Option("Replace with a verified backup…",""));
+   for(const opt of options)select.append(new Option(opt.company+" — "+opt.role,opt.id));
+   select.disabled=!options.length||busy;const b=node("button","secondary","Replace");b.disabled=!options.length||busy;b.onclick=()=>{if(select.value)modify({action:"swap",priorityId:item.id,backupId:select.value})};row.append(select,b);card.append(row)
+  }
+  if(!isComplete(item))card.append(node("p","meta","Detailed job content incomplete; publishing disabled until completed."));
+  root.append(card)
+ }
+ el("footer").hidden=tab!=="priority";el("publishBtn").disabled=!ready()||busy;el("publishBtn").textContent=batch.status==="submitted"?"Submitted":"Publish priority 10";
+}
+async function publish(){
+ if(!ready()||busy)return;
+ if(!confirm("Submit all ten reviewed jobs for website deployment and Telegram publishing?"))return;
+ busy=true;draw();
+ try{
+  const jobs=batch.priority.map(x=>x.job);
+  const r=await fetch("/api/admin/publish",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({jobs})});
+  const result=await r.json().catch(()=>({}));
+  if(!r.ok)throw Error(result.error||("Publish request HTTP "+r.status));
+  notify(result.message||"Publishing request accepted; check deployment and Telegram delivery.");
+  try{batch=await api("POST",{action:"submitted",batchId:batch.batchId})}catch(e){notify("Publish request accepted, but batch status did not save: "+e.message+". Check GitHub before retrying.")}
+ }catch(e){notify(e.message)}finally{busy=false;draw()}
+}
+load();
+</script>
+</body>
+</html>
