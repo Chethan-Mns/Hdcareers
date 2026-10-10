@@ -1,5 +1,322 @@
 [
   {
+    "id": 112,
+    "page": "jobs/accenture-ai-ml-computational-science-associate-bengaluru-aioc-s01665344.html",
+    "domain": "www.accenture.com",
+    "company": "Accenture",
+    "salary": "Not Disclosed",
+    "logo": [
+      "AC",
+      "#0b6fe8"
+    ],
+    "role": "AI/ML Computational Science Associate",
+    "roleTag": "AI/ML Computational Science Associate",
+    "loc": "Bengaluru",
+    "locationFilter": "Bengaluru",
+    "batch": "Not Specified",
+    "elig": "BE or BTech graduate; Python, object-oriented programming, data structures, SQL, basic REST APIs and Git.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0–1 year",
+    "date": "Not Specified",
+    "desc": "Accenture's Technology for Operations artificial-intelligence group is recruiting early-career associates in Bengaluru. Requisition AIOC-S01665344 lists BE/BTech qualifications and approximately zero to one year of experience. The official team description emphasises Python application development, software testing, scripts, backend services and data processing. Candidates should have fundamentals in Python programming, OOP, databases, APIs, algorithms and the development lifecycle. Engineers collaborate with experienced colleagues, work on documentation, troubleshooting and automation, and have opportunities to learn cloud and data engineering practices. The employer describes an application development role with AI exposure; applicants should not assume it is a research scientist or standalone model-training position. Consult the official job page for complete and current selection criteria.",
+    "resp": [
+      "Develop and maintain Python applications and scripts",
+      "Support REST APIs, debugging and backend services",
+      "Improve automation and data-processing workflows",
+      "Participate in code reviews and technical documentation"
+    ],
+    "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665344_en",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official Accenture employer careers posting",
+    "skills": [
+      "Python",
+      "SQL",
+      "OOP",
+      "Git",
+      "REST APIs",
+      "Data Structures"
+    ],
+    "who": "BE or BTech graduate; Python, object-oriented programming, data structures, SQL, basic REST APIs and Git.",
+    "workMode": "Not Specified",
+    "jobId": "AIOC-S01665344",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665344_en"
+  },
+  {
+    "id": 113,
+    "page": "jobs/new-street-technologies-associate-software-engineer-bengaluru-ns-fre-001.html",
+    "domain": "newstreettech.com",
+    "company": "New Street Technologies",
+    "salary": "Not Disclosed",
+    "logo": [
+      "NS",
+      "#0b6fe8"
+    ],
+    "role": "Associate Software Engineer",
+    "roleTag": "Associate Software Engineer",
+    "loc": "Bengaluru",
+    "locationFilter": "Bengaluru",
+    "batch": "Not Specified",
+    "elig": "Recent BE, BTech or MCA graduate; working Python, SQL, Git, programming fundamentals and a project the candidate can explain.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0–1 year",
+    "date": "Not Specified",
+    "desc": "New Street Technologies has opened an early-career Associate Software Engineer vacancy in its Bengaluru engineering and delivery organisation. Its official site calls this a permanent on-payroll role, not an internship or a stipend. Fresh graduates receive mentoring from senior developers and rotate among product engineering, dashboards and client delivery projects. The role expects practical Python and SQL skills, foundational understanding of algorithms, Git usage and evidence of independent software projects. Engineers contribute features used by customers, write and maintain tests, learn from code reviews and progressively take ownership of a component. Exposure to FastAPI, React, Kotlin, cloud technologies, open-source projects or AI development tools can help but is not listed as mandatory. Use official role code NS-FRE-001 on the employer's careers page.",
+    "resp": [
+      "Build production features under senior engineer review",
+      "Own and test small software modules",
+      "Rotate through product, dashboards and delivery work",
+      "Provide support and investigate bugs in components built"
+    ],
+    "apply": "https://newstreettech.com/careers/associate-software-engineer",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official New Street Technologies employer careers posting",
+    "skills": [
+      "Python",
+      "SQL",
+      "Git",
+      "Data Structures",
+      "Testing",
+      "Software Engineering"
+    ],
+    "who": "Recent BE, BTech or MCA graduate; working Python, SQL, Git, programming fundamentals and a project the candidate can explain.",
+    "workMode": "Not Specified",
+    "jobId": "NS-FRE-001",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://newstreettech.com/careers/associate-software-engineer"
+  },
+  {
+    "id": 114,
+    "page": "jobs/singlestore-software-engineer-database-engine-india-eng00416.html",
+    "domain": "job-boards.greenhouse.io",
+    "company": "SingleStore",
+    "salary": "Not Disclosed",
+    "logo": [
+      "SI",
+      "#0b6fe8"
+    ],
+    "role": "Software Engineer | Database Engine",
+    "roleTag": "Software Engineer | Database Engine",
+    "loc": "India",
+    "locationFilter": "India",
+    "batch": "Not Specified",
+    "elig": "Degree in Computer Science, Electrical Engineering, Computer Engineering or related field; strong C/C++, OS, concurrency and algorithms.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "Early career; no minimum years specified",
+    "date": "Not Specified",
+    "desc": "SingleStore is hiring a Software Engineer for its Database Engine team in India, requisition ENG00416. The official Greenhouse posting discusses work on a distributed SQL system powering transactional and analytical database workloads. Engineers in this team develop core product capabilities, contribute code used in production and investigate opportunities involving database performance, indexes, execution engines and query optimisation. The role requires strong C or C++ programming and deep technical foundations in operating systems, server architectures, concurrency, multithreading and data structures. The posting explicitly describes university graduates contributing to projects, but does not publish a specific zero-years minimum. Candidates with the listed CS or related engineering degree and relevant technical skills should read the exact application requirements instead of relying on an invented salary or degree-year cutoff.",
+    "resp": [
+      "Build and test distributed database engine components",
+      "Improve query performance and reliability",
+      "Contribute to indexing and query processing technologies",
+      "Work in a collaborative release cycle and own scoped code"
+    ],
+    "apply": "https://job-boards.greenhouse.io/singlestore/jobs/8000966",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official SingleStore employer careers posting",
+    "skills": [
+      "C++",
+      "C",
+      "Operating Systems",
+      "Concurrency",
+      "Multithreading",
+      "Algorithms",
+      "Database Systems"
+    ],
+    "who": "Degree in Computer Science, Electrical Engineering, Computer Engineering or related field; strong C/C++, OS, concurrency and algorithms.",
+    "workMode": "Not Specified",
+    "jobId": "ENG00416",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/singlestore/jobs/8000966"
+  },
+  {
+    "id": 115,
+    "page": "jobs/hyreo-software-engineer-java-bengaluru-5322122004.html",
+    "domain": "job-boards.greenhouse.io",
+    "company": "Hyreo",
+    "salary": "Not Disclosed",
+    "logo": [
+      "HY",
+      "#0b6fe8"
+    ],
+    "role": "Software Engineer – Java",
+    "roleTag": "Software Engineer – Java",
+    "loc": "Bengaluru, Karnataka",
+    "locationFilter": "Bengaluru",
+    "batch": "Not Specified",
+    "elig": "Practical Java experience through projects, internships or an entry-level role; core OOP, collections, SQL, basic Spring, APIs and Git.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "0–1 year",
+    "date": "Not Specified",
+    "desc": "Hyreo's official Greenhouse board lists a Software Engineer – Java vacancy in Bengaluru for candidates with zero to one year of practical Java development. Academic projects and internships count as relevant experience in the employer's description. The technical profile includes core Java, object-oriented design, exception handling, collections, multithreading and data structures. Exposure to Spring or Hibernate, SQL and relational databases, REST API fundamentals, frontend technologies and build tools is useful. The employer values source-control experience, testing practices and standard software-engineering team collaboration. Its job posting also mentions communication, problem-solving, attention to detail and continuous learning. Neither an exact salary nor a specific mandatory degree is shown on the accessible employer listing, so these details should be checked with the hiring team.",
+    "resp": [
+      "Develop Java application components using core language features",
+      "Integrate relational databases and REST API features",
+      "Use Git, Maven or Gradle and common Java IDEs",
+      "Write and test code and participate in teamwork and reviews"
+    ],
+    "apply": "https://job-boards.greenhouse.io/hyreo/jobs/5322122004",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official Hyreo employer careers posting",
+    "skills": [
+      "Java",
+      "Spring",
+      "Hibernate",
+      "SQL",
+      "Git",
+      "REST APIs",
+      "Maven",
+      "Gradle"
+    ],
+    "who": "Practical Java experience through projects, internships or an entry-level role; core OOP, collections, SQL, basic Spring, APIs and Git.",
+    "workMode": "Not Specified",
+    "jobId": "5322122004",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/hyreo/jobs/5322122004"
+  },
+  {
+    "id": 116,
+    "page": "jobs/superapp-software-engineer-full-stack-early-careers-bengaluru-8829824002.html",
+    "domain": "job-boards.greenhouse.io",
+    "company": "SuperApp",
+    "salary": "Not Disclosed",
+    "logo": [
+      "SU",
+      "#0b6fe8"
+    ],
+    "role": "Software Engineer, Full-Stack (Early Careers)",
+    "roleTag": "Software Engineer, Full-Stack (Early Careers)",
+    "loc": "Bengaluru",
+    "locationFilter": "Bengaluru",
+    "batch": "Not Specified",
+    "elig": "CS, HCI, Applied Mathematics, Computer Engineering or related Bachelor's, Master's or PhD; graduation after May 2024 preferred; 1–2 years product experience preferred.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "Early careers; 1–2 years preferred",
+    "date": "Not Specified",
+    "desc": "SuperApp is recruiting an early-career Full-Stack Software Engineer for its Bengaluru team. The employer builds collaborative AI applications and enterprise intelligent-document-processing workflows. Its official description says engineers work across frontend experiences, backend services, APIs, data models, AI workflow infrastructure and reliability. Team members build features from design through deployment, write well-tested code, review performance and security considerations, and collaborate closely with product managers and designers. The hiring profile welcomes related Bachelor's, Master's and PhD disciplines and prefers candidates who graduated after May 2024. One to two years of industry experience is preferred, not a stated hard requirement. The employer also references practical programming fundamentals, Python, Go, React, REST APIs and sound judgment when using AI-assisted development tools. Consult the official form for up-to-date eligibility and hybrid working expectations.",
+    "resp": [
+      "Develop frontend and backend production features",
+      "Build services and APIs for AI-powered workflows",
+      "Write tested, maintainable and secure code",
+      "Own scoped projects through deployment and iteration"
+    ],
+    "apply": "https://job-boards.greenhouse.io/superapp/jobs/8829824002",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official SuperApp employer careers posting",
+    "skills": [
+      "Python",
+      "Go",
+      "React",
+      "REST APIs",
+      "Data Structures",
+      "Testing",
+      "AI-assisted Development"
+    ],
+    "who": "CS, HCI, Applied Mathematics, Computer Engineering or related Bachelor's, Master's or PhD; graduation after May 2024 preferred; 1–2 years product experience preferred.",
+    "workMode": "Hybrid",
+    "jobId": "8829824002",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/superapp/jobs/8829824002"
+  },
+  {
+    "id": 117,
+    "page": "jobs/capgemini-group-internal-auditor-navi-mumbai-414912.html",
+    "domain": "careers.capgemini.com",
+    "company": "Capgemini",
+    "salary": "Not Disclosed",
+    "logo": [
+      "CA",
+      "#0b6fe8"
+    ],
+    "role": "Group Internal Auditor",
+    "roleTag": "Group Internal Auditor",
+    "loc": "Navi Mumbai",
+    "locationFilter": "Navi Mumbai",
+    "batch": "Not Specified",
+    "elig": "Qualified Chartered Accountant with three to five years of post-qualification experience and strong communication skills.",
+    "cat": "nonit",
+    "expType": "experienced",
+    "expYears": "3–5 years post-qualification",
+    "date": "8 Oct 2026",
+    "desc": "Capgemini's Group Internal Audit department is hiring a Group Internal Auditor for Navi Mumbai. The official Capgemini posting is requisition 414912 and was published on 8 October 2026. It requires a qualified Chartered Accountant and three to five years of post-qualification experience. This is an experienced Non-IT finance position and must not be presented as a fresher hiring drive. The department evaluates governance, internal controls, risk management and business processes across functions including finance, procurement, human resources, sales and delivery. Responsibilities include mapping processes, identifying controls, performing internal audits and testing design and operating effectiveness. The position offers exposure to business leadership and substantial travel across domestic and international operations, as clearly described by the employer. No salary is disclosed. Applicants should check the exact Capgemini careers listing for required travel and qualifications.",
+    "resp": [
+      "Perform independent audit assignments",
+      "Map internal processes and controls",
+      "Assess financial and compliance control effectiveness",
+      "Collaborate with international teams and communicate findings"
+    ],
+    "apply": "https://careers.capgemini.com/job/Navi-Mumbai-Group-Internal-Auditor/1445633133/",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official Capgemini employer careers posting",
+    "skills": [
+      "Chartered Accountancy",
+      "Internal Audit",
+      "Risk Management",
+      "Finance Controls",
+      "Governance"
+    ],
+    "who": "Qualified Chartered Accountant with three to five years of post-qualification experience and strong communication skills.",
+    "workMode": "Not Specified",
+    "jobId": "414912",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://careers.capgemini.com/job/Navi-Mumbai-Group-Internal-Auditor/1445633133/"
+  },
+  {
+    "id": 118,
+    "page": "jobs/eaton-apprentice-it-pune-687237633525.html",
+    "domain": "eaton.eightfold.ai",
+    "company": "Eaton",
+    "salary": "Not Disclosed",
+    "logo": [
+      "EA",
+      "#0b6fe8"
+    ],
+    "role": "Apprentice-IT",
+    "roleTag": "Apprentice-IT",
+    "loc": "Pune, Maharashtra",
+    "locationFilter": "Pune",
+    "batch": "Not Specified",
+    "elig": "Relevant Bachelor's degree such as BTech, BCA or BSc; basic Windows, Microsoft 365, hardware, networking and IT support skills.",
+    "cat": "apprenticeship",
+    "expType": "fresher",
+    "expYears": "0–2 years",
+    "date": "Not Specified",
+    "desc": "Eaton has an Apprentice-IT opening for its Pune operations under requisition 687237633525 on the official Eaton careers system. This is an entry-level technology-support apprenticeship involving end-user systems and workplace devices. The work includes supporting computers, laptops, mobile devices and peripherals, handling routine support issues, following IT service-management procedures and learning incident escalation practices. Employers' materials describe familiarity with Windows, Microsoft 365, basic networking and technical troubleshooting. The educational profile includes relevant Bachelor's degrees such as BTech, BCA or BSc and accepts zero to two years of IT-related experience. This is an IT-support apprenticeship rather than a software-development internship. The salary or stipend has not been publicly disclosed. Check Eaton's direct listing for the current application form, eligible education and any deadline.",
+    "resp": [
+      "Assist users with hardware and software issues",
+      "Support IT device lifecycles and ticket-based service workflows",
+      "Work with Microsoft 365 and Windows systems",
+      "Troubleshoot and escalate complex incidents under supervision"
+    ],
+    "apply": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official Eaton employer careers posting",
+    "skills": [
+      "IT Support",
+      "Windows",
+      "Microsoft 365",
+      "Networking",
+      "Hardware Troubleshooting"
+    ],
+    "who": "Relevant Bachelor's degree such as BTech, BCA or BSc; basic Windows, Microsoft 365, hardware, networking and IT support skills.",
+    "workMode": "Not Specified",
+    "jobId": "687237633525",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en"
+  },
+  {
     "id": 110,
     "page": "jobs/deloitte-analyst-ft-strategy-ops-bengaluru-110723.html",
     "domain": "southasiacareers.deloitte.com",
@@ -4596,44 +4913,44 @@
   },
   {
     "id": 24,
-    "page": "jobs/infosys-specialist-programmer-2027-campus.html",
+    "page": "jobs/infosys-systems-engineer-2027-campus-registration.html",
     "domain": "surveys.infosysapps.com",
     "company": "Infosys",
-    "salary": "₹10 LPA + ₹1L joining bonus / ₹16 LPA / ₹21 LPA",
+    "salary": "Not Disclosed",
     "logo": [
       "IN",
       "#007CC3"
     ],
-    "role": "Specialist Programmer (Trainee) – L1 / L2 / L3",
-    "roleTag": "Specialist Programmer",
-    "loc": "Pan India",
+    "role": "Systems Engineer (SE) — 2027 Campus Registration",
+    "roleTag": "Systems Engineer",
+    "loc": "Pan India (location not announced)",
     "locationFilter": "Pan India",
     "batch": "2027",
-    "elig": "2027 passing-out batch. Campus recruitment announcements for this program list engineering/computing branches including CSE, IT, AI/ML, AI&DS, ECE, CS/CST and related disciplines. Candidates should confirm the exact academic and branch eligibility shown in the official Infosys registration form before submitting.",
-    "cat": "campus",
+    "elig": "2027 passing-out BE, BTech, ME, MTech, MCA and MSc students. This is a campus registration form; confirm college/TPO participation and the exact academic criteria.",
+    "cat": "it",
     "expType": "fresher",
-    "expYears": "Fresher / 2027 Graduate",
+    "expYears": "2027 batch graduates; fresher",
     "date": "30 Sep 2026",
-    "desc": "Infosys is accepting 2027-batch campus registrations for Specialist Programmer trainee opportunities. The Specialist Programmer track includes L1, L2 and L3 levels, with compensation ranging from ₹10 LPA plus a ₹1 lakh joining bonus at L1 to ₹21 LPA at L3. Selection is coding-focused and aligned with Infosys' Power Programmer hiring track.",
+    "desc": "Infosys hosts a 2027 Systems Engineer campus registration form on its official Infosys Surveys portal, identified by SEcampusregistration2027batch. The registration is intended for eligible 2027 graduating students and may be linked to participating institutions and their training and placement officers. It is important not to describe the form as an unrestricted mass off-campus drive without a separate Infosys announcement. Candidates should visit the official registration channel, check eligibility and complete the academic and contact details required by the form. The site uses JavaScript to display its application flow and may request email OTP authentication. Exact salary, selection rounds, participating colleges and final locations are not confirmed from the official accessible form; claims from third-party websites should not be presented as official. This is the Systems Engineer recruitment track, not the Specialist Programmer track, so previously used SP salary claims are inapplicable.",
     "resp": [
-      "Participate in programming-based assessments and technical interview rounds",
-      "Demonstrate strong problem-solving, coding and software-engineering fundamentals",
-      "Build and contribute to software solutions for client projects and technology platforms",
-      "Work with modern engineering practices and rapidly learn new technologies",
-      "Collaborate with technical teams during training and project deployment"
+      "Visit the exact Infosys Systems Engineer 2027 campus-registration form.",
+      "Review graduating-year, degree, college and branch eligibility conditions.",
+      "Complete the personal, academic and contact details accurately.",
+      "Coordinate with the college placement office to confirm nomination if required.",
+      "Retain the registration confirmation and follow formal Infosys communications."
     ],
     "apply": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-    "status": "expired",
-    "verifiedDate": "8 Oct 2026",
-    "sourceName": "Official Infosys 2027 campus registration form",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
+    "sourceName": "Official Infosys 2027 Systems Engineer campus-registration portal",
     "skills": [
-      "Programming",
-      "Data Structures & Algorithms",
+      "Programming Fundamentals",
+      "Data Structures",
+      "Algorithms",
       "Problem Solving",
-      "Software Engineering",
-      "Coding Assessments"
+      "Software Engineering"
     ],
-    "who": "2027-batch students targeting Infosys Specialist Programmer roles should review this opening. The role is coding-intensive and suited to candidates with strong programming and problem-solving skills. Check the official registration form for the final eligibility criteria applicable to your college, branch and academics.",
+    "who": "Eligible 2027 graduating BE/BTech/ME/MTech/MCA/MSc students, subject to campus participation and the official registration form.",
     "workMode": "Not Specified",
     "verificationTerms": [
       "SEcampusregistration2027batch"
@@ -4641,13 +4958,9 @@
     "browserVerifiedAt": "2026-10-07T07:44:54.505Z",
     "logoPath": "assets/company-icons/infosys-471ce9a.png",
     "logoSourceDomain": "infosys.com",
-    "availabilityCheck": {
-      "id": 24,
-      "url": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-      "checkedAt": "2026-10-08T12:00:26.714Z",
-      "state": "expired",
-      "reason": "Marked expired manually from HD Careers Admin review."
-    }
+    "jobId": "SEcampusregistration2027batch",
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch"
   },
   {
     "id": 23,
@@ -4823,8 +5136,8 @@
       "Support releases and production systems as part of the software development lifecycle"
     ],
     "apply": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
-    "status": "expired",
-    "verifiedDate": "08 Oct 2026",
+    "status": "active",
+    "verifiedDate": "10 Oct 2026",
     "sourceName": "Official Cohere Health application page",
     "skills": [
       "Java or Python",
@@ -4838,12 +5151,13 @@
     "logoPath": "assets/company-icons/cohere-health-fa5a07c.png",
     "logoSourceDomain": "coherehealth.com",
     "availabilityCheck": {
-      "id": 20,
+      "state": "active",
+      "reason": "Owner confirmed live in Batch 3; Greenhouse official application form accessible",
       "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
-      "checkedAt": "2026-10-08T09:30:11.289412+00:00",
-      "state": "expired",
-      "reason": "Greenhouse public posting inventory returned HTTP 404 for the exact posting"
-    }
+      "checkedAt": "2026-10-10T06:32:22Z"
+    },
+    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
+    "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003"
   },
   {
     "id": 19,
