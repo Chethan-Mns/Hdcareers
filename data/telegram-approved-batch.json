@@ -1,8 +1,11 @@
 {
   "approved": true,
-  "batchId": "admin-review-1791518975576-1791533762656",
+  "batchId": "user-approved-20261010-deloitte-ey-4370a29d",
+  "approvedBy": "HD Careers owner in chat; exactly Deloitte and EY",
+  "sourceCommit": "4370a29d392eaebf5680e960b970e8d648a2b36b",
   "pages": [
-    "jobs/rubrik-software-engineer-cloud-azure.html"
+    "jobs/deloitte-analyst-ft-strategy-ops-bengaluru-110723.html",
+    "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html"
   ],
-  "approvedBy": "HD Careers Admin review"
+  "notes": "Two-job approved batch: website generated and Vercel ready; exact employer requisitions 110723/1751057 verified by editorial review; excludes eight other candidates."
 }
