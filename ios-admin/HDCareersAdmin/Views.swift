@@ -476,8 +476,8 @@ struct RootTabView: View {
                 .tabItem { Label("Jobs", systemImage: "briefcase.fill") }
                 .tag(1)
 
-            PublishView()
-                .tabItem { Label("Publish", systemImage: "wand.and.stars") }
+            DailyReviewView()
+                .tabItem { Label("Review", systemImage: "checkmark.seal.fill") }
                 .tag(2)
 
             CheckerView()
@@ -782,7 +782,7 @@ struct TrafficSummaryCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            HStack {
+            VStack(alignment: .leading, spacing: 11) {
                 PremiumSectionTitle(
                     icon: "chart.line.uptrend.xyaxis",
                     title: "Website traffic",
@@ -799,10 +799,9 @@ struct TrafficSummaryCard: View {
                     Text("30D").tag(30)
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 150)
             }
 
-            HStack(spacing: 8) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 125), spacing: 8)], spacing: 8) {
                 PremiumMetricTile(title: "Live", value: numberText(state.traffic?.realtimeUsers), icon: "dot.radiowaves.left.and.right", color: HDTheme.green)
                 PremiumMetricTile(title: "Users", value: numberText(state.traffic?.totals?.visitors), icon: "person.2.fill", color: HDTheme.blue)
                 PremiumMetricTile(title: "Views", value: numberText(state.traffic?.totals?.pageviews), icon: "eye.fill", color: HDTheme.violet)
@@ -2797,6 +2796,13 @@ struct MoreView: View {
 
                         VStack(spacing: 0) {
                             NavigationLink {
+                                PublishView()
+                            } label: {
+                                MoreRow(icon: "wand.and.stars", title: "Manual publishing", subtitle: "Create and edit job pages", color: HDTheme.violet)
+                            }
+                            Divider().padding(.leading, 58)
+
+                            NavigationLink {
                                 AnalyticsView()
                             } label: {
                                 MoreRow(icon: "chart.bar.fill", title: "Website analytics", subtitle: "Traffic, conversions and content", color: HDTheme.blue)
@@ -2950,7 +2956,7 @@ struct AnalyticsView: View {
                         }
                         .padding(18)
                     }
-                    .frame(height: 170)
+                    .frame(minHeight: 178)
                     .clipShape(RoundedRectangle(cornerRadius: 23, style: .continuous))
                     .shadow(color: HDTheme.navy.opacity(0.13), radius: 15, x: 0, y: 8)
 
@@ -2998,7 +3004,7 @@ struct AnalyticsView: View {
                         }
                     )
 
-                    HStack(alignment: .top, spacing: 10) {
+                    VStack(spacing: 10) {
                         AnalyticsListCard(
                             title: "Countries",
                             icon: "globe.asia.australia.fill",
@@ -3030,8 +3036,8 @@ struct AnalyticsView: View {
                 .font(.headline.weight(.black))
                 .foregroundStyle(.white)
             Text(title)
-                .font(.system(size: 8.5, weight: .semibold))
-                .foregroundStyle(.white.opacity(0.65))
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.78))
         }
         .padding(.horizontal, 11)
         .padding(.vertical, 8)
@@ -3069,7 +3075,7 @@ struct ConversionSummaryCard: View {
                     .foregroundStyle(HDTheme.violet)
             }
 
-            HStack(spacing: 8) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 125), spacing: 8)], spacing: 8) {
                 PremiumMetricTile(title: "Job views", value: numberText(conversions?.jobPageViews), icon: "eye.fill", color: HDTheme.blue)
                 PremiumMetricTile(title: "Resume", value: numberText(conversions?.resumeChecks), icon: "doc.text.magnifyingglass", color: HDTheme.cyan)
                 PremiumMetricTile(title: "Apply", value: numberText(conversions?.applyClicks), icon: "cursorarrow.click.2", color: HDTheme.green)
