@@ -36,7 +36,7 @@ Keep these existing Owner variables in both environments without changing their 
 
 1. Preview Redis credentials are supplied by the Vercel Upstash integration as `KV_REST_API_URL` and `KV_REST_API_TOKEN`; deploy/redeploy `feature/multi-admin-rbac` after confirming those Preview variables.
 2. Open the branch's Vercel preview URL (may require existing Vercel preview SSO).
-3. Sign in as Owner at `/admin/` using your **existing** Owner username/password.
+3. Sign in as Owner at `/admin/` using your existing credentials, or your Preview-specific replacement if you have already changed the Preview Owner password.
 4. Select **Team** or open `/admin/team.html`. Create a Job Editor with a unique username and a password of 14+ characters.
 5. Open the preview in a separate private browser session and sign in as the Job Editor.
 6. Verify Editor can view/manage job workflows but cannot access `/api/admin/team`, `/api/admin/audit`, `/api/admin/traffic` or the traffic page. Job-write requests on Preview are blocked.
@@ -49,6 +49,14 @@ The earlier signed admin sessions are intentionally invalidated by migration. Re
 
 ## Expired checker permissions
 Job Editors can **manually start the global expired-job checker** and review its results once the Owner approves and deploys multi-admin to production. The API enforces the role server-side, logs the request and rejects additional checker runs while an existing run is queued or running. Manual checker execution is still blocked in Preview; Preview is read-only.
+
+## Self-service Owner password changes
+
+The Owner can open **Admin → Team → Change Owner Password**. The form requires the current password, a new unique password of 14–128 characters and a matching confirmation. The API accepts only authenticated Owner sessions, checks the request origin, rate-limits attempts and verifies the current password. After a successful change it stores only a salted scrypt password hash in the environment-specific Redis database, increments the Owner session revision (revoking all Owner sessions), clears the caller cookie and records the change in the audit history without storing credentials. The Owner signs in again with the new password.
+
+Before the first change, the original `ADMIN_PASSWORD` environment variable remains the Owner login credential. After a change, the database credential takes precedence and the old Vercel password no longer authenticates. Do not delete the Redis database casually: if the Override record is lost, the original environment credential becomes the recovery credential again. For stronger recovery security, rotate the Vercel environment credential as part of a managed disaster recovery procedure rather than exposing it to staff.
+
+Preview password changes affect only the Preview Redis credential record; production remains independent and untouched. Production self-service becomes available only after multi-admin rollout and a separate Production Redis instance are configured. Unlike job publishing, Owner password changes work in Preview for isolated testing; no production job mutations are performed.
 
 ## Role matrix
 
