@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-10T09:02:01.597678+00:00",
+  "checkedAt": "2026-10-10T09:16:47.498Z",
   "checked": 76,
-  "active": 69,
+  "active": 70,
   "expired": 0,
-  "review": 7,
+  "review": 6,
   "changedExpired": 0,
   "items": [
     {
@@ -32,9 +32,11 @@
       "role": "Software Engineer – Cloud: Azure",
       "page": "jobs/rubrik-software-engineer-cloud-azure.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-10T08:58:28.884234+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-10T09:16:47.498Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-10T09:16:47.498Z"
     },
     {
       "id": 108,
