@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const REPO = process.env.ADMIN_GITHUB_REPO || "Chethan-Mns/Hdcareers";
 const REF = process.env.ADMIN_GITHUB_BASE || "main";
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
     res.setHeader("Allow", "GET, POST");
     return res.status(405).json({error: "Method not allowed."});
   }
-  if (!requireAdmin(req, res)) return;
+  if(!await requireAdmin(req,res))return;
   if (!originAllowed(req)) return res.status(403).json({error: "Invalid request origin."});
   const token = process.env.GITHUB_PUBLISH_TOKEN;
   if (!token) return res.status(503).json({error: "GitHub publishing credentials are not configured."});
@@ -123,6 +123,7 @@ export default async function handler(req, res) {
         return res.status(409).json({error: "Review batch changed. Refresh and try again."});
       }
       const next = update(data, req.body);
+      await auditMutation(req,"daily_batch."+String(req.body?.action||"update"),String(data.batchId));
       try {
         await github("/contents/" + PATH, token, {
           method: "PUT",
