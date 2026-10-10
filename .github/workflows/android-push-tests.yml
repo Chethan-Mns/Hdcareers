@@ -11,6 +11,10 @@ on:
       - .github/workflows/android-push-tests.yml
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -26,7 +30,6 @@ jobs:
         run: |
           node --check lib/android-notify.js
           node --check api/admin/android-devices.js
-          node --check api/admin/android-test-push.js
           node --check api/notifications/android-dispatch.js
       - name: Test auth, private storage, Firebase OAuth and push delivery request
         run: node --experimental-default-type=module --test tests/android-notify.test.mjs

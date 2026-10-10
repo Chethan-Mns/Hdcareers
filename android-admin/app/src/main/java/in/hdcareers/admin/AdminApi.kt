@@ -97,5 +97,5 @@ class AdminApi {
         request("/api/admin/android-devices",JSONObject().put("action","unregister").put("installationId",installation))
     }
     suspend fun testAndroidPush():Boolean =
-        JSONObject(request("/api/admin/android-test-push",JSONObject())).optBoolean("ok")
+        JSONObject(request("/api/admin/android-devices",JSONObject().put("action","test"))).optBoolean("ok")
 }

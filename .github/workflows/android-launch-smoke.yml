@@ -8,6 +8,10 @@ on:
       - android-admin/**
       - .github/workflows/android-launch-smoke.yml
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
