@@ -1,0 +1,641 @@
+{
+  "Accenture": {
+    "status": "fallback_existing_logo",
+    "domain": "accenture.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "TCS": {
+    "status": "fallback_existing_logo",
+    "domain": "tcs.com",
+    "reason": "HTTP Error 404: Not Found"
+  },
+  "Infosys": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/infosys.png",
+    "domain": "infosys.com",
+    "source": "https://www.google.com/s2/favicons?domain=infosys.com&sz=256",
+    "size": "256x256"
+  },
+  "Wipro": {
+    "status": "fallback_existing_logo",
+    "domain": "wipro.com",
+    "reason": "source icon below 96px: (90, 70)"
+  },
+  "HCLTech": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/hcltech.png",
+    "domain": "hcltech.com",
+    "source": "https://www.google.com/s2/favicons?domain=hcltech.com&sz=256",
+    "size": "256x256"
+  },
+  "Tech Mahindra": {
+    "status": "fallback_existing_logo",
+    "domain": "techmahindra.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Cognizant": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/cognizant.png",
+    "domain": "cognizant.com",
+    "source": "https://www.google.com/s2/favicons?domain=cognizant.com&sz=256",
+    "size": "256x256"
+  },
+  "Capgemini": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/capgemini.png",
+    "domain": "capgemini.com",
+    "source": "https://www.google.com/s2/favicons?domain=capgemini.com&sz=256",
+    "size": "256x256"
+  },
+  "LTIMindtree": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/ltimindtree.png",
+    "domain": "ltimindtree.com",
+    "source": "https://www.google.com/s2/favicons?domain=ltimindtree.com&sz=256",
+    "size": "256x256"
+  },
+  "IBM": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/ibm.png",
+    "domain": "ibm.com",
+    "source": "https://www.google.com/s2/favicons?domain=ibm.com&sz=256",
+    "size": "256x256"
+  },
+  "NTT DATA": {
+    "status": "fallback_existing_logo",
+    "domain": "nttdata.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "DXC Technology": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/dxc-technology.png",
+    "domain": "dxc.com",
+    "source": "https://www.google.com/s2/favicons?domain=dxc.com&sz=256",
+    "size": "256x256"
+  },
+  "Mphasis": {
+    "status": "fallback_existing_logo",
+    "domain": "mphasis.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Persistent Systems": {
+    "status": "fallback_existing_logo",
+    "domain": "persistent.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Coforge": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/coforge.png",
+    "domain": "coforge.com",
+    "source": "https://www.google.com/s2/favicons?domain=coforge.com&sz=256",
+    "size": "256x256"
+  },
+  "Hexaware": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/hexaware.png",
+    "domain": "hexaware.com",
+    "source": "https://www.google.com/s2/favicons?domain=hexaware.com&sz=256",
+    "size": "256x256"
+  },
+  "CGI": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/cgi.png",
+    "domain": "cgi.com",
+    "source": "https://www.google.com/s2/favicons?domain=cgi.com&sz=256",
+    "size": "256x256"
+  },
+  "UST": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/ust.png",
+    "domain": "ust.com",
+    "source": "https://www.google.com/s2/favicons?domain=ust.com&sz=256",
+    "size": "256x256"
+  },
+  "EPAM Systems": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/epam-systems.png",
+    "domain": "epam.com",
+    "source": "https://www.google.com/s2/favicons?domain=epam.com&sz=256",
+    "size": "256x256"
+  },
+  "Virtusa": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/virtusa.png",
+    "domain": "virtusa.com",
+    "source": "https://www.google.com/s2/favicons?domain=virtusa.com&sz=256",
+    "size": "256x256"
+  },
+  "Brillio": {
+    "status": "fallback_existing_logo",
+    "domain": "brillio.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Zensar Technologies": {
+    "status": "fallback_existing_logo",
+    "domain": "zensar.com",
+    "reason": "HTTP Error 404: Not Found"
+  },
+  "Nagarro": {
+    "status": "fallback_existing_logo",
+    "domain": "nagarro.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Sopra Steria": {
+    "status": "fallback_existing_logo",
+    "domain": "soprasteria.com",
+    "reason": "source icon below 96px: (64, 64)"
+  },
+  "Kyndryl": {
+    "status": "fallback_existing_logo",
+    "domain": "kyndryl.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Atos": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/atos.png",
+    "domain": "atos.net",
+    "source": "https://www.google.com/s2/favicons?domain=atos.net&sz=256",
+    "size": "256x256"
+  },
+  "Genpact": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/genpact.png",
+    "domain": "genpact.com",
+    "source": "https://www.google.com/s2/favicons?domain=genpact.com&sz=256",
+    "size": "256x256"
+  },
+  "Deloitte": {
+    "status": "fallback_existing_logo",
+    "domain": "deloitte.com",
+    "reason": "source icon below 96px: (64, 64)"
+  },
+  "EY": {
+    "status": "fallback_existing_logo",
+    "domain": "ey.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "PwC": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/pwc.png",
+    "domain": "pwc.com",
+    "source": "https://www.google.com/s2/favicons?domain=pwc.com&sz=256",
+    "size": "256x256"
+  },
+  "KPMG": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/kpmg.png",
+    "domain": "kpmg.com",
+    "source": "https://www.google.com/s2/favicons?domain=kpmg.com&sz=256",
+    "size": "256x256"
+  },
+  "Google": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/google.png",
+    "domain": "google.com",
+    "source": "https://www.google.com/s2/favicons?domain=google.com&sz=256",
+    "size": "256x256"
+  },
+  "Microsoft": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/microsoft.png",
+    "domain": "microsoft.com",
+    "source": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=256",
+    "size": "256x256"
+  },
+  "Amazon": {
+    "status": "fallback_existing_logo",
+    "domain": "amazon.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Adobe": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/adobe.png",
+    "domain": "adobe.com",
+    "source": "https://www.google.com/s2/favicons?domain=adobe.com&sz=256",
+    "size": "256x256"
+  },
+  "Oracle": {
+    "status": "fallback_existing_logo",
+    "domain": "oracle.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "SAP": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/sap.png",
+    "domain": "sap.com",
+    "source": "https://www.google.com/s2/favicons?domain=sap.com&sz=256",
+    "size": "256x256"
+  },
+  "Salesforce": {
+    "status": "fallback_existing_logo",
+    "domain": "salesforce.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Cisco": {
+    "status": "fallback_existing_logo",
+    "domain": "cisco.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Intel": {
+    "status": "fallback_existing_logo",
+    "domain": "intel.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "NVIDIA": {
+    "status": "fallback_existing_logo",
+    "domain": "nvidia.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Qualcomm": {
+    "status": "fallback_existing_logo",
+    "domain": "qualcomm.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Dell Technologies": {
+    "status": "fallback_existing_logo",
+    "domain": "dell.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "HP": {
+    "status": "fallback_existing_logo",
+    "domain": "hp.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "HPE": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/hpe.png",
+    "domain": "hpe.com",
+    "source": "https://www.google.com/s2/favicons?domain=hpe.com&sz=256",
+    "size": "256x256"
+  },
+  "ServiceNow": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/servicenow.png",
+    "domain": "servicenow.com",
+    "source": "https://www.google.com/s2/favicons?domain=servicenow.com&sz=256",
+    "size": "256x256"
+  },
+  "Red Hat": {
+    "status": "fallback_existing_logo",
+    "domain": "redhat.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Autodesk": {
+    "status": "fallback_existing_logo",
+    "domain": "autodesk.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Broadcom": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/broadcom.png",
+    "domain": "broadcom.com",
+    "source": "https://www.google.com/s2/favicons?domain=broadcom.com&sz=256",
+    "size": "256x256"
+  },
+  "Atlassian": {
+    "status": "fallback_existing_logo",
+    "domain": "atlassian.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "NetApp": {
+    "status": "fallback_existing_logo",
+    "domain": "netapp.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Freshworks": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/freshworks.png",
+    "domain": "freshworks.com",
+    "source": "https://www.google.com/s2/favicons?domain=freshworks.com&sz=256",
+    "size": "256x256"
+  },
+  "Zoho": {
+    "status": "fallback_existing_logo",
+    "domain": "zoho.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Flipkart": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/flipkart.png",
+    "domain": "flipkart.com",
+    "source": "https://www.google.com/s2/favicons?domain=flipkart.com&sz=256",
+    "size": "256x256"
+  },
+  "Walmart Global Tech": {
+    "status": "fallback_existing_logo",
+    "domain": "walmart.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "PhonePe": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/phonepe.png",
+    "domain": "phonepe.com",
+    "source": "https://www.google.com/s2/favicons?domain=phonepe.com&sz=256",
+    "size": "256x256"
+  },
+  "Razorpay": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/razorpay.png",
+    "domain": "razorpay.com",
+    "source": "https://www.google.com/s2/favicons?domain=razorpay.com&sz=256",
+    "size": "256x256"
+  },
+  "Paytm": {
+    "status": "fallback_existing_logo",
+    "domain": "paytm.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Meesho": {
+    "status": "fallback_existing_logo",
+    "domain": "meesho.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Swiggy": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/swiggy.png",
+    "domain": "swiggy.com",
+    "source": "https://www.google.com/s2/favicons?domain=swiggy.com&sz=256",
+    "size": "256x256"
+  },
+  "Zomato": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/zomato.png",
+    "domain": "zomato.com",
+    "source": "https://www.google.com/s2/favicons?domain=zomato.com&sz=256",
+    "size": "256x256"
+  },
+  "Uber": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/uber.png",
+    "domain": "uber.com",
+    "source": "https://www.google.com/s2/favicons?domain=uber.com&sz=256",
+    "size": "256x256"
+  },
+  "PayPal": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/paypal.png",
+    "domain": "paypal.com",
+    "source": "https://www.google.com/s2/favicons?domain=paypal.com&sz=256",
+    "size": "256x256"
+  },
+  "JPMorgan Chase": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/jpmorgan-chase.png",
+    "domain": "jpmorganchase.com",
+    "source": "https://www.google.com/s2/favicons?domain=jpmorganchase.com&sz=256",
+    "size": "256x256"
+  },
+  "Goldman Sachs": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/goldman-sachs.png",
+    "domain": "goldmansachs.com",
+    "source": "https://www.google.com/s2/favicons?domain=goldmansachs.com&sz=256",
+    "size": "256x256"
+  },
+  "Morgan Stanley": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/morgan-stanley.png",
+    "domain": "morganstanley.com",
+    "source": "https://www.google.com/s2/favicons?domain=morganstanley.com&sz=256",
+    "size": "256x256"
+  },
+  "Wells Fargo": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/wells-fargo.png",
+    "domain": "wellsfargo.com",
+    "source": "https://www.google.com/s2/favicons?domain=wellsfargo.com&sz=256",
+    "size": "256x256"
+  },
+  "Citi": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/citi.png",
+    "domain": "citi.com",
+    "source": "https://www.google.com/s2/favicons?domain=citi.com&sz=256",
+    "size": "256x256"
+  },
+  "Barclays": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/barclays.png",
+    "domain": "barclays.com",
+    "source": "https://www.google.com/s2/favicons?domain=barclays.com&sz=256",
+    "size": "256x256"
+  },
+  "HSBC": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/hsbc.png",
+    "domain": "hsbc.com",
+    "source": "https://www.google.com/s2/favicons?domain=hsbc.com&sz=256",
+    "size": "256x256"
+  },
+  "Deutsche Bank": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/deutsche-bank.png",
+    "domain": "db.com",
+    "source": "https://www.google.com/s2/favicons?domain=db.com&sz=256",
+    "size": "256x256"
+  },
+  "Bank of America": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/bank-of-america.png",
+    "domain": "bankofamerica.com",
+    "source": "https://www.google.com/s2/favicons?domain=bankofamerica.com&sz=256",
+    "size": "256x256"
+  },
+  "American Express": {
+    "status": "fallback_existing_logo",
+    "domain": "americanexpress.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Visa": {
+    "status": "fallback_existing_logo",
+    "domain": "visa.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Mastercard": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/mastercard.png",
+    "domain": "mastercard.com",
+    "source": "https://www.google.com/s2/favicons?domain=mastercard.com&sz=256",
+    "size": "256x256"
+  },
+  "State Street": {
+    "status": "fallback_existing_logo",
+    "domain": "statestreet.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Siemens": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/siemens.png",
+    "domain": "siemens.com",
+    "source": "https://www.google.com/s2/favicons?domain=siemens.com&sz=256",
+    "size": "256x256"
+  },
+  "Bosch": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/bosch.png",
+    "domain": "bosch.com",
+    "source": "https://www.google.com/s2/favicons?domain=bosch.com&sz=256",
+    "size": "256x256"
+  },
+  "Honeywell": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/honeywell.png",
+    "domain": "honeywell.com",
+    "source": "https://www.google.com/s2/favicons?domain=honeywell.com&sz=256",
+    "size": "256x256"
+  },
+  "GE HealthCare": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/ge-healthcare.png",
+    "domain": "gehealthcare.com",
+    "source": "https://www.google.com/s2/favicons?domain=gehealthcare.com&sz=256",
+    "size": "256x256"
+  },
+  "GE Vernova": {
+    "status": "fallback_existing_logo",
+    "domain": "gevernova.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "Philips": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/philips.png",
+    "domain": "philips.com",
+    "source": "https://www.google.com/s2/favicons?domain=philips.com&sz=256",
+    "size": "256x256"
+  },
+  "Schneider Electric": {
+    "status": "fallback_existing_logo",
+    "domain": "se.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Ericsson": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/ericsson.png",
+    "domain": "ericsson.com",
+    "source": "https://www.google.com/s2/favicons?domain=ericsson.com&sz=256",
+    "size": "256x256"
+  },
+  "Nokia": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/nokia.png",
+    "domain": "nokia.com",
+    "source": "https://www.google.com/s2/favicons?domain=nokia.com&sz=256",
+    "size": "256x256"
+  },
+  "Samsung R&D": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/samsung-r-d.png",
+    "domain": "samsung.com",
+    "source": "https://www.google.com/s2/favicons?domain=samsung.com&sz=256",
+    "size": "256x256"
+  },
+  "Texas Instruments": {
+    "status": "fallback_existing_logo",
+    "domain": "ti.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "ABB": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/abb.png",
+    "domain": "abb.com",
+    "source": "https://www.google.com/s2/favicons?domain=abb.com&sz=256",
+    "size": "256x256"
+  },
+  "L&T Technology Services": {
+    "status": "fallback_existing_logo",
+    "domain": "ltts.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Continental": {
+    "status": "fallback_existing_logo",
+    "domain": "continental.com",
+    "reason": "source icon below 96px: (32, 32)"
+  },
+  "Micron Technology": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/micron-technology.png",
+    "domain": "micron.com",
+    "source": "https://www.google.com/s2/favicons?domain=micron.com&sz=256",
+    "size": "256x256"
+  },
+  "Applied Materials": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/applied-materials.png",
+    "domain": "appliedmaterials.com",
+    "source": "https://www.google.com/s2/favicons?domain=appliedmaterials.com&sz=256",
+    "size": "256x256"
+  },
+  "Reliance Industries": {
+    "status": "fallback_existing_logo",
+    "domain": "ril.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Tata Motors": {
+    "status": "fallback_existing_logo",
+    "domain": "tatamotors.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Tata Steel": {
+    "status": "fallback_existing_logo",
+    "domain": "tatasteel.com",
+    "reason": "source icon below 96px: (21, 20)"
+  },
+  "Larsen & Toubro": {
+    "status": "fallback_existing_logo",
+    "domain": "larsentoubro.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Aditya Birla Group": {
+    "status": "fallback_existing_logo",
+    "domain": "adityabirla.com",
+    "reason": "source icon below 96px: (48, 48)"
+  },
+  "ITC": {
+    "status": "fallback_existing_logo",
+    "domain": "itcportal.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Hindustan Unilever": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/hindustan-unilever.png",
+    "domain": "hul.co.in",
+    "source": "https://www.google.com/s2/favicons?domain=hul.co.in&sz=256",
+    "size": "256x256"
+  },
+  "Procter & Gamble": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/procter-gamble.png",
+    "domain": "pg.com",
+    "source": "https://www.google.com/s2/favicons?domain=pg.com&sz=256",
+    "size": "256x256"
+  },
+  "Nestlé": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/nestl.png",
+    "domain": "nestle.com",
+    "source": "https://www.google.com/s2/favicons?domain=nestle.com&sz=256",
+    "size": "256x256"
+  },
+  "Asian Paints": {
+    "status": "fallback_existing_logo",
+    "domain": "asianpaints.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "IndiGo": {
+    "status": "candidate_needs_brand_review",
+    "path": "assets/company-marks-preview/indigo.png",
+    "domain": "goindigo.in",
+    "source": "https://www.google.com/s2/favicons?domain=goindigo.in&sz=256",
+    "size": "256x256"
+  },
+  "DHL": {
+    "status": "fallback_existing_logo",
+    "domain": "dhl.com",
+    "reason": "source icon below 96px: (16, 16)"
+  },
+  "Amazon Operations": {
+    "status": "fallback_existing_logo",
+    "domain": "amazon.com",
+    "reason": "source icon below 96px: (48, 48)"
+  }
+}
