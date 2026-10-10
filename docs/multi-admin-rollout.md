@@ -8,7 +8,11 @@ The preview deployment is explicitly read-only for production job mutations.
 
 ## Required Vercel configuration
 
-In **Vercel → hdcareers → Settings → Environment Variables**, add:
+The existing Vercel Upstash Redis marketplace connection has already created `KV_REST_API_URL` and `KV_REST_API_TOKEN` in the **Preview** environment. The multi-admin preview code accepts these directly, and no manual renaming or reinstallation is needed. Do not share the token.
+
+Production does **not** use the generic KV credentials. Only after successful Owner/Editor security tests and Owner approval should Production receive independent `HD_ADMIN_REDIS_URL` and `HD_ADMIN_REDIS_TOKEN`, ideally from a separate production database.
+
+For custom environments or the future production rollout, in **Vercel → hdcareers → Settings → Environment Variables**, add:
 
 | Name | Environment | Value |
 | --- | --- | --- |
@@ -30,7 +34,7 @@ Keep these existing Owner variables in both environments without changing their 
 
 ## Testing without affecting the website
 
-1. Configure **Preview** Redis REST variables only and redeploy `feature/multi-admin-rbac`.
+1. Preview Redis credentials are supplied by the Vercel Upstash integration as `KV_REST_API_URL` and `KV_REST_API_TOKEN`; deploy/redeploy `feature/multi-admin-rbac` after confirming those Preview variables.
 2. Open the branch's Vercel preview URL (may require existing Vercel preview SSO).
 3. Sign in as Owner at `/admin/` using your **existing** Owner username/password.
 4. Select **Team** or open `/admin/team.html`. Create a Job Editor with a unique username and a password of 14+ characters.
