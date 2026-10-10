@@ -76,7 +76,7 @@ fun PremiumAdminRoot(
                         val symbols=listOf(Icons.Default.Dashboard,Icons.Default.FactCheck,
                             Icons.Default.BusinessCenter,Icons.Default.GridView)
                         labels.forEachIndexed { index,label ->
-                            NavigationBarItem(selected=vm.tab==index,onClick={vm.tab=index},
+                            NavigationBarItem(selected=vm.tab==index,onClick={vm.tab=index;analyticsOpen=false},
                                 icon={Icon(symbols[index],contentDescription=label)},
                                 label={Text(label,maxLines=1,fontSize=11.sp,fontWeight=FontWeight.SemiBold)},
                                 colors=NavigationBarItemDefaults.colors(
