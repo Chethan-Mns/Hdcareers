@@ -45,7 +45,8 @@ fun PremiumAdminRoot(
             Scaffold(
                 containerColor=Brand.background,
                 topBar={
-                    Surface(color=Color.White,shadowElevation=1.dp) {
+                    Surface(modifier=Modifier.fillMaxWidth().statusBarsPadding(),
+                        color=Color.White,shadowElevation=1.dp) {
                         Row(Modifier.fillMaxWidth().padding(horizontal=16.dp,vertical=12.dp),
                             verticalAlignment=Alignment.CenterVertically,
                             horizontalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -110,7 +111,7 @@ fun PremiumAdminRoot(
 private fun ProLogin(vm:AdminViewModel,onBiometricSignIn:()->Unit) {
     var username by remember {mutableStateOf("")}
     var password by remember {mutableStateOf("")}
-    Box(Modifier.fillMaxSize().background(Brand.background)) {
+    Box(Modifier.fillMaxSize().background(Brand.background).statusBarsPadding()) {
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             Box(Modifier.fillMaxWidth().height(270.dp).clip(RoundedCornerShape(bottomStart=34.dp,bottomEnd=34.dp))
                 .background(Brush.linearGradient(listOf(Brand.navy,Brand.darkBlue,Brand.blue))),
@@ -301,7 +302,7 @@ private fun ProReview(vm:AdminViewModel) {
                 "Refresh now",vm::refreshClicked)
         }
         itemsIndexed(candidates,key={_,item->item.id}) {i,job->
-            ProCandidateCard(job,i,selected==0,vm.batch.backup,vm.busy,
+            ProCandidateCard(job,i,selected==0,vm.batch.backup,vm.companyLogos,vm.busy,
                 decide={vm.decide(job.id,it)},replace={vm.swap(job.id,it)})
         }
         if(selected==0&&vm.batch.id.isNotBlank()) item {
@@ -332,7 +333,8 @@ private fun ProReview(vm:AdminViewModel) {
 
 @Composable
 private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
-    backups:List<Candidate>,busy:Boolean,decide:(String)->Unit,replace:(String)->Unit) {
+    backups:List<Candidate>,logos:Map<String,CompanyLogoSource>,busy:Boolean,
+    decide:(String)->Unit,replace:(String)->Unit) {
     var expanded by remember {mutableStateOf(false)}
     val ctx=LocalContext.current
     val replacements=backups.filter{it.group==c.group&&it.decision=="live"&&it.company!=c.company}
@@ -342,10 +344,7 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
     }
     ProCard {
         Row(verticalAlignment=Alignment.Top,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-            Box(Modifier.size(45.dp).clip(RoundedCornerShape(13.dp))
-                .background(Brand.sky),contentAlignment=Alignment.Center) {
-                Text(c.company.take(2).uppercase(),fontSize=15.sp,fontWeight=FontWeight.Black,color=Brand.blue)
-            }
+            CompanyMark(c.company,logos,c.job,45)
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(3.dp)) {
                 Text(c.company,fontWeight=FontWeight.ExtraBold,color=Brand.navy,fontSize=14.sp)
                 Text(c.role,fontWeight=FontWeight.Bold,color=Brand.navy,fontSize=13.sp,
@@ -441,8 +440,13 @@ private fun ProJobs(vm:AdminViewModel) {
                 }
                 vm.manualDraft?.let{draft->
                     HorizontalDivider(color=Brand.outline)
-                    Text(draft.optString("company")+" — "+draft.optString("role"),
-                        fontWeight=FontWeight.Bold,fontSize=13.sp,color=Brand.navy)
+                    Row(verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                        CompanyMark(draft.optString("company"),vm.companyLogos,draft,43)
+                        Text(draft.optString("company")+" — "+draft.optString("role"),
+                        fontWeight=FontWeight.Bold,fontSize=13.sp,color=Brand.navy,
+                            modifier=Modifier.weight(1f))
+                    }
                     Text(draft.optString("desc").take(310),fontSize=12.sp,color=Brand.gray,
                         maxLines=6,overflow=TextOverflow.Ellipsis)
                     ProPill("Check all details before submitting",Brand.amber)
@@ -473,10 +477,7 @@ private fun ProJobs(vm:AdminViewModel) {
         items(filtered.take(120),key={it.id}) {job->
             ProCard {
                 Row(verticalAlignment=Alignment.Top,horizontalArrangement=Arrangement.spacedBy(11.dp)){
-                    Box(Modifier.size(43.dp).clip(RoundedCornerShape(12.dp)).background(Brand.sky),
-                        contentAlignment=Alignment.Center) {
-                        Text(job.company.take(2).uppercase(),fontWeight=FontWeight.Black,color=Brand.blue)
-                    }
+                    CompanyMark(job.company,vm.companyLogos,job.raw,43)
                     Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(5.dp)) {
                         Text(job.company,fontSize=13.sp,fontWeight=FontWeight.Black,color=Brand.navy)
                         Text(job.role,fontSize=12.sp,fontWeight=FontWeight.SemiBold,color=Brand.navy,
