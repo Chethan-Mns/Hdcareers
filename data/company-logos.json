@@ -419,5 +419,29 @@
     ],
     "qualityScore": 364,
     "bytes": 1214
+  },
+  "Capgemini": {
+    "officialDomain": "capgemini.com",
+    "sourceUrl": "https://www.capgemini.com/wp-content/uploads/2025/10/cropped-Capgemini_spade_32x32.png?w=180",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/capgemini-10eefd0.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 620,
+    "bytes": 4821
+  },
+  "New Street Technologies": {
+    "officialDomain": "newstreettech.com",
+    "sourceUrl": "https://newstreettech.com/nst.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/new-street-technologies-73c3cd9.png",
+    "sourceDimensions": [
+      190,
+      98
+    ],
+    "qualityScore": 418,
+    "bytes": 9659
   }
 }
