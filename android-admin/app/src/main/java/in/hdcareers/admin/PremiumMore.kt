@@ -1,4 +1,4 @@
-package \`in\`.hdcareers.admin
+package `in`.hdcareers.admin
 
 import android.content.Intent
 import android.net.Uri

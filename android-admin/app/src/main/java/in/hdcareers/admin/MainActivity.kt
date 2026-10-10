@@ -21,7 +21,7 @@ class MainActivity:FragmentActivity() {
         setContent {
             vm=viewModel()
             if(intent?.getBooleanExtra("open_review",false)==true) vm.tab=1
-            AdminRoot(vm,
+            PremiumAdminRoot(vm,
                 onBiometricSignIn={authenticate { vm.biometricSignIn() }},
                 onEnableBiometric={authenticate { vm.enableBiometric() }},
                 onRequestNotificationPermission={

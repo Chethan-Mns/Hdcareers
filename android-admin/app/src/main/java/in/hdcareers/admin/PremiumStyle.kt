@@ -1,4 +1,4 @@
-package \`in\`.hdcareers.admin
+package `in`.hdcareers.admin
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -219,7 +219,7 @@ internal fun TrendSpark(points:List<TrafficPoint>,modifier:Modifier=Modifier,
                         accent:Color=Brand.cyan) {
     val series=points.map {it.views.toFloat()}
     if(series.isEmpty()) {
-        Box(modifier,height(0.dp)) {}
+        Spacer(modifier.height(0.dp))
         return
     }
     Canvas(modifier.fillMaxWidth().height(125.dp)) {

@@ -67,3 +67,16 @@ The `.github/workflows/android-review-notify.yml` job calls the authenticated Ve
 4. Biometric unlock is opt-in and available after an initial password login. The app will request a biometric/device-credential challenge before saving encrypted login credentials.
 
 **Keep this work on a feature branch until the CI build passes, APK is installed on a real Pixel, and notifications are tested.**
+
+## Premium Android interface (v1.1)
+
+The Android app now uses the same HD Careers palette as the iOS Admin:
+deep navy (#071A33), blue (#0969DA), cyan, violet, green, and translucent gradient heroes. The UI uses original Compose screens and retains server-side authenticated controls.
+
+- **Official app branding:** The native launcher icon, login logo and header logo reuse the exact bytes from `assets/hd-careers-logo.png` in the repository.
+- **Four premium tabs:** rich Overview with traffic trend, daily Review with replacement controls, Jobs with VIP draft tools, and More with full GA4 Analytics, notifications, expiry checker and security.
+- **Analytics:** live stats, 24H/7D/30D filters, traffic sparkline, conversion cards, country and acquisition bars, top page ranking, device donut chart. Values come from the existing authenticated GA4 API, not sample data.
+- **Pixel layout:** two-column metrics, full-width reports, readable labels and text wrapping. No cramped three-column reports.
+- **No production changes:** install APKs from GitHub development CI only until real Pixel tests are successful.
+
+The app's `versionCode` is 2 / version 1.1.0. GitHub debug APKs may use different signing certificates: uninstall the old debug APK if Android refuses the new installation. The private signed release will provide stable long-term updates.
