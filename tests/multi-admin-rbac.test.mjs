@@ -6,6 +6,7 @@ import teamHandler from "../api/admin/team.js";
 import auditHandler from "../api/admin/audit.js";
 import trafficHandler from "../api/admin/traffic.js";
 import publishHandler from "../api/admin/publish.js";
+import availabilityHandler from "../api/admin/availability.js";
 
 process.env.ADMIN_USERNAME="owner";
 process.env.ADMIN_PASSWORD="test-owner-placeholder";
@@ -99,4 +100,61 @@ test("Existing Owner usernames with email-style characters remain accepted",asyn
   const token=await createAdminSession(who);
   assert.equal((await lookupSession(token)).role,"owner");
  }finally{process.env.ADMIN_USERNAME=original}
+});
+
+
+test("Job Editor can see the checker endpoint, but Preview cannot trigger a GitHub write",async()=>{
+ const editor=await issueSession("job.friend","job_editor");
+ const owner=await issueSession("owner","owner");
+ const prior=process.env.VERCEL_ENV;
+ process.env.VERCEL_ENV="preview";
+ try{
+   for(const token of [editor,owner]){
+     const response=res();
+     await availabilityHandler({...req(token),method:"POST",body:{}},response);
+     assert.equal(response.statusCode,403);
+     assert.match(response.body.error,/Preview is read-only/i);
+   }
+ }finally{
+   if(prior===undefined)delete process.env.VERCEL_ENV;
+   else process.env.VERCEL_ENV=prior;
+ }
+});
+
+test("Job Editor checker trigger is server-authorized, GitHub-backed and audited",async()=>{
+ const previousFetch=globalThis.fetch;
+ const previousEnv=process.env.VERCEL_ENV;
+ const previousPublishToken=process.env.GITHUB_PUBLISH_TOKEN;
+ const editor=await issueSession("job.friend","job_editor");
+ process.env.VERCEL_ENV="production";
+ process.env.GITHUB_PUBLISH_TOKEN="test-github-token";
+ const githubCalls=[];
+ globalThis.fetch=async(url,options={})=>{
+   if(String(url).startsWith("https://api.github.com/repos/")){
+     githubCalls.push({url:String(url),method:options.method||"GET"});
+     let payload;
+     if(String(url).includes("/actions/workflows/job-availability.yml/runs"))payload={workflow_runs:[]};
+     else if(options.method==="PUT" && String(url).includes("/contents/data/availability-trigger.json"))payload={commit:{sha:"mock-commit"}};
+     else if(String(url).includes("/contents/data/availability-trigger.json"))payload={sha:"mock-file",content:Buffer.from("{}").toString("base64")};
+     else throw Error("Unexpected mocked GitHub URL: "+url);
+     return {ok:true,text:async()=>JSON.stringify(payload)};
+   }
+   return previousFetch(url,options);
+ };
+ try{
+   const response=res();
+   await availabilityHandler({...req(editor),method:"POST",body:{}},response);
+   assert.equal(response.statusCode,202);
+   assert.equal(response.body.queued,true);
+   assert.equal(response.body.commitSha,"mock-commit");
+   assert.equal(githubCalls.filter(x=>x.method==="PUT").length,1);
+   const logs=await auditEntries(10);
+   assert(logs.some(x=>x.username==="job.friend"&&x.action==="checker.trigger"));
+ }finally{
+   globalThis.fetch=previousFetch;
+   if(previousEnv===undefined)delete process.env.VERCEL_ENV;
+   else process.env.VERCEL_ENV=previousEnv;
+   if(previousPublishToken===undefined)delete process.env.GITHUB_PUBLISH_TOKEN;
+   else process.env.GITHUB_PUBLISH_TOKEN=previousPublishToken;
+ }
 });
