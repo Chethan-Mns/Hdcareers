@@ -199,11 +199,12 @@ def observe_snapshot(state: dict, snap: dict, observed: datetime) -> dict:
         hist["missingStreak"] = 0
         if hist["lifecycle"] == "CLOSURE_SUSPECTED":
             hist["lifecycle"] = "RECHECK_REQUIRED"
-    missing = previous_keys - keys
+    # Use all historically seen jobs, not only the immediately prior successful snapshot.
+    # Otherwise a job missing twice would have a streak of one forever.
+    missing = {key for key, hist in state["jobs"].items()
+               if hist["job"]["source"] == sid and hist.get("lastSeen") and key not in keys}
     for key in missing:
-        hist = state["jobs"].get(key)
-        if not hist:
-            continue
+        hist = state["jobs"][key]
         hist["missingStreak"] = hist.get("missingStreak", 0) + 1
         if hist["lifecycle"] != "EXPIRED":
             hist["lifecycle"] = "CLOSURE_SUSPECTED"
@@ -247,6 +248,13 @@ def apply_verification(hist: dict, verdict: dict, observed: datetime, present: b
         hist["closedObservations"] = []
         hist["lifecycle"] = "VERIFIED_LIVE"
     elif explicitly_closed(verdict, hist["job"]):
+        if present:
+            # Exact open inventory conflicts with an explicit closure API signal.
+            # Escalate uncertainty rather than automatically expiring a listed vacancy.
+            hist["verification"] = "UNCONFIRMED"
+            hist["closedObservations"] = []
+            hist["lifecycle"] = "RECHECK_REQUIRED"
+            return hist["lifecycle"]
         observations = [t for t in hist.get("closedObservations", []) if parsed_at(t)]
         if not observations or observed - parsed_at(observations[-1]) >= MIN_CLOSURE_INTERVAL:
             observations.append(iso(observed))
