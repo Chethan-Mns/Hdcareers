@@ -1,4 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "ignoreCommand": "changed=$(git diff --name-only HEAD^ HEAD); if [ \"$changed\" = \"data/jobs.json\" ]; then echo \"Skipping intermediate data-only deployment\"; exit 0; else exit 1; fi"
+  "ignoreCommand": "changed=$(git diff --name-only HEAD^ HEAD); if [ \"$changed\" = \"data/jobs.json\" ] || [ \"$changed\" = \"data/reel-selection.json\" ]; then echo \"Skipping intermediate data-only deployment\"; exit 0; else exit 1; fi"
 }
