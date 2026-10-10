@@ -22,8 +22,10 @@ jobs:
       - name: Install SDK using preinstalled Android tooling
         run: |
           echo "ANDROID_HOME=$ANDROID_HOME"
-          yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)
+          test -x "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
       - name: Restore private signing credentials
         env:
           KEYSTORE_BASE64: ${{ secrets.HD_ANDROID_KEYSTORE_BASE64 }}
