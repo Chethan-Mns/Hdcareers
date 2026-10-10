@@ -18,9 +18,12 @@
   "NTT DATA": {
     "name": "NTT DATA",
     "domain": "nttdata.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "HTTP Error 404: Not Found"
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/ntt-data.svg",
+    "note": "HTTP Error 404: Not Found",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/e/e2/NTT_Data_2025.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg",
+    "provenance": "Wikimedia Commons identified brand mark: NTT Data 2025.svg"
   },
   "Persistent Systems": {
     "name": "Persistent Systems",
@@ -65,34 +68,39 @@
   "Kyndryl": {
     "name": "Kyndryl",
     "domain": "kyndryl.com",
-    "status": "official_raster_candidate",
-    "path": "assets/company-marks-review/kyndryl.png",
-    "source": "https://www.kyndryl.com/content/dam/kyndrylprogram/images/global/kyndryl-institute/ki-logo.png",
-    "format": "png",
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/kyndryl.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Kyndryl_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg",
     "sourceSize": [
       500,
       500
-    ]
+    ],
+    "note": "Rejected unrelated or incorrect page image; awaiting verified corporate mark",
+    "provenance": "Wikimedia Commons identified brand mark: Kyndryl logo.svg"
   },
   "Genpact": {
     "name": "Genpact",
     "domain": "genpact.com",
-    "status": "vector_candidate",
+    "status": "official_logo_contrast_variant",
     "path": "assets/company-marks-review/genpact.svg",
     "source": "https://s7ap1.scene7.com/is/content/genpactindia/310x150%20white?ts=1774318655171&dpr=off&bfc=on&fmt=avif-alpha",
-    "format": "svg"
+    "format": "svg",
+    "note": "Official Genpact vector, color adjusted for contrast in white logo tiles"
   },
   "EY": {
     "name": "EY",
     "domain": "ey.com",
-    "status": "official_raster_candidate",
-    "path": "assets/company-marks-review/ey.png",
-    "source": "https://www.ey.com/adobe/dynamicmedia/deliver/dm-aid--77ff1842-f343-4e18-9a15-15524ad301de/ey-parthenon-logo-135px-v2.png?preferwebp=true&quality=85",
-    "format": "png",
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/ey.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/6/61/Ernst_%26_Young_logo_%282025%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg",
     "sourceSize": [
       356,
       152
-    ]
+    ],
+    "note": "Rejected unrelated or incorrect page image; awaiting verified corporate mark",
+    "provenance": "Wikimedia Commons identified brand mark: Ernst & Young logo (2025).svg"
   },
   "Oracle": {
     "name": "Oracle",
@@ -145,14 +153,16 @@
   "Walmart Global Tech": {
     "name": "Walmart Global Tech",
     "domain": "walmart.com",
-    "status": "official_raster_candidate",
-    "path": "assets/company-marks-review/walmart-global-tech.png",
-    "source": "https://i5.walmartimages.com/dfw/4ff9c6c9-701f/k2-_05851b8d-891d-4ee1-b704-5db50d69ec80.v1.jpg?odnHeight=300&odnWidth=1612&odnBg=&odnDynImageQuality=70",
-    "format": "png",
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/walmart-global-tech.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/6/60/Walmart_spark_%282025%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg",
     "sourceSize": [
       1612,
       300
-    ]
+    ],
+    "note": "Rejected unrelated or incorrect page image; awaiting verified corporate mark",
+    "provenance": "Wikimedia Commons identified brand mark: Walmart spark (2025).svg"
   },
   "Paytm": {
     "name": "Paytm",
@@ -165,9 +175,16 @@
   "Meesho": {
     "name": "Meesho",
     "domain": "meesho.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "HTTP Error 403: Forbidden"
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/meesho.png",
+    "note": "HTTP Error 403: Forbidden",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/33/Meesho_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "png",
+    "sourceSize": [
+      1080,
+      1080
+    ],
+    "provenance": "Wikimedia Commons identified brand mark: Meesho logo.png"
   },
   "American Express": {
     "name": "American Express",
@@ -212,14 +229,15 @@
   "Reliance Industries": {
     "name": "Reliance Industries",
     "domain": "ril.com",
-    "status": "official_raster_candidate",
-    "path": "assets/company-marks-review/reliance-industries.png",
-    "source": "https://rilstaticasset.akamaized.net/sites/default/files/2023-01/ril-foundation-logo_0.jpg",
+    "status": "needs_official_asset",
+    "path": null,
+    "source": null,
     "format": "png",
     "sourceSize": [
       300,
       113
-    ]
+    ],
+    "note": "Logo source could not be downloaded: HTTP Error 404: Not Found"
   },
   "Tata Motors": {
     "name": "Tata Motors",
@@ -232,21 +250,23 @@
   "Tata Steel": {
     "name": "Tata Steel",
     "domain": "tatasteel.com",
-    "status": "official_raster_candidate",
-    "path": "assets/company-marks-review/tata-steel.png",
-    "source": "https://www.tatasteel.com/media/21234/youtube-logo.png",
-    "format": "png",
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/tata-steel.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Tata_Steel_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg",
     "sourceSize": [
       734,
       518
-    ]
+    ],
+    "note": "Rejected unrelated or incorrect page image; awaiting verified corporate mark",
+    "provenance": "Wikimedia Commons identified brand mark: Tata Steel Logo.svg"
   },
   "Larsen & Toubro": {
     "name": "Larsen & Toubro",
     "domain": "larsentoubro.com",
     "status": "needs_official_asset",
     "path": null,
-    "note": "No suitable official logo file detected"
+    "note": "Logo source could not be downloaded: HTTP Error 429: Too many requests (f061ab2)"
   },
   "Aditya Birla Group": {
     "name": "Aditya Birla Group",
@@ -260,7 +280,7 @@
     "domain": "itcportal.com",
     "status": "needs_official_asset",
     "path": null,
-    "note": "HTTP Error 406: Not Acceptable"
+    "note": "Logo source could not be downloaded: HTTP Error 429: Too many requests (f061ab2)"
   },
   "Nestlé": {
     "name": "Nestlé",
@@ -275,7 +295,7 @@
     "domain": "asianpaints.com",
     "status": "needs_official_asset",
     "path": null,
-    "note": "No suitable official logo file detected"
+    "note": "Logo source could not be downloaded: HTTP Error 429: Too Many Requests (015d12c)"
   },
   "IndiGo": {
     "name": "IndiGo",
