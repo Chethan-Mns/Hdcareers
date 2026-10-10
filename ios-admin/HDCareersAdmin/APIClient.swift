@@ -167,6 +167,57 @@ final class APIClient {
                                  body: encoder.encode(Body(batchId: batchId)))
     }
 
+    struct PushConfig: Decodable {
+        let configured: Bool
+        let storageConfigured: Bool
+        let apnsConfigured: Bool
+    }
+
+    struct PushReceipt: Decodable {
+        let ok: Bool
+        let registered: Bool?
+    }
+
+    struct PushTestReceipt: Decodable {
+        struct Result: Decodable {
+            let delivered: Bool
+            let reason: String?
+        }
+        let ok: Bool
+        let results: [Result]
+    }
+
+    func pushConfiguration() async throws -> PushConfig {
+        try await request("/api/admin/push-devices")
+    }
+
+    func registerPushToken(_ token: String) async throws {
+        struct Body: Encodable {
+            let action = "register"
+            let installationId: String
+            let token: String
+            let environment: String
+        }
+        let body = Body(installationId: APNsInstallation.id, token: token, environment: APNsInstallation.environment)
+        let result: PushReceipt = try await request("/api/admin/push-devices", method: "POST", body: encoder.encode(body))
+        guard result.ok && result.registered == true else { throw APIClientError.server("Device registration was not accepted.") }
+    }
+
+    func unregisterPush() async throws {
+        struct Body: Encodable {
+            let action = "unregister"
+            let installationId: String
+        }
+        let body = Body(installationId: APNsInstallation.id)
+        let _: PushReceipt = try await request("/api/admin/push-devices", method: "POST", body: encoder.encode(body))
+    }
+
+    func sendPushTest() async throws -> Bool {
+        let body = Data("{}".utf8)
+        let receipt: PushTestReceipt = try await request("/api/admin/push-test", method: "POST", body: body)
+        return receipt.ok
+    }
+
     func publish(jobs: [Job]) async throws -> PublishResponse {
         struct Body: Encodable { let jobs: [Job] }
         let data = try encoder.encode(Body(jobs: jobs))
