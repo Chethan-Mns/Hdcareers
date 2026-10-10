@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-10",
+  "approvedMappings": [
+    "Eaton",
+    "DRDO",
+    "Qualcomm",
+    "Cohere Health",
+    "Thermo Fisher Scientific"
+  ],
+  "unassigned": {
+    "name": "unidentified-teal-arch",
+    "asset": "assets/company-approved/unidentified-teal-arch.webp",
+    "reason": "Company identity not confirmed; do not assign to any company until user identifies it."
+  },
+  "note": "Approval branch only. Do not merge or trigger production Vercel until site deployment available."
+}
