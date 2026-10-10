@@ -135,7 +135,7 @@ private fun ProLogin(vm:AdminViewModel,onBiometricSignIn:()->Unit) {
                         shape=RoundedCornerShape(14.dp))
                     OutlinedTextField(password,{password=it},singleLine=true,
                         visualTransformation=PasswordVisualTransformation(),
-                        leadingIcon={Icon(Icons.Default.LockOutline,null)},
+                        leadingIcon={Icon(Icons.Default.Lock,null)},
                         label={Text("Password")},modifier=Modifier.fillMaxWidth(),
                         shape=RoundedCornerShape(14.dp))
                     Button(onClick={vm.login(username,password)},enabled=!vm.busy,
