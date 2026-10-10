@@ -3,9 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
-import java.io.File
-import java.util.Properties
-
 fun setting(name: String): String = providers.gradleProperty(name).orNull ?: System.getenv(name) ?: ""
 fun literal(value: String): String = "\"" + value.replace("\\","\\\\").replace("\"","\\\"") + "\""
 
@@ -24,11 +21,11 @@ android {
         buildConfigField("String", "FIREBASE_PROJECT_ID", literal(setting("FIREBASE_PROJECT_ID")))
         buildConfigField("String", "FIREBASE_SENDER_ID", literal(setting("FIREBASE_SENDER_ID")))
     }
-    val storeFile = setting("HD_ANDROID_KEYSTORE_FILE")
+    val keystorePath = setting("HD_ANDROID_KEYSTORE_FILE")
     signingConfigs {
         create("privateRelease") {
-            if (storeFile.isNotBlank()) {
-                storeFile = file(storeFile)
+            if (keystorePath.isNotBlank()) {
+                this.storeFile = file(keystorePath)
                 storePassword = setting("HD_ANDROID_KEYSTORE_PASSWORD")
                 keyAlias = setting("HD_ANDROID_KEY_ALIAS")
                 keyPassword = setting("HD_ANDROID_KEY_PASSWORD")
@@ -39,7 +36,7 @@ android {
         getByName("debug") { isMinifyEnabled = false }
         getByName("release") {
             isMinifyEnabled = false
-            if (storeFile.isNotBlank()) signingConfig = signingConfigs.getByName("privateRelease")
+            if (keystorePath.isNotBlank()) signingConfig = signingConfigs.getByName("privateRelease")
         }
     }
     buildFeatures { compose = true; buildConfig = true }
