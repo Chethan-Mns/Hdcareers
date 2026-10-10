@@ -30,11 +30,21 @@ data class DailyBatch(val id: String, val status: String, val priority: List<Can
         priority.count { it.group == "nonit" } == 1 &&
         priority.count { it.group == "training" } == 1
 }
-data class Traffic(val users: Int=0, val views: Int=0, val live: Int=0,
-                   val applies: Int=0, val resumes: Int=0,
-                   val countries: List<Pair<String,Int>> = emptyList(),
-                   val pages: List<Pair<String,Int>> = emptyList(),
-                   val devices: List<Pair<String,Int>> = emptyList())
+data class TrafficPoint(val date:String,val visitors:Int,val views:Int)
+data class Traffic(
+    val users:Int=0, val views:Int=0, val live:Int=0, val applies:Int=0, val resumes:Int=0,
+    val countries:List<Pair<String,Int>> = emptyList(),
+    val pages:List<Pair<String,Int>> = emptyList(),
+    val devices:List<Pair<String,Int>> = emptyList(),
+    val trend:List<TrafficPoint> = emptyList(),
+    val channels:List<Pair<String,Int>> = emptyList(),
+    val sources:List<Pair<String,Int>> = emptyList(),
+    val sessions:Int=0,
+    val newUsers:Int=0,
+    val engagementRate:Double=0.0,
+    val applyRate:Double=0.0,
+    val updatedAt:String=""
+)
 
 fun JSONObject.array(key: String): List<JSONObject> {
     val source = optJSONArray(key) ?: return emptyList()
@@ -59,11 +69,28 @@ fun parseJobs(raw: JSONArray): List<Job> = (0 until raw.length()).mapNotNull { i
     }
 }
 fun parseTraffic(j:JSONObject): Traffic {
-    fun counts(key:String,value:String)=j.array(key).take(8).map { it.optString(value,"Unknown") to
-        it.optInt(if(key=="pages")"pageviews" else "visitors") }
-    return Traffic(j.optJSONObject("totals")?.optInt("visitors")?:0,
-        j.optJSONObject("totals")?.optInt("pageviews")?:0,j.optInt("realtimeUsers"),
-        j.optJSONObject("conversions")?.optInt("applyClicks")?:0,
-        j.optJSONObject("conversions")?.optInt("resumeChecks")?:0,
-        counts("countries","country"),counts("pages","requestPath"),counts("devices","deviceType"))
+    fun counts(key:String,label:String,metric:String):List<Pair<String,Int>> =
+        j.array(key).take(8).map { it.optString(label,"Unknown") to it.optInt(metric) }
+    val totals=j.optJSONObject("totals")
+    val conversions=j.optJSONObject("conversions")
+    return Traffic(
+        users=totals?.optInt("visitors") ?: 0,
+        views=totals?.optInt("pageviews") ?: 0,
+        live=j.optInt("realtimeUsers"),
+        applies=conversions?.optInt("applyClicks") ?: 0,
+        resumes=conversions?.optInt("resumeChecks") ?: 0,
+        countries=counts("countries","country","visitors"),
+        pages=counts("pages","requestPath","pageviews"),
+        devices=counts("devices","deviceType","visitors"),
+        trend=j.array("trend").map {
+            TrafficPoint(it.optString("date"),it.optInt("users"),it.optInt("pageviews"))
+        },
+        channels=counts("channels","channel","sessions"),
+        sources=counts("referrers","referrerHostname","sessions"),
+        sessions=totals?.optInt("sessions") ?: 0,
+        newUsers=totals?.optInt("newUsers") ?: 0,
+        engagementRate=totals?.optDouble("engagementRate") ?: 0.0,
+        applyRate=conversions?.optDouble("applyRate") ?: 0.0,
+        updatedAt=j.optString("refreshedAt")
+    )
 }
