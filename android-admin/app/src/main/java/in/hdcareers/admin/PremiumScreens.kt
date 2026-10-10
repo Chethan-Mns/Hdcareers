@@ -38,6 +38,7 @@ fun PremiumAdminRoot(
     onEnableBiometric:()->Unit,
     onRequestNotificationPermission:()->Unit
 ) {
+    var analyticsOpen by remember { mutableStateOf(false) }
     MaterialTheme(colorScheme=Brand.scheme,typography=Typography()) {
         if(!vm.loggedIn) {
             ProLogin(vm,onBiometricSignIn)
@@ -87,8 +88,8 @@ fun PremiumAdminRoot(
                 }
             ) { insets ->
                 Box(Modifier.fillMaxSize().padding(insets)) {
-                    when(vm.tab) {
-                        0 -> ProHome(vm)
+                    if(analyticsOpen) ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
+                        0 -> ProHome(vm,onAnalytics={analyticsOpen=true})
                         1 -> ProReview(vm)
                         2 -> ProJobs(vm)
                         else -> ProMore(vm,onEnableBiometric,onRequestNotificationPermission)
@@ -166,7 +167,7 @@ private fun ProLogin(vm:AdminViewModel,onBiometricSignIn:()->Unit) {
 }
 
 @Composable
-private fun ProHome(vm:AdminViewModel) {
+private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
     val active=vm.jobs.count{it.status=="active"}
     val awaiting=vm.batch.priority.count{it.decision!="live"}
     LazyColumn(contentPadding=PaddingValues(start=16.dp,end=16.dp,top=18.dp,bottom=28.dp),
@@ -228,7 +229,7 @@ private fun ProHome(vm:AdminViewModel) {
             ProCard {
                 SectionHead(Icons.Default.ShowChart,"Traffic trend",
                     "Real Google Analytics data · "+vm.days+" day view",Brand.cyan,
-                    action={vm.tab=3})
+                    action=onAnalytics)
                 if(vm.traffic.trend.isNotEmpty()) {
                     TrendSpark(vm.traffic.trend,accent=Brand.cyan)
                 } else Text("Traffic history will appear when GA4 returns daily measurements.",
@@ -245,7 +246,7 @@ private fun ProHome(vm:AdminViewModel) {
                 Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                     QuickAction("Review",Icons.Default.FactCheck,Brand.blue,Modifier.weight(1f)){vm.tab=1}
                     QuickAction("Jobs",Icons.Default.BusinessCenter,Brand.violet,Modifier.weight(1f)){vm.tab=2}
-                    QuickAction("Analytics",Icons.Default.Insights,Brand.cyan,Modifier.weight(1f)){vm.tab=3}
+                    QuickAction("Analytics",Icons.Default.Insights,Brand.cyan,Modifier.weight(1f)){onAnalytics()}
                 }
             }
         }
