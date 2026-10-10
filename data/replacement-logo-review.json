@@ -229,15 +229,15 @@
   "Reliance Industries": {
     "name": "Reliance Industries",
     "domain": "ril.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "source": null,
+    "status": "official_brand_asset_review",
+    "path": "assets/company-marks-review/reliance-industries.png",
+    "source": "https://rilstaticasset.akamaized.net/sites/default/files/2023-02/S.1.1_2.png",
     "format": "png",
     "sourceSize": [
-      300,
-      113
+      366,
+      201
     ],
-    "note": "Logo source could not be downloaded: HTTP Error 404: Not Found"
+    "note": "Identified company-branded asset for visual approval"
   },
   "Tata Motors": {
     "name": "Tata Motors",
@@ -279,9 +279,11 @@
   "ITC": {
     "name": "ITC",
     "domain": "itcportal.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "Logo source could not be downloaded: HTTP Error 429: Too many requests (f061ab2)"
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/itc.svg",
+    "note": "Identified company-branded asset for visual approval",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/f/ff/ITC_Limited_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg"
   },
   "Nestlé": {
     "name": "Nestlé",
