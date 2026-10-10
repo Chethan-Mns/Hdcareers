@@ -7,7 +7,7 @@ on:
       - android-admin/**
       - .github/workflows/android-admin-build.yml
   pull_request:
-    branches: [main]
+    branches: [main, feat/android-admin-native-pixel-20261010]
     paths:
       - android-admin/**
       - .github/workflows/android-admin-build.yml
