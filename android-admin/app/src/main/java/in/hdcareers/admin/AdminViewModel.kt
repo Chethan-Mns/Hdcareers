@@ -45,7 +45,6 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         savedPassword=password
         loggedIn=true
         refresh()
-        connectPush()
     }
     fun biometricSignIn() {
         try {
