@@ -320,7 +320,9 @@
     "workMode": "Not Specified",
     "jobId": "687237633525",
     "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
-    "manualLiveVerifiedUrl": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en"
+    "manualLiveVerifiedUrl": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
+    "logoPath": "assets/company-approved/eaton.webp",
+    "logoSourceDomain": "eaton.eightfold.ai"
   },
   {
     "id": 110,
@@ -1774,7 +1776,9 @@
       "checkedAt": "2026-10-07T03:55:00.000Z",
       "state": "active",
       "reason": "Official DRDO page was published 06 Oct 2026 and live on 07 Oct 2026; it lists advertisement CAIR/HRT/JRF/2026/03, end date 30 Oct 2026 and walk-in interview on 24 Nov 2026."
-    }
+    },
+    "logoPath": "assets/company-approved/drdo.webp",
+    "logoSourceDomain": "drdo.gov.in"
   },
   {
     "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
@@ -1903,7 +1907,9 @@
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedUrl": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
     "manualLiveConfirmedBy": "HD Careers owner",
-    "manualLiveConfirmedReason": "Manually confirmed live in 2026-10-10 review"
+    "manualLiveConfirmedReason": "Manually confirmed live in 2026-10-10 review",
+    "logoPath": "assets/company-approved/thermo-fisher-scientific.webp",
+    "logoSourceDomain": "thermofisher.com"
   },
   {
     "page": "jobs/ge-healthcare-early-career-trainee-service-r4046659.html",
@@ -2523,7 +2529,9 @@
       "checkedAt": "2026-10-06T03:35:35.286Z",
       "state": "active",
       "reason": "Exact official role or event page re-opened on 06 Oct 2026; specific role/event details and current application, registration, notification or walk-in instructions were present."
-    }
+    },
+    "logoPath": "assets/company-approved/drdo.webp",
+    "logoSourceDomain": "drdo.gov.in"
   },
   {
     "page": "jobs/indigo-inflight-services-hiring-events-october-2026.html",
@@ -3021,7 +3029,7 @@
       "state": "active",
       "reason": "Official DRDO page and linked notice show advertisement 0675/Apprentice/DIPR/Adm, 24 seats, application materials, and deadline 13 October 2026."
     },
-    "logoPath": "assets/company-icons/drdo-dipr-c130855.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -3743,7 +3751,7 @@
       "state": "active",
       "reason": "Official DRDO vacancy page lists the VRDE Ahilyanagar JRF walk-in under Advertisement VRDE/H&HC/HRD/811/Fellowship through 07-10-2026."
     },
-    "logoPath": "assets/company-icons/drdo-vrde-c2432fd.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -3800,7 +3808,7 @@
       "state": "active",
       "reason": "Official DRDO vacancy page lists LRDE Bengaluru JRF Walk-in Interview 2026 under Advertisement No. 03/2026/JRF through 08-10-2026."
     },
-    "logoPath": "assets/company-icons/drdo-lrde-c7e2c23.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -3857,7 +3865,7 @@
       "state": "active",
       "reason": "Official DRDO vacancy page lists the DYSL-SM Hyderabad JRF walk-in under Advertisement No. DYSL-SM/HRD/JRF/REC/2026/1 through 06-10-2026."
     },
-    "logoPath": "assets/company-icons/drdo-dysl-sm-65edcc6.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -4089,7 +4097,7 @@
       "state": "active",
       "reason": "Official DRDO current vacancies page lists RCI Hyderabad apprenticeship advertisement RCI/HRD/Apprenticeship/Advt/2027 with end date 01/11/2026."
     },
-    "logoPath": "assets/company-icons/drdo-research-centre-imarat-rci-e81abca.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -4451,7 +4459,7 @@
       "state": "active",
       "reason": "Official Qualcomm Careers URL resolves to the 2027 Campus Hire_ Engineer_ HW job page for job ID 446719783487; current official page is accessible and application UI is present"
     },
-    "logoPath": "assets/company-icons/qualcomm-55f52ae.svg",
+    "logoPath": "assets/company-approved/qualcomm.webp",
     "logoSourceDomain": "qualcomm.com",
     "browserVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
@@ -4810,7 +4818,7 @@
       "state": "active",
       "reason": "Official DRDO detail page shows advertisement PXE/HRD/AT/01/2026-27, the 23 September 2026 opening date, 12 October 2026 end date and a public advertisement/application-form link"
     },
-    "logoPath": "assets/company-icons/drdo-proof-experimental-establishment-pxe-0bbb64a.png",
+    "logoPath": "assets/company-approved/drdo.webp",
     "logoSourceDomain": "drdo.gov.in"
   },
   {
@@ -5163,7 +5171,7 @@
     ],
     "who": "Early-career software engineers with a relevant technical degree or equivalent experience who are comfortable learning across backend, frontend and cloud technologies should review this role. The official posting allows 0-3 years of experience.",
     "workMode": "On-site",
-    "logoPath": "assets/company-icons/cohere-health-fa5a07c.png",
+    "logoPath": "assets/company-approved/cohere-health.webp",
     "logoSourceDomain": "coherehealth.com",
     "availabilityCheck": {
       "state": "active",
