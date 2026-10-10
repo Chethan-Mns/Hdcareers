@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import androidx.fragment.app.FragmentActivity
@@ -18,6 +19,7 @@ class MainActivity:FragmentActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.getInsetsController(window,window.decorView).isAppearanceLightStatusBars = true
         setContent {
             vm=viewModel()
             if(intent?.getBooleanExtra("open_review",false)==true) vm.tab=1
