@@ -417,7 +417,8 @@
     "manualLiveVerifiedUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
     "manualVerificationMethod": "Editorial exact-requisition review of employer official listing; user-approved release; automated generic page parser inconclusive",
     "manualVerificationSource": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-    "manualVerificationNotes": "Official EY listing requisition 1751057, published 9 Oct 2026, includes Apply Now"
+    "manualVerificationNotes": "Official EY listing requisition 1751057, published 9 Oct 2026, includes Apply Now",
+    "logoPath": "assets/company-approved/ey.webp"
   },
   {
     "id": 109,
@@ -505,7 +506,8 @@
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
     },
-    "browserVerifiedAt": "2026-10-10T09:17:00.469Z"
+    "browserVerifiedAt": "2026-10-10T09:17:00.469Z",
+    "logoPath": "assets/company-marks-review/visa.svg"
   },
   {
     "id": 107,
@@ -820,7 +822,7 @@
       "state": "review",
       "reason": "User approved publication; exact application route should be rechecked by publishing workflow."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -865,7 +867,7 @@
       "#374151"
     ],
     "skills": [],
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs",
     "browserVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
@@ -1058,7 +1060,8 @@
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
     "manualLiveConfirmedBy": "HD Careers owner",
-    "manualLiveConfirmedReason": "Manually confirmed live in 2026-10-10 review"
+    "manualLiveConfirmedReason": "Manually confirmed live in 2026-10-10 review",
+    "logoPath": "assets/company-approved/ey.webp"
   },
   {
     "id": 90,
@@ -1451,7 +1454,8 @@
       "checkedAt": "2026-10-08T11:58:51.908Z",
       "state": "expired",
       "reason": "Marked expired manually from HD Careers Admin review."
-    }
+    },
+    "logoPath": "assets/company-marks-review/ge-vernova.svg"
   },
   {
     "page": "jobs/nielseniq-associate-software-engineer-744000152930140.html",
@@ -1822,7 +1826,7 @@
       "state": "active",
       "reason": "Official IndiGo Engineering Events page was live on 07 Oct 2026 with mandatory registration and future walk-in dates from 08 Oct through 23 Oct 2026."
     },
-    "logoPath": "assets/company-icons/indigo-ef1fc5c.png",
+    "logoPath": "assets/company-marks-review/indigo.svg",
     "logoSourceDomain": "goindigo.in",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedUrl": "https://www.goindigo.in/careers/hiringevents/engineeringevents.html",
@@ -2576,7 +2580,7 @@
       "state": "active",
       "reason": "Exact official role or event page re-opened on 06 Oct 2026; specific role/event details and current application, registration, notification or walk-in instructions were present."
     },
-    "logoPath": "assets/company-icons/indigo-ef1fc5c.png",
+    "logoPath": "assets/company-marks-review/indigo.svg",
     "logoSourceDomain": "goindigo.in"
   },
   {
@@ -2833,7 +2837,7 @@
       "state": "active",
       "reason": "Exact official Cisco Careers page, Job ID 2014481, Bangalore location and Apply Now control were browser-verified."
     },
-    "logoPath": "assets/company-icons/cisco-a23ff87.png",
+    "logoPath": "assets/company-marks-review/cisco.svg",
     "logoSourceDomain": "cisco.com",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
@@ -3073,7 +3077,7 @@
       "state": "active",
       "reason": "Official Amazon.jobs page shows the exact Bengaluru role, Job ID 10498234, qualifications and active Apply now route."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -3489,7 +3493,7 @@
       "state": "active",
       "reason": "Official Amazon.jobs page shows the exact role, Job ID 10564385, Hyderabad location, experience requirements and an active Apply now route."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -3611,7 +3615,7 @@
       "state": "active",
       "reason": "Official IndiGo Airport Operations & Customer Services page lists future October 2026 hiring events with registration/application links."
     },
-    "logoPath": "assets/company-icons/indigo-ef1fc5c.png",
+    "logoPath": "assets/company-marks-review/indigo.svg",
     "logoSourceDomain": "goindigo.in",
     "browserVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
@@ -4143,7 +4147,7 @@
       "state": "expired",
       "reason": "Marked expired manually from HD Careers Admin review."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -4204,7 +4208,7 @@
       "state": "active",
       "reason": "Official Amazon Jobs page is live for Job ID 10541345 and states a 2027 six-month SDE internship across India locations."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -4265,7 +4269,7 @@
       "state": "active",
       "reason": "Official Amazon Jobs page is live for Job ID 10498163 and shows the Support Engineer Intern – 2027 opening."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -4326,7 +4330,7 @@
       "state": "active",
       "reason": "Official Amazon Jobs page is live for Job ID 10498161 and lists the 2027 Systems Development Engineer Intern role in India."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -4386,7 +4390,7 @@
       "state": "active",
       "reason": "Official Amazon Jobs page is live for Job ID 10513277 and shows the exact Software Development Engineer Intern opening in Bengaluru."
     },
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -4564,7 +4568,7 @@
       "state": "active",
       "reason": "Official SAP Careers page shows the exact Senior Machine Learning Engineer role, Bangalore location, 6–10 years experience, REF1744Y and an active Apply Now route"
     },
-    "logoPath": "assets/company-icons/sap-1d72097.png",
+    "logoPath": "assets/company-marks-review/sap.svg",
     "logoSourceDomain": "sap.com",
     "browserVerifiedAt": "2026-10-10T03:36:34.946Z",
     "manualLiveVerifiedAt": "2026-10-10T03:36:34.946Z",
@@ -5411,7 +5415,7 @@
     ],
     "who": "Candidates with a bachelor's degree and at least one year of data engineering experience who have worked with SQL, ETL and scripting are aligned with the basic qualifications.",
     "workMode": "Not Specified",
-    "logoPath": "assets/company-icons/amazon-74c0fda.ico",
+    "logoPath": "assets/company-marks-review/amazon-operations.svg",
     "logoSourceDomain": "amazon.jobs"
   },
   {
@@ -5463,7 +5467,7 @@
       "state": "expired",
       "reason": "Official job URL returned HTTP 410"
     },
-    "logoPath": "assets/company-icons/ntt-data-c8a49b0.ico",
+    "logoPath": "assets/company-marks-review/ntt-data.svg",
     "logoSourceDomain": "nttdata.com"
   },
   {
@@ -5515,7 +5519,7 @@
       "state": "expired",
       "reason": "Manual review confirmed the IBM opening is no longer active"
     },
-    "logoPath": "assets/company-icons/ibm-3f3b8e7.png",
+    "logoPath": "assets/company-marks-review/ibm.svg",
     "logoSourceDomain": "ibm.com"
   },
   {

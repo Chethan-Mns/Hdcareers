@@ -19,10 +19,9 @@
   },
   "Amazon": {
     "officialDomain": "amazon.jobs",
-    "sourceUrl": "https://static.amazon.jobs/assets/favicon-933ee4605ae64f3181e0fcd88f9205be7b5f8a15643c342e53a9f03bb673732c.ico",
-    "sourceType": "shortcut icon",
-    "localPath": "assets/company-icons/amazon-74c0fda.ico",
-    "bytes": 17542
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/amazon-operations.svg"
   },
   "Canonical": {
     "officialDomain": "canonical.com",
@@ -172,17 +171,15 @@
   },
   "IBM": {
     "officialDomain": "ibm.com",
-    "sourceUrl": "https://www.ibm.com/content/dam/adobe-cms/default-images/apple-touch-icon-180x180.png",
-    "sourceType": "apple-touch-icon",
-    "localPath": "assets/company-icons/ibm-3f3b8e7.png",
-    "bytes": 6140
+    "sourceUrl": "https://raw.githubusercontent.com/gilbarbara/logos/master/logos/ibm.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/ibm.svg"
   },
   "IndiGo": {
     "officialDomain": "goindigo.in",
-    "sourceUrl": "https://www.goindigo.in:443/favicon-apple-icon-180x180.png",
-    "sourceType": "apple-touch-icon",
-    "localPath": "assets/company-icons/indigo-ef1fc5c.png",
-    "bytes": 1206
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/indigo.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/indigo.svg"
   },
   "Infosys": {
     "officialDomain": "infosys.com",
@@ -200,10 +197,9 @@
   },
   "NTT DATA": {
     "officialDomain": "nttdata.com",
-    "sourceUrl": "https://www.nttdata.com/favicon.ico",
-    "sourceType": "icon",
-    "localPath": "assets/company-icons/ntt-data-c8a49b0.ico",
-    "bytes": 1357
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/NTT_Data_2025.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/ntt-data.svg"
   },
   "Priceline": {
     "officialDomain": "priceline.com",
@@ -244,10 +240,9 @@
   },
   "Cisco": {
     "officialDomain": "cisco.com",
-    "sourceUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cisco.com/&size=256",
-    "sourceType": "official-domain favicon cache fallback",
-    "localPath": "assets/company-icons/cisco-a23ff87.png",
-    "bytes": 201
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/cisco.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/cisco.svg"
   },
   "Deloitte": {
     "officialDomain": "deloitte.com",
@@ -265,10 +260,9 @@
   },
   "SAP": {
     "officialDomain": "sap.com",
-    "sourceUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sap.com/&size=256",
-    "sourceType": "official-domain favicon cache fallback",
-    "localPath": "assets/company-icons/sap-1d72097.png",
-    "bytes": 1262
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/sap.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/sap.svg"
   },
   "Electronics Corporation of India Limited (ECIL)": {
     "officialDomain": "ecil.co.in",
@@ -443,5 +437,239 @@
     ],
     "qualityScore": 418,
     "bytes": 9659
+  },
+  "TCS": {
+    "officialDomain": "tcs.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tcs.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/tcs.webp"
+  },
+  "Persistent Systems": {
+    "officialDomain": "persistent.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/persistent.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/persistent-systems.svg"
+  },
+  "Hexaware": {
+    "officialDomain": "hexaware.com",
+    "sourceUrl": "existing 256px cached icon",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/hexaware.webp"
+  },
+  "EPAM Systems": {
+    "officialDomain": "epam.com",
+    "sourceUrl": "existing 256px cached icon",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/epam-systems.webp"
+  },
+  "Brillio": {
+    "officialDomain": "brillio.com",
+    "sourceUrl": "https://www.brillio.com/wp-content/themes/brillio/assets/images/logo/Brillio_Secondary-Logo.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/brillio.webp"
+  },
+  "Zensar Technologies": {
+    "officialDomain": "zensar.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/zensar.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/zensar-technologies.svg"
+  },
+  "Kyndryl": {
+    "officialDomain": "kyndryl.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Kyndryl_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/kyndryl.svg"
+  },
+  "Genpact": {
+    "officialDomain": "genpact.com",
+    "sourceUrl": "https://s7ap1.scene7.com/is/content/genpactindia/310x150%20white?ts=1774318655171&dpr=off&bfc=on&fmt=avif-alpha",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/genpact.webp"
+  },
+  "EY": {
+    "officialDomain": "ey.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Ernst_%26_Young_logo_%282025%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/ey.webp"
+  },
+  "Oracle": {
+    "officialDomain": "oracle.com",
+    "sourceUrl": "https://raw.githubusercontent.com/gilbarbara/logos/master/logos/oracle.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/oracle.svg"
+  },
+  "Salesforce": {
+    "officialDomain": "salesforce.com",
+    "sourceUrl": "https://raw.githubusercontent.com/gilbarbara/logos/master/logos/salesforce.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/salesforce.svg"
+  },
+  "Intel": {
+    "officialDomain": "intel.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/intel.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/intel.svg"
+  },
+  "Autodesk": {
+    "officialDomain": "autodesk.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/autodesk.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/autodesk.svg"
+  },
+  "Walmart Global Tech": {
+    "officialDomain": "walmart.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Walmart_spark_%282025%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/walmart-global-tech.svg"
+  },
+  "Paytm": {
+    "officialDomain": "paytm.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/paytm.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/paytm.svg"
+  },
+  "Meesho": {
+    "officialDomain": "meesho.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Meesho_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/meesho.png"
+  },
+  "American Express": {
+    "officialDomain": "americanexpress.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/americanexpress.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/american-express.svg"
+  },
+  "Visa": {
+    "officialDomain": "visa.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/visa.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/visa.svg"
+  },
+  "Bosch": {
+    "officialDomain": "bosch.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bosch.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/bosch.svg"
+  },
+  "GE Vernova": {
+    "officialDomain": "gevernova.com",
+    "sourceUrl": "https://www.gevernova.com/themes/custom/ge_vernova_unified/logo.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/ge-vernova.svg"
+  },
+  "L&T Technology Services": {
+    "officialDomain": "ltts.com",
+    "sourceUrl": "https://www.ltts.com/themes/custom/ltts_revamp/logo.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/larsen-toubro.webp"
+  },
+  "Reliance Industries": {
+    "officialDomain": "ril.com",
+    "sourceUrl": "https://rilstaticasset.akamaized.net/sites/default/files/2023-02/S.1.1_2.png",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/reliance-industries.webp"
+  },
+  "Tata Motors": {
+    "officialDomain": "tatamotors.com",
+    "sourceUrl": "https://www.tatamotors.com/wp-content/themes/TataMotors/images/tata_logo.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/tata-motors.webp"
+  },
+  "Tata Steel": {
+    "officialDomain": "tatasteel.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Tata_Steel_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/tata-steel.svg"
+  },
+  "Larsen & Toubro": {
+    "officialDomain": "larsentoubro.com",
+    "sourceUrl": "https://github.com/ridh21/qubits-vendorbridge/blob/main/public/logos/lt.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/larsen-toubro.webp"
+  },
+  "Aditya Birla Group": {
+    "officialDomain": "adityabirla.com",
+    "sourceUrl": "https://develop.adityabirla.com/_next/static/media/aditya-birla-group-download-logo.a8a380da.webp",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/aditya-birla-group.webp"
+  },
+  "ITC": {
+    "officialDomain": "itcportal.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/ITC_Limited_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/itc.webp"
+  },
+  "Nestlé": {
+    "officialDomain": "nestle.com",
+    "sourceUrl": "existing 256px cached icon",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-preview/nestl.png"
+  },
+  "Asian Paints": {
+    "officialDomain": "asianpaints.com",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Asian_Paints_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/asian-paints.webp"
+  },
+  "DHL": {
+    "officialDomain": "dhl.com",
+    "sourceUrl": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/dhl.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/dhl.svg"
+  },
+  "Amazon Operations": {
+    "officialDomain": "amazon.com",
+    "sourceUrl": "repository:assets/logos/amazon-mark.svg",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/amazon-operations.svg"
+  },
+  "Amazon.jobs": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/amazon-operations.svg"
+  },
+  "L&T": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/larsen-toubro.webp"
+  },
+  "LTTS": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/larsen-toubro.webp"
+  },
+  "Larsen and Toubro": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/larsen-toubro.webp"
+  },
+  "Tata Consultancy Services": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/tcs.webp"
+  },
+  "Hexaware Technologies": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/hexaware.webp"
+  },
+  "EPAM": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-approved/epam-systems.webp"
+  },
+  "NTT Data": {
+    "officialDomain": "",
+    "sourceUrl": "User-approved HD Careers logo",
+    "sourceType": "owner-approved curated asset",
+    "localPath": "assets/company-marks-review/ntt-data.svg"
   }
 }
