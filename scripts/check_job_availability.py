@@ -53,12 +53,16 @@ def deadline_passed(job, now):
     return now >= dt
 
 def manual_verification_fresh(job, now):
-    raw = job.get('browserVerifiedAt')
+    manual = job.get('manualLiveVerifiedAt')
+    if manual and job.get('manualLiveVerifiedUrl') != job.get('apply'):
+        return False
+    raw = manual or job.get('browserVerifiedAt')
     if not raw: return False
     try:
         dt = datetime.fromisoformat(str(raw).replace('Z', '+00:00'))
         if dt.tzinfo is None: dt = dt.replace(tzinfo=timezone.utc)
-        return timedelta(0) <= now - dt <= timedelta(hours=24)
+        window = timedelta(hours=72 if manual else 24)
+        return timedelta(0) <= now - dt <= window
     except Exception:
         return False
 
@@ -262,23 +266,23 @@ def check(job, now=None):
             else:
                 state, reason = 'review', 'No successful official-page probe'
 
-            if state != 'active' and not (inventory and inventory[0] == 'expired') and manual_verification_fresh(job, now):
+            if state != 'active' and not (inventory and inventory[0] == 'expired') and not (state == 'expired' and 'deadline has passed' in reason) and manual_verification_fresh(job, now):
                 automated_state, automated_reason = state, reason
                 state = 'active'
-                reason = f'Fresh manual browser verification overrides automated {automated_state} result for 24 hours ({automated_reason}); verified at {job["browserVerifiedAt"]}'
+                reason = f'Recent exact-job manual confirmation overrides inconclusive automated {automated_state} result within its verification window ({automated_reason}); verified at {job["browserVerifiedAt"]}'
             elif state == 'expired' and not (inventory and inventory[0] == 'expired') and job.get('browserVerifiedAt'):
                 state = 'review'
                 reason = f'Automated closure conflicts with a previous manual browser verification ({job["browserVerifiedAt"]}); re-review required before expiry'
     except HTTPError as exc:
         if manual_verification_fresh(job, now):
-            state, reason = 'active', f'Fresh manual browser verification overrides automated HTTP {exc.code} result for 24 hours; verified at {job["browserVerifiedAt"]}'
+            state, reason = 'active', f'Recent exact-job manual confirmation overrides inconclusive automated HTTP {exc.code} result within its verification window; verified at {job["browserVerifiedAt"]}'
         elif exc.code in (404, 410):
             state, reason = 'review', f'HTTP {exc.code} from automated request; exact job page requires browser verification before expiry'
         else:
             state, reason = 'review', f'HTTP {exc.code}; availability unconfirmed'
     except Exception as exc:
         if manual_verification_fresh(job, now):
-            state, reason = 'active', f'Fresh manual browser verification overrides the inconclusive automated result for 24 hours; verified at {job["browserVerifiedAt"]}'
+            state, reason = 'active', f'Recent exact-job manual confirmation overrides the inconclusive automated result within its verification window; verified at {job["browserVerifiedAt"]}'
         else:
             state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)

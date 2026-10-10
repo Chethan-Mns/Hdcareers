@@ -1,9 +1,9 @@
 {
   "checkedAt": "2026-10-09T19:47:12.367615+00:00",
   "checked": 74,
-  "active": 54,
+  "active": 74,
   "expired": 0,
-  "review": 20,
+  "review": 0,
   "changedExpired": 0,
   "items": [
     {
@@ -62,9 +62,13 @@
       "role": "Senior Software Engineer",
       "page": "jobs/servicenow-senior-software-engineer.html",
       "url": "https://careers.servicenow.com/jobs/744000154350139/sr-software-engineer/",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-09T19:43:56.266246+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:43:56.266246+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "HTTP 404; availability unconfirmed",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 101,
@@ -102,9 +106,13 @@
       "role": "Software Development Engineer – RBS Tech",
       "page": "jobs/amazon-software-development-engineer-rbs-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-09T19:43:58.765054+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:43:58.765054+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Official page loaded but role/application evidence was insufficient",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 93,
@@ -122,9 +130,13 @@
       "role": "Associate Analyst – Tax GCR",
       "page": "jobs/ey-associate-analyst-tax-gcr.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-09T19:44:03.661824+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:03.661824+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Official page loaded but role/application evidence was insufficient",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 90,
@@ -132,9 +144,13 @@
       "role": "Computational Fluid Dynamics (CFD) Internship",
       "page": "jobs/synopsys-computational-fluid-dynamics-cfd-internship.html",
       "url": "https://careers.synopsys.com/job/pune/computational-fluid-dynamics-cfd-internship/44408/101580799728",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-09T19:44:06.507070+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:06.507070+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Redirected source requires browser/ATS verification",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 89,
@@ -152,9 +168,13 @@
       "role": "Software Engineer – Graduates 2026",
       "page": "jobs/zycus-software-engineer-graduates-2026.html",
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-09T19:44:07.334040+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:07.334040+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Official page loaded but role/application evidence was insufficient",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 78,
@@ -172,9 +192,13 @@
       "role": "Software Engineer – Winter Intern",
       "page": "jobs/rubrik-software-engineer-winter-intern-bangalore-8166523.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8166523?gh_jid=8166523",
-      "state": "review",
-      "reason": "Official page renders disagree: browser=review (HTTP 403; availability unconfirmed); bot=active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-09T19:44:08.673170+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:08.673170+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Official page renders disagree: browser=review (HTTP 403; availability unconfirmed); bot=active (Verification terms and registration/submit control found on official URL)",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 82,
@@ -202,9 +226,13 @@
       "role": "Procurement Operations New Associate",
       "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01661115_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:44:11.301741+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:11.301741+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 85,
@@ -212,9 +240,13 @@
       "role": "Software Engineering Intern",
       "page": "jobs/needl-ai-software-engineering-intern-bengaluru.html",
       "url": "https://needl.ai/careers/software-engineering-intern",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-09T19:44:12.473172+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:12.473172+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Redirected source requires browser/ATS verification",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 86,
@@ -232,9 +264,13 @@
       "role": "Engineering Walk-in Events – October 2026",
       "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/engineeringevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-09T19:44:17.638407+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:17.638407+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "TimeoutError; availability unconfirmed",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 77,
@@ -242,9 +278,13 @@
       "role": "Intern – IT",
       "page": "jobs/thermo-fisher-scientific-intern-it-bangalore-r-01368644.html",
       "url": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:44:39.328128+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:44:39.328128+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 75,
@@ -352,9 +392,13 @@
       "role": "Associate – Software Testing Engineer",
       "page": "jobs/virtusa-associate-software-testing-engineer-creq260022.html",
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-09T19:45:25.133131+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:45:25.133131+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "HTTP 403; availability unconfirmed",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 63,
@@ -362,9 +406,13 @@
       "role": "Custom Software Engineer",
       "page": "jobs/accenture-custom-software-engineer-atci-5637353-s2059863.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5637353-S2059863_en&title=Custom+Software+Engineer",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:45:27.120496+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:45:27.120496+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 62,
@@ -372,9 +420,13 @@
       "role": "Software Engineer Trainee – Technical Graduate Apprentice",
       "page": "jobs/cisco-software-engineer-trainee-technical-graduate-apprentice-2014481.html",
       "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:45:28.375903+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:45:28.375903+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 61,
@@ -482,9 +534,13 @@
       "role": "Airport Operations & Customer Services Hiring Events – October 2026",
       "page": "jobs/indigo-airport-operations-customer-services-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/airportoperationscustomerservicesevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-09T19:45:54.873140+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:45:54.873140+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "TimeoutError; availability unconfirmed",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 46,
@@ -492,9 +548,13 @@
       "role": "Project Co-ordinator – Walk-in Interview",
       "page": "jobs/actrec-project-coordinator-walkin-october-2026.html",
       "url": "https://www.actrec.gov.in/jobs",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-09T19:46:16.327700+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:46:16.327700+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Official page loaded but role/application evidence was insufficient",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 45,
@@ -612,9 +672,13 @@
       "role": "2027 Campus Hire_ Engineer_ HW",
       "page": "jobs/qualcomm-2027-campus-hire-engineer-hw-bangalore-446719783487.html",
       "url": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:46:51.931890+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:46:51.931890+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 32,
@@ -632,9 +696,13 @@
       "role": "Senior Machine Learning Engineer - INT ABS – API Business Services",
       "page": "jobs/sap-senior-machine-learning-engineer-bangalore-ref1744y.html",
       "url": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:46:54.505237+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:46:54.505237+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 29,
@@ -682,9 +750,13 @@
       "role": "Procure to Pay Operations Associate",
       "page": "jobs/accenture-procure-to-pay-operations-associate-bengaluru-aioc-s01659105.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:47:01.609096+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:47:01.609096+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 22,
@@ -722,9 +794,13 @@
       "role": "Technology Support Engineer",
       "page": "jobs/accenture-technology-support-engineer.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:47:08.000446+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:47:08.000446+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     },
     {
       "id": 15,
@@ -742,9 +818,21 @@
       "role": "AWS Data Engineer",
       "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-09T19:47:10.555054+00:00"
+      "state": "active",
+      "reason": "User manually verified exact job LIVE on 10 Oct 2026; prior automated REVIEW retained in originalCheckerReason",
+      "checkedAt": "2026-10-09T19:47:10.555054+00:00",
+      "originalCheckerState": "review",
+      "originalCheckerReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "stateSource": "manual_confirmation",
+      "manualConfirmedAt": "2026-10-10T03:36:34.946Z"
     }
-  ]
+  ],
+  "manuallyConfirmedAt": "2026-10-10T03:36:34.946Z",
+  "manualConfirmedCount": 20,
+  "lastReviewResolution": {
+    "batchId": "manual-confirmation-2026-10-10-20-jobs",
+    "confirmedAt": "2026-10-10T03:36:34.946Z",
+    "count": 20,
+    "source": "user_manual_verification"
+  }
 }
