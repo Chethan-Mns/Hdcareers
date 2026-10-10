@@ -963,7 +963,11 @@ if(pill){pill.textContent=owner?"Owner":"Job Editor";pill.classList.remove("hidd
 document.querySelectorAll('a[href="/admin/traffic.html"]').forEach(el=>el.classList.toggle("hidden",!owner));
 const dashboard=document.getElementById("analyticsDashboard");
 if(dashboard)dashboard.classList.toggle("hidden",!owner);
-document.querySelectorAll('[onclick*="triggerAvailability"]').forEach(el=>el.classList.toggle("hidden",!owner));
+// Checker execution is available to both Owner and Job Editor; server authorization
+// and the read-only Preview environment provide the actual enforcement.
+const checkerButton=document.getElementById("runAvailabilityBtn");
+if(checkerButton)checkerButton.classList.remove("hidden");
+document.querySelectorAll('[onclick*="triggerAvailability"]').forEach(el=>el.classList.remove("hidden"));
 }
 function showLogin(message=''){
 document.getElementById('adminApp').classList.add('hidden');
