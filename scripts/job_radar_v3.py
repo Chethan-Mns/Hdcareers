@@ -322,20 +322,31 @@ def run_shadow(sources: list[dict], state: dict, observed: datetime,
     audits = [observe_snapshot(state, snapshot, observed) for snapshot in responses]
     jobs = current_inventory_candidates(state, audits)
     jobs.sort(key=lambda x: (priority(x), x["key"]), reverse=True)
+    present_keys = {j["key"] for j in jobs}
+    # Missing jobs have a dedicated small recheck budget; they cannot be auto-expired by disappearance.
+    missing_jobs = [hist["job"] for hist in state["jobs"].values()
+                    if hist["job"]["source"] in {a["source"] for a in audits if a.get("accepted")}
+                    and hist["job"]["key"] not in present_keys and hist.get("missingStreak", 0) > 0]
+    missing_jobs.sort(key=lambda j: j["key"])
+    missing_budget = min(3, max_verify // 2)
+    to_verify = [(j, False) for j in missing_jobs[:missing_budget]]
+    to_verify.extend((j, True) for j in jobs[:max(0, max_verify - len(to_verify))])
     rechecks = []
-    for job in jobs[:max_verify]:
+    for job, present in to_verify:
         try:
             verdict = asdict(verifier(job["url"]))
         except Exception as exc:
             verdict = {"state": "UNCONFIRMED", "provider": job["provider"],
                        "requisition_id": job["requisitionId"], "reasons": [type(exc).__name__], "evidence": []}
         hist = state["jobs"][job["key"]]
-        lifecycle = apply_verification(hist, verdict, observed, present=True)
-        rechecks.append({"key": job["key"], "title": job["title"], "verifierState": verdict["state"],
-                         "lifecycle": lifecycle, "eligible": eligible_for_publish(hist, observed)})
+        lifecycle = apply_verification(hist, verdict, observed, present=present)
+        rechecks.append({"key": job["key"], "title": job["title"], "present": present,
+                         "verifierState": verdict["state"], "lifecycle": lifecycle,
+                         "eligible": eligible_for_publish(hist, observed)})
     report = {"shadow": True, "productionWrites": False, "websiteDeploy": False,
               "telegramPosts": False, "observedAt": iso(observed),
               "sourceAudits": audits, "discovered": len(jobs), "verified": len(rechecks),
+              "suspectedClosures": len(missing_jobs),
               "topEligible": select_top(state, observed, 10),
               "lifecycleCounts": dict(Counter(h["lifecycle"] for h in state["jobs"].values())),
               "checks": rechecks, "noAutoExpireFromMissing": True}
