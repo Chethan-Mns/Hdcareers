@@ -110,3 +110,50 @@ The file intentionally starts empty. It **does not** fabricate real discovered j
 6. Use `https://hdcareers.in/admin/review-batch.html` in Safari as a fallback while the native app needs re-signing.
 
 CI builds an unsigned **iPhone Simulator** app. It cannot produce a signed device install or TestFlight release without Apple credentials and Xcode signing.
+
+## Native APNs push notification setup (v1.2 foundation)
+
+This repository includes the **app-side and server-side implementation**, but real notifications cannot work until the Apple Developer Program enrollment and private credentials below are completed. Do not mark push as operational based only on a successful simulator build.
+
+### 1. Apple Developer account and signing
+
+1. Enroll in Apple's paid **Apple Developer Program**. In India, Apple requires enrollment through its Apple Developer app.
+2. In Apple Developer → Certificates, Identifiers & Profiles, register/enable the explicit App ID `in.hdcareers.admin` and enable **Push Notifications**.
+3. In Xcode → Settings → Accounts, select the paid development team, and in the `HDCareersAdmin` target select that team with **Automatically manage signing** enabled.
+4. In Signing & Capabilities, add **Push Notifications**. Debug has `aps-environment: development`; Release uses `production` (matching the provisioning profile).
+5. Install on an actual registered iPhone. Simulator builds do not verify APNs delivery.
+
+### 2. APNs authentication key
+
+In developer.apple.com → Certificates, Identifiers & Profiles → Keys, create a new APNs Authentication Key and save the `.p8` file in a secure place **outside GitHub**. Apple's key may only be downloaded once. Record the **Key ID** and **Team ID** from Apple. Never paste these or the key file into a ChatGPT conversation or commit them to the repository.
+
+### 3. Private device storage and server environment
+
+Create a durable Upstash Redis database. Add these Vercel project environment variables for Production:
+
+- `UPSTASH_REDIS_REST_URL` — HTTPS Upstash REST endpoint
+- `UPSTASH_REDIS_REST_TOKEN` — write-enabled Upstash REST token
+- `APNS_PRIVATE_KEY_P8` — exact PEM content of your Apple `.p8` key, stored as a Vercel secret; escaped newlines are also supported
+- `APNS_KEY_ID` — Apple 10-character Key ID
+- `APNS_TEAM_ID` — your paid developer Team ID
+- `PUSH_DISPATCH_SECRET` — generated random secret, minimum 32 characters, also added to GitHub Actions as `PUSH_DISPATCH_SECRET`
+
+Keep existing `GITHUB_PUBLISH_TOKEN` configured on Vercel for reading the private Admin review batch source. Add production env vars in Vercel Settings → Environment Variables; redeploy to load them. Never put APNs or Upstash credentials in client code, public JSON, logs, or GitHub files.
+
+### 4. Trigger and test
+
+A workflow at `.github/workflows/notify-daily-review.yml` runs when `data/daily-review-batch.json` changes on main (or on manual dispatch). It securely invokes `POST /api/notifications/dispatch`, which will notify registered iPhones **only** if the batch has a recent `generatedAt`, a stable valid `batchId`, exactly 10 priority and 10 backup items, and has not already been notified to that device.
+
+- Install the correctly signed app on an actual iPhone and sign in.
+- Open **Review → Enable real-time job alerts**, then grant iOS notification permission.
+- After the UI reports registration, use **Send test alert**.
+- Lock the phone and repeat to confirm background delivery. Tapping a push should open the **Review** tab.
+- Post a **real** completed 20-job batch through the discovery pipeline and check the delivery workflow. The pipeline to populate these 20 jobs is a separate task and is not completed by this APNs foundation.
+
+### Distribution choice
+
+For **private long-term installation**, export a signed **Ad Hoc** build for your registered iPhone (renew distribution/provisioning as needed) rather than relying on free-team 7-day installs. TestFlight offers easier updates but its builds expire every 90 days. Do not confuse either choice with a public App Store release.
+
+### Security
+
+Device tokens live only in authenticated, privately configured Redis storage (no token database inside the public repository). The registration route requires a valid Admin session. The batch dispatch endpoint requires a long shared secret. A test notification can be triggered only from an authenticated Admin session. Repeated batch notifications are deduplicated per registered device for 30 days. Any failed, timed-out or invalid APNs delivery is reported, never claimed as delivered.

@@ -1,0 +1,33 @@
+name: Notify HD Careers Review Batch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - data/daily-review-batch.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hd-careers-review-push
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch real iOS notification after a new batch
+        env:
+          SECRET: ${{ secrets.PUSH_DISPATCH_SECRET }}
+        run: |
+          set -eu
+          if [ -z "$SECRET" ]; then
+            echo "PUSH_DISPATCH_SECRET not configured — no notification sent."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error --retry 2 --max-time 45 \
+            -X POST -H "Authorization: Bearer $SECRET" \
+            https://hdcareers.in/api/notifications/dispatch
