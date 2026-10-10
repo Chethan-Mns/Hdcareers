@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   launch:
@@ -21,9 +22,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/download-artifact@v4
         with:
-          gradle-version: '8.9'
+          name: HDCareersAdmin-Android-Debug
+          run-id: 38034573689
+          github-token: ${{ github.token }}
+          repository: Chethan-Mns/Hdcareers
+          path: android-admin/app/build/outputs/apk/debug
       - name: Enable KVM
         run: |
           sudo chmod 666 /dev/kvm
@@ -36,8 +41,6 @@ jobs:
           profile: pixel_6
           emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
           script: |
-            cd android-admin
-            gradle --no-daemon :app:assembleDebug
             adb install -r app/build/outputs/apk/debug/app-debug.apk
             adb logcat -c
             adb shell am start -W -n in.hdcareers.admin/.MainActivity
