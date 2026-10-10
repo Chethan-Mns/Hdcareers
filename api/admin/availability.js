@@ -61,7 +61,7 @@ function runSummary(run,trigger){
 
 export default async function handler(req,res){
   res.setHeader("Cache-Control","private, max-age=0, no-store");
-  if(!await requireAdmin(req,res,req.method==="POST"?["owner"]:["owner","job_editor"]))return;
+  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
   if(!["GET","POST"].includes(req.method)){
     res.setHeader("Allow","GET, POST");
     return res.status(405).json({error:"Method not allowed."});
