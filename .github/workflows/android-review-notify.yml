@@ -1,0 +1,31 @@
+name: Android Review Push
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/daily-review-batch.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-review-notifications
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch review alert via authenticated server
+        env:
+          SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+        run: |
+          if [ -z "$SECRET" ]; then
+            echo "Android push dispatch secret is not configured. Skipping."
+            exit 0
+          fi
+          curl -fSs --retry 2 --max-time 45 \
+            -X POST -H "Authorization: Bearer $SECRET" \
+            https://hdcareers.in/api/notifications/android-dispatch
