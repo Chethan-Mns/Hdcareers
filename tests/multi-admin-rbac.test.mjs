@@ -2,6 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {verifyCredentials,createAdminSession,requireAdmin} from "../lib/admin-auth.js";
 import {createEditor,getUser,lookupSession,issueSession,setEditorState,removeSession,audit,auditEntries} from "../lib/admin-store.js";
+import teamHandler from "../api/admin/team.js";
+import auditHandler from "../api/admin/audit.js";
+import trafficHandler from "../api/admin/traffic.js";
+import publishHandler from "../api/admin/publish.js";
 
 process.env.ADMIN_USERNAME="owner";
 process.env.ADMIN_PASSWORD="test-owner-placeholder";
@@ -24,8 +28,8 @@ globalThis.fetch=async(_url,options)=>{
   if(op==="EXPIRE")value=1;
   return {ok:true,json:async()=>({result:value})};
 };
-const req=token=>({headers:{cookie:"hd_admin_session="+token}});
-const res=()=>({statusCode:200,status(n){this.statusCode=n;return this},json(v){this.body=v;return this}});
+const req=token=>({method:"GET",headers:{cookie:"hd_admin_session="+token,host:"hdcareers.in"}});
+const res=()=>({statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v;return this},status(n){this.statusCode=n;return this},json(v){this.body=v;return this}});
 
 test("Owner credentials are unchanged and new Owner session is revocable",async()=>{
   const user=await verifyCredentials("owner","test-owner-placeholder");
@@ -56,4 +60,31 @@ test("Owner-only audit entries store actors and actions",async()=>{
   const rows=await auditEntries(10);
   assert.equal(rows[0].username,"owner");
   assert.equal(rows[0].action,"account.disable");
+});
+
+test("Job Editor cannot access Owner team, audit or private analytics APIs",async()=>{
+  await setEditorState("job.friend","enable");
+  const token=await issueSession("job.friend","job_editor");
+  for(const handler of [teamHandler,auditHandler,trafficHandler]){
+    const response=res();
+    await handler(req(token),response);
+    assert.equal(response.statusCode,403);
+  }
+  const owner=await issueSession("owner","owner");
+  const response=res();
+  await teamHandler(req(owner),response);
+  assert.equal(response.statusCode,200);
+  assert.equal(response.body.editors[0].username,"job.friend");
+});
+
+test("Vercel preview cannot mutate production job data",async()=>{
+  process.env.VERCEL_ENV="preview";
+  try{
+    const token=await issueSession("owner","owner");
+    const response=res();
+    await publishHandler({...req(token),method:"POST",body:{jobs:[]}},response);
+    assert.equal(response.statusCode,403);
+  }finally{
+    delete process.env.VERCEL_ENV;
+  }
 });
