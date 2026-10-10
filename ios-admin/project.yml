@@ -23,12 +23,12 @@ targets:
         PRODUCT_NAME: "HD Careers Admin"
         TARGETED_DEVICE_FAMILY: "1"
         CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
       configs:
         Debug:
           CODE_SIGN_ENTITLEMENTS: HDCareersAdmin/HDAdminDebug.entitlements
         Release:
           CODE_SIGN_ENTITLEMENTS: HDCareersAdmin/HDAdminRelease.entitlements
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     preBuildScripts:
       - name: Prepare HD Careers App Icon
         basedOnDependencyAnalysis: false
