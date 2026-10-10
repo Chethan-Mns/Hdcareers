@@ -1,5 +1,5 @@
 import {requireAdmin} from "../../lib/admin-auth.js";
-import {devices, pushStorageConfigured, removeDevice} from "../../lib/push-redis.js";
+import {devices, pushStorageConfigured, removeDevice, redis} from "../../lib/push-redis.js";
 import {apnsConfigured, sendPush} from "../../lib/apns-client.js";
 
 function sameOrigin(req) {
@@ -16,6 +16,8 @@ export default async function handler(req, res) {
   if (!sameOrigin(req)) return res.status(403).json({error: "Invalid request origin"});
   if (!pushStorageConfigured() || !apnsConfigured()) return res.status(503).json({error: "Apple push delivery has not been configured."});
   try {
+    const limited = await redis(["SET", "hdcareers:apns:test-rate-limit", "1", "NX", "EX", 60]);
+    if (limited !== "OK") return res.status(429).json({error: "Please wait one minute before testing again."});
     const registered = await devices();
     if (!registered.length) return res.status(409).json({error: "No iPhone has registered for push notifications yet."});
     const results = [];
@@ -26,7 +28,7 @@ export default async function handler(req, res) {
           title: "HD Careers Push Test",
           body: "Your private Admin notification connection is working."
         });
-        if (result.status === 410 || result.reason === "BadDeviceToken" || result.reason === "Unregistered") await removeDevice(device.id);
+        if (result.status === 410 || result.reason === "Unregistered") await removeDevice(device.id);
         results.push({deviceId: device.id, delivered: result.ok, reason: result.reason || null});
       } catch { results.push({deviceId: device.id, delivered: false, reason: "APNs connection failed"}); }
     }
