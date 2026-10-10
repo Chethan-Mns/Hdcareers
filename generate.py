@@ -615,7 +615,7 @@ def logo_candidates(job: dict) -> list[str]:
     ordered = []
     company_key = company.strip().casefold()
     approved = APPROVED_COMPANY_LOGOS.get(company_key, "")
-    if not approved and re.match(r"^drdo\\b", company_key):
+    if not approved and re.match(r"^drdo\b", company_key):
         approved = APPROVED_COMPANY_LOGOS.get("drdo", "")
     if approved:
         ordered.append("../" + approved)
