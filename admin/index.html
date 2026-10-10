@@ -967,7 +967,7 @@ if(dashboard)dashboard.classList.toggle("hidden",!owner);
 // and the read-only Preview environment provide the actual enforcement.
 const checkerButton=document.getElementById("runAvailabilityBtn");
 if(checkerButton)checkerButton.classList.remove("hidden");
-document.querySelectorAll('[onclick*="triggerAvailability"]').forEach(el=>el.classList.remove("hidden"));
+// Other Owner-only buttons retain their original role restrictions.
 }
 function showLogin(message=''){
 document.getElementById('adminApp').classList.add('hidden');
