@@ -16,7 +16,7 @@ export default async function handler(req,res){
   if(req.method==="POST"&&!safeOrigin(req))return res.status(403).json({error:"Invalid request origin."});
   try{
     if(req.method==="GET")return res.status(200).json({
-      owner:{username:normalizeUsername(process.env.ADMIN_USERNAME),role:"owner",active:true},
+      owner:{username:String(process.env.ADMIN_USERNAME||"").trim().toLowerCase(),role:"owner",active:true},
       editors:await listEditors()
     });
     const action=String(req.body?.action||"");
