@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "notes": "Only public ATS tenants. Shadow collection cannot write jobs.json, deploy, or post.",
+  "sources": [
+    {
+      "provider": "greenhouse",
+      "tenant": "cloudsek",
+      "employer": "CloudSEK"
+    },
+    {
+      "provider": "lever",
+      "tenant": "hevodata",
+      "employer": "Hevo Data"
+    },
+    {
+      "provider": "greenhouse",
+      "tenant": "instawork",
+      "employer": "Instawork"
+    },
+    {
+      "provider": "lever",
+      "tenant": "Sprinto",
+      "employer": "Sprinto"
+    },
+    {
+      "provider": "greenhouse",
+      "tenant": "scopely",
+      "employer": "Scopely"
+    },
+    {
+      "provider": "lever",
+      "tenant": "ion",
+      "employer": "ION Group"
+    }
+  ]
+}
