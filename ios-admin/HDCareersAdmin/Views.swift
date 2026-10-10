@@ -467,7 +467,7 @@ struct RootTabView: View {
 
 
     var body: some View {
-        TabView(selection: $selection) {
+        TabView(selection: $state.selectedTab) {
             DashboardView()
                 .tabItem { Label("Dashboard", systemImage: "house.fill") }
                 .tag(0)
