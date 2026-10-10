@@ -47,8 +47,8 @@ class InventoryTests(unittest.TestCase):
         l = v3.parse_inventory("lever", "test", [{"id": "a-b", "text": "Graduate Software Developer",
            "categories": {"location": "Mumbai"}}])
         self.assertEqual(l[0]["url"], "https://jobs.lever.co/test/a-b")
-        a = v3.parse_inventory("ashby", "xyz", [{"title": "Intern", "jobUrl": "https://jobs.ashbyhq.com/xyz/99"},
-           {"title": "Unlisted", "isListed": False, "jobUrl": "https://jobs.ashbyhq.com/xyz/88"}])
+        a = v3.parse_inventory("ashby", "xyz", {"jobs": [{"title": "Intern", "jobUrl": "https://jobs.ashbyhq.com/xyz/99"},
+           {"title": "Unlisted", "isListed": False, "jobUrl": "https://jobs.ashbyhq.com/xyz/88"}]})
         self.assertEqual(len(a), 1)
         self.assertEqual(a[0]["key"], "ashby:xyz:99")
 
@@ -116,7 +116,7 @@ class LifecycleTests(unittest.TestCase):
         j = v3.make_job("workday", "acme", "R-2", "Graduate", "https://acme.example.com/job/R-2")
         hist = v3.ensure_history(self.state, j, NOW)
         v = asdict(verdict(j, "EXPIRED", "closed", "workday.can_apply_false"))
-        v["evidence"].append(asdict(verdict(j)["evidence"][0]))
+        v["evidence"].append(asdict(verdict(j).evidence[0]))
         for minutes in (0, 25):
             v3.apply_verification(hist, v, NOW + timedelta(minutes=minutes), False)
         self.assertNotEqual(hist["lifecycle"], "EXPIRED")
