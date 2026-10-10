@@ -13,9 +13,10 @@ urls={
 "Reliance Industries":["https://rilstaticasset.akamaized.net/sites/default/files/2023-02/S.1.1_2.png"],
 "Aditya Birla Group":[
 "https://www.adityabirla.com/_next/static/media/aditya-birla-group-download-logo.a8a380da.webp",
+"https://develop.adityabirla.com/_next/static/media/aditya-birla-group-download-logo.a8a380da.webp",
 "https://www.adityabirla.com/_next/image/?q=100&url=%2F_next%2Fstatic%2Fmedia%2Faditya-birla-group-download-logo.a8a380da.webp&w=1080"],
 "ITC":["https://commons.wikimedia.org/wiki/Special:Redirect/file/ITC_Limited_Logo.svg"],
-"Asian Paints":["https://commons.wikimedia.org/wiki/Special:Redirect/file/Asian_Paints_Logo.svg"]
+"Asian Paints":["https://commons.wikimedia.org/wiki/Special:Redirect/file/Asian_Paints_Logo.svg","https://seekvectors.com/files/download/Asian%20Paints.svg"]
 }
 for name,arr in urls.items():
     if data[name].get("path"): continue
