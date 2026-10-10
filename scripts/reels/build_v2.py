@@ -19,7 +19,7 @@ OUT=ROOT/"reel-shadow"/"v2"
 CLIPS=OUT/"stock"
 W,H=720,1280
 JOB_ID=112
-SCRIPT="Hey guys! Accenture is hiring freshers for an AI and M L Associate role. The job is in Bengaluru. B E or B Tech graduates with zero to one year of experience can apply. Interested? Comment LINK below for the application!"
+SCRIPT="Hey guys! Accenture is hiring freshers for an AI and M L Associate role in Bengaluru. B E or B Tech graduates with up to one year experience can apply. Interested? Comment LINK below!"
 SOURCES=[
     ("7652293","25","Colleagues walking in modern office lobby","Kindel Media"),
     ("8347239","25","Modern office desks and computers","Kampus Production"),
