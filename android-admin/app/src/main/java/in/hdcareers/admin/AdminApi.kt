@@ -56,6 +56,10 @@ class AdminApi {
     }
     suspend fun batch(): DailyBatch = parseBatch(JSONObject(request("/api/admin/daily-batch")))
     suspend fun jobs():List<Job> = parseJobs(JSONArray(request("/data/jobs.json")))
+    suspend fun logoSources():Map<String,CompanyLogoSource> = parseCompanyLogoSources(
+        JSONObject(request("/data/company-logos.json")),
+        JSONObject(request("/data/company-logo-domains.json"))
+    )
     suspend fun traffic(days: Int):Traffic = parseTraffic(JSONObject(request("/api/admin/traffic?days=$days")))
     suspend fun checker():JSONObject = JSONObject(request("/api/admin/availability"))
     suspend fun automation():JSONObject = JSONObject(request("/data/automation-status.json"))
