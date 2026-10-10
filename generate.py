@@ -13,6 +13,7 @@ from string import Template
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "jobs.json"
 INDEX_FILE = ROOT / "index.html"
+APPROVED_COMPANY_LOGOS = {str(k).strip().lower(): v for k, v in json.loads((ROOT / "data" / "approved-company-logos.json").read_text(encoding="utf-8")).items()}
 
 REQUIRED = [
     "id", "page", "domain", "company", "salary", "logo", "role", "roleTag",
@@ -612,6 +613,9 @@ def logo_candidates(job: dict) -> list[str]:
     google, duck = logo_sources(company, domain)
 
     ordered = []
+    approved = APPROVED_COMPANY_LOGOS.get(company.strip().lower(), "")
+    if approved:
+        ordered.append("../" + approved)
     if cached.startswith("assets/company-icons/"):
         ordered.append("../" + cached)
     if compact:
@@ -839,6 +843,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
 def update_index(jobs: list[dict], dry_run: bool) -> bool:
     source = INDEX_FILE.read_text(encoding="utf-8")
     source = source.replace('</script>\\n</head>', '</script>\n</head>')
+    source = re.sub(r"const APPROVED_COMPANY_LOGOS=\{[^\n]*\};", "const APPROVED_COMPANY_LOGOS=" + json.dumps(APPROVED_COMPANY_LOGOS, ensure_ascii=False, separators=(",", ":")) + ";", source, count=1)
     start_marker = "const JOBS = ["
     start = source.find(start_marker)
     if start == -1:
