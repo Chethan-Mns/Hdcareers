@@ -108,7 +108,7 @@ private fun SettingRow(
     }
 }
 @Composable
-private fun ProAnalytics(vm:AdminViewModel,onBack:()->Unit) {
+internal fun ProAnalytics(vm:AdminViewModel,onBack:()->Unit) {
     LazyColumn(contentPadding=PaddingValues(16.dp),
         verticalArrangement=Arrangement.spacedBy(14.dp)) {
         item {
