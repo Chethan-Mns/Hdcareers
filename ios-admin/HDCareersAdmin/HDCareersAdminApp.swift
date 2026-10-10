@@ -1,4 +1,6 @@
 import SwiftUI
+import UIKit
+import UserNotifications
 
 @MainActor
 final class AppState: ObservableObject {
@@ -14,6 +16,8 @@ final class AppState: ObservableObject {
     @Published var trafficDays = 7
     @Published var dailyBatch: DailyBatch?
     @Published var isBatchBusy = false
+    @Published var selectedTab = 0
+    @Published var pushStatus = "Remote push not enabled"
 
     let api = APIClient.shared
 
@@ -31,6 +35,7 @@ final class AppState: ObservableObject {
                 isAuthenticated = true
                 Task { @MainActor in
                     await refreshAll()
+                    await restoreRemotePushIfEnabled()
                 }
             }
         } catch {
@@ -53,6 +58,7 @@ final class AppState: ObservableObject {
         do {
             try await api.login(username: user, password: password)
             isAuthenticated = true
+            await restoreRemotePushIfEnabled()
 
             if rememberWithFaceID && BiometricAuth.isAvailable {
                 do {
@@ -83,6 +89,7 @@ final class AppState: ObservableObject {
             try await BiometricAuth.authenticate()
             try await api.login(username: credential.username, password: credential.password)
             isAuthenticated = true
+            await restoreRemotePushIfEnabled()
             Task { @MainActor in
                 await refreshAll()
             }
@@ -92,6 +99,7 @@ final class AppState: ObservableObject {
     }
 
     func logout() async {
+        try? await api.unregisterPush()
         await api.logout()
         isAuthenticated = false
         jobs = []
@@ -242,12 +250,74 @@ final class AppState: ObservableObject {
             await refreshDailyBatch()
         }
     }
+    private let pushEnabledKey = "hdcareers.apns.user-enabled"
+
+    func enableRemotePush() async {
+        guard isAuthenticated else { alertMessage = "Sign in first to enable push notifications."; return }
+        do {
+            let config = try await api.pushConfiguration()
+            guard config.configured else {
+                alertMessage = "Apple APNs and private device storage must be configured on the server first."
+                return
+            }
+            let center = UNUserNotificationCenter.current()
+            let granted = try await center.requestAuthorization(options: [.alert, .badge, .sound])
+            guard granted else {
+                alertMessage = "Allow notifications for HD Careers Admin in iPhone Settings."
+                return
+            }
+            UserDefaults.standard.set(true, forKey: pushEnabledKey)
+            pushStatus = "Requesting your Apple device token..."
+            UIApplication.shared.registerForRemoteNotifications()
+        } catch {
+            alertMessage = error.localizedDescription
+        }
+    }
+
+    func restoreRemotePushIfEnabled() async {
+        guard UserDefaults.standard.bool(forKey: pushEnabledKey), isAuthenticated else { return }
+        let status = await UNUserNotificationCenter.current().notificationSettings()
+        guard status.authorizationStatus == .authorized || status.authorizationStatus == .provisional else { return }
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+
+    func uploadPushToken(_ token: String) async {
+        guard UserDefaults.standard.bool(forKey: pushEnabledKey), isAuthenticated else { return }
+        do {
+            try await api.registerPushToken(token)
+            pushStatus = "Device registered for push notifications"
+        } catch {
+            pushStatus = "Push registration needs attention"
+            alertMessage = error.localizedDescription
+        }
+    }
+
+    func disableRemotePush() async {
+        do {
+            try await api.unregisterPush()
+            UserDefaults.standard.set(false, forKey: pushEnabledKey)
+            UIApplication.shared.unregisterForRemoteNotifications()
+            pushStatus = "Remote push disabled"
+        } catch {
+            alertMessage = error.localizedDescription
+        }
+    }
+
+    func sendTestPush() async {
+        do {
+            let sent = try await api.sendPushTest()
+            alertMessage = sent ? "APNs accepted the test. Check your iPhone's notification settings if no banner appears." : "APNs could not deliver the test. Check the server's push credentials."
+        } catch {
+            alertMessage = error.localizedDescription
+        }
+    }
 }
 
 @main
 struct HDCareersAdminApp: App {
     @StateObject private var state = AppState()
     @Environment(\.scenePhase) private var scenePhase
+    @UIApplicationDelegateAdaptor(RemotePushAppDelegate.self) private var pushDelegate
 
     var body: some Scene {
         WindowGroup {
@@ -267,8 +337,23 @@ struct HDCareersAdminApp: App {
             }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .active && state.isAuthenticated {
-                    Task { await state.refreshDailyBatch() }
+                    Task {
+                        await state.refreshDailyBatch()
+                        await state.restoreRemotePushIfEnabled()
+                    }
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .hdAPNSToken)) { notice in
+                if let token = notice.object as? String {
+                    Task { await state.uploadPushToken(token) }
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .hdAPNSError)) { notice in
+                state.pushStatus = "Apple device registration failed"
+                state.alertMessage = "Unable to register with APNs: " + (notice.object as? String ?? "Unknown error")
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .hdOpenReview)) { _ in
+                state.selectedTab = 2
             }
             .alert("HD Careers Admin", isPresented: Binding(
                 get: { state.alertMessage != nil },
