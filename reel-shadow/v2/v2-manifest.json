@@ -1,0 +1,28 @@
+{
+  "jobId": 112,
+  "company": "Accenture",
+  "seconds": 15,
+  "status": "shadow-only",
+  "output": "HD_Careers_Accenture_Reel_V2.mp4",
+  "caption": "HD_Careers_Accenture_V2_Caption.txt",
+  "sourceVideos": [
+    {
+      "url": "https://www.pexels.com/video/8347239/",
+      "title": "Modern office desks and computers",
+      "by": "Kampus Production"
+    },
+    {
+      "url": "https://www.pexels.com/video/12894330/",
+      "title": "People working at desks",
+      "by": "Mizuno K"
+    },
+    {
+      "url": "https://www.pexels.com/video/8347238/",
+      "title": "Modern office interior",
+      "by": "Kampus Production"
+    }
+  ],
+  "neuralVoice": "en-IN-PrabhatNeural",
+  "record": "Accenture AIOC-S01665344, verified published 10 Oct 2026",
+  "srt": "captions.ass"
+}
