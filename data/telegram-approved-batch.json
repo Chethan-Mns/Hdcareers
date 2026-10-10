@@ -1,11 +1,18 @@
 {
   "approved": true,
-  "batchId": "user-approved-20261010-deloitte-ey-4370a29d",
-  "approvedBy": "HD Careers owner in chat; exactly Deloitte and EY",
-  "sourceCommit": "4370a29d392eaebf5680e960b970e8d648a2b36b",
+  "batchId": "batch3-approved-20261010-10-employers",
+  "approvedBy": "HD Careers owner, explicitly approved website and Telegram publication on 10 October 2026",
+  "sourceCommit": "9601f6c7c19aaf2908e6267c96bdfb9a2e55b1dc",
   "pages": [
-    "jobs/deloitte-analyst-ft-strategy-ops-bengaluru-110723.html",
-    "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html"
+    "jobs/accenture-ai-ml-computational-science-associate-bengaluru-aioc-s01665344.html",
+    "jobs/infosys-systems-engineer-2027-campus-registration.html",
+    "jobs/cohere-health-associate-software-engineer-hyderabad-7728230003.html",
+    "jobs/new-street-technologies-associate-software-engineer-bengaluru-ns-fre-001.html",
+    "jobs/singlestore-software-engineer-database-engine-india-eng00416.html",
+    "jobs/hyreo-software-engineer-java-bengaluru-5322122004.html",
+    "jobs/superapp-software-engineer-full-stack-early-careers-bengaluru-8829824002.html",
+    "jobs/capgemini-group-internal-auditor-navi-mumbai-414912.html",
+    "jobs/eaton-apprentice-it-pune-687237633525.html"
   ],
-  "notes": "Two-job approved batch: website generated and Vercel ready; exact employer requisitions 110723/1751057 verified by editorial review; excludes eight other candidates."
+  "notes": "Nine pending distinct employers from owner-approved Batch 3. Amazon Software Dev Engineer I (10572929) is already posted to website and Telegram, confirmed delivery ID 439; exclude from retry to prevent duplicates. Infosys and Cohere are corrected existing records. Capgemini is experienced non-IT (CA + 3–5 years). HPE/TriNet expired, IBM unresolved: excluded."
 }
