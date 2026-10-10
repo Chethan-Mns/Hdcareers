@@ -1,4 +1,4 @@
-package in.hdcareers.admin
+package `in`.hdcareers.admin
 
 import android.app.Application
 import android.content.Context
@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class AdminViewModel(application:Application):AndroidViewModel(application) {
     private val api=AdminApi()
