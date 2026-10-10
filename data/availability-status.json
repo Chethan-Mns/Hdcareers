@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-10T09:17:12.291Z",
+  "checkedAt": "2026-10-10T09:17:19.383Z",
   "checked": 76,
-  "active": 73,
+  "active": 74,
   "expired": 0,
-  "review": 3,
+  "review": 2,
   "changedExpired": 0,
   "items": [
     {
@@ -80,9 +80,11 @@
       "role": "Software Engineer II",
       "page": "jobs/microsoft-software-engineer-ii.html",
       "url": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-10T08:58:35.029020+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-10T09:17:19.383Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-10T09:17:19.383Z"
     },
     {
       "id": 104,
