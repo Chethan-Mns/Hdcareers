@@ -4,6 +4,13 @@ import {audit,loginAllowed} from "../../lib/admin-store.js";
 export default async function handler(req,res){
   res.setHeader("Cache-Control","no-store");
   if(req.method!=="POST"){res.setHeader("Allow","POST");return res.status(405).json({error:"Method not allowed."});}
+  if(req.headers["sec-fetch-site"]==="cross-site")return res.status(403).json({error:"Invalid request origin."});
+  const origin=String(req.headers.origin||"");
+  const host=String(req.headers["x-forwarded-host"]||req.headers.host||"");
+  if(origin){
+    try{if(new URL(origin).host.toLowerCase()!==host.toLowerCase())return res.status(403).json({error:"Invalid request origin."});}
+    catch{return res.status(403).json({error:"Invalid request origin."});}
+  }
   if(!authConfigured())return res.status(503).json({error:"Secure admin authentication is not configured."});
   const username=String(req.body?.username||"");
   const password=String(req.body?.password||"");

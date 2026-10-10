@@ -402,7 +402,7 @@ async function loadTraffic(days=7){
  }catch(err){e.textContent=err.message||'Could not load traffic analytics.';e.classList.remove('hidden')}
 }
 async function logoutAdmin(){await fetch('/api/admin/logout',{method:'POST'}).catch(()=>{});location.href='/admin/'}
-(async()=>{try{const r=await fetch('/api/admin/session',{cache:'no-store'});const d=await r.json();if(!d.authenticated){location.href='/admin/';return}document.getElementById('loading').classList.add('hidden');document.getElementById('app').classList.remove('hidden');renderInternalTracking();revealAdmin();await loadJobMap();loadTraffic(7)}catch{location.href='/admin/'}})();
+(async()=>{try{const r=await fetch('/api/admin/session',{cache:'no-store'});const d=await r.json();if(!d.authenticated||d.role!=='owner'){location.href='/admin/';return}document.getElementById('loading').classList.add('hidden');document.getElementById('app').classList.remove('hidden');renderInternalTracking();revealAdmin();await loadJobMap();loadTraffic(7)}catch{location.href='/admin/'}})();
 </script>
 </body>
 </html>

@@ -36,6 +36,7 @@ export default async function handler(req,res){
     await audit({...req.adminUser,action:"account."+action,target:username,result:"success"});
     return res.status(200).json({ok:true,editor:user});
   }catch(error){
-    return res.status([400,404,409].includes(error.status)?error.status:400).json({error:error.message||"Could not update team account."});
+    const clientError=[400,404,409].includes(error.status)||/Username|Password|Owner account|Job Editor not found|Invalid user action/.test(error.message||"");
+    return res.status(clientError?(error.status||400):503).json({error:clientError?error.message:"Secure account service unavailable."});
   }
 }
