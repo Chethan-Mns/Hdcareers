@@ -12,6 +12,8 @@ final class AppState: ObservableObject {
     @Published var automationHealth: AutomationHealth?
     @Published var availability: AvailabilityResponse?
     @Published var trafficDays = 7
+    @Published var dailyBatch: DailyBatch?
+    @Published var isBatchBusy = false
 
     let api = APIClient.shared
 
@@ -96,6 +98,7 @@ final class AppState: ObservableObject {
         traffic = nil
         automationHealth = nil
         availability = nil
+        dailyBatch = nil
     }
 
     func removeSavedFaceID() {
@@ -119,6 +122,9 @@ final class AppState: ObservableObject {
         catch { firstError = firstError ?? error.localizedDescription }
 
         do { availability = try await api.availability() }
+        catch { firstError = firstError ?? error.localizedDescription }
+
+        do { dailyBatch = try await api.dailyBatch() }
         catch { firstError = firstError ?? error.localizedDescription }
 
         if let firstError {
@@ -183,11 +189,65 @@ final class AppState: ObservableObject {
             alertMessage = error.localizedDescription
         }
     }
+    func refreshDailyBatch() async {
+        do {
+            dailyBatch = try await api.dailyBatch()
+        } catch {
+            alertMessage = error.localizedDescription
+        }
+    }
+
+    func setDailyDecision(candidateId: String, decision: String) async {
+        guard let batchId = dailyBatch?.batchId, !batchId.isEmpty else { return }
+        isBatchBusy = true
+        defer { isBatchBusy = false }
+        do {
+            dailyBatch = try await api.reviewDailyBatch(batchId: batchId, candidateId: candidateId, decision: decision)
+        } catch {
+            alertMessage = error.localizedDescription
+            await refreshDailyBatch()
+        }
+    }
+
+    func swapDailyCandidate(priorityId: String, backupId: String) async {
+        guard let batchId = dailyBatch?.batchId, !batchId.isEmpty else { return }
+        isBatchBusy = true
+        defer { isBatchBusy = false }
+        do {
+            dailyBatch = try await api.replaceDailyBatch(batchId: batchId, priorityId: priorityId, backupId: backupId)
+        } catch {
+            alertMessage = error.localizedDescription
+            await refreshDailyBatch()
+        }
+    }
+
+    func publishDailyBatch() async {
+        guard let batch = dailyBatch, batch.readyToPublish else {
+            alertMessage = "Review all ten priority jobs as Live and complete their verified descriptions before publishing."
+            return
+        }
+        let jobs = batch.priority.compactMap(\.job)
+        guard jobs.count == 10 else {
+            alertMessage = "Some job descriptions are incomplete."
+            return
+        }
+        isBatchBusy = true
+        defer { isBatchBusy = false }
+        do {
+            let response = try await api.publish(jobs: jobs)
+            dailyBatch = try await api.markDailyBatchSubmitted(batchId: batch.batchId)
+            alertMessage = response.message ?? "Publishing request accepted. Check deployment and Telegram status."
+        } catch {
+            alertMessage = error.localizedDescription + " If a publishing request succeeded, check GitHub before retrying."
+            await refreshDailyBatch()
+        }
+    }
 }
 
 @main
 struct HDCareersAdminApp: App {
     @StateObject private var state = AppState()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
         WindowGroup {
@@ -204,6 +264,11 @@ struct HDCareersAdminApp: App {
             .preferredColorScheme(.light)
             .task {
                 await state.bootstrap()
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active && state.isAuthenticated {
+                    Task { await state.refreshDailyBatch() }
+                }
             }
             .alert("HD Careers Admin", isPresented: Binding(
                 get: { state.alertMessage != nil },
