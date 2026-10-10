@@ -132,6 +132,41 @@ final class APIClient {
         return job
     }
 
+    func dailyBatch() async throws -> DailyBatch {
+        try await request("/api/admin/daily-batch")
+    }
+
+    func reviewDailyBatch(batchId: String, candidateId: String, decision: String) async throws -> DailyBatch {
+        struct Body: Encodable {
+            let action = "review"
+            let batchId: String
+            let candidateId: String
+            let decision: String
+        }
+        return try await request("/api/admin/daily-batch", method: "POST",
+                                 body: encoder.encode(Body(batchId: batchId, candidateId: candidateId, decision: decision)))
+    }
+
+    func replaceDailyBatch(batchId: String, priorityId: String, backupId: String) async throws -> DailyBatch {
+        struct Body: Encodable {
+            let action = "swap"
+            let batchId: String
+            let priorityId: String
+            let backupId: String
+        }
+        return try await request("/api/admin/daily-batch", method: "POST",
+                                 body: encoder.encode(Body(batchId: batchId, priorityId: priorityId, backupId: backupId)))
+    }
+
+    func markDailyBatchSubmitted(batchId: String) async throws -> DailyBatch {
+        struct Body: Encodable {
+            let action = "submitted"
+            let batchId: String
+        }
+        return try await request("/api/admin/daily-batch", method: "POST",
+                                 body: encoder.encode(Body(batchId: batchId)))
+    }
+
     func publish(jobs: [Job]) async throws -> PublishResponse {
         struct Body: Encodable { let jobs: [Job] }
         let data = try encoder.encode(Body(jobs: jobs))
