@@ -81,7 +81,7 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(hist["lifecycle"], "CLOSURE_SUSPECTED")
         self.assertEqual(hist["verification"], "UNCONFIRMED")
         v3.observe_snapshot(self.state, snap(self.jobs[1:]), NOW + timedelta(minutes=45))
-        # Only the previous snapshot is compared; no false expiry from missing inventory.
+        self.assertEqual(hist["missingStreak"], 2)
         self.assertNotEqual(hist["lifecycle"], "EXPIRED")
 
     def test_implausible_inventory_drop_is_ignored(self):
@@ -111,6 +111,16 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(v3.apply_verification(hist, v, NOW, False), "CLOSURE_SUSPECTED")
         self.assertEqual(v3.apply_verification(hist, v, NOW + timedelta(minutes=5), False), "CLOSURE_SUSPECTED")
         self.assertEqual(v3.apply_verification(hist, v, NOW + timedelta(minutes=20), False), "EXPIRED")
+
+    def test_provider_closed_but_inventory_still_present_never_expires(self):
+        j = v3.make_job("workday", "acme", "R-20", "Graduate", "https://acme.example.com/job/R-20")
+        hist = v3.ensure_history(self.state, j, NOW)
+        v = asdict(verdict(j, "EXPIRED", "closed", "workday.can_apply_false"))
+        for minutes in (0, 16, 40):
+            self.assertEqual(v3.apply_verification(hist, v, NOW + timedelta(minutes=minutes), True),
+                             "RECHECK_REQUIRED")
+        self.assertEqual(hist["verification"], "UNCONFIRMED")
+        self.assertEqual(hist["closedObservations"], [])
 
     def test_conflicting_open_and_closed_never_auto_expire(self):
         j = v3.make_job("workday", "acme", "R-2", "Graduate", "https://acme.example.com/job/R-2")
