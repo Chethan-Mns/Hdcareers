@@ -613,7 +613,10 @@ def logo_candidates(job: dict) -> list[str]:
     google, duck = logo_sources(company, domain)
 
     ordered = []
-    approved = APPROVED_COMPANY_LOGOS.get(company.strip().lower(), "")
+    company_key = company.strip().casefold()
+    approved = APPROVED_COMPANY_LOGOS.get(company_key, "")
+    if not approved and re.match(r"^drdo\\b", company_key):
+        approved = APPROVED_COMPANY_LOGOS.get("drdo", "")
     if approved:
         ordered.append("../" + approved)
     if cached.startswith("assets/company-icons/"):
