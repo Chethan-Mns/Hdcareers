@@ -40,6 +40,8 @@ class AdminApi {
             val value = response.body?.string().orEmpty()
             if (!response.isSuccessful) {
                 val msg=runCatching { JSONObject(value).optString("error") }.getOrNull().orEmpty()
+                if (response.code==404 && path.startsWith("/api/admin/android-devices"))
+                    throw IOException("Android notifications are not deployed on the HD Careers server yet (404). The private Firebase endpoint must be deployed before this Pixel can connect.")
                 throw IOException(msg.ifBlank { "Server returned HTTP ${response.code}" })
             }
             value
