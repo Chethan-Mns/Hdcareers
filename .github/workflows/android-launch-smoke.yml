@@ -41,7 +41,7 @@ jobs:
           profile: pixel_6
           emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
           script: |
-            adb install -r app/build/outputs/apk/debug/app-debug.apk
+            adb install -r android-admin/app/build/outputs/apk/debug/app-debug.apk
             adb logcat -c
             adb shell am start -W -n in.hdcareers.admin/.MainActivity
             sleep 12
