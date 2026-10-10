@@ -272,9 +272,15 @@
   "Aditya Birla Group": {
     "name": "Aditya Birla Group",
     "domain": "adityabirla.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "HTTP Error 406: Not Acceptable"
+    "status": "official_brand_asset_review",
+    "path": "assets/company-marks-review/aditya-birla-group.png",
+    "note": "Identified company-branded asset for visual approval",
+    "source": "https://develop.adityabirla.com/_next/static/media/aditya-birla-group-download-logo.a8a380da.webp",
+    "format": "png",
+    "sourceSize": [
+      464,
+      260
+    ]
   },
   "ITC": {
     "name": "ITC",
@@ -296,9 +302,11 @@
   "Asian Paints": {
     "name": "Asian Paints",
     "domain": "asianpaints.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "Logo source could not be downloaded: HTTP Error 429: Too Many Requests (015d12c)"
+    "status": "review_corporate_brand_asset",
+    "path": "assets/company-marks-review/asian-paints.svg",
+    "note": "Identified company-branded asset for visual approval",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Asian_Paints_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "format": "svg"
   },
   "IndiGo": {
     "name": "IndiGo",
