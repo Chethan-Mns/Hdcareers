@@ -47,6 +47,9 @@ Keep these existing Owner variables in both environments without changing their 
 
 The earlier signed admin sessions are intentionally invalidated by migration. Re-login with the same Owner credentials.
 
+## Expired checker permissions
+Job Editors can **manually start the global expired-job checker** and review its results once the Owner approves and deploys multi-admin to production. The API enforces the role server-side, logs the request and rejects additional checker runs while an existing run is queued or running. Manual checker execution is still blocked in Preview; Preview is read-only.
+
 ## Role matrix
 
 | Feature | Owner | Job Editor |
@@ -54,7 +57,7 @@ The earlier signed admin sessions are intentionally invalidated by migration. Re
 | Login, manage job listing, extract job data | Yes | Yes |
 | Approve/review jobs, publish selected jobs, daily review batch | Yes | Yes |
 | View availability status and review queue | Yes | Yes |
-| Trigger global expired-job checker | Yes | No |
+| Trigger global expired-job checker (production; checks are audited) | Yes | Yes |
 | GA4/traffic private analytics | Yes | No |
 | Create/disable/reset editors; revoke sessions | Yes | No |
 | View audit log | Yes | No |
