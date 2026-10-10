@@ -264,9 +264,10 @@
   "Larsen & Toubro": {
     "name": "Larsen & Toubro",
     "domain": "larsentoubro.com",
-    "status": "needs_official_asset",
-    "path": null,
-    "note": "Logo source could not be downloaded: HTTP Error 429: Too many requests (f061ab2)"
+    "status": "vector_candidate",
+    "path": "assets/company-marks-review/larsen-toubro.svg",
+    "note": "Corporate L&T circle brand mark — preview approval required",
+    "source": "https://github.com/ridh21/qubits-vendorbridge/blob/main/public/logos/lt.svg"
   },
   "Aditya Birla Group": {
     "name": "Aditya Birla Group",
