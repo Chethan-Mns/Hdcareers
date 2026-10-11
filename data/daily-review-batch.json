@@ -597,7 +597,7 @@
       "apply": "https://unisys.wd5.myworkdayjobs.com/External/job/Bangalore-KA-India/Associate-Engineer_REQ568332",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact employer Workday route was identified, but authoritative page content was blank to automated review; do not approve without manual confirmation.",
       "postedDate": null,
@@ -609,8 +609,13 @@
         "status": "review",
         "cat": "it",
         "expYears": "0–2 years",
-        "sourceName": "Unisys Workday"
-      }
+        "sourceName": "Unisys Workday",
+        "manualLiveVerifiedAt": "2026-10-11T05:49:22.274Z",
+        "browserVerifiedAt": "2026-10-11T05:49:22.274Z",
+        "verifiedDate": "11 Oct 2026"
+      },
+      "reviewedAt": "2026-10-11T05:49:22.274Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nxp-R-10066434",
@@ -705,5 +710,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:49:18.466Z"
+  "updatedAt": "2026-10-11T05:49:22.274Z"
 }
