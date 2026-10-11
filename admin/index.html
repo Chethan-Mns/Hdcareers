@@ -630,7 +630,7 @@ grid.innerHTML='<div class="rounded-2xl border border-red-200 bg-red-50 p-4 text
 updated.textContent=''
 }
 }
-async function refreshDashboard(){const tasks=[loadExistingJobs(),loadAvailabilityStatus(),loadAutomationHealth()];if(activeAdminRole==="owner")tasks.push(loadDashboardTraffic());await Promise.all(tasks)}
+async function refreshDashboard(){const tasks=[loadExistingJobs(),loadAvailabilityStatus(),loadAutomationHealth()];tasks.push(loadDashboardTraffic());await Promise.all(tasks)}
 function parseInputLinks(){
 const lines=document.getElementById('linksInput').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
 const seen=new Set();
@@ -961,9 +961,9 @@ function applyAdminRole(username,role){
   if(team)team.classList.toggle("hidden",!owner);
   const badge=document.getElementById("adminRoleBadge");
   if(badge){badge.textContent=owner?"Owner":"Job Editor";badge.classList.remove("hidden")}
-  document.querySelectorAll('a[href="/admin/traffic.html"]').forEach(el=>el.classList.toggle("hidden",!owner));
+  document.querySelectorAll('a[href="/admin/traffic.html"]').forEach(el=>el.classList.remove("hidden"));
   const panel=document.getElementById("analyticsDashboard");
-  if(panel)panel.classList.toggle("hidden",!owner);
+  if(panel)panel.classList.remove("hidden");
 }
 function showLogin(message=''){
 document.getElementById('adminApp').classList.add('hidden');

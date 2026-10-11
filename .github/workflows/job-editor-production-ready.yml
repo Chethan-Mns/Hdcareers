@@ -32,7 +32,7 @@ jobs:
           for(const name of ['availability','daily-batch','extract-job','publish','review','reel-kit']){
             assert.match(read('api/admin/'+name+'.js'), /await requireAdmin\(req,\s*res/);
           }
-          assert.match(read('api/admin/traffic.js'), /await requireAdmin\(req,\s*res,\s*\["owner"\]\)/);
+          assert.match(read('api/admin/traffic.js'), /await requireAdmin\(req,\s*res,\s*\["owner","job_editor"\]\)/);
           assert.match(read('lib/admin-team-handler.js'), /await requireAdmin\(req,\s*res,\s*\["owner"\]\)/);
           const routes=JSON.parse(read('vercel.json')).rewrites||[];
           assert(routes.some(x=>x.source==='/api/admin/team' && x.destination.includes('adminOperation=team')));
