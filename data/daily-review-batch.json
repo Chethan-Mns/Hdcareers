@@ -57,58 +57,57 @@
       "reviewedBy": "HD Careers Admin"
     },
     {
-      "id": "google-122710813273137862",
-      "company": "Google",
-      "role": "Software Engineer, Search",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+      "id": "hcltech-175263",
+      "company": "HCLTech",
+      "role": "Engineer – Jenkins, Windows PowerShell",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
       "cat": "it",
-      "expYears": "1 year",
+      "expYears": "Not stated",
       "reviewedStatus": "live",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Google Careers page opened on 11 Oct 2026 and showed the role, Bengaluru location, Early level, qualifications, responsibilities and Apply control.",
+      "verificationReason": "Exact HCLTech page opened on 11 Oct 2026 with requisition 175263, Chennai location, responsibilities, skills and application controls.",
       "postedDate": null,
       "job": {
-        "page": "google-software-engineer-search-bengaluru",
-        "domain": "www.google.com",
-        "company": "Google",
+        "page": "hcltech-engineer-jenkins-windows-powershell-175263",
+        "domain": "careers.hcltech.com",
+        "company": "HCLTech",
         "salary": "Not disclosed",
         "logo": "",
-        "role": "Software Engineer, Search",
-        "roleTag": "Software Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru, Karnataka, India",
+        "role": "Engineer – Jenkins, Windows PowerShell",
+        "roleTag": "Tools & Automation Engineer",
+        "loc": "Chennai, Tamil Nadu, India",
+        "locationFilter": "Chennai, Tamil Nadu, India",
         "batch": "Not specified",
-        "elig": "Bachelor's degree or equivalent practical experience; 1 year of software development experience in one or more programming languages.",
+        "elig": "Official page requests basic Jenkins understanding, PowerShell familiarity, foundational Python and Ansible knowledge, problem solving and attention to detail; experience years not stated.",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "1 year",
+        "expYears": "Not stated",
         "date": "Not specified",
-        "desc": "Early-career software engineering role for Google Search.",
+        "desc": "Tools and automation engineering role using Jenkins and PowerShell.",
         "resp": [
-          "Write product or system development code.",
-          "Review code and contribute to documentation.",
-          "Debug and resolve product or system issues."
+          "Develop automation scripts and Jenkins/PowerShell pipelines.",
+          "Maintain and troubleshoot automation projects.",
+          "Gather requirements, implement features and document workflows."
         ],
-        "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+        "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
         "status": "active",
         "verifiedDate": "11 Oct 2026",
-        "sourceName": "Google Careers",
+        "sourceName": "HCLTech Careers",
         "skills": [
+          "Jenkins",
+          "PowerShell",
           "Python",
-          "C",
-          "C++",
-          "Java",
-          "JavaScript"
+          "Ansible"
         ],
         "who": [
-          "Software engineers with at least one year of development experience"
+          "Candidates with foundational CI/CD and scripting knowledge"
         ],
         "workMode": "Not specified",
-        "manualLiveVerifiedAt": "2026-10-11T05:56:46.398Z",
-        "browserVerifiedAt": "2026-10-11T05:56:46.398Z"
+        "manualLiveVerifiedAt": "2026-10-11T06:06:12.619Z",
+        "browserVerifiedAt": "2026-10-11T06:06:12.619Z"
       },
-      "reviewedAt": "2026-10-11T05:56:46.398Z",
+      "reviewedAt": "2026-10-11T06:06:12.619Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
@@ -465,57 +464,58 @@
   ],
   "backup": [
     {
-      "id": "hcltech-175263",
-      "company": "HCLTech",
-      "role": "Engineer – Jenkins, Windows PowerShell",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
+      "id": "google-122710813273137862",
+      "company": "Google",
+      "role": "Software Engineer, Search",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
       "cat": "it",
-      "expYears": "Not stated",
+      "expYears": "1 year",
       "reviewedStatus": "live",
       "verificationVerdict": "live",
-      "verificationReason": "Exact HCLTech page opened on 11 Oct 2026 with requisition 175263, Chennai location, responsibilities, skills and application controls.",
+      "verificationReason": "Exact Google Careers page opened on 11 Oct 2026 and showed the role, Bengaluru location, Early level, qualifications, responsibilities and Apply control.",
       "postedDate": null,
       "job": {
-        "page": "hcltech-engineer-jenkins-windows-powershell-175263",
-        "domain": "careers.hcltech.com",
-        "company": "HCLTech",
+        "page": "google-software-engineer-search-bengaluru",
+        "domain": "www.google.com",
+        "company": "Google",
         "salary": "Not disclosed",
         "logo": "",
-        "role": "Engineer – Jenkins, Windows PowerShell",
-        "roleTag": "Tools & Automation Engineer",
-        "loc": "Chennai, Tamil Nadu, India",
-        "locationFilter": "Chennai, Tamil Nadu, India",
+        "role": "Software Engineer, Search",
+        "roleTag": "Software Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
         "batch": "Not specified",
-        "elig": "Official page requests basic Jenkins understanding, PowerShell familiarity, foundational Python and Ansible knowledge, problem solving and attention to detail; experience years not stated.",
+        "elig": "Bachelor's degree or equivalent practical experience; 1 year of software development experience in one or more programming languages.",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Not stated",
+        "expYears": "1 year",
         "date": "Not specified",
-        "desc": "Tools and automation engineering role using Jenkins and PowerShell.",
+        "desc": "Early-career software engineering role for Google Search.",
         "resp": [
-          "Develop automation scripts and Jenkins/PowerShell pipelines.",
-          "Maintain and troubleshoot automation projects.",
-          "Gather requirements, implement features and document workflows."
+          "Write product or system development code.",
+          "Review code and contribute to documentation.",
+          "Debug and resolve product or system issues."
         ],
-        "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
+        "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
         "status": "active",
         "verifiedDate": "11 Oct 2026",
-        "sourceName": "HCLTech Careers",
+        "sourceName": "Google Careers",
         "skills": [
-          "Jenkins",
-          "PowerShell",
           "Python",
-          "Ansible"
+          "C",
+          "C++",
+          "Java",
+          "JavaScript"
         ],
         "who": [
-          "Candidates with foundational CI/CD and scripting knowledge"
+          "Software engineers with at least one year of development experience"
         ],
         "workMode": "Not specified",
-        "manualLiveVerifiedAt": "2026-10-11T06:06:12.619Z",
-        "browserVerifiedAt": "2026-10-11T06:06:12.619Z"
+        "manualLiveVerifiedAt": "2026-10-11T05:56:46.398Z",
+        "browserVerifiedAt": "2026-10-11T05:56:46.398Z"
       },
-      "reviewedAt": "2026-10-11T06:06:12.619Z",
+      "reviewedAt": "2026-10-11T05:56:46.398Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
@@ -747,5 +747,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-11T06:06:12.619Z"
+  "updatedAt": "2026-10-11T06:06:19.076Z"
 }
