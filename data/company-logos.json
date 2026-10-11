@@ -671,5 +671,17 @@
     "sourceUrl": "User-approved HD Careers logo",
     "sourceType": "owner-approved curated asset",
     "localPath": "assets/company-marks-review/ntt-data.svg"
+  },
+  "Arm": {
+    "officialDomain": "arm.com",
+    "sourceUrl": "https://www.arm.com/shared/common/img/favicon/apple-touch-icon.png?v=1.0.9749.18501",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/arm-e5748f5.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 18455
   }
 }
