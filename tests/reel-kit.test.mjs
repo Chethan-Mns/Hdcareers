@@ -1,11 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {createAdminSession} from "../lib/admin-auth.js";
+import {createFakeRedis} from "./helpers/fake-redis.mjs";
 import handler from "../api/admin/reel-kit.js";
 
 process.env.ADMIN_USERNAME="owner";
 process.env.ADMIN_PASSWORD="test-owner";
 process.env.ADMIN_SESSION_SECRET="test-session-secret-long-enough";
+const redis=createFakeRedis();
+process.env.HD_ADMIN_REDIS_URL=redis.url;
+process.env.HD_ADMIN_REDIS_TOKEN="test-only-redis-token";
 process.env.GITHUB_PUBLISH_TOKEN="test-github-token";
 process.env.ADMIN_GITHUB_REPO="Chethan-Mns/Hdcareers";
 process.env.ADMIN_GITHUB_BASE="main";
@@ -16,6 +20,8 @@ let selection={jobId:null,status:"not_selected",selectedAt:null,postedAt:null};
 const commits=[];
 const originalFetch=globalThis.fetch;
 globalThis.fetch=async(url,options={})=>{
+  const storeReply=redis.response(url,options);
+  if(storeReply)return storeReply;
   const path=String(url);const method=options.method||"GET";
   let result={};
   if(method==="GET"&&path.includes("/contents/data/jobs.json"))result={content:Buffer.from(JSON.stringify([good,expired])).toString("base64"),sha:"jobs-sha"};
@@ -28,7 +34,7 @@ globalThis.fetch=async(url,options={})=>{
   }else throw Error("Unexpected GitHub mock "+path+" "+method);
   return {ok:true,status:200,text:async()=>JSON.stringify(result)};
 };
-const token=createAdminSession();
+const token=await createAdminSession({username:"owner",role:"owner"});
 const req=(method,body,origin)=>({method,body,headers:{host:"hdcareers.in",cookie:"hd_admin_session="+token,...(origin?{origin}:{})}});
 const res=()=>({statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v;return this},status(n){this.statusCode=n;return this},json(v){this.body=v;return this}});
 async function call(method,body,origin){const response=res();await handler(req(method,body,origin),response);return response}

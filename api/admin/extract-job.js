@@ -888,7 +888,7 @@ export default async function handler(req,res){
   }
 
   res.setHeader("Cache-Control","no-store");
-  if(!requireAdmin(req,res))return;
+  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
 
   try{
     const input=String(req.body&&req.body.url||"").trim();
