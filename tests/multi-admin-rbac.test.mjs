@@ -2,12 +2,13 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {verifyCredentials,createAdminSession,requireAdmin} from "../lib/admin-auth.js";
 import {createEditor,getUser,lookupSession,issueSession,setEditorState,removeSession,audit,auditEntries,storeConfigured} from "../lib/admin-store.js";
-import teamHandler from "../api/admin/team.js";
-import auditHandler from "../api/admin/audit.js";
+import teamHandler from "../lib/admin-team-handler.js";
+import auditHandler from "../lib/admin-audit-handler.js";
 import trafficHandler from "../api/admin/traffic.js";
 import publishHandler from "../api/admin/publish.js";
 import availabilityHandler from "../api/admin/availability.js";
-import ownerPasswordHandler from "../api/admin/owner-password.js";
+import sessionHandler from "../api/admin/session.js";
+import ownerPasswordHandler from "../lib/admin-password-handler.js";
 import {ownerPasswordOverride} from "../lib/admin-store.js";
 
 process.env.ADMIN_USERNAME="owner";
@@ -79,6 +80,22 @@ test("Owner-only audit entries store actors and actions",async()=>{
   assert.equal(rows[0].action,"account.disable");
 });
 
+test("Shared session function routes Owner Team operations with RBAC and blocks Editor",async()=>{
+ const owner=await issueSession("owner","owner");
+ const editor=await issueSession("job.friend","job_editor");
+ const allowed=res();
+ await sessionHandler({...req(owner),query:{adminOperation:"team"}},allowed);
+ assert.equal(allowed.statusCode,200);
+ const denied=res();
+ await sessionHandler({...req(editor),query:{adminOperation:"team"}},denied);
+ assert.equal(denied.statusCode,403);
+ const passwordDenied=res();
+ await sessionHandler({...req(editor),method:"POST",query:{adminOperation:"owner-password"},body:{currentPassword:"invalid",newPassword:"MissingPrivileges-2026"}},passwordDenied);
+ assert.equal(passwordDenied.statusCode,403);
+ const normal=res();
+ await sessionHandler(req(owner),normal);
+ assert.equal(normal.body.role,"owner");
+});
 test("Job Editor cannot access Owner team, audit or private analytics APIs",async()=>{
   await setEditorState("job.friend","enable");
   const token=await issueSession("job.friend","job_editor");
