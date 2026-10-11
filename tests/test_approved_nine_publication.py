@@ -77,6 +77,14 @@ class TestExplicitNineJobPublication(unittest.TestCase):
         self.assertTrue(all(x["manualLiveVerifiedUrl"] == x["apply"] for x in event["client_payload"]["jobs"]))
         self.assertEqual(self.rows[0]["job"].get("manualLiveVerifiedUrl"), None)
 
+    def test_empty_logo_is_converted_to_safe_initials_without_touching_review(self):
+        self.batch["priority"][0]["job"]["logo"] = ""
+        self.save()
+        MOD.prepare(self.request, self.output)
+        event = json.loads(self.output.read_text())
+        self.assertEqual(event["client_payload"]["jobs"][0]["logo"], ["EM", "#0b6fe8"])
+        self.assertEqual(self.batch["priority"][0]["job"]["logo"], "")
+
     def test_unreviewed_job_is_never_published(self):
         self.batch["priority"][3]["reviewedStatus"] = "unreviewed"
         self.save()
