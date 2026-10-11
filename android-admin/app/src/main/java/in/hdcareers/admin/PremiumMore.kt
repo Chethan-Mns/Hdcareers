@@ -54,6 +54,30 @@ internal fun ProMore(vm:AdminViewModel,onEnableBiometric:()->Unit,onNotification
             }
             item {
                 ProCard {
+                    SectionHead(Icons.Default.NotificationsActive,"Live push alerts",
+                        "Firebase notifications on your Pixel",Brand.blue)
+                    Text(vm.fcmStatus,fontSize=12.sp,color=Brand.gray)
+                    Spacer(Modifier.height(10.dp))
+                    OutlinedButton(onClick={onNotifications();vm.connectPush()},
+                        modifier=Modifier.fillMaxWidth(),enabled=vm.loggedIn&&!vm.busy,
+                        shape=RoundedCornerShape(13.dp)) {
+                        Icon(Icons.Default.NotificationsActive,null,Modifier.size(18.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text("Enable Firebase notifications")
+                    }
+                    OutlinedButton(onClick=vm::testPush,
+                        modifier=Modifier.fillMaxWidth(),enabled=vm.loggedIn&&!vm.busy,
+                        shape=RoundedCornerShape(13.dp)) {
+                        Icon(Icons.Default.Send,null,Modifier.size(18.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text("Send test notification")
+                    }
+                    Text("Cloud alerts require Firebase build variables and server credentials. The daily local reminder works without Firebase.",
+                        fontSize=11.sp,color=Brand.gray)
+                }
+            }
+            item {
+                ProCard {
                     SectionHead(Icons.Default.Security,"Security & access",
                         "Protect your private publishing controls",Brand.green)
                     OutlinedButton(onClick=onEnableBiometric,modifier=Modifier.fillMaxWidth(),
