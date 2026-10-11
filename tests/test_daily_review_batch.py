@@ -63,9 +63,12 @@ class TestDailyReviewContract(unittest.TestCase):
         p=batch();p["backup"][0]["company"]=p["priority"][0]["company"];p["backup"][0]["job"]["company"]=p["priority"][0]["company"]
         with self.assertRaisesRegex(ValueError,"Repeated employer"):mod.check(p,strict_discovery=True)
     def test_strict_discovery_requires_all_twenty(self):
-        with self.assertRaisesRegex(ValueError,"10 priority"):mod.check(batch(10,8),strict_discovery=True)
+        p=batch(10,8)
+        for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
+        with self.assertRaisesRegex(ValueError,"10 priority"):mod.check(p,strict_discovery=True)
     def test_strict_discovery_prioritizes_fresher_it(self):
         p=batch()
+        for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
         for i,c in enumerate(p["priority"]+p["backup"]):c["job"]["expType"]="fresher" if i>=10 else "experienced";c["job"]["cat"]="it"
         with self.assertRaisesRegex(ValueError,"Fresher IT preference"):mod.check(p,strict_discovery=True)
     def test_invalid_json_document(self):
