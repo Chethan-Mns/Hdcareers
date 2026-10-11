@@ -45,7 +45,6 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         savedPassword=password
         loggedIn=true
         refresh()
-        connectPush()
     }
     fun biometricSignIn() {
         try {
@@ -99,7 +98,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         batch=api.swap(batch.id,priorityId,backupId);setReminderState()
     }
     fun publishBatch()=run {
-        check(batch.ready) { "Review 8 IT, 1 Non-IT and 1 training job as Live, with complete descriptions." }
+        check(batch.ready) { "Publishing blocked: " + batch.publishBlockers.take(4).joinToString(" | ") }
         val snapshot=batch
         val confirmation=api.submit(snapshot)
         try {

@@ -1,0 +1,85 @@
+name: HD Careers Pixel APK v1.2.2
+on:
+  push:
+    branches:
+      - fix/android-analytics-push-preview-20261010
+    paths:
+      - .github/workflows/pixel-apk-v122.yml
+      - android-admin/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hd-pixel-122-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/android-analytics-push-preview-20261010
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Install Android SDK
+        run: |
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)
+          test -x "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
+      - name: Build and test Android APK
+        id: compile
+        working-directory: android-admin
+        run: gradle --no-daemon :app:assembleDebug :app:testDebugUnitTest --stacktrace
+      - name: Upload installable APK
+        id: artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HD-Careers-Pixel-10a-v1.2.2-APK
+          path: android-admin/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+      - name: Write verifiable build result to branch
+        if: always()
+        env:
+          BUILD_RESULT: ${{ steps.compile.outcome }}
+          ARTIFACT_RESULT: ${{ steps.artifact.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          info={
+            "version":"1.2.2",
+            "versionCode":5,
+            "branch":"fix/android-analytics-push-preview-20261010",
+            "runId":int(os.environ["GITHUB_RUN_ID"]),
+            "runUrl":os.environ["GITHUB_SERVER_URL"]+"/"+os.environ["GITHUB_REPOSITORY"]+"/actions/runs/"+os.environ["GITHUB_RUN_ID"],
+            "commit":os.environ["GITHUB_SHA"],
+            "build":os.environ.get("BUILD_RESULT","unknown"),
+            "artifactUpload":os.environ.get("ARTIFACT_RESULT","unknown"),
+            "artifactName":"HD-Careers-Pixel-10a-v1.2.2-APK",
+            "success":os.environ.get("BUILD_RESULT")=="success" and os.environ.get("ARTIFACT_RESULT")=="success"
+          }
+          p=pathlib.Path("data/android-admin-apk-build.json")
+          p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(info,indent=2)+"\n")
+          print(json.dumps(info))
+          PY
+          git config user.name "HD Careers Android CI"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/android-admin-apk-build.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record verified Pixel APK v1.2.2 build and artifact link"
+            git pull --rebase origin fix/android-analytics-push-preview-20261010
+            git push origin HEAD:fix/android-analytics-push-preview-20261010
+          fi

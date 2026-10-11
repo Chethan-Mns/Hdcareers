@@ -1,0 +1,33 @@
+name: Finish Final Four HD Careers Logo Sources
+on:
+  push:
+    branches: [fix/android-analytics-push-preview-20261010]
+    paths:
+      - scripts/finalize_remaining_logo_sources.py
+      - .github/workflows/logo-last-four-review.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/android-analytics-push-preview-20261010
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "Pillow>=11,<13" "beautifulsoup4>=4.12,<5"
+      - run: python scripts/finalize_remaining_logo_sources.py
+      - run: |
+          git config user.name "HD Careers Asset Preview"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/replacement-logo-review.json assets/company-marks-review/
+          if ! git diff --cached --quiet; then
+            git commit -m "Add final available corporate logo assets to 36-company preview"
+            git pull --rebase origin fix/android-analytics-push-preview-20261010
+            git push origin HEAD:fix/android-analytics-push-preview-20261010
+          fi

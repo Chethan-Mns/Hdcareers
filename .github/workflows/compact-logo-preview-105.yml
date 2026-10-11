@@ -1,0 +1,39 @@
+name: Build 105 Compact Logo Asset Preview
+on:
+  push:
+    branches: [fix/android-analytics-push-preview-20261010]
+    paths:
+      - data/compact-logo-candidates-105.json
+      - scripts/build_compact_logo_preview.py
+      - .github/workflows/compact-logo-preview-105.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/android-analytics-push-preview-20261010
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "Pillow>=11,<13"
+      - run: python scripts/build_compact_logo_preview.py
+      - name: Commit review-only downloaded local assets
+        run: |
+          git config user.name "HD Careers Asset Preview"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/company-marks-preview data/compact-logo-preview-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Build review-only 105 company icon assets"
+            git push origin HEAD:fix/android-analytics-push-preview-20261010
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HD-Careers-105-Company-Mark-Candidates
+          path: |
+            assets/company-marks-preview/
+            data/compact-logo-preview-report.json
+          retention-days: 14

@@ -54,43 +54,6 @@ internal fun ProMore(vm:AdminViewModel,onEnableBiometric:()->Unit,onNotification
             }
             item {
                 ProCard {
-                    SectionHead(Icons.Default.NotificationsActive,"Smart notifications",
-                        "FCM alerts and pending-job reminders",Brand.cyan)
-                    ProPill(vm.fcmStatus,if(vm.fcmStatus.startsWith("Registered"))Brand.green else Brand.amber)
-                    OutlinedButton(onClick=onNotifications,modifier=Modifier.fillMaxWidth(),
-                        shape=RoundedCornerShape(13.dp)) {
-                        Icon(Icons.Default.Notifications,null,Modifier.size(18.dp))
-                        Spacer(Modifier.width(8.dp))
-                        Text("Allow Android notifications")
-                    }
-                    OutlinedButton(onClick=vm::connectPush,modifier=Modifier.fillMaxWidth(),
-                        shape=RoundedCornerShape(13.dp)) {
-                        Icon(Icons.Default.CloudSync,null,Modifier.size(18.dp))
-                        Spacer(Modifier.width(8.dp))
-                        Text("Connect this Pixel to FCM")
-                    }
-                    TextButton(onClick=vm::testPush) {
-                        Icon(Icons.Default.Send,null,Modifier.size(17.dp))
-                        Spacer(Modifier.width(7.dp))
-                        Text("Send a test notification")
-                    }
-                    val prefs=ctx.getSharedPreferences("hd_review",0)
-                    var enabled by remember {mutableStateOf(prefs.getBoolean("reminder_enabled",true))}
-                    Row(verticalAlignment=Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            Text("Daily reminder",fontWeight=FontWeight.Bold,color=Brand.navy,
-                                fontSize=13.sp)
-                            Text("Notify when a synced batch is still pending",color=Brand.gray,
-                                fontSize=11.sp,lineHeight=16.sp)
-                        }
-                        Switch(checked=enabled,onCheckedChange={enabled=it;vm.toggleReminder(it)})
-                    }
-                    Text("Exact delivery depends on Android battery settings and internet access.",
-                        color=Brand.gray,fontSize=11.sp)
-                }
-            }
-            item {
-                ProCard {
                     SectionHead(Icons.Default.Security,"Security & access",
                         "Protect your private publishing controls",Brand.green)
                     OutlinedButton(onClick=onEnableBiometric,modifier=Modifier.fillMaxWidth(),
@@ -145,7 +108,7 @@ private fun SettingRow(
     }
 }
 @Composable
-private fun ProAnalytics(vm:AdminViewModel,onBack:()->Unit) {
+internal fun ProAnalytics(vm:AdminViewModel,onBack:()->Unit) {
     LazyColumn(contentPadding=PaddingValues(16.dp),
         verticalArrangement=Arrangement.spacedBy(14.dp)) {
         item {
