@@ -39,19 +39,42 @@ jobs:
           assert 'scripts/publish_approved_telegram.py' in w
           print('Existing website + Telegram workflow is wired to guarded nine-job request')
           PY
-      - name: Preflight all nine REAL approved records with existing publisher validator (no writes)
+      - name: Verify Telegram receipts can persist without duplicates
         run: |
-          python3 scripts/prepare_review_publication.py data/approved-review-publication.json /tmp/hd-nine-preflight.json
+          python3 -m py_compile scripts/merge_telegram_delivery_receipts.py
+          python3 -m unittest discover -s tests -p test_telegram_receipt_safe_sync.py -v
+      - name: Validate Owner nine-job selection or verify it has already published safely
+        run: |
           PYTHONPATH=scripts python3 - <<'PY'
-          import json
+          import json,subprocess,sys
+          from pathlib import Path
           from admin_publish import validate
-          payload=json.load(open('/tmp/hd-nine-preflight.json'))
-          selected=payload['client_payload']['jobs']
-          assert len(selected)==9
-          for index,job in enumerate(selected):
-              validate(job,index)
-              assert job['status']=='active'
-              assert job['manualLiveVerifiedUrl']==job['apply']
-          assert len({j['company'].lower() for j in selected})==9
-          print('Validated all nine real jobs against the existing publisher schema; publication not started.')
+          request=json.loads(Path('data/approved-review-publication.json').read_text())
+          batch=json.loads(Path('data/daily-review-batch.json').read_text())
+          published=json.loads(Path('data/jobs.json').read_text())
+          ledger=json.loads(Path('data/telegram-deliveries.json').read_text())
+          ids=request['candidateIds']
+          assert len(ids)==9 and len(set(ids))==9 and 'unisys-REQ568332' not in ids
+          staged={str(x['id']):x for x in batch['priority']}
+          assert all(staged[x]['reviewedStatus']=='live' for x in ids)
+          expected={staged[x]['job']['apply'] for x in ids}
+          actual={j['apply']:j for j in published if j.get('apply') in expected}
+          if len(actual)==9:
+              assert len({j['company'].casefold() for j in actual.values()})==9
+              for job in actual.values():
+                  validate(job,0)
+                  assert any(v.get('page')==job['page'] and v.get('status')=='delivered'
+                             and isinstance(v.get('messageId'),int) for v in ledger.values())
+              print('Nine jobs already published, site data persisted and nine Telegram receipts confirmed. NO DUPLICATE PUBLISH.')
+          else:
+              assert not actual,'Only part of the approved batch is published; manual reconciliation required.'
+              subprocess.run(['python3','scripts/prepare_review_publication.py',
+                              'data/approved-review-publication.json','/tmp/hd-nine-preflight.json'],check=True)
+              payload=json.loads(Path('/tmp/hd-nine-preflight.json').read_text())
+              selected=payload['client_payload']['jobs']
+              assert len(selected)==9
+              for index,job in enumerate(selected):
+                  validate(job,index)
+                  assert job['status']=='active' and job['manualLiveVerifiedUrl']==job['apply']
+              print('Validated nine real jobs against existing publisher schema; NO LIVE WRITES.')
           PY

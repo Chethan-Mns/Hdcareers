@@ -112,14 +112,29 @@ jobs:
         run: |
           set -euo pipefail
           if [ ! -f data/telegram-deliveries.json ]; then exit 0; fi
+          snapshot="$RUNNER_TEMP/hd-telegram-receipts-$GITHUB_RUN_ID.json"
+          cp data/telegram-deliveries.json "$snapshot"
           git config user.name "HD Careers Telegram"
           git config user.email "actions@users.noreply.github.com"
-          git add data/telegram-deliveries.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Record admin Telegram delivery receipts"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/merge_telegram_delivery_receipts.py "$snapshot" data/telegram-deliveries.json
+            git add data/telegram-deliveries.json
+            if git diff --cached --quiet; then
+              echo "Delivery receipts already saved to main."
+              exit 0
+            fi
+            git commit -m "Record confirmed Telegram delivery receipts"
+            if git push origin HEAD:main; then
+              echo "Telegram delivery receipts persisted, without reposting messages."
+              exit 0
+            fi
+            echo "::warning::main advanced during receipt sync (attempt ${attempt}/8). Merging again safely."
+            sleep 2
+          done
+          echo "::error::Could not persist Telegram receipts; download workflow evidence before retry."
+          exit 1
       - name: Upload Telegram delivery evidence
         if: always()
         uses: actions/upload-artifact@v4
