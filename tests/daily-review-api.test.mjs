@@ -15,7 +15,7 @@ process.env.GITHUB_PUBLISH_TOKEN="shadow-github-mock";
 process.env.ADMIN_GITHUB_BASE="main";
 
 const liveJob={company:"Official Company",role:"Associate Developer",loc:"Bengaluru",elig:"BE/BTech",
- desc:"A correctly sourced employer description",resp:["Build actual products"],apply:"https://example.com/jobs/role-1",status:"review"};
+ desc:"A correctly sourced employer description",resp:["Build actual products"],apply:"https://example.com/jobs/role-1",sourceName:"Official Company Careers",status:"review"};
 const original=globalThis.fetch;
 let edits=0,dispatches=0;
 let state={batchId:"2026-10-11-0900-ist",generatedAt:"2026-10-11T03:30:00Z",status:"reviewing",priority:[
@@ -55,7 +55,7 @@ test("Owner review decision saves to same GitHub JSON, never publishes",async()=
 });
 test("Cannot submit insufficient priority jobs despite source LIVE review",async()=>{
  const r=await call("POST",{action:"submitted",batchId:"2026-10-11-0900-ist"});
- assert.equal(r.statusCode,400);assert.match(r.data.error,/Ten priority jobs/i);assert.equal(edits,1);
+ assert.equal(r.statusCode,400);assert.match(r.data.error,/Choose 1 to 10/i;assert.equal(edits,1);
 });
 test("Stale batch, disallowed origin and preview writes are blocked",async()=>{
  let r=await call("POST",{action:"review",batchId:"stale",candidateId:"source-job-1",decision:"expired"});
@@ -95,5 +95,14 @@ test("Explicit human approval changes job status; expired and unsure undo it",as
  assert.equal(unsure.data.priority[0].reviewedStatus,"unsure");
  assert.equal(dispatches,0);
  assert.equal(edits,3);
+});
+test("One selected Live job can be submitted and records exact ID",async()=>{
+ let r=await call("POST",{action:"review",batchId:"2026-10-11-0900-ist",candidateId:"source-job-1",decision:"live"});
+ assert.equal(r.statusCode,200);
+ r=await call("POST",{action:"submitted",batchId:"2026-10-11-0900-ist",candidateIds:["source-job-1"],requestId:"test-subset"});
+ assert.equal(r.statusCode,200);
+ assert.equal(r.data.status,"submitted");
+ assert.deepEqual(r.data.publication.candidateIds,["source-job-1"]);
+ assert.equal(dispatches,0);
 });
 test.after(()=>{globalThis.fetch=original});
