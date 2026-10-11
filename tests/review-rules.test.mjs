@@ -29,6 +29,15 @@ test("Any 1 through 10 reviewed complete jobs can be selected across either list
  assert.throws(()=>selectCandidates(batch,["b","b"]),/different reviewed/);
  assert.throws(()=>selectCandidates(batch,["unknown"]),/no longer/);
 });
+test("Exactly 1, 5, 9 and 10 Live jobs can be published across lists",()=>{
+ const all=Array.from({length:20},(_,i)=>candidate(String(i),"Employer "+i));
+ const batch=make(all.slice(0,10),all.slice(10));
+ for(const size of [1,5,9,10]){
+  const ids=Array.from({length:size},(_,i)=>String((i%2===0)?i:i+10));
+  assert.equal(selectCandidates(batch,ids).length,size);
+ }
+ assert.throws(()=>selectCandidates(batch,all.slice(0,11).map(c=>c.id)),/1 to 10/);
+});
 test("One employer per selection, even when presented under alias",()=>{
  const a=candidate("p","EY"),b=candidate("b","Ernst and Young");
  assert.throws(()=>selectCandidates(make([a],[b]),["p","b"]),/one job per employer/);
