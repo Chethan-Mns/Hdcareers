@@ -70,6 +70,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         } catch(e:Exception) { message=e.localizedMessage ?: "Biometric setup failed." }
     }
     fun logout()=run {
+        if(loggedIn)runCatching { api.unregisterAndroid(installationId(getApplication())) }
         api.logout()
         vault.clear()
         loggedIn=false
@@ -163,6 +164,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         manualDraft=null
     }
     fun connectPush() {
+        if(!loggedIn){fcmStatus="Sign in before enabling notifications.";return}
+        fcmStatus="Connecting to Firebase…"
         fcmToken(getApplication(),onToken={token->
             getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
                 .edit().putString("token",token).apply()

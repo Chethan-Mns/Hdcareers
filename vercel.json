@@ -13,6 +13,10 @@
     {
       "source": "/api/admin/owner-password",
       "destination": "/api/admin/session?adminOperation=owner-password"
+    },
+    {
+      "source": "/api/admin/android-devices",
+      "destination": "/api/admin/session?adminOperation=android-devices"
     }
   ]
 }
