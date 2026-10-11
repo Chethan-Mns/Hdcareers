@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {verifyCredentials,createAdminSession,requireAdmin} from "../lib/admin-auth.js";
-import {createEditor,getUser,lookupSession,issueSession,setEditorState,removeSession,audit,auditEntries} from "../lib/admin-store.js";
+import {createEditor,getUser,lookupSession,issueSession,setEditorState,removeSession,audit,auditEntries,storeConfigured} from "../lib/admin-store.js";
 import teamHandler from "../api/admin/team.js";
 import auditHandler from "../api/admin/audit.js";
 import trafficHandler from "../api/admin/traffic.js";
@@ -34,6 +34,20 @@ globalThis.fetch=async(_url,options)=>{
 const req=token=>({method:"GET",headers:{cookie:"hd_admin_session="+token,host:"hdcareers.in"}});
 const res=()=>({statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v;return this},status(n){this.statusCode=n;return this},json(v){this.body=v;return this}});
 
+test("Production uses separately connected Vercel Redis REST credentials without exposing secrets",()=>{
+  const saved={customUrl:process.env.HD_ADMIN_REDIS_URL,customToken:process.env.HD_ADMIN_REDIS_TOKEN,kvUrl:process.env.KV_REST_API_URL,kvToken:process.env.KV_REST_API_TOKEN,env:process.env.VERCEL_ENV};
+  try{
+    delete process.env.HD_ADMIN_REDIS_URL;delete process.env.HD_ADMIN_REDIS_TOKEN;
+    process.env.VERCEL_ENV="production";
+    delete process.env.KV_REST_API_URL;delete process.env.KV_REST_API_TOKEN;
+    assert.equal(storeConfigured(),false);
+    process.env.KV_REST_API_URL="https://production-upstash.example.test";
+    process.env.KV_REST_API_TOKEN="sensitive-test-token";
+    assert.equal(storeConfigured(),true);
+  }finally{
+    for(const [key,val] of Object.entries({HD_ADMIN_REDIS_URL:saved.customUrl,HD_ADMIN_REDIS_TOKEN:saved.customToken,KV_REST_API_URL:saved.kvUrl,KV_REST_API_TOKEN:saved.kvToken,VERCEL_ENV:saved.env})){if(val===undefined)delete process.env[key];else process.env[key]=val;}
+  }
+});
 test("Owner credentials are unchanged and new Owner session is revocable",async()=>{
   const user=await verifyCredentials("owner","test-owner-placeholder");
   assert.equal(user.role,"owner");
