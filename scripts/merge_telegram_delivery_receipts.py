@@ -23,7 +23,7 @@ def merge(current, incoming):
         if not isinstance(key, str) or "|" not in key or not isinstance(new, dict):
             raise ValueError("Invalid delivery receipt record")
         page = key.split("|", 1)[-1]
-        if new.get("page") != page or new.get("status") not in {"delivered", "uncertain"}:
+        if new.get("page") != page or new.get("status") not in {"delivered", "uncertain", "failed"}:
             raise ValueError("Receipt page or status mismatch")
         old = result.get(key)
         if old is not None:
@@ -33,7 +33,7 @@ def merge(current, incoming):
                 if new.get("status") == "delivered" and str(old.get("messageId")) != str(new.get("messageId")):
                     raise ValueError(f"Different Telegram message IDs recorded for already delivered {page}")
                 continue
-            if old.get("status") == "uncertain" and new.get("status") == "uncertain":
+            if old.get("status") == "uncertain" and new.get("status") in {"uncertain", "failed"}:
                 continue
         result[key] = new
         additions += 1
