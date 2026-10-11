@@ -4,8 +4,11 @@ on:
   push:
     branches:
       - feature/9am-review-batch-handoff-20261011
+      - feature/review-center-20-employers-flex-publish-20261011
     paths:
       - scripts/validate_daily_review_batch.py
+      - lib/review-rules.js
+      - tests/review-rules.test.mjs
       - tests/test_daily_review_batch.py
       - tests/daily-review-api.test.mjs
       - data/daily-review-batch.json
@@ -35,8 +38,11 @@ jobs:
         run: |
           python3 scripts/validate_daily_review_batch.py
           python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
+          python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
       - name: Validate API and browser scripts
         run: |
           node --check api/admin/daily-batch.js
           node --check api/admin/publish.js
+          node --check lib/review-rules.js
+          node --test tests/review-rules.test.mjs
           node --test tests/daily-review-api.test.mjs
