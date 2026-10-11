@@ -1,0 +1,41 @@
+name: Approved nine-job publishing safety
+
+on:
+  push:
+    branches:
+      - feature/publish-approved-nine-20261011
+    paths:
+      - scripts/prepare_review_publication.py
+      - tests/test_approved_nine_publication.py
+      - .github/workflows/approved-nine-publish-ci.yml
+      - .github/workflows/admin-job-generator.yml
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-guarded-publication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate approved selection script and existing workflow wiring
+        run: |
+          python3 -m py_compile scripts/prepare_review_publication.py
+          python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
+          python3 - <<'PY'
+          from pathlib import Path
+          w=Path('.github/workflows/admin-job-generator.yml').read_text()
+          assert 'data/approved-review-publication.json' in w
+          assert 'scripts/prepare_review_publication.py' in w
+          assert 'scripts/admin_publish.py "$approved_event"' in w
+          assert 'scripts/publish_approved_telegram.py' in w
+          print('Existing website + Telegram workflow is wired to guarded nine-job request')
+          PY
