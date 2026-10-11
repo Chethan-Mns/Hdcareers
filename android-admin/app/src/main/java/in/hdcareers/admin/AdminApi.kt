@@ -47,10 +47,14 @@ class AdminApi {
             value
         }
     }
-    suspend fun login(username: String, password: String) {
+    suspend fun login(username: String, password: String): String {
         val result = JSONObject(request("/api/admin/login",JSONObject()
             .put("username",username).put("password",password)))
         if (!result.optBoolean("authenticated")) throw IOException("Sign-in failed.")
+        val role = result.optString("role","owner")
+        if (role != "owner" && role != "job_editor")
+            throw IOException("Your account has an unsupported admin role.")
+        return role
     }
     suspend fun logout() {
         runCatching { request("/api/admin/logout",JSONObject()) }

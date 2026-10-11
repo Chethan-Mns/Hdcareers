@@ -2,7 +2,7 @@ name: Android Admin Build
 
 on:
   push:
-    branches: [main, fix/android-analytics-push-preview-20261010]
+    branches: [main, fix/android-analytics-push-preview-20261010, fix/android-job-editor-role-support-20261011]
     paths:
       - android-admin/**
       - .github/workflows/android-admin-build.yml

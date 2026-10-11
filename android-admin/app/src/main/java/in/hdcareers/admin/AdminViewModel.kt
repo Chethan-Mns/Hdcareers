@@ -13,6 +13,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     private val api=AdminApi()
     private val vault=CredentialVault(application)
     var loggedIn by androidx.compose.runtime.mutableStateOf(false)
+    var adminRole by androidx.compose.runtime.mutableStateOf("owner")
     var loading by androidx.compose.runtime.mutableStateOf(false)
     var busy by androidx.compose.runtime.mutableStateOf(false)
     var message by androidx.compose.runtime.mutableStateOf("")
@@ -40,7 +41,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     }
     fun login(user:String,password:String) = run {
         require(user.isNotBlank()&&password.isNotBlank()) { "Enter your admin username and password." }
-        api.login(user.trim(),password)
+        adminRole=api.login(user.trim(),password)
         savedUsername=user.trim()
         savedPassword=password
         loggedIn=true
@@ -67,6 +68,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         api.logout()
         vault.clear()
         loggedIn=false
+        adminRole="owner"
         savedUsername=""
         savedPassword=""
         jobs=emptyList()
@@ -83,14 +85,19 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
         try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
-        try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
+        if(adminRole=="owner") {
+            try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
+        } else traffic=Traffic()
         try { checker=api.checker() } catch(e:Exception){errors+="Checker: "+e.message}
         try { automation=api.automation() } catch(e:Exception){errors+="Automation: "+e.message}
         loading=false
         if(errors.isNotEmpty()) message=errors.take(2).joinToString("\n")
     }
     fun refreshClicked()=run { refresh() }
-    fun changeDays(value:Int)=run { days=value;traffic=api.traffic(value) }
+    fun changeDays(value:Int)=run {
+        check(adminRole=="owner") { "Traffic analytics are available to the Owner account only." }
+        days=value;traffic=api.traffic(value)
+    }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
     }

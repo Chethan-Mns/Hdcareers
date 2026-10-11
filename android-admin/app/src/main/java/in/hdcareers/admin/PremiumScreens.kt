@@ -88,8 +88,8 @@ fun PremiumAdminRoot(
                 }
             ) { insets ->
                 Box(Modifier.fillMaxSize().padding(insets)) {
-                    if(analyticsOpen) ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
-                        0 -> ProHome(vm,onAnalytics={analyticsOpen=true})
+                    if(analyticsOpen && vm.adminRole=="owner") ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
+                        0 -> ProHome(vm,onAnalytics={if(vm.adminRole=="owner") analyticsOpen=true})
                         1 -> ProReview(vm)
                         2 -> ProJobs(vm)
                         else -> ProMore(vm,onEnableBiometric,onRequestNotificationPermission)
@@ -190,12 +190,15 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
             }
         }
         item {
-            MetricsGrid(listOf(
+            val metrics=mutableListOf(
                 MetricSpec("Published jobs",vm.jobs.size.toString(),Icons.Default.Work,Brand.blue),
-                MetricSpec("Active listings",active.toString(),Icons.Default.CheckCircle,Brand.green),
-                MetricSpec("Page views",vm.traffic.views.toString(),Icons.Default.Visibility,Brand.violet),
-                MetricSpec("Apply clicks",vm.traffic.applies.toString(),Icons.Default.TouchApp,Brand.cyan)
-            ))
+                MetricSpec("Active listings",active.toString(),Icons.Default.CheckCircle,Brand.green)
+            )
+            if(vm.adminRole=="owner") {
+                metrics.add(MetricSpec("Page views",vm.traffic.views.toString(),Icons.Default.Visibility,Brand.violet))
+                metrics.add(MetricSpec("Apply clicks",vm.traffic.applies.toString(),Icons.Default.TouchApp,Brand.cyan))
+            }
+            MetricsGrid(metrics)
         }
         item {
             ProCard {
@@ -225,7 +228,7 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
                 }
             }
         }
-        item {
+        if(vm.adminRole=="owner") item {
             ProCard {
                 SectionHead(Icons.Default.ShowChart,"Traffic trend",
                     "Real Google Analytics data · "+vm.days+" day view",Brand.cyan,
@@ -246,7 +249,7 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
                 Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                     QuickAction("Review",Icons.Default.FactCheck,Brand.blue,Modifier.weight(1f)){vm.tab=1}
                     QuickAction("Jobs",Icons.Default.BusinessCenter,Brand.violet,Modifier.weight(1f)){vm.tab=2}
-                    QuickAction("Analytics",Icons.Default.Insights,Brand.cyan,Modifier.weight(1f)){onAnalytics()}
+                    if(vm.adminRole=="owner") QuickAction("Analytics",Icons.Default.Insights,Brand.cyan,Modifier.weight(1f)){onAnalytics()}
                 }
             }
         }
