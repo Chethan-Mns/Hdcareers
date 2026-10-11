@@ -1,0 +1,188 @@
+package `in`.hdcareers.admin
+
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+
+class AdminViewModel(application:Application):AndroidViewModel(application) {
+    private val api=AdminApi()
+    private val vault=CredentialVault(application)
+    var loggedIn by androidx.compose.runtime.mutableStateOf(false)
+    var adminRole by androidx.compose.runtime.mutableStateOf("owner")
+    var loading by androidx.compose.runtime.mutableStateOf(false)
+    var busy by androidx.compose.runtime.mutableStateOf(false)
+    var message by androidx.compose.runtime.mutableStateOf("")
+    var tab by androidx.compose.runtime.mutableIntStateOf(0)
+    var batch by androidx.compose.runtime.mutableStateOf(DailyBatch("","waiting",emptyList(),emptyList()))
+    var selectedIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
+    var publishedReviewIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
+    var publishingProgress by androidx.compose.runtime.mutableStateOf(JSONObject())
+    val selectedBlockers get()=batch.selectedBlockers(selectedIds,publishedReviewIds)
+    val canPublish get()=selectedBlockers.isEmpty()
+    var jobs by androidx.compose.runtime.mutableStateOf<List<Job>>(emptyList())
+    var companyLogos by androidx.compose.runtime.mutableStateOf<Map<String,CompanyLogoSource>>(emptyMap())
+    var traffic by androidx.compose.runtime.mutableStateOf(Traffic())
+    var days by androidx.compose.runtime.mutableIntStateOf(7)
+    var checker by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var automation by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var fcmStatus by androidx.compose.runtime.mutableStateOf("Not configured")
+    var manualDraft by androidx.compose.runtime.mutableStateOf<JSONObject?>(null)
+    var manualUrl by androidx.compose.runtime.mutableStateOf("")
+    var savedUsername=""
+    private var savedPassword=""
+    val hasBiometric get()=vault.exists
+
+    private fun run(action:suspend ()->Unit) {
+        viewModelScope.launch {
+            busy=true
+            try { action() } catch(e:Exception) { message=e.localizedMessage ?: "Operation failed." }
+            finally { busy=false }
+        }
+    }
+    fun login(user:String,password:String) = run {
+        require(user.isNotBlank()&&password.isNotBlank()) { "Enter your admin username and password." }
+        adminRole=api.login(user.trim(),password)
+        savedUsername=user.trim()
+        savedPassword=password
+        loggedIn=true
+        refresh()
+    }
+    fun biometricSignIn() {
+        try {
+            val pair=vault.read()
+            login(pair.first,pair.second)
+        } catch(e:Exception) {
+            message="Biometric access failed: "+(e.localizedMessage?:"Please sign in normally.")
+        }
+    }
+    fun enableBiometric() {
+        try {
+            check(loggedIn && savedUsername.isNotBlank() && savedPassword.isNotBlank()) {
+                "Sign in with your password before enabling biometrics."
+            }
+            vault.save(savedUsername,savedPassword)
+            message="Fingerprint/device unlock enabled for your next login."
+        } catch(e:Exception) { message=e.localizedMessage ?: "Biometric setup failed." }
+    }
+    fun logout()=run {
+        api.logout()
+        vault.clear()
+        loggedIn=false
+        adminRole="owner"
+        savedUsername=""
+        savedPassword=""
+        jobs=emptyList()
+        batch=DailyBatch("","waiting",emptyList(),emptyList())
+        selectedIds=emptySet()
+        publishedReviewIds=emptySet()
+        publishingProgress=JSONObject()
+    }
+    private fun setReminderState() {
+        val prefs=getApplication<Application>().getSharedPreferences("hd_review",Context.MODE_PRIVATE)
+        prefs.edit().putBoolean("pending",batch.id.isNotBlank() && batch.status !in listOf("submitted","published") &&
+                batch.priority.any { it.decision != "live" }).apply()
+    }
+    suspend fun refresh() {
+        loading=true
+        val errors= mutableListOf<String>()
+        try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
+        try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
+        try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
+        if(adminRole=="owner") {
+            try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
+        } else traffic=Traffic()
+        try { checker=api.checker() } catch(e:Exception){errors+="Checker: "+e.message}
+        try { automation=api.automation() } catch(e:Exception){errors+="Automation: "+e.message}
+        runCatching { loadPublishingProgress() }
+        loading=false
+        if(errors.isNotEmpty()) message=errors.take(2).joinToString("\n")
+    }
+    fun refreshClicked()=run { refresh() }
+    fun changeDays(value:Int)=run {
+        check(adminRole=="owner") { "Traffic analytics are available to the Owner account only." }
+        days=value;traffic=api.traffic(value)
+    }
+    private suspend fun loadPublishingProgress() {
+        val data=api.publishProgress()
+        if(data.optString("batchId")==batch.id) {
+            publishingProgress=data
+            val arr=data.optJSONArray("publishedCandidateIds")
+            publishedReviewIds=(0 until (arr?.length() ?: 0)).map { arr!!.optString(it) }.toSet()
+            selectedIds=selectedIds-publishedReviewIds
+        }
+    }
+    fun refreshPublishingStatus()=run { loadPublishingProgress() }
+    fun toggleSelected(id:String,checked:Boolean) {
+        val c=batch.all.firstOrNull { it.id==id } ?: return
+        if(!checked){selectedIds=selectedIds-id;return}
+        if(!c.approved){message="Mark a complete, verified job Live before selecting it.";return}
+        if(id in publishedReviewIds){message="That job is already published.";return}
+        if(selectedIds.size>=10){message="Select a maximum of 10 jobs.";return}
+        if(batch.all.any { it.id in selectedIds&&employerKey(it.company)==employerKey(c.company) }){
+            message="Select only one job per employer, including aliases.";return
+        }
+        selectedIds=selectedIds+id
+    }
+    fun decide(id:String,decision:String)=run {
+        batch=api.updateReview(batch.id,id,decision);setReminderState()
+        if(decision=="live")toggleSelected(id,true) else selectedIds=selectedIds-id
+    }
+    fun swap(priorityId:String,backupId:String)=run {
+        batch=api.swap(batch.id,priorityId,backupId);setReminderState()
+    }
+    fun publishBatch()=run {
+        check(canPublish) { "Publishing blocked: " + selectedBlockers.take(4).joinToString(" | ") }
+        val snapshot=batch
+        val chosen=selectedIds.toSet()
+        val (confirmation,requestId)=api.submit(snapshot,chosen)
+        try {
+            batch=api.markSubmitted(snapshot.id,chosen,requestId)
+            setReminderState()
+            message=confirmation+" Verify website deployment and Telegram delivery separately."
+            runCatching { loadPublishingProgress() }
+        } catch(e:Exception) {
+            message="GitHub accepted the request but review status could not be saved. Do not retry without checking the tracker: "+e.message
+        }
+    }
+    fun checkerRun()=run { message=api.runChecker();checker=api.checker() }
+    fun checkerResolve(id:Int,action:String)=run { message=api.resolveChecker(id,action);checker=api.checker() }
+    fun extract(url:String)=run {
+        require(url.startsWith("https://")) { "Enter a direct HTTPS job URL." }
+        manualDraft=api.extractJob(url)
+        message="Draft extracted. Review all details before publishing."
+    }
+    fun publishManual()=run {
+        val draft=manualDraft?:error("Generate a job draft first.")
+        check(draft.optString("company").isNotBlank() && draft.optString("role").isNotBlank()) {
+            "The generated job is missing required information."
+        }
+        message=api.publishOne(draft)+" Confirm the website and Telegram delivery."
+        manualDraft=null
+    }
+    fun connectPush() {
+        fcmToken(getApplication(),onToken={token->
+            getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
+                .edit().putString("token",token).apply()
+            run {
+                if(loggedIn) {
+                    api.registerAndroid(installationId(getApplication()),token)
+                    fcmStatus="Registered for live job alerts"
+                }
+            }
+        },onError={fcmStatus=it})
+    }
+    fun testPush()=run {
+        message=if(api.testAndroidPush()) "FCM accepted the test request. Check your Pixel notifications."
+        else "Test push was not accepted. Check Firebase and server configuration."
+    }
+    fun toggleReminder(on:Boolean) {
+        getApplication<Application>().getSharedPreferences("hd_review",Context.MODE_PRIVATE)
+            .edit().putBoolean("reminder_enabled",on).apply()
+        message=if(on)"Daily pending-review reminder enabled." else "Daily pending-review reminder disabled."
+    }
+}
