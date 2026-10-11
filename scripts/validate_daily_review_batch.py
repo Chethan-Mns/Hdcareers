@@ -106,6 +106,8 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
             raise ValueError(f"Candidate {uid} needs a concrete verification reason")
         full = all(str(job.get(k) or "").strip() for k in ("company", "role", "loc", "elig", "desc", "apply"))
         full = full and isinstance(job.get("resp"), list) and bool(job["resp"])
+        if strict_discovery and not full:
+            raise ValueError(f"Candidate {uid} has incomplete job content; enrich during discovery before review")
         if full:
             ready += 1
     if strict_discovery:
