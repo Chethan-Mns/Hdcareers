@@ -184,7 +184,9 @@ export default async function handler(req,res){
       const saved=await readJson("data/jobs.json",[]);
       const ledger=await readJson("data/telegram-deliveries.json",{});
       const urls=new Set(saved.map(x=>normalizeUrl(x.apply)));
-      const byPage=new Map(saved.map(x=>[String(x.page||"").replace(/^\//,""),x]));
+      const allCandidates=[...(batch.priority||[]),...(batch.backup||[])];
+      const publishedCandidateIds=allCandidates.filter(x=>urls.has(normalizeUrl(x.job?.apply||x.apply))).map(x=>String(x.id));
+      const publishedIds=new Set(publishedCandidateIds);
       const selections=Array.isArray(batch.publication?.candidateIds)?batch.publication.candidateIds:[];
       const stages=selections.map(id=>{
         const c=[...(batch.priority||[]),...(batch.backup||[])].find(x=>String(x.id)===id);
@@ -194,7 +196,7 @@ export default async function handler(req,res){
         return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
           github:batch.status==="submitted"?"queued_or_running":batch.status==="published"?"completed":"not_submitted",
           website:urls.has(normalizeUrl(c?.job?.apply))?"generated":"pending",
-          vercel:"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
+          vercel:last.status==="delivered"?"site-confirmed-before-send":"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
           note:last.status==="uncertain"?"Check Telegram manually before retrying.":""};
       });
       let workflow={state:"not_checked",url:null,conclusion:null};
@@ -206,6 +208,7 @@ export default async function handler(req,res){
       }catch(e){workflow={state:"unavailable",url:null,conclusion:null,reason:"GitHub workflow lookup failed"}}
       return res.status(200).json({batchId:batch.batchId||null,status:batch.status||"waiting",
         publishedCount:stages.filter(x=>x.website==="generated").length,
+        alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
         telegramDelivered:stages.filter(x=>x.telegram==="delivered").length,
         workflow,stages,observedAt:new Date().toISOString(),
         warning:"Workflow matching by timestamp is approximate; Vercel is unconfirmed until the deployed commit is verified."});
