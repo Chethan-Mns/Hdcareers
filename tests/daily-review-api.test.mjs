@@ -55,7 +55,7 @@ test("Owner review decision saves to same GitHub JSON, never publishes",async()=
 });
 test("Cannot submit insufficient priority jobs despite source LIVE review",async()=>{
  const r=await call("POST",{action:"submitted",batchId:"2026-10-11-0900-ist"});
- assert.equal(r.statusCode,400);assert.match(r.data.error,/Choose 1 to 10/i;assert.equal(edits,1);
+ assert.equal(r.statusCode,400);assert.match(r.data.error,/Choose 1 to 10/i);assert.equal(edits,1);
 });
 test("Stale batch, disallowed origin and preview writes are blocked",async()=>{
  let r=await call("POST",{action:"review",batchId:"stale",candidateId:"source-job-1",decision:"expired"});
