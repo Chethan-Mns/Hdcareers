@@ -521,7 +521,7 @@
       "apply": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
       "cat": "it",
       "expYears": "1+ years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Amazon Jobs page opened in the run with Job ID 10511883, Bengaluru job details, rolling applications and qualifications.",
       "postedDate": "2026-08-24",
@@ -548,8 +548,8 @@
           "Deliver high-quality software in an agile environment."
         ],
         "apply": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "Amazon Jobs",
         "skills": [
           "Programming",
@@ -559,8 +559,12 @@
         "who": [
           "Software developers with 1+ years of non-internship experience"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T06:04:56.805Z",
+        "browserVerifiedAt": "2026-10-11T06:04:56.805Z"
+      },
+      "reviewedAt": "2026-10-11T06:04:56.805Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "microsoft-1970393557035883",
@@ -739,5 +743,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-11T06:04:38.794Z"
+  "updatedAt": "2026-10-11T06:04:56.806Z"
 }
