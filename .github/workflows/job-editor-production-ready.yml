@@ -33,7 +33,12 @@ jobs:
             assert.match(read('api/admin/'+name+'.js'), /await requireAdmin\(req,\s*res/);
           }
           assert.match(read('api/admin/traffic.js'), /await requireAdmin\(req,\s*res,\s*\["owner"\]\)/);
-          assert.match(read('api/admin/team.js'), /await requireAdmin\(req,\s*res,\s*\["owner"\]\)/);
+          assert.match(read('lib/admin-team-handler.js'), /await requireAdmin\(req,\s*res,\s*\["owner"\]\)/);
+          const routes=JSON.parse(read('vercel.json')).rewrites||[];
+          assert(routes.some(x=>x.source==='/api/admin/team' && x.destination.includes('adminOperation=team')));
+          assert(routes.some(x=>x.source==='/api/admin/audit' && x.destination.includes('adminOperation=audit')));
+          assert(routes.some(x=>x.source==='/api/admin/owner-password' && x.destination.includes('adminOperation=owner-password')));
+          assert.match(read('api/admin/session.js'), /adminOperation/);
           assert.match(read('admin/index.html'), /adminTeamLink/);
           assert.match(read('admin/index.html'), /\/admin\/reel-kit\.html/);
           assert.match(read('admin/index.html'), /\/admin\/review-batch\.html/);
@@ -42,3 +47,8 @@ jobs:
           assert.match(read('api/admin/publish.js'), /admin_publish_jobs/);
           console.log('Original admin features and role checks preserved.');
           JS
+      - name: Confirm Vercel Hobby function limit
+        run: |
+          count=$(find api -type f -name '*.js' | wc -l)
+          echo "Serverless functions: $count"
+          test "$count" -le 12
