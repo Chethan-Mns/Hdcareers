@@ -74,7 +74,7 @@ const selected=new Set();
 let publishStatus=null;
 let publishedIds=new Set();
 let trackingTimer=null;
-const aliases={"tcs":"tata consultancy services","hcl technologies":"hcltech","hcl":"hcltech","ey":"ernst young","ernst and young":"ernst young","ibm":"international business machines","pwc":"pricewaterhousecoopers","ntt data":"nttdata","deloitte usi":"deloitte","google india":"google","amazon india":"amazon","cognizant technology solutions":"cognizant"};
+const aliases={"tcs":"tata consultancy services","hcl technologies":"hcltech","hcl":"hcltech","ey":"ernst young","ernst and young":"ernst young","ibm":"international business machines","pwc":"pricewaterhousecoopers","ntt data":"nttdata","deloitte usi":"deloitte","google india":"google","amazon india":"amazon","amazon web services":"amazon","aws":"amazon","google cloud":"google","alphabet":"google","microsoft azure":"microsoft","capgemini engineering":"capgemini","cognizant technology solutions":"cognizant"};
 function employerName(c){const name=String(c?.company||c?.job?.company||"").toLowerCase().replace(/&/g," and ").replace(/\b(?:pvt|private|ltd|limited|inc|llp|corp|corporation)\b/g," ").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");return aliases[name]||name}
 const el=id=>document.getElementById(id);
 function notify(message){el("message").style.display="block";el("message").textContent=message}
