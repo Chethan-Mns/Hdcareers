@@ -14,6 +14,8 @@ test("Employer aliases are normalized across the full 20 positions",()=>{
  assert.equal(employerKey("HCL Technologies Ltd"),employerKey("HCLTech"));
  assert.equal(employerKey("EY"),employerKey("Ernst & Young"));
  assert.equal(employerKey("TCS"),employerKey("Tata Consultancy Services"));
+ assert.equal(employerKey("AWS"),employerKey("Amazon"));
+ assert.equal(employerKey("Google Cloud"),employerKey("Google"));
  const all=Array.from({length:20},(_,i)=>candidate(String(i),"Distinct Employer "+i));
  assert.deepEqual(employerAudit(make(all.slice(0,10),all.slice(10))).duplicates,[]);
  all[19].company="HCL Technologies";all[0].company="HCLTech";
