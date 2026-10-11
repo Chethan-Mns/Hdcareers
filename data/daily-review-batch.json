@@ -316,7 +316,7 @@
       "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
       "cat": "non-it",
       "expYears": "0–5 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY page was live on 11 Oct 2026 with requisition 1751532, date 10 Oct 2026, New Delhi location, qualifications, 0–5 years and Apply Now.",
       "postedDate": "2026-10-10",
@@ -343,8 +343,8 @@
           "Prepare workpapers and validate inputs."
         ],
         "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "EY Careers",
         "skills": [
           "GST",
@@ -355,8 +355,12 @@
         "who": [
           "Commerce, MBA, law or CA candidates with 0–5 years"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T05:55:16.219Z",
+        "browserVerifiedAt": "2026-10-11T05:55:16.219Z"
+      },
+      "reviewedAt": "2026-10-11T05:55:16.219Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "microsoft-1970393557035883",
@@ -720,5 +724,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:54:07.064Z"
+  "updatedAt": "2026-10-11T05:55:16.220Z"
 }
