@@ -11,7 +11,7 @@
       "apply": "https://www.google.com/about/careers/applications/jobs/results/73379279982731974-silicon-engineer-platform-and-devices-university-graduate-2026",
       "cat": "it",
       "expYears": "Early career",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Google Careers job page opened on 11 Oct 2026, showed requisition-specific title, Bengaluru location, Early level, minimum qualifications and an Apply control.",
       "postedDate": null,
@@ -38,8 +38,8 @@
           "Help automate SoC design flows."
         ],
         "apply": "https://www.google.com/about/careers/applications/jobs/results/73379279982731974-silicon-engineer-platform-and-devices-university-graduate-2026",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "Google Careers",
         "skills": [
           "SoC/ASIC design",
@@ -49,8 +49,12 @@
         "who": [
           "Early-career hardware and silicon engineering candidates"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T05:48:34.359Z",
+        "browserVerifiedAt": "2026-10-11T05:48:34.359Z"
+      },
+      "reviewedAt": "2026-10-11T05:48:34.359Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "google-122710813273137862",
@@ -687,5 +691,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:41:30.604Z"
+  "updatedAt": "2026-10-11T05:48:34.385Z"
 }
