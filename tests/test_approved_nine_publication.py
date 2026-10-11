@@ -85,6 +85,20 @@ class TestExplicitNineJobPublication(unittest.TestCase):
         self.assertEqual(event["client_payload"]["jobs"][0]["logo"], ["EM", "#0b6fe8"])
         self.assertEqual(self.batch["priority"][0]["job"]["logo"], "")
 
+    def test_source_non_it_category_is_normalized_without_mutating_review(self):
+        self.batch["priority"][0]["job"]["cat"] = "non-it"
+        self.save()
+        MOD.prepare(self.request, self.output)
+        event = json.loads(self.output.read_text())
+        self.assertEqual(event["client_payload"]["jobs"][0]["cat"], "nonit")
+        self.assertEqual(self.batch["priority"][0]["job"]["cat"], "non-it")
+
+    def test_unsupported_category_fails_closed(self):
+        self.batch["priority"][0]["job"]["cat"] = "unknown"
+        self.save()
+        with self.assertRaisesRegex(ValueError, "Unsupported publishing category"):
+            MOD.prepare(self.request, self.output)
+
     def test_unreviewed_job_is_never_published(self):
         self.batch["priority"][3]["reviewedStatus"] = "unreviewed"
         self.save()
