@@ -96,14 +96,17 @@ test("Shared session function routes Owner Team operations with RBAC and blocks 
  await sessionHandler(req(owner),normal);
  assert.equal(normal.body.role,"owner");
 });
-test("Job Editor cannot access Owner team, audit or private analytics APIs",async()=>{
+test("Job Editor can view traffic but cannot access Owner team or audit APIs",async()=>{
   await setEditorState("job.friend","enable");
   const token=await issueSession("job.friend","job_editor");
-  for(const handler of [teamHandler,auditHandler,trafficHandler]){
+  for(const handler of [teamHandler,auditHandler]){
     const response=res();
     await handler(req(token),response);
     assert.equal(response.statusCode,403);
   }
+  const analyticsResponse=res();
+  await trafficHandler(req(token),analyticsResponse);
+  assert.notEqual(analyticsResponse.statusCode,403);
   const owner=await issueSession("owner","owner");
   const response=res();
   await teamHandler(req(owner),response);
