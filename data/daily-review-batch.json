@@ -472,7 +472,7 @@
       "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
       "cat": "it",
       "expYears": "Not stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact HCLTech page opened on 11 Oct 2026 with requisition 175263, Chennai location, responsibilities, skills and application controls.",
       "postedDate": null,
@@ -499,8 +499,8 @@
           "Gather requirements, implement features and document workflows."
         ],
         "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "HCLTech Careers",
         "skills": [
           "Jenkins",
@@ -511,8 +511,12 @@
         "who": [
           "Candidates with foundational CI/CD and scripting knowledge"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T06:06:12.619Z",
+        "browserVerifiedAt": "2026-10-11T06:06:12.619Z"
+      },
+      "reviewedAt": "2026-10-11T06:06:12.619Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-1443859",
@@ -743,5 +747,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-11T06:05:25.830Z"
+  "updatedAt": "2026-10-11T06:06:12.619Z"
 }
