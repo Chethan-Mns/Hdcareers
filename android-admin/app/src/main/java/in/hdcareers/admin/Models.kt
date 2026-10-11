@@ -17,18 +17,30 @@ data class Candidate(
     }
     val complete: Boolean get() = job?.let {
         listOf("company","role","loc","elig","desc","apply").all { key -> it.optString(key).isNotBlank() } &&
-            (it.optJSONArray("resp")?.length() ?: 0) > 0
+            (it.optJSONArray("resp")?.length() ?: 0) > 0 && it.optString("status") == "active"
     } ?: false
 }
 data class DailyBatch(val id: String, val status: String, val priority: List<Candidate>, val backup: List<Candidate>) {
     val reviewed: Int get() = (priority + backup).count { it.decision in listOf("live","expired","unsure") }
-    val ready: Boolean get() = id.isNotBlank() && priority.size == 10 &&
-        status !in listOf("submitted","published") &&
-        priority.all { it.decision == "live" && it.complete } &&
-        priority.map { it.company.trim().lowercase() }.distinct().size == 10 &&
-        priority.count { it.group == "it" } == 8 &&
-        priority.count { it.group == "nonit" } == 1 &&
-        priority.count { it.group == "training" } == 1
+    val publishBlockers: List<String> get() {
+        val issues = mutableListOf<String>()
+        if (id.isBlank()) issues.add("The 9 AM batch has not been saved.")
+        if (status in listOf("submitted","published")) issues.add("The batch has already been submitted.")
+        if (priority.size != 10) issues.add("Exactly 10 priority jobs are required (" + priority.size + " saved).")
+        val duplicates = priority.groupBy { it.company.trim().lowercase() }
+            .filter { it.key.isNotBlank() && it.value.size > 1 }
+        duplicates.values.forEach { items ->
+            issues.add(items.first().company + " appears " + items.size + " times; replace duplicate employers.")
+        }
+        priority.filter { it.decision != "live" }.forEach {
+            issues.add(it.company + ": " + (it.decision.ifBlank { "unreviewed" }) + " — confirm Live or replace it.")
+        }
+        priority.filter { it.decision == "live" && !it.complete }.forEach {
+            issues.add(it.company + ": verified publishing details missing or job not active.")
+        }
+        return issues
+    }
+    val ready: Boolean get() = publishBlockers.isEmpty()
 }
 data class TrafficPoint(val date:String,val visitors:Int,val views:Int)
 data class Traffic(
