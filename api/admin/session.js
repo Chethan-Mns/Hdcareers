@@ -2,6 +2,7 @@ import {getAdminIdentity} from "../../lib/admin-auth.js";
 import teamHandler from "../../lib/admin-team-handler.js";
 import auditHandler from "../../lib/admin-audit-handler.js";
 import passwordHandler from "../../lib/admin-password-handler.js";
+import pushHandler from "../../lib/admin-push-handler.js";
 
 export default async function handler(req,res){
   res.setHeader("Cache-Control","no-store");
@@ -12,6 +13,7 @@ export default async function handler(req,res){
   if(operation==="team")return teamHandler(req,res);
   if(operation==="audit")return auditHandler(req,res);
   if(operation==="owner-password")return passwordHandler(req,res);
+  if(operation==="android-devices")return pushHandler(req,res);
   if(req.method!=="GET"){res.setHeader("Allow","GET");return res.status(405).json({error:"Method not allowed."});}
   try{
     const user=await getAdminIdentity(req);
