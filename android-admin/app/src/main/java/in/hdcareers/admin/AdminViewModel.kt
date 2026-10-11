@@ -77,6 +77,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         savedUsername=""
         savedPassword=""
         jobs=emptyList()
+        traffic=Traffic()
         batch=DailyBatch("","waiting",emptyList(),emptyList())
         selectedIds=emptySet()
         publishedReviewIds=emptySet()
@@ -93,9 +94,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
         try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
-        if(adminRole=="owner") {
-            try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
-        } else traffic=Traffic()
+        try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
         try { checker=api.checker() } catch(e:Exception){errors+="Checker: "+e.message}
         try { automation=api.automation() } catch(e:Exception){errors+="Automation: "+e.message}
         runCatching { loadPublishingProgress() }
@@ -104,7 +103,6 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     }
     fun refreshClicked()=run { refresh() }
     fun changeDays(value:Int)=run {
-        check(adminRole=="owner") { "Traffic analytics are available to the Owner account only." }
         days=value;traffic=api.traffic(value)
     }
     private suspend fun loadPublishingProgress() {
