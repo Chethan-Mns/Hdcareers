@@ -35,8 +35,10 @@ def employer_key(value):
         "ibm": "international business machines",
         "pwc": "pricewaterhousecoopers",
         "ntt data": "nttdata", "deloitte usi": "deloitte",
-        "google india": "google", "amazon india": "amazon",
-        "cognizant technology solutions": "cognizant"
+        "google india": "google", "google cloud": "google", "alphabet": "google",
+        "amazon india": "amazon", "amazon web services": "amazon", "aws": "amazon",
+        "cognizant technology solutions": "cognizant",
+        "capgemini engineering": "capgemini"
     }.get(text, text)
 
 
