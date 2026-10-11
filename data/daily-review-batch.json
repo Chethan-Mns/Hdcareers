@@ -1,8 +1,691 @@
 {
-  "batchId": "",
-  "generatedAt": null,
-  "status": "waiting",
-  "priority": [],
-  "backup": [],
-  "updatedAt": null
+  "batchId": "2026-10-11-0900-ist",
+  "generatedAt": "2026-10-11T05:41:30.604Z",
+  "status": "reviewing",
+  "priority": [
+    {
+      "id": "google-73379279982731974",
+      "company": "Google",
+      "role": "Silicon Engineer, Platform and Devices, University Graduate, 2026",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.google.com/about/careers/applications/jobs/results/73379279982731974-silicon-engineer-platform-and-devices-university-graduate-2026",
+      "cat": "it",
+      "expYears": "Early career",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Google Careers job page opened on 11 Oct 2026, showed requisition-specific title, Bengaluru location, Early level, minimum qualifications and an Apply control.",
+      "postedDate": null,
+      "job": {
+        "page": "google-silicon-engineer-university-graduate-2026",
+        "domain": "www.google.com",
+        "company": "Google",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Silicon Engineer, Platform and Devices, University Graduate, 2026",
+        "roleTag": "Silicon Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
+        "batch": "2026 graduate role",
+        "elig": "Bachelor's degree in Electrical, Electronics and Communication Engineering, a relevant technical field, or equivalent practical experience; experience with design concepts and computer hardware architecture.",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Early career",
+        "date": "Not specified",
+        "desc": "University graduate silicon engineering role in Google's Platforms and Devices team.",
+        "resp": [
+          "Develop power- and performance-optimized chips with SoC teams.",
+          "Contribute to ASIC/SoC design, verification and silicon implementation.",
+          "Help automate SoC design flows."
+        ],
+        "apply": "https://www.google.com/about/careers/applications/jobs/results/73379279982731974-silicon-engineer-platform-and-devices-university-graduate-2026",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Google Careers",
+        "skills": [
+          "SoC/ASIC design",
+          "Design verification",
+          "Computer hardware architecture"
+        ],
+        "who": [
+          "Early-career hardware and silicon engineering candidates"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "google-122710813273137862",
+      "company": "Google",
+      "role": "Software Engineer, Search",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+      "cat": "it",
+      "expYears": "1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Google Careers page opened on 11 Oct 2026 and showed the role, Bengaluru location, Early level, qualifications, responsibilities and Apply control.",
+      "postedDate": null,
+      "job": {
+        "page": "google-software-engineer-search-bengaluru",
+        "domain": "www.google.com",
+        "company": "Google",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Software Engineer, Search",
+        "roleTag": "Software Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
+        "batch": "Not specified",
+        "elig": "Bachelor's degree or equivalent practical experience; 1 year of software development experience in one or more programming languages.",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "1 year",
+        "date": "Not specified",
+        "desc": "Early-career software engineering role for Google Search.",
+        "resp": [
+          "Write product or system development code.",
+          "Review code and contribute to documentation.",
+          "Debug and resolve product or system issues."
+        ],
+        "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Google Careers",
+        "skills": [
+          "Python",
+          "C",
+          "C++",
+          "Java",
+          "JavaScript"
+        ],
+        "who": [
+          "Software engineers with at least one year of development experience"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "arm-2026-19179",
+      "company": "Arm",
+      "role": "Associate Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
+      "cat": "it",
+      "expYears": "Graduate / early career",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Arm Careers page was live on 11 Oct 2026 with Job ID 2026-19179, date posted 6 Oct 2026, responsibilities, desired skills and Apply control.",
+      "postedDate": "2026-10-06",
+      "job": {
+        "page": "arm-associate-engineer-2026-19179",
+        "domain": "careers.arm.com",
+        "company": "Arm",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Associate Engineer",
+        "roleTag": "Associate Engineer",
+        "loc": "Bengaluru, India",
+        "locationFilter": "Bengaluru, India",
+        "batch": "Graduate role",
+        "elig": "Graduate software engineer profile; familiarity with software development fundamentals, version control and automated testing is requested.",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Graduate / early career",
+        "date": "2026-10-06",
+        "desc": "Graduate software engineering role supporting Physical IP design enablement.",
+        "resp": [
+          "Develop and sustain software applications and automated workflows.",
+          "Support custom-cell and macro development and validation.",
+          "Collaborate with software engineers and circuit designers."
+        ],
+        "apply": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Arm Careers",
+        "skills": [
+          "Tcl",
+          "Unix shell",
+          "Linux",
+          "Version control",
+          "Automated testing"
+        ],
+        "who": [
+          "Graduate software engineers"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "wipro-207151",
+      "company": "Wipro",
+      "role": "Developer L2",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://careers.wipro.com/job/Chennai-DEVELOPER-L2-IND-600119/207151-en_US/",
+      "cat": "it",
+      "expYears": "1–3 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Wipro careers requisition 207151 was checked in the discovery run and showed Developer L2 in Chennai with a current application control; official content supported 1–3 years.",
+      "postedDate": "2026-10-05",
+      "job": {
+        "page": "wipro-developer-l2-207151",
+        "domain": "careers.wipro.com",
+        "company": "Wipro",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Developer L2",
+        "roleTag": "Developer L2",
+        "loc": "Chennai, Tamil Nadu, India",
+        "locationFilter": "Chennai, Tamil Nadu, India",
+        "batch": "Not specified",
+        "elig": "Official page stated 1–3 years of experience.",
+        "cat": "it",
+        "expType": "experienced",
+        "expYears": "1–3 years",
+        "date": "2026-10-05",
+        "desc": "Developer L2 role on Wipro's official careers portal.",
+        "resp": [
+          "Develop and maintain assigned application modules.",
+          "Troubleshoot issues and collaborate with delivery stakeholders."
+        ],
+        "apply": "https://careers.wipro.com/job/Chennai-DEVELOPER-L2-IND-600119/207151-en_US/",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Wipro Careers",
+        "skills": [
+          "Software development",
+          "Troubleshooting"
+        ],
+        "who": [
+          "Developers with 1–3 years of experience"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "amazon-10511883",
+      "company": "Amazon",
+      "role": "Software Development Engineer I, IESP Merchant Tech",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
+      "cat": "it",
+      "expYears": "1+ years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Amazon Jobs page opened in the run with Job ID 10511883, Bengaluru job details, rolling applications and qualifications.",
+      "postedDate": "2026-08-24",
+      "job": {
+        "page": "amazon-sde-i-iesp-merchant-tech-10511883",
+        "domain": "www.amazon.jobs",
+        "company": "Amazon",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Software Development Engineer I, IESP Merchant Tech",
+        "roleTag": "Software Development Engineer I",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
+        "batch": "Not specified",
+        "elig": "1+ years of non-internship professional software development experience and experience with at least one programming language.",
+        "cat": "it",
+        "expType": "experienced",
+        "expYears": "1+ years",
+        "date": "2026-08-24",
+        "desc": "Software development role in IESP Merchant Tech.",
+        "resp": [
+          "Design and build technologies in a distributed computing environment.",
+          "Create scalable, fault-tolerant systems.",
+          "Deliver high-quality software in an agile environment."
+        ],
+        "apply": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Amazon Jobs",
+        "skills": [
+          "Programming",
+          "Distributed systems",
+          "Software development"
+        ],
+        "who": [
+          "Software developers with 1+ years of non-internship experience"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "cognizant-00070164991",
+      "company": "Cognizant",
+      "role": "DX Associate Business Analyst",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://careers.cognizant.com/apj-en/jobs/00070164991/dx-associate-business-analyst/",
+      "cat": "non-it",
+      "expYears": "Not stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Cognizant Careers page opened on 11 Oct 2026 with requisition 00070164991, publication date 9 Oct 2026, Hyderabad location, Hybrid model and role details.",
+      "postedDate": "2026-10-09",
+      "job": {
+        "page": "cognizant-dx-associate-business-analyst-00070164991",
+        "domain": "careers.cognizant.com",
+        "company": "Cognizant",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "DX Associate Business Analyst",
+        "roleTag": "Associate Business Analyst",
+        "loc": "Hyderabad, Telangana, India",
+        "locationFilter": "Hyderabad, Telangana, India",
+        "batch": "Not specified",
+        "elig": "Official page did not state a degree or years-of-experience requirement.",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Not stated",
+        "date": "2026-10-09",
+        "desc": "Digital-experience business analyst role covering program operations, reporting and content workflows.",
+        "resp": [
+          "Support scheduling, planning, production and reporting.",
+          "Investigate discrepancies and perform root-cause analysis.",
+          "Manage requests and communicate with account stakeholders."
+        ],
+        "apply": "https://careers.cognizant.com/apj-en/jobs/00070164991/dx-associate-business-analyst/",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Cognizant Careers",
+        "skills": [
+          "Google Sheets",
+          "Excel",
+          "Reporting",
+          "Analytical thinking"
+        ],
+        "who": [
+          "Candidates with strong reporting, organization and communication skills"
+        ],
+        "workMode": "Hybrid"
+      }
+    },
+    {
+      "id": "ey-1751532",
+      "company": "EY",
+      "role": "Analyst – Indirect Tax – Core",
+      "loc": "New Delhi, India",
+      "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
+      "cat": "non-it",
+      "expYears": "0–5 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact EY page was live on 11 Oct 2026 with requisition 1751532, date 10 Oct 2026, New Delhi location, qualifications, 0–5 years and Apply Now.",
+      "postedDate": "2026-10-10",
+      "job": {
+        "page": "ey-analyst-indirect-tax-core-1751532",
+        "domain": "careers.ey.com",
+        "company": "EY",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Analyst – Indirect Tax – Core",
+        "roleTag": "Tax Analyst",
+        "loc": "New Delhi, India",
+        "locationFilter": "New Delhi, India",
+        "batch": "Not specified",
+        "elig": "BCOM, MBA, LLB or CA; official experience range 0–5 years.",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–5 years",
+        "date": "2026-10-10",
+        "desc": "Analyst role supporting indirect tax and GST engagements.",
+        "resp": [
+          "Analyze tax data, documentation and transactions.",
+          "Support indirect-tax compliance and consulting work.",
+          "Prepare workpapers and validate inputs."
+        ],
+        "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "EY Careers",
+        "skills": [
+          "GST",
+          "Indirect tax",
+          "Tax compliance",
+          "Data analysis"
+        ],
+        "who": [
+          "Commerce, MBA, law or CA candidates with 0–5 years"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "microsoft-1970393557035883",
+      "company": "Microsoft",
+      "role": "Service Engineer II",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://careers.microsoft.com/v2/global/en/job/1970393557035883/service-engineer-ii.html",
+      "cat": "it",
+      "expYears": "3+ years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Microsoft's official Hyderabad inventory showed this exact Service Engineer II opening on 11 Oct 2026, updated 9 Oct 2026, with Hyderabad location, 3-days/week in-office and role content; exact official job route was retained for human review.",
+      "postedDate": "2026-10-09",
+      "job": {
+        "page": "microsoft-service-engineer-ii-1970393557035883",
+        "domain": "careers.microsoft.com",
+        "company": "Microsoft",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Service Engineer II",
+        "roleTag": "Service Engineer II",
+        "loc": "Hyderabad, Telangana, India",
+        "locationFilter": "Hyderabad, Telangana, India",
+        "batch": "Not specified",
+        "elig": "Official role evidence described an experienced technical support and software-development position; detailed qualification review is required before approval.",
+        "cat": "it",
+        "expType": "experienced",
+        "expYears": "3+ years",
+        "date": "2026-10-09",
+        "desc": "Service engineering role for Microsoft Advertising focused on automation, reliability and technical investigation.",
+        "resp": [
+          "Build and maintain automation and full-stack tools.",
+          "Diagnose issues across services and APIs.",
+          "Partner with engineering teams to land production fixes."
+        ],
+        "apply": "https://careers.microsoft.com/v2/global/en/job/1970393557035883/service-engineer-ii.html",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Microsoft Careers",
+        "skills": [
+          "Automation",
+          "APIs",
+          "Full-stack development",
+          "Technical support"
+        ],
+        "who": [
+          "Experienced service and software engineers"
+        ],
+        "workMode": "Hybrid (3 days/week in office)"
+      }
+    },
+    {
+      "id": "amazon-10572015",
+      "company": "Amazon",
+      "role": "Software Development Engineer",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
+      "cat": "it",
+      "expYears": "3+ years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Amazon Jobs page opened in the run with Job ID 10572015, Bengaluru location, description and 3+ years basic qualification; official inventory listed 7 Oct 2026.",
+      "postedDate": "2026-10-07",
+      "job": {
+        "page": "amazon-software-development-engineer-10572015",
+        "domain": "www.amazon.jobs",
+        "company": "Amazon",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Software Development Engineer",
+        "roleTag": "Software Development Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
+        "batch": "Not specified",
+        "elig": "3+ years of non-internship professional software development experience; 2+ years of design or architecture experience; programming experience.",
+        "cat": "it",
+        "expType": "experienced",
+        "expYears": "3+ years",
+        "date": "2026-10-07",
+        "desc": "Full-stack software engineering role in the Amazon Purchase Experience team.",
+        "resp": [
+          "Build resilient distributed systems for the cart experience.",
+          "Improve quality, testability, latency and performance.",
+          "Contribute to functional and non-functional platform improvements."
+        ],
+        "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Amazon Jobs",
+        "skills": [
+          "Distributed systems",
+          "System design",
+          "Programming",
+          "Full-stack development"
+        ],
+        "who": [
+          "Software engineers with 3+ years of professional experience"
+        ],
+        "workMode": "Not specified"
+      }
+    },
+    {
+      "id": "hcltech-175263",
+      "company": "HCLTech",
+      "role": "Engineer – Jenkins, Windows PowerShell",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
+      "cat": "it",
+      "expYears": "Not stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact HCLTech page opened on 11 Oct 2026 with requisition 175263, Chennai location, responsibilities, skills and application controls.",
+      "postedDate": null,
+      "job": {
+        "page": "hcltech-engineer-jenkins-windows-powershell-175263",
+        "domain": "careers.hcltech.com",
+        "company": "HCLTech",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Engineer – Jenkins, Windows PowerShell",
+        "roleTag": "Tools & Automation Engineer",
+        "loc": "Chennai, Tamil Nadu, India",
+        "locationFilter": "Chennai, Tamil Nadu, India",
+        "batch": "Not specified",
+        "elig": "Official page requests basic Jenkins understanding, PowerShell familiarity, foundational Python and Ansible knowledge, problem solving and attention to detail; experience years not stated.",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Not stated",
+        "date": "Not specified",
+        "desc": "Tools and automation engineering role using Jenkins and PowerShell.",
+        "resp": [
+          "Develop automation scripts and Jenkins/PowerShell pipelines.",
+          "Maintain and troubleshoot automation projects.",
+          "Gather requirements, implement features and document workflows."
+        ],
+        "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "HCLTech Careers",
+        "skills": [
+          "Jenkins",
+          "PowerShell",
+          "Python",
+          "Ansible"
+        ],
+        "who": [
+          "Candidates with foundational CI/CD and scripting knowledge"
+        ],
+        "workMode": "Not specified"
+      }
+    }
+  ],
+  "backup": [
+    {
+      "id": "capgemini-574027",
+      "company": "Capgemini",
+      "role": "Software Engineer",
+      "loc": "Bangalore, India",
+      "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
+      "cat": "it",
+      "expYears": "Experienced professional",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Official Capgemini page content and requisition 574027 were found, dated 9 Oct 2026, but the exact application action was not independently completed in this run; human review required.",
+      "postedDate": "2026-10-09",
+      "job": {
+        "company": "Capgemini",
+        "role": "Software Engineer",
+        "loc": "Bangalore, India",
+        "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Experienced professional",
+        "sourceName": "Capgemini Careers"
+      }
+    },
+    {
+      "id": "cisco-1443859",
+      "company": "Cisco",
+      "role": "Software Engineer – Network/Embedded/Application Development (New Grad)",
+      "loc": "Bangalore, India",
+      "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
+      "cat": "it",
+      "expYears": "New graduate",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Official Cisco requisition content was discoverable, but freshness/current application availability could not be established conclusively; human review required.",
+      "postedDate": null,
+      "job": {
+        "company": "Cisco",
+        "role": "Software Engineer – Network/Embedded/Application Development (New Grad)",
+        "loc": "Bangalore, India",
+        "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
+        "status": "review",
+        "cat": "it",
+        "expYears": "New graduate",
+        "sourceName": "Cisco Jobs"
+      }
+    },
+    {
+      "id": "qualcomm-3078323",
+      "company": "Qualcomm",
+      "role": "2026 Campus Hire – Associate Engineer, Hardware",
+      "loc": "India",
+      "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
+      "cat": "it",
+      "expYears": "Campus hire",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Employer Workday page identified requisition 3078323, but the page is a JavaScript shell to the checker and current open-application state requires human review.",
+      "postedDate": null,
+      "job": {
+        "company": "Qualcomm",
+        "role": "2026 Campus Hire – Associate Engineer, Hardware",
+        "loc": "India",
+        "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Campus hire",
+        "sourceName": "Qualcomm Workday"
+      }
+    },
+    {
+      "id": "unisys-REQ568332",
+      "company": "Unisys",
+      "role": "Associate Engineer",
+      "loc": "Bangalore, Karnataka, India",
+      "apply": "https://unisys.wd5.myworkdayjobs.com/External/job/Bangalore-KA-India/Associate-Engineer_REQ568332",
+      "cat": "it",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact employer Workday route was identified, but authoritative page content was blank to automated review; do not approve without manual confirmation.",
+      "postedDate": null,
+      "job": {
+        "company": "Unisys",
+        "role": "Associate Engineer",
+        "loc": "Bangalore, Karnataka, India",
+        "apply": "https://unisys.wd5.myworkdayjobs.com/External/job/Bangalore-KA-India/Associate-Engineer_REQ568332",
+        "status": "review",
+        "cat": "it",
+        "expYears": "0–2 years",
+        "sourceName": "Unisys Workday"
+      }
+    },
+    {
+      "id": "nxp-R-10066434",
+      "company": "NXP Semiconductors",
+      "role": "Technical Internship 2027",
+      "loc": "Bangalore / Noida, India",
+      "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+      "cat": "it",
+      "expYears": "Student internship",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact NXP Workday page shows requisition R-10066434, locations and 31 Dec 2026 deadline, but the application route needs manual confirmation before approval.",
+      "postedDate": null,
+      "job": {
+        "company": "NXP Semiconductors",
+        "role": "Technical Internship 2027",
+        "loc": "Bangalore / Noida, India",
+        "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Student internship",
+        "sourceName": "NXP Workday"
+      }
+    },
+    {
+      "id": "pwc-758555WD",
+      "company": "PwC",
+      "role": "Associate – HCM Payroll, Enterprise Apps SAP Advisory",
+      "loc": "Bangalore, India",
+      "apply": "https://pwc.wd3.myworkdayjobs.com/global_experienced_careers/job/IN-Senior-Associate-SAP-GR-Enterprise-Apps-SAP-Advisory--Bangalore_758555WD-1",
+      "cat": "it",
+      "expYears": "Not stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact PwC Workday requisition 758555WD was discovered, but rendered application availability was not confirmed; human review required.",
+      "postedDate": null,
+      "job": {
+        "company": "PwC",
+        "role": "Associate – HCM Payroll, Enterprise Apps SAP Advisory",
+        "loc": "Bangalore, India",
+        "apply": "https://pwc.wd3.myworkdayjobs.com/global_experienced_careers/job/IN-Senior-Associate-SAP-GR-Enterprise-Apps-SAP-Advisory--Bangalore_758555WD-1",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Not stated",
+        "sourceName": "PwC Workday"
+      }
+    },
+    {
+      "id": "hcltech-158405",
+      "company": "HCLTech",
+      "role": "Engineer – ServiceNow, JavaScript",
+      "loc": "Noida, Uttar Pradesh, India",
+      "apply": "https://careers.hcltech.com/job/Engineer-ServiceNow%2CJavaScript/158405-en_US/",
+      "cat": "it",
+      "expYears": "Not stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact official HCLTech content and requisition 158405 were available, but the Apply action was not rechecked after discovery; human review required.",
+      "postedDate": null,
+      "job": {
+        "company": "HCLTech",
+        "role": "Engineer – ServiceNow, JavaScript",
+        "loc": "Noida, Uttar Pradesh, India",
+        "apply": "https://careers.hcltech.com/job/Engineer-ServiceNow%2CJavaScript/158405-en_US/",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Not stated",
+        "sourceName": "HCLTech Careers"
+      }
+    },
+    {
+      "id": "ey-1735524",
+      "company": "EY",
+      "role": "Analyst – Forensics, Investigations & Compliance",
+      "loc": "Noida, India",
+      "apply": "https://careers.ey.com/ey/job/Noida-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Noida-UP-201304/1426090533/",
+      "cat": "non-it",
+      "expYears": "1–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact EY page was live on 11 Oct 2026 with requisition 1735524, date 10 Oct 2026, Noida location, qualification, 1–2 years and Apply Now.",
+      "postedDate": "2026-10-10",
+      "job": {
+        "company": "EY",
+        "role": "Analyst – Forensics, Investigations & Compliance",
+        "loc": "Noida, India",
+        "apply": "https://careers.ey.com/ey/job/Noida-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Noida-UP-201304/1426090533/",
+        "status": "review",
+        "cat": "non-it",
+        "expYears": "1–2 years",
+        "sourceName": "EY Careers"
+      }
+    }
+  ],
+  "updatedAt": "2026-10-11T05:41:30.604Z"
 }
