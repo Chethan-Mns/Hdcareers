@@ -233,16 +233,50 @@
         "role": "Software Engineer",
         "loc": "Bangalore, India",
         "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
-        "status": "review",
+        "status": "active",
         "cat": "it",
         "expYears": "Experienced professional",
         "sourceName": "Capgemini Careers",
         "manualLiveVerifiedAt": "2026-10-11T05:53:01.742Z",
         "browserVerifiedAt": "2026-10-11T05:53:01.742Z",
-        "verifiedDate": "11 Oct 2026"
+        "verifiedDate": "11 Oct 2026",
+        "page": "jobs/capgemini-software-engineer-bangalore-574027.html",
+        "domain": "careers.capgemini.com",
+        "salary": "Not Disclosed",
+        "logo": [
+          "CA",
+          "#0677a2"
+        ],
+        "roleTag": "Software Engineer – CEGID POS",
+        "locationFilter": "Bangalore",
+        "batch": "Not Specified",
+        "elig": "Experienced professional with experience in CEGID Y2 point-of-sale applications, retail production support, SQL, ITIL processes and ServiceNow. The employer does not specify a particular degree requirement.",
+        "expType": "experienced",
+        "date": "9 Oct 2026",
+        "desc": "Capgemini is recruiting a Software Engineer in Bangalore for retail technology and CEGID Y2 point-of-sale application support, including production monitoring, incident investigation and implementation of software fixes.",
+        "resp": [
+          "Provide second-level production support and monitoring for CEGID Y2 POS application interfaces in 24/7 retail environments.",
+          "Analyze technical incidents and identify root causes for point-of-sale and backend application issues.",
+          "Support sales, store operations, inventory management, loyalty, and promotions-related fixes.",
+          "Collaborate with business process owners and technical subject-matter experts to develop and implement solutions.",
+          "Use SQL, ITIL incident/change processes and ServiceNow to support application operations."
+        ],
+        "skills": [
+          "CEGID Y2 POS",
+          "Retail POS production support",
+          "SQL",
+          "ITIL",
+          "ServiceNow",
+          ".NET Framework"
+        ],
+        "who": "Experienced applicants familiar with CEGID Y2 retail POS, software production support, SQL and ITIL/ServiceNow processes. CEGID certification is an advantage, not a mandatory employer requirement.",
+        "workMode": "Not Specified"
       },
       "reviewedAt": "2026-10-11T05:53:01.742Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedBy": "HD Careers Admin",
+      "verifiedDetailsSource": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
+      "detailsCompletedAt": "2026-10-11",
+      "detailsSourceNote": "Copied/paraphrased from the matching official employer requisition; no salary invented; Owner Live decision retained."
     },
     {
       "id": "cognizant-00070164991",
@@ -397,16 +431,50 @@
         "role": "Technical Internship 2027",
         "loc": "Bangalore / Noida, India",
         "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-        "status": "review",
-        "cat": "it",
+        "status": "active",
+        "cat": "internship",
         "expYears": "Student internship",
-        "sourceName": "NXP Workday",
+        "sourceName": "NXP Semiconductors Workday Careers",
         "verifiedDate": "11 Oct 2026",
         "manualLiveVerifiedAt": "2026-10-11T06:04:38.767Z",
-        "browserVerifiedAt": "2026-10-11T06:04:38.767Z"
+        "browserVerifiedAt": "2026-10-11T06:04:38.767Z",
+        "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
+        "domain": "nxp.wd3.myworkdayjobs.com",
+        "salary": "Not Disclosed",
+        "logo": [
+          "NX",
+          "#ee6a00"
+        ],
+        "roleTag": "Technical Internship 2027",
+        "locationFilter": "Bangalore, Noida",
+        "batch": "2027",
+        "elig": "Current bachelor's or master's degree student in Electronics and Communication Engineering or a related discipline. The employer lists Bangalore and Noida as possible locations.",
+        "expType": "fresher",
+        "date": "Not Specified",
+        "desc": "NXP Semiconductors seeks bachelor's or master's students for the Technical Internship 2027, contributing to systems-on-chip hardware design, verification and implementation across automotive, IoT, security and connectivity technologies.",
+        "resp": [
+          "Assist experienced engineers with design, verification and implementation of system-on-chip hardware.",
+          "Contribute to SoC solutions for automotive, IoT, voice or object recognition, security, smart connectivity and touch sensing.",
+          "Design and verify digital and mixed-signal intellectual-property blocks.",
+          "Support physical design and implementation activities alongside the hardware design team.",
+          "Document engineering work and present technical results."
+        ],
+        "skills": [
+          "SoC design",
+          "Digital IP verification",
+          "Mixed-signal IP",
+          "Hardware design",
+          "Physical design",
+          "Technical documentation"
+        ],
+        "who": "Current BE/BTech or ME/MTech students in Electronics and Communication Engineering or closely related fields. The official job lists an application end date of 31 Dec 2026.",
+        "workMode": "Not Specified"
       },
       "reviewedAt": "2026-10-11T06:04:38.767Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedBy": "HD Careers Admin",
+      "verifiedDetailsSource": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+      "detailsCompletedAt": "2026-10-11",
+      "detailsSourceNote": "Copied/paraphrased from the matching official employer requisition; no salary invented; Owner Live decision retained."
     },
     {
       "id": "amazon-10511883",
@@ -747,5 +815,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-11T06:06:19.076Z"
+  "updatedAt": "2026-10-11T06:10:28.736Z"
 }
