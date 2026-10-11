@@ -144,6 +144,7 @@ export default async function handler(req,res){
   }
   if(!await requireAdmin(req,res,["owner","job_editor"]))return;
   if(!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
+  if(process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only. Job review changes require Production."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
   if(!token)return res.status(503).json({error:"GITHUB_PUBLISH_TOKEN is not configured in Vercel."});
