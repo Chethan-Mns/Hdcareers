@@ -88,7 +88,7 @@ def prepare(request_path: Path, output_path: Path) -> dict:
         # are resolved separately by resolve_company_logos.py / generate.py.
         if not (isinstance(approved.get("logo"), list) and len(approved["logo"]) == 2
                 and all(isinstance(v, str) and v.strip() for v in approved["logo"])):
-            words = [part for part in str(approved["company"]).split() if part]
+            words = [part for part in str(approved["company"]).split() if part and not part.isdigit()]
             initials = ("".join(w[0] for w in words[:2]) if len(words) > 1 else words[0][:2]).upper()
             approved["logo"] = [initials, "#0b6fe8"]
         if approved.get("manualLiveVerifiedAt") != item.get("reviewedAt"):
