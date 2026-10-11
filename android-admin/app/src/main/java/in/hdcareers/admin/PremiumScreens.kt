@@ -88,8 +88,8 @@ fun PremiumAdminRoot(
                 }
             ) { insets ->
                 Box(Modifier.fillMaxSize().padding(insets)) {
-                    if(analyticsOpen && vm.adminRole=="owner") ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
-                        0 -> ProHome(vm,onAnalytics={if(vm.adminRole=="owner") analyticsOpen=true})
+                    if(analyticsOpen) ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
+                        0 -> ProHome(vm,onAnalytics={analyticsOpen=true})
                         1 -> ProReview(vm)
                         2 -> ProJobs(vm)
                         else -> ProMore(vm,onEnableBiometric,onRequestNotificationPermission)
