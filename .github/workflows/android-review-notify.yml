@@ -1,0 +1,66 @@
+name: Android Daily Review Push Notification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/daily-review-batch.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify newly generated review batch
+        id: scan
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,subprocess,datetime,os,sys
+          from pathlib import Path
+          p=Path("data/daily-review-batch.json")
+          if not p.exists():sys.exit(0)
+          try:
+              d=json.loads(p.read_text())
+              previous=json.loads(subprocess.check_output(["git","show","HEAD^:data/daily-review-batch.json"],stderr=subprocess.DEVNULL))
+          except Exception:
+              sys.exit(0)
+          if d.get("status")!="reviewing" or not d.get("batchId") or d.get("generatedAt")==previous.get("generatedAt"):sys.exit(0)
+          priority,backup=d.get("priority",[]),d.get("backup",[])
+          if len(priority)!=10 or len(backup)!=10:sys.exit(0)
+          try:
+              generated=datetime.datetime.fromisoformat(d["generatedAt"].replace("Z","+00:00"))
+          except Exception:
+              sys.exit(0)
+          now=datetime.datetime.now(datetime.timezone.utc)
+          if not datetime.timedelta(0)<=now-generated<=datetime.timedelta(hours=3):sys.exit(0)
+          sys.path.insert(0,"scripts")
+          from validate_daily_review_batch import employer_key
+          names=[employer_key(c.get("company") or c.get("job",{}).get("company")) for c in priority+backup]
+          if not all(names) or len(set(names))!=20:sys.exit(0)
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write("notify=true\n")
+              f.write("batch_id="+d["batchId"]+"\n")
+          PY
+      - name: Notify registered admin devices
+        if: steps.scan.outputs.notify == 'true'
+        env:
+          PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+          BATCH_ID: ${{ steps.scan.outputs.batch_id }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PUSH_SECRET" ]; then
+            echo "::warning::ANDROID_PUSH_DISPATCH_SECRET missing. No push was sent."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error --retry 2 --max-time 35 \
+            -H "Content-Type: application/json" \
+            -H "x-hd-push-key: $PUSH_SECRET" \
+            -d "{\"action\":\"notify_batch\",\"batchId\":\"$BATCH_ID\"}" \
+            "https://hdcareers.in/api/admin/android-devices"
