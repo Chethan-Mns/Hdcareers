@@ -1,3 +1,11 @@
+# Approved storage decision — 11 October 2026
+
+The Owner explicitly approved reusing the existing free `hdcareers-admin-preview` Upstash database for Production and Preview. This supersedes the separate-instance requirement below. Vercel currently supplies `KV_REST_API_URL` and `KV_REST_API_TOKEN` to both environments. No paid database is required.
+
+Account, session, revision, password override, rate-limit and audit keys remain separated by `hdadmin:v2:production:` and `hdadmin:v2:preview:`. This is logical separation, not independent database access control: both environments share credentials, capacity and availability. Production editors must be created through the authenticated Owner Team page; Preview accounts and sessions are not automatically transferred. Existing Owner environment credentials remain unchanged.
+
+---
+
 # HD Careers multi-admin rollout (Owner + Job Editor)
 
 ## Status
