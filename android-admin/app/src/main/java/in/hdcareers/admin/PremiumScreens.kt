@@ -310,8 +310,17 @@ private fun ProReview(vm:AdminViewModel) {
             ProCard {
                 SectionHead(Icons.Default.RocketLaunch,"Publish approved batch",
                     "Ten jobs, ten distinct employers",Brand.green)
-                Text("Publishing requires 8 fresher IT, 1 non-IT and 1 internship/apprenticeship, all confirmed Live and fully documented.",
+                Text("Publish exactly 10 verified Live jobs from 10 distinct employers. Each job must have complete official details.",
                     fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                if(!vm.batch.ready) {
+                    vm.batch.publishBlockers.take(6).forEach { reason ->
+                        Text("• " + reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
+                    }
+                    if(vm.batch.publishBlockers.size>6) {
+                        Text("And " + (vm.batch.publishBlockers.size-6) + " more checks pending.",
+                            fontSize=11.sp,color=Brand.gray)
+                    }
+                }
                 Button(onClick={confirm=true},enabled=vm.batch.ready&&!vm.busy,
                     modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
                     Icon(Icons.Default.Send,null)
