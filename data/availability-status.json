@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-11T10:57:38.031Z",
+  "checkedAt": "2026-10-11T10:57:49.178Z",
   "checked": 94,
-  "active": 92,
+  "active": 93,
   "expired": 0,
-  "review": 2,
+  "review": 1,
   "changedExpired": 0,
   "items": [
     {
@@ -442,9 +442,11 @@
       "role": "Associate Analyst – Business Operation Support",
       "page": "jobs/deloitte-associate-analyst-business-operation-support-hyderabad-369345.html",
       "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-11T09:18:39.650530+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-11T10:57:49.178Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-11T10:57:49.178Z"
     },
     {
       "id": 74,
