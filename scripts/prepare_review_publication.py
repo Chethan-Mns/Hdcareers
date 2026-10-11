@@ -82,6 +82,15 @@ def prepare(request_path: Path, output_path: Path) -> dict:
         # This attaches the exact official URL to the earlier recorded HUMAN
         # decision, without changing the timestamp or inventing any new review.
         approved = dict(job)
+        # Discovery stores some reviewed jobs' logo as an empty string. The
+        # existing generator requires a [initials, hex-colour] fallback. This
+        # doesn't claim to be an employer's official logo; approved logo maps
+        # are resolved separately by resolve_company_logos.py / generate.py.
+        if not (isinstance(approved.get("logo"), list) and len(approved["logo"]) == 2
+                and all(isinstance(v, str) and v.strip() for v in approved["logo"])):
+            words = [part for part in str(approved["company"]).split() if part and not part.isdigit()]
+            initials = ("".join(w[0] for w in words[:2]) if len(words) > 1 else words[0][:2]).upper()
+            approved["logo"] = [initials, "#0b6fe8"]
         if approved.get("manualLiveVerifiedAt") != item.get("reviewedAt"):
             raise ValueError(f"Human verification timestamp mismatch: {cid}")
         if approved.get("apply") != item.get("apply"):
