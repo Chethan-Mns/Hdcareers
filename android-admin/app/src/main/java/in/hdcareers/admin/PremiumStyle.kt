@@ -2,6 +2,9 @@ package `in`.hdcareers.admin
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -113,6 +117,8 @@ internal fun ProPill(label:String,color:Color=Brand.blue,icon:ImageVector?=null)
 @Composable
 internal fun ProMetric(label:String,value:String,icon:ImageVector,accent:Color=Brand.blue,
                        modifier:Modifier=Modifier,caption:String?=null) {
+    val metricNumber=value.toIntOrNull()
+    val displayedNumber by animateIntAsState(targetValue=metricNumber ?: 0,animationSpec=tween(750),label="animated analytics count")
     ProCard(modifier=modifier,padding=13) {
         Row(verticalAlignment=Alignment.CenterVertically) {
             Box(Modifier.size(33.dp).clip(RoundedCornerShape(10.dp))
@@ -122,7 +128,7 @@ internal fun ProMetric(label:String,value:String,icon:ImageVector,accent:Color=B
             Spacer(Modifier.weight(1f))
             if(caption!=null)Text(caption,fontSize=10.sp,fontWeight=FontWeight.SemiBold,color=accent)
         }
-        Text(value,fontSize=25.sp,fontWeight=FontWeight.Black,color=Brand.navy,
+        Text(if(metricNumber!=null)displayedNumber.toString() else value,fontSize=25.sp,fontWeight=FontWeight.Black,color=Brand.navy,
             lineHeight=28.sp,maxLines=1)
         Text(label,fontSize=11.sp,fontWeight=FontWeight.SemiBold,color=Brand.gray,
             maxLines=2,lineHeight=14.sp)
@@ -222,6 +228,11 @@ internal fun TrendSpark(points:List<TrafficPoint>,modifier:Modifier=Modifier,
         Spacer(modifier.height(0.dp))
         return
     }
+    val chartMotion=remember { Animatable(0f) }
+    LaunchedEffect(points) {
+        chartMotion.snapTo(0f)
+        chartMotion.animateTo(1f,animationSpec=tween(900))
+    }
     Canvas(modifier.fillMaxWidth().height(125.dp)) {
         val ceiling=max(1f,series.maxOrNull()?:1f)
         val base=size.height-14.dp.toPx()
@@ -236,6 +247,7 @@ internal fun TrendSpark(points:List<TrafficPoint>,modifier:Modifier=Modifier,
         }
         floor.lineTo(size.width,base)
         floor.close()
+        clipRect(right=size.width*chartMotion.value){
         drawPath(floor,brush=Brush.verticalGradient(listOf(accent.copy(alpha=.22f),accent.copy(alpha=.005f))))
         drawPath(path,accent,style=Stroke(width=2.6.dp.toPx(),cap=StrokeCap.Round))
         series.forEachIndexed { index,v ->
@@ -244,12 +256,18 @@ internal fun TrendSpark(points:List<TrafficPoint>,modifier:Modifier=Modifier,
             drawCircle(Color.White,4.1.dp.toPx(),Offset(x,y))
             drawCircle(accent,2.6.dp.toPx(),Offset(x,y))
         }
+        }
     }
 }
 @Composable
 internal fun DonutDevices(items:List<Pair<String,Int>>,modifier:Modifier=Modifier) {
     val colors=listOf(Brand.blue,Brand.cyan,Brand.violet,Brand.amber,Brand.green)
     val total=items.sumOf { max(0,it.second) }
+    val sweepMotion=remember { Animatable(0f) }
+    LaunchedEffect(items) {
+        sweepMotion.snapTo(0f)
+        sweepMotion.animateTo(1f,animationSpec=tween(950))
+    }
     Row(modifier=modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
         horizontalArrangement=Arrangement.spacedBy(18.dp)) {
         Box(Modifier.size(124.dp),contentAlignment=Alignment.Center) {
@@ -257,14 +275,14 @@ internal fun DonutDevices(items:List<Pair<String,Int>>,modifier:Modifier=Modifie
                 var from=-90f
                 if(total>0) items.forEachIndexed{index,(_,count)->
                     val sweep=360f*max(0,count)/total
-                    drawArc(colors[index%colors.size],startAngle=from,sweepAngle=sweep,
+                    drawArc(colors[index%colors.size],startAngle=from,sweepAngle=sweep*sweepMotion.value,
                         useCenter=false,style=Stroke(width=18.dp.toPx(),cap=StrokeCap.Butt))
                     from+=sweep
                 } else drawArc(Brand.sky,0f,360f,useCenter=false,
                     style=Stroke(width=18.dp.toPx()))
             }
             Column(horizontalAlignment=Alignment.CenterHorizontally) {
-                Text(total.toString(),fontWeight=FontWeight.Black,fontSize=21.sp,color=Brand.navy)
+                Text((total*sweepMotion.value).toInt().toString(),fontWeight=FontWeight.Black,fontSize=21.sp,color=Brand.navy)
                 Text("Users",color=Brand.gray,fontSize=10.sp)
             }
         }
