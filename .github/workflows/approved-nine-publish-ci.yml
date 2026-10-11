@@ -39,3 +39,19 @@ jobs:
           assert 'scripts/publish_approved_telegram.py' in w
           print('Existing website + Telegram workflow is wired to guarded nine-job request')
           PY
+      - name: Preflight all nine REAL approved records with existing publisher validator (no writes)
+        run: |
+          python3 scripts/prepare_review_publication.py data/approved-review-publication.json /tmp/hd-nine-preflight.json
+          PYTHONPATH=scripts python3 - <<'PY'
+          import json
+          from admin_publish import validate
+          payload=json.load(open('/tmp/hd-nine-preflight.json'))
+          selected=payload['client_payload']['jobs']
+          assert len(selected)==9
+          for index,job in enumerate(selected):
+              validate(job,index)
+              assert job['status']=='active'
+              assert job['manualLiveVerifiedUrl']==job['apply']
+          assert len({j['company'].lower() for j in selected})==9
+          print('Validated all nine real jobs against the existing publisher schema; publication not started.')
+          PY
