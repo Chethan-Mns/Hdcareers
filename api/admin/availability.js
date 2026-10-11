@@ -67,6 +67,7 @@ export default async function handler(req,res){
     return res.status(405).json({error:"Method not allowed."});
   }
   if(req.method==="POST"&&!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
+  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only. The checker can only be triggered from Production."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
   const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
