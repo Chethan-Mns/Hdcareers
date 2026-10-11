@@ -2,7 +2,7 @@
 
 ## Status
 
-Shadow development branch: `feature/multi-admin-rbac`. This feature is NOT merged into `main`.
+Rebased integration branch: `feature/production-job-editor-auth-20261011` (rebased manually on the latest production website). This feature is NOT merged into `main`.
 All job-publishing workflows and existing Owner Vercel credentials remain unchanged.
 The preview deployment is explicitly read-only for production job mutations.
 
@@ -10,7 +10,7 @@ The preview deployment is explicitly read-only for production job mutations.
 
 The existing Vercel Upstash Redis marketplace connection has already created `KV_REST_API_URL` and `KV_REST_API_TOKEN` in the **Preview** environment. The multi-admin preview code accepts these directly, and no manual renaming or reinstallation is needed. Do not share the token.
 
-Production does **not** use the generic KV credentials. Only after successful Owner/Editor security tests and Owner approval should Production receive independent `HD_ADMIN_REDIS_URL` and `HD_ADMIN_REDIS_TOKEN`, ideally from a separate production database.
+Production supports the Vercel marketplace's automatically injected `KV_REST_API_URL` and `KV_REST_API_TOKEN` **only after the Owner provisions a separate Production Upstash Redis database and connects it to `hdcareers` for Production only**. Custom `HD_ADMIN_REDIS_URL` and `HD_ADMIN_REDIS_TOKEN` remain supported overrides. The existing Preview store `hdcareers-admin-preview` stays Preview-only; never copy Preview secrets into Production.
 
 For custom environments or the future production rollout, in **Vercel → hdcareers → Settings → Environment Variables**, add:
 
@@ -20,6 +20,8 @@ For custom environments or the future production rollout, in **Vercel → hdcare
 | `HD_ADMIN_REDIS_TOKEN` | Preview | REST token for the above instance |
 | `HD_ADMIN_REDIS_URL` | Production, after approval | HTTPS REST URL of a dedicated production Upstash Redis instance |
 | `HD_ADMIN_REDIS_TOKEN` | Production, after approval | REST token for the production instance |
+
+**Required Owner action:** Vercel → Storage → Upstash for Redis → create a separate resource named `hdcareers-admin-production` (check plan pricing first) → Connect Project `hdcareers` with `Production` environment selected, not Preview. Verify Vercel Environment Variables shows `KV_REST_API_URL` and `KV_REST_API_TOKEN` for Production. The connected integration usually provides the variables automatically; do not paste values into chat. After this, redeploy this integration branch to Preview for regression and only merge to main after passing it.
 
 Use different Redis databases/instances for Preview and Production. Mark tokens sensitive and never commit tokens,
 user passwords or bearer sessions to GitHub.
@@ -91,3 +93,7 @@ Enforcement is server-side for every admin API; hiding a UI button is never used
 - GitHub writes and Redis audits are separate systems; audit records represent requests/attempts and are not a transactional ledger of final GitHub commits.
 - Rate limiting applies per username and client IP; consider additional Vercel WAF limits for high-risk public admin endpoints.
 - A production deployment must not occur before production secrets and a successful preview sign-in test are available.
+
+## Job Editor account transition
+
+A Job Editor created in the Preview Redis resource (for example `dheerajmalleyt2`) **does not exist in the separate Production database**. Once the secure multi-admin rollout succeeds, the Owner opens `/admin/team.html` on **Production** and creates a new Job Editor with the same desired username and a new strong password. Share it privately using a password manager or secure channel, not ChatGPT. Usernames and salted hashes are never copied across environments without the Owner's deliberate migration. Android Admin uses the same production `/api/admin/login` and receives `role:job_editor`; the role-aware Android build must be installed to suppress Owner-only analytics screens. Keep existing `ADMIN_USERNAME` and `ADMIN_PASSWORD` unchanged throughout rollout. Owner must test login before enabling Editor; Editor must be denied team, audit and analytics endpoints and allowed only authorized job operations. Never merge in the absence of Production Redis, because the new `authConfigured()` requires a healthy user store. A rollback to the old production deployment must remain possible.
