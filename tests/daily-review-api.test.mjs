@@ -11,7 +11,7 @@ process.env.GITHUB_PUBLISH_TOKEN="shadow-github-mock";
 process.env.ADMIN_GITHUB_BASE="main";
 
 const liveJob={company:"Official Company",role:"Associate Developer",loc:"Bengaluru",elig:"BE/BTech",
- desc:"A correctly sourced employer description",resp:["Build actual products"],apply:"https://example.com/jobs/role-1",status:"active"};
+ desc:"A correctly sourced employer description",resp:["Build actual products"],apply:"https://example.com/jobs/role-1",status:"review"};
 const original=globalThis.fetch;
 let edits=0,dispatches=0;
 let state={batchId:"2026-10-11-0900-ist",generatedAt:"2026-10-11T03:30:00Z",status:"reviewing",priority:[
@@ -74,5 +74,20 @@ test("Admin Review Center inline JS parses and displays verification evidence",(
  assert.match(script[1],/verificationReason/);
  assert.match(script[1],/batchInfo/);
  assert.match(script[1],/isComplete/);
+});
+test("Explicit human approval changes job status; expired and unsure undo it",async()=>{
+ assert.equal(state.priority[0].job.status,"active");
+ assert(state.priority[0].job.manualLiveVerifiedAt);
+ const expired=await call("POST",{action:"review",batchId:"2026-10-11-0900-ist",candidateId:"source-job-1",decision:"expired"});
+ assert.equal(expired.statusCode,200);
+ assert.equal(expired.data.priority[0].reviewedStatus,"expired");
+ assert.equal(expired.data.priority[0].job.status,"expired");
+ assert.equal(expired.data.priority[0].job.manualLiveVerifiedAt,undefined);
+ const unsure=await call("POST",{action:"review",batchId:"2026-10-11-0900-ist",candidateId:"source-job-1",decision:"unsure"});
+ assert.equal(unsure.statusCode,200);
+ assert.equal(unsure.data.priority[0].job.status,"review");
+ assert.equal(unsure.data.priority[0].reviewedStatus,"unsure");
+ assert.equal(dispatches,0);
+ assert.equal(edits,3);
 });
 test.after(()=>{globalThis.fetch=original});

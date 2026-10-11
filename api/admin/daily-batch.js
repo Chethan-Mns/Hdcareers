@@ -76,6 +76,21 @@ function update(data, body) {
     item.reviewedStatus = decision;
     item.reviewedAt = new Date().toISOString();
     item.reviewedBy = "HD Careers Admin";
+    // The 9 AM discovery agent stages every job as REVIEW regardless of its
+    // source verdict. Only an explicit human LIVE decision unlocks publishing.
+    if (item.job && typeof item.job === "object") {
+      item.job.status = decision === "live" ? "active" : decision === "expired" ? "expired" : "review";
+      if (decision === "live") {
+        item.job.manualLiveVerifiedAt = item.reviewedAt;
+        item.job.browserVerifiedAt = item.reviewedAt;
+        item.job.verifiedDate = new Date(item.reviewedAt).toLocaleDateString("en-GB", {
+          day: "2-digit", month: "short", year: "numeric", timeZone: "Asia/Kolkata"
+        }).replace(/^0/, "");
+      } else {
+        delete item.job.manualLiveVerifiedAt;
+        delete item.job.browserVerifiedAt;
+      }
+    }
     // The human review decision is authoritative for the stored draft status;
     // the downstream admin publish pipeline still rechecks the exact employer URL.
     if (item.job && typeof item.job === "object") {
