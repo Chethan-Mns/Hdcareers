@@ -62,5 +62,5 @@ jobs:
           curl --fail-with-body --silent --show-error --retry 2 --max-time 35 \
             -H "Content-Type: application/json" \
             -H "x-hd-push-key: $PUSH_SECRET" \
-            -d "{\"action\":\"notify_batch\",\"batchId\":\"$BATCH_ID\"}" \
+            --data "$(jq -cn --arg batchId "$BATCH_ID" '{action:"notify_batch",batchId:$batchId}')" \
             "https://hdcareers.in/api/admin/android-devices"
