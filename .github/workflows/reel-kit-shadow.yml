@@ -1,0 +1,35 @@
+name: Reel Kit safe rollout
+on:
+  push:
+    branches:
+      - feature/manual-instagram-reel-kit-20261011
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reel-kit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Reel Kit API and UI syntax
+        run: |
+          node --check api/admin/reel-kit.js
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("admin/reel-kit.html").read_text()
+          assert 'id="saveSelection"' in s
+          assert 'id="copyCaption"' in s
+          assert 'id="copyLink"' in s
+          assert 'id="downloadOverlay"' in s
+          assert 'admin/reel-kit' in Path("admin/index.html").read_text()
+          assert Path("data/reel-selection.json").exists()
+          PY
+      - name: Run authenticated Reel selection regressions
+        run: node --test tests/reel-kit.test.mjs

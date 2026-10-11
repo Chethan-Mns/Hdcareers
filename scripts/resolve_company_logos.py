@@ -341,6 +341,7 @@ def main() -> None:
     if not isinstance(jobs, list):
         raise SystemExit("data/jobs.json must be a JSON array")
 
+    approved = {str(k).casefold(): str(v) for k, v in load_json(ROOT / "data" / "approved-company-logos.json", {}).items()}
     overrides = load_json(DOMAIN_PATH, {})
     direct_assets = load_json(DIRECT_PATH, {})
     quality_fallbacks = load_json(QUALITY_FALLBACK_PATH, {})
@@ -362,6 +363,10 @@ def main() -> None:
 
     def work(item):
         company, sample = item
+        approved_path = approved.get(company.casefold(), "")
+        if approved_path and (ROOT / approved_path).is_file():
+            domain = official_domain(sample, overrides)
+            return company, domain, ("cache", approved_path, {}), ""
         domain = official_domain(sample, overrides)
         if not domain:
             return company, domain, None, "no trusted official domain"

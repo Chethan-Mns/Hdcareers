@@ -1,0 +1,55 @@
+name: Refresh Job Page Logos After Approved Mapping Changes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/approved-company-logos.json
+      - .github/workflows/refresh-approved-company-logos.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hdcareers-approved-company-logo-pages
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate job pages from approved logo mapping
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers Website Automation"
+          git config user.email "actions@users.noreply.github.com"
+          for attempt in 1 2 3 4 5 6; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 generate.py
+            python3 generate.py --dry-run
+            git diff --check
+            git add index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+            if git diff --cached --quiet; then
+              echo "Approved logo job pages already current."
+              exit 0
+            fi
+            git commit -m "Generate job pages with approved company logo assets"
+            if git push origin HEAD:main; then
+              echo "Published current job pages with approved logo assets."
+              exit 0
+            fi
+            echo "::warning::main moved before push, retrying"
+            sleep 3
+          done
+          echo "::error::Could not publish generated job pages; main kept changing."
+          exit 1
