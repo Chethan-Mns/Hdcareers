@@ -374,54 +374,32 @@
       "reviewedBy": "HD Careers Admin"
     },
     {
-      "id": "amazon-10572015",
-      "company": "Amazon",
-      "role": "Software Development Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
+      "id": "nxp-R-10066434",
+      "company": "NXP Semiconductors",
+      "role": "Technical Internship 2027",
+      "loc": "Bangalore / Noida, India",
+      "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
       "cat": "it",
-      "expYears": "3+ years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Amazon Jobs page opened in the run with Job ID 10572015, Bengaluru location, description and 3+ years basic qualification; official inventory listed 7 Oct 2026.",
-      "postedDate": "2026-10-07",
+      "expYears": "Student internship",
+      "reviewedStatus": "live",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact NXP Workday page shows requisition R-10066434, locations and 31 Dec 2026 deadline, but the application route needs manual confirmation before approval.",
+      "postedDate": null,
       "job": {
-        "page": "amazon-software-development-engineer-10572015",
-        "domain": "www.amazon.jobs",
-        "company": "Amazon",
-        "salary": "Not disclosed",
-        "logo": "",
-        "role": "Software Development Engineer",
-        "roleTag": "Software Development Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru, Karnataka, India",
-        "batch": "Not specified",
-        "elig": "3+ years of non-internship professional software development experience; 2+ years of design or architecture experience; programming experience.",
-        "cat": "it",
-        "expType": "experienced",
-        "expYears": "3+ years",
-        "date": "2026-10-07",
-        "desc": "Full-stack software engineering role in the Amazon Purchase Experience team.",
-        "resp": [
-          "Build resilient distributed systems for the cart experience.",
-          "Improve quality, testability, latency and performance.",
-          "Contribute to functional and non-functional platform improvements."
-        ],
-        "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
+        "company": "NXP Semiconductors",
+        "role": "Technical Internship 2027",
+        "loc": "Bangalore / Noida, India",
+        "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
         "status": "review",
-        "verifiedDate": "2026-10-11",
-        "sourceName": "Amazon Jobs",
-        "skills": [
-          "Distributed systems",
-          "System design",
-          "Programming",
-          "Full-stack development"
-        ],
-        "who": [
-          "Software engineers with 3+ years of professional experience"
-        ],
-        "workMode": "Not specified"
-      }
+        "cat": "it",
+        "expYears": "Student internship",
+        "sourceName": "NXP Workday",
+        "manualLiveVerifiedAt": "2026-10-11T05:53:51.412Z",
+        "browserVerifiedAt": "2026-10-11T05:53:51.412Z",
+        "verifiedDate": "11 Oct 2026"
+      },
+      "reviewedAt": "2026-10-11T05:53:51.412Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-3078323",
@@ -629,32 +607,54 @@
       }
     },
     {
-      "id": "nxp-R-10066434",
-      "company": "NXP Semiconductors",
-      "role": "Technical Internship 2027",
-      "loc": "Bangalore / Noida, India",
-      "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+      "id": "amazon-10572015",
+      "company": "Amazon",
+      "role": "Software Development Engineer",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
       "cat": "it",
-      "expYears": "Student internship",
-      "reviewedStatus": "live",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Exact NXP Workday page shows requisition R-10066434, locations and 31 Dec 2026 deadline, but the application route needs manual confirmation before approval.",
-      "postedDate": null,
+      "expYears": "3+ years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Amazon Jobs page opened in the run with Job ID 10572015, Bengaluru location, description and 3+ years basic qualification; official inventory listed 7 Oct 2026.",
+      "postedDate": "2026-10-07",
       "job": {
-        "company": "NXP Semiconductors",
-        "role": "Technical Internship 2027",
-        "loc": "Bangalore / Noida, India",
-        "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-        "status": "review",
+        "page": "amazon-software-development-engineer-10572015",
+        "domain": "www.amazon.jobs",
+        "company": "Amazon",
+        "salary": "Not disclosed",
+        "logo": "",
+        "role": "Software Development Engineer",
+        "roleTag": "Software Development Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru, Karnataka, India",
+        "batch": "Not specified",
+        "elig": "3+ years of non-internship professional software development experience; 2+ years of design or architecture experience; programming experience.",
         "cat": "it",
-        "expYears": "Student internship",
-        "sourceName": "NXP Workday",
-        "manualLiveVerifiedAt": "2026-10-11T05:53:51.412Z",
-        "browserVerifiedAt": "2026-10-11T05:53:51.412Z",
-        "verifiedDate": "11 Oct 2026"
-      },
-      "reviewedAt": "2026-10-11T05:53:51.412Z",
-      "reviewedBy": "HD Careers Admin"
+        "expType": "experienced",
+        "expYears": "3+ years",
+        "date": "2026-10-07",
+        "desc": "Full-stack software engineering role in the Amazon Purchase Experience team.",
+        "resp": [
+          "Build resilient distributed systems for the cart experience.",
+          "Improve quality, testability, latency and performance.",
+          "Contribute to functional and non-functional platform improvements."
+        ],
+        "apply": "https://www.amazon.jobs/en-gb/jobs/10572015/software-development-engineer-amazon",
+        "status": "review",
+        "verifiedDate": "2026-10-11",
+        "sourceName": "Amazon Jobs",
+        "skills": [
+          "Distributed systems",
+          "System design",
+          "Programming",
+          "Full-stack development"
+        ],
+        "who": [
+          "Software engineers with 3+ years of professional experience"
+        ],
+        "workMode": "Not specified"
+      }
     },
     {
       "id": "pwc-758555WD",
@@ -728,5 +728,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:56:21.070Z"
+  "updatedAt": "2026-10-11T05:56:24.836Z"
 }
