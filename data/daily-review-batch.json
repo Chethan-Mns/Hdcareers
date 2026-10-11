@@ -467,6 +467,36 @@
       }
     },
     {
+      "id": "capgemini-574027",
+      "company": "Capgemini",
+      "role": "Software Engineer",
+      "loc": "Bangalore, India",
+      "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
+      "cat": "it",
+      "expYears": "Experienced professional",
+      "reviewedStatus": "live",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Official Capgemini page content and requisition 574027 were found, dated 9 Oct 2026, but the exact application action was not independently completed in this run; human review required.",
+      "postedDate": "2026-10-09",
+      "job": {
+        "company": "Capgemini",
+        "role": "Software Engineer",
+        "loc": "Bangalore, India",
+        "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
+        "status": "review",
+        "cat": "it",
+        "expYears": "Experienced professional",
+        "sourceName": "Capgemini Careers",
+        "manualLiveVerifiedAt": "2026-10-11T05:53:01.742Z",
+        "browserVerifiedAt": "2026-10-11T05:53:01.742Z",
+        "verifiedDate": "11 Oct 2026"
+      },
+      "reviewedAt": "2026-10-11T05:53:01.742Z",
+      "reviewedBy": "HD Careers Admin"
+    }
+  ],
+  "backup": [
+    {
       "id": "hcltech-175263",
       "company": "HCLTech",
       "role": "Engineer – Jenkins, Windows PowerShell",
@@ -515,36 +545,6 @@
         ],
         "workMode": "Not specified"
       }
-    }
-  ],
-  "backup": [
-    {
-      "id": "capgemini-574027",
-      "company": "Capgemini",
-      "role": "Software Engineer",
-      "loc": "Bangalore, India",
-      "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
-      "cat": "it",
-      "expYears": "Experienced professional",
-      "reviewedStatus": "live",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Official Capgemini page content and requisition 574027 were found, dated 9 Oct 2026, but the exact application action was not independently completed in this run; human review required.",
-      "postedDate": "2026-10-09",
-      "job": {
-        "company": "Capgemini",
-        "role": "Software Engineer",
-        "loc": "Bangalore, India",
-        "apply": "https://careers.capgemini.com/job/Bangalore-Software-Engineer/1446042033/",
-        "status": "review",
-        "cat": "it",
-        "expYears": "Experienced professional",
-        "sourceName": "Capgemini Careers",
-        "manualLiveVerifiedAt": "2026-10-11T05:53:01.742Z",
-        "browserVerifiedAt": "2026-10-11T05:53:01.742Z",
-        "verifiedDate": "11 Oct 2026"
-      },
-      "reviewedAt": "2026-10-11T05:53:01.742Z",
-      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-1443859",
@@ -728,5 +728,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:55:26.081Z"
+  "updatedAt": "2026-10-11T05:55:49.440Z"
 }
