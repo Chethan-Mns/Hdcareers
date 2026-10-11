@@ -15,7 +15,7 @@ def item(i,company=None,full=False):
          "apply":f"https://example.com/careers/req-{i}","status":"review"}
     if full:
         job.update(status="active",elig="Verified degree",desc="Verified employer information",
-                   resp=["Actual responsibility from listing"])
+                   resp=["Actual responsibility from listing"],sourceName="Official Careers")
     return {"id":f"{company}-REQ-{i}","company":company,"role":job["role"],
             "apply":job["apply"],"reviewedStatus":"unreviewed",
             "verificationReason":"Official exact requisition URL visited; source detail recorded",
@@ -48,15 +48,29 @@ class TestDailyReviewContract(unittest.TestCase):
         p=batch();p["priority"][0]["job"]={"company":"Comp","role":"Grad","apply":"https://example.com/careers/new","status":"review"}
         self.assertEqual(mod.check(p)["complete"],9)
         p["status"]="submitted"
-        for j in p["priority"]:j["reviewedStatus"]="live"
+        for j in p["priority"]:j.update(reviewedStatus="live",reviewedAt="2026-10-11T09:00:00Z")
+        p["publication"]={"candidateIds":[p["priority"][0]["id"]]}
         with self.assertRaises(ValueError):mod.check(p)
     def test_cannot_fake_owner_approval(self):
         p=batch();p["status"]="submitted"
         with self.assertRaises(ValueError):mod.check(p)
     def test_submitted_jobs_need_ten_live_complete(self):
         p=batch();p["status"]="submitted"
-        for j in p["priority"]:j["reviewedStatus"]="live"
+        for j in p["priority"]:j.update(reviewedStatus="live",reviewedAt="2026-10-11T09:00:00Z")
+        p["publication"]={"candidateIds":[p["priority"][0]["id"]]}
         self.assertEqual(mod.check(p)["state"],"submitted")
+    def test_strict_discovery_rejects_duplicate_employers(self):
+        p=batch();p["backup"][0]["company"]=p["priority"][0]["company"];p["backup"][0]["job"]["company"]=p["priority"][0]["company"]
+        with self.assertRaisesRegex(ValueError,"Repeated employer"):mod.check(p,strict_discovery=True)
+    def test_strict_discovery_requires_all_twenty(self):
+        p=batch(10,8)
+        for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
+        with self.assertRaisesRegex(ValueError,"10 priority"):mod.check(p,strict_discovery=True)
+    def test_strict_discovery_prioritizes_fresher_it(self):
+        p=batch()
+        for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
+        for i,c in enumerate(p["priority"]+p["backup"]):c["job"]["expType"]="fresher" if i>=10 else "experienced";c["job"]["cat"]="it"
+        with self.assertRaisesRegex(ValueError,"Fresher IT preference"):mod.check(p,strict_discovery=True)
     def test_invalid_json_document(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/"batch.json";path.write_text(json.dumps(batch(3,2)))

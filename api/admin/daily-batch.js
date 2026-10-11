@@ -1,4 +1,5 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
+import {employerKey,selectCandidates,reviewCounts} from "../../lib/review-rules.js";
 
 const REPO = process.env.ADMIN_GITHUB_REPO || "Chethan-Mns/Hdcareers";
 const REF = process.env.ADMIN_GITHUB_BASE || "main";
@@ -56,7 +57,7 @@ function category(candidate) {
 }
 
 function company(candidate) {
-  return String(candidate?.company || candidate?.job?.company || "").trim().toLowerCase();
+  return employerKey(candidate?.company || candidate?.job?.company);
 }
 
 function update(data, body) {
@@ -114,31 +115,22 @@ function update(data, body) {
     if (incoming.reviewedStatus !== "live") {
       throw Object.assign(new Error("Verify the backup job as Live before replacing."), {status: 400});
     }
-    if (category(outgoing) !== category(incoming)) {
-      throw Object.assign(new Error("Choose a backup from the same IT, Non-IT or Internship category."), {status: 400});
-    }
     if (data.priority.some((j, index) => index !== pi && company(j) === company(incoming))) {
       throw Object.assign(new Error("Priority jobs must come from different employers."), {status: 409});
     }
     data.priority[pi] = incoming;
     data.backup[bi] = outgoing;
   } else if (action === "submitted") {
-    if (data.priority.length !== 10 || data.priority.some(x => x.reviewedStatus !== "live")) {
-      throw Object.assign(new Error("Ten priority jobs must be reviewed Live before submission."), {status: 400});
-    }
-    const employers = new Set(data.priority.map(company));
-    if (employers.size !== 10) {
-      throw Object.assign(new Error("Ten different employers are required."), {status: 400});
-    }
-    if (data.priority.some(x => {
-      const j=x.job||{};
-      return !j.company||!j.role||!j.loc||!j.elig||!j.desc||!j.apply||
-        !Array.isArray(j.resp)||!j.resp.length||j.status!=="active";
-    })) {
-      throw Object.assign(new Error("Complete, active job details are required before submission."), {status: 400});
-    }
-    data.status = "submitted";
-    data.submittedAt = new Date().toISOString();
+    const picked=selectCandidates(data,body.candidateIds);
+    data.status="submitted";
+    data.submittedAt=new Date().toISOString();
+    data.publication={
+      candidateIds:picked.map(x=>String(x.id)),
+      companies:picked.map(x=>String(x.job.company)),
+      urls:picked.map(x=>String(x.job.apply)),
+      requestId:String(body.requestId||"").slice(0,120),
+      count:picked.length,submittedAt:data.submittedAt
+    };
   } else {
     throw Object.assign(new Error("Invalid review action."), {status: 400});
   }
@@ -160,7 +152,7 @@ export default async function handler(req, res) {
   const token = process.env.GITHUB_PUBLISH_TOKEN;
   if (!token) return res.status(503).json({error: "GitHub publishing credentials are not configured."});
   try {
-    if (req.method === "GET") return res.status(200).json((await read(token)).data);
+    if (req.method === "GET") { const batch=(await read(token)).data; return res.status(200).json({...batch,metrics:reviewCounts(batch,batch.publication?.candidateIds||[])}); }
     for (let attempt = 0; attempt < 3; attempt++) {
       const {data, sha} = await read(token);
       if (req.body?.batchId !== data.batchId || !data.batchId) {
@@ -179,7 +171,7 @@ export default async function handler(req, res) {
             branch: REF
           })
         });
-        return res.status(200).json(next);
+        return res.status(200).json({...next,metrics:reviewCounts(next,next.publication?.candidateIds||[])});
       } catch (error) {
         if (![409, 422].includes(error.status) || attempt === 2) throw error;
       }

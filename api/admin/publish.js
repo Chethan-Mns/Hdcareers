@@ -1,4 +1,7 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
+import {selectCandidates} from "../../lib/review-rules.js";
+import {redis} from "../../lib/admin-store.js";
+import crypto from "node:crypto";
 
 const DEFAULT_REPO = "Chethan-Mns/Hdcareers";
 const DEFAULT_BASE = "main";
@@ -156,27 +159,76 @@ async function github(path,token,options={}){
 export default async function handler(req,res){
   res.setHeader("Cache-Control","no-store");
 
-  if(req.method!=="POST"){
-    res.setHeader("Allow","POST");
+  if(!["GET","POST"].includes(req.method)){
+    res.setHeader("Allow","GET, POST");
     return res.status(405).json({error:"Method not allowed"});
   }
 
   if(!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
   if(!await requireAdmin(req,res,["owner","job_editor"]))return;
-  if(process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only; website and Telegram publishing is disabled."});
+  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only; website and Telegram publishing is disabled."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
   if(!token)return res.status(503).json({error:"GITHUB_PUBLISH_TOKEN is not configured in Vercel yet."});
 
-  const submitted=Array.isArray(req.body&&req.body.jobs)?req.body.jobs:[];
-  if(!submitted.length)return res.status(400).json({error:"Select at least one job to publish."});
-  if(submitted.length>MAX_JOBS)return res.status(400).json({error:"Maximum "+MAX_JOBS+" jobs per deployment."});
-
   try{
+    const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
+    const readJson=async(path,defaultValue)=>{
+      try{
+        const doc=await github("/contents/"+path+"?ref="+encodeURIComponent(base),token);
+        return JSON.parse(Buffer.from(String(doc.content||"").replace(/\n/g,""),"base64").toString("utf8"));
+      }catch(e){if(e.status===404&&defaultValue!==undefined)return defaultValue;throw e}
+    };
+    if(req.method==="GET"){
+      const batch=await readJson("data/daily-review-batch.json",{});
+      const saved=await readJson("data/jobs.json",[]);
+      const ledger=await readJson("data/telegram-deliveries.json",{});
+      const urls=new Set(saved.map(x=>normalizeUrl(x.apply)));
+      const allCandidates=[...(batch.priority||[]),...(batch.backup||[])];
+      const publishedCandidateIds=allCandidates.filter(x=>urls.has(normalizeUrl(x.job?.apply||x.apply))).map(x=>String(x.id));
+      const publishedIds=new Set(publishedCandidateIds);
+      const selections=Array.isArray(batch.publication?.candidateIds)?batch.publication.candidateIds:[];
+      const stages=selections.map(id=>{
+        const c=[...(batch.priority||[]),...(batch.backup||[])].find(x=>String(x.id)===id);
+        const page=String(c?.job?.page||"").replace(/^\//,"");
+        const entries=Object.values(ledger).filter(x=>x&&x.page===page);
+        const last=entries.at(-1)||{};
+        return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
+          github:batch.status==="submitted"?"queued_or_running":batch.status==="published"?"completed":"not_submitted",
+          website:urls.has(normalizeUrl(c?.job?.apply))?"generated":"pending",
+          vercel:last.status==="delivered"?"site-confirmed-before-send":"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
+          note:last.status==="uncertain"?"Check Telegram manually before retrying.":""};
+      });
+      let workflow={state:"not_checked",url:null,conclusion:null};
+      try{
+        const runs=await github("/actions/workflows/admin-job-generator.yml/runs?per_page=15",token);
+        const since=Date.parse(batch.submittedAt||"");
+        const run=(runs.workflow_runs||[]).find(x=>x.event==="repository_dispatch"&&Number.isFinite(since)&&Date.parse(x.created_at)>=since-60000);
+        if(run)workflow={state:run.status,url:run.html_url,conclusion:run.conclusion,runId:run.id,exactMatch:false};
+      }catch(e){workflow={state:"unavailable",url:null,conclusion:null,reason:"GitHub workflow lookup failed"}}
+      return res.status(200).json({batchId:batch.batchId||null,status:batch.status||"waiting",
+        publishedCount:stages.filter(x=>x.website==="generated").length,
+        alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
+        telegramDelivered:stages.filter(x=>x.telegram==="delivered").length,
+        workflow,stages,observedAt:new Date().toISOString(),
+        warning:"Workflow matching by timestamp is approximate; Vercel is unconfirmed until the deployed commit is verified."});
+    }
+    const fromReview=Boolean(req.body?.batchId);
+    let reviewBatch=null;
+    const selectedIds=fromReview?req.body.candidateIds:null;
+    let submitted=Array.isArray(req.body?.jobs)?req.body.jobs:[];
+    if(fromReview){
+      reviewBatch=await readJson("data/daily-review-batch.json");
+      if(reviewBatch.batchId!==req.body.batchId||reviewBatch.status!=="reviewing"){
+        return res.status(409).json({error:"Review batch changed or was already submitted. Refresh before publishing."});
+      }
+      submitted=selectCandidates(reviewBatch,selectedIds).map(x=>x.job);
+    }
+    if(!submitted.length)return res.status(400).json({error:"Select at least one job to publish."});
+    if(submitted.length>(fromReview?10:MAX_JOBS))return res.status(400).json({error:"Maximum "+(fromReview?10:MAX_JOBS)+" jobs per deployment."});
     const incoming=submitted.map(canonicalJob);
     incoming.forEach(validateJob);
 
-    const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
     const file=await github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token);
     const current=JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
     if(!Array.isArray(current))throw new Error("data/jobs.json is not a JSON array.");
@@ -199,23 +251,37 @@ export default async function handler(req,res){
 
     if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
 
-    const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming}});
+    const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):null;
+    const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
     }
 
     await auditMutation(req,"jobs.publish",incoming.map(j=>j.company+" - "+j.role).join("; ").slice(0,150));
-    await github("/dispatches",token,{
-      method:"POST",
-      headers:{"content-type":"application/json"},
-      body:payload
-    });
+    const lockKey=requestId?"hdreview:dispatch:"+process.env.VERCEL_ENV+":"+reviewBatch.batchId:null;
+    if(lockKey){
+      const acquired=await redis("SET",lockKey,requestId,"NX","EX",86400);
+      if(acquired!=="OK")return res.status(409).json({error:"This review batch has already started publishing. Check the tracker; never resend a pending batch."});
+    }
+    try{
+      await github("/dispatches",token,{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:payload
+      });
+    }catch(e){
+      // A timeout can occur after GitHub accepts the dispatch. Keep the lock
+      // rather than risking a duplicate publish when the outcome is unknown.
+      if(lockKey&&Number(e.status)>=400&&Number(e.status)<500)await redis("DEL",lockKey);
+      throw e;
+    }
 
     return res.status(202).json({
       ok:true,
       queued:true,
       count:incoming.length,
-      message:"Production deployment started."
+      requestId,
+      message:"GitHub accepted the publishing request. Website deployment and Telegram delivery are not confirmed yet."
     });
   }catch(error){
     const status=Number(error&&error.status);

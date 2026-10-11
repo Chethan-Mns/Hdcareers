@@ -43,7 +43,7 @@ jobs:
           assert.match(read('admin/index.html'), /\/admin\/reel-kit\.html/);
           assert.match(read('admin/index.html'), /\/admin\/review-batch\.html/);
           assert.match(read('admin/index.html'), /activeAdminRole===\"owner\"/);
-          assert.match(read('api/admin/daily-batch.js'), /Ten priority jobs must be reviewed Live/);
+          assert.match(read('api/admin/daily-batch.js'), /selectCandidates\(data,body.candidateIds\)/);
           assert.match(read('api/admin/publish.js'), /admin_publish_jobs/);
           console.log('Original admin features and role checks preserved.');
           JS
