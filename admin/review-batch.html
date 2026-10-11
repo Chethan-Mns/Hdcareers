@@ -72,6 +72,7 @@ let tab="priority";
 let busy=false;
 const selected=new Set();
 let publishStatus=null;
+let publishedIds=new Set();
 let trackingTimer=null;
 const aliases={"tcs":"tata consultancy services","hcl technologies":"hcltech","hcl":"hcltech","ey":"ernst young","ernst and young":"ernst young","ibm":"international business machines","pwc":"pricewaterhousecoopers","ntt data":"nttdata","deloitte usi":"deloitte","google india":"google","amazon india":"amazon","cognizant technology solutions":"cognizant"};
 function employerName(c){const name=String(c?.company||c?.job?.company||"").toLowerCase().replace(/&/g," and ").replace(/\b(?:pvt|private|ltd|limited|inc|llp|corp|corporation)\b/g," ").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");return aliases[name]||name}
@@ -84,9 +85,9 @@ function isComplete(c){const j=c.job||{};return !!(j.company&&j.role&&j.loc&&j.e
 function isReady(c){return c.reviewedStatus==="live"&&!!c.reviewedAt&&isComplete(c)&&employerName(c)===employerName({company:c.job.company})&&(c.apply||c.job.apply)===c.job.apply}
 function chosen(){return [...selected].map(id=>[...(batch?.priority||[]),...(batch?.backup||[])].find(x=>String(x.id)===id)).filter(Boolean)}
 function ready(){const a=chosen();return batch&&a.length>=1&&a.length<=10&&a.every(isReady)&&new Set(a.map(employerName)).size===a.length&&!["submitted","published"].includes(batch.status)}
-function toggleCandidate(item,checked){if(checked){if(selected.size>=10){notify("Maximum 10 jobs per publication.");return}const employer=employerName(item);if(chosen().some(x=>employerName(x)===employer&&x.id!==item.id)){notify("Only one job per employer, including aliases.");return}if(!isReady(item)){notify("Mark this complete job Live first.");return}selected.add(String(item.id))}else selected.delete(String(item.id));draw()}
+function toggleCandidate(item,checked){if(checked){if(selected.size>=10){notify("Maximum 10 jobs per publication.");return}const employer=employerName(item);if(chosen().some(x=>employerName(x)===employer&&x.id!==item.id)){notify("Only one job per employer, including aliases.");return}if(publishedIds.has(String(item.id))){notify("This job has already been published.");return}if(!isReady(item)){notify("Mark this complete job Live first.");return}selected.add(String(item.id))}else selected.delete(String(item.id));draw()}
 async function api(method,body){const r=await fetch("/api/admin/daily-batch",{method,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||("HTTP "+r.status));return data}
-async function load(){try{batch=await api("GET");const known=new Set([...batch.priority,...batch.backup].map(x=>String(x.id)));for(const id of [...selected])if(!known.has(id))selected.delete(id);draw();if(["submitted","published"].includes(batch.status))refreshTracker()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
+async function load(){try{batch=await api("GET");const known=new Set([...batch.priority,...batch.backup].map(x=>String(x.id)));for(const id of [...selected])if(!known.has(id))selected.delete(id);draw();refreshTracker()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
 function switchTab(next){tab=next;draw()}
 async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});if(body.action==="review"){const item=[...batch.priority,...batch.backup].find(x=>String(x.id)===String(body.candidateId));if(body.decision==="live"&&item&&isReady(item)&&selected.size<10&&!chosen().some(x=>employerName(x)===employerName(item)&&x.id!==item.id))selected.add(String(item.id));if(body.decision!=="live")selected.delete(String(body.candidateId))}draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
 function draw(){
@@ -97,7 +98,7 @@ function draw(){
  el("selectedCount").textContent=selected.size;el("readyCount").textContent=all.filter(isReady).length;
  el("incompleteCount").textContent=all.filter(x=>x.reviewedStatus==="live"&&!isReady(x)).length;
  el("expiredCount").textContent=all.filter(x=>x.reviewedStatus==="expired").length;
- el("publishedCount").textContent=publishStatus?.publishedCount||0;
+ el("publishedCount").textContent=publishedIds.size;
  const seen=new Map(),dupes=[];
  for(const x of all){const name=employerName(x);if(seen.has(name))dupes.push(x.company+" duplicates "+seen.get(name));else seen.set(name,x.company)}
  const warning=el("employerWarning");warning.hidden=all.length===20&&dupes.length===0;
@@ -120,7 +121,7 @@ function draw(){
   card.append(evidence);
   const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
   const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
-  const pick=node("label","selectline"),check=node("input");check.type="checkbox";check.checked=selected.has(String(item.id));check.disabled=busy||!isReady(item)||["submitted","published"].includes(batch.status);check.onchange=()=>toggleCandidate(item,check.checked);pick.append(check,node("span",null,check.disabled&&item.reviewedStatus!=="live"?"Mark Live to enable publishing":"Select this job for publishing"));card.append(pick);
+  const pick=node("label","selectline"),check=node("input");check.type="checkbox";check.checked=selected.has(String(item.id));check.disabled=busy||!isReady(item)||publishedIds.has(String(item.id))||["submitted","published"].includes(batch.status);check.onchange=()=>toggleCandidate(item,check.checked);pick.append(check,node("span",null,check.disabled&&item.reviewedStatus!=="live"?"Mark Live to enable publishing":"Select this job for publishing"));card.append(pick);
   if(tab==="priority"){
    const options=batch.backup.filter(x=>x.reviewedStatus==="live"&&isReady(x)&&!batch.priority.some(p=>p.id!==item.id&&employerName(p)===employerName(x)));
    const row=node("div","replace"),select=node("select");select.append(new Option("Replace with a verified backup…",""));
@@ -155,6 +156,7 @@ async function refreshTracker(){
   if(!r.ok)throw Error(data.error||"Tracker unavailable");
   if(data.batchId!==batch.batchId)return;
   publishStatus=data;
+  publishedIds=new Set(data.publishedCandidateIds||[]);for(const id of [...selected])if(publishedIds.has(id))selected.delete(id);
   el("trackSummary").textContent="Website "+data.publishedCount+"/"+data.stages.length+" · Telegram "+data.telegramDelivered+"/"+data.stages.length+" · Workflow "+(data.workflow.conclusion||data.workflow.state)+" · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
   const root=el("tracking");root.replaceChildren();
   for(const s of data.stages){
@@ -168,7 +170,7 @@ async function refreshTracker(){
  }catch(e){el("trackSummary").textContent="Tracker unavailable: "+e.message}
  if(!trackingTimer)trackingTimer=setInterval(()=>{if(["submitted","published"].includes(batch?.status))refreshTracker()},20000);
 }
-function drawCountsOnly(){el("publishedCount").textContent=publishStatus?.publishedCount||0}
+function drawCountsOnly(){el("publishedCount").textContent=publishedIds.size;el("selectedCount").textContent=selected.size;el("publishBtn").disabled=!ready()||busy}
 
 load();
 </script>
