@@ -2,11 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import {createAdminSession} from "../lib/admin-auth.js";
+import {createFakeRedis} from "./helpers/fake-redis.mjs";
 import handler from "../api/admin/daily-batch.js";
 
 process.env.ADMIN_USERNAME="owner";
 process.env.ADMIN_PASSWORD="test-owner-password";
 process.env.ADMIN_SESSION_SECRET="shadow-test-secret-not-production";
+const redis=createFakeRedis();
+process.env.HD_ADMIN_REDIS_URL=redis.url;
+process.env.HD_ADMIN_REDIS_TOKEN="test-only-redis-token";
 process.env.GITHUB_PUBLISH_TOKEN="shadow-github-mock";
 process.env.ADMIN_GITHUB_BASE="main";
 
@@ -18,6 +22,8 @@ let state={batchId:"2026-10-11-0900-ist",generatedAt:"2026-10-11T03:30:00Z",stat
  {id:"source-job-1",company:"Official Company",role:"Associate Developer",cat:"it",reviewedStatus:"unreviewed",
  verificationReason:"Checked exact employer apply URL",job:liveJob}],backup:[],updatedAt:"2026-10-11T03:33:00Z"};
 globalThis.fetch=async(url,options={})=>{
+  const storeReply=redis.response(url,options);
+  if(storeReply)return storeReply;
  const method=options.method||"GET";
  const path=String(url);
  if(path.includes("/dispatches")){dispatches++;throw Error("Review staging must never publish");}
@@ -33,7 +39,7 @@ globalThis.fetch=async(url,options={})=>{
  }
  throw Error("Unexpected API request: "+path+" "+method);
 };
-const session=createAdminSession();
+const session=await createAdminSession({username:"owner",role:"owner"});
 function request(method,body,customHeaders={}){return {method,body,headers:{host:"hdcareers.in",cookie:"hd_admin_session="+session,...customHeaders}}}
 function response(){return {statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v;return this},status(s){this.statusCode=s;return this},json(data){this.data=data;return this}}}
 async function call(method,body,headers){const res=response();await handler(request(method,body,headers),res);return res}
