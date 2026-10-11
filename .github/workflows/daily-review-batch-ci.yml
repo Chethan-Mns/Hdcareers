@@ -1,0 +1,42 @@
+name: 9AM Daily Review Batch integration tests
+
+on:
+  push:
+    branches:
+      - feature/9am-review-batch-handoff-20261011
+    paths:
+      - scripts/validate_daily_review_batch.py
+      - tests/test_daily_review_batch.py
+      - tests/daily-review-api.test.mjs
+      - data/daily-review-batch.json
+      - api/admin/daily-batch.js
+      - api/admin/publish.js
+      - admin/review-batch.html
+      - .github/workflows/daily-review-batch-ci.yml
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate staged-review data and schema tests
+        run: |
+          python3 scripts/validate_daily_review_batch.py
+          python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
+      - name: Validate API and browser scripts
+        run: |
+          node --check api/admin/daily-batch.js
+          node --check api/admin/publish.js
+          node --test tests/daily-review-api.test.mjs

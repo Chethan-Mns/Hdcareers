@@ -76,6 +76,21 @@ function update(data, body) {
     item.reviewedStatus = decision;
     item.reviewedAt = new Date().toISOString();
     item.reviewedBy = "HD Careers Admin";
+    // The human review decision is authoritative for the stored draft status;
+    // the downstream admin publish pipeline still rechecks the exact employer URL.
+    if (item.job && typeof item.job === "object") {
+      if (decision === "live") {
+        const j = item.job;
+        const complete = j.company && j.role && j.loc && j.elig && j.desc && j.apply &&
+          Array.isArray(j.resp) && j.resp.length;
+        // Never make an incomplete sourced candidate automatically publishable.
+        j.status = complete ? "active" : "review";
+      } else if (decision === "expired") {
+        item.job.status = "expired";
+      } else {
+        item.job.status = "review";
+      }
+    }
   } else if (action === "swap") {
     const pi = data.priority.findIndex(x => String(x.id) === String(body.priorityId));
     const bi = data.backup.findIndex(x => String(x.id) === String(body.backupId));
@@ -96,6 +111,17 @@ function update(data, body) {
     if (data.priority.length !== 10 || data.priority.some(x => x.reviewedStatus !== "live")) {
       throw Object.assign(new Error("Ten priority jobs must be reviewed Live before submission."), {status: 400});
     }
+    const employers = new Set(data.priority.map(company));
+    if (employers.size !== 10) {
+      throw Object.assign(new Error("Ten different employers are required."), {status: 400});
+    }
+    if (data.priority.some(x => {
+      const j=x.job||{};
+      return !j.company||!j.role||!j.loc||!j.elig||!j.desc||!j.apply||
+        !Array.isArray(j.resp)||!j.resp.length||j.status!=="active";
+    })) {
+      throw Object.assign(new Error("Complete, active job details are required before submission."), {status: 400});
+    }
     data.status = "submitted";
     data.submittedAt = new Date().toISOString();
   } else {
@@ -113,6 +139,9 @@ export default async function handler(req, res) {
   }
   if (!requireAdmin(req, res)) return;
   if (!originAllowed(req)) return res.status(403).json({error: "Invalid request origin."});
+  if (req.method === "POST" && process.env.VERCEL_ENV === "preview") {
+    return res.status(403).json({error: "Preview is read-only. Review changes must be made in Production."});
+  }
   const token = process.env.GITHUB_PUBLISH_TOKEN;
   if (!token) return res.status(503).json({error: "GitHub publishing credentials are not configured."});
   try {
