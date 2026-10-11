@@ -64,7 +64,7 @@
       "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
       "cat": "it",
       "expYears": "1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Google Careers page opened on 11 Oct 2026 and showed the role, Bengaluru location, Early level, qualifications, responsibilities and Apply control.",
       "postedDate": null,
@@ -91,8 +91,8 @@
           "Debug and resolve product or system issues."
         ],
         "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "Google Careers",
         "skills": [
           "Python",
@@ -104,8 +104,12 @@
         "who": [
           "Software engineers with at least one year of development experience"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T05:56:46.398Z",
+        "browserVerifiedAt": "2026-10-11T05:56:46.398Z"
+      },
+      "reviewedAt": "2026-10-11T05:56:46.398Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "arm-2026-19179",
@@ -732,5 +736,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:56:35.073Z"
+  "updatedAt": "2026-10-11T05:56:46.398Z"
 }
