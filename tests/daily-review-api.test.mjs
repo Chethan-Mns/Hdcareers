@@ -44,7 +44,7 @@ test("9 AM batch appears in Review Center API without publishing",async()=>{
 });
 test("Owner review decision saves to same GitHub JSON, never publishes",async()=>{
  const r=await call("POST",{action:"review",batchId:"2026-10-11-0900-ist",candidateId:"source-job-1",decision:"live"});
- assert.equal(r.statusCode,200);assert.equal(r.data.priority[0].reviewedStatus,"live");
+ assert.equal(r.statusCode,200);assert.equal(r.data.priority[0].reviewedStatus,"live");assert.equal(r.data.priority[0].job.status,"active");
  assert.equal(edits,1);assert.equal(dispatches,0);
 });
 test("Cannot submit insufficient priority jobs despite source LIVE review",async()=>{
