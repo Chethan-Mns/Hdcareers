@@ -266,7 +266,7 @@
       "apply": "https://careers.cognizant.com/apj-en/jobs/00070164991/dx-associate-business-analyst/",
       "cat": "non-it",
       "expYears": "Not stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Cognizant Careers page opened on 11 Oct 2026 with requisition 00070164991, publication date 9 Oct 2026, Hyderabad location, Hybrid model and role details.",
       "postedDate": "2026-10-09",
@@ -293,8 +293,8 @@
           "Manage requests and communicate with account stakeholders."
         ],
         "apply": "https://careers.cognizant.com/apj-en/jobs/00070164991/dx-associate-business-analyst/",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "Cognizant Careers",
         "skills": [
           "Google Sheets",
@@ -305,8 +305,12 @@
         "who": [
           "Candidates with strong reporting, organization and communication skills"
         ],
-        "workMode": "Hybrid"
-      }
+        "workMode": "Hybrid",
+        "manualLiveVerifiedAt": "2026-10-11T05:55:26.080Z",
+        "browserVerifiedAt": "2026-10-11T05:55:26.080Z"
+      },
+      "reviewedAt": "2026-10-11T05:55:26.080Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1751532",
@@ -724,5 +728,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:55:16.220Z"
+  "updatedAt": "2026-10-11T05:55:26.081Z"
 }
