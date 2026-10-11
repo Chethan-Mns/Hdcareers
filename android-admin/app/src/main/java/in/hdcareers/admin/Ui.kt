@@ -176,10 +176,12 @@ fun AdminRoot(vm:AdminViewModel,onBiometricSignIn:()->Unit,onEnableBiometric:()-
     val visible=if(selected==0)vm.batch.priority else vm.batch.backup
     LazyColumn(contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
         item {
-            CardSection("Daily Review Center","Ten priority jobs, ten category-matched backup options") {
+            CardSection("Daily Review Center","20 unique employers · select 1–10 Live jobs from either list") {
                 TwoMetricRows(listOf("Priority" to "${vm.batch.priority.size}",
                     "Backups" to "${vm.batch.backup.size}","Reviewed" to "${vm.batch.reviewed}",
-                    "Verified Live" to "${(vm.batch.priority+vm.batch.backup).count{it.decision=="live"}}"))
+                    "Verified Live" to "${(vm.batch.priority+vm.batch.backup).count{it.decision=="live"}}",
+                    "Selected" to "${vm.selectedIds.size}","Ready" to "${vm.batch.readyCount}",
+                    "Expired" to "${vm.batch.expiredCount}","Incomplete" to "${vm.batch.incomplete}"))
                 TabRow(selectedTabIndex=selected) {
                     listOf("Priority 10","Backup 10").forEachIndexed{index,name->
                         Tab(selected=selected==index,onClick={selected=index},text={Text(name)})
@@ -193,21 +195,30 @@ fun AdminRoot(vm:AdminViewModel,onBiometricSignIn:()->Unit,onEnableBiometric:()-
         items(visible,key={it.id}) { job ->
             CandidateCard(job,selected==0,vm.batch.backup,vm.busy,
                 onDecision={vm.decide(job.id,it)},onSwap={vm.swap(job.id,it)})
+            Row(verticalAlignment=Alignment.CenterVertically) {
+                Checkbox(checked=job.id in vm.selectedIds,
+                    onCheckedChange={vm.toggleSelected(job.id,it)},
+                    enabled=job.approved&&!vm.busy&&job.id !in vm.publishedReviewIds)
+                Text(if(job.id in vm.publishedReviewIds)"Already published" else "Select job",fontSize=12.sp)
+            }
         }
-        if(selected==0 && vm.batch.id.isNotBlank()) item {
-            CardSection("Publish the verified Top 10") {
-                Text("Requires 8 fresher IT, 1 non-IT and 1 training job from 10 distinct employers, all reviewed Live with complete descriptions.",
+        if(vm.batch.id.isNotBlank()) item {
+            CardSection("Publish selected verified jobs") {
+                Text("Publish any 1–10 complete verified Live jobs from distinct employers; no category quota.",
                     color=Gray,fontSize=12.sp)
-                Button(onClick={confirm=true},modifier=Modifier.fillMaxWidth(),enabled=vm.batch.ready && !vm.busy){
-                    Text("Approve and start publishing")
+                Button(onClick={confirm=true},modifier=Modifier.fillMaxWidth(),enabled=vm.canPublish && !vm.busy){
+                    Text("Publish ${vm.selectedIds.size} selected jobs")
                 }
+                OutlinedButton(onClick=vm::refreshPublishingStatus,enabled=!vm.busy) {Text("Refresh status")}
+                val progress=vm.publishingProgress
+                Text("Website: ${progress.optInt("publishedCount")} · Telegram: ${progress.optInt("telegramDelivered")}",fontSize=12.sp,color=Gray)
                 Text("Dispatch accepted ≠ website deployed or Telegram delivered. Verify delivery separately.",
                     fontSize=12.sp,color=Gray)
             }
         }
     }
     if(confirm) AlertDialog(onDismissRequest={confirm=false},title={Text("Publish reviewed jobs?")},
-        text={Text("This submits the approved ten jobs to the existing GitHub publishing pipeline.")},
+        text={Text("This submits ${vm.selectedIds.size} selected verified jobs to GitHub. Website and Telegram delivery must be confirmed separately.")},
         confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Publish")}},
         dismissButton={TextButton(onClick={confirm=false}){Text("Cancel")}})
 }
@@ -215,7 +226,7 @@ fun AdminRoot(vm:AdminViewModel,onBiometricSignIn:()->Unit,onEnableBiometric:()-
     onDecision:(String)->Unit,onSwap:(String)->Unit) {
     var expanded by remember { mutableStateOf(false) }
     val context=LocalContext.current
-    val choices=backups.filter{it.group==c.group&&it.decision=="live" && it.company!=c.company}
+    val choices=backups.filter{it.approved&&employerKey(it.company)!=employerKey(c.company)}
     CardSection(c.company,c.role) {
         Text(listOf(c.location,c.experience).filter{it.isNotBlank()}.joinToString(" · "),color=Gray,fontSize=12.sp)
         Text(when(c.group){"nonit"->"Non-IT";"training"->"Internship / Apprenticeship";else->"Fresher IT"},
