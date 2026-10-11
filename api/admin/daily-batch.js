@@ -76,6 +76,21 @@ function update(data, body) {
     item.reviewedStatus = decision;
     item.reviewedAt = new Date().toISOString();
     item.reviewedBy = "HD Careers Admin";
+    // The human review decision is authoritative for the stored draft status;
+    // the downstream admin publish pipeline still rechecks the exact employer URL.
+    if (item.job && typeof item.job === "object") {
+      if (decision === "live") {
+        const j = item.job;
+        const complete = j.company && j.role && j.loc && j.elig && j.desc && j.apply &&
+          Array.isArray(j.resp) && j.resp.length;
+        // Never make an incomplete sourced candidate automatically publishable.
+        j.status = complete ? "active" : "review";
+      } else if (decision === "expired") {
+        item.job.status = "expired";
+      } else {
+        item.job.status = "review";
+      }
+    }
   } else if (action === "swap") {
     const pi = data.priority.findIndex(x => String(x.id) === String(body.priorityId));
     const bi = data.backup.findIndex(x => String(x.id) === String(body.backupId));
