@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const REPO = process.env.ADMIN_GITHUB_REPO || "Chethan-Mns/Hdcareers";
 const REF = process.env.ADMIN_GITHUB_BASE || "main";
@@ -167,6 +167,7 @@ export default async function handler(req, res) {
         return res.status(409).json({error: "Review batch changed. Refresh and try again."});
       }
       const next = update(data, req.body);
+      await auditMutation(req,"daily_batch."+String(req.body?.action||"update"),String(data.batchId));
       try {
         await github("/contents/" + PATH, token, {
           method: "PUT",
