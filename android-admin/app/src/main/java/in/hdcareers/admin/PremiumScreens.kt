@@ -276,7 +276,7 @@ private fun ProReview(vm:AdminViewModel) {
         verticalArrangement=Arrangement.spacedBy(13.dp)) {
         item {
             ProHero("Daily publishing","Your 20-job\nreview desk.",
-                "Verify the Top 10, keep ten backups, and publish only when ready.",
+                "Review 20 different employers. Select any 1–10 verified Live jobs from either list.",
                 icon=Icons.Default.FactCheck) {
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     HeroMiniStat(vm.batch.priority.size.toString(),"Priority",Modifier.weight(1f))
@@ -291,6 +291,12 @@ private fun ProReview(vm:AdminViewModel) {
                 LinearProgressIndicator(progress={vm.batch.reviewed.toFloat()/max(1,total)},
                     modifier=Modifier.fillMaxWidth().height(7.dp).clip(RoundedCornerShape(8.dp)),
                     color=Brand.blue,trackColor=Brand.sky)
+                Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                    HeroMiniStat(vm.selectedIds.size.toString(),"Selected",Modifier.weight(1f))
+                    HeroMiniStat(vm.batch.readyCount.toString(),"Ready",Modifier.weight(1f))
+                    HeroMiniStat(vm.batch.expiredCount.toString(),"Expired",Modifier.weight(1f))
+                }
+                Text("Employers: ${vm.batch.uniqueEmployers}/20 · Incomplete Live: ${vm.batch.incomplete} · Already published: ${vm.publishedReviewIds.size}",fontSize=12.sp,color=Brand.gray)
                 TabRow(selectedTabIndex=selected,containerColor=Color.Transparent,
                     contentColor=Brand.blue) {
                     listOf("Priority 10","Backup 10").forEachIndexed {index,name->
@@ -307,38 +313,52 @@ private fun ProReview(vm:AdminViewModel) {
         }
         itemsIndexed(candidates,key={_,item->item.id}) {i,job->
             ProCandidateCard(job,i,selected==0,vm.batch.backup,vm.companyLogos,vm.busy,
-                decide={vm.decide(job.id,it)},replace={vm.swap(job.id,it)})
+                chosen=job.id in vm.selectedIds,published=job.id in vm.publishedReviewIds,
+                decide={vm.decide(job.id,it)},replace={vm.swap(job.id,it)},toggle={vm.toggleSelected(job.id,it)})
         }
-        if(selected==0&&vm.batch.id.isNotBlank()) item {
+        if(vm.batch.id.isNotBlank()) item {
             ProCard {
-                SectionHead(Icons.Default.RocketLaunch,"Publish approved batch",
-                    "Ten jobs, ten distinct employers",Brand.green)
-                Text("Publish exactly 10 verified Live jobs from 10 distinct employers. Each job must have complete official details.",
+                SectionHead(Icons.Default.RocketLaunch,"Publish selected jobs",
+                    "1–10 distinct verified Live employers · either tab",Brand.green)
+                Text("No mandatory category quota. Select complete verified Live jobs on either tab; publication requires the exact employer URL.",
                     fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                if(!vm.batch.ready) {
-                    vm.batch.publishBlockers.take(6).forEach { reason ->
+                if(!vm.canPublish) {
+                    vm.selectedBlockers.take(6).forEach { reason ->
                         Text("• " + reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
                     }
-                    if(vm.batch.publishBlockers.size>6) {
-                        Text("And " + (vm.batch.publishBlockers.size-6) + " more checks pending.",
+                    if(vm.selectedBlockers.size>6) {
+                        Text("And " + (vm.selectedBlockers.size-6) + " more checks pending.",
                             fontSize=11.sp,color=Brand.gray)
                     }
                 }
-                Button(onClick={confirm=true},enabled=vm.batch.ready&&!vm.busy,
+                Button(onClick={confirm=true},enabled=vm.canPublish&&!vm.busy,
                     modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
                     Icon(Icons.Default.Send,null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Approve and publish selected jobs")
+                    Text("Publish ${vm.selectedIds.size} selected job(s)")
                 }
-                ProPill(if(vm.batch.ready)"Ready for your approval" else "Review and content checks pending",
-                    if(vm.batch.ready)Brand.green else Brand.amber)
-                Text("Website deployment and Telegram delivery are tracked separately.",
-                    color=Brand.gray,fontSize=11.sp)
+                ProPill(if(vm.canPublish)"Ready for publishing" else "Review and content checks pending",
+                    if(vm.canPublish)Brand.green else Brand.amber)
+                Text("GitHub acceptance ≠ website deployment ≠ Telegram delivery.",color=Brand.gray,fontSize=11.sp)
+                OutlinedButton(onClick=vm::refreshPublishingStatus,enabled=!vm.busy,
+                    modifier=Modifier.fillMaxWidth()) { Text("Refresh publishing tracker") }
+                val progress=vm.publishingProgress
+                Text("GitHub workflow: "+(progress.optJSONObject("workflow")?.optString("conclusion")?.takeIf { it.isNotBlank() }
+                    ?:progress.optJSONObject("workflow")?.optString("state").orEmpty())+
+                    " · Website: "+progress.optInt("publishedCount")+
+                    " · Telegram sent: "+progress.optInt("telegramDelivered"),fontSize=12.sp,color=Brand.gray)
+                val stages=progress.optJSONArray("stages")
+                for(i in 0 until (stages?.length() ?: 0)) {
+                    val stage=stages?.optJSONObject(i) ?: continue
+                    Text(stage.optString("company")+" · Site "+stage.optString("website")+
+                        " · Vercel "+stage.optString("vercel")+
+                        " · Telegram "+stage.optString("telegram"),fontSize=11.sp,color=Brand.gray)
+                }
             }
         }
     }
     if(confirm) AlertDialog(onDismissRequest={confirm=false},
-        title={Text("Publish 10 verified jobs?",fontWeight=FontWeight.Black)},
+        title={Text("Publish ${vm.selectedIds.size} verified jobs?",fontWeight=FontWeight.Black)},
         text={Text("This sends your reviewed jobs to the existing publishing pipeline. The app will not claim Telegram delivery until separately confirmed.")},
         confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Publish jobs")}},
         dismissButton={TextButton(onClick={confirm=false}){Text("Cancel")}})
@@ -347,10 +367,10 @@ private fun ProReview(vm:AdminViewModel) {
 @Composable
 private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
     backups:List<Candidate>,logos:Map<String,CompanyLogoSource>,busy:Boolean,
-    decide:(String)->Unit,replace:(String)->Unit) {
+    chosen:Boolean,published:Boolean,decide:(String)->Unit,replace:(String)->Unit,toggle:(Boolean)->Unit) {
     var expanded by remember {mutableStateOf(false)}
     val ctx=LocalContext.current
-    val replacements=backups.filter{it.group==c.group&&it.decision=="live"&&it.company!=c.company}
+    val replacements=backups.filter{it.approved&&employerKey(it.company)!=employerKey(c.company)}
     val category=when(c.group) {"nonit"->"Non-IT";"training"->"Internship / Apprentice";else->"Fresher IT"}
     val decisionColor=when(c.decision) {
         "live"->Brand.green;"expired"->Brand.red;"unsure"->Brand.amber;else->Brand.blue
@@ -394,6 +414,10 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
                         fontSize=10.sp,color=color,maxLines=1)
                 }
             }
+        }
+        Row(verticalAlignment=Alignment.CenterVertically) {
+            Checkbox(checked=chosen,onCheckedChange=toggle,enabled=!busy&&c.approved&&!published)
+            Text(if(published)"Already published" else if(c.approved)"Select for publishing" else "Mark complete job Live to select",fontSize=12.sp,color=Brand.navy)
         }
         if(priority) Box {
             OutlinedButton(onClick={expanded=true},enabled=replacements.isNotEmpty()&&!busy,

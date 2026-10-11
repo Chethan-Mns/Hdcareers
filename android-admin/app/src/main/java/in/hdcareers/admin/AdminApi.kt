@@ -75,15 +75,23 @@ class AdminApi {
     suspend fun swap(batch:String,priority:String,backup:String):DailyBatch =
         parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","swap")
             .put("batchId",batch).put("priorityId",priority).put("backupId",backup))))
-    suspend fun submit(batch:DailyBatch):String {
-        val jobs=JSONArray()
-        batch.priority.forEach { jobs.put(it.job ?: throw IOException("Missing verified job details")) }
-        val result=JSONObject(request("/api/admin/publish",JSONObject().put("jobs",jobs)))
+    suspend fun submit(batch:DailyBatch,selected:Set<String>):Pair<String,String> {
+        val ids=JSONArray()
+        selected.sorted().forEach { ids.put(it) }
+        val result=JSONObject(request("/api/admin/publish",JSONObject()
+            .put("batchId",batch.id).put("candidateIds",ids)))
         if(!result.optBoolean("queued")) throw IOException("Publisher did not accept the batch.")
-        return result.optString("message","Publishing requested. Check the deployment status.")
+        return result.optString("message","GitHub accepted the request; delivery is pending.") to
+            result.optString("requestId")
     }
-    suspend fun markSubmitted(batch:String):DailyBatch =
-        parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","submitted").put("batchId",batch))))
+    suspend fun markSubmitted(batch:String,selected:Set<String>,requestId:String):DailyBatch {
+        val ids=JSONArray()
+        selected.sorted().forEach { ids.put(it) }
+        return parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject()
+            .put("action","submitted").put("batchId",batch)
+            .put("candidateIds",ids).put("requestId",requestId))))
+    }
+    suspend fun publishProgress():JSONObject = JSONObject(request("/api/admin/publish"))
     suspend fun extractJob(url:String):JSONObject {
         val result=JSONObject(request("/api/admin/extract-job",JSONObject().put("url",url)))
         return result.optJSONObject("data") ?: throw IOException(result.optString("error","Job extraction failed."))

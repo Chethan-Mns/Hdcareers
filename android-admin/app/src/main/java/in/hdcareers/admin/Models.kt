@@ -10,37 +10,50 @@ data class Job(
 data class Candidate(
     val id: String, val company: String, val role: String, val location: String,
     val category: String, val apply: String, val experience: String, val decision: String,
-    val job: JSONObject?
+    val job: JSONObject?, val reviewedAt: String = ""
 ) {
+    val approved: Boolean get() = decision == "live" && reviewedAt.isNotBlank() && complete && apply == job?.optString("apply")
     val group: String get() = when(category.lowercase()) {
         "nonit" -> "nonit"; "internship", "apprenticeship" -> "training"; else -> "it"
     }
     val complete: Boolean get() = job?.let {
-        listOf("company","role","loc","elig","desc","apply").all { key -> it.optString(key).isNotBlank() } &&
+        listOf("company","role","loc","elig","desc","apply","sourceName").all { key -> it.optString(key).isNotBlank() } &&
             (it.optJSONArray("resp")?.length() ?: 0) > 0 && it.optString("status") == "active"
     } ?: false
 }
+fun employerKey(input:String):String {
+    val normalized=input.lowercase().replace("&"," and ")
+        .replace(Regex("\\b(pvt|private|ltd|limited|inc|llp|corp|corporation)\\b")," ")
+        .replace(Regex("[^a-z0-9]+")," ").trim().replace(Regex("\\s+")," ")
+    return mapOf("tcs" to "tata consultancy services","hcl technologies" to "hcltech",
+        "hcl" to "hcltech","ey" to "ernst young","ernst and young" to "ernst young",
+        "ibm" to "international business machines","pwc" to "pricewaterhousecoopers",
+        "ntt data" to "nttdata","deloitte usi" to "deloitte",
+        "google india" to "google","amazon india" to "amazon",
+        "cognizant technology solutions" to "cognizant")[normalized] ?: normalized
+}
 data class DailyBatch(val id: String, val status: String, val priority: List<Candidate>, val backup: List<Candidate>) {
-    val reviewed: Int get() = (priority + backup).count { it.decision in listOf("live","expired","unsure") }
-    val publishBlockers: List<String> get() {
-        val issues = mutableListOf<String>()
-        if (id.isBlank()) issues.add("The 9 AM batch has not been saved.")
-        if (status in listOf("submitted","published")) issues.add("The batch has already been submitted.")
-        if (priority.size != 10) issues.add("Exactly 10 priority jobs are required (" + priority.size + " saved).")
-        val duplicates = priority.groupBy { it.company.trim().lowercase() }
-            .filter { it.key.isNotBlank() && it.value.size > 1 }
-        duplicates.values.forEach { items ->
-            issues.add(items.first().company + " appears " + items.size + " times; replace duplicate employers.")
-        }
-        priority.filter { it.decision != "live" }.forEach {
-            issues.add(it.company + ": " + (it.decision.ifBlank { "unreviewed" }) + " — confirm Live or replace it.")
-        }
-        priority.filter { it.decision == "live" && !it.complete }.forEach {
-            issues.add(it.company + ": verified publishing details missing or job not active.")
-        }
+    val all:List<Candidate> get()=priority+backup
+    val reviewed:Int get()=all.count { it.decision in listOf("live","expired","unsure") }
+    val uniqueEmployers:Int get()=all.map { employerKey(it.company) }.filter { it.isNotBlank() }.distinct().size
+    val incomplete:Int get()=all.count { it.decision=="live"&&!it.approved }
+    val readyCount:Int get()=all.count { it.approved }
+    val expiredCount:Int get()=all.count { it.decision=="expired" }
+    fun selectedBlockers(ids:Set<String>,alreadyPublished:Set<String> = emptySet()):List<String> {
+        val issues=mutableListOf<String>()
+        if(id.isBlank())issues+="The 9 AM batch has not been saved."
+        if(status in listOf("submitted","published"))issues+="This batch was already submitted."
+        if(ids.size !in 1..10)issues+="Select 1 to 10 verified Live jobs."
+        val picked=all.filter { it.id in ids }
+        if(picked.size!=ids.size)issues+="A selected job is missing from the current review batch."
+        if(picked.any { !it.approved })issues+="Every selected job must be Live, complete and verified."
+        if(picked.any { it.id in alreadyPublished })issues+="A selected job has already been published."
+        if(picked.map { employerKey(it.company) }.distinct().size!=picked.size)
+            issues+="Select just one job per employer, including aliases."
         return issues
     }
-    val ready: Boolean get() = publishBlockers.isEmpty()
+    val publishBlockers:List<String> get()=selectedBlockers(emptySet())
+    val ready:Boolean get()=false
 }
 data class TrafficPoint(val date:String,val visitors:Int,val views:Int)
 data class Traffic(
@@ -67,7 +80,7 @@ fun parseCandidate(j: JSONObject): Candidate {
     fun string(field:String)=j.optString(field).ifBlank { detail?.optString(field).orEmpty() }
     return Candidate(j.optString("id"),string("company"),string("role"),string("loc"),
         string("cat").ifBlank { "it" }, string("apply"),string("expYears"),
-        j.optString("reviewedStatus"),detail)
+        j.optString("reviewedStatus"),detail,j.optString("reviewedAt"))
 }
 fun parseBatch(json: JSONObject): DailyBatch = DailyBatch(
     json.optString("batchId"),json.optString("status"),
