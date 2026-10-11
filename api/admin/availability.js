@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO="Chethan-Mns/Hdcareers";
 const DEFAULT_BASE="main";
@@ -92,6 +92,7 @@ export default async function handler(req,res){
         sha:file.sha,
         branch:base
       };
+      await auditMutation(req,"checker.trigger",WORKFLOW);
       const update=await github("/contents/"+TRIGGER_PATH,token,{
         method:"PUT",
         headers:{"content-type":"application/json"},
