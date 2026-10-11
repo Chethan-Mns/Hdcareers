@@ -546,7 +546,7 @@
       "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
       "cat": "it",
       "expYears": "New graduate",
-      "reviewedStatus": "live",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Cisco requisition content was discoverable, but freshness/current application availability could not be established conclusively; human review required.",
       "postedDate": null,
@@ -555,15 +555,13 @@
         "role": "Software Engineer – Network/Embedded/Application Development (New Grad)",
         "loc": "Bangalore, India",
         "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "New graduate",
         "sourceName": "Cisco Jobs",
-        "manualLiveVerifiedAt": "2026-10-11T05:49:14.513Z",
-        "browserVerifiedAt": "2026-10-11T05:49:14.513Z",
         "verifiedDate": "11 Oct 2026"
       },
-      "reviewedAt": "2026-10-11T05:49:14.513Z",
+      "reviewedAt": "2026-10-11T05:53:19.273Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
@@ -715,5 +713,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:53:01.742Z"
+  "updatedAt": "2026-10-11T05:53:19.273Z"
 }
