@@ -34,7 +34,7 @@ button:disabled{opacity:.55;cursor:wait}.actions{display:flex;gap:8px;flex-wrap:
 </nav></header>
 <main id="loading"><div class="panel">Verifying Owner access…</div></main>
 <main id="app" class="hidden">
- <section><h1>Team access</h1><p>Give each colleague a separate account. Job Editors can manage jobs, but cannot manage other users or access private analytics.</p></section>
+ <section><h1>Team access</h1><p>Give each colleague a separate account. Job Editors can manage jobs, and view traffic analytics, but cannot manage other users, passwords or security settings.</p></section>
  <div id="feedback" role="alert" aria-live="polite"></div>
  <div class="cols">
   <section class="panel"><h2>Add Job Editor</h2><p>Choose a unique username and a strong temporary password. Share the password privately; it is never stored in plaintext.</p>
@@ -48,7 +48,7 @@ button:disabled{opacity:.55;cursor:wait}.actions{display:flex;gap:8px;flex-wrap:
   </section>
   <section class="panel"><h2>Permissions</h2>
     <p><strong>Owner</strong> — all admin features, job publishing, analytics, team accounts, session revocation and audit logs.</p>
-    <p><strong>Job Editor</strong> — view/create/review/publish jobs, prepare daily batches and manually run the expired-job checker. No access to team accounts, account secrets, traffic analytics or security settings.</p>
+    <p><strong>Job Editor</strong> — view/create/review/publish jobs, prepare daily batches and manually run the expired-job checker. Can view traffic analytics. No access to team accounts, account secrets or security settings.</p>
     <p class="notice">Disabling an editor or revoking sessions takes effect across all devices on the next authenticated request. The Owner account is protected from team-level changes.</p>
   </section>
  </div>
