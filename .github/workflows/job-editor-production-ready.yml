@@ -20,9 +20,9 @@ jobs:
           node-version: '22'
       - name: Validate all admin server code syntax
         run: |
-          for file in lib/admin-auth.js lib/admin-store.js api/admin/*.js; do node --check "$file"; done
+          for file in lib/admin-auth.js lib/admin-store.js lib/admin-push-handler.js api/admin/*.js; do node --check "$file"; done
       - name: Run Owner and Job Editor RBAC security tests
-        run: node --test tests/multi-admin-rbac.test.mjs
+        run: node --test tests/multi-admin-rbac.test.mjs tests/android-push-config.test.mjs
       - name: Verify current HD Careers API and UI integrations preserved
         run: |
           node --input-type=module <<'JS'
