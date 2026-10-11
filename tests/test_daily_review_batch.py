@@ -15,7 +15,7 @@ def item(i,company=None,full=False):
          "apply":f"https://example.com/careers/req-{i}","status":"review"}
     if full:
         job.update(status="active",elig="Verified degree",desc="Verified employer information",
-                   resp=["Actual responsibility from listing"])
+                   resp=["Actual responsibility from listing"],sourceName="Official Careers")
     return {"id":f"{company}-REQ-{i}","company":company,"role":job["role"],
             "apply":job["apply"],"reviewedStatus":"unreviewed",
             "verificationReason":"Official exact requisition URL visited; source detail recorded",
