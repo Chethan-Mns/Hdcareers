@@ -656,7 +656,7 @@
       "apply": "https://pwc.wd3.myworkdayjobs.com/global_experienced_careers/job/IN-Senior-Associate-SAP-GR-Enterprise-Apps-SAP-Advisory--Bangalore_758555WD-1",
       "cat": "it",
       "expYears": "Not stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact PwC Workday requisition 758555WD was discovered, but rendered application availability was not confirmed; human review required.",
       "postedDate": null,
@@ -665,11 +665,13 @@
         "role": "Associate – HCM Payroll, Enterprise Apps SAP Advisory",
         "loc": "Bangalore, India",
         "apply": "https://pwc.wd3.myworkdayjobs.com/global_experienced_careers/job/IN-Senior-Associate-SAP-GR-Enterprise-Apps-SAP-Advisory--Bangalore_758555WD-1",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "Not stated",
         "sourceName": "PwC Workday"
-      }
+      },
+      "reviewedAt": "2026-10-11T05:54:07.064Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hcltech-158405",
@@ -718,5 +720,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:53:51.413Z"
+  "updatedAt": "2026-10-11T05:54:07.064Z"
 }
