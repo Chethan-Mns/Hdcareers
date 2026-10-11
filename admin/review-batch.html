@@ -14,7 +14,7 @@ header .heading{display:flex;align-items:center;justify-content:space-between;ga
 .brand{display:flex;gap:12px;align-items:center}.brand img{width:44px;height:44px;object-fit:contain;background:#fff;border-radius:12px;padding:4px}
 h1{margin:0;font-size:1.4rem}header p{margin:6px 0 0;color:#d7e8ff;font-size:.88rem}
 header a{color:white;text-decoration:none;font-size:.88rem;font-weight:700}
-main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .tile,.card,.banner{background:white;border:1px solid #e2e9f2;border-radius:19px;box-shadow:0 9px 28px #132b4409}
 .tile{padding:16px}.tile .value{font-size:1.75rem;font-weight:900;color:#09305e}.tile .label{font-size:.77rem;color:#687b90;margin-top:3px}
 .bar{height:7px;background:#e7eff9;border-radius:9px;overflow:hidden;margin-top:14px}.bar div{height:100%;background:#0f69df;transition:width .2s}
@@ -36,7 +36,7 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 .actions button.chosen.live{border-color:#16a36a;background:#e6f7ee;color:#117442}
 .actions button.chosen.expired{border-color:#d0394b;background:#fff0f0;color:#ae2540}
 .actions button.chosen.unsure{border-color:#e6ad42;background:#fff5e3;color:#8c5900}
-.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
+.selectline{display:flex;align-items:center;gap:10px;margin:12px 0 4px;padding:10px 12px;border:1px solid #cfdef0;border-radius:12px;background:#f5f9ff;font-size:.82rem;font-weight:750}.selectline input{accent-color:#0969da;width:18px;height:18px}.warning{background:#fff6e6;border-color:#f1d28d;color:#7a4c06}.tracking{display:grid;gap:10px;margin-top:14px}.stage{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #e3eaf4;background:#fff;border-radius:12px;padding:12px;font-size:.79rem}.stage small{display:block;color:#64748b;margin-top:5px}.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
 .footer{margin-top:18px;padding:20px;display:flex;justify-content:space-between;gap:18px;align-items:center}
 .footer p{font-size:.84rem;color:#63758a;max-width:600px}.message{margin:15px 0;padding:13px;border-radius:12px;background:#ebf3ff;color:#164678;font-size:.85rem;display:none}
 .banner{padding:34px 22px;text-align:center;color:#59708d}.banner h2{color:#123d76}
@@ -44,7 +44,7 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 </style>
 </head>
 <body>
-<header><div class="heading"><div class="brand"><img src="/assets/hd-careers-logo.png" alt=""><div><h1>Daily Review Center</h1><p>20 jobs · 10 employers · Your approval controls publishing</p></div></div><a href="/admin/">← Back to Admin</a></div></header>
+<header><div class="heading"><div class="brand"><img src="/assets/hd-careers-logo.png" alt=""><div><h1>Daily Review Center</h1><p>10 Priority + 10 Backup · 20 different employers · Select 1–10 verified Live jobs</p></div></div><a href="/admin/">← Back to Admin</a></div></header>
 <main>
 <div id="message" class="message" role="status"></div>
 <div id="batchInfo" class="status-note" role="status">Checking 9 AM shortlist…</div>
@@ -53,32 +53,56 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 <div class="tile"><div class="value" id="backupCount">0</div><div class="label">Backup jobs</div></div>
 <div class="tile"><div class="value" id="reviewedCount">0</div><div class="label">Reviewed jobs</div></div>
 <div class="tile"><div class="value" id="liveCount">0</div><div class="label">Verified Live</div></div>
+<div class="tile"><div class="value" id="selectedCount">0</div><div class="label">Selected to publish (max 10)</div></div>
+<div class="tile"><div class="value" id="readyCount">0</div><div class="label">Ready and complete</div></div>
+<div class="tile"><div class="value" id="incompleteCount">0</div><div class="label">Incomplete Live</div></div>
+<div class="tile"><div class="value" id="expiredCount">0</div><div class="label">Expired</div></div>
+<div class="tile"><div class="value" id="publishedCount">0</div><div class="label">Already published</div></div>
 </section>
 <div class="bar"><div id="progress" style="width:0"></div></div>
 <div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority 10</button><button id="backupTab" onclick="switchTab('backup')">Backup 10</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
+<div id="employerWarning" class="status-note warning" hidden></div>
 <div id="cards" class="grid"></div>
-<section id="footer" class="card footer" hidden><div><strong>Publish reviewed jobs</strong><p>Ten different employers. Only jobs manually confirmed Live, with complete descriptions, are eligible. The website and Telegram status must still be checked after submission.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish priority 10</button></section>
+<section id="footer" class="card footer" hidden><div><strong>Publish selected Live jobs</strong><p>Choose 1–10 complete, verified Live jobs from either list. No category quota. One employer per selection. GitHub, deployment and Telegram delivery will be tracked separately.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish selected jobs</button></section>
+<section class="card" style="margin-top:18px;padding:20px"><strong>Publishing progress</strong><p class="meta">Updated automatically every 20 seconds after submission. A queued workflow does not mean the site or Telegram is live.</p><div class="toolbar"><button class="secondary" onclick="refreshTracker()">↻ Check publishing status</button><span id="trackSummary" class="meta" aria-live="polite">No submission to track.</span></div><div id="tracking" class="tracking"></div></section>
 </main>
 <script>
 let batch=null;
 let tab="priority";
 let busy=false;
+const selected=new Set();
+let publishStatus=null;
+let trackingTimer=null;
+const aliases={"tcs":"tata consultancy services","hcl technologies":"hcltech","hcl":"hcltech","ey":"ernst young","ernst and young":"ernst young","ibm":"international business machines","pwc":"pricewaterhousecoopers","ntt data":"nttdata","deloitte usi":"deloitte","google india":"google","amazon india":"amazon","cognizant technology solutions":"cognizant"};
+function employerName(c){const name=String(c?.company||c?.job?.company||"").toLowerCase().replace(/&/g," and ").replace(/\b(?:pvt|private|ltd|limited|inc|llp|corp|corporation)\b/g," ").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");return aliases[name]||name}
 const el=id=>document.getElementById(id);
 function notify(message){el("message").style.display="block";el("message").textContent=message}
 function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
 function bucket(j){const c=String(j.cat||j.job?.cat||"it").toLowerCase();return c==="nonit"?"nonit":(c==="internship"||c==="apprenticeship"?"training":"it")}
 function cat(j){const b=bucket(j);return b==="nonit"?"Non-IT":b==="training"?"Internship / Apprenticeship":"Fresher IT"}
-function isComplete(c){const j=c.job||{};return !!(j.company&&j.role&&j.loc&&j.elig&&j.desc&&j.apply&&j.status==="active"&&Array.isArray(j.resp)&&j.resp.length)}
-function ready(){return batch&&batch.priority.length===10&&new Set(batch.priority.map(j=>String(j.company||j.job?.company||"").trim().toLowerCase())).size===10&&batch.priority.every(x=>x.reviewedStatus==="live"&&isComplete(x))&&batch.status!=="submitted"&&batch.status!=="published"}
+function isComplete(c){const j=c.job||{};return !!(j.company&&j.role&&j.loc&&j.elig&&j.desc&&j.sourceName&&/^https:\/\//i.test(j.apply||"")&&j.status==="active"&&Array.isArray(j.resp)&&j.resp.length)}
+function isReady(c){return c.reviewedStatus==="live"&&!!c.reviewedAt&&isComplete(c)&&employerName(c)===employerName({company:c.job.company})&&(c.apply||c.job.apply)===c.job.apply}
+function chosen(){return [...selected].map(id=>[...(batch?.priority||[]),...(batch?.backup||[])].find(x=>String(x.id)===id)).filter(Boolean)}
+function ready(){const a=chosen();return batch&&a.length>=1&&a.length<=10&&a.every(isReady)&&new Set(a.map(employerName)).size===a.length&&!["submitted","published"].includes(batch.status)}
+function toggleCandidate(item,checked){if(checked){if(selected.size>=10){notify("Maximum 10 jobs per publication.");return}const employer=employerName(item);if(chosen().some(x=>employerName(x)===employer&&x.id!==item.id)){notify("Only one job per employer, including aliases.");return}if(!isReady(item)){notify("Mark this complete job Live first.");return}selected.add(String(item.id))}else selected.delete(String(item.id));draw()}
 async function api(method,body){const r=await fetch("/api/admin/daily-batch",{method,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||("HTTP "+r.status));return data}
-async function load(){try{batch=await api("GET");draw()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
+async function load(){try{batch=await api("GET");const known=new Set([...batch.priority,...batch.backup].map(x=>String(x.id)));for(const id of [...selected])if(!known.has(id))selected.delete(id);draw();if(["submitted","published"].includes(batch.status))refreshTracker()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
 function switchTab(next){tab=next;draw()}
-async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
+async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});if(body.action==="review"){const item=[...batch.priority,...batch.backup].find(x=>String(x.id)===String(body.candidateId));if(body.decision==="live"&&item&&isReady(item)&&selected.size<10&&!chosen().some(x=>employerName(x)===employerName(item)&&x.id!==item.id))selected.add(String(item.id));if(body.decision!=="live")selected.delete(String(body.candidateId))}draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
 function draw(){
  if(!batch)return;
  const all=[...batch.priority,...batch.backup],checked=all.filter(j=>j.reviewedStatus&&!["unreviewed"].includes(j.reviewedStatus)).length;
  el("priorityCount").textContent=batch.priority.length;el("backupCount").textContent=batch.backup.length;
  el("reviewedCount").textContent=checked;el("liveCount").textContent=all.filter(j=>j.reviewedStatus==="live").length;
+ el("selectedCount").textContent=selected.size;el("readyCount").textContent=all.filter(isReady).length;
+ el("incompleteCount").textContent=all.filter(x=>x.reviewedStatus==="live"&&!isReady(x)).length;
+ el("expiredCount").textContent=all.filter(x=>x.reviewedStatus==="expired").length;
+ el("publishedCount").textContent=publishStatus?.publishedCount||0;
+ const seen=new Map(),dupes=[];
+ for(const x of all){const name=employerName(x);if(seen.has(name))dupes.push(x.company+" duplicates "+seen.get(name));else seen.set(name,x.company)}
+ const warning=el("employerWarning");warning.hidden=all.length===20&&dupes.length===0;
+ warning.textContent="Discovery quality: "+all.length+"/20 jobs, "+seen.size+"/20 distinct employers. "+(dupes.length?"Duplicates: "+dupes.join("; ")+". ":"")+"Please replace duplicates with verified jobs from different employers; existing review decisions are preserved.";
+
  el("progress").style.width=(all.length?checked/all.length*100:0)+"%";
  el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");
  const root=el("cards");root.replaceChildren();
@@ -96,8 +120,9 @@ function draw(){
   card.append(evidence);
   const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
   const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
+  const pick=node("label","selectline"),check=node("input");check.type="checkbox";check.checked=selected.has(String(item.id));check.disabled=busy||!isReady(item)||["submitted","published"].includes(batch.status);check.onchange=()=>toggleCandidate(item,check.checked);pick.append(check,node("span",null,check.disabled&&item.reviewedStatus!=="live"?"Mark Live to enable publishing":"Select this job for publishing"));card.append(pick);
   if(tab==="priority"){
-   const options=batch.backup.filter(x=>x.reviewedStatus==="live"&&bucket(x)===bucket(item)&&!batch.priority.some(p=>p.id!==item.id&&(p.company||"").toLowerCase()===(x.company||"").toLowerCase()));
+   const options=batch.backup.filter(x=>x.reviewedStatus==="live"&&isReady(x)&&!batch.priority.some(p=>p.id!==item.id&&employerName(p)===employerName(x)));
    const row=node("div","replace"),select=node("select");select.append(new Option("Replace with a verified backup…",""));
    for(const opt of options)select.append(new Option(opt.company+" — "+opt.role,opt.id));
    select.disabled=!options.length||busy;const b=node("button","secondary","Replace");b.disabled=!options.length||busy;b.onclick=()=>{if(select.value)modify({action:"swap",priorityId:item.id,backupId:select.value})};row.append(select,b);card.append(row)
@@ -105,21 +130,46 @@ function draw(){
   if(!isComplete(item))card.append(node("p","meta","Full job content is incomplete or not recorded active; you may review this candidate, but publishing is blocked until verified details are completed."));
   root.append(card)
  }
- el("footer").hidden=tab!=="priority";el("publishBtn").disabled=!ready()||busy;el("publishBtn").textContent=batch.status==="submitted"?"Submitted":batch.status==="published"?"Published":"Publish priority 10";
+ el("footer").hidden=false;el("publishBtn").disabled=!ready()||busy;el("publishBtn").textContent=batch.status==="submitted"?"Submitted":batch.status==="published"?"Published":("Publish "+selected.size+" selected job"+(selected.size===1?"":"s"));
 }
 async function publish(){
  if(!ready()||busy)return;
- if(!confirm("Submit all ten reviewed jobs for website deployment and Telegram publishing?"))return;
+ const ids=chosen().map(x=>String(x.id));
+ if(!confirm("Publish "+ids.length+" verified Live job(s) from distinct employers to the website, followed by Telegram?"))return;
  busy=true;draw();
  try{
-  const jobs=batch.priority.map(x=>x.job);
-  const r=await fetch("/api/admin/publish",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({jobs})});
+  const r=await fetch("/api/admin/publish",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({batchId:batch.batchId,candidateIds:ids})});
   const result=await r.json().catch(()=>({}));
   if(!r.ok)throw Error(result.error||("Publish request HTTP "+r.status));
-  notify(result.message||"Publishing request accepted; check deployment and Telegram delivery.");
-  try{batch=await api("POST",{action:"submitted",batchId:batch.batchId})}catch(e){notify("Publish request accepted, but batch status did not save: "+e.message+". Check GitHub before retrying.")}
+  notify(result.message||"GitHub accepted the request. Deployment and Telegram are still pending.");
+  try{batch=await api("POST",{action:"submitted",batchId:batch.batchId,candidateIds:ids,requestId:result.requestId})}
+  catch(e){notify("GitHub accepted the request, but batch status did not save: "+e.message+". Do not publish again; check GitHub and Telegram first.")}
+  await refreshTracker();
  }catch(e){notify(e.message)}finally{busy=false;draw()}
 }
+async function refreshTracker(){
+ if(!batch?.batchId)return;
+ try{
+  const r=await fetch("/api/admin/publish",{credentials:"same-origin",cache:"no-store"});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok)throw Error(data.error||"Tracker unavailable");
+  if(data.batchId!==batch.batchId)return;
+  publishStatus=data;
+  el("trackSummary").textContent="Website "+data.publishedCount+"/"+data.stages.length+" · Telegram "+data.telegramDelivered+"/"+data.stages.length+" · Workflow "+(data.workflow.conclusion||data.workflow.state)+" · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
+  const root=el("tracking");root.replaceChildren();
+  for(const s of data.stages){
+   const row=node("div","stage"),left=node("div"),right=node("div");
+   left.append(node("strong",null,s.company+" — "+s.role),node("small",null,"GitHub: "+s.github+" · Site: "+s.website+" · Vercel: "+s.vercel+" · Telegram: "+s.telegram));
+   if(s.note)left.append(node("small",null,s.note));
+   right.append(node("span","pill "+(s.telegram==="delivered"?"live":s.telegram==="failed"||s.telegram==="uncertain"?"expired":"unsure"),s.telegram==="delivered"?"Sent":s.telegram));
+   row.append(left,right);root.append(row)
+  }
+  drawCountsOnly();
+ }catch(e){el("trackSummary").textContent="Tracker unavailable: "+e.message}
+ if(!trackingTimer)trackingTimer=setInterval(()=>{if(["submitted","published"].includes(batch?.status))refreshTracker()},20000);
+}
+function drawCountsOnly(){el("publishedCount").textContent=publishStatus?.publishedCount||0}
+
 load();
 </script>
 </body>
