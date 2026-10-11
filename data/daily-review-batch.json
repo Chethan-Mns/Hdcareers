@@ -115,7 +115,7 @@
       "apply": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
       "cat": "it",
       "expYears": "Graduate / early career",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Arm Careers page was live on 11 Oct 2026 with Job ID 2026-19179, date posted 6 Oct 2026, responsibilities, desired skills and Apply control.",
       "postedDate": "2026-10-06",
@@ -142,8 +142,8 @@
           "Collaborate with software engineers and circuit designers."
         ],
         "apply": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
-        "status": "review",
-        "verifiedDate": "2026-10-11",
+        "status": "active",
+        "verifiedDate": "11 Oct 2026",
         "sourceName": "Arm Careers",
         "skills": [
           "Tcl",
@@ -155,8 +155,12 @@
         "who": [
           "Graduate software engineers"
         ],
-        "workMode": "Not specified"
-      }
+        "workMode": "Not specified",
+        "manualLiveVerifiedAt": "2026-10-11T05:48:49.421Z",
+        "browserVerifiedAt": "2026-10-11T05:48:49.421Z"
+      },
+      "reviewedAt": "2026-10-11T05:48:49.421Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wipro-207151",
@@ -691,5 +695,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:48:34.385Z"
+  "updatedAt": "2026-10-11T05:48:49.421Z"
 }
