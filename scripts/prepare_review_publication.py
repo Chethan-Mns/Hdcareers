@@ -82,6 +82,11 @@ def prepare(request_path: Path, output_path: Path) -> dict:
         # This attaches the exact official URL to the earlier recorded HUMAN
         # decision, without changing the timestamp or inventing any new review.
         approved = dict(job)
+        category = str(approved.get("cat") or "").strip().lower()
+        category_aliases = {"non-it": "nonit", "non it": "nonit", "it & software": "it"}
+        approved["cat"] = category_aliases.get(category, category)
+        if approved["cat"] not in {"it", "nonit", "internship", "apprenticeship", "campus", "remote", "walkin", "experienced", "govt"}:
+            raise ValueError(f"Unsupported publishing category for {cid}: {category}")
         # Discovery stores some reviewed jobs' logo as an empty string. The
         # existing generator requires a [initials, hex-colour] fallback. This
         # doesn't claim to be an employer's official logo; approved logo maps
