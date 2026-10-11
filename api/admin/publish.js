@@ -163,6 +163,7 @@ export default async function handler(req,res){
 
   if(!sameOrigin(req))return res.status(403).json({error:"Invalid request origin."});
   if(!requireAdmin(req,res))return;
+  if(process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Preview is read-only; website and Telegram publishing is disabled."});
 
   const token=process.env.GITHUB_PUBLISH_TOKEN;
   if(!token)return res.status(503).json({error:"GITHUB_PUBLISH_TOKEN is not configured in Vercel yet."});
