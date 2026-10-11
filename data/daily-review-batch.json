@@ -389,7 +389,7 @@
       "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
       "cat": "it",
       "expYears": "Student internship",
-      "reviewedStatus": "expired",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact NXP Workday page shows requisition R-10066434, locations and 31 Dec 2026 deadline, but the application route needs manual confirmation before approval.",
       "postedDate": null,
@@ -398,13 +398,15 @@
         "role": "Technical Internship 2027",
         "loc": "Bangalore / Noida, India",
         "apply": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-        "status": "expired",
+        "status": "review",
         "cat": "it",
         "expYears": "Student internship",
         "sourceName": "NXP Workday",
-        "verifiedDate": "11 Oct 2026"
+        "verifiedDate": "11 Oct 2026",
+        "manualLiveVerifiedAt": "2026-10-11T06:04:38.767Z",
+        "browserVerifiedAt": "2026-10-11T06:04:38.767Z"
       },
-      "reviewedAt": "2026-10-11T06:04:32.124Z",
+      "reviewedAt": "2026-10-11T06:04:38.767Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
@@ -737,5 +739,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-11T06:04:32.124Z"
+  "updatedAt": "2026-10-11T06:04:38.794Z"
 }
