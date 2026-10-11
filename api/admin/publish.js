@@ -1,4 +1,4 @@
-import {requireAdmin} from "../../lib/admin-auth.js";
+import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO = "Chethan-Mns/Hdcareers";
 const DEFAULT_BASE = "main";
@@ -204,6 +204,7 @@ export default async function handler(req,res){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
     }
 
+    await auditMutation(req,"jobs.publish",incoming.map(j=>j.company+" - "+j.role).join("; ").slice(0,150));
     await github("/dispatches",token,{
       method:"POST",
       headers:{"content-type":"application/json"},
