@@ -417,7 +417,7 @@
       "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
       "cat": "it",
       "expYears": "Campus hire",
-      "reviewedStatus": "live",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Employer Workday page identified requisition 3078323, but the page is a JavaScript shell to the checker and current open-application state requires human review.",
       "postedDate": null,
@@ -426,15 +426,13 @@
         "role": "2026 Campus Hire – Associate Engineer, Hardware",
         "loc": "India",
         "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "Campus hire",
         "sourceName": "Qualcomm Workday",
-        "manualLiveVerifiedAt": "2026-10-11T05:49:18.466Z",
-        "browserVerifiedAt": "2026-10-11T05:49:18.466Z",
         "verifiedDate": "11 Oct 2026"
       },
-      "reviewedAt": "2026-10-11T05:49:18.466Z",
+      "reviewedAt": "2026-10-11T05:57:42.487Z",
       "reviewedBy": "HD Careers Admin"
     }
   ],
@@ -736,5 +734,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-11T05:56:46.398Z"
+  "updatedAt": "2026-10-11T05:57:42.487Z"
 }
