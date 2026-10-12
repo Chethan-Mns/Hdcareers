@@ -19,7 +19,6 @@ from urllib.parse import urlencode, urljoin, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from urllib.robotparser import RobotFileParser
 
-from discovery_v3_shadow import classify_exact
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENT = "HDCareersShadowResearch/1.0"
@@ -56,11 +55,14 @@ class ListingHTML(HTMLParser):
         self.visible = []
         self._current = None
         self._script = 0
+        self.canonical = ""
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag in ("script", "style"):
             self._script += 1
+        if tag == "link" and "canonical" in str(attrs.get("rel", "")).lower():
+            self.canonical = attrs.get("href", "")
         if tag == "a":
             self._current = {"url": attrs.get("href", ""), "text": []}
 
@@ -137,6 +139,38 @@ def parse_page(company, html, source, expected_page=0):
                 "jobs": list(unique.values()), "total": total, "pages": pages}
     return {"valid": True, "reason": "Exact listing count and page bounds match",
             "jobs": list(unique.values()), "total": total, "pages": pages}
+
+
+def verify_exact_listing_job(html_body, job):
+    """For SuccessFactors, URL listing ID differs from the visible requisition ID.
+
+    Require three separate signals: exact canonical, title visible, and an
+    actual Apply control on the exact employer page. Never trust status=200.
+    """
+    parser = ListingHTML()
+    parser.feed(html_body)
+    canonical = normalized_url(urljoin(job["jobUrl"], parser.canonical)) if parser.canonical else ""
+    if canonical != job["jobUrl"]:
+        return {"state":"unconfirmed", "reason":"Canonical URL did not match exact official listing",
+                "evidence":[]}
+    normalized_text = " ".join(re.findall(r"[a-z0-9]+",
+        " ".join(parser.visible).lower()))
+    expected_title = " ".join(re.findall(r"[a-z0-9]+", job["title"].lower()))
+    title_match = bool(expected_title and expected_title in normalized_text)
+    has_apply = any("apply" in link["text"].casefold() and
+                    link["url"].strip() and link["url"].strip() not in ("#", "javascript:void(0)")
+                    for link in parser.links)
+    # Some SuccessFactors Apply buttons are form actions instead of links.
+    has_apply = has_apply or bool(re.search(
+        r"<(?:button|input)\\b[^>]*(?:apply now|apply for this job)",
+        html_body, re.I))
+    evidence = [k for k,flag in (("canonical-match", bool(canonical)),
+                ("title-match", title_match), ("apply-control", has_apply)) if flag]
+    if title_match and has_apply:
+        return {"state":"live","reason":"Exact canonical job, title and Apply control confirmed",
+                "evidence":evidence}
+    return {"state":"unconfirmed","reason":"Title or application control not confirmed",
+            "evidence":evidence}
 
 
 def listing_url(company, index):
@@ -278,8 +312,7 @@ def process(scans, published, fetcher, verify_new=3, pause=0.5):
         response = fetcher.get(row["jobUrl"], company)
         verdict = {"state": "unconfirmed", "reason": response.get("reason","")}
         if response["status"] == "ok":
-            verdict = classify_exact(response["body"], row["jobUrl"],
-                                     row["listingUrlId"], row["title"])
+            verdict = verify_exact_listing_job(response["body"], row)
         checked.append(dict(row, **verdict))
         if pause:
             time.sleep(pause)
