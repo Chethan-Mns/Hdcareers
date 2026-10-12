@@ -173,7 +173,7 @@
       "apply": "https://ingrammicro.wd5.myworkdayjobs.com/IngramMicro/job/Mumbai-India/Graduate-Engineer-Trainee_R-115589",
       "cat": "it",
       "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Ingram Micro Workday result contains requisition R-115589 and 2026 graduate criteria; today’s exact page was a blank Workday shell.",
       "postedDate": null,
@@ -182,7 +182,7 @@
         "role": "Graduate Engineer Trainee",
         "loc": "Mumbai / Chennai, India",
         "apply": "https://ingrammicro.wd5.myworkdayjobs.com/IngramMicro/job/Mumbai-India/Graduate-Engineer-Trainee_R-115589",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "2026 graduate",
         "sourceName": "Ingram Micro Careers",
@@ -194,7 +194,9 @@
           "Web technologies"
         ],
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:08:26.595Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "gehc-r4043087",
@@ -620,5 +622,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:08:12.680Z"
+  "updatedAt": "2026-10-12T04:08:26.595Z"
 }
