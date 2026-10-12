@@ -27,7 +27,7 @@ def inspect_history(reports, now=None):
     chronological = sorted(reports, key=lambda r: timestamp(r["checkedAt"]))
     output = {"mode": "shadow_gate", "evaluatedAt": now.isoformat(),
               "runs": len(chronological), "employers": {},
-              "publicationCandidates": [], "expiryDecisions": [],
+              "publicationCandidates": [], "verifiedLeads": [], "expiryDecisions": [],
               "safeToEnableAutomaticPublishing": False}
 
     companies = sorted({scan["employer"] for r in chronological
@@ -94,17 +94,17 @@ def inspect_history(reports, now=None):
             continue
         if candidate.get("state") != "live" or not REQUIRED_EVIDENCE.issubset(evidence):
             continue
-        # Incomplete scopes can yield leads; source feeds must pass the complete
-        # scan gate before unattended publishing, even with verified exact pages.
-        if output["employers"].get(company, {}).get("status") != "eligible_for_further_checks":
-            continue
         if not url.startswith("https://"):
             continue
-        output["publicationCandidates"].append({
-            "company": company, "title": candidate.get("title"),
-            "url": url, "evidence": sorted(evidence),
-            "action": "prepare_source_grounded_draft_then_reverify",
-        })
+        lead={"company":company,"title":candidate.get("title"),
+              "url":url,"evidence":sorted(evidence),
+              "action":"prepare_source_grounded_draft_then_reverify"}
+        # Partial listing snapshots can generate individually verified leads.
+        # They NEVER justify expiry decisions, and cannot independently enable
+        # the unattended 9 AM publishing cutover.
+        output["verifiedLeads"].append(lead)
+        if output["employers"].get(company, {}).get("status") == "eligible_for_further_checks":
+            output["publicationCandidates"].append(lead)
 
     # Other release gates (complete drafts, independent current-source verify,
     # retries, website and Telegram delivery) are not implemented by the
@@ -131,6 +131,7 @@ def main():
     print(json.dumps({"runs": result["runs"],
                       "employers": result["employers"],
                       "candidates": len(result["publicationCandidates"]),
+                      "verifiedLeads": len(result["verifiedLeads"]),
                       "expiryReviewOnly": len(result["expiryDecisions"]),
                       "autoPublishingEnabled": result["safeToEnableAutomaticPublishing"]},
                      indent=2))
