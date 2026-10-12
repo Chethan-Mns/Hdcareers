@@ -7,6 +7,9 @@ on:
       - scripts/discovery_v3_shadow.py
       - tests/test_discovery_v3_full_list.py
       - .github/workflows/discovery-v3-full-list-shadow.yml
+  schedule:
+    # Read-only shadow at approximately 08:30 IST; no publishing.
+    - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
       max_pages:
@@ -19,6 +22,9 @@ on:
         default: "3"
 permissions:
   contents: read
+concurrency:
+  group: hd-v3-discovery-shadow
+  cancel-in-progress: false
 jobs:
   discover:
     runs-on: ubuntu-latest
@@ -34,8 +40,8 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_discovery_v3_full_list.py' -v
       - name: Read-only current employer discovery
         env:
-          MAX_PAGES: ${{ inputs.max_pages || '2' }}
-          VERIFY_NEW: ${{ inputs.verify_new || '3' }}
+          MAX_PAGES: ${{ inputs.max_pages || (github.event_name == 'schedule' && '6' || '2') }}
+          VERIFY_NEW: ${{ inputs.verify_new || (github.event_name == 'schedule' && '4' || '3') }}
         run: |
           python3 scripts/discovery_v3_full_list.py --max-pages "$MAX_PAGES" --verify-new "$VERIFY_NEW" --output discovery-v3-full-list-report.json
       - name: Validate shadow report fail-closed contract
