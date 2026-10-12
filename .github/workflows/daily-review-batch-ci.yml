@@ -44,6 +44,9 @@ jobs:
       - name: Validate staged-review data and schema tests
         run: |
           python3 scripts/validate_daily_review_batch.py
+          python3 -m py_compile scripts/prepare_owner_approved_ten_20261012.py
+          python3 scripts/prepare_owner_approved_ten_20261012.py /tmp/hd-10-preflight.json
+          python3 -c 'import json; p=json.load(open("/tmp/hd-10-preflight.json")); a=p["client_payload"]["jobs"]; assert len(a)==10 and len({v["apply"] for v in a})==10; assert all(v["manualLiveVerifiedUrl"]==v["apply"] and len(v["resp"])>0 for v in a); print("Ten verified-content drafts pass preflight")'
           python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
           python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
       - name: Validate API and browser scripts
