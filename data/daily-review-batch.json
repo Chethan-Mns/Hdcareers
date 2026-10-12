@@ -237,7 +237,7 @@
       "apply": "https://jj.wd5.myworkdayjobs.com/JJ/job/PENJERLA-Telangana-India/JJT-Intern_R-100745-1",
       "cat": "it",
       "expYears": "Technology internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official J&J Workday result identifies R-100745 and a technology internship, but today’s exact page was a blank Workday shell.",
       "postedDate": null,
@@ -246,14 +246,16 @@
         "role": "JJT Intern",
         "loc": "Penjerla, Telangana, India",
         "apply": "https://jj.wd5.myworkdayjobs.com/JJ/job/PENJERLA-Telangana-India/JJT-Intern_R-100745-1",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "Technology internship",
         "sourceName": "Johnson & Johnson Careers",
         "elig": "Bachelor’s or Master’s attained between June 2026 and June 2027; GPA and other criteria are stated on the official listing.",
         "desc": "Technology internship covering product management, data analytics and experience design.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:09:23.446Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "rockwell-r26-2361",
@@ -627,5 +629,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:08:42.345Z"
+  "updatedAt": "2026-10-12T04:09:23.446Z"
 }
