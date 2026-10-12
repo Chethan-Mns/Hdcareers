@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - data/approved-review-publication.json
+      - data/owner-approved-ten-20261012.json
 
 permissions:
   contents: write
@@ -35,9 +36,15 @@ jobs:
       - name: Install logo quality dependency
         run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
 
-      - name: Validate explicitly approved Review Center selection
+      - name: Prepare exact approved jobs on push
         if: github.event_name == 'push'
-        run: python3 scripts/prepare_review_publication.py data/approved-review-publication.json /tmp/hd-reviewed-publish-event.json
+        shell: bash
+        run: |
+          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'data/owner-approved-ten-20261012.json'; then
+            python3 scripts/prepare_owner_approved_ten_20261012.py /tmp/hd-reviewed-publish-event.json
+          else
+            python3 scripts/prepare_review_publication.py data/approved-review-publication.json /tmp/hd-reviewed-publish-event.json
+          fi
 
       - name: Add selected jobs
         shell: bash
@@ -85,7 +92,11 @@ jobs:
             echo "::warning::main changed during admin publishing. Rebuilding from latest main (attempt ${attempt}/8)."
             git fetch origin main
             git reset --hard origin/main
-            python3 scripts/admin_publish.py "$GITHUB_EVENT_PATH"
+            if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+              python3 scripts/admin_publish.py "$approved_event"
+            else
+              python3 scripts/admin_publish.py "$GITHUB_EVENT_PATH"
+            fi
             python3 scripts/resolve_company_logos.py
             python3 generate.py
             git diff --check
