@@ -111,6 +111,7 @@ class FullListTests(unittest.TestCase):
         self.assertEqual(verify_exact_listing_job(body.replace("/apply",""),job)["state"],"unconfirmed")
         self.assertEqual(verify_exact_listing_job(body.replace(job["jobUrl"],"https://careers.ey.com/ey/job/Other/1445632533/"),job)["state"],"unconfirmed")
         self.assertEqual(verify_exact_listing_job(body.replace("Software Engineer","Finance Manager"),job)["state"],"unconfirmed")
+        self.assertEqual(verify_exact_listing_job(body.replace("</html>","<p>This position is no longer available</p></html>"),job)["state"],"unconfirmed")
 
     def test_two_complete_absences_only_flag_not_auto_expiry(self):
         older={"employer":"EY","filter":"India","status":"ok","complete":True,"ids":["a","b"]}
