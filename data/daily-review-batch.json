@@ -302,7 +302,7 @@
       "apply": "https://kone.wd3.myworkdayjobs.com/en-US/Careers/job/Graduate-Engineer-Trainee_R0661003",
       "cat": "other",
       "expYears": "Graduate trainee",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official KONE Workday result identifies R0661003, but today’s exact page was a blank Workday shell and the indexed copy is older.",
       "postedDate": null,
@@ -311,13 +311,15 @@
         "role": "Graduate Engineer Trainee – Sustainability CoE",
         "loc": "Chennai, Tamil Nadu, India",
         "apply": "https://kone.wd3.myworkdayjobs.com/en-US/Careers/job/Graduate-Engineer-Trainee_R0661003",
-        "status": "review",
+        "status": "expired",
         "cat": "other",
         "expYears": "Graduate trainee",
         "sourceName": "KONE Careers",
         "desc": "Graduate engineering role in KONE’s Environment & Sustainability Center of Excellence.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:09:47.904Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -631,5 +633,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:09:36.486Z"
+  "updatedAt": "2026-10-12T04:09:47.904Z"
 }
