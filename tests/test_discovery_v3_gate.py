@@ -48,6 +48,8 @@ class GateTests(unittest.TestCase):
         out = inspect_history(reports, now=DAY.astimezone(timezone.utc)+timedelta(days=2))
         self.assertEqual(out["employers"]["Deloitte South Asia"]["status"],"blocked")
         self.assertEqual(out["expiryDecisions"],[])
+        self.assertEqual(len(out["verifiedLeads"]),1)
+        self.assertEqual(out["publicationCandidates"],[])
 
     def test_missing_twice_is_review_only(self):
         reports=[run(0,ids=["a","b","c"]),run(1,ids=["b","c"]),run(2,ids=["b","c"])]
