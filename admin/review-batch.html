@@ -171,7 +171,7 @@ async function refreshTracker(){
   if(data.batchId!==batch.batchId)return;
   publishStatus=data;
   publishedIds=new Set(data.publishedCandidateIds||[]);for(const id of [...selected])if(publishedIds.has(id))selected.delete(id);
-  el("trackSummary").textContent="Website data "+data.publishedCount+"/"+data.stages.length+" · Telegram confirmed "+data.telegramDelivered+"/"+data.stages.length+" · GitHub "+(data.workflow.conclusion||data.workflow.state)+" · Vercel unconfirmed until deployment verified · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
+  el("trackSummary").textContent="Website Live "+data.publishedCount+"/"+data.stages.length+" · Data committed "+data.dataCommittedCount+"/"+data.stages.length+" · Telegram confirmed "+data.telegramDelivered+"/"+data.stages.length+" · GitHub "+(data.workflow.conclusion||data.workflow.state)+" · Vercel unconfirmed until deployment verified · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
   const root=el("tracking");root.replaceChildren();
   for(const s of data.stages){
    const row=node("div","stage"),left=node("div"),right=node("div");
