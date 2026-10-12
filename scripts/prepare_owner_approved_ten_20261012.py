@@ -31,7 +31,7 @@ SOURCE_DETAILS={
  "resp":["Analyze and remediate merchant account data quality issues.","Improve merchant industry-code inventories, guidance and monitoring controls.","Work with process owners on operational improvement and data governance.","Use SQL to extract, transform and analyze information from multiple sources.","Develop advanced Excel reports and models for business insights.","Collaborate with technology teams on data-focused tools, including GenAI-enabled workflows."],
  "elig":"Bachelor’s degree in Technology, Engineering or related STEM discipline, including data science, IT, statistics or mathematics. Recent graduates with up to one year of work experience are eligible. Must commit to a 12-month apprenticeship.",
  "skills":["SQL","Excel","Data quality","Analytics","Communication","Merchant data governance"],
- "workMode":"Hybrid","closingAt":"2026-10-13T04:00:00+05:30","expType":"fresher"
+ "workMode":"Hybrid","expType":"fresher"
 },
 "gehc-r4043087":{
  "loc":"Bengaluru, Karnataka, India",
@@ -46,7 +46,7 @@ SOURCE_DETAILS={
  "resp":["Respond to employee and manager HR administration requests through approved channels.","Support employee onboarding, transfers and departures.","Track and resolve HR queries using the team ticketing system.","Assist with pre-employment checks and HR documents.","Help maintain employee data and process transactions in Workday under guidance.","Keep HR trackers, correspondence and process records accurate and up to date."],
  "elig":"Employer lists this as a People Services internship. A specific mandatory degree or prior-experience threshold was not stated in the accessible vacancy description; refer to the official application for any further eligibility questions.",
  "skills":["HR operations","Workday","Data accuracy","Employee administration","Communication","MS Office"],
- "cat":"nonit","expType":"fresher","closingAt":"2026-10-29T23:59:00+05:30"
+ "cat":"nonit","expType":"fresher"
 },
 "nec-744000152589569":{
  "desc":"NEC Software Solutions India is looking for a Full Stack Software Engineer in Pune to design and improve Java and React web applications. The role spans Spring Boot microservices, REST APIs, React/Next.js interfaces, databases and Agile delivery; the vacancy states a hybrid arrangement with three office days weekly.",
@@ -124,7 +124,6 @@ def build():
    "workMode":str(src.get("workMode") or "Not specified"),
    "manualLiveVerifiedAt":now.isoformat(),
    "manualLiveVerifiedUrl":url,
-   "browserVerifiedAt":now.isoformat(),
    "sourceReview":"Owner explicitly confirmed this exact job is live and accepting applications on 12 Oct 2026.",
    "skills":list(src.get("skills") or []),
   })
