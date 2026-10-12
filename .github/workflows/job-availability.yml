@@ -41,7 +41,7 @@ jobs:
           git config user.email 'actions@users.noreply.github.com'
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/availability-status.json data/review-queue.json index.html jobs/ robots.txt sitemap.xml
+            git add data/jobs.json data/availability-status.json data/review-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
 
             if git diff --cached --quiet; then
               echo "No website changes to publish."
