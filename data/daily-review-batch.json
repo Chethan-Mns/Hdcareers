@@ -361,7 +361,7 @@
       "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
       "cat": "it",
       "expYears": "2027 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Graviton Greenhouse page was live today with a role-specific Apply form and 2027-graduate title.",
       "postedDate": null,
@@ -370,7 +370,7 @@
         "role": "Software Engineer (2027 Graduate)",
         "loc": "Gurugram, Haryana, India",
         "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
-        "status": "review",
+        "status": "active",
         "cat": "it",
         "expYears": "2027 graduate",
         "sourceName": "Graviton Careers",
@@ -387,8 +387,13 @@
           "Operating systems",
           "Networking"
         ],
-        "expType": "fresher"
-      }
+        "expType": "fresher",
+        "manualLiveVerifiedAt": "2026-10-12T04:10:30.975Z",
+        "browserVerifiedAt": "2026-10-12T04:10:30.975Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:10:30.975Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "omnidian-e4bd2d30",
@@ -638,5 +643,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:10:11.683Z"
+  "updatedAt": "2026-10-12T04:10:30.975Z"
 }
