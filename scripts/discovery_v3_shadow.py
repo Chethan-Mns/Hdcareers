@@ -21,8 +21,8 @@ HOSTS = {
     "HCLTech": {"host": "careers.hcltech.com", "listing": "https://careers.hcltech.com/go/India/9553955/"}
 }
 CLOSURE = re.compile(r"(?:this job (?:is )?no longer (?:available|accepting applications)|job has been (?:closed|filled)|position has been filled|applications are closed)", re.I)
-APPLY = re.compile(r"\\b(?:apply now|apply for this job|apply to this job|apply now »)\\b", re.I)
-REQUISITION = re.compile(r"\\brequisition\\s*(?:id)?\\s*[:#–-]?\\s*([0-9]{5,9})", re.I)
+APPLY = re.compile(r"\b(?:apply now|apply for this job|apply to this job|apply now »)\b", re.I)
+REQUISITION = re.compile(r"\brequisition\s*(?:id)?\s*[:#–-]?\s*([0-9]{5,9})", re.I)
 
 class ListingParser(HTMLParser):
     def __init__(self):
@@ -49,13 +49,13 @@ class ListingParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag in ("script", "style") and self.in_script: self.in_script -= 1
         if tag == "a" and self.in_anchor:
-            self.links.append((self.href, re.sub(r"\\s+", " ", self.link_text).strip()))
+            self.links.append((self.href, re.sub(r"\s+", " ", self.link_text).strip()))
             self.in_anchor = False
 
 def classify_exact(html_text, url, expected_id, expected_role):
     parser = ListingParser()
     parser.feed(html_text)
-    text = re.sub(r"\\s+", " ", html.unescape(" ".join(parser.visible))).strip()
+    text = re.sub(r"\s+", " ", html.unescape(" ".join(parser.visible))).strip()
     if CLOSURE.search(text):
         return {"state": "unconfirmed", "reason": "Closure words need exact-job and listing corroboration", "evidence": ["closure-text"]}
     role = " ".join(re.findall(r"[a-z0-9]+", expected_role.lower()))
@@ -116,7 +116,7 @@ def extract_listed_jobs(body, base, host):
         if urlparse(url).hostname != host: continue
         if not re.search(r"/(?:job|jobs)/",urlparse(url).path,re.I): continue
         if not title or len(title)>200: continue
-        match = re.search(r"/(\\d{6,12})(?:/|$)", urlparse(url).path)
+        match = re.search(r"/(\d{6,12})(?:/|$)", urlparse(url).path)
         if not match: continue
         jobs[match.group(1)]={"title":title,"url":url}
     return jobs
