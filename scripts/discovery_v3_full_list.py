@@ -144,6 +144,10 @@ def parse_page(company, html, source, expected_page=0):
     unique = {}
     eligible_links = []
     for link in parser.links:
+        # SuccessFactors includes promotional and campaign job links outside
+        # the actual result table. Only counted table rows belong to pagination.
+        if DEFAULTS[company]["mode"] == "successfactors" and "rowText" not in link:
+            continue
         job = job_from_link(company, link["url"], link["text"], source)
         if job:
             eligible_links.append(link)
@@ -275,7 +279,7 @@ def scan_employer(company, fetcher, max_pages=2, pause=0.5):
         if total is None:
             total, expected_pages = page["total"], page["pages"]
         elif total != page["total"] or expected_pages != page["pages"]:
-            problems.append({"page": index + 1, "reason": "Listing total changed during crawl"})
+            problems.append({"page": index + 1, "reason": f"Listing total changed during crawl: {total} -> {page['total']}"})
             break
         page_ids = {r["id"] for r in page["jobs"]}
         if page_ids & seen:
