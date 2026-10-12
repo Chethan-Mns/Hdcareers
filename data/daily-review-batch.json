@@ -265,7 +265,7 @@
       "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/external_rockwell_automation/job/Pune-India/Graduate-Engineer-Trainee_R26-2361",
       "cat": "it",
       "expYears": "Graduate trainee",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Rockwell Workday result identifies R26-2361, but today’s exact page was a blank Workday shell and the indexed copy is older.",
       "postedDate": null,
@@ -274,7 +274,7 @@
         "role": "Graduate Engineer Trainee",
         "loc": "Pune, Maharashtra, India",
         "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/external_rockwell_automation/job/Pune-India/Graduate-Engineer-Trainee_R26-2361",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "Graduate trainee",
         "sourceName": "Rockwell Automation Careers",
@@ -290,7 +290,9 @@
           "Agile"
         ],
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:09:36.486Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "kone-r0661003",
@@ -629,5 +631,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:09:23.446Z"
+  "updatedAt": "2026-10-12T04:09:36.486Z"
 }
