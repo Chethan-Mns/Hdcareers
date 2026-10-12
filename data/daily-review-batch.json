@@ -105,7 +105,7 @@
       "apply": "https://ibmglobal.avature.net/en_US/careers/JobDetail/Associate-System-Engineer/52240",
       "cat": "it",
       "expYears": "Entry level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "unsure",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official IBM recruiting page identifies job 52240 and 2026 pass-outs, but exact fetch returned HTTP 406; manual browser confirmation required.",
       "postedDate": null,
@@ -121,7 +121,9 @@
         "elig": "2026 pass-outs in CSE, AI, Data Science, Cloud, Cybersecurity, IT or related programs; official listing states 6 CGPA/60%.",
         "desc": "Entry-level associate system engineering role.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T05:04:05.396Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ahead-7950d5ca",
@@ -665,5 +667,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-12T04:12:12.465Z"
+  "updatedAt": "2026-10-12T05:04:05.396Z"
 }
