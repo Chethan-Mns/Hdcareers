@@ -8,6 +8,8 @@ on:
       - tests/test_discovery_v3_full_list.py
       - scripts/discovery_v3_gate.py
       - tests/test_discovery_v3_gate.py
+      - scripts/discovery_v3_source_registry.py
+      - tests/test_discovery_v3_registry.py
       - .github/workflows/discovery-v3-full-list-shadow.yml
   schedule:
     # Read-only shadow at approximately 08:30 IST; no publishing.
@@ -42,6 +44,7 @@ jobs:
           python3 -m py_compile scripts/discovery_v3_full_list.py
           python3 -m unittest discover -s tests -p 'test_discovery_v3_full_list.py' -v
           python3 -m unittest discover -s tests -p 'test_discovery_v3_gate.py' -v
+          python3 -m unittest discover -s tests -p 'test_discovery_v3_registry.py' -v
       - name: Read-only current employer discovery
         env:
           MAX_PAGES: ${{ inputs.max_pages || (github.event_name == 'schedule' && '6' || '2') }}
