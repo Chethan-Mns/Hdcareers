@@ -1,0 +1,49 @@
+name: HD Careers V3 additional employer portal fingerprints
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/discovery_v3_probe_employers.py
+      - scripts/discovery_v3_source_registry.py
+      - tests/test_discovery_v3_probe_employers.py
+      - .github/workflows/discovery-v3-employer-probes.yml
+  schedule:
+    # Read-only official portal scan near 08:45 IST.
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: hd-v3-official-employer-probes
+  cancel-in-progress: false
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test allowed official hosts and no publication side effects
+        run: |
+          python3 -m py_compile scripts/discovery_v3_probe_employers.py
+          python3 -m unittest discover -s tests -p 'test_discovery_v3_probe_employers.py' -v
+      - name: Fingerprint additional employer portals
+        run: python3 scripts/discovery_v3_probe_employers.py --output discovery-v3-expansion-probe.json
+      - name: Assert strictly diagnostic report
+        run: |
+          python3 - <<'PY'
+          import json
+          report=json.load(open("discovery-v3-expansion-probe.json"))
+          assert report["mode"]=="read_only_portal_fingerprint"
+          assert len(report["companies"])==8
+          assert not report["automaticPublishingEnabled"]
+          assert all(not row["canPublish"] and not row["canExpire"] and row["jobCount"] is None for row in report["companies"])
+          print("Employer portal diagnostics passed without publishing any jobs.")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hd-careers-v3-employer-fingerprints
+          path: discovery-v3-expansion-probe.json
+          retention-days: 14
