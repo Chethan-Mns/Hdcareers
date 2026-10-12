@@ -12,7 +12,21 @@ data class Candidate(
     val category: String, val apply: String, val experience: String, val decision: String,
     val job: JSONObject?, val reviewedAt: String = ""
 ) {
-    val approved: Boolean get() = decision == "live" && reviewedAt.isNotBlank() && complete && apply == job?.optString("apply")
+    val selectable: Boolean get() = decision == "live" && reviewedAt.isNotBlank() &&
+        apply.startsWith("https://") && apply == job?.optString("apply")
+    val approved: Boolean get() = selectable && complete
+    val missingDetails: List<String> get() = job?.let { detail ->
+        val fields = listOf("company" to "company", "role" to "role", "loc" to "location",
+            "elig" to "eligibility", "desc" to "description", "apply" to "official URL",
+            "sourceName" to "source")
+        val missing = fields.filter { (key, _) -> detail.optString(key).isBlank() }
+            .map { it.second }.toMutableList()
+        val resp = detail.optJSONArray("resp")
+        if (resp == null || (0 until resp.length()).none { resp.optString(it).isNotBlank() })
+            missing += "responsibilities"
+        if (detail.optString("status") != "active") missing += "validated content"
+        missing
+    } ?: listOf("verified source content")
     val group: String get() = when(category.lowercase()) {
         "nonit" -> "nonit"; "internship", "apprenticeship" -> "training"; else -> "it"
     }

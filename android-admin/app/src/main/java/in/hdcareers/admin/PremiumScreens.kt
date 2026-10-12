@@ -6,6 +6,8 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.max
+import kotlinx.coroutines.delay
 
 @Composable
 fun PremiumAdminRoot(
@@ -268,109 +271,152 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
 }
 @Composable
 private fun ProReview(vm:AdminViewModel) {
-    var selected by remember {mutableIntStateOf(0)}
-    var confirm by remember {mutableStateOf(false)}
-    val candidates=if(selected==0)vm.batch.priority else vm.batch.backup
-    val total=vm.batch.priority.size+vm.batch.backup.size
-    LazyColumn(contentPadding=PaddingValues(16.dp),
-        verticalArrangement=Arrangement.spacedBy(13.dp)) {
+    var selected by remember { mutableIntStateOf(0) }
+    var confirm by remember { mutableStateOf(false) }
+    val chosen=vm.batch.all.filter { it.id in vm.selectedIds }
+    val raw=when(selected) {
+        0 -> vm.batch.priority.filterNot { it.id in vm.selectedIds }
+        1 -> vm.batch.backup.filterNot { it.id in vm.selectedIds }
+        else -> chosen
+    }
+    val candidates=if(selected==2)raw else raw.sortedWith(compareBy<Candidate> {
+        when(it.decision) { "live" -> 0; "unreviewed", "" -> 1; "unsure" -> 2; else -> 3 }
+    }.thenByDescending { it.complete })
+    val total=vm.batch.all.size
+    LaunchedEffect(vm.tab,vm.batch.status) {
+        if(vm.tab==1 && vm.batch.status=="submitted") {
+            while(true) {
+                vm.refreshPublishingStatusQuietly()
+                delay(10000)
+            }
+        }
+    }
+    LazyColumn(modifier=Modifier.fillMaxSize().pointerInput(selected) {
+        var swipe=0f
+        detectHorizontalDragGestures(
+            onDragStart={swipe=0f},
+            onHorizontalDrag={change,delta->change.consume();swipe+=delta},
+            onDragEnd={
+                if(swipe < -80f) selected=(selected+1).coerceAtMost(2)
+                if(swipe > 80f) selected=(selected-1).coerceAtLeast(0)
+            }
+        )
+    },contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(13.dp)) {
         item {
-            ProHero("Daily publishing","Your 20-job\nreview desk.",
-                "Review 20 different employers. Select any 1–10 verified Live jobs from either list.",
+            ProHero("Daily publishing","Review. Select.\nPublish.",
+                "Priority and Backup are for review. Verified Live jobs move into Publish Ready.",
                 icon=Icons.Default.FactCheck) {
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     HeroMiniStat(vm.batch.priority.size.toString(),"Priority",Modifier.weight(1f))
-                    HeroMiniStat(vm.batch.backup.size.toString(),"Backups",Modifier.weight(1f))
-                    HeroMiniStat(vm.batch.reviewed.toString(),"Reviewed",Modifier.weight(1f))
+                    HeroMiniStat(vm.batch.backup.size.toString(),"Backup",Modifier.weight(1f))
+                    HeroMiniStat(chosen.size.toString()+"/10","Publish Ready",Modifier.weight(1f))
                 }
             }
         }
         item {
             ProCard {
-                SectionHead(Icons.Default.FactCheck,"Review queue","Manual verification is required")
-                LinearProgressIndicator(progress={vm.batch.reviewed.toFloat()/max(1,total)},
+                SectionHead(Icons.Default.FactCheck,"Your review desk","Swipe sideways to switch sections")
+                LinearProgressIndicator(
+                    progress={vm.batch.reviewed.toFloat()/max(1,total)},
                     modifier=Modifier.fillMaxWidth().height(7.dp).clip(RoundedCornerShape(8.dp)),
                     color=Brand.blue,trackColor=Brand.sky)
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                    HeroMiniStat(vm.selectedIds.size.toString(),"Selected",Modifier.weight(1f))
-                    HeroMiniStat(vm.batch.readyCount.toString(),"Ready",Modifier.weight(1f))
+                    HeroMiniStat(vm.batch.reviewed.toString(),"Reviewed",Modifier.weight(1f))
                     HeroMiniStat(vm.batch.expiredCount.toString(),"Expired",Modifier.weight(1f))
+                    HeroMiniStat(vm.batch.readyCount.toString(),"Content Ready",Modifier.weight(1f))
                 }
-                Text("Employers: ${vm.batch.uniqueEmployers}/20 · Incomplete Live: ${vm.batch.incomplete} · Already published: ${vm.publishedReviewIds.size}",fontSize=12.sp,color=Brand.gray)
+                Text("20 employers: ${vm.batch.uniqueEmployers}/20 · Source details required: ${vm.batch.incomplete}",
+                    fontSize=12.sp,color=Brand.gray)
                 TabRow(selectedTabIndex=selected,containerColor=Color.Transparent,
                     contentColor=Brand.blue) {
-                    listOf("Priority 10","Backup 10").forEachIndexed {index,name->
+                    listOf("Priority","Backup","Publish Ready").forEachIndexed {index,label->
                         Tab(selected=selected==index,onClick={selected=index},
-                            text={Text(name,fontWeight=FontWeight.Bold,fontSize=12.sp)})
+                            text={Text(if(index==2)"Ready (${chosen.size})" else label,
+                                fontWeight=FontWeight.Bold,fontSize=11.sp,maxLines=1)})
                     }
                 }
+                Text(when(selected){
+                    0 -> "Priority: source-checked roles first. Expired roles remain visible for audit."
+                    1 -> "Backup: Live roles here can also go directly to Publish Ready."
+                    else -> "Final review: only complete, verified jobs can be published."
+                },fontSize=11.sp,color=Brand.gray)
             }
         }
         if(vm.batch.id.isBlank()) item {
             ProEmpty(Icons.Default.EventNote,"No batch available",
-                "When the discovery pipeline prepares 10 priority and 10 backup jobs, they'll appear here. No example jobs are shown as live.",
+                "The discovery pipeline must generate real source-backed jobs first.",
                 "Refresh now",vm::refreshClicked)
+        } else if(candidates.isEmpty()) item {
+            ProEmpty(Icons.Default.CheckCircle,
+                if(selected==2)"Nothing in Publish Ready" else "No jobs remaining in this section",
+                if(selected==2)"Verify a role Live and tap Add to Publish Ready in Priority or Backup."
+                else "Selected jobs have moved to Publish Ready.",
+                "Refresh",vm::refreshClicked)
         }
         itemsIndexed(candidates,key={_,item->item.id}) {i,job->
-            ProCandidateCard(job,i,selected==0,vm.batch.backup,vm.companyLogos,vm.busy,
+            ProCandidateCard(job,i,selected==0,vm.companyLogos,vm.busy,
                 chosen=job.id in vm.selectedIds,published=job.id in vm.publishedReviewIds,
-                decide={vm.decide(job.id,it)},replace={vm.swap(job.id,it)},toggle={vm.toggleSelected(job.id,it)})
+                inReady=selected==2,decide={vm.decide(job.id,it)},
+                toggle={vm.toggleSelected(job.id,it)})
         }
-        if(vm.batch.id.isNotBlank()) item {
+        if(vm.batch.id.isNotBlank() && selected==2) item {
             ProCard {
-                SectionHead(Icons.Default.RocketLaunch,"Publish selected jobs",
-                    "1–10 distinct verified Live employers · either tab",Brand.green)
-                Text("No mandatory category quota. Select complete verified Live jobs on either tab; publication requires the exact employer URL.",
-                    fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                if(!vm.canPublish) {
-                    vm.selectedBlockers.take(6).forEach { reason ->
-                        Text("• " + reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
-                    }
-                    if(vm.selectedBlockers.size>6) {
-                        Text("And " + (vm.selectedBlockers.size-6) + " more checks pending.",
-                            fontSize=11.sp,color=Brand.gray)
-                    }
+                SectionHead(Icons.Default.RocketLaunch,"Publish Ready",
+                    "Review your selected jobs before final confirmation",Brand.green)
+                val incomplete=chosen.filterNot { it.approved }
+                Text("${chosen.size} of 10 selected · ${incomplete.size} awaiting source details",
+                    color=if(incomplete.isEmpty())Brand.green else Brand.amber,fontSize=12.sp)
+                if(incomplete.isNotEmpty()) {
+                    Text("Incomplete information must be recovered from the official job page. We won't invent eligibility, responsibilities or experience requirements.",
+                        fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                }
+                if(!vm.canPublish) vm.selectedBlockers.take(4).forEach { reason ->
+                    Text("• "+reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
                 }
                 Button(onClick={confirm=true},enabled=vm.canPublish&&!vm.busy,
                     modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
                     Icon(Icons.Default.Send,null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Publish ${vm.selectedIds.size} selected job(s)")
+                    Text("Publish ${chosen.size} selected job(s)")
                 }
-                ProPill(if(vm.canPublish)"Ready for publishing" else "Review and content checks pending",
-                    if(vm.canPublish)Brand.green else Brand.amber)
-                Text("GitHub acceptance ≠ website deployment ≠ Telegram delivery.",color=Brand.gray,fontSize=11.sp)
+                Text("GitHub, website data and Telegram receipts are tracked separately.",
+                    fontSize=11.sp,color=Brand.gray)
                 OutlinedButton(onClick=vm::refreshPublishingStatus,enabled=!vm.busy,
-                    modifier=Modifier.fillMaxWidth()) { Text("Refresh publishing tracker") }
+                    modifier=Modifier.fillMaxWidth()) { Text("Refresh live publishing status") }
                 val progress=vm.publishingProgress
-                Text("GitHub workflow: "+(progress.optJSONObject("workflow")?.optString("conclusion")?.takeIf { it.isNotBlank() }
-                    ?:progress.optJSONObject("workflow")?.optString("state").orEmpty())+
-                    " · Website: "+progress.optInt("publishedCount")+
-                    " · Telegram sent: "+progress.optInt("telegramDelivered"),fontSize=12.sp,color=Brand.gray)
+                val gh=progress.optJSONObject("workflow")
+                Text("GitHub: "+(gh?.optString("conclusion")?.takeIf { it.isNotBlank() }
+                    ?:gh?.optString("state").orEmpty().ifBlank { "Not submitted" }),
+                    fontSize=12.sp,color=Brand.navy)
+                Text("Website Live: ${progress.optInt("publishedCount")} · Source data: ${progress.optInt("dataCommittedCount")} · Telegram: ${progress.optInt("telegramDelivered")} delivered",
+                    fontSize=12.sp,color=Brand.navy)
+                Text("Vercel deployment: confirm separately until a deployed commit is verified.",
+                    fontSize=11.sp,color=Brand.gray)
                 val stages=progress.optJSONArray("stages")
                 for(i in 0 until (stages?.length() ?: 0)) {
                     val stage=stages?.optJSONObject(i) ?: continue
-                    Text(stage.optString("company")+" · Site "+stage.optString("website")+
-                        " · Vercel "+stage.optString("vercel")+
-                        " · Telegram "+stage.optString("telegram"),fontSize=11.sp,color=Brand.gray)
+                    Text(stage.optString("company")+
+                        " · GitHub "+stage.optString("github")+
+                        " · Site "+stage.optString("website")+
+                        " · Telegram "+stage.optString("telegram"),
+                        fontSize=11.sp,color=Brand.gray)
                 }
             }
         }
     }
     if(confirm) AlertDialog(onDismissRequest={confirm=false},
-        title={Text("Publish ${vm.selectedIds.size} verified jobs?",fontWeight=FontWeight.Black)},
-        text={Text("This sends your reviewed jobs to the existing publishing pipeline. The app will not claim Telegram delivery until separately confirmed.")},
-        confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Publish jobs")}},
+        title={Text("Publish ${chosen.size} verified job(s)?",fontWeight=FontWeight.Black)},
+        text={Text("Send these complete jobs to GitHub. Website deployment and Telegram delivery will be tracked separately, without claiming success early.")},
+        confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Submit to GitHub")}},
         dismissButton={TextButton(onClick={confirm=false}){Text("Cancel")}})
 }
 
 @Composable
 private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
-    backups:List<Candidate>,logos:Map<String,CompanyLogoSource>,busy:Boolean,
-    chosen:Boolean,published:Boolean,decide:(String)->Unit,replace:(String)->Unit,toggle:(Boolean)->Unit) {
-    var expanded by remember {mutableStateOf(false)}
+    logos:Map<String,CompanyLogoSource>,busy:Boolean,
+    chosen:Boolean,published:Boolean,inReady:Boolean,
+    decide:(String)->Unit,toggle:(Boolean)->Unit) {
     val ctx=LocalContext.current
-    val replacements=backups.filter{it.approved&&employerKey(it.company)!=employerKey(c.company)}
     val category=when(c.group) {"nonit"->"Non-IT";"training"->"Internship / Apprentice";else->"Fresher IT"}
     val decisionColor=when(c.decision) {
         "live"->Brand.green;"expired"->Brand.red;"unsure"->Brand.amber;else->Brand.blue
@@ -380,8 +426,7 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
             CompanyMark(c.company,logos,c.job,45)
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(3.dp)) {
                 Text(c.company,fontWeight=FontWeight.ExtraBold,color=Brand.navy,fontSize=14.sp)
-                Text(c.role,fontWeight=FontWeight.Bold,color=Brand.navy,fontSize=13.sp,
-                    lineHeight=18.sp)
+                Text(c.role,fontWeight=FontWeight.Bold,color=Brand.navy,fontSize=13.sp,lineHeight=18.sp)
                 Text(listOf(c.location,c.experience).filter{it.isNotBlank()}.joinToString(" · "),
                     fontSize=11.sp,color=Brand.gray)
             }
@@ -389,8 +434,8 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
         }
         Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
             ProPill(category,Brand.blue)
-            ProPill(c.decision.ifBlank{"Needs review"}.replaceFirstChar{it.uppercase()},
-                decisionColor)
+            ProPill(c.decision.ifBlank{"Needs review"}.replaceFirstChar{it.uppercase()},decisionColor)
+            if(inReady) ProPill("Selected",Brand.green)
         }
         if(c.apply.startsWith("https://")) TextButton(onClick={
             ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(c.apply)))
@@ -402,40 +447,36 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
         Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
             listOf("live","expired","unsure").forEach{status->
                 val color=when(status){"live"->Brand.green;"expired"->Brand.red;else->Brand.amber}
-                val checked=status==c.decision
                 OutlinedButton(onClick={decide(status)},enabled=!busy,
                     shape=RoundedCornerShape(11.dp),contentPadding=PaddingValues(horizontal=8.dp),
                     modifier=Modifier.weight(1f).height(37.dp),
                     colors=ButtonDefaults.outlinedButtonColors(
-                        containerColor=if(checked)color.copy(alpha=.10f) else Color.White),
+                        containerColor=if(status==c.decision) color.copy(alpha=.10f) else Color.White),
                     border=androidx.compose.foundation.BorderStroke(1.dp,
-                        if(checked) color.copy(alpha=.5f) else Brand.outline)) {
+                        if(status==c.decision)color.copy(alpha=.5f) else Brand.outline)) {
                     Text(status.replaceFirstChar{it.uppercase()},fontWeight=FontWeight.Bold,
                         fontSize=10.sp,color=color,maxLines=1)
                 }
             }
         }
-        Row(verticalAlignment=Alignment.CenterVertically) {
-            Checkbox(checked=chosen,onCheckedChange=toggle,enabled=!busy&&c.approved&&!published)
-            Text(if(published)"Already published" else if(c.approved)"Select for publishing" else "Mark complete job Live to select",fontSize=12.sp,color=Brand.navy)
-        }
-        if(priority) Box {
-            OutlinedButton(onClick={expanded=true},enabled=replacements.isNotEmpty()&&!busy,
-                shape=RoundedCornerShape(12.dp),modifier=Modifier.fillMaxWidth()) {
-                Icon(Icons.Default.SwapHoriz,null,Modifier.size(18.dp))
-                Spacer(Modifier.width(7.dp))
-                Text("Replace from verified backups",fontSize=12.sp)
+        if(inReady) {
+            OutlinedButton(onClick={toggle(false)},enabled=!busy,modifier=Modifier.fillMaxWidth()) {
+                Icon(Icons.Default.ArrowBack,null,Modifier.size(17.dp))
+                Spacer(Modifier.width(6.dp))
+                Text("Remove from Publish Ready")
             }
-            DropdownMenu(expanded=expanded,onDismissRequest={expanded=false}) {
-                replacements.forEach {candidate->
-                    DropdownMenuItem(text={Text(candidate.company+" — "+candidate.role,
-                        fontSize=12.sp,maxLines=2)},
-                        onClick={expanded=false;replace(candidate.id)})
-                }
+        } else if(!published) {
+            Button(onClick={toggle(true)},enabled=!busy&&c.selectable,
+                modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(12.dp)) {
+                Icon(Icons.Default.Add,null,Modifier.size(17.dp))
+                Spacer(Modifier.width(6.dp))
+                Text(if(c.selectable)"Add to Publish Ready" else "Verify Live to add")
             }
+        } else Text("Already published",fontSize=12.sp,color=Brand.green)
+        if(c.decision=="live"&&!c.approved) {
+            Text("Source details needed before publishing: "+c.missingDetails.joinToString(", "),
+                fontSize=11.sp,color=Brand.amber,lineHeight=16.sp)
         }
-        if(!c.complete) Text("Full verified description is still required before publishing.",
-            fontSize=11.sp,color=Brand.amber)
     }
 }
 

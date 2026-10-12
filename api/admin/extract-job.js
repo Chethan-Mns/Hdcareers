@@ -881,19 +881,7 @@ function whoShouldApply(exp,eligibility){
   return "Experienced candidates whose background matches the official education, skill and experience requirements should review this opportunity. Experience listed: "+years+".";
 }
 
-export default async function handler(req,res){
-  if(req.method!=="POST"){
-    res.setHeader("Allow","POST");
-    return res.status(405).json({error:"Method not allowed"});
-  }
-
-  res.setHeader("Cache-Control","no-store");
-  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
-
-  try{
-    const input=String(req.body&&req.body.url||"").trim();
-    if(!input)return res.status(400).json({error:"Job URL is required."});
-
+export async function extractOfficialJob(input) {
     const original=await assertPublicUrl(input);
     const hint=normalizeKnownCareerUrl(original.href);
     const sourceUrl=hint.applyUrl||original.href;
@@ -1050,7 +1038,20 @@ export default async function handler(req,res){
       }
     };
 
-    return res.status(200).json({ok:true,data});
+    return data;
+}
+
+export default async function handler(req,res){
+  if(req.method!=="POST"){
+    res.setHeader("Allow","POST");
+    return res.status(405).json({error:"Method not allowed"});
+  }
+  res.setHeader("Cache-Control","no-store");
+  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
+  try{
+    const input=String(req.body&&req.body.url||"").trim();
+    if(!input)return res.status(400).json({error:"Job URL is required."});
+    return res.status(200).json({ok:true,data:await extractOfficialJob(input)});
   }catch(error){
     const msg=error&&error.name==="AbortError"?"The job page took too long to respond.":(error&&error.message)||"Could not extract the job page.";
     return res.status(400).json({error:msg});

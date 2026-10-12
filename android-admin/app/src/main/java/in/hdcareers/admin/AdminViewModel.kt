@@ -92,7 +92,19 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     suspend fun refresh() {
         loading=true
         val errors= mutableListOf<String>()
-        try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
+        try {
+            val latest=api.batch()
+            if(latest.id!=batch.id) {
+                selectedIds=emptySet()
+                publishedReviewIds=emptySet()
+                publishingProgress=JSONObject()
+            }
+            batch=latest
+            selectedIds=selectedIds.filterTo(mutableSetOf()) { id ->
+                latest.all.any { it.id==id && it.selectable }
+            }
+            setReminderState()
+        } catch(e:Exception){errors+="Review: "+e.message}
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
         try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
         try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
@@ -116,20 +128,33 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         }
     }
     fun refreshPublishingStatus()=run { loadPublishingProgress() }
+    fun refreshPublishingStatusQuietly() {
+        viewModelScope.launch { runCatching { loadPublishingProgress() } }
+    }
     fun toggleSelected(id:String,checked:Boolean) {
         val c=batch.all.firstOrNull { it.id==id } ?: return
         if(!checked){selectedIds=selectedIds-id;return}
-        if(!c.approved){message="Mark a complete, verified job Live before selecting it.";return}
+        if(!c.selectable){message="Verify the official job URL as Live before moving it to Publish Ready.";return}
         if(id in publishedReviewIds){message="That job is already published.";return}
         if(selectedIds.size>=10){message="Select a maximum of 10 jobs.";return}
         if(batch.all.any { it.id in selectedIds&&employerKey(it.company)==employerKey(c.company) }){
             message="Select only one job per employer, including aliases.";return
         }
         selectedIds=selectedIds+id
+        if(!c.approved) run {
+            try {
+                batch=api.enrich(batch.id,id)
+                setReminderState()
+                message="Recovered available job details from the official listing. Check Publish Ready."
+            } catch(e:Exception) {
+                message="Moved to Publish Ready, but source details remain incomplete: "+
+                    (e.localizedMessage ?: "The official page could not be verified.")
+            }
+        }
     }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
-        if(decision=="live")toggleSelected(id,true) else selectedIds=selectedIds-id
+        if(decision!="live")selectedIds=selectedIds-id
     }
     fun swap(priorityId:String,backupId:String)=run {
         batch=api.swap(batch.id,priorityId,backupId);setReminderState()

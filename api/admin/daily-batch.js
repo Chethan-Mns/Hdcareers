@@ -1,5 +1,9 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import {employerKey,selectCandidates,reviewCounts} from "../../lib/review-rules.js";
+import {extractOfficialJob} from "./extract-job.js";
+import {enrichReviewedCandidate} from "../../lib/review-enrichment.js";
+
+export const config={maxDuration:30};
 
 const REPO = process.env.ADMIN_GITHUB_REPO || "Chethan-Mns/Hdcareers";
 const REF = process.env.ADMIN_GITHUB_BASE || "main";
@@ -138,6 +142,21 @@ function update(data, body) {
   return data;
 }
 
+async function enrichCandidate(data,body) {
+  const candidate=[...data.priority,...data.backup].find(c=>String(c.id)===String(body.candidateId||""));
+  if(!candidate)throw Object.assign(new Error("Job no longer belongs to this batch."),{status:404});
+  if(candidate.reviewedStatus!=="live"||!candidate.reviewedAt)
+    throw Object.assign(new Error("Verify this employer's exact job posting Live first."),{status:409});
+  if(candidate.job?.apply!==candidate.apply||!String(candidate.apply||"").startsWith("https://"))
+    throw Object.assign(new Error("The verified official URL does not match the candidate."),{status:409});
+  const result=await extractOfficialJob(candidate.apply);
+  const {candidate:updated,recovered}=enrichReviewedCandidate(candidate,result);
+  if(!recovered.length)throw Object.assign(new Error("The official page did not provide reliable missing details. Publication is still blocked."),{status:422});
+  Object.assign(candidate,updated);
+  data.updatedAt=new Date().toISOString();
+  return data;
+}
+
 export default async function handler(req, res) {
   res.setHeader("Cache-Control", "private, no-store");
   if (!["GET", "POST"].includes(req.method)) {
@@ -158,7 +177,7 @@ export default async function handler(req, res) {
       if (req.body?.batchId !== data.batchId || !data.batchId) {
         return res.status(409).json({error: "Review batch changed. Refresh and try again."});
       }
-      const next = update(data, req.body);
+      const next = req.body?.action === "enrich" ? await enrichCandidate(data,req.body) : update(data, req.body);
       await auditMutation(req,"daily_batch."+String(req.body?.action||"update"),String(data.batchId));
       try {
         await github("/contents/" + PATH, token, {

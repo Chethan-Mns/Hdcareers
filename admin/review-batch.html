@@ -38,7 +38,7 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 .actions button.chosen.unsure{border-color:#e6ad42;background:#fff5e3;color:#8c5900}
 .selectline{display:flex;align-items:center;gap:10px;margin:12px 0 4px;padding:10px 12px;border:1px solid #cfdef0;border-radius:12px;background:#f5f9ff;font-size:.82rem;font-weight:750}.selectline input{accent-color:#0969da;width:18px;height:18px}.warning{background:#fff6e6;border-color:#f1d28d;color:#7a4c06}.tracking{display:grid;gap:10px;margin-top:14px}.stage{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #e3eaf4;background:#fff;border-radius:12px;padding:12px;font-size:.79rem}.stage small{display:block;color:#64748b;margin-top:5px}.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
 .footer{margin-top:18px;padding:20px;display:flex;justify-content:space-between;gap:18px;align-items:center}
-.footer p{font-size:.84rem;color:#63758a;max-width:600px}.message{margin:15px 0;padding:13px;border-radius:12px;background:#ebf3ff;color:#164678;font-size:.85rem;display:none}
+.pickaction{display:flex;justify-content:center;width:100%;margin:12px 0 0}.pickaction button{width:100%}.content-warning{padding:10px 12px;border-radius:11px;background:#fff7e9;color:#82540b;margin-top:10px;font-size:.8rem}.footer p{font-size:.84rem;color:#63758a;max-width:600px}.message{margin:15px 0;padding:13px;border-radius:12px;background:#ebf3ff;color:#164678;font-size:.85rem;display:none}
 .banner{padding:34px 22px;text-align:center;color:#59708d}.banner h2{color:#123d76}
 @media(max-width:720px){header{padding:16px}main{margin:14px auto;padding:0 12px 40px}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.segment{width:100%;display:flex}.segment button{flex:1}.footer{flex-direction:column;align-items:stretch}.primary{width:100%}.tile{padding:13px}}
 </style>
@@ -60,10 +60,11 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 <div class="tile"><div class="value" id="publishedCount">0</div><div class="label">Already published</div></div>
 </section>
 <div class="bar"><div id="progress" style="width:0"></div></div>
-<div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority 10</button><button id="backupTab" onclick="switchTab('backup')">Backup 10</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
+<div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority</button><button id="backupTab" onclick="switchTab('backup')">Backup</button><button id="readyTab" onclick="switchTab('ready')">Publish Ready (0)</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
+<p class="meta">Swipe horizontally on mobile to move between Priority, Backup and Publish Ready. Selecting a verified Live job moves it out of its original list.</p>
 <div id="employerWarning" class="status-note warning" hidden></div>
 <div id="cards" class="grid"></div>
-<section id="footer" class="card footer" hidden><div><strong>Publish selected Live jobs</strong><p>Choose 1–10 complete, verified Live jobs from either list. No category quota. One employer per selection. GitHub, deployment and Telegram delivery will be tracked separately.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish selected jobs</button></section>
+<section id="footer" class="card footer" hidden><div><strong>Publish Ready — final review</strong><p>Review up to 10 selected Live jobs. Missing employer-sourced information blocks publishing, but never blocks selection. GitHub, website and Telegram results are tracked separately.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish selected jobs</button></section>
 <section class="card" style="margin-top:18px;padding:20px"><strong>Publishing progress</strong><p class="meta">Updated automatically every 20 seconds after submission. A queued workflow does not mean the site or Telegram is live.</p><div class="toolbar"><button class="secondary" onclick="refreshTracker()">↻ Check publishing status</button><span id="trackSummary" class="meta" aria-live="polite">No submission to track.</span></div><div id="tracking" class="tracking"></div></section>
 </main>
 <script>
@@ -82,14 +83,30 @@ function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.classNa
 function bucket(j){const c=String(j.cat||j.job?.cat||"it").toLowerCase();return c==="nonit"?"nonit":(c==="internship"||c==="apprenticeship"?"training":"it")}
 function cat(j){const b=bucket(j);return b==="nonit"?"Non-IT":b==="training"?"Internship / Apprenticeship":"Fresher IT"}
 function isComplete(c){const j=c.job||{};return !!(j.company&&j.role&&j.loc&&j.elig&&j.desc&&j.sourceName&&/^https:\/\//i.test(j.apply||"")&&j.status==="active"&&Array.isArray(j.resp)&&j.resp.length)}
-function isReady(c){return c.reviewedStatus==="live"&&!!c.reviewedAt&&isComplete(c)&&employerName(c)===employerName({company:c.job.company})&&(c.apply||c.job.apply)===c.job.apply}
+function canSelect(c){return !!(c&&c.reviewedStatus==="live"&&c.reviewedAt&&/^https:\/\//i.test(c.apply||c.job?.apply||"")&&(c.apply||c.job?.apply)===c.job?.apply)}
+function isReady(c){return canSelect(c)&&isComplete(c)&&employerName(c)===employerName({company:c.job.company})}
+function missingDetails(c){const j=c.job||{},missing=["company","role","loc","elig","desc","apply","sourceName"].filter(k=>!String(j[k]||"").trim());if(!Array.isArray(j.resp)||!j.resp.some(x=>String(x||"").trim()))missing.push("responsibilities");if(j.status!=="active")missing.push("validated content");return missing}
 function chosen(){return [...selected].map(id=>[...(batch?.priority||[]),...(batch?.backup||[])].find(x=>String(x.id)===id)).filter(Boolean)}
 function ready(){const a=chosen();return batch&&a.length>=1&&a.length<=10&&a.every(isReady)&&new Set(a.map(employerName)).size===a.length&&!["submitted","published"].includes(batch.status)}
-function toggleCandidate(item,checked){if(checked){if(selected.size>=10){notify("Maximum 10 jobs per publication.");return}const employer=employerName(item);if(chosen().some(x=>employerName(x)===employer&&x.id!==item.id)){notify("Only one job per employer, including aliases.");return}if(publishedIds.has(String(item.id))){notify("This job has already been published.");return}if(!isReady(item)){notify("Mark this complete job Live first.");return}selected.add(String(item.id))}else selected.delete(String(item.id));draw()}
+async function toggleCandidate(item,checked){
+ if(checked){
+  if(selected.size>=10){notify("Maximum 10 jobs per publication.");return}
+  const employer=employerName(item);
+  if(chosen().some(x=>employerName(x)===employer&&x.id!==item.id)){notify("Only one job per employer.");return}
+  if(publishedIds.has(String(item.id))){notify("This job was already published.");return}
+  if(!canSelect(item)){notify("Open the employer listing and verify this job Live first.");return}
+  selected.add(String(item.id));tab="ready";draw();
+  if(!isReady(item)){
+   try{const updated=await api("POST",{action:"enrich",batchId:batch.batchId,candidateId:item.id});
+    if(batch?.batchId===updated.batchId){batch=updated;draw();notify("Recovered available job details from the official listing. Review before publishing.");}}
+   catch(e){notify("Selected for Publish Ready, but official source details need attention: "+e.message)}
+  }
+ }else{selected.delete(String(item.id));draw()}
+}
 async function api(method,body){const r=await fetch("/api/admin/daily-batch",{method,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||("HTTP "+r.status));return data}
-async function load(){try{batch=await api("GET");const known=new Set([...batch.priority,...batch.backup].map(x=>String(x.id)));for(const id of [...selected])if(!known.has(id))selected.delete(id);draw();refreshTracker()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
+async function load(){try{const previous=batch?.batchId;batch=await api("GET");if(previous&&previous!==batch.batchId)selected.clear();const known=new Set([...batch.priority,...batch.backup].filter(canSelect).map(x=>String(x.id)));for(const id of [...selected])if(!known.has(id))selected.delete(id);draw();refreshTracker()}catch(e){notify(e.message+" — Sign in from the Admin page if your session expired.")}}
 function switchTab(next){tab=next;draw()}
-async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});if(body.action==="review"){const item=[...batch.priority,...batch.backup].find(x=>String(x.id)===String(body.candidateId));if(body.decision==="live"&&item&&isReady(item)&&selected.size<10&&!chosen().some(x=>employerName(x)===employerName(item)&&x.id!==item.id))selected.add(String(item.id));if(body.decision!=="live")selected.delete(String(body.candidateId))}draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
+async function modify(body){if(busy||!batch)return;busy=true;try{batch=await api("POST",{...body,batchId:batch.batchId});if(body.action==="review"&&body.decision!=="live")selected.delete(String(body.candidateId));draw()}catch(e){notify(e.message);await load()}finally{busy=false}}
 function draw(){
  if(!batch)return;
  const all=[...batch.priority,...batch.backup],checked=all.filter(j=>j.reviewedStatus&&!["unreviewed"].includes(j.reviewedStatus)).length;
@@ -105,11 +122,11 @@ function draw(){
  warning.textContent="Discovery quality: "+all.length+"/20 jobs, "+seen.size+"/20 distinct employers. "+(dupes.length?"Duplicates: "+dupes.join("; ")+". ":"")+"Please replace duplicates with verified jobs from different employers; existing review decisions are preserved.";
 
  el("progress").style.width=(all.length?checked/all.length*100:0)+"%";
- el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");
+ el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");el("readyTab").classList.toggle("active",tab==="ready");el("readyTab").textContent="Publish Ready ("+selected.size+")";
  const root=el("cards");root.replaceChildren();
  el("batchInfo").textContent=batch.batchId?("9 AM batch: "+batch.batchId+" · Prepared "+new Date(batch.generatedAt||Date.now()).toLocaleString("en-IN")+" · Status: "+(batch.status||"reviewing")+". Review changes are stored in GitHub; the website and Telegram are untouched until you approve publication."):"No saved 9 AM discovery batch has reached the Admin Review Center. The separate Expired-Job review queue is not the discovery shortlist.";
  if(!batch.batchId){const empty=node("div","banner");empty.style.gridColumn="1/-1";empty.append(node("h2",null,"Waiting for the daily discovery batch"),node("p",null,"The job discovery pipeline must first populate the server-side priority and backup list. No jobs have been invented for this preview."));root.append(empty);el("footer").hidden=true;return}
- const items=tab==="priority"?batch.priority:batch.backup;
+ const items=tab==="ready"?chosen():(tab==="priority"?batch.priority:batch.backup).filter(x=>!selected.has(String(x.id))).sort((a,b)=>{const rank=j=>j.reviewedStatus==="live"?0:j.reviewedStatus==="expired"?3:j.reviewedStatus==="unsure"?2:1;return rank(a)-rank(b)});
  for(const item of items){
   const card=node("article","card"),head=node("div","head"),description=node("div");
   description.append(node("div","company",item.company||"Unknown employer"),node("h3",null,item.role||"Role not provided"),node("div","meta",[item.loc||item.job?.loc,item.expYears||item.job?.expYears].filter(Boolean).join(" · ")));
@@ -121,17 +138,14 @@ function draw(){
   card.append(evidence);
   const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
   const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
-  const pick=node("label","selectline"),check=node("input");check.type="checkbox";check.checked=selected.has(String(item.id));check.disabled=busy||!isReady(item)||publishedIds.has(String(item.id))||["submitted","published"].includes(batch.status);check.onchange=()=>toggleCandidate(item,check.checked);pick.append(check,node("span",null,check.disabled&&item.reviewedStatus!=="live"?"Mark Live to enable publishing":"Select this job for publishing"));card.append(pick);
-  if(tab==="priority"){
-   const options=batch.backup.filter(x=>x.reviewedStatus==="live"&&isReady(x)&&!batch.priority.some(p=>p.id!==item.id&&employerName(p)===employerName(x)));
-   const row=node("div","replace"),select=node("select");select.append(new Option("Replace with a verified backup…",""));
-   for(const opt of options)select.append(new Option(opt.company+" — "+opt.role,opt.id));
-   select.disabled=!options.length||busy;const b=node("button","secondary","Replace");b.disabled=!options.length||busy;b.onclick=()=>{if(select.value)modify({action:"swap",priorityId:item.id,backupId:select.value})};row.append(select,b);card.append(row)
-  }
-  if(!isComplete(item))card.append(node("p","meta","Full job content is incomplete or not recorded active; you may review this candidate, but publishing is blocked until verified details are completed."));
+  const pick=node("div","pickaction"),button=node("button",tab==="ready"?"secondary":"primary",tab==="ready"?"← Remove from Publish Ready":canSelect(item)?"Add to Publish Ready →":"Verify Live to select");
+  button.disabled=busy||tab!=="ready"&&(!canSelect(item)||publishedIds.has(String(item.id)))||["submitted","published"].includes(batch.status);
+  button.onclick=()=>toggleCandidate(item,tab!=="ready");
+  pick.append(button);card.append(pick);
+  if(item.reviewedStatus==="live"&&!isReady(item))card.append(node("p","content-warning","Content needed before publishing: "+missingDetails(item).join(", ")+". Source recovery starts when you select this job."));
   root.append(card)
  }
- el("footer").hidden=false;el("publishBtn").disabled=!ready()||busy;el("publishBtn").textContent=batch.status==="submitted"?"Submitted":batch.status==="published"?"Published":("Publish "+selected.size+" selected job"+(selected.size===1?"":"s"));
+ el("footer").hidden=tab!=="ready";el("publishBtn").disabled=!ready()||busy;el("publishBtn").textContent=batch.status==="submitted"?"Submitted":batch.status==="published"?"Published":("Publish "+selected.size+" selected job"+(selected.size===1?"":"s"));
 }
 async function publish(){
  if(!ready()||busy)return;
@@ -157,7 +171,7 @@ async function refreshTracker(){
   if(data.batchId!==batch.batchId)return;
   publishStatus=data;
   publishedIds=new Set(data.publishedCandidateIds||[]);for(const id of [...selected])if(publishedIds.has(id))selected.delete(id);
-  el("trackSummary").textContent="Website "+data.publishedCount+"/"+data.stages.length+" · Telegram "+data.telegramDelivered+"/"+data.stages.length+" · Workflow "+(data.workflow.conclusion||data.workflow.state)+" · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
+  el("trackSummary").textContent="Website Live "+data.publishedCount+"/"+data.stages.length+" · Data committed "+data.dataCommittedCount+"/"+data.stages.length+" · Telegram confirmed "+data.telegramDelivered+"/"+data.stages.length+" · GitHub "+(data.workflow.conclusion||data.workflow.state)+" · Vercel unconfirmed until deployment verified · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
   const root=el("tracking");root.replaceChildren();
   for(const s of data.stages){
    const row=node("div","stage"),left=node("div"),right=node("div");
@@ -168,10 +182,19 @@ async function refreshTracker(){
   }
   drawCountsOnly();
  }catch(e){el("trackSummary").textContent="Tracker unavailable: "+e.message}
- if(!trackingTimer)trackingTimer=setInterval(()=>{if(["submitted","published"].includes(batch?.status))refreshTracker()},20000);
+ if(!trackingTimer)trackingTimer=setInterval(()=>{if(["submitted","published"].includes(batch?.status))refreshTracker()},10000);
 }
 function drawCountsOnly(){el("publishedCount").textContent=publishedIds.size;el("selectedCount").textContent=selected.size;el("publishBtn").disabled=!ready()||busy}
 
+let swipeStart=null;
+el("cards").addEventListener("touchstart",e=>{if(e.touches.length===1)swipeStart={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
+el("cards").addEventListener("touchend",e=>{
+ if(!swipeStart||!e.changedTouches.length)return;
+ const dx=e.changedTouches[0].clientX-swipeStart.x,dy=e.changedTouches[0].clientY-swipeStart.y;swipeStart=null;
+ if(Math.abs(dx)<75||Math.abs(dx)<Math.abs(dy)*1.4)return;
+ const tabs=["priority","backup","ready"],index=tabs.indexOf(tab);
+ switchTab(tabs[Math.max(0,Math.min(2,index+(dx<0?1:-1)))]);
+},{passive:true});
 load();
 </script>
 </body>

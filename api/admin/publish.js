@@ -188,15 +188,33 @@ export default async function handler(req,res){
       const publishedCandidateIds=allCandidates.filter(x=>urls.has(normalizeUrl(x.job?.apply||x.apply))).map(x=>String(x.id));
       const publishedIds=new Set(publishedCandidateIds);
       const selections=Array.isArray(batch.publication?.candidateIds)?batch.publication.candidateIds:[];
+      // A GitHub data commit is not proof that the public production page is live.
+      const production=await Promise.all(selections.map(async id=>{
+        const candidate=allCandidates.find(c=>String(c.id)===String(id));
+        const page=String(candidate?.job?.page||"").replace(/^\//,"");
+        if(!/^jobs\/[a-z0-9-]+\.html$/.test(page))return {id,live:false};
+        const controller=new AbortController();
+        const timeout=setTimeout(()=>controller.abort(),4000);
+        try{
+          const response=await fetch("https://hdcareers.in/"+page,{
+            cache:"no-store",signal:controller.signal,headers:{"Accept":"text/html"}
+          });
+          if(!response.ok)return {id,live:false};
+          const html=(await response.text()).replace(/&amp;/g,"&");
+          return {id,live:Boolean(candidate?.job?.apply&&html.includes(String(candidate.job.apply)))};
+        }catch{return {id,live:false}}
+        finally{clearTimeout(timeout)}
+      }));
+      const livePages=new Set(production.filter(x=>x.live).map(x=>String(x.id)));
       const stages=selections.map(id=>{
         const c=[...(batch.priority||[]),...(batch.backup||[])].find(x=>String(x.id)===id);
         const page=String(c?.job?.page||"").replace(/^\//,"");
         const entries=Object.values(ledger).filter(x=>x&&x.page===page);
         const last=entries.at(-1)||{};
         return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
-          github:batch.status==="submitted"?"queued_or_running":batch.status==="published"?"completed":"not_submitted",
-          website:urls.has(normalizeUrl(c?.job?.apply))?"generated":"pending",
-          vercel:last.status==="delivered"?"site-confirmed-before-send":"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
+          github:batch.status==="submitted"?"accepted":batch.status==="published"?"completed":"not_submitted",
+          website:livePages.has(String(id))?"live":urls.has(normalizeUrl(c?.job?.apply))?"data-committed":"pending",
+          vercel:livePages.has(String(id))?"production-page-confirmed":"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
           note:last.status==="uncertain"?"Check Telegram manually before retrying.":""};
       });
       let workflow={state:"not_checked",url:null,conclusion:null};
@@ -207,11 +225,12 @@ export default async function handler(req,res){
         if(run)workflow={state:run.status,url:run.html_url,conclusion:run.conclusion,runId:run.id,exactMatch:false};
       }catch(e){workflow={state:"unavailable",url:null,conclusion:null,reason:"GitHub workflow lookup failed"}}
       return res.status(200).json({batchId:batch.batchId||null,status:batch.status||"waiting",
-        publishedCount:stages.filter(x=>x.website==="generated").length,
+        publishedCount:stages.filter(x=>x.website==="live").length,
+        dataCommittedCount:stages.filter(x=>x.website==="live"||x.website==="data-committed").length,
         alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
         telegramDelivered:stages.filter(x=>x.telegram==="delivered").length,
         workflow,stages,observedAt:new Date().toISOString(),
-        warning:"Workflow matching by timestamp is approximate; Vercel is unconfirmed until the deployed commit is verified."});
+        warning:"GitHub workflow matching is approximate. Production page evidence is checked directly on hdcareers.in. Vercel commit identity is not independently verified."});
     }
     const fromReview=Boolean(req.body?.batchId);
     let reviewBatch=null;

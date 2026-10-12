@@ -72,6 +72,9 @@ class AdminApi {
     suspend fun updateReview(batch:String,id:String,status:String):DailyBatch =
         parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","review")
             .put("batchId",batch).put("candidateId",id).put("decision",status))))
+    suspend fun enrich(batch:String,id:String):DailyBatch =
+        parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","enrich")
+            .put("batchId",batch).put("candidateId",id))))
     suspend fun swap(batch:String,priority:String,backup:String):DailyBatch =
         parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","swap")
             .put("batchId",batch).put("priorityId",priority).put("backupId",backup))))

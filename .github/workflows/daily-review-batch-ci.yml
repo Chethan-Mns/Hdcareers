@@ -13,6 +13,13 @@ on:
       - tests/daily-review-api.test.mjs
       - data/daily-review-batch.json
       - api/admin/daily-batch.js
+      - api/admin/extract-job.js
+      - lib/review-enrichment.js
+      - lib/review-ranking.js
+      - tests/review-ranking.test.mjs
+      - scripts/reprioritize_review_batch.mjs
+      - .github/workflows/rank-daily-review-batch.yml
+      - tests/review-enrichment.test.mjs
       - api/admin/publish.js
       - admin/review-batch.html
       - .github/workflows/daily-review-batch-ci.yml
@@ -42,7 +49,23 @@ jobs:
       - name: Validate API and browser scripts
         run: |
           node --check api/admin/daily-batch.js
+          node --check api/admin/extract-job.js
+          node --check lib/review-enrichment.js
+          node --check lib/review-ranking.js
+          node --check scripts/reprioritize_review_batch.mjs
           node --check api/admin/publish.js
           node --check lib/review-rules.js
           node --test tests/review-rules.test.mjs
+          node --test tests/review-enrichment.test.mjs
+          node --test tests/review-ranking.test.mjs
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          text=Path("admin/review-batch.html").read_text()
+          script=text.split("<script>",1)[1].split("</script>",1)[0]
+          Path("/tmp/hd-review-inline.mjs").write_text(script)
+          subprocess.run(["node","--check","/tmp/hd-review-inline.mjs"],check=True)
+          assert 'id="readyTab"' in text
+          assert 'Mark complete job' not in text
+          PY
           node --test tests/daily-review-api.test.mjs
