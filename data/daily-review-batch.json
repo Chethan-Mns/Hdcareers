@@ -331,7 +331,7 @@
       "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26014347",
       "cat": "it",
       "expYears": "Apprentice / early career",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official American Express Oracle listing was indexed last week, but today’s exact page returned an empty shell; manual review required.",
       "postedDate": null,
@@ -345,8 +345,13 @@
         "expYears": "Apprentice / early career",
         "sourceName": "American Express Careers",
         "elig": "Bachelor’s degree in technology, engineering, data science, data engineering, IT, statistics, mathematics or related STEM field.",
-        "expType": "fresher"
-      }
+        "expType": "fresher",
+        "manualLiveVerifiedAt": "2026-10-12T04:10:11.683Z",
+        "browserVerifiedAt": "2026-10-12T04:10:11.683Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:10:11.683Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "graviton-8764240002",
@@ -633,5 +638,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:09:47.904Z"
+  "updatedAt": "2026-10-12T04:10:11.683Z"
 }
