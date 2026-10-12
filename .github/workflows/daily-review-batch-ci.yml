@@ -51,11 +51,15 @@ jobs:
           b=json.loads(Path("data/daily-review-batch.json").read_text())
           if b.get("status")=="published":
               published=json.loads(Path("data/jobs.json").read_text())
-              manifest=json.loads(Path("data/telegram-approved-batch.json").read_text())
               ledger=json.loads(Path("data/telegram-deliveries.json").read_text())
-              pages=manifest["pages"]
-              assert len(pages)==10 and set(pages).issubset({j["page"] for j in published})
-              assert all(any(r.get("page")==page and r.get("status")=="delivered" for r in ledger.values()) for page in pages)
+              batch_jobs={j["id"]:j for j in b["priority"]+b["backup"]}
+              selected=b.get("publication",{}).get("candidateIds",[])
+              assert len(selected)==10 and len(set(selected))==10
+              published_urls={j["apply"]:j["page"] for j in published}
+              pages=[published_urls[batch_jobs[id]["apply"]] for id in selected]
+              assert len(set(pages))==10
+              assert all(any(r.get("page")==page and r.get("status")=="delivered"
+                  and r.get("batchId")=="admin-38209972992" for r in ledger.values()) for page in pages)
               print("Historical October 12 publication and Telegram receipts verified.")
           else:
               subprocess.run(["python3","scripts/prepare_owner_approved_ten_20261012.py","/tmp/hd-10-preflight.json"],check=True)
