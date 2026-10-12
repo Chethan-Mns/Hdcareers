@@ -3,6 +3,8 @@ import {employerKey,selectCandidates,reviewCounts} from "../../lib/review-rules.
 import {extractOfficialJob} from "./extract-job.js";
 import {enrichReviewedCandidate} from "../../lib/review-enrichment.js";
 
+export const config={maxDuration:30};
+
 const REPO = process.env.ADMIN_GITHUB_REPO || "Chethan-Mns/Hdcareers";
 const REF = process.env.ADMIN_GITHUB_BASE || "main";
 const PATH = "data/daily-review-batch.json";
