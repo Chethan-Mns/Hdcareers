@@ -279,8 +279,9 @@ def scan_employer(company, fetcher, max_pages=2, pause=0.5):
         if total is None:
             total, expected_pages = page["total"], page["pages"]
         elif total != page["total"] or expected_pages != page["pages"]:
+            # Keep discovering visible jobs, but NEVER treat this snapshot as
+            # complete or use absences from it to close published listings.
             problems.append({"page": index + 1, "reason": f"Listing total changed during crawl: {total} -> {page['total']}"})
-            break
         page_ids = {r["id"] for r in page["jobs"]}
         if page_ids & seen:
             problems.append({"page": index + 1, "reason": "Overlap across result pages"})
