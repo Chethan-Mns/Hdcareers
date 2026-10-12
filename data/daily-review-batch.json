@@ -636,7 +636,7 @@
       "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000152388899",
       "cat": "it",
       "expYears": ">3 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Bosch SmartRecruiters page opened today with job-specific application control and >3 years experience.",
       "postedDate": null,
@@ -656,9 +656,14 @@
           "PCB design",
           "BLDC motor control",
           "Power electronics"
-        ]
-      }
+        ],
+        "manualLiveVerifiedAt": "2026-10-12T04:12:12.464Z",
+        "browserVerifiedAt": "2026-10-12T04:12:12.464Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:12:12.464Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-12T04:11:55.969Z"
+  "updatedAt": "2026-10-12T04:12:12.465Z"
 }
