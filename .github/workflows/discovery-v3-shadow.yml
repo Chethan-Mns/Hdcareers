@@ -1,0 +1,38 @@
+name: HD Careers V3 employer-first discovery shadow
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/discovery_v3_shadow.py
+      - data/discovery-v3-seeds.json
+      - tests/test_discovery_v3_shadow.py
+      - .github/workflows/discovery-v3-shadow.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests - fail closed on uncertain evidence
+        run: python3 -m unittest discover -s tests -p 'test_discovery_v3_shadow.py' -v
+      - name: Shadow exact jobs on Deloitte EY and HCLTech official portals
+        run: python3 scripts/discovery_v3_shadow.py --output discovery-v3-shadow-report.json
+      - name: Read-only report summary
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open("discovery-v3-shadow-report.json"))
+          print("Read-only V3 results:",r["counts"])
+          assert r["runType"]=="shadow_only"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hd-careers-v3-shadow-evidence
+          path: discovery-v3-shadow-report.json
+          retention-days: 14
