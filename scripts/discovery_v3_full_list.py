@@ -180,6 +180,12 @@ def verify_exact_listing_job(html_body, job):
     if canonical != job["jobUrl"]:
         return {"state":"unconfirmed", "reason":"Canonical URL did not match exact official listing",
                 "evidence":[]}
+    if re.search(r"(?:this (?:job|position) (?:is )?no longer available|"+
+                 r"(?:applications? (?:are |is )?closed)|no longer accepting applications|"+
+                 r"(?:position|job) has been filled)", " ".join(parser.visible), re.I):
+        return {"state":"unconfirmed",
+                "reason":"Employer page contains a closure notice; independent confirmation required",
+                "evidence":["possible-closure-text"]}
     normalized_text = " ".join(re.findall(r"[a-z0-9]+",
         " ".join(parser.visible).lower()))
     expected_title = " ".join(re.findall(r"[a-z0-9]+", job["title"].lower()))
