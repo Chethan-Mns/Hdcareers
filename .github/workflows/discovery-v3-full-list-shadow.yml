@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - scripts/discovery_v3_full_list.py
+      - tests/test_discovery_v3_wipro.py
       - scripts/discovery_v3_shadow.py
       - tests/test_discovery_v3_full_list.py
       - scripts/discovery_v3_gate.py
@@ -45,6 +46,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/discovery_v3_full_list.py
           python3 -m unittest discover -s tests -p 'test_discovery_v3_full_list.py' -v
+          python3 -m unittest discover -s tests -p 'test_discovery_v3_wipro.py' -v
           python3 -m unittest discover -s tests -p 'test_discovery_v3_gate.py' -v
           python3 -m unittest discover -s tests -p 'test_discovery_v3_registry.py' -v
           python3 -m unittest discover -s tests -p 'test_discovery_v3_draft.py' -v
@@ -54,6 +56,18 @@ jobs:
           VERIFY_NEW: ${{ inputs.verify_new || (github.event_name == 'schedule' && '4' || '3') }}
         run: |
           python3 scripts/discovery_v3_full_list.py --max-pages "$MAX_PAGES" --verify-new "$VERIFY_NEW" --output discovery-v3-full-list-report.json
+      - name: Separate Wipro full-list shadow trial
+        run: |
+          python3 scripts/discovery_v3_full_list.py --companies Wipro --max-pages 2 --verify-new 2 --output discovery-v3-wipro-report.json
+          python3 - <<'PY'
+          import json
+          report=json.load(open("discovery-v3-wipro-report.json"))
+          assert report["mode"]=="shadow_only"
+          assert len(report["scans"])==1 and report["scans"][0]["employer"]=="Wipro"
+          assert len(report["scans"][0]["jobs"])==len(set(report["scans"][0]["ids"]))
+          print("Wipro probe status:",report["scans"][0]["status"],
+                "jobs:",len(report["scans"][0]["jobs"]))
+          PY
       - name: Validate shadow report fail-closed contract
         run: |
           python3 - <<'PY'
@@ -135,4 +149,5 @@ jobs:
           path: |
             discovery-v3-full-list-report.json
             discovery-v3-quality-gate.json
+            discovery-v3-wipro-report.json
           retention-days: 14

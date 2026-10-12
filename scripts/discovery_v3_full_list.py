@@ -30,7 +30,13 @@ DEFAULTS = {
            "path": "/go/Deloitte-India/718244/", "mode": "successfactors"},
     "HCLTech": {"host": "careers.hcltech.com",
            "path": "/go/India/9553955/", "mode": "hcl"},
+    "Wipro": {"host": "careers.wipro.com",
+           "path": "/viewalljobs/", "mode": "successfactors", "page_size": 50},
 }
+def page_size(company):
+    return int(DEFAULTS[company].get("page_size", PAGE_SIZE))
+
+
 RESULTS = re.compile(
     r"Results\s+([\d,]+)\s*[–-]\s*([\d,]+)\s+of\s+([\d,]+)"
     r"\s+Page\s+([\d,]+)\s+of\s+([\d,]+)", re.I
@@ -133,12 +139,13 @@ def parse_page(company, html, source, expected_page=0):
         return {"valid": False, "reason": "Total results and full-page bounds unavailable",
                 "jobs": [], "total": None, "pages": None}
     start, end, total, page_number, pages = [int(n.replace(",", "")) for n in m.groups()]
-    expected_start = expected_page * PAGE_SIZE + 1
-    expected_end = min((expected_page + 1) * PAGE_SIZE, total)
+    size = page_size(company)
+    expected_start = expected_page * size + 1
+    expected_end = min((expected_page + 1) * size, total)
     if (start, end, page_number) != (expected_start, expected_end, expected_page + 1):
         return {"valid": False, "reason": "Pagination range or page number mismatch",
                 "jobs": [], "total": total, "pages": pages}
-    if total < 0 or pages != (total + PAGE_SIZE - 1) // PAGE_SIZE:
+    if total < 0 or pages != (total + size - 1) // size:
         return {"valid": False, "reason": "Reported total and page count disagree",
                 "jobs": [], "total": total, "pages": pages}
     unique = {}
@@ -153,10 +160,10 @@ def parse_page(company, html, source, expected_page=0):
             eligible_links.append(link)
             row = link.get("rowText", "")
             job["locationEvidence"] = row[-220:] if row else ""
-            # EY is a global board. Only positive employer-row evidence can
-            # qualify a record as India-focused.
+            # EY and Wipro are global boards: require positive India evidence
+            # in the result row rather than inferring from the company name.
             job["country"] = "IN" if re.search(r"(?:,\s*IN\b|\bIndia\b)", row, re.I) else "unconfirmed"
-            if company != "EY":
+            if company not in ("EY", "Wipro"):
                 job["country"] = "IN"
             unique[job["id"]] = job
     if len(unique) != end - start + 1:
@@ -210,11 +217,16 @@ def listing_url(company, index):
     config = DEFAULTS[company]
     base = "https://" + config["host"] + config["path"]
     if config["mode"] == "successfactors":
-        params = {"q": "", "sortColumn": "referencedate", "sortDirection": "desc"}
-        if company == "EY":
-            params["startrow"] = index * PAGE_SIZE
-        elif index > 0:
-            base = base.rstrip("/") + "/" + str(index * PAGE_SIZE) + "/"
+        if company == "Wipro":
+            params = {"locale": "en_US"}
+            if index > 0:
+                base = base.rstrip("/") + "/" + str(index * page_size(company)) + "/"
+        else:
+            params = {"q": "", "sortColumn": "referencedate", "sortDirection": "desc"}
+            if company == "EY":
+                params["startrow"] = index * page_size(company)
+            elif index > 0:
+                base = base.rstrip("/") + "/" + str(index * page_size(company)) + "/"
     else:
         # HCL India career page can expose a separate dynamically loaded listing.
         # Its missing count is never treated as complete without a trusted total.
@@ -308,7 +320,7 @@ def scan_employer(company, fetcher, max_pages=2, pause=0.5):
         "complete": complete,
         "totalReported": total,
         "pagesReported": expected_pages,
-        "pagesRead": (len(rows) + PAGE_SIZE - 1) // PAGE_SIZE,
+        "pagesRead": (len(rows) + page_size(company) - 1) // page_size(company),
         "jobs": rows,
         "ids": [x["id"] for x in rows],
         "problems": problems or ([] if complete else ["Page limit reached before complete pagination"]),
@@ -363,6 +375,8 @@ def process(scans, published, fetcher, verify_new=3, pause=0.5):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-pages", type=int, default=2)
+    parser.add_argument("--companies", nargs="+", choices=list(DEFAULTS),
+                        default=["EY", "Deloitte South Asia", "HCLTech"])
     parser.add_argument("--verify-new", type=int, default=3)
     parser.add_argument("--pause", type=float, default=0.5)
     parser.add_argument("--output", default="discovery-v3-full-list-report.json")
@@ -375,7 +389,7 @@ def main():
         raise SystemExit("Published jobs data must be an array")
     fetcher = AllowedHostFetcher()
     scans = [scan_employer(name, fetcher, args.max_pages, args.pause)
-             for name in DEFAULTS]
+             for name in args.companies]
     outcomes = process(scans, published, fetcher, args.verify_new, args.pause)
     report = {"mode":"shadow_only","checkedAt":datetime.now(timezone.utc).isoformat(),
         "scans": scans,"summary": outcomes,
