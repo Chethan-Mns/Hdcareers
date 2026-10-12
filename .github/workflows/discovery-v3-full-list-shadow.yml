@@ -1,0 +1,61 @@
+name: HD Careers V3 full-list discovery shadow
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/discovery_v3_full_list.py
+      - scripts/discovery_v3_shadow.py
+      - tests/test_discovery_v3_full_list.py
+      - .github/workflows/discovery-v3-full-list-shadow.yml
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Maximum official listing pages per employer (1-400). A limited scan is PARTIAL, never a completed expiry check."
+        required: false
+        default: "2"
+      verify_new:
+        description: "Verify this many newly discovered exact job pages (0-5)"
+        required: false
+        default: "3"
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify pagination, duplicate and expiry safety rules
+        run: |
+          python3 -m py_compile scripts/discovery_v3_full_list.py
+          python3 -m unittest discover -s tests -p 'test_discovery_v3_full_list.py' -v
+      - name: Read-only current employer discovery
+        env:
+          MAX_PAGES: ${{ inputs.max_pages || '2' }}
+          VERIFY_NEW: ${{ inputs.verify_new || '3' }}
+        run: |
+          python3 scripts/discovery_v3_full_list.py --max-pages "$MAX_PAGES" --verify-new "$VERIFY_NEW" --output discovery-v3-full-list-report.json
+      - name: Validate shadow report fail-closed contract
+        run: |
+          python3 - <<'PY'
+          import json
+          with open("discovery-v3-full-list-report.json") as fd:
+              data=json.load(fd)
+          assert data["mode"]=="shadow_only"
+          assert len(data["scans"])==3
+          for scan in data["scans"]:
+              assert scan["status"] in ("ok","partial")
+              assert scan["complete"] or scan["status"]=="partial"
+              assert len(scan["jobs"])==len(set(scan["ids"]))
+              if not scan["complete"]:
+                  print("Incomplete job listing held from expiry decisions:",scan["employer"],scan["problems"])
+          print("V3 verification report validated. No production jobs mutated.")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hd-careers-v3-full-list-evidence
+          path: discovery-v3-full-list-report.json
+          retention-days: 14
