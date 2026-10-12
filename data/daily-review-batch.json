@@ -11,7 +11,7 @@
       "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Deloitte job page opened today, identifies requisition 110963 and exposes Apply Now.",
       "postedDate": "2026-10-11",
@@ -20,7 +20,7 @@
         "role": "Analyst – D365 F&O Functional SCM",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-        "status": "review",
+        "status": "active",
         "cat": "it",
         "expYears": "0–2 years",
         "sourceName": "Deloitte South Asia Careers",
@@ -35,8 +35,13 @@
           "Testing"
         ],
         "expType": "fresher",
-        "date": "2026-10-11"
-      }
+        "date": "2026-10-11",
+        "manualLiveVerifiedAt": "2026-10-12T04:06:52.077Z",
+        "browserVerifiedAt": "2026-10-12T04:06:52.077Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:06:52.077Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-3078323",
@@ -606,5 +611,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T03:35:15.759Z"
+  "updatedAt": "2026-10-12T04:06:52.106Z"
 }
