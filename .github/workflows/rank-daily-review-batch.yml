@@ -1,0 +1,37 @@
+name: Rank 9AM discovery shortlist from official evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/daily-review-batch.json
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hd-daily-review-ranking
+  cancel-in-progress: false
+jobs:
+  rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Unit test quality rules
+        run: node --test tests/review-ranking.test.mjs
+      - name: Re-rank only if no manual reviews exist
+        run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
+      - name: Safely commit reordered 10+10 shortlist
+        run: |
+          git diff --check
+          if git diff --quiet -- data/daily-review-batch.json; then exit 0; fi
+          git config user.name "HD Careers Review Quality"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/daily-review-batch.json
+          git commit -m "Rank unreviewed daily shortlist using source evidence"
+          git push origin HEAD:main
