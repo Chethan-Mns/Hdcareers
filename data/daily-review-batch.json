@@ -125,7 +125,7 @@
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
       "verificationReason": "Exact AHEAD Lever page opened today with job-specific Apply link and 2026-graduate eligibility.",
-      "postedDate": "2026-10-05",
+      "postedDate": null,
       "job": {
         "company": "AHEAD",
         "role": "MS – EUS Apprentice/Intern (6 months)",
@@ -148,7 +148,6 @@
           "IT support"
         ],
         "expType": "fresher",
-        "date": "2026-10-05",
         "workMode": "Hybrid"
       }
     },
@@ -370,7 +369,7 @@
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
       "verificationReason": "Exact Omnidian Lever page opened today with job-specific Apply and current application form.",
-      "postedDate": "2026-10-12",
+      "postedDate": null,
       "job": {
         "company": "Omnidian",
         "role": "Software Engineer I/II",
@@ -389,7 +388,6 @@
           "Databricks",
           "Python"
         ],
-        "date": "2026-10-12",
         "workMode": "Hybrid"
       }
     },
@@ -404,7 +402,7 @@
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
       "verificationReason": "Exact NEC SmartRecruiters page opened today with role details and an active interest/application control.",
-      "postedDate": "2026-10-12",
+      "postedDate": null,
       "job": {
         "company": "NEC Software Solutions India",
         "role": "Software Engineer – Full Stack Developer (Java + React)",
@@ -423,7 +421,6 @@
           "REST APIs",
           "SQL"
         ],
-        "date": "2026-10-12",
         "workMode": "Hybrid"
       }
     },
@@ -556,7 +553,7 @@
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
       "verificationReason": "Exact Keyloop Lever page opened today with job-specific Apply and 4–6 years requirement.",
-      "postedDate": "2026-10-11",
+      "postedDate": null,
       "job": {
         "company": "Keyloop",
         "role": "Software Engineer (IC2)",
@@ -574,7 +571,6 @@
           "Databases",
           "CI/CD"
         ],
-        "date": "2026-10-11",
         "workMode": "Hybrid"
       }
     },
@@ -589,7 +585,7 @@
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
       "verificationReason": "Exact Bosch SmartRecruiters page opened today with job-specific application control and >3 years experience.",
-      "postedDate": "2026-10-08",
+      "postedDate": null,
       "job": {
         "company": "Bosch",
         "role": "2026/03: HW Developer (PS-DC Projects)",
@@ -606,10 +602,9 @@
           "PCB design",
           "BLDC motor control",
           "Power electronics"
-        ],
-        "date": "2026-10-08"
+        ]
       }
     }
   ],
-  "updatedAt": "2026-10-12T03:34:03.138Z"
+  "updatedAt": "2026-10-12T03:35:15.759Z"
 }
