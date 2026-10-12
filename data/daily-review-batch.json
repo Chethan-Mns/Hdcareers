@@ -441,7 +441,7 @@
       "apply": "https://jobs.smartrecruiters.com/necsws/744000152589569",
       "cat": "it",
       "expYears": "Not stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact NEC SmartRecruiters page opened today with role details and an active interest/application control.",
       "postedDate": null,
@@ -463,8 +463,13 @@
           "REST APIs",
           "SQL"
         ],
-        "workMode": "Hybrid"
-      }
+        "workMode": "Hybrid",
+        "manualLiveVerifiedAt": "2026-10-12T04:11:11.828Z",
+        "browserVerifiedAt": "2026-10-12T04:11:11.828Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:11:11.828Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "synopsys-19013",
@@ -648,5 +653,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:10:57.877Z"
+  "updatedAt": "2026-10-12T04:11:11.829Z"
 }
