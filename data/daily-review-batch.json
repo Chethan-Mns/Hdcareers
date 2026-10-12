@@ -78,7 +78,7 @@
       "apply": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Test-and-Tools-Development-Engineer---New-College-Grad-2026_JR2016982",
       "cat": "it",
       "expYears": "New college graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official NVIDIA Workday result showed requisition JR2016982 and Apply, but today’s exact page rendered as a blank Workday shell.",
       "postedDate": null,
@@ -87,13 +87,15 @@
         "role": "Test and Tools Development Engineer – New College Grad 2026",
         "loc": "Pune, Maharashtra, India",
         "apply": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Test-and-Tools-Development-Engineer---New-College-Grad-2026_JR2016982",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "New college graduate",
         "sourceName": "NVIDIA Careers",
         "desc": "New-college-graduate test and tools development role.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:07:26.856Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ibm-52240",
@@ -613,5 +615,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:07:07.581Z"
+  "updatedAt": "2026-10-12T04:07:26.856Z"
 }
