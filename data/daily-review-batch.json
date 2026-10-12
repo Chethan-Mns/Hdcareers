@@ -51,7 +51,7 @@
       "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
       "cat": "it",
       "expYears": "Campus hire",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Authoritative Qualcomm Workday result identifies requisition 3078323 and Apply, but today’s exact page rendered as a blank Workday shell; manual review required.",
       "postedDate": null,
@@ -60,13 +60,15 @@
         "role": "2026 Campus Hire – Associate Engineer, HW",
         "loc": "Bangalore / Chennai, India",
         "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
-        "status": "review",
+        "status": "expired",
         "cat": "it",
         "expYears": "Campus hire",
         "sourceName": "Qualcomm Careers",
         "desc": "2026 campus hardware engineering opportunity.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:07:07.581Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nvidia-jr2016982",
@@ -611,5 +613,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:06:52.106Z"
+  "updatedAt": "2026-10-12T04:07:07.581Z"
 }
