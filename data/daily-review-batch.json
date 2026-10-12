@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-12-0900-ist",
   "generatedAt": "2026-10-12T03:33:49.311Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "deloitte-110963",
@@ -676,5 +676,26 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-12T05:35:02.446Z"
+  "updatedAt": "2026-10-12T05:37:25.167Z",
+  "submittedAt": "2026-10-12T05:37:25.167Z",
+  "publication": {
+    "candidateIds": [
+      "ahead-7950d5ca",
+      "deloitte-110963",
+      "graviton-8764240002"
+    ],
+    "companies": [
+      "AHEAD",
+      "Deloitte South Asia",
+      "Graviton Research Capital"
+    ],
+    "urls": [
+      "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
+      "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002"
+    ],
+    "requestId": "fc6f7b82236281bed971c57e",
+    "count": 3,
+    "submittedAt": "2026-10-12T05:37:25.167Z"
+  }
 }
