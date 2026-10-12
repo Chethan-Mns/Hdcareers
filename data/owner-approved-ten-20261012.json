@@ -1,0 +1,21 @@
+{
+  "id": "owner-approved-20261012-all-ten",
+  "batchId": "2026-10-12-0900-ist",
+  "approvedBy": "HD Careers Owner",
+  "approvalNote": "Owner confirmed all ten exact employer applications currently live and authorized website plus Telegram publishing; include Deloitte D365 SCM",
+  "humanConfirmedAllLive": true,
+  "candidateIds": [
+    "ahead-7950d5ca",
+    "graviton-8764240002",
+    "amex-26014347",
+    "gehc-r4043087",
+    "erm-r00032044",
+    "deloitte-110963",
+    "nec-744000152589569",
+    "omnidian-e4bd2d30",
+    "synopsys-19013",
+    "bosch-744000152388899"
+  ],
+  "telegram": "post_each_after_verified_website_deploy",
+  "publishMode": "one_batch_no_queue"
+}
