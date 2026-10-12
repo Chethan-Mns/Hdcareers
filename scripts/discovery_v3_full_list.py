@@ -162,7 +162,7 @@ def verify_exact_listing_job(html_body, job):
                     for link in parser.links)
     # Some SuccessFactors Apply buttons are form actions instead of links.
     has_apply = has_apply or bool(re.search(
-        r"<(?:button|input)\\b[^>]*(?:apply now|apply for this job)",
+        r"<(?:button|input)\b[^>]*(?:apply now|apply for this job)",
         html_body, re.I))
     evidence = [k for k,flag in (("canonical-match", bool(canonical)),
                 ("title-match", title_match), ("apply-control", has_apply)) if flag]
