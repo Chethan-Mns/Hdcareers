@@ -39,7 +39,7 @@ class FakeFetcher:
 class FullListTests(unittest.TestCase):
     def test_pagination_uses_real_sap_startrow(self):
         self.assertIn("startrow=25", listing_url("EY",1))
-        self.assertIn("startrow=50", listing_url("Deloitte South Asia",2))
+        self.assertIn("/718244/50/", listing_url("Deloitte South Asia",2))
         self.assertIn("page=3", listing_url("HCLTech",3))
 
     def test_parse_one_page_requires_exact_count_and_range(self):
@@ -112,13 +112,25 @@ class FullListTests(unittest.TestCase):
         incomplete={**missing,"complete":False}
         self.assertEqual(consecutive_absence([older,missing,incomplete], "EY", "a"),"unconfirmed")
 
+    def test_ey_only_uses_row_based_india_country_evidence(self):
+        listing=page_html(total=2,override=[
+            '<tr><td><a href="/ey/job/Mumbai-Analyst/1400000001/">Analyst</a></td><td>Mumbai, MH, IN, 400028</td></tr>',
+            '<tr><td><a href="/ey/job/London-Consultant/1400000002/">Consultant</a></td><td>London, UK</td></tr>'
+        ])
+        result=parse_page("EY",listing,listing_url("EY",0),0)
+        self.assertTrue(result["valid"])
+        self.assertEqual([j["country"] for j in result["jobs"]],["IN","unconfirmed"])
+        scan={"jobs":result["jobs"]}
+        out=process([scan],[],FakeFetcher({}),verify_new=0,pause=0)
+        self.assertEqual(out["discoveredNewIndia"],1)
+
     def test_published_duplicates_are_excluded(self):
         job=job_from_link("EY","https://careers.ey.com/ey/job/City-SWE/1445632533/",
                           "Software Engineer",listing_url("EY",0))
         scan={"jobs":[job]}
         f=FakeFetcher({})
         result=process([scan],[{"apply":job["jobUrl"],"company":"EY"}],f,verify_new=3,pause=0)
-        self.assertEqual(result["discoveredNew"],0)
+        self.assertEqual(result["discoveredNewIndia"],0)
         self.assertEqual(result["alreadyPublished"],1)
         self.assertEqual(len(f.called),0)
 
