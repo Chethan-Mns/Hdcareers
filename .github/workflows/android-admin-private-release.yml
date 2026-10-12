@@ -2,6 +2,11 @@ name: HD Careers Admin Private Signed APK
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - android-admin/**
+      - .github/workflows/android-admin-private-release.yml
 
 permissions:
   contents: read
