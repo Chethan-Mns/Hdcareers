@@ -13,6 +13,9 @@ on:
       - tests/daily-review-api.test.mjs
       - data/daily-review-batch.json
       - api/admin/daily-batch.js
+      - api/admin/extract-job.js
+      - lib/review-enrichment.js
+      - tests/review-enrichment.test.mjs
       - api/admin/publish.js
       - admin/review-batch.html
       - .github/workflows/daily-review-batch-ci.yml
@@ -42,7 +45,10 @@ jobs:
       - name: Validate API and browser scripts
         run: |
           node --check api/admin/daily-batch.js
+          node --check api/admin/extract-job.js
+          node --check lib/review-enrichment.js
           node --check api/admin/publish.js
           node --check lib/review-rules.js
           node --test tests/review-rules.test.mjs
+          node --test tests/review-enrichment.test.mjs
           node --test tests/daily-review-api.test.mjs
