@@ -55,6 +55,30 @@ jobs:
           ledger=json.loads(Path('data/telegram-deliveries.json').read_text())
           ids=request['candidateIds']
           assert len(ids)==9 and len(set(ids))==9 and 'unisys-REQ568332' not in ids
+          if batch.get('batchId') != request.get('batchId'):
+              assert request['batchId']=='2026-10-11-0900-ist'
+              assert request['requestId']=='approved-nine-20261011'
+              pages=[
+                  'jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026.html',
+                  'jobs/hcltech-engineer-jenkins-windows-powershell.html',
+                  'jobs/arm-associate-engineer.html',
+                  'jobs/wipro-developer-l2.html',
+                  'jobs/capgemini-software-engineer-bangalore-574027.html',
+                  'jobs/cognizant-dx-associate-business-analyst.html',
+                  'jobs/ey-analyst-indirect-tax-core.html',
+                  'jobs/nxp-technical-internship-2027-r-10066434.html',
+                  'jobs/amazon-software-development-engineer-i-iesp-merchant-tech.html'
+              ]
+              assert len(pages)==len(ids) and len(set(pages))==len(ids)
+              jobs_by_page={j['page']:j for j in published if j.get('page') in pages}
+              assert set(jobs_by_page)==set(pages),'Previously approved publication missing published jobs.'
+              for page in pages:
+                  validate(jobs_by_page[page],0)
+                  assert any(v.get('page')==page and v.get('status')=='delivered'
+                      and isinstance(v.get('messageId'),int) for v in ledger.values()),(
+                      'Missing confirmed Telegram receipt: '+page)
+              print('Historical approved jobs and confirmed Telegram receipts preserved. No duplicate publication.')
+              sys.exit(0)
           staged={str(x['id']):x for x in batch['priority']}
           assert all(staged[x]['reviewedStatus']=='live' for x in ids)
           expected={staged[x]['job']['apply'] for x in ids}
