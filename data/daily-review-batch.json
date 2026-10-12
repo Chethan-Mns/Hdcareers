@@ -131,7 +131,7 @@
       "apply": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
       "cat": "it",
       "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact AHEAD Lever page opened today with job-specific Apply link and 2026-graduate eligibility.",
       "postedDate": null,
@@ -140,7 +140,7 @@
         "role": "MS – EUS Apprentice/Intern (6 months)",
         "loc": "Gurugram, Haryana, India",
         "apply": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
-        "status": "review",
+        "status": "active",
         "cat": "it",
         "expYears": "2026 graduate",
         "sourceName": "AHEAD Careers",
@@ -157,8 +157,13 @@
           "IT support"
         ],
         "expType": "fresher",
-        "workMode": "Hybrid"
-      }
+        "workMode": "Hybrid",
+        "manualLiveVerifiedAt": "2026-10-12T04:08:12.679Z",
+        "browserVerifiedAt": "2026-10-12T04:08:12.679Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:08:12.679Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ingram-r115589",
@@ -615,5 +620,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:07:26.856Z"
+  "updatedAt": "2026-10-12T04:08:12.680Z"
 }
