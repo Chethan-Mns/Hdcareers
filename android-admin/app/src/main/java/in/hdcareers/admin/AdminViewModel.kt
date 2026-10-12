@@ -92,7 +92,15 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     suspend fun refresh() {
         loading=true
         val errors= mutableListOf<String>()
-        try { batch=api.batch();setReminderState() } catch(e:Exception){errors+="Review: "+e.message}
+        try {
+            val refreshed=api.batch()
+            if(refreshed.id != batch.id) selectedIds=emptySet()
+            batch=refreshed
+            selectedIds=selectedIds.filterTo(mutableSetOf()) { id ->
+                refreshed.all.any { it.id==id && it.selectable }
+            }
+            setReminderState()
+        } catch(e:Exception){errors+="Review: "+e.message}
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
         try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
         try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
@@ -119,7 +127,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     fun toggleSelected(id:String,checked:Boolean) {
         val c=batch.all.firstOrNull { it.id==id } ?: return
         if(!checked){selectedIds=selectedIds-id;return}
-        if(!c.approved){message="Mark a complete, verified job Live before selecting it.";return}
+        if(!c.selectable){message="Verify this job as Live at its official application URL before selecting.";return}
         if(id in publishedReviewIds){message="That job is already published.";return}
         if(selectedIds.size>=10){message="Select a maximum of 10 jobs.";return}
         if(batch.all.any { it.id in selectedIds&&employerKey(it.company)==employerKey(c.company) }){
@@ -129,7 +137,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
-        if(decision=="live")toggleSelected(id,true) else selectedIds=selectedIds-id
+        if(decision!="live")selectedIds=selectedIds-id
     }
     fun swap(priorityId:String,backupId:String)=run {
         batch=api.swap(batch.id,priorityId,backupId);setReminderState()
