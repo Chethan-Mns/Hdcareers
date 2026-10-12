@@ -545,7 +545,7 @@
       "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981?workerSubType=645e861bc53a018fc2809ac3fb3a9444",
       "cat": "nonit",
       "expYears": "Fresh graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Deutsche Bank Workday result was indexed recently with requisition R0357981 and Apply, but today’s exact page rendered as a blank shell.",
       "postedDate": null,
@@ -554,14 +554,16 @@
         "role": "Apprentice Hiring for 2026–2027",
         "loc": "Mumbai / Pune / Jaipur / Bengaluru / New Delhi, India",
         "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981?workerSubType=645e861bc53a018fc2809ac3fb3a9444",
-        "status": "review",
+        "status": "expired",
         "cat": "nonit",
         "expYears": "Fresh graduate",
         "sourceName": "Deutsche Bank Careers",
         "elig": "Fresh graduates; the official listing describes a 12-month apprenticeship under NATS.",
         "desc": "Non-technology banking operations apprenticeship.",
         "expType": "fresher"
-      }
+      },
+      "reviewedAt": "2026-10-12T04:11:37.324Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "erm-r00032044",
@@ -653,5 +655,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:11:11.829Z"
+  "updatedAt": "2026-10-12T04:11:37.324Z"
 }
