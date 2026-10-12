@@ -6,6 +6,8 @@ on:
       - scripts/discovery_v3_full_list.py
       - scripts/discovery_v3_shadow.py
       - tests/test_discovery_v3_full_list.py
+      - scripts/discovery_v3_gate.py
+      - tests/test_discovery_v3_gate.py
       - .github/workflows/discovery-v3-full-list-shadow.yml
   schedule:
     # Read-only shadow at approximately 08:30 IST; no publishing.
@@ -22,6 +24,7 @@ on:
         default: "3"
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: hd-v3-discovery-shadow
   cancel-in-progress: false
@@ -38,6 +41,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/discovery_v3_full_list.py
           python3 -m unittest discover -s tests -p 'test_discovery_v3_full_list.py' -v
+          python3 -m unittest discover -s tests -p 'test_discovery_v3_gate.py' -v
       - name: Read-only current employer discovery
         env:
           MAX_PAGES: ${{ inputs.max_pages || (github.event_name == 'schedule' && '6' || '2') }}
@@ -60,8 +64,69 @@ jobs:
                   print("Incomplete job listing held from expiry decisions:",scan["employer"],scan["problems"])
           print("V3 verification report validated. No production jobs mutated.")
           PY
+      - name: Collect previous independent shadow reports
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/v3-history
+          python3 - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          cmd=["gh","run","list","--repo",os.environ["GITHUB_REPOSITORY"],
+               "--workflow","discovery-v3-full-list-shadow.yml",
+               "--limit","15","--json","databaseId,conclusion,createdAt"]
+          try:
+              runs=json.loads(subprocess.check_output(cmd,text=True,timeout=30))
+          except (subprocess.SubprocessError,ValueError,OSError) as error:
+              print("History unavailable; quality gate remains blocked:",type(error).__name__)
+              runs=[]
+          count=0
+          for item in runs:
+              if item.get("conclusion")!="success" or str(item.get("databaseId"))==os.environ["GITHUB_RUN_ID"]:
+                  continue
+              target=Path("/tmp/v3-history")/str(item["databaseId"])
+              target.mkdir(parents=True,exist_ok=True)
+              command=["gh","run","download",str(item["databaseId"]),
+                       "--repo",os.environ["GITHUB_REPOSITORY"],
+                       "--name","hd-careers-v3-full-list-evidence",
+                       "--dir",str(target)]
+              try:
+                  subprocess.run(command,check=True,stdout=subprocess.DEVNULL,
+                                 stderr=subprocess.DEVNULL,timeout=40)
+                  if (target/"discovery-v3-full-list-report.json").is_file():
+                      count+=1
+                  else:
+                      print("Prior run contained no complete report:",item["databaseId"])
+              except (subprocess.SubprocessError,OSError):
+                  print("Prior report could not be read:",item["databaseId"])
+              if count>=5: break
+          print("Previous shadow reports collected:",count)
+          PY
+      - name: Conservative quality gate (never publishes or expires)
+        run: |
+          python3 - <<'PY'
+          import glob,json
+          from pathlib import Path
+          from sys import path
+          path.insert(0,"scripts")
+          from discovery_v3_gate import inspect_history
+          files=glob.glob("/tmp/v3-history/*/discovery-v3-full-list-report.json")
+          reports=[]
+          for file in files:
+              try: reports.append(json.loads(Path(file).read_text()))
+              except (ValueError,OSError): continue
+          reports.append(json.loads(Path("discovery-v3-full-list-report.json").read_text()))
+          outcome=inspect_history(reports)
+          Path("discovery-v3-quality-gate.json").write_text(json.dumps(outcome,indent=2)+"\n")
+          print("Evidence:",len(reports),"reports")
+          for company,value in outcome["employers"].items():
+              print(company,value["status"],value["reasons"])
+          print("Publishing remains disabled:",not outcome["safeToEnableAutomaticPublishing"])
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: hd-careers-v3-full-list-evidence
-          path: discovery-v3-full-list-report.json
+          path: |
+            discovery-v3-full-list-report.json
+            discovery-v3-quality-gate.json
           retention-days: 14
