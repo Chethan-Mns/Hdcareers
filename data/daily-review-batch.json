@@ -350,10 +350,19 @@
         "expType": "fresher",
         "manualLiveVerifiedAt": "2026-10-12T04:10:11.683Z",
         "browserVerifiedAt": "2026-10-12T04:10:11.683Z",
-        "verifiedDate": "12 Oct 2026"
+        "verifiedDate": "12 Oct 2026",
+        "desc": "Duration: 12 months Global Merchant & Network Services (GMNS) brings together American Express."
       },
       "reviewedAt": "2026-10-12T04:10:11.683Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedBy": "HD Careers Admin",
+      "sourceEnrichment": {
+        "fields": [
+          "description"
+        ],
+        "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014347",
+        "source": "url-fallback",
+        "evidenceVerifiedAt": "2026-10-12T05:35:02.446Z"
+      }
     },
     {
       "id": "graviton-8764240002",
@@ -667,5 +676,5 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-12T05:04:05.396Z"
+  "updatedAt": "2026-10-12T05:35:02.446Z"
 }
