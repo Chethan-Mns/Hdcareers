@@ -56,11 +56,16 @@ class ListingHTML(HTMLParser):
         self._current = None
         self._script = 0
         self.canonical = ""
+        self._row_text = None
+        self._row_links = None
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag in ("script", "style"):
             self._script += 1
+        if tag == "tr":
+            self._row_text = []
+            self._row_links = len(self.links)
         if tag == "link" and "canonical" in str(attrs.get("rel", "")).lower():
             self.canonical = attrs.get("href", "")
         if tag == "a":
@@ -69,10 +74,18 @@ class ListingHTML(HTMLParser):
     def handle_data(self, value):
         if not self._script:
             self.visible.append(value)
+            if self._row_text is not None:
+                self._row_text.append(value)
         if self._current is not None:
             self._current["text"].append(value)
 
     def handle_endtag(self, tag):
+        if tag == "tr" and self._row_text is not None:
+            text = " ".join(" ".join(self._row_text).split())
+            for link in self.links[self._row_links:]:
+                link["rowText"] = text
+            self._row_text = None
+            self._row_links = None
         if tag in ("script", "style") and self._script:
             self._script -= 1
         if tag == "a" and self._current is not None:
@@ -129,13 +142,23 @@ def parse_page(company, html, source, expected_page=0):
         return {"valid": False, "reason": "Reported total and page count disagree",
                 "jobs": [], "total": total, "pages": pages}
     unique = {}
+    eligible_links = []
     for link in parser.links:
         job = job_from_link(company, link["url"], link["text"], source)
         if job:
+            eligible_links.append(link)
+            row = link.get("rowText", "")
+            job["locationEvidence"] = row[-220:] if row else ""
+            # EY is a global board. Only positive employer-row evidence can
+            # qualify a record as India-focused.
+            job["country"] = "IN" if re.search(r"(?:,\s*IN\b|\bIndia\b)", row, re.I) else "unconfirmed"
+            if company != "EY":
+                job["country"] = "IN"
             unique[job["id"]] = job
     if len(unique) != end - start + 1:
+        paths = [urlsplit(urljoin(source, l["url"])).path[:120] for l in eligible_links[:3]]
         return {"valid": False,
-                "reason": "Listing links do not match claimed page size",
+                "reason": f"Job-row mismatch: expected {end-start+1}, got {len(unique)} (links {len(eligible_links)}); samples {paths}",
                 "jobs": list(unique.values()), "total": total, "pages": pages}
     return {"valid": True, "reason": "Exact listing count and page bounds match",
             "jobs": list(unique.values()), "total": total, "pages": pages}
@@ -177,8 +200,11 @@ def listing_url(company, index):
     config = DEFAULTS[company]
     base = "https://" + config["host"] + config["path"]
     if config["mode"] == "successfactors":
-        params = {"q": "", "sortColumn": "referencedate",
-                  "sortDirection": "desc", "startrow": index * PAGE_SIZE}
+        params = {"q": "", "sortColumn": "referencedate", "sortDirection": "desc"}
+        if company == "EY":
+            params["startrow"] = index * PAGE_SIZE
+        elif index > 0:
+            base = base.rstrip("/") + "/" + str(index * PAGE_SIZE) + "/"
     else:
         # HCL India career page can expose a separate dynamically loaded listing.
         # Its missing count is never treated as complete without a trusted total.
@@ -305,7 +331,7 @@ def process(scans, published, fetcher, verify_new=3, pause=0.5):
         for row in scan["jobs"]:
             row["alreadyPublished"] = (row["jobUrl"] in known_urls or
                 (row["company"].casefold(), row["listingUrlId"]) in known_ids)
-            if not row["alreadyPublished"]:
+            if not row["alreadyPublished"] and row["country"] == "IN":
                 new.append(row)
     for row in new[:verify_new]:
         company = row["company"]
@@ -316,7 +342,7 @@ def process(scans, published, fetcher, verify_new=3, pause=0.5):
         checked.append(dict(row, **verdict))
         if pause:
             time.sleep(pause)
-    return {"discoveredNew": len(new), "alreadyPublished": sum(
+    return {"discoveredNewIndia": len(new), "alreadyPublished": sum(
         x["alreadyPublished"] for s in scans for x in s["jobs"]),
         "verifiedNew": [x for x in checked if x["state"] == "live"],
         "unconfirmedNew": [x for x in checked if x["state"] != "live"],
@@ -348,7 +374,7 @@ def main():
     print(json.dumps({"companies":[{"company":s["employer"],"complete":s["complete"],
               "found":len(s["jobs"]),"reported":s["totalReported"],
               "problems":s["problems"]} for s in scans],
-              "new":outcomes["discoveredNew"],
+              "newIndia":outcomes["discoveredNewIndia"],
               "verifiedNew":len(outcomes["verifiedNew"])}, indent=2))
 
 
