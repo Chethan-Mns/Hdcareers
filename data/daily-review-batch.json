@@ -403,7 +403,7 @@
       "apply": "https://jobs.lever.co/omnidian/e4bd2d30-9fb0-443f-a7c6-628851828074",
       "cat": "it",
       "expYears": "2–6 years or strong project/internship equivalent",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Omnidian Lever page opened today with job-specific Apply and current application form.",
       "postedDate": null,
@@ -425,8 +425,13 @@
           "Databricks",
           "Python"
         ],
-        "workMode": "Hybrid"
-      }
+        "workMode": "Hybrid",
+        "manualLiveVerifiedAt": "2026-10-12T04:10:51.492Z",
+        "browserVerifiedAt": "2026-10-12T04:10:51.492Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:10:51.492Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nec-744000152589569",
@@ -643,5 +648,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:10:30.975Z"
+  "updatedAt": "2026-10-12T04:10:51.493Z"
 }
