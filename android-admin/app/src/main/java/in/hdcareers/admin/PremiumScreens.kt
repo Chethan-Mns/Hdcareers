@@ -415,9 +415,16 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
                 }
             }
         }
-        Row(verticalAlignment=Alignment.CenterVertically) {
-            Checkbox(checked=chosen,onCheckedChange=toggle,enabled=!busy&&c.approved&&!published)
-            Text(if(published)"Already published" else if(c.approved)"Select for publishing" else "Mark complete job Live to select",fontSize=12.sp,color=Brand.navy)
+        val canSelect=!busy&&c.selectable&&!published
+        Row(modifier=Modifier.fillMaxWidth().clickable(enabled=canSelect){toggle(!chosen)},
+            verticalAlignment=Alignment.CenterVertically) {
+            Checkbox(checked=chosen,onCheckedChange=toggle,enabled=canSelect)
+            Text(when {
+                published -> "Already published"
+                !c.selectable -> "Verify job Live to select"
+                c.approved -> "Select for publishing"
+                else -> "Select Live job (content required before publishing)"
+            },fontSize=12.sp,color=Brand.navy)
         }
         if(priority) Box {
             OutlinedButton(onClick={expanded=true},enabled=replacements.isNotEmpty()&&!busy,
@@ -434,8 +441,9 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
                 }
             }
         }
-        if(!c.complete) Text("Full verified description is still required before publishing.",
-            fontSize=11.sp,color=Brand.amber)
+        if(c.decision=="live"&&!c.approved) Text(
+            "Publishing blocked until verified: "+c.missingDetails.joinToString(", ")+".",
+            fontSize=11.sp,color=Brand.amber,lineHeight=16.sp)
     }
 }
 
