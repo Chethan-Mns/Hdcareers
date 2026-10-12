@@ -573,7 +573,7 @@
       "apply": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
       "cat": "nonit",
       "expYears": "Intern",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official ERM Early Careers Workday result shows Apply and an October 29, 2026 deadline, but today’s exact page rendered as a blank shell.",
       "postedDate": "2026-10-07",
@@ -588,8 +588,13 @@
         "sourceName": "ERM Careers",
         "desc": "People Services internship in ERM’s Global Delivery Centre.",
         "expType": "fresher",
-        "date": "2026-10-07"
-      }
+        "date": "2026-10-07",
+        "manualLiveVerifiedAt": "2026-10-12T04:11:55.968Z",
+        "browserVerifiedAt": "2026-10-12T04:11:55.968Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:11:55.968Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "keyloop-a129a920",
@@ -655,5 +660,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:11:37.324Z"
+  "updatedAt": "2026-10-12T04:11:55.969Z"
 }
