@@ -18,8 +18,8 @@ def page_html(company="EY", page=0, total=50, override=None):
     jobs = []
     for idx in range(start, end+1):
         title = f"Software Engineer {idx}"
-        jobs.append(f'<a href="https://{host}/ey/job/City-Software-Engineer-{idx}/'
-                    f'{1400000000+idx}/">{title}</a>')
+        jobs.append(f'<tr><td><a href="https://{host}/ey/job/City-Software-Engineer-{idx}/'
+                    f'{1400000000+idx}/">{title}</a></td><td>Mumbai, MH, IN</td></tr>')
     if override is not None:
         jobs = override
     return (f'<html>Results {start} – {end} of {total} Page {page+1} of {pages}'
@@ -52,10 +52,19 @@ class FullListTests(unittest.TestCase):
                                     listing_url("EY",0),0)["valid"])
 
     def test_duplicate_or_missing_records_fail_closed(self):
-        same = ['<a href="/ey/job/City-Test/1400000001/">Engineer</a>']*25
+        same = ['<tr><td><a href="/ey/job/City-Test/1400000001/">Engineer</a></td><td>Mumbai, IN</td></tr>']*25
         r=parse_page("EY",page_html(override=same),listing_url("EY",0),0)
         self.assertFalse(r["valid"])
         self.assertEqual(len(r["jobs"]),1)
+
+    def test_promotional_job_outside_results_is_excluded(self):
+        rows=[f'<tr><td><a href="/job/Role-{i}/55000{i:03}/">Role {i}</a></td>'
+              f'<td>Hyderabad, IN</td></tr>' for i in range(25)]
+        promo='<a href="/job/Returnship/58332844/">Returnship</a>'
+        html='<html>'+promo+'Results 1 – 25 of 50 Page 1 of 2'+''.join(rows)+'</html>'
+        result=parse_page("Deloitte South Asia",html,listing_url("Deloitte South Asia",0),0)
+        self.assertTrue(result["valid"])
+        self.assertEqual(len(result["jobs"]),25)
 
     def test_complete_scan_needs_every_page_and_matching_total(self):
         urls=[listing_url("EY",i) for i in range(2)]
