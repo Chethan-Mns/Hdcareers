@@ -206,7 +206,7 @@
       "apply": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
       "cat": "other",
       "expYears": "Fresh graduate or up to 1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official GE HealthCare Workday result for R4043087 was indexed yesterday with eligibility details, but today’s exact page rendered as a blank shell.",
       "postedDate": null,
@@ -221,8 +221,13 @@
         "sourceName": "GE HealthCare Careers",
         "elig": "B.E./B.Tech in Electrical, Electronics, Biomedical or Mechanical Engineering; fresh graduate or up to one year.",
         "desc": "Manufacturing, production and quality graduate engineering trainee role.",
-        "expType": "fresher"
-      }
+        "expType": "fresher",
+        "manualLiveVerifiedAt": "2026-10-12T04:08:42.344Z",
+        "browserVerifiedAt": "2026-10-12T04:08:42.344Z",
+        "verifiedDate": "12 Oct 2026"
+      },
+      "reviewedAt": "2026-10-12T04:08:42.344Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "jnj-r100745",
@@ -622,5 +627,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-12T04:08:26.595Z"
+  "updatedAt": "2026-10-12T04:08:42.345Z"
 }
