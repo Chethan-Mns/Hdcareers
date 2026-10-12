@@ -388,7 +388,7 @@ private fun ProReview(vm:AdminViewModel) {
                 Text("GitHub: "+(gh?.optString("conclusion")?.takeIf { it.isNotBlank() }
                     ?:gh?.optString("state").orEmpty().ifBlank { "Not submitted" }),
                     fontSize=12.sp,color=Brand.navy)
-                Text("Website data: ${progress.optInt("publishedCount")} committed · Telegram: ${progress.optInt("telegramDelivered")} delivered",
+                Text("Website Live: ${progress.optInt("publishedCount")} · Source data: ${progress.optInt("dataCommittedCount")} · Telegram: ${progress.optInt("telegramDelivered")} delivered",
                     fontSize=12.sp,color=Brand.navy)
                 Text("Vercel deployment: confirm separately until a deployed commit is verified.",
                     fontSize=11.sp,color=Brand.gray)
