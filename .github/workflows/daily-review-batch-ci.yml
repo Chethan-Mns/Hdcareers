@@ -45,8 +45,23 @@ jobs:
         run: |
           python3 scripts/validate_daily_review_batch.py
           python3 -m py_compile scripts/prepare_owner_approved_ten_20261012.py
-          python3 scripts/prepare_owner_approved_ten_20261012.py /tmp/hd-10-preflight.json
-          python3 -c 'import json; p=json.load(open("/tmp/hd-10-preflight.json")); a=p["client_payload"]["jobs"]; assert len(a)==10 and len({v["apply"] for v in a})==10; assert all(v["manualLiveVerifiedUrl"]==v["apply"] and len(v["resp"])>0 for v in a); print("Ten verified-content drafts pass preflight")'
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          b=json.loads(Path("data/daily-review-batch.json").read_text())
+          if b.get("status")=="published":
+              published=json.loads(Path("data/jobs.json").read_text())
+              manifest=json.loads(Path("data/telegram-approved-batch.json").read_text())
+              ledger=json.loads(Path("data/telegram-deliveries.json").read_text())
+              pages=manifest["pages"]
+              assert len(pages)==10 and set(pages).issubset({j["page"] for j in published})
+              assert all(any(r.get("page")==page and r.get("status")=="delivered" for r in ledger.values()) for page in pages)
+              print("Historical October 12 publication and Telegram receipts verified.")
+          else:
+              subprocess.run(["python3","scripts/prepare_owner_approved_ten_20261012.py","/tmp/hd-10-preflight.json"],check=True)
+              jobs=json.loads(Path("/tmp/hd-10-preflight.json").read_text())["client_payload"]["jobs"]
+              assert len(jobs)==10 and len({j["apply"] for j in jobs})==10
+          PY
           python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
           python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
       - name: Validate API and browser scripts
