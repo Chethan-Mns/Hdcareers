@@ -128,6 +128,9 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         }
     }
     fun refreshPublishingStatus()=run { loadPublishingProgress() }
+    fun refreshPublishingStatusQuietly() {
+        viewModelScope.launch { runCatching { loadPublishingProgress() } }
+    }
     fun toggleSelected(id:String,checked:Boolean) {
         val c=batch.all.firstOrNull { it.id==id } ?: return
         if(!checked){selectedIds=selectedIds-id;return}
@@ -138,6 +141,16 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             message="Select only one job per employer, including aliases.";return
         }
         selectedIds=selectedIds+id
+        if(!c.approved) run {
+            try {
+                batch=api.enrich(batch.id,id)
+                setReminderState()
+                message="Recovered available job details from the official listing. Check Publish Ready."
+            } catch(e:Exception) {
+                message="Moved to Publish Ready, but source details remain incomplete: "+
+                    (e.localizedMessage ?: "The official page could not be verified.")
+            }
+        }
     }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
