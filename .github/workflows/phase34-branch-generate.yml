@@ -1,0 +1,55 @@
+name: Phase 3/4 temporary branch-only static generation
+
+on:
+  push:
+    branches: [feature/phase3-pilot-phase4-growth-20261014]
+    paths:
+      - .github/workflows/phase34-branch-generate.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phase34-static-branch-generate
+  cancel-in-progress: false
+
+jobs:
+  generate-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/phase3-pilot-phase4-growth-20261014
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test isolated pilot and growth integrity
+        run: |
+          python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+          python3 -m unittest discover -s tests -p test_phase4_growth.py -v
+      - name: Rebuild static pages and run non-destructive SEO inspection
+        run: |
+          python3 generate.py
+          python3 scripts/phase4_growth_audit.py --output phase4-growth-audit.json
+          git diff --check
+      - name: Save only generated files to feature branch
+        run: |
+          git config user.name "HD Careers Preview Generator"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Preview output unchanged"
+            exit 0
+          fi
+          git commit -m "Regenerate Phase 4 search and performance optimized preview pages"
+          git push origin HEAD:feature/phase3-pilot-phase4-growth-20261014
+      - name: Save readiness audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase4-growth-audit
+          path: phase4-growth-audit.json
+          if-no-files-found: ignore
+          retention-days: 30
