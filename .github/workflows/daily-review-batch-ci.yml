@@ -68,6 +68,24 @@ jobs:
           PY
           python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
           python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
+      - name: Dry-run recovery of exact owner-reviewed October 13 batch
+        run: |
+          python3 -m py_compile scripts/prepare_submitted_oct13.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from subprocess import run
+          batch=json.loads(Path("data/daily-review-batch.json").read_text())
+          if batch.get("batchId")=="2026-10-13-0900-ist" and batch.get("status")=="submitted":
+              run(["python3","scripts/prepare_submitted_oct13.py","/tmp/hd-owner-13-publish.json"],check=True)
+              payload=json.loads(Path("/tmp/hd-owner-13-publish.json").read_text())
+              jobs=payload["client_payload"]["jobs"]
+              assert len(jobs)==10 and len({j["apply"] for j in jobs})==10
+              assert all(j["manualLiveVerifiedAt"] and j["manualLiveVerifiedUrl"]==j["apply"] for j in jobs)
+              print("Exact ten owner-reviewed jobs pass a no-publish recovery dry-run.")
+          else:
+              print("October 13 approval is no longer pending; recovery remains single use.")
+          PY
       - name: Validate API and browser scripts
         run: |
           node --check api/admin/daily-batch.js
@@ -76,6 +94,8 @@ jobs:
           node --check lib/review-ranking.js
           node --check scripts/reprioritize_review_batch.mjs
           node --check api/admin/publish.js
+          node --check lib/review-publish-proof.js
+          node --test tests/review-publish-proof.test.mjs
           node --check lib/review-rules.js
           node --test tests/review-rules.test.mjs
           node --test tests/review-enrichment.test.mjs
