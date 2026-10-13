@@ -1016,7 +1016,7 @@
       "apply": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Bangalore-India/Intern_R1567860",
       "cat": "it",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday inventory describes R1567860 as a software engineering internship, but the exact page rendered as a blank JavaScript shell; manual review required.",
       "postedDate": null,
@@ -1053,7 +1053,7 @@
           "Microservices"
         ],
         "apply": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Bangalore-India/Intern_R1567860",
-        "status": "review",
+        "status": "expired",
         "sourceName": "IQVIA official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Internship; complete education and eligibility requirements require manual confirmation.",
@@ -1066,7 +1066,9 @@
           "method": "authoritative inventory or exact page; manual review required",
           "jobId": "R1567860"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:05:52.971Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-3078323",
@@ -1167,7 +1169,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:05:42.244Z",
+  "updatedAt": "2026-10-13T04:05:52.971Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
