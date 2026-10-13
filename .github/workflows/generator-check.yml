@@ -34,6 +34,8 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -p test_phase1_safety.py -v
           python3 -m unittest discover -s tests -p test_confirmed_only.py -v
+          python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+          python3 -m unittest discover -s tests -p test_phase4_growth.py -v
           python3 -m unittest discover -s tests -p test_phase1_delivery.py -v
           python3 -m unittest discover -s tests -p test_job_availability.py -v
           python3 -m unittest discover -s tests -p test_telegram_approval.py -v
@@ -89,6 +91,9 @@ jobs:
           test -f sitemap.xml
           grep -q "Sitemap: https://hdcareers.in/sitemap.xml" robots.txt
           grep -q "https://hdcareers.in/privacy-policy.html" sitemap.xml
+
+      - name: Phase 4 growth and AdSense-readiness audit
+        run: python3 scripts/phase4_growth_audit.py --output phase4-growth-audit.json
 
       - name: Check generated output
         run: |
