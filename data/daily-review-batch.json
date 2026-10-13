@@ -136,7 +136,7 @@
       "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/7922676",
       "cat": "it",
       "expYears": "1–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official job page and application form opened on 13 Oct 2026.",
       "postedDate": null,
@@ -171,7 +171,7 @@
           "Distributed systems"
         ],
         "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/7922676",
-        "status": "review",
+        "status": "active",
         "sourceName": "MongoDB official Greenhouse careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Completed Bachelor's or Master's in Computer Science, Computer Engineering or related; 1–2 years professional software engineering.",
@@ -183,8 +183,12 @@
           "source": "MongoDB official Greenhouse careers",
           "method": "exact role + application route",
           "jobId": "7922676"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:07:01.953Z",
+        "browserVerifiedAt": "2026-10-13T04:07:01.953Z"
+      },
+      "reviewedAt": "2026-10-13T04:07:01.953Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "veeva-90e4e761",
@@ -1177,7 +1181,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:06:28.029Z",
+  "updatedAt": "2026-10-13T04:07:01.953Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
