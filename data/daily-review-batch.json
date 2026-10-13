@@ -728,7 +728,7 @@
       "apply": "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200",
       "cat": "it",
       "expYears": "6 months–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer Lever page and application route opened on 13 Oct 2026.",
       "postedDate": null,
@@ -765,7 +765,7 @@
           "SQL"
         ],
         "apply": "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200",
-        "status": "review",
+        "status": "active",
         "sourceName": "Trackmind official Lever careers",
         "verifiedDate": "13 Oct 2026",
         "who": "6 months–2 years relevant AI/ML or software development experience; Python and AI/ML fundamentals.",
@@ -777,8 +777,12 @@
           "source": "Trackmind official Lever careers",
           "method": "exact role + application route",
           "jobId": "ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:04:52.920Z",
+        "browserVerifiedAt": "2026-10-13T04:04:52.920Z"
+      },
+      "reviewedAt": "2026-10-13T04:04:52.920Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "superapp-8859685002",
@@ -1157,7 +1161,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:04:40.030Z",
+  "updatedAt": "2026-10-13T04:04:52.921Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
