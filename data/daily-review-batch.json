@@ -492,7 +492,7 @@
       "apply": "https://www.powergrid.in/en/job-opportunities/recruitment-engineer-trainees-2027-through-gate-2027-advt-no-cc032026-dated",
       "cat": "govt",
       "expYears": "Entry-level recruitment",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact official recruitment page and detailed advertisement were live on 13 Oct 2026; the official opportunities index shows an application window through 30 Apr 2027, but the specific page does not expose a direct application control, so manual review is required.",
       "postedDate": "2026-09-24",
@@ -530,8 +530,12 @@
           "source": "POWERGRID official recruitment",
           "method": "specific recruitment page + official opportunities window; manual application-route check required",
           "jobId": "CC/03/2026"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:03:51.211Z",
+        "browserVerifiedAt": "2026-10-13T04:03:51.211Z"
+      },
+      "reviewedAt": "2026-10-13T04:03:51.211Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "trimble-r55422",
@@ -1147,7 +1151,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:03:36.627Z",
+  "updatedAt": "2026-10-13T04:03:51.212Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
