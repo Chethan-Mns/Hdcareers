@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-13-0900-ist",
   "generatedAt": "2026-10-13T03:29:41Z",
-  "status": "submitted",
+  "status": "published",
   "priority": [
     {
       "id": "ahead-3fd5cb37",
@@ -62,7 +62,10 @@
           "jobId": "3fd5cb37-6541-4e97-a827-d644468e6535"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:03:02.936Z",
-        "browserVerifiedAt": "2026-10-13T04:03:02.936Z"
+        "browserVerifiedAt": "2026-10-13T04:03:02.936Z",
+        "page": "jobs/ahead-ms-noc-apprentice-intern-6-months.html",
+        "manualLiveVerifiedUrl": "https://jobs.lever.co/thinkahead/3fd5cb37-6541-4e97-a827-d644468e6535",
+        "id": 139
       },
       "reviewedAt": "2026-10-13T04:03:02.936Z",
       "reviewedBy": "HD Careers Admin"
@@ -127,7 +130,10 @@
           "jobId": "6147925004"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:07:43.204Z",
-        "browserVerifiedAt": "2026-10-13T04:07:43.204Z"
+        "browserVerifiedAt": "2026-10-13T04:07:43.204Z",
+        "page": "jobs/startree-software-engineer-sre.html",
+        "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/startree/jobs/6147925004",
+        "id": 145
       },
       "reviewedAt": "2026-10-13T04:07:43.204Z",
       "reviewedBy": "HD Careers Admin"
@@ -189,7 +195,10 @@
           "jobId": "7922676"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:07:01.953Z",
-        "browserVerifiedAt": "2026-10-13T04:07:01.953Z"
+        "browserVerifiedAt": "2026-10-13T04:07:01.953Z",
+        "page": "jobs/mongodb-software-engineer-2.html",
+        "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/7922676",
+        "id": 144
       },
       "reviewedAt": "2026-10-13T04:07:01.953Z",
       "reviewedBy": "HD Careers Admin"
@@ -255,7 +264,10 @@
           "jobId": "90e4e761-8dce-407c-a8bb-73781cc8b0d0"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:03:17.372Z",
-        "browserVerifiedAt": "2026-10-13T04:03:17.372Z"
+        "browserVerifiedAt": "2026-10-13T04:03:17.372Z",
+        "page": "jobs/veeva-systems-associate-software-engineer-release-engineer.html",
+        "manualLiveVerifiedUrl": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0",
+        "id": 148
       },
       "reviewedAt": "2026-10-13T04:03:17.372Z",
       "reviewedBy": "HD Careers Admin"
@@ -312,7 +324,12 @@
           "jobId": "161936"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:03:36.627Z",
-        "browserVerifiedAt": "2026-10-13T04:03:36.627Z"
+        "browserVerifiedAt": "2026-10-13T04:03:36.627Z",
+        "page": "jobs/hcltech-engineer-support-operations.html",
+        "manualLiveVerifiedUrl": "https://careers.hcltech.com/job/Engineer-%28Support-%26-Operations%29/161936-en_US/",
+        "id": 143,
+        "logoPath": "assets/company-icons/hcltech-4735861.png",
+        "logoSourceDomain": "hcltech.com"
       },
       "reviewedAt": "2026-10-13T04:03:36.627Z",
       "reviewedBy": "HD Careers Admin"
@@ -374,7 +391,12 @@
           "jobId": "1747790"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:07:36.484Z",
-        "browserVerifiedAt": "2026-10-13T04:07:36.484Z"
+        "browserVerifiedAt": "2026-10-13T04:07:36.484Z",
+        "page": "jobs/ey-associate-consultant-tech-consulting-cyber-security.html",
+        "manualLiveVerifiedUrl": "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/",
+        "id": 142,
+        "logoPath": "assets/company-approved/ey.webp",
+        "logoSourceDomain": "ey.com"
       },
       "reviewedAt": "2026-10-13T04:07:36.484Z",
       "reviewedBy": "HD Careers Admin"
@@ -436,7 +458,12 @@
           "jobId": "112526"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:07:16.959Z",
-        "browserVerifiedAt": "2026-10-13T04:07:16.959Z"
+        "browserVerifiedAt": "2026-10-13T04:07:16.959Z",
+        "page": "jobs/deloitte-south-asia-analyst-financial-risk.html",
+        "manualLiveVerifiedUrl": "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/",
+        "id": 141,
+        "logoPath": "assets/company-icons/deloitte-south-asia-c7cec96.svg",
+        "logoSourceDomain": "southasiacareers.deloitte.com"
       },
       "reviewedAt": "2026-10-13T04:07:16.959Z",
       "reviewedBy": "HD Careers Admin"
@@ -499,7 +526,12 @@
           "jobId": "519185"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:07:27.646Z",
-        "browserVerifiedAt": "2026-10-13T04:07:27.646Z"
+        "browserVerifiedAt": "2026-10-13T04:07:27.646Z",
+        "page": "jobs/capgemini-data-science-architect.html",
+        "manualLiveVerifiedUrl": "https://careers.capgemini.com/job/Bangalore-Data-Science-Architect/1416207133/?feedId=388633&tcsource=apply",
+        "id": 140,
+        "logoPath": "assets/company-icons/capgemini-10eefd0.png",
+        "logoSourceDomain": "capgemini.com"
       },
       "reviewedAt": "2026-10-13T04:07:27.646Z",
       "reviewedBy": "HD Careers Admin"
@@ -799,7 +831,10 @@
           "jobId": "ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:04:52.920Z",
-        "browserVerifiedAt": "2026-10-13T04:04:52.920Z"
+        "browserVerifiedAt": "2026-10-13T04:04:52.920Z",
+        "page": "jobs/trackmind-junior-ai-engineer.html",
+        "manualLiveVerifiedUrl": "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200",
+        "id": 147
       },
       "reviewedAt": "2026-10-13T04:04:52.920Z",
       "reviewedBy": "HD Careers Admin"
@@ -864,7 +899,10 @@
           "jobId": "8859685002"
         },
         "manualLiveVerifiedAt": "2026-10-13T04:06:28.029Z",
-        "browserVerifiedAt": "2026-10-13T04:06:28.029Z"
+        "browserVerifiedAt": "2026-10-13T04:06:28.029Z",
+        "page": "jobs/superapp-software-engineer-backend-early-careers.html",
+        "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
+        "id": 146
       },
       "reviewedAt": "2026-10-13T04:06:28.029Z",
       "reviewedBy": "HD Careers Admin"
@@ -1197,7 +1235,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:08:22.364Z",
+  "updatedAt": "2026-10-13T04:27:13.706Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
@@ -1243,6 +1281,23 @@
     ],
     "requestId": "98de7f55ea2aea01053aa026",
     "count": 10,
-    "submittedAt": "2026-10-13T04:08:22.364Z"
-  }
+    "submittedAt": "2026-10-13T04:08:22.364Z",
+    "publishedAt": "2026-10-13T04:27:13.706Z",
+    "githubRunId": 38346297806,
+    "telegramBatchId": "admin-38346297806",
+    "telegramDelivered": 10,
+    "publishedPages": [
+      "jobs/ahead-ms-noc-apprentice-intern-6-months.html",
+      "jobs/capgemini-data-science-architect.html",
+      "jobs/deloitte-south-asia-analyst-financial-risk.html",
+      "jobs/ey-associate-consultant-tech-consulting-cyber-security.html",
+      "jobs/hcltech-engineer-support-operations.html",
+      "jobs/mongodb-software-engineer-2.html",
+      "jobs/startree-software-engineer-sre.html",
+      "jobs/superapp-software-engineer-backend-early-careers.html",
+      "jobs/trackmind-junior-ai-engineer.html",
+      "jobs/veeva-systems-associate-software-engineer-release-engineer.html"
+    ]
+  },
+  "publishedAt": "2026-10-13T04:27:13.706Z"
 }
