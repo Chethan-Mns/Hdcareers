@@ -127,6 +127,10 @@ def official_inventory_probe(job):
                 return False
             match = next((x for x in jobs if isinstance(x, dict) and exact_ashby(x)), None)
             if match:
+                source_title = re.sub(r'[^a-z0-9]+', ' ', str(match.get('title') or '').casefold()).strip()
+                expected_title = re.sub(r'[^a-z0-9]+', ' ', str(job.get('role') or '').casefold()).strip()
+                if not source_title or not expected_title or not (source_title in expected_title or expected_title in source_title):
+                    return 'review', f'{provider} exact posting URL exists, but job title could not be confirmed'
                 return 'active', f'{provider} public posting inventory contains the exact published job'
             return 'review', f'{provider} board inventory did not contain the exact job; a missing ID without proven complete pagination is not closure evidence'
 
@@ -138,6 +142,18 @@ def official_inventory_probe(job):
         active_flag = data.get('active')
         if active_flag is False:
             return 'expired', f'{provider} public posting inventory explicitly marks the matching job inactive'
+        title = str(data.get('title') or data.get('text') or data.get('name') or '').strip()
+        expected_role = re.sub(r'[^a-z0-9]+', ' ', str(job.get('role', '')).casefold()).strip()
+        returned_role = re.sub(r'[^a-z0-9]+', ' ', title.casefold()).strip()
+        title_matches = (expected_role and returned_role and len(expected_role.split()) >= 2
+                         and len(returned_role.split()) >= 2
+                         and (expected_role in returned_role or returned_role in expected_role))
+        if not title_matches:
+            return 'review', f'{provider} exact ID returned, but source job title does not establish the matching role'
+        if active_flag is not True:
+            application_url = str(data.get('applyUrl') or data.get('absolute_url') or data.get('hostedUrl') or '')
+            if not application_url.startswith('https://'):
+                return 'review', f'{provider} exact role found without an explicit active flag or application URL'
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
