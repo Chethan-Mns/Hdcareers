@@ -1769,7 +1769,7 @@
       "Troubleshoot and escalate complex incidents under supervision"
     ],
     "apply": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "10 Oct 2026",
     "sourceName": "Official Eaton employer careers posting",
     "skills": [
@@ -1782,10 +1782,11 @@
     "who": "Relevant Bachelor's degree such as BTech, BCA or BSc; basic Windows, Microsoft 365, hardware, networking and IT support skills.",
     "workMode": "Not Specified",
     "jobId": "687237633525",
-    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
-    "manualLiveVerifiedUrl": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
     "logoPath": "assets/company-approved/eaton.webp",
-    "logoSourceDomain": "eaton.eightfold.ai"
+    "logoSourceDomain": "eaton.eightfold.ai",
+    "manualExpiredVerifiedAt": "2026-10-13",
+    "manualExpiredVerifiedUrl": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
+    "manualExpiredVerificationSource": "user"
   },
   {
     "id": 110,
@@ -3465,7 +3466,7 @@
       "Follow standard operating procedures for business support activities"
     ],
     "apply": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "11 Oct 2026",
     "sourceName": "Official Deloitte USI Careers – Requisition 369345",
     "skills": [
@@ -3490,7 +3491,10 @@
       "checkedAt": "2026-10-06T04:38:44.817Z",
       "state": "active",
       "reason": "Exact requisition 369345 was confirmed current on 06 Oct 2026 through live search evidence pointing to Deloitte's company application route; the listing showed Apply Now and Hyderabad."
-    }
+    },
+    "manualExpiredVerifiedAt": "2026-10-13",
+    "manualExpiredVerifiedUrl": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
+    "manualExpiredVerificationSource": "user"
   },
   {
     "page": "jobs/hcltech-graduate-trainee-service-desk-noida-153688.html",
@@ -6426,7 +6430,7 @@
       "Retain the registration confirmation and follow formal Infosys communications."
     ],
     "apply": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "10 Oct 2026",
     "sourceName": "Official Infosys 2027 Systems Engineer campus-registration portal",
     "skills": [
@@ -6445,8 +6449,9 @@
     "logoPath": "assets/company-icons/infosys-471ce9a.png",
     "logoSourceDomain": "infosys.com",
     "jobId": "SEcampusregistration2027batch",
-    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
-    "manualLiveVerifiedUrl": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch"
+    "manualExpiredVerifiedAt": "2026-10-13",
+    "manualExpiredVerifiedUrl": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
+    "manualExpiredVerificationSource": "user"
   },
   {
     "id": 23,
@@ -6643,8 +6648,9 @@
       "state": "expired",
       "reason": "Greenhouse public posting inventory returned HTTP 404 for the exact posting"
     },
-    "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
-    "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003"
+    "manualExpiredVerifiedAt": "2026-10-13",
+    "manualExpiredVerifiedUrl": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
+    "manualExpiredVerificationSource": "user"
   },
   {
     "id": 19,
