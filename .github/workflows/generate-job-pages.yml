@@ -1,18 +1,13 @@
-name: Generate missing job pages
+name: Generate missing job pages (manual maintenance only)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/jobs.json'
-      - '.github/workflows/generate-job-pages.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: generate-job-pages-main
+  group: main-job-data-publish
   cancel-in-progress: false
 
 jobs:
@@ -31,7 +26,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add index.html jobs/ insights.html insights/ sitemap.xml robots.txt
           if ! git diff --cached --quiet; then
             git commit -m "Generate job pages and sitemap from jobs data"
             git pull --rebase origin main
