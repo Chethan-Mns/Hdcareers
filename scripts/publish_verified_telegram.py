@@ -32,7 +32,7 @@ def live_job(job: dict) -> bool:
         canonical = BASE + page
         return (
             "<html" in body
-            and "jobposting" in body
+            and "<strong>verified active:</strong>" in body
             and bool(company and company in title)
             and bool(role and role in title)
             and ('href="' + canonical.lower() + '"') in body

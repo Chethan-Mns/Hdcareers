@@ -26,7 +26,8 @@ data/
   automation-status.json
   availability-status.json
   review-queue.json
-  telegram-queue.json
+  telegram-approved-batch.json
+  telegram-deliveries.json
   company-logos.json
   company-logo-domains.json
   company-logo-direct.json
@@ -39,7 +40,8 @@ scripts/
   resolve_company_logos.py
   post_telegram.py
   post_telegram_from_push.py
-  telegram_queue.py
+  publish_approved_telegram.py
+  publish_verified_telegram.py
 
 generate.py
 index.html
@@ -64,7 +66,7 @@ ios-admin/
   workflows/
     admin-job-generator.yml
     generator-check.yml
-    hourly-telegram-publish.yml
+    publish-verified-telegram.yml
     ios-admin-build.yml
     job-availability.yml
     logo-preview-refresh.yml
@@ -128,7 +130,8 @@ Important operational state is stored separately:
 
 - `data/availability-status.json` — latest availability-check summary
 - `data/review-queue.json` — jobs that require human/browser review
-- `data/telegram-queue.json` — persistent hourly Telegram queue and posting history
+- `data/telegram-approved-batch.json` — approved delivery manifests
+- `data/telegram-deliveries.json` — message receipts and safe retry state
 - `data/automation-status.json` — automation health/status
 - `data/company-logos.json` — resolved company-logo manifest
 
@@ -196,85 +199,23 @@ Full schema/workflow instructions are in:
 HOW_TO_ADD_JOB.md
 ```
 
-## Two Publishing Paths
+## Daily Approval, VIP Publishing and Telegram
 
-HD Careers deliberately keeps automated batch publishing and manually supplied jobs separate.
+The daily 9 AM review flow discovers candidates but currently requires explicit owner review for publication. Discovery V3 remains **shadow-only** and unattended publishing is not enabled.
 
-### 1. Daily Batch
+Admin-approved daily jobs and one-off VIP jobs both need evidence-backed validation, one coordinated generation and website publication, and confirmation that exact production pages are live before Telegram delivery.
 
-The 9 AM automation discovers a broad candidate pool before selecting the final batch.
+The admin publisher uses `data/telegram-approved-batch.json` as its manifest and `scripts/publish_approved_telegram.py` as the automatic sender. Successful Telegram message IDs and uncertain outcomes are recorded in `data/telegram-deliveries.json`. Already-delivered pages are not automatically resent, and uncertain responses require reconciliation.
 
-Current selection policy:
+`publish-verified-telegram.yml` is a **manual maintenance/recovery fallback**, not a second automatic sender. `generate-job-pages.yml` is also manual-only; production generation belongs to the coordinated publication/checker path.
 
-- Aim for about 10 strong verified jobs
-- Prioritize at least 5 useful fresher/early-career IT or technical opportunities
-- Prefer new-grad, graduate, apprentice, internship, trainee, Software Engineer I and 0–2 YOE roles
-- Search broadly across MNCs, product companies, Big Four firms, startups and official government/public-sector sources
-- Build a substantially larger candidate pool before selecting the final jobs
-- Target 8–10 different employers in a 10-job batch
-- Normally select only one job per employer
-- Never select more than two jobs from one employer
-- Prefer recent roles and direct official application pages
-- Do not publish weak/repetitive roles merely to fill a quota
+There is **no hourly Telegram batch queue**. Manual/VIP jobs follow the same verification and deployment safety requirements as review batches.
 
-The batch updates `data/jobs.json` once, re-verifies the selected jobs, generates/deploys the surviving pages, and then persists those jobs to `data/telegram-queue.json`.
+### Availability and verification uncertainty
 
-A failed or unverifiable listing must not block the rest of a valid batch.
+The 08:15 and 20:15 IST availability scans remain active. An inconclusive latest check does not automatically expire a previously listed job; instead its generated page and homepage card show **Verification pending**, without renewed `JobPosting` claims. Newer exact-URL owner evidence takes precedence over earlier inconclusive checks. An isolated ATS HTTP 404 or an incomplete Ashby board is not sufficient closure evidence.
 
-### 2. Manual / VIP Job
-
-A job explicitly supplied for immediate publishing uses a commit beginning with:
-
-```
-Manual publish:
-```
-
-The flow is:
-
-```
-Verify official job
-  ↓
-Update jobs.json
-  ↓
-Re-check availability
-  ↓
-Generate HD Careers page
-  ↓
-Deploy / confirm page is live
-  ↓
-Post to Telegram immediately
-```
-
-A manual/VIP job does **not** join, replace, reorder, pause or consume the normal hourly batch queue.
-
-The VIP publisher also supports retrying a manually updated job through `manualPublishRequestedAt` without confusing it with a brand-new batch listing.
-
-## Telegram Queue
-
-Batch Telegram publishing is persistent and stateful.
-
-`data/telegram-queue.json` contains:
-
-- `pending` — jobs waiting for an hourly slot
-- `posted` — posting history and timestamps
-
-`scripts/telegram_queue.py` supports:
-
-```
-enqueue <before-sha>
-publish-one
-publish-new <before-sha>
-```
-
-The hourly workflow runs at:
-
-```
-10:00 AM through 8:00 PM IST
-```
-
-Each scheduled run posts at most one publishable queued job. For a normal 10-job batch starting at 10 AM, the expected slots are 10 AM through 7 PM. An 11th pending item can use the 8 PM slot.
-
-Queue state is committed back to `main`, so pending jobs survive unrelated website changes. Manual/VIP Telegram posts are independent of this queue.
+`datePosted` is never synthesized from HD Careers' `verifiedDate`. If no usable employer posting date is available, generated `JobPosting` structured data is omitted until truthful original-date provenance can be established.
 
 ## Company Logo System
 
@@ -318,10 +259,10 @@ hdcareers.in
 
 Current important workflows:
 
-- `main-data-publish.yml` — verifies new jobs, resolves logos, generates/deploys the site, queues batch jobs, and immediately posts manual/VIP jobs after deployment
-- `hourly-telegram-publish.yml` — posts one pending Telegram batch job per hourly slot
+- `main-data-publish.yml` — verifies changed jobs, resolves logos and generates the website; Telegram delivery requires a separately approved manifest
+- `publish-verified-telegram.yml` — manual-only recovery sender using the approval manifest and receipt ledger
 - `job-availability.yml` — twice-daily availability/content-quality checks and confirmed closure updates
-- `admin-job-generator.yml` — admin publishing support
+- `admin-job-generator.yml` — coordinated admin batch publication and automatic receipt-aware Telegram delivery
 - `generator-check.yml` — generated-output validation
 - `logo-preview-refresh.yml` — company-logo refresh/preview workflow
 - `ios-admin-build.yml` — iOS Admin simulator build validation

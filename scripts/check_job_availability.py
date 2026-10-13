@@ -121,7 +121,7 @@ def official_inventory_probe(job):
             match = next((x for x in jobs if needle in str(x.get('jobUrl', '')).casefold() or needle in str(x.get('applyUrl', '')).casefold()), None)
             if match:
                 return 'active', f'{provider} public posting inventory contains the exact published job'
-            return 'expired', f'{provider} public posting inventory no longer contains the exact job'
+            return 'review', f'{provider} board inventory did not contain the exact job; a missing ID without proven complete pagination is not closure evidence'
 
         if not isinstance(data, dict):
             return 'review', f'{provider} public posting inventory returned an unexpected response'
@@ -134,7 +134,7 @@ def official_inventory_probe(job):
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
-            return 'expired', f'{provider} public posting inventory returned HTTP {exc.code} for the exact posting'
+            return 'review', f'{provider} exact posting API returned HTTP {exc.code}; confirm with an independent employer signal before expiry'
         return 'review', f'{provider} public posting inventory returned HTTP {exc.code}'
     except Exception as exc:
         return 'review', f'{provider} public posting inventory check was inconclusive ({type(exc).__name__})'

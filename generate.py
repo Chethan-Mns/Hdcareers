@@ -13,6 +13,7 @@ from string import Template
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "jobs.json"
 INDEX_FILE = ROOT / "index.html"
+AVAILABILITY_FILE = ROOT / "data" / "availability-status.json"
 APPROVED_COMPANY_LOGOS = {str(k).strip().lower(): v for k, v in json.loads((ROOT / "data" / "approved-company-logos.json").read_text(encoding="utf-8")).items()}
 
 REQUIRED = [
@@ -700,10 +701,45 @@ def schema_date(value: str) -> str:
     return ""
 
 
+def annotate_latest_availability(jobs: list[dict]) -> None:
+    """Do not advertise unconfirmed checks as newly verified active."""
+    if not AVAILABILITY_FILE.exists():
+        return
+    try:
+        data = json.loads(AVAILABILITY_FILE.read_text(encoding="utf-8"))
+        items = data.get("items", [])
+        if not isinstance(items, list):
+            return
+    except (OSError, ValueError, AttributeError):
+        return
+    by_id = {str(item.get("id")): item for item in items if isinstance(item, dict)}
+    for job in jobs:
+        if job.get("status") != "active":
+            continue
+        item = by_id.get(str(job.get("id")))
+        if not item or item.get("state") != "review" or item.get("url") != job.get("apply"):
+            continue
+        try:
+            checked = datetime.fromisoformat(str(item["checkedAt"]).replace("Z", "+00:00"))
+        except (KeyError, TypeError, ValueError):
+            continue
+        verified_raw = str(job.get("manualLiveVerifiedAt") or "")
+        if verified_raw and job.get("manualLiveVerifiedUrl") == job.get("apply"):
+            try:
+                verified = datetime.fromisoformat(verified_raw.replace("Z", "+00:00"))
+                if verified.tzinfo and checked.tzinfo and verified > checked:
+                    continue
+            except ValueError:
+                pass
+        job["_verification_pending"] = True
+
+
 def job_posting_schema(job: dict, canonical: str) -> str:
-    if str(job.get("status", "active")) != "active":
+    if str(job.get("status", "active")) != "active" or job.get("_verification_pending"):
         return ""
-    posted = schema_date(str(job.get("date", ""))) or schema_date(str(job.get("verifiedDate", "")))
+    posted = schema_date(str(job.get("employerPostedAt") or job.get("date", "")))
+    if not posted:
+        return ""
     closing_raw = str(job.get("closingAt", "")).strip()
     valid_through = ""
     if closing_raw:
@@ -752,19 +788,20 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     candidate = {"fresher": "Fresher", "experienced": "Experienced", "not-specified": "Experience not specified"}[job["expType"]]
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
-    status_label = "Active" if status == "active" else "Expired / Closed"
+    pending = status == "active" and bool(job.get("_verification_pending"))
+    status_label = "Verification pending" if pending else "Active" if status == "active" else "Expired / Closed"
     candidates = logo_candidates(job)
     favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
-    meta_description = f"{heading} - verified job details, eligibility, skills, location and official source on HD Careers."
+    meta_description = f"{heading} - job details, eligibility, skills, location and official source on HD Careers."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
     structured_data = job_posting_schema(job, canonical)
     share_text = f"{company} - {role}\\n{job['loc']}"
 
     if status == "active":
-        status_badge = '<span class="bg-green-400/20 border border-green-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Active</span>'
+        status_badge = ('<span class="bg-amber-400/20 border border-amber-200/30 px-3 py-1 rounded-full text-xs font-bold">Verification pending</span>' if pending else '<span class="bg-green-400/20 border border-green-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Active</span>')
         hero_action = f'<a href="{esc(job["apply"])}" target="_blank" rel="noopener nofollow" data-hd-track="job_apply_click" class="flex-1 text-center bg-white text-[var(--primary)] font-extrabold px-5 py-3 rounded-xl hover:bg-blue-50">Official Apply <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>'
-        status_notice = f'<div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-900"><strong>Verified active:</strong> HD Careers checked the official source on {esc(job["verifiedDate"])}. Availability can still change, so confirm once more before submitting.</div>'
+        status_notice = ('<div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900"><strong>Verification pending:</strong> The latest automated check could not confirm availability. This does not establish that the employer has closed the job. Please verify the opening on the official website before applying.</div>' if pending else f'<div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-900"><strong>Verified active:</strong> HD Careers checked the official source on {esc(job["verifiedDate"])}. Availability can still change, so confirm once more before submitting.</div>')
         apply_section = (
             '<div class="card bg-white border border-blue-200 rounded-2xl p-5 sm:p-6 shadow-sm"><div class="flex items-start gap-3"><span class="w-11 h-11 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center shrink-0"><i class="fa-solid fa-paper-plane"></i></span><div><h2 class="text-xl font-black">Ready to Apply?</h2><p class="text-sm text-slate-500 mt-1">Review the requirements above, check your resume match if useful, and continue only through the official employer page.</p></div></div>'
             f'<div class="mt-4 space-y-3 text-slate-600"><p>1. Open the official {esc(company)} application page using the button below.</p><p>2. Re-check the current eligibility, location and any deadline on the employer site.</p><p>3. Complete the application only on the official employer or authorized recruitment portal.</p></div>'
@@ -1088,6 +1125,7 @@ def main() -> None:
     args = parser.parse_args()
 
     jobs = load_jobs()
+    annotate_latest_availability(jobs)
     index_changed = update_index(jobs, args.dry_run)
     created, changed, deleted = write_job_pages(jobs, args.dry_run)
     insights_changed = write_insights_files(jobs, args.dry_run)
