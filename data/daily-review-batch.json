@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-13-0900-ist",
   "generatedAt": "2026-10-13T03:29:41Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "ahead-3fd5cb37",
@@ -1197,10 +1197,52 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:07:43.204Z",
+  "updatedAt": "2026-10-13T04:08:22.364Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
     "warning": "Uncertain shells are not proof of expiry. Manually verify exact URLs before publishing."
+  },
+  "submittedAt": "2026-10-13T04:08:22.364Z",
+  "publication": {
+    "candidateIds": [
+      "ahead-3fd5cb37",
+      "capgemini-519185",
+      "deloitte-112526",
+      "ey-1747790",
+      "hcltech-161936",
+      "mongodb-7922676",
+      "startree-6147925004",
+      "superapp-8859685002",
+      "trackmind-ad66c0ec",
+      "veeva-90e4e761"
+    ],
+    "companies": [
+      "AHEAD",
+      "Capgemini",
+      "Deloitte South Asia",
+      "EY",
+      "HCLTech",
+      "MongoDB",
+      "StarTree",
+      "SuperApp",
+      "Trackmind",
+      "Veeva Systems"
+    ],
+    "urls": [
+      "https://jobs.lever.co/thinkahead/3fd5cb37-6541-4e97-a827-d644468e6535",
+      "https://careers.capgemini.com/job/Bangalore-Data-Science-Architect/1416207133/?feedId=388633&tcsource=apply",
+      "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/",
+      "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/",
+      "https://careers.hcltech.com/job/Engineer-%28Support-%26-Operations%29/161936-en_US/",
+      "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/7922676",
+      "https://job-boards.greenhouse.io/startree/jobs/6147925004",
+      "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
+      "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200",
+      "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0"
+    ],
+    "requestId": "98de7f55ea2aea01053aa026",
+    "count": 10,
+    "submittedAt": "2026-10-13T04:08:22.364Z"
   }
 }
