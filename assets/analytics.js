@@ -28,7 +28,7 @@
     gtag("js", new Date());
     gtag("config", GA4_ID, {
       anonymize_ip: true,
-      page_location: window.location.origin + normalizedPath() + window.location.search,
+      page_location: window.location.origin + normalizedPath(),
       page_title: document.title
     });
   }
@@ -43,6 +43,32 @@
     };
     window.gtag("event", eventName, clean);
   };
+
+  // Privacy-respecting aggregate field-vitals; no user identifiers or search parameters.
+  const vitals = { lcp: null, cls: 0 };
+  let vitalsSent = false;
+  try {
+    if ("PerformanceObserver" in window) {
+      if (PerformanceObserver.supportedEntryTypes.includes("largest-contentful-paint")) {
+        new PerformanceObserver(list => {
+          for (const entry of list.getEntries()) vitals.lcp = Math.round(entry.startTime);
+        }).observe({ type: "largest-contentful-paint", buffered: true });
+      }
+      if (PerformanceObserver.supportedEntryTypes.includes("layout-shift")) {
+        new PerformanceObserver(list => {
+          for (const entry of list.getEntries()) if (!entry.hadRecentInput) vitals.cls += entry.value || 0;
+        }).observe({ type: "layout-shift", buffered: true });
+      }
+    }
+  } catch {}
+  function reportVitals() {
+    if (vitalsSent || document.visibilityState !== "hidden") return;
+    vitalsSent = true;
+    if (vitals.lcp !== null) window.hdTrack("hd_web_vital", { metric_name: "LCP", metric_value: vitals.lcp });
+    window.hdTrack("hd_web_vital", { metric_name: "CLS_x1000", metric_value: Math.round(vitals.cls * 1000) });
+  }
+  document.addEventListener("visibilitychange", reportVitals);
+  window.addEventListener("pagehide", reportVitals);
 
   function socialChannel(href) {
     const value = String(href || "").toLowerCase();
