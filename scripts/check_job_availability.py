@@ -363,6 +363,15 @@ def prune_unverified_new_jobs(jobs, old_jobs, results):
     removed = [j for j in jobs if j.get('id') in rejected]
     return [j for j in jobs if j.get('id') not in rejected], sorted(rejected), removed
 
+def review_history(previous, result):
+    """Count only consecutive inconclusive checks for the same exact source URL."""
+    if result.get('state') != 'review':
+        return 0, None
+    if previous.get('state') == 'review' and previous.get('url') == result.get('url'):
+        return int(previous.get('consecutiveReviewCount') or 0) + 1, previous.get('firstReviewAt') or result.get('checkedAt')
+    return 1, result.get('checkedAt')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
@@ -400,10 +409,7 @@ def main():
         for result in results:
             job = by_id.get(result.get('id'), {})
             previous = previous_items.get(str(result.get('id')), {})
-            consecutive = (int(previous.get('consecutiveReviewCount') or 0) + 1
-                           if result.get('state') == 'review' and previous.get('state') == 'review'
-                           and previous.get('url') == result.get('url') else 1 if result.get('state') == 'review' else 0)
-            first_review = (previous.get('firstReviewAt') if consecutive > 1 else None) or result.get('checkedAt', checked_at)
+            consecutive, first_review = review_history(previous, result)
             details.append({
                 'id': result.get('id'),
                 'company': job.get('company', ''),
