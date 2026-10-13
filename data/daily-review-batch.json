@@ -441,7 +441,7 @@
       "apply": "https://careers.capgemini.com/job/Bangalore-Data-Science-Architect/1416207133/?feedId=388633&tcsource=apply",
       "cat": "it",
       "expYears": "Experienced professional; years not specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official page opened on 13 Oct 2026 with reference 519185, posted 12 Oct, and Apply Now.",
       "postedDate": "2026-10-12",
@@ -477,7 +477,7 @@
           "Spark/Hadoop"
         ],
         "apply": "https://careers.capgemini.com/job/Bangalore-Data-Science-Architect/1416207133/?feedId=388633&tcsource=apply",
-        "status": "review",
+        "status": "active",
         "sourceName": "Capgemini Engineering careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Experienced professional with enterprise-scale AI/data-science architecture expertise; no exact years stated.",
@@ -489,8 +489,12 @@
           "source": "Capgemini Engineering careers",
           "method": "exact role + application route",
           "jobId": "519185"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:07:27.646Z",
+        "browserVerifiedAt": "2026-10-13T04:07:27.646Z"
+      },
+      "reviewedAt": "2026-10-13T04:07:27.646Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "powergrid-cc-03-2026",
@@ -1185,7 +1189,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:07:16.959Z",
+  "updatedAt": "2026-10-13T04:07:27.646Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
