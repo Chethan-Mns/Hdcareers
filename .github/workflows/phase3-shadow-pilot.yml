@@ -1,12 +1,14 @@
 name: Phase 3 single-employer shadow publishing pilot
 
 on:
-  push:
-    branches: [feature/phase3-pilot-phase4-growth-20261014]
+  pull_request:
+    branches: [main]
     paths:
       - scripts/phase3_pilot.py
       - tests/test_phase3_pilot.py
       - .github/workflows/phase3-shadow-pilot.yml
+  schedule:
+    - cron: "30 3 * * *"
   workflow_dispatch:
 
 permissions:
