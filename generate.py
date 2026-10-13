@@ -761,7 +761,7 @@ def visible_in_latest(job: dict) -> bool:
 def job_posting_schema(job: dict, canonical: str) -> str:
     if str(job.get("status", "active")) != "active" or job.get("_verification_pending") or job.get("_hold_from_latest"):
         return ""
-    posted = schema_date(str(job.get("employerPostedAt") or job.get("date", "")))
+    posted = schema_date(str(job.get("employerPostedAt") or ""))
     if not posted:
         return ""
     closing_raw = str(job.get("closingAt", "")).strip()
