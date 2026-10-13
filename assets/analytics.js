@@ -61,14 +61,14 @@
       }
     }
   } catch {}
-  function reportVitals() {
-    if (vitalsSent || document.visibilityState !== "hidden") return;
+  function reportVitals(force = false) {
+    if (vitalsSent || (!force && document.visibilityState !== "hidden")) return;
     vitalsSent = true;
     if (vitals.lcp !== null) window.hdTrack("hd_web_vital", { metric_name: "LCP", metric_value: vitals.lcp });
     window.hdTrack("hd_web_vital", { metric_name: "CLS_x1000", metric_value: Math.round(vitals.cls * 1000) });
   }
   document.addEventListener("visibilitychange", reportVitals);
-  window.addEventListener("pagehide", reportVitals);
+  window.addEventListener("pagehide", () => reportVitals(true));
 
   function socialChannel(href) {
     const value = String(href || "").toLowerCase();
