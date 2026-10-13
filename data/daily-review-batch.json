@@ -606,7 +606,7 @@
       "apply": "https://ingrammicro.wd5.myworkdayjobs.com/IngramMicro/job/Mumbai-India/Graduate-Engineer-Trainee_R-115589",
       "cat": "it",
       "expYears": "Fresher / 2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday search evidence lists R-115589 with 2026 eligibility, but the exact page is a JavaScript-only shell; manual review required.",
       "postedDate": null,
@@ -641,7 +641,7 @@
           "Cloud/data/AI awareness"
         ],
         "apply": "https://ingrammicro.wd5.myworkdayjobs.com/IngramMicro/job/Mumbai-India/Graduate-Engineer-Trainee_R-115589",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Ingram Micro official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "B.E./B.Tech 2026 graduates based locally in Chennai or Mumbai.",
@@ -654,7 +654,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "R-115589"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:04:21.856Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "pitney-r22023",
@@ -1153,7 +1155,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:04:05.360Z",
+  "updatedAt": "2026-10-13T04:04:21.856Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
