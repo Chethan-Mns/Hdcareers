@@ -1129,7 +1129,7 @@
       "apply": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Test-and-Tools-Development-Engineer---New-College-Grad-2026_JR2016982",
       "cat": "it",
       "expYears": "New college graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday inventory identifies JR2016982 as a Pune new-college-grad role, but the exact page rendered as a blank JavaScript shell; manual review required.",
       "postedDate": null,
@@ -1155,7 +1155,7 @@
         "resp": [],
         "skills": [],
         "apply": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Test-and-Tools-Development-Engineer---New-College-Grad-2026_JR2016982",
-        "status": "review",
+        "status": "expired",
         "sourceName": "NVIDIA official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "New College Graduate 2026; complete requirements require manual confirmation.",
@@ -1168,10 +1168,12 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "JR2016982"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:06:19.451Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:06:09.656Z",
+  "updatedAt": "2026-10-13T04:06:19.451Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
