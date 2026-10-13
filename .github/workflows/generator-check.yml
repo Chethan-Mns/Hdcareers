@@ -24,6 +24,7 @@ jobs:
 
       - name: Validate admin and analytics JavaScript
         run: |
+          node --check api/admin/review.js
           node --check api/admin/extract-job.js
           node --check api/admin/publish.js
           node --check api/admin/traffic.js
@@ -32,6 +33,7 @@ jobs:
       - name: Phase 1 verification and failure-safety regression tests
         run: |
           python3 -m unittest discover -s tests -p test_phase1_safety.py -v
+          python3 -m unittest discover -s tests -p test_confirmed_only.py -v
           python3 -m unittest discover -s tests -p test_phase1_delivery.py -v
           python3 -m unittest discover -s tests -p test_job_availability.py -v
           python3 -m unittest discover -s tests -p test_telegram_approval.py -v
