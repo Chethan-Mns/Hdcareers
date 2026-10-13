@@ -29,6 +29,7 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
           python3 -m unittest discover -s tests -p test_phase4_growth.py -v
+          python3 -m unittest discover -s tests -p test_phase1_safety.py -v
       - name: Rebuild static pages and run non-destructive SEO inspection
         run: |
           python3 generate.py
