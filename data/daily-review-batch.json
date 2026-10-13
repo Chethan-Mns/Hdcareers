@@ -75,7 +75,7 @@
       "apply": "https://job-boards.greenhouse.io/startree/jobs/6147925004",
       "cat": "it",
       "expYears": "1–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official job page and application form opened on 13 Oct 2026.",
       "postedDate": null,
@@ -113,7 +113,7 @@
           "Networking"
         ],
         "apply": "https://job-boards.greenhouse.io/startree/jobs/6147925004",
-        "status": "review",
+        "status": "active",
         "sourceName": "StarTree official Greenhouse careers",
         "verifiedDate": "13 Oct 2026",
         "who": "1–2 years in SRE, DevOps, cloud operations, systems engineering or infrastructure support.",
@@ -125,8 +125,12 @@
           "source": "StarTree official Greenhouse careers",
           "method": "exact role + application route",
           "jobId": "6147925004"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:07:43.204Z",
+        "browserVerifiedAt": "2026-10-13T04:07:43.204Z"
+      },
+      "reviewedAt": "2026-10-13T04:07:43.204Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "mongodb-7922676",
@@ -1193,7 +1197,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:07:36.484Z",
+  "updatedAt": "2026-10-13T04:07:43.204Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
