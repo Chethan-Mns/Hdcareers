@@ -1,5 +1,6 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import {selectCandidates} from "../../lib/review-rules.js";
+import {attachReviewedProof} from "../../lib/review-publish-proof.js";
 import {redis} from "../../lib/admin-store.js";
 import crypto from "node:crypto";
 
@@ -245,7 +246,8 @@ export default async function handler(req,res){
     }
     if(!submitted.length)return res.status(400).json({error:"Select at least one job to publish."});
     if(submitted.length>(fromReview?10:MAX_JOBS))return res.status(400).json({error:"Maximum "+(fromReview?10:MAX_JOBS)+" jobs per deployment."});
-    const incoming=submitted.map(canonicalJob);
+    const normalized=submitted.map(canonicalJob);
+    const incoming=fromReview?attachReviewedProof(normalized,reviewBatch,selectedIds):normalized;
     incoming.forEach(validateJob);
 
     const file=await github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token);

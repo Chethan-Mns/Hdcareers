@@ -26,16 +26,25 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_discovery_v3_shadow.py' -v
       - name: Dry-run one EY publication through existing content contract
         run: |
-          python3 scripts/prepare_v3_ey_pilot.py /tmp/v3-ey-event.json --skip-live-check
           python3 - <<'PY'
-          import json,sys
-          sys.path.insert(0,"scripts")
-          from admin_publish import validate
-          data=json.load(open("/tmp/v3-ey-event.json"))
-          items=data["client_payload"]["jobs"]
-          assert len(items)==1 and items[0]["jobId"]=="1750731"
-          validate(items[0],1)
-          print("EY 1750731 is ready for re-verification in production; no jobs posted.")
+          import json,sys,subprocess
+          from pathlib import Path
+          jobs=json.loads(Path("data/jobs.json").read_text())
+          existing=[x for x in jobs if str(x.get("jobId",""))=="1750731" and x.get("company")=="EY"]
+          if existing:
+              ledger=json.loads(Path("data/telegram-deliveries.json").read_text())
+              assert len(existing)==1
+              assert any(x.get("page")==existing[0]["page"] and x.get("status")=="delivered" for x in ledger.values())
+              print("Historical EY pilot has a confirmed website record and Telegram receipt; do not republish.")
+          else:
+              subprocess.run(["python3","scripts/prepare_v3_ey_pilot.py","/tmp/v3-ey-event.json","--skip-live-check"],check=True)
+              sys.path.insert(0,"scripts")
+              from admin_publish import validate
+              data=json.loads(Path("/tmp/v3-ey-event.json").read_text())
+              items=data["client_payload"]["jobs"]
+              assert len(items)==1 and items[0]["jobId"]=="1750731"
+              validate(items[0],1)
+              print("EY pilot draft validated without publication.")
           PY
       - name: Shadow exact jobs on Deloitte EY and HCLTech official portals
         run: python3 scripts/discovery_v3_shadow.py --output discovery-v3-shadow-report.json
