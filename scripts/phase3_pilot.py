@@ -99,7 +99,7 @@ def build_report(feed, published, fetch=fetch_json, verify=check, now=None):
         if len(output["candidates"]) >= MAX_CANDIDATES:
             break
         record = {**candidate, "verification": "review", "draftState": "hold",
-                  "reasons": [], "evidence": [], "readyForPublishing": False}
+                  "reasons": [], "evidence": [], "readyForDraftReview": False, "readyForPublishing": False}
         try:
             exact = fetch(f"https://api.lever.co/v0/postings/{SITE}/{candidate['id']}")
             verified = verify({**candidate, "status": "active"}, now=now)
@@ -114,14 +114,16 @@ def build_report(feed, published, fetch=fetch_json, verify=check, now=None):
                 record["reasons"].extend(draft["reasons"])
                 record["facts"] = draft["facts"]
                 record["evidence"] = ["exact-Lever-ID", "matching-source-title", "exact-official-URL", "fresh-Live-result"]
-                record["readyForPublishing"] = draft["state"] == "draft_ready"
+                record["readyForDraftReview"] = draft["state"] == "draft_ready"
+                record["readyForPublishing"] = False  # Full published-job fields and independent deployment gate are not complete.
         except Exception as exc:
             record["reasons"].append("source-check-inconclusive:" + type(exc).__name__)
         output["candidates"].append(record)
     output["summary"] = {
         "sourceItems": len(feed), "newCandidatesChecked": len(output["candidates"]),
-        "held": sum(not item["readyForPublishing"] for item in output["candidates"]),
-        "draftReady": sum(item["readyForPublishing"] for item in output["candidates"]),
+        "held": sum(not item["readyForDraftReview"] for item in output["candidates"]),
+        "draftReady": sum(item["readyForDraftReview"] for item in output["candidates"]),
+        "publishReady": 0,
         "existingOrInvalidSkipped": skipped
     }
     return output
