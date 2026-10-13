@@ -64,6 +64,14 @@ class PilotTests(unittest.TestCase):
         self.assertIsNone(result["facts"]["employerPostedAt"])
         self.assertIsNone(result["facts"]["salary"])
 
+    def test_foreign_or_ambiguous_location_cannot_be_promoted_to_india_draft(self):
+        c = source_candidate(RAW)
+        for location in ("New York, United States", "Remote - USA", "Worldwide", "Remote", ""):
+            with self.subTest(location=location):
+                exact = dict(RAW, categories={"location": location})
+                self.assertEqual(source_grounded_draft(c, exact)["state"], "hold")
+        self.assertEqual(source_grounded_draft(c, RAW)["state"], "draft_ready")
+
     def test_403_timeout_wrong_check_and_expired_do_not_publish(self):
         for state in ("review", "expired", "active"):
             def checking(job, now=None):
