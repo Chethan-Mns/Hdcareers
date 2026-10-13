@@ -222,6 +222,8 @@ export default async function handler(req,res){
 
       if(action==="expire"){
         job.status="expired";
+        job.manualClosedVerifiedAt=now;
+        job.manualClosedVerifiedUrl=job.apply;
         job.verifiedDate=today();
         job.availabilityCheck={
           ...(job.availabilityCheck||{}),
@@ -250,6 +252,10 @@ export default async function handler(req,res){
         );
       }else{
         job.browserVerifiedAt=now;
+        job.manualLiveVerifiedAt=now;
+        job.manualLiveVerifiedUrl=job.apply;
+        delete job.manualClosedVerifiedAt;
+        delete job.manualClosedVerifiedUrl;
         job.verifiedDate=today();
         if(result){
           result.state="active";
