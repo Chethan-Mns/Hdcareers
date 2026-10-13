@@ -11,7 +11,7 @@
       "apply": "https://jobs.lever.co/thinkahead/3fd5cb37-6541-4e97-a827-d644468e6535",
       "cat": "it",
       "expYears": "Fresher / intern",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer Lever page opened on 13 Oct 2026 with role details and active application form.",
       "postedDate": null,
@@ -48,7 +48,7 @@
           "Incident handling"
         ],
         "apply": "https://jobs.lever.co/thinkahead/3fd5cb37-6541-4e97-a827-d644468e6535",
-        "status": "review",
+        "status": "active",
         "sourceName": "AHEAD official Lever careers",
         "verifiedDate": "13 Oct 2026",
         "who": "2026 engineering graduates in Computer Science, IT, Electronics, Telecom or a related field; willing to work rotational 24×7 shifts.",
@@ -60,8 +60,12 @@
           "source": "AHEAD official Lever careers",
           "method": "exact role + application route",
           "jobId": "3fd5cb37-6541-4e97-a827-d644468e6535"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:03:02.936Z",
+        "browserVerifiedAt": "2026-10-13T04:03:02.936Z"
+      },
+      "reviewedAt": "2026-10-13T04:03:02.936Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "startree-6147925004",
@@ -1135,7 +1139,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T03:29:41Z",
+  "updatedAt": "2026-10-13T04:03:02.965Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
