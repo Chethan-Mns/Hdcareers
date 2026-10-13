@@ -118,19 +118,26 @@ def official_inventory_probe(job):
         if provider == 'Ashby':
             jobs = data.get('jobs', []) if isinstance(data, dict) else []
             needle = expected_id.casefold()
-            match = next((x for x in jobs if needle in str(x.get('jobUrl', '')).casefold() or needle in str(x.get('applyUrl', '')).casefold()), None)
+            def exact_ashby(item):
+                for field in ('jobUrl', 'applyUrl'):
+                    item_url = str(item.get(field, ''))
+                    item_parts = [part.casefold() for part in urlsplit(item_url).path.split('/') if part]
+                    if len(item_parts) >= 2 and item_parts[0] == board.casefold() and item_parts[1] == needle:
+                        return True
+                return False
+            match = next((x for x in jobs if isinstance(x, dict) and exact_ashby(x)), None)
             if match:
                 return 'active', f'{provider} public posting inventory contains the exact published job'
             return 'review', f'{provider} board inventory did not contain the exact job; a missing ID without proven complete pagination is not closure evidence'
 
         if not isinstance(data, dict):
             return 'review', f'{provider} public posting inventory returned an unexpected response'
-        actual = str(data.get('id') or data.get('uuid') or '')
+        actual_ids = {str(data.get(key)).strip().casefold() for key in ('id', 'uuid') if data.get(key) is not None and str(data.get(key)).strip()}
+        if not expected_id or expected_id.casefold() not in actual_ids:
+            return 'review', f'{provider} public posting inventory did not confirm the exact posting ID'
         active_flag = data.get('active')
-        if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
-            return 'review', f'{provider} public posting inventory returned a different posting'
         if active_flag is False:
-            return 'expired', f'{provider} public posting inventory marks the exact job inactive'
+            return 'expired', f'{provider} public posting inventory explicitly marks the matching job inactive'
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
@@ -167,7 +174,7 @@ def structured_jobposting(body, job, now=None):
                 continue
             blob = json.dumps(item, ensure_ascii=False).casefold()
             title = re.sub(r'\s+', ' ', str(item.get('title', ''))).strip().casefold()
-            matched = bool((role and (role in blob or title in role or role in title)) or (terms and sum(t in blob for t in terms) >= min(2, len(terms))))
+            matched = bool((role and title and (role in title or title in role)) or (terms and sum(t in blob for t in terms) >= min(2, len(terms))))
             if not matched:
                 continue
             valid = item.get('validThrough')
@@ -371,6 +378,12 @@ def main():
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
+    previous_path = ROOT / 'data' / 'availability-status.json'
+    try:
+        previous_report = json.loads(previous_path.read_text(encoding='utf-8'))
+        previous_items = {str(item.get('id')): item for item in previous_report.get('items', []) if isinstance(item, dict)}
+    except (OSError, ValueError, AttributeError):
+        previous_items = {}
     results = []; changed = False
     for job in selected:
         result = check(job); results.append(result)
@@ -386,6 +399,11 @@ def main():
         details = []
         for result in results:
             job = by_id.get(result.get('id'), {})
+            previous = previous_items.get(str(result.get('id')), {})
+            consecutive = (int(previous.get('consecutiveReviewCount') or 0) + 1
+                           if result.get('state') == 'review' and previous.get('state') == 'review'
+                           and previous.get('url') == result.get('url') else 1 if result.get('state') == 'review' else 0)
+            first_review = (previous.get('firstReviewAt') if consecutive > 1 else None) or result.get('checkedAt', checked_at)
             details.append({
                 'id': result.get('id'),
                 'company': job.get('company', ''),
@@ -395,6 +413,8 @@ def main():
                 'state': result.get('state', 'review'),
                 'reason': result.get('reason', ''),
                 'checkedAt': result.get('checkedAt', checked_at),
+                'consecutiveReviewCount': consecutive,
+                'firstReviewAt': first_review if consecutive else None,
             })
         states = [x.get('state') for x in details]
         summary = {
