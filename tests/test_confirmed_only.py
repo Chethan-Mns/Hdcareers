@@ -38,8 +38,20 @@ class ConfirmedOnlyTests(unittest.TestCase):
     def test_matching_exact_id_can_confirm_live_or_closed(self):
         job = {"id": 1, "apply": SOURCE}
         for flag, verdict in ((True, "active"), (False, "expired")):
-            with patch("check_job_availability.fetch_json", return_value={"id": 12345, "active": flag}):
+            with patch("check_job_availability.fetch_json", return_value={"id": 12345, "active": flag, "title": "Data Engineer"}):
                 self.assertEqual(official_inventory_probe(job)[0], verdict)
+
+    def test_matching_id_without_title_or_active_evidence_is_not_live(self):
+        job = {"id": 1, "role": "Data Engineer", "apply": SOURCE}
+        rows = [
+            {"id": 12345},
+            {"id": 12345, "active": True},
+            {"id": 12345, "title": "Different Role", "active": True},
+            {"id": 12345, "title": "Data Engineer"},
+        ]
+        for response in rows:
+            with self.subTest(response=response), patch("check_job_availability.fetch_json", return_value=response):
+                self.assertEqual(official_inventory_probe(job)[0], "review")
 
     def test_ashby_partial_id_substring_is_not_live(self):
         job = {"id": 1, "apply": "https://jobs.ashbyhq.com/acme/abc-123"}
