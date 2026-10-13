@@ -58,6 +58,8 @@ def audit(root=ROOT):
             summary["thinContentUnder600Words"] += 1
         if not job.get("employerPostedAt") and job.get("date") not in (None, "", "Not specified", "Not Specified"):
             summary["employerPostingDateUnproven"] += 1
+    if summary["employerPostingDateUnproven"]:
+        warnings.append(str(summary["employerPostingDateUnproven"]) + " listings have a displayed date without separately proven employer-posted date; rich job markup is intentionally omitted")
     for file in TRUST:
         if not (root / file).exists():
             blockers.append("Missing trust page: " + file)
