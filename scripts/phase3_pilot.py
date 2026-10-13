@@ -66,6 +66,8 @@ def source_grounded_draft(candidate, exact):
         reasons.append("missing-employer-description")
     if not location:
         reasons.append("missing-employer-location")
+    elif not re.search(r"\\b(?:india|bengaluru|bangalore|hyderabad|mumbai|delhi|chennai|pune|gurugram|gurgaon|noida|kolkata|ahmedabad|tirupati)\\b", location, re.I):
+        reasons.append("employer-location-not-verified-india")
     if not duties:
         reasons.append("missing-employer-requirements-or-duties")
     return {"state": "draft_ready" if not reasons else "hold", "reasons": reasons, "facts": {
