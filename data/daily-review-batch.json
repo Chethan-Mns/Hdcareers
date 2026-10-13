@@ -792,7 +792,7 @@
       "apply": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
       "cat": "it",
       "expYears": "1–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Greenhouse job and submit-application form were live on 13 Oct 2026.",
       "postedDate": null,
@@ -830,7 +830,7 @@
           "Databases"
         ],
         "apply": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
-        "status": "review",
+        "status": "active",
         "sourceName": "SuperApp official Greenhouse careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Bachelor's or Master's in Computer Science/engineering or equivalent practical systems experience; 1–2 years professional backend engineering.",
@@ -842,8 +842,12 @@
           "source": "SuperApp official Greenhouse careers",
           "method": "exact role + application route",
           "jobId": "8859685002"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:06:28.029Z",
+        "browserVerifiedAt": "2026-10-13T04:06:28.029Z"
+      },
+      "reviewedAt": "2026-10-13T04:06:28.029Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "rockwell-r26-2361",
@@ -1173,7 +1177,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:06:19.451Z",
+  "updatedAt": "2026-10-13T04:06:28.029Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
