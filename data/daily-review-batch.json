@@ -853,7 +853,7 @@
       "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Graduate-Engineer-Trainee_R26-2361",
       "cat": "it",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday evidence identifies R26-2361 and fresher criteria, but the exact page rendered blank; manual review required.",
       "postedDate": null,
@@ -889,7 +889,7 @@
           "Git"
         ],
         "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/job/Graduate-Engineer-Trainee_R26-2361",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Rockwell Automation official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "CS/IT or related degree; 2025–2026 fresher with 0–1 year and CGPA 7.0+.",
@@ -902,7 +902,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "R26-2361"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:05:08.229Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ibm-52240",
@@ -1161,7 +1163,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:04:52.921Z",
+  "updatedAt": "2026-10-13T04:05:08.229Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
