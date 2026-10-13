@@ -379,7 +379,7 @@
       "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/",
       "cat": "it",
       "expYears": "4–8 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official page opened on 13 Oct 2026 with requisition 112526 and Apply Now.",
       "postedDate": null,
@@ -414,7 +414,7 @@
           "Regulatory controls"
         ],
         "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deloitte South Asia careers",
         "verifiedDate": "13 Oct 2026",
         "who": "4–8 years in trade support, investment operations, fund administration or securities operations.",
@@ -426,8 +426,12 @@
           "source": "Deloitte South Asia careers",
           "method": "exact role + application route",
           "jobId": "112526"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:07:16.959Z",
+        "browserVerifiedAt": "2026-10-13T04:07:16.959Z"
+      },
+      "reviewedAt": "2026-10-13T04:07:16.959Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "capgemini-519185",
@@ -1181,7 +1185,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:07:01.953Z",
+  "updatedAt": "2026-10-13T04:07:16.959Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
