@@ -6622,8 +6622,8 @@
       "Support releases and production systems as part of the software development lifecycle"
     ],
     "apply": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
-    "status": "active",
-    "verifiedDate": "10 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "13 Oct 2026",
     "sourceName": "Official Cohere Health application page",
     "skills": [
       "Java or Python",
@@ -6637,10 +6637,11 @@
     "logoPath": "assets/company-approved/cohere-health.webp",
     "logoSourceDomain": "coherehealth.com",
     "availabilityCheck": {
-      "state": "active",
-      "reason": "Owner confirmed live in Batch 3; Greenhouse official application form accessible",
+      "id": 20,
       "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
-      "checkedAt": "2026-10-10T06:32:22Z"
+      "checkedAt": "2026-10-13T09:47:50.361778+00:00",
+      "state": "expired",
+      "reason": "Greenhouse public posting inventory returned HTTP 404 for the exact posting"
     },
     "manualLiveVerifiedAt": "2026-10-10T06:32:22Z",
     "manualLiveVerifiedUrl": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003"
