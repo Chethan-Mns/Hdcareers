@@ -36,6 +36,18 @@ jobs:
           python3 -m unittest discover -s tests -p test_job_availability.py -v
           python3 -m unittest discover -s tests -p test_telegram_approval.py -v
 
+      - name: Validate admin inline JavaScript and stale-state guards
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          page = Path('admin/index.html').read_text()
+          code = page.rsplit('<script>', 1)[-1].split('</script>', 1)[0]
+          assert 'const stale=' in code and 'Status stale' in code
+          Path('/tmp/hd-admin-inline.js').write_text(code)
+          subprocess.run(['node','--check','/tmp/hd-admin-inline.js'], check=True)
+          PY
+
       - name: Run generator
         run: python3 generate.py
 
