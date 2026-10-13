@@ -6,7 +6,7 @@ import json
 import re
 import urllib.parse
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
 
@@ -662,7 +662,7 @@ def logo_onerror(job: dict) -> str:
 
 
 def render_related_jobs(job: dict, jobs: list[dict]) -> str:
-    active = [j for j in jobs if j["id"] != job["id"] and j.get("status") == "active"]
+    active = [j for j in jobs if j["id"] != job["id"] and visible_in_latest(j)]
     ranked = sorted(
         active,
         key=lambda j: (
@@ -732,10 +732,29 @@ def annotate_latest_availability(jobs: list[dict]) -> None:
             except ValueError:
                 pass
         job["_verification_pending"] = True
+        try:
+            streak = int(item.get("consecutiveReviewCount") or 0)
+            first = datetime.fromisoformat(str(item.get("firstReviewAt") or "").replace("Z", "+00:00"))
+            old_enough = first.tzinfo is not None and checked.tzinfo is not None and checked - first >= timedelta(hours=72)
+        except (TypeError, ValueError, OverflowError):
+            streak, old_enough = 0, False
+        recent_manual = False
+        if verified_raw and job.get("manualLiveVerifiedUrl") == job.get("apply"):
+            try:
+                manual_at = datetime.fromisoformat(verified_raw.replace("Z", "+00:00"))
+                recent_manual = manual_at.tzinfo is not None and timedelta(0) <= checked - manual_at < timedelta(hours=72)
+            except ValueError:
+                pass
+        if streak >= 2 and old_enough and not recent_manual:
+            job["_hold_from_latest"] = True
+
+
+def visible_in_latest(job: dict) -> bool:
+    return job.get("status") == "active" and not job.get("_hold_from_latest", False)
 
 
 def job_posting_schema(job: dict, canonical: str) -> str:
-    if str(job.get("status", "active")) != "active" or job.get("_verification_pending"):
+    if str(job.get("status", "active")) != "active" or job.get("_verification_pending") or job.get("_hold_from_latest"):
         return ""
     posted = schema_date(str(job.get("employerPostedAt") or job.get("date", "")))
     if not posted:
@@ -794,7 +813,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - job details, eligibility, skills, location and official source on HD Careers."
-    robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
+    robots_meta = "index,follow,max-image-preview:large" if visible_in_latest(job) else "noindex,follow"
     structured_data = job_posting_schema(job, canonical)
     share_text = f"{company} - {role}\\n{job['loc']}"
 
@@ -897,7 +916,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if end == -1:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
-    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    active_jobs = [job for job in jobs if visible_in_latest(job)]
     jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
@@ -970,7 +989,7 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
 
 
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
-    active = [job for job in jobs if job.get("status") == "active"]
+    active = [job for job in jobs if visible_in_latest(job)]
     companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
     locations = Counter(str(job.get("locationFilter") or job.get("loc") or "Other").strip() for job in active)
     skills = Counter(
@@ -1098,7 +1117,7 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/resources/resume-tips-for-freshers.html",
         "https://hdcareers.in/resources/job-application-checklist.html",
     ]
-    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    active_jobs = [job for job in jobs if visible_in_latest(job)]
     sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
     for job in active_jobs:
         url = f"https://hdcareers.in/{job['page']}"
