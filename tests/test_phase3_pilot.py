@@ -24,7 +24,9 @@ class PilotTests(unittest.TestCase):
         report = build_report([RAW], [], fetch=lambda url: RAW, verify=positive, now=NOW)
         self.assertEqual(report["summary"]["draftReady"], 1)
         item = report["candidates"][0]
-        self.assertTrue(item["readyForPublishing"])
+        self.assertTrue(item["readyForDraftReview"])
+        self.assertFalse(item["readyForPublishing"])
+        self.assertEqual(report["summary"]["publishReady"], 0)
         self.assertEqual(item["facts"]["company"], EMPLOYER)
         self.assertIsNone(item["facts"]["salary"])
         self.assertFalse(report["autoPublishEnabled"])
