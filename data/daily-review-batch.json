@@ -545,7 +545,7 @@
       "apply": "https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/India---Chennai/Software-Engineer_R55422",
       "cat": "it",
       "expYears": "Graduate / early career",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday evidence describes R55422 as a graduate/early-career Software Engineer 1, but the exact page rendered blank; manual review required.",
       "postedDate": null,
@@ -579,7 +579,7 @@
           "C#/.NET/SQL or Node.js/Java/React/Angular"
         ],
         "apply": "https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/India---Chennai/Software-Engineer_R55422",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Trimble official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Bachelor's or Master's in CS, Software Engineering or related; 2024/2025 graduates welcomed.",
@@ -592,7 +592,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "R55422"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:04:05.360Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -1151,7 +1153,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:03:51.212Z",
+  "updatedAt": "2026-10-13T04:04:05.360Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
