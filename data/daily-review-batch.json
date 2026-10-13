@@ -321,7 +321,7 @@
       "apply": "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/",
       "cat": "it",
       "expYears": "2–3+ years (page is internally inconsistent)",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY role page opened on 13 Oct 2026 with requisition 1747790 and Apply Now; the page states both 2 years and 3+ years, so the inconsistency is preserved.",
       "postedDate": "2026-10-12",
@@ -356,7 +356,7 @@
           "RFP/RFI support"
         ],
         "apply": "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/",
-        "status": "review",
+        "status": "active",
         "sourceName": "EY official careers",
         "verifiedDate": "13 Oct 2026",
         "who": "Bachelor of Technology in Computer Science; official page inconsistently states 2 years in pre-sales/product/full-stack and 3+ years business analysis.",
@@ -368,8 +368,12 @@
           "source": "EY official careers",
           "method": "exact role + application route",
           "jobId": "1747790"
-        }
-      }
+        },
+        "manualLiveVerifiedAt": "2026-10-13T04:07:36.484Z",
+        "browserVerifiedAt": "2026-10-13T04:07:36.484Z"
+      },
+      "reviewedAt": "2026-10-13T04:07:36.484Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deloitte-112526",
@@ -1189,7 +1193,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-13T04:07:27.646Z",
+  "updatedAt": "2026-10-13T04:07:36.484Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
