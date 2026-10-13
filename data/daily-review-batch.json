@@ -965,7 +965,7 @@
       "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
       "cat": "it",
       "expYears": "Early in career / 2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Cisco search evidence names project 1443859 as Bangalore Early in Career for 2026 graduates, but the exact route was inaccessible to the verifier; manual review required.",
       "postedDate": null,
@@ -991,7 +991,7 @@
         "resp": [],
         "skills": [],
         "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Cisco official careers",
         "verifiedDate": "13 Oct 2026",
         "who": "2026 graduate; full requirements require manual confirmation on the exact Cisco page.",
@@ -1004,7 +1004,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "1443859"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:05:42.244Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "iqvia-r1567860",
@@ -1165,7 +1167,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:05:24.218Z",
+  "updatedAt": "2026-10-13T04:05:42.244Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
