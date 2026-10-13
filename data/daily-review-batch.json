@@ -914,7 +914,7 @@
       "apply": "https://ibmglobal.avature.net/en_US/careers/JobDetail/Associate-System-Engineer/52240",
       "cat": "it",
       "expYears": "Fresher / 2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official IBM result identifies job 52240 for 2026 passouts, but the exact page returned 406 to the verifier; manual review required.",
       "postedDate": null,
@@ -940,7 +940,7 @@
         "resp": [],
         "skills": [],
         "apply": "https://ibmglobal.avature.net/en_US/careers/JobDetail/Associate-System-Engineer/52240",
-        "status": "review",
+        "status": "expired",
         "sourceName": "IBM official Avature careers",
         "verifiedDate": "13 Oct 2026",
         "who": "2026 passouts; detailed degree and skill requirements require manual confirmation.",
@@ -953,7 +953,9 @@
           "method": "authoritative inventory or exact page; manual review required",
           "jobId": "52240"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:05:24.218Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-1443859",
@@ -1163,7 +1165,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:05:08.229Z",
+  "updatedAt": "2026-10-13T04:05:24.218Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
