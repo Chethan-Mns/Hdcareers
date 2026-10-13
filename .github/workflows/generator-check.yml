@@ -29,6 +29,12 @@ jobs:
           node --check api/admin/traffic.js
           node --check assets/analytics.js
 
+      - name: Phase 1 verification and failure-safety regression tests
+        run: |
+          python3 -m unittest discover -s tests -p test_phase1_safety.py -v
+          python3 -m unittest discover -s tests -p test_job_availability.py -v
+          python3 -m unittest discover -s tests -p test_telegram_approval.py -v
+
       - name: Run generator
         run: python3 generate.py
 
