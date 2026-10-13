@@ -666,7 +666,7 @@
       "apply": "https://pitneybowes.wd1.myworkdayjobs.com/en-US/PBCareers/job/Graduate-Engineer-Trainee--NOC-_R22023",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday evidence describes R22023 and 0–2 year requirements, but the exact page rendered blank; manual review required.",
       "postedDate": null,
@@ -703,7 +703,7 @@
           "AWS/Azure/GCP"
         ],
         "apply": "https://pitneybowes.wd1.myworkdayjobs.com/en-US/PBCareers/job/Graduate-Engineer-Trainee--NOC-_R22023",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Pitney Bowes official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "0–2 years; engineering fundamentals in networking, automation, DevOps and monitoring; willing to work 24×7 shifts.",
@@ -716,7 +716,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "R22023"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:04:40.030Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "trackmind-ad66c0ec",
@@ -1155,7 +1157,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:04:21.856Z",
+  "updatedAt": "2026-10-13T04:04:40.030Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
