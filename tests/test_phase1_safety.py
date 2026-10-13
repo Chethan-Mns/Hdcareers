@@ -35,8 +35,11 @@ class Phase1SafetyTests(unittest.TestCase):
         self.assertEqual(generate.job_posting_schema(sample(), "https://hdcareers.in/jobs/example.html"), "")
 
     def test_employer_date_can_generate_structured_data(self):
-        html = generate.job_posting_schema(sample(date="12 Oct 2026"), "https://hdcareers.in/jobs/example.html")
+        html = generate.job_posting_schema(sample(employerPostedAt="12 Oct 2026"), "https://hdcareers.in/jobs/example.html")
         self.assertIn('"datePosted": "2026-10-12"', html)
+
+    def test_unsourced_editorial_date_is_not_employer_posting_date(self):
+        self.assertEqual(generate.job_posting_schema(sample(date="12 Oct 2026"), "https://hdcareers.in/jobs/example.html"), "")
 
     def test_expired_listing_excludes_jobposting(self):
         self.assertEqual(generate.job_posting_schema(sample(status="expired", date="12 Oct 2026"), "https://hdcareers.in/jobs/example.html"), "")
