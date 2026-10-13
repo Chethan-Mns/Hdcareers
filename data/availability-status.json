@@ -2,8 +2,8 @@
   "checkedAt": "2026-10-13T09:47:56.111551+00:00",
   "checked": 113,
   "active": 81,
-  "expired": 1,
-  "review": 31,
+  "expired": 4,
+  "review": 28,
   "changedExpired": 1,
   "items": [
     {
@@ -372,9 +372,12 @@
       "role": "Apprentice-IT",
       "page": "jobs/eaton-apprentice-it-pune-687237633525.html",
       "url": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-13T09:44:18.291058+00:00"
+      "state": "expired",
+      "reason": "Manually verified expired by site owner on 2026-10-13",
+      "checkedAt": "2026-10-13T09:44:18.291058+00:00",
+      "checkerReasonBeforeManualVerification": "Official page loaded but role/application evidence was insufficient",
+      "manualVerifiedAt": "2026-10-13",
+      "manualVerifiedSource": "owner"
     },
     {
       "id": 110,
@@ -632,9 +635,12 @@
       "role": "Associate Analyst – Business Operation Support",
       "page": "jobs/deloitte-associate-analyst-business-operation-support-hyderabad-369345.html",
       "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-13T09:45:35.108878+00:00"
+      "state": "expired",
+      "reason": "Manually verified expired by site owner on 2026-10-13",
+      "checkedAt": "2026-10-13T09:45:35.108878+00:00",
+      "checkerReasonBeforeManualVerification": "HTTP 404; availability unconfirmed",
+      "manualVerifiedAt": "2026-10-13",
+      "manualVerifiedSource": "owner"
     },
     {
       "id": 74,
@@ -1062,9 +1068,12 @@
       "role": "Systems Engineer (SE) — 2027 Campus Registration",
       "page": "jobs/infosys-systems-engineer-2027-campus-registration.html",
       "url": "https://surveys.infosysapps.com/r/a/SEcampusregistration2027batch",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-13T09:47:47.460688+00:00"
+      "state": "expired",
+      "reason": "Manually verified expired by site owner on 2026-10-13",
+      "checkedAt": "2026-10-13T09:47:47.460688+00:00",
+      "checkerReasonBeforeManualVerification": "Official page loaded but role/application evidence was insufficient",
+      "manualVerifiedAt": "2026-10-13",
+      "manualVerifiedSource": "owner"
     },
     {
       "id": 22,
@@ -1093,8 +1102,11 @@
       "page": "jobs/cohere-health-associate-software-engineer-hyderabad-7728230003.html",
       "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003",
       "state": "expired",
-      "reason": "Greenhouse public posting inventory returned HTTP 404 for the exact posting",
-      "checkedAt": "2026-10-13T09:47:50.361778+00:00"
+      "reason": "Manually verified expired by site owner on 2026-10-13",
+      "checkedAt": "2026-10-13T09:47:50.361778+00:00",
+      "checkerReasonBeforeManualVerification": "Greenhouse public posting inventory returned HTTP 404 for the exact posting",
+      "manualVerifiedAt": "2026-10-13",
+      "manualVerifiedSource": "owner"
     },
     {
       "id": 17,
