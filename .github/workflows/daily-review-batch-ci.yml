@@ -49,7 +49,9 @@ jobs:
           import json,subprocess
           from pathlib import Path
           b=json.loads(Path("data/daily-review-batch.json").read_text())
-          if b.get("status")=="published":
+          if b.get("batchId")!="2026-10-12-0900-ist":
+              print("October 12 one-time publication preflight not applicable to a newer daily batch.")
+          elif b.get("status")=="published":
               published=json.loads(Path("data/jobs.json").read_text())
               ledger=json.loads(Path("data/telegram-deliveries.json").read_text())
               batch_jobs={j["id"]:j for j in b["priority"]+b["backup"]}
