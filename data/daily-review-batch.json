@@ -1078,7 +1078,7 @@
       "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
       "cat": "it",
       "expYears": "Campus hire",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official Workday result identifies requisition 3078323 and campus-hire role, but the exact page rendered as a blank JavaScript shell; manual review required.",
       "postedDate": null,
@@ -1104,7 +1104,7 @@
         "resp": [],
         "skills": [],
         "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Qualcomm official Workday careers",
         "verifiedDate": "13 Oct 2026",
         "who": "2026 campus hire; complete degree and experience requirements require manual confirmation.",
@@ -1117,7 +1117,9 @@
           "method": "exact role or authoritative inventory; manual review required",
           "jobId": "3078323"
         }
-      }
+      },
+      "reviewedAt": "2026-10-13T04:06:09.656Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nvidia-jr2016982",
@@ -1169,7 +1171,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-13T04:05:52.971Z",
+  "updatedAt": "2026-10-13T04:06:09.656Z",
   "ranking": {
     "method": "official-evidence-v1",
     "rankedAt": "2026-10-13T03:34:13.575Z",
