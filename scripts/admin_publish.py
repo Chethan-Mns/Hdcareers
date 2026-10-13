@@ -6,7 +6,7 @@ from check_job_availability import check
 import re
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -103,6 +103,39 @@ def enqueue_review(queue: list[dict], job: dict, result: dict, offset: int) -> N
     })
 
 
+
+def confirmed_live_for_publish(job: dict, result: dict, now=None) -> bool:
+    """Allow only fresh exact-URL positive evidence into new public listings."""
+    now = now or datetime.now(timezone.utc)
+    if result.get("state") != "active" or normalize_url(result.get("url")) != normalize_url(job.get("apply")):
+        return False
+    if result.get("id") != job.get("id"):
+        return False
+    try:
+        checked = datetime.fromisoformat(str(result.get("checkedAt", "")).replace("Z", "+00:00"))
+        if checked.tzinfo is None or not timedelta(0) <= now - checked <= timedelta(hours=2):
+            return False
+    except (ValueError, TypeError):
+        return False
+    reason = str(result.get("reason", ""))
+    if "manual confirmation overrides" in reason:
+        stamp = job.get("manualLiveVerifiedAt")
+        if not stamp or job.get("manualLiveVerifiedUrl") != job.get("apply"):
+            return False
+        try:
+            confirmed = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
+            return confirmed.tzinfo is not None and timedelta(0) <= now - confirmed <= timedelta(hours=24)
+        except (ValueError, TypeError):
+            return False
+    return any(reason.startswith(prefix) for prefix in (
+        "Greenhouse public posting inventory contains the exact published job",
+        "Lever public posting inventory contains the exact published job",
+        "SmartRecruiters public posting inventory contains the exact published job",
+        "Ashby public posting inventory contains the exact published job",
+        "Browser-compatible official-page render is active (",
+    ))
+
+
 def main() -> None:
     if len(sys.argv) != 2:
         raise SystemExit("Usage: admin_publish.py <github-event-path>")
@@ -147,9 +180,9 @@ def main() -> None:
         result = check(job)
         verdicts.append(dict(result, apply=job.get("apply")))
         print(f"{job['company']} — {job['role']}: {result['state']} — {result['reason']}")
-        if result["state"] == "active":
+        if confirmed_live_for_publish(job, result):
             verified.append(job)
-        elif result["state"] == "review":
+        elif result["state"] in {"active", "review"}:
             if url not in pending_urls and pair not in pending_pairs:
                 enqueue_review(review_queue, job, result, pos)
                 pending_urls.add(url); pending_pairs.add(pair)
