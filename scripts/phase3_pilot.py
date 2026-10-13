@@ -18,7 +18,7 @@ from check_job_availability import check, fetch_json
 
 EMPLOYER = "AHEAD"
 SITE = "thinkahead"
-LIST_URL = f"https://api.lever.co/v0/postings/{SITE}?mode=json"
+LIST_URL = f"https://api.lever.co/v0/postings/{SITE}?mode=json&limit=12"
 POSTING_URL = f"https://jobs.lever.co/{SITE}/"
 OUTPUT = ROOT / "phase3-pilot-report.json"
 MAX_CANDIDATES = 12
@@ -139,11 +139,13 @@ def main():
         report = {"mode": "shadow_only", "pilotEmployer": EMPLOYER, "source": LIST_URL,
                   "checkedAt": datetime.now(timezone.utc).isoformat(), "productionWrites": False,
                   "websiteDeployments": 0, "telegramMessagesSent": 0,
-                  "autoPublishEnabled": False, "summary": {"error": type(exc).__name__},
+                  "autoPublishEnabled": False, "summary": {"error": type(exc).__name__, "detail": str(exc)[:220]},
                   "candidates": []}
     Path(args.output).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(report["summary"], indent=2))
     assert report["mode"] == "shadow_only" and report["autoPublishEnabled"] is False
+    if report["summary"].get("error"):
+        raise SystemExit("Pilot source blocked: " + str(report["summary"]["error"]))
 
 
 if __name__ == "__main__":
