@@ -1,0 +1,22 @@
+{
+  "batchId": "2026-10-13-0900-ist",
+  "requestId": "98de7f55ea2aea01053aa026",
+  "action": "retry_exact_previously_submitted_jobs",
+  "ownerApproved": true,
+  "approvalSource": "October 13 HD Careers Admin submission at 9:38 AM IST and owner request to deploy and publish reviewed batch",
+  "candidateIds": [
+    "ahead-3fd5cb37",
+    "capgemini-519185",
+    "deloitte-112526",
+    "ey-1747790",
+    "hcltech-161936",
+    "mongodb-7922676",
+    "startree-6147925004",
+    "superapp-8859685002",
+    "trackmind-ad66c0ec",
+    "veeva-90e4e761"
+  ],
+  "expectedCount": 10,
+  "duplicateProtection": "exact employer URLs and Telegram receipts",
+  "notes": "No fresh manual Live verdict created: use only previously recorded reviewedAt, exact URL and unchanged submitted candidate set."
+}
