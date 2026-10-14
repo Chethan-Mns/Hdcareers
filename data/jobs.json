@@ -1121,8 +1121,8 @@
       "Gather requirements, implement features and document workflows."
     ],
     "apply": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
-    "status": "active",
-    "verifiedDate": "11 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "14 Oct 2026",
     "sourceName": "HCLTech Careers",
     "skills": [
       "Jenkins",
@@ -1139,7 +1139,14 @@
     "manualLiveVerifiedUrl": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
     "id": 120,
     "logoPath": "assets/company-icons/hcltech-4735861.png",
-    "logoSourceDomain": "hcltech.com"
+    "logoSourceDomain": "hcltech.com",
+    "availabilityCheck": {
+      "id": 120,
+      "url": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
+      "checkedAt": "2026-10-14T08:21:16.205Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review."
+    }
   },
   {
     "page": "jobs/arm-associate-engineer.html",

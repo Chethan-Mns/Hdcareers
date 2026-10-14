@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-14T08:04:03.698138+00:00",
+  "checkedAt": "2026-10-14T08:21:16.205Z",
   "checked": 109,
   "active": 73,
-  "expired": 0,
-  "review": 36,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 35,
+  "changedExpired": 1,
   "items": [
     {
       "id": 139,
@@ -232,9 +232,11 @@
       "role": "Engineer – Jenkins, Windows PowerShell",
       "page": "jobs/hcltech-engineer-jenkins-windows-powershell.html",
       "url": "https://careers.hcltech.com/job/Engineer-Jenkins%2CWindows-PowerShell/175263-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-14T08:00:50.174743+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-14T08:21:16.205Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-14T08:21:16.205Z"
     },
     {
       "id": 121,
