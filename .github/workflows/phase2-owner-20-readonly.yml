@@ -1,0 +1,59 @@
+name: Phase 2 Owner 20-Job Read-Only Release Benchmark
+
+on:
+  push:
+    branches:
+      - test/phase2-owner-20-shadow-20261015
+    paths:
+      - scripts/phase2_owner_20_readonly.py
+      - tests/test_phase2_owner_baseline_20.py
+      - tests/fixtures/owner_phase2_manual_20_20261014.json
+      - .github/workflows/phase2-owner-20-readonly.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase2-accuracy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Confirm read-only runner
+        run: |
+          test -z "${TELEGRAM_BOT_TOKEN:-}"
+          test -z "${GITHUB_PUBLISH_TOKEN:-}"
+          sha256sum data/jobs.json > /tmp/phase2-jobs.sha256
+      - name: Preserve owner's 20-job ground truth and known mismatches
+        run: python3 -m unittest discover -s tests -p test_phase2_owner_baseline_20.py -v
+      - name: Independent employer source scan without previous manual overrides
+        run: python3 scripts/phase2_owner_20_readonly.py --output phase2-owner-20-shadow-results.json
+      - name: Prove production source records unchanged
+        if: always()
+        run: |
+          sha256sum -c /tmp/phase2-jobs.sha256
+          git diff --exit-code -- data/jobs.json data/availability-status.json
+      - name: Preserve exact per-job evidence even if release gate fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-owner20-real-employer-evidence
+          path: phase2-owner-20-shadow-results.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Block release on owner-confirmed incorrect database statuses
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          r=json.load(open("phase2-owner-20-shadow-results.json"))
+          bad=[x for x in r["items"] if x["currentDatabaseAssessment"]!="agrees_with_owner"]
+          print("OWNER-TRUTH DATABASE DISCREPANCIES:",[(x["id"],x["company"],x["ownerVerdict"],x["currentDatabase"]) for x in bad])
+          print("SOURCE COVERAGE:",r["summary"]["independent"])
+          if bad:
+              print("RELEASE BLOCKED: incorrect records need explicit owner-approved reconciliation. No production updates were made.")
+              sys.exit(1)
+          PY
