@@ -53,7 +53,7 @@ class ReopeningAndConflicts(unittest.TestCase):
 
     def test_nielseniq_inactive_ats_conflicts_with_exact_live_apply_page(self):
         job = dict(self.jobs[82], status="active")
-        body = "<h1>Associate Software Engineer</h1><a href='/apply'>Apply now</a>"
+        body = "<h1>Associate Software Engineer</h1><p>Up to 6 months experience; Java; final year</p><a href='/apply'>Apply now</a>"
         with patch("check_job_availability.safe_url"), patch("check_job_availability.fetch_json", return_value={"id": "744000152930140", "active": False}), patch("check_job_availability.build_opener", return_value=Opener(job["apply"], body)):
             result = check(job)
         self.assertEqual(result["state"], "review")
@@ -74,7 +74,7 @@ class ReopeningAndConflicts(unittest.TestCase):
 
     def test_expired_without_owner_closure_requires_both_api_and_public_application(self):
         job = dict(self.jobs[82], status="expired")
-        body = "<h1>Associate Software Engineer</h1><button>Apply now</button>"
+        body = "<h1>Associate Software Engineer</h1><p>Up to 6 months experience; Java; final year</p><button>Apply now</button>"
         with patch("check_job_availability.safe_url"), patch("check_job_availability.official_inventory_probe", return_value=("active", "Exact ATS active")), patch("check_job_availability.build_opener", return_value=Opener(job["apply"],body)):
             result = check(job)
         self.assertEqual(result["state"], "active")
