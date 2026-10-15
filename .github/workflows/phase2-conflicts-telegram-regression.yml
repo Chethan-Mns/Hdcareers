@@ -26,6 +26,16 @@ jobs:
         run: python3 -m unittest discover -s tests -p test_job_availability.py -v
       - name: New owner evidence, reopening, and Telegram failure scenarios
         run: python3 -m unittest discover -s tests -p test_phase2_reopening_telegram.py -v
+      - name: Independently recheck NielsenIQ and Deloitte USI exact career URLs
+        run: python3 scripts/shadow_two_reopening_cases.py
+      - name: Save real source evidence, including unresolved cases
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-nielsen-deloitte-live-shadow
+          path: phase2-nielsen-deloitte-shadow.json
+          if-no-files-found: warn
+          retention-days: 30
       - name: Assert main data and delivery ledger unchanged
         if: always()
         run: |
