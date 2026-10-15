@@ -38,7 +38,7 @@ class OwnerBaselineTests(unittest.TestCase):
         self.assertTrue({75, 82}.issubset(wrong))
         self.assertIn(104, wrong)
 
-    def test_trusted_source_list_has_no fabricated_url(self):
+    def test_trusted_source_list_has_no_fabricated_url(self):
         self.assertTrue(all(r["url"].startswith("https://") and r["url"] == self.jobs[r["id"]]["apply"] for r in self.fixture["samples"]))
 
 if __name__ == "__main__":
