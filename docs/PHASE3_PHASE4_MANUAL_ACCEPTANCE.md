@@ -34,3 +34,9 @@ Status: **development only**, no production merge and no Telegram sends.
 10. Regenerate site and compare against latest production owner review without any data/ledger mutations.
 
 Production remains unchanged by these steps. PR #81 remains draft until the above tests pass.
+
+## Automated reconciliation evidence — 15 October 2026
+- Two-round actual employer source smoke test completed on draft PR #82, GitHub Actions run 38778826649. The rounds were separated by >=60s, not separate daily scans. No status edits.
+- Draft PR #81 now has the latest production job data and Phase 2 safety code in its merge ancestry; old 130-job generated HTML was replaced by 131 regenerated pages on branch only, commit 5c8f510a56f7e14596a616083bcfb7acda47947a.
+- Reconciliation generator workflow run 38779819079 passed, confirmed 131 records (100 active, 31 expired), preserved 39 manual decisions and Telegram receipt ledger, and reported 0 blocking growth-audit findings.
+- This is development evidence only, not owner approval to merge into main.
