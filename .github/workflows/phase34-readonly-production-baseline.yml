@@ -23,6 +23,7 @@ jobs:
       - name: Run Phase 3 official-source / publishing safety unit tests
         run: python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
       - name: Read AHEAD official Lever ATS only; do not publish
+        continue-on-error: true
         run: python3 scripts/phase3_pilot.py --output phase3-readonly-prod-baseline.json
       - name: Audit current production job pages for Phase 4 readiness
         continue-on-error: true
