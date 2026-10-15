@@ -1,0 +1,43 @@
+name: Phase 2 Conflicts, Reopening and Telegram Retry Tests
+on:
+  push:
+    branches:
+      - fix/phase2-conflicts-reopening-telegram-20261015
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: No production or Telegram credentials
+        run: |
+          test -z "${TELEGRAM_BOT_TOKEN:-}"
+          test -z "${GITHUB_PUBLISH_TOKEN:-}"
+          sha256sum data/jobs.json data/telegram-deliveries.json > /tmp/hd-regression-before.sha
+      - name: Static compile checks
+        run: python3 -m py_compile scripts/check_job_availability.py scripts/publish_approved_telegram.py tests/test_phase2_reopening_telegram.py
+      - name: Existing availability checker regressions
+        run: python3 -m unittest discover -s tests -p test_job_availability.py -v
+      - name: New owner evidence, reopening, and Telegram failure scenarios
+        run: python3 -m unittest discover -s tests -p test_phase2_reopening_telegram.py -v
+      - name: Independently recheck NielsenIQ and Deloitte USI exact career URLs
+        run: python3 scripts/shadow_two_reopening_cases.py
+      - name: Save real source evidence, including unresolved cases
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-nielsen-deloitte-live-shadow
+          path: phase2-nielsen-deloitte-shadow.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Assert main data and delivery ledger unchanged
+        if: always()
+        run: |
+          sha256sum -c /tmp/hd-regression-before.sha
+          git diff --exit-code -- data/jobs.json data/telegram-deliveries.json

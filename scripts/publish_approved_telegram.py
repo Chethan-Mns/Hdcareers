@@ -31,6 +31,18 @@ def save_ledger(ledger):
     LEDGER.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def delivery_failure_state(exc):
+    """Only acknowledged 4xx rejection is safe to retry automatically.
+
+    Telegram HTTP 5xx, connection errors, timeouts, malformed success replies
+    and missing message IDs may have delivered the message already.
+    """
+    match = re.match(r"^Telegram HTTP (\d{3})\b", str(exc))
+    if match and 400 <= int(match.group(1)) < 500:
+        return "failed"
+    return "uncertain"
+
+
 def requested_pages():
     manual = os.getenv("JOB_PAGES", "").strip()
     if manual:
@@ -118,9 +130,8 @@ def publish():
         try:
             message_id = send_telegram(token, channel, message_for(job))
         except Exception as exc:
-            uncertain = not (isinstance(exc, RuntimeError) and str(exc).startswith("Telegram HTTP "))
             ledger[key] = {
-                "status": "uncertain" if uncertain else "failed",
+                "status": delivery_failure_state(exc),
                 "batchId": batch_id,
                 "page": page,
                 "checkedAt": datetime.now(timezone.utc).isoformat(),
@@ -128,6 +139,14 @@ def publish():
             }
             save_ledger(ledger)
             raise
+        if not isinstance(message_id, int) or isinstance(message_id, bool) or message_id <= 0:
+            ledger[key] = {
+                "status": "uncertain", "batchId": batch_id, "page": page,
+                "checkedAt": datetime.now(timezone.utc).isoformat(),
+                "reason": "Telegram missing valid message ID"
+            }
+            save_ledger(ledger)
+            raise RuntimeError("Telegram delivery unconfirmed: no valid message ID; manual channel reconciliation required")
         ledger[key] = {
             "status": "delivered",
             "batchId": batch_id,

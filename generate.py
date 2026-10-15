@@ -6,7 +6,7 @@ import json
 import re
 import urllib.parse
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from string import Template
 
@@ -123,6 +123,11 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <meta property="og:title" content="$page_title">
 <meta property="og:description" content="$meta_description">
 <meta property="og:url" content="$canonical">
+<meta property="og:site_name" content="HD Careers">
+<meta property="og:image" content="https://hdcareers.in/assets/hd-careers-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="$page_title">
+<meta name="twitter:description" content="$meta_description">
 $structured_data
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
@@ -130,8 +135,7 @@ $structured_data
 <script defer src="../assets/public-header.js"></script>
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js" defer></script>
+<!-- Resume parsing libraries are loaded on first PDF/DOCX selection only. -->
 <style>
 :root{--primary:#0b6fe8;--primary2:#0058c7;--dark:#071b35;--slate:#f4f7fb}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
@@ -224,10 +228,11 @@ const revealObserver=('IntersectionObserver' in window)?new IntersectionObserver
 document.querySelectorAll('.card, aside > div').forEach(el=>{el.classList.add('reveal-on-scroll');if(revealObserver)revealObserver.observe(el);else el.classList.add('is-visible')});
 const MATCH_PROFILE=$match_profile;
 const SAMPLE_RESUME=$sample_resume;
-if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
+const resumeReaderLoads={};
+function ensureResumeReader(kind){if(resumeReaderLoads[kind])return resumeReaderLoads[kind];const url=kind==='pdf'?'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js':'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js';resumeReaderLoads[kind]=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=url;script.async=true;script.onload=()=>{if(kind==='pdf'){if(!window.pdfjsLib)return reject(new Error('PDF reader unavailable. Please retry.'));pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}else if(!window.mammoth)return reject(new Error('DOCX reader unavailable. Please retry.'));resolve()};script.onerror=()=>reject(new Error('Could not load the resume reader. Check your connection and retry.'));document.head.appendChild(script)}).catch(err=>{delete resumeReaderLoads[kind];throw err});return resumeReaderLoads[kind]}
 const resumeFile=document.getElementById('resumeFile');
 if(resumeFile)resumeFile.addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;document.getElementById('resumeFileName').textContent=file.name+' • '+Math.max(1,Math.round(file.size/1024))+' KB';if(file.size>5*1024*1024){showMatchError('Please choose a resume smaller than 5 MB.');return}setMatchLoading(true);try{const text=await readResumeFile(file);if(text.trim().length<80)throw new Error('Could not read enough text from this resume. Try a text-based PDF, DOCX or TXT file.');renderMatch(analyzeResume(text));if(window.hdTrack)window.hdTrack('resume_checker_use')}catch(err){showMatchError(err&&err.message?err.message:'Could not read this resume.')}finally{setMatchLoading(false)}});
-async function readResumeFile(file){const name=file.name.toLowerCase();if(name.endsWith('.txt'))return await file.text();if(name.endsWith('.docx')){if(!window.mammoth)throw new Error('DOCX reader is still loading. Please try again in a moment.');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value||''}if(name.endsWith('.pdf')){if(!window.pdfjsLib)throw new Error('PDF reader is still loading. Please try again in a moment.');const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let text='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();text+='\\n'+content.items.map(x=>x.str+(x.hasEOL?'\\n':' ')).join('')}return text}throw new Error('Supported formats are PDF, DOCX and TXT.')}
+async function readResumeFile(file){const name=file.name.toLowerCase();if(name.endsWith('.txt'))return await file.text();if(name.endsWith('.docx')){await ensureResumeReader('docx');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value||''}if(name.endsWith('.pdf')){await ensureResumeReader('pdf');const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let text='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();text+='\\n'+content.items.map(x=>x.str+(x.hasEOL?'\\n':' ')).join('')}return text}throw new Error('Supported formats are PDF, DOCX and TXT.')}
 function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9+#.]+/g,' ').replace(/\\s+/g,' ').trim()}
 function requiredYears(s){const t=String(s||'').toLowerCase();if(/entry|fresher|0\\s*year/.test(t))return 0;const m=t.match(/(\\d+(?:\\.\\d+)?)\\s*(?:\\+|[-–]\\s*\\d+)?\\s*years?/);return m?Number(m[1]):null}
 function resumeYears(text){const vals=[...String(text).matchAll(/(\\d+(?:\\.\\d+)?)\\s*\\+?\\s*(?:years?|yrs?)/gi)].map(m=>Number(m[1])).filter(x=>x>=0&&x<50);return vals.length?Math.max(...vals):null}
@@ -662,7 +667,7 @@ def logo_onerror(job: dict) -> str:
 
 
 def render_related_jobs(job: dict, jobs: list[dict]) -> str:
-    active = [j for j in jobs if j["id"] != job["id"] and j.get("status") == "active"]
+    active = [j for j in jobs if j["id"] != job["id"] and visible_in_latest(j)]
     ranked = sorted(
         active,
         key=lambda j: (
@@ -732,12 +737,31 @@ def annotate_latest_availability(jobs: list[dict]) -> None:
             except ValueError:
                 pass
         job["_verification_pending"] = True
+        try:
+            streak = int(item.get("consecutiveReviewCount") or 0)
+            first = datetime.fromisoformat(str(item.get("firstReviewAt") or "").replace("Z", "+00:00"))
+            old_enough = first.tzinfo is not None and checked.tzinfo is not None and checked - first >= timedelta(hours=72)
+        except (TypeError, ValueError, OverflowError):
+            streak, old_enough = 0, False
+        recent_manual = False
+        if verified_raw and job.get("manualLiveVerifiedUrl") == job.get("apply"):
+            try:
+                manual_at = datetime.fromisoformat(verified_raw.replace("Z", "+00:00"))
+                recent_manual = manual_at.tzinfo is not None and timedelta(0) <= checked - manual_at < timedelta(hours=72)
+            except ValueError:
+                pass
+        if streak >= 2 and old_enough and not recent_manual:
+            job["_hold_from_latest"] = True
+
+
+def visible_in_latest(job: dict) -> bool:
+    return job.get("status") == "active" and not job.get("_hold_from_latest", False)
 
 
 def job_posting_schema(job: dict, canonical: str) -> str:
-    if str(job.get("status", "active")) != "active" or job.get("_verification_pending"):
+    if str(job.get("status", "active")) != "active" or job.get("_verification_pending") or job.get("_hold_from_latest"):
         return ""
-    posted = schema_date(str(job.get("employerPostedAt") or job.get("date", "")))
+    posted = schema_date(str(job.get("employerPostedAt") or ""))
     if not posted:
         return ""
     closing_raw = str(job.get("closingAt", "")).strip()
@@ -794,7 +818,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} - job details, eligibility, skills, location and official source on HD Careers."
-    robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
+    robots_meta = "index,follow,max-image-preview:large" if visible_in_latest(job) else "noindex,follow"
     structured_data = job_posting_schema(job, canonical)
     share_text = f"{company} - {role}\\n{job['loc']}"
 
@@ -897,7 +921,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if end == -1:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
-    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    active_jobs = [job for job in jobs if visible_in_latest(job)]
     jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
@@ -970,7 +994,7 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
 
 
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
-    active = [job for job in jobs if job.get("status") == "active"]
+    active = [job for job in jobs if visible_in_latest(job)]
     companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
     locations = Counter(str(job.get("locationFilter") or job.get("loc") or "Other").strip() for job in active)
     skills = Counter(
@@ -1098,7 +1122,7 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/resources/resume-tips-for-freshers.html",
         "https://hdcareers.in/resources/job-application-checklist.html",
     ]
-    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    active_jobs = [job for job in jobs if visible_in_latest(job)]
     sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
     for job in active_jobs:
         url = f"https://hdcareers.in/{job['page']}"

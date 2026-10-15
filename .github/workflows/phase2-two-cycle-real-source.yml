@@ -1,0 +1,39 @@
+name: Phase 2 Two-Cycle Real Source Shadow (No Writes)
+on:
+  push:
+    branches:
+      - fix/phase2-conflicts-reopening-telegram-20261015
+    paths:
+      - scripts/two_cycle_real_source_shadow.py
+      - .github/workflows/phase2-two-cycle-real-source.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-cycles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify no publishing credentials and save file hashes
+        run: |
+          test -z "${TELEGRAM_BOT_TOKEN:-}"
+          sha256sum data/jobs.json data/telegram-deliveries.json > /tmp/two-cycle-before.sha
+      - name: Two independent real-source rounds, at least 60 seconds apart
+        run: python3 scripts/two_cycle_real_source_shadow.py
+      - name: Prove no production or Telegram data was touched
+        if: always()
+        run: |
+          sha256sum -c /tmp/two-cycle-before.sha
+          git diff --exit-code -- data/jobs.json data/telegram-deliveries.json
+      - name: Attach actual exact-job per-round evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-two-live-source-shadow
+          path: phase2-two-live-source-cycles.json
+          if-no-files-found: warn
+          retention-days: 30

@@ -24,6 +24,7 @@ jobs:
 
       - name: Validate admin and analytics JavaScript
         run: |
+          node --check api/admin/review.js
           node --check api/admin/extract-job.js
           node --check api/admin/publish.js
           node --check api/admin/traffic.js
@@ -32,6 +33,8 @@ jobs:
       - name: Phase 1 verification and failure-safety regression tests
         run: |
           python3 -m unittest discover -s tests -p test_phase1_safety.py -v
+          python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+          python3 -m unittest discover -s tests -p test_phase4_growth.py -v
           python3 -m unittest discover -s tests -p test_phase1_delivery.py -v
           python3 -m unittest discover -s tests -p test_job_availability.py -v
           python3 -m unittest discover -s tests -p test_telegram_approval.py -v
@@ -87,6 +90,9 @@ jobs:
           test -f sitemap.xml
           grep -q "Sitemap: https://hdcareers.in/sitemap.xml" robots.txt
           grep -q "https://hdcareers.in/privacy-policy.html" sitemap.xml
+
+      - name: Phase 4 growth and trust audit
+        run: python3 scripts/phase4_growth_audit.py --output phase4-growth-audit.json
 
       - name: Check generated output
         run: |

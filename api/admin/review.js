@@ -222,6 +222,11 @@ export default async function handler(req,res){
 
       if(action==="expire"){
         job.status="expired";
+        job.manualClosedVerifiedAt=now;
+        job.manualClosedVerifiedUrl=job.apply;
+        delete job.manualLiveVerifiedAt;
+        delete job.manualLiveVerifiedUrl;
+        delete job.browserVerifiedAt;
         job.verifiedDate=today();
         job.availabilityCheck={
           ...(job.availabilityCheck||{}),
@@ -249,7 +254,13 @@ export default async function handler(req,res){
           token
         );
       }else{
+        job.status="active";
         job.browserVerifiedAt=now;
+        job.manualLiveVerifiedAt=now;
+        job.manualLiveVerifiedUrl=job.apply;
+        job.availabilityCheck={...(job.availabilityCheck||{}),id:job.id,url:job.apply,checkedAt:now,state:"active",reason:"HD Careers Admin manually confirmed exact employer application page."};
+        delete job.manualClosedVerifiedAt;
+        delete job.manualClosedVerifiedUrl;
         job.verifiedDate=today();
         if(result){
           result.state="active";

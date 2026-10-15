@@ -1,0 +1,49 @@
+name: Phase 3 single-employer shadow publishing pilot
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/phase3_pilot.py
+      - tests/test_phase3_pilot.py
+      - .github/workflows/phase3-shadow-pilot.yml
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controlled-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Mock end-to-end source, content and publishing gates
+        run: python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+      - name: Read-only AHEAD official source pilot
+        run: python3 scripts/phase3_pilot.py --output phase3-pilot-report.json
+      - name: Verify safe shadow output
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open('phase3-pilot-report.json'))
+          assert r['mode']=='shadow_only'
+          assert r['productionWrites'] is False
+          assert r['autoPublishEnabled'] is False
+          assert r['telegramMessagesSent']==0
+          assert r['websiteDeployments']==0
+          print('Phase 3 PILOT SAFE:',r['summary'])
+          PY
+      - name: Save real employer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase3-ahead-official-shadow-report
+          path: phase3-pilot-report.json
+          if-no-files-found: warn
+          retention-days: 30
