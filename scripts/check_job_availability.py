@@ -397,16 +397,21 @@ def main():
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
+    previous_states = {j.get('id'): j.get('status') for j in selected}
     results = []; changed = False
+    transitioned_expired = 0
+    transitioned_reopened = 0
     for job in selected:
         result = check(job); results.append(result)
         print(f"{job['id']}: {result['state']} — {result['reason']}")
         if args.write and job.get('status') == 'active' and result['state'] == 'expired':
             job['status'] = 'expired'; job['availabilityCheck'] = result
             job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_expired += 1
         elif args.write and job.get('status') == 'expired' and result['state'] == 'active' and result['reason'].startswith('Reopening confirmed:') and not job.get('manualClosedVerifiedAt'):
             job['status'] = 'active'; job['availabilityCheck'] = result
             job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_reopened += 1
             print(f"SAFE REOPEN: {job.get('id')} - both ATS and public Apply page confirmed")
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
@@ -433,8 +438,9 @@ def main():
             'active': states.count('active'),
             'expired': states.count('expired'),
             'review': states.count('review'),
-            'changedExpired': sum(x.get('state') == 'expired' and by_id.get(x.get('id'), {}).get('status') == 'expired' for x in details),
-            'reopenCandidatesChecked': sum(x.get('id') in {j.get('id') for j in selected if j.get('status') == 'expired'} for x in details),
+            'changedExpired': transitioned_expired,
+            'changedReopened': transitioned_reopened,
+            'reopenCandidatesChecked': sum(previous_states.get(x.get('id')) == 'expired' for x in details),
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'

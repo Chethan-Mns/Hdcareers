@@ -97,6 +97,11 @@ class ReopeningAndConflicts(unittest.TestCase):
         self.assertEqual(result["state"], "review")
         self.assertIn("Owner-verified closure", result["reason"])
 
+    def test_scheduled_checker_enablement_is_opt_in_and_bounded(self):
+        workflow = (ROOT / ".github/workflows/job-availability.yml").read_text()
+        self.assertIn("scripts/check_job_availability.py --write --recheck-expired", workflow)
+        self.assertEqual(choose_reopening_candidates.__defaults__[1], 6)
+
     def test_bounded_expired_rotation_keeps_owner_closed_jobs_eligible_for_audit(self):
         jobs = [{"id": i,"status": "expired"} for i in range(24)]
         chosen = choose_reopening_candidates(jobs, datetime(2026, 10, 15, tzinfo=timezone.utc), limit=6)
