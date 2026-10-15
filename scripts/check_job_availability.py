@@ -419,9 +419,10 @@ def main():
         by_id = {j.get('id'): j for j in jobs}
         checked_at = datetime.now(timezone.utc).isoformat()
         details = []
+        reopening_checks = []
         for result in results:
             job = by_id.get(result.get('id'), {})
-            details.append({
+            row = {
                 'id': result.get('id'),
                 'company': job.get('company', ''),
                 'role': job.get('role', ''),
@@ -430,7 +431,12 @@ def main():
                 'state': result.get('state', 'review'),
                 'reason': result.get('reason', ''),
                 'checkedAt': result.get('checkedAt', checked_at),
-            })
+            }
+            if previous_states.get(result.get('id')) == 'expired':
+                row['outcome'] = 'reopened' if job.get('status') == 'active' else 'held'
+                reopening_checks.append(row)
+            else:
+                details.append(row)
         states = [x.get('state') for x in details]
         summary = {
             'checkedAt': checked_at,
@@ -440,7 +446,8 @@ def main():
             'review': states.count('review'),
             'changedExpired': transitioned_expired,
             'changedReopened': transitioned_reopened,
-            'reopenCandidatesChecked': sum(previous_states.get(x.get('id')) == 'expired' for x in details),
+            'reopenCandidatesChecked': len(reopening_checks),
+            'reopenChecks': reopening_checks,
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'

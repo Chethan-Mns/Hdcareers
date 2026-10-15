@@ -1,5 +1,6 @@
 import json
 import os
+import copy
 import sys
 import tempfile
 import unittest
@@ -101,6 +102,52 @@ class ReopeningAndConflicts(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/job-availability.yml").read_text()
         self.assertIn("scripts/check_job_availability.py --write --recheck-expired", workflow)
         self.assertEqual(choose_reopening_candidates.__defaults__[1], 6)
+
+
+    def test_scheduled_two_cycles_reopen_only_when_independently_confirmed(self):
+        from unittest.mock import patch
+        import check_job_availability as checker
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            (root/"data").mkdir()
+            original=[
+                {"id": 1, "company": "Example", "role": "Engineer", "status": "active", "apply": "https://careers.example.com/1"},
+                {"id": 2, "company": "Example", "role": "Engineer", "status": "expired", "apply": "https://careers.example.com/2"},
+                {"id": 3, "company": "Example", "role": "Engineer", "status": "expired", "apply": "https://careers.example.com/3", "manualClosedVerifiedAt": "2026-10-15T10:00:00Z"},
+            ]
+            (root/"data/jobs.json").write_text(json.dumps(original))
+            visits={2:0}
+            def fake_check(job):
+                id=job["id"]
+                if id==1:
+                    state,reason="active","The existing job is open"
+                elif id==2:
+                    visits[2]+=1
+                    if visits[2] == 1:
+                        state,reason="review","Page unavailable during cycle 1"
+                    else:
+                        state,reason="active","Reopening confirmed: exact ATS posting ID and independent exact public application page both active"
+                else:
+                    state,reason="review","Owner-verified closure is protected; reopening requires a newer explicit owner decision"
+                return {"id":id,"url":job["apply"],"checkedAt":"2026-10-15T11:00:00Z","state":state,"reason":reason}
+            with patch.object(checker,"ROOT",root), patch.object(checker,"check",side_effect=fake_check), patch.object(sys,"argv",["check_job_availability.py","--write","--recheck-expired"]):
+                checker.main()
+                first=json.loads((root/"data/availability-status.json").read_text())
+                after_first=json.loads((root/"data/jobs.json").read_text())
+                self.assertEqual(first["checked"],1)
+                self.assertEqual(first["review"],0)
+                self.assertEqual(first["reopenCandidatesChecked"],2)
+                self.assertEqual([x["outcome"] for x in first["reopenChecks"]],["held","held"])
+                self.assertEqual([x["status"] for x in after_first],["active","expired","expired"])
+                checker.main()
+                second=json.loads((root/"data/availability-status.json").read_text())
+                after_second=json.loads((root/"data/jobs.json").read_text())
+                self.assertEqual(second["checked"],1)
+                self.assertEqual(second["review"],0)
+                self.assertEqual(second["reopenCandidatesChecked"],2)
+                self.assertEqual(second["changedReopened"],1)
+                self.assertEqual([x["status"] for x in after_second],["active","active","expired"])
+                self.assertEqual([x["outcome"] for x in second["reopenChecks"]],["reopened","held"])
 
     def test_bounded_expired_rotation_keeps_owner_closed_jobs_eligible_for_audit(self):
         jobs = [{"id": i,"status": "expired"} for i in range(24)]
