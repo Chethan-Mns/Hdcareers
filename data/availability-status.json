@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-15T07:46:50.578277+00:00",
+  "checkedAt": "2026-10-15T16:51:02.186Z",
   "checked": 109,
-  "active": 70,
-  "expired": 0,
-  "review": 39,
-  "changedExpired": 0,
+  "active": 100,
+  "expired": 9,
+  "review": 0,
+  "changedExpired": 9,
   "items": [
     {
       "id": 149,
@@ -132,9 +132,13 @@
       "role": "MS – EUS Apprentice/Intern (6 months)",
       "page": "jobs/ahead-ms-eus-apprentice-intern-6-months.html",
       "url": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:22.872302+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 129,
@@ -152,9 +156,13 @@
       "role": "Apprentice",
       "page": "jobs/american-express-apprentice.html",
       "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014347",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:23.750405+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.americanexpress.com/en/sites/CX_1/job/26014347",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 131,
@@ -162,9 +170,13 @@
       "role": "Graduate Engineer Trainee",
       "page": "jobs/ge-healthcare-graduate-engineer-trainee.html",
       "url": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:25.069793+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 132,
@@ -172,9 +184,13 @@
       "role": "People Services Intern",
       "page": "jobs/erm-people-services-intern.html",
       "url": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:26.098009+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 133,
@@ -182,9 +198,13 @@
       "role": "Analyst – D365 F&O Functional SCM",
       "page": "jobs/deloitte-south-asia-analyst-d365-f-o-functional-scm.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:28.492718+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 134,
@@ -212,9 +232,13 @@
       "role": "ASIC Digital Design, Engineer",
       "page": "jobs/synopsys-asic-digital-design-engineer.html",
       "url": "https://careers.synopsys.com/en/job/hyderabad/asic-digital-design-engineer/44408/101644992960",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-15T07:43:31.786228+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.synopsys.com/en/job/hyderabad/asic-digital-design-engineer/44408/101644992960",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 137,
@@ -242,9 +266,13 @@
       "role": "Associate Engineer",
       "page": "jobs/arm-associate-engineer.html",
       "url": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:33.964517+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 122,
@@ -282,9 +310,13 @@
       "role": "Analyst – Indirect Tax – Core",
       "page": "jobs/ey-analyst-indirect-tax-core.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:37.483764+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 126,
@@ -292,9 +324,13 @@
       "role": "Technical Internship 2027",
       "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
       "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:39.047109+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 127,
@@ -302,9 +338,13 @@
       "role": "Software Development Engineer I, IESP Merchant Tech",
       "page": "jobs/amazon-software-development-engineer-i-iesp-merchant-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:40.535249+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 112,
@@ -312,9 +352,13 @@
       "role": "AI/ML Computational Science Associate",
       "page": "jobs/accenture-ai-ml-computational-science-associate-bengaluru-aioc-s01665344.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665344_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:41.526034+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665344_en",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 113,
@@ -372,9 +416,13 @@
       "role": "Analyst | FT: Strategy & Ops | Finance Transformation",
       "page": "jobs/deloitte-analyst-ft-strategy-ops-bengaluru-110723.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-FT-Strategy-%26-Ops-Bengaluru-Finance-Transformation-Finance-Strategy/58756444/",
-      "state": "review",
-      "reason": "Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry (this position has been filled)",
-      "checkedAt": "2026-10-15T07:43:46.983280+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-FT-Strategy-%26-Ops-Bengaluru-Finance-Transformation-Finance-Strategy/58756444/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 111,
@@ -382,9 +430,13 @@
       "role": "Associate Analyst – TAX – Indirect Tax – Core",
       "page": "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:49.385878+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 109,
@@ -392,9 +444,13 @@
       "role": "Software Engineer – Cloud: Azure",
       "page": "jobs/rubrik-software-engineer-cloud-azure.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:43:51.021965+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 108,
@@ -402,9 +458,13 @@
       "role": "New Grad – Software Engineer (Evergreen PPO)",
       "page": "jobs/visa-new-grad-software-engineer-evergreen-ppo.html",
       "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:43:52.420227+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 107,
@@ -412,9 +472,13 @@
       "role": "Software Engineer – SaaS O365",
       "page": "jobs/rubrik-software-engineer-saas-o365.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:43:52.902169+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 106,
@@ -422,9 +486,13 @@
       "role": "Analyst – SAP Analytics",
       "page": "jobs/deloitte-analyst-sap-analytics.html",
       "url": "https://southasiacareers.deloitte.com/job/Goa-Analyst-SAP-Analytics-Goa-SAP-DSA-Oil,-Gas-and-Utilities/60507544/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:43:54.032616+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://southasiacareers.deloitte.com/job/Goa-Analyst-SAP-Analytics-Goa-SAP-DSA-Oil,-Gas-and-Utilities/60507544/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 105,
@@ -432,9 +500,13 @@
       "role": "Software Engineer II",
       "page": "jobs/microsoft-software-engineer-ii.html",
       "url": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:43:56.556391+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 104,
@@ -442,9 +514,13 @@
       "role": "Senior Software Engineer",
       "page": "jobs/servicenow-senior-software-engineer.html",
       "url": "https://careers.servicenow.com/jobs/744000154350139/sr-software-engineer/",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:43:58.201968+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.servicenow.com/jobs/744000154350139/sr-software-engineer/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 101,
@@ -482,9 +558,13 @@
       "role": "Software Development Engineer – RBS Tech",
       "page": "jobs/amazon-software-development-engineer-rbs-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:44:01.382629+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 93,
@@ -502,9 +582,13 @@
       "role": "Associate Analyst – Tax GCR",
       "page": "jobs/ey-associate-analyst-tax-gcr.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:44:06.588108+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 90,
@@ -512,9 +596,13 @@
       "role": "Computational Fluid Dynamics (CFD) Internship",
       "page": "jobs/synopsys-computational-fluid-dynamics-cfd-internship.html",
       "url": "https://careers.synopsys.com/job/pune/computational-fluid-dynamics-cfd-internship/44408/101580799728",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-15T07:44:08.132928+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.synopsys.com/job/pune/computational-fluid-dynamics-cfd-internship/44408/101580799728",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 89,
@@ -532,9 +620,13 @@
       "role": "Software Engineer – Graduates 2026",
       "page": "jobs/zycus-software-engineer-graduates-2026.html",
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:44:09.292693+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://zycus.sensehq.com/careers/jobs/57681",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 78,
@@ -552,9 +644,13 @@
       "role": "Software Engineer – Winter Intern",
       "page": "jobs/rubrik-software-engineer-winter-intern-bangalore-8166523.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8166523?gh_jid=8166523",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:44:11.159331+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.rubrik.com/company/careers/departments/job.8166523?gh_jid=8166523",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 83,
@@ -572,9 +668,13 @@
       "role": "Procurement Operations New Associate",
       "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01661115_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:44:13.138179+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01661115_en",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 85,
@@ -582,9 +682,13 @@
       "role": "Software Engineering Intern",
       "page": "jobs/needl-ai-software-engineering-intern-bengaluru.html",
       "url": "https://needl.ai/careers/software-engineering-intern",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-15T07:44:14.521604+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://needl.ai/careers/software-engineering-intern",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 86,
@@ -602,9 +706,13 @@
       "role": "Engineering Walk-in Events – October 2026",
       "page": "jobs/indigo-engineering-walkin-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/engineeringevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:44:19.549654+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.goindigo.in/careers/hiringevents/engineeringevents.html",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 77,
@@ -612,9 +720,13 @@
       "role": "Intern – IT",
       "page": "jobs/thermo-fisher-scientific-intern-it-bangalore-r-01368644.html",
       "url": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:44:40.904773+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 74,
@@ -702,9 +814,13 @@
       "role": "Associate – Software Testing Engineer",
       "page": "jobs/virtusa-associate-software-testing-engineer-creq260022.html",
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:44:59.571110+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 63,
@@ -712,9 +828,13 @@
       "role": "Custom Software Engineer",
       "page": "jobs/accenture-custom-software-engineer-atci-5637353-s2059863.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5637353-S2059863_en&title=Custom+Software+Engineer",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:45:00.714323+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5637353-S2059863_en&title=Custom+Software+Engineer",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 62,
@@ -722,9 +842,13 @@
       "role": "Software Engineer Trainee – Technical Graduate Apprentice",
       "page": "jobs/cisco-software-engineer-trainee-technical-graduate-apprentice-2014481.html",
       "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:45:02.309616+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 61,
@@ -732,9 +856,13 @@
       "role": "Scientific Assistant – IT / Data Science (Walk-in)",
       "page": "jobs/actrec-scientific-assistant-walkin-october-2026.html",
       "url": "https://actrec.gov.in/node/13339",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:45:03.078847+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://actrec.gov.in/node/13339",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 60,
@@ -832,9 +960,13 @@
       "role": "Airport Operations & Customer Services Hiring Events – October 2026",
       "page": "jobs/indigo-airport-operations-customer-services-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/airportoperationscustomerservicesevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-15T07:45:27.856075+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.goindigo.in/careers/hiringevents/airportoperationscustomerservicesevents.html",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 46,
@@ -842,9 +974,13 @@
       "role": "Project Co-ordinator – Walk-in Interview",
       "page": "jobs/actrec-project-coordinator-walkin-october-2026.html",
       "url": "https://www.actrec.gov.in/jobs",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-15T07:45:48.192446+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.actrec.gov.in/jobs",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 45,
@@ -962,9 +1098,13 @@
       "role": "2027 Campus Hire_ Engineer_ HW",
       "page": "jobs/qualcomm-2027-campus-hire-engineer-hw-bangalore-446719783487.html",
       "url": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:46:30.027603+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 32,
@@ -982,9 +1122,13 @@
       "role": "Senior Machine Learning Engineer - INT ABS – API Business Services",
       "page": "jobs/sap-senior-machine-learning-engineer-bangalore-ref1744y.html",
       "url": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:46:32.558376+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 29,
@@ -1032,9 +1176,13 @@
       "role": "Procure to Pay Operations Associate",
       "page": "jobs/accenture-procure-to-pay-operations-associate-bengaluru-aioc-s01659105.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:46:41.074877+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 22,
@@ -1072,9 +1220,13 @@
       "role": "Technology Support Engineer",
       "page": "jobs/accenture-technology-support-engineer.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-15T07:46:47.346161+00:00"
+      "state": "expired",
+      "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5765023-S2070529_en&title=Technology+Support+Engineer",
+      "ownerDecision": "HD Careers Owner"
     },
     {
       "id": 15,
@@ -1092,9 +1244,15 @@
       "role": "AWS Data Engineer",
       "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-15T07:46:49.205498+00:00"
+      "state": "active",
+      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026; automated review superseded.",
+      "checkedAt": "2026-10-15T16:51:02.186Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-15T16:51:02.186Z",
+      "manualReviewedUrl": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
+      "ownerDecision": "HD Careers Owner"
     }
-  ]
+  ],
+  "lastAutomatedScanAt": "2026-10-15T07:46:50.578277+00:00",
+  "lastManualReviewAt": "2026-10-15T16:51:02.186Z"
 }
