@@ -1,6 +1,11 @@
 name: Publish verified jobs to Telegram
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - data/telegram-approved-batch.json
   workflow_dispatch:
     inputs:
       pages:

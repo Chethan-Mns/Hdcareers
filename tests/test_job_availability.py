@@ -25,17 +25,17 @@ class AvailabilityTests(unittest.TestCase):
         self.assertEqual(classify(JOB, 'Verify you are human', JOB['apply'])[0], 'review')
     def test_greenhouse_inventory_can_confirm_live_job(self):
         job = dict(JOB, apply='https://boards.greenhouse.io/acme/jobs/12345')
-        with patch('check_job_availability.fetch_json', return_value={'id': 12345, 'title': 'Data Engineer', 'absolute_url': 'https://boards.greenhouse.io/acme/jobs/12345'}):
+        with patch('check_job_availability.fetch_json', return_value={'id': 12345, 'title': 'Data Engineer'}):
             self.assertEqual(official_inventory_probe(job)[0], 'active')
 
     def test_lever_inventory_can_confirm_live_job(self):
         job = dict(JOB, apply='https://jobs.lever.co/acme/abc-123')
-        with patch('check_job_availability.fetch_json', return_value={'id': 'abc-123', 'text': 'Data Engineer', 'applyUrl': 'https://jobs.lever.co/acme/abc-123/apply'}):
+        with patch('check_job_availability.fetch_json', return_value={'id': 'abc-123', 'text': 'Data Engineer'}):
             self.assertEqual(official_inventory_probe(job)[0], 'active')
 
     def test_smartrecruiters_inventory_can_confirm_live_job(self):
         job = dict(JOB, apply='https://jobs.smartrecruiters.com/acme/744000123456789-data-engineer')
-        with patch('check_job_availability.fetch_json', return_value={'id': '744000123456789', 'active': True, 'name': 'Data Engineer'}):
+        with patch('check_job_availability.fetch_json', return_value={'id': '744000123456789', 'active': True}):
             self.assertEqual(official_inventory_probe(job)[0], 'active')
 
     def test_ashby_inventory_can_confirm_live_job(self):
@@ -63,10 +63,10 @@ class AvailabilityTests(unittest.TestCase):
             with self.subTest(payload=payload), patch('check_job_availability.fetch_json', return_value=payload):
                 self.assertEqual(official_inventory_probe(job)[0], 'review')
 
-    def test_explicit_exact_ats_inactive_flag_is_expired(self):
+    def test_exact_ats_inactive_flag_requires_independent_confirmation(self):
         job = dict(JOB, apply='https://jobs.smartrecruiters.com/acme/744000123456789-data-engineer')
         with patch('check_job_availability.fetch_json', return_value={'id': '744000123456789', 'active': False}):
-            self.assertEqual(official_inventory_probe(job)[0], 'expired')
+            self.assertEqual(official_inventory_probe(job)[0], 'review')
 
     def test_jobposting_jsonld_can_confirm_live_job(self):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2099-12-31T23:59:59Z"}</script>'

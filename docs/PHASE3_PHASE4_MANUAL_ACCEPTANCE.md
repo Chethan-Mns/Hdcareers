@@ -1,49 +1,36 @@
-# HD Careers — Phases 2–4 acceptance handover
+# HD Careers Phases 3–4: production-reconciled acceptance guide
 
-Status: **development preview only**. Do not merge before manual checks.
-PR: https://github.com/Chethan-Mns/Hdcareers/pull/81
-Phase 2 prerequisite: https://github.com/Chethan-Mns/Hdcareers/pull/80
+Status: **development only**, no production merge and no Telegram sends.
 
-## Phase 3 pilot
-One employer: **AHEAD (official Lever API)**. Runs in read-only shadow mode with explicit `autoPublishEnabled: false`.
-API inventory listing -> exact source identity -> independent per-posting positive check -> India-location check -> source-only content draft -> hold/review or draft-ready.
-No job publishing, GitHub website writes, status updates, or Telegram activity.
-Shadow report: GitHub Actions, `Phase 3 single-employer shadow publishing pilot` -> artifact `phase3-ahead-official-shadow-report`.
-Latest read-only measured result as of 14 Oct 2026: 12 candidates checked, 5 draft-ready, 7 held, 0 publication-ready. These numbers change as real employer listings change.
-Mocked tests also cover invalid UUID, source URL mismatch, wrong role, wrong company path, duplicate source, missing employer content, unconfirmed country, timeout, 403/404, duplicate published role and no publication side effects.
+## Reconciliation
+- Old PR #81 had 130 generated pages and predates 15 October owner verification.
+- Current 131 production job records, all 39 owner decisions, Cognizant Service Desk #149, and the Telegram delivery ledger are authoritative. Regenerate HTML on the development branch from those records; do not restore stale generated pages.
+- Phase 2 fixes in PR #82 are the prerequisite to merging Phases 3–4. No old test fixture may override newer owner evidence.
+- The preview branch contains newer Phase 2 safety fixes; never merge it ahead of Phase 2 sign-off.
 
-## Phase 4 site improvements
-- All 130 generated job pages get Twitter and OG share metadata and existing canonical/robots semantics.
-- PDF.js and Mammoth reader scripts download **only after** selecting a PDF or DOCX; TXT requires no reader dependency.
-- Site analytics suppresses search query parameter forwarding in GA4 page URL and adds aggregate LCP/CLS telemetry, honoring the existing opt-out setting.
-- Google JobPosting datePosted appears **only with source-confirmed employerPostedAt**; without it, the listing remains available but no rich schema is invented.
-- Static growth audit counts live/expired records, validates canonical and robots, job pages, share metadata, sitemap, local SEO/trust pages, opt-out, dependency loading and historical date provenance.
-- Preview audit: 130 job pages, 109 active database records, 21 expired database records, 0 SEO blockers, 51 historical jobs requiring verified employer posting dates for Google Jobs schema. These are NOT AdSense-approval guarantees.
+## Phase 3 discovery
+- Read-only AHEAD Lever employer-feed pilot, with exact-posting ID/title, source page, India location, duplicate and description checks. Draft-ready does not mean publish-ready. No automatic deployment/Telegram messages.
+- Timeouts, CAPTCHA and contradictory signals are REVIEW, not automatically expired.
+- Before fully automatic publishing, validate source-specific adapters, a real website publication canary, durable Telegram receipt/idempotency, and two actual daily scheduled expiry runs.
 
-## Manual browser test matrix
-| ID | Page/action | Expected |
-|---|---|---|
-| M1 | Open Vercel Preview via PR #81 checks | Updated site with unchanged public design |
-| M2 | Open `jobs/ahead-ms-noc-apprentice-intern-6-months.html` | Real job text and working official apply URL, social metadata in view-source |
-| M3 | Open `jobs/rubrik-software-engineer-cloud-azure.html` | Unconfirmed source shows 'Verification pending'; not an invented verified-active claim |
-| M4 | Open `jobs/eaton-apprentice-it-pune-687237633525.html` | Expired/closed state, no enabled Apply CTA, no JobPosting JSON-LD |
-| M5 | On active job page, network tab, before resume upload | Neither pdf.min.js nor mammoth.browser.min.js downloaded |
-| M6 | Upload a TXT resume | No PDF or DOCX library downloaded; resume matcher still runs |
-| M7 | Upload a text PDF resume | PDF library downloaded only on selection; matching resumes succeeds |
-| M8 | Upload a DOCX resume | Mammoth library downloaded only on selection; matching resumes succeeds |
-| M9 | On mobile, test loading/navigation, logo, job cards and share preview | No header overlaps, old design preserved |
-| M10 | Check GitHub Phase 3 run artifact and data/jobs.json | Pilot output is shadow-only; production statuses, deploy and Telegram count unchanged |
-| M11 | Inspect `sitemap.xml` and JobPosting JSON-LD | Expired job omitted; unproven date does not create fake markup |
-| M12 | Verify browser analytics opt-out before loading page | No GA4/Clarity initialization when opted out; note real network requests require browser inspection |
+## Phase 4 growth
+- Social OG/Twitter meta and canonical/robots on regenerated pages.
+- Lazy-load PDF.js/Mammoth only when the matching PDF/DOCX resume is uploaded; TXT needs neither library.
+- JobPosting `datePosted` only when an employer-posted date is independently sourced. Historical editorial dates are not proof.
+- GA4 page_location excludes query parameters; privacy-respecting LCP/CLS metrics follow analytics opt-out.
+- SEO static audit verifies 131 pages, nine owner-expired job pages closed/noindex/absent from sitemap and all 30 owner-confirmed Active jobs preserved.
+- Passing static audits does not establish AdSense approval or real-device performance.
 
-## Conditions to enable unattended publishing
-- Preserve owner-confirmed ServiceNow closure in a separate verified production change, never infer expiry from a single 404.
-- Add tested Rubrik and Visa ATS adapters so availability coverage improves; current pilot only covers AHEAD.
-- Establish source-complete publishing content and website deployment/Telegram receipt end-to-end tests before treating draft-ready as publish-ready.
-- Owner signs off on the latest manual browser matrix; shadow-mode report alone is insufficient to prove real Telegram delivery or AdSense approval.
+## Manual acceptance before merging
+1. Preview on desktop, iPhone and Android: logo, theme, header, job cards, filters and no overlaps.
+2. Check all 9 owner-expired pages: no Apply CTA, no JobPosting and no sitemap URL.
+3. Check all 30 owner-active pages still live on preview with exact employer links.
+4. Check Cognizant Service Desk #149 has original Superset URL.
+5. Inspect resume checker before upload: neither PDF.js nor Mammoth downloaded. Upload valid TXT, PDF and DOCX and check skills output.
+6. Check real share previews and analytics opt-out.
+7. Review Phase 4 audit warnings and performance: target LCP <=2.5s, CLS <=0.1.
+8. Check official employer links and no failed or duplicate Telegram sending.
+9. Owner review of NielsenIQ #82 and Deloitte USI #75 is still needed for ground truth; do not auto-reopen on HTTP-only evidence.
+10. Regenerate site and compare against latest production owner review without any data/ledger mutations.
 
-## Release safeguards
-- No live production jobs mutated.
-- No real Telegram messages sent.
-- Never mark closed solely due to 403, 404, timeout, CAPTCHA, or missing inventory entry.
-- PR #81 is a stacked preview based on the unmerged Phase 2 changes.
+Production remains unchanged by these steps. PR #81 remains draft until the above tests pass.

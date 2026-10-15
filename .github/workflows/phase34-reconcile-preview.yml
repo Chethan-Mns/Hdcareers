@@ -1,0 +1,81 @@
+name: Reconcile Phase 3-4 Generated Preview Pages
+on:
+  push:
+    branches:
+      - feature/phase3-pilot-phase4-growth-20261014
+    paths:
+      - generate.py
+      - assets/analytics.js
+      - scripts/phase4_growth_audit.py
+      - .github/workflows/phase34-reconcile-preview.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: phase34-reconciled-preview
+  cancel-in-progress: false
+jobs:
+  regenerate:
+    if: github.ref == 'refs/heads/feature/phase3-pilot-phase4-growth-20261014'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/phase3-pilot-phase4-growth-20261014
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Preserve newest job data and 39 owner decisions
+        run: |
+          python3 - <<'PY'
+          import json
+          jobs=json.load(open('data/jobs.json'))
+          by_id={j['id']:j for j in jobs}
+          audit=json.load(open('data/owner-manual-expiry-review-20261015.json'))
+          assert len(jobs)==131 and len(audit['changes'])==39
+          assert len({x['id'] for x in audit['changes']})==39
+          for change in audit['changes']:
+              job=by_id[change['id']]
+              assert job['company']==change['company']
+              assert job['status']==change['ownerVerdict'].lower()
+              assert job['apply']==change['officialUrl']
+          assert by_id[149]['company']=='Cognizant' and by_id[149]['status']=='active'
+          assert 'a8af19f3-444e-43bd-8828-e8656f637a17' in by_id[149]['apply']
+          print('Current 131 jobs and 39 owner decisions preserved.')
+          PY
+          sha256sum data/jobs.json data/telegram-deliveries.json > /tmp/hd-phase34-data.sha
+      - name: Generate full current preview, not old 130-page artifacts
+        run: |
+          python3 generate.py
+          git diff --check
+          sha256sum -c /tmp/hd-phase34-data.sha
+      - name: Run Phase 3-4 and historic safety checks
+        run: |
+          python3 -m unittest discover -s tests -p test_phase1_safety.py -v
+          python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+          python3 -m unittest discover -s tests -p test_phase4_growth.py -v
+          python3 scripts/phase4_growth_audit.py --output phase4-reconciled-audit.json
+      - name: Stage and commit generated preview pages only
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "feature/phase3-pilot-phase4-growth-20261014"
+          git config user.name "HD Careers Preview Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A -- jobs/ index.html sitemap.xml robots.txt insights.html insights/
+          if git diff --cached --quiet; then
+            echo "All generated preview pages match source."
+            exit 0
+          fi
+          git commit -m "Regenerate 131 preview job pages from latest owner-verified production data"
+          git push origin HEAD:feature/phase3-pilot-phase4-growth-20261014
+      - name: Keep Phase 4 audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase34-reconciled-site-audit
+          path: phase4-reconciled-audit.json
+          if-no-files-found: warn
+          retention-days: 30

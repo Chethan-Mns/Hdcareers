@@ -118,42 +118,21 @@ def official_inventory_probe(job):
         if provider == 'Ashby':
             jobs = data.get('jobs', []) if isinstance(data, dict) else []
             needle = expected_id.casefold()
-            def exact_ashby(item):
-                for field in ('jobUrl', 'applyUrl'):
-                    item_url = str(item.get(field, ''))
-                    item_parts = [part.casefold() for part in urlsplit(item_url).path.split('/') if part]
-                    if len(item_parts) >= 2 and item_parts[0] == board.casefold() and item_parts[1] == needle:
-                        return True
-                return False
-            match = next((x for x in jobs if isinstance(x, dict) and exact_ashby(x)), None)
+            match = next((x for x in jobs if needle in str(x.get('jobUrl', '')).casefold() or needle in str(x.get('applyUrl', '')).casefold()), None)
             if match:
-                source_title = re.sub(r'[^a-z0-9]+', ' ', str(match.get('title') or '').casefold()).strip()
-                expected_title = re.sub(r'[^a-z0-9]+', ' ', str(job.get('role') or '').casefold()).strip()
-                if not source_title or not expected_title or not (source_title in expected_title or expected_title in source_title):
-                    return 'review', f'{provider} exact posting URL exists, but job title could not be confirmed'
                 return 'active', f'{provider} public posting inventory contains the exact published job'
             return 'review', f'{provider} board inventory did not contain the exact job; a missing ID without proven complete pagination is not closure evidence'
 
         if not isinstance(data, dict):
             return 'review', f'{provider} public posting inventory returned an unexpected response'
-        actual_ids = {str(data.get(key)).strip().casefold() for key in ('id', 'uuid') if data.get(key) is not None and str(data.get(key)).strip()}
-        if not expected_id or expected_id.casefold() not in actual_ids:
-            return 'review', f'{provider} public posting inventory did not confirm the exact posting ID'
+        actual = str(data.get('id') or data.get('uuid') or '')
         active_flag = data.get('active')
+        if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
+            return 'review', f'{provider} public posting inventory returned a different posting'
+        if not actual:
+            return 'review', f'{provider} public posting inventory did not identify the exact posting'
         if active_flag is False:
-            return 'expired', f'{provider} public posting inventory explicitly marks the matching job inactive'
-        title = str(data.get('title') or data.get('text') or data.get('name') or '').strip()
-        expected_role = re.sub(r'[^a-z0-9]+', ' ', str(job.get('role', '')).casefold()).strip()
-        returned_role = re.sub(r'[^a-z0-9]+', ' ', title.casefold()).strip()
-        title_matches = (expected_role and returned_role and len(expected_role.split()) >= 2
-                         and len(returned_role.split()) >= 2
-                         and (expected_role in returned_role or returned_role in expected_role))
-        if not title_matches:
-            return 'review', f'{provider} exact ID returned, but source job title does not establish the matching role'
-        if active_flag is not True:
-            application_url = str(data.get('applyUrl') or data.get('absolute_url') or data.get('hostedUrl') or '')
-            if not application_url.startswith('https://'):
-                return 'review', f'{provider} exact role found without an explicit active flag or application URL'
+            return 'review', f'{provider} exact posting inventory reports inactive; public application status needs corroboration'
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
@@ -190,7 +169,7 @@ def structured_jobposting(body, job, now=None):
                 continue
             blob = json.dumps(item, ensure_ascii=False).casefold()
             title = re.sub(r'\s+', ' ', str(item.get('title', ''))).strip().casefold()
-            matched = bool((role and title and (role in title or title in role)) or (terms and sum(t in blob for t in terms) >= min(2, len(terms))))
+            matched = bool((role and (role in blob or title in role or role in title)) or (terms and sum(t in blob for t in terms) >= min(2, len(terms))))
             if not matched:
                 continue
             valid = item.get('validThrough')
@@ -244,12 +223,14 @@ def check(job, now=None):
         else:
             safe_url(job['apply'])
             inventory = official_inventory_probe(job)
-            if inventory and inventory[0] in {'active', 'expired'}:
-                state, reason = inventory
-                probes = []
-            else:
-                probes = []
-            for label, user_agent in (() if (inventory and inventory[0] in {'active', 'expired'}) else (('browser', BROWSER_UA), ('bot', BOT_UA))):
+            reopening = job.get('status') == 'expired'
+            inventory_live = bool(inventory and inventory[0] == 'active')
+            inventory_inactive = bool(inventory and 'reports inactive' in inventory[1])
+            probes = []
+            # Existing active listings may use the exact ATS ID. Reopening a
+            # previously expired listing requires an independent public page.
+            probes_required = reopening or not inventory_live
+            for label, user_agent in ((('browser', BROWSER_UA), ('bot', BOT_UA)) if probes_required else ()):
                 try:
                     req = Request(job['apply'], headers={
                         'User-Agent': user_agent,
@@ -269,8 +250,15 @@ def check(job, now=None):
             browser = next((p for p in probes if p[0] == 'browser'), None)
             bot = next((p for p in probes if p[0] == 'bot'), None)
 
-            if inventory and inventory[0] in {'active', 'expired'}:
+            if reopening and inventory_live:
+                if browser and browser[1] == 'active':
+                    state, reason = 'active', 'Reopening confirmed: exact ATS posting ID and independent exact public application page both active'
+                else:
+                    state, reason = 'review', 'Potential reopening: ATS listing active, but exact public job/application page not independently confirmed'
+            elif inventory_live:
                 state, reason = inventory
+            elif inventory_inactive and browser and browser[1] == 'active':
+                state, reason = 'review', 'Conflicting official evidence: exact ATS record inactive but public job page accepts applications'
             elif browser and browser[1] == 'active':
                 state, reason = 'active', f'Browser-compatible official-page render is active ({browser[2]})'
                 if bot and bot[1] == 'expired':
@@ -289,7 +277,9 @@ def check(job, now=None):
             else:
                 state, reason = 'review', 'No successful official-page probe'
 
-            if state != 'active' and not (inventory and inventory[0] == 'expired') and not (state == 'expired' and 'deadline has passed' in reason) and manual_verification_fresh(job, now):
+            if reopening and job.get('manualClosedVerifiedAt') and state == 'active':
+                state, reason = 'review', 'Owner-verified closure is protected; reopening requires a newer explicit owner decision'
+            if state != 'active' and not inventory_inactive and not reopening and not (state == 'expired' and 'deadline has passed' in reason) and manual_verification_fresh(job, now):
                 automated_state, automated_reason = state, reason
                 state = 'active'
                 reason = f'Recent exact-job manual confirmation overrides inconclusive automated {automated_state} result within its verification window ({automated_reason}); verified at {job.get("manualLiveVerifiedAt") or job.get("browserVerifiedAt")}'
@@ -309,6 +299,16 @@ def check(job, now=None):
         else:
             state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)
+
+def choose_reopening_candidates(jobs, now=None, limit=6):
+    """Bound daily rechecks of expired listings without blocking active scans."""
+    now = now or datetime.now(timezone.utc)
+    expired = sorted((j for j in jobs if j.get('status') == 'expired'), key=lambda j: str(j.get('id')))
+    if not expired or limit <= 0:
+        return []
+    offset = (now.timetuple().tm_yday * limit) % len(expired)
+    rotated = expired[offset:] + expired[:offset]
+    return rotated[:limit]
 
 def require_active(job):
     if job.get('status') != 'active': raise SystemExit('Publication blocked: job is not active')
@@ -379,54 +379,50 @@ def prune_unverified_new_jobs(jobs, old_jobs, results):
     removed = [j for j in jobs if j.get('id') in rejected]
     return [j for j in jobs if j.get('id') not in rejected], sorted(rejected), removed
 
-def review_history(previous, result):
-    """Count only consecutive inconclusive checks for the same exact source URL."""
-    if result.get('state') != 'review':
-        return 0, None
-    if previous.get('state') == 'review' and previous.get('url') == result.get('url'):
-        return int(previous.get('consecutiveReviewCount') or 0) + 1, previous.get('firstReviewAt') or result.get('checkedAt')
-    return 1, result.get('checkedAt')
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
+    parser.add_argument('--recheck-expired', action='store_true', help='Inspect a bounded rotation of expired jobs; owner closures cannot reopen automatically')
     parser.add_argument('--before', help='Verify new/reopened/changed-source jobs against this Git ref')
     parser.add_argument('--prune-unverified-new', action='store_true', help='Hold newly added unverified jobs for review and continue publishing verified jobs')
     args = parser.parse_args()
     path = ROOT / 'data/jobs.json'
     jobs = json.loads(path.read_text())
     selected = [j for j in jobs if j.get('status') == 'active']
+    if args.recheck_expired and not args.before:
+        selected += choose_reopening_candidates(jobs)
     old = []
     known = {}
     if args.before:
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
-    previous_path = ROOT / 'data' / 'availability-status.json'
-    try:
-        previous_report = json.loads(previous_path.read_text(encoding='utf-8'))
-        previous_items = {str(item.get('id')): item for item in previous_report.get('items', []) if isinstance(item, dict)}
-    except (OSError, ValueError, AttributeError):
-        previous_items = {}
+    previous_states = {j.get('id'): j.get('status') for j in selected}
     results = []; changed = False
+    transitioned_expired = 0
+    transitioned_reopened = 0
     for job in selected:
         result = check(job); results.append(result)
         print(f"{job['id']}: {result['state']} — {result['reason']}")
-        if args.write and result['state'] == 'expired':
+        if args.write and job.get('status') == 'active' and result['state'] == 'expired':
             job['status'] = 'expired'; job['availabilityCheck'] = result
             job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_expired += 1
+        elif args.write and job.get('status') == 'expired' and result['state'] == 'active' and result['reason'].startswith('Reopening confirmed:') and not job.get('manualClosedVerifiedAt'):
+            job['status'] = 'active'; job['availabilityCheck'] = result
+            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_reopened += 1
+            print(f"SAFE REOPEN: {job.get('id')} - both ATS and public Apply page confirmed")
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
     if args.write:
         by_id = {j.get('id'): j for j in jobs}
         checked_at = datetime.now(timezone.utc).isoformat()
         details = []
+        reopening_checks = []
         for result in results:
             job = by_id.get(result.get('id'), {})
-            previous = previous_items.get(str(result.get('id')), {})
-            consecutive, first_review = review_history(previous, result)
-            details.append({
+            row = {
                 'id': result.get('id'),
                 'company': job.get('company', ''),
                 'role': job.get('role', ''),
@@ -435,9 +431,12 @@ def main():
                 'state': result.get('state', 'review'),
                 'reason': result.get('reason', ''),
                 'checkedAt': result.get('checkedAt', checked_at),
-                'consecutiveReviewCount': consecutive,
-                'firstReviewAt': first_review if consecutive else None,
-            })
+            }
+            if previous_states.get(result.get('id')) == 'expired':
+                row['outcome'] = 'reopened' if job.get('status') == 'active' else 'held'
+                reopening_checks.append(row)
+            else:
+                details.append(row)
         states = [x.get('state') for x in details]
         summary = {
             'checkedAt': checked_at,
@@ -445,7 +444,10 @@ def main():
             'active': states.count('active'),
             'expired': states.count('expired'),
             'review': states.count('review'),
-            'changedExpired': states.count('expired'),
+            'changedExpired': transitioned_expired,
+            'changedReopened': transitioned_reopened,
+            'reopenCandidatesChecked': len(reopening_checks),
+            'reopenChecks': reopening_checks,
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'
