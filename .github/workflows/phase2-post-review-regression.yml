@@ -1,0 +1,53 @@
+name: Post-Review Phase 2 Read-Only Regression
+on:
+  push:
+    branches:
+      - test/post-owner-review-regression-20261015
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  post-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Preserve data hashes and refuse publishing credentials
+        run: |
+          test -z "${TELEGRAM_BOT_TOKEN:-}"
+          test -z "${GITHUB_PUBLISH_TOKEN:-}"
+          sha256sum data/jobs.json data/availability-status.json data/telegram-deliveries.json > /tmp/hd-phase2-before.sha
+      - name: Check 39 owner decisions and generated website status
+        run: python3 -m unittest discover -s tests -p test_post_review_39.py -v
+      - name: Verify October 14 independent ground truth fixture
+        run: python3 -m unittest discover -s tests -p test_phase2_owner_baseline_20.py -v
+      - name: Live read-only scan of 20 exact employer links with manual overrides removed
+        run: python3 scripts/phase2_owner_20_readonly.py --output phase2-post-review-shadow-results.json
+      - name: Prove no production or delivery ledger files changed
+        if: always()
+        run: |
+          sha256sum -c /tmp/hd-phase2-before.sha
+          git diff --exit-code -- data/jobs.json data/availability-status.json data/telegram-deliveries.json
+      - name: Save independent per-job evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-post-review-20-independently-checked
+          path: phase2-post-review-shadow-results.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Release gate - reject known false-expired production records
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          d=json.load(open('phase2-post-review-shadow-results.json'))
+          mismatches=[x for x in d['items'] if x['currentDatabaseAssessment']!='agrees_with_owner']
+          print('RELEASE GATE, owner verification 14 Oct: ',[(x['id'],x['company'],x['ownerVerdict'],x['currentDatabase']) for x in mismatches])
+          print('READ-ONLY SOURCE CHECK:',d['summary']['independent'])
+          if mismatches:
+              print('EXPECTED RELEASE BLOCKER: historical owner-live jobs are still stored expired. No production files were changed.')
+              sys.exit(1)
+          PY

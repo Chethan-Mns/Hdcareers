@@ -1,0 +1,172 @@
+{
+  "source": "HD Careers owner exact-career-link manual verification submitted in ChatGPT on 2026-10-14",
+  "verifiedOn": "2026-10-14",
+  "rule": "Immutable user observations for the time tested, not continuous live availability; do not automatically modify job data using this fixture.",
+  "originalStatusCounts": {
+    "active": 10,
+    "review": 5,
+    "expired": 5
+  },
+  "samples": [
+    {
+      "id": 145,
+      "company": "StarTree",
+      "role": "Software Engineer SRE",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://job-boards.greenhouse.io/startree/jobs/6147925004"
+    },
+    {
+      "id": 146,
+      "company": "SuperApp",
+      "role": "Software Engineer, Backend (Early Careers)",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://job-boards.greenhouse.io/superapp/jobs/8859685002"
+    },
+    {
+      "id": 147,
+      "company": "Trackmind",
+      "role": "Junior AI Engineer",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200"
+    },
+    {
+      "id": 148,
+      "company": "Veeva Systems",
+      "role": "Associate Software Engineer – Release Engineer",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0"
+    },
+    {
+      "id": 129,
+      "company": "Graviton Research Capital",
+      "role": "Software Engineer (2027 Graduate)",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002"
+    },
+    {
+      "id": 137,
+      "company": "Bosch",
+      "role": "HW Developer (PS-DC Projects)",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152388899"
+    },
+    {
+      "id": 122,
+      "company": "Wipro",
+      "role": "Developer L2",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://careers.wipro.com/job/Chennai-DEVELOPER-L2-IND-600119/207151-en_US/"
+    },
+    {
+      "id": 143,
+      "company": "HCLTech",
+      "role": "Engineer (Support & Operations)",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://careers.hcltech.com/job/Engineer-%28Support-%26-Operations%29/161936-en_US/"
+    },
+    {
+      "id": 141,
+      "company": "Deloitte South Asia",
+      "role": "Analyst – Financial Risk",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/"
+    },
+    {
+      "id": 142,
+      "company": "EY",
+      "role": "Associate Consultant – Cyber Security",
+      "recordedChecker": "active",
+      "userVerdict": "live",
+      "url": "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/"
+    },
+    {
+      "id": 109,
+      "company": "Rubrik",
+      "role": "Software Engineer – Cloud: Azure",
+      "recordedChecker": "review",
+      "userVerdict": "live",
+      "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200"
+    },
+    {
+      "id": 108,
+      "company": "Visa",
+      "role": "New Grad – Software Engineer (Evergreen PPO)",
+      "recordedChecker": "review",
+      "userVerdict": "live",
+      "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa"
+    },
+    {
+      "id": 104,
+      "company": "ServiceNow",
+      "role": "Senior Software Engineer",
+      "recordedChecker": "review",
+      "userVerdict": "expired",
+      "url": "https://careers.servicenow.com/jobs/744000154350139/sr-software-engineer/"
+    },
+    {
+      "id": 105,
+      "company": "Microsoft",
+      "role": "Software Engineer II",
+      "recordedChecker": "review",
+      "userVerdict": "live",
+      "url": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en"
+    },
+    {
+      "id": 62,
+      "company": "Cisco",
+      "role": "Software Engineer Trainee – Technical Graduate Apprentice",
+      "recordedChecker": "review",
+      "userVerdict": "live",
+      "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR"
+    },
+    {
+      "id": 82,
+      "company": "NielsenIQ",
+      "role": "Associate Software Engineer",
+      "recordedChecker": "expired",
+      "userVerdict": "live",
+      "url": "https://jobs.smartrecruiters.com/NielsenIQ/744000152930140-associate-software-engineer"
+    },
+    {
+      "id": 118,
+      "company": "Eaton",
+      "role": "Apprentice – IT",
+      "recordedChecker": "expired",
+      "userVerdict": "expired",
+      "url": "https://eaton.eightfold.ai/careers/job/687237633525?domain=eaton.com&hl=en"
+    },
+    {
+      "id": 76,
+      "company": "GE HealthCare",
+      "role": "Early Career Trainee – Service",
+      "recordedChecker": "expired",
+      "userVerdict": "expired",
+      "url": "https://careers.gehealthcare.com/global/en/job/R4046659/Early-Career-Trainee-Service"
+    },
+    {
+      "id": 75,
+      "company": "Deloitte USI",
+      "role": "Associate Analyst – Business Operations",
+      "recordedChecker": "expired",
+      "userVerdict": "live",
+      "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/USI-EH27-EA-MF-UK-Business-Operation-Support-Associate-Analyst/369345"
+    },
+    {
+      "id": 20,
+      "company": "Cohere Health",
+      "role": "Associate Software Engineer",
+      "recordedChecker": "expired",
+      "userVerdict": "expired",
+      "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7728230003"
+    }
+  ]
+}
