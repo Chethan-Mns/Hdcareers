@@ -1,0 +1,66 @@
+name: Phase 3 and 4 Read-Only Production Baseline
+on:
+  push:
+    branches:
+      - test/phase34-readonly-production-baseline-20261015
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  phase34:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Snapshot production files before tests
+        run: |
+          test -z "${TELEGRAM_BOT_TOKEN:-}"
+          test -z "${GITHUB_PUBLISH_TOKEN:-}"
+          sha256sum data/jobs.json data/telegram-deliveries.json index.html sitemap.xml > /tmp/hd-prod-baseline.sha
+      - name: Run Phase 3 official-source / publishing safety unit tests
+        run: python3 -m unittest discover -s tests -p test_phase3_pilot.py -v
+      - name: Read AHEAD official Lever ATS only; do not publish
+        run: python3 scripts/phase3_pilot.py --output phase3-readonly-prod-baseline.json
+      - name: Audit current production job pages for Phase 4 readiness
+        continue-on-error: true
+        run: python3 scripts/phase4_growth_audit.py --output phase4-readonly-prod-baseline.json
+      - name: Summarize both phases and forbid sends
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p3=Path("phase3-readonly-prod-baseline.json")
+          p4=Path("phase4-readonly-prod-baseline.json")
+          if p3.exists():
+              a=json.loads(p3.read_text())
+              print("PHASE3",a.get("summary"))
+              assert a.get("mode")=="shadow_only"
+              assert a.get("productionWrites") is False
+              assert a.get("telegramMessagesSent")==0
+              assert a.get("websiteDeployments")==0
+              assert a.get("autoPublishEnabled") is False
+          if p4.exists():
+              b=json.loads(p4.read_text())
+              print("PHASE4",b.get("metrics"),"BLOCKERS",len(b.get("blockers",[])),"WARNINGS",len(b.get("warnings",[])))
+              for x in b.get("blockers",[])[:10]:
+                  print("BLOCKER",x)
+          PY
+      - name: Verify production data and delivered messages unchanged
+        if: always()
+        run: |
+          sha256sum -c /tmp/hd-prod-baseline.sha
+          git diff --exit-code -- data/jobs.json data/telegram-deliveries.json index.html sitemap.xml
+      - name: Attach full Phase 3 and 4 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase34-production-baseline-readonly-evidence
+          path: |
+            phase3-readonly-prod-baseline.json
+            phase4-readonly-prod-baseline.json
+          if-no-files-found: warn
+          retention-days: 30
