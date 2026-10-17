@@ -6,6 +6,8 @@ on:
       - data/daily-review-batch.json
       - lib/review-ranking.js
       - scripts/reprioritize_review_batch.mjs
+      - scripts/preflight_review_content.py
+      - scripts/recover_daily_review_content.mjs
       - .github/workflows/rank-daily-review-batch.yml
   workflow_dispatch:
 permissions:
@@ -31,6 +33,17 @@ jobs:
         run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
       - name: Validate revised shortlist contract
         run: python3 scripts/validate_daily_review_batch.py data/daily-review-batch.json
+      - name: Recover missing fields from exact official job pages
+        timeout-minutes: 8
+        run: node scripts/recover_daily_review_content.mjs data/daily-review-batch.json --apply
+      - name: Source-backed content preflight
+        run: python3 scripts/preflight_review_content.py data/daily-review-batch.json --output /tmp/content-readiness.json
+      - name: Attach review readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-daily-content-readiness
+          path: /tmp/content-readiness.json
+          retention-days: 7
       - name: Safely commit revised shortlist
         run: |
           git diff --check
@@ -38,5 +51,5 @@ jobs:
           git config user.name "HD Careers Review Quality"
           git config user.email "actions@users.noreply.github.com"
           git add data/daily-review-batch.json
-          git commit -m "Rank unreviewed daily shortlist by quota and employer diversity"
+          git commit -m "Rank and enrich daily shortlist from official sources"
           git push origin HEAD:main
