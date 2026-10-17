@@ -44,6 +44,14 @@ jobs:
           from validate_daily_review_batch import employer_key
           names=[employer_key(c.get("company") or c.get("job",{}).get("company")) for c in priority+backup]
           if not all(names) or len(set(names))!=len(names):sys.exit(0)
+          from scripts.preflight_review_content import inspect
+          readiness=inspect(d)
+          if readiness["needsSourceContent"]:
+              print("::error::Daily Android push blocked: "+str(readiness["needsSourceContent"])+" source-incomplete or employer-mismatched jobs. Prepare complete official job data BEFORE owner review.")
+              for item in readiness["items"]:
+                  if item["missing"]:
+                      print("::error::"+str(item["company"])+": "+", ".join(item["missing"]))
+              sys.exit(1)
           with open(os.environ["GITHUB_OUTPUT"],"a") as f:
               f.write("notify=true\n")
               f.write("batch_id="+d["batchId"]+"\n")
