@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import {extractOfficialJob} from "../api/admin/extract-job.js";
 import {enrichReviewedCandidate} from "../lib/review-enrichment.js";
-import {employerKey} from "../lib/review-rules.js";
 
 const path=process.argv[2]||"data/daily-review-batch.json";
 const write=process.argv.includes("--apply");
@@ -11,6 +10,7 @@ if(!["reviewing","waiting"].includes(data.status))process.exit(0);
 const all=[...(data.priority||[]),...(data.backup||[])];
 let recovered=0,held=0;
 for(const candidate of all){
+ if(["expired","unsure"].includes(candidate.reviewedStatus))continue;
  const job=candidate.job;
  if(!job||!candidate.apply?.startsWith("https://")||job.apply!==candidate.apply){
   held++;continue;
