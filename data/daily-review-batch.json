@@ -1,6 +1,6 @@
 {
   "batchId": "hd-android-two-job-test-20261017",
-  "generatedAt": "2026-10-17T14:37:18.505Z",
+  "generatedAt": "2026-10-17T14:39:20.794Z",
   "status": "reviewing",
   "priority": [
     {
@@ -103,10 +103,11 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-17T14:37:18.505Z",
+  "updatedAt": "2026-10-17T14:39:20.794Z",
   "ranking": {
     "kind": "manual-two-job-smoke-test",
     "preservedPreviousBatch": "data/testing/archived-submitted-batch-20261017.json",
     "count": 2
-  }
+  },
+  "notificationRetry": "verified-FCM-receipt"
 }
