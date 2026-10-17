@@ -65,6 +65,22 @@ jobs:
           fi
           python3 scripts/admin_publish.py "$approved_event"
 
+      - name: Queue hourly Telegram announcements when requested
+        id: hourly
+        shell: bash
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            approved_event="/tmp/hd-reviewed-publish-event.json"
+          else
+            approved_event="$GITHUB_EVENT_PATH"
+          fi
+          if python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); exit(0 if d.get("client_payload",{}).get("telegramDeliveryMode")=="hourly" else 1)' "$approved_event"; then
+            python3 scripts/hourly_telegram.py enqueue "$approved_event"
+            echo "deferred=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deferred=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Resolve official company favicons
         run: python3 scripts/resolve_company_logos.py
 
@@ -84,7 +100,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/company-logos.json data/review-queue.json assets/company-icons index.html jobs/ robots.txt sitemap.xml data/telegram-approved-batch.json
+            git add data/jobs.json data/company-logos.json data/review-queue.json data/telegram-hourly-queue.json assets/company-icons index.html jobs/ robots.txt sitemap.xml data/telegram-approved-batch.json
 
             if git diff --cached --quiet; then
               echo "No changes to publish."
@@ -116,6 +132,7 @@ jobs:
           exit 1
 
       - name: Deliver admin-approved jobs to Telegram after deployment
+        if: steps.hourly.outputs.deferred != 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
