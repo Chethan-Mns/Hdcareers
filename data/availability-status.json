@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-17T10:31:13.830Z",
+  "checkedAt": "2026-10-17T10:31:20.276Z",
   "checked": 120,
   "active": 115,
-  "expired": 2,
-  "review": 3,
-  "changedExpired": 2,
+  "expired": 3,
+  "review": 2,
+  "changedExpired": 3,
   "items": [
     {
       "id": 161,
@@ -940,9 +940,11 @@
       "role": "Software Development Engineer II, Workplace Productivity",
       "page": "jobs/amazon-software-development-engineer-ii-workplace-productivity-hyderabad-10564385.html",
       "url": "https://www.amazon.jobs/en/jobs/10564385/software-development-engineer-ii-workplace-productivity",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-17T07:13:22.160755+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-17T10:31:20.276Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-17T10:31:20.276Z"
     },
     {
       "id": 48,
