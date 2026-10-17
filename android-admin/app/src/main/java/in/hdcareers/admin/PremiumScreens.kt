@@ -348,31 +348,78 @@ private fun ProReview(vm:AdminViewModel) {
         }
         item {
             ProCard {
-                SectionHead(Icons.Default.NotificationsActive,"Two-job test inbox","Separate from your submitted daily batch")
-                Text("Test drafts and Firebase push. Production publishing is disabled for these test drafts until the independent backend receipt tracker is complete.",
-                    fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                val inbox=vm.twoJobInbox.optJSONObject("staged")
-                val entries=inbox?.optJSONArray("jobs")
-                if(entries==null) {
-                    Text("No test inbox loaded",fontSize=12.sp,color=Brand.amber)
-                } else {
-                    Text("Staged jobs: ${entries.length()} · Review only",fontSize=12.sp,color=Brand.green)
-                    for(n in 0 until entries.length()){
-                        val j=entries.optJSONObject(n) ?: continue
-                        HorizontalDivider()
-                        Text(j.optString("company")+" · "+j.optString("role"),fontWeight=FontWeight.Bold,fontSize=13.sp)
-                        Text("Status: Awaiting individual review · Not submitted to publisher",fontSize=11.sp,color=Brand.gray)
-                        val uri=j.optString("apply")
-                        val ctx=LocalContext.current
-                        TextButton(onClick={if(uri.startsWith("https://"))ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(uri)))}) { Text("Open official application") }
+                SectionHead(Icons.Default.NotificationsActive,"Two-job review & live tracker","Independent of your daily batch")
+                LaunchedEffect(vm.twoJobInbox.optJSONObject("staged")?.optString("status"),vm.tab) {
+                    if(vm.tab==1 && vm.twoJobInbox.optJSONObject("staged")?.optString("status")=="submitted"){
+                        while(true){vm.refreshTwoJobInboxQuietly();delay(10000)}
                     }
                 }
-                Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick=vm::loadTwoJobInbox,enabled=!vm.busy) { Text("Refresh test jobs") }
-                    Button(onClick=vm::stageTwoJobInbox,enabled=!vm.busy && entries==null) { Text("Stage 2 test jobs") }
+                val inbox=vm.twoJobInbox.optJSONObject("staged")
+                val entries=inbox?.optJSONArray("jobs")
+                val submitted=inbox?.optString("status")=="submitted"
+                val statuses=vm.twoJobInbox.optJSONArray("stages")
+                if(entries==null) Text("Refresh to load the separate two-job test inbox.",fontSize=12.sp,color=Brand.gray)
+                else {
+                    Text("Two official-source job drafts · "+(if(submitted)"Publishing submitted" else "Awaiting your review"),fontSize=12.sp,color=Brand.gray)
+                    for(n in 0 until entries.length()){
+                        val job=entries.optJSONObject(n) ?: continue
+                        val id=job.optString("id")
+                        var expanded by remember(id){mutableStateOf(false)}
+                        HorizontalDivider()
+                        Column(Modifier.fillMaxWidth().clickable{expanded=!expanded}.padding(vertical=6.dp)) {
+                            Text(job.optString("company")+" · "+job.optString("role"),fontWeight=FontWeight.Bold,fontSize=13.sp)
+                            Text("Review: "+job.optString("reviewedStatus")+"  •  Tap for individual status",fontSize=11.sp,color=Brand.gray)
+                        }
+                        if(expanded){
+                            val ctx=LocalContext.current
+                            val uri=job.optString("apply")
+                            TextButton(onClick={if(uri.startsWith("https://"))ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(uri)))}) {Text("Open exact official job")}
+                            Text("Job overview: "+job.optString("desc"),fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                            Text("Eligibility: "+job.optString("elig"),fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                            if(!submitted){
+                                Row(horizontalArrangement=Arrangement.spacedBy(6.dp)){
+                                    OutlinedButton(onClick={vm.reviewTestJob(id,"live")},enabled=!vm.busy){Text("Live")}
+                                    OutlinedButton(onClick={vm.reviewTestJob(id,"expired")},enabled=!vm.busy){Text("Expired")}
+                                    OutlinedButton(onClick={vm.reviewTestJob(id,"unsure")},enabled=!vm.busy){Text("Unsure")}
+                                }
+                                val chosen=id in vm.twoJobSelected
+                                Row(verticalAlignment=Alignment.CenterVertically){
+                                    Checkbox(checked=chosen,onCheckedChange={vm.selectTestJob(id,it)},enabled=job.optString("reviewedStatus")=="live"&&!vm.busy)
+                                    Text("Select verified Live job for publishing",fontSize=12.sp)
+                                }
+                            }else{
+                                val stage=(0 until (statuses?.length() ?: 0)).mapNotNull{statuses?.optJSONObject(it)}
+                                    .firstOrNull{it.optString("candidateId")==id}
+                                listOf("GitHub" to (stage?.optString("github")?:"dispatched-unconfirmed"),
+                                    "Website" to (stage?.optString("website")?:"unconfirmed"),
+                                    "Telegram" to (stage?.optString("telegram")?:"unconfirmed")).forEach{(label,value)->
+                                    Row(Modifier.fillMaxWidth().padding(vertical=7.dp),horizontalArrangement=Arrangement.SpaceBetween){
+                                        Text(label,fontWeight=FontWeight.Bold,fontSize=12.sp)
+                                        Text(value,fontSize=12.sp,color=if(value=="live"||value=="delivered")Brand.green else Brand.amber)
+                                    }
+                                }
+                                stage?.optString("telegramMessageId")?.takeIf{it.isNotBlank()}?.let{
+                                    Text("Telegram message ID: "+it,fontSize=11.sp,color=Brand.gray)
+                                }
+                                Text("Verified updates refresh every 10 seconds. Dispatch acceptance is not proof of delivery.",fontSize=11.sp,color=Brand.gray)
+                            }
+                        }
+                    }
                 }
-                Text("No demo success is presented as real deployment. Per-job GitHub, website and Telegram receipts remain pending backend integration.",
-                    fontSize=11.sp,color=Brand.gray)
+                Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                    OutlinedButton(onClick=vm::loadTwoJobInbox,enabled=!vm.busy){Text("Refresh")}
+                    if(entries==null) Button(onClick=vm::stageTwoJobInbox,enabled=!vm.busy){Text("Stage 2 jobs")}
+                }
+                if(!submitted&&vm.twoJobSelected.isNotEmpty()) {
+                    var confirmTest by remember {mutableStateOf(false)}
+                    Button(onClick={confirmTest=true},enabled=!vm.busy,modifier=Modifier.fillMaxWidth()){Text("Publish ${vm.twoJobSelected.size} verified test job(s)")}
+                    if(confirmTest) AlertDialog(onDismissRequest={confirmTest=false},
+                        title={Text("Publish selected real jobs?")},
+                        text={Text("This publishes selected Live jobs on HD Careers and posts them to Telegram. Continue only after verifying each exact official Apply link.")},
+                        confirmButton={TextButton(onClick={confirmTest=false;vm.publishTestJobs()}){Text("Confirm Publish")}},
+                        dismissButton={TextButton(onClick={confirmTest=false}){Text("Cancel")}})
+                }
+                Text("Each job shows independent GitHub/data, website and Telegram evidence after submission.",fontSize=11.sp,color=Brand.gray)
             }
         }
         if(vm.batch.id.isBlank()) item {
