@@ -121,7 +121,7 @@ function today(){
 const j=rJobs(),ex=rExpiry(),cnt=state.live?.counts||{};const ready=state.mode==='demo'?state.candidates.filter(x=>x.verified).length:state.live?.daily?.priority||0;
 return '<div class="eyebrow">OPERATIONS / OCTOBER 2026</div><h1 class="heading">Good afternoon. You’re in control.</h1><p class="subtitle">One operational view for discovery, deployment, expiry and Telegram delivery. Less tapping, more publishing confidence.</p>'+
 sourceBanner()+
-'<div class="split"><div class="card highlight grow"><div class="eyebrow" style="color:#89bbff">DAILY COMMAND CENTER</div><h2>From discovery to delivery.<br>Without the guesswork.</h2><p>Deloitte-first, 87 priority employers, fresher-friendly jobs. Verify once, publish eligible positions in one go, and track each stage.</p><div class="buttons"><button class="btn light" data-tab="publish">Explore publishing →</button><button class="btn outline" data-tab="expiry">View exceptions</button></div></div><div class="card w320"><div class="section-title"><h3>Today’s runbook</h3>'+tag('9:00 AM IST','purple')+'</div><div class="jobrow"><span class="tile-icon">①</span><div class="job-text"><div class="company">Discover up to 20 jobs</div><div class="role">10 priority · 10 backup</div></div></div><div class="jobrow"><span class="tile-icon">②</span><div class="job-text"><div class="company">Check exact applications</div><div class="role">Duplicates & expirations excluded</div></div></div><div class="jobrow"><span class="tile-icon">③</span><div class="job-text"><div class="company">Publish ready jobs</div><div class="role">8 IT · 1 non-IT · 1 internship target</div></div></div><div class="jobrow"><span class="tile-icon">④</span><div class="job-text"><div class="company">Hourly Telegram delivery</div><div class="role">Real message IDs & audit trail</div></div></div></div></div>'+
+'<div class="split"><div class="card highlight grow"><div class="eyebrow" style="color:#89bbff">DAILY COMMAND CENTER</div><h2>From discovery to delivery.<br>Without the guesswork.</h2><p>Deloitte-first, 87 priority employers, fresher-friendly jobs. Verify once, publish eligible positions in one go, and track each stage.</p><div class="buttons"><button class="btn light" data-tab="publish">Explore publishing →</button><button class="btn outline" data-tab="analytics">View audience analytics ↗</button><button class="btn outline" data-tab="expiry">View exceptions</button></div></div><div class="card w320"><div class="section-title"><h3>Today’s runbook</h3>'+tag('9:00 AM IST','purple')+'</div><div class="jobrow"><span class="tile-icon">①</span><div class="job-text"><div class="company">Discover up to 20 jobs</div><div class="role">10 priority · 10 backup</div></div></div><div class="jobrow"><span class="tile-icon">②</span><div class="job-text"><div class="company">Check exact applications</div><div class="role">Duplicates & expirations excluded</div></div></div><div class="jobrow"><span class="tile-icon">③</span><div class="job-text"><div class="company">Publish ready jobs</div><div class="role">8 IT · 1 non-IT · 1 internship target</div></div></div><div class="jobrow"><span class="tile-icon">④</span><div class="job-text"><div class="company">Hourly Telegram delivery</div><div class="role">Real message IDs & audit trail</div></div></div></div></div>'+
 '<div class="stats">'+statCard('Website jobs',state.mode==='live'?cnt.published||0:j.length,'Records in HD Careers','▦')+statCard('Telegram delivered',state.mode==='live'?cnt.confirmedDeliveries||0:j.filter(delivered).length,'Verified message receipts','↗')+statCard('Hourly pending',state.mode==='live'?cnt.pendingHourly||0:2,'Awaiting next eligible slot','◷')+statCard('Needs your attention',ex.length,'Availability exceptions','⚑')+'</div>'+
 '<div class="split">'+pipelineCard()+queueCard()+'</div><div class="notice">🔒 Production is unchanged by preview interactions. '+(state.mode==='demo'?'Demo statuses and commit conflicts are simulated.':'Live stages are read-only and sourced from production records; application availability is checked separately.')+'</div>'}
 function candidateCard(c){
@@ -149,6 +149,116 @@ return '<div class="eyebrow">EXCEPTION-ONLY REVIEW</div><h1 class="heading">Expi
  ['Application journey','Follow the job-bound Apply route—not a generic career homepage.'],
  ['Human exception decision','Confirm only ambiguous cases; record evidence and audit trail.']
 ].map((x,i)=>'<li class="step done"><div class="step-icon">'+(i+1)+'</div><div class="step-copy"><div><div class="step-name">'+esc(x[0])+'</div><div class="muted">'+esc(x[1])+'</div></div></div></li>').join('')+'</ol><div class="rightnote">No automatic expiry based only on HTTP status, JavaScript render failure, or CAPTCHA. Manual Keep must capture exact source evidence instead of falsely marking a page “browser-verified”.</div></div></div>'}
+
+function sampleAnalytics(days){
+ const scale=days===1?.18:days===30?3.45:1;
+ const base=[28,37,34,59,49,73,91,76,102,89,111,132,125,153,161,149,184,195,203,230,245,260,251,282,296,320,350,338,374,395];
+ const tail=(days===1?base.slice(-1):days===7?base.slice(-7):base);
+ const trend=tail.map((n,i)=>({date:days===1?'Today':String(i+1).padStart(2,'0'),users:n,pageviews:Math.round(n*1.89),sessions:Math.round(n*1.12)}));
+ return {configured:true,provider:'demo-fixture',days,realtimeUsers:Math.round(23*scale),totals:{
+   visitors:Math.round(1482*scale),pageviews:Math.round(3105*scale),sessions:Math.round(1890*scale),
+   newUsers:Math.round(1140*scale),engagementRate:63.8,averageSessionDuration:95.4,viewsPerUser:2.1,
+   returningUsers:Math.round(342*scale)
+  },conversions:{applyClicks:Math.round(412*scale),resumeChecks:Math.round(37*scale),
+     jobPageViews:Math.round(2150*scale),applyRate:19.2,shares:Math.round(84*scale)},
+    trend,pages:[{requestPath:'/jobs/deloitte-analyst.html',pageviews:Math.round(1221*scale)},
+      {requestPath:'/jobs/ey-associate-analyst.html',pageviews:Math.round(705*scale)},
+      {requestPath:'/jobs/hcltech-campus-beginner.html',pageviews:Math.round(543*scale)},
+      {requestPath:'/jobs/google-software-engineer.html',pageviews:Math.round(397*scale)}],
+    countries:[{country:'India',visitors:Math.round(1249*scale)},{country:'United States',visitors:Math.round(137*scale)},
+      {country:'United Arab Emirates',visitors:Math.round(67*scale)},{country:'United Kingdom',visitors:Math.round(29*scale)}],
+    devices:[{deviceType:'mobile',visitors:Math.round(1040*scale)},
+      {deviceType:'desktop',visitors:Math.round(401*scale)},{deviceType:'tablet',visitors:Math.round(41*scale)}],
+    channels:[{channel:'Organic Search',sessions:Math.round(680*scale)},
+      {channel:'Organic Social',sessions:Math.round(492*scale)},{channel:'Direct',sessions:Math.round(407*scale)},
+      {channel:'Referral',sessions:Math.round(311*scale)}],refreshedAt:null
+ };
+}
+function intFmt(n){const v=Number(n)||0;return v.toLocaleString('en-IN',{maximumFractionDigits:0})}
+function graphChart(points,metric){
+ const numbers=(Array.isArray(points)?points:[]).map(x=>Number(x?.[metric])||0).filter(Number.isFinite);
+ if(!numbers.length)return '<div class="empty">No trend measurements available for this period.</div>';
+ const left=32,top=18,w=630,h=185;const min=0,max=Math.max(1,...numbers)*1.16;
+ const xy=numbers.map((n,i)=>({x:left+(numbers.length>1?i/(numbers.length-1):.5)*w,y:top+h-(n/max)*h}));
+ const path=xy.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+ const area=path+' L '+xy[xy.length-1].x.toFixed(1)+' '+(top+h)+' L '+xy[0].x.toFixed(1)+' '+(top+h)+' Z';
+ const ticks=[0,.25,.5,.75,1].map(x=>{const y=(top+h-x*h).toFixed(1);
+   return '<line class="axis" x1="'+left+'" y1="'+y+'" x2="'+(left+w)+'" y2="'+y+'"/>'+
+     '<text x="1" y="'+(Number(y)+4)+'">'+intFmt(Math.round(x*max))+'</text>'
+ }).join('');
+ const labels=xy.map((p,i)=>i===0||i===xy.length-1||i%Math.max(1,Math.floor(numbers.length/6))===0?
+ '<text x="'+p.x.toFixed(1)+'" y="226" text-anchor="middle">'+esc(points[i]?.date||'')+'</text>':'').join('');
+ return '<svg class="graph" viewBox="0 0 680 237" role="img" aria-label="'+esc(metric==='pageviews'?'Page views over the selected period':'Visitors over the selected period')+'" preserveAspectRatio="xMidYMid meet">'+
+ ticks+'<path class="area" d="'+area+'"/><path class="trend" d="'+path+'"/>'+
+ (xy.length===1?'<circle class="graphdot" cx="'+xy[0].x+'" cy="'+xy[0].y+'" r="5"/>':'')+labels+'</svg>';
+}
+function horizontalBars(rows,key,val,limit){
+ const data=Array.isArray(rows)?rows.slice(0,limit||5):[];
+ if(!data.length)return '<div class="empty">No analytics breakdown available.</div>';
+ const max=Math.max(1,...data.map(x=>Number(x?.[val])||0));
+ return data.map(x=>'<div class="bar-item"><div class="bar-name"><span class="truncate" title="'+esc(x?.[key])+'">'+esc(x?.[key]||'Unknown')+'</span><b>'+intFmt(x?.[val])+'</b></div>'+
+ '<div class="bar-track"><span style="width:'+Math.max(1,Math.round(100*(Number(x?.[val])||0)/max))+'%"></span></div></div>').join('');
+}
+function deviceBreakdown(rows){
+ const data=(Array.isArray(rows)?rows:[]).filter(x=>(Number(x.visitors)||0)>0);
+ if(!data.length)return '<div class="empty">No device measurements available.</div>';
+ const colors=['#3d70ee','#63b0df','#b7ccf2','#8b73da'];
+ const total=Math.max(1,data.reduce((a,b)=>a+Number(b.visitors||0),0));
+ let acc=0;
+ const stops=data.map((x,i)=>{let st=acc;acc+=Number(x.visitors||0)/total*100;return colors[i%colors.length]+' '+st.toFixed(2)+'% '+acc.toFixed(2)+'%'}).join(', ');
+ const legend=data.map((x,i)=>'<div class="legend-row"><span><i class="disc" style="background:'+colors[i%colors.length]+'"></i>'+esc(x.deviceType||'Unknown')+'</span><strong>'+Math.round(100*(Number(x.visitors)||0)/total)+'%</strong></div>').join('');
+ return '<div class="donut" style="background:conic-gradient('+stops+')"><div class="donut-center"><strong>'+intFmt(total)+'</strong><span>users by device</span></div></div><div class="legend">'+legend+'</div>';
+}
+function analyticsPage(){
+ const days=state.analyticsDays;
+ const demo=state.mode==='demo';
+ const d=demo?sampleAnalytics(days):state.analytics;
+ const totals=d?.totals||{},conv=d?.conversions||{};
+ const ranges=[1,7,30].map(n=>'<button class="'+(days===n?'active':'')+'" data-days="'+n+'">'+(n===1?'24 hours':n+' days')+'</button>').join('');
+ const status=demo?'<div class="banner warn"><strong>✦ DEMO ANALYTICS</strong> All numbers and charts below are illustrative, not real HD Careers traffic.</div>':d?
+ '<div class="banner good"><strong>● GA4 ANALYTICS</strong> Authenticated live analytics data · refreshed '+esc(fmtDate(d.refreshedAt||state.analyticsAt))+'. Read-only.</div>':
+ '<div class="banner warn"><strong>○ DATA NOT AVAILABLE</strong> '+esc(state.analyticsError||'Connect your admin account to load GA4 statistics.')+
+ ' <button class="textbtn" data-act="retryAnalytics">Retry analytics</button></div>';
+ const metrics=[
+  statCard('Unique visitors',d?intFmt(totals.visitors):'—','GA4 active users','♙'),
+  statCard('Page views',d?intFmt(totals.pageviews):'—','Measured views','◉'),
+  statCard('Apply link clicks',d?intFmt(conv.applyClicks):'—','GA4 job_apply_click events','↗'),
+  statCard('Active right now',d?intFmt(d.realtimeUsers):'—','Realtime visitors','●')
+ ].join('');
+ return '<div class="eyebrow">ANALYTICS / AUDIENCE INTELLIGENCE</div>'+
+ '<div class="analytics-head"><div><h1 class="heading">Audience analytics.</h1><p class="subtitle" style="margin-bottom:0">Know which jobs drive visits, clicks and conversions—not just which ones you publish.</p></div>'+
+ '<div class="range" role="group" aria-label="Analytics date range">'+ranges+'</div></div>'+
+ status+'<div class="stats">'+metrics+'</div>'+
+ '<div class="analytics-grid"><div class="card"><div class="section-title"><div><h3>Audience activity</h3><p>Trend sourced from Google Analytics 4</p></div>'+
+ '<div class="analytics-control"><select aria-label="Trend metric" id="metricPick"><option value="users" '+(state.analyticMetric==='users'?'selected':'')+'>Visitors</option><option value="pageviews" '+(state.analyticMetric==='pageviews'?'selected':'')+'>Page views</option></select></div></div>'+
+ (d?graphChart(d.trend,state.analyticMetric):'<div class="empty">'+(state.analyticsLoading?'Loading traffic trend…':'No trend loaded')+'</div>')+
+ '<div class="analytic-foot">GA4 may report late-arriving events or sampled dimensions. Charts are not website-publishing confirmations.</div></div>'+
+ '<div class="card"><div class="section-title"><div><h3>Engagement & conversion</h3><p>Real behavior beyond raw page views</p></div></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Visitor engagement rate</div><div class="role">From GA4 engaged sessions</div></div><strong>'+ (d?Number(totals.engagementRate||0).toFixed(1)+'%':'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Application click-through</div><div class="role">Job page views → apply link clicks</div></div><strong>'+ (d?Number(conv.applyRate||0).toFixed(1)+'%':'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Resume checker uses</div><div class="role">Tracked resume checker events</div></div><strong>'+ (d?intFmt(conv.resumeChecks):'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Returning users</div><div class="role">Visitors excluding new visitors</div></div><strong>'+ (d?intFmt(totals.returningUsers):'—')+'</strong></div>'+
+ '<div class="analytic-foot">Counts reflect GA4 tracking instrumentation and do not imply completed job applications.</div></div></div>'+
+ '<div class="analytic-panels" style="margin-top:18px">'+
+ '<div class="card"><div class="section-title"><div><h3>Top job pages</h3><p>Where your audience is spending attention</p></div></div>'+ (d?horizontalBars(d.pages,'requestPath','pageviews',6):'<div class="empty">Connect GA4 to see pages.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Traffic sources</h3><p>Discoveries, social and returning readers</p></div></div>'+ (d?horizontalBars(d.channels,'channel','sessions',6):'<div class="empty">Connect GA4 to see traffic sources.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Visitors by country</h3><p>Where applicants are reading HD Careers</p></div></div>'+ (d?horizontalBars(d.countries,'country','visitors',6):'<div class="empty">Connect GA4 to see countries.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Device breakdown</h3><p>Is your audience mainly on mobile?</p></div></div>'+(d?deviceBreakdown(d.devices):'<div class="empty">Connect GA4 to see devices.</div>')+'</div>'+
+ '</div><div class="notice">🔒 Analytics is a read-only preview. Demo figures are illustrative and Live data is returned from the existing authenticated /api/admin/traffic service.</div>';
+}
+async function loadAnalytics(force){
+ if(state.mode!=='live'||state.analyticsLoading)return;
+ if(!force&&state.analytics&&Date.now()-state.analyticsAt<120000)return;
+ state.analyticsLoading=true;
+ if(state.tab==='analytics')render();
+ try{
+   const response=await fetch('/api/admin/traffic?days='+state.analyticsDays,{cache:'no-store',credentials:'same-origin',headers:{Accept:'application/json'}});
+   const data=await response.json().catch(()=>({}));
+   if(!response.ok||data.configured===false)throw new Error(data.error||'Analytics unavailable, HTTP '+response.status);
+   state.analytics=data;state.analyticsError='';state.analyticsAt=Date.now();
+ }catch(err){state.analytics=null;state.analyticsError=err.message||'Could not load analytics'}
+ finally{state.analyticsLoading=false;if(state.tab==='analytics')render()}
+}
 function jobCard(j){
 const label=j.telegram==='delivered'?'Telegram #'+j.messageId:j.telegram==='pending'?'Hourly queued':j.telegram==='sending'?'Sending':j.telegram==='uncertain'?'Needs attention':'Not queued';
 return '<div class="jobrow"><div class="mark '+(j.telegram==='delivered'?'green':'')+'">'+esc(initials(j.company))+'</div><div class="job-text"><div class="company">'+esc(j.company)+'</div><div class="role">'+esc(j.role)+'</div><div class="meta">'+esc(j.location||'Location not supplied')+'</div></div><div class="rowactions">'+tag(label,j.telegram==='delivered'?'good':j.telegram==='pending'?'warn':'purple')+
@@ -164,7 +274,7 @@ return '<div class="eyebrow">JOBS & DELIVERY</div><h1 class="heading">Every job.
 '<div class="notice">Displayed delivery status comes from recorded Telegram receipts and the hourly queue, not a client-side success assumption.</div></div>'}
 function loginModal(){return '<div class="modalshade"><form class="modal" id="loginForm"><h3>Connect secure live telemetry</h3><p>Use your HD Careers admin session to see read-only data from main. Credentials are sent directly to the existing admin login API and are not stored in the preview.</p><label for="user">Admin username</label><input class="search" id="user" name="user" required autocomplete="username"><label for="password">Password</label><input class="search" id="password" type="password" name="password" required autocomplete="current-password"><p class="muted">No publishing or expiry endpoints are called from this preview.</p><div class="buttons"><button class="btn" type="submit">Connect securely</button><button class="btn outline" type="button" data-act="closeLogin">Cancel</button></div></form></div>'}
 function modal(){document.getElementById('overlay').innerHTML=state.showLogin?loginModal():''}
-function render(){nav();document.getElementById('page').innerHTML=state.tab==='today'?today():state.tab==='publish'?publish():state.tab==='expiry'?expiry():jobsPage();modal()}
+function render(){nav();document.getElementById('page').innerHTML=state.tab==='today'?today():state.tab==='publish'?publish():state.tab==='expiry'?expiry():state.tab==='analytics'?analyticsPage():jobsPage();modal()}
 function toast(txt){let z=document.getElementById('toastZone');z.innerHTML='<div class="toast">'+esc(txt)+'</div>';clearTimeout(toast._id);toast._id=setTimeout(()=>z.innerHTML='',4800)}
 async function loadLive(){
 if(state.mode!=='live')return;
@@ -193,12 +303,13 @@ i++;render();setTimeout(tick,i===3?1500:1150)}
 setTimeout(tick,500)
 }
 document.addEventListener('click',function(e){
-const bt=e.target.closest('[data-tab]');if(bt){state.tab=bt.dataset.tab;render();return}
+const bt=e.target.closest('[data-tab]');if(bt){state.tab=bt.dataset.tab;render();if(state.tab==='analytics'&&state.mode==='live')loadAnalytics(false);return}
 const el=e.target.closest('[data-act]');if(!el)return;
 const act=el.dataset.act;
 if(act==='demo'){state.mode='demo';state.live=null;state.showLogin=false;render();return}
-if(act==='live'){state.mode='live';state.showLogin=false;render();loadLive();return}
-if(act==='refresh'){if(state.mode==='live')loadLive();else toast('Demo mode uses sample data. Select Live for current read-only telemetry.');return}
+if(act==='live'){state.mode='live';state.showLogin=false;render();loadLive();if(state.tab==='analytics')loadAnalytics(false);return}
+if(act==='refresh'){if(state.mode==='live'){loadLive();if(state.tab==='analytics')loadAnalytics(true)}else toast('Demo mode uses sample data. Select Live for current read-only telemetry.');return}
+if(act==='retryAnalytics'){if(state.mode==='live')loadAnalytics(true);return}
 if(act==='login'){state.showLogin=true;modal();return}
 if(act==='closeLogin'){state.showLogin=false;state.mode=state.live?'live':'demo';render();return}
 if(act==='simulate'||act==='simPublish'){simulate(false);return}
@@ -210,7 +321,12 @@ if(state.mode!=='demo'){toast('Live mode is read-only.');return}
 const c=state.exceptions.find(x=>x.id===el.dataset.id);if(c){c.state=act==='expire'?'expired':'active';toast('Demo-only change: '+c.company+' marked '+c.state+'. No website changes.');render()}return
 }
 });
-document.addEventListener('change',function(e){const id=e.target?.dataset?.check;if(id){if(e.target.checked)state.selected.add(id);else state.selected.delete(id);render()}});
+document.addEventListener('change',function(e){
+ if(e.target?.id==='metricPick'){state.analyticMetric=e.target.value==='pageviews'?'pageviews':'users';render();return}
+ const id=e.target?.dataset?.check;
+ if(id){if(e.target.checked)state.selected.add(id);else state.selected.delete(id);render()}
+});
+document.addEventListener('click',function(e){const t=e.target.closest('[data-days]');if(!t)return;const n=Number(t.dataset.days);if(![1,7,30].includes(n))return;state.analyticsDays=n;state.analytics=null;state.analyticsAt=0;render();if(state.mode==='live')loadAnalytics(true)});
 document.addEventListener('input',function(e){if(e.target.id==='searchJobs'){state.search=e.target.value;const pos=e.target.selectionStart;render();const n=document.getElementById('searchJobs');if(n){n.focus();n.setSelectionRange(pos,pos)}}});
 document.addEventListener('click',function(e){const p=e.target.closest('[data-filter]');if(p){state.filter=p.dataset.filter;render()}});
 document.addEventListener('submit',async function(e){if(e.target.id!=='loginForm')return;e.preventDefault();const f=e.target;const user=f.querySelector('#user').value,password=f.querySelector('#password').value;
