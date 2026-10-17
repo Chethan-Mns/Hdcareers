@@ -82,7 +82,8 @@ class AdminApi {
         val ids=JSONArray()
         selected.sorted().forEach { ids.put(it) }
         val result=JSONObject(request("/api/admin/publish",JSONObject()
-            .put("batchId",batch.id).put("candidateIds",ids)))
+            .put("batchId",batch.id).put("candidateIds",ids)
+            .put("telegramDeliveryMode","hourly")))
         if(!result.optBoolean("queued")) throw IOException("Publisher did not accept the batch.")
         return result.optString("message","GitHub accepted the request; delivery is pending.") to
             result.optString("requestId")

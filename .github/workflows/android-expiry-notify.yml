@@ -1,0 +1,66 @@
+name: Android Expiry Exception Push
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/availability-status.json
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  notify-expiry-exceptions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Confirm genuinely new exception scan before alerting
+        id: scan
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,subprocess,datetime,os,hashlib
+          from pathlib import Path
+          current=json.loads(Path("data/availability-status.json").read_text())
+          items=[x for x in current.get("items",[]) if x.get("state")=="review"]
+          if not items:
+              print("No exceptions; no notification.");raise SystemExit
+          stamp=current.get("checkedAt")
+          if not stamp:
+              raise SystemExit("Scan timestamp missing; no notification.")
+          try:
+              now=datetime.datetime.now(datetime.timezone.utc)
+              when=datetime.datetime.fromisoformat(stamp.replace("Z","+00:00"))
+              if not datetime.timedelta(0)<=now-when<=datetime.timedelta(hours=3):
+                  print("Stale scan; no notification.");raise SystemExit
+          except ValueError:
+              print("Invalid scan timestamp");raise SystemExit
+          try:
+              old=json.loads(subprocess.check_output(["git","show","HEAD^:data/availability-status.json"],stderr=subprocess.DEVNULL))
+          except Exception:
+              old={}
+          if old.get("checkedAt")==stamp:
+              print("Previously alerted scan; no notification.");raise SystemExit
+          current_keys=sorted(str(x.get("id"))+":"+str(x.get("reason")) for x in items)
+          previous_keys=sorted(str(x.get("id"))+":"+str(x.get("reason")) for x in old.get("items",[]) if x.get("state")=="review")
+          if current_keys==previous_keys:
+              print("No new/changed exceptions; no redundant notification.");raise SystemExit
+          notification_id="expiry-"+hashlib.sha256((stamp+"|".join(current_keys)).encode()).hexdigest()[:24]
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write("notify=true\nid="+notification_id+"\ncount="+str(len(items))+"\n")
+          PY
+      - name: Notify registered Android admins for review
+        if: steps.scan.outputs.notify == 'true'
+        env:
+          PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+          SCAN_ID: ${{ steps.scan.outputs.id }}
+          REVIEW_COUNT: ${{ steps.scan.outputs.count }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PUSH_SECRET" ]; then echo "::warning::Expiry push secret not configured"; exit 0; fi
+          curl --fail-with-body --silent --show-error --max-time 35 \
+            --retry 2 --retry-delay 3 \
+            -H "Content-Type: application/json" \
+            -H "x-hd-push-key: $PUSH_SECRET" \
+            --data "$(jq -cn --arg id "$SCAN_ID" --argjson n "$REVIEW_COUNT" '{action:"notify_expiry",batchId:$id,reviewCount:$n}')" \
+            "https://hdcareers.in/api/admin/android-devices"

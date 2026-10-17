@@ -22,7 +22,8 @@ class MainActivity:FragmentActivity() {
         WindowCompat.getInsetsController(window,window.decorView).isAppearanceLightStatusBars = true
         setContent {
             vm=viewModel()
-            if(intent?.getBooleanExtra("open_review",false)==true) vm.tab=1
+            if((intent?.getBooleanExtra("open_expiry",false)==true||intent?.getStringExtra("openExpiry")=="1")) vm.tab=2
+            else if((intent?.getBooleanExtra("open_review",false)==true||intent?.getStringExtra("openReview")=="1")) vm.tab=1
             PremiumAdminRoot(vm,
                 onBiometricSignIn={authenticate { vm.biometricSignIn() }},
                 onEnableBiometric={authenticate { vm.enableBiometric() }},
@@ -34,7 +35,10 @@ class MainActivity:FragmentActivity() {
     override fun onNewIntent(intent:Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        if(intent.getBooleanExtra("open_review",false) && ::vm.isInitialized) vm.tab=1
+        if(::vm.isInitialized) {
+            if(intent.getBooleanExtra("open_expiry",false)||intent.getStringExtra("openExpiry")=="1") vm.tab=2
+            else if(intent.getBooleanExtra("open_review",false)||intent.getStringExtra("openReview")=="1") vm.tab=1
+        }
     }
     private fun requestNotificationPermission() {
         if(Build.VERSION.SDK_INT >= 33 &&

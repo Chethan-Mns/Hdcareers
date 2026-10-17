@@ -184,6 +184,8 @@ export default async function handler(req,res){
       const batch=await readJson("data/daily-review-batch.json",{});
       const saved=await readJson("data/jobs.json",[]);
       const ledger=await readJson("data/telegram-deliveries.json",{});
+       const hourly=await readJson("data/telegram-hourly-queue.json",{items:[]});
+       const queueItems=Array.isArray(hourly.items)?hourly.items:[];
       const urls=new Set(saved.map(x=>normalizeUrl(x.apply)));
       const allCandidates=[...(batch.priority||[]),...(batch.backup||[])];
       const publishedCandidateIds=allCandidates.filter(x=>urls.has(normalizeUrl(x.job?.apply||x.apply))).map(x=>String(x.id));
@@ -192,7 +194,8 @@ export default async function handler(req,res){
       // A GitHub data commit is not proof that the public production page is live.
       const production=await Promise.all(selections.map(async id=>{
         const candidate=allCandidates.find(c=>String(c.id)===String(id));
-        const page=String(candidate?.job?.page||"").replace(/^\//,"");
+        const existing=saved.find(x=>normalizeUrl(x.apply)===normalizeUrl(candidate?.job?.apply||candidate?.apply));
+         const page=String(existing?.page||candidate?.job?.page||"").replace(/^\//,"");
         if(!/^jobs\/[a-z0-9-]+\.html$/.test(page))return {id,live:false};
         const controller=new AbortController();
         const timeout=setTimeout(()=>controller.abort(),4000);
@@ -209,13 +212,15 @@ export default async function handler(req,res){
       const livePages=new Set(production.filter(x=>x.live).map(x=>String(x.id)));
       const stages=selections.map(id=>{
         const c=[...(batch.priority||[]),...(batch.backup||[])].find(x=>String(x.id)===id);
-        const page=String(c?.job?.page||"").replace(/^\//,"");
+        const existing=saved.find(x=>normalizeUrl(x.apply)===normalizeUrl(c?.job?.apply||c?.apply));
+         const page=String(existing?.page||c?.job?.page||"").replace(/^\//,"");
+         const queued=queueItems.find(x=>x?.page===page);
         const entries=Object.values(ledger).filter(x=>x&&x.page===page);
         const last=entries.at(-1)||{};
         return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
           github:batch.status==="submitted"?"accepted":batch.status==="published"?"completed":"not_submitted",
           website:livePages.has(String(id))?"live":urls.has(normalizeUrl(c?.job?.apply))?"data-committed":"pending",
-          vercel:livePages.has(String(id))?"production-page-confirmed":"unconfirmed",telegram:last.status||"pending",telegramMessageId:last.messageId||null,
+          vercel:livePages.has(String(id))?"production-page-confirmed":"unconfirmed",telegram:last.status||queued?.status||"not_queued",telegramMessageId:last.messageId||queued?.messageId||null,
           note:last.status==="uncertain"?"Check Telegram manually before retrying.":""};
       });
       let workflow={state:"not_checked",url:null,conclusion:null};
@@ -230,6 +235,7 @@ export default async function handler(req,res){
         dataCommittedCount:stages.filter(x=>x.website==="live"||x.website==="data-committed").length,
         alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
         telegramDelivered:stages.filter(x=>x.telegram==="delivered").length,
+         telegramHourlyPending:stages.filter(x=>["pending","sending"].includes(x.telegram)).length,
         workflow,stages,observedAt:new Date().toISOString(),
         warning:"GitHub workflow matching is approximate. Production page evidence is checked directly on hdcareers.in. Vercel commit identity is not independently verified."});
     }
@@ -273,7 +279,8 @@ export default async function handler(req,res){
     if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
 
     const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):null;
-    const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
+    const telegramDeliveryMode=req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
+     const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
     }

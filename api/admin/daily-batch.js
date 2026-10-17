@@ -172,14 +172,14 @@ export default async function handler(req, res) {
   if (!token) return res.status(503).json({error: "GitHub publishing credentials are not configured."});
   try {
     if (req.method === "GET") { const batch=(await read(token)).data; return res.status(200).json({...batch,metrics:reviewCounts(batch,batch.publication?.candidateIds||[])}); }
-    for (let attempt = 0; attempt < 3; attempt++) {
+    await auditMutation(req,"daily_batch."+String(req.body?.action||"update"),String(req.body?.batchId||""));
+    for (let attempt = 0; attempt < 8; attempt++) {
       const {data, sha} = await read(token);
       if (req.body?.batchId !== data.batchId || !data.batchId) {
         return res.status(409).json({error: "Review batch changed. Refresh and try again."});
       }
       const next = req.body?.action === "enrich" ? await enrichCandidate(data,req.body) : update(data, req.body);
-      await auditMutation(req,"daily_batch."+String(req.body?.action||"update"),String(data.batchId));
-      try {
+       try {
         await github("/contents/" + PATH, token, {
           method: "PUT",
           headers: {"Content-Type": "application/json"},
@@ -192,7 +192,9 @@ export default async function handler(req, res) {
         });
         return res.status(200).json({...next,metrics:reviewCounts(next,next.publication?.candidateIds||[])});
       } catch (error) {
-        if (![409, 422].includes(error.status) || attempt === 2) throw error;
+        if (![409, 422].includes(error.status) || attempt === 7) throw error;
+        // GitHub content SHA changed: re-read latest snapshot and replay exactly one operation.
+        await new Promise(resolve=>setTimeout(resolve,150*(attempt+1)));
       }
     }
   } catch (error) {
