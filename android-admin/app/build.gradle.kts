@@ -14,8 +14,8 @@ android {
         applicationId = "in.hdcareers.admin"
         minSdk = 29
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.2.2"
+        versionCode = 6
+        versionName = "1.3.0"
         buildConfigField("String", "FIREBASE_APP_ID", literal(setting("FIREBASE_APP_ID")))
         buildConfigField("String", "FIREBASE_API_KEY", literal(setting("FIREBASE_API_KEY")))
         buildConfigField("String", "FIREBASE_PROJECT_ID", literal(setting("FIREBASE_PROJECT_ID")))
