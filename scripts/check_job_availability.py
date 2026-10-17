@@ -129,8 +129,10 @@ def official_inventory_probe(job):
         active_flag = data.get('active')
         if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
             return 'review', f'{provider} public posting inventory returned a different posting'
+        if not actual:
+            return 'review', f'{provider} public posting inventory did not identify the exact posting'
         if active_flag is False:
-            return 'expired', f'{provider} public posting inventory marks the exact job inactive'
+            return 'review', f'{provider} exact posting inventory reports inactive; public application status needs corroboration'
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
@@ -221,12 +223,14 @@ def check(job, now=None):
         else:
             safe_url(job['apply'])
             inventory = official_inventory_probe(job)
-            if inventory and inventory[0] in {'active', 'expired'}:
-                state, reason = inventory
-                probes = []
-            else:
-                probes = []
-            for label, user_agent in (() if (inventory and inventory[0] in {'active', 'expired'}) else (('browser', BROWSER_UA), ('bot', BOT_UA))):
+            reopening = job.get('status') == 'expired'
+            inventory_live = bool(inventory and inventory[0] == 'active')
+            inventory_inactive = bool(inventory and 'reports inactive' in inventory[1])
+            probes = []
+            # Existing active listings may use the exact ATS ID. Reopening a
+            # previously expired listing requires an independent public page.
+            probes_required = reopening or not inventory_live
+            for label, user_agent in ((('browser', BROWSER_UA), ('bot', BOT_UA)) if probes_required else ()):
                 try:
                     req = Request(job['apply'], headers={
                         'User-Agent': user_agent,
@@ -246,8 +250,15 @@ def check(job, now=None):
             browser = next((p for p in probes if p[0] == 'browser'), None)
             bot = next((p for p in probes if p[0] == 'bot'), None)
 
-            if inventory and inventory[0] in {'active', 'expired'}:
+            if reopening and inventory_live:
+                if browser and browser[1] == 'active':
+                    state, reason = 'active', 'Reopening confirmed: exact ATS posting ID and independent exact public application page both active'
+                else:
+                    state, reason = 'review', 'Potential reopening: ATS listing active, but exact public job/application page not independently confirmed'
+            elif inventory_live:
                 state, reason = inventory
+            elif inventory_inactive and browser and browser[1] == 'active':
+                state, reason = 'review', 'Conflicting official evidence: exact ATS record inactive but public job page accepts applications'
             elif browser and browser[1] == 'active':
                 state, reason = 'active', f'Browser-compatible official-page render is active ({browser[2]})'
                 if bot and bot[1] == 'expired':
@@ -266,7 +277,9 @@ def check(job, now=None):
             else:
                 state, reason = 'review', 'No successful official-page probe'
 
-            if state != 'active' and not (inventory and inventory[0] == 'expired') and not (state == 'expired' and 'deadline has passed' in reason) and manual_verification_fresh(job, now):
+            if reopening and job.get('manualClosedVerifiedAt') and state == 'active':
+                state, reason = 'review', 'Owner-verified closure is protected; reopening requires a newer explicit owner decision'
+            if state != 'active' and not inventory_inactive and not reopening and not (state == 'expired' and 'deadline has passed' in reason) and manual_verification_fresh(job, now):
                 automated_state, automated_reason = state, reason
                 state = 'active'
                 reason = f'Recent exact-job manual confirmation overrides inconclusive automated {automated_state} result within its verification window ({automated_reason}); verified at {job.get("manualLiveVerifiedAt") or job.get("browserVerifiedAt")}'
@@ -286,6 +299,16 @@ def check(job, now=None):
         else:
             state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)
+
+def choose_reopening_candidates(jobs, now=None, limit=6):
+    """Bound daily rechecks of expired listings without blocking active scans."""
+    now = now or datetime.now(timezone.utc)
+    expired = sorted((j for j in jobs if j.get('status') == 'expired'), key=lambda j: str(j.get('id')))
+    if not expired or limit <= 0:
+        return []
+    offset = (now.timetuple().tm_yday * limit) % len(expired)
+    rotated = expired[offset:] + expired[:offset]
+    return rotated[:limit]
 
 def require_active(job):
     if job.get('status') != 'active': raise SystemExit('Publication blocked: job is not active')
@@ -359,34 +382,47 @@ def prune_unverified_new_jobs(jobs, old_jobs, results):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
+    parser.add_argument('--recheck-expired', action='store_true', help='Inspect a bounded rotation of expired jobs; owner closures cannot reopen automatically')
     parser.add_argument('--before', help='Verify new/reopened/changed-source jobs against this Git ref')
     parser.add_argument('--prune-unverified-new', action='store_true', help='Hold newly added unverified jobs for review and continue publishing verified jobs')
     args = parser.parse_args()
     path = ROOT / 'data/jobs.json'
     jobs = json.loads(path.read_text())
     selected = [j for j in jobs if j.get('status') == 'active']
+    if args.recheck_expired and not args.before:
+        selected += choose_reopening_candidates(jobs)
     old = []
     known = {}
     if args.before:
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
+    previous_states = {j.get('id'): j.get('status') for j in selected}
     results = []; changed = False
+    transitioned_expired = 0
+    transitioned_reopened = 0
     for job in selected:
         result = check(job); results.append(result)
         print(f"{job['id']}: {result['state']} — {result['reason']}")
-        if args.write and result['state'] == 'expired':
+        if args.write and job.get('status') == 'active' and result['state'] == 'expired':
             job['status'] = 'expired'; job['availabilityCheck'] = result
             job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_expired += 1
+        elif args.write and job.get('status') == 'expired' and result['state'] == 'active' and result['reason'].startswith('Reopening confirmed:') and not job.get('manualClosedVerifiedAt'):
+            job['status'] = 'active'; job['availabilityCheck'] = result
+            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            transitioned_reopened += 1
+            print(f"SAFE REOPEN: {job.get('id')} - both ATS and public Apply page confirmed")
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
     if args.write:
         by_id = {j.get('id'): j for j in jobs}
         checked_at = datetime.now(timezone.utc).isoformat()
         details = []
+        reopening_checks = []
         for result in results:
             job = by_id.get(result.get('id'), {})
-            details.append({
+            row = {
                 'id': result.get('id'),
                 'company': job.get('company', ''),
                 'role': job.get('role', ''),
@@ -395,7 +431,12 @@ def main():
                 'state': result.get('state', 'review'),
                 'reason': result.get('reason', ''),
                 'checkedAt': result.get('checkedAt', checked_at),
-            })
+            }
+            if previous_states.get(result.get('id')) == 'expired':
+                row['outcome'] = 'reopened' if job.get('status') == 'active' else 'held'
+                reopening_checks.append(row)
+            else:
+                details.append(row)
         states = [x.get('state') for x in details]
         summary = {
             'checkedAt': checked_at,
@@ -403,7 +444,10 @@ def main():
             'active': states.count('active'),
             'expired': states.count('expired'),
             'review': states.count('review'),
-            'changedExpired': states.count('expired'),
+            'changedExpired': transitioned_expired,
+            'changedReopened': transitioned_reopened,
+            'reopenCandidatesChecked': len(reopening_checks),
+            'reopenChecks': reopening_checks,
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'
