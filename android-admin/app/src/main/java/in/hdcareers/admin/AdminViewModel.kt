@@ -50,6 +50,12 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         viewModelScope.launch { runCatching { twoJobInbox=api.twoJobInbox() } }
     }
     fun loadTwoJobInbox()=run { twoJobInbox=api.twoJobInbox() }
+    fun replaceTwoJobInbox()=run {
+        val result=api.replaceTwoJobs()
+        twoJobInbox=api.twoJobInbox()
+        twoJobSelected=emptySet()
+        message=if(result.optString("notification")=="accepted_by_fcm") "New two-job review staged. Firebase accepted your notification." else "Two new jobs staged. Notification delivery has not been confirmed."
+    }
     fun stageTwoJobInbox()=run {
         val result=api.stageTwoJobs()
         twoJobInbox=api.twoJobInbox()
