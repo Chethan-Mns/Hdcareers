@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-17T10:31:30.046Z",
+  "checkedAt": "2026-10-17T10:31:43.727Z",
   "checked": 120,
-  "active": 115,
+  "active": 116,
   "expired": 4,
-  "review": 1,
+  "review": 0,
   "changedExpired": 4,
   "items": [
     {
@@ -1154,9 +1154,11 @@
       "role": "Senior Software Engineer – Backend",
       "page": "jobs/priceline-senior-software-engineer-backend-mumbai-r5631.html",
       "url": "https://careers.priceline.com/job/r5631/",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-17T07:14:35.935844+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-17T10:31:43.727Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-17T10:31:43.727Z"
     },
     {
       "id": 25,
