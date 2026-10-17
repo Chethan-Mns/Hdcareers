@@ -1,0 +1,68 @@
+name: Hourly Telegram Job Announcements
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize with the Admin publisher so queue claims and receipts cannot race.
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  send-one:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refresh from current main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          git config user.name "HD Careers Hourly Telegram"
+          git config user.email "actions@users.noreply.github.com"
+      - name: Persist at-most-once claim before any send
+        id: claim
+        shell: bash
+        run: |
+          python3 scripts/hourly_telegram.py claim
+          git add data/telegram-hourly-queue.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Claim next hourly Telegram job safely"
+            git push origin HEAD:main
+          fi
+      - name: Send only the claimed job and verify the live public page
+        if: steps.claim.outputs.claimed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/hourly_telegram.py send
+      - name: Persist delivery receipt (or uncertain result) without risking repost
+        if: always() && steps.claim.outputs.claimed == 'true'
+        shell: bash
+        run: |
+          git add data/telegram-hourly-queue.json data/telegram-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record hourly Telegram delivery result"
+            git push origin HEAD:main
+          fi
+      - name: Upload hourly delivery evidence for recovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hourly-telegram-evidence
+          path: |
+            data/telegram-hourly-queue.json
+            data/telegram-deliveries.json
+          if-no-files-found: ignore
+          retention-days: 30
