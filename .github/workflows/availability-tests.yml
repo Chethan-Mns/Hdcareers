@@ -6,6 +6,10 @@ on:
       - 'scripts/admin_publish.py'
       - 'tests/test_job_availability.py'
       - 'tests/test_admin_publish_partial.py'
+      - 'scripts/hourly_telegram.py'
+      - 'tests/test_hourly_telegram.py'
+      - '.github/workflows/hourly-telegram-queue.yml'
+      - '.github/workflows/admin-job-generator.yml'
       - '.github/workflows/availability-tests.yml'
   push:
     branches: [main]
@@ -13,6 +17,10 @@ on:
       - 'scripts/check_job_availability.py'
       - 'scripts/admin_publish.py'
       - 'tests/test_admin_publish_partial.py'
+      - 'scripts/hourly_telegram.py'
+      - 'tests/test_hourly_telegram.py'
+      - '.github/workflows/hourly-telegram-queue.yml'
+      - '.github/workflows/admin-job-generator.yml'
       - 'tests/test_job_availability.py'
       - '.github/workflows/availability-tests.yml'
   workflow_dispatch:
@@ -28,4 +36,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run availability unit tests
-        run: python3 -m unittest discover -s tests -p 'test_job_availability.py' && python3 -m unittest discover -s tests -p 'test_admin_publish_partial.py'
+        run: python3 -m unittest discover -s tests -p 'test_job_availability.py' && python3 -m unittest discover -s tests -p 'test_admin_publish_partial.py' && python3 -m unittest discover -s tests -p 'test_hourly_telegram.py'
