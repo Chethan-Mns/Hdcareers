@@ -1,0 +1,51 @@
+name: Stage two owner-review jobs on Android
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/testing/two-job-publish-preview-20261017.json
+      - .github/workflows/stage-two-android-review.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: two-android-review-stage
+  cancel-in-progress: false
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Stage review-only candidates and ask Firebase to notify owner
+        env:
+          PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+        run: |
+          set -euo pipefail
+          if [ "${#PUSH_SECRET}" -lt 32 ]; then
+            echo "::error::ANDROID_PUSH_DISPATCH_SECRET is unavailable. Two-job inbox was NOT staged."
+            exit 1
+          fi
+          body='{"action":"stage_from_github"}'
+          for attempt in $(seq 1 12); do
+            code=$(curl --max-time 30 -sS -o /tmp/hd-stage-response -w '%{http_code}' \
+              -H "Content-Type: application/json" \
+              -H "x-hd-push-key: $PUSH_SECRET" \
+              --data "$body" \
+              "https://hdcareers.in/api/admin/two-job-review") || code=000
+            echo "Staging attempt $attempt HTTP $code"
+            if [ "$code" = 201 ] || [ "$code" = 200 ]; then
+              cat /tmp/hd-stage-response
+              jq -e '.ok == true and .count == 2' /tmp/hd-stage-response
+              jq -e '.notification == "accepted_by_fcm"' /tmp/hd-stage-response || \
+                echo "::warning::Jobs staged, but Firebase did not accept notification for an owner device."
+              exit 0
+            fi
+            if [ "$code" = 401 ] || [ "$code" = 403 ] || [ "$code" = 409 ]; then
+              echo "::error::Staging blocked by authorization or an already submitted inbox."
+              sed -E 's/"[^"]*token[^"]*"/"REDACTED"/g' /tmp/hd-stage-response || true
+              exit 1
+            fi
+            sleep 15
+          done
+          echo "::error::Production endpoint did not confirm inbox staging."
+          exit 1

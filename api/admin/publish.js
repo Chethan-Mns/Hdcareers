@@ -299,7 +299,7 @@ export default async function handler(req,res){
 
     const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):
       fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):null;
-    const telegramDeliveryMode=req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
+    const telegramDeliveryMode=fromTest||req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
      const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});

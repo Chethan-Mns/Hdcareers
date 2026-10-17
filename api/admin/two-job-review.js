@@ -1,5 +1,6 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
-import {redis} from "../../lib/admin-store.js";
+import {redis,audit} from "../../lib/admin-store.js";
+import crypto from "node:crypto";
 import {notifyTwoJobReview} from "../../lib/admin-push-handler.js";
 
 const PREFIX="hdadmin:manual-review:v1:"+(process.env.VERCEL_ENV==="preview"?"preview":"production")+":";
@@ -18,9 +19,14 @@ async function readStaged(){
 export default async function handler(req,res){
  res.setHeader("Cache-Control","private, no-store");
  if(!["GET","POST"].includes(req.method)){res.setHeader("Allow","GET, POST");return res.status(405).json({error:"Method not allowed"});}
- if(!await requireAdmin(req,res,["owner","job_editor"]))return;
+ const secret=String(process.env.ANDROID_PUSH_DISPATCH_SECRET||"");
+ const provided=String(req.headers["x-hd-push-key"]||"");
+ const validSecret=secret.length>=32&&provided.length===secret.length&&
+  crypto.timingSafeEqual(Buffer.from(provided),Buffer.from(secret));
+ const automated=req.method==="POST"&&req.body?.action==="stage_from_github"&&validSecret;
+ if(!automated&&!await requireAdmin(req,res,["owner","job_editor"]))return;
  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Read-only preview"});
- if(req.method==="POST"){
+ if(req.method==="POST"&&!automated){
   const origin=String(req.headers.origin||"");
   const host=String(req.headers["x-forwarded-host"]||req.headers.host||"").toLowerCase();
   try{if(origin&&new URL(origin).host.toLowerCase()!==host)return res.status(403).json({error:"Invalid origin"});}
@@ -86,22 +92,36 @@ export default async function handler(req,res){
    await auditMutation(req,"two_job_inbox.review",job.id+":"+job.reviewedStatus);
    return res.status(200).json({ok:true,staged:data});
   }
-  if(!["stage","replace"].includes(req.body?.action))return res.status(400).json({error:"Unsupported test inbox action"});
-  if(req.body.action==="replace"){
+  const action=automated?"replace":req.body?.action;
+  if(!["stage","replace"].includes(action))return res.status(400).json({error:"Unsupported test inbox action"});
+  const staged=await readStaged();
+  if(action==="replace"){
    const prior=await redis("GET",key);
-   if(prior&&JSON.parse(prior).status!=="reviewing")
-    return res.status(409).json({error:"Cannot replace submitted test jobs. Preserve publication evidence."});
-   if(prior)await redis("DEL",key);
+   if(prior){
+    const previous=JSON.parse(prior);
+    if(previous.status!=="reviewing")
+     return res.status(409).json({error:"Cannot replace submitted test jobs. Preserve publication evidence."});
+    const unchanged=previous.jobs.length===staged.jobs.length&&
+     previous.jobs.every((j,i)=>j.apply===staged.jobs[i].apply);
+    if(unchanged){
+     const push=await notifyTwoJobReview(automated?null:req.adminUser.username,previous.id);
+     return res.status(200).json({ok:true,unchanged:true,count:previous.jobs.length,
+      notification:push.accepted>0?"accepted_by_fcm":"not_accepted",push,publishEnabled:false});
+    }
+    if(automated&&previous.jobs.some(j=>j.reviewedStatus!=="unreviewed"))
+     return res.status(409).json({error:"Owner has already reviewed a previous test job; automated replacement refused."});
+    await redis("DEL",key);
+   }
   }
   const origin=String(req.headers.origin||"");
-  if(origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
-  const staged=await readStaged();
+  if(!automated&&origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
   const jobs=staged.jobs.map((job,i)=>({...job,id:"two-job-preview-20261017-"+(i+1),reviewedStatus:"unreviewed",reviewedAt:null}));
   const data={id:"two-job-preview-20261017",status:"reviewing",createdAt:new Date().toISOString(),jobs,publishAuthorized:false};
   const value=await redis("SET",key,JSON.stringify(data),"NX","EX",7*86400);
   if(value!=="OK")return res.status(409).json({error:"Test inbox already staged; refresh instead of resending"});
-  await auditMutation(req,"two_job_inbox.stage",data.id);
-  const push=await notifyTwoJobReview(req.adminUser.username,data.id);
+  if(automated)await audit({username:"github-actions",role:"automation",action:"two_job_inbox.stage",target:data.id,result:"attempt"});
+  else await auditMutation(req,"two_job_inbox.stage",data.id);
+  const push=await notifyTwoJobReview(automated?null:req.adminUser.username,data.id);
   return res.status(201).json({ok:true,inboxId:data.id,count:jobs.length,notification:push.accepted>0?"accepted_by_fcm":"not_accepted",push,publishEnabled:false});
  }catch(e){return res.status(503).json({error:e.message||"Inbox unavailable"})}
 }
