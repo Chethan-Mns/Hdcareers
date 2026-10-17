@@ -4,29 +4,39 @@
   "status": "staged_not_sent_to_android",
   "requiresOwnerReview": true,
   "publishAuthorized": false,
-  "note": "Isolated review inbox; only user-verified Live jobs may be submitted. HackerRank job content requires further verification before publish.",
+  "note": "Two new complete source-backed unpublished test drafts; publication requires app Live approval.",
   "jobs": [
     {
-      "company": "HackerRank",
-      "role": "Software Development Engineer Intern",
-      "loc": "Bengaluru, Karnataka, India",
+      "company": "Glance",
+      "role": "UX Design - Intern",
+      "loc": "Bengaluru",
       "cat": "internship",
       "expType": "fresher",
-      "expYears": "Internship; specific graduation-year criteria not confirmed",
+      "expYears": "Design student or recent graduate",
       "salary": "Not Disclosed",
       "status": "review",
-      "apply": "https://job-boards.greenhouse.io/hackerrank/jobs/8229735",
-      "jobId": "8229735",
-      "sourceName": "HackerRank official Greenhouse application",
-      "desc": "HackerRank is recruiting a Software Development Engineer Intern for a full-time six-month internship starting January 5, 2027, working from its Bangalore office. The active official application form asks applicants to confirm availability for the six-month period and full-time on-site attendance. The role is a software development internship with hands-on engineering exposure. Specific technical qualifications and responsibilities are not fully visible on the application form and must be verified before publication.",
-      "elig": "Must be able to attend a full-time six-month internship commencing January 5, 2027, at HackerRank's Bangalore office. Other academic and technical eligibility details were not confirmed on the accessible official application form.",
+      "apply": "https://job-boards.greenhouse.io/glance/jobs/7916115",
+      "jobId": "7916115",
+      "sourceName": "Glance official Greenhouse careers",
+      "desc": "Glance is hiring a UX Design Intern to support the team developing Glance TV, an AI-driven shopping experience on connected televisions. The intern works alongside experienced designers on shopping cards, brand stores, editorial layouts, ambient product experiences and agent interactions. The position involves design-system work, reviewing user flows and edge cases, design critique, exploration and delivery with engineering teams.",
+      "elig": "Design student or recent graduate with a strong portfolio showing product-design thinking and execution. Curiosity about interaction design and user behaviour, systems thinking, reusable components, visual craft and iterative shipping. Interest in AI, ambient computing or TV/large-screen interaction is advantageous.",
       "resp": [
-        "Participate in software development activities as an engineering intern; exact employer-assigned responsibilities require additional source verification."
+        "Contribute UX and visual designs across shopping cards, brand stores, editorial layouts and TV agent interfaces.",
+        "Work through user flows, interface states and edge cases.",
+        "Maintain components, reusable patterns and documentation in the design system.",
+        "Participate in design critiques, reviews, explorations and iterations.",
+        "Support implementation handoff and collaborate with engineers to ship designs."
       ],
       "skills": [
-        "Software engineering (role category; exact required stack unconfirmed)"
+        "UX design",
+        "Visual design",
+        "Interaction design",
+        "Design systems",
+        "Product thinking",
+        "Portfolio development",
+        "Design handoff"
       ],
-      "verificationNote": "Official application confirms open form and program dates, but substantive job duties and skills require source verification; hold from publishing until confirmed."
+      "workMode": "Not Specified"
     },
     {
       "company": "Instawork",
