@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.max
+import kotlinx.coroutines.delay
 
 @Composable
 internal fun ProMore(vm:AdminViewModel,onEnableBiometric:()->Unit,onNotifications:()->Unit) {
@@ -269,18 +270,65 @@ private fun EmptyReport() {
 }
 @Composable
 internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
+    LaunchedEffect(vm.loggedIn) {
+        while(vm.loggedIn) {
+            vm.refreshOperationsQuietly()
+            delay(30000)
+        }
+    }
     val result=vm.checker.optJSONObject("results")
     val list=result?.optJSONArray("items")
-    LazyColumn(contentPadding=PaddingValues(16.dp),
-        verticalArrangement=Arrangement.spacedBy(13.dp)) {
+    val reviewItems=(0 until (list?.length() ?: 0)).mapNotNull { list?.optJSONObject(it) }.filter { it.optString("state")=="review" }
+    val snapshot=vm.automation
+    val slots=snapshot.optJSONArray("slots")
+    val ctx=LocalContext.current
+    LazyColumn(
+        contentPadding=PaddingValues(start=16.dp,end=16.dp,top=12.dp,bottom=32.dp),
+        verticalArrangement=Arrangement.spacedBy(10.dp)
+    ) {
         item {
             TextButton(onClick=onBack) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack,null)
-                Spacer(Modifier.width(7.dp)); Text("Back to admin center")
+                Spacer(Modifier.width(7.dp))
+                Text("Back to admin center")
             }
-            ProHero("Expiry management","Keep listings\ntrustworthy.",
-                "Blockers and CAPTCHA do not prove jobs have expired.",
+            ProHero("Expiry management","Keep listings\\ntrustworthy.",
+                "CAPTCHAs, timeouts and blocked pages require manual review.",
                 icon=Icons.Default.Shield)
+        }
+        item {
+            ProCard {
+                SectionHead(Icons.Default.Autorenew,"Automation activity",
+                    "Server snapshot · refreshes every 30 seconds",Brand.blue)
+                val updated=snapshot.optString("updatedAt").ifBlank { "Not yet available" }
+                Text("Last server update: $updated",fontSize=12.sp,color=Brand.gray)
+                if(slots==null || slots.length()==0) {
+                    Text("No pipeline reports available. This is not a live execution trace.",
+                        fontSize=12.sp,color=Brand.gray)
+                } else {
+                    for(n in 0 until slots.length()) {
+                        val slot=slots.optJSONObject(n) ?: continue
+                        Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                            Text(slot.optString("title","Workflow"),fontWeight=FontWeight.Bold,
+                                fontSize=14.sp,color=Brand.navy)
+                            Text("Last run: "+slot.optString("lastRunAt","Not reported"),
+                                fontSize=11.sp,color=Brand.gray)
+                            Text("Outcome: "+slot.optString("outcome","Unknown"),
+                                fontSize=12.sp,color=Brand.blue)
+                            val detail=slot.optString("detail")
+                            if(detail.isNotBlank()) Text(detail,fontSize=12.sp,
+                                lineHeight=18.sp,color=Brand.gray)
+                        }
+                        if(n<slots.length()-1) HorizontalDivider(color=Brand.outline)
+                    }
+                }
+                OutlinedButton(onClick=vm::refreshClicked,enabled=!vm.busy,
+                    modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(12.dp)) {
+                    Icon(Icons.Default.Refresh,null,modifier=Modifier.size(17.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text("Refresh from server")
+                }
+            }
         }
         item {
             MetricsGrid(listOf(
@@ -297,8 +345,9 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
         item {
             ProCard {
                 SectionHead(Icons.Default.Shield,"Verification actions",
-                    "Decisions are never based on HTTP blocking alone")
-                Button(onClick=vm::checkerRun,enabled=!vm.busy,modifier=Modifier.fillMaxWidth(),
+                    "Review evidence before confirming expiry")
+                Button(onClick=vm::checkerRun,enabled=!vm.busy,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
                     shape=RoundedCornerShape(14.dp)) {
                     Icon(Icons.Default.Refresh,null)
                     Spacer(Modifier.width(8.dp))
@@ -306,32 +355,50 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                 }
             }
         }
-        if(list!=null)items(list.length()) {index->
-            val j=list.optJSONObject(index)
-            if(j!=null&&j.optString("state")=="review") {
-                ProCard {
-                    SectionHead(Icons.Default.WarningAmber,
-                        j.optString("company","Unknown employer"),j.optString("role"),Brand.amber)
-                    Text(j.optString("reason"),fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                    Text("Last checked: "+j.optString("checkedAt","Unknown"),fontSize=10.sp,color=Brand.gray)
-                    val link=j.optString("url").ifBlank{j.optString("apply")}
-                    val context=LocalContext.current
-                    if(link.startsWith("https://")) OutlinedButton(onClick={
-                        context.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
-                    },modifier=Modifier.fillMaxWidth()) {
-                        Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
-                        Spacer(Modifier.width(7.dp))
-                        Text("Open official job before deciding")
-                    }
-                    val jobId=j.optInt("id",-1)
-                    Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                        OutlinedButton(onClick={vm.checkerResolve(jobId,"keep")},
-                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Keep (verified)",fontSize=11.sp)
+        if(reviewItems.isEmpty()) item {
+            ProCard {
+                Text("No jobs currently need manual review.",fontSize=13.sp,color=Brand.gray)
+            }
+        }
+        items(reviewItems.size) { index ->
+            val j=reviewItems[index]
+            run {
+                ProCard(padding=13) {
+                    Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                        ProPill("NEEDS REVIEW",Brand.amber)
+                        Text(j.optString("company","Unknown employer"),fontSize=17.sp,
+                            fontWeight=FontWeight.Bold,color=Brand.navy)
+                        Text(j.optString("role"),fontSize=13.sp,color=Brand.navy,
+                            lineHeight=19.sp)
+                        HorizontalDivider(color=Brand.outline)
+                        Text(j.optString("reason").ifBlank { "No reason reported" },
+                            fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                        val checked=j.optString("checkedAt","")
+                        val readable=runCatching {
+                            java.time.OffsetDateTime.parse(checked)
+                                .atZoneSameInstant(java.time.ZoneId.of("Asia/Kolkata"))
+                                .format(java.time.format.DateTimeFormatter.ofPattern("dd MMM, hh:mm a"))
+                        }.getOrDefault(checked.ifBlank { "Unknown" })
+                        Text("Checked: $readable IST",fontSize=11.sp,color=Brand.gray)
+                        val link=j.optString("url").ifBlank { j.optString("apply") }
+                        if(link.startsWith("https://")) OutlinedButton(onClick={
+                            ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
+                        },modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                            shape=RoundedCornerShape(12.dp)) {
+                            Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
+                            Spacer(Modifier.width(7.dp))
+                            Text("View official listing",maxLines=1)
+                        }
+                        val jobId=j.optInt("id",-1)
+                        Button(onClick={vm.checkerResolve(jobId,"keep")},
+                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.fillMaxWidth()
+                                .heightIn(min=48.dp),shape=RoundedCornerShape(12.dp)) {
+                            Text("Keep active — verified",maxLines=1)
                         }
                         OutlinedButton(onClick={vm.checkerResolve(jobId,"expire")},
-                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Confirm expired",fontSize=11.sp)
+                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.fillMaxWidth()
+                                .heightIn(min=48.dp),shape=RoundedCornerShape(12.dp)) {
+                            Text("Confirm expired",maxLines=1)
                         }
                     }
                 }

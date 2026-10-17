@@ -31,6 +31,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var checker by androidx.compose.runtime.mutableStateOf(JSONObject())
     var automation by androidx.compose.runtime.mutableStateOf(JSONObject())
     var fcmStatus by androidx.compose.runtime.mutableStateOf("Not configured")
+    var updateAvailable by androidx.compose.runtime.mutableStateOf<AvailableUpdate?>(null)
+    var updateInstalling by androidx.compose.runtime.mutableStateOf(false)
     var manualDraft by androidx.compose.runtime.mutableStateOf<JSONObject?>(null)
     var manualUrl by androidx.compose.runtime.mutableStateOf("")
     var savedUsername=""
@@ -52,6 +54,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         loggedIn=true
         refresh()
         ensurePushConnected()
+        checkForUpdates()
     }
     fun biometricSignIn() {
         try {
@@ -115,7 +118,26 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         loading=false
         if(errors.isNotEmpty()) message=errors.take(2).joinToString("\n")
     }
-    fun refreshClicked()=run { refresh() }
+    fun refreshClicked()=run { refresh(); checkForUpdates() }
+    fun checkForUpdates() {
+        if(!loggedIn)return
+        viewModelScope.launch {
+            runCatching { UpdateManager.parse(api.availableUpdate()) }
+                .onSuccess { updateAvailable=it }
+        }
+    }
+    fun installUpdate() {
+        val target=updateAvailable ?: return
+        viewModelScope.launch {
+            updateInstalling=true
+            try {
+                val file=UpdateManager.download(getApplication(),target)
+                UpdateManager.install(getApplication(),file)
+            } catch(e:Exception) {
+                message="Update failed: "+(e.localizedMessage ?: "Please retry.")
+            } finally { updateInstalling=false }
+        }
+    }
     fun changeDays(value:Int)=run {
         days=value;traffic=api.traffic(value)
     }
@@ -176,6 +198,13 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             ". No publishing request was sent."
     }
     fun refreshExpiry()=run { checker=api.checker() }
+    fun refreshOperationsQuietly() {
+        if(!loggedIn) return
+        viewModelScope.launch {
+            runCatching { checker=api.checker() }
+            runCatching { automation=api.automation() }
+        }
+    }
     fun ensurePushConnected(){
         if(!loggedIn||!firebaseReady(getApplication()))return
         val prefs=getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
