@@ -194,7 +194,8 @@ export default async function handler(req,res){
       // A GitHub data commit is not proof that the public production page is live.
       const production=await Promise.all(selections.map(async id=>{
         const candidate=allCandidates.find(c=>String(c.id)===String(id));
-        const page=String(candidate?.job?.page||"").replace(/^\//,"");
+        const existing=saved.find(x=>normalizeUrl(x.apply)===normalizeUrl(candidate?.job?.apply||candidate?.apply));
+         const page=String(existing?.page||candidate?.job?.page||"").replace(/^\//,"");
         if(!/^jobs\/[a-z0-9-]+\.html$/.test(page))return {id,live:false};
         const controller=new AbortController();
         const timeout=setTimeout(()=>controller.abort(),4000);
@@ -211,7 +212,9 @@ export default async function handler(req,res){
       const livePages=new Set(production.filter(x=>x.live).map(x=>String(x.id)));
       const stages=selections.map(id=>{
         const c=[...(batch.priority||[]),...(batch.backup||[])].find(x=>String(x.id)===id);
-        const page=String(c?.job?.page||"").replace(/^\//,"");
+        const existing=saved.find(x=>normalizeUrl(x.apply)===normalizeUrl(c?.job?.apply||c?.apply));
+         const page=String(existing?.page||c?.job?.page||"").replace(/^\//,"");
+         const queued=queueItems.find(x=>x?.page===page);
         const entries=Object.values(ledger).filter(x=>x&&x.page===page);
         const last=entries.at(-1)||{};
         return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
