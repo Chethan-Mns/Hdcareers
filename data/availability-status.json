@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-17T10:31:20.276Z",
+  "checkedAt": "2026-10-17T10:31:30.046Z",
   "checked": 120,
   "active": 115,
-  "expired": 3,
-  "review": 2,
-  "changedExpired": 3,
+  "expired": 4,
+  "review": 1,
+  "changedExpired": 4,
   "items": [
     {
       "id": 161,
@@ -1102,9 +1102,11 @@
       "role": "Campus-Beginner – .NET Developer",
       "page": "jobs/hcltech-campus-beginner-dotnet-developer-bengaluru.html",
       "url": "https://careers.hcltech.com/job/Campus-Beginner/165612-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-17T07:14:26.351016+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-17T10:31:30.046Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-17T10:31:30.046Z"
     },
     {
       "id": 31,
