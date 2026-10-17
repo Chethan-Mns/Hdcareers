@@ -151,3 +151,44 @@ test("Owner-priority Dell and CGI outrank equally verified small employers",()=>
  assert.ok(out.batch.priority.some(x=>x.company==="Dell Technologies"));
  assert.ok(out.batch.priority.some(x=>x.company==="CGI"));
 });
+
+test("87-company watchlist is exact and Deloitte IT is ranked first",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const watchlist=JSON.parse(readFileSync(new URL("../data/employer-watchlist-87.json",import.meta.url),"utf8"));
+ assert.equal(Object.values(watchlist.categories).flat().length,87);
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[19]=ready(19,"it","fresher","Deloitte South Asia");
+ all[1]=ready(1,"it","fresher","Accenture");
+ const result=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)},{watchlist});
+ assert.equal(result.batch.priority[0].company,"Deloitte South Asia");
+ assert.ok(result.batch.priority.some(x=>x.company==="Accenture"));
+});
+test("Deloitte non-IT fresher opportunity fills its non-IT slot when no Deloitte IT exists",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const watchlist=JSON.parse(readFileSync(new URL("../data/employer-watchlist-87.json",import.meta.url),"utf8"));
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[18]=ready(18,"nonit","fresher","Deloitte");
+ all[19]=ready(19,"internship","fresher","KPMG");
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)},{watchlist});
+ assert.ok(out.batch.priority.some(x=>x.company==="Deloitte"&&x.job.cat==="nonit"));
+ assert.equal(out.batch.ranking.selected.nonIT,1);
+ assert.equal(out.batch.ranking.selected.training,1);
+});
+test("outside-watchlist firm is not chosen before 87 approved companies with comparable Live evidence",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const watchlist=JSON.parse(readFileSync(new URL("../data/employer-watchlist-87.json",import.meta.url),"utf8"));
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[0]=ready(0,"it","fresher","Outside Incidental Startup");
+ for(let i=1;i<=8;i++)all[i]=ready(i,"it","fresher",["EY","KPMG","Deloitte","Accenture","Capgemini","Cognizant","Infosys","Wipro"][i-1]);
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)},{watchlist});
+ assert.ok(!out.batch.priority.some(x=>x.company==="Outside Incidental Startup"));
+ assert.equal(out.batch.priority.length,8);
+});
+test("manager title cannot be counted as fresher even if malformed metadata says fresher",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","experienced"));
+ all[19]=ready(19,"it","fresher","Deloitte"); all[19].role="Senior Manager Data Engineering";all[19].job.role="Senior Manager Data Engineering";
+ all[18]=ready(18,"it","fresher","Accenture");
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)});
+ assert.ok(!out.batch.priority.some(x=>x.company==="Deloitte"));
+ assert.ok(out.batch.priority.some(x=>x.company==="Accenture"));
+});
