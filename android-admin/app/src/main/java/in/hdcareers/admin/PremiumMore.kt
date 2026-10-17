@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.max
+import kotlinx.coroutines.delay
 
 @Composable
 internal fun ProMore(vm:AdminViewModel,onEnableBiometric:()->Unit,onNotifications:()->Unit) {
@@ -269,6 +270,12 @@ private fun EmptyReport() {
 }
 @Composable
 internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
+    LaunchedEffect(vm.loggedIn) {
+        while(vm.loggedIn) {
+            vm.refreshOperationsQuietly()
+            delay(30000)
+        }
+    }
     val result=vm.checker.optJSONObject("results")
     val list=result?.optJSONArray("items")
     val snapshot=vm.automation
