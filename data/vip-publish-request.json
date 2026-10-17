@@ -55,8 +55,17 @@
           "Intern",
           "20829"
         ],
-        "sourceVerificationMethod": "official-employer-careers-page-content",
-        "sourceReview": "Official requisition page was indexed with this exact title, location and requisition ID on 17 Oct 2026; workflow must independently verify the exact application is live before publishing."
+        "sourceVerificationMethod": "owner-manual-exact-job-apply-confirmed",
+        "sourceReview": "Official requisition page was indexed with this exact title, location and requisition ID on 17 Oct 2026; workflow must independently verify the exact application is live before publishing.",
+        "manualLiveVerifiedAt": "2026-10-17T05:27:00.657Z",
+        "manualLiveVerifiedUrl": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T05:27:00.657Z",
+          "source": "HD Careers owner confirmation in current conversation",
+          "method": "Owner verified the exact Wayfair job application accepts submissions",
+          "jobId": "20829",
+          "officialUrl": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829"
+        }
       }
     ]
   }
