@@ -94,15 +94,27 @@ export default async function handler(req,res){
   }
   const action=automated?"replace":req.body?.action;
   if(!["stage","replace"].includes(action))return res.status(400).json({error:"Unsupported test inbox action"});
+  const staged=await readStaged();
   if(action==="replace"){
    const prior=await redis("GET",key);
-   if(prior&&JSON.parse(prior).status!=="reviewing")
-    return res.status(409).json({error:"Cannot replace submitted test jobs. Preserve publication evidence."});
-   if(prior)await redis("DEL",key);
+   if(prior){
+    const previous=JSON.parse(prior);
+    if(previous.status!=="reviewing")
+     return res.status(409).json({error:"Cannot replace submitted test jobs. Preserve publication evidence."});
+    const unchanged=previous.jobs.length===staged.jobs.length&&
+     previous.jobs.every((j,i)=>j.apply===staged.jobs[i].apply);
+    if(unchanged){
+     const push=await notifyTwoJobReview(automated?null:req.adminUser.username,previous.id);
+     return res.status(200).json({ok:true,unchanged:true,count:previous.jobs.length,
+      notification:push.accepted>0?"accepted_by_fcm":"not_accepted",push,publishEnabled:false});
+    }
+    if(automated&&previous.jobs.some(j=>j.reviewedStatus!=="unreviewed"))
+     return res.status(409).json({error:"Owner has already reviewed a previous test job; automated replacement refused."});
+    await redis("DEL",key);
+   }
   }
   const origin=String(req.headers.origin||"");
-  if(origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
-  const staged=await readStaged();
+  if(!automated&&origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
   const jobs=staged.jobs.map((job,i)=>({...job,id:"two-job-preview-20261017-"+(i+1),reviewedStatus:"unreviewed",reviewedAt:null}));
   const data={id:"two-job-preview-20261017",status:"reviewing",createdAt:new Date().toISOString(),jobs,publishAuthorized:false};
   const value=await redis("SET",key,JSON.stringify(data),"NX","EX",7*86400);
