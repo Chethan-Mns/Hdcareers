@@ -692,5 +692,17 @@
     "sourceDimensions": null,
     "qualityScore": 1080,
     "bytes": 53565
+  },
+  "Wayfair": {
+    "officialDomain": "wayfair.com",
+    "sourceUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://wayfair.com/&size=256",
+    "sourceType": "official-domain favicon proxy fallback",
+    "localPath": "assets/company-icons/wayfair-6abd487.png",
+    "sourceDimensions": [
+      192,
+      192
+    ],
+    "qualityScore": 387,
+    "bytes": 3026
   }
 }
