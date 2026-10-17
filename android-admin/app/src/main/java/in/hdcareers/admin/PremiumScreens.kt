@@ -346,6 +346,35 @@ private fun ProReview(vm:AdminViewModel) {
                 },fontSize=11.sp,color=Brand.gray)
             }
         }
+        item {
+            ProCard {
+                SectionHead(Icons.Default.NotificationsActive,"Two-job test inbox","Separate from your submitted daily batch")
+                Text("Test drafts and Firebase push. Production publishing is disabled for these test drafts until the independent backend receipt tracker is complete.",
+                    fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                val inbox=vm.twoJobInbox.optJSONObject("staged")
+                val entries=inbox?.optJSONArray("jobs")
+                if(entries==null) {
+                    Text("No test inbox loaded",fontSize=12.sp,color=Brand.amber)
+                } else {
+                    Text("Staged jobs: ${entries.length()} · Review only",fontSize=12.sp,color=Brand.green)
+                    for(n in 0 until entries.length()){
+                        val j=entries.optJSONObject(n) ?: continue
+                        HorizontalDivider()
+                        Text(j.optString("company")+" · "+j.optString("role"),fontWeight=FontWeight.Bold,fontSize=13.sp)
+                        Text("Status: Awaiting individual review · Not submitted to publisher",fontSize=11.sp,color=Brand.gray)
+                        val uri=j.optString("apply")
+                        val ctx=LocalContext.current
+                        TextButton(onClick={if(uri.startsWith("https://"))ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(uri)))}) { Text("Open official application") }
+                    }
+                }
+                Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick=vm::loadTwoJobInbox,enabled=!vm.busy) { Text("Refresh test jobs") }
+                    Button(onClick=vm::stageTwoJobInbox,enabled=!vm.busy && entries==null) { Text("Stage 2 test jobs") }
+                }
+                Text("No demo success is presented as real deployment. Per-job GitHub, website and Telegram receipts remain pending backend integration.",
+                    fontSize=11.sp,color=Brand.gray)
+            }
+        }
         if(vm.batch.id.isBlank()) item {
             ProEmpty(Icons.Default.EventNote,"No batch available",
                 "The discovery pipeline must generate real source-backed jobs first.",
