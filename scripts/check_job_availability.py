@@ -192,7 +192,9 @@ def classify(job, body, final_url, status=200):
     if final_url.rstrip('/') != job['apply'].rstrip('/'):
         return 'review', 'Redirected source requires browser/ATS verification'
     structured = structured_jobposting(body, job)
-    if structured:
+    # JSON-LD existence alone is not an active application signal. Check the visible
+    # job page before falling back to Review; a passed official deadline stays final.
+    if structured and structured[0] == 'expired':
         return structured
     closed = CLOSED.search(text)
     raw = re.sub(r'\s+', ' ', body).casefold()
@@ -210,7 +212,7 @@ def classify(job, body, final_url, status=200):
         if terms:
             return 'active', 'Verification terms and registration/submit control found on official URL'
         return 'active', 'Exact role and application call-to-action found on official URL'
-    return 'review', 'Official page loaded but role/application evidence was insufficient'
+    return structured or ('review', 'Official page loaded but role/application evidence was insufficient')
 
 def check(job, now=None):
     now = now or datetime.now(timezone.utc)
