@@ -9,7 +9,7 @@ on:
       - .github/workflows/android-admin-private-release.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   release:
@@ -65,3 +65,38 @@ jobs:
           name: HDCareersAdmin-Android-Private-Signed
           path: android-admin/app/build/outputs/apk/release/app-release.apk
           retention-days: 14
+
+      - name: Upload signed APK to private R2 and publish update manifest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.HD_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.HD_R2_SECRET_ACCESS_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.HD_R2_ACCOUNT_ID }}
+          R2_BUCKET: ${{ secrets.HD_R2_BUCKET }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for name in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY R2_ACCOUNT_ID R2_BUCKET; do
+            test -n "${!name}" || { echo "::error::Private R2 setting missing: $name"; exit 1; }
+          done
+          export AWS_DEFAULT_REGION=auto
+          KEY="hdcareers/android/${GITHUB_SHA}/app-release.apk"
+          APK="android-admin/app/build/outputs/apk/release/app-release.apk"
+          aws s3 cp "$APK" "s3://$R2_BUCKET/$KEY" --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com" --no-progress
+          HASH=$(sha256sum "$APK" | cut -d' ' -f1)
+          CODE=$(sed -nE 's/.*versionCode = ([0-9]+).*/\1/p' android-admin/app/build.gradle.kts | head -1)
+          NAME=$(sed -nE 's/.*versionName = "([^"]+)".*/\1/p' android-admin/app/build.gradle.kts | head -1)
+          test -n "$CODE" && test -n "$NAME" && test -n "$HASH"
+          mkdir -p data
+          python3 - "$CODE" "$NAME" "$HASH" "$KEY" <<'PY'
+          import json,sys
+          from pathlib import Path
+          code,name,sha,key=sys.argv[1:]
+          Path("data/android-release.json").write_text(json.dumps({"versionCode":int(code),"versionName":name,"sha256":sha,"objectKey":key,"notes":"HD Careers app improvements"},indent=2)+"\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/android-release.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish private Android update manifest [skip ci]"
+            git push origin HEAD:main
+          fi
