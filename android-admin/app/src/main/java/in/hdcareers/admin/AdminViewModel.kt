@@ -22,6 +22,13 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var selectedIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
     var publishedReviewIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
     var publishingProgress by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var twoJobInbox by androidx.compose.runtime.mutableStateOf(JSONObject())
+    fun loadTwoJobInbox()=run { twoJobInbox=api.twoJobInbox() }
+    fun stageTwoJobInbox()=run {
+        val result=api.stageTwoJobs()
+        twoJobInbox=api.twoJobInbox()
+        message=if(result.optString("notification")=="accepted_by_fcm") "Two-job review staged; Firebase accepted your notification." else "Two-job review staged, but Firebase notification was not accepted. Check notification settings."
+    }
     val selectedBlockers get()=batch.selectedBlockers(selectedIds,publishedReviewIds)
     val canPublish get()=selectedBlockers.isEmpty()
     var jobs by androidx.compose.runtime.mutableStateOf<List<Job>>(emptyList())
