@@ -98,6 +98,13 @@ class AdminApi {
     suspend fun publishProgress():JSONObject = JSONObject(request("/api/admin/publish"))
     suspend fun twoJobInbox():JSONObject = JSONObject(request("/api/admin/two-job-review"))
     suspend fun stageTwoJobs():JSONObject = JSONObject(request("/api/admin/two-job-review",JSONObject().put("action","stage")))
+    suspend fun reviewTwoJob(id:String,decision:String):JSONObject =
+        JSONObject(request("/api/admin/two-job-review",JSONObject().put("action","review").put("jobId",id).put("decision",decision)))
+    suspend fun publishTwoJobs(ids:Set<String>):JSONObject {
+        val selected=JSONArray()
+        ids.sorted().forEach { selected.put(it) }
+        return JSONObject(request("/api/admin/publish",JSONObject().put("testInboxId","two-job-preview-20261017").put("candidateIds",selected).put("telegramDeliveryMode","instant")))
+    }
     suspend fun extractJob(url:String):JSONObject {
         val result=JSONObject(request("/api/admin/extract-job",JSONObject().put("url",url)))
         return result.optJSONObject("data") ?: throw IOException(result.optString("error","Job extraction failed."))
