@@ -9,8 +9,8 @@ test("standalone HTML has syntactically valid interactive JavaScript",()=>{
  assert.equal(scripts.length,1,"Preview must be self-contained with one inline app script");
  assert.doesNotThrow(()=>new vm.Script(scripts[0][1],{filename:"admin-operations-v2.html"}));
 });
-test("native-sized preview has functional four-tab navigation and distinct live/demo modes",()=>{
- for(const v of ['today','publish','expiry','jobs'])assert.match(html,new RegExp("id:'"+v+"'"));
+test("native-sized preview has functional five-tab navigation including analytics and distinct live/demo modes",()=>{
+ for(const v of ['today','publish','expiry','jobs','analytics'])assert.match(html,new RegExp("id:'"+v+"'"));
  for(const s of ['data-act="simulate"','data-act="conflict"','data-act="live"','data-act="demo"','data-act="simPublish"','data-act="refresh"'])assert.ok(html.includes(s),s);
  assert.match(html,/minimum 60 minutes/i);
  assert.match(html,/read-only/i);
@@ -31,4 +31,17 @@ test("demo simulated commit conflict never invokes actual publish endpoint",()=>
  assert.match(html,/no real GitHub or Telegram requests/);
  assert.ok(!/fetch\(\s*['"]\/api\/admin\/publish['"]/.test(html));
  assert.ok(!/fetch\(\s*['"]\/api\/admin\/review['"]/.test(html));
+});
+test("analytics preserves existing GA4 access controls and never mixes demo numbers into Live",()=>{
+ assert.match(html,/function analyticsPage\(\)/);
+ assert.match(html,/function sampleAnalytics\(days\)/);
+ assert.match(html,/state.mode==='demo'\?sampleAnalytics\(days\):state.analytics/);
+ assert.match(html,/fetch\('\/api\/admin\/traffic\?days='/);
+ assert.match(html,/credentials:'same-origin'/);
+ for(const key of ['Unique visitors','Page views','Apply link clicks','Active right now','Top job pages','Traffic sources','Visitors by country','Device breakdown','Visitor engagement rate','Resume checker uses'])assert.ok(html.includes(key),key);
+ assert.ok(html.includes('days===7'));
+ assert.match(html,/\[1,7,30\]/);
+ assert.ok(html.includes('DEMO ANALYTICS'));
+ assert.ok(html.includes('GA4 ANALYTICS'));
+ assert.ok(!/fetch\(\s*['"]\/api\/admin\/publish['"]/.test(html));
 });
