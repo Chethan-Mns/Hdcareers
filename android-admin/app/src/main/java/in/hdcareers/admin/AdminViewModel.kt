@@ -176,6 +176,13 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             ". No publishing request was sent."
     }
     fun refreshExpiry()=run { checker=api.checker() }
+    fun refreshOperationsQuietly() {
+        if(!loggedIn) return
+        viewModelScope.launch {
+            runCatching { checker=api.checker() }
+            runCatching { automation=api.automation() }
+        }
+    }
     fun ensurePushConnected(){
         if(!loggedIn||!firebaseReady(getApplication()))return
         val prefs=getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
