@@ -1,6 +1,6 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import {redis} from "../../lib/admin-store.js";
-import crypto from "node:crypto";
+import {notifyTwoJobReview} from "../../lib/admin-push-handler.js";
 
 const PREFIX="hdadmin:manual-review:v1:"+(process.env.VERCEL_ENV==="preview"?"preview":"production")+":";
 const ROOT="https://api.github.com/repos/"+(process.env.ADMIN_GITHUB_REPO||"Chethan-Mns/Hdcareers");
@@ -35,6 +35,7 @@ export default async function handler(req,res){
   const value=await redis("SET",key,JSON.stringify(data),"NX","EX",7*86400);
   if(value!=="OK")return res.status(409).json({error:"Test inbox already staged; refresh instead of resending"});
   await auditMutation(req,"two_job_inbox.stage",data.id);
-  return res.status(201).json({ok:true,inboxId:data.id,count:jobs.length,notification:"not_sent",publishEnabled:false});
+  const push=await notifyTwoJobReview(req.adminUser.username,data.id);
+  return res.status(201).json({ok:true,inboxId:data.id,count:jobs.length,notification:push.accepted>0?"accepted_by_fcm":"not_accepted",push,publishEnabled:false});
  }catch(e){return res.status(503).json({error:e.message||"Inbox unavailable"})}
 }
