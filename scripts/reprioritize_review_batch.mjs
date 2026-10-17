@@ -11,7 +11,8 @@ const publishedJobs=safeLoad("data/jobs.json",[]);
 const deliveries=safeLoad("data/telegram-deliveries.json",{});
 const evidence=safeLoad("data/verification-benchmark-2026-10-17.json",{items:[]});
 const ownerVerdicts=Array.isArray(evidence.items)?evidence.items:[];
-const result=reprioritizeBeforeReview(batch,{publishedJobs,deliveries,ownerVerdicts});
+const watchlist=safeLoad("data/employer-watchlist-87.json",null);
+const result=reprioritizeBeforeReview(batch,{publishedJobs,deliveries,ownerVerdicts,watchlist});
 console.log(result.reason);
 if(result.changed&&process.argv.includes("--apply")){
  fs.writeFileSync(file,JSON.stringify(result.batch,null,2)+"\n");
