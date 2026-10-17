@@ -86,7 +86,13 @@ export default async function handler(req,res){
    await auditMutation(req,"two_job_inbox.review",job.id+":"+job.reviewedStatus);
    return res.status(200).json({ok:true,staged:data});
   }
-  if(req.body?.action!=="stage")return res.status(400).json({error:"Unsupported test inbox action"});
+  if(!["stage","replace"].includes(req.body?.action))return res.status(400).json({error:"Unsupported test inbox action"});
+  if(req.body.action==="replace"){
+   const prior=await redis("GET",key);
+   if(prior&&JSON.parse(prior).status!=="reviewing")
+    return res.status(409).json({error:"Cannot replace submitted test jobs. Preserve publication evidence."});
+   if(prior)await redis("DEL",key);
+  }
   const origin=String(req.headers.origin||"");
   if(origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
   const staged=await readStaged();
