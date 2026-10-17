@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-17T10:31:05.679Z",
+  "checkedAt": "2026-10-17T10:31:13.830Z",
   "checked": 120,
   "active": 115,
-  "expired": 1,
-  "review": 4,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 3,
+  "changedExpired": 2,
   "items": [
     {
       "id": 161,
@@ -888,9 +888,11 @@
       "role": "Software Development Engineer II, Infra Supply Chain Automation",
       "page": "jobs/amazon-software-development-engineer-ii-infra-supply-chain-automation-10498234.html",
       "url": "https://www.amazon.jobs/en/jobs/10498234/software-dev-engineer-ii-infra-supply-chain-automation",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-17T07:13:10.468044+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-17T10:31:13.830Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-17T10:31:13.830Z"
     },
     {
       "id": 55,
