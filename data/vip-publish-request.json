@@ -3,556 +3,447 @@
   "client_payload": {
     "jobs": [
       {
-        "page": "jobs/fretron-technical-engineer-gurugram.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "Fretron Private Ltd.",
-        "salary": "Not Disclosed",
-        "logo": [
-          "F",
-          "#0b6bcb"
-        ],
-        "role": "Technical Engineer",
-        "roleTag": "Technical Engineer | 0–1 Years",
-        "loc": "Gurugram, Haryana, India",
-        "locationFilter": "Gurugram",
-        "batch": "Not specified",
-        "elig": "B.Tech in Information Technology or Computer Science.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "date": "Not specified",
-        "desc": "Fretron is hiring a Technical Engineer to support development, testing, troubleshooting and customer issue resolution for its logistics technology platform.",
-        "resp": [
-          "Develop platform features with the development team and complete assigned tasks within scope and timelines.",
-          "Test software against functional, design and quality requirements; diagnose root causes and resolve issues within SLA.",
-          "Use tools such as Postman and scripts to support customer solutions and coordinate with cross-functional teams."
-        ],
-        "skills": [
-          "JavaScript",
-          "Node.js",
-          "Debugging",
-          "MongoDB",
-          "MySQL",
-          "Oracle",
-          "XML",
-          "JSON",
-          "HTML",
-          "REST APIs",
-          "Postman",
-          "Agile fundamentals"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/FretronPrivateLtd/743999812282138-technical-engineer",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Fretron official SmartRecruiters posting",
-        "who": "Candidates with 0–1 years of experience and a B.Tech in IT or Computer Science.",
-        "workMode": "Not specified",
-        "jobId": "743999812282138",
-        "qualification": "B.Tech in IT or Computer Science",
-        "verificationTerms": [
-          "Technical Engineer",
-          "0-1 Years",
-          "B-Tech"
-        ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Fretron official SmartRecruiters posting",
-          "method": "Exact posting title, requisition URL and active interest/application control confirmed"
-        }
-      },
-      {
-        "page": "jobs/dataflair-software-engineer-fresher-indore.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "DataFlair Web Services Pvt Ltd",
-        "salary": "Not Disclosed",
-        "logo": [
-          "DF",
-          "#2563eb"
-        ],
-        "role": "Software Engineer",
-        "roleTag": "Software Engineer | Fresher",
-        "loc": "Indore, Madhya Pradesh, India",
-        "locationFilter": "Indore",
-        "batch": "Not specified",
-        "elig": "Graduates in BSc, BCA, MCA, BE, ME or MSc.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "date": "Not specified",
-        "desc": "DataFlair is seeking fresh graduates for a Software Engineer role focused on Big Data Hadoop and other emerging technologies.",
-        "resp": [
-          "Work with Big Data Hadoop and other upcoming technologies.",
-          "Apply analytical problem-solving skills while working independently and proactively.",
-          "Learn new technologies and contribute technical solutions."
-        ],
-        "skills": [
-          "Big Data",
-          "Hadoop",
-          "Java or another programming language",
-          "Analytical thinking",
-          "Problem solving",
-          "Technical fundamentals"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/DataFlairWebServicesPvtLtd/743999667075811-software-engineer",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "DataFlair official SmartRecruiters posting",
-        "who": "Fresh graduates with a BSc, BCA, MCA, BE, ME or MSc and strong analytical capability.",
-        "workMode": "Not specified",
-        "jobId": "743999667075811",
-        "qualification": "BSc, BCA, MCA, BE, ME or MSc",
-        "verificationTerms": [
-          "Software Engineer",
-          "fresher",
-          "Big Data Hadoop"
-        ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "DataFlair official SmartRecruiters posting",
-          "method": "Exact posting, fresher eligibility and active interest/application control confirmed"
-        }
-      },
-      {
-        "page": "jobs/endeavor-it-solution-software-engineer-java-fresher-indore.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "Endeavor IT Solution",
-        "salary": "Not Disclosed",
-        "logo": [
-          "E",
-          "#7c3aed"
-        ],
-        "role": "Software Engineer - Java - Fresher",
-        "roleTag": "Software Engineer – Java | Fresher",
-        "loc": "Indore, Madhya Pradesh, India",
-        "locationFilter": "Indore",
-        "batch": "Not specified",
-        "elig": "BE, MCA or BCA graduates.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–6 months / Freshers",
-        "date": "Not specified",
-        "desc": "Endeavor IT Solution is hiring Java freshers in Indore for software development work using Java and related web technologies.",
-        "resp": [
-          "Develop Java-based software from technical requirements.",
-          "Write structured code and deliver assigned work on time.",
-          "Work with web technologies, databases and a Linux-based environment."
-        ],
-        "skills": [
-          "Java",
-          "J2EE",
-          "JSP",
-          "Servlet",
-          "jQuery",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Ajax",
-          "MySQL",
-          "Linux",
-          "Software design patterns"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Endeavor IT Solution official SmartRecruiters posting",
-        "who": "BE, MCA or BCA candidates with 0–6 months of experience, including freshers.",
-        "workMode": "On-site",
-        "jobId": "743999651528856",
-        "qualification": "BE, MCA or BCA",
-        "verificationTerms": [
-          "Software Engineer - Java - Fresher",
-          "0-6 months",
-          "Indore"
-        ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Endeavor IT Solution official SmartRecruiters posting",
-          "method": "Exact posting title, location, fresher eligibility and active application control confirmed"
-        }
-      },
-      {
-        "page": "jobs/taurus-hard-soft-solutions-java-developer-bengaluru.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "Taurus Hard Soft Solutions Pvt Ltd",
-        "salary": "Not Disclosed",
-        "logo": [
-          "T",
-          "#334155"
-        ],
-        "role": "Java Developer",
-        "roleTag": "Java Developer | 0.3–1 Year",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru",
-        "batch": "Not specified",
-        "elig": "The posting does not specify a degree requirement; applicants should have hands-on Java programming experience.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0.3–1 year",
-        "date": "Not specified",
-        "desc": "Taurus Hard Soft Solutions is seeking an early-career Java Developer in Bengaluru to develop, implement and maintain Java-based components and interfaces.",
-        "resp": [
-          "Develop, implement and maintain Java-based components and interfaces.",
-          "Contribute to user-information solutions using Java.",
-          "Communicate and collaborate while delivering assigned development work."
-        ],
-        "skills": [
-          "Java",
-          "Android basics (optional)",
-          "Communication"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/TaurusHardSoftSolutionsPvtLtd/82091961-java-developer",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Taurus Hard Soft Solutions official SmartRecruiters posting",
-        "who": "Candidates with 0.3–1 year of Java development experience and good communication skills.",
-        "workMode": "Not specified",
-        "jobId": "82091961",
-        "qualification": "Not specified",
-        "verificationTerms": [
-          "Java Developer",
-          "0.3 - 1 Year",
-          "Bengaluru"
-        ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Taurus Hard Soft Solutions official SmartRecruiters posting",
-          "method": "Exact posting title, Bengaluru location, early-career experience and active application control confirmed"
-        }
-      },
-      {
-        "page": "jobs/hevo-data-sde-i-bangalore.html",
-        "domain": "jobs.lever.co",
-        "company": "Hevo Data",
+        "page": "jobs/hcltech-campus-beginner-170239.html",
+        "domain": "careers.hcltech.com",
+        "company": "HCLTech",
         "salary": "Not Disclosed",
         "logo": [
           "H",
-          "#ff5a36"
+          "#0b6bcb"
         ],
-        "role": "SDE I",
-        "roleTag": "SDE I | Backend Engineering",
-        "loc": "Bangalore, Karnataka, India",
+        "role": "Campus-Beginner",
+        "roleTag": "Campus-Beginner | Desk Side Services",
+        "loc": "Madurai, Tamil Nadu, India",
+        "locationFilter": "Madurai",
+        "batch": "Not specified",
+        "elig": "Public job page does not specify a degree or experience minimum; applicants should confirm eligibility with HCLTech.",
+        "cat": "it",
+        "expType": "not-specified",
+        "expYears": "Not stated on official job page",
+        "date": "Not specified",
+        "desc": "HCLTech's Campus-Beginner Desk Side Services role provides end-user hardware, software and IT-infrastructure support in Madurai.",
+        "resp": [
+          "Provide first- and second-level support for user devices and applications.",
+          "Troubleshoot laptops, desktops, printers, peripherals and Microsoft 365 tools.",
+          "Manage user accounts, password resets and software configuration."
+        ],
+        "skills": [
+          "IT support",
+          "Hardware troubleshooting",
+          "Microsoft 365",
+          "Service desk"
+        ],
+        "apply": "https://careers.hcltech.com/job/Campus-Beginner/170239-en_US/",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "HCLTech official careers",
+        "who": "Applicants seeking a campus-beginner IT-support role who meet HCLTech's current eligibility conditions.",
+        "workMode": "Not specified",
+        "jobId": "170239",
+        "verificationTerms": [
+          "Campus-Beginner"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.228Z",
+          "source": "HCLTech official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/ntt-data-qa-engineer-394503.html",
+        "domain": "careers-inc.nttdata.com",
+        "company": "NTT DATA",
+        "salary": "Not Disclosed",
+        "logo": [
+          "ND",
+          "#0b6bcb"
+        ],
+        "role": "QA Engineer",
+        "roleTag": "QA Engineer | Data Platform",
+        "loc": "Bengaluru, Karnataka, India",
         "locationFilter": "Bengaluru",
         "batch": "Not specified",
-        "elig": "B.Tech in Computer Science or equivalent.",
+        "elig": "Official listing calls for end-to-end test experience, SQL validation, data testing and test automation; no degree or years threshold is specified.",
         "cat": "it",
+        "expType": "not-specified",
+        "expYears": "Not specified in employer posting; testing experience required",
+        "date": "Not specified",
+        "desc": "NTT DATA is recruiting a QA Engineer (Test Engineer, Data Platform) for its Databricks environment in Bengaluru.",
+        "resp": [
+          "Create and execute functional, regression and integration test plans.",
+          "Validate ETL and ELT data pipelines and perform reconciliation tests.",
+          "Automate testing activities and track and manage defects."
+        ],
+        "skills": [
+          "QA",
+          "SQL",
+          "Data testing",
+          "ETL/ELT",
+          "Databricks",
+          "Test automation"
+        ],
+        "apply": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "NTT DATA official careers",
+        "who": "QA and data-testing applicants with the testing, SQL and data-pipeline skills specified by NTT DATA.",
+        "workMode": "Not specified",
+        "jobId": "394503",
+        "verificationTerms": [
+          "QA Engineer"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.228Z",
+          "source": "NTT DATA official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/caterpillar-it-analyst-applications-r0000377078.html",
+        "domain": "careers.caterpillar.com",
+        "company": "Caterpillar",
+        "salary": "Not Disclosed",
+        "logo": [
+          "C",
+          "#0b6bcb"
+        ],
+        "role": "IT Analyst Applications",
+        "roleTag": "IT Analyst Applications | Data & Integration",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru",
+        "batch": "Not specified",
+        "elig": "Official listing seeks Power BI, data engineering, SQL/Python, system integration, analytics and business-analysis capabilities; specific degree and experience years not provided.",
+        "cat": "it",
+        "expType": "not-specified",
+        "expYears": "Not stated; role description calls for demonstrated enterprise experience",
+        "date": "Not specified",
+        "desc": "Caterpillar is seeking an IT Analyst Applications supporting procurement data, analytics dashboards and enterprise application integrations in Bengaluru.",
+        "resp": [
+          "Translate strategic procurement requirements into technical solutions and dashboards.",
+          "Design and maintain Power BI data models and ETL/ELT integrations.",
+          "Work with business partners on data quality, requirements and application-support tasks."
+        ],
+        "skills": [
+          "Power BI",
+          "SQL",
+          "Python",
+          "ETL",
+          "Business analysis",
+          "Systems integration"
+        ],
+        "apply": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "Caterpillar official careers",
+        "who": "Applicants with business-analysis, Power BI and integration capabilities who meet Caterpillar's posted role requirements.",
+        "workMode": "On-site, five days a week",
+        "jobId": "R0000377078",
+        "verificationTerms": [
+          "IT Analyst Applications"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.228Z",
+          "source": "Caterpillar official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/ey-analyst-forensics-national-asu-forensics-investigations-compliance-mumbai-1735771.html",
+        "domain": "careers.ey.com",
+        "company": "EY",
+        "salary": "Not Disclosed",
+        "logo": [
+          "E",
+          "#0b6bcb"
+        ],
+        "role": "Analyst - Forensics - National - ASU - Forensics - Investigations & Compliance - Mumbai",
+        "roleTag": "Analyst | Forensics | 0–1 Years",
+        "loc": "Mumbai, Maharashtra, India",
+        "locationFilter": "Mumbai",
+        "batch": "Not specified",
+        "elig": "Bachelor of Commerce, Bachelor of Business Administration or Master of Business Administration; Business Intelligence experience 0–1 years.",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 years",
         "date": "Not specified",
-        "desc": "Hevo Data is hiring an SDE I for its backend engineering team to build SaaS connectors, REST API components and data-pipeline features.",
+        "desc": "EY is recruiting a Forensics Analyst in Mumbai for compliance investigation research, due diligence and reputational-risk services.",
         "resp": [
-          "Implement SaaS connectors and learn application-specific authentication and data-extraction patterns.",
-          "Build and test REST API components under mentorship.",
-          "Debug and optimize data-pipeline code and contribute to feature breakdown and documentation."
+          "Support client due diligence and background checks on individuals or entities.",
+          "Gather and analyze open-source information to identify integrity and reputational risks.",
+          "Prepare research findings supporting investigations and compliance assessments."
         ],
         "skills": [
-          "Object-oriented programming",
-          "REST APIs",
-          "JSON",
-          "Java",
-          "TypeScript",
-          "Python",
-          "Data structures",
-          "Algorithms",
-          "Data pipelines"
+          "Due diligence",
+          "Research",
+          "Compliance",
+          "Business intelligence",
+          "Risk assessment"
         ],
-        "apply": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
+        "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Mumbai-MH-400028/1426376333/",
         "status": "active",
         "verifiedDate": "17 Oct 2026",
-        "sourceName": "Hevo Data official Lever posting",
-        "who": "Candidates with 0–1 years in software development and a B.Tech in Computer Science or equivalent.",
-        "workMode": "On-site",
-        "jobId": "6cbbe304-e065-4711-bf3e-756795d2bc2a",
-        "qualification": "B.Tech in Computer Science or equivalent",
-        "verificationTerms": [
-          "SDE I",
-          "0-1 years",
-          "Bangalore"
-        ],
-        "sourceVerificationMethod": "official-lever-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Hevo Data official Lever posting",
-          "method": "Exact posting is present in the employer's Lever inventory with an active application form"
-        }
-      },
-      {
-        "page": "jobs/swappit-android-application-developer-jaipur.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "Swappit Web & Software Solutions",
-        "salary": "Not Disclosed",
-        "logo": [
-          "S",
-          "#16a34a"
-        ],
-        "role": "Android Application Developer",
-        "roleTag": "Android Application Developer | Early Career",
-        "loc": "Jaipur, Rajasthan, India",
-        "locationFilter": "Jaipur",
-        "batch": "Not specified",
-        "elig": "BS in Computer Science, a similar technical field, or equivalent practical experience.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years stated in qualifications",
-        "date": "Not specified",
-        "desc": "Swappit is hiring an early-career Android Application Developer to design, develop and maintain mobile applications.",
-        "resp": [
-          "Design, develop and maintain Android applications.",
-          "Translate business requirements into technical solutions and collaborate with other developers.",
-          "Build mobile features that connect to backend services and work across device versions and screen sizes."
-        ],
-        "skills": [
-          "Android SDK",
-          "Java",
-          "Object-oriented programming",
-          "REST APIs",
-          "Android Studio",
-          "Offline storage",
-          "SDLC",
-          "Agile",
-          "Software security"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/SwappitWebSoftwareSolutions/743999679880263-android-application-developer",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Swappit official SmartRecruiters posting",
-        "who": "Candidates with a BS in Computer Science or similar background; the qualifications state 0–1 years in iOS or Android development.",
+        "sourceName": "EY official careers",
+        "who": "BCom, BBA or MBA graduates with 0–1 years of relevant Business Intelligence experience.",
         "workMode": "Not specified",
-        "jobId": "743999679880263",
-        "qualification": "BS in Computer Science or similar technical field, or equivalent practical experience",
+        "jobId": "1735771",
         "verificationTerms": [
-          "Android Application Developer",
-          "0-1 years",
-          "Jaipur"
+          "Analyst - Forensics - National - ASU - Forensics - Investigations & Compliance - Mumbai"
         ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
         "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Swappit official SmartRecruiters posting",
-          "method": "Exact posting and active interest/application control confirmed; experience text was preserved as stated"
+          "observedAt": "2026-10-17T07:06:54.228Z",
+          "source": "EY official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
         }
       },
       {
-        "page": "jobs/tudip-graduate-engineering-trainee-fresher-pune.html",
-        "domain": "tudip.com",
-        "company": "Tudip Technologies Pvt. Ltd.",
+        "page": "jobs/wipro-process-associate-207145.html",
+        "domain": "careers.wipro.com",
+        "company": "Wipro",
         "salary": "Not Disclosed",
         "logo": [
-          "T",
-          "#ef4444"
+          "W",
+          "#0b6bcb"
         ],
-        "role": "Graduate Engineering Trainee (Fresher)",
-        "roleTag": "Graduate Engineering Trainee | Fresher",
-        "loc": "Pune, Maharashtra, India",
-        "locationFilter": "Pune",
+        "role": "Process Associate",
+        "roleTag": "Process Associate | Freshers Eligible",
+        "loc": "Kolkata, West Bengal, India",
+        "locationFilter": "Kolkata",
         "batch": "Not specified",
-        "elig": "BE/B.Tech in Computer Science or IT, or MCA.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "date": "Not specified",
-        "desc": "Tudip Technologies is hiring a Graduate Engineering Trainee in Pune to work on application and software development using Java, Spring and Batch.",
-        "resp": [
-          "Program and develop applications and software using Java, Spring and Batch.",
-          "Apply logical and technical problem-solving skills to assigned development work.",
-          "Learn, adapt and contribute within Tudip's engineering environment."
-        ],
-        "skills": [
-          "Java",
-          "Spring",
-          "Batch",
-          "Algorithms",
-          "Data structures",
-          "Logical reasoning",
-          "Technical problem solving"
-        ],
-        "apply": "https://tudip.com/jobs/india/graduate-engineering-trainee-fresher/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Tudip Technologies official careers page",
-        "who": "Freshers with BE/B.Tech in Computer Science or IT, or MCA, and strong algorithms and data-structure fundamentals.",
-        "workMode": "Not specified",
-        "jobId": "graduate-engineering-trainee-fresher",
-        "qualification": "BE/B.Tech in Computer Science or IT, or MCA",
-        "verificationTerms": [
-          "Graduate Engineering Trainee",
-          "Fresher",
-          "Pune"
-        ],
-        "sourceVerificationMethod": "official-employer-job-page-with-active-apply-route",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Tudip official careers page",
-          "method": "Exact job page lists role, Pune location, eligibility and active Apply Now/recruitment portal route"
-        }
-      },
-      {
-        "page": "jobs/markteq-web-software-developer-ahmedabad.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "MarkTeQ",
-        "salary": "Not Disclosed",
-        "logo": [
-          "M",
-          "#0f766e"
-        ],
-        "role": "Web/Software Developer",
-        "roleTag": "Web/Software Developer | 0–6 Months",
-        "loc": "Ahmedabad, Gujarat, India",
-        "locationFilter": "Ahmedabad",
-        "batch": "Not specified",
-        "elig": "Any graduate.",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–6 months",
-        "date": "Not specified",
-        "desc": "MarkTeQ is seeking an early-career Web/Software Developer in Ahmedabad to build software and web solutions using Microsoft and web technologies.",
-        "resp": [
-          "Develop software and web solutions using C#, ASP.NET, MVC and SQL.",
-          "Work with database design and implementation for Windows and web applications.",
-          "Collaborate with the team while also handling assigned work independently."
-        ],
-        "skills": [
-          "C#",
-          "ASP.NET",
-          "MVC",
-          "MS SQL",
-          "Database design",
-          "JavaScript",
-          "PHP",
-          "WordPress",
-          "Communication"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/MarkTeQ/80440901-web-software-developer",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "MarkTeQ official SmartRecruiters posting",
-        "who": "Graduates with 0–6 months of experience and knowledge of C#, ASP.NET, MVC and SQL.",
-        "workMode": "Not specified",
-        "jobId": "80440901",
-        "qualification": "Any graduate",
-        "verificationTerms": [
-          "Web/Software Developer",
-          "0 - 6 Months",
-          "Ahmedabad"
-        ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "MarkTeQ official SmartRecruiters posting and employer inventory",
-          "method": "Exact posting has active interest/application control; Ahmedabad is listed in the employer's current SmartRecruiters inventory"
-        }
-      },
-      {
-        "page": "jobs/playto-labs-business-development-representative-fresher-bengaluru.html",
-        "domain": "jobs.smartrecruiters.com",
-        "company": "Playto Labs",
-        "salary": "Not Disclosed",
-        "logo": [
-          "P",
-          "#ea580c"
-        ],
-        "role": "Business Development Representative (Fresher)",
-        "roleTag": "Business Development Representative | Fresher",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru",
-        "batch": "2024, 2025 & 2026",
-        "elig": "Bachelor's degree in Business, Marketing, Commerce or a related field; 2024, 2025 and 2026 graduates.",
+        "elig": "Undergraduate or graduate degree in business or another discipline; B.Sc IT, MBA and BE candidates are explicitly not eligible.",
         "cat": "nonit",
         "expType": "fresher",
-        "expYears": "No prior experience required",
+        "expYears": "Freshers or experienced applicants; 24/7 shifts",
         "date": "Not specified",
-        "desc": "Playto Labs is hiring a fresher Business Development Representative to support pre-sales activities, prospect research, lead qualification and client demos.",
+        "desc": "Wipro is hiring a Process Associate in Kolkata for customer-support and claims-processing transactions requiring communication and problem-solving skills.",
         "resp": [
-          "Research prospects and qualify leads through calls, email and social media outreach.",
-          "Schedule demos, client meetings and follow-ups, and track opportunities in CRM systems.",
-          "Support proposals, collaborate with product and sales teams, and work toward outreach targets."
+          "Respond to customer requests by phone or email and document cases.",
+          "Record, track and resolve process queries under quality and SLA requirements.",
+          "Support claims processing and update customer-service records."
         ],
         "skills": [
-          "Business development",
-          "Lead generation",
-          "Prospect research",
-          "CRM",
+          "Claims processing",
+          "Customer service",
           "English communication",
-          "Time management",
-          "Client outreach"
+          "Typing",
+          "Problem solving"
         ],
-        "apply": "https://jobs.smartrecruiters.com/PlaytoLabs/744000154718244-business-development-representative-fresher-",
+        "apply": "https://careers.wipro.com/job/Process-Associate/207145-en_US/",
         "status": "active",
         "verifiedDate": "17 Oct 2026",
-        "sourceName": "Playto Labs official SmartRecruiters posting",
-        "who": "Fresh graduates from 2024, 2025 or 2026 with a bachelor's degree in Business, Marketing, Commerce or a related field; no prior experience required.",
+        "sourceName": "Wipro official careers",
+        "who": "Eligible undergraduate or graduate applicants EXCEPT B.Sc IT, MBA and BE; proficient in English and comfortable with shift work.",
         "workMode": "Not specified",
-        "jobId": "744000154718244",
-        "qualification": "Bachelor's degree in Business, Marketing, Commerce or related field",
+        "jobId": "207145",
         "verificationTerms": [
-          "Business Development Representative",
-          "Freshers only",
-          "2024, 2025, and 2026"
+          "Process Associate"
         ],
-        "sourceVerificationMethod": "official-smartrecruiters-exact-posting-with-apply",
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
         "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Playto Labs official SmartRecruiters posting",
-          "method": "Exact posting, fresher-only eligibility and active interest/application control confirmed"
+          "observedAt": "2026-10-17T07:06:54.228Z",
+          "source": "Wipro official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
         }
       },
       {
-        "page": "jobs/sprinto-ai-implementation-intern-bengaluru-remote.html",
-        "domain": "jobs.lever.co",
-        "company": "Sprinto",
+        "page": "jobs/cognizant-analyst-cash-position-reconciliation-00069443878.html",
+        "domain": "careers.cognizant.com",
+        "company": "Cognizant",
         "salary": "Not Disclosed",
         "logo": [
-          "S",
-          "#7c3aed"
+          "C",
+          "#0b6bcb"
         ],
-        "role": "AI Implementation Intern",
-        "roleTag": "AI Implementation Intern",
-        "loc": "Bengaluru, India / Remote",
-        "locationFilter": "Bengaluru",
+        "role": "Analyst : Cash & Position Reconciliation",
+        "roleTag": "Analyst | Finance Operations",
+        "loc": "Hyderabad, Telangana, India",
+        "locationFilter": "Hyderabad",
         "batch": "Not specified",
-        "elig": "Currently pursuing a degree in Computer Science, Engineering, Data Science or a related technical field.",
-        "cat": "internship",
+        "elig": "Bachelor's degree in Finance, Commerce, Accounting, Economics or a related discipline. Listing prefers 1–4 years, but says strong finance freshers may be considered for junior analyst positions.",
+        "cat": "nonit",
         "expType": "fresher",
-        "expYears": "Student internship",
+        "expYears": "1–4 years preferred; strong finance freshers may be considered",
         "date": "Not specified",
-        "desc": "Sprinto is recruiting an AI Implementation Intern to support AI infrastructure, data pipelines, model evaluation and developer tools.",
+        "desc": "Cognizant's Cash & Position Reconciliation Analyst supports daily finance-operations control, exception management and reporting in Hyderabad.",
         "resp": [
-          "Support engineering teams in solving AI-development challenges and improving system usability.",
-          "Help develop and optimize AI infrastructure, including model-training and evaluation pipelines.",
-          "Contribute to centralized AI services such as document parsing, search and LLM integrations."
+          "Reconcile cash entries, account balances and portfolio positions.",
+          "Investigate and document reconciliation breaks and follow up with operations teams.",
+          "Update exception logs, controls and daily MIS or status reports."
         ],
         "skills": [
-          "Python",
-          "Machine learning fundamentals",
-          "Data processing",
-          "TensorFlow or PyTorch",
-          "Software development",
-          "Data engineering",
-          "Cloud services",
-          "LLMs",
-          "Problem solving"
+          "Financial reconciliation",
+          "Excel",
+          "Accounting",
+          "Reporting",
+          "Communication"
         ],
-        "apply": "https://jobs.lever.co/Sprinto/6dfd5f41-57b6-40e8-9eab-ba4083c1a7c4",
+        "apply": "https://careers.cognizant.com/global-en/jobs/00069443878/analyst-cash-position-reconciliation/",
         "status": "active",
         "verifiedDate": "17 Oct 2026",
-        "sourceName": "Sprinto official Lever posting",
-        "who": "Students currently pursuing Computer Science, Engineering, Data Science or a related technical degree.",
-        "workMode": "Remote",
-        "jobId": "6dfd5f41-57b6-40e8-9eab-ba4083c1a7c4",
-        "qualification": "Currently pursuing a related technical degree",
+        "sourceName": "Cognizant official careers",
+        "who": "Finance, Commerce, Accounting or Economics graduates; experienced applicants preferred but academically strong freshers may be considered.",
+        "workMode": "Hybrid",
+        "jobId": "00069443878",
         "verificationTerms": [
-          "AI Implementation Intern",
-          "Bengaluru",
-          "Apply"
+          "Analyst : Cash & Position Reconciliation"
         ],
-        "sourceVerificationMethod": "official-lever-exact-posting-with-apply",
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
         "verificationEvidence": {
-          "observedAt": "2026-10-17T06:06:13.233Z",
-          "source": "Sprinto official Lever posting",
-          "method": "Exact posting is present in the employer's Lever inventory with an active application form"
+          "observedAt": "2026-10-17T07:06:54.229Z",
+          "source": "Cognizant official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/bosch-process-associate-744000149790449.html",
+        "domain": "jobs.smartrecruiters.com",
+        "company": "Bosch",
+        "salary": "Not Disclosed",
+        "logo": [
+          "B",
+          "#0b6bcb"
+        ],
+        "role": "Process Associate",
+        "roleTag": "Process Associate | Multilingual Support",
+        "loc": "India (city not specified on employer listing)",
+        "locationFilter": "India (city not specified on employer listing)",
+        "batch": "Not specified",
+        "elig": "Any graduate degree or equivalent. Official description mentions freshers with strong language proficiency, but the qualifications section also says minimum 1 year experience.",
+        "cat": "nonit",
+        "expType": "not-specified",
+        "expYears": "Conflicting employer text: freshers mentioned and minimum 1 year listed",
+        "date": "Not specified",
+        "desc": "Bosch Global Software Technologies is recruiting a Process Associate for multilingual customer support in a 24/7 shift-based environment.",
+        "resp": [
+          "Handle multilingual customer-support calls and resolve service issues.",
+          "Use English, Hindi and Kannada to support customer communication.",
+          "Use MS Excel and customer-service analytical skills."
+        ],
+        "skills": [
+          "Customer support",
+          "English",
+          "Hindi",
+          "Kannada",
+          "MS Excel"
+        ],
+        "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000149790449",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "Bosch official careers",
+        "who": "Graduates fluent in English, Hindi and Kannada; note that the official page conflicts about whether a minimum one year of experience is mandatory.",
+        "workMode": "Not specified",
+        "jobId": "744000149790449",
+        "verificationTerms": [
+          "Process Associate"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.229Z",
+          "source": "Bosch official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/google-software-engineer-search-122710813273137862.html",
+        "domain": "www.google.com",
+        "company": "Google",
+        "salary": "Not Disclosed",
+        "logo": [
+          "G",
+          "#0b6bcb"
+        ],
+        "role": "Software Engineer, Search",
+        "roleTag": "Software Engineer, Search | Early Career",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru",
+        "batch": "Not specified",
+        "elig": "Bachelor's degree or equivalent practical experience and at least 1 year of experience with software development in Python, C, C++, Java, JavaScript or similar languages.",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Minimum 1 year of software development experience",
+        "date": "Not specified",
+        "desc": "Google is recruiting an early-career Software Engineer for Search in Bengaluru to develop, test and maintain software systems used by global search users.",
+        "resp": [
+          "Write product and system development code.",
+          "Review other developers' code and maintain engineering quality.",
+          "Investigate, debug and resolve software or system issues."
+        ],
+        "skills": [
+          "Software development",
+          "Python",
+          "C++",
+          "Java",
+          "JavaScript",
+          "Debugging"
+        ],
+        "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "Google official careers",
+        "who": "Candidates with a bachelor's degree or equivalent experience and at least one year of software development experience.",
+        "workMode": "Not specified",
+        "jobId": "122710813273137862",
+        "verificationTerms": [
+          "Software Engineer, Search"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.229Z",
+          "source": "Google official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+        }
+      },
+      {
+        "page": "jobs/cloudsek-sde-intern-backend-6222340004.html",
+        "domain": "job-boards.greenhouse.io",
+        "company": "CloudSEK",
+        "salary": "Not Disclosed",
+        "logo": [
+          "C",
+          "#0b6bcb"
+        ],
+        "role": "SDE Intern - Backend",
+        "roleTag": "SDE Intern | Backend | 3 Months",
+        "loc": "Bengaluru, Karnataka, India",
+        "locationFilter": "Bengaluru",
+        "batch": "Not specified",
+        "elig": "Pursuing or recently completed a degree in Computer Science, Software Engineering or related discipline, with Node.js or Go programming and basic backend/database knowledge.",
+        "cat": "internship",
+        "expType": "fresher",
+        "expYears": "Student or recent graduate; 3-month internship",
+        "date": "Not specified",
+        "desc": "CloudSEK is recruiting an SDE Backend Intern in Bengaluru to work on backend systems for cybersecurity products.",
+        "resp": [
+          "Build and maintain backend services in Node.js or Go.",
+          "Collaborate with frontend, data science and product teams to deliver features.",
+          "Debug defects, participate in code reviews and document technical work."
+        ],
+        "skills": [
+          "Node.js",
+          "Go",
+          "Backend development",
+          "APIs",
+          "SQL",
+          "Databases"
+        ],
+        "apply": "https://job-boards.greenhouse.io/cloudsek/jobs/6222340004",
+        "status": "active",
+        "verifiedDate": "17 Oct 2026",
+        "sourceName": "CloudSEK official careers",
+        "who": "Current students or recent graduates in CS, Software Engineering or related fields; able to attend Bengaluru office four days weekly for three months.",
+        "workMode": "Hybrid, Bengaluru office four days a week",
+        "jobId": "6222340004",
+        "verificationTerms": [
+          "SDE Intern - Backend"
+        ],
+        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "verificationEvidence": {
+          "observedAt": "2026-10-17T07:06:54.229Z",
+          "source": "CloudSEK official careers",
+          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
         }
       }
     ]
