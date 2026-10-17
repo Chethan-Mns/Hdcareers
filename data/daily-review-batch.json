@@ -1,7 +1,7 @@
 {
   "batchId": "hd-android-two-job-test-20261017-v2",
   "generatedAt": "2026-10-17T14:40:20.449Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "hd-two-job-20261017-1-7916115",
@@ -109,11 +109,29 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-17T14:48:40.605Z",
+  "updatedAt": "2026-10-17T14:48:52.809Z",
   "ranking": {
     "kind": "manual-two-job-smoke-test",
     "preservedPreviousBatch": "data/testing/archived-submitted-batch-20261017.json",
     "count": 2
   },
-  "notificationRetry": "new-batch-key-for-confirmed-FCM-push"
+  "notificationRetry": "new-batch-key-for-confirmed-FCM-push",
+  "submittedAt": "2026-10-17T14:48:52.809Z",
+  "publication": {
+    "candidateIds": [
+      "hd-two-job-20261017-1-7916115",
+      "hd-two-job-20261017-2-4646670006"
+    ],
+    "companies": [
+      "Glance",
+      "Instawork"
+    ],
+    "urls": [
+      "https://job-boards.greenhouse.io/glance/jobs/7916115",
+      "https://job-boards.greenhouse.io/instawork/jobs/4646670006"
+    ],
+    "requestId": "813c8cfa6562af1e2890f949",
+    "count": 2,
+    "submittedAt": "2026-10-17T14:48:52.809Z"
+  }
 }
