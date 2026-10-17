@@ -239,6 +239,25 @@ export default async function handler(req,res){
         workflow,stages,observedAt:new Date().toISOString(),
         warning:"GitHub workflow matching is approximate. Production page evidence is checked directly on hdcareers.in. Vercel commit identity is not independently verified."});
     }
+    const fromTest=String(req.body?.testInboxId||"")==="two-job-preview-20261017";
+    const testKey="hdadmin:manual-review:v1:"+(process.env.VERCEL_ENV==="preview"?"preview":"production")+":test-two-jobs";
+    let testInbox=null;
+    if(fromTest){
+      const raw=await redis("GET",testKey);
+      if(!raw)return res.status(404).json({error:"Two-job test inbox is not staged."});
+      testInbox=JSON.parse(raw);
+      if(testInbox.id!==req.body.testInboxId||testInbox.status!=="reviewing")
+        return res.status(409).json({error:"This test inbox has already been submitted."});
+      const ids=req.body.candidateIds;
+      if(!Array.isArray(ids)||ids.length<1||ids.length>2||new Set(ids).size!==ids.length)
+        return res.status(400).json({error:"Select one or two test jobs."});
+      const picked=ids.map(id=>testInbox.jobs.find(j=>j.id===id));
+      if(picked.some(j=>!j||j.reviewedStatus!=="live"||!j.reviewedAt||j.status!=="review"))
+        return res.status(409).json({error:"Only manually verified Live test jobs can be published."});
+      if(picked.some(j=>!j.apply?.startsWith("https://")||!j.role||!j.company||!j.desc||!j.elig||!Array.isArray(j.resp)||j.resp.length===0))
+        return res.status(400).json({error:"Selected test jobs lack verified source content."});
+      req.body.jobs=picked.map(j=>({...j,status:"active",manualLiveVerifiedAt:j.reviewedAt,manualLiveVerifiedUrl:j.apply}));
+    }
     const fromReview=Boolean(req.body?.batchId);
     let reviewBatch=null;
     const selectedIds=fromReview?req.body.candidateIds:null;
@@ -278,7 +297,8 @@ export default async function handler(req,res){
 
     if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
 
-    const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):null;
+    const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):
+      fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):null;
     const telegramDeliveryMode=req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
      const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
@@ -286,7 +306,7 @@ export default async function handler(req,res){
     }
 
     await auditMutation(req,"jobs.publish",incoming.map(j=>j.company+" - "+j.role).join("; ").slice(0,150));
-    const lockKey=requestId?"hdreview:dispatch:"+process.env.VERCEL_ENV+":"+reviewBatch.batchId:null;
+    const lockKey=requestId?"hdreview:dispatch:"+process.env.VERCEL_ENV+":"+(fromTest?testInbox.id:reviewBatch.batchId):null;
     if(lockKey){
       const acquired=await redis("SET",lockKey,requestId,"NX","EX",86400);
       if(acquired!=="OK")return res.status(409).json({error:"This review batch has already started publishing. Check the tracker; never resend a pending batch."});
@@ -304,6 +324,14 @@ export default async function handler(req,res){
       throw e;
     }
 
+    if(fromTest){
+      testInbox.status="submitted";
+      testInbox.requestId=requestId;
+      testInbox.submittedAt=new Date().toISOString();
+      testInbox.selectedIds=req.body.candidateIds;
+      try{await redis("SET",testKey,JSON.stringify(testInbox),"EX",7*86400)}
+      catch(e){return res.status(202).json({ok:true,queued:true,requestId,message:"GitHub accepted dispatch, but test status could not be saved. Do not retry; verify delivery manually."})}
+    }
     return res.status(202).json({
       ok:true,
       queued:true,
