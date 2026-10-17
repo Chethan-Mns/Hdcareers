@@ -926,6 +926,24 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
+    # Real HTML job links remain discoverable when the interactive JavaScript UI fails.
+    link_rows = "".join(
+        '<li class="rounded-lg border border-slate-200 p-3">'
+        + '<a class="font-bold text-blue-700 hover:underline" href="/' + esc(job["page"]) + '">'
+        + esc(job["company"]) + ' — ' + esc(job["role"]) + '</a>'
+        + '<p class="text-xs text-slate-500 mt-1">' + esc(job["loc"]) + '</p></li>'
+        for job in active_jobs[:12]
+    )
+    fallback = ('<!-- HD-STATIC-JOBS-START -->\n'
+        '<nav id="jobFallback" aria-label="Latest job links" class="mt-4 rounded-2xl border border-slate-200 bg-white p-5">'
+        '<h3 class="font-bold text-slate-900">Recently listed jobs</h3>'
+        '<p class="text-sm text-slate-500 mt-2">Official-source job summaries on HD Careers. These links also work without interactive search.</p>'
+        '<ul class="mt-4 grid sm:grid-cols-2 gap-3">' + link_rows + '</ul></nav>\n'
+        '<!-- HD-STATIC-JOBS-END -->')
+    pattern = r"<!-- HD-STATIC-JOBS-START -->.*?<!-- HD-STATIC-JOBS-END -->"
+    if not re.search(pattern, updated, flags=re.S):
+        raise SystemExit("Static homepage job link marker is missing")
+    updated = re.sub(pattern, lambda _: fallback, updated, count=1, flags=re.S)
 
     if updated == source:
         return False
