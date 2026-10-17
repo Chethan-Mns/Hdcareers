@@ -22,6 +22,39 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var selectedIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
     var publishedReviewIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
     var publishingProgress by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var twoJobInbox by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var twoJobSelected by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
+    fun reviewTestJob(id:String,decision:String)=run {
+        api.reviewTwoJob(id,decision)
+        twoJobInbox=api.twoJobInbox()
+        if(decision!="live")twoJobSelected=twoJobSelected-id
+        message="Test job marked "+decision+"."
+    }
+    fun selectTestJob(id:String,selected:Boolean) {
+        val staged=twoJobInbox.optJSONObject("staged")
+        if(staged?.optString("status")!="reviewing") { message="Test inbox not open for publishing.";return }
+        val array=staged.optJSONArray("jobs")
+        val job=(0 until (array?.length() ?: 0)).mapNotNull{ array?.optJSONObject(it) }.firstOrNull{it.optString("id")==id}
+        if(job?.optString("reviewedStatus")!="live") { message="Mark the exact job Live before selecting.";return }
+        twoJobSelected=if(selected)twoJobSelected+id else twoJobSelected-id
+    }
+    fun publishTestJobs()=run {
+        check(twoJobSelected.isNotEmpty()) { "Select at least one verified Live test job." }
+        val result=api.publishTwoJobs(twoJobSelected)
+        check(result.optBoolean("queued")) { "GitHub did not accept the publish request." }
+        twoJobInbox=api.twoJobInbox()
+        message="GitHub accepted "+twoJobSelected.size+" test job(s). Website and Telegram delivery are pending independent verification."
+        twoJobSelected=emptySet()
+    }
+    fun refreshTwoJobInboxQuietly() {
+        viewModelScope.launch { runCatching { twoJobInbox=api.twoJobInbox() } }
+    }
+    fun loadTwoJobInbox()=run { twoJobInbox=api.twoJobInbox() }
+    fun stageTwoJobInbox()=run {
+        val result=api.stageTwoJobs()
+        twoJobInbox=api.twoJobInbox()
+        message=if(result.optString("notification")=="accepted_by_fcm") "Two-job review staged; Firebase accepted your notification." else "Two-job review staged, but Firebase notification was not accepted. Check notification settings."
+    }
     val selectedBlockers get()=batch.selectedBlockers(selectedIds,publishedReviewIds)
     val canPublish get()=selectedBlockers.isEmpty()
     var jobs by androidx.compose.runtime.mutableStateOf<List<Job>>(emptyList())
