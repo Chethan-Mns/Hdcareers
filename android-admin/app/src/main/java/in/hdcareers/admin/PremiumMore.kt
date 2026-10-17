@@ -268,7 +268,7 @@ private fun EmptyReport() {
     Text("No measurements available for this period.",fontSize=12.sp,color=Brand.gray)
 }
 @Composable
-private fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
+internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
     val result=vm.checker.optJSONObject("results")
     val list=result?.optJSONArray("items")
     LazyColumn(contentPadding=PaddingValues(16.dp),
@@ -313,15 +313,25 @@ private fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                     SectionHead(Icons.Default.WarningAmber,
                         j.optString("company","Unknown employer"),j.optString("role"),Brand.amber)
                     Text(j.optString("reason"),fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                    Text("Last checked: "+j.optString("checkedAt","Unknown"),fontSize=10.sp,color=Brand.gray)
+                    val link=j.optString("url").ifBlank{j.optString("apply")}
+                    val context=LocalContext.current
+                    if(link.startsWith("https://")) OutlinedButton(onClick={
+                        context.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
+                    },modifier=Modifier.fillMaxWidth()) {
+                        Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
+                        Spacer(Modifier.width(7.dp))
+                        Text("Open official job before deciding")
+                    }
                     val jobId=j.optInt("id",-1)
                     Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                         OutlinedButton(onClick={vm.checkerResolve(jobId,"keep")},
                             enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Keep live",fontSize=11.sp)
+                            Text("Keep (verified)",fontSize=11.sp)
                         }
                         OutlinedButton(onClick={vm.checkerResolve(jobId,"expire")},
                             enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Expire job",fontSize=11.sp)
+                            Text("Confirm expired",fontSize=11.sp)
                         }
                     }
                 }
