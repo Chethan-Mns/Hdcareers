@@ -11,7 +11,7 @@ async function readStaged(){
  const r=await fetch(ROOT+"/contents/"+SOURCE+"?ref=main",{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(8000)});
  if(!r.ok)throw Error("Staged job draft unavailable: "+r.status);
  const file=await r.json();
- const data=JSON.parse(Buffer.from(file.content.replace(/\\n/g,""),"base64").toString());
+ const data=JSON.parse(Buffer.from(file.content.split(String.fromCharCode(10)).join(""),"base64").toString());
  if(!Array.isArray(data.jobs)||data.jobs.length!==2||data.publishAuthorized!==false)throw Error("Invalid staging snapshot");
  return data;
 }
@@ -30,17 +30,17 @@ export default async function handler(req,res){
    const source=async path=>{
     const r=await fetch(ROOT+"/contents/"+path+"?ref=main",{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(8000)});
     if(!r.ok)throw Error("Could not read "+path);
-    const v=await r.json();return JSON.parse(Buffer.from(v.content.replace(/\\n/g,""),"base64").toString());
+    const v=await r.json();return JSON.parse(Buffer.from(v.content.split(String.fromCharCode(10)).join(""),"base64").toString());
    };
    try{
     const [jobs,ledger]=await Promise.all([source("data/jobs.json"),source("data/telegram-deliveries.json")]);
     const stages=await Promise.all(data.jobs.filter(j=>data.selectedIds.includes(j.id)).map(async j=>{
-      const existing=jobs.find(x=>String(x.apply).replace(/\\/$/,"")===String(j.apply).replace(/\\/$/,""));
-      const page=String(existing?.page||"").replace(/^\\//,"");
+      const existing=jobs.find(x=>String(x.apply).replace(new RegExp("/$"),"")===String(j.apply).replace(new RegExp("/$"),""));
+      const page=String(existing?.page||"").replace(new RegExp("^/"),"");
       let website="pending";
       if(existing){
        website="data-committed";
-       if(/^jobs\\/[a-z0-9-]+\\.html$/.test(page)){
+       if(page.startsWith("jobs/")&&page.endsWith(".html")&&!page.includes("..")){
         try{
          const r=await fetch("https://hdcareers.in/"+page,{signal:AbortSignal.timeout(6000),headers:{"Cache-Control":"no-cache"}});
          const html=r.ok?await r.text():"";
