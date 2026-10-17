@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {evidenceScore,reprioritizeBeforeReview} from "../lib/review-ranking.js";
 const candidate=(i,reason,reviewedStatus="unreviewed")=>({
  id:String(i),company:"Employer "+i,role:"Software Engineer",cat:"it",
- verificationReason:reason,reviewedStatus,
+ verificationReason:reason,verificationVerdict:"live",reviewedStatus,
  job:{company:"Employer "+i,loc:"Hyderabad",elig:"Bachelor's degree",desc:"Detailed role and software engineering team information.",resp:["Build tools"],expType:"fresher"}
 });
 test("Exact employer job page with Apply outranks ambiguous Workday shell",()=>{
@@ -17,7 +17,7 @@ test("Move source-supported backup listings ahead of uncertain priority without 
  const batch={batchId:"2026-10-13",status:"reviewing",priority,backup};
  const result=reprioritizeBeforeReview(batch);
  assert.equal(result.changed,true);
- assert.deepEqual(result.batch.priority.map(x=>x.id),backup.map(x=>x.id));
+ assert.deepEqual(result.batch.priority.map(x=>x.id),backup.slice(0,8).map(x=>x.id));
  assert.equal(result.batch.priority[0].reviewedStatus,"unreviewed");
  assert.equal(batch.priority[0].id,"0");
 });
@@ -67,8 +67,8 @@ test("Never recycle a job already in website history, even with a fresh shortlis
  assert.equal(out.changed,true);
  assert.ok(![...out.batch.priority,...out.batch.backup].some(c=>c.id==="0"));
  assert.equal(out.batch.ranking.excludedPreviouslyPublished.length,1);
- assert.equal(out.batch.priority.length,10);
- assert.equal(out.batch.backup.length,9);
+ assert.equal(out.batch.priority.length,8);
+ assert.equal(out.batch.backup.length,10);
 });
 test("Favor owner-priority employers when source evidence and eligibility are equal",()=>{
  const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
@@ -100,4 +100,27 @@ test("Never falsely classify experienced roles as fresher and report unfillable 
  assert.equal(out.batch.ranking.selected.nonIT,0);
  assert.equal(out.batch.ranking.shortfalls.fresherIT,5);
  assert.equal(out.batch.ranking.shortfalls.nonIT,1);
+});
+
+test("No substitution of experienced candidates for missing fresher IT or non-IT quota",()=>{
+ const pool=[
+  ...Array.from({length:3},(_,i)=>ready(i,"it","fresher")),
+  ready(3,"internship","fresher"),
+  ...Array.from({length:16},(_,i)=>ready(i+4,"it","experienced"))
+ ];
+ const out=reprioritizeBeforeReview({priority:pool.slice(0,10),backup:pool.slice(10)});
+ assert.equal(out.batch.priority.length,4);
+ assert.deepEqual(out.batch.ranking.selected,{fresherIT:3,nonIT:0,training:1});
+ assert.deepEqual(out.batch.ranking.shortfalls,{fresherIT:5,nonIT:1,training:0});
+ assert.equal(out.batch.priority.filter(j=>j.job.expType==="experienced").length,0);
+});
+test("Unconfirmed applicants must remain in backup and cannot be counted as Live",()=>{
+ const all=[...Array.from({length:8},(_,i)=>ready(i)),ready(8,"nonit"),ready(9,"internship"),
+  ...Array.from({length:10},(_,i)=>ready(i+10,"it","experienced"))];
+ all[0].verificationVerdict="unconfirmed";
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)});
+ assert.equal(out.batch.ranking.selected.fresherIT,7);
+ assert.equal(out.batch.ranking.shortfalls.fresherIT,1);
+ assert.ok(!out.batch.priority.some(x=>x.id==="0"));
+ assert.ok(out.batch.backup.some(x=>x.id==="0"));
 });
