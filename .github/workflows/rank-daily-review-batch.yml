@@ -6,6 +6,7 @@ on:
       - data/daily-review-batch.json
       - lib/review-ranking.js
       - scripts/reprioritize_review_batch.mjs
+      - scripts/preflight_review_content.py
       - .github/workflows/rank-daily-review-batch.yml
   workflow_dispatch:
 permissions:
@@ -31,6 +32,14 @@ jobs:
         run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
       - name: Validate revised shortlist contract
         run: python3 scripts/validate_daily_review_batch.py data/daily-review-batch.json
+      - name: Source-backed content preflight
+        run: python3 scripts/preflight_review_content.py data/daily-review-batch.json --output /tmp/content-readiness.json
+      - name: Attach review readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-daily-content-readiness
+          path: /tmp/content-readiness.json
+          retention-days: 7
       - name: Safely commit revised shortlist
         run: |
           git diff --check
