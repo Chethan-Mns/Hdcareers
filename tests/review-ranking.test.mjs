@@ -124,3 +124,30 @@ test("Unconfirmed applicants must remain in backup and cannot be counted as Live
  assert.ok(!out.batch.priority.some(x=>x.id==="0"));
  assert.ok(out.batch.backup.some(x=>x.id==="0"));
 });
+
+test("Never rediscover exact employer job URL owner confirmed expired",()=>{
+ const candidates=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ const bad=candidates[1];
+ const out=reprioritizeBeforeReview({priority:candidates.slice(0,10),backup:candidates.slice(10)},{
+  ownerVerdicts:[{company:bad.company,officialUrl:bad.job.apply,manualVerdict:"expired"}]
+ });
+ assert.equal(out.changed,true);
+ assert.ok(!out.batch.priority.concat(out.batch.backup).some(x=>x.id===bad.id));
+ assert.equal(out.batch.ranking.excludedOwnerExpired.length,1);
+});
+test("Cisco generic homepage exception cannot be counted as source Live",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[19]=ready(19,"it","fresher","Cisco");
+ all[19].verificationVerdict="unconfirmed";
+ all[19].verificationReason="Exact requisition route redirects to generic careers homepage";
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)});
+ assert.ok(!out.batch.priority.some(x=>x.company==="Cisco"));
+});
+test("Owner-priority Dell and CGI outrank equally verified small employers",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[18]=ready(18,"it","fresher","Dell Technologies");
+ all[19]=ready(19,"it","fresher","CGI");
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)});
+ assert.ok(out.batch.priority.some(x=>x.company==="Dell Technologies"));
+ assert.ok(out.batch.priority.some(x=>x.company==="CGI"));
+});
