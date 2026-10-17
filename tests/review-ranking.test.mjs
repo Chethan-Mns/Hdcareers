@@ -35,3 +35,69 @@ test("Reject duplicate employers or incomplete batch without altering data",()=>
  assert.equal(reprioritizeBeforeReview({priority,backup}).changed,false);
  assert.equal(reprioritizeBeforeReview({priority,backup:[]}).changed,false);
 });
+
+const ready=(i,cat="it",expType="fresher",name="Employer "+i)=>({
+ id:String(i),company:name,role:cat==="internship"?"Software Engineering Intern":"Software Engineer "+i,
+ verificationReason:"Exact official posting with active application form",verificationVerdict:"live",
+ reviewedStatus:"unreviewed",
+ job:{company:name,cat,expType,jobId:String(i),role:cat==="internship"?"Software Engineering Intern":"Software Engineer "+i,
+  apply:"https://jobs.example.org/"+i,loc:"Bengaluru",elig:"Official degree requirements",
+  desc:"Official full job description for this company and engineering opportunity.",resp:["Build software"]}
+});
+test("Prefer exactly eight verified-fresher IT, one non-IT and one internship when available",()=>{
+ const pool=[
+  ...Array.from({length:8},(_,i)=>ready(i,"it","fresher")),
+  ready(8,"nonit","fresher"),
+  ready(9,"internship","fresher"),
+  ...Array.from({length:10},(_,i)=>ready(i+10,"it","experienced"))
+ ];
+ const batch={priority:pool.slice(10),backup:pool.slice(0,10)};
+ const out=reprioritizeBeforeReview(batch);
+ assert.equal(out.changed,true);
+ assert.deepEqual(out.batch.ranking.selected,{fresherIT:8,nonIT:1,training:1});
+ assert.deepEqual(out.batch.ranking.shortfalls,{fresherIT:0,nonIT:0,training:0});
+ assert.equal(out.batch.priority.length,10);
+ assert.deepEqual(new Set(out.batch.priority.map(x=>x.company)).size,10);
+});
+test("Never recycle a job already in website history, even with a fresh shortlist entry",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i));
+ const original={priority:all.slice(0,10),backup:all.slice(10)};
+ const published=[{company:all[0].company,role:all[0].role,jobId:"0",apply:all[0].job.apply,page:"jobs/old.html"}];
+ const out=reprioritizeBeforeReview(original,{publishedJobs:published});
+ assert.equal(out.changed,true);
+ assert.ok(![...out.batch.priority,...out.batch.backup].some(c=>c.id==="0"));
+ assert.equal(out.batch.ranking.excludedPreviouslyPublished.length,1);
+ assert.equal(out.batch.priority.length,10);
+ assert.equal(out.batch.backup.length,9);
+});
+test("Favor owner-priority employers when source evidence and eligibility are equal",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[19]=ready(19,"it","fresher","Microsoft");
+ const out=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)});
+ assert.ok(out.batch.priority.some(x=>x.company==="Microsoft"));
+});
+test("Recently delivered company is deprioritized when fresh employer alternatives exist",()=>{
+ const all=Array.from({length:20},(_,i)=>ready(i,"it","fresher"));
+ all[0]=ready(0,"it","fresher","EY");
+ all[19]=ready(19,"it","fresher","Microsoft");
+ const now=new Date("2026-10-17T06:00:00Z");
+ const result=reprioritizeBeforeReview({priority:all.slice(0,10),backup:all.slice(10)},{
+  now,
+  publishedJobs:[{page:"jobs/recent.html",company:"EY",role:"Other recent EY role",jobId:"different",apply:"https://example.org/old"}],
+  deliveries:{"@HD_Careers|jobs/recent.html":{status:"delivered",page:"jobs/recent.html",deliveredAt:"2026-10-16T05:00:00Z"}}
+ });
+ assert.ok(!result.batch.priority.some(x=>x.company==="EY"));
+ assert.ok(result.batch.priority.some(x=>x.company==="Microsoft"));
+});
+test("Never falsely classify experienced roles as fresher and report unfillable quotas",()=>{
+ const all=[
+  ...Array.from({length:3},(_,i)=>ready(i,"it","fresher")),
+  ...Array.from({length:2},(_,i)=>ready(i+3,"internship","fresher")),
+  ...Array.from({length:15},(_,i)=>ready(i+5,"it","experienced"))
+ ];
+ const out=reprioritizeBeforeReview({priority:all.slice(10),backup:all.slice(0,10)});
+ assert.equal(out.batch.ranking.selected.fresherIT,3);
+ assert.equal(out.batch.ranking.selected.nonIT,0);
+ assert.equal(out.batch.ranking.shortfalls.fresherIT,5);
+ assert.equal(out.batch.ranking.shortfalls.nonIT,1);
+});
