@@ -385,7 +385,7 @@
       "company": "AMG TECHNOLOGY",
       "role": "Entry Level Computer Science Graduate",
       "apply": "https://jobs.smartrecruiters.com/AMGTECHNOLOGY/84257404-entry-level-computer-science-graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact SmartRecruiters opening has I'm Interested and describes Indian offshore presence but job location and current candidate intake need checking.",
       "job": {
@@ -401,9 +401,13 @@
         "desc": "Entry-level Python scripting, development and QA automation.",
         "elig": "Refer to the exact employer listing",
         "resp": [],
-        "verifiedDate": "Not yet verified",
-        "jobId": "84257404"
-      }
+        "verifiedDate": "17 Oct 2026",
+        "jobId": "84257404",
+        "manualLiveVerifiedAt": "2026-10-17T11:04:15.234Z",
+        "browserVerifiedAt": "2026-10-17T11:04:15.234Z"
+      },
+      "reviewedAt": "2026-10-17T11:04:15.234Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "manual-scan-20261017-17-73f1600d-4c26-4963-af94-1ea4e17b8bae",
@@ -506,7 +510,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-17T06:56:30.734Z",
+  "updatedAt": "2026-10-17T11:04:15.252Z",
   "ranking": {
     "method": "deduped_exact_official_jobs_manual_research",
     "reusedPublishedJobs": 0,
