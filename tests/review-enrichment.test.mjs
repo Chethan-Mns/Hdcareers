@@ -36,13 +36,14 @@ test("Never overwrite already verified employer descriptions",()=>{
  const result=enrichReviewedCandidate(x,extracted());
  assert.equal(result.candidate.job.desc,"Confirmed original description");
 });
-test("Mismatch, missing manual review and expired jobs fail closed",()=>{
+test("Naming variations recover data, while unreviewed and wrong URLs remain blocked",()=>{
  const j=candidate();j.reviewedStatus="expired";
  assert.throws(()=>enrichReviewedCandidate(j,extracted()),/Verify/);
- const j2=candidate(),x2=extracted();x2.company="Other Employer";
- assert.throws(()=>enrichReviewedCandidate(j2,x2),/Employer identity/);
+ const j2=candidate(),x2=extracted();x2.company="Different display name";x2.role="Software Engineer Intern";x2.jobId="alternate-label";
+ const recovered=enrichReviewedCandidate(j2,x2);
+ assert.equal(recovered.complete,true);
+ assert.equal(recovered.candidate.job.company,j2.job.company);
+ assert.equal(recovered.candidate.job.role,j2.job.role);
  const x3=extracted();x3.sourceUrl="https://careers.example.com/job/other";
  assert.throws(()=>enrichReviewedCandidate(candidate(),x3),/exact reviewed/);
- const x4=extracted();x4.role="Finance Associate";
- assert.throws(()=>enrichReviewedCandidate(candidate(),x4),/Job title/);
 });
