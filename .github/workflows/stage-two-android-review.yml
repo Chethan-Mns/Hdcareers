@@ -7,45 +7,86 @@ on:
       - .github/workflows/stage-two-android-review.yml
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: two-android-review-stage
   cancel-in-progress: false
 jobs:
   stage:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
-      - name: Stage review-only candidates and ask Firebase to notify owner
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Stage review-only jobs and capture truthful delivery receipt
+        id: stage
         env:
           PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          code=000
+          state="not_staged"
+          reason="endpoint_unavailable"
+          notice="not_accepted"
+          count=0
+          accepted=0
+          if [ "${#PUSH_SECRET}" -lt 32 ]; then
+            reason="github_secret_missing"
+          else
+            for attempt in $(seq 1 12); do
+              code=$(curl --max-time 25 -sS -o /tmp/hd-stage-response -w '%{http_code}' \
+                -H "Content-Type: application/json" \
+                -H "x-hd-push-key: $PUSH_SECRET" \
+                --data '{"action":"stage_from_github"}' \
+                "https://hdcareers.in/api/admin/two-job-review") || code=000
+              echo "Stage attempt $attempt: HTTP $code"
+              if [ "$code" = "200" ] || [ "$code" = "201" ]; then
+                if jq -e '.ok == true and .count == 2' /tmp/hd-stage-response >/dev/null 2>&1; then
+                  state="staged"
+                  reason="none"
+                  count=2
+                  notice=$(jq -r '.notification // "not_accepted"' /tmp/hd-stage-response)
+                  accepted=$(jq -r '.push.accepted // 0' /tmp/hd-stage-response)
+                  break
+                fi
+              fi
+              if [ "$code" = "409" ]; then
+                reason="protected_previous_submission"
+                break
+              fi
+              sleep 15
+            done
+          fi
+          mkdir -p data/testing
+          jq -n --arg time "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+             --arg source "$GITHUB_SHA" --arg status "$state" \
+             --arg reason "$reason" --arg http "$code" \
+             --arg notification "$notice" --argjson count "$count" \
+             --argjson fcmAccepted "$accepted" \
+             '{checkedAt:$time,sourceCommit:$source,stagingStatus:$status,reason:$reason,apiHttpCode:$http,jobCount:$count,fcmRequestStatus:$notification,fcmAcceptedDevices:$fcmAccepted,note:"FCM accepted means requested, not proof of display on phone."}' \
+             > data/testing/two-job-stage-receipt.json
+          cat data/testing/two-job-stage-receipt.json
+          echo "stage_state=$state" >> "$GITHUB_OUTPUT"
+          echo "notice_state=$notice" >> "$GITHUB_OUTPUT"
+      - name: Commit staging result for owner visibility
         run: |
           set -euo pipefail
-          if [ "${#PUSH_SECRET}" -lt 32 ]; then
-            echo "::error::ANDROID_PUSH_DISPATCH_SECRET is unavailable. Two-job inbox was NOT staged."
-            exit 1
-          fi
-          body='{"action":"stage_from_github"}'
-          for attempt in $(seq 1 12); do
-            code=$(curl --max-time 30 -sS -o /tmp/hd-stage-response -w '%{http_code}' \
-              -H "Content-Type: application/json" \
-              -H "x-hd-push-key: $PUSH_SECRET" \
-              --data "$body" \
-              "https://hdcareers.in/api/admin/two-job-review") || code=000
-            echo "Staging attempt $attempt HTTP $code"
-            if [ "$code" = 201 ] || [ "$code" = 200 ]; then
-              cat /tmp/hd-stage-response
-              jq -e '.ok == true and .count == 2' /tmp/hd-stage-response
-              jq -e '.notification == "accepted_by_fcm"' /tmp/hd-stage-response || \
-                echo "::warning::Jobs staged, but Firebase did not accept notification for an owner device."
-              exit 0
-            fi
-            if [ "$code" = 401 ] || [ "$code" = 403 ] || [ "$code" = 409 ]; then
-              echo "::error::Staging blocked by authorization or an already submitted inbox."
-              sed -E 's/"[^"]*token[^"]*"/"REDACTED"/g' /tmp/hd-stage-response || true
-              exit 1
-            fi
-            sleep 15
-          done
-          echo "::error::Production endpoint did not confirm inbox staging."
+          git config user.name "HD Careers Review Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/testing/two-job-stage-receipt.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Record actual two-job Android inbox staging result"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Fail if actual inbox staging did not happen
+        if: steps.stage.outputs.stage_state != 'staged'
+        run: |
+          echo "::error::Android two-job inbox was not confirmed staged. See exact receipt on main."
           exit 1
+      - name: Flag pending Firebase confirmation
+        if: steps.stage.outputs.stage_state == 'staged' && steps.stage.outputs.notice_state != 'accepted_by_fcm'
+        run: |
+          echo "::warning::Two jobs staged; FCM did not confirm accepting a notification to a registered owner device."
