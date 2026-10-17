@@ -107,6 +107,28 @@ fun PremiumAdminRoot(
                 }
             }
         }
+        if(vm.loggedIn && vm.updateAvailable!=null) {
+            val update=vm.updateAvailable!!
+            AlertDialog(
+                onDismissRequest={vm.updateAvailable=null},
+                icon={Icon(Icons.Default.SystemUpdate,null,tint=Brand.blue)},
+                title={Text("HD Careers update available",fontWeight=FontWeight.Bold)},
+                text={
+                    Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                        Text("Version "+update.name+" is ready to install.")
+                        Text(update.notes,fontSize=13.sp,color=Brand.gray)
+                        Text("Android will ask you to confirm the installation.",
+                            fontSize=12.sp,color=Brand.gray)
+                    }
+                },
+                confirmButton={
+                    Button(onClick=vm::installUpdate,enabled=!vm.updateInstalling) {
+                        Text(if(vm.updateInstalling)"Downloading…" else "Update now")
+                    }
+                },
+                dismissButton={TextButton(onClick={vm.updateAvailable=null}){Text("Later")}}
+            )
+        }
         if(vm.message.isNotBlank()) AlertDialog(
             onDismissRequest={vm.message=""},
             title={Text("HD Careers Admin",fontWeight=FontWeight.Bold)},
