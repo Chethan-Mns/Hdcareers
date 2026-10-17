@@ -26,7 +26,21 @@ export default async function handler(req,res){
    const raw=await redis("GET",key);
    return res.status(200).json({ok:true,staged:raw?JSON.parse(raw):null});
   }
-  if(req.body?.action!=="stage")return res.status(400).json({error:"Only stage is supported; publishing is deliberately disabled on this route"});
+  if(req.body?.action==="review"){
+   const raw=await redis("GET",key);
+   if(!raw)return res.status(404).json({error:"Stage the two jobs before reviewing."});
+   const data=JSON.parse(raw);
+   if(data.status!=="reviewing")return res.status(409).json({error:"The test inbox was already submitted."});
+   const job=data.jobs.find(x=>x.id===req.body.jobId);
+   if(!job)return res.status(404).json({error:"Job not in this test inbox"});
+   if(!["live","expired","unsure"].includes(req.body.decision))return res.status(400).json({error:"Invalid review decision"});
+   job.reviewedStatus=req.body.decision;
+   job.reviewedAt=new Date().toISOString();
+   await redis("SET",key,JSON.stringify(data),"EX",7*86400);
+   await auditMutation(req,"two_job_inbox.review",job.id+":"+job.reviewedStatus);
+   return res.status(200).json({ok:true,staged:data});
+  }
+  if(req.body?.action!=="stage")return res.status(400).json({error:"Unsupported test inbox action"});
   const origin=String(req.headers.origin||"");
   if(origin&&new URL(origin).host!==String(req.headers["x-forwarded-host"]||req.headers.host))return res.status(403).json({error:"Invalid origin"});
   const staged=await readStaged();
