@@ -7,6 +7,10 @@ const safeLoad=(path,fallback)=>{
  catch(e){if(e.code==="ENOENT")return fallback;throw e;}
 };
 const batch=safeLoad(file,null);
+if(String(batch?.batchId||"").includes("owner-requested-new-20")){
+ console.log("Owner-requested exact 20-company shortlist: preserve 10 Priority + 10 Backup, do not auto-reorder or truncate.");
+ process.exit(0);
+}
 const publishedJobs=safeLoad("data/jobs.json",[]);
 const deliveries=safeLoad("data/telegram-deliveries.json",{});
 const evidence=safeLoad("data/verification-benchmark-2026-10-17.json",{items:[]});
