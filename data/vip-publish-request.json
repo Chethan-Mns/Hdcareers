@@ -3,449 +3,113 @@
   "client_payload": {
     "jobs": [
       {
-        "page": "jobs/hcltech-campus-beginner-170239.html",
-        "domain": "careers.hcltech.com",
-        "company": "HCLTech",
-        "salary": "Not Disclosed",
-        "logo": [
-          "H",
-          "#0b6bcb"
-        ],
-        "role": "Campus-Beginner",
-        "roleTag": "Campus-Beginner | Desk Side Services",
-        "loc": "Madurai, Tamil Nadu, India",
-        "locationFilter": "Madurai",
-        "batch": "Not specified",
-        "elig": "Public job page does not specify a degree or experience minimum; applicants should confirm eligibility with HCLTech.",
-        "cat": "it",
-        "expType": "not-specified",
-        "expYears": "Not stated on official job page",
-        "date": "Not specified",
-        "desc": "HCLTech's Campus-Beginner Desk Side Services role provides end-user hardware, software and IT-infrastructure support in Madurai.",
-        "resp": [
-          "Provide first- and second-level support for user devices and applications.",
-          "Troubleshoot laptops, desktops, printers, peripherals and Microsoft 365 tools.",
-          "Manage user accounts, password resets and software configuration."
-        ],
-        "skills": [
-          "IT support",
-          "Hardware troubleshooting",
-          "Microsoft 365",
-          "Service desk"
-        ],
-        "apply": "https://careers.hcltech.com/job/Campus-Beginner/170239-en_US/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "HCLTech official careers",
-        "who": "Applicants seeking a campus-beginner IT-support role who meet HCLTech's current eligibility conditions.",
-        "workMode": "Not specified",
-        "jobId": "170239",
-        "verificationTerms": [
-          "Campus-Beginner"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.228Z",
-          "source": "HCLTech official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/ntt-data-qa-engineer-394503.html",
-        "domain": "careers-inc.nttdata.com",
-        "company": "NTT DATA",
-        "salary": "Not Disclosed",
-        "logo": [
-          "ND",
-          "#0b6bcb"
-        ],
-        "role": "QA Engineer",
-        "roleTag": "QA Engineer | Data Platform",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru",
-        "batch": "Not specified",
-        "elig": "Official listing calls for end-to-end test experience, SQL validation, data testing and test automation; no degree or years threshold is specified.",
-        "cat": "it",
-        "expType": "not-specified",
-        "expYears": "Not specified in employer posting; testing experience required",
-        "date": "Not specified",
-        "desc": "NTT DATA is recruiting a QA Engineer (Test Engineer, Data Platform) for its Databricks environment in Bengaluru.",
-        "resp": [
-          "Create and execute functional, regression and integration test plans.",
-          "Validate ETL and ELT data pipelines and perform reconciliation tests.",
-          "Automate testing activities and track and manage defects."
-        ],
-        "skills": [
-          "QA",
-          "SQL",
-          "Data testing",
-          "ETL/ELT",
-          "Databricks",
-          "Test automation"
-        ],
-        "apply": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "NTT DATA official careers",
-        "who": "QA and data-testing applicants with the testing, SQL and data-pipeline skills specified by NTT DATA.",
-        "workMode": "Not specified",
-        "jobId": "394503",
-        "verificationTerms": [
-          "QA Engineer"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.228Z",
-          "source": "NTT DATA official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/caterpillar-it-analyst-applications-r0000377078.html",
-        "domain": "careers.caterpillar.com",
-        "company": "Caterpillar",
-        "salary": "Not Disclosed",
-        "logo": [
-          "C",
-          "#0b6bcb"
-        ],
-        "role": "IT Analyst Applications",
-        "roleTag": "IT Analyst Applications | Data & Integration",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru",
-        "batch": "Not specified",
-        "elig": "Official listing seeks Power BI, data engineering, SQL/Python, system integration, analytics and business-analysis capabilities; specific degree and experience years not provided.",
-        "cat": "it",
-        "expType": "not-specified",
-        "expYears": "Not stated; role description calls for demonstrated enterprise experience",
-        "date": "Not specified",
-        "desc": "Caterpillar is seeking an IT Analyst Applications supporting procurement data, analytics dashboards and enterprise application integrations in Bengaluru.",
-        "resp": [
-          "Translate strategic procurement requirements into technical solutions and dashboards.",
-          "Design and maintain Power BI data models and ETL/ELT integrations.",
-          "Work with business partners on data quality, requirements and application-support tasks."
-        ],
-        "skills": [
-          "Power BI",
-          "SQL",
-          "Python",
-          "ETL",
-          "Business analysis",
-          "Systems integration"
-        ],
-        "apply": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Caterpillar official careers",
-        "who": "Applicants with business-analysis, Power BI and integration capabilities who meet Caterpillar's posted role requirements.",
-        "workMode": "On-site, five days a week",
-        "jobId": "R0000377078",
-        "verificationTerms": [
-          "IT Analyst Applications"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.228Z",
-          "source": "Caterpillar official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/ey-analyst-forensics-national-asu-forensics-investigations-compliance-mumbai-1735771.html",
-        "domain": "careers.ey.com",
-        "company": "EY",
-        "salary": "Not Disclosed",
-        "logo": [
-          "E",
-          "#0b6bcb"
-        ],
-        "role": "Analyst - Forensics - National - ASU - Forensics - Investigations & Compliance - Mumbai",
-        "roleTag": "Analyst | Forensics | 0–1 Years",
-        "loc": "Mumbai, Maharashtra, India",
-        "locationFilter": "Mumbai",
-        "batch": "Not specified",
-        "elig": "Bachelor of Commerce, Bachelor of Business Administration or Master of Business Administration; Business Intelligence experience 0–1 years.",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "date": "Not specified",
-        "desc": "EY is recruiting a Forensics Analyst in Mumbai for compliance investigation research, due diligence and reputational-risk services.",
-        "resp": [
-          "Support client due diligence and background checks on individuals or entities.",
-          "Gather and analyze open-source information to identify integrity and reputational risks.",
-          "Prepare research findings supporting investigations and compliance assessments."
-        ],
-        "skills": [
-          "Due diligence",
-          "Research",
-          "Compliance",
-          "Business intelligence",
-          "Risk assessment"
-        ],
-        "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Mumbai-MH-400028/1426376333/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "EY official careers",
-        "who": "BCom, BBA or MBA graduates with 0–1 years of relevant Business Intelligence experience.",
-        "workMode": "Not specified",
-        "jobId": "1735771",
-        "verificationTerms": [
-          "Analyst - Forensics - National - ASU - Forensics - Investigations & Compliance - Mumbai"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.228Z",
-          "source": "EY official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/wipro-process-associate-207145.html",
-        "domain": "careers.wipro.com",
-        "company": "Wipro",
-        "salary": "Not Disclosed",
-        "logo": [
-          "W",
-          "#0b6bcb"
-        ],
-        "role": "Process Associate",
-        "roleTag": "Process Associate | Freshers Eligible",
-        "loc": "Kolkata, West Bengal, India",
-        "locationFilter": "Kolkata",
-        "batch": "Not specified",
-        "elig": "Undergraduate or graduate degree in business or another discipline; B.Sc IT, MBA and BE candidates are explicitly not eligible.",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Freshers or experienced applicants; 24/7 shifts",
-        "date": "Not specified",
-        "desc": "Wipro is hiring a Process Associate in Kolkata for customer-support and claims-processing transactions requiring communication and problem-solving skills.",
-        "resp": [
-          "Respond to customer requests by phone or email and document cases.",
-          "Record, track and resolve process queries under quality and SLA requirements.",
-          "Support claims processing and update customer-service records."
-        ],
-        "skills": [
-          "Claims processing",
-          "Customer service",
-          "English communication",
-          "Typing",
-          "Problem solving"
-        ],
-        "apply": "https://careers.wipro.com/job/Process-Associate/207145-en_US/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Wipro official careers",
-        "who": "Eligible undergraduate or graduate applicants EXCEPT B.Sc IT, MBA and BE; proficient in English and comfortable with shift work.",
-        "workMode": "Not specified",
-        "jobId": "207145",
-        "verificationTerms": [
-          "Process Associate"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.228Z",
-          "source": "Wipro official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/cognizant-analyst-cash-position-reconciliation-00069443878.html",
-        "domain": "careers.cognizant.com",
-        "company": "Cognizant",
-        "salary": "Not Disclosed",
-        "logo": [
-          "C",
-          "#0b6bcb"
-        ],
-        "role": "Analyst : Cash & Position Reconciliation",
-        "roleTag": "Analyst | Finance Operations",
-        "loc": "Hyderabad, Telangana, India",
-        "locationFilter": "Hyderabad",
-        "batch": "Not specified",
-        "elig": "Bachelor's degree in Finance, Commerce, Accounting, Economics or a related discipline. Listing prefers 1–4 years, but says strong finance freshers may be considered for junior analyst positions.",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "1–4 years preferred; strong finance freshers may be considered",
-        "date": "Not specified",
-        "desc": "Cognizant's Cash & Position Reconciliation Analyst supports daily finance-operations control, exception management and reporting in Hyderabad.",
-        "resp": [
-          "Reconcile cash entries, account balances and portfolio positions.",
-          "Investigate and document reconciliation breaks and follow up with operations teams.",
-          "Update exception logs, controls and daily MIS or status reports."
-        ],
-        "skills": [
-          "Financial reconciliation",
-          "Excel",
-          "Accounting",
-          "Reporting",
-          "Communication"
-        ],
-        "apply": "https://careers.cognizant.com/global-en/jobs/00069443878/analyst-cash-position-reconciliation/",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Cognizant official careers",
-        "who": "Finance, Commerce, Accounting or Economics graduates; experienced applicants preferred but academically strong freshers may be considered.",
-        "workMode": "Hybrid",
-        "jobId": "00069443878",
-        "verificationTerms": [
-          "Analyst : Cash & Position Reconciliation"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.229Z",
-          "source": "Cognizant official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/bosch-process-associate-744000149790449.html",
+        "page": "jobs/ergomed-associate-software-engineer-european-hours-744000154090889.html",
         "domain": "jobs.smartrecruiters.com",
-        "company": "Bosch",
+        "company": "Ergomed",
         "salary": "Not Disclosed",
         "logo": [
-          "B",
-          "#0b6bcb"
+          "ER",
+          "#223d69"
         ],
-        "role": "Process Associate",
-        "roleTag": "Process Associate | Multilingual Support",
-        "loc": "India (city not specified on employer listing)",
-        "locationFilter": "India (city not specified on employer listing)",
+        "role": "Associate Software Engineer - European Hours",
+        "roleTag": "Associate Software Engineer | Recent Graduates",
+        "loc": "Location not specified by employer; CET/GMT work hours",
+        "locationFilter": "Not specified",
         "batch": "Not specified",
-        "elig": "Any graduate degree or equivalent. Official description mentions freshers with strong language proficiency, but the qualifications section also says minimum 1 year experience.",
-        "cat": "nonit",
-        "expType": "not-specified",
-        "expYears": "Conflicting employer text: freshers mentioned and minimum 1 year listed",
-        "date": "Not specified",
-        "desc": "Bosch Global Software Technologies is recruiting a Process Associate for multilingual customer support in a 24/7 shift-based environment.",
-        "resp": [
-          "Handle multilingual customer-support calls and resolve service issues.",
-          "Use English, Hindi and Kannada to support customer communication.",
-          "Use MS Excel and customer-service analytical skills."
-        ],
-        "skills": [
-          "Customer support",
-          "English",
-          "Hindi",
-          "Kannada",
-          "MS Excel"
-        ],
-        "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000149790449",
-        "status": "active",
-        "verifiedDate": "17 Oct 2026",
-        "sourceName": "Bosch official careers",
-        "who": "Graduates fluent in English, Hindi and Kannada; note that the official page conflicts about whether a minimum one year of experience is mandatory.",
-        "workMode": "Not specified",
-        "jobId": "744000149790449",
-        "verificationTerms": [
-          "Process Associate"
-        ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
-        "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.229Z",
-          "source": "Bosch official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
-        }
-      },
-      {
-        "page": "jobs/google-software-engineer-search-122710813273137862.html",
-        "domain": "www.google.com",
-        "company": "Google",
-        "salary": "Not Disclosed",
-        "logo": [
-          "G",
-          "#0b6bcb"
-        ],
-        "role": "Software Engineer, Search",
-        "roleTag": "Software Engineer, Search | Early Career",
-        "loc": "Bengaluru, Karnataka, India",
-        "locationFilter": "Bengaluru",
-        "batch": "Not specified",
-        "elig": "Bachelor's degree or equivalent practical experience and at least 1 year of experience with software development in Python, C, C++, Java, JavaScript or similar languages.",
+        "elig": "Bachelor's degree, diploma, or equivalent experience in Computer Science, Software Engineering or a related field; demonstrable full-stack C# .NET/ASP.NET and JavaScript knowledge.",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Minimum 1 year of software development experience",
+        "expYears": "Recent CS graduates considered; 1–2 years experience preferred",
         "date": "Not specified",
-        "desc": "Google is recruiting an early-career Software Engineer for Search in Bengaluru to develop, test and maintain software systems used by global search users.",
+        "desc": "Ergomed is recruiting an Associate Software Engineer for its Systems Engineering team. The role supports full-stack software used in pharmaceutical research services. The official posting requires CET/GMT business-hour availability and does not clearly state the job's work location.",
         "resp": [
-          "Write product and system development code.",
-          "Review other developers' code and maintain engineering quality.",
-          "Investigate, debug and resolve software or system issues."
+          "Develop, test and maintain internal applications and services used by the Systems Engineering team.",
+          "Work with project managers and business partners on feature development, troubleshooting and debugging.",
+          "Write maintainable code with tests and documentation, and provide ongoing technical support."
         ],
         "skills": [
-          "Software development",
-          "Python",
-          "C++",
-          "Java",
+          "C#",
+          ".NET",
+          "ASP.NET MVC",
+          "Razor",
           "JavaScript",
-          "Debugging"
+          "HTML",
+          "CSS",
+          "Git",
+          "SQL preferred"
         ],
-        "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+        "apply": "https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours",
         "status": "active",
         "verifiedDate": "17 Oct 2026",
-        "sourceName": "Google official careers",
-        "who": "Candidates with a bachelor's degree or equivalent experience and at least one year of software development experience.",
+        "sourceName": "Ergomed official SmartRecruiters posting",
+        "who": "Recent Computer Science or Software Engineering graduates with practical C#/.NET full-stack development skills; 1–2 years preferred, CET/GMT hours required.",
         "workMode": "Not specified",
-        "jobId": "122710813273137862",
+        "jobId": "744000154090889",
         "verificationTerms": [
-          "Software Engineer, Search"
+          "Associate Software Engineer",
+          "European Hours"
         ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "sourceVerificationMethod": "Exact official SmartRecruiters job and public ATS posting; publisher must independently verify Active.",
         "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.229Z",
-          "source": "Google official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+          "observedAt": "2026-10-17T07:18:38.135Z",
+          "source": "Ergomed SmartRecruiters",
+          "method": "Exact posting displays role, qualifications, responsibilities and I'm interested application control."
         }
       },
       {
-        "page": "jobs/cloudsek-sde-intern-backend-6222340004.html",
+        "page": "jobs/skild-ai-robotics-software-engineer-bengaluru-4136373008.html",
         "domain": "job-boards.greenhouse.io",
-        "company": "CloudSEK",
-        "salary": "Not Disclosed",
+        "company": "Skild AI",
+        "salary": "India salary not specified",
         "logo": [
-          "C",
-          "#0b6bcb"
+          "SK",
+          "#222a55"
         ],
-        "role": "SDE Intern - Backend",
-        "roleTag": "SDE Intern | Backend | 3 Months",
-        "loc": "Bengaluru, Karnataka, India",
+        "role": "Robotics Software Engineer",
+        "roleTag": "Robotics Software Engineer | Graduates Considered",
+        "loc": "Bengaluru, Karnataka, India (also US locations)",
         "locationFilter": "Bengaluru",
         "batch": "Not specified",
-        "elig": "Pursuing or recently completed a degree in Computer Science, Software Engineering or related discipline, with Node.js or Go programming and basic backend/database knowledge.",
-        "cat": "internship",
+        "elig": "BS, MS or higher degree in CS, Robotics, Engineering, or equivalent practical experience; solid C++/Python, robotics systems and familiarity with ROS/ROS2, perception, SLAM or manipulation.",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "Student or recent graduate; 3-month internship",
+        "expYears": "New graduates may apply; advanced robotics expertise strongly preferred",
         "date": "Not specified",
-        "desc": "CloudSEK is recruiting an SDE Backend Intern in Bengaluru to work on backend systems for cybersecurity products.",
+        "desc": "Skild AI is hiring Robotics Software Engineers in Bengaluru, Pittsburgh and San Mateo to build intelligent robotic software. The listing considers new graduates but expects proficiency in robotic systems, navigation, manipulation or perception. The USD salary range in the source is not represented as an India salary.",
         "resp": [
-          "Build and maintain backend services in Node.js or Go.",
-          "Collaborate with frontend, data science and product teams to deliver features.",
-          "Debug defects, participate in code reviews and document technical work."
+          "Design and implement robotics software for navigation, planning, controls, SLAM, perception and manipulation.",
+          "Build production-grade C++/Python robotic applications and collaborate on machine-learning integration.",
+          "Test, deploy, monitor and improve robotic solutions for performance and reliability."
         ],
         "skills": [
-          "Node.js",
-          "Go",
-          "Backend development",
-          "APIs",
-          "SQL",
-          "Databases"
+          "C++",
+          "Python",
+          "ROS",
+          "ROS2",
+          "SLAM",
+          "Perception",
+          "Robotics",
+          "Motion planning",
+          "Machine learning"
         ],
-        "apply": "https://job-boards.greenhouse.io/cloudsek/jobs/6222340004",
+        "apply": "https://job-boards.greenhouse.io/skildai-careers/jobs/4136373008",
         "status": "active",
         "verifiedDate": "17 Oct 2026",
-        "sourceName": "CloudSEK official careers",
-        "who": "Current students or recent graduates in CS, Software Engineering or related fields; able to attend Bengaluru office four days weekly for three months.",
-        "workMode": "Hybrid, Bengaluru office four days a week",
-        "jobId": "6222340004",
+        "sourceName": "Skild AI official Greenhouse job posting",
+        "who": "New graduates and experienced candidates with strong coding, robotics or related engineering project experience; Bengaluru is among eligible offices.",
+        "workMode": "Not specified",
+        "jobId": "4136373008",
         "verificationTerms": [
-          "SDE Intern - Backend"
+          "Robotics Software Engineer"
         ],
-        "sourceVerificationMethod": "Official employer exact-job posting checked; independently rechecked by publishing workflow",
+        "sourceVerificationMethod": "Exact official Greenhouse application form and public posting; publisher must independently verify Active.",
         "verificationEvidence": {
-          "observedAt": "2026-10-17T07:06:54.229Z",
-          "source": "CloudSEK official careers",
-          "method": "Official job listing matched exact ID and current source details; user selected for publication on 17 Oct 2026"
+          "observedAt": "2026-10-17T07:18:38.135Z",
+          "source": "Skild AI Greenhouse",
+          "method": "Exact Bengaluru-inclusive role and full online application form visible."
         }
       }
-    ]
+    ],
+    "telegramDeliveryMode": "hourly"
   }
 }
