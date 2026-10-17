@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HD Careers · Admin v2 Preview</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--ink:#102139;--navy:#0a1630;--blue:#3165f5;--royal:#345de1;--muted:#7b8ba2;--bg:#f5f7fc;--border:#e8edf6;--green:#159c77;--amber:#d99128;--red:#d64d63;--violet:#7757df;--round:18px;--shadow:0 12px 36px rgba(23,46,94,.045)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--bg)}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}.app{display:flex;min-height:100vh}.sidebar{width:246px;flex:0 0 246px;background:#0b1935;color:#f3f7ff;display:flex;flex-direction:column;padding:28px 16px 20px;position:sticky;top:0;height:100vh;z-index:5}.brand{display:flex;align-items:center;gap:11px;padding:0 12px 28px}.brand img{width:39px;height:39px;object-fit:contain;border-radius:9px;background:white;padding:3px}.brand .main-brand{font-weight:800;letter-spacing:.4px;font-size:15px}.brand .sub-brand{font-size:10px;color:#8ea7d2;margin-top:3px;letter-spacing:1.6px;font-weight:800}.nav-label{font-size:10px;letter-spacing:1.8px;font-weight:800;color:#6380af;margin:9px 15px 11px}.nav{display:flex;flex-direction:column;gap:5px}.navbtn{display:flex;gap:12px;align-items:center;border:0;border-radius:12px;padding:13px 14px;text-align:left;background:transparent;color:#9db0d1;font-size:13px;font-weight:700}.navbtn svg{width:19px;height:19px}.navbtn.active,.navbtn:hover{background:#25395e;color:#fff}.navbtn.active{box-shadow:inset 3px 0 0 #729bff}.navbtn b{margin-left:auto;background:#db5468;border-radius:20px;padding:2px 6px;font-size:10px;color:#fff}.sidebar-tip{margin:auto 7px 0;border:1px solid #2a4266;background:linear-gradient(135deg,#142b53,#11213e);border-radius:15px;padding:15px}.sidebar-tip strong{font-size:12px}.sidebar-tip p{font-size:11px;color:#a6b8d2;line-height:1.7}.sidebar-tip span{font-size:10px;color:#9abef6}.main{flex:1;min-width:0}.topbar{height:77px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 36px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:4;gap:15px}.breadcrumb{font-size:12px;font-weight:800;color:#5f708c;white-space:nowrap}.top-actions{display:flex;align-items:center;gap:10px}.refresh{background:#f4f7ff;border:1px solid #e5ebfb;color:#3f577c}.iconbtn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;height:36px;padding:0 12px;gap:6px;font-size:12px;font-weight:800}.avatar{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:#102e61;color:#fff;border-radius:11px;font-size:12px;font-weight:800}.mode{border:1px solid #dce5fb;background:#f5f8ff;border-radius:10px;display:flex;gap:2px;padding:3px}.mode button{border:0;background:transparent;color:#8192a9;padding:7px 10px;border-radius:7px;font-size:11px;font-weight:800;white-space:nowrap}.mode button.on{color:#194cbe;background:#fff;box-shadow:0 1px 6px #cedaf1}.content{max-width:1380px;padding:31px 34px 65px;margin:auto}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:var(--royal);text-transform:uppercase}.heading{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-1.6px;font-size:34px;line-height:1.2;margin:6px 0 8px}.subtitle{font-size:13px;color:#77859b;line-height:1.6;margin:0 0 24px}.split{display:flex;gap:20px;align-items:stretch}.card{border:1px solid var(--border);background:#fff;border-radius:var(--round);box-shadow:var(--shadow);padding:21px;min-width:0}.grow{flex:1}.w320{width:345px;flex:0 0 345px}.highlight{background:linear-gradient(115deg,#0e264d 0%,#154388 65%,#234e9d 100%);color:#fff;min-height:210px;padding:28px;position:relative;overflow:hidden}.highlight:after{content:'';position:absolute;width:290px;height:290px;right:-80px;top:-130px;border:50px solid #ffffff0c;border-radius:50%}.highlight h2{font-family:Manrope;font-size:25px;letter-spacing:-.9px;margin:9px 0}.highlight p{font-size:13px;max-width:440px;line-height:1.6;color:#bdd0f0}.btn{border:1px solid transparent;background:var(--blue);color:white;font-weight:800;font-size:12px;padding:11px 15px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.btn:hover{filter:brightness(.95)}.btn.light{background:white;color:#18478b}.btn.outline{background:#fff;border-color:#dce4f0;color:#365378}.btn.danger{background:#fff3f4;border-color:#f8d9de;color:#b43e54}.btn:disabled{opacity:.48;cursor:not-allowed}.buttons{display:flex;gap:9px;flex-wrap:wrap}.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 9px;font-size:10px;letter-spacing:.2px;font-weight:800;white-space:nowrap;background:#edf3fc;color:#4e6b99}.tag.good{background:#e7f8f1;color:#128864}.tag.warn{background:#fff5e5;color:#bc7b22}.tag.bad{background:#ffeaed;color:#c14457}.tag.purple{background:#f1edff;color:#7259d4}.tag.dark{background:#162e55;color:#e9f1ff}.dot{width:6px;height:6px;border-radius:50%;background:currentColor}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:20px 0}.stat{padding:19px 19px 17px}.stat-head{display:flex;align-items:center;justify-content:space-between;color:#70829d;font-size:11px;font-weight:700}.stat .value{font-family:Manrope;font-size:30px;font-weight:800;letter-spacing:-1px;margin:8px 0 3px}.stat .desc{font-size:11px;color:#8c9aaf}.tile-icon{border-radius:11px;height:32px;width:32px;display:grid;place-items:center;font-size:17px;background:#f0f5ff}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:3px 0 14px}.section-title h3{font-size:16px;font-weight:800;margin:0;letter-spacing:-.25px;font-family:Manrope}.section-title p{margin:4px 0 0;color:#8090a8;font-size:11px}.textbtn{border:0;background:transparent;color:#3566c8;font-size:11px;font-weight:800}.line{height:1px;background:var(--border);margin:17px 0}.steps{margin:0;padding:0;list-style:none}.step{display:flex;gap:13px;position:relative;padding:0 0 18px}.step:not(:last-child):before{content:'';width:1px;background:#e0e7f2;position:absolute;top:26px;bottom:0;left:12px}.step:last-child{padding-bottom:0}.step-icon{display:grid;place-items:center;background:#f0f4fc;border:1px solid #e1e8f5;width:25px;height:25px;flex:0 0 25px;border-radius:50%;font-weight:800;font-size:11px;color:#889dbd;z-index:1}.step.done .step-icon{background:#e0f8ee;border-color:#d0eedd;color:#108e68}.step.active .step-icon{background:#e9eeff;color:var(--blue);border-color:#bfd1fc}.step.failed .step-icon{background:#ffeeef;color:#ba4356;border-color:#f9cbcf}.step-copy{display:flex;flex:1;align-items:baseline;justify-content:space-between;gap:8px;padding-top:3px}.step-name{font-size:12px;font-weight:800}.step-meta{font-size:10px;color:#8895a8;white-space:nowrap}.jobrow{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #f0f3f8}.jobrow:last-child{border:0;padding-bottom:0}.mark{width:41px;height:41px;border-radius:12px;background:linear-gradient(140deg,#e9efff,#f9fbff);color:#335d9e;display:grid;place-items:center;font-size:12px;font-weight:800;flex:0 0 41px}.mark.violet{background:#f1ebff;color:#775cbe}.mark.green{background:#eaf7f1;color:#118669}.job-text{flex:1;min-width:0}.company{font-size:12px;font-weight:800;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.role{font-size:11px;color:#8290a5;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;margin-top:3px}.meta{font-size:10px;color:#9da8b7;margin-top:4px}.rowactions{display:flex;align-items:center;gap:6px}.pillnav{display:flex;gap:6px;border-bottom:1px solid #e8edf6;margin:0 0 17px;padding:0 0 12px}.pillnav button{border:1px solid transparent;border-radius:9px;background:transparent;color:#7285a1;padding:10px 15px;font-size:12px;font-weight:800}.pillnav button.active{color:var(--royal);background:#edf3ff;border-color:#e1eafb}.two{display:grid;grid-template-columns:1.45fr 1fr;gap:20px}.muted{color:#8593a9;font-size:11px;line-height:1.6}.tiny{color:#97a5b8;font-size:10px}.progress{height:7px;background:#e8eef9;overflow:hidden;border-radius:20px}.progress>span{display:block;background:linear-gradient(90deg,#4174ef,#72b6ee);height:100%;transition:width .4s}.banner{border:1px solid #d9e5fb;background:#f4f8ff;padding:12px 15px;border-radius:12px;display:flex;align-items:center;gap:9px;font-size:11px;line-height:1.6;color:#42638b;margin-bottom:17px}.banner.warn{background:#fff9ed;border-color:#f7e9cb;color:#a47c35}.banner.good{background:#f0fcf5;border-color:#d4efdf;color:#257e55}.listjob{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--border);border-radius:14px;margin:10px 0;background:#fff}.listjob input{width:17px;height:17px;accent-color:var(--blue)}.selectjob{flex:1;min-width:0}.smicon{width:18px;height:18px}.search{border:1px solid var(--border);border-radius:10px;padding:11px 13px;background:#fff;outline:0;width:100%;color:#1e3354;font-size:12px}.search:focus{border-color:#9cb5f9}.empty{text-align:center;color:#8796a9;padding:34px;font-size:12px}.rightnote{border:1px dashed #b7c9e5;background:#f8fbff;padding:15px;border-radius:12px;color:#47668e;font-size:12px;line-height:1.8}.notice{display:flex;align-items:flex-start;gap:9px;color:#8c97a7;font-size:11px;line-height:1.7;margin-top:13px}.mini-table{width:100%;border-collapse:collapse;font-size:11px}.mini-table th{text-align:left;color:#8d9cb1;font-weight:700;padding:9px 8px;border-bottom:1px solid var(--border)}.mini-table td{padding:11px 8px;border-bottom:1px solid #f0f3f8}.mini-table tr:last-child td{border-bottom:0}.truncate{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.footer{color:#9faec1;font-size:11px;padding:22px 0}.modalshade{position:fixed;inset:0;background:#04152b9c;z-index:20;display:grid;place-items:center;padding:20px}.modal{max-width:440px;width:100%;background:#fff;border-radius:22px;padding:28px;box-shadow:0 30px 100px #05182b50}.modal h3{margin:0 0 9px;font-family:Manrope}.modal p{color:#70809a;line-height:1.7;font-size:12px}.modal label{font-size:11px;display:block;margin:14px 0 6px;font-weight:800}.modal .search{width:100%}.toast{position:fixed;bottom:25px;right:25px;z-index:30;background:#112c53;color:#fff;padding:14px 20px;border-radius:12px;font-size:12px;box-shadow:0 12px 40px #132d5555;max-width:390px}.spinner{display:inline-block;width:11px;height:11px;border:2px solid #ccd8f5;border-top-color:#3765dd;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.shimmer{animation:breathe 1.3s infinite alternate}@keyframes breathe{to{opacity:.4}}.mobile-brand{display:none}
+
+.analytics-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}.range{display:inline-flex;gap:4px;padding:4px;border-radius:11px;background:#edf2fa}.range button{border:0;border-radius:9px;color:#7587a3;font-size:11px;font-weight:800;padding:9px 14px;background:transparent}.range button.active{background:#fff;color:#315dd1;box-shadow:0 2px 9px #25477b16}.analytics-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}.analytic-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.graph{display:block;width:100%;min-height:210px}.graph text{font:11px 'DM Sans',sans-serif;fill:#98a9c0}.graph .axis{stroke:#e8eef8;stroke-width:1}.graph .trend{fill:none;stroke:#3e6bf2;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.graph .area{fill:#386eef;opacity:.08}.graph .graphdot{fill:#fff;stroke:#3369eb;stroke-width:2}.bar-track{height:9px;border-radius:99px;background:#edf2fa;overflow:hidden}.bar-track span{height:100%;display:block;background:linear-gradient(90deg,#4272ed,#7fa9f3);border-radius:99px}.bar-item{margin:13px 0}.bar-name{display:flex;justify-content:space-between;gap:12px;margin-bottom:7px;color:#526783;font-size:11px}.bar-name b{color:#1a3355}.donut{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;margin:12px auto;position:relative}.donut:before{content:'';position:absolute;inset:28px;background:#fff;border-radius:50%}.donut-center{z-index:1;text-align:center}.donut-center strong{display:block;font-family:Manrope;font-size:21px}.donut-center span{color:#92a0b1;font-size:10px}.legend{display:flex;flex-direction:column;gap:11px}.legend-row{display:flex;justify-content:space-between;gap:9px;font-size:11px;color:#60728c}.legend-row .disc{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px}.analytics-control{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.analytics-control select{background:#f5f8fe;border:1px solid #dfe8f6;color:#31528b;border-radius:9px;padding:9px 11px;font-size:11px;font-weight:800}.analytic-foot{margin-top:14px;border-top:1px solid #e9eef7;padding-top:13px;font-size:11px;color:#8799af;line-height:1.6}
+@media(max-width:1100px){.analytics-grid{grid-template-columns:1fr}.analytic-panels{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.analytic-panels{grid-template-columns:1fr}.analytics-head{align-items:flex-start}.range{width:100%;justify-content:space-between}.range button{flex:1}}
+@media(max-width:1150px){.sidebar{width:205px;flex-basis:205px}.content{padding:26px 22px}.topbar{padding:0 22px}.stats{gap:10px}.stat{padding:14px}.w320{width:300px;flex-basis:300px}}
+@media(max-width:870px){.sidebar{display:none}.mobile-brand{display:inline;font-weight:900;color:#203b6a;letter-spacing:.4px}.topbar{height:65px}.topbar .breadcrumb{display:none}.content{padding:22px 17px 95px}.heading{font-size:28px}.split,.two{display:block}.w320{width:auto;margin-top:17px}.two>*+*{margin-top:18px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat .value{font-size:27px}.mobilebar{position:fixed;display:flex;bottom:0;left:0;right:0;z-index:10;background:#fff;border-top:1px solid var(--border);padding:7px 5px max(7px,env(safe-area-inset-bottom));justify-content:space-around;box-shadow:0 -4px 24px #203c5f09}.mobilebar button{border:0;background:transparent;color:#8495ac;display:grid;gap:3px;place-items:center;font-size:10px;font-weight:800;min-width:65px;padding:7px 5px;border-radius:10px}.mobilebar button.active{background:#ecf2ff;color:var(--royal)}.mobilebar svg{width:21px;height:21px}.toast{bottom:83px;left:15px;right:15px}.mode button{padding:6px 7px}}
+@media(min-width:871px){.mobilebar{display:none}}@media(max-width:430px){.topbar{padding:0 12px}.top-actions{gap:5px}.avatar{display:none}.iconbtn{padding:0 8px}.mode button{font-size:10px}.content{padding:20px 13px 95px}.card{padding:17px}.highlight{padding:24px}.stats .stat{padding:13px}.listjob{gap:8px;padding:11px}.jobrow .tag{max-width:100px;overflow:hidden;text-overflow:ellipsis}.rowactions{flex-wrap:wrap;justify-content:flex-end}.section-title h3{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+ <div class="brand"><img src="/assets/hd-careers-logo.png" alt="" onerror="this.style.display='none'"><div><div class="main-brand">HD CAREERS</div><div class="sub-brand">ADMIN STUDIO · V2</div></div></div>
+ <div class="nav-label">WORKSPACE</div><nav class="nav" id="sideNav"></nav>
+ <div class="sidebar-tip"><span>✦ OPERATIONAL CLARITY</span><p><strong>Manage only what matters.</strong><br>Live publishing receipts, hourly Telegram, and exceptions—without manual queue chaos.</p><span>PRIVATE PREVIEW · NO PRODUCTION WRITES</span></div>
+</aside>
+<section class="main">
+ <div class="topbar"><span class="mobile-brand">HD CAREERS <span style="color:#597ce3">/ ADMIN</span></span><span class="breadcrumb" id="crumb">Workspace / Today</span><div class="top-actions">
+ <div class="mode"><button id="demoSwitch" data-act="demo" class="on">✦ Demo</button><button id="liveSwitch" data-act="live">● Live</button></div>
+ <button class="iconbtn refresh" data-act="refresh" title="Refresh live data">↻ <span id="syncLabel">Sync</span></button><div class="avatar">HD</div></div></div>
+ <div id="page" class="content"></div>
+</section>
+</div><div class="mobilebar" id="mobileNav"></div><div id="overlay"></div><div id="toastZone"></div>
+<script>
+(function(){
+'use strict';
+var tabs=[{id:'today',name:'Today',icon:'home'},{id:'publish',name:'Publish',icon:'send'},{id:'expiry',name:'Expiry',icon:'shield'},{id:'jobs',name:'Jobs',icon:'briefcase'},{id:'analytics',name:'Analytics',icon:'chart'}];
+var symbols={
+ home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
+ send:'<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+ briefcase:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>',
+ chart:'<path d="M3 3v18h18"/><path d="m7 15 4-4 3 2 6-7"/>'
+};
+function ico(n){return '<svg class="smicon" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">'+symbols[n]+'</svg>'}
+var demoJobs=[
+ {id:171,company:'Skild AI',role:'Robotics Software Engineer',location:'Bengaluru · New grads considered',status:'active',site:'live',telegram:'pending',page:'jobs/skild-ai-robotics-software-engineer-bengaluru-4136373008.html',apply:'https://job-boards.greenhouse.io/skildai-careers/jobs/4136373008',category:'it',verified:true},
+ {id:170,company:'Ergomed',role:'Associate Software Engineer',location:'European hours · Location unconfirmed',status:'active',site:'live',telegram:'pending',page:'jobs/ergomed-associate-software-engineer-european-hours-744000154090889.html',apply:'https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours',category:'it',verified:true},
+ {id:169,company:'CloudSEK',role:'SDE Intern — Backend',location:'Bengaluru · Internship',status:'active',site:'live',telegram:'delivered',messageId:513,page:'jobs/cloudsek-sde-intern-backend-6222340004.html',category:'internship',verified:true},
+ {id:168,company:'Google',role:'Software Engineer, Search',location:'Bengaluru · 1+ year',status:'active',site:'live',telegram:'delivered',messageId:512,page:'jobs/google-software-engineer-search-122710813273137862.html',category:'it',verified:true},
+ {id:167,company:'Bosch',role:'Process Associate',location:'India · Eligibility needs review',status:'active',site:'live',telegram:'delivered',messageId:511,page:'jobs/bosch-process-associate-744000149790449.html',category:'nonit',verified:true},
+ {id:166,company:'Cognizant',role:'Cash & Position Reconciliation Analyst',location:'Hyderabad · Finance',status:'active',site:'live',telegram:'delivered',messageId:510,page:'jobs/cognizant-analyst-cash-position-reconciliation-00069443878.html',category:'nonit',verified:true},
+ {id:165,company:'Wipro',role:'Process Associate',location:'Kolkata · Graduate',status:'active',site:'live',telegram:'delivered',messageId:509,page:'jobs/wipro-process-associate-207145.html',category:'nonit',verified:true},
+ {id:164,company:'EY',role:'Analyst — Forensics',location:'Mumbai · 0–1 year',status:'active',site:'live',telegram:'delivered',messageId:508,page:'jobs/ey-analyst-forensics-national-asu-forensics-investigations-compliance-mumbai-1735771.html',category:'nonit',verified:true},
+ {id:163,company:'Caterpillar',role:'IT Analyst Applications',location:'Bengaluru · Requirements review',status:'active',site:'live',telegram:'delivered',messageId:507,page:'jobs/caterpillar-it-analyst-applications-r0000377078.html',category:'it',verified:true},
+ {id:162,company:'NTT DATA',role:'QA Engineer',location:'Bengaluru · IT',status:'active',site:'live',telegram:'delivered',messageId:506,page:'jobs/ntt-data-qa-engineer-394503.html',category:'it',verified:true},
+ {id:161,company:'HCLTech',role:'Campus Beginner',location:'Madurai · IT Support',status:'active',site:'live',telegram:'delivered',messageId:505,page:'jobs/hcltech-campus-beginner-170239.html',category:'it',verified:true}
+];
+var demoCandidates=[
+ {id:'d1',company:'Deloitte',role:'Analyst — Technology Operations',location:'Bengaluru · 0–2 yrs',verified:false,reason:'Exact requisition apply route not confirmed',category:'it'},
+ {id:'d2',company:'Accenture',role:'Application Development Associate',location:'Hyderabad · Fresher',verified:true,category:'it'},
+ {id:'d3',company:'Infosys',role:'Systems Engineer',location:'Pune · Graduate',verified:true,category:'it'},
+ {id:'d4',company:'EY',role:'Associate Analyst — Tax',location:'Mumbai · Graduate',verified:true,category:'nonit'},
+ {id:'d5',company:'CloudSEK',role:'Backend Intern',location:'Bengaluru · Internship',verified:false,reason:'Example: existing job already published',category:'internship'},
+ {id:'d6',company:'TCS',role:'Support Engineer',location:'Chennai · Fresher',verified:true,category:'it'}
+];
+var demoExceptions=[
+ {id:'x1',company:'Deloitte',role:'Analyst — Financial Risk',reason:'Exact job page loaded but active application route not confirmed.',state:'review'},
+ {id:'x2',company:'HCLTech',role:'Campus Beginner — .NET Developer',reason:'Source showed role but final application context could not be confirmed.',state:'review'},
+ {id:'x3',company:'Amazon',role:'SDE II',reason:'HTTP 404 in automated request. Not sufficient to declare expired.',state:'review'}
+];
+var state={tab:'today',mode:'demo',loading:false,live:null,liveError:'',lastSync:'',search:'',filter:'All',selected:new Set(['d2','d3','d4']),candidates:demoCandidates.map(x=>Object.assign({},x)),exceptions:demoExceptions.map(x=>Object.assign({},x)),sim:{active:false,step:-1,attempt:1,conflict:false,log:[]},analytics:null,analyticsDays:7,analyticsError:'',analyticsLoading:false,analyticsAt:0,analyticMetric:'users',showLogin:false};
+var stages=['Official job source verified','Publish request accepted','Git commit & conflict recovery','Website deployment confirmed','Telegram hourly queue','Telegram delivered'];
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function initials(v){return String(v||'HD').split(/\s+/).slice(0,2).map(x=>x.charAt(0)).join('').toUpperCase()}
+function tag(v,t){return '<span class="tag '+(t||'')+'"><span class="dot"></span>'+esc(v)+'</span>'}
+function fmtDate(d){if(!d)return 'Not yet';try{return new Date(d).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true})+' IST'}catch{return 'Unknown'}}
+function textOr(s,f){return s?s:f}
+function rJobs(){return state.mode==='live'?(state.live&&state.live.jobs||[]):demoJobs}
+function rExpiry(){return state.mode==='live'?(state.live&&state.live.expiryExceptions||[]):state.exceptions.filter(x=>x.state==='review')}
+function delivered(j){return j.telegram==='delivered'}
+function nav(){var d=document.getElementById('sideNav'),m=document.getElementById('mobileNav');d.innerHTML=tabs.map(t=>'<button class="navbtn '+(t.id===state.tab?'active':'')+'" data-tab="'+t.id+'">'+ico(t.icon)+esc(t.name)+(t.id==='expiry'&&rExpiry().length?'<b>'+rExpiry().length+'</b>':'')+'</button>').join('');
+m.innerHTML=tabs.map(t=>'<button class="'+(t.id===state.tab?'active':'')+'" data-tab="'+t.id+'">'+ico(t.icon)+esc(t.name)+'</button>').join('');
+document.getElementById('crumb').textContent='Workspace / '+tabs.find(t=>t.id===state.tab).name;
+document.getElementById('demoSwitch').classList.toggle('on',state.mode==='demo');
+document.getElementById('liveSwitch').classList.toggle('on',state.mode==='live');
+document.getElementById('syncLabel').textContent=state.loading||state.analyticsLoading?'Loading':state.mode==='live'?'Refresh':'Sync'}
+function sourceBanner(){
+if(state.mode==='demo')return '<div class="banner warn"><strong>✦ INTERACTIVE DEMO</strong> This screen demonstrates the proposed behavior. No publishing, job expiry or Telegram send takes place.</div>';
+if(state.live)return '<div class="banner good"><strong>● READ-ONLY LIVE</strong> Loaded from production main and HD Careers. Auto refreshes every 20 seconds. Last checked '+esc(fmtDate(state.live.checkedAt))+'. No write actions.</div>';
+return '<div class="banner warn"><strong>○ LIVE FEED NOT CONNECTED</strong> '+esc(state.liveError||'Sign into the secure preview to view actual workflow data.')+' <button class="textbtn" data-act="login">Connect account</button></div>'}
+function latestRun(){return state.live?.runs?.publish?.[0]||null}
+function stageStatus(i){
+if(state.mode==='demo'){
+ const k=state.sim.step;
+ if(k<0)return i===0?'done':i===3?'done':i===4?'active':'todo';
+ if(i===2&&state.sim.conflict&&k===2)return 'failed';
+ return i<k?'done':i===k?'active':'todo';
+}
+const run=latestRun(),steps=state.live?.runs?.publishSteps||[];
+if(i===0)return run?'done':'todo';
+if(i===1)return run?'done':'todo';
+if(i===2){var c=steps.filter(x=>/Commit directly to main|Add selected jobs/i.test(x.name));if(c.some(x=>x.conclusion==='failure'))return 'failed';if(c.some(x=>x.conclusion==='success'))return 'done';return run?.status==='in_progress'?'active':'todo'}
+if(i===3)return rJobs().length&&rJobs()[0].site==='live'?'done':'todo';
+if(i===4)return state.live?.queue?.some(x=>x.status==='pending'||x.status==='sending')?'active':'done';
+if(i===5)return rJobs()[0]?.telegram==='delivered'?'done':'todo';
+return 'todo'}
+function pipelineCard(){
+const run=latestRun();var log=state.sim.log.slice(-1)[0];
+return '<div class="card grow"><div class="section-title"><div><h3>Publishing pipeline</h3><p>Actual status by stage, not an optimistic “submitted” toast</p></div>'+tag(state.mode==='demo'?(state.sim.active?'SIMULATING':'READY TO TEST'):(run?.status||'NO RUN'),state.mode==='demo'?'purple':'')+'</div>'+
+'<ol class="steps">'+stages.map((n,i)=>{var status=stageStatus(i);var sub=state.mode==='demo'&&i===2?(state.sim.conflict?'Conflicted — safe retry '+state.sim.attempt+'/8':'Compare-and-swap · up to 8 retries'):i===4?'At most one new message per hour':i===5?'Recorded message ID required':i===3?'Exact production job-page check':i===0?'ATS ID + application route':'Owner approved · idempotent request';return '<li class="step '+status+'"><div class="step-icon">'+(status==='done'?'✓':status==='failed'?'!':status==='active'?'●':i+1)+'</div><div class="step-copy"><div><div class="step-name">'+n+'</div><div class="tiny">'+esc(sub)+'</div></div><span class="step-meta">'+(status==='active'?'<span class="spinner"></span> Working':status==='done'?'Done':status==='failed'?'Retrying':'Waiting')+'</span></div></li>'}).join('')+'</ol><div class="line"></div>'+
+(state.mode==='demo'?'<div class="buttons"><button class="btn" data-act="simulate">▶ Test publish flow</button><button class="btn outline" data-act="conflict">↻ Simulate commit conflict</button></div>'+(log?'<p class="muted">'+esc(log)+'</p>':''):
+'<div class="buttons"><button class="btn outline" data-act="refresh">↻ Refresh actual steps</button>'+(run?.url?'<a class="btn outline" target="_blank" rel="noopener noreferrer" href="'+esc(run.url)+'">GitHub run ↗</a>':'')+'</div>')+
+'</div>'}
+function queueCard(){let q=state.mode==='live'?(state.live?.queue||[]):[{page:'Ergomed',status:'pending'},{page:'Skild AI',status:'pending'}];
+return '<div class="card w320"><div class="section-title"><div><h3>Telegram hourly queue</h3><p>Verified delivery. Never double-post.</p></div>'+tag(q.filter(x=>x.status==='pending').length+' waiting','warn')+'</div>'+
+q.slice(0,5).map((x,i)=>'<div class="jobrow"><div class="mark '+(i?'violet':'')+'">'+(i?'02':'01')+'</div><div class="job-text"><div class="company">'+esc(x.page.includes('ergomed')||x.page==='Ergomed'?'Ergomed':x.page.includes('skild')||x.page==='Skild AI'?'Skild AI':x.page.split('/').pop().slice(0,22))+'</div><div class="role">'+esc(x.status==='pending'?'One message in upcoming hourly slot':x.status==='delivered'?'Delivered #'+x.messageId:'Awaiting attention')+'</div></div>'+tag(x.status,x.status==='delivered'?'good':x.status==='pending'?'warn':'bad')+'</div>').join('')+
+'<div class="line"></div><div class="rightnote">⏱ Minimum <strong>60 minutes</strong> between confirmed messages. A failed or uncertain send is held, never automatically retried.</div></div>'}
+function statCard(label,val,desc,icon){return '<div class="card stat"><div class="stat-head">'+esc(label)+'<span class="tile-icon">'+icon+'</span></div><div class="value">'+esc(val)+'</div><div class="desc">'+esc(desc)+'</div></div>'}
+function today(){
+const j=rJobs(),ex=rExpiry(),cnt=state.live?.counts||{};const ready=state.mode==='demo'?state.candidates.filter(x=>x.verified).length:state.live?.daily?.priority||0;
+return '<div class="eyebrow">OPERATIONS / OCTOBER 2026</div><h1 class="heading">Good afternoon. You’re in control.</h1><p class="subtitle">One operational view for discovery, deployment, expiry and Telegram delivery. Less tapping, more publishing confidence.</p>'+
+sourceBanner()+
+'<div class="split"><div class="card highlight grow"><div class="eyebrow" style="color:#89bbff">DAILY COMMAND CENTER</div><h2>From discovery to delivery.<br>Without the guesswork.</h2><p>Deloitte-first, 87 priority employers, fresher-friendly jobs. Verify once, publish eligible positions in one go, and track each stage.</p><div class="buttons"><button class="btn light" data-tab="publish">Explore publishing →</button><button class="btn outline" data-tab="analytics">View audience analytics ↗</button><button class="btn outline" data-tab="expiry">View exceptions</button></div></div><div class="card w320"><div class="section-title"><h3>Today’s runbook</h3>'+tag('9:00 AM IST','purple')+'</div><div class="jobrow"><span class="tile-icon">①</span><div class="job-text"><div class="company">Discover up to 20 jobs</div><div class="role">10 priority · 10 backup</div></div></div><div class="jobrow"><span class="tile-icon">②</span><div class="job-text"><div class="company">Check exact applications</div><div class="role">Duplicates & expirations excluded</div></div></div><div class="jobrow"><span class="tile-icon">③</span><div class="job-text"><div class="company">Publish ready jobs</div><div class="role">8 IT · 1 non-IT · 1 internship target</div></div></div><div class="jobrow"><span class="tile-icon">④</span><div class="job-text"><div class="company">Hourly Telegram delivery</div><div class="role">Real message IDs & audit trail</div></div></div></div></div>'+
+'<div class="stats">'+statCard('Website jobs',state.mode==='live'?cnt.published||0:j.length,'Records in HD Careers','▦')+statCard('Telegram delivered',state.mode==='live'?cnt.confirmedDeliveries||0:j.filter(delivered).length,'Verified message receipts','↗')+statCard('Hourly pending',state.mode==='live'?cnt.pendingHourly||0:2,'Awaiting next eligible slot','◷')+statCard('Needs your attention',ex.length,'Availability exceptions','⚑')+'</div>'+
+'<div class="split">'+pipelineCard()+queueCard()+'</div><div class="notice">🔒 Production is unchanged by preview interactions. '+(state.mode==='demo'?'Demo statuses and commit conflicts are simulated.':'Live stages are read-only and sourced from production records; application availability is checked separately.')+'</div>'}
+function candidateCard(c){
+return '<div class="listjob"><input type="checkbox" aria-label="Select '+esc(c.company)+'" data-check="'+esc(c.id)+'" '+(state.selected.has(c.id)?'checked ':'')+(!c.verified?'disabled ':'')+'/>'+
+'<div class="mark">'+esc(initials(c.company))+'</div><div class="selectjob"><div class="company">'+esc(c.company)+' <span style="font-weight:500;color:#99a5b7">/ '+esc(c.category==='nonit'?'Non-IT':c.category==='internship'?'Internship':'Fresher IT')+'</span></div><div class="role">'+esc(c.role)+'</div><div class="meta">'+esc(c.location)+'</div></div><div>'+tag(c.verified?'Verified Live':'Hold',c.verified?'good':'warn')+'</div></div>'+(c.reason?'<div class="muted" style="padding-left:12px">↳ '+esc(c.reason)+'</div>':'')}
+function publish(){
+const verified=state.candidates.filter(x=>x.verified),held=state.candidates.filter(x=>!x.verified);const chosen=state.candidates.filter(x=>state.selected.has(x.id)&&x.verified);
+return '<div class="eyebrow">ONE-GO PUBLISHING</div><h1 class="heading">Your publishing desk.</h1><p class="subtitle">Check evidence—not every job. Source-valid, never-before-published positions move into Ready. Others stay on hold.</p>'+sourceBanner()+
+'<div class="stats">'+statCard('Demo candidates',state.candidates.length,'Illustrative candidates','▦')+statCard('Verified ready',verified.length,'Eligible to select','✓')+statCard('Selected',chosen.length,'One-go request','↗')+statCard('Held for review',held.length,'Not automatically posted','!')+'</div>'+
+'<div class="two"><div class="card"><div class="section-title"><div><h3>Publish Ready</h3><p>Approve eligible jobs in one action; no duplicate company or requisition</p></div>'+tag(chosen.length+' selected','good')+'</div>'+
+(verified.length?verified.map(candidateCard).join(''):'<div class="empty">No verified jobs to publish.</div>')+
+'<div class="line"></div><div class="buttons"><button class="btn" data-act="simPublish" '+(chosen.length?'':'disabled')+'>▶ Preview '+chosen.length+'-job publishing flow</button><button class="btn outline" data-act="selectAll">Select all verified</button></div>'+
+'<div class="notice">This preview cannot submit to GitHub. It demonstrates the exact status path you will approve for the native app.</div></div><div class="card"><div class="section-title"><div><h3>Held / Backups</h3><p>Reasons visible, no false “Live” status</p></div>'+tag(held.length+' held','warn')+'</div>'+
+(held.map(candidateCard).join('')||'<div class="empty">No jobs held.</div>')+'<div class="line"></div><div class="rightnote"><strong>Release guardrails</strong><br>Require exact public requisition + functioning application + correct eligibility + unique URL/company. Commit conflicts retry with deduplication; uncertainty never becomes success.</div></div></div>'}
+function expiry(){
+const list=rExpiry();
+return '<div class="eyebrow">EXCEPTION-ONLY REVIEW</div><h1 class="heading">Expiry intelligence.</h1><p class="subtitle">Only review uncertain cases. A 403, 404, bot challenge, or generic redirect is <strong>not</strong> proof of expiry.</p>'+sourceBanner()+
+'<div class="stats">'+statCard('Exceptions',list.length,'Only issues requiring attention','⚑')+statCard('Checked',state.mode==='live'?state.live?.counts?.checked||0:120,'Last checker sample','▦')+statCard('Classified Active',state.mode==='live'?state.live?.counts?.active||0:113,'Automatic evidence','✓')+statCard('Confirmed expired',state.mode==='live'?state.live?.counts?.expired||0:0,'Evidence-backed closures','×')+'</div>'+
+'<div class="two"><div class="card"><div class="section-title"><h3>Needs decision</h3>'+tag(list.length+' exceptions','warn')+'</div>'+
+(list.map(x=>'<div class="listjob" style="display:block"><div style="display:flex;align-items:center;gap:10px"><div class="mark">'+esc(initials(x.company))+'</div><div class="job-text"><div class="company">'+esc(x.company)+'</div><div class="role">'+esc(x.role)+'</div></div>'+tag('Review','warn')+'</div><p class="muted">'+esc(x.reason)+'</p><div class="buttons">'+(x.apply?'<a class="btn outline" target="_blank" rel="noopener" href="'+esc(x.apply)+'">Exact official link ↗</a>':'')+
+(state.mode==='demo'?'<button class="btn outline" data-act="keep" data-id="'+esc(x.id)+'">Keep published (demo)</button><button class="btn danger" data-act="expire" data-id="'+esc(x.id)+'">Confirm expired (demo)</button>':'<button class="btn outline" data-act="info">Read-only: decision requires evidence</button>')+'</div></div>').join('')||'<div class="empty">No outstanding exceptions detected.</div>')+'</div>'+
+'<div class="card"><div class="section-title"><h3>Verification policy</h3>'+tag('SAFETY FIRST','good')+'</div><ol class="steps">'+[
+ ['ATS evidence','Confirm exact requisition in the employer’s posting API.'],
+ ['Search/listing evidence','Match exact job ID in current public inventory.'],
+ ['Application journey','Follow the job-bound Apply route—not a generic career homepage.'],
+ ['Human exception decision','Confirm only ambiguous cases; record evidence and audit trail.']
+].map((x,i)=>'<li class="step done"><div class="step-icon">'+(i+1)+'</div><div class="step-copy"><div><div class="step-name">'+esc(x[0])+'</div><div class="muted">'+esc(x[1])+'</div></div></div></li>').join('')+'</ol><div class="rightnote">No automatic expiry based only on HTTP status, JavaScript render failure, or CAPTCHA. Manual Keep must capture exact source evidence instead of falsely marking a page “browser-verified”.</div></div></div>'}
+
+function sampleAnalytics(days){
+ const scale=days===1?.18:days===30?3.45:1;
+ const base=[28,37,34,59,49,73,91,76,102,89,111,132,125,153,161,149,184,195,203,230,245,260,251,282,296,320,350,338,374,395];
+ const tail=(days===1?base.slice(-1):days===7?base.slice(-7):base);
+ const trend=tail.map((n,i)=>({date:days===1?'Today':String(i+1).padStart(2,'0'),users:n,pageviews:Math.round(n*1.89),sessions:Math.round(n*1.12)}));
+ return {configured:true,provider:'demo-fixture',days,realtimeUsers:Math.round(23*scale),totals:{
+   visitors:Math.round(1482*scale),pageviews:Math.round(3105*scale),sessions:Math.round(1890*scale),
+   newUsers:Math.round(1140*scale),engagementRate:63.8,averageSessionDuration:95.4,viewsPerUser:2.1,
+   returningUsers:Math.round(342*scale)
+  },conversions:{applyClicks:Math.round(412*scale),resumeChecks:Math.round(37*scale),
+     jobPageViews:Math.round(2150*scale),applyRate:19.2,shares:Math.round(84*scale)},
+    trend,pages:[{requestPath:'/jobs/deloitte-analyst.html',pageviews:Math.round(1221*scale)},
+      {requestPath:'/jobs/ey-associate-analyst.html',pageviews:Math.round(705*scale)},
+      {requestPath:'/jobs/hcltech-campus-beginner.html',pageviews:Math.round(543*scale)},
+      {requestPath:'/jobs/google-software-engineer.html',pageviews:Math.round(397*scale)}],
+    countries:[{country:'India',visitors:Math.round(1249*scale)},{country:'United States',visitors:Math.round(137*scale)},
+      {country:'United Arab Emirates',visitors:Math.round(67*scale)},{country:'United Kingdom',visitors:Math.round(29*scale)}],
+    devices:[{deviceType:'mobile',visitors:Math.round(1040*scale)},
+      {deviceType:'desktop',visitors:Math.round(401*scale)},{deviceType:'tablet',visitors:Math.round(41*scale)}],
+    channels:[{channel:'Organic Search',sessions:Math.round(680*scale)},
+      {channel:'Organic Social',sessions:Math.round(492*scale)},{channel:'Direct',sessions:Math.round(407*scale)},
+      {channel:'Referral',sessions:Math.round(311*scale)}],refreshedAt:null
+ };
+}
+function intFmt(n){const v=Number(n)||0;return v.toLocaleString('en-IN',{maximumFractionDigits:0})}
+function graphChart(points,metric){
+ const numbers=(Array.isArray(points)?points:[]).map(x=>Number(x?.[metric])||0).filter(Number.isFinite);
+ if(!numbers.length)return '<div class="empty">No trend measurements available for this period.</div>';
+ const left=32,top=18,w=630,h=185;const min=0,max=Math.max(1,...numbers)*1.16;
+ const xy=numbers.map((n,i)=>({x:left+(numbers.length>1?i/(numbers.length-1):.5)*w,y:top+h-(n/max)*h}));
+ const path=xy.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+ const area=path+' L '+xy[xy.length-1].x.toFixed(1)+' '+(top+h)+' L '+xy[0].x.toFixed(1)+' '+(top+h)+' Z';
+ const ticks=[0,.25,.5,.75,1].map(x=>{const y=(top+h-x*h).toFixed(1);
+   return '<line class="axis" x1="'+left+'" y1="'+y+'" x2="'+(left+w)+'" y2="'+y+'"/>'+
+     '<text x="1" y="'+(Number(y)+4)+'">'+intFmt(Math.round(x*max))+'</text>'
+ }).join('');
+ const labels=xy.map((p,i)=>i===0||i===xy.length-1||i%Math.max(1,Math.floor(numbers.length/6))===0?
+ '<text x="'+p.x.toFixed(1)+'" y="226" text-anchor="middle">'+esc(points[i]?.date||'')+'</text>':'').join('');
+ return '<svg class="graph" viewBox="0 0 680 237" role="img" aria-label="'+esc(metric==='pageviews'?'Page views over the selected period':'Visitors over the selected period')+'" preserveAspectRatio="xMidYMid meet">'+
+ ticks+'<path class="area" d="'+area+'"/><path class="trend" d="'+path+'"/>'+
+ (xy.length===1?'<circle class="graphdot" cx="'+xy[0].x+'" cy="'+xy[0].y+'" r="5"/>':'')+labels+'</svg>';
+}
+function horizontalBars(rows,key,val,limit){
+ const data=Array.isArray(rows)?rows.slice(0,limit||5):[];
+ if(!data.length)return '<div class="empty">No analytics breakdown available.</div>';
+ const max=Math.max(1,...data.map(x=>Number(x?.[val])||0));
+ return data.map(x=>'<div class="bar-item"><div class="bar-name"><span class="truncate" title="'+esc(x?.[key])+'">'+esc(x?.[key]||'Unknown')+'</span><b>'+intFmt(x?.[val])+'</b></div>'+
+ '<div class="bar-track"><span style="width:'+Math.max(1,Math.round(100*(Number(x?.[val])||0)/max))+'%"></span></div></div>').join('');
+}
+function deviceBreakdown(rows){
+ const data=(Array.isArray(rows)?rows:[]).filter(x=>(Number(x.visitors)||0)>0);
+ if(!data.length)return '<div class="empty">No device measurements available.</div>';
+ const colors=['#3d70ee','#63b0df','#b7ccf2','#8b73da'];
+ const total=Math.max(1,data.reduce((a,b)=>a+Number(b.visitors||0),0));
+ let acc=0;
+ const stops=data.map((x,i)=>{let st=acc;acc+=Number(x.visitors||0)/total*100;return colors[i%colors.length]+' '+st.toFixed(2)+'% '+acc.toFixed(2)+'%'}).join(', ');
+ const legend=data.map((x,i)=>'<div class="legend-row"><span><i class="disc" style="background:'+colors[i%colors.length]+'"></i>'+esc(x.deviceType||'Unknown')+'</span><strong>'+Math.round(100*(Number(x.visitors)||0)/total)+'%</strong></div>').join('');
+ return '<div class="donut" style="background:conic-gradient('+stops+')"><div class="donut-center"><strong>'+intFmt(total)+'</strong><span>users by device</span></div></div><div class="legend">'+legend+'</div>';
+}
+function analyticsPage(){
+ const days=state.analyticsDays;
+ const demo=state.mode==='demo';
+ const d=demo?sampleAnalytics(days):state.analytics;
+ const totals=d?.totals||{},conv=d?.conversions||{};
+ const ranges=[1,7,30].map(n=>'<button class="'+(days===n?'active':'')+'" data-days="'+n+'">'+(n===1?'24 hours':n+' days')+'</button>').join('');
+ const status=demo?'<div class="banner warn"><strong>✦ DEMO ANALYTICS</strong> All numbers and charts below are illustrative, not real HD Careers traffic.</div>':d?
+ '<div class="banner good"><strong>● GA4 ANALYTICS</strong> Authenticated live analytics data · refreshed '+esc(fmtDate(d.refreshedAt||state.analyticsAt))+'. Read-only.</div>':
+ '<div class="banner warn"><strong>○ DATA NOT AVAILABLE</strong> '+esc(state.analyticsError||'Connect your admin account to load GA4 statistics.')+
+ ' <button class="textbtn" data-act="retryAnalytics">Retry analytics</button></div>';
+ const metrics=[
+  statCard('Unique visitors',d?intFmt(totals.visitors):'—','GA4 active users','♙'),
+  statCard('Page views',d?intFmt(totals.pageviews):'—','Measured views','◉'),
+  statCard('Apply link clicks',d?intFmt(conv.applyClicks):'—','GA4 job_apply_click events','↗'),
+  statCard('Active right now',d?intFmt(d.realtimeUsers):'—','Realtime visitors','●')
+ ].join('');
+ return '<div class="eyebrow">ANALYTICS / AUDIENCE INTELLIGENCE</div>'+
+ '<div class="analytics-head"><div><h1 class="heading">Audience analytics.</h1><p class="subtitle" style="margin-bottom:0">Know which jobs drive visits, clicks and conversions—not just which ones you publish.</p></div>'+
+ '<div class="range" role="group" aria-label="Analytics date range">'+ranges+'</div></div>'+
+ status+'<div class="stats">'+metrics+'</div>'+
+ '<div class="analytics-grid"><div class="card"><div class="section-title"><div><h3>Audience activity</h3><p>Trend sourced from Google Analytics 4</p></div>'+
+ '<div class="analytics-control"><select aria-label="Trend metric" id="metricPick"><option value="users" '+(state.analyticMetric==='users'?'selected':'')+'>Visitors</option><option value="pageviews" '+(state.analyticMetric==='pageviews'?'selected':'')+'>Page views</option></select></div></div>'+
+ (d?graphChart(d.trend,state.analyticMetric):'<div class="empty">'+(state.analyticsLoading?'Loading traffic trend…':'No trend loaded')+'</div>')+
+ '<div class="analytic-foot">GA4 may report late-arriving events or sampled dimensions. Charts are not website-publishing confirmations.</div></div>'+
+ '<div class="card"><div class="section-title"><div><h3>Engagement & conversion</h3><p>Real behavior beyond raw page views</p></div></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Visitor engagement rate</div><div class="role">From GA4 engaged sessions</div></div><strong>'+ (d?Number(totals.engagementRate||0).toFixed(1)+'%':'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Application click-through</div><div class="role">Job page views → apply link clicks</div></div><strong>'+ (d?Number(conv.applyRate||0).toFixed(1)+'%':'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Resume checker uses</div><div class="role">Tracked resume checker events</div></div><strong>'+ (d?intFmt(conv.resumeChecks):'—')+'</strong></div>'+
+ '<div class="jobrow"><div class="job-text"><div class="company">Returning users</div><div class="role">Visitors excluding new visitors</div></div><strong>'+ (d?intFmt(totals.returningUsers):'—')+'</strong></div>'+
+ '<div class="analytic-foot">Counts reflect GA4 tracking instrumentation and do not imply completed job applications.</div></div></div>'+
+ '<div class="analytic-panels" style="margin-top:18px">'+
+ '<div class="card"><div class="section-title"><div><h3>Top job pages</h3><p>Where your audience is spending attention</p></div></div>'+ (d?horizontalBars(d.pages,'requestPath','pageviews',6):'<div class="empty">Connect GA4 to see pages.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Traffic sources</h3><p>Discoveries, social and returning readers</p></div></div>'+ (d?horizontalBars(d.channels,'channel','sessions',6):'<div class="empty">Connect GA4 to see traffic sources.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Visitors by country</h3><p>Where applicants are reading HD Careers</p></div></div>'+ (d?horizontalBars(d.countries,'country','visitors',6):'<div class="empty">Connect GA4 to see countries.</div>')+'</div>'+
+ '<div class="card"><div class="section-title"><div><h3>Device breakdown</h3><p>Is your audience mainly on mobile?</p></div></div>'+(d?deviceBreakdown(d.devices):'<div class="empty">Connect GA4 to see devices.</div>')+'</div>'+
+ '</div><div class="notice">🔒 Analytics is a read-only preview. Demo figures are illustrative and Live data is returned from the existing authenticated /api/admin/traffic service.</div>';
+}
+async function loadAnalytics(force){
+ if(state.mode!=='live'||state.analyticsLoading)return;
+ if(!force&&state.analytics&&Date.now()-state.analyticsAt<120000)return;
+ state.analyticsLoading=true;
+ if(state.tab==='analytics')render();
+ try{
+   const response=await fetch('/api/admin/traffic?days='+state.analyticsDays,{cache:'no-store',credentials:'same-origin',headers:{Accept:'application/json'}});
+   const data=await response.json().catch(()=>({}));
+   if(!response.ok||data.configured===false)throw new Error(data.error||'Analytics unavailable, HTTP '+response.status);
+   state.analytics=data;state.analyticsError='';state.analyticsAt=Date.now();
+ }catch(err){state.analytics=null;state.analyticsError=err.message||'Could not load analytics'}
+ finally{state.analyticsLoading=false;if(state.tab==='analytics')render()}
+}
+function jobCard(j){
+const label=j.telegram==='delivered'?'Telegram #'+j.messageId:j.telegram==='pending'?'Hourly queued':j.telegram==='sending'?'Sending':j.telegram==='uncertain'?'Needs attention':'Not queued';
+return '<div class="jobrow"><div class="mark '+(j.telegram==='delivered'?'green':'')+'">'+esc(initials(j.company))+'</div><div class="job-text"><div class="company">'+esc(j.company)+'</div><div class="role">'+esc(j.role)+'</div><div class="meta">'+esc(j.location||'Location not supplied')+'</div></div><div class="rowactions">'+tag(label,j.telegram==='delivered'?'good':j.telegram==='pending'?'warn':'purple')+
+(j.page?'<a class="btn outline" target="_blank" rel="noopener" href="https://hdcareers.in/'+esc(j.page)+'">Site ↗</a>':'')+
+(j.messageId?'<a class="btn outline" target="_blank" rel="noopener" href="https://t.me/HD_Careers/'+encodeURIComponent(j.messageId)+'">Telegram ↗</a>':'')+'</div></div>'}
+function jobsPage(){
+const rows=rJobs().filter(j=>(state.filter==='All'||(state.filter==='Delivered'&&delivered(j))||(state.filter==='Queued'&&j.telegram==='pending')||(state.filter==='Needs review'&&(j.status==='expired'||j.telegram==='uncertain')))&&(String(j.company+' '+j.role).toLowerCase().includes(state.search.toLowerCase())));
+return '<div class="eyebrow">JOBS & DELIVERY</div><h1 class="heading">Every job. Every receipt.</h1><p class="subtitle">One source of truth for published pages, actual Telegram message IDs, and jobs awaiting the next hourly delivery.</p>'+sourceBanner()+
+'<div class="card"><div class="section-title"><div><h3>Publishing ledger</h3><p>Search the website records and cross-check delivery status</p></div>'+tag(rows.length+' visible','purple')+'</div>'+
+'<input class="search" id="searchJobs" placeholder="Search company or role…" value="'+esc(state.search)+'" aria-label="Search jobs">'+
+'<div class="pillnav" style="margin-top:14px">'+['All','Delivered','Queued','Needs review'].map(s=>'<button data-filter="'+esc(s)+'" class="'+(state.filter===s?'active':'')+'">'+esc(s)+'</button>').join('')+'</div>'+
+(rows.map(jobCard).join('')||'<div class="empty">No matching records.</div>')+
+'<div class="notice">Displayed delivery status comes from recorded Telegram receipts and the hourly queue, not a client-side success assumption.</div></div>'}
+function loginModal(){return '<div class="modalshade"><form class="modal" id="loginForm"><h3>Connect secure live telemetry</h3><p>Use your HD Careers admin session to see read-only data from main. Credentials are sent directly to the existing admin login API and are not stored in the preview.</p><label for="user">Admin username</label><input class="search" id="user" name="user" required autocomplete="username"><label for="password">Password</label><input class="search" id="password" type="password" name="password" required autocomplete="current-password"><p class="muted">No publishing or expiry endpoints are called from this preview.</p><div class="buttons"><button class="btn" type="submit">Connect securely</button><button class="btn outline" type="button" data-act="closeLogin">Cancel</button></div></form></div>'}
+function modal(){document.getElementById('overlay').innerHTML=state.showLogin?loginModal():''}
+function render(){nav();document.getElementById('page').innerHTML=state.tab==='today'?today():state.tab==='publish'?publish():state.tab==='expiry'?expiry():state.tab==='analytics'?analyticsPage():jobsPage();modal()}
+function toast(txt){let z=document.getElementById('toastZone');z.innerHTML='<div class="toast">'+esc(txt)+'</div>';clearTimeout(toast._id);toast._id=setTimeout(()=>z.innerHTML='',4800)}
+async function loadLive(){
+if(state.mode!=='live')return;
+state.loading=true;nav();
+try{
+const response=await fetch('/api/admin/operations-preview',{cache:'no-store',credentials:'same-origin',headers:{Accept:'application/json'}});
+if(!response.ok){const v=await response.json().catch(()=>({}));throw new Error(v.error||'Live telemetry returned HTTP '+response.status)}
+state.live=await response.json();state.liveError='';state.lastSync=new Date().toISOString();
+}catch(e){state.liveError=e.message; if(!state.live&&/401|403|sign.in|authenticated|unauthorized/i.test(e.message))state.showLogin=true}
+finally{state.loading=false;render()}
+}
+function simulate(conflict){
+if(state.sim.active){toast('A demo flow is already running.');return}
+state.mode='demo';state.tab='today';state.sim={active:true,step:0,attempt:1,conflict:!!conflict,log:['Simulation started — no real GitHub or Telegram requests.']};render();
+var phases=[0,1,2,2,3,4,5],i=0;
+function tick(){
+if(!state.sim.active)return;
+if(i>=phases.length){state.sim.active=false;state.sim.log.push('Demo completed: Telegram message IDs would be recorded. No actual messages were sent.');render();return}
+state.sim.step=phases[i];
+if(i===2&&conflict){state.sim.attempt=1;state.sim.log.push('Simulated GitHub 409: branch moved; re-read latest main and rebuild from job IDs, do not double-send.')}
+if(i===3&&conflict){state.sim.attempt=2;state.sim.conflict=false;state.sim.log.push('Simulated retry 2/8: compare-and-swap commit succeeded; publication still deduplicated.')}
+if(i===4)state.sim.log.push('Simulated website check: exact job page is live before Telegram queue.');
+if(i===5)state.sim.log.push('Simulated hourly queue: minimum 60 minutes, compressed to seconds for demo.');
+if(i===6)state.sim.log.push('Simulated receipt #DEMO-001; real delivery requires an actual Telegram message ID.');
+i++;render();setTimeout(tick,i===3?1500:1150)}
+setTimeout(tick,500)
+}
+document.addEventListener('click',function(e){
+const bt=e.target.closest('[data-tab]');if(bt){state.tab=bt.dataset.tab;render();if(state.tab==='analytics'&&state.mode==='live')loadAnalytics(false);return}
+const el=e.target.closest('[data-act]');if(!el)return;
+const act=el.dataset.act;
+if(act==='demo'){state.mode='demo';state.live=null;state.showLogin=false;render();return}
+if(act==='live'){state.mode='live';state.showLogin=false;render();loadLive();if(state.tab==='analytics')loadAnalytics(false);return}
+if(act==='refresh'){if(state.mode==='live'){loadLive();if(state.tab==='analytics')loadAnalytics(true)}else toast('Demo mode uses sample data. Select Live for current read-only telemetry.');return}
+if(act==='retryAnalytics'){if(state.mode==='live')loadAnalytics(true);return}
+if(act==='login'){state.showLogin=true;modal();return}
+if(act==='closeLogin'){state.showLogin=false;state.mode=state.live?'live':'demo';render();return}
+if(act==='simulate'||act==='simPublish'){simulate(false);return}
+if(act==='conflict'){simulate(true);return}
+if(act==='info'){toast('Preview is read-only. Production review decisions require an audited source-backed action.');return}
+if(act==='selectAll'){state.selected=new Set(state.candidates.filter(x=>x.verified).map(x=>x.id));render();return}
+if(act==='keep'||act==='expire'){
+if(state.mode!=='demo'){toast('Live mode is read-only.');return}
+const c=state.exceptions.find(x=>x.id===el.dataset.id);if(c){c.state=act==='expire'?'expired':'active';toast('Demo-only change: '+c.company+' marked '+c.state+'. No website changes.');render()}return
+}
+});
+document.addEventListener('change',function(e){
+ if(e.target?.id==='metricPick'){state.analyticMetric=e.target.value==='pageviews'?'pageviews':'users';render();return}
+ const id=e.target?.dataset?.check;
+ if(id){if(e.target.checked)state.selected.add(id);else state.selected.delete(id);render()}
+});
+document.addEventListener('click',function(e){const t=e.target.closest('[data-days]');if(!t)return;const n=Number(t.dataset.days);if(![1,7,30].includes(n))return;state.analyticsDays=n;state.analytics=null;state.analyticsAt=0;render();if(state.mode==='live')loadAnalytics(true)});
+document.addEventListener('input',function(e){if(e.target.id==='searchJobs'){state.search=e.target.value;const pos=e.target.selectionStart;render();const n=document.getElementById('searchJobs');if(n){n.focus();n.setSelectionRange(pos,pos)}}});
+document.addEventListener('click',function(e){const p=e.target.closest('[data-filter]');if(p){state.filter=p.dataset.filter;render()}});
+document.addEventListener('submit',async function(e){if(e.target.id!=='loginForm')return;e.preventDefault();const f=e.target;const user=f.querySelector('#user').value,password=f.querySelector('#password').value;
+try{const r=await fetch('/api/admin/login',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:user,password:password})});const obj=await r.json().catch(()=>({}));if(!r.ok||!obj.authenticated)throw new Error(obj.error||'Login not accepted by preview environment');state.showLogin=false;state.mode='live';await loadLive();toast('Secure read-only telemetry connected.')}catch(err){toast('Login not connected: '+err.message)}});
+setInterval(function(){if(state.mode==='live'&&!state.loading&&document.visibilityState==='visible')loadLive()},20000);
+render();
+})();
+</script>
+</body></html>
