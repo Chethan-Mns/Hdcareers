@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "reviewId": 1792214482000,
+    "kind": "new_job",
+    "state": "review",
+    "company": "Wayfair",
+    "role": "Software Engineer Intern",
+    "page": "jobs/wayfair-software-engineer-intern-ai-first-genai-bengaluru-20829.html",
+    "url": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
+    "reason": "Official Wayfair JobPosting found, but the live application route could not be independently confirmed by the production publishing gate.",
+    "checkedAt": "2026-10-17T05:21:22Z",
+    "queuedAt": "2026-10-17T05:21:22Z",
+    "source": "vip_approval_gate",
+    "workflowUrl": "https://github.com/Chethan-Mns/Hdcareers/actions/runs/39005946051",
+    "job": {
+      "page": "jobs/wayfair-software-engineer-intern-ai-first-genai-bengaluru-20829.html",
+      "domain": "wayfair.com",
+      "company": "Wayfair",
+      "salary": "Not Disclosed",
+      "logo": [
+        "W",
+        "#6d31ac"
+      ],
+      "role": "Software Engineer Intern",
+      "roleTag": "Software Engineer Intern — AI-First & GenAI Focus",
+      "loc": "Bengaluru, Karnataka, India",
+      "locationFilter": "Bengaluru",
+      "batch": "Not specified",
+      "elig": "Currently enrolled in the 7th semester of a full-time B.E./B.Tech in Computer Science and available for internship in the 8th semester.",
+      "cat": "internship",
+      "expType": "fresher",
+      "expYears": "Student internship (7th semester)",
+      "date": "Not specified",
+      "desc": "Wayfair is recruiting Software Engineer Interns for AI-first engineering work in Bengaluru. Interns may work with teams spanning Search & Recommendations, Storefront, Supply Chain Retail, Marketing Technology, ML Platforms & Infrastructure and Global Supplier Tech. The role emphasizes software engineering, machine learning and integrating Generative AI tools into the development lifecycle.",
+      "resp": [
+        "Contribute to applications, web services and data systems supporting Wayfair's technology teams.",
+        "Work on software engineering challenges across search, storefront, supply chain, marketing, ML platforms or supplier technology, depending on team placement.",
+        "Explore AI-assisted development, coding, testing and other software lifecycle activities."
+      ],
+      "skills": [
+        "Object-oriented programming",
+        "Python",
+        "Java",
+        "C++",
+        "SQL",
+        "JavaScript",
+        "HTML/CSS",
+        "Full-stack/mobile/cloud development familiarity",
+        "Generative AI tools",
+        "Problem solving",
+        "Communication"
+      ],
+      "apply": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
+      "status": "active",
+      "verifiedDate": "17 Oct 2026",
+      "sourceName": "Wayfair official careers listing, requisition 20829",
+      "who": "Current 7th-semester full-time B.E./B.Tech Computer Science students who can undertake the internship during their 8th semester; refer to Wayfair for exact application requirements.",
+      "workMode": "Not specified",
+      "jobId": "20829",
+      "companyWebsite": "https://www.wayfair.com/",
+      "careersUrl": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
+      "qualification": "Full-time B.E./B.Tech in Computer Science (currently in 7th semester)",
+      "verificationTerms": [
+        "Software Engineer",
+        "Intern",
+        "20829"
+      ],
+      "sourceVerificationMethod": "official-employer-careers-page-content",
+      "sourceReview": "Official requisition page was indexed with this exact title, location and requisition ID on 17 Oct 2026; workflow must independently verify the exact application is live before publishing."
+    }
+  }
+]
