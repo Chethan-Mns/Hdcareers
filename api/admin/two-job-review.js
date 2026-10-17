@@ -62,6 +62,16 @@ export default async function handler(req,res){
     return res.status(200).json({ok:true,staged:data,stages,observedAt:new Date().toISOString(),warning:"GitHub workflow execution not independently matched; website verified by actual public page, Telegram by delivery ledger."});
    }catch(e){return res.status(200).json({ok:true,staged:data,stages:[],warning:"Progress evidence temporarily unavailable: "+e.message});}
   }
+  if(req.body?.action==="reset"){
+   const raw=await redis("GET",key);
+   if(raw){
+    const current=JSON.parse(raw);
+    if(current.status!=="reviewing")return res.status(409).json({error:"Previously submitted test jobs cannot be silently cleared; preserve publishing evidence."});
+   }
+   await redis("DEL",key);
+   await auditMutation(req,"two_job_inbox.reset","unsubmitted test inbox");
+   return res.status(200).json({ok:true,cleared:true});
+  }
   if(req.body?.action==="review"){
    const raw=await redis("GET",key);
    if(!raw)return res.status(404).json({error:"Stage the two jobs before reviewing."});
