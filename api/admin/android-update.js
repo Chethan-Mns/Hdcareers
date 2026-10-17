@@ -36,17 +36,22 @@ export default async function handler(req,res){
   res.setHeader("Cache-Control","private, no-store");
   if(!await requireAdmin(req,res,["owner","job_editor"]))return;
   if(req.method!=="GET"){res.setHeader("Allow","GET");return res.status(405).json({error:"Method not allowed"});}
-  const versionCode=Number(process.env.HD_ANDROID_UPDATE_VERSION_CODE||0);
-  const versionName=String(process.env.HD_ANDROID_UPDATE_VERSION_NAME||"");
-  const sha256=String(process.env.HD_ANDROID_UPDATE_SHA256||"").toLowerCase();
-  const key=String(process.env.HD_ANDROID_UPDATE_OBJECT_KEY||"");
-  if(!Number.isSafeInteger(versionCode)||versionCode<1||!/^[0-9a-f]{64}$/.test(sha256)||!/^hdcareers\/android\/[A-Za-z0-9._/-]+\.apk$/.test(key)){
+  let manifest={};
+  try{
+    const response=await fetch("https://raw.githubusercontent.com/Chethan-Mns/Hdcareers/main/data/android-release.json",{cache:"no-store"});
+    if(response.ok)manifest=await response.json();
+  }catch{}
+  const versionCode=Number(manifest.versionCode||0);
+  const versionName=String(manifest.versionName||"");
+  const sha256=String(manifest.sha256||"").toLowerCase();
+  const key=String(manifest.objectKey||"");
+  if(!Number.isSafeInteger(versionCode)||versionCode<1||!/^[0-9a-f]{64}$/.test(sha256)||!/^hdcareers\\/android\\/[A-Za-z0-9._/-]+\\.apk$/.test(key)){
     return res.status(200).json({available:false,reason:"No verified private APK published"});
   }
   const apkUrl=signedGet(key);
   if(!apkUrl)return res.status(200).json({available:false,reason:"Private release storage is not configured"});
   return res.status(200).json({
     available:true,versionCode,versionName,apkUrl,sha256,
-    notes:String(process.env.HD_ANDROID_UPDATE_NOTES||"HD Careers improvements").slice(0,500)
+    notes:String(manifest.notes||"HD Careers improvements").slice(0,500)
   });
 }
