@@ -41,7 +41,7 @@ fun PremiumAdminRoot(
     onEnableBiometric:()->Unit,
     onRequestNotificationPermission:()->Unit
 ) {
-    var analyticsOpen by remember { mutableStateOf(false) }
+    var moreOpen by remember { mutableStateOf(false) }
     MaterialTheme(colorScheme=Brand.scheme,typography=Typography()) {
         if(!vm.loggedIn) {
             ProLogin(vm,onBiometricSignIn)
@@ -58,14 +58,17 @@ fun PremiumAdminRoot(
                             Column(Modifier.weight(1f)) {
                                 Text("HD CAREERS",fontSize=10.sp,fontWeight=FontWeight.Black,
                                     letterSpacing=1.1.sp,color=Brand.blue)
-                                Text(listOf("Overview","Daily Review","Job Manager","Admin Center")[vm.tab],
+                                Text(if(moreOpen)"Settings" else listOf("Today","Publish","Expiry","Jobs","Analytics")[vm.tab.coerceIn(0,4)],
                                     fontSize=19.sp,fontWeight=FontWeight.Black,color=Brand.navy)
                             }
-                            BadgedBox(badge={if(vm.batch.id.isNotBlank()&&vm.batch.reviewed<20)
+                            BadgedBox(badge={if(vm.batch.id.isNotBlank()&&vm.batch.reviewed<vm.batch.all.size)
                                 Badge(containerColor=Brand.amber){} }) {
-                                IconButton(onClick={vm.tab=1}) {
+                                IconButton(onClick={moreOpen=false;vm.tab=1}) {
                                     Icon(Icons.Default.NotificationsNone,"Review notifications",tint=Brand.navy)
                                 }
+                            }
+                            IconButton(onClick={moreOpen=!moreOpen}) {
+                                Icon(Icons.Default.Settings,"Settings, Firebase and security",tint=Brand.navy)
                             }
                             IconButton(onClick={vm::refreshClicked}) {
                                 Icon(Icons.Default.Refresh,"Refresh server data",tint=Brand.blue)
@@ -75,11 +78,11 @@ fun PremiumAdminRoot(
                 },
                 bottomBar={
                     NavigationBar(containerColor=Color.White,tonalElevation=4.dp) {
-                        val labels=listOf("Home","Review","Jobs","More")
+                        val labels=listOf("Today","Publish","Expiry","Jobs","Analytics")
                         val symbols=listOf(Icons.Default.Dashboard,Icons.Default.FactCheck,
-                            Icons.Default.BusinessCenter,Icons.Default.GridView)
+                            Icons.Default.Shield,Icons.Default.BusinessCenter,Icons.Default.Insights)
                         labels.forEachIndexed { index,label ->
-                            NavigationBarItem(selected=vm.tab==index,onClick={vm.tab=index;analyticsOpen=false},
+                            NavigationBarItem(selected=vm.tab==index&&!moreOpen,onClick={vm.tab=index;moreOpen=false},
                                 icon={Icon(symbols[index],contentDescription=label)},
                                 label={Text(label,maxLines=1,fontSize=11.sp,fontWeight=FontWeight.SemiBold)},
                                 colors=NavigationBarItemDefaults.colors(
@@ -91,11 +94,12 @@ fun PremiumAdminRoot(
                 }
             ) { insets ->
                 Box(Modifier.fillMaxSize().padding(insets)) {
-                    if(analyticsOpen) ProAnalytics(vm,onBack={analyticsOpen=false}) else when(vm.tab) {
-                        0 -> ProHome(vm,onAnalytics={analyticsOpen=true})
+                    if(moreOpen) ProMore(vm,onEnableBiometric,onRequestNotificationPermission) else when(vm.tab) {
+                        0 -> ProHome(vm,onAnalytics={vm.tab=4})
                         1 -> ProReview(vm)
-                        2 -> ProJobs(vm)
-                        else -> ProMore(vm,onEnableBiometric,onRequestNotificationPermission)
+                        2 -> ProChecker(vm,onBack={vm.tab=0})
+                        3 -> ProJobs(vm)
+                        else -> ProAnalyticsV2(vm)
                     }
                     if(vm.loading) LinearProgressIndicator(
                         modifier=Modifier.fillMaxWidth().align(Alignment.TopCenter),
@@ -357,6 +361,7 @@ private fun ProReview(vm:AdminViewModel) {
             ProCandidateCard(job,i,selected==0,vm.companyLogos,vm.busy,
                 chosen=job.id in vm.selectedIds,published=job.id in vm.publishedReviewIds,
                 inReady=selected==2,decide={vm.decide(job.id,it)},
+                 verifyAndAdd={vm.verifyAndAdd(job.id)},
                 toggle={vm.toggleSelected(job.id,it)})
         }
         if(vm.batch.id.isNotBlank() && selected==2) item {
@@ -377,9 +382,9 @@ private fun ProReview(vm:AdminViewModel) {
                     modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
                     Icon(Icons.Default.Send,null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Publish ${chosen.size} selected job(s)")
+                    Text("Verify & Publish ${chosen.size} job(s)")
                 }
-                Text("GitHub, website data and Telegram receipts are tracked separately.",
+                Text("Website deployment first. New jobs then enter the hourly Telegram queue.",
                     fontSize=11.sp,color=Brand.gray)
                 OutlinedButton(onClick=vm::refreshPublishingStatus,enabled=!vm.busy,
                     modifier=Modifier.fillMaxWidth()) { Text("Refresh live publishing status") }
@@ -388,9 +393,9 @@ private fun ProReview(vm:AdminViewModel) {
                 Text("GitHub: "+(gh?.optString("conclusion")?.takeIf { it.isNotBlank() }
                     ?:gh?.optString("state").orEmpty().ifBlank { "Not submitted" }),
                     fontSize=12.sp,color=Brand.navy)
-                Text("Website Live: ${progress.optInt("publishedCount")} · Source data: ${progress.optInt("dataCommittedCount")} · Telegram: ${progress.optInt("telegramDelivered")} delivered",
+                Text("Website Live: ${progress.optInt("publishedCount")} · Telegram queued: ${progress.optInt("telegramHourlyPending")} · Delivered: ${progress.optInt("telegramDelivered")}",
                     fontSize=12.sp,color=Brand.navy)
-                Text("Vercel deployment: confirm separately until a deployed commit is verified.",
+                Text("Live tracking refreshes every 10 seconds after submission; a commit alone is not a delivery.",
                     fontSize=11.sp,color=Brand.gray)
                 val stages=progress.optJSONArray("stages")
                 for(i in 0 until (stages?.length() ?: 0)) {
@@ -407,7 +412,7 @@ private fun ProReview(vm:AdminViewModel) {
     if(confirm) AlertDialog(onDismissRequest={confirm=false},
         title={Text("Publish ${chosen.size} verified job(s)?",fontWeight=FontWeight.Black)},
         text={Text("Send these complete jobs to GitHub. Website deployment and Telegram delivery will be tracked separately, without claiming success early.")},
-        confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Submit to GitHub")}},
+        confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Confirm & Start")}},
         dismissButton={TextButton(onClick={confirm=false}){Text("Cancel")}})
 }
 
@@ -415,7 +420,7 @@ private fun ProReview(vm:AdminViewModel) {
 private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
     logos:Map<String,CompanyLogoSource>,busy:Boolean,
     chosen:Boolean,published:Boolean,inReady:Boolean,
-    decide:(String)->Unit,toggle:(Boolean)->Unit) {
+    decide:(String)->Unit,verifyAndAdd:()->Unit,toggle:(Boolean)->Unit) {
     val ctx=LocalContext.current
     val category=when(c.group) {"nonit"->"Non-IT";"training"->"Internship / Apprentice";else->"Fresher IT"}
     val decisionColor=when(c.decision) {
@@ -466,11 +471,11 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
                 Text("Remove from Publish Ready")
             }
         } else if(!published) {
-            Button(onClick={toggle(true)},enabled=!busy&&c.selectable,
+            Button(onClick={if(c.selectable)toggle(true) else verifyAndAdd()},enabled=!busy&&c.apply.startsWith("https://"),
                 modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(12.dp)) {
                 Icon(Icons.Default.Add,null,Modifier.size(17.dp))
                 Spacer(Modifier.width(6.dp))
-                Text(if(c.selectable)"Add to Publish Ready" else "Verify Live to add")
+                Text(if(c.selectable)"Add to Publish Ready" else "Verified official link · Add")
             }
         } else Text("Already published",fontSize=12.sp,color=Brand.green)
         if(c.decision=="live"&&!c.approved) {
