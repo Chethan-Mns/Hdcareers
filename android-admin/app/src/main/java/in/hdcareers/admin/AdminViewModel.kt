@@ -152,6 +152,34 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             }
         }
     }
+    // Owner explicitly checked the exact official listing, then verifies and selects in one action.
+    fun verifyAndAdd(id:String)=run {
+        val original=batch.all.firstOrNull{it.id==id} ?: error("Candidate no longer exists.")
+        check(original.apply.startsWith("https://")) { "Open the exact official link before verifying." }
+        check(batch.status !in listOf("submitted","published")) { "Refresh: this batch was submitted." }
+        check(selectedIds.size<10) { "The daily maximum is ten jobs." }
+        check(batch.all.none { it.id in selectedIds && employerKey(it.company)==employerKey(original.company) }) {
+            "Only one job per employer is permitted."
+        }
+        if(original.decision!="live")batch=api.updateReview(batch.id,id,"live")
+        var candidate=batch.all.firstOrNull{it.id==id} ?: error("Updated candidate missing.")
+        if(!candidate.complete) {
+            batch=api.enrich(batch.id,id)
+            candidate=batch.all.firstOrNull{it.id==id} ?: error("Enriched candidate missing.")
+        }
+        setReminderState()
+        if(candidate.approved && id !in publishedReviewIds){
+            selectedIds=selectedIds+id
+            message=candidate.company+" verified and added to Publish Ready."
+        } else message=candidate.company+" held: "+candidate.missingDetails.joinToString(", ")+
+            ". No publishing request was sent."
+    }
+    fun refreshExpiry()=run { checker=api.checker() }
+    fun ensurePushConnected(){
+        if(!loggedIn||!firebaseReady(getApplication()))return
+        val prefs=getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
+        if(prefs.getBoolean("consented",false))connectPush()
+    }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
         if(decision!="live")selectedIds=selectedIds-id
@@ -167,7 +195,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         try {
             batch=api.markSubmitted(snapshot.id,chosen,requestId)
             setReminderState()
-            message=confirmation+" Verify website deployment and Telegram delivery separately."
+            message=confirmation+" Website publication will be checked before hourly Telegram delivery."
             runCatching { loadPublishingProgress() }
         } catch(e:Exception) {
             message="GitHub accepted the request but review status could not be saved. Do not retry without checking the tracker: "+e.message
