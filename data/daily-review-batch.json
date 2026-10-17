@@ -321,18 +321,39 @@
         "expType": "fresher",
         "expYears": "Fresher with prior service-desk internship",
         "apply": "https://job-boards.greenhouse.io/66degrees/jobs/6127315004",
-        "sourceName": "66degrees official careers",
-        "status": "review",
-        "desc": "First-line software, Windows/macOS and IT support to employees.",
-        "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "sourceName": "66degrees official Greenhouse job posting",
+        "status": "active",
+        "desc": "66degrees is hiring an IT Service Desk Intern in Bangalore to deliver first-level support for employee IT incidents and service requests. The intern diagnoses hardware, Windows/macOS, application, and network connectivity problems, documents support tickets, maintains IT assets and user access, and escalates complex cases to the L2 team. The role emphasizes customer service, secure workplace support, clear documentation, and continuous improvement.",
+        "elig": "Bachelor's degree in Information Technology, Computer Science or a related discipline (or equivalent practical experience). Freshers with prior IT service desk or technical support internship experience. Understanding of Windows, macOS, Google Workspace administration, basic networking (TCP/IP, DNS, VPN), troubleshooting and communication. Preferred: ITIL Foundation, ServiceNow/Jira Service Management or remote desktop support experience.",
+        "resp": [
+          "Provide first-level IT support to employees for incidents and service requests.",
+          "Maintain IT assets and manage user access within a secure workspace.",
+          "Log, categorize, prioritize and track tickets in the IT support system.",
+          "Troubleshoot computers, operating systems, business applications and connectivity issues.",
+          "Help users with password resets, account unlocks and software installations.",
+          "Escalate complex problems to L2 support with detailed troubleshooting notes.",
+          "Maintain documentation, knowledge articles and issue-resolution records.",
+          "Guide employees on IT best practices and common troubleshooting techniques.",
+          "Participate in on-call rotations where required.",
+          "Improve service desk processes and end-user satisfaction."
+        ],
         "verifiedDate": "17 Oct 2026",
         "jobId": "6127315004",
         "manualLiveVerifiedAt": "2026-10-17T11:04:35.766Z",
         "browserVerifiedAt": "2026-10-17T11:04:35.766Z"
       },
       "reviewedAt": "2026-10-17T11:04:35.766Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedBy": "HD Careers Admin",
+      "sourceEnrichment": {
+        "fields": [
+          "description",
+          "eligibility",
+          "responsibilities"
+        ],
+        "url": "https://job-boards.greenhouse.io/66degrees/jobs/6127315004",
+        "source": "official Greenhouse job listing",
+        "evidenceVerifiedAt": "2026-10-17T11:08:59.046Z"
+      }
     },
     {
       "id": "manual-scan-20261017-14-6184116004",
@@ -514,7 +535,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-17T11:04:35.767Z",
+  "updatedAt": "2026-10-17T11:08:59.050Z",
   "ranking": {
     "method": "deduped_exact_official_jobs_manual_research",
     "reusedPublishedJobs": 0,
