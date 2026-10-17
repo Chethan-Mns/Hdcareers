@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-17-owner-requested-new-20",
   "generatedAt": "2026-10-17T06:56:30.734Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "manual-scan-20261017-1-170239",
@@ -610,7 +610,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-17T11:08:59.050Z",
+  "updatedAt": "2026-10-17T11:23:06.414Z",
   "ranking": {
     "method": "deduped_exact_official_jobs_manual_research",
     "reusedPublishedJobs": 0,
@@ -621,5 +621,20 @@
       "internship": 1
     },
     "warning": "Discovery leads only. Even entries with visible application forms are NOT owner-reviewed, must be freshly independently verified and enriched before website/Telegram publication."
+  },
+  "submittedAt": "2026-10-17T11:23:06.414Z",
+  "publication": {
+    "candidateIds": [
+      "manual-scan-20261017-13-6127315004"
+    ],
+    "companies": [
+      "66degrees"
+    ],
+    "urls": [
+      "https://job-boards.greenhouse.io/66degrees/jobs/6127315004"
+    ],
+    "requestId": "b33de522736b4ab080c9afdd",
+    "count": 1,
+    "submittedAt": "2026-10-17T11:23:06.414Z"
   }
 }
