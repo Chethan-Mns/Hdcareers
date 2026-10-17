@@ -1,0 +1,24 @@
+name: Remove generated build caches once
+on:
+  push:
+    branches: [fix/adsense-readiness-editorial-crawl-20261017]
+    paths: [.github/workflows/adsense-clear-cache-once.yml]
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/adsense-readiness-editorial-crawl-20261017
+      - name: Remove tracked Python caches and temporary workflow
+        run: |
+          set -euo pipefail
+          git rm -f __pycache__/generate.cpython-312.pyc scripts/__pycache__/check_content_quality.cpython-312.pyc
+          rm .github/workflows/adsense-clear-cache-once.yml
+          git config user.name "HD Careers Editorial Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Remove tracked Python caches to restore reproducible generator checks"
+          git push origin HEAD:fix/adsense-readiness-editorial-crawl-20261017
