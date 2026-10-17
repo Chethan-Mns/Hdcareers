@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   notify:
@@ -56,19 +56,47 @@ jobs:
               f.write("notify=true\n")
               f.write("batch_id="+d["batchId"]+"\n")
           PY
-      - name: Notify registered admin devices
+      - name: Notify registered admin devices and record result
         if: steps.scan.outputs.notify == 'true'
         env:
           PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
           BATCH_ID: ${{ steps.scan.outputs.batch_id }}
+        shell: bash
         run: |
-          set -euo pipefail
-          if [ -z "$PUSH_SECRET" ]; then
-            echo "::warning::ANDROID_PUSH_DISPATCH_SECRET missing. No push was sent."
-            exit 0
+          set -uo pipefail
+          mkdir -p data/testing
+          code=000
+          if [ "${#PUSH_SECRET}" -ge 32 ]; then
+            code=$(curl --silent --show-error --retry 2 --max-time 35 -o /tmp/review-fcm.json -w '%{http_code}' \
+              -H "Content-Type: application/json" \
+              -H "x-hd-push-key: $PUSH_SECRET" \
+              --data "$(jq -cn --arg batchId "$BATCH_ID" '{action:"notify_batch",batchId:$batchId}')" \
+              "https://hdcareers.in/api/admin/android-devices") || code=000
           fi
-          curl --fail-with-body --silent --show-error --retry 2 --max-time 35 \
-            -H "Content-Type: application/json" \
-            -H "x-hd-push-key: $PUSH_SECRET" \
-            --data "$(jq -cn --arg batchId "$BATCH_ID" '{action:"notify_batch",batchId:$batchId}')" \
-            "https://hdcareers.in/api/admin/android-devices"
+          export HTTP_CODE="$code"
+          python3 - <<'PY'
+          import json,os,datetime
+          from pathlib import Path
+          body={}
+          try:body=json.loads(Path("/tmp/review-fcm.json").read_text())
+          except Exception:pass
+          out={"batchId":os.environ.get("BATCH_ID"),"checkedAt":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "httpCode":os.environ.get("HTTP_CODE"),"fcmAccepted":body.get("accepted",0),
+            "fcmFailed":body.get("failed",0),"responseOk":body.get("ok",False),
+            "note":"FCM acceptance is not proof that Android displayed the notification."}
+          Path("data/testing/daily-review-fcm-receipt.json").write_text(json.dumps(out,indent=2)+"\n")
+          print(json.dumps(out))
+          PY
+          git config user.name "HD Careers Push Receipt"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/testing/daily-review-fcm-receipt.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual Firebase response for Android daily review batch"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          if [ "$code" != 200 ]; then
+            echo "::error::Daily Android push could not be confirmed, HTTP $code."
+            exit 1
+          fi
+          echo "Firebase request made; check recorded device acceptance."
