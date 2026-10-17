@@ -38,7 +38,33 @@ test("Automated push requires dedicated secret and only new complete review batc
  const workflow=read(".github/workflows/android-review-notify.yml");
  const server=read("lib/admin-push-handler.js");
  assert.match(workflow,/ANDROID_PUSH_DISPATCH_SECRET/);
- assert.match(workflow,/len\(priority\)!=10 or len\(backup\)!=10/);
- assert.match(workflow,/len\(set\(names\)\)!=20/);
+ assert.match(workflow,/1<=len\(priority\)\+len\(backup\)<=20/);
+ assert.match(workflow,/len\(set\(names\)\)!=len\(names\)/);
  assert.match(server,/safe\(req.headers\?\.\["x-hd-push-key"\],secret\)/);
+});
+
+test("Expiry alerts require trusted secret, are deduplicated by scan, and route to the correct Android tab",()=>{
+ const push=read("lib/admin-push-handler.js");
+ const workflow=read(".github/workflows/android-expiry-notify.yml");
+ const client=read("android-admin/app/src/main/java/in/hdcareers/admin/Notifications.kt");
+ const activity=read("android-admin/app/src/main/java/in/hdcareers/admin/MainActivity.kt");
+ assert.match(push,/notify_expiry/);
+ assert.match(push,/const once=scope\+kind\+"/);
+ assert.match(push,/reviewCount<1/);
+ assert.match(workflow,/current_keys==previous_keys/);
+ assert.match(workflow,/ANDROID_PUSH_DISPATCH_SECRET/);
+ assert.match(workflow,/data\/availability-status\.json/);
+ assert.match(client,/hd_expiry_updates/);
+ assert.match(client,/putExtra\("open_expiry",openExpiry\)/);
+ assert.match(activity,/open_expiry/);
+});
+test("Production Android requests hourly Telegram and distinguishes accepted from delivered",()=>{
+ const native=read("android-admin/app/src/main/java/in/hdcareers/admin/AdminApi.kt");
+ const backend=read("api/admin/publish.js");
+ const kotlin=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumScreens.kt");
+ assert.match(native,/put\("telegramDeliveryMode","hourly"\)/);
+ assert.match(backend,/telegramHourlyPending/);
+ assert.match(backend,/const queued=queueItems\.find/);
+ assert.match(kotlin,/Confirm & Start/);
+ assert.match(kotlin,/ProAnalyticsV2/);
 });
