@@ -19,6 +19,14 @@ def inspect(batch):
                 missing.append("matching_official_url")
             if str(candidate.get("company") or "").strip().casefold()!=str(job.get("company") or "").strip().casefold():
                 missing.append("matching_employer")
+            original_role=" ".join(str(candidate.get("role") or "").lower().split())
+            job_role=" ".join(str(job.get("role") or "").lower().split())
+            if original_role and job_role and original_role!=job_role:
+                missing.append("matching_job_title")
+            original_id=str(candidate.get("jobId") or "").strip().lower()
+            job_id=str(job.get("jobId") or "").strip().lower()
+            if original_id and job_id and original_id!=job_id:
+                missing.append("matching_requisition_id")
             if not str(job.get("apply") or "").startswith("https://"):
                 missing.append("secure_official_url")
             findings.append({"id":candidate.get("id"),"company":candidate.get("company"),"role":candidate.get("role"),
