@@ -1,0 +1,51 @@
+name: Prepare AdSense editorials and generated pages once
+on:
+  push:
+    branches: [fix/adsense-readiness-editorial-crawl-20261017]
+    paths: [.github/workflows/adsense-editorial-prepare-once.yml]
+permissions:
+  contents: write
+jobs:
+  generate-editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/adsense-readiness-editorial-crawl-20261017
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate generator syntax
+        run: python3 -m py_compile generate.py scripts/check_content_quality.py
+      - name: Materialize source-backed pages and priority report
+        run: |
+          set -euo pipefail
+          python3 generate.py
+          python3 scripts/check_content_quality.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          home=Path('index.html').read_text()
+          report=json.loads(Path('docs/adsense-editorial-priorities.json').read_text())
+          assert home.count('id="jobFallback"')==1, 'Static job fallback missing'
+          assert home.count('<!-- HD-STATIC-JOBS-START -->')==1
+          assert 'jobs/glance-ux-design-intern.html' in home
+          assert report['active']>0
+          assert 'BreadcrumbList' in Path('jobs/glance-ux-design-intern.html').read_text()
+          assert 'candidate worksheet' in Path('jobs/glance-ux-design-intern.html').read_text()
+          assert 'https://hdcareers.in/sitemap.xml' in Path('robots.txt').read_text()
+          print('Home job links, generated job specifics, audit queue, and sitemap verified.')
+          PY
+      - name: Commit generated pages and remove one-time helper
+        run: |
+          set -euo pipefail
+          rm .github/workflows/adsense-editorial-prepare-once.yml
+          git config user.name "HD Careers Editorial Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Generate AdSense-ready job templates and editorial priority report"
+          git push origin HEAD:fix/adsense-readiness-editorial-crawl-20261017
