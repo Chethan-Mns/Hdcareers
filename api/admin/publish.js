@@ -215,29 +215,57 @@ export default async function handler(req,res){
         const existing=saved.find(x=>normalizeUrl(x.apply)===normalizeUrl(c?.job?.apply||c?.apply));
          const page=String(existing?.page||c?.job?.page||"").replace(/^\//,"");
          const queued=queueItems.find(x=>x?.page===page);
+        const inFlight=queueItems.filter(x=>["pending","sending"].includes(x.status));
+        const queuePosition=queued&&["pending","sending"].includes(queued.status)?inFlight.findIndex(x=>x.page===page)+1:null;
         const entries=Object.values(ledger).filter(x=>x&&x.page===page);
         const last=entries.at(-1)||{};
         return {candidateId:id,company:c?.company||c?.job?.company||"",role:c?.role||c?.job?.role||"",
           github:batch.status==="submitted"?"accepted":batch.status==="published"?"completed":"not_submitted",
           website:livePages.has(String(id))?"live":urls.has(normalizeUrl(c?.job?.apply))?"data-committed":"pending",
           vercel:livePages.has(String(id))?"production-page-confirmed":"unconfirmed",telegram:last.status||queued?.status||"not_queued",telegramMessageId:last.messageId||queued?.messageId||null,
+          pageUrl:page?"https://hdcareers.in/"+page:null,
+          queuedAt:queued?.queuedAt||null,queuePosition,queueLength:inFlight.length,
+          telegramDeliveredAt:last.deliveredAt||queued?.deliveredAt||null,
+          githubRunId:Number(String(queued?.batchId||"").replace(/^admin-/,""))||null,
+          sourceVerifiedAt:c?.reviewedAt||null,
           note:last.status==="uncertain"?"Check Telegram manually before retrying.":""};
       });
-      let workflow={state:"not_checked",url:null,conclusion:null};
-      try{
-        const runs=await github("/actions/workflows/admin-job-generator.yml/runs?per_page=15",token);
-        const since=Date.parse(batch.submittedAt||"");
-        const run=(runs.workflow_runs||[]).find(x=>x.event==="repository_dispatch"&&Number.isFinite(since)&&Date.parse(x.created_at)>=since-60000);
-        if(run)workflow={state:run.status,url:run.html_url,conclusion:run.conclusion,runId:run.id,exactMatch:false};
-      }catch(e){workflow={state:"unavailable",url:null,conclusion:null,reason:"GitHub workflow lookup failed"}}
+      const exactRunIds=[...new Set(stages.map(x=>x.githubRunId).filter(Number.isInteger))];
+      let workflow={state:"waiting",url:null,conclusion:null,runId:null,exactMatch:false,steps:[]};
+      if(exactRunIds.length===1){
+        const runId=exactRunIds[0];
+        workflow={state:"lookup_unavailable",url:"https://github.com/"+(process.env.ADMIN_GITHUB_REPO||DEFAULT_REPO)+"/actions/runs/"+runId,
+          conclusion:null,runId,exactMatch:true,steps:[]};
+        try{
+          const run=await github("/actions/runs/"+runId,token);
+          if(run.event==="repository_dispatch"){
+            workflow={state:run.status,url:run.html_url||workflow.url,conclusion:run.conclusion,runId,
+              exactMatch:true,createdAt:run.created_at,updatedAt:run.updated_at,steps:[]};
+            const details=await github("/actions/runs/"+runId+"/jobs?per_page=20",token);
+            workflow.steps=(details.jobs||[]).flatMap(j=>(j.steps||[]).map(step=>({
+              name:step.name,status:step.status,conclusion:step.conclusion,startedAt:step.started_at,completedAt:step.completed_at
+            }))).slice(0,40);
+          }
+        }catch(e){workflow.reason="Unable to read GitHub workflow evidence: "+String(e.message||"unavailable").slice(0,120)}
+      }else if(exactRunIds.length>1)workflow={state:"multiple_runs",url:null,conclusion:null,runId:null,exactMatch:false,steps:[]};
+      const pipeline={
+        approval:batch.status==="submitted"||batch.status==="published"?"complete":"waiting",
+        github:workflow.conclusion==="success"?"complete":workflow.conclusion==="failure"?"failed":
+          workflow.state==="completed"?"awaiting_confirmation":workflow.state==="in_progress"?"running":"unconfirmed",
+        website:stages.length&&stages.every(x=>x.website==="live")?"complete":
+          stages.some(x=>x.website==="live")?"partial":"pending",
+        telegram:stages.length&&stages.every(x=>x.telegram==="delivered")?"complete":
+          stages.some(x=>x.telegram==="delivered")?"partial":
+          stages.some(x=>["pending","sending"].includes(x.telegram))?"queued":"pending"
+      };
       return res.status(200).json({batchId:batch.batchId||null,status:batch.status||"waiting",
         publishedCount:stages.filter(x=>x.website==="live").length,
         dataCommittedCount:stages.filter(x=>x.website==="live"||x.website==="data-committed").length,
         alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
         telegramDelivered:stages.filter(x=>x.telegram==="delivered").length,
          telegramHourlyPending:stages.filter(x=>["pending","sending"].includes(x.telegram)).length,
-        workflow,stages,observedAt:new Date().toISOString(),
-        warning:"GitHub workflow matching is approximate. Production page evidence is checked directly on hdcareers.in. Vercel commit identity is not independently verified."});
+        workflow,pipeline,stages,observedAt:new Date().toISOString(),
+        warning:"GitHub workflow is matched by the queue run ID when present. Public website evidence is checked independently; exact Vercel deployment SHA is not verified in this response."});
     }
     const fromTest=String(req.body?.testInboxId||"")==="two-job-preview-20261017";
     const testKey="hdadmin:manual-review:v1:"+(process.env.VERCEL_ENV==="preview"?"preview":"production")+":test-two-jobs";
