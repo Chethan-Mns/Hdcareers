@@ -72,6 +72,20 @@ class AvailabilityTests(unittest.TestCase):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2099-12-31T23:59:59Z"}</script>'
         self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'review')
 
+    def test_jobposting_jsonld_with_live_exact_apply_is_active(self):
+        # Wayfair req 20829 regression: JSON-LD identifiers previously hid Apply now.
+        job = dict(JOB, role='Software Engineer Intern', apply='https://www.wayfair.com/careers/job/software-engineer-intern/2-20829', verificationTerms=['Software Engineer', 'Intern', '20829'])
+        body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Software Engineer Intern","identifier":"20829","validThrough":"2099-12-31T23:59:59Z"}</script><h1>Software Engineer Intern</h1><a href="/apply/20829">Apply now</a>'
+        self.assertEqual(classify(job, body, job['apply'])[0], 'active')
+
+    def test_jobposting_without_live_apply_remains_review(self):
+        body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"123","validThrough":"2099-12-31T23:59:59Z"}</script><h1>Data Engineer</h1>'
+        self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'review')
+
+    def test_jobposting_closed_text_and_apply_is_review(self):
+        body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"123"}</script><h1>Data Engineer</h1><p>Applications are closed</p><a>Apply now</a>'
+        self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'review')
+
     def test_jobposting_jsonld_past_deadline_expires_job(self):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2020-01-01T00:00:00Z"}</script>'
         self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'expired')
