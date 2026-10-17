@@ -19,20 +19,14 @@ object UpdateManager {
     private val client=OkHttpClient.Builder().connectTimeout(15,TimeUnit.SECONDS)
         .readTimeout(90,TimeUnit.SECONDS).followRedirects(true).build()
 
-    suspend fun check(cookie:String):AvailableUpdate?=withContext(Dispatchers.IO) {
-        val request=Request.Builder().url("https://hdcareers.in/api/admin/android-update")
-            .header("Cookie",cookie).build()
-        client.newCall(request).execute().use { response ->
-            if(!response.isSuccessful) return@withContext null
-            val json=JSONObject(response.body?.string().orEmpty())
-            if(!json.optBoolean("available"))return@withContext null
-            val code=json.optInt("versionCode")
-            val sha=json.optString("sha256").lowercase()
-            val url=json.optString("apkUrl")
-            if(code<=BuildConfig.VERSION_CODE||!url.startsWith("https://")||!Regex("[0-9a-f]{64}").matches(sha))
-                return@withContext null
-            AvailableUpdate(code,json.optString("versionName"),url,sha,json.optString("notes"))
-        }
+    fun parse(json:JSONObject):AvailableUpdate? {
+        if(!json.optBoolean("available"))return null
+        val code=json.optInt("versionCode")
+        val sha=json.optString("sha256").lowercase()
+        val url=json.optString("apkUrl")
+        if(code<=BuildConfig.VERSION_CODE||!url.startsWith("https://")||!Regex("[0-9a-f]{64}").matches(sha))
+            return null
+        return AvailableUpdate(code,json.optString("versionName"),url,sha,json.optString("notes"))
     }
 
     suspend fun download(context:Context,update:AvailableUpdate):File=withContext(Dispatchers.IO) {
