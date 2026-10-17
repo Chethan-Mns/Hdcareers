@@ -157,19 +157,12 @@ def main() -> None:
         else:
             closed.append(job)
 
-    if held or closed:
-        lines = [
-            f"{j.get('company', '')} — {j.get('role', '')}: "
-            + next((check_result['state'] + ' — ' + check_result['reason']
-                    for check_result in verdicts if check_result.get('apply') == j.get('apply')), 'Not verified')
-            for j in held + closed
-        ]
-        raise SystemExit(
-            "Approved batch blocked; nothing was published. "
-            f"{len(verified)} of {len(incoming)} passed, {len(held)} need manual review, {len(closed)} were closed. "
-            "Resolve or replace every failed candidate and reapprove the complete batch. "
-            + " | ".join(lines)
-        )
+    # An uncertain or closed candidate must never suppress the other independently
+    # verified Live jobs in the same explicitly approved batch.
+    if held:
+        print(f"Holding {len(held)} inconclusive job(s) in Needs Review; they will not publish or post to Telegram")
+    if closed:
+        print(f"Skipping {len(closed)} confirmed closed job(s); they will not publish or post to Telegram")
 
     next_id = max([int(j.get("id", 0) or 0) for j in current] + [0]) + 1
     used_pages = {str(j.get("page", "")).lower() for j in current}
