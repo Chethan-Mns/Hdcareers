@@ -1,0 +1,31 @@
+name: Android Admin v2 HTML Preview Checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - preview/admin-operations-v2.html
+      - api/admin/operations-preview.js
+      - tests/admin-operations-v2-preview.test.mjs
+      - .github/workflows/admin-v2-preview-ci.yml
+  push:
+    branches: [preview/admin-operations-v2-20261017]
+    paths:
+      - preview/admin-operations-v2.html
+      - api/admin/operations-preview.js
+      - tests/admin-operations-v2-preview.test.mjs
+      - .github/workflows/admin-v2-preview-ci.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify JavaScript syntax and read-only preview behavior
+        run: |
+          node --check api/admin/operations-preview.js
+          node --test tests/admin-operations-v2-preview.test.mjs
