@@ -194,6 +194,7 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
 $job_content_sections
+$role_evidence
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
 <p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">HD Careers original resources</p>
 <h2 class="text-xl font-black mt-2">Useful Before You Apply</h2>
@@ -345,6 +346,23 @@ def render_expanded_guidance(job: dict) -> str:
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Application checklist</p><h2 class="text-xl font-black mt-2">Before you submit</h2><p class="mt-4 text-slate-600 leading-relaxed">Open the official application page and confirm the title, location, job ID and current status. Re-check any closing date and requirements there because a listing can change after HD Careers verifies it. Review the resume that the employer portal reads, especially dates, qualification and contact details, before submitting.</p><p class="mt-4 text-slate-600 leading-relaxed">The resume matcher on this page is a text-based comparison aid. Its skills, relevant experience and qualification percentages do not predict an interview, replace an employer ATS or decide eligibility. Applications are handled by the employer.</p></div>'''
 
 
+def render_role_evidence(job: dict) -> str:
+    """Candidate preparation guidance grounded in known job facts, not invented requirements."""
+    tasks = [str(x).strip() for x in job.get("resp", []) if str(x).strip()][:3]
+    if not tasks:
+        return ""
+    rows = "".join(
+        '<li class="rounded-xl border border-slate-200 p-4"><p class="font-bold text-slate-900">' + esc(task) +
+        '</p><p class="mt-2 text-sm text-slate-600">Prepare a truthful example showing your approach, decisions and result. If this is new to you, explain a learning plan rather than inventing work experience.</p></li>'
+        for task in tasks
+    )
+    return ('<section class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+            '<p class="text-xs font-black uppercase text-blue-700">HD Careers candidate worksheet</p>'
+            '<h2 class="text-xl font-black mt-2">Prepare for the work mentioned in this role</h2>'
+            '<p class="mt-3 text-sm text-slate-600">These prompts are editorial preparation tips derived from listed responsibilities, not employer selection criteria or guaranteed interview questions.</p>'
+            '<ul class="grid gap-3 mt-4">' + rows + '</ul></section>')
+
+
 def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
     """Render useful job-specific content using only verified fields already stored for the listing."""
     company = str(job["company"])
@@ -478,15 +496,14 @@ def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
 </div>'''
 
     faq = [
-        ("Which company is hiring for this role?", f"{company} is the employer listed for this opportunity."),
-        ("What role is this application for?", f"The role is {role}."),
-        ("Where is the job located?", location),
-        ("What experience is listed?", experience),
-        ("What qualification or batch is mentioned?", qualification),
-        ("Where should I apply?", f"Apply only through the official employer link on this page. HD Careers verified this listing using {source_name}."),
+        ("Is this vacancy still accepting applications?",
+         f"Check the exact source link for {company} and confirm the application form still accepts submissions. Availability can change after HD Careers checks the listing."),
+        ("How can I correct inaccurate job information?",
+         "Use the HD Careers Contact page with the job URL, official application link and a description of the discrepancy."),
     ]
     if job_ref:
-        faq.insert(2, ("What is the job or requisition ID?", job_ref))
+        faq.insert(1, ("Which job ID should I verify with the employer?",
+                       f"Compare job ID {job_ref} against the official posting before applying." ))
     faq_html = "".join(
         f'<details class="rounded-xl border border-slate-200 bg-white p-4"><summary class="cursor-pointer font-extrabold text-slate-900">{esc(q)}</summary><p class="text-sm text-slate-600 mt-2 leading-relaxed">{esc(a)}</p></details>'
         for q, a in faq
@@ -793,9 +810,16 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     candidates = logo_candidates(job)
     favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
-    meta_description = f"{heading} - job details, eligibility, skills, location and official source on HD Careers."
+    meta_description = f"{heading} in {job[\'loc\']}: eligibility, responsibilities, experience and official employer link. Checked {job[\'verifiedDate\']}."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
     structured_data = job_posting_schema(job, canonical)
+    breadcrumb = {"@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "HD Careers", "item": "https://hdcareers.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Jobs", "item": "https://hdcareers.in/#jobs"},
+            {"@type": "ListItem", "position": 3, "name": heading, "item": canonical}
+        ]}
+    structured_data += '<script type="application/ld+json">' + json.dumps(breadcrumb, ensure_ascii=False).replace("</", "<\\/") + '</script>'
     share_text = f"{company} - {role}\\n{job['loc']}"
 
     if status == "active":
@@ -847,6 +871,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "who": esc(job["who"]),
         "responsibilities": render_responsibilities(job["resp"]),
         "job_content_sections": render_job_content_sections(job, jobs),
+        "role_evidence": render_role_evidence(job),
         "source_name": esc(job["sourceName"]),
         "hero_action": hero_action,
         "status_notice": status_notice,
