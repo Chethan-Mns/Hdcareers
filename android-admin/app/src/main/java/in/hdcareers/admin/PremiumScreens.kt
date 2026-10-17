@@ -499,7 +499,7 @@ private fun ProReview(vm:AdminViewModel) {
                     if(progress.optInt("telegramDelivered")==count&&count>0)"complete"
                     else if(progress.optInt("telegramHourlyPending")>0)"queued" else "pending",
                     "${progress.optInt("telegramHourlyPending")} queued · ${progress.optInt("telegramDelivered")} delivered")
-                if(gh?.optLong("runId",0L)?:0L>0L){
+                if((gh?.optLong("runId",0L) ?: 0L)>0L){
                     val runLink=gh?.optString("url").orEmpty()
                     if(runLink.startsWith("https://")) TextButton(onClick={
                         ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(runLink)))
