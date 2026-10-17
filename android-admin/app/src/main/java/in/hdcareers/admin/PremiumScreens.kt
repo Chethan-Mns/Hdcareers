@@ -287,6 +287,7 @@ private fun ProReview(vm:AdminViewModel) {
         when(it.decision) { "live" -> 0; "unreviewed", "" -> 1; "unsure" -> 2; else -> 3 }
     }.thenByDescending { it.complete })
     val total=vm.batch.all.size
+    val ctx=LocalContext.current
     LaunchedEffect(vm.tab,vm.batch.status) {
         if(vm.tab==1 && vm.batch.status=="submitted") {
             while(true) {
@@ -329,7 +330,7 @@ private fun ProReview(vm:AdminViewModel) {
                     HeroMiniStat(vm.batch.expiredCount.toString(),"Expired",Modifier.weight(1f))
                     HeroMiniStat(vm.batch.readyCount.toString(),"Content Ready",Modifier.weight(1f))
                 }
-                Text("20 employers: ${vm.batch.uniqueEmployers}/20 · Source details required: ${vm.batch.incomplete}",
+                Text("${vm.batch.uniqueEmployers} employers · ${vm.batch.all.size} candidates · Details needing attention: ${vm.batch.incomplete}",
                     fontSize=12.sp,color=Brand.gray)
                 TabRow(selectedTabIndex=selected,containerColor=Color.Transparent,
                     contentColor=Brand.blue) {
@@ -346,6 +347,7 @@ private fun ProReview(vm:AdminViewModel) {
                 },fontSize=11.sp,color=Brand.gray)
             }
         }
+        if(vm.twoJobInbox.optJSONObject("staged")!=null) {
         item {
             ProCard {
                 SectionHead(Icons.Default.NotificationsActive,"Two-job review & live tracker","Independent of your daily batch")
@@ -423,6 +425,7 @@ private fun ProReview(vm:AdminViewModel) {
                 Text("Each job shows independent GitHub/data, website and Telegram evidence after submission.",fontSize=11.sp,color=Brand.gray)
             }
         }
+        }
         if(vm.batch.id.isBlank()) item {
             ProEmpty(Icons.Default.EventNote,"No batch available",
                 "The discovery pipeline must generate real source-backed jobs first.",
@@ -445,44 +448,146 @@ private fun ProReview(vm:AdminViewModel) {
             ProCard {
                 SectionHead(Icons.Default.RocketLaunch,"Publish Ready",
                     "Review your selected jobs before final confirmation",Brand.green)
-                val incomplete=chosen.filterNot { it.approved }
-                Text("${chosen.size} of 10 selected · ${incomplete.size} awaiting source details",
-                    color=if(incomplete.isEmpty())Brand.green else Brand.amber,fontSize=12.sp)
-                if(incomplete.isNotEmpty()) {
-                    Text("Incomplete information must be recovered from the official job page. We won't invent eligibility, responsibilities or experience requirements.",
-                        fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                val submitted=vm.batch.status=="submitted"||vm.batch.status=="published"
+                val progress=vm.publishingProgress
+                val stages=progress.optJSONArray("stages")
+                val count=stages?.length() ?: 0
+                if(submitted){
+                    Text("Approved batch submitted · "+count+" jobs in the publishing tracker",
+                        color=Brand.green,fontWeight=FontWeight.Bold,fontSize=13.sp)
+                    Text("No action needed. Your previous confirmation is protected from duplicate publishing.",
+                        color=Brand.gray,fontSize=12.sp,lineHeight=18.sp)
+                }else{
+                    val incomplete=chosen.filterNot { it.approved }
+                    Text("${chosen.size} of 10 selected · ${incomplete.size} awaiting source details",
+                        color=if(incomplete.isEmpty())Brand.green else Brand.amber,fontSize=12.sp)
+                    if(incomplete.isNotEmpty()) {
+                        Text("Job details are recovered from official sources before publication.",
+                            fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                    }
+                    if(!vm.canPublish) vm.selectedBlockers.take(4).forEach { reason ->
+                        Text("• "+reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
+                    }
+                    Button(onClick={confirm=true},enabled=vm.canPublish&&!vm.busy,
+                        modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
+                        Icon(Icons.Default.Send,null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Verify & Publish ${chosen.size} job(s)")
+                    }
                 }
-                if(!vm.canPublish) vm.selectedBlockers.take(4).forEach { reason ->
-                    Text("• "+reason,fontSize=12.sp,color=Brand.amber,lineHeight=17.sp)
+                HorizontalDivider(color=Brand.sky)
+                SectionHead(Icons.Default.Route,"Live publishing pipeline","Refreshes every 10 seconds after approval",Brand.blue)
+                val pipeline=progress.optJSONObject("pipeline")
+                val gh=progress.optJSONObject("workflow")
+                val ghStatus=gh?.optString("conclusion")?.takeUnless{it.isBlank()||it=="null"}
+                    ?:gh?.optString("state")?.takeUnless{it.isBlank()||it=="null"}
+                    ?:"Awaiting verified workflow data"
+                val tracked=count>0
+                ProPipelineStep("01","Owner approval",
+                    if(submitted)"complete" else "pending",
+                    if(submitted)"Both review and publishing request submitted" else "Awaiting final review")
+                ProPipelineStep("02","GitHub publishing",
+                    if(ghStatus=="success")"complete" else if(ghStatus=="failure")"failed" else "pending",
+                    if(tracked)ghStatus else "No submitted workflow yet")
+                ProPipelineStep("03","Website content",
+                    if(progress.optInt("dataCommittedCount")==count&&count>0)"complete" else "pending",
+                    "${progress.optInt("dataCommittedCount")} of $count job records committed")
+                ProPipelineStep("04","Live production website",
+                    if(progress.optInt("publishedCount")==count&&count>0)"complete" else "pending",
+                    "${progress.optInt("publishedCount")} of $count pages independently confirmed live")
+                ProPipelineStep("05","Hourly Telegram",
+                    if(progress.optInt("telegramDelivered")==count&&count>0)"complete"
+                    else if(progress.optInt("telegramHourlyPending")>0)"queued" else "pending",
+                    "${progress.optInt("telegramHourlyPending")} queued · ${progress.optInt("telegramDelivered")} delivered")
+                if(gh?.optLong("runId",0L)?:0L>0L){
+                    val runLink=gh?.optString("url").orEmpty()
+                    if(runLink.startsWith("https://")) TextButton(onClick={
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(runLink)))
+                    }){Icon(Icons.Default.OpenInNew,null);Spacer(Modifier.width(5.dp));Text("Open verified GitHub workflow")}
                 }
-                Button(onClick={confirm=true},enabled=vm.canPublish&&!vm.busy,
-                    modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp)) {
-                    Icon(Icons.Default.Send,null)
-                    Spacer(Modifier.width(8.dp))
-                    Text("Verify & Publish ${chosen.size} job(s)")
-                }
-                Text("Website deployment first. New jobs then enter the hourly Telegram queue.",
+                Text("Latest server check: "+progress.optString("observedAt").takeIf{it.isNotBlank()}?.replace("T"," ")?.take(19).orEmpty()+" UTC",
                     fontSize=11.sp,color=Brand.gray)
                 OutlinedButton(onClick=vm::refreshPublishingStatus,enabled=!vm.busy,
-                    modifier=Modifier.fillMaxWidth()) { Text("Refresh live publishing status") }
-                val progress=vm.publishingProgress
-                val gh=progress.optJSONObject("workflow")
-                Text("GitHub: "+(gh?.optString("conclusion")?.takeIf { it.isNotBlank() }
-                    ?:gh?.optString("state").orEmpty().ifBlank { "Not submitted" }),
-                    fontSize=12.sp,color=Brand.navy)
-                Text("Website Live: ${progress.optInt("publishedCount")} · Telegram queued: ${progress.optInt("telegramHourlyPending")} · Delivered: ${progress.optInt("telegramDelivered")}",
-                    fontSize=12.sp,color=Brand.navy)
-                Text("Live tracking refreshes every 10 seconds after submission; a commit alone is not a delivery.",
-                    fontSize=11.sp,color=Brand.gray)
-                val stages=progress.optJSONArray("stages")
-                for(i in 0 until (stages?.length() ?: 0)) {
-                    val stage=stages?.optJSONObject(i) ?: continue
-                    Text(stage.optString("company")+
-                        " · GitHub "+stage.optString("github")+
-                        " · Site "+stage.optString("website")+
-                        " · Telegram "+stage.optString("telegram"),
-                        fontSize=11.sp,color=Brand.gray)
+                    modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(13.dp)) {
+                    Icon(Icons.Default.Refresh,null)
+                    Spacer(Modifier.width(8.dp))
+                    Text("Refresh verified status")
                 }
+                if(tracked) {
+                    HorizontalDivider(color=Brand.sky)
+                    Text("INDIVIDUAL JOB STATUS",fontWeight=FontWeight.Black,
+                        fontSize=11.sp,letterSpacing=1.sp,color=Brand.blue)
+                    for(i in 0 until count){
+                        val stage=stages?.optJSONObject(i) ?: continue
+                        val id=stage.optString("candidateId")
+                        var expanded by remember(id) {mutableStateOf(true)}
+                        val company=stage.optString("company")
+                        val title=stage.optString("role")
+                        val queueStatus=stage.optString("telegram","not_queued")
+                        Surface(color=Brand.sky.copy(alpha=.34f),shape=RoundedCornerShape(16.dp)) {
+                            Column(Modifier.fillMaxWidth().animateContentSize().padding(13.dp),
+                                verticalArrangement=Arrangement.spacedBy(9.dp)) {
+                                Row(Modifier.fillMaxWidth().clickable{expanded=!expanded},
+                                    verticalAlignment=Alignment.CenterVertically,
+                                    horizontalArrangement=Arrangement.spacedBy(9.dp)){
+                                    Icon(if(queueStatus=="delivered")Icons.Default.CheckCircle else Icons.Default.WorkOutline,
+                                        null,tint=if(queueStatus=="delivered")Brand.green else Brand.blue)
+                                    Column(Modifier.weight(1f)){
+                                        Text(company,fontWeight=FontWeight.Black,fontSize=15.sp,color=Brand.navy)
+                                        Text(title,fontSize=11.sp,color=Brand.gray,maxLines=2)
+                                    }
+                                    Icon(if(expanded)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null,tint=Brand.blue)
+                                }
+                                if(expanded){
+                                    ProPipelineStep("1","GitHub",
+                                        if(ghStatus=="success")"complete" else if(ghStatus=="failure")"failed" else "pending",
+                                        if(ghStatus=="success")"Exact workflow completed successfully" else ghStatus)
+                                    ProPipelineStep("2","Data saved",
+                                        if(stage.optString("website") in listOf("live","data-committed"))"complete" else "pending",
+                                        if(stage.optString("website") in listOf("live","data-committed"))"Job page generated in repository" else "Not confirmed")
+                                    val siteLive=stage.optString("website")=="live"
+                                    ProPipelineStep("3","Public website",
+                                        if(siteLive)"complete" else "pending",
+                                        if(siteLive)"Official job page responded with matching Apply URL" else "Awaiting live-page verification")
+                                    val pos=stage.optInt("queuePosition",0)
+                                    ProPipelineStep("4","Telegram hourly queue",
+                                        if(queueStatus=="delivered")"complete" else if(queueStatus in listOf("pending","sending"))"queued" else "pending",
+                                        when(queueStatus){
+                                            "delivered"->"Message confirmed delivered"
+                                            "sending"->"Claimed and sending"
+                                            "pending"->"Position "+(if(pos>0)pos.toString() else "pending")+" · one eligible job per hour"
+                                            "uncertain"->"Delivery uncertain — manual inspection required"
+                                            else->"Not yet queued"
+                                        })
+                                    val submittedAt=stage.optString("queuedAt")
+                                    if(submittedAt.isNotBlank()&&submittedAt!="null")
+                                        Text("Queued: "+submittedAt.replace("T"," ").take(19)+" UTC",
+                                            fontSize=11.sp,color=Brand.gray)
+                                    val deliveredAt=stage.optString("telegramDeliveredAt")
+                                    if(deliveredAt.isNotBlank()&&deliveredAt!="null")
+                                        Text("Delivered: "+deliveredAt.replace("T"," ").take(19)+" UTC",
+                                            fontSize=11.sp,color=Brand.green)
+                                    val messageId=stage.optString("telegramMessageId")
+                                    if(messageId.isNotBlank()&&messageId!="null")
+                                        Text("Telegram message #"+messageId,fontSize=11.sp,color=Brand.green)
+                                    val pageUrl=stage.optString("pageUrl")
+                                    if(pageUrl.startsWith("https://")) TextButton(onClick={
+                                        ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(pageUrl)))
+                                    }) {
+                                        Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
+                                        Spacer(Modifier.width(5.dp))
+                                        Text("Open HD Careers job page")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }else if(submitted){
+                    Text("Server details unavailable. The batch has already been submitted; do not publish it again.",
+                        color=Brand.amber,fontSize=12.sp,lineHeight=18.sp)
+                }
+                Text("GitHub completion, website availability, and Telegram message IDs are verified separately. A GitHub commit does not prove delivery.",
+                    fontSize=11.sp,color=Brand.gray,lineHeight=17.sp)
             }
         }
     }
@@ -491,6 +596,30 @@ private fun ProReview(vm:AdminViewModel) {
         text={Text("Send these complete jobs to GitHub. Website deployment and Telegram delivery will be tracked separately, without claiming success early.")},
         confirmButton={TextButton(onClick={confirm=false;vm.publishBatch()}){Text("Confirm & Start")}},
         dismissButton={TextButton(onClick={confirm=false}){Text("Cancel")}})
+}
+
+@Composable
+private fun ProPipelineStep(number:String,title:String,state:String,detail:String) {
+    val good=state=="complete"
+    val failed=state=="failed"
+    val color=if(good)Brand.green else if(failed)Brand.red else if(state=="queued")Brand.blue else Brand.gray
+    Row(Modifier.fillMaxWidth().padding(vertical=2.dp),
+        horizontalArrangement=Arrangement.spacedBy(11.dp),verticalAlignment=Alignment.CenterVertically) {
+        Surface(shape=RoundedCornerShape(12.dp),
+            color=color.copy(alpha=.12f),modifier=Modifier.size(34.dp)) {
+            Box(contentAlignment=Alignment.Center) {
+                if(good)Icon(Icons.Default.Check,null,tint=color,modifier=Modifier.size(19.dp))
+                else if(failed)Icon(Icons.Default.ErrorOutline,null,tint=color,modifier=Modifier.size(19.dp))
+                else Text(number,color=color,fontWeight=FontWeight.Bold,fontSize=11.sp)
+            }
+        }
+        Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+            Text(title,fontWeight=FontWeight.SemiBold,fontSize=13.sp,color=Brand.navy)
+            Text(detail,fontSize=11.sp,color=Brand.gray,lineHeight=16.sp)
+        }
+        Text(when(state){"complete"->"Done";"failed"->"Failed";"queued"->"Queued";else->"Pending"},
+            fontSize=10.sp,fontWeight=FontWeight.Bold,color=color)
+    }
 }
 
 @Composable
