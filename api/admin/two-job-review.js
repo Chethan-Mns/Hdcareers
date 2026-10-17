@@ -20,6 +20,12 @@ export default async function handler(req,res){
  if(!["GET","POST"].includes(req.method)){res.setHeader("Allow","GET, POST");return res.status(405).json({error:"Method not allowed"});}
  if(!await requireAdmin(req,res,["owner","job_editor"]))return;
  if(req.method==="POST"&&process.env.VERCEL_ENV==="preview")return res.status(403).json({error:"Read-only preview"});
+ if(req.method==="POST"){
+  const origin=String(req.headers.origin||"");
+  const host=String(req.headers["x-forwarded-host"]||req.headers.host||"").toLowerCase();
+  try{if(origin&&new URL(origin).host.toLowerCase()!==host)return res.status(403).json({error:"Invalid origin"});}
+  catch{return res.status(403).json({error:"Invalid origin"});}
+ }
  try{
   const key=PREFIX+"test-two-jobs";
   if(req.method==="GET"){
