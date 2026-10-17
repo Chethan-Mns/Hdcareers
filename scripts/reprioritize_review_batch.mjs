@@ -7,8 +7,8 @@ const safeLoad=(path,fallback)=>{
  catch(e){if(e.code==="ENOENT")return fallback;throw e;}
 };
 const batch=safeLoad(file,null);
-if(String(batch?.batchId||"").includes("owner-requested-new-20")){
- console.log("Owner-requested exact 20-company shortlist: preserve 10 Priority + 10 Backup, do not auto-reorder or truncate.");
+if(String(batch?.batchId||"").includes("owner-requested-new-20")||String(batch?.batchId||"").startsWith("hd-android-two-job-test-")){
+ console.log("Owner-approved review/test shortlist: preserve prepared candidates without auto-reordering or truncation.");
  process.exit(0);
 }
 const publishedJobs=safeLoad("data/jobs.json",[]);
