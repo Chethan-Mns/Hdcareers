@@ -29,6 +29,7 @@ import java.util.concurrent.TimeUnit
 
 const val REVIEW_CHANNEL="hd_review_updates"
 const val REMINDER_CHANNEL="hd_daily_reminder"
+const val EXPIRY_CHANNEL="hd_expiry_updates"
 
 class HDApplication:Application() {
     override fun onCreate() {
@@ -36,6 +37,7 @@ class HDApplication:Application() {
         val manager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(NotificationChannel(REVIEW_CHANNEL,"Job batches and publishing",NotificationManager.IMPORTANCE_HIGH))
         manager.createNotificationChannel(NotificationChannel(REMINDER_CHANNEL,"Daily pending reviews",NotificationManager.IMPORTANCE_DEFAULT))
+        manager.createNotificationChannel(NotificationChannel(EXPIRY_CHANNEL,"Expiry exceptions to review",NotificationManager.IMPORTANCE_HIGH))
         if (BuildConfig.FIREBASE_APP_ID.isNotBlank() && BuildConfig.FIREBASE_API_KEY.isNotBlank() &&
             BuildConfig.FIREBASE_SENDER_ID.isNotBlank() && BuildConfig.FIREBASE_PROJECT_ID.isNotBlank()) {
             if (FirebaseApp.getApps(this).isEmpty()) {
@@ -63,20 +65,21 @@ fun fcmToken(context:Context,onToken:(String)->Unit,onError:(String)->Unit) {
         onError(it.localizedMessage ?: "FCM token unavailable.")
     }
 }
-fun showHDNotification(context:Context,title:String,body:String,channel:String,id:Int) {
+fun showHDNotification(context:Context,title:String,body:String,channel:String,id:Int,openExpiry:Boolean=false) {
     if(Build.VERSION.SDK_INT>=33 &&
         context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED) return
     val intent=Intent(context,MainActivity::class.java).apply {
         flags=Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        putExtra("open_review",true)
+        putExtra("open_review",!openExpiry)
+        putExtra("open_expiry",openExpiry)
     }
-    val pending=PendingIntent.getActivity(context,100,intent,
+    val pending=PendingIntent.getActivity(context,if(openExpiry)101 else 100,intent,
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     val item=NotificationCompat.Builder(context,channel)
         .setSmallIcon(R.drawable.ic_launcher)
         .setContentTitle(title).setContentText(body)
         .setAutoCancel(true).setContentIntent(pending)
-        .setPriority(if(channel==REVIEW_CHANNEL)NotificationCompat.PRIORITY_HIGH else NotificationCompat.PRIORITY_DEFAULT)
+        .setPriority(if(channel==REVIEW_CHANNEL||channel==EXPIRY_CHANNEL)NotificationCompat.PRIORITY_HIGH else NotificationCompat.PRIORITY_DEFAULT)
         .build()
     NotificationManagerCompat.from(context).notify(id,item)
 }
@@ -88,8 +91,9 @@ class PushService:FirebaseMessagingService() {
     override fun onMessageReceived(message:RemoteMessage) {
         val title=message.notification?.title ?: message.data["title"] ?: "HD Careers"
         val body=message.notification?.body ?: message.data["body"] ?: "Your job review has an update."
-        showHDNotification(this,title,body,REVIEW_CHANNEL,
-            message.data["batchId"]?.hashCode() ?: System.currentTimeMillis().toInt())
+        val expiry=message.data["openExpiry"]=="1"||message.data["kind"]=="expiry"
+        showHDNotification(this,title,body,if(expiry)EXPIRY_CHANNEL else REVIEW_CHANNEL,
+            message.data["batchId"]?.hashCode() ?: System.currentTimeMillis().toInt(),openExpiry=expiry)
     }
 }
 class ReminderWorker(context:Context,params:WorkerParameters):CoroutineWorker(context,params) {
