@@ -1,0 +1,144 @@
+{
+  "batchId": "2026-10-17-0900-ist",
+  "observedDate": "2026-10-17",
+  "source": "HD Careers owner independent manual review provided in conversation",
+  "purpose": "quality_regression_only_not_publication_or_production_expiry_instruction",
+  "notes": [
+    "Manual owner reports override crawler assumptions for benchmark scoring; do not classify uncertain Cisco as expired.",
+    "Cisco direct link reportedly redirected to a generic Cisco careers page, so it is NOT application-route-verified.",
+    "All 'expired' owner verdicts block rediscovery until fresh, exact authoritative evidence supports reopening.",
+    "A verified live posting need not qualify for the HD Careers fresher quota."
+  ],
+  "items": [
+    {
+      "index": 1,
+      "company": "DataFlair Web Services",
+      "role": "Software Engineer",
+      "officialUrl": "https://jobs.smartrecruiters.com/DataFlairWebServicesPvtLtd/743999667075811-software-engineer",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "fresher_it",
+      "notes": ""
+    },
+    {
+      "index": 2,
+      "company": "Endeavor IT Solution",
+      "role": "Software Engineer – Java Fresher",
+      "officialUrl": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "fresher_it",
+      "notes": ""
+    },
+    {
+      "index": 3,
+      "company": "CloudSEK",
+      "role": "SDE Intern – Backend",
+      "officialUrl": "https://job-boards.greenhouse.io/cloudsek/jobs/6222340004",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "internship",
+      "notes": ""
+    },
+    {
+      "index": 4,
+      "company": "Qualcomm",
+      "role": "2026 Campus Hire – Associate Engineer",
+      "officialUrl": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2026-Campus-Hire--Associate-Engineer--HW_3078323",
+      "manualVerdict": "expired",
+      "previousCheckerVerdict": "review",
+      "audienceClass": "fresher_it",
+      "notes": ""
+    },
+    {
+      "index": 5,
+      "company": "Cisco",
+      "role": "Software Engineer – New Grad",
+      "officialUrl": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
+      "manualVerdict": "unsure",
+      "previousCheckerVerdict": "review",
+      "audienceClass": "fresher_it",
+      "notes": "Owner reached generic Cisco careers page, not exact job form"
+    },
+    {
+      "index": 6,
+      "company": "Emerson",
+      "role": "Software Engineer Trainee",
+      "officialUrl": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26009291",
+      "manualVerdict": "expired",
+      "previousCheckerVerdict": "review",
+      "audienceClass": "fresher_it",
+      "notes": ""
+    },
+    {
+      "index": 7,
+      "company": "NVIDIA",
+      "role": "Test and Tools Development Engineer",
+      "officialUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/India-Pune/Test-and-Tools-Development-Engineer---New-College-Grad-2026_JR2016982",
+      "manualVerdict": "expired",
+      "previousCheckerVerdict": "review",
+      "audienceClass": "fresher_it",
+      "notes": ""
+    },
+    {
+      "index": 8,
+      "company": "NTT DATA",
+      "role": "QA Engineer",
+      "officialUrl": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "unconfirmed_fresher_eligibility",
+      "notes": ""
+    },
+    {
+      "index": 9,
+      "company": "Sprinto",
+      "role": "AI Implementation Intern",
+      "officialUrl": "https://jobs.lever.co/Sprinto/6dfd5f41-57b6-40e8-9eab-ba4083c1a7c4",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "internship",
+      "notes": ""
+    },
+    {
+      "index": 10,
+      "company": "Caterpillar",
+      "role": "IT Analyst Applications",
+      "officialUrl": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "unconfirmed_fresher_eligibility",
+      "notes": ""
+    },
+    {
+      "index": 11,
+      "company": "EY",
+      "role": "Analyst – SAP Tech Consulting",
+      "officialUrl": "https://careers.ey.com/ey/job/Mumbai-Analyst-Tech-Consulting-National-CNS-TC-SAP-Mumbai-MH-400028/1447861633/",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "early_career",
+      "notes": ""
+    },
+    {
+      "index": 12,
+      "company": "Bosch",
+      "role": "Java Eclipse Development",
+      "officialUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000152431877",
+      "manualVerdict": "live",
+      "previousCheckerVerdict": "live",
+      "audienceClass": "experienced_not_eligible_for_fresher_slot",
+      "notes": "Requires experienced staff, despite reportedly Live"
+    },
+    {
+      "index": 13,
+      "company": "IBM",
+      "role": "Software Developer Intern",
+      "officialUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=134098",
+      "manualVerdict": "expired",
+      "previousCheckerVerdict": "review",
+      "audienceClass": "internship",
+      "notes": ""
+    }
+  ]
+}
