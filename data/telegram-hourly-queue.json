@@ -45,10 +45,12 @@
     {
       "page": "jobs/instawork-it-intern-gadget-tech-support-operations.html",
       "batchId": "admin-39042339927",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-17T14:49:01.867777+00:00",
       "claimId": "39080086007",
-      "claimedAt": "2026-10-17T23:43:09.496518+00:00"
+      "claimedAt": "2026-10-17T23:43:09.496518+00:00",
+      "messageId": 518,
+      "deliveredAt": "2026-10-17T23:43:12.219476+00:00"
     }
   ]
 }
