@@ -24,7 +24,37 @@ export default async function handler(req,res){
   const key=PREFIX+"test-two-jobs";
   if(req.method==="GET"){
    const raw=await redis("GET",key);
-   return res.status(200).json({ok:true,staged:raw?JSON.parse(raw):null});
+   const data=raw?JSON.parse(raw):null;
+   if(!data||data.status!=="submitted")return res.status(200).json({ok:true,staged:data,stages:[]});
+   const token=process.env.GITHUB_PUBLISH_TOKEN;
+   const source=async path=>{
+    const r=await fetch(ROOT+"/contents/"+path+"?ref=main",{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(8000)});
+    if(!r.ok)throw Error("Could not read "+path);
+    const v=await r.json();return JSON.parse(Buffer.from(v.content.replace(/\\n/g,""),"base64").toString());
+   };
+   try{
+    const [jobs,ledger]=await Promise.all([source("data/jobs.json"),source("data/telegram-deliveries.json")]);
+    const stages=await Promise.all(data.jobs.filter(j=>data.selectedIds.includes(j.id)).map(async j=>{
+      const existing=jobs.find(x=>String(x.apply).replace(/\\/$/,"")===String(j.apply).replace(/\\/$/,""));
+      const page=String(existing?.page||"").replace(/^\\//,"");
+      let website="pending";
+      if(existing){
+       website="data-committed";
+       if(/^jobs\\/[a-z0-9-]+\\.html$/.test(page)){
+        try{
+         const r=await fetch("https://hdcareers.in/"+page,{signal:AbortSignal.timeout(6000),headers:{"Cache-Control":"no-cache"}});
+         const html=r.ok?await r.text():"";
+         if(r.ok&&html.toLowerCase().includes(j.role.toLowerCase()))website="live";
+        }catch{}
+       }
+      }
+      const receipts=Object.values(ledger||{}).filter(x=>x&&x.page===page&&page);
+      const last=receipts.at(-1)||{};
+      return {candidateId:j.id,company:j.company,role:j.role,apply:j.apply,page,github:existing?"data-committed":"dispatched-unconfirmed",
+       website,telegram:last.status||"not-confirmed",telegramMessageId:last.messageId||null};
+    }));
+    return res.status(200).json({ok:true,staged:data,stages,observedAt:new Date().toISOString(),warning:"GitHub workflow execution not independently matched; website verified by actual public page, Telegram by delivery ledger."});
+   }catch(e){return res.status(200).json({ok:true,staged:data,stages:[],warning:"Progress evidence temporarily unavailable: "+e.message});}
   }
   if(req.body?.action==="review"){
    const raw=await redis("GET",key);
