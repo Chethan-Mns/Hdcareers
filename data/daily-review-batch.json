@@ -73,9 +73,24 @@
         "status": "review",
         "desc": "Develop, test and maintain production software components.",
         "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "resp": [
+          "[Skip to main content](https://www.amazon.jobs/en/jobs/10580007/software-development-engineer-i#main-1792235798)",
+          "[×](javascript:void(0))",
+          "[Home](https://www.amazon.jobs/en)",
+          "[Teams](https://www.amazon.jobs/en/business_categories)",
+          "[Locations](https://www.amazon.jobs/en/locations)",
+          "[Job categories](https://www.amazon.jobs/en/job_categories)"
+        ],
         "verifiedDate": "Not yet verified",
         "jobId": "10580007"
+      },
+      "sourceEnrichment": {
+        "fields": [
+          "responsibilities"
+        ],
+        "url": "https://www.amazon.jobs/en/jobs/10580007/software-development-engineer-i",
+        "source": "reader",
+        "evidenceVerifiedAt": "2026-10-17T11:16:40.580Z"
       }
     },
     {
@@ -98,9 +113,24 @@
         "status": "review",
         "desc": "Learn and develop test automation scripts for Veeva Vault.",
         "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "resp": [
+          "<p>Veeva Systems is a mission-driven organization and pioneer in industry cloud, helping life sciences companies bring therapies to patients faster",
+          "<p>At the heart of Veeva are our values: Do the Right Thing, Customer Success, Employee Success, and Speed",
+          "<p><span style=\"font-size: 16px;\">Do you dream about being part of a team with the talent, passion, and financial backing to build top-notch, industry-changing cloud-based applications and platforms?",
+          "cosmetics industries. Our customers make vaccines, life-saving medicines, and life-enhancing products that make a difference in everyday lives. Our technology has transformed",
+          "<p><span style=\"font-size: 16px;\">Veeva Systems is expanding its global footprint with a new development centre in Hyderabad, India",
+          "release engineering efforts. You will be working on cutting-edge technologies such as Cucumber, AWS(EC2, S3, Workspace), Visual Regression &amp"
+        ],
         "verifiedDate": "Not yet verified",
         "jobId": "d0704c83-8c0f-4545-8a40-eb48bcfec299"
+      },
+      "sourceEnrichment": {
+        "fields": [
+          "responsibilities"
+        ],
+        "url": "https://jobs.lever.co/veeva/d0704c83-8c0f-4545-8a40-eb48bcfec299",
+        "source": "structured",
+        "evidenceVerifiedAt": "2026-10-17T11:16:40.707Z"
       }
     },
     {
@@ -173,9 +203,24 @@
         "status": "review",
         "desc": "Test Databricks ETL/ELT pipelines and analytics data.",
         "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "resp": [
+          "Create test strategies and test plans",
+          "Execute functional, regression, and integration testing",
+          "Validate ETL and ELT pipelines",
+          "Perform data reconciliation testing",
+          "Automate testing processes where appropriate",
+          "Test automation tools"
+        ],
         "verifiedDate": "Not yet verified",
         "jobId": "1439894800"
+      },
+      "sourceEnrichment": {
+        "fields": [
+          "responsibilities"
+        ],
+        "url": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
+        "source": "reader",
+        "evidenceVerifiedAt": "2026-10-17T11:16:51.865Z"
       }
     },
     {
@@ -223,9 +268,24 @@
         "status": "review",
         "desc": "Research due diligence, compliance and reputational-risk assessments.",
         "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "resp": [
+          "Requisition ID:1735771",
+          "As a global leader in assurance, tax, transaction and advisory services, we hire and develop the most passionate people in their field to help build a better working world",
+          "The opportunity**: Analyst-National-Forensics-ASU - Forensics - Investigations & Compliance - Mumbai",
+          "National comprises of sector agnostic teams working across industries for a well rounded experience",
+          "ASU - Forensics - Investigations & Compliance :**",
+          "Successful organizations depend on their reputation for keeping promises, respecting laws and behaving ethically to maintain stakeholder trust"
+        ],
         "verifiedDate": "Not yet verified",
         "jobId": "1426376333"
+      },
+      "sourceEnrichment": {
+        "fields": [
+          "responsibilities"
+        ],
+        "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Mumbai-MH-400028/1426376333/",
+        "source": "reader",
+        "evidenceVerifiedAt": "2026-10-17T11:16:59.193Z"
       }
     },
     {
@@ -300,9 +360,24 @@
         "status": "review",
         "desc": "Daily cash and position reconciliations, reporting and exception logs.",
         "elig": "Refer to the exact employer listing",
-        "resp": [],
+        "resp": [
+          "Perform daily cash reconciliation across all accounts",
+          "Identify, document, and investigate cash breaks in a timely manner",
+          "Execute daily position reconciliation across equities, fixed income, and other assigned asset classes",
+          "Maintain accurate and up-to-date break logs with investigation notes and resolution status",
+          "Ensure breaks are cleared within SLA-defined timelines",
+          "Maintain proper documentation of daily reconciliation activities and exception handling"
+        ],
         "verifiedDate": "Not yet verified",
         "jobId": "00069443878"
+      },
+      "sourceEnrichment": {
+        "fields": [
+          "responsibilities"
+        ],
+        "url": "https://careers.cognizant.com/global-en/jobs/00069443878/analyst-cash-position-reconciliation/",
+        "source": "reader",
+        "evidenceVerifiedAt": "2026-10-17T11:17:07.488Z"
       }
     },
     {
