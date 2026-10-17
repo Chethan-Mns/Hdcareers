@@ -56,8 +56,8 @@
       "company": "Instawork",
       "role": "IT Intern – Gadget & Tech Support Operations",
       "apply": "https://job-boards.greenhouse.io/instawork/jobs/4646670006",
-      "reviewedStatus": "unreviewed",
-      "reviewedAt": null,
+      "reviewedStatus": "live",
+      "reviewedAt": "2026-10-17T14:48:40.605Z",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Official employer-specific application prepared with title, location, eligibility, responsibilities and verified exact application URL; final Live/Expired decision remains with owner.",
       "job": {
@@ -68,7 +68,7 @@
         "expType": "not-specified",
         "expYears": "Not specified by employer",
         "salary": "Not Disclosed",
-        "status": "review",
+        "status": "active",
         "apply": "https://job-boards.greenhouse.io/instawork/jobs/4646670006",
         "jobId": "4646670006",
         "sourceName": "Instawork official Greenhouse careers posting",
@@ -101,12 +101,15 @@
         "workMode": "On-site",
         "verifiedDate": "17 Oct 2026",
         "date": "17 Oct 2026",
-        "who": "Required: basic computer knowledge and Google Sheets, handling SD cards and readers, computer-based file transfer, ability to follow technical checklists, high attention to accuracy, and patience for repetitive video validation. Prior data processing, video review, cloud uploads, quality checking or operational tracking is preferred, not mandatory. The official posting does not specify a minimum degree or graduation year."
-      }
+        "who": "Required: basic computer knowledge and Google Sheets, handling SD cards and readers, computer-based file transfer, ability to follow technical checklists, high attention to accuracy, and patience for repetitive video validation. Prior data processing, video review, cloud uploads, quality checking or operational tracking is preferred, not mandatory. The official posting does not specify a minimum degree or graduation year.",
+        "manualLiveVerifiedAt": "2026-10-17T14:48:40.605Z",
+        "browserVerifiedAt": "2026-10-17T14:48:40.605Z"
+      },
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-17T14:48:37.557Z",
+  "updatedAt": "2026-10-17T14:48:40.605Z",
   "ranking": {
     "kind": "manual-two-job-smoke-test",
     "preservedPreviousBatch": "data/testing/archived-submitted-batch-20261017.json",
