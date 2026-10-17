@@ -98,6 +98,7 @@ class AdminApi {
     suspend fun publishProgress():JSONObject = JSONObject(request("/api/admin/publish"))
     suspend fun twoJobInbox():JSONObject = JSONObject(request("/api/admin/two-job-review"))
     suspend fun stageTwoJobs():JSONObject = JSONObject(request("/api/admin/two-job-review",JSONObject().put("action","stage")))
+    suspend fun replaceTwoJobs():JSONObject = JSONObject(request("/api/admin/two-job-review",JSONObject().put("action","replace")))
     suspend fun reviewTwoJob(id:String,decision:String):JSONObject =
         JSONObject(request("/api/admin/two-job-review",JSONObject().put("action","review").put("jobId",id).put("decision",decision)))
     suspend fun publishTwoJobs(ids:Set<String>):JSONObject {
