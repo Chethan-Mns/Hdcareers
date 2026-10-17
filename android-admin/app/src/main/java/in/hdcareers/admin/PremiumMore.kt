@@ -278,12 +278,13 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
     }
     val result=vm.checker.optJSONObject("results")
     val list=result?.optJSONArray("items")
+    val reviewItems=(0 until (list?.length() ?: 0)).mapNotNull { list?.optJSONObject(it) }.filter { it.optString("state")=="review" }
     val snapshot=vm.automation
     val slots=snapshot.optJSONArray("slots")
     val ctx=LocalContext.current
     LazyColumn(
         contentPadding=PaddingValues(start=16.dp,end=16.dp,top=12.dp,bottom=32.dp),
-        verticalArrangement=Arrangement.spacedBy(14.dp)
+        verticalArrangement=Arrangement.spacedBy(10.dp)
     ) {
         item {
             TextButton(onClick=onBack) {
@@ -354,16 +355,16 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                 }
             }
         }
-        if(list==null || list.length()==0) item {
+        if(reviewItems.isEmpty()) item {
             ProCard {
-                Text("No checker items in the latest response.",fontSize=13.sp,color=Brand.gray)
+                Text("No jobs currently need manual review.",fontSize=13.sp,color=Brand.gray)
             }
         }
-        if(list!=null) items(list.length()) { index ->
-            val j=list.optJSONObject(index)
-            if(j!=null && j.optString("state")=="review") {
-                ProCard {
-                    Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+        items(reviewItems.size) { index ->
+            val j=reviewItems[index]
+            run {
+                ProCard(padding=13) {
+                    Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
                         ProPill("NEEDS REVIEW",Brand.amber)
                         Text(j.optString("company","Unknown employer"),fontSize=17.sp,
                             fontWeight=FontWeight.Bold,color=Brand.navy)
@@ -372,8 +373,13 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                         HorizontalDivider(color=Brand.outline)
                         Text(j.optString("reason").ifBlank { "No reason reported" },
                             fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                        Text("Checked: "+j.optString("checkedAt","Unknown"),
-                            fontSize=11.sp,color=Brand.gray)
+                        val checked=j.optString("checkedAt","")
+                        val readable=runCatching {
+                            java.time.OffsetDateTime.parse(checked)
+                                .atZoneSameInstant(java.time.ZoneId.of("Asia/Kolkata"))
+                                .format(java.time.format.DateTimeFormatter.ofPattern("dd MMM, hh:mm a"))
+                        }.getOrDefault(checked.ifBlank { "Unknown" })
+                        Text("Checked: $readable IST",fontSize=11.sp,color=Brand.gray)
                         val link=j.optString("url").ifBlank { j.optString("apply") }
                         if(link.startsWith("https://")) OutlinedButton(onClick={
                             ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
