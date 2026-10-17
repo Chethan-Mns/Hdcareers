@@ -278,6 +278,12 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 </div>
 <div id="jobGrid" class="space-y-4"></div>
+<!-- HD-STATIC-JOBS-START -->
+<nav id="jobFallback" aria-label="Latest job links" class="mt-4 rounded-2xl border border-slate-200 bg-white p-5">
+<p class="font-bold text-slate-900">Recently listed jobs</p>
+<p class="text-sm text-slate-500 mt-2">Direct links remain available even if interactive search does not load.</p>
+</nav>
+<!-- HD-STATIC-JOBS-END -->
 <div id="noResults" class="hidden bg-white border border-slate-200 rounded-2xl py-12 px-5 text-center">
 <div class="w-14 h-14 rounded-2xl bg-slate-100 mx-auto flex items-center justify-center text-slate-400 text-xl"><i class="fa-solid fa-magnifying-glass"></i></div>
 <p class="font-bold mt-3">No matching jobs found</p><p class="text-sm text-slate-500 mt-1">Try another keyword or choose All Jobs.</p>
@@ -7422,6 +7428,8 @@ return catOk&&termOk&&expTypeOk&&expYearsOk&&roleOk&&companyOk&&locationOk
 });
 const sort=document.getElementById('sortSelect')?.value||'latest';
 filtered=[...filtered].sort(sort==='company'?(a,b)=>a.company.localeCompare(b.company):(a,b)=>parseJobDate(b.date)-parseJobDate(a.date));
+const fallback=document.getElementById('jobFallback');
+if(fallback)fallback.hidden=true;
 const grid=document.getElementById('jobGrid');
 document.getElementById('jobCount').textContent=`Showing ${filtered.length} of ${JOBS.length} opportunities`;
 document.getElementById('noResults').classList.toggle('hidden',filtered.length>0);
