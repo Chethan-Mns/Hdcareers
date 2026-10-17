@@ -1,0 +1,81 @@
+{
+  "kind": "hdcareers-two-job-preview-only",
+  "createdAt": "2026-10-17",
+  "status": "staged_not_sent_to_android",
+  "requiresOwnerReview": true,
+  "publishAuthorized": false,
+  "note": "These are separate source-backed drafts for test staging; they must NOT be merged into a submitted daily review batch or automatically published.",
+  "jobs": [
+    {
+      "company": "66degrees",
+      "role": "IT Service Desk Intern",
+      "loc": "Bangalore",
+      "cat": "internship",
+      "expType": "fresher",
+      "expYears": "Fresher with prior IT service desk / technical support internship",
+      "sourceName": "66degrees Greenhouse official careers",
+      "apply": "https://job-boards.greenhouse.io/66degrees/jobs/6127315004",
+      "jobId": "6127315004",
+      "status": "review",
+      "salary": "Not disclosed",
+      "desc": "66degrees is seeking an IT Service Desk Intern to act as the first point of contact for employee IT incidents and service requests. The role includes first-line technical support for Windows and macOS systems, hardware, business applications and basic networking issues. Interns log and track service tickets, administer routine account support, document resolutions, and escalate complex incidents to L2 support. The posting requires strong customer communication and troubleshooting skills.",
+      "elig": "Bachelor's degree in IT, Computer Science or related field (or equivalent practical experience). Freshers with prior IT service desk or technical-support internship. Understanding of Windows, macOS, Google Workspace, basic TCP/IP, DNS and VPN. ITIL, ServiceNow or Jira Service Management experience is preferred, not required. The official application also asks about Bangalore office attendance and rotational shifts.",
+      "resp": [
+        "Provide first-level end-user technical support for incidents and requests.",
+        "Manage IT assets and user access securely.",
+        "Log, prioritize and track IT tickets.",
+        "Troubleshoot hardware, software, operating systems and connectivity.",
+        "Assist with account unlocks, password resets and software installations.",
+        "Escalate complex incidents to L2 with documentation.",
+        "Maintain knowledge articles and troubleshooting records.",
+        "Educate employees on IT best practices.",
+        "Participate in on-call rotations when required.",
+        "Improve service desk processes and end-user satisfaction."
+      ],
+      "skills": [
+        "Windows",
+        "macOS",
+        "Google Workspace",
+        "TCP/IP",
+        "DNS",
+        "VPN",
+        "Troubleshooting",
+        "Ticketing",
+        "Customer service"
+      ]
+    },
+    {
+      "company": "Bosch",
+      "role": "Process Associate",
+      "loc": "Not specified on the official listing",
+      "cat": "nonit",
+      "expType": "fresher",
+      "expYears": "Official description mentions freshers, while Qualifications specifies minimum 1 year; confirm eligibility with employer",
+      "sourceName": "Bosch Group SmartRecruiters official careers",
+      "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000149790449",
+      "jobId": "744000149790449",
+      "status": "review",
+      "salary": "Not disclosed",
+      "desc": "Bosch Global Software Technologies, a Bosch subsidiary providing engineering, IT and business solutions, advertises a Process Associate role supporting multilingual customer service voice operations. The description calls for clear spoken and written communication, independent call handling, adaptability, basic MS Excel and analytical skills, and readiness for 24/7 rotating shifts and flexible weekly time off. The job description references freshers, but the qualifications section also specifies at least one year of experience; that discrepancy must be reviewed.",
+      "elig": "Any graduate degree or equivalent. Proficiency in English, Hindi and Kannada for customer support is highlighted, with other Indian regional languages an advantage. The official page's experience statements conflict: it mentions freshers while a separate Qualifications section says minimum 1 year. Do not treat this as a confirmed fresher-only position.",
+      "resp": [
+        "Provide multilingual voice support for customer service operations.",
+        "Handle calls independently while adapting to changing project requirements.",
+        "Communicate clearly in English, Hindi and Kannada.",
+        "Use basic MS Excel and analytical skills to complete assigned tasks.",
+        "Work across flexible weekly offs and shifts covering 24/7 when scheduled.",
+        "Learn project processes quickly and execute assigned responsibilities with limited supervision."
+      ],
+      "skills": [
+        "English",
+        "Hindi",
+        "Kannada",
+        "Customer service",
+        "Voice support",
+        "MS Excel",
+        "Communication",
+        "Analytical skills"
+      ]
+    }
+  ]
+}
