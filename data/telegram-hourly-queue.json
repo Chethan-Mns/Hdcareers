@@ -25,10 +25,12 @@
     {
       "page": "jobs/66degrees-it-service-desk-intern.html",
       "batchId": "admin-39028490621",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-17T11:23:13.717114+00:00",
       "claimId": "39056692503",
-      "claimedAt": "2026-10-17T18:07:12.778207+00:00"
+      "claimedAt": "2026-10-17T18:07:12.778207+00:00",
+      "messageId": 516,
+      "deliveredAt": "2026-10-17T18:07:15.570561+00:00"
     },
     {
       "page": "jobs/glance-ux-design-intern.html",
