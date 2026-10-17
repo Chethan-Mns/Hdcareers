@@ -12,6 +12,7 @@ on:
       - data/owner-approved-ten-20261012.json
       - data/discovery-v3-ey-pilot-approval.json
       - data/owner-reviewed-publish-retry-20261013.json
+      - data/vip-publish-request.json
 
 permissions:
   contents: write
@@ -42,7 +43,9 @@ jobs:
         if: github.event_name == 'push'
         shell: bash
         run: |
-          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'data/owner-reviewed-publish-retry-20261013.json'; then
+          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'data/vip-publish-request.json'; then
+            cp data/vip-publish-request.json /tmp/hd-reviewed-publish-event.json
+          elif git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'data/owner-reviewed-publish-retry-20261013.json'; then
             python3 scripts/prepare_submitted_oct13.py /tmp/hd-reviewed-publish-event.json
           elif git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'data/discovery-v3-ey-pilot-approval.json'; then
             python3 scripts/prepare_v3_ey_pilot.py /tmp/hd-reviewed-publish-event.json
