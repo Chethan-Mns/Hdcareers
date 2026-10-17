@@ -81,8 +81,9 @@ jobs:
           try:body=json.loads(Path("/tmp/review-fcm.json").read_text())
           except Exception:pass
           out={"batchId":os.environ.get("BATCH_ID"),"checkedAt":datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            "httpCode":os.environ.get("HTTP_CODE"),"fcmAccepted":body.get("accepted",0),
-            "fcmFailed":body.get("failed",0),"responseOk":body.get("ok",False),
+            "httpCode":os.environ.get("HTTP_CODE"),"fcmSent":body.get("sent",0),"fcmProcessed":body.get("processed",0),
+            "fcmFailed":body.get("failed",0),"duplicateSuppressed":body.get("duplicate",False),
+            "responseOk":os.environ.get("HTTP_CODE")=="200" and not body.get("duplicate",False),
             "note":"FCM acceptance is not proof that Android displayed the notification."}
           Path("data/testing/daily-review-fcm-receipt.json").write_text(json.dumps(out,indent=2)+"\n")
           print(json.dumps(out))
