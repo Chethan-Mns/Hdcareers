@@ -51,6 +51,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         savedPassword=password
         loggedIn=true
         refresh()
+        ensurePushConnected()
     }
     fun biometricSignIn() {
         try {
@@ -178,7 +179,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     fun ensurePushConnected(){
         if(!loggedIn||!firebaseReady(getApplication()))return
         val prefs=getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
-        if(prefs.getBoolean("consented",false))connectPush()
+        if(prefs.getBoolean("consented",false)||!prefs.getString("token",null).isNullOrBlank())connectPush()
     }
     fun decide(id:String,decision:String)=run {
         batch=api.updateReview(batch.id,id,decision);setReminderState()
@@ -218,6 +219,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     }
     fun connectPush() {
         if(!loggedIn){fcmStatus="Sign in before enabling notifications.";return}
+        getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
+            .edit().putBoolean("consented",true).apply()
         fcmStatus="Connecting to Firebase…"
         fcmToken(getApplication(),onToken={token->
             getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
