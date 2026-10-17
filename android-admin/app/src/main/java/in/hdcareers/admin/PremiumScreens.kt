@@ -409,6 +409,7 @@ private fun ProReview(vm:AdminViewModel) {
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
                     OutlinedButton(onClick=vm::loadTwoJobInbox,enabled=!vm.busy){Text("Refresh")}
                     if(entries==null) Button(onClick=vm::stageTwoJobInbox,enabled=!vm.busy){Text("Stage 2 jobs")}
+                    if(!submitted && entries!=null) Button(onClick=vm::replaceTwoJobInbox,enabled=!vm.busy){Text("Clear & load 2 new jobs")}
                 }
                 if(!submitted&&vm.twoJobSelected.isNotEmpty()) {
                     var confirmTest by remember {mutableStateOf(false)}
