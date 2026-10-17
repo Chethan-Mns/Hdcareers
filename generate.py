@@ -810,7 +810,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     candidates = logo_candidates(job)
     favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
-    meta_description = f"{heading} in {job[\'loc\']}: eligibility, responsibilities, experience and official employer link. Checked {job[\'verifiedDate\']}."
+    meta_description = f"{heading} in {job.get('loc', '')}: eligibility, responsibilities and employer application link. Checked {job.get('verifiedDate', '')}."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
     structured_data = job_posting_schema(job, canonical)
     breadcrumb = {"@context": "https://schema.org", "@type": "BreadcrumbList",
