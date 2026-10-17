@@ -1,9 +1,11 @@
 {
-  "batchId": "hd-android-two-job-test-20261017",
-  "checkedAt": "2026-10-17T14:39:29.962085+00:00",
+  "batchId": "hd-android-two-job-test-20261017-v2",
+  "checkedAt": "2026-10-17T14:40:32.376997+00:00",
   "httpCode": "200",
-  "fcmAccepted": 0,
-  "fcmFailed": 0,
-  "responseOk": false,
+  "fcmSent": 1,
+  "fcmProcessed": 5,
+  "fcmFailed": 4,
+  "duplicateSuppressed": false,
+  "responseOk": true,
   "note": "FCM acceptance is not proof that Android displayed the notification."
 }
