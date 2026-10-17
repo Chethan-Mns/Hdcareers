@@ -1,5 +1,114 @@
 [
   {
+    "page": "jobs/ergomed-associate-software-engineer-european-hours-744000154090889.html",
+    "domain": "jobs.smartrecruiters.com",
+    "company": "Ergomed",
+    "salary": "Not Disclosed",
+    "logo": [
+      "ER",
+      "#223d69"
+    ],
+    "role": "Associate Software Engineer - European Hours",
+    "roleTag": "Associate Software Engineer | Recent Graduates",
+    "loc": "Location not specified by employer; CET/GMT work hours",
+    "locationFilter": "Not specified",
+    "batch": "Not specified",
+    "elig": "Bachelor's degree, diploma, or equivalent experience in Computer Science, Software Engineering or a related field; demonstrable full-stack C# .NET/ASP.NET and JavaScript knowledge.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "Recent CS graduates considered; 1–2 years experience preferred",
+    "date": "Not specified",
+    "desc": "Ergomed is recruiting an Associate Software Engineer for its Systems Engineering team. The role supports full-stack software used in pharmaceutical research services. The official posting requires CET/GMT business-hour availability and does not clearly state the job's work location.",
+    "resp": [
+      "Develop, test and maintain internal applications and services used by the Systems Engineering team.",
+      "Work with project managers and business partners on feature development, troubleshooting and debugging.",
+      "Write maintainable code with tests and documentation, and provide ongoing technical support."
+    ],
+    "skills": [
+      "C#",
+      ".NET",
+      "ASP.NET MVC",
+      "Razor",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Git",
+      "SQL preferred"
+    ],
+    "apply": "https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours",
+    "status": "active",
+    "verifiedDate": "17 Oct 2026",
+    "sourceName": "Ergomed official SmartRecruiters posting",
+    "who": "Recent Computer Science or Software Engineering graduates with practical C#/.NET full-stack development skills; 1–2 years preferred, CET/GMT hours required.",
+    "workMode": "Not specified",
+    "jobId": "744000154090889",
+    "verificationTerms": [
+      "Associate Software Engineer",
+      "European Hours"
+    ],
+    "sourceVerificationMethod": "Exact official SmartRecruiters job and public ATS posting; publisher must independently verify Active.",
+    "verificationEvidence": {
+      "observedAt": "2026-10-17T07:18:38.135Z",
+      "source": "Ergomed SmartRecruiters",
+      "method": "Exact posting displays role, qualifications, responsibilities and I'm interested application control."
+    },
+    "id": 170
+  },
+  {
+    "page": "jobs/skild-ai-robotics-software-engineer-bengaluru-4136373008.html",
+    "domain": "job-boards.greenhouse.io",
+    "company": "Skild AI",
+    "salary": "India salary not specified",
+    "logo": [
+      "SK",
+      "#222a55"
+    ],
+    "role": "Robotics Software Engineer",
+    "roleTag": "Robotics Software Engineer | Graduates Considered",
+    "loc": "Bengaluru, Karnataka, India (also US locations)",
+    "locationFilter": "Bengaluru",
+    "batch": "Not specified",
+    "elig": "BS, MS or higher degree in CS, Robotics, Engineering, or equivalent practical experience; solid C++/Python, robotics systems and familiarity with ROS/ROS2, perception, SLAM or manipulation.",
+    "cat": "it",
+    "expType": "fresher",
+    "expYears": "New graduates may apply; advanced robotics expertise strongly preferred",
+    "date": "Not specified",
+    "desc": "Skild AI is hiring Robotics Software Engineers in Bengaluru, Pittsburgh and San Mateo to build intelligent robotic software. The listing considers new graduates but expects proficiency in robotic systems, navigation, manipulation or perception. The USD salary range in the source is not represented as an India salary.",
+    "resp": [
+      "Design and implement robotics software for navigation, planning, controls, SLAM, perception and manipulation.",
+      "Build production-grade C++/Python robotic applications and collaborate on machine-learning integration.",
+      "Test, deploy, monitor and improve robotic solutions for performance and reliability."
+    ],
+    "skills": [
+      "C++",
+      "Python",
+      "ROS",
+      "ROS2",
+      "SLAM",
+      "Perception",
+      "Robotics",
+      "Motion planning",
+      "Machine learning"
+    ],
+    "apply": "https://job-boards.greenhouse.io/skildai-careers/jobs/4136373008",
+    "status": "active",
+    "verifiedDate": "17 Oct 2026",
+    "sourceName": "Skild AI official Greenhouse job posting",
+    "who": "New graduates and experienced candidates with strong coding, robotics or related engineering project experience; Bengaluru is among eligible offices.",
+    "workMode": "Not specified",
+    "jobId": "4136373008",
+    "verificationTerms": [
+      "Robotics Software Engineer"
+    ],
+    "sourceVerificationMethod": "Exact official Greenhouse application form and public posting; publisher must independently verify Active.",
+    "verificationEvidence": {
+      "observedAt": "2026-10-17T07:18:38.135Z",
+      "source": "Skild AI Greenhouse",
+      "method": "Exact Bengaluru-inclusive role and full online application form visible."
+    },
+    "id": 171
+  },
+  {
     "page": "jobs/hcltech-campus-beginner-170239.html",
     "domain": "careers.hcltech.com",
     "company": "HCLTech",
