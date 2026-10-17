@@ -35,7 +35,8 @@ test("demo simulated commit conflict never invokes actual publish endpoint",()=>
 test("analytics preserves existing GA4 access controls and never mixes demo numbers into Live",()=>{
  assert.match(html,/function analyticsPage\(\)/);
  assert.match(html,/function sampleAnalytics\(days\)/);
- assert.match(html,/state.mode==='demo'\?sampleAnalytics\(days\):state.analytics/);
+ assert.match(html,/const demo=state.mode==='demo';/);
+ assert.match(html,/const d=demo\?sampleAnalytics\(days\):state.analytics;/);
  assert.match(html,/fetch\('\/api\/admin\/traffic\?days='/);
  assert.match(html,/credentials:'same-origin'/);
  for(const key of ['Unique visitors','Page views','Apply link clicks','Active right now','Top job pages','Traffic sources','Visitors by country','Device breakdown','Visitor engagement rate','Resume checker uses'])assert.ok(html.includes(key),key);
