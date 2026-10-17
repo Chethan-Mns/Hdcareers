@@ -33,7 +33,7 @@ jobs:
               sys.exit(0)
           if d.get("status")!="reviewing" or not d.get("batchId") or d.get("generatedAt")==previous.get("generatedAt"):sys.exit(0)
           priority,backup=d.get("priority",[]),d.get("backup",[])
-          if len(priority)!=10 or len(backup)!=10:sys.exit(0)
+          if not 1<=len(priority)+len(backup)<=20:sys.exit(0)
           try:
               generated=datetime.datetime.fromisoformat(d["generatedAt"].replace("Z","+00:00"))
           except Exception:
@@ -43,7 +43,7 @@ jobs:
           sys.path.insert(0,"scripts")
           from validate_daily_review_batch import employer_key
           names=[employer_key(c.get("company") or c.get("job",{}).get("company")) for c in priority+backup]
-          if not all(names) or len(set(names))!=20:sys.exit(0)
+          if not all(names) or len(set(names))!=len(names):sys.exit(0)
           with open(os.environ["GITHUB_OUTPUT"],"a") as f:
               f.write("notify=true\n")
               f.write("batch_id="+d["batchId"]+"\n")
