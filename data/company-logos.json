@@ -728,5 +728,29 @@
     ],
     "qualityScore": 566,
     "bytes": 3297
+  },
+  "AiPrise": {
+    "officialDomain": "ashbyhq.com",
+    "sourceUrl": "https://www.ashbyhq.com/icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/aiprise-bb5de8a.png",
+    "sourceDimensions": [
+      192,
+      192
+    ],
+    "qualityScore": 632,
+    "bytes": 4268
+  },
+  "Mastercard": {
+    "officialDomain": "mastercard.com",
+    "sourceUrl": "https://www.mastercard.com/etc.clientlibs/marts/clientlibs/clientlib-site/resources/icons/mastercard-apple-touch-icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/mastercard-4aa5037.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 3869
   }
 }
