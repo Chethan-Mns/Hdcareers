@@ -108,30 +108,41 @@ export default async function handler(req,res){
       });
     }
 
-    const [file,statusFile,reviewFile,runs]=await Promise.all([
+    const [file,statusFile,reviewFile,runs,jobsFile]=await Promise.all([
       github("/contents/"+TRIGGER_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/contents/"+STATUS_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
       github("/contents/"+REVIEW_PATH+"?ref="+encodeURIComponent(base),token).catch(()=>null),
-      github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token).catch(()=>({workflow_runs:[]}))
+      github("/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(base)+"&per_page=5",token).catch(()=>({workflow_runs:[]})),
+      github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token).catch(()=>null)
     ]);
     const trigger=file?decodeFile(file):{};
     const checker=statusFile?decodeFile(statusFile):{};
     const reviewQueue=reviewFile?decodeFile(reviewFile):[];
+    const jobs=jobsFile?decodeFile(jobsFile):[];
+    const publishedUrls=new Set((Array.isArray(jobs)?jobs:[])
+      .map(j=>String(j.apply||"").trim().toLowerCase()).filter(Boolean));
     const pendingReviews=(Array.isArray(reviewQueue)?reviewQueue:[])
-      .filter(x=>x&&x.state==="review")
-      .map(x=>({
-        id:Number(x.reviewId),
-        company:x.company||x.job?.company||"",
-        role:x.role||x.job?.role||"",
-        page:x.page||x.job?.page||"",
-        url:x.url||x.job?.apply||"",
-        state:"review",
-        reason:x.reason||"Manual verification required before publishing.",
-        checkedAt:x.checkedAt||x.queuedAt||null,
-        reviewType:"new_job",
-        pendingNew:true,
-        source:x.source||"publishing"
-      }));
+      .filter(x=>x&&["review","ready"].includes(x.state))
+      .map(x=>{
+        const url=String(x.url||x.job?.apply||"");
+        const isPublished=publishedUrls.has(url.trim().toLowerCase());
+        return {
+          id:Number(x.reviewId),
+          company:x.company||x.job?.company||"",
+          role:x.role||x.job?.role||"",
+          page:x.page||x.job?.page||"",
+          url,
+          state:isPublished?"published":x.state,
+          reason:x.reason||"Manual verification required before publishing.",
+          checkedAt:x.reviewedAt||x.checkedAt||x.queuedAt||null,
+          reviewType:"new_job",
+          pendingNew:true,
+          verifiedAt:x.reviewedAt||null,
+          source:x.source||"publishing"
+        };
+      })
+      .filter(x=>x.state!=="published");
+    const readyReviews=pendingReviews.filter(x=>x.state==="ready");
     const list=Array.isArray(runs.workflow_runs)?runs.workflow_runs:[];
     const latest=list[0]||null;
     const lastCompleted=list.find(x=>x.status==="completed")||null;
@@ -152,9 +163,11 @@ export default async function handler(req,res){
         checked:Number(checker.checked||0)+pendingReviews.length,
         active:Number(checker.active||0),
         expired:Number(checker.expired||0),
-        review:Number(checker.review||0)+pendingReviews.length,
+        review:Number(checker.review||0)+pendingReviews.filter(x=>x.state==="review").length,
+        ready:readyReviews.length,
         changedExpired:Number(checker.changedExpired||checker.expired||0),
-        items:[...(Array.isArray(checker.items)?checker.items:[]),...pendingReviews],
+        items:[...(Array.isArray(checker.items)?checker.items:[]).map(x=>({...x,reviewType:"published_job"})),...pendingReviews],
+        readyItems:readyReviews,
         current:!latestSummary||latestSummary.status!=="completed"||summaryTime>=runTime
       }
     });
