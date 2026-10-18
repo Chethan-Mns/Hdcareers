@@ -107,6 +107,8 @@ LOGO_DOMAINS = {
     "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
 
+WORKDAY_EMPLOYER_DOMAINS = json.loads((ROOT / "data" / "company-logo-domains.json").read_text(encoding="utf-8"))
+
 GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com")
 TRUSTED_STANDALONE_CAREER_HOSTS = ("amazon.jobs",)
 
@@ -575,7 +577,7 @@ def _host(value: str) -> str:
 def _company_logo_domain(job: dict) -> str:
     company = str(job.get("company", ""))
     fallback = str(job.get("domain", ""))
-    domain = _host(LOGO_DOMAINS.get(company, "") or job.get("companyWebsite") or job.get("careersUrl") or fallback)
+    domain = _host(LOGO_DOMAINS.get(company, "") or (WORKDAY_EMPLOYER_DOMAINS.get(company, "") if _is_generic_recruiting_host(fallback) else "") or job.get("companyWebsite") or job.get("careersUrl") or fallback)
     return "" if _is_generic_recruiting_host(domain) else domain
 
 
