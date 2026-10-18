@@ -95,9 +95,11 @@
     {
       "page": "jobs/ey-analyst-tech-consulting-sap.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240374+00:00",
-      "dueAt": "2026-10-18T12:45:19.548669+00:00"
+      "dueAt": "2026-10-18T12:45:19.548669+00:00",
+      "claimId": "39128613559",
+      "claimedAt": "2026-10-18T12:45:28.430217+00:00"
     },
     {
       "page": "jobs/hackerrank-software-development-engineer-intern.html",
