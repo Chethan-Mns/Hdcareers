@@ -69,6 +69,7 @@ class AdminApi {
     suspend fun traffic(days: Int):Traffic = parseTraffic(JSONObject(request("/api/admin/traffic?days=$days")))
     suspend fun checker():JSONObject = JSONObject(request("/api/admin/availability"))
     suspend fun automation():JSONObject = JSONObject(request("/data/automation-status.json"))
+    suspend fun availableUpdate():JSONObject = JSONObject(request("/api/admin/android-update"))
     suspend fun updateReview(batch:String,id:String,status:String):DailyBatch =
         parseBatch(JSONObject(request("/api/admin/daily-batch",JSONObject().put("action","review")
             .put("batchId",batch).put("candidateId",id).put("decision",status))))
