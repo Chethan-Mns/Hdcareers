@@ -107,7 +107,7 @@
       "apply": "https://careers.hcltech.com/job/Campus-Beginner/142115-en_US/",
       "cat": "it",
       "expYears": "1–2 years; FY27 Fresher+",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact HCLTech Campus-Beginner requisition opened with FY27 Fresher+ wording, role requirements and current public job page.",
       "postedDate": null,
@@ -121,7 +121,7 @@
         "expYears": "1–2 years; FY27 Fresher+",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "HCLTech official careers",
         "desc": "Design Engineer role supporting optical and electromechanical component design, project work, research and documentation.",
         "elig": "BE or Diploma in Mechanical/Electromechanical Engineering; 1–2 years in SEMI domain; FY27 Fresher+ noted by employer.",
@@ -140,8 +140,12 @@
         "jobId": "142115",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact HCLTech Campus-Beginner requisition opened with FY27 Fresher+ wording, role requirements and current public job page."
-      }
+        "sourceVerificationMethod": "Exact HCLTech Campus-Beginner requisition opened with FY27 Fresher+ wording, role requirements and current public job page.",
+        "manualLiveVerifiedAt": "2026-10-18T05:51:00.046Z",
+        "browserVerifiedAt": "2026-10-18T05:51:00.046Z"
+      },
+      "reviewedAt": "2026-10-18T05:51:00.046Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "american-express-26014930",
@@ -818,7 +822,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:50:41.632Z",
+  "updatedAt": "2026-10-18T05:51:00.046Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
