@@ -1,0 +1,57 @@
+name: ATS Seven Oracle Browser and SAP Careers Accuracy QA
+
+on:
+  push:
+    branches: [dev/verification-precision-expiry-branding-20261018]
+    paths:
+      - scripts/check_job_availability.py
+      - scripts/qa_ats_check.py
+      - data/testing/ats-platform-seven-20261018.json
+      - tests/test_verification_precision.py
+      - .github/workflows/ats-seven-oracle-browser-qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa-exact-ats-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Chromium for first-party rendered Oracle requisition
+        run: |
+          python3 -m pip install "playwright==1.58.0"
+          python3 -m playwright install --with-deps chromium
+      - name: Run exact seven-job read-only ATS check with browser fallback
+        env:
+          HD_CAREERS_ENABLE_ORACLE_BROWSER: '1'
+        run: python3 scripts/qa_ats_check.py --batch data/testing/ats-platform-seven-20261018.json --output /tmp/ats-seven-real-evidence.json
+      - name: Compare original six owner labels without overwriting them
+        run: |
+          python3 - <<'PY'
+          import json
+          report=json.load(open('/tmp/ats-seven-real-evidence.json'))
+          truth=json.load(open('data/testing/ats-platform-six-owner-ground-truth-20261018.json'))
+          mapping={x['id']:x for x in truth['jobs']}
+          assert len(report['jobs'])==7 and len(mapping)==6
+          assert report['batchId']=='ats-seven-sources-2026-10-18'
+          bad=[x['id'] for x in report['jobs'] if x['id'] in mapping
+               and x['verifiedLive'] and mapping[x['id']]['manualVerdict']=='expired']
+          assert not bad, 'Unexpected false Live on owner-confirmed expired examples: '+str(bad)
+          print('Original owner labels untouched; false Live across known expired:',len(bad))
+          for x in report['jobs']:
+              print(x['provider'],x['company'],x['observedState'],x['verifiedLive'],x['evidence'][:170])
+          PY
+      - name: Prevent any write to publication, expiry or Telegram production records
+        run: |
+          git diff --exit-code -- data/jobs.json data/review-queue.json data/availability-status.json data/telegram-hourly-queue.json data/telegram-deliveries.json data/daily-review-batch.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ats-seven-oracle-browser-successfactors-qa-evidence
+          path: /tmp/ats-seven-real-evidence.json
+          retention-days: 14
