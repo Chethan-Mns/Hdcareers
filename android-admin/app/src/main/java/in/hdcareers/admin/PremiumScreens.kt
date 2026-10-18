@@ -399,11 +399,11 @@ private fun ProReview(vm:AdminViewModel) {
         }
         item {
             ProCard {
-                SectionHead(Icons.Default.FactCheck,"Six-platform QA review",
-                    "Six official job examples · isolated, no website or Telegram publishing",Brand.blue)
+                SectionHead(Icons.Default.FactCheck,"Seven-platform QA review",
+                    "Seven official job examples · isolated, no website or Telegram publishing",Brand.blue)
                 Text("Greenhouse · Workday · Oracle · SmartRecruiters · Lever · Ashby. Compare exact job links and employer logos, mark Live / Expired / Unsure, then rehearse publishing without sending anything.",fontSize=12.sp,color=Brand.gray)
                 Button(onClick={vm.atsQaOpen=true},modifier=Modifier.fillMaxWidth()){
-                    Text("Open 6-job QA test inbox")
+                    Text("Open 7-job QA test inbox")
                 }
             }
         }
