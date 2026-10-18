@@ -74,6 +74,53 @@ class HourlyTelegramTests(unittest.TestCase):
         self.assertEqual(h.queue()["items"][0]["messageId"], 222)
         self.assertEqual(h.queue()["items"][0]["status"], "delivered")
 
+    def test_relay_arms_at_actual_delivered_plus_60m_without_sending(self):
+        h.enqueue(self.event)
+        now = datetime(2026, 10, 18, 8, 0, tzinfo=timezone.utc)
+        q = h.queue()
+        q["items"][0].update(status="delivered", deliveredAt=h.stamp(now), messageId=521)
+        h.save(h.QUEUE, q)
+        output_file = h.QUEUE.parent/"next-output"
+        with patch.dict(os.environ, {"GITHUB_OUTPUT": str(output_file)}, clear=False):
+            h.next_wakeup(now=now+timedelta(minutes=4))
+        outputs = dict(line.split("=", 1) for line in output_file.read_text().splitlines())
+        self.assertEqual(outputs["armed"], "true")
+        self.assertEqual(int(outputs["delay_seconds"]), 56*60)
+        self.assertEqual(h.parse(outputs["next_due"]), now+timedelta(hours=1))
+        self.assertTrue(all(x.get("status") != "sending" for x in h.queue()["items"]))
+
+    def test_relay_never_resends_an_uncertain_or_inflight_claim(self):
+        h.enqueue(self.event)
+        now = datetime(2026, 10, 18, 8, 0, tzinfo=timezone.utc)
+        q = h.queue()
+        q["items"][0].update(status="sending",claimId="earlier")
+        h.save(h.QUEUE,q)
+        p=h.QUEUE.parent/"relay-stop"
+        with patch.dict(os.environ, {"GITHUB_OUTPUT": str(p)}, clear=False):
+            h.next_wakeup(now=now)
+        self.assertIn("armed=false",p.read_text())
+        q=h.queue()
+        q["items"][0].update(status="uncertain")
+        q["items"][1].update(status="uncertain")
+        for item in q["items"][2:]:
+            item.update(status="uncertain")
+        h.save(h.QUEUE,q)
+        p.unlink()
+        with patch.dict(os.environ, {"GITHUB_OUTPUT": str(p)}, clear=False):
+            h.next_wakeup(now=now)
+        self.assertIn("armed=false",p.read_text())
+
+    def test_relay_due_is_zero_when_cron_has_already_missed_due_time(self):
+        h.enqueue(self.event)
+        t=datetime(2026,10,18,4,0,tzinfo=timezone.utc)
+        q=h.queue()
+        q["items"][0].update(status="delivered",messageId=700,deliveredAt=h.stamp(t))
+        h.save(h.QUEUE,q)
+        out=h.QUEUE.parent/"relay-due"
+        with patch.dict(os.environ,{"GITHUB_OUTPUT":str(out)},clear=False):
+            h.next_wakeup(now=t+timedelta(hours=3))
+        self.assertIn("delay_seconds=0",out.read_text())
+
     def test_one_off_vip_does_not_enqueue(self):
         h.save(h.MANIFEST, {"approved": True, "batchId": "admin-7777", "pages": ["jobs/test-00.html"]})
         h.save(self.event, {"client_payload": {"telegramDeliveryMode": "instant"}})

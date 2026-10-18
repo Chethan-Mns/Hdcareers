@@ -8,19 +8,27 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
+    inputs:
+      relay:
+        description: "Keep the one-hour Telegram queue self-waking until empty"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
+  actions: write
 
-# GitHub scheduling is best-effort; due timestamps prevent early posts.
-# Serialize with Admin publishing to protect claims and ledger writes.
-concurrency:
-  group: main-job-data-publish
-  cancel-in-progress: false
-
+# Cron stays an emergency backup; one runner backs each next-hour wake-up.
+# Only the sender holds the publishing lock, never the waiting wake-up.
 jobs:
   send-one:
+    concurrency:
+      group: main-job-data-publish
+      cancel-in-progress: false
     runs-on: ubuntu-latest
+    outputs:
+      claimed: ${{ steps.claim.outputs.claimed }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -87,3 +95,40 @@ jobs:
             data/telegram-deliveries.json
           if-no-files-found: ignore
           retention-days: 30
+
+  wake-next:
+    needs: send-one
+    if: ${{ needs.send-one.result == 'success' && (needs.send-one.outputs.claimed == 'true' || github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.relay)) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    # Newer confirmed deliveries cancel obsolete sleepers, not active publishers.
+    concurrency:
+      group: telegram-due-wakeup
+      cancel-in-progress: true
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Checkout latest main queue
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Compute next receipt-based due time
+        id: plan
+        run: python3 scripts/hourly_telegram.py wake
+      - name: Wait until due and dispatch next run
+        if: steps.plan.outputs.armed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DELAY_SECONDS: ${{ steps.plan.outputs.delay_seconds }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! [[ "$DELAY_SECONDS" =~ ^[0-9]+$ ]] || (( DELAY_SECONDS > 3600 )); then
+            echo "::error::Unsafe next Telegram wake delay"
+            exit 1
+          fi
+          echo "Next attempt due in $DELAY_SECONDS seconds; cron remains a backup."
+          sleep "$DELAY_SECONDS"
+          gh workflow run hourly-telegram-queue.yml --ref main --field relay=true
+          echo "Follow-up dispatched; sender will re-check dueAt and delivery receipts."
