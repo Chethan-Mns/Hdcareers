@@ -65,9 +65,11 @@
     {
       "page": "jobs/aiprise-software-engineer-i.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240353+00:00",
-      "dueAt": "2026-10-18T08:22:49.130308+00:00"
+      "dueAt": "2026-10-18T08:22:49.130308+00:00",
+      "claimId": "39116534657",
+      "claimedAt": "2026-10-18T09:44:42.022740+00:00"
     },
     {
       "page": "jobs/bosch-graduate-management-trainee-engineering-application.html",
