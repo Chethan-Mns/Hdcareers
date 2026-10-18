@@ -470,7 +470,7 @@ def has_high_confidence_live(job, result):
     if is_oracle_candidate_url(job.get('apply')):
         return reason.startswith('Oracle rendered exact requisition confirms ID, role heading and enabled Apply control')
     if host == 'jobs.sap.com':
-        return reason.startswith('SAP SuccessFactors official exact career page confirms requisition title and Apply now')
+        return ('SAP SuccessFactors official exact career page confirms requisition title and Apply now' in reason)
     if 'manual confirmation overrides' in reason or 'override' in reason.lower():
         return False
     return (reason.startswith('Oracle rendered exact requisition confirms ID, role heading and enabled Apply control')
