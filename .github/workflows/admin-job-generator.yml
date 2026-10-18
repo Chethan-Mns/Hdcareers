@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: main-job-data-publish
@@ -187,6 +188,34 @@ jobs:
             sleep 2
           done
           echo "::error::Could not persist Telegram receipts; download workflow evidence before retry."
+          exit 1
+      - name: Arm reliable follow-up wake after the first confirmed Telegram post
+        if: success() && steps.hourly.outputs.deferred == 'true' && steps.first_claim.outputs.claimed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Do not re-publish anything here: dispatch a clock/wakeup only.
+          # The new workflow rechecks the actual saved receipt and dueAt.
+          python3 - <<'PY'
+          import json,os
+          batch="admin-"+os.environ["GITHUB_RUN_ID"]
+          queue=json.load(open("data/telegram-hourly-queue.json"))["items"]
+          delivered=[i for i in queue if i.get("batchId")==batch and i.get("status")=="delivered"]
+          if not delivered or not all(i.get("messageId") and i.get("deliveredAt") for i in delivered):
+              raise SystemExit("First post not durably confirmed; do not arm hourly relay")
+          print("Confirmed first delivery:", delivered[0]["page"],delivered[0]["messageId"])
+          PY
+          for attempt in 1 2 3 4 5; do
+            if gh workflow run hourly-telegram-queue.yml --ref main --field relay=true; then
+              echo "Hourly follow-up relay armed."
+              exit 0
+            fi
+            echo "::warning::Telegram relay dispatch failed (attempt $attempt/5)."
+            sleep 12
+          done
+          echo "::error::First post delivered but hourly follow-up wake could not be armed."
           exit 1
       - name: Notify registered Android admins of publishing outcome
         if: always()
