@@ -684,7 +684,7 @@
       "apply": "https://jobs.lever.co/merklescience/e663b69b-264a-4bd7-b04d-fb3c0a824a28",
       "cat": "internship",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Lever application form is publicly available and bound to the backend intern role; outside the approved 87 and retained only as fallback.",
       "postedDate": null,
@@ -698,7 +698,7 @@
         "expYears": "Internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Merkle Science official Lever",
         "desc": "Backend software engineering internship at Merkle Science; complete substantive duties require owner confirmation from the official listing.",
         "elig": "Not Specified in the accessible application-form capture.",
@@ -715,7 +715,9 @@
         "jobId": "e663b69b-264a-4bd7-b04d-fb3c0a824a28",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Lever application form is publicly available and bound to the backend intern role; outside the approved 87 and retained only as fallback."
+        "sourceVerificationMethod": "Exact Lever application form is publicly available and bound to the backend intern role; outside the approved 87 and retained only as fallback.",
+        "manualLiveVerifiedAt": "2026-10-18T05:50:41.632Z",
+        "browserVerifiedAt": "2026-10-18T05:50:41.632Z"
       },
       "sourceEnrichment": {
         "fields": [
@@ -724,7 +726,9 @@
         "url": "https://jobs.lever.co/merklescience/e663b69b-264a-4bd7-b04d-fb3c0a824a28",
         "source": "structured",
         "evidenceVerifiedAt": "2026-10-18T03:35:50.297Z"
-      }
+      },
+      "reviewedAt": "2026-10-18T05:50:41.632Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "headout-4309298006",
@@ -814,7 +818,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:50:34.339Z",
+  "updatedAt": "2026-10-18T05:50:41.632Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
