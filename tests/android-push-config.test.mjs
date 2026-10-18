@@ -51,7 +51,8 @@ test("Expiry alerts require trusted secret, are deduplicated by scan, and route 
  assert.match(push,/notify_expiry/);
  assert.match(push,/const once=scope\+kind\+"/);
  assert.match(push,/reviewCount<1/);
- assert.match(workflow,/current_keys==previous_keys/);
+ assert.match(workflow,/notify_checker/);
+ assert.doesNotMatch(workflow,/current_keys==previous_keys/);
  assert.match(workflow,/ANDROID_PUSH_DISPATCH_SECRET/);
  assert.match(workflow,/data\/availability-status\.json/);
  assert.match(client,/hd_expiry_updates/);
@@ -67,4 +68,33 @@ test("Production Android requests hourly Telegram and distinguishes accepted fro
  assert.match(backend,/const queued=queueItems\.find/);
  assert.match(kotlin,/Confirm & Start/);
  assert.match(kotlin,/ProAnalyticsV2/);
+});
+
+test("Expiry screen has no empty rows and the Home dashboard exposes review exceptions",()=>{
+ const checker=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumMore.kt");
+ const home=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumScreens.kt");
+ const model=read("android-admin/app/src/main/java/in/hdcareers/admin/AdminViewModel.kt");
+ assert.match(checker,/\.filter \{ it\.optString\("state"\)=="review" \}/);
+ assert.match(checker,/rememberLazyListState/);
+ assert.match(checker,/scrollToItem\(0\)/);
+ assert.match(checker,/itemsIndexed\(reviews/);
+ assert.match(checker,/confirmation=jobId to "expire"/);
+ assert.match(home,/pendingExpiryReviews/);
+ assert.match(home,/Review "\+pending\.size\+" pending jobs/);
+ assert.match(model,/fun refreshOperationsQuietly/);
+});
+test("Checker and publishing transitions trigger independently deduplicated FCM notifications",()=>{
+ const push=read("lib/admin-push-handler.js");
+ const checker=read(".github/workflows/android-expiry-notify.yml");
+ const publishing=read(".github/workflows/admin-job-generator.yml");
+ const hourly=read(".github/workflows/hourly-telegram-queue.yml");
+ assert.match(push,/notify_checker/);
+ assert.match(push,/notify_publishing/);
+ assert.match(push,/notify_telegram/);
+ assert.match(push,/crypto\.createHash\("sha256"\)\.update\(batchId\)/);
+ assert.match(checker,/notify_checker/);
+ assert.match(publishing,/notify_publishing/);
+ assert.match(hourly,/steps\.claim\.outputs\.claimed == 'true'/);
+ assert.match(hourly,/notify_telegram/);
+ assert.match(read("android-admin/app/src/main/java/in/hdcareers/admin/Notifications.kt"),/message\.data\["kind"\]=="checker"/);
 });
