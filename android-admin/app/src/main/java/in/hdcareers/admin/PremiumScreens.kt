@@ -46,6 +46,12 @@ fun PremiumAdminRoot(
         if(!vm.loggedIn) {
             ProLogin(vm,onBiometricSignIn)
         } else {
+            LaunchedEffect(vm.tab,moreOpen,vm.loggedIn) {
+                while(vm.loggedIn && !moreOpen && vm.tab in listOf(0,2)) {
+                    vm.refreshOperationsQuietly()
+                    delay(30000)
+                }
+            }
             Scaffold(
                 containerColor=Brand.background,
                 topBar={
@@ -61,9 +67,9 @@ fun PremiumAdminRoot(
                                 Text(if(moreOpen)"Settings" else listOf("Today","Publish","Expiry","Jobs","Analytics")[vm.tab.coerceIn(0,4)],
                                     fontSize=19.sp,fontWeight=FontWeight.Black,color=Brand.navy)
                             }
-                            BadgedBox(badge={if(vm.batch.id.isNotBlank()&&vm.batch.reviewed<vm.batch.all.size)
+                            BadgedBox(badge={if(vm.pendingExpiryReviews.isNotEmpty() || (vm.batch.id.isNotBlank()&&vm.batch.reviewed<vm.batch.all.size))
                                 Badge(containerColor=Brand.amber){} }) {
-                                IconButton(onClick={moreOpen=false;vm.tab=1}) {
+                                IconButton(onClick={moreOpen=false;vm.tab=if(vm.pendingExpiryReviews.isNotEmpty())2 else 1}) {
                                     Icon(Icons.Default.NotificationsNone,"Review notifications",tint=Brand.navy)
                                 }
                             }
@@ -176,7 +182,8 @@ private fun ProLogin(vm:AdminViewModel,onBiometricSignIn:()->Unit) {
 @Composable
 private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
     val active=vm.jobs.count{it.status=="active"}
-    val awaiting=vm.batch.priority.count{it.decision!="live"}
+    val awaiting=vm.batch.priority.count{it.decision=="unreviewed"||it.decision.isBlank()}
+    val pending=vm.pendingExpiryReviews
     LazyColumn(contentPadding=PaddingValues(start=16.dp,end=16.dp,top=18.dp,bottom=28.dp),
         verticalArrangement=Arrangement.spacedBy(15.dp)) {
         item {
@@ -191,7 +198,7 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
                 "Jobs, reviews and website performance at a glance.") {
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     HeroMiniStat(active.toString(),"Live jobs",Modifier.weight(1f))
-                    HeroMiniStat(awaiting.toString(),"To review",Modifier.weight(1f))
+                    HeroMiniStat((awaiting+pending.size).toString(),"To review",Modifier.weight(1f))
                     HeroMiniStat("9:00","Discovery",Modifier.weight(1f))
                 }
             }
@@ -235,6 +242,45 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
                 }
             }
         }
+        item {
+            ProCard {
+                SectionHead(Icons.Default.WarningAmber,"Expiry checker · pending reviews",
+                    if(pending.isEmpty())"No unresolved job checks" else pending.size.toString()+" jobs waiting for your decision",
+                    if(pending.isEmpty())Brand.green else Brand.amber,action={vm.tab=2})
+                if(pending.isEmpty()) {
+                    Row(verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                        Icon(Icons.Default.CheckCircle,null,tint=Brand.green,modifier=Modifier.size(21.dp))
+                        Text("All reported checks are clear. Run or refresh to check again.",
+                            color=Brand.gray,fontSize=12.sp)
+                    }
+                } else {
+                    pending.take(4).forEach { item ->
+                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
+                            horizontalArrangement=Arrangement.spacedBy(9.dp)) {
+                            Icon(Icons.Default.WarningAmber,null,tint=Brand.amber,
+                                modifier=Modifier.size(19.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text(item.optString("company","Employer"),fontWeight=FontWeight.Bold,
+                                    color=Brand.navy,fontSize=12.sp,maxLines=1)
+                                Text(item.optString("role","Review needed"),
+                                    color=Brand.gray,fontSize=11.sp,maxLines=2)
+                            }
+                            Icon(Icons.Default.ChevronRight,null,tint=Brand.gray)
+                        }
+                        HorizontalDivider(color=Brand.outline)
+                    }
+                    if(pending.size>4) Text("+"+(pending.size-4)+" more waiting in Expiry",
+                        color=Brand.gray,fontSize=11.sp)
+                }
+                Button(onClick={vm.tab=2},modifier=Modifier.fillMaxWidth(),
+                    shape=RoundedCornerShape(13.dp)) {
+                    Text(if(pending.isEmpty())"Open job checker" else "Review "+pending.size+" pending jobs")
+                    Spacer(Modifier.width(7.dp))
+                    Icon(Icons.Default.ArrowForward,null,modifier=Modifier.size(16.dp))
+                }
+            }
+        }
         if(vm.adminRole=="owner") item {
             ProCard {
                 SectionHead(Icons.Default.ShowChart,"Traffic trend",
@@ -255,8 +301,8 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
                 SectionHead(Icons.Default.AutoAwesome,"Quick actions","Your most-used admin tools")
                 Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                     QuickAction("Review",Icons.Default.FactCheck,Brand.blue,Modifier.weight(1f)){vm.tab=1}
-                    QuickAction("Jobs",Icons.Default.BusinessCenter,Brand.violet,Modifier.weight(1f)){vm.tab=2}
-                    if(vm.adminRole=="owner") QuickAction("Analytics",Icons.Default.Insights,Brand.cyan,Modifier.weight(1f)){onAnalytics()}
+                    QuickAction("Expiry",Icons.Default.Shield,Brand.amber,Modifier.weight(1f)){vm.tab=2}
+                    QuickAction("Jobs",Icons.Default.BusinessCenter,Brand.violet,Modifier.weight(1f)){vm.tab=3}
                 }
             }
         }
