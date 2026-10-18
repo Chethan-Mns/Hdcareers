@@ -105,9 +105,11 @@
     {
       "page": "jobs/hackerrank-software-development-engineer-intern.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240380+00:00",
-      "dueAt": "2026-10-18T13:45:32.637426+00:00"
+      "dueAt": "2026-10-18T13:45:32.637426+00:00",
+      "claimId": "39132950589",
+      "claimedAt": "2026-10-18T13:45:41.571502+00:00"
     },
     {
       "page": "jobs/hcltech-campus-beginner-design-engineer.html",
