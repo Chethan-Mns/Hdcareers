@@ -188,6 +188,30 @@ jobs:
           done
           echo "::error::Could not persist Telegram receipts; download workflow evidence before retry."
           exit 1
+      - name: Notify registered Android admins of publishing outcome
+        if: always()
+        env:
+          PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+          PUBLISH_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          if [ "${#PUSH_SECRET}" -lt 32 ]; then
+            echo "::warning::Android push secret missing; publishing receipts remain authoritative."
+            exit 0
+          fi
+          if ! python3 -c 'import json,os; p=json.load(open("data/telegram-approved-batch.json")); exit(0 if p.get("approved") and p.get("pages") and p.get("batchId")=="admin-"+os.environ["GITHUB_RUN_ID"] else 1)'; then
+            echo "No new approved batch in this workflow; no push."
+            exit 0
+          fi
+          status="$PUBLISH_STATUS"
+          if [ "$status" != success ]; then status=failure; fi
+          curl --fail-with-body --silent --show-error --max-time 30 --retry 2 \
+            -H "Content-Type: application/json" \
+            -H "x-hd-push-key: $PUSH_SECRET" \
+            --data "$(jq -cn --arg id "admin-$GITHUB_RUN_ID" --arg status "$status" '{action:"notify_publishing",batchId:$id,publishStatus:$status}')" \
+            "https://hdcareers.in/api/admin/android-devices" \
+            || echo "::warning::Publishing push failed; do not retry publishing because the push failed."
       - name: Upload Telegram delivery evidence
         if: always()
         uses: actions/upload-artifact@v4

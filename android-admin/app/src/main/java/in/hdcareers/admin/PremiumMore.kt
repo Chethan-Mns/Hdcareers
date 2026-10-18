@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -270,23 +271,39 @@ private fun EmptyReport() {
 @Composable
 internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
     val result=vm.checker.optJSONObject("results")
-    val list=result?.optJSONArray("items")
-    LazyColumn(contentPadding=PaddingValues(16.dp),
-        verticalArrangement=Arrangement.spacedBy(13.dp)) {
+    val source=result?.optJSONArray("items")
+    // Only manual-review items belong in the LazyColumn; empty rows caused huge gaps.
+    val reviews=remember(vm.checker) {
+        (0 until (source?.length() ?: 0)).mapNotNull { source?.optJSONObject(it) }
+            .filter { it.optString("state")=="review" }
+    }
+    val state=rememberLazyListState()
+    val ctx=LocalContext.current
+    var confirmation by remember { mutableStateOf<Pair<Int,String>?>(null) }
+    LaunchedEffect(reviews.size,result?.optString("checkedAt")) {
+        state.scrollToItem(0)
+    }
+    LazyColumn(
+        modifier=Modifier.fillMaxSize(),
+        state=state,
+        contentPadding=PaddingValues(start=16.dp,end=16.dp,top=12.dp,bottom=32.dp),
+        verticalArrangement=Arrangement.spacedBy(10.dp)
+    ) {
         item {
             TextButton(onClick=onBack) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack,null)
-                Spacer(Modifier.width(7.dp)); Text("Back to admin center")
+                Spacer(Modifier.width(7.dp))
+                Text("Back to Today")
             }
             ProHero("Expiry management","Keep listings\ntrustworthy.",
-                "Blockers and CAPTCHA do not prove jobs have expired.",
+                "Review official career pages before marking a listing expired.",
                 icon=Icons.Default.Shield)
         }
         item {
             MetricsGrid(listOf(
                 MetricSpec("Checked",(result?.optInt("checked")?:0).toString(),
                     Icons.Default.FactCheck,Brand.blue),
-                MetricSpec("Needs review",(result?.optInt("review")?:0).toString(),
+                MetricSpec("Needs review",reviews.size.toString(),
                     Icons.Default.WarningAmber,Brand.amber),
                 MetricSpec("Active",(result?.optInt("active")?:0).toString(),
                     Icons.Default.CheckCircle,Brand.green),
@@ -296,46 +313,97 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
         }
         item {
             ProCard {
-                SectionHead(Icons.Default.Shield,"Verification actions",
-                    "Decisions are never based on HTTP blocking alone")
-                Button(onClick=vm::checkerRun,enabled=!vm.busy,modifier=Modifier.fillMaxWidth(),
-                    shape=RoundedCornerShape(14.dp)) {
+                SectionHead(Icons.Default.Autorenew,"Job checker",
+                    "Refreshes while Today or Expiry is visible",Brand.blue)
+                val latest=vm.checker.optJSONObject("latestRun")
+                val status=latest?.optString("status").orEmpty()
+                val checkedAt=result?.optString("checkedAt").orEmpty()
+                Text(if(status=="in_progress"||status=="queued")
+                        "Scan running · new results will appear automatically."
+                    else if(checkedAt.isNotBlank())"Last completed snapshot: $checkedAt"
+                    else "No completed scan recorded.",
+                    fontSize=12.sp,color=Brand.gray)
+                Button(onClick=vm::checkerRun,enabled=!vm.busy&&status!="in_progress"&&status!="queued",
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                    shape=RoundedCornerShape(13.dp)) {
+                    Icon(Icons.Default.PlayArrow,null)
+                    Spacer(Modifier.width(8.dp))
+                    Text(if(status=="in_progress"||status=="queued")"Checker is running" else "Run job checker")
+                }
+                OutlinedButton(onClick=vm::refreshExpiry,enabled=!vm.busy,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                    shape=RoundedCornerShape(13.dp)) {
                     Icon(Icons.Default.Refresh,null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Run expired-job checker")
+                    Text("Refresh pending reviews")
                 }
             }
         }
-        if(list!=null)items(list.length()) {index->
-            val j=list.optJSONObject(index)
-            if(j!=null&&j.optString("state")=="review") {
-                ProCard {
-                    SectionHead(Icons.Default.WarningAmber,
-                        j.optString("company","Unknown employer"),j.optString("role"),Brand.amber)
-                    Text(j.optString("reason"),fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
-                    Text("Last checked: "+j.optString("checkedAt","Unknown"),fontSize=10.sp,color=Brand.gray)
-                    val link=j.optString("url").ifBlank{j.optString("apply")}
-                    val context=LocalContext.current
-                    if(link.startsWith("https://")) OutlinedButton(onClick={
-                        context.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
-                    },modifier=Modifier.fillMaxWidth()) {
-                        Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
-                        Spacer(Modifier.width(7.dp))
-                        Text("Open official job before deciding")
+        if(reviews.isEmpty()) item {
+            ProCard {
+                SectionHead(Icons.Default.CheckCircle,"No pending expiry reviews",
+                    "New exceptions appear here after the checker completes",Brand.green)
+            }
+        }
+        itemsIndexed(reviews,key={ index,j -> j.optInt("id",-1).toString()+"-"+index }) { _, j ->
+            ProCard(padding=13) {
+                Column(verticalArrangement=Arrangement.spacedBy(9.dp)) {
+                    ProPill("NEEDS REVIEW",Brand.amber)
+                    Text(j.optString("company","Unknown employer"),fontSize=16.sp,
+                        fontWeight=FontWeight.Bold,color=Brand.navy)
+                    Text(j.optString("role"),fontSize=13.sp,color=Brand.navy,lineHeight=18.sp)
+                    Text(j.optString("reason").ifBlank { "Check the official listing." },
+                        fontSize=12.sp,color=Brand.gray,lineHeight=18.sp)
+                    val checked=j.optString("checkedAt","")
+                    val readable=runCatching {
+                        java.time.OffsetDateTime.parse(checked)
+                            .atZoneSameInstant(java.time.ZoneId.of("Asia/Kolkata"))
+                            .format(java.time.format.DateTimeFormatter.ofPattern("dd MMM, hh:mm a"))
+                    }.getOrDefault(checked.ifBlank { "Unknown" })
+                    Text("Checked: $readable IST",fontSize=11.sp,color=Brand.gray)
+                    val link=j.optString("url").ifBlank { j.optString("apply") }
+                    if(link.startsWith("https://")) {
+                        OutlinedButton(onClick={
+                            ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
+                        },modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                            shape=RoundedCornerShape(12.dp)) {
+                            Icon(Icons.Default.OpenInNew,null,modifier=Modifier.size(16.dp))
+                            Spacer(Modifier.width(7.dp))
+                            Text("Open official job",maxLines=1)
+                        }
                     }
                     val jobId=j.optInt("id",-1)
-                    Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                        OutlinedButton(onClick={vm.checkerResolve(jobId,"keep")},
-                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Keep (verified)",fontSize=11.sp)
-                        }
-                        OutlinedButton(onClick={vm.checkerResolve(jobId,"expire")},
-                            enabled=jobId>=0&&!vm.busy,modifier=Modifier.weight(1f)) {
-                            Text("Confirm expired",fontSize=11.sp)
-                        }
+                    Button(onClick={confirmation=jobId to "keep"},
+                        enabled=jobId>=0&&!vm.busy,
+                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                        shape=RoundedCornerShape(12.dp)) {
+                        Icon(Icons.Default.Check,null,modifier=Modifier.size(16.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text("Keep active — verified",maxLines=1)
+                    }
+                    OutlinedButton(onClick={confirmation=jobId to "expire"},
+                        enabled=jobId>=0&&!vm.busy,
+                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                        shape=RoundedCornerShape(12.dp)) {
+                        Icon(Icons.Default.Cancel,null,modifier=Modifier.size(16.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text("Confirm expired",maxLines=1)
                     }
                 }
             }
         }
+    }
+    confirmation?.let { (id,decision) ->
+        AlertDialog(
+            onDismissRequest={confirmation=null},
+            title={Text(if(decision=="expire")"Confirm job expired?" else "Confirm job is active?")},
+            text={Text("Only confirm after checking the official job URL. This updates production records.")},
+            confirmButton={
+                TextButton(onClick={confirmation=null;vm.checkerResolve(id,decision)}) {
+                    Text(if(decision=="expire")"Mark expired" else "Keep active")
+                }
+            },
+            dismissButton={TextButton(onClick={confirmation=null}){Text("Cancel")}}
+        )
     }
 }

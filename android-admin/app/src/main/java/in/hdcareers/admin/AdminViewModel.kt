@@ -126,8 +126,9 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     }
     private fun setReminderState() {
         val prefs=getApplication<Application>().getSharedPreferences("hd_review",Context.MODE_PRIVATE)
-        prefs.edit().putBoolean("pending",batch.id.isNotBlank() && batch.status !in listOf("submitted","published") &&
-                batch.priority.any { it.decision != "live" }).apply()
+        val pendingDaily=batch.id.isNotBlank() && batch.status !in listOf("submitted","published") &&
+                batch.priority.any { it.decision != "live" }
+        prefs.edit().putBoolean("pending",pendingDaily || pendingExpiryReviews.isNotEmpty()).apply()
     }
     suspend fun refresh() {
         loading=true
@@ -148,7 +149,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         try { jobs=api.jobs() } catch(e:Exception){errors+="Jobs: "+e.message}
         try { companyLogos=api.logoSources() } catch(_:Exception) { /* Show initials when the catalog is unavailable. */ }
         try { traffic=api.traffic(days) } catch(e:Exception){errors+="Analytics: "+e.message}
-        try { checker=api.checker() } catch(e:Exception){errors+="Checker: "+e.message}
+        try { checker=api.checker(); setReminderState() } catch(e:Exception){errors+="Checker: "+e.message}
         try { automation=api.automation() } catch(e:Exception){errors+="Automation: "+e.message}
         runCatching { loadPublishingProgress() }
         loading=false
@@ -214,7 +215,26 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         } else message=candidate.company+" held: "+candidate.missingDetails.joinToString(", ")+
             ". No publishing request was sent."
     }
-    fun refreshExpiry()=run { checker=api.checker() }
+    val pendingExpiryReviews get():List<JSONObject> {
+        val items=checker.optJSONObject("results")?.optJSONArray("items")
+        return (0 until (items?.length() ?: 0)).mapNotNull { items?.optJSONObject(it) }
+            .filter { it.optString("state")=="review" }
+    }
+    fun refreshExpiry()=run {
+        checker=api.checker()
+        automation=runCatching { api.automation() }.getOrDefault(automation)
+        setReminderState()
+    }
+    fun refreshOperationsQuietly() {
+        if(!loggedIn)return
+        viewModelScope.launch {
+            runCatching {
+                checker=api.checker()
+                setReminderState()
+            }
+            runCatching { automation=api.automation() }
+        }
+    }
     fun ensurePushConnected(){
         if(!loggedIn||!firebaseReady(getApplication()))return
         val prefs=getApplication<Application>().getSharedPreferences("hd_push",Context.MODE_PRIVATE)
@@ -236,13 +256,27 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             batch=api.markSubmitted(snapshot.id,chosen,requestId)
             setReminderState()
             message=confirmation+" Website publication will be checked before hourly Telegram delivery."
+            showHDNotification(getApplication(),"HD Careers · Publishing submitted",
+                "Your selected jobs were accepted for publishing. Track website and Telegram progress.",
+                REVIEW_CHANNEL,98311)
             runCatching { loadPublishingProgress() }
         } catch(e:Exception) {
             message="GitHub accepted the request but review status could not be saved. Do not retry without checking the tracker: "+e.message
         }
     }
-    fun checkerRun()=run { message=api.runChecker();checker=api.checker() }
-    fun checkerResolve(id:Int,action:String)=run { message=api.resolveChecker(id,action);checker=api.checker() }
+    fun checkerRun()=run {
+        message=api.runChecker()
+        checker=api.checker()
+        showHDNotification(getApplication(),"HD Careers · Checker started",
+            "Availability scan accepted. You will be alerted when it finishes.",
+            EXPIRY_CHANNEL,98310,openExpiry=true)
+    }
+    fun checkerResolve(id:Int,action:String)=run {
+        message=api.resolveChecker(id,action)
+        checker=api.checker()
+        jobs=api.jobs()
+        setReminderState()
+    }
     fun extract(url:String)=run {
         require(url.startsWith("https://")) { "Enter a direct HTTPS job URL." }
         manualDraft=api.extractJob(url)
@@ -254,6 +288,9 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             "The generated job is missing required information."
         }
         message=api.publishOne(draft)+" Confirm the website and Telegram delivery."
+        showHDNotification(getApplication(),"HD Careers · VIP job submitted",
+            "Your job was accepted for publishing. Website and Telegram checks are underway.",
+            REVIEW_CHANNEL,98312)
         manualDraft=null
     }
     fun connectPush() {

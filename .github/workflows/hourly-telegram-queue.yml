@@ -61,6 +61,22 @@ jobs:
             git commit -m "Record hourly Telegram delivery result"
             git push origin HEAD:main
           fi
+      - name: Notify Android about confirmed Telegram job delivery
+        if: success() && steps.claim.outputs.claimed == 'true'
+        env:
+          PUSH_SECRET: ${{ secrets.ANDROID_PUSH_DISPATCH_SECRET }}
+        shell: bash
+        run: |
+          if [ "${#PUSH_SECRET}" -lt 32 ]; then
+            echo "::warning::Android push secret missing; delivery receipt is still saved."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error --max-time 30 --retry 2 \
+            -H "Content-Type: application/json" \
+            -H "x-hd-push-key: $PUSH_SECRET" \
+            --data "$(jq -cn --arg id "telegram-$GITHUB_RUN_ID" '{action:"notify_telegram",batchId:$id}')" \
+            "https://hdcareers.in/api/admin/android-devices" \
+            || echo "::warning::Telegram delivery push failed; receipt remains the source of truth."
       - name: Upload hourly delivery evidence for recovery
         if: always()
         uses: actions/upload-artifact@v4
