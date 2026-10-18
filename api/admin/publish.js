@@ -1,5 +1,5 @@
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
-import {selectCandidates} from "../../lib/review-rules.js";
+import {selectCandidates,employerKey} from "../../lib/review-rules.js";
 import {attachReviewedProof} from "../../lib/review-publish-proof.js";
 import {redis} from "../../lib/admin-store.js";
 import crypto from "node:crypto";
@@ -186,6 +186,7 @@ export default async function handler(req,res){
       const ledger=await readJson("data/telegram-deliveries.json",{});
        const hourly=await readJson("data/telegram-hourly-queue.json",{items:[]});
        const queueItems=Array.isArray(hourly.items)?hourly.items:[];
+       const reviewQueue=await readJson("data/review-queue.json",[]);
       const urls=new Set(saved.map(x=>normalizeUrl(x.apply)));
       const allCandidates=[...(batch.priority||[]),...(batch.backup||[])];
       const publishedCandidateIds=allCandidates.filter(x=>urls.has(normalizeUrl(x.job?.apply||x.apply))).map(x=>String(x.id));
@@ -258,7 +259,25 @@ export default async function handler(req,res){
           stages.some(x=>x.telegram==="delivered")?"partial":
           stages.some(x=>["pending","sending"].includes(x.telegram))?"queued":"pending"
       };
-      return res.status(200).json({batchId:batch.batchId||null,status:batch.status||"waiting",
+      const expiry=await Promise.all((Array.isArray(reviewQueue)?reviewQueue:[])
+        .filter(x=>["ready","review","rejected"].includes(x.state)).slice(0,200).map(async item=>{
+          const official=normalizeUrl(item.job?.apply||item.url);
+          const existing=saved.find(x=>normalizeUrl(x.apply)===official);
+          const page=String(existing?.page||item.job?.page||"").replace(/^\//,"");
+          const queued=queueItems.find(x=>x.page===page);
+          const receipt=Object.values(ledger).find(x=>x.page===page&&x.status==="delivered");
+          const marker=await redis("GET","hdreview:expiry:job:"+String(item.reviewId)).catch(()=>null);
+          return {id:Number(item.reviewId),company:item.company||item.job?.company||"",
+            role:item.role||item.job?.role||"",state:item.state,
+            dispatched:Boolean(marker),requestId:marker||null,
+            website:existing?"data-committed":"pending",
+            websiteUrl:page?"https://hdcareers.in/"+page:null,
+            telegram:receipt?"delivered":queued?.status||"not_queued",
+            telegramMessageId:receipt?.messageId||queued?.messageId||null,
+            telegramDueAt:queued?.dueAt||null,reviewedAt:item.reviewedAt||null};
+        }));
+      return res.status(200).json({expiryStages:expiry,
+        batchId:batch.batchId||null,status:batch.status||"waiting",
         publishedCount:stages.filter(x=>x.website==="live").length,
         dataCommittedCount:stages.filter(x=>x.website==="live"||x.website==="data-committed").length,
         alreadyPublishedCount:publishedCandidateIds.length,publishedCandidateIds,
@@ -267,6 +286,9 @@ export default async function handler(req,res){
         workflow,pipeline,stages,observedAt:new Date().toISOString(),
         warning:"GitHub workflow is matched by the queue run ID when present. Public website evidence is checked independently; exact Vercel deployment SHA is not verified in this response."});
     }
+    const fromExpiry=Array.isArray(req.body?.expiryReviewIds);
+    if(fromExpiry&&(req.body?.batchId||req.body?.testInboxId||req.body?.jobs))
+      return res.status(400).json({error:"Choose one publishing source per request."});
     const fromTest=String(req.body?.testInboxId||"")==="two-job-preview-20261017";
     const testKey="hdadmin:manual-review:v1:"+(process.env.VERCEL_ENV==="preview"?"preview":"production")+":test-two-jobs";
     let testInbox=null;
@@ -287,9 +309,28 @@ export default async function handler(req,res){
       req.body.jobs=picked.map(j=>({...j,status:"active",manualLiveVerifiedAt:j.reviewedAt,manualLiveVerifiedUrl:j.apply}));
     }
     const fromReview=Boolean(req.body?.batchId);
+    let expiryIds=[];
+    if(fromExpiry){
+      const ids=req.body.expiryReviewIds;
+      if(ids.length<1||ids.length>10||ids.some(x=>!Number.isSafeInteger(x)||x<=0)||new Set(ids).size!==ids.length)
+        return res.status(400).json({error:"Select 1 to 10 different Live review IDs."});
+      expiryIds=ids;
+    }
     let reviewBatch=null;
     const selectedIds=fromReview?req.body.candidateIds:null;
     let submitted=Array.isArray(req.body?.jobs)?req.body.jobs:[];
+    if(fromExpiry){
+      const q=await readJson("data/review-queue.json",[]);
+      const picks=expiryIds.map(id=>q.find(x=>Number(x.reviewId)===id));
+      if(picks.some(x=>!x||x.state!=="ready"||x.reviewDecision!=="live"||!x.reviewedAt||!x.job||x.job.status!=="active"))
+        return res.status(409).json({error:"Selected jobs must be verified Live in the checker. Refresh before publishing."});
+      const employers=picks.map(x=>employerKey(x.job.company));
+      if(employers.some(x=>!x)||new Set(employers).size!==employers.length)
+        return res.status(409).json({error:"Only one job per employer may be published per batch."});
+      if(picks.some(x=>normalizeUrl(x.url||x.job.apply)!==normalizeUrl(x.job.apply)||normalizeUrl(x.job.manualLiveVerifiedUrl)!==normalizeUrl(x.job.apply)))
+        return res.status(409).json({error:"Reviewed official URL does not match the stored job."});
+      submitted=picks.map(x=>x.job);
+    }
     if(fromReview){
       reviewBatch=await readJson("data/daily-review-batch.json");
       if(reviewBatch.batchId!==req.body.batchId||reviewBatch.status!=="reviewing"){
@@ -326,18 +367,32 @@ export default async function handler(req,res){
     if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
 
     const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):
-      fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):null;
+      fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):
+      fromExpiry?crypto.createHash("sha256").update("expiry|"+expiryIds.slice().sort((a,b)=>a-b).join("|")).digest("hex").slice(0,24):null;
     const telegramDeliveryMode=fromTest||fromReview||incoming.length>1||req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
-     const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
+     const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(fromReview?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:requestId?{requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
     }
 
     await auditMutation(req,"jobs.publish",incoming.map(j=>j.company+" - "+j.role).join("; ").slice(0,150));
-    const lockKey=requestId?"hdreview:dispatch:"+process.env.VERCEL_ENV+":"+(fromTest?testInbox.id:reviewBatch.batchId):null;
+    const lockKey=requestId?"hdreview:dispatch:"+process.env.VERCEL_ENV+":"+(fromExpiry?"expiry:"+requestId:fromTest?testInbox.id:reviewBatch.batchId):null;
+    const expiryLocked=[];
     if(lockKey){
-      const acquired=await redis("SET",lockKey,requestId,"NX","EX",86400);
-      if(acquired!=="OK")return res.status(409).json({error:"This review batch has already started publishing. Check the tracker; never resend a pending batch."});
+      const acquired=await redis("SET",lockKey,requestId,"NX","EX",fromExpiry?30*86400:86400);
+      if(acquired!=="OK")return res.status(409).json({error:"This selection already started publishing. Check the tracker before trying again."});
+    }
+    if(fromExpiry){
+      for(const id of expiryIds){
+        const key="hdreview:expiry:job:"+id;
+        const acquired=await redis("SET",key,requestId,"NX","EX",30*86400);
+        if(acquired!=="OK"){
+          for(const entry of expiryLocked)await redis("DEL",entry);
+          if(lockKey)await redis("DEL",lockKey);
+          return res.status(409).json({error:"One selected job was already submitted. Refresh publishing status."});
+        }
+        expiryLocked.push(key);
+      }
     }
     try{
       await github("/dispatches",token,{
@@ -348,7 +403,10 @@ export default async function handler(req,res){
     }catch(e){
       // A timeout can occur after GitHub accepts the dispatch. Keep the lock
       // rather than risking a duplicate publish when the outcome is unknown.
-      if(lockKey&&Number(e.status)>=400&&Number(e.status)<500)await redis("DEL",lockKey);
+      if(Number(e.status)>=400&&Number(e.status)<500){
+        if(lockKey)await redis("DEL",lockKey);
+        for(const entry of expiryLocked)await redis("DEL",entry);
+      }
       throw e;
     }
 
