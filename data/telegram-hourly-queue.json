@@ -115,9 +115,11 @@
     {
       "page": "jobs/hcltech-campus-beginner-design-engineer.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240386+00:00",
-      "dueAt": "2026-10-18T14:45:44.500592+00:00"
+      "dueAt": "2026-10-18T14:45:44.500592+00:00",
+      "claimId": "39137443410",
+      "claimedAt": "2026-10-18T14:45:54.627799+00:00"
     },
     {
       "page": "jobs/mastercard-software-engineer-i-1.html",
