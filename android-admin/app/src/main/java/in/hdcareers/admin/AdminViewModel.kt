@@ -176,7 +176,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             // Keep the original evidence and Telegram timeline, clear only visible ready selection
             // after every selected website page is independently verified live.
             if(batch.status in listOf("submitted","published") &&
-                data.optJSONArray("stages")?.length() ?: 0 > 0 &&
+                (data.optJSONArray("stages")?.length() ?: 0) > 0 &&
                 data.optInt("publishedCount") == data.optJSONArray("stages")?.length())
                 selectedIds=emptySet()
             else selectedIds=selectedIds-serverPublished
