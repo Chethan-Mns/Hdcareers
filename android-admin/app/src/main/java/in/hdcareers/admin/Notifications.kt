@@ -91,7 +91,7 @@ class PushService:FirebaseMessagingService() {
     override fun onMessageReceived(message:RemoteMessage) {
         val title=message.notification?.title ?: message.data["title"] ?: "HD Careers"
         val body=message.notification?.body ?: message.data["body"] ?: "Your job review has an update."
-        val expiry=message.data["openExpiry"]=="1"||message.data["kind"]=="expiry"
+        val expiry=message.data["openExpiry"]=="1"||message.data["kind"]=="expiry"||message.data["kind"]=="checker"
         showHDNotification(this,title,body,if(expiry)EXPIRY_CHANNEL else REVIEW_CHANNEL,
             message.data["batchId"]?.hashCode() ?: System.currentTimeMillis().toInt(),openExpiry=expiry)
     }
