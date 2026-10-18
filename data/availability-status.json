@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-18T07:19:58.190Z",
+  "checkedAt": "2026-10-18T07:20:05.076Z",
   "checked": 121,
   "active": 118,
-  "expired": 0,
-  "review": 3,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 2,
+  "changedExpired": 1,
   "items": [
     {
       "id": 173,
@@ -294,9 +294,11 @@
       "role": "Analyst - Financial Risk",
       "page": "jobs/deloitte-south-asia-analyst-financial-risk.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Eco-space-Analyst-Financial-Risk-Bengaluru-Regulatory-%26-Financial-Risk/60562444/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-17T17:31:53.990134+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-18T07:20:05.076Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-18T07:20:05.076Z"
     },
     {
       "id": 142,
