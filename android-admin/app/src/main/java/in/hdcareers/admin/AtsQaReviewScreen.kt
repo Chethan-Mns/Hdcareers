@@ -34,7 +34,7 @@ private data class QaRole(val id:String,val company:String,val provider:String,v
     val location:String,val url:String,val req:String,val domain:String,val notes:String)
 
 private fun sample(context:Context):List<QaRole>{
- val data=JSONObject(context.assets.open("ats-platform-six.json").bufferedReader().use{it.readText()})
+ val data=JSONObject(context.assets.open("ats-platform-seven.json").bufferedReader().use{it.readText()})
  val rows=data.getJSONArray("jobs")
  return (0 until rows.length()).map{i->
   val j=rows.getJSONObject(i)
@@ -69,7 +69,7 @@ fun AtsPlatformQaScreen(onBack:(()->Unit)?=null){
      .put("manualVerdict",verdicts[j.id]?:"unreviewed")
      .put("selectedForQaPublish",j.id in selected))
   }
-  val report=JSONObject().put("batchId","ats-six-sources-2026-10-18")
+  val report=JSONObject().put("batchId","ats-seven-sources-2026-10-18")
     .put("type","QA_OFFLINE_NO_PUBLICATION")
     .put("jobs",items).toString(2)
   val cb=ctx.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -84,7 +84,7 @@ fun AtsPlatformQaScreen(onBack:(()->Unit)?=null){
     Surface(color=qaInk,shape=RoundedCornerShape(22.dp)){
      Column(Modifier.padding(19.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
       Text("HD CAREERS · ISOLATED QA",color=Color(0xFF9BD1FF),fontSize=11.sp,fontWeight=FontWeight.Black)
-      Text("6 ATS platforms",color=Color.White,fontSize=24.sp,fontWeight=FontWeight.Black)
+      Text("${jobs.size} ATS platforms",color=Color.White,fontSize=24.sp,fontWeight=FontWeight.Black)
       Text("Test real official links, employer logos and review decisions. Publishing is SIMULATED — no website or Telegram changes.",
        color=Color.White,fontSize=12.sp)
       Text("Live ${jobs.count{verdicts[it.id]=="live"}}   •   Expired ${jobs.count{verdicts[it.id]=="expired"}}   •   Unsure ${jobs.count{verdicts[it.id]=="unsure"}}",
