@@ -1,6 +1,10 @@
 name: Hourly Telegram Job Announcements
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - data/telegram-scheduler-kick.json
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
