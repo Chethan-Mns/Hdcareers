@@ -1,0 +1,73 @@
+{
+  "batchId": "ats-six-sources-2026-10-18",
+  "mode": "qa-isolated-no-production-publishing",
+  "sourceDate": "2026-10-18",
+  "jobs": [
+    {
+      "id": "greenhouse-superapp",
+      "provider": "Greenhouse",
+      "company": "SuperApp",
+      "role": "Software Engineer, Backend (Early Careers)",
+      "location": "Bengaluru, India",
+      "reqId": "8859685002",
+      "url": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
+      "brandDomain": "superapp.chat",
+      "notes": "Early career; exact Greenhouse job ID."
+    },
+    {
+      "id": "workday-airbus",
+      "provider": "Workday",
+      "company": "Airbus",
+      "role": "Internship – Configuration & PLM Integration Services",
+      "location": "Bengaluru, India",
+      "reqId": "JR10448743",
+      "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Bangalore-Area/Internship-Configuration---PLM-Integration--services_JR10448743",
+      "brandDomain": "airbus.com",
+      "notes": "Native Workday requisition must match exactly; blank shell remains Unsure."
+    },
+    {
+      "id": "oracle-jpmc",
+      "provider": "Oracle",
+      "company": "JPMorganChase",
+      "role": "Disclosure of Interest Analyst",
+      "location": "Hyderabad, India",
+      "reqId": "210794554",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/job/210794554",
+      "brandDomain": "jpmorganchase.com",
+      "notes": "Oracle Candidate Experience; employer deadline shown as 30 Oct 2026, not evidence of active application today."
+    },
+    {
+      "id": "smartrecruiters-hrroll",
+      "provider": "SmartRecruiters",
+      "company": "HrRoll",
+      "role": "Intern for Programming",
+      "location": "Bengaluru, India",
+      "reqId": "96220260",
+      "url": "https://jobs.smartrecruiters.com/HrRoll/96220260-intern-for-programming",
+      "brandDomain": "hrroll.com",
+      "notes": "Legacy SmartRecruiters posting; deliberately useful for identifying stale postings."
+    },
+    {
+      "id": "lever-ahead",
+      "provider": "Lever",
+      "company": "AHEAD",
+      "role": "MS – EUS Apprentice/Intern (6 months)",
+      "location": "India",
+      "reqId": "7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "url": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "brandDomain": "thinkahead.com",
+      "notes": "Exact Lever job ID, manually verified in October 15 review; recheck current status."
+    },
+    {
+      "id": "ashby-almabase",
+      "provider": "Ashby",
+      "company": "Almabase",
+      "role": "Software Engineer",
+      "location": "Bengaluru, India",
+      "reqId": "71f033a9-4183-4df9-900f-1fb354267618",
+      "url": "https://jobs.ashbyhq.com/almabase/71f033a9-4183-4df9-900f-1fb354267618/",
+      "brandDomain": "almabase.com",
+      "notes": "Early-career Ashby board; check exact job/application ID."
+    }
+  ]
+}
