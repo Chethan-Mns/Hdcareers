@@ -389,7 +389,7 @@
       "apply": "https://careers.mastercard.com/us/en/job/R-293576/Software-Engineer-I-1",
       "cat": "it",
       "expYears": "0–12 months",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "review",
       "verificationReason": "Current authoritative page exposes exact requisition R-293576 and 0–12 months eligibility, but it could not be reopened reliably in the prior final check; retained REVIEW.",
       "postedDate": null,
@@ -403,7 +403,7 @@
         "expYears": "0–12 months",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Mastercard official careers",
         "desc": "Entry-level software engineering role covering programming, testing, implementation, documentation, maintenance and support.",
         "elig": "Bachelor’s degree in IT, Computer Science, MIS or equivalent experience; 0–12 months in software engineering.",
@@ -422,8 +422,12 @@
         "jobId": "R-293576",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Current authoritative page exposes exact requisition R-293576 and 0–12 months eligibility, but it could not be reopened reliably in the prior final check; retained REVIEW."
-      }
+        "sourceVerificationMethod": "Current authoritative page exposes exact requisition R-293576 and 0–12 months eligibility, but it could not be reopened reliably in the prior final check; retained REVIEW.",
+        "manualLiveVerifiedAt": "2026-10-18T05:49:06.822Z",
+        "browserVerifiedAt": "2026-10-18T05:49:06.822Z"
+      },
+      "reviewedAt": "2026-10-18T05:49:06.822Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ibm-52240",
@@ -790,7 +794,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:48:56.850Z",
+  "updatedAt": "2026-10-18T05:49:06.823Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
