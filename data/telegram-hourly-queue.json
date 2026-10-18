@@ -125,9 +125,11 @@
     {
       "page": "jobs/mastercard-software-engineer-i-1.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240392+00:00",
-      "dueAt": "2026-10-18T15:45:59.920656+00:00"
+      "dueAt": "2026-10-18T15:45:59.920656+00:00",
+      "claimId": "39141956458",
+      "claimedAt": "2026-10-18T15:46:08.861274+00:00"
     },
     {
       "page": "jobs/merkle-science-software-engineer-intern-backend.html",
