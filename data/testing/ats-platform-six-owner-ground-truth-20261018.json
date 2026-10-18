@@ -1,0 +1,62 @@
+{
+  "batchId": "ats-six-sources-2026-10-18",
+  "recordedDate": "2026-10-18",
+  "source": "Owner manually reviewed exact official job links in HD Careers Admin ATS QA pilot",
+  "mode": "QA_ONLY_DO_NOT_PUBLISH",
+  "caution": "Manual verdicts are point-in-time truth labels for validation, not durable proof for future automatic publishing.",
+  "jobs": [
+    {
+      "id": "greenhouse-superapp",
+      "manualVerdict": "live",
+      "checkerState": "active",
+      "checkerVerifiedLive": true
+    },
+    {
+      "id": "workday-airbus",
+      "manualVerdict": "expired",
+      "checkerState": "review",
+      "checkerVerifiedLive": false
+    },
+    {
+      "id": "oracle-jpmc",
+      "manualVerdict": "live",
+      "checkerState": "review",
+      "checkerVerifiedLive": false
+    },
+    {
+      "id": "smartrecruiters-hrroll",
+      "manualVerdict": "live",
+      "checkerState": "active",
+      "checkerVerifiedLive": true
+    },
+    {
+      "id": "lever-ahead",
+      "manualVerdict": "live",
+      "checkerState": "review",
+      "checkerVerifiedLive": false
+    },
+    {
+      "id": "ashby-almabase",
+      "manualVerdict": "expired",
+      "checkerState": "review",
+      "checkerVerifiedLive": false
+    }
+  ],
+  "totals": {
+    "reviewed": 6,
+    "manualLive": 4,
+    "manualExpired": 2,
+    "checkerVerifiedLive": 2,
+    "truePositiveLive": 2,
+    "falsePositiveLive": 0,
+    "falseNegativeLive": 2,
+    "manualExpiredHeldForReview": 2
+  },
+  "eligibilityNote": {
+    "id": "oracle-jpmc",
+    "audience": "not suitable for fresher queue",
+    "reason": "The official JPMorganChase listing requires at least five years of relevant financial services experience; Live status alone does not imply fresher eligibility.",
+    "sourceUrl": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/job/210794554"
+  },
+  "productionPublishAuthorized": false
+}
