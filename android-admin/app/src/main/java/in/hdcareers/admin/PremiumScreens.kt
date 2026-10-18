@@ -45,6 +45,8 @@ fun PremiumAdminRoot(
     MaterialTheme(colorScheme=Brand.scheme,typography=Typography()) {
         if(!vm.loggedIn) {
             ProLogin(vm,onBiometricSignIn)
+        } else if(vm.atsQaOpen) {
+            AtsPlatformQaScreen(onBack={vm.atsQaOpen=false})
         } else {
             LaunchedEffect(vm.tab,moreOpen,vm.loggedIn) {
                 while(vm.loggedIn && !moreOpen && vm.tab in listOf(0,2)) {
@@ -393,6 +395,16 @@ private fun ProReview(vm:AdminViewModel) {
                     2 -> "Final review: only complete, verified jobs can be published."
                     else -> "Read-only reviewed job history and verified delivery evidence."
                 },fontSize=11.sp,color=Brand.gray)
+            }
+        }
+        item {
+            ProCard {
+                SectionHead(Icons.Default.FactCheck,"Six-platform QA review",
+                    "Six official job examples · isolated, no website or Telegram publishing",Brand.blue)
+                Text("Greenhouse · Workday · Oracle · SmartRecruiters · Lever · Ashby. Compare exact job links and employer logos, mark Live / Expired / Unsure, then rehearse publishing without sending anything.",fontSize=12.sp,color=Brand.gray)
+                Button(onClick={vm.atsQaOpen=true},modifier=Modifier.fillMaxWidth()){
+                    Text("Open 6-job QA test inbox")
+                }
             }
         }
         if(vm.twoJobInbox.optJSONObject("staged")!=null) {
