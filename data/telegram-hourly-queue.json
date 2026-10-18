@@ -145,9 +145,11 @@
     {
       "page": "jobs/oracle-accounting-support-a1-fin.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240404+00:00",
-      "dueAt": "2026-10-18T17:46:38.749424+00:00"
+      "dueAt": "2026-10-18T17:46:38.749424+00:00",
+      "claimId": "39151135574",
+      "claimedAt": "2026-10-18T17:46:52.264276+00:00"
     }
   ]
 }
