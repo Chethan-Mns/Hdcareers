@@ -734,7 +734,7 @@
       "apply": "https://job-boards.greenhouse.io/headoutcareers/jobs/4309298006?gh_jid=4309298006",
       "cat": "internship",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "unsure",
       "verificationVerdict": "live",
       "verificationReason": "Exact Greenhouse role and Apply control opened; outside the approved 87 and retained only as fallback.",
       "postedDate": null,
@@ -768,7 +768,9 @@
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
         "sourceVerificationMethod": "Exact Greenhouse role and Apply control opened; outside the approved 87 and retained only as fallback."
-      }
+      },
+      "reviewedAt": "2026-10-18T05:50:34.339Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hackerrank-8229735",
@@ -812,7 +814,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:50:18.372Z",
+  "updatedAt": "2026-10-18T05:50:34.339Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
