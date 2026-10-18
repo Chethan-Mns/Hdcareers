@@ -36,7 +36,7 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 .actions button.chosen.live{border-color:#16a36a;background:#e6f7ee;color:#117442}
 .actions button.chosen.expired{border-color:#d0394b;background:#fff0f0;color:#ae2540}
 .actions button.chosen.unsure{border-color:#e6ad42;background:#fff5e3;color:#8c5900}
-.selectline{display:flex;align-items:center;gap:10px;margin:12px 0 4px;padding:10px 12px;border:1px solid #cfdef0;border-radius:12px;background:#f5f9ff;font-size:.82rem;font-weight:750}.selectline input{accent-color:#0969da;width:18px;height:18px}.warning{background:#fff6e6;border-color:#f1d28d;color:#7a4c06}.tracking{display:grid;gap:10px;margin-top:14px}.stage{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #e3eaf4;background:#fff;border-radius:12px;padding:12px;font-size:.79rem}.stage small{display:block;color:#64748b;margin-top:5px}.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
+.selectline{display:flex;align-items:center;gap:10px;margin:12px 0 4px;padding:10px 12px;border:1px solid #cfdef0;border-radius:12px;background:#f5f9ff;font-size:.82rem;font-weight:750}.selectline input{accent-color:#0969da;width:18px;height:18px}.warning{background:#fff6e6;border-color:#f1d28d;color:#7a4c06}.tracking{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px;margin-top:14px}.stage{display:grid;gap:12px;align-content:start;border:1px solid #dce7f4;background:linear-gradient(155deg,#fff,#f8fbff);border-radius:19px;padding:17px;font-size:.82rem;box-shadow:0 12px 30px #0f274408}.stage small{display:block;color:#64748b;margin-top:5px}.stage strong{font-size:14px;color:#12385e}.stage-meta{display:flex;gap:6px;flex-wrap:wrap}.stage-meta span{padding:6px 8px;border-radius:99px;background:#eef4ff;color:#18589e;font-size:10px;font-weight:800}.stage-rail{height:7px;border-radius:99px;background:#e5edf7;overflow:hidden}.stage-rail span{display:block;height:100%;background:linear-gradient(90deg,#0969da,#15a66b)}.stage-note{font-size:11px;color:#667b95}.stage-actions{display:flex;gap:12px}.stage-actions a{font-size:12px;font-weight:850;color:#075db7;text-decoration:none}.replace{display:flex;gap:8px;margin-top:12px}.replace select{min-width:0;flex:1;background:#f8fbff;border:1px solid #d7e4f2;border-radius:9px;padding:9px;color:#344c6b}
 .footer{margin-top:18px;padding:20px;display:flex;justify-content:space-between;gap:18px;align-items:center}
 .pickaction{display:flex;justify-content:center;width:100%;margin:12px 0 0}.pickaction button{width:100%}.content-warning{padding:10px 12px;border-radius:11px;background:#fff7e9;color:#82540b;margin-top:10px;font-size:.8rem}.footer p{font-size:.84rem;color:#63758a;max-width:600px}.message{margin:15px 0;padding:13px;border-radius:12px;background:#ebf3ff;color:#164678;font-size:.85rem;display:none}
 .banner{padding:34px 22px;text-align:center;color:#59708d}.banner h2{color:#123d76}
@@ -60,12 +60,12 @@ main{max-width:1100px;margin:20px auto;padding:0 16px 55px}.summary{display:grid
 <div class="tile"><div class="value" id="publishedCount">0</div><div class="label">Already published</div></div>
 </section>
 <div class="bar"><div id="progress" style="width:0"></div></div>
-<div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority</button><button id="backupTab" onclick="switchTab('backup')">Backup</button><button id="readyTab" onclick="switchTab('ready')">Publish Ready (0)</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
-<p class="meta">Swipe horizontally on mobile to move between Priority, Backup and Publish Ready. Selecting a verified Live job moves it out of its original list.</p>
+<div class="toolbar"><div class="segment" role="tablist"><button id="priorityTab" class="active" onclick="switchTab('priority')">Priority</button><button id="backupTab" onclick="switchTab('backup')">Backup</button><button id="readyTab" onclick="switchTab('ready')">Publish Ready (0)</button><button id="historyTab" onclick="switchTab('history')">History</button></div><button class="secondary" onclick="load()">↻ Refresh batch</button></div>
+<p class="meta">Expired jobs leave active review immediately; confirmed published jobs leave Publish Ready. History and the Telegram tracker preserve evidence.</p>
 <div id="employerWarning" class="status-note warning" hidden></div>
 <div id="cards" class="grid"></div>
 <section id="footer" class="card footer" hidden><div><strong>Publish Ready — final review</strong><p>Review up to 10 selected Live jobs. Missing employer-sourced information blocks publishing, but never blocks selection. GitHub, website and Telegram results are tracked separately.</p></div><button class="primary" id="publishBtn" onclick="publish()" disabled>Publish selected jobs</button></section>
-<section class="card" style="margin-top:18px;padding:20px"><strong>Publishing progress</strong><p class="meta">Updated automatically every 20 seconds after submission. A queued workflow does not mean the site or Telegram is live.</p><div class="toolbar"><button class="secondary" onclick="refreshTracker()">↻ Check publishing status</button><span id="trackSummary" class="meta" aria-live="polite">No submission to track.</span></div><div id="tracking" class="tracking"></div></section>
+<section class="card" style="margin-top:18px;padding:20px"><strong>Publishing progress</strong><p class="meta">Checks every ten seconds. Verified website publication clears Ready; Telegram receipts remain visible independently.</p><div class="toolbar"><button class="secondary" onclick="refreshTracker()">↻ Check publishing status</button><span id="trackSummary" class="meta" aria-live="polite">No submission to track.</span></div><div id="tracking" class="tracking"></div></section>
 </main>
 <script>
 let batch=null;
@@ -122,11 +122,12 @@ function draw(){
  warning.textContent="Discovery quality: "+all.length+"/20 jobs, "+seen.size+"/20 distinct employers. "+(dupes.length?"Duplicates: "+dupes.join("; ")+". ":"")+"Please replace duplicates with verified jobs from different employers; existing review decisions are preserved.";
 
  el("progress").style.width=(all.length?checked/all.length*100:0)+"%";
- el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");el("readyTab").classList.toggle("active",tab==="ready");el("readyTab").textContent="Publish Ready ("+selected.size+")";
+ el("priorityTab").classList.toggle("active",tab==="priority");el("backupTab").classList.toggle("active",tab==="backup");el("readyTab").classList.toggle("active",tab==="ready");el("historyTab").classList.toggle("active",tab==="history");el("readyTab").textContent="Publish Ready ("+selected.size+")";
  const root=el("cards");root.replaceChildren();
  el("batchInfo").textContent=batch.batchId?("9 AM batch: "+batch.batchId+" · Prepared "+new Date(batch.generatedAt||Date.now()).toLocaleString("en-IN")+" · Status: "+(batch.status||"reviewing")+". Review changes are stored in GitHub; the website and Telegram are untouched until you approve publication."):"No saved 9 AM discovery batch has reached the Admin Review Center. The separate Expired-Job review queue is not the discovery shortlist.";
  if(!batch.batchId){const empty=node("div","banner");empty.style.gridColumn="1/-1";empty.append(node("h2",null,"Waiting for the daily discovery batch"),node("p",null,"The job discovery pipeline must first populate the server-side priority and backup list. No jobs have been invented for this preview."));root.append(empty);el("footer").hidden=true;return}
- const items=tab==="ready"?chosen():(tab==="priority"?batch.priority:batch.backup).filter(x=>!selected.has(String(x.id))).sort((a,b)=>{const rank=j=>j.reviewedStatus==="live"?0:j.reviewedStatus==="expired"?3:j.reviewedStatus==="unsure"?2:1;return rank(a)-rank(b)});
+ const historyIds=new Set(publishStatus?.stages?.filter(x=>x.website==="live").map(x=>String(x.candidateId))||[]);
+ const items=tab==="ready"?chosen():tab==="history"?all.filter(x=>x.reviewedStatus==="expired"||historyIds.has(String(x.id))):(tab==="priority"?batch.priority:batch.backup).filter(x=>!selected.has(String(x.id))&&x.reviewedStatus!=="expired"&&!historyIds.has(String(x.id))).sort((a,b)=>{const rank=j=>j.reviewedStatus==="live"?0:j.reviewedStatus==="unsure"?2:1;return rank(a)-rank(b)});
  for(const item of items){
   const card=node("article","card"),head=node("div","head"),description=node("div");
   description.append(node("div","company",item.company||"Unknown employer"),node("h3",null,item.role||"Role not provided"),node("div","meta",[item.loc||item.job?.loc,item.expYears||item.job?.expYears].filter(Boolean).join(" · ")));
@@ -137,7 +138,8 @@ function draw(){
   if(item.postedDate)evidence.append(node("div",null,"Employer posting date: "+item.postedDate));
   card.append(evidence);
   const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
-  const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
+  if(tab==="history"){card.append(node("div","evidence",item.reviewedStatus==="expired"?"Archived: Expired · not published":"Website confirmed live · delivery history retained below"));root.append(card);continue}
+   const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);
   const pick=node("div","pickaction"),button=node("button",tab==="ready"?"secondary":"primary",tab==="ready"?"← Remove from Publish Ready":canSelect(item)?"Add to Publish Ready →":"Verify Live to select");
   button.disabled=busy||tab!=="ready"&&(!canSelect(item)||publishedIds.has(String(item.id)))||["submitted","published"].includes(batch.status);
   button.onclick=()=>toggleCandidate(item,tab!=="ready");
@@ -170,17 +172,31 @@ async function refreshTracker(){
   if(!r.ok)throw Error(data.error||"Tracker unavailable");
   if(data.batchId!==batch.batchId)return;
   publishStatus=data;
-  publishedIds=new Set(data.publishedCandidateIds||[]);for(const id of [...selected])if(publishedIds.has(id))selected.delete(id);
+  publishedIds=new Set(data.stages.filter(x=>x.website==="live").map(x=>String(x.candidateId)));for(const id of [...selected])if(publishedIds.has(id))selected.delete(id);
   el("trackSummary").textContent="Website Live "+data.publishedCount+"/"+data.stages.length+" · Data committed "+data.dataCommittedCount+"/"+data.stages.length+" · Telegram confirmed "+data.telegramDelivered+"/"+data.stages.length+" · GitHub "+(data.workflow.conclusion||data.workflow.state)+" · Vercel unconfirmed until deployment verified · "+new Date(data.observedAt).toLocaleTimeString("en-IN");
   const root=el("tracking");root.replaceChildren();
-  for(const s of data.stages){
-   const row=node("div","stage"),left=node("div"),right=node("div");
-   left.append(node("strong",null,s.company+" — "+s.role),node("small",null,"GitHub: "+s.github+" · Site: "+s.website+" · Vercel: "+s.vercel+" · Telegram: "+s.telegram));
-   if(s.note)left.append(node("small",null,s.note));
-   right.append(node("span","pill "+(s.telegram==="delivered"?"live":s.telegram==="failed"||s.telegram==="uncertain"?"expired":"unsure"),s.telegram==="delivered"?"Sent":s.telegram));
-   row.append(left,right);root.append(row)
+  for(const item of data.stages){
+    const card=node("article","stage");
+    const done=item.telegram==="delivered",live=item.website==="live",committed=item.website==="data-committed";
+    const head=node("div","stage-meta");
+    for(const [label,yes] of [["GitHub "+(data.workflow.conclusion||data.workflow.state),data.workflow.conclusion==="success"],["Website "+(live?"LIVE":committed?"committed":"pending"),live],["Telegram "+(done?"sent":item.telegram||"pending"),done]]){
+      const chip=node("span",null,label);
+      if(yes){chip.style.color="#0f7145";chip.style.background="#def7eb"}
+      head.append(chip);
+    }
+    card.append(node("strong",null,item.company+" — "+item.role),head);
+    const rail=node("div","stage-rail"),fill=node("span");
+    fill.style.width=(done?100:live?74:committed?42:12)+"%";rail.append(fill);card.append(rail);
+    card.append(node("div","stage-note","Queue #"+(item.queuePosition||"—")+
+      " · Next due: "+(item.telegramDueAt?new Date(item.telegramDueAt).toLocaleString("en-IN"):"Not scheduled")));
+    if(item.note)card.append(node("div","stage-note",item.note));
+    const actions=node("div","stage-actions");
+    if(item.pageUrl?.startsWith("https://")){const link=node("a",null,"↗ Website");link.href=item.pageUrl;link.target="_blank";link.rel="noopener noreferrer";actions.append(link)}
+    if(done&&item.telegramMessageId){const link=node("a",null,"↗ Telegram #"+item.telegramMessageId);link.href="https://t.me/HD_Careers/"+encodeURIComponent(item.telegramMessageId);link.target="_blank";link.rel="noopener noreferrer";actions.append(link)}
+    if(actions.childElementCount)card.append(actions);
+    root.append(card);
   }
-  drawCountsOnly();
+  draw();
  }catch(e){el("trackSummary").textContent="Tracker unavailable: "+e.message}
  if(!trackingTimer)trackingTimer=setInterval(()=>{if(["submitted","published"].includes(batch?.status))refreshTracker()},10000);
 }
@@ -192,8 +208,8 @@ el("cards").addEventListener("touchend",e=>{
  if(!swipeStart||!e.changedTouches.length)return;
  const dx=e.changedTouches[0].clientX-swipeStart.x,dy=e.changedTouches[0].clientY-swipeStart.y;swipeStart=null;
  if(Math.abs(dx)<75||Math.abs(dx)<Math.abs(dy)*1.4)return;
- const tabs=["priority","backup","ready"],index=tabs.indexOf(tab);
- switchTab(tabs[Math.max(0,Math.min(2,index+(dx<0?1:-1)))]);
+ const tabs=["priority","backup","ready","history"],index=tabs.indexOf(tab);
+ switchTab(tabs[Math.max(0,Math.min(3,index+(dx<0?1:-1)))]);
 },{passive:true});
 load();
 </script>
