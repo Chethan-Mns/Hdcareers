@@ -11,7 +11,7 @@
       "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667983_en&title=IT+Customer+Service+New+Associate",
       "cat": "it",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Accenture requisition opened with a job-bound Apply control, Any Graduation eligibility and 0–1 years experience.",
       "postedDate": null,
@@ -25,7 +25,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Accenture official careers",
         "desc": "Service Desk Non-Voice Support role handling customer queries, incidents and service requests through email, web and chat.",
         "elig": "Any Graduation; 0–1 years of experience.",
@@ -44,8 +44,12 @@
         "jobId": "AIOC-S01667983",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Accenture requisition opened with a job-bound Apply control, Any Graduation eligibility and 0–1 years experience."
-      }
+        "sourceVerificationMethod": "Exact Accenture requisition opened with a job-bound Apply control, Any Graduation eligibility and 0–1 years experience.",
+        "manualLiveVerifiedAt": "2026-10-18T05:47:31.883Z",
+        "browserVerifiedAt": "2026-10-18T05:47:31.883Z"
+      },
+      "reviewedAt": "2026-10-18T05:47:31.883Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1745766",
@@ -770,7 +774,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T03:36:49.640Z",
+  "updatedAt": "2026-10-18T05:47:31.911Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
