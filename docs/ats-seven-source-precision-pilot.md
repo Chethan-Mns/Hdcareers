@@ -2,7 +2,7 @@
 
 Date: 18 October 2026, latest external-readonly scan: 14:24 UTC.
 
-**Status: QA complete, awaiting owner's seventh-source verdict. Not approved for production.**
+**Status: Owner confirmed all seven platform verdicts. Development QA passed; production rollout NOT approved.**
 
 ## Why this is a safe pilot
 
@@ -22,11 +22,11 @@ Date: 18 October 2026, latest external-readonly scan: 14:24 UTC.
 | SmartRecruiters | HrRoll – Intern for Programming | Live | Verified Live |
 | Lever | AHEAD – MS-EUS Apprentice/Intern | Live | Verified Live after typography-safe exact title comparison |
 | Ashby | Almabase – Software Engineer | Expired | Unsure, safely withheld |
-| SAP SuccessFactors career site | SIA Engineering Company – Aircraft Maintenance License Trainee (AMLT), requisition 767 | **Not yet reviewed** | Verified Live via exact requisition + matching title + active Apply link |
+| SAP SuccessFactors career site | SIA Engineering Company – Aircraft Maintenance License Trainee (AMLT), requisition 767 | **Live (owner-confirmed)** | Verified Live via exact requisition + matching title + active Apply link |
 
-Read-only QA evidence: `.github/workflows/ats-seven-oracle-browser-qa.yml` artifacts. Snapshot for the old six owner decisions lives in `data/testing/ats-platform-six-owner-ground-truth-20261018.json`.
+Read-only QA evidence: `.github/workflows/ats-seven-oracle-browser-qa.yml` artifacts. The seven-job owner snapshot is `data/testing/ats-platform-seven-owner-ground-truth-20261018.json` and the original six-job baseline remains in `data/testing/ats-platform-six-owner-ground-truth-20261018.json`.
 
-**Metric interpretation:** 4/4 previously owner-confirmed Live postings detected, 0/2 owner-confirmed Expired postings incorrectly marked Live. SuccessFactors is the seventh and needs owner confirmation; it is not part of the historical six-label accuracy denominator.
+**Metric interpretation:** 5/5 owner-confirmed Live postings detected, 0/2 owner-confirmed Expired postings incorrectly marked Live (5/5 observed Live precision, 5/5 recall) in the October 18 seven-source read-only scan. Sample size 7 is too small to guarantee future performance. The 2 Expired examples were conservatively marked Uncertain; they were NOT automatically expired by this pilot.
 
 ## Remaining non-availability eligibility issues
 
@@ -38,10 +38,11 @@ Read-only QA evidence: `.github/workflows/ats-seven-oracle-browser-qa.yml` artif
 
 1. Update HD Careers Admin to v1.3.4-test, then open **Publish → Seven-platform QA review**.
 2. Your original six saved decisions should still appear; select the SIA Engineering row.
-3. Follow its exact official SuccessFactors posting, check role, requisition **767** and actual job-bound Apply link.
-4. Mark the seventh posting **Live / Expired / Unsure**; tap **Copy decisions** and paste the JSON into the conversation.
-5. Test **Simulate Publish** to confirm no website or Telegram messages are sent.
-6. Decide whether Oracle browser checks and official SuccessFactors probing should proceed to limited production shadow evaluation; do not merge PR #112 without owner approval.
+3. **Complete:** Owner opened exact SuccessFactors requisition 767 and marked **Live**, selected for QA Publish simulation (not for public publishing).
+4. **Next:** Run repeated 9 AM shadow shortlists to measure precision across more employers and verify fresher eligibility independently.
+5. **Next:** Observe both twice-daily expiry scans, including closed, blocked and ambiguous URLs, without altering published jobs.
+6. **Next:** Verify branded company icons across the actual Admin and website previews and reconcile PR #112 with the current `main` branch.
+7. **Owner approval still required:** Production merge/publishing. The QA selection `selectedForQaPublish=true` is simulation-only.
 
 ## Safety requirements before a production merge
 
