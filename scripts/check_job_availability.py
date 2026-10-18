@@ -12,7 +12,7 @@ import socket
 import subprocess
 import time
 from urllib.error import HTTPError
-from urllib.parse import urlsplit, quote
+from urllib.parse import urlsplit, quote, urljoin
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -327,8 +327,17 @@ def successfactors_exact_page(job,body,final_url,status=200):
         return 'review','SAP SuccessFactors visible exact role heading did not match'
     if re.search(r'\b(?:no longer accepting applications|job is closed|applications are closed)\b',text,re.I):
         return 'review','SAP SuccessFactors career page contains closure text'
-    if not re.search(r'\bApply\s+now\b',text,re.I):
-        return 'review','SAP SuccessFactors exact posting lacks a visible Apply now action'
+    # Generic Apply text in headers is not evidence that this exact job accepts applications.
+    apply_links=re.findall(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',body,re.I|re.S)
+    valid_apply=any(
+        re.search(r'\bApply\s+now\b',re.sub(r'<[^>]*>',' ',label),re.I)
+        and not href.strip().lower().startswith(('javascript:','#','mailto:'))
+        and urlsplit(urljoin(final_url,href)).hostname in {(urlsplit(final_url).hostname or '').lower(),
+                                                             'career2.successfactors.eu','career5.successfactors.eu'}
+        for href,label in apply_links
+    )
+    if not valid_apply:
+        return 'review','SAP SuccessFactors posting has no clickable job-bound Apply now link'
     return 'active','SAP SuccessFactors official exact career page confirms requisition title and Apply now'
 
 def classify(job, body, final_url, status=200):
