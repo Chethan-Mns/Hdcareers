@@ -581,7 +581,7 @@
       "apply": "https://ingrammicro.wd5.myworkdayjobs.com/en-US/IngramMicro/job/Mumbai-India/Graduate-Engineer-Trainee_R-115589",
       "cat": "it",
       "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "review",
       "verificationReason": "Employer-recognized exact Workday requisition and 2026-graduate evidence exist, but the page is a JavaScript-only shell; outside the approved 87 fallback and held REVIEW.",
       "postedDate": null,
@@ -595,7 +595,7 @@
         "expYears": "2026 graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Ingram Micro official Workday",
         "desc": "Structured graduate trainee opportunity providing onboarding, training, live-project exposure and software-development experience.",
         "elig": "BE/BTech 2026 graduates based locally in Chennai or Mumbai.",
@@ -618,7 +618,9 @@
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
         "sourceVerificationMethod": "Employer-recognized exact Workday requisition and 2026-graduate evidence exist, but the page is a JavaScript-only shell; outside the approved 87 fallback and held REVIEW."
-      }
+      },
+      "reviewedAt": "2026-10-18T05:50:08.280Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deutsche-bank-r0357981",
@@ -806,7 +808,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:49:52.400Z",
+  "updatedAt": "2026-10-18T05:50:08.280Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
