@@ -222,7 +222,7 @@ def normalize_role_heading(value):
     # ATS titles often use hyphen/en-dash/em-dash/slash interchangeably.
     # This is only used as supplemental visible-text matching on exact pages;
     # it is never independent evidence that an application is open.
-    return re.sub(r'\\s+', ' ', re.sub(r'[-\\u2010-\\u2015\\u2212/]+', ' ', str(value).casefold())).strip()
+    return re.sub(r'\s+', ' ', re.sub(r'[-\u2010-\u2015\u2212/]+', ' ', str(value).casefold())).strip()
 
 
 def classify(job, body, final_url, status=200):
