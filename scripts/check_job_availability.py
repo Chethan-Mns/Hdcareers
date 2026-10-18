@@ -4,6 +4,7 @@ import argparse
 from datetime import datetime, timezone, timedelta
 from html.parser import HTMLParser
 import ipaddress
+import os
 import json
 from pathlib import Path
 import re
@@ -225,7 +226,114 @@ def normalize_role_heading(value):
     return re.sub(r'\s+', ' ', re.sub(r'[-\u2010-\u2015\u2212/]+', ' ', str(value).casefold())).strip()
 
 
+
+def is_oracle_candidate_url(url):
+    """Only exact public Oracle CX site requisition URLs qualify for browser fallback."""
+    p = urlsplit(str(url))
+    host = (p.hostname or '').lower()
+    return bool(p.scheme == 'https' and re.fullmatch(r'[a-z0-9-]+\.fa\.oraclecloud\.com', host)
+                and re.fullmatch(r'/hcmUI/CandidateExperience/(?:[a-z]{2}(?:-[A-Z]{2})?/)?sites/[A-Za-z0-9_]+/job/\d+/?', p.path))
+
+
+def oracle_rendered_evidence(job, final_url, heading, text, enabled_apply):
+    """Evaluate the rendered exact Oracle job page; no generic career page is Live."""
+    expected = str(job.get('jobId') or urlsplit(str(job.get('apply') or '')).path.rstrip('/').rsplit('/', 1)[-1])
+    if not is_oracle_candidate_url(job.get('apply')) or not expected.isdecimal():
+        return 'review', 'Oracle Candidate Experience link is not a supported exact requisition URL'
+    original = urlsplit(str(job.get('apply')))
+    actual_url = urlsplit(str(final_url))
+    if (actual_url.hostname or '').lower() != (original.hostname or '').lower() or actual_url.path.rstrip('/') != original.path.rstrip('/'):
+        return 'review', 'Oracle browser navigation left the exact requisition page'
+    if BLOCKED.search(text):
+        return 'review', 'Oracle candidate page shows an access challenge'
+    matched_id = re.search(r'\bJob\s+Identification\s*[:#]?\s*(\d{5,})\b',text,re.I)
+    if not matched_id or matched_id.group(1) != expected:
+        return 'review', 'Oracle rendered page did not show the matching Job Identification'
+    title=normalize_role_heading(job.get('role') or '')
+    rendered=normalize_role_heading(heading or '')
+    if not title or title != rendered:
+        return 'review', 'Oracle rendered requisition heading differs from stored job title'
+    if re.search(r'\b(?:applications? closed|no longer accepting applications|this job is closed)\b', text,re.I):
+        return 'review', 'Oracle rendered page contains conflicting closure text'
+    if not enabled_apply:
+        return 'review', 'Oracle exact requisition loaded without an enabled job Apply control'
+    return 'active', 'Oracle rendered exact requisition confirms ID, role heading and enabled Apply control'
+
+
+def oracle_browser_probe(job):
+    """Optional real-browser check, no CAPTCHA/login bypass; fail closed without browser."""
+    if os.getenv('HD_CAREERS_ENABLE_ORACLE_BROWSER') != '1':
+        return None
+    if not is_oracle_candidate_url(job.get('apply')):
+        return None
+    try:
+        safe_url(job['apply'])
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True,args=['--no-sandbox'])
+            try:
+                page=browser.new_page(locale='en-US',viewport={'width':1280,'height':800})
+                page.goto(job['apply'],wait_until='domcontentloaded',timeout=22000)
+                page.wait_for_timeout(2800)
+                page.wait_for_load_state('networkidle',timeout=4500)
+            except Exception:
+                # A timed-out networkidle isn't itself a failed application page;
+                # only the rendered visible content below can establish Live.
+                pass
+            try:
+                final_url=page.url
+                text=page.locator('body').inner_text(timeout=7000)
+                headings=page.locator('h1')
+                heading=headings.first.inner_text(timeout=2000) if headings.count() else ''
+                elements=page.locator('button, a, [role="button"]')
+                enabled_apply=False
+                for index in range(min(elements.count(),120)):
+                    element=elements.nth(index)
+                    if not element.is_visible() or not element.is_enabled():
+                        continue
+                    label=' '.join(element.inner_text(timeout=500).split())
+                    aria=element.get_attribute('aria-label') or ''
+                    if re.fullmatch(r'Apply(?:\s+Now)?',label,re.I) or re.fullmatch(r'Apply(?:\s+Now)?',aria,re.I):
+                        if element.get_attribute('aria-disabled') != 'true':
+                            enabled_apply=True
+                            break
+                return oracle_rendered_evidence(job,final_url,heading,text,enabled_apply)
+            finally:
+                browser.close()
+    except Exception as exc:
+        return 'review', 'Oracle browser verification inconclusive ('+type(exc).__name__+')'
+
+
+def successfactors_exact_page(job,body,final_url,status=200):
+    """Public SAP Recruiting Marketing exact posting, distinct page vs requisition IDs."""
+    original=urlsplit(str(job.get('apply') or ''))
+    resolved=urlsplit(str(final_url))
+    if (original.hostname or '').lower() != 'jobs.sap.com' or not re.fullmatch(r'/job/[^/]+/\d+/?',original.path):
+        return None
+    if status != 200 or resolved.hostname != original.hostname or resolved.path.rstrip('/') != original.path.rstrip('/'):
+        return 'review','SAP SuccessFactors exact career posting did not load at its original URL'
+    parser=Visible()
+    parser.feed(body)
+    text=re.sub(r'\s+',' ',' '.join(parser.parts)).strip()
+    if BLOCKED.search(text):
+        return 'review','SAP SuccessFactors career posting shows an access challenge'
+    expected=str(job.get('jobId') or '')
+    match=re.search(r'\bRequisition\s+ID\s*[:#]?\s*(\d+)\b',text,re.I)
+    if not expected or not match or match.group(1)!=expected:
+        return 'review','SAP SuccessFactors exact requisition ID was not visible or mismatched'
+    role=normalize_role_heading(job.get('role') or '')
+    role_text=normalize_role_heading(text)
+    if not role or role not in role_text:
+        return 'review','SAP SuccessFactors visible exact role heading did not match'
+    if re.search(r'\b(?:no longer accepting applications|job is closed|applications are closed)\b',text,re.I):
+        return 'review','SAP SuccessFactors career page contains closure text'
+    if not re.search(r'\bApply\s+now\b',text,re.I):
+        return 'review','SAP SuccessFactors exact posting lacks a visible Apply now action'
+    return 'active','SAP SuccessFactors official exact career page confirms requisition title and Apply now'
+
 def classify(job, body, final_url, status=200):
+    sf=successfactors_exact_page(job,body,final_url,status)
+    if sf is not None: return sf
     if status in (404, 410): return 'review', f'HTTP {status} from automated request; exact job page requires browser verification before expiry'
     if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
     p = Visible(); p.feed(body)
@@ -298,6 +406,10 @@ def check(job, now=None):
 
             if inventory and inventory[0] in {'active', 'expired'}:
                 state, reason = inventory
+            elif (is_oracle_candidate_url(job.get('apply')) and
+                  (oracle_rendered := oracle_browser_probe(job)) is not None and
+                  oracle_rendered[0] == 'active'):
+                state, reason = oracle_rendered
             elif browser and browser[1] == 'active':
                 state, reason = 'active', f'Browser-compatible official-page render is active ({browser[2]})'
                 if bot and bot[1] == 'expired':
@@ -348,7 +460,9 @@ def has_high_confidence_live(job, result):
         return reason.startswith('Workday public exact posting inventory confirms ')
     if 'manual confirmation overrides' in reason or 'override' in reason.lower():
         return False
-    return ('public posting inventory contains the exact published job' in reason
+    return (reason.startswith('Oracle rendered exact requisition confirms ID, role heading and enabled Apply control')
+            or reason.startswith('SAP SuccessFactors official exact career page confirms requisition title and Apply now')
+            or 'public posting inventory contains the exact published job' in reason
             or reason.startswith('Browser-compatible official-page render is active (Exact role and application call-to-action')
             or reason.startswith('Browser-compatible official-page render is active (Verification terms and registration/submit control'))
 
