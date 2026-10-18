@@ -308,7 +308,8 @@ def successfactors_exact_page(job,body,final_url,status=200):
     """Public SAP Recruiting Marketing exact posting, distinct page vs requisition IDs."""
     original=urlsplit(str(job.get('apply') or ''))
     resolved=urlsplit(str(final_url))
-    if (original.hostname or '').lower() != 'jobs.sap.com' or not re.fullmatch(r'/job/[^/]+/\d+/?',original.path):
+    allowed_hosts={'jobs.sap.com','careers.singaporeair.com','careers.capgemini.com'}
+    if (original.hostname or '').lower() not in allowed_hosts or not re.fullmatch(r'/(?:[A-Za-z0-9_-]+/)?job/[^/]+/\d+/?',original.path):
         return None
     if status != 200 or resolved.hostname != original.hostname or resolved.path.rstrip('/') != original.path.rstrip('/'):
         return 'review','SAP SuccessFactors exact career posting did not load at its original URL'
@@ -469,7 +470,7 @@ def has_high_confidence_live(job, result):
         return reason.startswith('Workday public exact posting inventory confirms ')
     if is_oracle_candidate_url(job.get('apply')):
         return reason.startswith('Oracle rendered exact requisition confirms ID, role heading and enabled Apply control')
-    if host == 'jobs.sap.com':
+    if host in {'jobs.sap.com','careers.singaporeair.com','careers.capgemini.com'}:
         return ('SAP SuccessFactors official exact career page confirms requisition title and Apply now' in reason)
     if 'manual confirmation overrides' in reason or 'override' in reason.lower():
         return False
