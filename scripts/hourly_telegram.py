@@ -69,12 +69,12 @@ def enqueue(event_path):
     event = load(Path(event_path), {})
     batch_id, pages = approved_batch()
     mode = event.get("client_payload", {}).get("telegramDeliveryMode", "")
-    hourly = mode == "hourly" or len(pages) > 1
+    hourly = mode == "hourly" or (len(pages) > 1 and mode != "instant")
     if not hourly or not pages:
         print("One-off VIP or no verified pages: use immediate Telegram sender")
         output("deferred", "false")
         return
-    valid_pages = {j.get("page") for j in load(JOBS, []) if j.get("status") == "active"}
+    valid_pages = {j.get("page") for j in load(JOBS, []) if j.get("status", "active") == "active"}
     q = queue()
     ledger = load(LEDGER, {})
     known = {x["page"] for x in q["items"]}
@@ -102,21 +102,21 @@ def reconcile(q, ledger):
         entry = next((x for x in ledger.values()
                       if x.get("page") == item.get("page") and x.get("status") == "delivered"), None)
         if entry:
-            item.update(status="delivered", deliveredAt=entry["deliveredAt"], messageId=entry["messageId"])
+            item.update(status="already-delivered", deliveredAt=entry["deliveredAt"], messageId=entry["messageId"])
             item.pop("dueAt", None)
 
 
 def refresh_due(q):
     """Schedule next items from confirmed Telegram receipts, not from a cron tick."""
-    batches = {x["batchId"] for x in q["items"] if x.get("batchId")}
+    batches = {x.get("batchId") or "__legacy" for x in q["items"]}
     for batch_id in batches:
-        members = [x for x in q["items"] if x.get("batchId") == batch_id]
+        members = [x for x in q["items"] if (x.get("batchId") or "__legacy") == batch_id]
         last = [parse(x["deliveredAt"]) for x in members
                 if x.get("status") in DONE and x.get("deliveredAt")]
         if not last:
             for item in members:
                 if item.get("status") == "pending":
-                    item["dueAt"] = item.get("queuedAt")
+                    item["dueAt"] = item.get("queuedAt") or stamp(datetime.now(timezone.utc) - timedelta(seconds=1))
             continue
         base = max(last)
         position = 0
@@ -153,7 +153,7 @@ def claim(prime=False, now=None):
         for item in q["items"]:
             if item.get("status") != "pending" or item.get("batchId") in blocked_batches:
                 continue
-            due = parse(item["dueAt"]) if item.get("dueAt") else parse(item["queuedAt"])
+            due = parse(item["dueAt"]) if item.get("dueAt") else (parse(item["queuedAt"]) if item.get("queuedAt") else now - timedelta(seconds=1))
             if due <= now:
                 candidates.append((due, item))
         if candidates:
