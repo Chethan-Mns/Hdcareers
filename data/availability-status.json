@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-18T08:19:05.412Z",
+  "checkedAt": "2026-10-18T08:19:20.661Z",
   "checked": 130,
   "active": 129,
-  "expired": 0,
-  "review": 1,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 0,
+  "changedExpired": 1,
   "items": [
     {
       "id": 185,
@@ -856,9 +856,11 @@
       "role": "Software Developer Intern",
       "page": "jobs/tecnots-software-developer-intern-bengaluru-muur08j1.html",
       "url": "https://tecnots.com/careers/software-developer-intern-muur08j1",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-18T07:26:15.968877+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-18T08:19:20.661Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-18T08:19:20.661Z"
     },
     {
       "id": 84,
