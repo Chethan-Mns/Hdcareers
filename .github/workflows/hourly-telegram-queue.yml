@@ -98,7 +98,7 @@ jobs:
 
   wake-next:
     needs: send-one
-    if: ${{ needs.send-one.result == 'success' && (needs.send-one.outputs.claimed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.relay)) }}
+    if: ${{ needs.send-one.result == 'success' && (needs.send-one.outputs.claimed == 'true' || github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.relay)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 70
     # Newer confirmed deliveries cancel obsolete sleepers, not active publishers.
