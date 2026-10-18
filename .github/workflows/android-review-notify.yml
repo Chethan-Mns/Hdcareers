@@ -31,7 +31,7 @@ jobs:
               previous=json.loads(subprocess.check_output(["git","show","HEAD^:data/daily-review-batch.json"],stderr=subprocess.DEVNULL))
           except Exception:
               sys.exit(0)
-          if d.get("status")!="reviewing" or not d.get("batchId") or d.get("generatedAt")==previous.get("generatedAt"):sys.exit(0)
+          if d.get("status")!="reviewing" or not d.get("batchId") or not d.get("verificationCheckedAt") or d.get("verificationCheckedAt")==previous.get("verificationCheckedAt"):sys.exit(0)
           priority,backup=d.get("priority",[]),d.get("backup",[])
           if not 1<=len(priority)+len(backup)<=20:sys.exit(0)
           try:
