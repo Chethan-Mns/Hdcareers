@@ -1,77 +1,51 @@
 # HD Careers (hdcareers.in)
 
-HD Careers is a mobile-first jobs and careers platform for India. It combines a static public website, Python-based job generation and verification, GitHub Actions automation, Vercel production hosting, GA4/Clarity analytics, Telegram distribution, a protected web admin, and a native iOS Admin project.
+HD Careers is a mobile-first Indian jobs platform combining static job pages, official-source verification, Vercel production hosting, an authenticated web admin, a privately signed Android admin app, GitHub Actions publishing, hourly Telegram announcements, and GA4/Clarity analytics. A separate iOS simulator project is retained.
 
 Production: https://hdcareers.in
 
-_Last refreshed: 06 Oct 2026_
+_Last refreshed and verified against the production repository: 18 Oct 2026. GitHub workflow/queue/receipt state is authoritative for current delivery status._
 
 ## Current Architecture
 
-```
-README.md
-PROJECT_CONTEXT.md
-HOW_TO_ADD_JOB.md
+~~~text
+Public jobs website (index.html, jobs/, insights/, generate.py)
+    ↑
+data/jobs.json + official-source availability checks
+    ↑
+Owner / Job Editor authenticated web admin (/admin/)
+    ├── Daily Review Center: 10 priority + 10 backup
+    ├── Expiry Checker: Live / Expired / Unsure
+    ├── Explicit Publish Ready + per-job publishing tracker
+    ├── VIP job editor, Reel Kit, analytics, team controls
+    └── Android Admin v1.3.2: Home / Review / Jobs / More
+         |
+Approved verified jobs → GitHub Actions coordinated publisher
+         |
+GitHub main commit → Vercel → verified public HD Careers pages
+         |
+Multi-job approved batch: first Telegram post immediately
+    → remaining posts hourly after each real delivery
+    → self-waking GitHub relay with five-minute cron backup
+    → saved queue state and Telegram message receipts
+         |
+Admin job-card progress + Firebase/Android notifications
+~~~
 
-assets/
-  analytics.js
-  editorial.css
-  public-header.css
-  public-header.js
-  company-icons/
-
-data/
-  jobs.json
-  job-template.json
-  automation-status.json
-  availability-status.json
-  review-queue.json
-  telegram-approved-batch.json
-  telegram-deliveries.json
-  company-logos.json
-  company-logo-domains.json
-  company-logo-direct.json
-  company-logo-quality-fallbacks.json
-
-scripts/
-  admin_publish.py
-  check_job_availability.py
-  check_content_quality.py
-  resolve_company_logos.py
-  post_telegram.py
-  post_telegram_from_push.py
-  publish_approved_telegram.py
-  publish_verified_telegram.py
-
-generate.py
-index.html
-jobs/
-insights.html
-insights/
-
-admin/
-  index.html
-  traffic.html
-  ios-preview.html
-
-api/
-  admin/
-    availability.js
-    review.js
-    traffic.js
-
-ios-admin/
-
-.github/
-  workflows/
-    admin-job-generator.yml
-    generator-check.yml
-    publish-verified-telegram.yml
-    ios-admin-build.yml
-    job-availability.yml
-    logo-preview-refresh.yml
-    main-data-publish.yml
-```
+| Area | Implemented paths |
+| --- | --- |
+| Public site | index.html, jobs/, insights/, assets/, generate.py |
+| Canonical jobs & job content | data/jobs.json, data/job-template.json |
+| Daily owner reviews | data/daily-review-batch.json, admin/review-batch.html, api/admin/daily-batch.js |
+| Admin web dashboard | admin/index.html, admin/traffic.html, admin/team.html, admin/reel-kit.html |
+| Expiry/new-job review | data/review-queue.json, data/availability-status.json, api/admin/availability.js, api/admin/review.js |
+| Guarded publishing + tracker | api/admin/publish.js, .github/workflows/admin-job-generator.yml |
+| Hourly Telegram queue | scripts/hourly_telegram.py, data/telegram-hourly-queue.json, data/telegram-deliveries.json |
+| Self-waking scheduler | .github/workflows/hourly-telegram-queue.yml, data/telegram-scheduler-kick.json |
+| Native Android Admin | android-admin/, android-admin/app/src/main/java/in/hdcareers/admin/ |
+| Android builds | .github/workflows/android-admin-build.yml, .github/workflows/android-admin-private-release.yml |
+| Push notifications | lib/admin-push-handler.js, .github/workflows/android-review-notify.yml, .github/workflows/android-expiry-notify.yml |
+| Quality/security checks | tests/, .github/workflows/review-lifecycle-check.yml, .github/workflows/telegram-hourly-regression.yml |
 
 ## Public Website Features
 
@@ -209,7 +183,7 @@ The admin publisher uses `data/telegram-approved-batch.json` as its manifest and
 
 `publish-verified-telegram.yml` is a **manual maintenance/recovery fallback**, not a second automatic sender. `generate-job-pages.yml` is also manual-only; production generation belongs to the coordinated publication/checker path.
 
-There is **no hourly Telegram batch queue**. Manual/VIP jobs follow the same verification and deployment safety requirements as review batches.
+**October 2026 update:** Multi-job approved batches use a receipt-based **hourly Telegram queue**; single VIP jobs can still post immediately once their website pages are verified live. Full lifecycle, timing and recovery rules are documented below.
 
 ### Availability and verification uncertainty
 
@@ -266,6 +240,21 @@ Current important workflows:
 - `generator-check.yml` — generated-output validation
 - `logo-preview-refresh.yml` — company-logo refresh/preview workflow
 - `ios-admin-build.yml` — iOS Admin simulator build validation
+
+## Native Android Admin — current v1.3.2
+
+The Android Admin is a native Kotlin / Jetpack Compose / Material 3 app for Pixel devices. The latest privately release-signed build is **v1.3.2, versionCode 8**, produced by Android Admin Private Signed APK workflow. Do not confuse this with a differently signed temporary debug APK. For an existing private release install, use the new signed version for an in-place update; uninstalling erases local login, preferences and notification permissions.
+
+- **Home:** real pending review counts and quick access to expiry exceptions.
+- **Review:** daily Priority, Backup, Publish Ready and read-only History; explicitly saved Live/Expired/Unsure decisions, safe one-employer-per-batch publishing and post-publication cleanup.
+- **Jobs:** browse existing website records and run approved single VIP publishing through authenticated APIs.
+- **More:** job expiry checker, selected new-job publishing, visual GA4 analytics, security/notification controls.
+- **Expiry:** only actual unresolved jobs occupy list rows, preventing giant white gaps; confirmable Live, Expired and Unsure buttons. Existing published jobs can be kept/expired but are never re-published from this screen. New Live candidates move to Publish Ready, then require a separate explicit Publish action.
+- **Publishing cards:** GitHub, committed data, verified public website page and Telegram receipt are separate stages; expandable cards show due times, queue position, delivery timestamps and links to confirmed messages.
+- **Push/local alerts:** FCM integration supports review batches, checker completion, publish workflow outcomes and confirmed hourly Telegram receipts. Notification permission, Firebase/server secrets, connectivity, battery optimization and real-device testing affect delivery. An accepted publish request is NOT proof of completed Telegram delivery.
+- **Security:** Android Keystore/optional biometrics plus server-side Admin RBAC; signing keys, tokens and FCM service-account secrets remain private.
+
+Relevant merges: [#109](https://github.com/Chethan-Mns/Hdcareers/pull/109) for expiry list/scroll, Home visibility and notifications; [#110](https://github.com/Chethan-Mns/Hdcareers/pull/110) for History, premium tracking, Live/Expired/Unsure and guarded expiry publishing. The signed APK artifact is available from the [private signed workflow](https://github.com/Chethan-Mns/Hdcareers/actions/workflows/android-admin-private-release.yml), not stored publicly in the repo.
 
 ## Native iOS Admin
 
@@ -325,6 +314,11 @@ experienced
 
 ## Current Website TODO
 
+- [ ] Verify on-time delivery of the first autonomous hourly Telegram relay and actual Telegram receipt (do not trust an armed timer alone).
+- [ ] Alert on an overdue pending job, failed self-dispatch or unresolved sending/uncertain claims.
+- [ ] Test Android v1.3.2 on a real Pixel: Expiry list scrolling, Live/Expired/Unsure, Ready clearing, history and push delivery.
+- [ ] If a hard 5–10-minute upper delay bound is required, evaluate a dedicated scheduler; GitHub Actions runner startup is best effort.
+
 - [ ] **Resume score checker:** improve matching visibility, scoring logic and result presentation
 - [ ] **Job pages — company section:** add useful source-backed company overview, industry, headquarters, official website and careers information
 - [ ] **Analytics cleanup:** combine duplicate homepage paths such as `/` and `/index.html`
@@ -344,6 +338,64 @@ experienced
 5. Analytics and traffic-quality cleanup
 6. AdSense readiness
 7. iOS Admin real-device stability and UI refinement
+
+## October 2026 Updates — Review, Publishing, Telegram and Reliability
+
+### 1. Owner-controlled daily 20-job review
+
+The daily shortlist targets **10 Priority + 10 Backup** jobs from distinct employers, when enough real verified openings exist. Candidates may be Live, Expired or Unsure. Only Live jobs with the exact verified HTTPS employer URL and complete job content can be selected for publication. The owner may publish **1–10 jobs, one per employer**, rather than padding to ten. Uncertain official-source responses are held for review, not silently expired or published. Discovery V3's unattended automatic publishing remains gated/shadow.
+
+After review, Expired items disappear from the active Priority/Backup list and remain in **History**; an explicitly selected and submitted candidate leaves **Publish Ready** only once its public website page is independently confirmed live. Hiding cards is not deleting job data, audit decisions or Telegram evidence. In-flight hourly Telegram jobs remain trackable.
+
+In the expiry checker, **existing published jobs** are kept active, marked expired or held as Unsure. **New unpublished jobs** verified Live move to a separate Publish Ready section and do not publish automatically. The Publish selected action validates saved Live proof, official URL match, job-content requirements, existing published URLs, the ten-job/unique-employer limit and duplicate dispatch locks. Rejected/newly expired jobs remain archived; Unsure stays pending. RBAC/auth checks remain enforced by API, not only UI.
+
+### 2. Per-job real-time publishing evidence
+
+The redesigned web and Android cards show independent evidence for GitHub workflow execution, repository data commit, Vercel/public page verification, and Telegram actual delivery. The progress panel includes queue position, planned due time, actual sent timestamp and Telegram message IDs where confirmed. A GitHub success alone is not enough to call a job published on the website, and a live page alone is not a Telegram receipt.
+
+Important locations: admin/review-batch.html, admin/index.html, api/admin/publish.js, data/daily-review-batch.json, data/telegram-deliveries.json.
+
+### 3. First Telegram announcement immediately; follow-ups every hour
+
+The publishing path in .github/workflows/admin-job-generator.yml first generates the owner-approved jobs, waits for live production page checks, and posts the **first batch job immediately after website publication**. Single VIP posts retain a separate immediate path after publication.
+
+Multi-job hourly items are durable records in data/telegram-hourly-queue.json; each item progresses through pending, sending, delivered or uncertain states. scripts/hourly_telegram.py computes the next dueAt from the **actual last Telegram delivery time plus 60 minutes**, not from the user's Publish click and not from the previous intended due time.
+
+The .github/workflows/hourly-telegram-queue.yml sender persists an at-most-once claim before sending. It checks public production page availability and saves the Telegram reply's message ID; its separate **wake-next** job uses the saved receipt to wait until the next due time and then dispatches a sender run. The previous five-minute cron remains an emergency backup; a change to data/telegram-scheduler-kick.json can trigger a controlled due-only recovery.
+
+The waiting job does not hold the job-data publishing concurrency lock, and each newly dispatched sender rechecks dueAt and persisted receipts. A state of sending or uncertain must be manually reconciled if the result is ambiguous; do not reset it and blindly retry. **Independent batches have independent timing; cross-batch global spacing is not guaranteed.**
+
+**Timing limitation:** GitHub's schedule, workflow dispatch and hosted runner start are best effort. The target is 60 minutes with a tolerable small delay, but a 5–10-minute maximum is **not guaranteed**. The operator must verify a concrete Telegram delivery message ID before claiming success; use dedicated managed scheduling if strict timing becomes necessary. The self-waking GitHub runner also consumes Actions runner time while sleeping.
+
+### 4. Incident and fix on 18 October 2026 (historical example)
+
+Accenture was delivered at **12:52:49 PM IST**, message [#520](https://t.me/HD_Careers/520). The next AiPrise message was due at **1:52:49 PM IST**, but a missed GitHub scheduled wake-up left it pending. Controlled due-only recovery confirmed AiPrise at **3:14:44 PM IST** as [#521](https://t.me/HD_Careers/521). The next planned Bosch target was **4:14:44 PM IST**. This is a historical due-time snapshot, not proof of Bosch delivery; the queue/ledger must be checked live.
+
+The repair merged as [PR #111](https://github.com/Chethan-Mns/Hdcareers/pull/111) and was activated: the new wake-next job was observed running and waiting for the actual saved Bosch dueAt. Existing confirmed posts were not duplicated.
+
+### 5. Safely investigating a missed Telegram post
+
+1. Read the **latest** data/telegram-hourly-queue.json and data/telegram-deliveries.json from main; check last confirmed messageId/deliveredAt, next dueAt, and any uncertain/sending state.
+2. Inspect [GitHub Actions](https://github.com/Chethan-Mns/Hdcareers/actions), especially Hourly Telegram Job Announcements and its send-one and wake-next jobs, plus Admin Direct Publish.
+3. If dueAt has passed but the queue remains pending, determine whether wake-next failed dispatch, GitHub runner startup was delayed, or cron failed to fire.
+4. For a **confirmed pending** overdue record only, trigger a controlled scheduler kick rather than sending it directly. Confirm the next workflow claims just one due job and reconciles receipts.
+5. If a record says sending/uncertain, inspect the Telegram channel and workflow artifact **before any retry**. Prevent duplicated channel posts.
+6. Confirm the actual Telegram receipt and new next-due calculation. Update owner-facing history if an exception remains.
+
+### 6. Other recently shipped changes
+
+| PR | Key changes |
+| --- | --- |
+| [#105](https://github.com/Chethan-Mns/Hdcareers/pull/105) | Job-by-job GitHub, website, queue and Telegram progress tracking |
+| [#106](https://github.com/Chethan-Mns/Hdcareers/pull/106) | Content quality, AdSense-readiness and SEO/crawlability improvements; AdSense approval is not implied |
+| [#107](https://github.com/Chethan-Mns/Hdcareers/pull/107) and [#108](https://github.com/Chethan-Mns/Hdcareers/pull/108) | Hourly queued delivery, safe claims, due tracking and controlled scheduler kickoff |
+| [#109](https://github.com/Chethan-Mns/Hdcareers/pull/109) | Android expiry list/scroll fixes, interactive controls, Home reviews and push events |
+| [#110](https://github.com/Chethan-Mns/Hdcareers/pull/110) | Web + Android History, separate expiry Publish Ready, guarded publish and premium timelines, APK v1.3.2 |
+| [#111](https://github.com/Chethan-Mns/Hdcareers/pull/111) | Receipt-timed self-waking hourly dispatch + cron fallback and regression tests |
+
+Additional workflow regression coverage includes tests/test_hourly_telegram_queue.py, tests/review-lifecycle-ui.test.mjs and tests/android-push-config.test.mjs. The iOS Admin remains a separate simulator-tested prototype. GA4, Clarity, company-logo resolution, job page SEO, audit controls, privacy/trust pages and AdSense content improvements continue to be maintained.
+
+---
 
 ## Project Recovery / New Chat
 
