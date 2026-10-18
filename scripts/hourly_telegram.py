@@ -201,6 +201,40 @@ def send():
     save(QUEUE, q)
 
 
+def next_wakeup(now=None):
+    """Compute a durable one-shot wake-up without modifying delivery data.
+
+    GitHub cron can silently skip several hours. A dedicated short-lived chain
+    job sleeps until the actual receipt-based dueAt and dispatches the sender.
+    Uncertain or in-flight delivery must NEVER be awakened into a second send.
+    """
+    q = queue()
+    ledger = load(LEDGER, {})
+    reconcile(q, ledger)
+    refresh_due(q)
+    if any(x.get("status") == "sending" for x in q["items"]):
+        print("Not arming relay: unresolved in-flight claim needs reconciliation")
+        output("armed", "false")
+        return
+    blocked = {x.get("batchId") for x in q["items"] if x.get("status") == "uncertain"}
+    pending = [x for x in q["items"] if x.get("status") == "pending"
+               and x.get("batchId") not in blocked]
+    if not pending:
+        print("No eligible pending jobs; relay stops until next approved batch")
+        output("armed", "false")
+        return
+    now = now or datetime.now(timezone.utc)
+    next_due = min(parse(x.get("dueAt") or x.get("queuedAt") or stamp(now))
+                   for x in pending)
+    # Always re-read the queue in the dispatched workflow; a cron or new batch
+    # may already have processed the selected page while this runner sleeps.
+    seconds = max(0, int((next_due - now).total_seconds() + 0.999999))
+    seconds = min(seconds, 3600)
+    print("Arming next Telegram relay in", seconds, "seconds; next target:", stamp(next_due))
+    output("armed", "true")
+    output("delay_seconds", str(seconds))
+    output("next_due", stamp(next_due))
+
 def merge(snapshot_path):
     """Merge local sender state into fresh main after website/other run updates."""
     current = queue()
@@ -233,9 +267,10 @@ def merge(snapshot_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        raise SystemExit("Usage: hourly_telegram.py enqueue <event.json>|prime|claim|send|merge <snapshot.json>")
+        raise SystemExit("Usage: hourly_telegram.py enqueue <event.json>|prime|claim|send|wake|merge <snapshot.json>")
     modes = {"enqueue": lambda: enqueue(sys.argv[2]), "prime": lambda: claim(prime=True),
-             "claim": claim, "send": send, "merge": lambda: merge(sys.argv[2])}
+             "claim": claim, "send": send, "wake": next_wakeup,
+             "merge": lambda: merge(sys.argv[2])}
     if sys.argv[1] not in modes:
         raise SystemExit("Unsupported Telegram queue mode")
     modes[sys.argv[1]]()
