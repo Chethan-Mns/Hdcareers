@@ -45,7 +45,7 @@ private fun sample(context:Context):List<QaRole>{
 }
 
 @Composable
-fun AtsPlatformQaScreen(){
+fun AtsPlatformQaScreen(onBack:(()->Unit)?=null){
  val ctx=androidx.compose.ui.platform.LocalContext.current
  val jobs=remember{sample(ctx)}
  val prefs=remember{ctx.getSharedPreferences("ats_platform_qa",Context.MODE_PRIVATE)}
@@ -80,6 +80,7 @@ fun AtsPlatformQaScreen(){
   LazyColumn(modifier=Modifier.fillMaxSize().background(Color(0xFFF4F8FC)),
    contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(13.dp)){
    item {
+    if(onBack!=null) TextButton(onClick=onBack) { Text("Back to HD Careers Admin",color=qaBlue) }
     Surface(color=qaInk,shape=RoundedCornerShape(22.dp)){
      Column(Modifier.padding(19.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
       Text("HD CAREERS · ISOLATED QA",color=Color(0xFF9BD1FF),fontSize=11.sp,fontWeight=FontWeight.Black)
