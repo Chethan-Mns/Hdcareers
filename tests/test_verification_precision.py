@@ -8,7 +8,7 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from check_job_availability import (official_inventory_probe, has_high_confidence_live,
-                                    expiry_decision)
+                                    expiry_decision, classify, normalize_role_heading)
 from preflight_live_shortlist import preflight
 
 T=datetime(2026,10,18,3,30,tzinfo=timezone.utc)
@@ -50,6 +50,31 @@ class PrecisionTests(unittest.TestCase):
    with self.subTest(prior=mismatch):
     previous={**mismatch,"observedState":"expired","state":"review"}
     self.assertEqual(expiry_decision(HTML,{"state":"expired","reason":"This job is closed"},previous=previous,now=T)["state"],"review")
+ def test_lever_typography_only_normalizes_visible_exact_job_title(self):
+  job={"id":3,"company":"AHEAD","role":"MS – EUS Apprentice/Intern (6 months)",
+       "apply":"https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f"}
+  url=job["apply"]
+  html="<h1>MS - EUS Apprentice/Intern (6 months)</h1><a href='"+url+"/apply'>Apply for this job</a>"
+  self.assertEqual(normalize_role_heading("MS – EUS Apprentice/Intern (6 months)"),
+                   normalize_role_heading("MS - EUS Apprentice/Intern (6 months)"))
+  result=classify(job,html,url)
+  self.assertEqual(result[0],"active")
+  self.assertTrue(has_high_confidence_live(job,{"state":result[0],
+       "reason":"Browser-compatible official-page render is active ("+result[1]+")"}))
+  self.assertEqual(classify(job,"<h1>MS - NOC Apprentice/Intern (6 months)</h1><p>Apply for this job</p>",url)[0],"review")
+  self.assertEqual(classify(job,"<h1>MS - EUS Apprentice/Intern (6 months)</h1>",url)[0],"review")
+  self.assertEqual(classify(job,html,"https://jobs.lever.co/thinkahead/other-posting")[0],"review")
+ def test_owner_ground_truth_is_recorded_without_publishing(self):
+  j=json.loads((ROOT/"data/testing/ats-platform-six-owner-ground-truth-20261018.json").read_text())
+  self.assertFalse(j["productionPublishAuthorized"])
+  self.assertEqual(j["batchId"],"ats-six-sources-2026-10-18")
+  self.assertEqual(len(j["jobs"]),6)
+  self.assertEqual(sum(x["manualVerdict"]=="live" for x in j["jobs"]),4)
+  self.assertEqual(sum(x["manualVerdict"]=="expired" for x in j["jobs"]),2)
+  tp=sum(x["manualVerdict"]=="live" and x["checkerVerifiedLive"] for x in j["jobs"])
+  fp=sum(x["manualVerdict"]!="live" and x["checkerVerifiedLive"] for x in j["jobs"])
+  self.assertEqual((tp,fp),(2,0))
+  self.assertEqual(j["eligibilityNote"]["id"],"oracle-jpmc")
  def test_exact_html_apply_is_eligible_but_old_manual_override_is_not(self):
   strong={"state":"active","reason":"Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)"}
   self.assertTrue(has_high_confidence_live(HTML,strong))
