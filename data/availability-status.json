@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-18T07:20:20.632Z",
+  "checkedAt": "2026-10-18T07:20:42.612Z",
   "checked": 121,
   "active": 119,
-  "expired": 1,
-  "review": 1,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 0,
+  "changedExpired": 2,
   "items": [
     {
       "id": 173,
@@ -1038,9 +1038,11 @@
       "role": "ITI Trade Apprentices",
       "page": "jobs/cochin-shipyard-cmsru-iti-trade-apprentices-mumbai-2026.html",
       "url": "https://cochinshipyard.in/career/career_locations/2",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-17T17:34:13.015028+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-18T07:20:42.612Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-18T07:20:42.612Z"
     },
     {
       "id": 40,
