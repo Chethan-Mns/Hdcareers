@@ -246,7 +246,7 @@
       "apply": "https://careers.oracle.com/en/sites/jobsearch/job/346482",
       "cat": "nonit",
       "expYears": "0–2+ years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Oracle requisition 346482 is current with 0–2+ years, job-bound details and a public application route.",
       "postedDate": "2026-09-30",
@@ -260,7 +260,7 @@
         "expYears": "0–2+ years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Oracle official careers",
         "desc": "Entry-level accounting support role focused on accurate business communication, collaboration, change agility and operational decision support.",
         "elig": "0–2+ years; additional degree requirements were not stated in the accessible source evidence.",
@@ -279,8 +279,12 @@
         "jobId": "346482",
         "date": "2026-09-30",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Oracle requisition 346482 is current with 0–2+ years, job-bound details and a public application route."
-      }
+        "sourceVerificationMethod": "Exact Oracle requisition 346482 is current with 0–2+ years, job-bound details and a public application route.",
+        "manualLiveVerifiedAt": "2026-10-18T05:48:21.304Z",
+        "browserVerifiedAt": "2026-10-18T05:48:21.304Z"
+      },
+      "reviewedAt": "2026-10-18T05:48:21.304Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "bosch-744000135641599",
@@ -780,7 +784,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:48:06.925Z",
+  "updatedAt": "2026-10-18T05:48:21.304Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
