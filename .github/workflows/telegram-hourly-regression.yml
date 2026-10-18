@@ -1,0 +1,30 @@
+name: Telegram hourly delivery regression tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/hourly_telegram.py'
+      - 'tests/test_hourly_telegram_queue.py'
+      - '.github/workflows/hourly-telegram-queue.yml'
+      - '.github/workflows/admin-job-generator.yml'
+      - 'api/admin/publish.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  telegram-hourly-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python compile and hourly queue regression
+        run: |
+          python3 -m py_compile scripts/hourly_telegram.py
+          python3 -m unittest discover -s tests -p test_hourly_telegram_queue.py -v
+      - name: Validate admin publisher intake
+        run: node --check api/admin/publish.js

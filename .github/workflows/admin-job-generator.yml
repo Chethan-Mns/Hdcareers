@@ -65,7 +65,7 @@ jobs:
           fi
           python3 scripts/admin_publish.py "$approved_event"
 
-      - name: Queue hourly Telegram announcements when requested
+      - name: Queue approved multi-job batch for hourly delivery
         id: hourly
         shell: bash
         run: |
@@ -74,12 +74,7 @@ jobs:
           else
             approved_event="$GITHUB_EVENT_PATH"
           fi
-          if python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); exit(0 if d.get("client_payload",{}).get("telegramDeliveryMode")=="hourly" else 1)' "$approved_event"; then
-            python3 scripts/hourly_telegram.py enqueue "$approved_event"
-            echo "deferred=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "deferred=false" >> "$GITHUB_OUTPUT"
-          fi
+          python3 scripts/hourly_telegram.py enqueue "$approved_event"
 
       - name: Resolve official company favicons
         run: python3 scripts/resolve_company_logos.py
@@ -131,6 +126,24 @@ jobs:
           echo "::error::Could not save admin publishing changes after 8 safe retries because main kept changing."
           exit 1
 
+      - name: Claim first hourly job after approved website publication
+        if: steps.hourly.outputs.deferred == 'true'
+        id: first_claim
+        shell: bash
+        run: |
+          python3 scripts/hourly_telegram.py prime
+          git add data/telegram-hourly-queue.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Claim first approved hourly Telegram job"
+            git push origin HEAD:main
+          fi
+      - name: Send first approved job immediately after website deployment
+        if: steps.hourly.outputs.deferred == 'true' && steps.first_claim.outputs.claimed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/hourly_telegram.py send
       - name: Deliver admin-approved jobs to Telegram after deployment
         if: steps.hourly.outputs.deferred != 'true'
         env:
@@ -150,14 +163,17 @@ jobs:
           set -euo pipefail
           if [ ! -f data/telegram-deliveries.json ]; then exit 0; fi
           snapshot="$RUNNER_TEMP/hd-telegram-receipts-$GITHUB_RUN_ID.json"
+          queue_snapshot="$RUNNER_TEMP/hd-telegram-hourly-$GITHUB_RUN_ID.json"
           cp data/telegram-deliveries.json "$snapshot"
+          cp data/telegram-hourly-queue.json "$queue_snapshot"
           git config user.name "HD Careers Telegram"
           git config user.email "actions@users.noreply.github.com"
           for attempt in 1 2 3 4 5 6 7 8; do
             git fetch origin main
             git reset --hard origin/main
             python3 scripts/merge_telegram_delivery_receipts.py "$snapshot" data/telegram-deliveries.json
-            git add data/telegram-deliveries.json
+            python3 scripts/hourly_telegram.py merge "$queue_snapshot"
+            git add data/telegram-deliveries.json data/telegram-hourly-queue.json
             if git diff --cached --quiet; then
               echo "Delivery receipts already saved to main."
               exit 0

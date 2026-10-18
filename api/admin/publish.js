@@ -224,7 +224,7 @@ export default async function handler(req,res){
           website:livePages.has(String(id))?"live":urls.has(normalizeUrl(c?.job?.apply))?"data-committed":"pending",
           vercel:livePages.has(String(id))?"production-page-confirmed":"unconfirmed",telegram:last.status||queued?.status||"not_queued",telegramMessageId:last.messageId||queued?.messageId||null,
           pageUrl:page?"https://hdcareers.in/"+page:null,
-          queuedAt:queued?.queuedAt||null,queuePosition,queueLength:inFlight.length,
+          queuedAt:queued?.queuedAt||null,telegramDueAt:queued?.dueAt||null,queuePosition,queueLength:inFlight.length,
           telegramDeliveredAt:last.deliveredAt||queued?.deliveredAt||null,
           githubRunId:Number(String(queued?.batchId||"").replace(/^admin-/,""))||null,
           sourceVerifiedAt:c?.reviewedAt||null,
@@ -327,7 +327,7 @@ export default async function handler(req,res){
 
     const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):
       fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):null;
-    const telegramDeliveryMode=fromTest||req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
+    const telegramDeliveryMode=fromTest||fromReview||incoming.length>1||req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
      const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(requestId?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});

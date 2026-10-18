@@ -1,115 +1,241 @@
-"""At-most-once, one job per hour Telegram queue, using the existing audited sender."""
+"""Deployment-gated Telegram batch publisher: first message immediately, then hourly.
+
+One confirmed message per batch per hour. GitHub cron is only a best-effort
+wake-up mechanism; dueAt is anchored to the *actual* Telegram receipt.
+Uncertain sends are never automatically retried.
+"""
 from __future__ import annotations
+
 import json
 import os
 import sys
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[1]
-QUEUE=ROOT/"data"/"telegram-hourly-queue.json"
-LEDGER=ROOT/"data"/"telegram-deliveries.json"
-MANIFEST=ROOT/"data"/"telegram-approved-batch.json"
-JOBS=ROOT/"data"/"jobs.json"
+ROOT = Path(__file__).resolve().parents[1]
+QUEUE = ROOT / "data" / "telegram-hourly-queue.json"
+LEDGER = ROOT / "data" / "telegram-deliveries.json"
+MANIFEST = ROOT / "data" / "telegram-approved-batch.json"
+JOBS = ROOT / "data" / "jobs.json"
+INTERVAL = timedelta(hours=1)
+DONE = {"delivered", "already-delivered"}
+OPEN = {"pending", "sending", "uncertain"}
 
-def load(p, fallback):
-    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else fallback
 
-def save(p, obj):
-    p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+def load(path, fallback):
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else fallback
 
-def iso():
-    return datetime.now(timezone.utc).isoformat()
+
+def save(path, value):
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def parse(value):
+    return datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(timezone.utc)
+
+
+def stamp(value=None):
+    return (value or datetime.now(timezone.utc)).isoformat()
+
+
+def output(name, value):
+    if os.getenv("GITHUB_OUTPUT"):
+        with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as file:
+            file.write(f"{name}={value}\n")
+
 
 def queue():
-    q=load(QUEUE,{"version":1,"intervalMinutes":60,"items":[]})
-    if not isinstance(q,dict) or q.get("version")!=1 or q.get("intervalMinutes")!=60 or not isinstance(q.get("items"),list):
-        raise ValueError("Invalid hourly Telegram queue")
-    return q
+    value = load(QUEUE, {"version": 1, "intervalMinutes": 60, "items": []})
+    if (not isinstance(value, dict) or value.get("version") != 1
+            or value.get("intervalMinutes") != 60 or not isinstance(value.get("items"), list)):
+        raise ValueError("Unexpected hourly queue format")
+    if len({x.get("page") for x in value["items"]}) != len(value["items"]):
+        raise ValueError("Duplicate page in Telegram queue")
+    return value
 
-def output(name,value):
-    if os.getenv("GITHUB_OUTPUT"):
-        with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as f: f.write(f"{name}={value}\n")
 
-def enqueue(eventfile):
-    payload=load(Path(eventfile),{})
-    if payload.get("client_payload",{}).get("telegramDeliveryMode")!="hourly":
-        print("Instant delivery selected; no hourly queue changed")
+def approved_batch():
+    manifest = load(MANIFEST, {})
+    batch_id = "admin-" + str(os.getenv("GITHUB_RUN_ID", ""))
+    if not os.getenv("GITHUB_RUN_ID") or not manifest.get("approved") or manifest.get("batchId") != batch_id:
+        return None, []
+    pages = manifest.get("pages", [])
+    if not isinstance(pages, list) or len(pages) > 20 or len(pages) != len(set(pages)):
+        raise ValueError("Expected 1-20 unique approved pages")
+    return batch_id, pages
+
+
+def enqueue(event_path):
+    event = load(Path(event_path), {})
+    batch_id, pages = approved_batch()
+    mode = event.get("client_payload", {}).get("telegramDeliveryMode", "")
+    hourly = mode == "hourly" or (len(pages) > 1 and mode != "instant")
+    if not hourly or not pages:
+        print("One-off VIP or no verified pages: use immediate Telegram sender")
+        output("deferred", "false")
         return
-    manifest=load(MANIFEST,{})
-    expected="admin-"+str(os.getenv("GITHUB_RUN_ID",""))
-    if manifest.get("batchId")!=expected or manifest.get("approved") is not True:
-        print("No newly verified pages for this workflow run")
-        return
-    pages=manifest.get("pages",[])
-    if len(pages)>20 or len(pages)!=len(set(pages)):
-        raise ValueError("Invalid approved pages")
-    site={j.get("page") for j in load(JOBS,[])}
-    q=queue()
-    old={x["page"] for x in q["items"]}
-    ledger=load(LEDGER,{})
-    added=[]
+    valid_pages = {j.get("page") for j in load(JOBS, []) if j.get("status", "active") == "active"}
+    q = queue()
+    ledger = load(LEDGER, {})
+    known = {x["page"] for x in q["items"]}
+    added = []
+    now = stamp()
     for page in pages:
-        if not isinstance(page,str) or not page.startswith("jobs/") or not page.endswith(".html") or page not in site:
-            raise ValueError("Approved page is not present in website job data")
-        if page in old or any(v.get("page")==page and v.get("status")=="delivered" for v in ledger.values()):
-            print("Skipping already queued/delivered page:",page)
+        if not isinstance(page, str) or not page.startswith("jobs/") or not page.endswith(".html") or page not in valid_pages:
+            raise ValueError("Approved page missing from verified website job data: " + str(page))
+        if page in known or any(v.get("page") == page and v.get("status") == "delivered" for v in ledger.values()):
             continue
-        q["items"].append({"page":page,"batchId":expected,"status":"pending","queuedAt":iso()})
+        q["items"].append({"page": page, "batchId": batch_id, "status": "pending", "queuedAt": now})
+        known.add(page)
         added.append(page)
-    if added: save(QUEUE,q)
-    print(f"Hourly Telegram queued {len(added)} new verified pages: {added}")
+    if added:
+        save(QUEUE, q)
+    print("Queued", len(added), "verified pages for immediate-first hourly delivery:", added)
+    output("deferred", "true" if added else "false")
 
-def claim():
-    q=queue()
-    run=str(os.getenv("GITHUB_RUN_ID","")).strip()
-    if not run: raise ValueError("GITHUB_RUN_ID is mandatory for at-most-once claim")
-    if any(x.get("status")=="sending" for x in q["items"]):
-        print("Prior send has unresolved claim; stopping to prevent duplicate messages")
-        output("claimed","false");return
-    ledger=load(LEDGER,{})
+
+def reconcile(q, ledger):
+    """Recover confirmed sends without treating an ambiguous claimed send as safe."""
     for item in q["items"]:
-        if item.get("status")!="pending": continue
-        sent=next((x for x in ledger.values() if x.get("page")==item["page"] and x.get("status")=="delivered"),None)
-        if sent:
-            item.update({"status":"already-delivered","deliveredAt":sent.get("deliveredAt"),"messageId":sent.get("messageId")})
-    last=[datetime.fromisoformat(x["deliveredAt"].replace("Z","+00:00")) for x in q["items"] if x.get("status")=="delivered" and x.get("deliveredAt")]
-    if last and datetime.now(timezone.utc)-max(last)<timedelta(minutes=q["intervalMinutes"]):
-        print("60-minute spacing not yet reached")
-        save(QUEUE,q); output("claimed","false");return
-    next_item=next((x for x in q["items"] if x.get("status")=="pending"),None)
-    if not next_item:
-        save(QUEUE,q);print("No pending pages");output("claimed","false");return
-    next_item.update({"status":"sending","claimId":run,"claimedAt":iso()})
-    save(QUEUE,q)
-    output("claimed","true")
-    output("page",next_item["page"])
-    print("Claimed for one-time send:",next_item["page"])
+        if item.get("status") not in {"pending", "sending"}:
+            continue
+        entry = next((x for x in ledger.values()
+                      if x.get("page") == item.get("page") and x.get("status") == "delivered"), None)
+        if entry:
+            item.update(status="already-delivered", deliveredAt=entry["deliveredAt"], messageId=entry["messageId"])
+            item.pop("dueAt", None)
+
+
+def refresh_due(q):
+    """Schedule next items from confirmed Telegram receipts, not from a cron tick."""
+    batches = {x.get("batchId") or "__legacy" for x in q["items"]}
+    for batch_id in batches:
+        members = [x for x in q["items"] if (x.get("batchId") or "__legacy") == batch_id]
+        last = [parse(x["deliveredAt"]) for x in members
+                if x.get("status") in DONE and x.get("deliveredAt")]
+        if not last:
+            for item in members:
+                if item.get("status") == "pending":
+                    item["dueAt"] = item.get("queuedAt") or stamp(datetime.now(timezone.utc) - timedelta(seconds=1))
+            continue
+        base = max(last)
+        position = 0
+        for item in members:
+            if item.get("status") == "pending":
+                position += 1
+                item["dueAt"] = stamp(base + INTERVAL * position)
+
+
+def claim(prime=False, now=None):
+    q = queue()
+    ledger = load(LEDGER, {})
+    run_id = str(os.getenv("GITHUB_RUN_ID", "")).strip()
+    if not run_id:
+        raise ValueError("GITHUB_RUN_ID is required for unique at-most-once claims")
+    reconcile(q, ledger)
+    refresh_due(q)
+    if any(x.get("status") == "sending" for x in q["items"]):
+        # A sender whose result is uncommitted must be reconciled, not resent.
+        save(QUEUE, q)
+        print("Unresolved sending claim; holding to prevent duplicates")
+        output("claimed", "false")
+        return
+    now = now or datetime.now(timezone.utc)
+    chosen = None
+    if prime:
+        batch_id, approved = approved_batch()
+        candidates = [x for x in q["items"] if x.get("batchId") == batch_id and x.get("page") in approved]
+        if batch_id and not any(x.get("status") in DONE | {"uncertain"} for x in candidates):
+            chosen = next((x for x in candidates if x.get("status") == "pending"), None)
+    else:
+        candidates = []
+        blocked_batches = {x.get("batchId") for x in q["items"] if x.get("status") == "uncertain"}
+        for item in q["items"]:
+            if item.get("status") != "pending" or item.get("batchId") in blocked_batches:
+                continue
+            due = parse(item["dueAt"]) if item.get("dueAt") else (parse(item["queuedAt"]) if item.get("queuedAt") else now - timedelta(seconds=1))
+            if due <= now:
+                candidates.append((due, item))
+        if candidates:
+            chosen = min(candidates, key=lambda entry: entry[0])[1]
+    if not chosen:
+        save(QUEUE, q)
+        future = [x.get("dueAt") for x in q["items"] if x.get("status") == "pending"]
+        print("No eligible Telegram item; next due:", min((x for x in future if x), default="none"))
+        output("claimed", "false")
+        return
+    chosen.update(status="sending", claimId=run_id, claimedAt=stamp(now))
+    save(QUEUE, q)
+    output("claimed", "true")
+    output("page", chosen["page"])
+    print("Claimed exactly one approved job:", chosen["page"], "due:", chosen.get("dueAt"))
+
 
 def send():
-    run=str(os.getenv("GITHUB_RUN_ID","")).strip()
-    q=queue()
-    item=next((x for x in q["items"] if x.get("status")=="sending" and x.get("claimId")==run),None)
+    run = str(os.getenv("GITHUB_RUN_ID", "")).strip()
+    q = queue()
+    item = next((x for x in q["items"] if x.get("status") == "sending" and x.get("claimId") == run), None)
     if not item:
-        raise ValueError("No persisted sending claim belongs to this run")
-    page=item["page"]
-    os.environ["JOB_PAGES"]=page
+        raise ValueError("No pre-persisted Telegram claim owned by this run")
+    page = item["page"]
+    os.environ["JOB_PAGES"] = page
     try:
         from publish_approved_telegram import publish
         publish()
-        ledger=load(LEDGER,{})
-        receipt=next((v for v in ledger.values() if v.get("page")==page and v.get("status")=="delivered"),None)
-        if not receipt: raise RuntimeError("Message ID missing after Telegram send")
-        item.update({"status":"delivered","messageId":receipt.get("messageId"),"deliveredAt":receipt.get("deliveredAt") or iso()})
-        print("Hourly delivery confirmed:",page,item["messageId"])
+        ledger = load(LEDGER, {})
+        receipt = next((v for v in ledger.values() if v.get("page") == page and v.get("status") == "delivered"), None)
+        if not receipt or not isinstance(receipt.get("messageId"), int):
+            raise RuntimeError("Telegram returned no durable message ID")
+        item.update(status="delivered", messageId=receipt["messageId"],
+                    deliveredAt=receipt.get("deliveredAt") or stamp())
+        item.pop("dueAt", None)
+        refresh_due(q)
+        print("Telegram confirmed:", page, "message ID:", item["messageId"])
     except Exception as exc:
-        # Never auto-retry after a send attempt: response/receipt may be ambiguous.
-        item.update({"status":"uncertain","lastError":str(exc)[:360],"failedAt":iso()})
-        save(QUEUE,q)
-        print("Delivery held for human inspection (no automatic retry):",page,str(exc),file=sys.stderr)
+        # This may have failed after the Telegram server accepted the post.
+        # Never silently retry an ambiguous outcome.
+        item.update(status="uncertain", lastError=str(exc)[:360], failedAt=stamp())
+        print("Telegram status requires manual reconciliation:", page, str(exc), file=sys.stderr)
+        save(QUEUE, q)
         raise
-    save(QUEUE,q)
+    save(QUEUE, q)
 
-if __name__=="__main__":
-    if len(sys.argv)<2: raise SystemExit("Usage: hourly_telegram.py enqueue <event.json>|claim|send")
-    {"enqueue":lambda:enqueue(sys.argv[2]),"claim":claim,"send":send}[sys.argv[1]]()
+
+def merge(snapshot_path):
+    """Merge local sender state into fresh main after website/other run updates."""
+    current = queue()
+    captured = load(Path(snapshot_path), {})
+    if not isinstance(captured, dict) or not isinstance(captured.get("items"), list):
+        raise ValueError("Invalid queue snapshot")
+    by_page = {x["page"]: x for x in current["items"]}
+    rank = {"pending": 1, "sending": 2, "uncertain": 3, "already-delivered": 4, "delivered": 4}
+    for item in captured["items"]:
+        page = item.get("page")
+        if not isinstance(page, str) or page not in by_page:
+            if not isinstance(page, str):
+                raise ValueError("Invalid snapshot page")
+            current["items"].append(item)
+            by_page[page] = item
+            continue
+        previous = by_page[page]
+        if previous.get("status") == "delivered" and item.get("status") == "delivered" and previous.get("messageId") != item.get("messageId"):
+            raise ValueError("Conflicting Telegram message IDs for " + page)
+        if rank.get(item.get("status"), 0) > rank.get(previous.get("status"), 0):
+            previous.update(item)
+        elif item.get("status") == previous.get("status"):
+            if item.get("claimId") and previous.get("claimId") not in (None, item["claimId"]):
+                raise ValueError("Conflicting Telegram claims for " + page)
+            previous.update(item)
+    refresh_due(current)
+    save(QUEUE, current)
+    print("Merged Telegram queue state without downgrading deliveries")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise SystemExit("Usage: hourly_telegram.py enqueue <event.json>|prime|claim|send|merge <snapshot.json>")
+    modes = {"enqueue": lambda: enqueue(sys.argv[2]), "prime": lambda: claim(prime=True),
+             "claim": claim, "send": send, "merge": lambda: merge(sys.argv[2])}
+    if sys.argv[1] not in modes:
+        raise SystemExit("Unsupported Telegram queue mode")
+    modes[sys.argv[1]]()
