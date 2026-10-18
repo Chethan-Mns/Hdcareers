@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only official-source comparison of ATS QA candidates."""
 import json
+import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
@@ -34,10 +35,13 @@ def verify(batch,fn=check):
             "notice":"Read-only evidence snapshot. No owner decisions, GitHub job data, public pages or Telegram records changed."}
 
 if __name__=="__main__":
-    report=verify(json.loads(BATCH.read_text(encoding="utf-8")))
-    destination=ROOT/"data/testing/ats-platform-seven-checker-results.json"
-    if len(sys.argv)>1:destination=Path(sys.argv[1])
-    destination.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-    for j in report["jobs"]:
-        print(j["provider"],j["company"],j["observedState"],j["verifiedLive"],j["evidence"][:130])
-    print("Confirmed Live:",report["verifiedLive"],"/",report["checked"])
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--batch',default=str(BATCH),help='Exact local QA batch file')
+    parser.add_argument('--output',default='',help='Output report, never live production data')
+    args=parser.parse_args()
+    report=verify(json.loads(Path(args.batch).read_text(encoding='utf-8')))
+    destination=Path(args.output) if args.output else ROOT/"data/testing/ats-platform-seven-checker-results.json"
+    destination.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding='utf-8')
+    for item in report['jobs']:
+        print(item['provider'],item['company'],item['observedState'],item['verifiedLive'],item['evidence'][:170])
+    print('Confirmed Live:',report['verifiedLive'],'/',report['checked'])
