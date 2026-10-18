@@ -244,12 +244,13 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 </div>
 
 <div id="availabilityResults" class="hidden mt-5">
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
 <div class="rounded-2xl border border-red-200 bg-red-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-red-500">Expired / Closed</p><p id="availabilityExpiredCount" class="text-2xl font-black text-red-700 mt-1">0</p></div>
 <div class="rounded-2xl border border-amber-200 bg-amber-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-amber-600">Needs Review</p><p id="availabilityReviewCount" class="text-2xl font-black text-amber-700 mt-1">0</p></div>
+<div class="rounded-2xl border border-blue-200 bg-blue-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-blue-600">Publish Ready</p><p id="availabilityReadyCount" class="text-2xl font-black text-blue-700 mt-1">0</p></div>
 <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-emerald-600">No Change</p><p id="availabilityActiveCount" class="text-2xl font-black text-emerald-700 mt-1">0</p></div>
 </div>
-<div id="availabilityResultList" class="mt-3 space-y-2"></div>
+<div id="availabilityResultList" class="mt-3 space-y-2"></div><div class="mt-4 p-4 rounded-2xl border border-blue-200 bg-blue-50/50"><div class="flex flex-wrap items-center justify-between gap-2"><div><h3 class="font-black">Publish Ready · New verified jobs</h3><p class="text-xs text-slate-500">Manual Live approval first. Existing website jobs cannot be republished.</p></div><button id="expiryPublishBtn" onclick="publishVerifiedExpiryJobs()" disabled class="btn bg-blue-700 text-white px-4 py-2.5 text-sm disabled:opacity-50">Publish 0 selected</button></div><div id="expiryPublishingEvidence" class="grid sm:grid-cols-2 gap-2 mt-3"></div></div>
 <p id="availabilityCheckedAt" class="text-[11px] text-slate-400 mt-3"></p>
 </div>
 
@@ -461,6 +462,7 @@ if(status){status.className='badge bg-red-50 text-red-700 border border-red-200'
 }
 }
 let availabilityPollTimer=null;
+const expirySelected=new Set();let expiryPublishingStages=[];
 function formatAdminTime(value){
 if(!value)return'Never';
 const d=new Date(value);
@@ -479,10 +481,10 @@ function checkerJobHref(item){const p=String(item?.page||'').replace(/^\/+/, '')
 function renderAvailabilityResults(results){
 const wrap=document.getElementById('availabilityResults');
 const list=document.getElementById('availabilityResultList');
-if(!results||!Number(results.checked||0)){wrap.classList.add('hidden');return}
+if(!results){wrap.classList.add('hidden');return}
 wrap.classList.remove('hidden');
 document.getElementById('availabilityExpiredCount').textContent=Number(results.expired||0);
-document.getElementById('availabilityReviewCount').textContent=Number(results.review||0);
+document.getElementById('availabilityReviewCount').textContent=Number(results.review||0);document.getElementById('availabilityReadyCount').textContent=Number(results.ready||0);
 document.getElementById('availabilityActiveCount').textContent=Number(results.active||0);
 const items=Array.isArray(results.items)?results.items:[];
 const important=items.filter(x=>x.state==='expired'||x.state==='review');
@@ -518,7 +520,8 @@ document.getElementById('availabilityLastRun').textContent=formatAdminTime(run?.
 document.getElementById('availabilitySource').textContent=run?.source||'—';
 document.getElementById('availabilityCompleted').textContent=done?formatAdminTime(done.updatedAt||done.createdAt)+' · '+(done.conclusion||'completed'):'Never';
 document.getElementById('availabilityManual').textContent=formatAdminTime(d.trigger?.requestedAt);
-renderAvailabilityResults(d.results);
+await loadExpiryPublishingEvidence();
+ renderAvailabilityResults(d.results);
 const link=document.getElementById('availabilityRunLink');
 if(run?.url){link.href=run.url;link.classList.remove('hidden')}else link.classList.add('hidden');
 const btn=document.getElementById('runAvailabilityBtn');
@@ -558,8 +561,8 @@ if(!running||attempts>=30){clearInterval(availabilityPollTimer);availabilityPoll
 },4000);
 }
 async function resolveAvailabilityReview(jobId,action){
-const verb=action==='expire'?'mark this job expired and remove it from active listings':'keep this job active';
-if(action==='expire'&&!confirm('Are you sure you want to '+verb+'?'))return;
+const verb=action==='expire'?'mark this job expired':action==='unsure'?'leave as Unsure':'verify this job Live';
+if(!confirm('Confirm you want to '+verb+'? This will not send Telegram messages.'))return;
 const row=document.querySelector('[data-review-id="'+jobId+'"]');
 const buttons=row?[...row.querySelectorAll('button')]:[];
 buttons.forEach(b=>{b.disabled=true;b.classList.add('opacity-60')});
@@ -568,7 +571,7 @@ const r=await fetch('/api/admin/review',{method:'POST',headers:{'content-type':'
 const d=await r.json().catch(()=>({}));
 if(r.status===401){showLogin('Your admin session expired. Sign in again.');return}
 if(!r.ok)throw new Error(d.error||'Could not update this review item');
-renderAvailabilityResults(d.results);
+
 toast(d.message||'Review updated');
 await loadExistingJobs();
 setTimeout(()=>loadAvailabilityStatus(false),1200);
