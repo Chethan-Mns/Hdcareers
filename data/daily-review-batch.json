@@ -197,7 +197,7 @@
       "apply": "https://jobs.smartrecruiters.com/Experian/744000143860629-software-engineer-i",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer posting opened with 0–2 years, recent-graduate language and an application control; outside the approved 87 and retained only as fallback.",
       "postedDate": null,
@@ -211,7 +211,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Experian official SmartRecruiters",
         "desc": "Early-career Java software engineering role contributing to application development, CI/CD and Agile delivery.",
         "elig": "0–2 years of software development experience or equivalent internships, academic projects or bootcamps.",
@@ -234,7 +234,9 @@
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
         "sourceVerificationMethod": "Exact employer posting opened with 0–2 years, recent-graduate language and an application control; outside the approved 87 and retained only as fallback."
-      }
+      },
+      "reviewedAt": "2026-10-18T05:48:06.925Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "oracle-346482",
@@ -778,7 +780,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:47:41.927Z",
+  "updatedAt": "2026-10-18T05:48:06.925Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
