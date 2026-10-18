@@ -534,7 +534,7 @@
       "apply": "https://jobs.ashbyhq.com/aiprise/3763c791-a387-4078-9ca4-00cbfbf9b1a6",
       "cat": "it",
       "expYears": "Not Specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "review",
       "verificationReason": "Exact Ashby requisition is public, but accessible evidence does not state an entry-level experience threshold; outside the approved 87 and held REVIEW.",
       "postedDate": null,
@@ -548,7 +548,7 @@
         "expYears": "Not Specified",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "AiPrise official Ashby",
         "desc": "Software Engineer I role building compliance orchestration, vendor integrations, case-management features and AI-agent systems.",
         "elig": "Not Specified in the accessible official evidence.",
@@ -566,8 +566,12 @@
         "jobId": "3763c791-a387-4078-9ca4-00cbfbf9b1a6",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Ashby requisition is public, but accessible evidence does not state an entry-level experience threshold; outside the approved 87 and held REVIEW."
-      }
+        "sourceVerificationMethod": "Exact Ashby requisition is public, but accessible evidence does not state an entry-level experience threshold; outside the approved 87 and held REVIEW.",
+        "manualLiveVerifiedAt": "2026-10-18T05:49:37.892Z",
+        "browserVerifiedAt": "2026-10-18T05:49:37.892Z"
+      },
+      "reviewedAt": "2026-10-18T05:49:37.892Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ingrammicro-r-115589",
@@ -798,7 +802,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:49:27.807Z",
+  "updatedAt": "2026-10-18T05:49:37.892Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
