@@ -157,10 +157,15 @@ def official_inventory_probe(job):
             return 'review', f'{provider} public posting inventory returned an unexpected response'
         actual = str(data.get('id') or data.get('uuid') or '')
         active_flag = data.get('active')
-        if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
+        if not actual:
+            return 'review', f'{provider} inventory response omitted the exact requisition identifier'
+        if expected_id and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
             return 'review', f'{provider} public posting inventory returned a different posting'
         if active_flag is False:
             return 'expired', f'{provider} public posting inventory marks the exact job inactive'
+        title_or_text = str(data.get('title') or data.get('name') or data.get('text') or '').strip()
+        if active_flag is not True and not title_or_text:
+            return 'review', f'{provider} exact requisition lacks positive live posting evidence'
         return 'active', f'{provider} public posting inventory contains the exact published job'
     except HTTPError as exc:
         if exc.code in (404, 410):
