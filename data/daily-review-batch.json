@@ -437,7 +437,7 @@
       "apply": "https://ibmglobal.avature.net/en_US/careers/JobDetail/Associate-System-Engineer/52240",
       "cat": "it",
       "expYears": "2026 graduate hiring",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "review",
       "verificationReason": "Exact IBM requisition and 2026-graduate evidence exist, but the public English route returns an automation-facing 406; owner review required.",
       "postedDate": null,
@@ -451,7 +451,7 @@
         "expYears": "2026 graduate hiring",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "IBM official Avature careers",
         "desc": "Associate System Engineer opportunity for 2026 graduates across multiple India locations.",
         "elig": "Official evidence identifies 2026 pass-outs; complete eligibility requires confirmation on the IBM requisition.",
@@ -477,7 +477,9 @@
         "url": "https://ibmglobal.avature.net/en_US/careers/JobDetail/Associate-System-Engineer/52240",
         "source": "reader",
         "evidenceVerifiedAt": "2026-10-18T03:35:49.423Z"
-      }
+      },
+      "reviewedAt": "2026-10-18T05:49:20.558Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "amazon-10580007",
@@ -794,7 +796,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:49:06.823Z",
+  "updatedAt": "2026-10-18T05:49:20.559Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
