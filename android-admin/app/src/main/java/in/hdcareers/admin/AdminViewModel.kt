@@ -18,6 +18,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var busy by androidx.compose.runtime.mutableStateOf(false)
     var message by androidx.compose.runtime.mutableStateOf("")
     var tab by androidx.compose.runtime.mutableIntStateOf(0)
+    var atsQaOpen by androidx.compose.runtime.mutableStateOf(false)
     var batch by androidx.compose.runtime.mutableStateOf(DailyBatch("","waiting",emptyList(),emptyList()))
     var selectedIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
     var publishedReviewIds by androidx.compose.runtime.mutableStateOf<Set<String>>(emptySet())
