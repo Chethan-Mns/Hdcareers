@@ -68,6 +68,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var traffic by androidx.compose.runtime.mutableStateOf(Traffic())
     var days by androidx.compose.runtime.mutableIntStateOf(7)
     var checker by androidx.compose.runtime.mutableStateOf(JSONObject())
+    var expirySelected by androidx.compose.runtime.mutableStateOf<Set<Int>>(emptySet())
+    var expiryStages by androidx.compose.runtime.mutableStateOf<List<JSONObject>>(emptyList())
     var automation by androidx.compose.runtime.mutableStateOf(JSONObject())
     var fcmStatus by androidx.compose.runtime.mutableStateOf("Not configured")
     var manualDraft by androidx.compose.runtime.mutableStateOf<JSONObject?>(null)
@@ -123,6 +125,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         selectedIds=emptySet()
         publishedReviewIds=emptySet()
         publishingProgress=JSONObject()
+        expirySelected=emptySet()
+        expiryStages=emptyList()
     }
     private fun setReminderState() {
         val prefs=getApplication<Application>().getSharedPreferences("hd_review",Context.MODE_PRIVATE)
@@ -164,9 +168,23 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         if(data.optString("batchId")==batch.id) {
             publishingProgress=data
             val arr=data.optJSONArray("publishedCandidateIds")
-            publishedReviewIds=(0 until (arr?.length() ?: 0)).map { arr!!.optString(it) }.toSet()
-            selectedIds=selectedIds-publishedReviewIds
+            val serverPublished=(0 until (data.optJSONArray("stages")?.length() ?: 0))
+                .mapNotNull { data.optJSONArray("stages")?.optJSONObject(it) }
+                .filter { it.optString("website")=="live" }
+                .map { it.optString("candidateId") }.toSet()
+            publishedReviewIds=serverPublished
+            // Keep the original evidence and Telegram timeline, clear only visible ready selection
+            // after every selected website page is independently verified live.
+            if(batch.status in listOf("submitted","published") &&
+                data.optJSONArray("stages")?.length() ?: 0 > 0 &&
+                data.optInt("publishedCount") == data.optJSONArray("stages")?.length())
+                selectedIds=emptySet()
+            else selectedIds=selectedIds-serverPublished
         }
+        val expiry=data.optJSONArray("expiryStages")
+        expiryStages=(0 until (expiry?.length() ?: 0)).mapNotNull { expiry?.optJSONObject(it) }
+        val readyIds=expiryStages.filter { it.optString("state")=="ready" && !it.optBoolean("dispatched") }.map { it.optInt("id") }.toSet()
+        expirySelected=expirySelected.intersect(readyIds)
     }
     fun refreshPublishingStatus()=run { loadPublishingProgress() }
     fun refreshPublishingStatusQuietly() {
@@ -215,6 +233,11 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         } else message=candidate.company+" held: "+candidate.missingDetails.joinToString(", ")+
             ". No publishing request was sent."
     }
+    val readyExpiryReviews get():List<JSONObject> {
+        val items=checker.optJSONObject("results")?.optJSONArray("items")
+        return (0 until (items?.length() ?: 0)).mapNotNull { items?.optJSONObject(it) }
+            .filter { it.optString("state")=="ready" && it.optString("reviewType")=="new_job" }
+    }
     val pendingExpiryReviews get():List<JSONObject> {
         val items=checker.optJSONObject("results")?.optJSONArray("items")
         return (0 until (items?.length() ?: 0)).mapNotNull { items?.optJSONObject(it) }
@@ -223,6 +246,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     fun refreshExpiry()=run {
         checker=api.checker()
         automation=runCatching { api.automation() }.getOrDefault(automation)
+        runCatching { loadPublishingProgress() }
         setReminderState()
     }
     fun refreshOperationsQuietly() {
@@ -233,6 +257,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
                 setReminderState()
             }
             runCatching { automation=api.automation() }
+            runCatching { loadPublishingProgress() }
         }
     }
     fun ensurePushConnected(){
@@ -272,10 +297,31 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
             EXPIRY_CHANNEL,98310,openExpiry=true)
     }
     fun checkerResolve(id:Int,action:String)=run {
+        val wasNew=pendingExpiryReviews.any { it.optInt("id")==id && it.optString("reviewType")=="new_job" }
         message=api.resolveChecker(id,action)
         checker=api.checker()
         jobs=api.jobs()
+        runCatching { loadPublishingProgress() }
+        if(wasNew&&action=="keep"&&expirySelected.size<10)
+            expirySelected=expirySelected+id
+        if(action!="keep")expirySelected=expirySelected-id
         setReminderState()
+    }
+    fun selectExpiry(id:Int,on:Boolean) {
+        val ready=readyExpiryReviews.any { it.optInt("id")==id }
+        val stage=expiryStages.firstOrNull { it.optInt("id")==id }
+        if(!on){expirySelected=expirySelected-id;return}
+        if(!ready||stage?.optBoolean("dispatched")==true){message="Only unsubmitted Live jobs can be selected.";return}
+        if(expirySelected.size>=10){message="Maximum 10 jobs per publication.";return}
+        expirySelected=expirySelected+id
+    }
+    fun publishExpirySelected()=run {
+        check(expirySelected.isNotEmpty()) { "Verify and select at least one new job first." }
+        val result=api.publishExpiryReviews(expirySelected)
+        message=result.optString("message","Publishing accepted; check the tracker.")
+        expirySelected=emptySet()
+        runCatching { loadPublishingProgress() }
+        checker=api.checker()
     }
     fun extract(url:String)=run {
         require(url.startsWith("https://")) { "Enter a direct HTTPS job URL." }
