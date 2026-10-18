@@ -588,7 +588,10 @@ private fun ProReview(vm:AdminViewModel) {
                         val company=stage.optString("company")
                         val title=stage.optString("role")
                         val queueStatus=stage.optString("telegram","not_queued")
-                        Surface(color=Brand.sky.copy(alpha=.34f),shape=RoundedCornerShape(16.dp)) {
+                        Surface(color=Color.White,shape=RoundedCornerShape(18.dp),
+                            border=androidx.compose.foundation.BorderStroke(1.dp,
+                                if(queueStatus=="delivered")Brand.green.copy(alpha=.55f) else Brand.outline),
+                            shadowElevation=3.dp) {
                             Column(Modifier.fillMaxWidth().animateContentSize().padding(13.dp),
                                 verticalArrangement=Arrangement.spacedBy(9.dp)) {
                                 Row(Modifier.fillMaxWidth().clickable{expanded=!expanded},
@@ -600,9 +603,16 @@ private fun ProReview(vm:AdminViewModel) {
                                         Text(company,fontWeight=FontWeight.Black,fontSize=15.sp,color=Brand.navy)
                                         Text(title,fontSize=11.sp,color=Brand.gray,maxLines=2)
                                     }
-                                    Icon(if(expanded)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null,tint=Brand.blue)
+                                    ProPill(if(queueStatus=="delivered")"SENT" else if(queueStatus=="uncertain")"CHECK" else "TRACKING",
+                                         if(queueStatus=="delivered")Brand.green else if(queueStatus=="uncertain")Brand.red else Brand.blue)
+                                     Icon(if(expanded)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null,tint=Brand.blue)
                                 }
                                 if(expanded){
+                                    Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                                        ProPill(if(ghStatus=="success")"GitHub complete" else "GitHub pending",Brand.blue)
+                                        ProPill(if(stage.optString("website")=="live")"Site live" else "Deploying",
+                                            if(stage.optString("website")=="live")Brand.green else Brand.amber)
+                                    }
                                     ProPipelineStep("1","GitHub",
                                         if(ghStatus=="success")"complete" else if(ghStatus=="failure")"failed" else "pending",
                                         if(ghStatus=="success")"Exact workflow completed successfully" else ghStatus)
@@ -623,6 +633,10 @@ private fun ProReview(vm:AdminViewModel) {
                                             "uncertain"->"Delivery uncertain — manual inspection required"
                                             else->"Not yet queued"
                                         })
+                                    val dueAt=stage.optString("telegramDueAt")
+                                    if(dueAt.isNotBlank()&&dueAt!="null"&&queueStatus!="delivered")
+                                        Text("Telegram target: "+dueAt.replace("T"," ").take(19)+" UTC",
+                                            fontWeight=FontWeight.Bold,fontSize=12.sp,color=Brand.blue)
                                     val submittedAt=stage.optString("queuedAt")
                                     if(submittedAt.isNotBlank()&&submittedAt!="null")
                                         Text("Queued: "+submittedAt.replace("T"," ").take(19)+" UTC",
@@ -632,8 +646,14 @@ private fun ProReview(vm:AdminViewModel) {
                                         Text("Delivered: "+deliveredAt.replace("T"," ").take(19)+" UTC",
                                             fontSize=11.sp,color=Brand.green)
                                     val messageId=stage.optString("telegramMessageId")
-                                    if(messageId.isNotBlank()&&messageId!="null")
+                                    if(messageId.isNotBlank()&&messageId!="null") {
                                         Text("Telegram message #"+messageId,fontSize=11.sp,color=Brand.green)
+                                        TextButton(onClick={ctx.startActivity(Intent(Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/HD_Careers/"+messageId)))}) {
+                                            Icon(Icons.Default.Send,null,Modifier.size(15.dp))
+                                            Text(" View confirmed Telegram post")
+                                        }
+                                    }
                                     val pageUrl=stage.optString("pageUrl")
                                     if(pageUrl.startsWith("https://")) TextButton(onClick={
                                         ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(pageUrl)))
