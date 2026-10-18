@@ -323,13 +323,14 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
 private fun ProReview(vm:AdminViewModel) {
     var selected by remember { mutableIntStateOf(0) }
     var confirm by remember { mutableStateOf(false) }
-    val chosen=vm.batch.all.filter { it.id in vm.selectedIds }
+    val chosen=vm.batch.all.filter { it.id in vm.selectedIds && it.id !in vm.publishedReviewIds }
     val raw=when(selected) {
-        0 -> vm.batch.priority.filterNot { it.id in vm.selectedIds }
-        1 -> vm.batch.backup.filterNot { it.id in vm.selectedIds }
-        else -> chosen
+        0 -> vm.batch.priority.filterNot { it.id in vm.selectedIds || it.decision=="expired" || it.id in vm.publishedReviewIds }
+        1 -> vm.batch.backup.filterNot { it.id in vm.selectedIds || it.decision=="expired" || it.id in vm.publishedReviewIds }
+        2 -> chosen
+        else -> vm.batch.all.filter { it.decision=="expired" || it.id in vm.publishedReviewIds }
     }
-    val candidates=if(selected==2)raw else raw.sortedWith(compareBy<Candidate> {
+    val candidates=if(selected==2||selected==3)raw else raw.sortedWith(compareBy<Candidate> {
         when(it.decision) { "live" -> 0; "unreviewed", "" -> 1; "unsure" -> 2; else -> 3 }
     }.thenByDescending { it.complete })
     val total=vm.batch.all.size
@@ -348,7 +349,7 @@ private fun ProReview(vm:AdminViewModel) {
             onDragStart={swipe=0f},
             onHorizontalDrag={change,delta->change.consume();swipe+=delta},
             onDragEnd={
-                if(swipe < -80f) selected=(selected+1).coerceAtMost(2)
+                if(swipe < -80f) selected=(selected+1).coerceAtMost(3)
                 if(swipe > 80f) selected=(selected-1).coerceAtLeast(0)
             }
         )
@@ -380,16 +381,17 @@ private fun ProReview(vm:AdminViewModel) {
                     fontSize=12.sp,color=Brand.gray)
                 TabRow(selectedTabIndex=selected,containerColor=Color.Transparent,
                     contentColor=Brand.blue) {
-                    listOf("Priority","Backup","Publish Ready").forEachIndexed {index,label->
+                    listOf("Priority","Backup","Ready","History").forEachIndexed {index,label->
                         Tab(selected=selected==index,onClick={selected=index},
                             text={Text(if(index==2)"Ready (${chosen.size})" else label,
                                 fontWeight=FontWeight.Bold,fontSize=11.sp,maxLines=1)})
                     }
                 }
                 Text(when(selected){
-                    0 -> "Priority: source-checked roles first. Expired roles remain visible for audit."
+                    0 -> "Expired and website-confirmed published jobs move to History; no data is deleted."
                     1 -> "Backup: Live roles here can also go directly to Publish Ready."
-                    else -> "Final review: only complete, verified jobs can be published."
+                    2 -> "Final review: only complete, verified jobs can be published."
+                    else -> "Read-only reviewed job history and verified delivery evidence."
                 },fontSize=11.sp,color=Brand.gray)
             }
         }
@@ -478,19 +480,35 @@ private fun ProReview(vm:AdminViewModel) {
                 "Refresh now",vm::refreshClicked)
         } else if(candidates.isEmpty()) item {
             ProEmpty(Icons.Default.CheckCircle,
-                if(selected==2)"Nothing in Publish Ready" else "No jobs remaining in this section",
-                if(selected==2)"Verify a role Live and tap Add to Publish Ready in Priority or Backup."
-                else "Selected jobs have moved to Publish Ready.",
+                if(selected==2)"Nothing in Publish Ready" else if(selected==3)"History is empty" else "No jobs remaining in this section",
+                if(selected==2)"Verify a role Live and add it from Priority or Backup."
+                else if(selected==3)"Expired and confirmed published jobs appear in History."
+                else "Reviewed jobs have moved to Publish Ready or History.",
                 "Refresh",vm::refreshClicked)
         }
         itemsIndexed(candidates,key={_,item->item.id}) {i,job->
-            ProCandidateCard(job,i,selected==0,vm.companyLogos,vm.busy,
+            if(selected==3){
+                ProCard {
+                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(job.company,fontWeight=FontWeight.Black,fontSize=14.sp,color=Brand.navy)
+                            Text(job.role,fontSize=12.sp,color=Brand.gray)
+                        }
+                        ProPill(if(job.decision=="expired")"EXPIRED" else "WEBSITE LIVE",
+                            if(job.decision=="expired")Brand.red else Brand.green)
+                    }
+                    Text("Original decision and publishing evidence retained.",fontSize=11.sp,color=Brand.gray)
+                    if(job.apply.startsWith("https://")) TextButton(onClick={
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(job.apply)))
+                    }){ Icon(Icons.Default.OpenInNew,null,Modifier.size(16.dp)); Text(" Official source") }
+                }
+            } else ProCandidateCard(job,i,selected==0,vm.companyLogos,vm.busy,
                 chosen=job.id in vm.selectedIds,published=job.id in vm.publishedReviewIds,
                 inReady=selected==2,decide={vm.decide(job.id,it)},
                  verifyAndAdd={vm.verifyAndAdd(job.id)},
                 toggle={vm.toggleSelected(job.id,it)})
         }
-        if(vm.batch.id.isNotBlank() && selected==2) item {
+        if(vm.batch.id.isNotBlank() && (selected==2||selected==3)) item {
             ProCard {
                 SectionHead(Icons.Default.RocketLaunch,"Publish Ready",
                     "Review your selected jobs before final confirmation",Brand.green)
@@ -503,7 +521,7 @@ private fun ProReview(vm:AdminViewModel) {
                         color=Brand.green,fontWeight=FontWeight.Bold,fontSize=13.sp)
                     Text("No action needed. Your previous confirmation is protected from duplicate publishing.",
                         color=Brand.gray,fontSize=12.sp,lineHeight=18.sp)
-                }else{
+                }else if(selected==2){
                     val incomplete=chosen.filterNot { it.approved }
                     Text("${chosen.size} of 10 selected · ${incomplete.size} awaiting source details",
                         color=if(incomplete.isEmpty())Brand.green else Brand.amber,fontSize=12.sp)
@@ -570,7 +588,10 @@ private fun ProReview(vm:AdminViewModel) {
                         val company=stage.optString("company")
                         val title=stage.optString("role")
                         val queueStatus=stage.optString("telegram","not_queued")
-                        Surface(color=Brand.sky.copy(alpha=.34f),shape=RoundedCornerShape(16.dp)) {
+                        Surface(color=Color.White,shape=RoundedCornerShape(18.dp),
+                            border=androidx.compose.foundation.BorderStroke(1.dp,
+                                if(queueStatus=="delivered")Brand.green.copy(alpha=.55f) else Brand.outline),
+                            shadowElevation=3.dp) {
                             Column(Modifier.fillMaxWidth().animateContentSize().padding(13.dp),
                                 verticalArrangement=Arrangement.spacedBy(9.dp)) {
                                 Row(Modifier.fillMaxWidth().clickable{expanded=!expanded},
@@ -582,9 +603,16 @@ private fun ProReview(vm:AdminViewModel) {
                                         Text(company,fontWeight=FontWeight.Black,fontSize=15.sp,color=Brand.navy)
                                         Text(title,fontSize=11.sp,color=Brand.gray,maxLines=2)
                                     }
-                                    Icon(if(expanded)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null,tint=Brand.blue)
+                                    ProPill(if(queueStatus=="delivered")"SENT" else if(queueStatus=="uncertain")"CHECK" else "TRACKING",
+                                         if(queueStatus=="delivered")Brand.green else if(queueStatus=="uncertain")Brand.red else Brand.blue)
+                                     Icon(if(expanded)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null,tint=Brand.blue)
                                 }
                                 if(expanded){
+                                    Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                                        ProPill(if(ghStatus=="success")"GitHub complete" else "GitHub pending",Brand.blue)
+                                        ProPill(if(stage.optString("website")=="live")"Site live" else "Deploying",
+                                            if(stage.optString("website")=="live")Brand.green else Brand.amber)
+                                    }
                                     ProPipelineStep("1","GitHub",
                                         if(ghStatus=="success")"complete" else if(ghStatus=="failure")"failed" else "pending",
                                         if(ghStatus=="success")"Exact workflow completed successfully" else ghStatus)
@@ -605,6 +633,10 @@ private fun ProReview(vm:AdminViewModel) {
                                             "uncertain"->"Delivery uncertain — manual inspection required"
                                             else->"Not yet queued"
                                         })
+                                    val dueAt=stage.optString("telegramDueAt")
+                                    if(dueAt.isNotBlank()&&dueAt!="null"&&queueStatus!="delivered")
+                                        Text("Telegram target: "+dueAt.replace("T"," ").take(19)+" UTC",
+                                            fontWeight=FontWeight.Bold,fontSize=12.sp,color=Brand.blue)
                                     val submittedAt=stage.optString("queuedAt")
                                     if(submittedAt.isNotBlank()&&submittedAt!="null")
                                         Text("Queued: "+submittedAt.replace("T"," ").take(19)+" UTC",
@@ -614,8 +646,14 @@ private fun ProReview(vm:AdminViewModel) {
                                         Text("Delivered: "+deliveredAt.replace("T"," ").take(19)+" UTC",
                                             fontSize=11.sp,color=Brand.green)
                                     val messageId=stage.optString("telegramMessageId")
-                                    if(messageId.isNotBlank()&&messageId!="null")
+                                    if(messageId.isNotBlank()&&messageId!="null") {
                                         Text("Telegram message #"+messageId,fontSize=11.sp,color=Brand.green)
+                                        TextButton(onClick={ctx.startActivity(Intent(Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/HD_Careers/"+messageId)))}) {
+                                            Icon(Icons.Default.Send,null,Modifier.size(15.dp))
+                                            Text(" View confirmed Telegram post")
+                                        }
+                                    }
                                     val pageUrl=stage.optString("pageUrl")
                                     if(pageUrl.startsWith("https://")) TextButton(onClick={
                                         ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(pageUrl)))

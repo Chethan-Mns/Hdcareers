@@ -244,12 +244,13 @@ body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:linear-grad
 </div>
 
 <div id="availabilityResults" class="hidden mt-5">
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
 <div class="rounded-2xl border border-red-200 bg-red-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-red-500">Expired / Closed</p><p id="availabilityExpiredCount" class="text-2xl font-black text-red-700 mt-1">0</p></div>
 <div class="rounded-2xl border border-amber-200 bg-amber-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-amber-600">Needs Review</p><p id="availabilityReviewCount" class="text-2xl font-black text-amber-700 mt-1">0</p></div>
+<div class="rounded-2xl border border-blue-200 bg-blue-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-blue-600">Publish Ready</p><p id="availabilityReadyCount" class="text-2xl font-black text-blue-700 mt-1">0</p></div>
 <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-3"><p class="text-[10px] font-black uppercase tracking-wide text-emerald-600">No Change</p><p id="availabilityActiveCount" class="text-2xl font-black text-emerald-700 mt-1">0</p></div>
 </div>
-<div id="availabilityResultList" class="mt-3 space-y-2"></div>
+<div id="availabilityResultList" class="mt-3 space-y-2"></div><div class="mt-4 p-4 rounded-2xl border border-blue-200 bg-blue-50/50"><div class="flex flex-wrap items-center justify-between gap-2"><div><h3 class="font-black">Publish Ready · New verified jobs</h3><p class="text-xs text-slate-500">Manual Live approval first. Existing website jobs cannot be republished.</p></div><button id="expiryPublishBtn" onclick="publishVerifiedExpiryJobs()" disabled class="btn bg-blue-700 text-white px-4 py-2.5 text-sm disabled:opacity-50">Publish 0 selected</button></div><div id="expiryPublishingEvidence" class="grid sm:grid-cols-2 gap-2 mt-3"></div></div>
 <p id="availabilityCheckedAt" class="text-[11px] text-slate-400 mt-3"></p>
 </div>
 
@@ -461,6 +462,7 @@ if(status){status.className='badge bg-red-50 text-red-700 border border-red-200'
 }
 }
 let availabilityPollTimer=null;
+const expirySelected=new Set();let expiryPublishingStages=[];
 function formatAdminTime(value){
 if(!value)return'Never';
 const d=new Date(value);
@@ -477,30 +479,119 @@ return{label:run.conclusion||run.status||'Unknown',cls:'bg-amber-50 text-amber-7
 function checkerJobLabel(item){return [item?.company,item?.role].filter(Boolean).join(' — ')||('Job '+(item?.id??''))}
 function checkerJobHref(item){const p=String(item?.page||'').replace(/^\/+/, '');return p?'/'+p:'#'}
 function renderAvailabilityResults(results){
-const wrap=document.getElementById('availabilityResults');
-const list=document.getElementById('availabilityResultList');
-if(!results||!Number(results.checked||0)){wrap.classList.add('hidden');return}
-wrap.classList.remove('hidden');
-document.getElementById('availabilityExpiredCount').textContent=Number(results.expired||0);
-document.getElementById('availabilityReviewCount').textContent=Number(results.review||0);
-document.getElementById('availabilityActiveCount').textContent=Number(results.active||0);
-const items=Array.isArray(results.items)?results.items:[];
-const important=items.filter(x=>x.state==='expired'||x.state==='review');
-const blocks=[];
-if(results.expired>0){
-blocks.push('<div class="rounded-2xl border border-red-100 bg-red-50/40 p-3"><p class="text-xs font-black text-red-700 mb-2"><i class="fa-solid fa-circle-xmark mr-1"></i>Expired jobs changed on the site</p>'+important.filter(x=>x.state==='expired').map(x=>'<div class="checker-result-row mb-2 last:mb-0"><a href="'+checkerJobHref(x)+'" target="_blank" class="text-sm font-bold text-slate-800 hover:text-blue-700">'+esc(checkerJobLabel(x))+' <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i><div class="reason">'+esc(x.reason||'Confirmed expired')+'</div></a><span class="badge bg-red-50 text-red-700 border border-red-200 shrink-0">Expired</span></div>').join('')+'</div>')
+ const wrap=document.getElementById("availabilityResults"),list=document.getElementById("availabilityResultList");
+ if(!results){wrap.classList.add("hidden");return}
+ wrap.classList.remove("hidden");
+ document.getElementById("availabilityExpiredCount").textContent=Number(results.expired||0);
+ document.getElementById("availabilityReviewCount").textContent=Number(results.review||0);
+ document.getElementById("availabilityReadyCount").textContent=Number(results.ready||0);
+ document.getElementById("availabilityActiveCount").textContent=Number(results.active||0);
+ const items=Array.isArray(results.items)?results.items:[];
+ const pending=items.filter(x=>x.state==="review");
+ const ready=items.filter(x=>x.state==="ready"&&x.reviewType==="new_job");
+ const readyIds=new Set(ready.map(x=>Number(x.id)));
+ for(const id of [...expirySelected]){
+  if(!readyIds.has(id)||expiryPublishingStages.some(x=>x.id===id&&x.dispatched))expirySelected.delete(id);
+ }
+ list.replaceChildren();
+ const heading=(text,cls)=>{
+  const block=document.createElement("div");block.className="rounded-xl border p-3 "+cls;
+  const title=document.createElement("h3");title.className="text-sm font-black mb-3";title.textContent=text;
+  block.append(title);list.append(block);return block;
+ };
+ if(pending.length){
+  const section=heading("Needs verification · "+pending.length,"border-amber-200 bg-amber-50/50");
+  for(const job of pending){
+   const id=Number(job.id),card=document.createElement("article");
+   card.className="checker-result-row !block mb-2";
+   card.dataset.reviewId=String(id);
+   const title=document.createElement("strong");title.className="text-sm";title.textContent=checkerJobLabel(job);card.append(title);
+   const reason=document.createElement("p");reason.className="reason";reason.textContent=job.reason||"Manual official-source verification required";card.append(reason);
+   const actions=document.createElement("div");actions.className="flex flex-wrap gap-2 mt-3";
+   if(String(job.url||"").startsWith("https://")){
+    const link=document.createElement("a");link.href=job.url;link.target="_blank";link.rel="noopener noreferrer";
+    link.className="btn px-3 py-2 text-xs border border-blue-200 text-blue-700";link.textContent="Official job ↗";actions.append(link);
+   }
+   for(const [decision,label,cls] of [["keep",job.reviewType==="new_job"?"Live → Ready":"Live · keep","bg-green-600 text-white"],["expire","Expired","bg-red-600 text-white"],["unsure","Unsure","border border-amber-200 bg-white text-amber-700"]]){
+    const btn=document.createElement("button");btn.className="btn px-3 py-2 text-xs "+cls;btn.textContent=label;
+    btn.disabled=!Number.isSafeInteger(id)||id<1;btn.onclick=()=>resolveAvailabilityReview(id,decision);
+    actions.append(btn);
+   }
+   card.append(actions);section.append(card);
+  }
+ }else {
+  const block=heading("Nothing awaiting verification","border-green-200 bg-green-50");
+  block.append(document.createTextNode("Uncertain jobs will appear here after a new scan."));
+ }
+ if(ready.length){
+  const section=heading("Live new jobs · select to publish","border-blue-200 bg-blue-50/40");
+  for(const job of ready){
+   const id=Number(job.id),stage=expiryPublishingStages.find(x=>x.id===id);
+   const dispatched=Boolean(stage?.dispatched);
+   const row=document.createElement("label");row.className="checker-result-row mb-2 items-center";
+   const input=document.createElement("input");input.type="checkbox";input.className="w-5 h-5 accent-blue-700";
+   input.checked=expirySelected.has(id);input.disabled=dispatched;input.onchange=()=>toggleExpiryReady(id,input.checked);
+   const copy=document.createElement("span");copy.className="text-xs font-bold text-slate-800 flex-1";
+   copy.textContent=checkerJobLabel(job);
+   const badge=document.createElement("span");badge.className="badge "+(dispatched?"bg-slate-100 text-slate-700":"bg-green-100 text-green-700");
+   badge.textContent=dispatched?"SUBMITTED":"LIVE";
+   row.append(input,copy,badge);section.append(row);
+  }
+ }
+ if(Number(results.expired||0)>0) {
+  const info=heading("Already expired · "+results.expired,"border-red-200 bg-red-50/40");
+  info.append(document.createTextNode("These are not pending reviews. They remain in audit history."));
+ }
+ if(Number(results.active||0)>0){
+  const info=heading(results.active+" existing website listings confirmed active","border-green-200 bg-green-50/40");
+  info.append(document.createTextNode("No changes required."));
+ }
+ document.getElementById("availabilityCheckedAt").textContent="Checker results from "+formatAdminTime(results.checkedAt)+(results.current===false?" · previous scan":"");
+ updateExpiryPublishingEvidence();
 }
-if(results.review>0){
-blocks.push('<div class="rounded-2xl border border-amber-100 bg-amber-50/40 p-3"><p class="text-xs font-black text-amber-700 mb-2"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Needs manual review</p>'+important.filter(x=>x.state==='review').map(x=>{
-const official=String(x.url||'');
-return '<div class="checker-result-row mb-2 last:mb-0 !block" data-review-id="'+Number(x.id)+'"><div class="flex items-start justify-between gap-3"><div class="min-w-0"><p class="text-sm font-black text-slate-800">'+esc(checkerJobLabel(x))+'</p><div class="reason">'+esc(x.reason||'Availability could not be confirmed')+'</div></div><span class="badge bg-amber-50 text-amber-700 border border-amber-200 shrink-0">Review</span></div><div class="flex flex-wrap gap-2 mt-3">'+(official?'<a href="'+esc(official)+'" target="_blank" rel="noopener" class="btn border border-blue-200 bg-blue-50 text-blue-700 px-3 py-2 text-xs"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Official job</a>':'')+'<a href="'+checkerJobHref(x)+'" target="_blank" rel="noopener" class="btn border border-slate-200 bg-white text-slate-700 px-3 py-2 text-xs"><i class="fa-solid fa-eye mr-1"></i>HD Careers</a><button onclick="resolveAvailabilityReview('+Number(x.id)+',\'expire\')" class="btn bg-red-600 hover:bg-red-700 text-white px-3 py-2 text-xs"><i class="fa-solid fa-trash-can mr-1"></i>Remove</button><button onclick="resolveAvailabilityReview('+Number(x.id)+',\'keep\')" class="btn bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 text-xs"><i class="fa-solid fa-check mr-1"></i>No change</button></div></div>'
-}).join('')+'</div>')
+async function loadExpiryPublishingEvidence(){
+ try{
+  const r=await fetch("/api/admin/publish",{credentials:"same-origin",cache:"no-store"});
+  if(!r.ok)return;
+  const data=await r.json();
+  expiryPublishingStages=Array.isArray(data.expiryStages)?data.expiryStages:[];
+ }catch{}
 }
-if(results.active>0){
-blocks.push('<div class="rounded-2xl border border-emerald-100 bg-emerald-50/50 p-3 text-sm text-emerald-800"><i class="fa-solid fa-circle-check mr-1"></i><strong>'+Number(results.active)+'</strong> checked jobs are still active — no status changes needed.</div>')
+function updateExpiryPublishingEvidence(){
+ const button=document.getElementById("expiryPublishBtn");
+ if(button){button.disabled=expirySelected.size===0;button.textContent="Publish "+expirySelected.size+" selected"}
+ const root=document.getElementById("expiryPublishingEvidence");
+ if(!root)return;
+ root.replaceChildren();
+ for(const x of expiryPublishingStages.filter(x=>x.dispatched||x.state==="rejected").slice(-12)){
+  const card=document.createElement("div");card.className="rounded-xl bg-white border border-blue-100 p-3";
+  const title=document.createElement("strong");title.className="text-xs text-slate-900";title.textContent=x.company+" — "+x.role;card.append(title);
+  const note=document.createElement("p");note.className="text-xs text-slate-500 mt-1";
+  note.textContent=x.state==="rejected"?"Rejected · archived":"Website "+x.website+" · Telegram "+x.telegram;
+  card.append(note);
+  if(x.websiteUrl?.startsWith("https://")){const a=document.createElement("a");a.href=x.websiteUrl;a.target="_blank";a.rel="noopener noreferrer";a.className="text-xs font-bold text-blue-700";a.textContent="View job page ↗";card.append(a)}
+  root.append(card);
+ }
 }
-list.innerHTML=blocks.join('');
-document.getElementById('availabilityCheckedAt').textContent='Checker results from '+formatAdminTime(results.checkedAt)+(results.current===false?' · previous completed run':'');
+function toggleExpiryReady(id,checked){
+ if(checked&&expirySelected.size>=10){toast("Maximum ten jobs per batch");loadAvailabilityStatus(false);return}
+ if(checked)expirySelected.add(id);else expirySelected.delete(id);
+ updateExpiryPublishingEvidence();
+}
+async function publishVerifiedExpiryJobs(){
+ const ids=[...expirySelected];
+ if(!ids.length)return;
+ if(!confirm("Publish "+ids.length+" new jobs verified Live? The server checks the approved official URLs and refuses duplicate publishing."))return;
+ const btn=document.getElementById("expiryPublishBtn");btn.disabled=true;
+ try{
+  const r=await fetch("/api/admin/publish",{method:"POST",credentials:"same-origin",
+   headers:{"Content-Type":"application/json"},body:JSON.stringify({expiryReviewIds:ids,telegramDeliveryMode:"hourly"})});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok)throw Error(data.error||"Publishing request not accepted");
+  expirySelected.clear();
+  toast(data.message||"Publishing request accepted. Follow website and Telegram evidence.");
+  await loadAvailabilityStatus(false);
+ }catch(e){toast(e.message);btn.disabled=false}
 }
 async function loadAvailabilityStatus(startPolling=true){
 const statusEl=document.getElementById('availabilityStatus');
@@ -518,7 +609,8 @@ document.getElementById('availabilityLastRun').textContent=formatAdminTime(run?.
 document.getElementById('availabilitySource').textContent=run?.source||'—';
 document.getElementById('availabilityCompleted').textContent=done?formatAdminTime(done.updatedAt||done.createdAt)+' · '+(done.conclusion||'completed'):'Never';
 document.getElementById('availabilityManual').textContent=formatAdminTime(d.trigger?.requestedAt);
-renderAvailabilityResults(d.results);
+await loadExpiryPublishingEvidence();
+ renderAvailabilityResults(d.results);
 const link=document.getElementById('availabilityRunLink');
 if(run?.url){link.href=run.url;link.classList.remove('hidden')}else link.classList.add('hidden');
 const btn=document.getElementById('runAvailabilityBtn');
@@ -558,8 +650,8 @@ if(!running||attempts>=30){clearInterval(availabilityPollTimer);availabilityPoll
 },4000);
 }
 async function resolveAvailabilityReview(jobId,action){
-const verb=action==='expire'?'mark this job expired and remove it from active listings':'keep this job active';
-if(action==='expire'&&!confirm('Are you sure you want to '+verb+'?'))return;
+const verb=action==='expire'?'mark this job expired':action==='unsure'?'leave as Unsure':'verify this job Live';
+if(!confirm('Confirm you want to '+verb+'? This will not send Telegram messages.'))return;
 const row=document.querySelector('[data-review-id="'+jobId+'"]');
 const buttons=row?[...row.querySelectorAll('button')]:[];
 buttons.forEach(b=>{b.disabled=true;b.classList.add('opacity-60')});
@@ -568,7 +660,7 @@ const r=await fetch('/api/admin/review',{method:'POST',headers:{'content-type':'
 const d=await r.json().catch(()=>({}));
 if(r.status===401){showLogin('Your admin session expired. Sign in again.');return}
 if(!r.ok)throw new Error(d.error||'Could not update this review item');
-renderAvailabilityResults(d.results);
+
 toast(d.message||'Review updated');
 await loadExistingJobs();
 setTimeout(()=>loadAvailabilityStatus(false),1200);

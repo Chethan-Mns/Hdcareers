@@ -1,0 +1,45 @@
+name: Review lifecycle and admin publishing safety tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'admin/index.html'
+      - 'admin/review-batch.html'
+      - 'api/admin/availability.js'
+      - 'api/admin/publish.js'
+      - 'api/admin/review.js'
+      - 'android-admin/**'
+      - 'tests/review-lifecycle-ui.test.mjs'
+      - '.github/workflows/review-lifecycle-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'admin/index.html'
+      - 'admin/review-batch.html'
+      - 'api/admin/availability.js'
+      - 'api/admin/publish.js'
+      - 'api/admin/review.js'
+      - 'tests/review-lifecycle-ui.test.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guarded-review-and-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse server-side publishing and review code
+        run: |
+          node --check api/admin/review.js
+          node --check api/admin/publish.js
+          node --check api/admin/availability.js
+      - name: Execute review and publishing regressions
+        run: |
+          node --test tests/review-lifecycle-ui.test.mjs tests/daily-review-api.test.mjs tests/review-rules.test.mjs

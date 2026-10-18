@@ -152,7 +152,7 @@ export default async function handler(req,res){
   const jobId=Number(req.body?.jobId);
   const action=String(req.body?.action||"");
   if(!Number.isFinite(jobId))return res.status(400).json({error:"A valid jobId is required."});
-  if(!["expire","keep"].includes(action))return res.status(400).json({error:"action must be expire or keep."});
+  if(!["expire","keep","unsure"].includes(action))return res.status(400).json({error:"action must be expire, keep or unsure."});
 
   const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
 
@@ -166,53 +166,47 @@ export default async function handler(req,res){
       if(!Array.isArray(reviewQueue))throw new Error("data/review-queue.json is not a JSON array.");
       if(!Array.isArray(summary.items))summary.items=[];
 
-      const pendingIndex=reviewQueue.findIndex(x=>Number(x.reviewId)===jobId&&x.state==="review");
+      const pendingIndex=reviewQueue.findIndex(x=>Number(x.reviewId)===jobId&&["review","ready"].includes(x.state));
       const now=new Date().toISOString();
 
       if(pendingIndex>=0){
         const pending=reviewQueue[pendingIndex];
-
-        if(action==="expire"){
-          reviewQueue.splice(pendingIndex,1);
-          await commitJsonFiles(
-            base,
-            headSha,
-            {[REVIEW_PATH]:reviewQueue},
-            "Reject review job: "+(pending.company||"Job")+" — "+(pending.role||"Opening"),
-            token
-          );
-          return res.status(200).json({
-            ok:true,
-            action,
-            jobId,
-            company:pending.company||pending.job?.company||"",
-            role:pending.role||pending.job?.role||"",
-            status:"rejected",
-            message:"Job rejected and removed from Needs Review. It was not published."
-          });
+        const official=String(pending.job?.apply||pending.url||"").trim();
+        if(action==="keep"){
+          if(!official.startsWith("https://")||!pending.job?.company||!pending.job?.role)
+            return res.status(422).json({error:"An official job link, employer and role are required before Live approval."});
+          if(jobs.some(j=>String(j.apply||"").trim().toLowerCase()===official.toLowerCase()))
+            return res.status(409).json({error:"This job already exists on HD Careers. Verify the published listing instead."});
+          pending.state="ready";
+          pending.reviewDecision="live";
+          pending.reviewedAt=now;
+          pending.job.status="active";
+          pending.job.manualLiveVerifiedAt=now;
+          pending.job.manualLiveVerifiedUrl=official;
+          pending.job.browserVerifiedAt=now;
+          pending.job.verifiedDate=today();
+        }else if(action==="expire"){
+          pending.state="rejected";
+          pending.reviewDecision="expired";
+          pending.reviewedAt=now;
+          if(pending.job)pending.job.status="expired";
+        }else{
+          pending.state="review";
+          pending.reviewDecision="unsure";
+          pending.reviewedAt=now;
+          if(pending.job){
+            pending.job.status="review";
+            delete pending.job.manualLiveVerifiedAt;
+            delete pending.job.manualLiveVerifiedUrl;
+          }
         }
-
-        const approved=prepareApprovedJob(pending.job,jobs,now);
-        reviewQueue.splice(pendingIndex,1);
-        await commitJsonFiles(
-          base,
-          headSha,
-          {
-            [JOBS_PATH]:[approved,...jobs],
-            [REVIEW_PATH]:reviewQueue,
-            [APPROVED_BATCH_PATH]:{approved:true,batchId:"admin-review-"+jobId+"-"+Date.now(),pages:[approved.page],approvedBy:"HD Careers Admin review"}
-          },
-          "Manual publish: "+(approved.company||"Job")+" — "+(approved.role||"Opening"),
-          token
-        );
+        await commitJsonFiles(base,headSha,{[REVIEW_PATH]:reviewQueue},
+          "Review new job: "+action+" — "+(pending.company||pending.job?.company||"Job"),token);
         return res.status(200).json({
-          ok:true,
-          action,
-          jobId:approved.id,
-          company:approved.company,
-          role:approved.role,
-          status:"active",
-          message:"Approved. The job has been moved back into the publishing flow."
+          ok:true,action,jobId,status:pending.state,
+          message:action==="keep"?"Verified Live and added to Publish Ready. No job has been published yet.":
+            action==="expire"?"Rejected and archived from the pending queue. Nothing was published.":
+            "Marked Unsure and retained for later verification. Nothing was published."
         });
       }
 
@@ -220,7 +214,19 @@ export default async function handler(req,res){
       if(!job)return res.status(404).json({error:"Review item not found."});
       const result=summary.items.find(x=>Number(x.id)===jobId);
 
-      if(action==="expire"){
+      if(action==="unsure"){
+        if(result){
+          result.state="review";
+          result.reason="Owner marked Unsure — official status still needs verification.";
+          result.checkedAt=now;
+          result.manualReview="unsure";
+          result.manualReviewedAt=now;
+        }
+        summary.checkedAt=now;
+        recompute(summary);
+        await commitJsonFiles(base,headSha,{[STATUS_PATH]:summary},
+          "Manual unsure: "+job.company+" — "+job.role,token);
+      }else if(action==="expire"){
         job.status="expired";
         job.verifiedDate=today();
         job.availabilityCheck={
@@ -276,9 +282,9 @@ export default async function handler(req,res){
         jobId,
         company:job.company,
         role:job.role,
-        status:action==="expire"?"expired":"active",
+        status:action==="expire"?"expired":action==="unsure"?"review":"active",
         results:summary,
-        message:action==="expire"?"Job marked expired. Site regeneration will follow automatically.":"Job manually verified active and removed from Needs Review."
+        message:action==="expire"?"Job marked expired. Site regeneration will follow automatically.":action==="unsure"?"Marked Unsure. This job remains pending; no status or website change.":"Job manually verified active and removed from Needs Review."
       });
     }catch(error){
       const status=Number(error&&error.status);

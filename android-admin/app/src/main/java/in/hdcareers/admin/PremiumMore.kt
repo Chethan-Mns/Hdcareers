@@ -277,10 +277,13 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
         (0 until (source?.length() ?: 0)).mapNotNull { source?.optJSONObject(it) }
             .filter { it.optString("state")=="review" }
     }
+    val ready=vm.readyExpiryReviews
+    val stages=vm.expiryStages
+    var confirmPublish by remember { mutableStateOf(false) }
     val state=rememberLazyListState()
     val ctx=LocalContext.current
     var confirmation by remember { mutableStateOf<Pair<Int,String>?>(null) }
-    LaunchedEffect(reviews.size,result?.optString("checkedAt")) {
+    LaunchedEffect(reviews.size,ready.size,result?.optString("checkedAt")) {
         state.scrollToItem(0)
     }
     LazyColumn(
@@ -305,7 +308,7 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                     Icons.Default.FactCheck,Brand.blue),
                 MetricSpec("Needs review",reviews.size.toString(),
                     Icons.Default.WarningAmber,Brand.amber),
-                MetricSpec("Active",(result?.optInt("active")?:0).toString(),
+                MetricSpec("Publish Ready",ready.size.toString(),
                     Icons.Default.CheckCircle,Brand.green),
                 MetricSpec("Expired",(result?.optInt("expired")?:0).toString(),
                     Icons.Default.Cancel,Brand.red)
@@ -379,7 +382,12 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                         shape=RoundedCornerShape(12.dp)) {
                         Icon(Icons.Default.Check,null,modifier=Modifier.size(16.dp))
                         Spacer(Modifier.width(6.dp))
-                        Text("Keep active — verified",maxLines=1)
+                        Text(if(j.optString("reviewType")=="new_job")"Live · add to Publish Ready" else "Live · keep listed",maxLines=1)
+                    }
+                    OutlinedButton(onClick={confirmation=jobId to "unsure"},
+                        enabled=jobId>=0&&!vm.busy,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)) {
+                        Icon(Icons.Default.HelpOutline,null,modifier=Modifier.size(16.dp))
+                        Spacer(Modifier.width(6.dp)); Text("Unsure · keep pending")
                     }
                     OutlinedButton(onClick={confirmation=jobId to "expire"},
                         enabled=jobId>=0&&!vm.busy,
@@ -392,15 +400,78 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                 }
             }
         }
+        item {
+            ProCard {
+                SectionHead(Icons.Default.RocketLaunch,"Publish Ready ("+ready.size+")",
+                    "New jobs manually verified Live · maximum ten, one employer each",Brand.green)
+                Text("Tap Live to verify first, then select new jobs here. No automatic publishing.",
+                    fontSize=12.sp,color=Brand.gray)
+                if(ready.isEmpty()) Text("No new verified Live jobs waiting to publish.",
+                    fontSize=12.sp,color=Brand.gray)
+                ready.forEach { job ->
+                    val id=job.optInt("id",-1)
+                    val stage=stages.firstOrNull{it.optInt("id")==id}
+                    val dispatched=stage?.optBoolean("dispatched")==true
+                    HorizontalDivider(color=Brand.outline)
+                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
+                        Checkbox(checked=id in vm.expirySelected,
+                            onCheckedChange={vm.selectExpiry(id,it)},enabled=!dispatched&&!vm.busy)
+                        Column(Modifier.weight(1f)) {
+                            Text(job.optString("company","Employer"),fontWeight=FontWeight.Bold,
+                                color=Brand.navy,fontSize=13.sp)
+                            Text(job.optString("role"),fontSize=11.sp,color=Brand.gray)
+                        }
+                        ProPill(if(dispatched)"SUBMITTED" else "LIVE",
+                            if(dispatched)Brand.blue else Brand.green)
+                    }
+                    if(dispatched)Text("Website: "+stage?.optString("website")+" · Telegram: "+
+                        stage?.optString("telegram"),fontSize=11.sp,color=Brand.gray)
+                    if(!dispatched) TextButton(onClick={confirmation=id to "unsure"}) {
+                        Text("Return to Unsure")
+                    }
+                }
+                Button(onClick={confirmPublish=true},enabled=vm.expirySelected.isNotEmpty()&&!vm.busy,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=50.dp)) {
+                    Icon(Icons.Default.Send,null)
+                    Spacer(Modifier.width(7.dp))
+                    Text("Publish "+vm.expirySelected.size+" selected Live job(s)")
+                }
+                Text("Previously published job pages are never re-published from expiry review.",
+                    color=Brand.gray,fontSize=11.sp)
+            }
+        }
+        val history=stages.filter { it.optBoolean("dispatched") }
+        if(history.isNotEmpty()) item {
+            ProCard {
+                SectionHead(Icons.Default.History,"Publishing history",
+                    "Website and Telegram evidence stays visible after clearing",Brand.violet)
+                history.take(15).forEach { h ->
+                    HorizontalDivider(color=Brand.outline)
+                    Text(h.optString("company")+" · "+h.optString("role"),
+                        fontWeight=FontWeight.Bold,fontSize=13.sp,color=Brand.navy)
+                    Text("Website: "+h.optString("website")+" · Telegram: "+h.optString("telegram"),
+                        fontSize=11.sp,color=Brand.gray)
+                    val url=h.optString("websiteUrl")
+                    if(url.startsWith("https://")) TextButton(onClick={
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(url)))
+                    }){Text("Open job page")}
+                }
+            }
+        }
     }
+    if(confirmPublish) AlertDialog(onDismissRequest={confirmPublish=false},
+        title={Text("Publish "+vm.expirySelected.size+" verified new jobs?")},
+        text={Text("Only verified Live new jobs will be sent to website deployment and hourly Telegram. Existing jobs will not be republished.")},
+        confirmButton={TextButton(onClick={confirmPublish=false;vm.publishExpirySelected()}){Text("Confirm Publish")}},
+        dismissButton={TextButton(onClick={confirmPublish=false}){Text("Cancel")}})
     confirmation?.let { (id,decision) ->
         AlertDialog(
             onDismissRequest={confirmation=null},
-            title={Text(if(decision=="expire")"Confirm job expired?" else "Confirm job is active?")},
-            text={Text("Only confirm after checking the official job URL. This updates production records.")},
+            title={Text(when(decision){"expire"->"Confirm job expired?";"unsure"->"Keep as Unsure?";else->"Confirm Live?"})},
+            text={Text("Live for new jobs means Publish Ready, not website publication. Unsure stays pending. Expired is archived and removed from active review.")},
             confirmButton={
                 TextButton(onClick={confirmation=null;vm.checkerResolve(id,decision)}) {
-                    Text(if(decision=="expire")"Mark expired" else "Keep active")
+                    Text(if(decision=="expire")"Mark expired" else if(decision=="unsure")"Keep Unsure" else "Confirm Live")
                 }
             },
             dismissButton={TextButton(onClick={confirmation=null}){Text("Cancel")}}
