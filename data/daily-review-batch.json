@@ -489,7 +489,7 @@
       "apply": "https://www.amazon.jobs/en/jobs/10580007/software-development-engineer-i",
       "cat": "it",
       "expYears": "1+ years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "review",
       "verificationReason": "Authoritative exact requisition and eligibility were found, but the exact page returned an internal error during final re-open; owner review required.",
       "postedDate": "2026-10-15",
@@ -503,7 +503,7 @@
         "expYears": "1+ years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Amazon Jobs",
         "desc": "Software engineering role contributing to design, development, testing, deployment and operation of production software.",
         "elig": "1+ years of non-internship professional software development experience and programming experience in at least one language; bachelor’s degree in computer science or equivalent preferred.",
@@ -522,7 +522,9 @@
         "date": "2026-10-15",
         "verifiedDate": "18 Oct 2026",
         "sourceVerificationMethod": "Authoritative exact requisition and eligibility were found, but the exact page returned an internal error during final re-open; owner review required."
-      }
+      },
+      "reviewedAt": "2026-10-18T05:49:27.807Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "aiprise-3763c791",
@@ -796,7 +798,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:49:20.559Z",
+  "updatedAt": "2026-10-18T05:49:27.807Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
