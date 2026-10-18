@@ -71,7 +71,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check official ATS requisitions read-only
-        run: python3 scripts/qa_ats_check.py /tmp/qa-ats-official-check.json
+        run: python3 scripts/qa_ats_check.py --batch data/testing/ats-platform-six-20261018.json --output /tmp/qa-ats-official-check.json
       - name: Upload verifier evidence separate from owner verdicts
         uses: actions/upload-artifact@v4
         with:
