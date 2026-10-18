@@ -294,7 +294,7 @@
       "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000135641599-in-bosch-rexroth-india-graduate-management-traninee-engineering-application",
       "cat": "internship",
       "expYears": "Graduate trainee; 12-month training",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Bosch Rexroth graduate-trainee page opened with role details, qualifications and public interest/application control.",
       "postedDate": null,
@@ -308,7 +308,7 @@
         "expYears": "Graduate trainee; 12-month training",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Bosch official SmartRecruiters",
         "desc": "A 12-month graduate management trainee program combining classroom and on-the-job training in hydraulics and industrial automation.",
         "elig": "BTech in Mechanical, Mechatronics or a relevant mechanical discipline with the academic thresholds stated by Bosch; mobility across India.",
@@ -327,8 +327,12 @@
         "jobId": "744000135641599",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Bosch Rexroth graduate-trainee page opened with role details, qualifications and public interest/application control."
-      }
+        "sourceVerificationMethod": "Exact Bosch Rexroth graduate-trainee page opened with role details, qualifications and public interest/application control.",
+        "manualLiveVerifiedAt": "2026-10-18T05:48:36.307Z",
+        "browserVerifiedAt": "2026-10-18T05:48:36.307Z"
+      },
+      "reviewedAt": "2026-10-18T05:48:36.307Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -784,7 +788,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:48:21.304Z",
+  "updatedAt": "2026-10-18T05:48:36.307Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
