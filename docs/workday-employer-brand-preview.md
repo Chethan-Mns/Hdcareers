@@ -7,6 +7,12 @@
 - [Independent Deutsche Bank careers portal](https://careers.db.com/professionals/).
 - [Company logo standards](https://uat.brandportal.db.com/our-visual-identity/Logo/index?language_id=1).
 
+## Visual preview — expected employer favicon
+
+![Deutsche Bank employer-careers favicon, never a Workday tenant favicon](https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fcareers.db.com%2F&sz=256)
+
+**Expected source:** careers.db.com (verified employer's own careers domain); if that icon is missing, fall back to db.com and then DB initials. This is a live remote favicon preview, not evidence that the employer job is currently hiring.
+
 ## Expected icon selection
 1. The verified job says company: Deutsche Bank.
 2. The curated company-logo-domains configuration maps Deutsche Bank to db.com, not db.wd3.myworkdayjobs.com.
