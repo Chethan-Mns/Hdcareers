@@ -40,8 +40,14 @@ jobs:
         run: node scripts/recover_daily_review_content.mjs data/daily-review-batch.json --apply
       - name: Source-backed content preflight
         run: python3 scripts/preflight_review_content.py data/daily-review-batch.json --output /tmp/content-readiness.json
+      - name: Install read-only Oracle browser verification
+        run: |
+          python3 -m pip install "playwright==1.58.0"
+          python3 -m playwright install --with-deps chromium
       - name: High-confidence exact-source Live checks before owner review
         timeout-minutes: 10
+        env:
+          HD_CAREERS_ENABLE_ORACLE_BROWSER: '1'
         run: python3 scripts/preflight_live_shortlist.py data/daily-review-batch.json --apply --report /tmp/high-confidence-live-evidence.json
       - name: Retain held Workday/ATS source evidence
         if: always()
