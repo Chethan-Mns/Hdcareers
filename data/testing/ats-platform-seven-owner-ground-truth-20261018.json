@@ -1,0 +1,121 @@
+{
+  "batchId": "ats-seven-sources-2026-10-18",
+  "recordedDate": "2026-10-18",
+  "type": "QA_OFFLINE_NO_PUBLICATION",
+  "source": "Owner manual review submitted in ChatGPT after using existing HD Careers Admin v1.3.4-test seven-source QA inbox",
+  "checkerEvidence": {
+    "source": "read-only ATS Seven Oracle Browser and SAP Careers Accuracy QA",
+    "workflowRun": "https://github.com/Chethan-Mns/Hdcareers/actions/runs/39135796431",
+    "checkedAt": "2026-10-18T14:24:28.361001+00:00",
+    "freshnessNote": "Automated observations are a point-in-time snapshot, not permanent current availability"
+  },
+  "jobs": [
+    {
+      "id": "greenhouse-superapp",
+      "provider": "Greenhouse",
+      "company": "SuperApp",
+      "role": "Software Engineer, Backend (Early Careers)",
+      "officialUrl": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
+      "manualVerdict": "live",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "active",
+      "checkerVerifiedLive": true,
+      "checkerReason": "Greenhouse public posting inventory contains the exact published job"
+    },
+    {
+      "id": "workday-airbus",
+      "provider": "Workday",
+      "company": "Airbus",
+      "role": "Internship – Configuration & PLM Integration Services",
+      "officialUrl": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Bangalore-Area/Internship-Configuration---PLM-Integration--services_JR10448743",
+      "manualVerdict": "expired",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "review",
+      "checkerVerifiedLive": false,
+      "checkerReason": "Official page loaded but role/application evidence was insufficient"
+    },
+    {
+      "id": "oracle-jpmc",
+      "provider": "Oracle",
+      "company": "JPMorganChase",
+      "role": "Disclosure of Interest Analyst",
+      "officialUrl": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/job/210794554",
+      "manualVerdict": "live",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "active",
+      "checkerVerifiedLive": true,
+      "checkerReason": "Oracle rendered exact requisition confirms ID, role heading and enabled Apply control"
+    },
+    {
+      "id": "smartrecruiters-hrroll",
+      "provider": "SmartRecruiters",
+      "company": "HrRoll",
+      "role": "Intern for Programming",
+      "officialUrl": "https://jobs.smartrecruiters.com/HrRoll/96220260-intern-for-programming",
+      "manualVerdict": "live",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "active",
+      "checkerVerifiedLive": true,
+      "checkerReason": "SmartRecruiters public posting inventory contains the exact published job"
+    },
+    {
+      "id": "lever-ahead",
+      "provider": "Lever",
+      "company": "AHEAD",
+      "role": "MS – EUS Apprentice/Intern (6 months)",
+      "officialUrl": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "manualVerdict": "live",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "active",
+      "checkerVerifiedLive": true,
+      "checkerReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)"
+    },
+    {
+      "id": "ashby-almabase",
+      "provider": "Ashby",
+      "company": "Almabase",
+      "role": "Software Engineer",
+      "officialUrl": "https://jobs.ashbyhq.com/almabase/71f033a9-4183-4df9-900f-1fb354267618/",
+      "manualVerdict": "expired",
+      "selectedForQaPublish": false,
+      "checkerObservedState": "review",
+      "checkerVerifiedLive": false,
+      "checkerReason": "Official page loaded but role/application evidence was insufficient"
+    },
+    {
+      "id": "successfactors-siaec",
+      "provider": "SAP SuccessFactors (SIA Engineering)",
+      "company": "SIA Engineering Company",
+      "role": "Aircraft Maintenance License Trainee (AMLT)",
+      "officialUrl": "https://careers.singaporeair.com/siaec/job/Aircraft-Maintenance-License-Trainee-%28AMLT%29/19970444/",
+      "manualVerdict": "live",
+      "selectedForQaPublish": true,
+      "checkerObservedState": "active",
+      "checkerVerifiedLive": true,
+      "checkerReason": "Browser-compatible official-page render is active (SAP SuccessFactors official exact career page confirms requisition title and Apply now)"
+    }
+  ],
+  "metrics": {
+    "reviewed": 7,
+    "manualLive": 5,
+    "manualExpired": 2,
+    "checkerVerifiedLive": 5,
+    "truePositiveLive": 5,
+    "falsePositiveLive": 0,
+    "falseNegativeLive": 0,
+    "expiredHeldSafely": 2,
+    "livePrecision": 1,
+    "liveRecall": 1,
+    "sampleSizeWarning": "7 examples; not a production or statistical guarantee"
+  },
+  "productionPublishAuthorized": false,
+  "publicationSideEffects": {
+    "website": false,
+    "telegram": false,
+    "realJobStatuses": false
+  },
+  "eligibilityCaveats": [
+    "JPMorganChase is experienced-only, not fresher-eligible despite Live",
+    "SIA Engineering Singapore trainee role is a QA fixture, not an India fresher recommendation"
+  ]
+}

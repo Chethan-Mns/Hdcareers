@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 JOBS_PATH = ROOT / "data" / "jobs.json"
 DOMAIN_PATH = ROOT / "data" / "company-logo-domains.json"
 DIRECT_PATH = ROOT / "data" / "company-logo-direct.json"
+CAREERS_PATH = ROOT / "data" / "company-careers-portals.json"
 QUALITY_FALLBACK_PATH = ROOT / "data" / "company-logo-quality-fallbacks.json"
 MANIFEST_PATH = ROOT / "data" / "company-logos.json"
 ASSET_DIR = ROOT / "assets" / "company-icons"
@@ -162,12 +163,28 @@ def slugify(company: str) -> str:
     return f"{base}-{digest}"
 
 
-def candidate_urls(domain: str, direct_url: str = "") -> list[tuple[int, str, str]]:
+def candidate_urls(domain: str, direct_url: str = "", careers_url: str = "") -> list[tuple[int, str, str]]:
     base = f"https://{domain}/"
     candidates: list[tuple[int, str, str]] = []
 
     if direct_url:
         candidates.append((700, direct_url, "official high-resolution logo override"))
+    if careers_url:
+        careers_host = host_of(careers_url)
+        if (careers_host == domain or careers_host.endswith("." + domain)) and not is_generic(careers_host):
+            try:
+                html_body, ct, final = fetch(careers_url, MAX_HTML)
+                if "text/html" in ct or html_body.lstrip().lower().startswith((b"<!doctype",b"<html")):
+                    parser = IconParser()
+                    parser.feed(html_body.decode("utf-8", errors="replace"))
+                    for score, href, rel in parser.icons:
+                        icon_url = urljoin(final, href)
+                        icon_host = host_of(icon_url)
+                        if icon_host == domain or icon_host.endswith("." + domain):
+                            candidates.append((score + 250, icon_url, "employer careers favicon: " + rel))
+            except Exception:
+                # Corporate favicon still outranks any unverified ATS tenant logo.
+                pass
 
     try:
         html_body, content_type, final_url = fetch(base, MAX_HTML)
@@ -312,12 +329,12 @@ def evaluate_local_vector(path_value: str):
     return 1450, body, ".svg", path.as_posix(), "curated crisp vector fallback", None
 
 
-def resolve_icon(company: str, domain: str, direct_url: str = "", local_vector: str = ""):
+def resolve_icon(company: str, domain: str, direct_url: str = "", local_vector: str = "", careers_url: str = ""):
     local = evaluate_local_vector(local_vector)
     if local:
         return local
 
-    for base_score, url, label in candidate_urls(domain, direct_url):
+    for base_score, url, label in candidate_urls(domain, direct_url, careers_url):
         result = evaluate_remote_candidate(base_score, url, label)
         if result:
             return result
@@ -344,6 +361,7 @@ def main() -> None:
     approved = {str(k).casefold(): str(v) for k, v in load_json(ROOT / "data" / "approved-company-logos.json", {}).items()}
     overrides = load_json(DOMAIN_PATH, {})
     direct_assets = load_json(DIRECT_PATH, {})
+    careers_portals = load_json(CAREERS_PATH, {})
     quality_fallbacks = load_json(QUALITY_FALLBACK_PATH, {})
     manifest = load_json(MANIFEST_PATH, {})
     if not isinstance(manifest, dict):
@@ -387,6 +405,7 @@ def main() -> None:
             domain,
             direct_url,
             local_vector,
+            str(careers_portals.get(company, "") or sample.get("careersUrl") or ""),
         )
         if result:
             return company, domain, ("resolved", result, cached), ""

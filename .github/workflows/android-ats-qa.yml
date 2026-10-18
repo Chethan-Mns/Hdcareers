@@ -1,0 +1,80 @@
+name: HD Careers ATS Six-Platform QA APK (isolated)
+
+on:
+  push:
+    branches:
+      - dev/verification-precision-expiry-branding-20261018
+    paths:
+      - 'android-admin/**'
+      - 'data/testing/ats-platform-six-20261018.json'
+      - 'scripts/qa_ats_check.py'
+      - '.github/workflows/android-ats-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Install Android SDK
+        run: |
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
+      - name: Verify QA source URLs match embedded assets
+        run: |
+          python3 - <<'PY'
+          import json
+          a=json.load(open("data/testing/ats-platform-six-20261018.json"))
+          b=json.load(open("android-admin/app/src/qa/assets/ats-platform-six.json"))
+          assert a==b and len(a["jobs"])==6
+          assert a["mode"]=="qa-isolated-no-production-publishing"
+          for j in a["jobs"]:
+              assert j["url"].startswith("https://")
+              assert not j["brandDomain"].endswith(("myworkdayjobs.com","greenhouse.io","smartrecruiters.com","oraclecloud.com","lever.co","ashbyhq.com"))
+          print("QA batch, employer branding and source URLs verified.")
+          PY
+      - name: Build isolated QA Android app (different app ID, no production API)
+        working-directory: android-admin
+        run: gradle --no-daemon :app:assembleQa :app:testQaUnitTest --stacktrace
+      - name: Verify QA APK package and cryptographic signing
+        run: |
+          APK=android-admin/app/build/outputs/apk/qa/app-qa.apk
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -n 2
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -F "package: name='in.hdcareers.admin.qa'"
+      - name: Publish QA APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HD-Careers-Six-ATS-QA-Android-Installable
+          path: android-admin/app/build/outputs/apk/qa/app-qa.apk
+          retention-days: 14
+
+  check-official-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check official ATS requisitions read-only
+        run: python3 scripts/qa_ats_check.py --batch data/testing/ats-platform-six-20261018.json --output /tmp/qa-ats-official-check.json
+      - name: Upload verifier evidence separate from owner verdicts
+        uses: actions/upload-artifact@v4
+        with:
+          name: HD-Careers-Six-ATS-Live-Verification-Report
+          path: /tmp/qa-ats-official-check.json
+          retention-days: 14

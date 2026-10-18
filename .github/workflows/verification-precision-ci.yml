@@ -1,0 +1,45 @@
+name: Verified Live precision, safe expiry and company branding tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/check_job_availability.py'
+      - 'scripts/preflight_live_shortlist.py'
+      - 'scripts/resolve_company_logos.py'
+      - 'generate.py'
+      - 'data/company-logo-domains.json'
+      - 'data/company-careers-portals.json'
+      - 'tests/test_verification_precision.py'
+      - '.github/workflows/verification-precision-ci.yml'
+      - '.github/workflows/rank-daily-review-batch.yml'
+      - '.github/workflows/android-review-notify.yml'
+      - '.github/workflows/job-availability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  precision-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install only logo resolver test dependency
+        run: python3 -m pip install pillow
+      - name: Compile checker, shortlist gate and brand resolver
+        run: python3 -m py_compile scripts/check_job_availability.py scripts/preflight_live_shortlist.py scripts/resolve_company_logos.py generate.py
+      - name: Run Workday, two-scan expiry and employer-logo regressions
+        run: |
+          python3 -m unittest discover -s tests -p test_verification_precision.py -v
+          python3 -m unittest discover -s tests -p test_job_availability.py -v
+      - name: Confirm live owner-reviewed batch is not modified by preflight dry run
+        run: python3 scripts/preflight_live_shortlist.py data/daily-review-batch.json --report /tmp/live-evidence-dry-run.json
+      - name: Validate source paths and existing company branding
+        run: |
+          python3 generate.py --dry-run
+          git diff --exit-code -- data/daily-review-batch.json data/jobs.json

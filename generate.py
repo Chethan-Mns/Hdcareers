@@ -107,6 +107,9 @@ LOGO_DOMAINS = {
     "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
 
+WORKDAY_EMPLOYER_DOMAINS = json.loads((ROOT / "data" / "company-logo-domains.json").read_text(encoding="utf-8"))
+EMPLOYER_CAREERS_PORTALS = json.loads((ROOT / "data" / "company-careers-portals.json").read_text(encoding="utf-8"))
+
 GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com")
 TRUSTED_STANDALONE_CAREER_HOSTS = ("amazon.jobs",)
 
@@ -575,7 +578,8 @@ def _host(value: str) -> str:
 def _company_logo_domain(job: dict) -> str:
     company = str(job.get("company", ""))
     fallback = str(job.get("domain", ""))
-    return _host(LOGO_DOMAINS.get(company, fallback))
+    domain = _host(LOGO_DOMAINS.get(company, "") or (WORKDAY_EMPLOYER_DOMAINS.get(company, "") if _is_generic_recruiting_host(fallback) else "") or job.get("companyWebsite") or job.get("careersUrl") or fallback)
+    return "" if _is_generic_recruiting_host(domain) else domain
 
 
 def _is_generic_recruiting_host(host: str) -> bool:
@@ -612,8 +616,22 @@ def career_domain_favicon(job: dict) -> str:
     return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
 
 
+def trusted_employer_careers_favicon(job: dict) -> str:
+    portal = str(EMPLOYER_CAREERS_PORTALS.get(str(job.get("company", "")), "")).strip()
+    host = _host(portal)
+    company_host = _company_logo_domain(job)
+    if not portal.startswith("https://") or not company_host or _is_generic_recruiting_host(host):
+        return ""
+    if host != company_host and not host.endswith("." + company_host):
+        return ""
+    encoded = urllib.parse.quote(portal, safe="")
+    return f"https://www.google.com/s2/favicons?domain_url={encoded}&sz=256"
+
+
 def logo_sources(company: str, domain: str) -> tuple[str, str]:
-    selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
+    selected = _company_logo_domain({"company":company, "domain":domain})
+    if not selected:
+        return "", ""
     google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=256"
     duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
     return google, duck
@@ -645,11 +663,15 @@ def logo_candidates(job: dict) -> list[str]:
         ordered.append(direct)
     if career:
         ordered.append(career)
-    ordered.append(google)
+    employer_careers = trusted_employer_careers_favicon(job)
+    if employer_careers:
+        ordered.append(employer_careers)
+    if google:
+        ordered.append(google)
     career_domain = career_domain_favicon(job)
     if career_domain:
         ordered.append(career_domain)
-    if full.startswith("https://"):
+    if full.startswith("https://") and not _is_generic_recruiting_host(_host(full)):
         ordered.append(full)
     if local:
         ordered.append(f"../assets/logos/{local}")

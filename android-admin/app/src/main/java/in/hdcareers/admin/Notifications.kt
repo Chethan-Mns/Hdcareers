@@ -34,6 +34,7 @@ const val EXPIRY_CHANNEL="hd_expiry_updates"
 class HDApplication:Application() {
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.BUILD_TYPE == "qa") return // No production Firebase tokens, reminders or remote admin operations in QA
         val manager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(NotificationChannel(REVIEW_CHANNEL,"Job batches and publishing",NotificationManager.IMPORTANCE_HIGH))
         manager.createNotificationChannel(NotificationChannel(REMINDER_CHANNEL,"Daily pending reviews",NotificationManager.IMPORTANCE_DEFAULT))

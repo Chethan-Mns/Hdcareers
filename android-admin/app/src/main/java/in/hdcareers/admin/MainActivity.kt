@@ -21,7 +21,10 @@ class MainActivity:FragmentActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.getInsetsController(window,window.decorView).isAppearanceLightStatusBars = true
         setContent {
-            vm=viewModel()
+            if (BuildConfig.BUILD_TYPE == "qa") {
+                AtsPlatformQaScreen()
+            } else {
+                vm=viewModel()
             if((intent?.getBooleanExtra("open_expiry",false)==true||intent?.getStringExtra("openExpiry")=="1")) vm.tab=2
             else if((intent?.getBooleanExtra("open_review",false)==true||intent?.getStringExtra("openReview")=="1")) vm.tab=1
             PremiumAdminRoot(vm,
@@ -30,6 +33,7 @@ class MainActivity:FragmentActivity() {
                 onRequestNotificationPermission={
                     requestNotificationPermission()
                 })
+            }
         }
     }
     override fun onNewIntent(intent:Intent) {

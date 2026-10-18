@@ -1,0 +1,63 @@
+name: QA ATS Six Source Accuracy Recheck - Read Only
+
+on:
+  push:
+    branches:
+      - dev/verification-precision-expiry-branding-20261018
+    paths:
+      - 'scripts/check_job_availability.py'
+      - 'scripts/qa_ats_check.py'
+      - 'data/testing/ats-platform-six-owner-ground-truth-20261018.json'
+      - 'tests/test_verification_precision.py'
+      - '.github/workflows/ats-six-readonly-recheck.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-url-live-recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run read-only official source checks
+        run: python3 scripts/qa_ats_check.py --batch data/testing/ats-platform-six-20261018.json --output /tmp/qa-ats-six-checker-now.json
+      - name: Compare saved owner verdicts without overriding them
+        run: |
+          python3 - <<'PY'
+          import json
+          truth=json.load(open("data/testing/ats-platform-six-owner-ground-truth-20261018.json"))
+          report=json.load(open("/tmp/qa-ats-six-checker-now.json"))
+          owners={x["id"]:x for x in truth["jobs"]}
+          assert len(report["jobs"])==len(owners)==6
+          confusion={"trueLive":0,"falseLive":0,"missedLive":0,"expiredHeldSafely":0}
+          for j in report["jobs"]:
+              manual=owners[j["id"]]["manualVerdict"]
+              auto=bool(j["verifiedLive"])
+              if auto and manual=="live": confusion["trueLive"]+=1
+              if auto and manual!="live": confusion["falseLive"]+=1
+              if not auto and manual=="live": confusion["missedLive"]+=1
+              if not auto and manual=="expired": confusion["expiredHeldSafely"]+=1
+              print(j["provider"],j["company"],"owner=",manual,"checker=",j["observedState"],"verifiedLive=",auto)
+          assert confusion["falseLive"]==0, "False Live: fail the accuracy gate"
+          assert sum(confusion.values())==6
+          print("Precision baseline / new evaluation:",json.dumps(confusion))
+          with open("/tmp/qa-ats-six-comparison.json","w") as out:
+              json.dump({"batchId":report["batchId"],"scannedAt":report["scannedAt"],
+                         "comparison":confusion,"source":"offline saved owner decisions",
+                         "publishAuthorized":False},out,indent=2)
+          PY
+      - name: Assert no publication data mutations
+        run: |
+          git diff --exit-code -- data/jobs.json data/telegram-hourly-queue.json data/telegram-deliveries.json data/daily-review-batch.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ats-six-qa-after-real-owner-decisions
+          path: |
+            /tmp/qa-ats-six-checker-now.json
+            /tmp/qa-ats-six-comparison.json
+          retention-days: 14
