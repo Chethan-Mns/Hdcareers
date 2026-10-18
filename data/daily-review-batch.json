@@ -630,7 +630,7 @@
       "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
       "cat": "nonit",
       "expYears": "Fresh graduate apprenticeship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "review",
       "verificationReason": "Exact employer Workday requisition is known, but the page renders as a blank shell and current eligibility/application state cannot be positively confirmed.",
       "postedDate": null,
@@ -644,7 +644,7 @@
         "expYears": "Fresh graduate apprenticeship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deutsche Bank official Workday",
         "desc": "Non-technology apprenticeship opportunity for fresh graduates in Mumbai; full responsibilities require confirmation from the official Workday page.",
         "elig": "Fresh graduates; detailed degree requirements are Not Specified in accessible evidence.",
@@ -661,7 +661,9 @@
         "jobId": "R0357981",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact employer Workday requisition is known, but the page renders as a blank shell and current eligibility/application state cannot be positively confirmed."
+        "sourceVerificationMethod": "Exact employer Workday requisition is known, but the page renders as a blank shell and current eligibility/application state cannot be positively confirmed.",
+        "manualLiveVerifiedAt": "2026-10-18T05:50:18.371Z",
+        "browserVerifiedAt": "2026-10-18T05:50:18.371Z"
       },
       "sourceEnrichment": {
         "fields": [
@@ -670,7 +672,9 @@
         "url": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
         "source": "structured",
         "evidenceVerifiedAt": "2026-10-18T03:35:50.088Z"
-      }
+      },
+      "reviewedAt": "2026-10-18T05:50:18.371Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "merklescience-e663b69b",
@@ -808,7 +812,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:50:08.280Z",
+  "updatedAt": "2026-10-18T05:50:18.372Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
