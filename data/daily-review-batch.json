@@ -344,7 +344,7 @@
       "apply": "https://jobs.cisco.com/jobs/ProjectDetail?do=redirectRegister&projectId=1443859",
       "cat": "it",
       "expYears": "New graduate; 2026 graduating students",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "unsure",
       "verificationVerdict": "review",
       "verificationReason": "Provider-native Cisco record shows the exact New Grad requisition and Apply, but the exact route errored on final re-open; kept REVIEW, not Live.",
       "postedDate": null,
@@ -377,7 +377,9 @@
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
         "sourceVerificationMethod": "Provider-native Cisco record shows the exact New Grad requisition and Apply, but the exact route errored on final re-open; kept REVIEW, not Live."
-      }
+      },
+      "reviewedAt": "2026-10-18T05:48:56.850Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "mastercard-r-293576",
@@ -788,7 +790,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:48:36.307Z",
+  "updatedAt": "2026-10-18T05:48:56.850Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
