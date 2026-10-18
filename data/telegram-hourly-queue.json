@@ -85,9 +85,11 @@
     {
       "page": "jobs/deutsche-bank-apprentice-non-technology.html",
       "batchId": "admin-39101979018",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-18T05:51:39.240368+00:00",
-      "dueAt": "2026-10-18T11:44:59.942085+00:00"
+      "dueAt": "2026-10-18T11:44:59.942085+00:00",
+      "claimId": "39124486986",
+      "claimedAt": "2026-10-18T11:45:13.201565+00:00"
     },
     {
       "page": "jobs/ey-analyst-tech-consulting-sap.html",
