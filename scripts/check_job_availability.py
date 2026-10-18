@@ -11,7 +11,7 @@ import socket
 import subprocess
 import time
 from urllib.error import HTTPError
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, quote
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -107,6 +107,18 @@ def official_inventory_probe(job):
             expected_id = m.group(1) if m else parts[1]
             endpoint = f'https://api.smartrecruiters.com/v1/companies/{company}/postings/{expected_id}'
             provider = 'SmartRecruiters'
+        elif re.fullmatch(r'[a-z0-9-]+\.wd\d+\.myworkdayjobs\.com', host) and 'job' in parts:
+            # Public Workday Candidate Experience exact-posting endpoint. A Workday
+            # HTML shell, generic Apply text or missing posting never proves Live.
+            site_i = next((i for i, part in enumerate(parts) if part.lower() == 'job'), -1)
+            if site_i < 2 or site_i + 1 >= len(parts):
+                return 'review', 'Workday URL lacks an exact site and job route'
+            tenant = host.split('.')[0]
+            site = parts[site_i - 1]
+            route = '/'.join(quote(x, safe='-_.~') for x in parts[site_i + 1:])
+            endpoint = f'https://{host}/wday/cxs/{tenant}/{quote(site, safe="-_.~")}/job/{route}'
+            provider = 'Workday'
+            expected_id = parts[-1].rsplit('_', 1)[-1]
         elif host == 'jobs.ashbyhq.com' and len(parts) >= 2:
             board, expected_id = parts[0], parts[1]
             endpoint = f'https://api.ashbyhq.com/posting-api/job-board/{board}'
@@ -115,6 +127,24 @@ def official_inventory_probe(job):
             return None
 
         data = fetch_json(endpoint)
+        if provider == 'Workday':
+            info = data.get('jobPostingInfo') if isinstance(data, dict) else None
+            if not isinstance(info, dict):
+                return 'review', 'Workday exact posting API returned no jobPostingInfo'
+            actual = str(info.get('jobReqId') or info.get('requisitionId') or '')
+            # _R4043087-1 may be an URL suffix while the official jobReqId is R4043087.
+            if not actual or not (expected_id.casefold() == actual.casefold()
+                or expected_id.casefold().startswith(actual.casefold() + '-')):
+                return 'review', 'Workday requisition ID did not match exact URL'
+            if info.get('isClosed') is True or info.get('canApply') is False or info.get('isActive') is False:
+                return 'expired', 'Workday exact posting API explicitly marks the requisition closed'
+            can_apply = (info.get('canApply') is True or info.get('isActive') is True
+                         or isinstance(info.get('applyUrl'), str) and bool(info.get('applyUrl')))
+            if not can_apply:
+                return 'review', 'Workday exact requisition found without explicit active application evidence'
+            if not str(info.get('title') or '').strip():
+                return 'review', 'Workday exact requisition lacks a job title'
+            return 'active', 'Workday public exact posting inventory confirms requisition and active application'
         if provider == 'Ashby':
             jobs = data.get('jobs', []) if isinstance(data, dict) else []
             needle = expected_id.casefold()
@@ -289,6 +319,57 @@ def check(job, now=None):
             state, reason = 'review', f'Check incomplete ({type(exc).__name__})'
     return dict(result, state=state, reason=reason)
 
+
+def has_high_confidence_live(job, result):
+    """Qualification for owner shortlist: fresh, exact, positive employer evidence."""
+    if result.get('state') != 'active':
+        return False
+    reason = str(result.get('reason') or '')
+    host = (urlsplit(str(job.get('apply') or '')).hostname or '').lower()
+    if '.myworkdayjobs.com' in host or '.myworkdaysite.com' in host:
+        return reason.startswith('Workday public exact posting inventory confirms ')
+    if 'manual confirmation overrides' in reason or 'override' in reason.lower():
+        return False
+    return ('public posting inventory contains the exact published job' in reason
+            or reason.startswith('Browser-compatible official-page render is active (Exact role and application call-to-action')
+            or reason.startswith('Browser-compatible official-page render is active (Verification terms and registration/submit control'))
+
+
+def expiry_decision(job, observed, previous=None, now=None):
+    """Return final state plus auditable evidence; never close on a single ambiguous crawl."""
+    now = now or datetime.now(timezone.utc)
+    result = dict(observed)
+    result['observedState'] = observed.get('state')
+    if observed.get('state') != 'expired':
+        return result
+    reason = str(observed.get('reason') or '')
+    definitive = (
+        reason == 'Official closingAt deadline passed'
+        or reason == 'Official JobPosting structured-data deadline has passed'
+        or ('public posting inventory marks the exact job inactive' in reason)
+        or reason == 'Workday exact posting API explicitly marks the requisition closed'
+    )
+    if definitive:
+        result['expiryEvidence'] = 'authoritative'
+        return result
+    prior = previous or {}
+    try:
+        prior_at = datetime.fromisoformat(str(prior.get('checkedAt', '')).replace('Z', '+00:00'))
+        if prior_at.tzinfo is None: prior_at = prior_at.replace(tzinfo=timezone.utc)
+        separation = now - prior_at
+        same = (prior.get('url') == job.get('apply') and
+                prior.get('observedState', prior.get('state')) == 'expired' and
+                timedelta(hours=6) <= separation <= timedelta(hours=36))
+    except (TypeError, ValueError):
+        same = False
+    if same:
+        result['expiryEvidence'] = 'independent-consecutive-scans'
+        return result
+    result['state'] = 'review'
+    result['expiryEvidence'] = 'first_observation_unconfirmed'
+    result['reason'] = f"Possible closure requires an independent second scan or owner review ({reason})"
+    return result
+
 def require_active(job):
     if job.get('status') != 'active': raise SystemExit('Publication blocked: job is not active')
     result = check(job)
@@ -373,13 +454,21 @@ def main():
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
-    results = []; changed = False
+    status_path = ROOT / 'data' / 'availability-status.json'
+    try:
+        previous_status = json.loads(status_path.read_text()) if status_path.exists() else {}
+    except (ValueError, OSError):
+        previous_status = {}
+    previous_by_id = {x.get('id'): x for x in previous_status.get('items', [])
+                      if isinstance(x, dict)}
+    results = []; changed = False; changed_expired = 0
     for job in selected:
-        result = check(job); results.append(result)
+        result = expiry_decision(job, check(job), previous_by_id.get(job.get('id'))) if args.write else check(job)
+        results.append(result)
         print(f"{job['id']}: {result['state']} — {result['reason']}")
         if args.write and result['state'] == 'expired':
             job['status'] = 'expired'; job['availabilityCheck'] = result
-            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True; changed_expired += 1
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
     if args.write:
@@ -396,6 +485,8 @@ def main():
                 'url': result.get('url', ''),
                 'state': result.get('state', 'review'),
                 'reason': result.get('reason', ''),
+                'observedState': result.get('observedState', result.get('state')),
+                'expiryEvidence': result.get('expiryEvidence', ''),
                 'checkedAt': result.get('checkedAt', checked_at),
             })
         states = [x.get('state') for x in details]
@@ -405,7 +496,7 @@ def main():
             'active': states.count('active'),
             'expired': states.count('expired'),
             'review': states.count('review'),
-            'changedExpired': states.count('expired'),
+            'changedExpired': changed_expired,
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'
