@@ -772,7 +772,7 @@
       "apply": "https://job-boards.greenhouse.io/hackerrank/jobs/8229735?gh_src=514fhkze1us",
       "cat": "internship",
       "expYears": "Six-month internship starting 5 Jan 2027",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact HackerRank Greenhouse application is live and bound to this role; the form confirms a full-time six-month Bengaluru internship starting 5 January 2027.",
       "postedDate": null,
@@ -786,7 +786,7 @@
         "expYears": "Six-month internship starting 5 Jan 2027",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "HackerRank official Greenhouse",
         "desc": "Software Development Engineer internship based in Bengaluru for a full-time six-month period starting 5 January 2027.",
         "elig": "Must be available for the full six-month internship and able to work from the Bengaluru office; other requirements must be confirmed from the official page.",
@@ -798,11 +798,15 @@
         "jobId": "8229735",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact HackerRank Greenhouse application is live and bound to this role; the form confirms a full-time six-month Bengaluru internship starting 5 January 2027."
-      }
+        "sourceVerificationMethod": "Exact HackerRank Greenhouse application is live and bound to this role; the form confirms a full-time six-month Bengaluru internship starting 5 January 2027.",
+        "manualLiveVerifiedAt": "2026-10-18T05:49:52.400Z",
+        "browserVerifiedAt": "2026-10-18T05:49:52.400Z"
+      },
+      "reviewedAt": "2026-10-18T05:49:52.400Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:49:37.892Z",
+  "updatedAt": "2026-10-18T05:49:52.400Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
