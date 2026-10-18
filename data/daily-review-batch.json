@@ -59,7 +59,7 @@
       "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-Tech-Consulting-National-CNS-TC-SAP-Mumbai-MH-400028/1447861633/",
       "cat": "it",
       "expYears": "0+ years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1745766 opened with Apply Now, qualifications and 0+ years experience.",
       "postedDate": "2026-10-15",
@@ -73,7 +73,7 @@
         "expYears": "0+ years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "EY official careers",
         "desc": "Technology Consulting analyst role supporting SAP Ariba, CIG and related application support or implementation work.",
         "elig": "MBA, MS, BSc, MSc, BE or BTech; project implementation, AMS or corporate experience from 0+ years.",
@@ -92,8 +92,12 @@
         "jobId": "1745766",
         "date": "2026-10-15",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact EY requisition 1745766 opened with Apply Now, qualifications and 0+ years experience."
-      }
+        "sourceVerificationMethod": "Exact EY requisition 1745766 opened with Apply Now, qualifications and 0+ years experience.",
+        "manualLiveVerifiedAt": "2026-10-18T05:47:41.927Z",
+        "browserVerifiedAt": "2026-10-18T05:47:41.927Z"
+      },
+      "reviewedAt": "2026-10-18T05:47:41.927Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hcltech-142115",
@@ -774,7 +778,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-18T05:47:31.911Z",
+  "updatedAt": "2026-10-18T05:47:41.927Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
