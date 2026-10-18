@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only official-source comparison of the six ATS QA candidates."""
+"""Read-only official-source comparison of ATS QA candidates."""
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,7 +8,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from check_job_availability import check, has_high_confidence_live
 
 ROOT=Path(__file__).resolve().parents[1]
-BATCH=ROOT/"data/testing/ats-platform-six-20261018.json"
+BATCH=ROOT/"data/testing/ats-platform-seven-20261018.json"
 
 def verify(batch,fn=check):
     results=[]
@@ -35,7 +35,7 @@ def verify(batch,fn=check):
 
 if __name__=="__main__":
     report=verify(json.loads(BATCH.read_text(encoding="utf-8")))
-    destination=ROOT/"data/testing/ats-platform-six-checker-results.json"
+    destination=ROOT/"data/testing/ats-platform-seven-checker-results.json"
     if len(sys.argv)>1:destination=Path(sys.argv[1])
     destination.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     for j in report["jobs"]:
