@@ -55,14 +55,25 @@ class PrecisionTests(unittest.TestCase):
     ("<h1>Other role</h1><p>Requisition ID: 458688</p><a href='/apply'>Apply now</a>",sap["apply"]),
   ]:
    self.assertEqual(successfactors_exact_page(sap,content,final)[0],"review")
+ def test_employer_hosted_sap_successfactors_trainee_page(self):
+  job={"company":"SIA Engineering Company",
+       "role":"Aircraft Maintenance License Trainee (AMLT)",
+       "jobId":"767",
+       "apply":"https://careers.singaporeair.com/siaec/job/Aircraft-Maintenance-License-Trainee-%28AMLT%29/19970444/"}
+  html="<h1>Aircraft Maintenance License Trainee (AMLT)</h1><p>Requisition ID: 767</p><a href='/siaec/job/Aircraft-Maintenance-License-Trainee-%28AMLT%29/19970444/apply'>Apply now</a>"
+  status,reason=successfactors_exact_page(job,html,job["apply"])
+  self.assertEqual(status,"active")
+  self.assertTrue(has_high_confidence_live(job,{"state":status,"reason":reason}))
+  self.assertEqual(successfactors_exact_page(job,html.replace("Requisition ID: 767","Requisition ID: 999"),job["apply"])[0],"review")
+  self.assertEqual(successfactors_exact_page(job,html.replace("Apply now","Learn more"),job["apply"])[0],"review")
  def test_seventh_source_is_official_qa_only_and_preserves_first_six(self):
   base=json.loads((ROOT/"data/testing/ats-platform-six-20261018.json").read_text())
   seven=json.loads((ROOT/"data/testing/ats-platform-seven-20261018.json").read_text())
   self.assertEqual(len(base["jobs"]),6)
   self.assertEqual(len(seven["jobs"]),7)
   self.assertEqual(base["jobs"],seven["jobs"][:6])
-  self.assertEqual(seven["jobs"][6]["reqId"],"458688")
-  self.assertEqual(seven["jobs"][6]["brandDomain"],"sap.com")
+  self.assertEqual(seven["jobs"][6]["reqId"],"767")
+  self.assertEqual(seven["jobs"][6]["brandDomain"],"siaec.com.sg")
   self.assertEqual(seven["mode"],"qa-isolated-no-production-publishing")
  def test_exact_workday_native_active(self):
   payload={"jobPostingInfo":{"jobReqId":"R0357981","title":"Apprentice Hiring for 2026-2027","canApply":True}}
