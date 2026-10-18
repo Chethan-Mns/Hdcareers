@@ -218,6 +218,13 @@ def structured_jobposting(body, job, now=None):
                 return 'review', 'Exact official JobPosting structured data exists, but a live application route is still required'
     return None
 
+def normalize_role_heading(value):
+    # ATS titles often use hyphen/en-dash/em-dash/slash interchangeably.
+    # This is only used as supplemental visible-text matching on exact pages;
+    # it is never independent evidence that an application is open.
+    return re.sub(r'\\s+', ' ', re.sub(r'[-\\u2010-\\u2015\\u2212/]+', ' ', str(value).casefold())).strip()
+
+
 def classify(job, body, final_url, status=200):
     if status in (404, 410): return 'review', f'HTTP {status} from automated request; exact job page requires browser verification before expiry'
     if status != 200: return 'review', f'HTTP {status}; availability unconfirmed'
@@ -237,6 +244,12 @@ def classify(job, body, final_url, status=200):
     terms = [str(x).strip().casefold() for x in job.get('verificationTerms', []) if str(x).strip()]
     role = re.sub(r'\s+', ' ', job.get('role', '')).strip().casefold()
     matched = all(term in haystack for term in terms) if terms else bool(role and role in haystack)
+    if not matched and not terms and urlsplit(final_url).hostname == 'jobs.lever.co':
+        # Preserve exact-page and job-bound Apply requirements below. Only
+        # compensate for typography variants in the VISIBLE job title, not JS.
+        formatted_role = normalize_role_heading(role)
+        formatted_text = normalize_role_heading(text)
+        matched = bool(len(formatted_role) >= 15 and formatted_role in formatted_text)
     registration_control = bool(re.search(r'<form\\b|type=["\\\']submit["\\\']|\\bsubmit\\b', body, re.I))
     has_apply = bool(APPLY.search(text + ' ' + body) or (terms and registration_control))
     if closed and matched and has_apply:
