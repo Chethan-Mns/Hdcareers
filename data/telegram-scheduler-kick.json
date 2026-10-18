@@ -1,6 +1,6 @@
 {
-  "requestId": "repair-backlog-20261018",
-  "reason": "One-time operator wakeup after hourly scheduling fix",
+  "requestId": "recovery-due-aiprise-20261018-after-accenture",
+  "reason": "Safely claim exactly one overdue approved job; ledger protects Accenture from duplication",
   "mode": "send-one-due-only",
   "scheduledBatchId": "admin-39101979018"
 }
