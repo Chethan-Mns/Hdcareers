@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-18-0900-ist",
   "generatedAt": "2026-10-18T03:36:49.640Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "accenture-aioc-s01667983",
@@ -822,7 +822,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-18T05:51:00.046Z",
+  "updatedAt": "2026-10-18T05:51:14.972Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
@@ -873,5 +873,47 @@
       }
     ],
     "warning": "Ranked candidates are not verified for publication. Recheck the exact job and application before posting; unconfirmed jobs remain held."
+  },
+  "submittedAt": "2026-10-18T05:51:14.972Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01667983",
+      "aiprise-3763c791",
+      "bosch-744000135641599",
+      "deutsche-bank-r0357981",
+      "ey-1745766",
+      "hackerrank-8229735",
+      "hcltech-142115",
+      "mastercard-r-293576",
+      "merklescience-e663b69b",
+      "oracle-346482"
+    ],
+    "companies": [
+      "Accenture",
+      "AiPrise",
+      "Bosch",
+      "Deutsche Bank",
+      "EY",
+      "HackerRank",
+      "HCLTech",
+      "Mastercard",
+      "Merkle Science",
+      "Oracle"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667983_en&title=IT+Customer+Service+New+Associate",
+      "https://jobs.ashbyhq.com/aiprise/3763c791-a387-4078-9ca4-00cbfbf9b1a6",
+      "https://jobs.smartrecruiters.com/BoschGroup/744000135641599-in-bosch-rexroth-india-graduate-management-traninee-engineering-application",
+      "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
+      "https://careers.ey.com/ey/job/Mumbai-Analyst-Tech-Consulting-National-CNS-TC-SAP-Mumbai-MH-400028/1447861633/",
+      "https://job-boards.greenhouse.io/hackerrank/jobs/8229735?gh_src=514fhkze1us",
+      "https://careers.hcltech.com/job/Campus-Beginner/142115-en_US/",
+      "https://careers.mastercard.com/us/en/job/R-293576/Software-Engineer-I-1",
+      "https://jobs.lever.co/merklescience/e663b69b-264a-4bd7-b04d-fb3c0a824a28",
+      "https://careers.oracle.com/en/sites/jobsearch/job/346482"
+    ],
+    "requestId": "d9aa913a4eaf763386ca47fe",
+    "count": 10,
+    "submittedAt": "2026-10-18T05:51:14.972Z"
   }
 }
