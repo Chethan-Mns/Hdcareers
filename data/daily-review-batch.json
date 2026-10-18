@@ -1,6 +1,6 @@
 {
   "batchId": "2026-10-18-0900-ist",
-  "generatedAt": "2026-10-18T03:35:34.095Z",
+  "generatedAt": "2026-10-18T03:36:49.640Z",
   "status": "reviewing",
   "priority": [
     {
@@ -742,7 +742,7 @@
       "expYears": "Six-month internship starting 5 Jan 2027",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Greenhouse job application is available and asks availability for the full-time six-month Bengaluru internship; outside the approved 87 fallback.",
+      "verificationReason": "Exact HackerRank Greenhouse application is live and bound to this role; the form confirms a full-time six-month Bengaluru internship starting 5 January 2027.",
       "postedDate": null,
       "job": {
         "company": "HackerRank",
@@ -758,17 +758,19 @@
         "sourceName": "HackerRank official Greenhouse",
         "desc": "Software Development Engineer internship based in Bengaluru for a full-time six-month period starting 5 January 2027.",
         "elig": "Must be available for the full six-month internship and able to work from the Bengaluru office; other requirements must be confirmed from the official page.",
-        "resp": [],
+        "resp": [
+          "Complete a full-time six-month software development internship from the Bengaluru office beginning 5 January 2027."
+        ],
         "skills": [],
         "workMode": "Not Specified",
         "jobId": "8229735",
         "date": "Not Specified",
         "verifiedDate": "18 Oct 2026",
-        "sourceVerificationMethod": "Exact Greenhouse job application is available and asks availability for the full-time six-month Bengaluru internship; outside the approved 87 fallback."
+        "sourceVerificationMethod": "Exact HackerRank Greenhouse application is live and bound to this role; the form confirms a full-time six-month Bengaluru internship starting 5 January 2027."
       }
     }
   ],
-  "updatedAt": "2026-10-18T03:35:34.095Z",
+  "updatedAt": "2026-10-18T03:36:49.640Z",
   "discoverySummary": {
     "portalsVisited": 32,
     "uniqueExactCandidatesScreened": 34,
