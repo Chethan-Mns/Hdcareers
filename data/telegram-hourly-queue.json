@@ -135,18 +135,19 @@
     {
       "page": "jobs/merkle-science-software-engineer-intern-backend.html",
       "batchId": "admin-39101979018",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-18T05:51:39.240398+00:00",
-      "dueAt": "2026-10-18T16:46:14.251921+00:00",
       "claimId": "39146519436",
-      "claimedAt": "2026-10-18T16:46:23.422016+00:00"
+      "claimedAt": "2026-10-18T16:46:23.422016+00:00",
+      "messageId": 528,
+      "deliveredAt": "2026-10-18T16:46:38.749424+00:00"
     },
     {
       "page": "jobs/oracle-accounting-support-a1-fin.html",
       "batchId": "admin-39101979018",
       "status": "pending",
       "queuedAt": "2026-10-18T05:51:39.240404+00:00",
-      "dueAt": "2026-10-18T17:46:14.251921+00:00"
+      "dueAt": "2026-10-18T17:46:38.749424+00:00"
     }
   ]
 }
