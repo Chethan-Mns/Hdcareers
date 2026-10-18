@@ -115,6 +115,15 @@ class AdminApi {
         if(!result.optBoolean("queued")) throw IOException("Publishing request was not accepted.")
         return result.optString("message","Job submitted to publisher.")
     }
+    suspend fun publishExpiryReviews(ids:Set<Int>):JSONObject {
+        require(ids.size in 1..10) { "Choose 1 to 10 different verified Live jobs." }
+        val array=JSONArray()
+        ids.sorted().forEach { array.put(it) }
+        val result=JSONObject(request("/api/admin/publish",
+            JSONObject().put("expiryReviewIds",array).put("telegramDeliveryMode","hourly")))
+        if(!result.optBoolean("queued"))throw IOException("Expiry publishing was not accepted.")
+        return result
+    }
     suspend fun runChecker():String =
         JSONObject(request("/api/admin/availability",JSONObject())).optString("message","Checker requested.")
     suspend fun resolveChecker(jobId:Int,action:String):String =
