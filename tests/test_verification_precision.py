@@ -8,7 +8,9 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from check_job_availability import (official_inventory_probe, has_high_confidence_live,
-                                    expiry_decision, classify, normalize_role_heading)
+                                    expiry_decision, classify, normalize_role_heading,
+                                    oracle_rendered_evidence, successfactors_exact_page,
+                                    is_oracle_candidate_url)
 from preflight_live_shortlist import preflight
 
 T=datetime(2026,10,18,3,30,tzinfo=timezone.utc)
@@ -18,6 +20,50 @@ HTML={"id":2,"company":"Example","role":"Software Engineer",
       "apply":"https://careers.example.com/jobs/123"}
 
 class PrecisionTests(unittest.TestCase):
+ def test_oracle_rendered_exact_requisition_positive(self):
+  oracle={"company":"JPMorganChase","role":"Disclosure of Interest Analyst",
+    "jobId":"210794554","apply":"https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/job/210794554"}
+  text="Disclosure of Interest Analyst Job Identification 210794554 Job Category CCOR Foundation"
+  state,reason=oracle_rendered_evidence(oracle,oracle["apply"],oracle["role"],text,True)
+  self.assertEqual(state,"active")
+  self.assertTrue(has_high_confidence_live(oracle,{"state":state,"reason":reason}))
+  for target,heading,body,enabled in [
+    (oracle["apply"],oracle["role"],text,False),
+    (oracle["apply"],oracle["role"],"Job Identification 210794999 Disclosure of Interest Analyst",True),
+    (oracle["apply"],"Other Job",text,True),
+    (oracle["apply"].replace("/job/210794554","/jobs"),oracle["role"],text,True),
+    (oracle["apply"],oracle["role"],text+" This job is closed",True),
+  ]:
+   with self.subTest(heading=heading,target=target):
+    self.assertEqual(oracle_rendered_evidence(oracle,target,heading,body,enabled)[0],"review")
+  self.assertTrue(is_oracle_candidate_url(oracle["apply"]))
+  self.assertFalse(is_oracle_candidate_url("http://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/job/210794554"))
+  # Browser-like HTML alone does not qualify Oracle; must use exact rendered proof.
+  self.assertFalse(has_high_confidence_live(oracle,{"state":"active","reason":"Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)"}))
+
+ def test_sap_successfactors_exact_requisition_and_real_apply_link(self):
+  sap={"company":"SAP","role":"Solution Advisor Associate - SAP Academy for Customer Success - INDIA",
+      "jobId":"458688","apply":"https://jobs.sap.com/job/New-Delhi-Solution-Advisor-Associate-SAP-Academy-for-Customer-Success-INDIA-110017/1426371233/"}
+  page='<h1>'+sap["role"]+'</h1><p>Requisition ID: 458688</p><a href="'+sap["apply"]+'apply">Apply now »</a>'
+  status,why=successfactors_exact_page(sap,page,sap["apply"])
+  self.assertEqual(status,"active")
+  self.assertTrue(has_high_confidence_live(sap,{"state":status,"reason":why}))
+  for content,final in [
+    (page.replace("458688","999999"),sap["apply"]),
+    (page.replace('<a href="'+sap["apply"]+'apply">Apply now »</a>',"<span>Apply now</span>"),sap["apply"]),
+    (page,sap["apply"].replace("/1426371233/","/other/")),
+    ("<h1>Other role</h1><p>Requisition ID: 458688</p><a href='/apply'>Apply now</a>",sap["apply"]),
+  ]:
+   self.assertEqual(successfactors_exact_page(sap,content,final)[0],"review")
+ def test_seventh_source_is_official_qa_only_and_preserves_first_six(self):
+  base=json.loads((ROOT/"data/testing/ats-platform-six-20261018.json").read_text())
+  seven=json.loads((ROOT/"data/testing/ats-platform-seven-20261018.json").read_text())
+  self.assertEqual(len(base["jobs"]),6)
+  self.assertEqual(len(seven["jobs"]),7)
+  self.assertEqual(base["jobs"],seven["jobs"][:6])
+  self.assertEqual(seven["jobs"][6]["reqId"],"458688")
+  self.assertEqual(seven["jobs"][6]["brandDomain"],"sap.com")
+  self.assertEqual(seven["mode"],"qa-isolated-no-production-publishing")
  def test_exact_workday_native_active(self):
   payload={"jobPostingInfo":{"jobReqId":"R0357981","title":"Apprentice Hiring for 2026-2027","canApply":True}}
   with patch("check_job_availability.fetch_json",return_value=payload) as fetch:
