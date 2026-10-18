@@ -575,7 +575,8 @@ def _host(value: str) -> str:
 def _company_logo_domain(job: dict) -> str:
     company = str(job.get("company", ""))
     fallback = str(job.get("domain", ""))
-    return _host(LOGO_DOMAINS.get(company, fallback))
+    domain = _host(LOGO_DOMAINS.get(company, "") or job.get("companyWebsite") or job.get("careersUrl") or fallback)
+    return "" if _is_generic_recruiting_host(domain) else domain
 
 
 def _is_generic_recruiting_host(host: str) -> bool:
@@ -613,7 +614,9 @@ def career_domain_favicon(job: dict) -> str:
 
 
 def logo_sources(company: str, domain: str) -> tuple[str, str]:
-    selected = LOGO_DOMAINS.get(company, domain).lower().replace("https://", "").replace("http://", "").split("/")[0]
+    selected = _company_logo_domain({"company":company, "domain":domain})
+    if not selected:
+        return "", ""
     google = f"https://www.google.com/s2/favicons?domain_url=https%3A%2F%2F{urllib.parse.quote(selected)}&sz=256"
     duck = f"https://icons.duckduckgo.com/ip3/{urllib.parse.quote(selected)}.ico"
     return google, duck
@@ -649,7 +652,7 @@ def logo_candidates(job: dict) -> list[str]:
     career_domain = career_domain_favicon(job)
     if career_domain:
         ordered.append(career_domain)
-    if full.startswith("https://"):
+    if full.startswith("https://") and not _is_generic_recruiting_host(_host(full)):
         ordered.append(full)
     if local:
         ordered.append(f"../assets/logos/{local}")
