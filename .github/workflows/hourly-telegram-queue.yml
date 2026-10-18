@@ -2,13 +2,14 @@ name: Hourly Telegram Job Announcements
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
-# Serialize with the Admin publisher so queue claims and receipts cannot race.
+# GitHub scheduling is best-effort; due timestamps prevent early posts.
+# Serialize with Admin publishing to protect claims and ledger writes.
 concurrency:
   group: main-job-data-publish
   cancel-in-progress: false
