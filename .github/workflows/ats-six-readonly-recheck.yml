@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run read-only official source checks
-        run: python3 scripts/qa_ats_check.py /tmp/qa-ats-six-checker-now.json
+        run: python3 scripts/qa_ats_check.py --batch data/testing/ats-platform-six-20261018.json --output /tmp/qa-ats-six-checker-now.json
       - name: Compare saved owner verdicts without overriding them
         run: |
           python3 - <<'PY'
