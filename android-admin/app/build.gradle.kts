@@ -15,7 +15,8 @@ android {
         minSdk = 29
         targetSdk = 35
         versionCode = 8
-        versionName = "1.3.2"
+        versionName = "1.3.2" 
+        manifestPlaceholders["hdAppLabel"] = "HD Careers Admin"
         buildConfigField("String", "FIREBASE_APP_ID", literal(setting("FIREBASE_APP_ID")))
         buildConfigField("String", "FIREBASE_API_KEY", literal(setting("FIREBASE_API_KEY")))
         buildConfigField("String", "FIREBASE_PROJECT_ID", literal(setting("FIREBASE_PROJECT_ID")))
@@ -34,6 +35,12 @@ android {
     }
     buildTypes {
         getByName("debug") { isMinifyEnabled = false }
+        create("qa") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".qa"
+            versionNameSuffix = "-ATS-QA"
+            manifestPlaceholders["hdAppLabel"] = "HD Careers QA"
+        }
         getByName("release") {
             isMinifyEnabled = false
             if (keystorePath.isNotBlank()) signingConfig = signingConfigs.getByName("privateRelease")
