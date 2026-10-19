@@ -7802,7 +7802,7 @@ function filterAndScrollNow(){clearTimeout(filterScrollTimer);renderJobs();reque
 function filterAndScrollDebounced(){renderJobs();clearTimeout(filterScrollTimer);filterScrollTimer=setTimeout(scrollToResults,600)}
 function companyDomain(j){const company=String(j.company||"").trim();let d=String(COMPANY_LOGO_DOMAINS[company]||j.domain||"").trim().toLowerCase().replace(/^https?:\/\//,"").replace(/\/.*$/,"").replace(/^www\./,"");if(/^(?:careers?|jobs?|usijobs|global|careersglobal)\./.test(d)&&d.split(".").length>2)d=d.split(".").slice(1).join(".");return d}
 function hostOf(value){try{return new URL(String(value||""),location.href).hostname.toLowerCase().replace(/^www\./,"")}catch{return""}}
-const GENERIC_RECRUITING_HOSTS=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com"];
+const GENERIC_RECRUITING_HOSTS=["myworkdayjobs.com","myworkdaysite.com","greenhouse.io","lever.co","successfactors.com","taleo.net","oraclecloud.com","icims.com","smartrecruiters.com","workable.com","infosysapps.com","ashbyhq.com","teamtailor.com","jobvite.com","bamboohr.com","recruitee.com","applytojob.com","ultipro.com","workday.com"];
 const TRUSTED_STANDALONE_CAREER_HOSTS=["amazon.jobs"];
 function genericRecruitingHost(host){const h=String(host||"").toLowerCase().replace(/^www\./,"");return GENERIC_RECRUITING_HOSTS.some(d=>h===d||h.endsWith("."+d))}
 function trustedCareerHost(j){const h=hostOf(j.apply);if(!h||genericRecruitingHost(h))return false;if(TRUSTED_STANDALONE_CAREER_HOSTS.some(d=>h===d||h.endsWith("."+d)))return true;const d=companyDomain(j);return !d||h===d||h.endsWith("."+d)}
@@ -7813,7 +7813,27 @@ function localCompanyLogo(j){const name=Object.keys(LOCAL_LOGOS).find(k=>k.toLow
 function cardCompanyLogo(j){const name=Object.keys(CARD_LOCAL_LOGOS).find(k=>k.toLowerCase()===String(j.company||"").toLowerCase());return name?`assets/logos/${CARD_LOCAL_LOGOS[name]}`:""}
 function directCompanyLogo(j){const name=Object.keys(DIRECT_LOGOS).find(k=>k.toLowerCase()===String(j.company||"").toLowerCase());return name?DIRECT_LOGOS[name]:""}
 function logoFallback(img){let backups=[];try{backups=JSON.parse(img.dataset.backups||"[]")}catch{};const next=backups.shift();if(next){img.dataset.backups=JSON.stringify(backups);img.src=next;return}img.onerror=null;const p=img.parentElement;if(!p)return;const mark=(img.dataset.mark||"HD").slice(0,8);const color=/^#[0-9a-f]{6}$/i.test(img.dataset.color||"")?img.dataset.color:"#0b6fe8";p.innerHTML="";const t=document.createElement("span");t.textContent=mark;t.style.color=color;t.style.fontWeight="900";t.style.fontSize=mark.length>4?"10px":"16px";t.style.letterSpacing="-0.02em";p.appendChild(t)}
-function companyLogo(j,size='w-16 h-16'){const key=String(j.company||'').trim().toLowerCase();const approved=APPROVED_COMPANY_LOGOS[key]||(/^drdo\b/.test(key)?APPROVED_COMPANY_LOGOS['drdo']:'')||'';const cached=String(j.logoPath||"").trim();const career=careerFavicon(j);const careerDomain=careerDomainFavicon(j);const compact=cardCompanyLogo(j);const direct=directCompanyLogo(j);const internet=companyInternetLogos(j);const official=String(j.logoUrl||"").trim();const local=localCompanyLogo(j);const sources=[...(approved?[approved]:[]),...(cached.startsWith("assets/company-icons/")?[cached]:[]),...(compact?[compact]:[]),...(direct?[direct]:[]),...(career?[career]:[]),...internet,...(careerDomain?[careerDomain]:[]),...(official?[official]:[]),...(local?[local]:[])];const unique=[...new Set(sources.filter(Boolean))];const first=unique.shift()||"";const backups=JSON.stringify(unique).replace(/"/g,"&quot;");const mark=String((j.logo&&j.logo[0])||String(j.company||"HD").slice(0,2)).replace(/"/g,"&quot;");const color=String((j.logo&&j.logo[1])||"#0b6fe8").replace(/"/g,"&quot;");return `<div class="company-logo ${size} shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden"><img src="${first}" data-backups="${backups}" data-mark="${mark}" data-color="${color}" alt="${j.company} logo" class="w-[94%] h-[94%] object-contain" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)"></div>`}
+function companyLogo(j,size='w-16 h-16'){
+  const company=String(j.company||'').trim();
+  const key=company.toLowerCase();
+  const approved=APPROVED_COMPANY_LOGOS[key]||(/^drdo\b/.test(key)?APPROVED_COMPANY_LOGOS.drdo:'')||'';
+  const sourceHost=String(j.logoSourceDomain||'').trim().toLowerCase();
+  const safeCache=!sourceHost||!genericRecruitingHost(sourceHost);
+  const cached=safeCache&&String(j.logoPath||'').startsWith('assets/company-icons/')?j.logoPath:'';
+  const local=cardCompanyLogo(j)||localCompanyLogo(j);
+  const direct=directCompanyLogo(j);
+  const sources=[approved,cached,local,direct].filter(Boolean);
+  const unique=[...new Set(sources)];
+  const first=unique.shift();
+  const backups=JSON.stringify(unique).replace(/"/g,'&quot;');
+  const mark=String((j.logo&&j.logo[0])||company.slice(0,2)||'HD').slice(0,8).replace(/"/g,'&quot;');
+  const color=String((j.logo&&j.logo[1])||'#0b6fe8').replace(/"/g,'&quot;');
+  const zoom={'arm':1.22,'rubrik':1.24,'new street technologies':1.25,'wayfair':1.24}[key]||1;
+  const visible=first
+    ?'<img src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="w-[94%] h-[94%] object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
+    :'<span style="color:'+color+';font-weight:900;font-size:16px">'+mark+'</span>';
+  return '<div class="company-logo '+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
+}
 
 function parseJobDate(s){const m=s.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);if(!m)return 0;const months={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};return new Date(+m[3],months[m[2]]??0,+m[1]).getTime()}
 
