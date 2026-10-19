@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:10:25.853Z",
+  "checkedAt": "2026-10-19T03:10:43.420Z",
   "checked": 129,
-  "active": 110,
+  "active": 111,
   "expired": 0,
-  "review": 19,
+  "review": 18,
   "changedExpired": 0,
   "items": [
     {
@@ -520,9 +520,11 @@
       "role": "People Services Intern",
       "page": "jobs/erm-people-services-intern.html",
       "url": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-18T17:33:35.029385+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:10:43.420Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:10:43.420Z"
     },
     {
       "id": 133,
