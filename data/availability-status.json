@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:13:10.595Z",
+  "checkedAt": "2026-10-19T03:13:26.134Z",
   "checked": 129,
-  "active": 118,
+  "active": 119,
   "expired": 1,
-  "review": 10,
+  "review": 9,
   "changedExpired": 1,
   "items": [
     {
@@ -768,9 +768,11 @@
       "role": "Software Engineer – SaaS O365",
       "page": "jobs/rubrik-software-engineer-saas-o365.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-18T17:33:58.994605+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:13:26.134Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:13:26.134Z"
     },
     {
       "id": 106,
