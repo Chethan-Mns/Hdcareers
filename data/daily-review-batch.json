@@ -311,7 +311,7 @@
       "apply": "https://jobs.citi.com/job/chennai/application-development-programmer-analyst/287/101987407296",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
       "postedDate": "2026-10-15",
@@ -325,7 +325,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Citi official careers",
         "desc": "Application development role supporting analysis, programming, testing and implementation of software solutions.",
         "elig": "Bachelor’s degree or equivalent experience; 0–2 years of relevant experience.",
@@ -344,9 +344,10 @@
         "jobId": "26998658",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired."
+      },
+      "reviewedAt": "2026-10-19T03:49:44.018Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "sap-458688",
@@ -752,7 +753,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:49:23.809Z",
+  "updatedAt": "2026-10-19T03:49:44.018Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
