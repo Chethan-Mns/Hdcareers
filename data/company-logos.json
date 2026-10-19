@@ -752,5 +752,26 @@
     ],
     "qualityScore": 710,
     "bytes": 3869
+  },
+  "Kaplan": {
+    "officialDomain": "community.kaplan.com",
+    "sourceUrl": "https://us.v-cdn.net/6037957/uploads/5JWRBU1VB38I/kc-image-updates-281-29.png",
+    "sourceType": "apple-touch-icon default",
+    "localPath": "assets/company-icons/kaplan-6dca03b.png",
+    "sourceDimensions": [
+      1080,
+      1080
+    ],
+    "qualityScore": 972,
+    "bytes": 18883
+  },
+  "Tieto": {
+    "officialDomain": "tieto.com",
+    "sourceUrl": "https://www.tieto.com/images/tieto-favicon.svg",
+    "sourceType": "icon",
+    "localPath": "assets/company-icons/tieto-cb34a69.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1090,
+    "bytes": 393
   }
 }
