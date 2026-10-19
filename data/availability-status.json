@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:12:53.069Z",
+  "checkedAt": "2026-10-19T03:13:10.595Z",
   "checked": 129,
-  "active": 117,
+  "active": 118,
   "expired": 1,
-  "review": 11,
+  "review": 10,
   "changedExpired": 1,
   "items": [
     {
@@ -756,9 +756,11 @@
       "role": "New Grad – Software Engineer (Evergreen PPO)",
       "page": "jobs/visa-new-grad-software-engineer-evergreen-ppo.html",
       "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-18T17:33:58.472203+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:13:10.595Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:13:10.595Z"
     },
     {
       "id": 107,
