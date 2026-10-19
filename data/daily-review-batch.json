@@ -449,7 +449,7 @@
       "apply": "https://careers.gehealthcare.com/global/en/job/R4046852",
       "cat": "it",
       "expYears": "Not Specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
       "postedDate": null,
@@ -463,7 +463,7 @@
         "expYears": "Not Specified",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "GE HealthCare official careers",
         "desc": "Early-career software engineering role contributing to MR workflow software and product features.",
         "elig": "Not Specified in the accessible official response.",
@@ -480,9 +480,10 @@
         "jobId": "R4046852",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired."
+      },
+      "reviewedAt": "2026-10-19T03:50:17.376Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "unisys-req575939",
@@ -755,7 +756,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:07.847Z",
+  "updatedAt": "2026-10-19T03:50:17.376Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
