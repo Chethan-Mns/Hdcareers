@@ -493,7 +493,7 @@
       "apply": "https://unisys.wd5.myworkdayjobs.com/External/job/Bangalore-KA-India/Associate-Engineer-Software-Application-Engineer---AB-Suite_REQ575939",
       "cat": "it",
       "expYears": "0–3 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Unisys Workday requisition REQ575939 and matching 0–3-year Associate Engineer evidence were found, but the public endpoint returned an empty JavaScript shell at final check; manual review is required.",
       "postedDate": null,
@@ -507,7 +507,7 @@
         "expYears": "0–3 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Unisys official Workday careers",
         "desc": "Associate application-engineering role supporting development, testing and maintenance of AB Suite software.",
         "elig": "Bachelor’s degree or equivalent; 0–3 years of relevant experience.",
@@ -526,9 +526,10 @@
         "jobId": "REQ575939",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Unisys Workday requisition REQ575939 and matching 0–3-year Associate Engineer evidence were found, but the public endpoint returned an empty JavaScript shell at final check; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Unisys Workday requisition REQ575939 and matching 0–3-year Associate Engineer evidence were found, but the public endpoint returned an empty JavaScript shell at final check; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:27.441Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "lgads-02b11bae",
@@ -756,7 +757,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:17.376Z",
+  "updatedAt": "2026-10-19T03:50:27.441Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
