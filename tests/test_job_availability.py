@@ -90,6 +90,29 @@ class AvailabilityTests(unittest.TestCase):
         body = '<script type="application/ld+json">{"@type":"JobPosting","title":"Data Engineer","identifier":"REQ-123","validThrough":"2020-01-01T00:00:00Z"}</script>'
         self.assertEqual(classify(JOB, body, JOB['apply'])[0], 'expired')
 
+    def test_generic_careers_link_is_not_verified(self):
+        generic = dict(JOB, apply='https://www.actrec.gov.in/jobs')
+        self.assertEqual(classify(generic, '<h1>Data Engineer</h1>Apply now', generic['apply'])[0], 'review')
+        with patch('check_job_availability.safe_url', side_effect=AssertionError('should not request generic URL')):
+            self.assertEqual(check(generic)['state'], 'review')
+
+    def test_public_inventory_missing_exact_id_is_review(self):
+        examples = [
+            'https://boards.greenhouse.io/acme/jobs/12345',
+            'https://jobs.lever.co/acme/abc-123',
+            'https://jobs.smartrecruiters.com/acme/744000123456789-data-engineer',
+        ]
+        with patch('check_job_availability.fetch_json', return_value={'title': 'Data Engineer', 'active': False}):
+            for url in examples:
+                with self.subTest(url=url):
+                    self.assertEqual(official_inventory_probe(dict(JOB, apply=url))[0], 'review')
+
+    def test_ashby_prefix_collision_cannot_verify_a_different_posting(self):
+        job = dict(JOB, apply='https://jobs.ashbyhq.com/acme/abc-123')
+        payload = {'jobs': [{'title': 'Data Engineer', 'jobUrl': 'https://jobs.ashbyhq.com/acme/abc-1234'}]}
+        with patch('check_job_availability.fetch_json', return_value=payload):
+            self.assertEqual(official_inventory_probe(job)[0], 'review')
+
     def test_deadline(self):
         job = dict(JOB, closingAt='2026-09-29T18:00:00+05:30')
         now = datetime(2026, 9, 29, 12, 30, tzinfo=timezone.utc)

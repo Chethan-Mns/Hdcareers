@@ -1,0 +1,128 @@
+{
+  "batchId": "owner-verification-2026-10-19",
+  "purpose": "read_only_quality_regression_no_production_status_changes",
+  "ownerVerdictDate": "2026-10-19",
+  "automaticScanDate": "2026-10-19T08:08:01.583063+00:00",
+  "totals": {
+    "ownerLive": 9,
+    "ownerExpired": 2,
+    "matchedLiveInReview": 9,
+    "matchedExpiredInReview": 1,
+    "unmatchedOwnerExpired": 1,
+    "confirmedFalseActive": 0,
+    "confirmedFalseExpired": 0
+  },
+  "caution": "Review is an abstention, not an Expired or Live claim; findings cannot authorize a production status change.",
+  "items": [
+    {
+      "id": 133,
+      "company": "Deloitte South Asia",
+      "role": "Analyst – D365 F&O Functional SCM",
+      "officialUrl": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Official page loaded but role/application evidence was insufficient"
+    },
+    {
+      "id": 166,
+      "company": "Cognizant",
+      "role": "Analyst : Cash & Position Reconciliation",
+      "officialUrl": "https://careers.cognizant.com/global-en/jobs/00069443878/analyst-cash-position-reconciliation/",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "HTTP 500; availability unconfirmed"
+    },
+    {
+      "id": 111,
+      "company": "EY",
+      "role": "Associate Analyst – TAX – Indirect Tax – Core",
+      "officialUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Official page loaded but role/application evidence was insufficient"
+    },
+    {
+      "id": 128,
+      "company": "AHEAD",
+      "role": "MS – EUS Apprentice/Intern (6 months)",
+      "officialUrl": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Official page loaded but role/application evidence was insufficient"
+    },
+    {
+      "id": 131,
+      "company": "GE HealthCare",
+      "role": "Graduate Engineer Trainee",
+      "officialUrl": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Exact official JobPosting structured data exists, but a live application route is still required"
+    },
+    {
+      "id": 132,
+      "company": "ERM",
+      "role": "People Services Intern",
+      "officialUrl": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Exact official JobPosting structured data exists, but a live application route is still required"
+    },
+    {
+      "id": 109,
+      "company": "Rubrik",
+      "role": "Software Engineer – Cloud: Azure",
+      "officialUrl": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "HTTP 403; availability unconfirmed"
+    },
+    {
+      "id": 107,
+      "company": "Rubrik",
+      "role": "Software Engineer – SaaS O365",
+      "officialUrl": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "HTTP 403; availability unconfirmed"
+    },
+    {
+      "id": 126,
+      "company": "NXP Semiconductors",
+      "role": "Technical Internship 2027",
+      "officialUrl": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
+      "ownerVerdict": "live",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "Exact official JobPosting structured data exists, but a live application route is still required"
+    },
+    {
+      "id": 77,
+      "company": "Thermo Fisher Scientific",
+      "role": "Intern – IT",
+      "officialUrl": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
+      "ownerVerdict": "expired",
+      "checkerVerdict": "review",
+      "siteStatusAtAudit": "active",
+      "checkerReason": "HTTP 410; availability unconfirmed"
+    },
+    {
+      "id": null,
+      "company": "Qualcomm",
+      "role": "Campus Hire – Associate Engineer",
+      "ownerVerdict": "expired",
+      "checkerVerdict": "not_scored",
+      "siteStatusAtAudit": "not_matched",
+      "officialUrl": null,
+      "notes": "Do not conflate this position with the 2027 Campus Hire Engineer HW job (ID 33); exact requisition link is not in the current 129-job check."
+    }
+  ]
+}
