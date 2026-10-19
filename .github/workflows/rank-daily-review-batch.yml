@@ -32,6 +32,31 @@ jobs:
         run: node --test tests/review-ranking.test.mjs
       - name: Re-rank only if no manual reviews exist
         run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
+      - name: Normalize official job categories before owner review
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("data/daily-review-batch.json")
+          d=json.loads(p.read_text())
+          all_jobs=(d.get("priority") or [])+(d.get("backup") or [])
+          if d.get("status")!="reviewing" or any(x.get("reviewedAt") for x in all_jobs):
+              print("Existing owner review is immutable; no category changes.")
+          else:
+              aliases={"non-it":"nonit","non it":"nonit","it & software":"it","it / software":"it"}
+              count=0
+              for c in all_jobs:
+                  j=c.get("job") or {}
+                  before=str(j.get("cat") or "").strip()
+                  after=aliases.get(before.lower(),before)
+                  if before!=after:
+                      j["cat"]=after
+                      count+=1
+              if count:
+                  p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n")
+              print(f"Normalized {count} publisher category labels; no employer or owner decisions changed.")
+          PY
       - name: Validate revised shortlist contract
         run: python3 scripts/validate_daily_review_batch.py data/daily-review-batch.json
       - name: Recover missing fields from exact official job pages
