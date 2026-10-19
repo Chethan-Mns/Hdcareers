@@ -3,55 +3,147 @@
   "client_payload": {
     "jobs": [
       {
-        "page": "jobs/deloitte-usi-assistant-ai-specialist-valuation-analytics-advisory-364049.html",
-        "domain": "usijobs.deloitte.com",
-        "company": "Deloitte",
-        "salary": "Not Disclosed",
-        "logo": [
-          "DE",
-          "#13874e"
-        ],
-        "role": "Assistant (AI Specialist) – Valuation and Analytics Advisory",
-        "roleTag": "Assistant (AI Specialist) | 0–1 Years",
-        "loc": "Bengaluru / Gurugram",
-        "locationFilter": "Bengaluru, Gurugram",
-        "batch": "Not Specified",
-        "elig": "Bachelor’s degree in Computer Science, Data Science, Information Systems, Statistics, or a related field; 0–1 year of experience. Hands-on exposure to Python, AI/ML tools, or cloud machine-learning platforms is required.",
+        "company": "Kaplan",
+        "role": "Software Engineer I",
+        "loc": "Bengaluru",
+        "apply": "https://jobs.community.kaplan.com/job/software-engineer-i-hybrid-bengaluru-409895",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–1 years",
-        "date": "Not Specified",
-        "desc": "Deloitte USI seeks a fixed-term Assistant (AI Specialist) in Audit & Assurance Valuation and Analytics Advisory. The role supports evaluations of AI risks, governance, model reliability and controls used in enterprise and financial-reporting processes. The stated engagement is six months, with standard working hours of 11 AM–8 PM and possible night shifts during January and February.",
+        "expYears": "1.5+ years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Kaplan official careers",
+        "desc": "Software Engineer I role developing applications, writing unit tests, maintaining test automation and troubleshooting systems.",
+        "elig": "Bachelor’s or master’s degree in Computer Science, Engineering or a relevant field; 1.5+ years of experience.",
         "resp": [
-          "Help engagement teams identify how clients use machine learning, generative AI and agentic systems.",
-          "Support AI model reliability, performance, assumptions and governance assessments.",
-          "Assist with audit control testing and documentation of AI-related risks.",
-          "Prepare analysis, scorecards, reporting and stakeholder communications."
+          "Develop software applications and features.",
+          "Write and execute unit tests.",
+          "Maintain test-automation frameworks.",
+          "Troubleshoot applications and collaborate in Agile delivery."
         ],
         "skills": [
-          "Python",
-          "pandas / scikit-learn",
-          "PyTorch / TensorFlow",
-          "AI / Machine Learning",
-          "Generative AI and LLMs",
-          "AI Governance and Risk Assessment",
-          "Statistics",
-          "Cloud ML platforms"
+          "HTML/CSS",
+          "Angular",
+          "Node.js",
+          "Web API",
+          "GraphQL",
+          "AWS DevOps"
         ],
-        "apply": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/FY27-USI-Audit-Services-FTH-Assistant-AI-Specialist-Valuation-and-Analytics-Advisory/364049",
+        "workMode": "Hybrid",
+        "jobId": "409895",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact Kaplan posting 409895 opened with a job-bound Apply button, Bengaluru location, 1.5+ years requirement and full responsibilities.",
+        "browserVerifiedAt": "2026-10-19T03:48:48.900Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:48:48.900Z",
+        "page": "jobs/kaplan-409895.html",
+        "domain": "jobs.community.kaplan.com",
+        "who": "Review the official requirements and apply if your education, experience and skills match the role.",
+        "roleTag": "Software Engineer I",
+        "locationFilter": "Bengaluru",
+        "logo": [
+          "KA",
+          "#0b6fe8"
+        ],
+        "manualLiveVerifiedUrl": "https://jobs.community.kaplan.com/job/software-engineer-i-hybrid-bengaluru-409895"
+      },
+      {
+        "company": "Tieto",
+        "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
+        "loc": "Mohali",
+        "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
         "status": "active",
-        "verifiedDate": "18 Oct 2026",
-        "sourceName": "Deloitte USI official careers, requisition 364049",
-        "who": "Candidates with 0–1 year of experience and a related bachelor’s degree who can demonstrate foundational AI/ML and Python or cloud ML experience should review the official requirements. This is a six-month fixed-term position.",
-        "workMode": "Not Specified",
-        "jobId": "364049",
-        "verificationTerms": [
-          "AI Specialist",
-          "Valuation and Analytics Advisory"
+        "sourceName": "Tieto official careers",
+        "desc": "Entry-level Service Desk L1 role providing initial technical support and troubleshooting for users.",
+        "elig": "B.Sc, BCA or B.A.; basic knowledge of computer hardware, software and networking; prior internship is advantageous but not required.",
+        "resp": [
+          "Act as first contact for technical assistance.",
+          "Diagnose basic hardware, software and network issues.",
+          "Log, track and escalate incidents and service requests.",
+          "Support password resets, account unlocks and basic applications."
         ],
-        "sourceVerificationMethod": "Official exact job URL supplied by publisher; availability is not independently confirmed due to HTTP 406 in outside checker; only publish if the repo's independent official-source check confirms active."
+        "skills": [
+          "IT support",
+          "Hardware and software troubleshooting",
+          "Networking fundamentals",
+          "Ticket management",
+          "Customer service"
+        ],
+        "workMode": "Onsite",
+        "jobId": "2812",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
+        "browserVerifiedAt": "2026-10-19T03:49:15.435Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:49:15.435Z",
+        "page": "jobs/tieto-2812.html",
+        "domain": "careers.tieto.com",
+        "who": "Review the official requirements and apply if your education, experience and skills match the role.",
+        "roleTag": "Junior Service Desk Specialist – Tieto Tech Consulting",
+        "locationFilter": "Mohali",
+        "logo": [
+          "TI",
+          "#0b6fe8"
+        ],
+        "manualLiveVerifiedUrl": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812"
+      },
+      {
+        "company": "EY",
+        "role": "Analyst – Tax, Global Compliance & Reporting",
+        "loc": "Mumbai",
+        "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "EY official careers",
+        "desc": "Entry-level tax compliance and reporting analyst role supporting client deliverables and documentation.",
+        "elig": "Graduate qualification; 0–2 years of relevant experience.",
+        "resp": [
+          "Support tax compliance and reporting deliverables.",
+          "Prepare documentation and working papers.",
+          "Coordinate data and respond to review comments."
+        ],
+        "skills": [
+          "Tax compliance",
+          "Reporting",
+          "Documentation",
+          "Data analysis"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "1749819",
+        "date": "6 Oct 2026",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
+        "browserVerifiedAt": "2026-10-19T03:49:01.600Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:49:01.600Z",
+        "page": "jobs/ey-1749819.html",
+        "domain": "careers.ey.com",
+        "who": "Review the official requirements and apply if your education, experience and skills match the role.",
+        "roleTag": "Analyst – Tax, Global Compliance & Reporting",
+        "locationFilter": "Mumbai",
+        "logo": [
+          "EY",
+          "#0b6fe8"
+        ],
+        "manualLiveVerifiedUrl": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/"
       }
     ],
-    "telegramDeliveryMode": "immediate"
+    "telegramDeliveryMode": "hourly",
+    "reviewBatchId": "2026-10-19-0900-ist",
+    "reviewCandidateIds": [
+      "kaplan-409895",
+      "tieto-2812",
+      "ey-1749819"
+    ],
+    "requestId": "owner-reviewed-20261019-three-recovery"
   }
 }
