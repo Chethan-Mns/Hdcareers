@@ -11,7 +11,7 @@
       "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000150285389--ejv-junior-telematics-software-engineer-embedded-android",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Bosch SmartRecruiters posting 744000150285389 opened with matching job details and application route; it states recent graduates are welcome and 0–2 years is eligible.",
       "postedDate": null,
@@ -25,7 +25,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Bosch official SmartRecruiters",
         "desc": "Junior embedded software role supporting migration of a telematics control-unit platform from Embedded Linux to Android.",
         "elig": "Bachelor’s degree in Computer Science, Electrical/Electronics Engineering or a related field; recent graduates welcome; 0–2 years.",
@@ -47,8 +47,11 @@
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
         "sourceVerificationMethod": "Exact Bosch SmartRecruiters posting 744000150285389 opened with matching job details and application route; it states recent graduates are welcome and 0–2 years is eligible.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "browserVerifiedAt": "2026-10-19T03:48:42.894Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:48:42.894Z"
+      },
+      "reviewedAt": "2026-10-19T03:48:42.894Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "kaplan-409895",
@@ -738,7 +741,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:36:54.559Z",
+  "updatedAt": "2026-10-19T03:48:42.925Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
