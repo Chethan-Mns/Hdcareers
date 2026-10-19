@@ -585,7 +585,7 @@
       "apply": "https://job-boards.greenhouse.io/conga/jobs/5066175007",
       "cat": "it",
       "expYears": "Not Specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Conga Greenhouse requisition 5066175007 and matching Associate Software Engineer – AI evidence were discovered, but the final URL redirected to the board with error=true; manual review is required.",
       "postedDate": null,
@@ -599,7 +599,7 @@
         "expYears": "Not Specified",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Conga official Greenhouse careers",
         "desc": "Associate engineering role contributing to AI and generative-AI product capabilities.",
         "elig": "Not Specified in the accessible official response.",
@@ -618,9 +618,10 @@
         "jobId": "5066175007",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Conga Greenhouse requisition 5066175007 and matching Associate Software Engineer – AI evidence were discovered, but the final URL redirected to the board with error=true; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Conga Greenhouse requisition 5066175007 and matching Associate Software Engineer – AI evidence were discovered, but the final URL redirected to the board with error=true; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:41.775Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "keystone-8a93bfb4",
@@ -758,7 +759,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:33.209Z",
+  "updatedAt": "2026-10-19T03:50:41.775Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
