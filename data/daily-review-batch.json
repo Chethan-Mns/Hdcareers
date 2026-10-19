@@ -539,7 +539,7 @@
       "apply": "https://jobs.ashbyhq.com/lgads/02b11bae-83d2-47f5-9ff2-6114f13ee360",
       "cat": "it",
       "expYears": "Early career; exact years not specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact employer Ashby requisition and matching Software Engineer I evidence were found, but the final endpoint rendered only a blank JavaScript shell; manual review is required.",
       "postedDate": null,
@@ -553,7 +553,7 @@
         "expYears": "Early career; exact years not specified",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "LG Ad Solutions official Ashby careers",
         "desc": "Early-career software role contributing to scalable advertising-platform systems.",
         "elig": "Not Specified in the accessible official response.",
@@ -572,9 +572,10 @@
         "jobId": "02b11bae-83d2-47f5-9ff2-6114f13ee360",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact employer Ashby requisition and matching Software Engineer I evidence were found, but the final endpoint rendered only a blank JavaScript shell; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact employer Ashby requisition and matching Software Engineer I evidence were found, but the final endpoint rendered only a blank JavaScript shell; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:33.209Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "conga-5066175007",
@@ -757,7 +758,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:27.441Z",
+  "updatedAt": "2026-10-19T03:50:33.209Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
