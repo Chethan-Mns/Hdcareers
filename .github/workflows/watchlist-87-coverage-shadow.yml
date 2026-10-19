@@ -1,0 +1,47 @@
+name: HD Careers 87-employer coverage shadow
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:45 IST daily; report only, no job discovery or publication.
+    - cron: "15 3 * * *"
+  pull_request:
+    branches: [main]
+    paths:
+      - data/employer-watchlist-87.json
+      - scripts/watchlist_coverage_audit.py
+      - scripts/discovery_v3_source_registry.py
+      - scripts/discovery_v3_full_list.py
+      - tests/test_watchlist_coverage_audit.py
+      - .github/workflows/watchlist-87-coverage-shadow.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Confirm 87-employer coverage accounting
+        run: python3 -m unittest discover -s tests -p 'test_watchlist_coverage_audit.py' -v
+      - name: Generate shadow-only adapter coverage report
+        run: python3 scripts/watchlist_coverage_audit.py --output watchlist-87-coverage-report.json
+      - name: Summarize gaps
+        run: |
+          python3 - <<'PY'
+          import json, os
+          d=json.load(open("watchlist-87-coverage-report.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+              f.write("## HD Careers — 87 company coverage (shadow only)\n")
+              f.write(f"Registered official-source entries: {d['registeredEmployers']}/87\n\n")
+              for state, count in d["counts"].items():
+                  f.write(f"- {state}: {count}\n")
+              f.write("\n**No production job statuses or publishing actions changed.**\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: watchlist-87-coverage-report
+          path: watchlist-87-coverage-report.json
+          retention-days: 30
