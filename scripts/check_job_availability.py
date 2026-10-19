@@ -40,6 +40,17 @@ def safe_url(url):
     if not addresses or any(not ipaddress.ip_address(a[4][0]).is_global for a in addresses):
         raise ValueError('Non-public destination refused')
 
+def generic_portal_url(url):
+    """Unbound careers landing pages must never be counted as verified Apply links."""
+    parsed = urlsplit(str(url or ''))
+    path = (parsed.path or '/').rstrip('/').lower() or '/'
+    generic = {'/', '/career', '/careers', '/job', '/jobs', '/search',
+               '/jobsearch', '/opportunities', '/careers/jobs', '/careers/search',
+               '/jobs/search'}
+    has_job_id = bool(re.search(r'(?:^|&)(?:id|jobid|job_id|reqid|requisitionid|projectid|gh_jid)=[^&]+', parsed.query, re.I))
+    return path in generic and not has_job_id
+
+
 class Redirects(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         safe_url(newurl)
@@ -117,8 +128,16 @@ def official_inventory_probe(job):
         data = fetch_json(endpoint)
         if provider == 'Ashby':
             jobs = data.get('jobs', []) if isinstance(data, dict) else []
-            needle = expected_id.casefold()
-            match = next((x for x in jobs if needle in str(x.get('jobUrl', '')).casefold() or needle in str(x.get('applyUrl', '')).casefold()), None)
+            def same_post(entry):
+                for field in ('jobUrl', 'applyUrl'):
+                    uri = urlsplit(str(entry.get(field) or ''))
+                    segments = [v for v in uri.path.split('/') if v]
+                    if (uri.hostname == 'jobs.ashbyhq.com' and len(segments) >= 2
+                            and segments[0].casefold() == board.casefold()
+                            and segments[1].casefold() == expected_id.casefold()):
+                        return True
+                return False
+            match = next((x for x in jobs if isinstance(x, dict) and same_post(x)), None)
             if match:
                 return 'active', f'{provider} public posting inventory contains the exact published job'
             return 'review', f'{provider} board inventory did not contain the exact job; a missing ID without proven complete pagination is not closure evidence'
@@ -126,6 +145,8 @@ def official_inventory_probe(job):
         if not isinstance(data, dict):
             return 'review', f'{provider} public posting inventory returned an unexpected response'
         actual = str(data.get('id') or data.get('uuid') or '')
+        if not actual:
+            return 'review', f'{provider} response did not identify the exact posting ID'
         active_flag = data.get('active')
         if expected_id and actual and expected_id.casefold() not in {actual.casefold(), str(data.get('uuid') or '').casefold()}:
             return 'review', f'{provider} public posting inventory returned a different posting'
@@ -189,6 +210,8 @@ def classify(job, body, final_url, status=200):
     p = Visible(); p.feed(body)
     text = re.sub(r'\s+', ' ', ' '.join(p.parts)).strip()
     if BLOCKED.search(text): return 'review', 'Access challenge; availability unconfirmed'
+    if generic_portal_url(job.get('apply')):
+        return 'review', 'Generic careers portal URL has no exact requisition; replace with job-bound official Apply link'
     if final_url.rstrip('/') != job['apply'].rstrip('/'):
         return 'review', 'Redirected source requires browser/ATS verification'
     structured = structured_jobposting(body, job)
@@ -221,6 +244,8 @@ def check(job, now=None):
         if deadline_passed(job, now):
             state, reason = 'expired', 'Official closingAt deadline passed'
         else:
+            if generic_portal_url(job.get('apply')):
+                return dict(result, state='review', reason='Generic careers portal URL; exact official requisition and Apply route required')
             safe_url(job['apply'])
             inventory = official_inventory_probe(job)
             if inventory and inventory[0] in {'active', 'expired'}:
