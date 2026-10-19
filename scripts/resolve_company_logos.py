@@ -282,6 +282,8 @@ def normalize_raster(body: bytes) -> bytes:
 def evaluate_remote_candidate(base_score: int, url: str, label: str):
     try:
         body, content_type, final_url = fetch(url, MAX_ICON)
+        if is_generic(host_of(final_url)):
+            return None  # Employer redirect to a shared ATS must never provide a logo.
         ext = sniff_ext(body, content_type, final_url)
         if ext == ".svg":
             cleaned = clean_svg(body)
@@ -439,9 +441,8 @@ def main() -> None:
         if kind == "resolved":
             score, body, ext, source_url, source_type, dims = payload[1]
             stem = slugify(company)
-            for old in ASSET_DIR.glob(stem + ".*"):
-                old.unlink()
-            target = ASSET_DIR / (stem + ext)
+            # Content-addressed file names preserve every existing image asset.
+            target = ASSET_DIR / (stem + "-" + hashlib.sha256(body).hexdigest()[:10] + ext)
             target.write_bytes(body)
             local_path = target.relative_to(ROOT).as_posix()
             manifest[company] = {
