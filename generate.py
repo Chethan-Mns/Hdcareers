@@ -107,7 +107,7 @@ LOGO_DOMAINS = {
     "Cochin Shipyard Limited – CMSRU": "cochinshipyard.in"
 }
 
-GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com")
+GENERIC_RECRUITING_HOSTS = ("myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co", "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com", "smartrecruiters.com", "workable.com", "infosysapps.com", "ashbyhq.com", "teamtailor.com", "jobvite.com", "bamboohr.com", "recruitee.com", "applytojob.com", "ultipro.com", "workday.com")
 TRUSTED_STANDALONE_CAREER_HOSTS = ("amazon.jobs",)
 
 PAGE_TEMPLATE = Template("""<!DOCTYPE html>
@@ -159,7 +159,7 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 <div class="text-xs text-blue-100 flex flex-wrap items-center gap-2 mb-5"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right text-[9px]"></i><a href="../index.html#jobs">$breadcrumb</a><i class="fa-solid fa-chevron-right text-[9px]"></i><span class="text-white">$breadcrumb_job</span></div>
 <div class="bg-white/10 border border-white/15 rounded-[28px] p-5 sm:p-7 backdrop-blur-sm">
 <div class="flex flex-col lg:flex-row lg:items-center gap-5">
-<div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-lg overflow-hidden"><img src="$favicon_url" alt="$company logo" class="w-[72%] h-[72%] object-contain" $logo_onerror></div>
+<div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-lg overflow-hidden">$logo_image</div>
 <div class="flex-1 min-w-0"><div class="flex flex-wrap gap-2 mb-3"><span class="bg-blue-400/20 border border-blue-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid $cat_icon mr-1"></i> $cat_label</span><span class="bg-emerald-400/20 border border-emerald-200/20 px-3 py-1 rounded-full text-xs font-bold">$candidate</span>$status_badge</div><h1 class="text-2xl sm:text-4xl font-black tracking-tight">$heading</h1><p class="text-blue-100 mt-2">$loc • $work_mode</p><p class="text-blue-200 text-xs mt-2">Posted $date • Last verified $verified_date</p></div>
 <div class="flex flex-wrap lg:flex-col items-stretch gap-2 lg:w-48">$hero_action<button data-hd-track="share_click" onclick="shareJob()" class="h-12 lg:h-11 px-4 rounded-xl border border-white/20 bg-white/10 hover:bg-white/15 font-bold"><i class="fa-solid fa-share-nodes mr-1.5"></i> Share</button></div>
 </div></div></div>
@@ -620,46 +620,37 @@ def logo_sources(company: str, domain: str) -> tuple[str, str]:
 
 
 def logo_candidates(job: dict) -> list[str]:
-    company = str(job.get("company", ""))
-    domain = str(job.get("domain", ""))
-    cached = str(job.get("logoPath", "")).strip()
-    career = career_favicon_url(job)
-    compact = COMPACT_LOCAL_LOGOS.get(company)
-    direct = DIRECT_LOGOS.get(company)
-    full = str(job.get("logoUrl", "")).strip()
-    local = LOCAL_LOGOS.get(company)
-    google, duck = logo_sources(company, domain)
-
-    ordered = []
-    company_key = company.strip().casefold()
-    approved = APPROVED_COMPANY_LOGOS.get(company_key, "")
-    if not approved and re.match(r"^drdo\b", company_key):
+    """Allow only user-approved or project-local branded assets, never ATS icons."""
+    company = str(job.get("company", "")).strip()
+    key = company.casefold()
+    approved = APPROVED_COMPANY_LOGOS.get(key, "")
+    if not approved and re.match(r"^drdo\b", key):
         approved = APPROVED_COMPANY_LOGOS.get("drdo", "")
-    if approved:
-        ordered.append("../" + approved)
-    if cached.startswith("assets/company-icons/"):
-        ordered.append("../" + cached)
-    if compact:
-        ordered.append(f"../assets/logos/{compact}")
-    if direct:
-        ordered.append(direct)
-    if career:
-        ordered.append(career)
-    ordered.append(google)
-    career_domain = career_domain_favicon(job)
-    if career_domain:
-        ordered.append(career_domain)
-    if full.startswith("https://"):
-        ordered.append(full)
-    if local:
-        ordered.append(f"../assets/logos/{local}")
-    ordered.append(duck)
+    cached = str(job.get("logoPath", "")).strip()
+    source_host = _host(str(job.get("logoSourceDomain", "")))
+    if source_host and _is_generic_recruiting_host(source_host):
+        cached = ""
+    compact = COMPACT_LOCAL_LOGOS.get(company)
+    local = LOCAL_LOGOS.get(company)
+    direct = DIRECT_LOGOS.get(company)
+    sources = [
+        "../" + approved if approved else "",
+        "../" + cached if cached.startswith("assets/company-icons/") else "",
+        f"../assets/logos/{compact}" if compact else "",
+        f"../assets/logos/{local}" if local else "",
+        direct if direct and direct.startswith("https://") else "",
+    ]
+    return list(dict.fromkeys(x for x in sources if x))
 
-    unique = []
-    for item in ordered:
-        if item and item not in unique:
-            unique.append(item)
-    return unique
+
+def logo_zoom_style(company: str) -> str:
+    """Presentation only: preserve every existing asset's bytes."""
+    return {
+        "arm": "transform:scale(1.22);transform-origin:center;",
+        "rubrik": "transform:scale(1.24);transform-origin:center;",
+        "new street technologies": "transform:scale(1.25);transform-origin:center;",
+        "wayfair": "transform:scale(1.24);transform-origin:center;",
+    }.get(company.strip().casefold(), "")
 
 
 def logo_onerror(job: dict) -> str:
@@ -808,7 +799,14 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     pending = status == "active" and bool(job.get("_verification_pending"))
     status_label = "Verification pending" if pending else "Active" if status == "active" else "Expired / Closed"
     candidates = logo_candidates(job)
-    favicon_url = candidates[0] if candidates else "../assets/hd-careers-logo.png"
+    favicon_url = candidates[0] if candidates else ""
+    if favicon_url:
+        logo_image = (f'<img src="{esc(favicon_url)}" alt="{esc(job["company"])} logo" '
+                      f'class="w-[88%] h-[88%] object-contain" style="{logo_zoom_style(job["company"])}" '
+                      + logo_onerror(job) + '>')
+    else:
+        initials = esc(str((job.get("logo") or [job["company"][:2]])[0])[:8])
+        logo_image = f'<span class="font-black text-blue-700 text-xl">{initials}</span>'
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} in {job.get('loc', '')}: eligibility, responsibilities and employer application link. Checked {job.get('verifiedDate', '')}."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
@@ -848,6 +846,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "breadcrumb": esc(CAT_BREADCRUMB[cat]),
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
+        "logo_image": logo_image,
         "company": esc(company),
         "logo_onerror": logo_onerror(job),
         "cat_icon": CAT_ICON[cat],
