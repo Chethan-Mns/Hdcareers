@@ -17,6 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rank:
+    if: github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'Admin review:')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -47,9 +48,11 @@ jobs:
       - name: Safely commit revised shortlist
         run: |
           git diff --check
-          if git diff --quiet -- data/daily-review-batch.json; then exit 0; fi
+          if git diff --quiet -- data/daily-review-batch.json && ! test -f data/daily-review-source-recheck.json; then exit 0; fi
           git config user.name "HD Careers Review Quality"
           git config user.email "actions@users.noreply.github.com"
           git add data/daily-review-batch.json
+          if [ -f data/daily-review-source-recheck.json ]; then git add data/daily-review-source-recheck.json; fi
+          if git diff --cached --quiet; then exit 0; fi
           git commit -m "Rank and enrich daily shortlist from official sources"
           git push origin HEAD:main

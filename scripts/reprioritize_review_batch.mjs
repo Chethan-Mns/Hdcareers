@@ -20,6 +20,21 @@ const result=reprioritizeBeforeReview(batch,{publishedJobs,deliveries,ownerVerdi
 console.log(result.reason);
 if(result.changed&&process.argv.includes("--apply")){
  fs.writeFileSync(file,JSON.stringify(result.batch,null,2)+"\n");
+
+ const held=result.batch.ranking?.needsSourceVerification||[];
+ if(held.length){
+  const sidecar="data/daily-review-source-recheck.json";
+  const prior=safeLoad(sidecar,{items:[]});
+  const byUrl=new Map((prior.items||[]).filter(x=>x.officialUrl).map(x=>[x.officialUrl,x]));
+  for(const item of held){
+   if(!item.officialUrl)continue;
+   byUrl.set(item.officialUrl,{...item,batchId:batch.batchId,
+      state:"needs_official_verification",lastSeen:batch.generatedAt||new Date().toISOString()});
+  }
+  fs.writeFileSync(sidecar,JSON.stringify({policy:"Keep inconclusive official jobs for rechecking. Never present as Live or automatically expire.",items:[...byUrl.values()]},null,2)+"\n");
+  console.log("Deferred "+held.length+" source-uncertain jobs to "+sidecar+" without losing exact URLs.");
+ }
+
  console.log("Selected fresher-first 8/1/1 shortlist, excluded published duplicates, and preserved manual review status.");
  if(result.batch.ranking?.shortfalls){
   console.log("Category shortfalls (new discovery required):",JSON.stringify(result.batch.ranking.shortfalls));

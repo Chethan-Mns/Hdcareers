@@ -114,7 +114,7 @@ test("No substitution of experienced candidates for missing fresher IT or non-IT
  assert.deepEqual(out.batch.ranking.shortfalls,{fresherIT:5,nonIT:1,training:0});
  assert.equal(out.batch.priority.filter(j=>j.job.expType==="experienced").length,0);
 });
-test("Unconfirmed applicants must remain in backup and cannot be counted as Live",()=>{
+test("Unconfirmed job URLs are retained for source rechecking and never shown as owner Live backups",()=>{
  const all=[...Array.from({length:8},(_,i)=>ready(i)),ready(8,"nonit"),ready(9,"internship"),
   ...Array.from({length:10},(_,i)=>ready(i+10,"it","experienced"))];
  all[0].verificationVerdict="unconfirmed";
@@ -122,7 +122,8 @@ test("Unconfirmed applicants must remain in backup and cannot be counted as Live
  assert.equal(out.batch.ranking.selected.fresherIT,7);
  assert.equal(out.batch.ranking.shortfalls.fresherIT,1);
  assert.ok(!out.batch.priority.some(x=>x.id==="0"));
- assert.ok(out.batch.backup.some(x=>x.id==="0"));
+ assert.ok(!out.batch.backup.some(x=>x.id==="0"));
+ assert.ok(out.batch.ranking.needsSourceVerification.some(x=>x.id==="0"&&x.officialUrl==="https://jobs.example.org/0"));
 });
 
 test("Never rediscover exact employer job URL owner confirmed expired",()=>{
