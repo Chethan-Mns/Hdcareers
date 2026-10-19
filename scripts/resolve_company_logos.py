@@ -27,7 +27,9 @@ ASSET_DIR = ROOT / "assets" / "company-icons"
 GENERIC_HOSTS = (
     "myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io", "lever.co",
     "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com",
-    "smartrecruiters.com", "workable.com", "infosysapps.com",
+    "smartrecruiters.com", "workable.com", "infosysapps.com", "ashbyhq.com",
+    "teamtailor.com", "jobvite.com", "bamboohr.com", "recruitee.com",
+    "applytojob.com", "ultipro.com", "workday.com",
 )
 
 USER_AGENT = "HD-Careers-Official-Logo-Resolver/2.0"
@@ -372,6 +374,12 @@ def main() -> None:
             return company, domain, None, "no trusted official domain"
 
         cached = manifest.get(company, {}) if isinstance(manifest.get(company), dict) else {}
+        # Existing icons may have been cached from a shared ATS. Never trust
+        # those files as a company logo merely because they are local.
+        old_source_host = host_of(cached.get("sourceUrl", ""))
+        old_official_host = host_of(cached.get("officialDomain", ""))
+        if is_generic(old_source_host) or is_generic(old_official_host):
+            cached = {}
         cached_path = str(cached.get("localPath", "")).strip()
         target_exists = bool(cached_path and (ROOT / cached_path).exists())
         direct_url = str(direct_assets.get(company, "")).strip()
@@ -411,6 +419,19 @@ def main() -> None:
 
         if not payload:
             failed += 1
+            # Failed employer-logo resolution must not preserve provider images.
+            old_entry = manifest.get(company, {})
+            if isinstance(old_entry, dict) and (
+                is_generic(host_of(old_entry.get("sourceUrl", ""))) or
+                is_generic(host_of(old_entry.get("officialDomain", "")))
+            ):
+                manifest.pop(company, None)
+                changed = True
+                for job in jobs:
+                    if str(job.get("company", "")).strip() == company:
+                        if job.pop("logoPath", None):
+                            changed = True
+                        job.pop("logoSourceDomain", None)
             print(f"[MISS] {company}: {error}")
             continue
 
