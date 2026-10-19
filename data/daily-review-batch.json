@@ -163,7 +163,7 @@
       "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
       "cat": "it",
       "expYears": "Entry level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
       "postedDate": null,
@@ -177,7 +177,7 @@
         "expYears": "Entry level",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Tieto official careers",
         "desc": "Entry-level Service Desk L1 role providing initial technical support and troubleshooting for users.",
         "elig": "B.Sc, BCA or B.A.; basic knowledge of computer hardware, software and networking; prior internship is advantageous but not required.",
@@ -199,8 +199,11 @@
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
         "sourceVerificationMethod": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "browserVerifiedAt": "2026-10-19T03:49:15.435Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:49:15.435Z"
+      },
+      "reviewedAt": "2026-10-19T03:49:15.435Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1749819",
@@ -748,7 +751,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:49:01.600Z",
+  "updatedAt": "2026-10-19T03:49:15.435Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
