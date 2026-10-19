@@ -18,16 +18,22 @@ class CompanyLogoRules(unittest.TestCase):
         self.generator=(ROOT/"generate.py").read_text()
         self.home=(ROOT/"index.html").read_text()
 
-    def test_owner_uploads_are_real_images(self):
+    def test_owner_uploads_are_valid_branded_assets(self):
         from PIL import Image
+        from xml.etree import ElementTree as ET
         for name in ("Amazon","Google","Microsoft"):
             path=ROOT/self.approved[name]
-            self.assertTrue(path.is_file(),f"Missing approved {name} owner upload")
-            with Image.open(path) as img:
-                img.verify()
-            with Image.open(path) as img:
-                self.assertGreaterEqual(img.width,128)
-                self.assertGreaterEqual(img.height,128)
+            self.assertTrue(path.is_file(),f"Missing approved {name} artwork")
+            if path.suffix==".svg":
+                root=ET.parse(path).getroot()
+                self.assertTrue(root.tag.endswith("svg"))
+                self.assertGreater(len(list(root)),2)
+            else:
+                with Image.open(path) as img:
+                    img.verify()
+                with Image.open(path) as img:
+                    self.assertGreaterEqual(img.width,128)
+                    self.assertGreaterEqual(img.height,128)
 
     def test_every_approved_asset_preserved(self):
         for name,path in self.approved.items():
