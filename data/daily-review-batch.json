@@ -677,7 +677,7 @@
       "apply": "https://job-boards.greenhouse.io/capco/jobs/7698358",
       "cat": "it",
       "expYears": "Not Specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Capco Greenhouse requisition 7698358 and matching Bengaluru Java role were discovered, but the final URL redirected to the board with error=true; manual review is required.",
       "postedDate": null,
@@ -691,7 +691,7 @@
         "expYears": "Not Specified",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Capco official Greenhouse careers",
         "desc": "Java software-engineering role supporting application design, development and delivery.",
         "elig": "Not Specified in the accessible official response.",
@@ -710,9 +710,10 @@
         "jobId": "7698358",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Capco Greenhouse requisition 7698358 and matching Bengaluru Java role were discovered, but the final URL redirected to the board with error=true; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Capco Greenhouse requisition 7698358 and matching Bengaluru Java role were discovered, but the final URL redirected to the board with error=true; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:51.559Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-aioc-s01665483",
@@ -760,7 +761,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:46.717Z",
+  "updatedAt": "2026-10-19T03:50:51.559Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
