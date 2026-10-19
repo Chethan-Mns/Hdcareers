@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:15:01.641Z",
+  "checkedAt": "2026-10-19T03:15:24.473Z",
   "checked": 129,
-  "active": 123,
+  "active": 124,
   "expired": 3,
-  "review": 3,
+  "review": 2,
   "changedExpired": 3,
   "items": [
     {
@@ -1102,9 +1102,11 @@
       "role": "Airport Operations & Customer Services Hiring Events – October 2026",
       "page": "jobs/indigo-airport-operations-customer-services-events-october-2026.html",
       "url": "https://www.goindigo.in/careers/hiringevents/airportoperationscustomerservicesevents.html",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-10-18T17:34:58.392320+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:15:24.473Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:15:24.473Z"
     },
     {
       "id": 46,
