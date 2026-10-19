@@ -46,3 +46,5 @@ jobs:
           if git diff --cached --quiet; then echo 'No generated changes'; exit 0; fi
           git commit -m "Materialize official employer logos and regenerate complete website"
           git push origin HEAD:fix/official-company-logos-all-20261019
+
+# Retry after replacing invalid bitmap transfers with validated vector artwork.
