@@ -112,7 +112,7 @@
       "apply": "https://jobs.smartrecruiters.com/Experian/744000143860629-software-engineer-i",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Experian SmartRecruiters posting 744000143860629 opened with matching role, current application route and explicit recent-graduate/0–2 years eligibility.",
       "postedDate": null,
@@ -126,7 +126,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Experian official SmartRecruiters",
         "desc": "Early-career software role developing, testing and deploying Java-based applications and improving delivery pipelines.",
         "elig": "0–2 years of software-development experience or equivalent internships, academic projects or bootcamps.",
@@ -150,9 +150,10 @@
         "jobId": "744000143860629",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Experian SmartRecruiters posting 744000143860629 opened with matching role, current application route and explicit recent-graduate/0–2 years eligibility.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Experian SmartRecruiters posting 744000143860629 opened with matching role, current application route and explicit recent-graduate/0–2 years eligibility."
+      },
+      "reviewedAt": "2026-10-19T03:48:55.023Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "tieto-2812",
@@ -744,7 +745,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:48:48.900Z",
+  "updatedAt": "2026-10-19T03:48:55.023Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
