@@ -631,7 +631,7 @@
       "apply": "https://jobs.ashbyhq.com/keystone/8a93bfb4-ba8f-47c6-a3b8-5ea93dd2f39d",
       "cat": "it",
       "expYears": "1–3 years or strong internships/projects",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact employer Ashby requisition and matching Bengaluru SDE I evidence were found, but the final endpoint returned a blank JavaScript shell; manual review is required.",
       "postedDate": null,
@@ -645,7 +645,7 @@
         "expYears": "1–3 years or strong internships/projects",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Keystone official Ashby careers",
         "desc": "Software-development role building and maintaining product features in an onsite engineering team.",
         "elig": "Computer Science or related degree; 1–3 years of experience, with strong internships or academic projects considered.",
@@ -664,9 +664,10 @@
         "jobId": "8a93bfb4-ba8f-47c6-a3b8-5ea93dd2f39d",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact employer Ashby requisition and matching Bengaluru SDE I evidence were found, but the final endpoint returned a blank JavaScript shell; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact employer Ashby requisition and matching Bengaluru SDE I evidence were found, but the final endpoint returned a blank JavaScript shell; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:46.717Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "capco-7698358",
@@ -759,7 +760,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:50:41.775Z",
+  "updatedAt": "2026-10-19T03:50:46.717Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
