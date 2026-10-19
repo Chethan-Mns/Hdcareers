@@ -261,7 +261,7 @@
       "apply": "https://careers.synopsys.com/job/noida/digital-design-engineer-apprenticeship/44408/101968068128",
       "cat": "internship",
       "expYears": "Graduate apprenticeship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Synopsys apprenticeship ID 19228 opened with matching Noida role, active job-bound Apply control, 12-month duration and 2025/2026 graduate eligibility.",
       "postedDate": "2026-10-13",
@@ -275,7 +275,7 @@
         "expYears": "Graduate apprenticeship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Synopsys official careers",
         "desc": "Twelve-month digital-design engineering apprenticeship focused on verification and semiconductor design workflows.",
         "elig": "2025 or 2026 graduate in Electronics and Communication, Electrical Engineering or a related discipline.",
@@ -296,9 +296,10 @@
         "jobId": "19228",
         "date": "13 Oct 2026",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Synopsys apprenticeship ID 19228 opened with matching Noida role, active job-bound Apply control, 12-month duration and 2025/2026 graduate eligibility.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Synopsys apprenticeship ID 19228 opened with matching Noida role, active job-bound Apply control, 12-month duration and 2025/2026 graduate eligibility."
+      },
+      "reviewedAt": "2026-10-19T03:49:23.809Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -751,7 +752,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:49:15.435Z",
+  "updatedAt": "2026-10-19T03:49:23.809Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
