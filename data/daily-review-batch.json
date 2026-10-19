@@ -403,7 +403,7 @@
       "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR334858",
       "cat": "it",
       "expYears": "Entry level; 2026 graduating batch",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
       "postedDate": null,
@@ -417,7 +417,7 @@
         "expYears": "Entry level; 2026 graduating batch",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Salesforce official Workday careers",
         "desc": "Entry-level software engineering role for the 2026 graduating batch.",
         "elig": "B.E./B.Tech in Computer Science, Electrical or Electronics-related disciplines; 2026 graduating batch; official posting states a 7.5 CGPA criterion.",
@@ -436,9 +436,10 @@
         "jobId": "JR334858",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:07.847Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "gehealthcare-r4046852",
@@ -754,7 +755,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:49:53.495Z",
+  "updatedAt": "2026-10-19T03:50:07.847Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
