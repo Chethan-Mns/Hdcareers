@@ -61,7 +61,7 @@
       "apply": "https://jobs.community.kaplan.com/job/software-engineer-i-hybrid-bengaluru-409895",
       "cat": "it",
       "expYears": "1.5+ years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Kaplan posting 409895 opened with a job-bound Apply button, Bengaluru location, 1.5+ years requirement and full responsibilities.",
       "postedDate": null,
@@ -75,7 +75,7 @@
         "expYears": "1.5+ years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Kaplan official careers",
         "desc": "Software Engineer I role developing applications, writing unit tests, maintaining test automation and troubleshooting systems.",
         "elig": "Bachelor’s or master’s degree in Computer Science, Engineering or a relevant field; 1.5+ years of experience.",
@@ -98,8 +98,11 @@
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
         "sourceVerificationMethod": "Exact Kaplan posting 409895 opened with a job-bound Apply button, Bengaluru location, 1.5+ years requirement and full responsibilities.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "browserVerifiedAt": "2026-10-19T03:48:48.900Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:48:48.900Z"
+      },
+      "reviewedAt": "2026-10-19T03:48:48.900Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "experian-744000143860629",
@@ -741,7 +744,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:48:42.925Z",
+  "updatedAt": "2026-10-19T03:48:48.900Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
