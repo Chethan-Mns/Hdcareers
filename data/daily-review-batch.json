@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-19-0900-ist",
   "generatedAt": "2026-10-19T03:36:54.559Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "bosch-744000150285389",
@@ -762,7 +762,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-19T03:50:58.397Z",
+  "updatedAt": "2026-10-19T05:45:34.248Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
@@ -821,8 +821,30 @@
     "warning": "Ranked candidates are not verified for publication. Recheck the exact job and application before posting; unconfirmed jobs remain held."
   },
   "publication": {
-    "authorized": false,
-    "websitePublished": 0,
-    "telegramDelivered": 0
-  }
+    "authorized": true,
+    "candidateIds": [
+      "kaplan-409895",
+      "tieto-2812",
+      "ey-1749819"
+    ],
+    "companies": [
+      "Kaplan",
+      "Tieto",
+      "EY"
+    ],
+    "urls": [
+      "https://jobs.community.kaplan.com/job/software-engineer-i-hybrid-bengaluru-409895",
+      "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
+      "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/"
+    ],
+    "requestId": "owner-reviewed-20261019-three-recovery",
+    "count": 3,
+    "submittedAt": "2026-10-19T05:43:00.000Z",
+    "heldCandidateIds": [
+      "bosch-744000150285389"
+    ],
+    "heldReason": "Bosch application listing includes Vietnam-specific employer benefits; confirm precise job country before publishing.",
+    "recoveryWorkflowRunId": 39205952388
+  },
+  "submittedAt": "2026-10-19T05:43:00.000Z"
 }
