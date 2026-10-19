@@ -357,7 +357,7 @@
       "apply": "https://jobs.sap.com/job/New-Delhi-Solution-Advisor-Associate-SAP-Academy-for-Customer-Success-INDIA-110017/1426371233/",
       "cat": "it",
       "expYears": "2–3 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact SAP requisition 458688 was discovered with matching New Delhi Academy role and 2–3 years profile, but the final URL redirected to SAP's generic jobs index; manual confirmation is required.",
       "postedDate": "2026-09-12",
@@ -371,7 +371,7 @@
         "expYears": "2–3 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "SAP official careers",
         "desc": "Graduate academy role supporting customer solution discovery, demonstrations and technical value articulation.",
         "elig": "Graduate qualification; official discovery evidence lists 2–3 years of relevant experience.",
@@ -390,9 +390,10 @@
         "jobId": "458688",
         "date": "12 Sep 2026",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact SAP requisition 458688 was discovered with matching New Delhi Academy role and 2–3 years profile, but the final URL redirected to SAP's generic jobs index; manual confirmation is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact SAP requisition 458688 was discovered with matching New Delhi Academy role and 2–3 years profile, but the final URL redirected to SAP's generic jobs index; manual confirmation is required."
+      },
+      "reviewedAt": "2026-10-19T03:49:53.495Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "salesforce-jr334858",
@@ -753,7 +754,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:49:44.018Z",
+  "updatedAt": "2026-10-19T03:49:53.495Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
