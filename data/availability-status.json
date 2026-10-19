@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-19T03:10:54.616Z",
+  "checkedAt": "2026-10-19T03:11:15.600Z",
   "checked": 129,
   "active": 112,
-  "expired": 0,
-  "review": 17,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 16,
+  "changedExpired": 1,
   "items": [
     {
       "id": 185,
@@ -564,9 +564,11 @@
       "role": "ASIC Digital Design, Engineer",
       "page": "jobs/synopsys-asic-digital-design-engineer.html",
       "url": "https://careers.synopsys.com/en/job/hyderabad/asic-digital-design-engineer/44408/101644992960",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-18T17:33:39.545907+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-19T03:11:15.600Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-19T03:11:15.600Z"
     },
     {
       "id": 137,
