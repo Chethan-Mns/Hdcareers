@@ -4,143 +4,6 @@
   "status": "reviewing",
   "priority": [
     {
-      "id": "salesforce-jr334858",
-      "company": "Salesforce",
-      "role": "Software Engineering AMTS",
-      "loc": "Bengaluru / Hyderabad",
-      "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR334858",
-      "cat": "it",
-      "expYears": "Entry level; 2026 graduating batch",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
-      "postedDate": null,
-      "job": {
-        "company": "Salesforce",
-        "role": "Software Engineering AMTS",
-        "loc": "Bengaluru / Hyderabad",
-        "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR334858",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Entry level; 2026 graduating batch",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Salesforce official Workday careers",
-        "desc": "Entry-level software engineering role for the 2026 graduating batch.",
-        "elig": "B.E./B.Tech in Computer Science, Electrical or Electronics-related disciplines; 2026 graduating batch; official posting states a 7.5 CGPA criterion.",
-        "resp": [
-          "Design, develop and test software features.",
-          "Collaborate with engineering teams on product delivery.",
-          "Troubleshoot and improve software quality."
-        ],
-        "skills": [
-          "Software engineering",
-          "Programming",
-          "Testing",
-          "Problem solving"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR334858",
-        "date": "Not Specified",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
-      "id": "citi-26998658",
-      "company": "Citi",
-      "role": "Application Development Programmer Analyst",
-      "loc": "Chennai",
-      "apply": "https://jobs.citi.com/job/chennai/application-development-programmer-analyst/287/101987407296",
-      "cat": "it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
-      "postedDate": "2026-10-15",
-      "job": {
-        "company": "Citi",
-        "role": "Application Development Programmer Analyst",
-        "loc": "Chennai",
-        "apply": "https://jobs.citi.com/job/chennai/application-development-programmer-analyst/287/101987407296",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Citi official careers",
-        "desc": "Application development role supporting analysis, programming, testing and implementation of software solutions.",
-        "elig": "Bachelor’s degree or equivalent experience; 0–2 years of relevant experience.",
-        "resp": [
-          "Develop and maintain application code.",
-          "Test and debug applications.",
-          "Work within Citi development standards and controls."
-        ],
-        "skills": [
-          "Programming",
-          "Application development",
-          "Testing",
-          "Debugging"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "26998658",
-        "date": "Not Specified",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
-      "id": "tieto-2812",
-      "company": "Tieto",
-      "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
-      "loc": "Mohali",
-      "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
-      "cat": "it",
-      "expYears": "Entry level",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
-      "postedDate": null,
-      "job": {
-        "company": "Tieto",
-        "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
-        "loc": "Mohali",
-        "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Entry level",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Tieto official careers",
-        "desc": "Entry-level Service Desk L1 role providing initial technical support and troubleshooting for users.",
-        "elig": "B.Sc, BCA or B.A.; basic knowledge of computer hardware, software and networking; prior internship is advantageous but not required.",
-        "resp": [
-          "Act as first contact for technical assistance.",
-          "Diagnose basic hardware, software and network issues.",
-          "Log, track and escalate incidents and service requests.",
-          "Support password resets, account unlocks and basic applications."
-        ],
-        "skills": [
-          "IT support",
-          "Hardware and software troubleshooting",
-          "Networking fundamentals",
-          "Ticket management",
-          "Customer service"
-        ],
-        "workMode": "Onsite",
-        "jobId": "2812",
-        "date": "Not Specified",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
       "id": "bosch-744000150285389",
       "company": "Bosch",
       "role": "Junior Telematics Software Engineer – Embedded Android",
@@ -236,52 +99,6 @@
       }
     },
     {
-      "id": "hevo-993a3ed3",
-      "company": "Hevo Data",
-      "role": "Associate Software Development Engineer",
-      "loc": "Bengaluru",
-      "apply": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
-      "cat": "it",
-      "expYears": "Fresher; internship experience accepted",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Hevo Lever posting opened with matching Associate SDE title, Bengaluru location, fresher eligibility and an active job-bound application form.",
-      "postedDate": null,
-      "job": {
-        "company": "Hevo Data",
-        "role": "Associate Software Development Engineer",
-        "loc": "Bengaluru",
-        "apply": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher; internship experience accepted",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Hevo Data official Lever careers",
-        "desc": "Associate software-development role building and maintaining data connectors and platform capabilities.",
-        "elig": "B.Tech in Computer Science or a related discipline; freshers with relevant internship experience are eligible.",
-        "resp": [
-          "Build and maintain data-source connectors.",
-          "Develop and integrate REST APIs.",
-          "Debug data pipelines and production issues.",
-          "Collaborate on reliable platform features."
-        ],
-        "skills": [
-          "Programming",
-          "REST APIs",
-          "Debugging",
-          "Data pipelines"
-        ],
-        "workMode": "Onsite",
-        "jobId": "993a3ed3-3014-432f-b0f4-28d300d58d9a",
-        "date": "Not Specified",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Hevo Lever posting opened with matching Associate SDE title, Bengaluru location, fresher eligibility and an active job-bound application form.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
       "id": "experian-744000143860629",
       "company": "Experian",
       "role": "Software Engineer I",
@@ -332,90 +149,94 @@
       }
     },
     {
-      "id": "gehealthcare-r4046852",
-      "company": "GE HealthCare",
-      "role": "Early Career Software Engineer",
-      "loc": "Bengaluru",
-      "apply": "https://careers.gehealthcare.com/global/en/job/R4046852",
+      "id": "tieto-2812",
+      "company": "Tieto",
+      "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
+      "loc": "Mohali",
+      "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
       "cat": "it",
-      "expYears": "Not Specified",
+      "expYears": "Entry level",
       "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
       "postedDate": null,
       "job": {
-        "company": "GE HealthCare",
-        "role": "Early Career Software Engineer",
-        "loc": "Bengaluru",
-        "apply": "https://careers.gehealthcare.com/global/en/job/R4046852",
+        "company": "Tieto",
+        "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
+        "loc": "Mohali",
+        "apply": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Not Specified",
+        "expYears": "Entry level",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "review",
-        "sourceName": "GE HealthCare official careers",
-        "desc": "Early-career software engineering role contributing to MR workflow software and product features.",
-        "elig": "Not Specified in the accessible official response.",
+        "sourceName": "Tieto official careers",
+        "desc": "Entry-level Service Desk L1 role providing initial technical support and troubleshooting for users.",
+        "elig": "B.Sc, BCA or B.A.; basic knowledge of computer hardware, software and networking; prior internship is advantageous but not required.",
         "resp": [
-          "Contribute to software-feature development.",
-          "Support design, coding and testing activities for MR workflow software."
+          "Act as first contact for technical assistance.",
+          "Diagnose basic hardware, software and network issues.",
+          "Log, track and escalate incidents and service requests.",
+          "Support password resets, account unlocks and basic applications."
         ],
         "skills": [
-          "Software development",
-          "Testing",
-          "Problem solving"
+          "IT support",
+          "Hardware and software troubleshooting",
+          "Networking fundamentals",
+          "Ticket management",
+          "Customer service"
         ],
-        "workMode": "Not Specified",
-        "jobId": "R4046852",
+        "workMode": "Onsite",
+        "jobId": "2812",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
+        "sourceVerificationMethod": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
         "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
       }
     },
     {
-      "id": "caterpillar-r0000399729",
-      "company": "Caterpillar",
-      "role": "Accounting Associate",
-      "loc": "Bengaluru",
-      "apply": "https://careers.caterpillar.com/de/jobs/r0000399729/accounting-associate/",
+      "id": "ey-1749819",
+      "company": "EY",
+      "role": "Analyst – Tax, Global Compliance & Reporting",
+      "loc": "Mumbai",
+      "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
       "cat": "non-it",
-      "expYears": "0–2 years for CA pathway",
+      "expYears": "0–2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Caterpillar requisition R0000399729 opened with matching role/location, active application route and an official 22 Oct 2026 deadline; the CA pathway explicitly allows 0–2 years.",
-      "postedDate": "2026-10-12",
+      "verificationReason": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
+      "postedDate": "2026-10-06",
       "job": {
-        "company": "Caterpillar",
-        "role": "Accounting Associate",
-        "loc": "Bengaluru",
-        "apply": "https://careers.caterpillar.com/de/jobs/r0000399729/accounting-associate/",
+        "company": "EY",
+        "role": "Analyst – Tax, Global Compliance & Reporting",
+        "loc": "Mumbai",
+        "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
         "cat": "non-it",
         "expType": "fresher",
-        "expYears": "0–2 years for CA pathway",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "review",
-        "sourceName": "Caterpillar official careers",
-        "desc": "Accounting role supporting reporting, financial controls and analysis.",
-        "elig": "Chartered Accountant with 0–2 years of relevant experience; the posting also lists separate experienced pathways for other qualifications.",
+        "sourceName": "EY official careers",
+        "desc": "Entry-level tax compliance and reporting analyst role supporting client deliverables and documentation.",
+        "elig": "Graduate qualification; 0–2 years of relevant experience.",
         "resp": [
-          "Support accounting and financial reporting activities.",
-          "Maintain controls and data accuracy.",
-          "Prepare analyses and resolve accounting issues."
+          "Support tax compliance and reporting deliverables.",
+          "Prepare documentation and working papers.",
+          "Coordinate data and respond to review comments."
         ],
         "skills": [
-          "Accounting",
-          "Financial reporting",
-          "Controls",
-          "Analysis"
+          "Tax compliance",
+          "Reporting",
+          "Documentation",
+          "Data analysis"
         ],
         "workMode": "Not Specified",
-        "jobId": "R0000399729",
-        "date": "12 Oct 2026",
+        "jobId": "1749819",
+        "date": "6 Oct 2026",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Caterpillar requisition R0000399729 opened with matching role/location, active application route and an official 22 Oct 2026 deadline; the CA pathway explicitly allows 0–2 years.",
+        "sourceVerificationMethod": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
         "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
       }
     },
@@ -469,6 +290,51 @@
   ],
   "backup": [
     {
+      "id": "citi-26998658",
+      "company": "Citi",
+      "role": "Application Development Programmer Analyst",
+      "loc": "Chennai",
+      "apply": "https://jobs.citi.com/job/chennai/application-development-programmer-analyst/287/101987407296",
+      "cat": "it",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
+      "postedDate": "2026-10-15",
+      "job": {
+        "company": "Citi",
+        "role": "Application Development Programmer Analyst",
+        "loc": "Chennai",
+        "apply": "https://jobs.citi.com/job/chennai/application-development-programmer-analyst/287/101987407296",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Citi official careers",
+        "desc": "Application development role supporting analysis, programming, testing and implementation of software solutions.",
+        "elig": "Bachelor’s degree or equivalent experience; 0–2 years of relevant experience.",
+        "resp": [
+          "Develop and maintain application code.",
+          "Test and debug applications.",
+          "Work within Citi development standards and controls."
+        ],
+        "skills": [
+          "Programming",
+          "Application development",
+          "Testing",
+          "Debugging"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "26998658",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact Citi requisition 26998658 was indexed with matching Chennai title, 0–2 years and application-development duties, but the final employer-page fetch returned crawler-facing 404; under the conservative rule this is REVIEW, not expired.",
+        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
+      }
+    },
+    {
       "id": "sap-458688",
       "company": "SAP",
       "role": "Solution Advisor Associate – SAP Academy for Customer Success",
@@ -514,6 +380,94 @@
       }
     },
     {
+      "id": "salesforce-jr334858",
+      "company": "Salesforce",
+      "role": "Software Engineering AMTS",
+      "loc": "Bengaluru / Hyderabad",
+      "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR334858",
+      "cat": "it",
+      "expYears": "Entry level; 2026 graduating batch",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
+      "postedDate": null,
+      "job": {
+        "company": "Salesforce",
+        "role": "Software Engineering AMTS",
+        "loc": "Bengaluru / Hyderabad",
+        "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR334858",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level; 2026 graduating batch",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Salesforce official Workday careers",
+        "desc": "Entry-level software engineering role for the 2026 graduating batch.",
+        "elig": "B.E./B.Tech in Computer Science, Electrical or Electronics-related disciplines; 2026 graduating batch; official posting states a 7.5 CGPA criterion.",
+        "resp": [
+          "Design, develop and test software features.",
+          "Collaborate with engineering teams on product delivery.",
+          "Troubleshoot and improve software quality."
+        ],
+        "skills": [
+          "Software engineering",
+          "Programming",
+          "Testing",
+          "Problem solving"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "JR334858",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact Salesforce Workday requisition JR334858 and employer-native search evidence match the AMTS role and 2026 graduate eligibility, but the public endpoint returned an empty JavaScript shell during the final check; manual review is required.",
+        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
+      }
+    },
+    {
+      "id": "gehealthcare-r4046852",
+      "company": "GE HealthCare",
+      "role": "Early Career Software Engineer",
+      "loc": "Bengaluru",
+      "apply": "https://careers.gehealthcare.com/global/en/job/R4046852",
+      "cat": "it",
+      "expYears": "Not Specified",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
+      "postedDate": null,
+      "job": {
+        "company": "GE HealthCare",
+        "role": "Early Career Software Engineer",
+        "loc": "Bengaluru",
+        "apply": "https://careers.gehealthcare.com/global/en/job/R4046852",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Not Specified",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "GE HealthCare official careers",
+        "desc": "Early-career software engineering role contributing to MR workflow software and product features.",
+        "elig": "Not Specified in the accessible official response.",
+        "resp": [
+          "Contribute to software-feature development.",
+          "Support design, coding and testing activities for MR workflow software."
+        ],
+        "skills": [
+          "Software development",
+          "Testing",
+          "Problem solving"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R4046852",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact employer requisition R4046852 was discovered with matching Early Career Software Engineer title and Bengaluru location, but the final employer-page request returned a crawler-facing 410; conservative policy requires REVIEW, not expired.",
+        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
+      }
+    },
+    {
       "id": "unisys-req575939",
       "company": "Unisys",
       "role": "Associate Engineer – Software Application Engineer, AB Suite",
@@ -555,96 +509,6 @@
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
         "sourceVerificationMethod": "Exact Unisys Workday requisition REQ575939 and matching 0–3-year Associate Engineer evidence were found, but the public endpoint returned an empty JavaScript shell at final check; manual review is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
-      "id": "accenture-aioc-s01665483",
-      "company": "Accenture",
-      "role": "Measurement and Reporting New Associate",
-      "loc": "Bengaluru",
-      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665483_en",
-      "cat": "non-it",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
-      "postedDate": null,
-      "job": {
-        "company": "Accenture",
-        "role": "Measurement and Reporting New Associate",
-        "loc": "Bengaluru",
-        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665483_en",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Accenture official careers",
-        "desc": "Sales-operations measurement and reporting role supporting recurring reports and business analysis.",
-        "elig": "Any Graduation; 0–1 years of experience.",
-        "resp": [
-          "Prepare and maintain operational reports.",
-          "Analyze data and support sales-execution reporting.",
-          "Follow established reporting processes and quality checks."
-        ],
-        "skills": [
-          "Reporting",
-          "Data analysis",
-          "Microsoft Excel",
-          "Sales operations"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "AIOC-S01665483",
-        "date": "Not Specified",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
-    },
-    {
-      "id": "ey-1749819",
-      "company": "EY",
-      "role": "Analyst – Tax, Global Compliance & Reporting",
-      "loc": "Mumbai",
-      "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
-      "cat": "non-it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
-      "postedDate": "2026-10-06",
-      "job": {
-        "company": "EY",
-        "role": "Analyst – Tax, Global Compliance & Reporting",
-        "loc": "Mumbai",
-        "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "EY official careers",
-        "desc": "Entry-level tax compliance and reporting analyst role supporting client deliverables and documentation.",
-        "elig": "Graduate qualification; 0–2 years of relevant experience.",
-        "resp": [
-          "Support tax compliance and reporting deliverables.",
-          "Prepare documentation and working papers.",
-          "Coordinate data and respond to review comments."
-        ],
-        "skills": [
-          "Tax compliance",
-          "Reporting",
-          "Documentation",
-          "Data analysis"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1749819",
-        "date": "6 Oct 2026",
-        "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
         "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
       }
     },
@@ -827,6 +691,51 @@
         "sourceVerificationMethod": "Exact Capco Greenhouse requisition 7698358 and matching Bengaluru Java role were discovered, but the final URL redirected to the board with error=true; manual review is required.",
         "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
       }
+    },
+    {
+      "id": "accenture-aioc-s01665483",
+      "company": "Accenture",
+      "role": "Measurement and Reporting New Associate",
+      "loc": "Bengaluru",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665483_en",
+      "cat": "non-it",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "unconfirmed",
+      "verificationReason": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
+      "postedDate": null,
+      "job": {
+        "company": "Accenture",
+        "role": "Measurement and Reporting New Associate",
+        "loc": "Bengaluru",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665483_en",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Accenture official careers",
+        "desc": "Sales-operations measurement and reporting role supporting recurring reports and business analysis.",
+        "elig": "Any Graduation; 0–1 years of experience.",
+        "resp": [
+          "Prepare and maintain operational reports.",
+          "Analyze data and support sales-execution reporting.",
+          "Follow established reporting processes and quality checks."
+        ],
+        "skills": [
+          "Reporting",
+          "Data analysis",
+          "Microsoft Excel",
+          "Sales operations"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "AIOC-S01665483",
+        "date": "Not Specified",
+        "verifiedDate": "19 Oct 2026",
+        "sourceVerificationMethod": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
+        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
+      }
     }
   ],
   "updatedAt": "2026-10-19T03:36:54.559Z",
@@ -855,18 +764,37 @@
     "deloitte": "No verified eligible new opening today. The exact live OFSAA EPM Analyst requisition requires 1+ years in banking risk/finance/regulatory reporting and 1+ years of OFSAA/SAS experience, so it was not treated as an attainable fresher IT or fresher non-IT opening."
   },
   "ranking": {
-    "policy": "Deloitte-first; approved-87 before shortage fallbacks; audience relevance, exact-source confidence, freshness and distinct employers.",
-    "target": "8 entry-level IT + 1 fresher non-IT + 1 internship/apprenticeship",
-    "achievedPriority": {
-      "it": 8,
-      "nonIt": 1,
-      "internshipOrApprenticeship": 1
+    "method": "official-evidence-quota-diversity-v2",
+    "rankedAt": "2026-10-19T03:37:04.297Z",
+    "target": {
+      "fresherIT": 8,
+      "nonIT": 1,
+      "training": 1
     },
-    "warnings": [
-      "Five priority rows remain source-unconfirmed because exact official endpoints returned crawler-facing blank shells, redirects or denial responses; owner review is required.",
-      "Only 9 of the 18 staged distinct employers map to the approved 87/parent groups; outside-list employers were used only after priority portals did not yield enough source-complete distinct employers.",
-      "Nothing in this batch is owner-approved or authorized for publication."
-    ]
+    "selected": {
+      "fresherIT": 4,
+      "nonIT": 1,
+      "training": 1
+    },
+    "shortfalls": {
+      "fresherIT": 4,
+      "nonIT": 0,
+      "training": 0
+    },
+    "excludedPreviouslyPublished": [
+      {
+        "id": "hevo-993a3ed3",
+        "company": "Hevo Data"
+      }
+    ],
+    "excludedOwnerExpired": [],
+    "deferredForFreshDiscovery": [
+      {
+        "id": "caterpillar-r0000399729",
+        "company": "Caterpillar"
+      }
+    ],
+    "warning": "Ranked candidates are not verified for publication. Recheck the exact job and application before posting; unconfirmed jobs remain held."
   },
   "publication": {
     "authorized": false,
