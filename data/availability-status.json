@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:14:25.768Z",
+  "checkedAt": "2026-10-19T03:14:46.034Z",
   "checked": 129,
-  "active": 121,
+  "active": 122,
   "expired": 3,
-  "review": 5,
+  "review": 4,
   "changedExpired": 3,
   "items": [
     {
@@ -908,9 +908,11 @@
       "role": "Intern – IT",
       "page": "jobs/thermo-fisher-scientific-intern-it-bangalore-r-01368644.html",
       "url": "https://jobs.thermofisher.com/global/en/job/R-01368644/Intern-IT",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-18T17:34:17.401351+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:14:46.034Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:14:46.034Z"
     },
     {
       "id": 74,
