@@ -4721,16 +4721,16 @@
       "Apply through the official employer career portal"
     ],
     "apply": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-    "status": "active",
-    "verifiedDate": "15 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "19 Oct 2026",
     "sourceName": "Official employer career portal",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
     "availabilityCheck": {
       "url": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-      "checkedAt": "2026-10-15T16:51:02.186Z",
-      "state": "active",
-      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026.",
+      "checkedAt": "2026-10-19T03:13:52.760Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
       "id": 95
     },
     "logo": [

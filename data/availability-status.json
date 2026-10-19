@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-19T03:13:35.759Z",
+  "checkedAt": "2026-10-19T03:13:52.760Z",
   "checked": 129,
   "active": 119,
-  "expired": 2,
-  "review": 8,
-  "changedExpired": 2,
+  "expired": 3,
+  "review": 7,
+  "changedExpired": 3,
   "items": [
     {
       "id": 185,
@@ -832,9 +832,11 @@
       "role": "Software Development Engineer – RBS Tech",
       "page": "jobs/amazon-software-development-engineer-rbs-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10554342/software-development-engineer-rbs-tech",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-18T17:34:06.239737+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-19T03:13:52.760Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-19T03:13:52.760Z"
     },
     {
       "id": 91,
