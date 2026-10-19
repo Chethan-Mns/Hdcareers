@@ -210,7 +210,7 @@
       "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
       "cat": "non-it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
       "postedDate": "2026-10-06",
@@ -224,7 +224,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "EY official careers",
         "desc": "Entry-level tax compliance and reporting analyst role supporting client deliverables and documentation.",
         "elig": "Graduate qualification; 0–2 years of relevant experience.",
@@ -244,8 +244,11 @@
         "date": "6 Oct 2026",
         "verifiedDate": "19 Oct 2026",
         "sourceVerificationMethod": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "browserVerifiedAt": "2026-10-19T03:49:01.600Z",
+        "manualLiveVerifiedAt": "2026-10-19T03:49:01.600Z"
+      },
+      "reviewedAt": "2026-10-19T03:49:01.600Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "synopsys-19228",
@@ -745,7 +748,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-19T03:48:55.023Z",
+  "updatedAt": "2026-10-19T03:49:01.600Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
