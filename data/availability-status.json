@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T03:10:11.757Z",
+  "checkedAt": "2026-10-19T03:10:25.853Z",
   "checked": 129,
-  "active": 109,
+  "active": 110,
   "expired": 0,
-  "review": 20,
+  "review": 19,
   "changedExpired": 0,
   "items": [
     {
@@ -508,9 +508,11 @@
       "role": "Graduate Engineer Trainee",
       "page": "jobs/ge-healthcare-graduate-engineer-trainee.html",
       "url": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-18T17:33:34.237168+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-19T03:10:25.853Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-19T03:10:25.853Z"
     },
     {
       "id": 132,
