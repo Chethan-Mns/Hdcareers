@@ -3,7 +3,7 @@
     "officialDomain": "actrec.gov.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/actrec-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/actrec-217b242.svg",
+    "localPath": "assets/company-icons/actrec-217b242-fba2fe72aa.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
     "bytes": 479
@@ -12,7 +12,7 @@
     "officialDomain": "actrec.gov.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/actrec-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e.svg",
+    "localPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-fba2fe72aa.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
     "bytes": 479
@@ -48,7 +48,7 @@
     "officialDomain": "cochinshipyard.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/cochin-shipyard-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/cochin-shipyard-limited-556509f.svg",
+    "localPath": "assets/company-icons/cochin-shipyard-limited-556509f-1f25fa7259.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
     "bytes": 376
@@ -57,7 +57,7 @@
     "officialDomain": "cochinshipyard.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/cochin-shipyard-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985.svg",
+    "localPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-1f25fa7259.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
     "bytes": 376
@@ -268,7 +268,7 @@
     "officialDomain": "ecil.co.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/ecil-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b.svg",
+    "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-1e9ea634a0.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
     "bytes": 353
@@ -730,16 +730,13 @@
     "bytes": 3297
   },
   "AiPrise": {
-    "officialDomain": "ashbyhq.com",
-    "sourceUrl": "https://www.ashbyhq.com/icon.png",
-    "sourceType": "apple-touch-icon",
-    "localPath": "assets/company-icons/aiprise-bb5de8a.png",
-    "sourceDimensions": [
-      192,
-      192
-    ],
-    "qualityScore": 632,
-    "bytes": 4268
+    "officialDomain": "aiprise.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/67c03fc304a1deac6d23708b/67f362c2f0f49490e8c2fcdd_Frame%2013761.svg",
+    "sourceType": "shortcut icon",
+    "localPath": "assets/company-icons/aiprise-bb5de8a-4cb6def98f.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1090,
+    "bytes": 1219
   },
   "Mastercard": {
     "officialDomain": "mastercard.com",
@@ -773,5 +770,158 @@
     "sourceDimensions": null,
     "qualityScore": 1090,
     "bytes": 393
+  },
+  "66degrees": {
+    "officialDomain": "66degrees.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/68dd5adbcc75b2bc818c9064/68dd9d05fd5320033efe867b_webclip.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/66degrees-921eb66-8fb784f88a.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 696,
+    "bytes": 6622
+  },
+  "AHEAD": {
+    "officialDomain": "ahead.com",
+    "sourceUrl": "https://www.ahead.com/icons/icon-512x512.png?v=a3a297a89c947953943193c36ac37e80",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/ahead-0918318-afb6ded5a4.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "qualityScore": 1208,
+    "bytes": 7386
+  },
+  "CloudSEK": {
+    "officialDomain": "cloudsek.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/634fc5026f66af518e897c77/634fc72bbb51ca5becedfe90_Logo%20Emblem%20only%20dark.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/cloudsek-8d21fcc-0dfb695d6c.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 696,
+    "bytes": 24507
+  },
+  "Deutsche Bank": {
+    "officialDomain": "db.com",
+    "sourceUrl": "https://prod2.master.dwebcms.db.com/application/themes/default/favicon/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/deutsche-bank-883e11d-7cd2c89bba.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 1805
+  },
+  "Ergomed": {
+    "officialDomain": "ergomedgroup.com",
+    "sourceUrl": "https://ergomedgroup.com/wp-content/uploads/2021/08/cropped-Ergomed_favicon_600x600-180x180.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/ergomed-6d4a7d2-cd496816a1.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 620,
+    "bytes": 7845
+  },
+  "HackerRank": {
+    "officialDomain": "hackerrank.com",
+    "sourceUrl": "https://www.hackerrank.com:443/_sherpa/assets/static/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/hackerrank-09080bd-beb24adc90.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 824,
+    "bytes": 25248
+  },
+  "Instawork": {
+    "officialDomain": "instawork.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/63fd26f2fd0da53e0276079c/647e2794ec611bef8c055ebd_IW-favicon-white-grey-256x256.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/instawork-1354fb3-766611ddc5.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 696,
+    "bytes": 11661
+  },
+  "Merkle Science": {
+    "officialDomain": "merklescience.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/6058883b1b6e85eceae76f61/605ef67b007f8664f872bcca_webclip.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/merkle-science-1bc635f-b2ba2ed62d.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "qualityScore": 696,
+    "bytes": 9215
+  },
+  "NXP Semiconductors": {
+    "officialDomain": "nxp.com",
+    "sourceUrl": "https://www.nxp.com:443/favicon.ico",
+    "sourceType": "favicon ICO default",
+    "localPath": "assets/company-icons/nxp-semiconductors-67dc9d6-6368a684d5.png",
+    "sourceDimensions": [
+      100,
+      100
+    ],
+    "qualityScore": 190,
+    "bytes": 1215
+  },
+  "SingleStore": {
+    "officialDomain": "singlestore.com",
+    "sourceUrl": "https://www.singlestore.com/icons/icon-512x512.png?v=277b9cbbe31e8bc416504cf3b902d430",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/singlestore-e9fb172-ede303a092.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "qualityScore": 1208,
+    "bytes": 32590
+  },
+  "Skild AI": {
+    "officialDomain": "skild.ai",
+    "sourceUrl": "https://skild.ai/icon.svg?36392896a72c5828",
+    "sourceType": "icon",
+    "localPath": "assets/company-icons/skild-ai-92215b3-a9b3b4e300.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1090,
+    "bytes": 1533
+  },
+  "StarTree": {
+    "officialDomain": "startree.ai",
+    "sourceUrl": "https://startree.ai/wp-content/uploads/2025/06/cropped-main-favicon-180x180.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/startree-7ab3377-6e5a233557.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 620,
+    "bytes": 4204
+  },
+  "Trackmind": {
+    "officialDomain": "trackmind.com",
+    "sourceUrl": "https://www.trackmind.com/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/trackmind-53d952a-22dc32b67b.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 4542
   }
 }
