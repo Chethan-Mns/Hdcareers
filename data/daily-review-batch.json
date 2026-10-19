@@ -723,7 +723,7 @@
       "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665483_en",
       "cat": "non-it",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "unconfirmed",
       "verificationReason": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
       "postedDate": null,
@@ -737,7 +737,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Accenture official careers",
         "desc": "Sales-operations measurement and reporting role supporting recurring reports and business analysis.",
         "elig": "Any Graduation; 0–1 years of experience.",
@@ -756,12 +756,13 @@
         "jobId": "AIOC-S01665483",
         "date": "Not Specified",
         "verifiedDate": "19 Oct 2026",
-        "sourceVerificationMethod": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required.",
-        "browserVerifiedAt": "2026-10-19T03:36:54.559Z"
-      }
+        "sourceVerificationMethod": "Exact Accenture requisition AIOC-S01665483 and matching 0–1-year New Associate evidence were found, but the final URL redirected to the generic job-search page; manual confirmation is required."
+      },
+      "reviewedAt": "2026-10-19T03:50:58.397Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-19T03:50:51.559Z",
+  "updatedAt": "2026-10-19T03:50:58.397Z",
   "discoverySummary": {
     "portalsVisited": 34,
     "uniqueExactCandidates": 27,
