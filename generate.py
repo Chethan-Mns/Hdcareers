@@ -624,6 +624,8 @@ def logo_candidates(job: dict) -> list[str]:
     company = str(job.get("company", "")).strip()
     key = company.casefold()
     approved = APPROVED_COMPANY_LOGOS.get(key, "")
+    if not approved and key.startswith("deloitte"):
+        approved = APPROVED_COMPANY_LOGOS.get("deloitte", "")
     if not approved and re.match(r"^drdo\b", key):
         approved = APPROVED_COMPANY_LOGOS.get("drdo", "")
     cached = str(job.get("logoPath", "")).strip()
