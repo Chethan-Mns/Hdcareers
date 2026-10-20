@@ -923,5 +923,29 @@
     ],
     "qualityScore": 710,
     "bytes": 4542
+  },
+  "Stripe": {
+    "officialDomain": "stripe.com",
+    "sourceUrl": "https://images.stripeassets.com/fzn2n1nzq965/4vVgZi0ZMoEzOhkcv7EVwK/8cce6fdcf2733b2ec8e99548908847ed/favicon.png?w=180&h=180",
+    "sourceType": "apple-touch-icon",
+    "localPath": "assets/company-icons/stripe-4d08ec5-b1fe614adc.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 710,
+    "bytes": 4473
+  },
+  "YASH Technologies": {
+    "officialDomain": "yash.com",
+    "sourceUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yash.com/&size=256",
+    "sourceType": "official-domain favicon proxy fallback",
+    "localPath": "assets/company-icons/yash-technologies-77a8374-4f3d6ed515.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "qualityScore": 375,
+    "bytes": 4219
   }
 }
