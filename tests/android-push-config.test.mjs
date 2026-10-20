@@ -79,7 +79,7 @@ test("Expiry review lists all statuses lazily, stages clicks locally and preserv
  assert.match(checker,/scrollToItem\(0\)/);
  assert.match(checker,/itemsIndexed\(visibleReviews/);
  assert.match(checker,/vm\.stageExpiryReview\(jobId,"keep"\)/);
- assert.match(checker,/vm\.publishExpiryDraft/);
+ assert.match(checker,/vm(?:::|\.)publishExpiryDraft/);
  assert.match(checker,/confirmation=jobId to "expire"/);
  assert.match(home,/pendingExpiryReviews/);
  assert.match(home,/Review "\+pending\.size\+" pending jobs/);
