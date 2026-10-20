@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-20T04:18:23.225Z",
+  "checkedAt": "2026-10-20T04:18:38.637Z",
   "checked": 129,
   "active": 122,
-  "expired": 3,
-  "review": 4,
-  "changedExpired": 3,
+  "expired": 4,
+  "review": 3,
+  "changedExpired": 4,
   "items": [
     {
       "id": 186,
@@ -1050,9 +1050,11 @@
       "role": "Campus-Beginner – Cybersecurity Associate",
       "page": "jobs/hcltech-campus-beginner-cybersecurity-associate-chennai-164704.html",
       "url": "https://careers.hcltech.com/job/Campus-Beginner/164704-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-19T20:12:53.566128+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-20T04:18:38.637Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-20T04:18:38.637Z"
     },
     {
       "id": 54,
