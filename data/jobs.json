@@ -2043,8 +2043,8 @@
       "Databases"
     ],
     "apply": "https://job-boards.greenhouse.io/cloudsek/jobs/6222340004",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "20 Oct 2026",
     "sourceName": "CloudSEK official careers",
     "who": "Current students or recent graduates in CS, Software Engineering or related fields; able to attend Bengaluru office four days weekly for three months.",
     "workMode": "Hybrid, Bengaluru office four days a week",
@@ -2060,7 +2060,14 @@
     },
     "id": 169,
     "logoPath": "assets/company-icons/cloudsek-8d21fcc-0dfb695d6c.png",
-    "logoSourceDomain": "cloudsek.com"
+    "logoSourceDomain": "cloudsek.com",
+    "availabilityCheck": {
+      "id": 169,
+      "url": "https://job-boards.greenhouse.io/cloudsek/jobs/6222340004",
+      "checkedAt": "2026-10-20T04:13:33.993Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review."
+    }
   },
   {
     "page": "jobs/fretron-technical-engineer-gurugram.html",
