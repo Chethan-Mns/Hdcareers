@@ -1,6 +1,6 @@
 {
   "batchId": "2026-10-20-0900-ist",
-  "generatedAt": "2026-10-20T03:29:38Z",
+  "generatedAt": "2026-10-20T03:35:00Z",
   "status": "reviewing",
   "priority": [
     {
@@ -691,7 +691,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:29:38Z",
+  "updatedAt": "2026-10-20T03:35:00Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
@@ -792,5 +792,9 @@
   "publication": {
     "authorized": false,
     "reason": "Morning automation stages review only. Owner Verify & Publish approval is required; no website or Telegram publication was initiated."
+  },
+  "notificationRetry": {
+    "reason": "Final ranked batch contains only confirmed Live candidates; refresh requested because the initial notification gate evaluated the pre-rank commit and skipped.",
+    "requestedAt": "2026-10-20T03:35:00Z"
   }
 }
