@@ -70,7 +70,7 @@ test("Production Android requests hourly Telegram and distinguishes accepted fro
  assert.match(kotlin,/ProAnalyticsV2/);
 });
 
-test("Expiry screen has no empty rows and the Home dashboard exposes review exceptions",()=>{
+test("Expiry review lists all statuses lazily, stages clicks locally and preserves Home exceptions",()=>{
  const checker=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumMore.kt");
  const home=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumScreens.kt");
  const model=read("android-admin/app/src/main/java/in/hdcareers/admin/AdminViewModel.kt");
