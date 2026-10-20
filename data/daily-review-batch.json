@@ -4,6 +4,113 @@
   "status": "reviewing",
   "priority": [
     {
+      "id": "yash-66559",
+      "company": "YASH Technologies",
+      "role": "Trainee Consultant - SAP - NextGen Technical Innovation",
+      "loc": "Hyderabad, Telangana",
+      "apply": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
+      "cat": "it",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route.",
+      "postedDate": "2026-10-01",
+      "job": {
+        "company": "YASH Technologies",
+        "role": "Trainee Consultant - SAP - NextGen Technical Innovation",
+        "loc": "Hyderabad, Telangana",
+        "apply": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "YASH Technologies Careers",
+        "desc": "Trainee SAP NextGen technical consultant role supporting development, unit testing and implementation to technical specifications.",
+        "elig": "0–1 years of experience; knowledge of SAP BTP Integration Suite or UI5 is mandatory.",
+        "resp": [
+          "Develop requirements according to technical specifications.",
+          "Execute unit testing.",
+          "Follow coding and performance standards.",
+          "Participate in training and self-development."
+        ],
+        "skills": [
+          "SAP BTP Integration Suite",
+          "UI5",
+          "JavaScript",
+          "Node.js",
+          "CSS",
+          "React or similar framework",
+          "HTML5"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "66559",
+        "date": "2026-10-01",
+        "verifiedDate": "2026-10-20",
+        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
+        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+      },
+      "sourceEvidence": {
+        "ownerManualLiveDate": "2026-10-19",
+        "currentCheckAt": "2026-10-20T03:29:38Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route."
+      }
+    },
+    {
+      "id": "sutherland-744000151046829",
+      "company": "Sutherland",
+      "role": "Campus Associates - FY'27",
+      "loc": "Hyderabad / Bengaluru",
+      "apply": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
+      "cat": "non-it",
+      "expYears": "2026 graduate / campus entry-level",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts.",
+      "postedDate": null,
+      "job": {
+        "company": "Sutherland",
+        "role": "Campus Associates - FY'27",
+        "loc": "Hyderabad / Bengaluru",
+        "apply": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "2026 graduate / campus entry-level",
+        "salary": "Not Disclosed",
+        "batch": "2026 passout",
+        "status": "review",
+        "sourceName": "Sutherland SmartRecruiters",
+        "desc": "Campus Associate role providing customer support through calls, email, chat or social channels.",
+        "elig": "Any full-time UG/PG graduate in Arts, Science, Commerce, Engineering, Pharmacy, MBA or MCA; 2026 passouts can apply and must live within 25 km of the office.",
+        "resp": [
+          "Resolve customer requests through calls, email, chat or social channels.",
+          "Meet customer satisfaction and productivity targets.",
+          "Follow data-security policies and service levels.",
+          "Complete required upskilling and coaching."
+        ],
+        "skills": [
+          "English communication",
+          "Analytical skills",
+          "Typing",
+          "Shift flexibility"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "744000151046829",
+        "date": null,
+        "verifiedDate": "2026-10-20",
+        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
+        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+      },
+      "sourceEvidence": {
+        "ownerManualLiveDate": "2026-10-19",
+        "currentCheckAt": "2026-10-20T03:29:38Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts."
+      }
+    },
+    {
       "id": "deloitte-60805744",
       "company": "Deloitte South Asia",
       "role": "Intern | Income Tax Laws | Hyderabad | Business Tax",
@@ -52,7 +159,9 @@
         "currentVerdict": "live",
         "officialEvidence": "Exact Deloitte requisition 60805744 opened today with matching title and Apply now route; the posting explicitly allows graduate/fresher candidates with no prior experience."
       }
-    },
+    }
+  ],
+  "backup": [
     {
       "id": "citi-26992827",
       "company": "Citi",
@@ -102,60 +211,6 @@
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Citi requisition 26992827 opened today with matching title, Mumbai location, 18 Oct 2026 posting date and a requisition-bound Apply route."
-      }
-    },
-    {
-      "id": "amazon-10508052",
-      "company": "Amazon",
-      "role": "SDE I Intern, Amazon University Talent Acquisition",
-      "loc": "India (including Bengaluru, Chennai, Hyderabad, Delhi, Mumbai and Pune)",
-      "apply": "https://www.amazon.jobs/en/jobs/10508052/sde-i-intern-amazon-university-talent-acquisition",
-      "cat": "internship",
-      "expYears": "Student internship",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Amazon Job ID 10508052 opened today with matching title and Apply now route; it is a six-month 2027 in-person internship for currently enrolled students graduating in 2027.",
-      "postedDate": null,
-      "job": {
-        "company": "Amazon",
-        "role": "SDE I Intern, Amazon University Talent Acquisition",
-        "loc": "India (including Bengaluru, Chennai, Hyderabad, Delhi, Mumbai and Pune)",
-        "apply": "https://www.amazon.jobs/en/jobs/10508052/sde-i-intern-amazon-university-talent-acquisition",
-        "cat": "internship",
-        "expType": "fresher",
-        "expYears": "Student internship",
-        "salary": "Not Disclosed",
-        "batch": "2027",
-        "status": "review",
-        "sourceName": "Amazon Jobs",
-        "desc": "Six-month Software Development Engineer internship contributing production software and distributed systems work.",
-        "elig": "Currently enrolled in a bachelor’s or master’s degree in Computer Science, Computer Engineering or a related field, with graduation year 2027.",
-        "resp": [
-          "Collaborate with cross-disciplinary teams to design and build products and services.",
-          "Build scalable distributed storage, index and query systems.",
-          "Design and code solutions from broadly defined problems.",
-          "Deliver high-quality software in an agile environment."
-        ],
-        "skills": [
-          "Data structures and algorithms",
-          "Object-oriented design",
-          "Operating systems",
-          "C/C++",
-          "Python",
-          "Java"
-        ],
-        "workMode": "In-person",
-        "jobId": "10508052",
-        "date": null,
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Amazon Job ID 10508052 opened today with matching title and Apply now route; it is a six-month 2027 in-person internship for currently enrolled students graduating in 2027."
       }
     },
     {
@@ -209,103 +264,6 @@
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Google job 109375266236572358 opened today with matching title, India locations and active Apply control; official deadline is 30 Apr 2027."
-      }
-    },
-    {
-      "id": "microsoft-1970393556917520",
-      "company": "Microsoft",
-      "role": "Data Science Intern",
-      "loc": "Not Specified",
-      "apply": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
-      "cat": "internship",
-      "expYears": "Internship; exact eligibility requires owner recheck",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "The exact Microsoft job-bound application form still opens today and identifies Data Science INTERN, but the public response did not expose the full job description, location or eligibility. Owner manually confirmed this exact link Live on 19 Oct; recheck required, not expired.",
-      "postedDate": null,
-      "job": {
-        "company": "Microsoft",
-        "role": "Data Science Intern",
-        "loc": "Not Specified",
-        "apply": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
-        "cat": "internship",
-        "expType": "fresher",
-        "expYears": "Internship; exact eligibility requires owner recheck",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Microsoft Careers",
-        "desc": "Official application form identifies a Data Science Intern role; substantive description was not exposed in today’s public response.",
-        "elig": "Not Specified on the accessible application response; owner must recheck the exact official listing before approval.",
-        "resp": [],
-        "skills": [],
-        "workMode": "Not Specified",
-        "jobId": "1970393556917520",
-        "date": null,
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact Microsoft application form opened; job content incomplete, retaining 19 Oct owner Live evidence",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "unconfirmed",
-        "officialEvidence": "The exact Microsoft job-bound application form still opens today and identifies Data Science INTERN, but the public response did not expose the full job description, location or eligibility. Owner manually confirmed this exact link Live on 19 Oct; recheck required, not expired."
-      }
-    },
-    {
-      "id": "yash-66559",
-      "company": "YASH Technologies",
-      "role": "Trainee Consultant - SAP - NextGen Technical Innovation",
-      "loc": "Hyderabad, Telangana",
-      "apply": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
-      "cat": "it",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route.",
-      "postedDate": "2026-10-01",
-      "job": {
-        "company": "YASH Technologies",
-        "role": "Trainee Consultant - SAP - NextGen Technical Innovation",
-        "loc": "Hyderabad, Telangana",
-        "apply": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "YASH Technologies Careers",
-        "desc": "Trainee SAP NextGen technical consultant role supporting development, unit testing and implementation to technical specifications.",
-        "elig": "0–1 years of experience; knowledge of SAP BTP Integration Suite or UI5 is mandatory.",
-        "resp": [
-          "Develop requirements according to technical specifications.",
-          "Execute unit testing.",
-          "Follow coding and performance standards.",
-          "Participate in training and self-development."
-        ],
-        "skills": [
-          "SAP BTP Integration Suite",
-          "UI5",
-          "JavaScript",
-          "Node.js",
-          "CSS",
-          "React or similar framework",
-          "HTML5"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "66559",
-        "date": "2026-10-01",
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route."
       }
     },
     {
@@ -364,48 +322,6 @@
       }
     },
     {
-      "id": "globallogic-irc300388",
-      "company": "GlobalLogic",
-      "role": "Associate Analyst - Freshers (Non Technical/Non Voice)",
-      "loc": "India",
-      "apply": "https://www.globallogic.com/careers/associate-analyst-freshers-non-technical-non-voice-irc300388/",
-      "cat": "non-it",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Owner manually confirmed exact IRC300388 Live on 19 Oct. Today the official page returned 404 to the verifier while an indexed official result still shows the matching title, 0–1 years and 7 Oct 2026; under policy this conflict is REVIEW, not Expired.",
-      "postedDate": "2026-10-07",
-      "job": {
-        "company": "GlobalLogic",
-        "role": "Associate Analyst - Freshers (Non Technical/Non Voice)",
-        "loc": "India",
-        "apply": "https://www.globallogic.com/careers/associate-analyst-freshers-non-technical-non-voice-irc300388/",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "GlobalLogic Careers",
-        "desc": "Non-technical, non-voice Associate Analyst opening for freshers; full current duties could not be re-extracted today.",
-        "elig": "Official indexed result states 0–1 years; other eligibility is Not Specified in today’s accessible evidence.",
-        "resp": [],
-        "skills": [],
-        "workMode": "Not Specified",
-        "jobId": "IRC300388",
-        "date": "2026-10-07",
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Conflicting official evidence: current fetch 404, official indexed result retained; owner Live evidence from 19 Oct",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "unconfirmed",
-        "officialEvidence": "Owner manually confirmed exact IRC300388 Live on 19 Oct. Today the official page returned 404 to the verifier while an indexed official result still shows the matching title, 0–1 years and 7 Oct 2026; under policy this conflict is REVIEW, not Expired."
-      }
-    },
-    {
       "id": "neuron7-3e5b2afa",
       "company": "Neuron7",
       "role": "Frontend Apprentice",
@@ -459,60 +375,6 @@
         "officialEvidence": "Exact Neuron7 Lever requisition opened today with matching title, Bengaluru location and active apply form; it explicitly describes a structured one-year early-career apprenticeship."
       }
     },
-    {
-      "id": "sutherland-744000151046829",
-      "company": "Sutherland",
-      "role": "Campus Associates - FY'27",
-      "loc": "Hyderabad / Bengaluru",
-      "apply": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
-      "cat": "non-it",
-      "expYears": "2026 graduate / campus entry-level",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts.",
-      "postedDate": null,
-      "job": {
-        "company": "Sutherland",
-        "role": "Campus Associates - FY'27",
-        "loc": "Hyderabad / Bengaluru",
-        "apply": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "2026 graduate / campus entry-level",
-        "salary": "Not Disclosed",
-        "batch": "2026 passout",
-        "status": "review",
-        "sourceName": "Sutherland SmartRecruiters",
-        "desc": "Campus Associate role providing customer support through calls, email, chat or social channels.",
-        "elig": "Any full-time UG/PG graduate in Arts, Science, Commerce, Engineering, Pharmacy, MBA or MCA; 2026 passouts can apply and must live within 25 km of the office.",
-        "resp": [
-          "Resolve customer requests through calls, email, chat or social channels.",
-          "Meet customer satisfaction and productivity targets.",
-          "Follow data-security policies and service levels.",
-          "Complete required upskilling and coaching."
-        ],
-        "skills": [
-          "English communication",
-          "Analytical skills",
-          "Typing",
-          "Shift flexibility"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000151046829",
-        "date": null,
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts."
-      }
-    }
-  ],
-  "backup": [
     {
       "id": "zynga-6216621004",
       "company": "Zynga",
@@ -676,60 +538,6 @@
       }
     },
     {
-      "id": "instawork-4618554006",
-      "company": "Instawork",
-      "role": "Operations Management Intern",
-      "loc": "Bengaluru, Karnataka",
-      "apply": "https://job-boards.greenhouse.io/instawork/jobs/4618554006",
-      "cat": "internship",
-      "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Instawork Greenhouse requisition 4618554006 opened today with matching internship title, Bengaluru location and active application form.",
-      "postedDate": null,
-      "job": {
-        "company": "Instawork",
-        "role": "Operations Management Intern",
-        "loc": "Bengaluru, Karnataka",
-        "apply": "https://job-boards.greenhouse.io/instawork/jobs/4618554006",
-        "cat": "internship",
-        "expType": "fresher",
-        "expYears": "Internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Instawork Greenhouse",
-        "desc": "Operations internship coordinating regional field data collection, field officers, quality, inventory and reporting.",
-        "elig": "Basic computer knowledge, comfort with WhatsApp and Google Sheets, coordination ability and operational problem-solving; no prior employment requirement is stated.",
-        "resp": [
-          "Plan daily field assignments and backup businesses.",
-          "Monitor field officers and resolve live issues.",
-          "Track recording quality, inventory and asset returns.",
-          "Report planned versus achieved hours and loss reasons."
-        ],
-        "skills": [
-          "Google Sheets",
-          "WhatsApp",
-          "Coordination",
-          "Multitasking",
-          "Operational reporting",
-          "Problem-solving"
-        ],
-        "workMode": "Field/operations",
-        "jobId": "4618554006",
-        "date": null,
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Instawork Greenhouse requisition 4618554006 opened today with matching internship title, Bengaluru location and active application form."
-      }
-    },
-    {
       "id": "paytm-a2f53649",
       "company": "Paytm",
       "role": "Talent Acquisition Intern",
@@ -782,48 +590,6 @@
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Paytm Lever requisition opened today with matching title, Noida location and active apply form; it explicitly accepts pursuing or recently completed graduates."
-      }
-    },
-    {
-      "id": "airbound-88683246",
-      "company": "Airbound",
-      "role": "UAV Pilot, Flight Operations",
-      "loc": "Guntur, Andhra Pradesh",
-      "apply": "https://jobs.ashbyhq.com/airbound/88683246-88ba-4398-8c84-0294c314915f",
-      "cat": "non-it",
-      "expYears": "Fresher eligibility requires owner recheck",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "unconfirmed",
-      "verificationReason": "Owner manually confirmed the exact Ashby requisition Live on 19 Oct. Today the official URL resolves with matching UAV Pilot title and Guntur location, but only a JavaScript shell was accessible, so the application route and fresher eligibility require recheck; not marked Expired.",
-      "postedDate": null,
-      "job": {
-        "company": "Airbound",
-        "role": "UAV Pilot, Flight Operations",
-        "loc": "Guntur, Andhra Pradesh",
-        "apply": "https://jobs.ashbyhq.com/airbound/88683246-88ba-4398-8c84-0294c314915f",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "Fresher eligibility requires owner recheck",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Airbound Ashby",
-        "desc": "UAV pilot role in flight operations; substantive responsibilities were not exposed in today’s accessible response.",
-        "elig": "Not Specified in today’s accessible evidence; owner must recheck fresher eligibility before approval.",
-        "resp": [],
-        "skills": [],
-        "workMode": "Not Specified",
-        "jobId": "88683246-88ba-4398-8c84-0294c314915f",
-        "date": null,
-        "verifiedDate": "2026-10-20",
-        "sourceVerificationMethod": "Exact official Ashby URL resolved but returned JavaScript-only shell; retaining 19 Oct owner Live evidence",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
-      },
-      "sourceEvidence": {
-        "ownerManualLiveDate": "2026-10-19",
-        "currentCheckAt": "2026-10-20T03:29:38Z",
-        "currentVerdict": "unconfirmed",
-        "officialEvidence": "Owner manually confirmed the exact Ashby requisition Live on 19 Oct. Today the official URL resolves with matching UAV Pilot title and Guntur location, but only a JavaScript shell was accessible, so the application route and fresher eligibility require recheck; not marked Expired."
       }
     },
     {
@@ -965,9 +731,63 @@
     "deloitte": "Qualified: Deloitte South Asia requisition 60805744 is currently Live, fresher-eligible and retained as Priority #1."
   },
   "ranking": {
-    "policy": "Preserved the owner’s 19 Oct order, removed the EY duplicate and closed Volvo posting, then compacted the next candidates upward without changing relative order.",
-    "ownerSampleDate": "2026-10-19",
-    "ownerSampleCount": 20
+    "method": "official-evidence-quota-diversity-v2",
+    "rankedAt": "2026-10-20T03:31:46.412Z",
+    "target": {
+      "fresherIT": 8,
+      "nonIT": 1,
+      "training": 1
+    },
+    "selected": {
+      "fresherIT": 1,
+      "nonIT": 1,
+      "training": 1
+    },
+    "shortfalls": {
+      "fresherIT": 7,
+      "nonIT": 0,
+      "training": 0
+    },
+    "excludedPreviouslyPublished": [
+      {
+        "id": "amazon-10508052",
+        "company": "Amazon"
+      }
+    ],
+    "excludedOwnerExpired": [],
+    "deferredForFreshDiscovery": [
+      {
+        "id": "instawork-4618554006",
+        "company": "Instawork"
+      }
+    ],
+    "needsSourceVerification": [
+      {
+        "id": "microsoft-1970393556917520",
+        "company": "Microsoft",
+        "role": "Data Science Intern",
+        "officialUrl": "https://apply.careers.microsoft.com/careers/job/1970393556917520",
+        "verificationVerdict": "unconfirmed",
+        "verificationReason": "The exact Microsoft job-bound application form still opens today and identifies Data Science INTERN, but the public response did not expose the full job description, location or eligibility. Owner manually confirmed this exact link Live on 19 Oct; recheck required, not expired."
+      },
+      {
+        "id": "globallogic-irc300388",
+        "company": "GlobalLogic",
+        "role": "Associate Analyst - Freshers (Non Technical/Non Voice)",
+        "officialUrl": "https://www.globallogic.com/careers/associate-analyst-freshers-non-technical-non-voice-irc300388/",
+        "verificationVerdict": "unconfirmed",
+        "verificationReason": "Owner manually confirmed exact IRC300388 Live on 19 Oct. Today the official page returned 404 to the verifier while an indexed official result still shows the matching title, 0–1 years and 7 Oct 2026; under policy this conflict is REVIEW, not Expired."
+      },
+      {
+        "id": "airbound-88683246",
+        "company": "Airbound",
+        "role": "UAV Pilot, Flight Operations",
+        "officialUrl": "https://jobs.ashbyhq.com/airbound/88683246-88ba-4398-8c84-0294c314915f",
+        "verificationVerdict": "unconfirmed",
+        "verificationReason": "Owner manually confirmed the exact Ashby requisition Live on 19 Oct. Today the official URL resolves with matching UAV Pilot title and Guntur location, but only a JavaScript shell was accessible, so the application route and fresher eligibility require recheck; not marked Expired."
+      }
+    ],
+    "warning": "Only confirmed Live-evidenced jobs reach Priority/Backup. Unconfirmed exact URLs are saved for separate source rechecking, never silently marked Expired."
   },
   "publication": {
     "authorized": false,
