@@ -368,6 +368,8 @@ def main() -> None:
     def work(item):
         company, sample = item
         approved_path = approved.get(company.casefold(), "")
+        if not approved_path and company.strip().casefold().startswith("deloitte"):
+            approved_path = approved.get("deloitte", "")
         if approved_path and (ROOT / approved_path).is_file():
             domain = official_domain(sample, overrides)
             return company, domain, ("cache", approved_path, {}), ""
