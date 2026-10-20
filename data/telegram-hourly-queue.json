@@ -257,25 +257,26 @@
     {
       "page": "jobs/stripe-software-engineer-intern.html",
       "batchId": "admin-39366680205",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T10:59:31.706875+00:00",
       "claimId": "39411790253",
-      "claimedAt": "2026-10-20T10:59:42.617330+00:00"
+      "claimedAt": "2026-10-20T10:59:42.617330+00:00",
+      "messageId": 540,
+      "deliveredAt": "2026-10-20T10:59:45.738442+00:00"
     },
     {
       "page": "jobs/sutherland-campus-associates-fy-27.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T11:59:31.706875+00:00"
+      "dueAt": "2026-10-20T11:59:45.738442+00:00"
     },
     {
       "page": "jobs/yash-technologies-trainee-consultant-sap-nextgen-technical-innovation.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T12:59:31.706875+00:00"
+      "dueAt": "2026-10-20T12:59:45.738442+00:00"
     }
   ]
 }
