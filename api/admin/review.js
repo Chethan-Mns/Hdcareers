@@ -136,6 +136,131 @@ async function commitJsonFiles(base,headSha,changes,message,token){
   return commit.sha;
 }
 
+
+/**
+ * Apply an entire Android expiry-review selection in one Git commit.
+ * Taps in the app do not write here: only the explicit Publish Review Changes action does.
+ * This endpoint does not dispatch jobs to Telegram or republish an existing job.
+ */
+async function saveBulkDecisions(req,res,base,token){
+  const choices=req.body?.decisions;
+  if(!Array.isArray(choices)||choices.length===0||choices.length>200)
+    return res.status(400).json({error:"Provide 1–200 review decisions."});
+  const seen=new Set();
+  for(const x of choices){
+    const id=Number(x?.jobId),action=String(x?.action||"");
+    if(!Number.isSafeInteger(id)||id<1||!["keep","expire","unsure"].includes(action)||seen.has(id))
+      return res.status(400).json({error:"Invalid or repeated review job ID/action."});
+    seen.add(id);
+  }
+  try{await auditMutation(req,"job.review.bulk",choices.map(x=>x.jobId).join(","));}
+  catch{return res.status(503).json({error:"Audit logging unavailable. No decisions were saved."});}
+
+  for(let attempt=1;attempt<=5;attempt++){
+    try{
+      const {headSha,jobs,summary,reviewQueue}=await readState(base,token);
+      if(!Array.isArray(jobs)||!Array.isArray(reviewQueue))
+        throw new Error("The review data is not available.");
+      if(!Array.isArray(summary.items))summary.items=[];
+      const now=new Date().toISOString();
+      let changedJobs=false,changedQueue=false,newlyExpired=0;
+      const applied=[];
+      // All decisions are validated against the SAME snapshot before any commit.
+      for(const choice of choices){
+        const id=Number(choice.jobId),action=String(choice.action);
+        const pending=reviewQueue.find(x=>Number(x.reviewId)===id&&["review","ready"].includes(x.state));
+        const job=pending?null:jobs.find(x=>Number(x.id)===id);
+        if(!pending&&!job)
+          return res.status(409).json({error:"The review list has changed. Refresh and try again.",jobId:id});
+        if(pending&&action==="keep"){
+          const url=String(pending.job?.apply||pending.url||"").trim();
+          if(!url.startsWith("https://")||!pending.job?.company||!pending.job?.role)
+            return res.status(422).json({error:"Official job URL, employer and role required before marking Live.",jobId:id});
+          if(jobs.some(j=>String(j.apply||"").trim().toLowerCase()===url.toLowerCase()))
+            return res.status(409).json({error:"Job already exists on the site. Review its published record.",jobId:id});
+        }
+        applied.push({id,action,pending,job});
+      }
+      for(const {id,action,pending,job} of applied){
+        if(pending){
+          changedQueue=true;
+          pending.reviewDecision=action==="keep"?"live":action==="expire"?"expired":"unsure";
+          pending.reviewedAt=now;
+          if(action==="keep"){
+            pending.state="ready";
+            pending.job.status="active";
+            pending.job.manualLiveVerifiedAt=now;
+            pending.job.manualLiveVerifiedUrl=String(pending.job.apply||pending.url);
+            pending.job.browserVerifiedAt=now;
+            pending.job.verifiedDate=today();
+          }else if(action==="expire"){
+            pending.state="rejected";
+            if(pending.job)pending.job.status="expired";
+          }else{
+            pending.state="review";
+            if(pending.job){
+              pending.job.status="review";
+              delete pending.job.manualLiveVerifiedAt;
+              delete pending.job.manualLiveVerifiedUrl;
+            }
+          }
+          continue;
+        }
+        let record=summary.items.find(x=>Number(x.id)===id);
+        if(!record){
+          record={id,company:job.company,role:job.role,page:job.page,url:job.apply};
+          summary.items.push(record);
+        }
+        const previous=job.status;
+        record.checkedAt=now;
+        record.manualReview=action;
+        record.manualReviewedAt=now;
+        if(action==="expire"){
+          if(previous!=="expired")newlyExpired++;
+          job.status="expired";
+          job.verifiedDate=today();
+          job.availabilityCheck={...(job.availabilityCheck||{}),id:job.id,url:job.apply,
+            checkedAt:now,state:"expired",reason:"Marked expired by HD Careers owner in a bulk review."};
+          record.state="expired";
+          record.reason="Marked expired by HD Careers owner in a bulk review.";
+          changedJobs=true;
+        }else if(action==="keep"){
+          // An owner may reverse a previous Expired decision; preserve a new positive verification.
+          job.status="active";
+          job.browserVerifiedAt=now;
+          job.verifiedDate=today();
+          job.availabilityCheck={...(job.availabilityCheck||{}),id:job.id,url:job.apply,
+            checkedAt:now,state:"active",reason:"Owner confirmed the exact posting Live in a bulk review."};
+          record.state="active";
+          record.reason="Manually browser-verified in HD Careers Admin bulk review.";
+          changedJobs=true;
+        }else{
+          record.state="review";
+          record.reason="Owner marked Unsure; hold for further verification.";
+          // Do not prematurely change the published job's active/expired state.
+        }
+      }
+      summary.checkedAt=now;
+      recompute(summary);
+      summary.changedExpired=newlyExpired;
+      const changes={[STATUS_PATH]:summary};
+      if(changedJobs)changes[JOBS_PATH]=jobs;
+      if(changedQueue)changes[REVIEW_PATH]=reviewQueue;
+      const commit=await commitJsonFiles(base,headSha,changes,
+        "Apply "+applied.length+" HD Careers owner review decisions in one batch",token);
+      return res.status(200).json({ok:true,applied:applied.length,newlyExpired,
+        commit,decisions:applied.map(({id,action})=>({jobId:id,action})),
+        message:"All "+applied.length+" review decisions saved together. Website regeneration follows; no jobs were dispatched to Telegram."});
+    }catch(error){
+      const status=Number(error?.status);
+      if((status===409||status===422)&&attempt<5)continue;
+      return res.status(status===401||status===403?502:500)
+        .json({error:error?.message||"Could not save the review batch. No confirmation of changes."});
+    }
+  }
+  return res.status(409).json({error:"The review list changed while saving. Refresh and retry."});
+}
+
 export default async function handler(req,res){
   res.setHeader("Cache-Control","private, max-age=0, no-store");
   if(req.method!=="POST"){
@@ -149,12 +274,14 @@ export default async function handler(req,res){
   const token=process.env.GITHUB_PUBLISH_TOKEN;
   if(!token)return res.status(503).json({error:"GITHUB_PUBLISH_TOKEN is not configured in Vercel."});
 
+  const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
+  if(Array.isArray(req.body?.decisions))
+    return saveBulkDecisions(req,res,base,token);
+
   const jobId=Number(req.body?.jobId);
   const action=String(req.body?.action||"");
   if(!Number.isFinite(jobId))return res.status(400).json({error:"A valid jobId is required."});
   if(!["expire","keep","unsure"].includes(action))return res.status(400).json({error:"action must be expire, keep or unsure."});
-
-  const base=process.env.ADMIN_GITHUB_BASE||DEFAULT_BASE;
 
   try{await auditMutation(req,"job.review."+action,String(jobId));}
   catch{return res.status(503).json({error:"Audit logging unavailable. Review was not changed."});}
