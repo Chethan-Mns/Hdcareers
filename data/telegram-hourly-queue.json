@@ -197,67 +197,68 @@
     {
       "page": "jobs/deloitte-south-asia-intern-income-tax-laws-hyderabad-business-tax.html",
       "batchId": "admin-39366680205",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T04:55:19.461359+00:00",
       "claimId": "39372122185",
-      "claimedAt": "2026-10-20T04:55:29.833447+00:00"
+      "claimedAt": "2026-10-20T04:55:29.833447+00:00",
+      "messageId": 534,
+      "deliveredAt": "2026-10-20T04:55:34.673274+00:00"
     },
     {
       "page": "jobs/google-silicon-engineering-intern-phd-summer-2027.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T05:55:19.461359+00:00"
+      "dueAt": "2026-10-20T05:55:34.673274+00:00"
     },
     {
       "page": "jobs/groww-video-editor-intern.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T06:55:19.461359+00:00"
+      "dueAt": "2026-10-20T06:55:34.673274+00:00"
     },
     {
       "page": "jobs/neuron7-frontend-apprentice.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T07:55:19.461359+00:00"
+      "dueAt": "2026-10-20T07:55:34.673274+00:00"
     },
     {
       "page": "jobs/paytm-talent-acquisition-intern.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T08:55:19.461359+00:00"
+      "dueAt": "2026-10-20T08:55:34.673274+00:00"
     },
     {
       "page": "jobs/qube-research-technologies-2027-internship-or-graduate-software-engineer-and-qua.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T09:55:19.461359+00:00"
+      "dueAt": "2026-10-20T09:55:34.673274+00:00"
     },
     {
       "page": "jobs/stripe-software-engineer-intern.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T10:55:19.461359+00:00"
+      "dueAt": "2026-10-20T10:55:34.673274+00:00"
     },
     {
       "page": "jobs/sutherland-campus-associates-fy-27.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T11:55:19.461359+00:00"
+      "dueAt": "2026-10-20T11:55:34.673274+00:00"
     },
     {
       "page": "jobs/yash-technologies-trainee-consultant-sap-nextgen-technical-innovation.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T12:55:19.461359+00:00"
+      "dueAt": "2026-10-20T12:55:34.673274+00:00"
     }
   ]
 }
