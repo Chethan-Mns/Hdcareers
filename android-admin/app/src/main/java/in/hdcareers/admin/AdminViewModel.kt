@@ -69,6 +69,8 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
     var days by androidx.compose.runtime.mutableIntStateOf(7)
     var checker by androidx.compose.runtime.mutableStateOf(JSONObject())
     var expirySelected by androidx.compose.runtime.mutableStateOf<Set<Int>>(emptySet())
+    // Purely local selections: clicking Live/Expired/Unsure does not call the backend.
+    var expiryDraft by androidx.compose.runtime.mutableStateOf<Map<Int,String>>(emptyMap())
     var expiryStages by androidx.compose.runtime.mutableStateOf<List<JSONObject>>(emptyList())
     var automation by androidx.compose.runtime.mutableStateOf(JSONObject())
     var fcmStatus by androidx.compose.runtime.mutableStateOf("Not configured")
@@ -126,6 +128,7 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         publishedReviewIds=emptySet()
         publishingProgress=JSONObject()
         expirySelected=emptySet()
+        expiryDraft=emptyMap()
         expiryStages=emptyList()
     }
     private fun setReminderState() {
@@ -295,6 +298,25 @@ class AdminViewModel(application:Application):AndroidViewModel(application) {
         showHDNotification(getApplication(),"HD Careers · Checker started",
             "Availability scan accepted. You will be alerted when it finishes.",
             EXPIRY_CHANNEL,98310,openExpiry=true)
+    }
+    fun stageExpiryReview(id:Int,action:String) {
+        if(id<1||action !in listOf("keep","expire","unsure"))return
+        expiryDraft=expiryDraft+(id to action)
+    }
+    fun unstageExpiryReview(id:Int) {
+        expiryDraft=expiryDraft-id
+    }
+    fun publishExpiryDraft()=run {
+        val submission=expiryDraft.toMap()
+        check(submission.isNotEmpty()) { "Select at least one Live, Expired, or Unsure review decision." }
+        val result=api.resolveCheckerBatch(submission)
+        // Do not lose edits made while the single batch request was in flight.
+        expiryDraft=expiryDraft.filter { (id,decision) -> submission[id]!=decision }
+        checker=api.checker()
+        jobs=api.jobs()
+        runCatching { loadPublishingProgress() }
+        setReminderState()
+        message=result.optString("message","Review changes saved together.")
     }
     fun checkerResolve(id:Int,action:String)=run {
         val wasNew=pendingExpiryReviews.any { it.optInt("id")==id && it.optString("reviewType")=="new_job" }
