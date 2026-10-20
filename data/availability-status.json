@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-20T04:15:34.246Z",
+  "checkedAt": "2026-10-20T04:16:01.260Z",
   "checked": 129,
-  "active": 112,
+  "active": 113,
   "expired": 2,
-  "review": 15,
+  "review": 14,
   "changedExpired": 2,
   "items": [
     {
@@ -658,9 +658,11 @@
       "role": "Analyst – Indirect Tax – Core",
       "page": "jobs/ey-analyst-indirect-tax-core.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-19T20:11:53.487331+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-20T04:16:01.260Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-20T04:16:01.260Z"
     },
     {
       "id": 126,
