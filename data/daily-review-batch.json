@@ -462,7 +462,7 @@
       "apply": "https://job-boards.greenhouse.io/scopely/jobs/5448999008?gh_jid=5448999008",
       "cat": "internship",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Scopely Greenhouse requisition 5448999008 opened today with matching title, Bengaluru location and active application form.",
       "postedDate": null,
@@ -476,7 +476,7 @@
         "expYears": "Internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Scopely Greenhouse",
         "desc": "QA engineering internship learning and executing functional, regression, exploratory and compatibility testing for games and applications.",
         "elig": "Intern-level role requiring analytical and communication skills plus basic software-testing understanding or willingness to learn; no prior employment requirement is stated.",
@@ -496,16 +496,19 @@
         "workMode": "Hybrid",
         "jobId": "5448999008",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:20.402Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:20.402Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Scopely Greenhouse requisition 5448999008 opened today with matching title, Bengaluru location and active application form."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:20.402Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "groww-4956817101",
@@ -721,7 +724,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:53:17.017Z",
+  "updatedAt": "2026-10-20T03:53:20.402Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
