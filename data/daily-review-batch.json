@@ -341,7 +341,7 @@
       "apply": "https://jobs.lever.co/neuron7/3e5b2afa-c8f0-4ad0-adea-34e7604773cc",
       "cat": "internship",
       "expYears": "Early-career apprenticeship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Neuron7 Lever requisition opened today with matching title, Bengaluru location and active apply form; it explicitly describes a structured one-year early-career apprenticeship.",
       "postedDate": null,
@@ -355,7 +355,7 @@
         "expYears": "Early-career apprenticeship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Neuron7 Lever Careers",
         "desc": "One-year frontend engineering apprenticeship supporting teams building AI-powered enterprise products.",
         "elig": "Good web fundamentals and willingness to learn; Angular exposure is a plus but not required.",
@@ -376,16 +376,19 @@
         "workMode": "Hybrid",
         "jobId": "3e5b2afa-c8f0-4ad0-adea-34e7604773cc",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:52:51.885Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:52:51.885Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Neuron7 Lever requisition opened today with matching title, Bengaluru location and active apply form; it explicitly describes a structured one-year early-career apprenticeship."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:52:51.885Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zynga-6216621004",
@@ -709,7 +712,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:52:32.848Z",
+  "updatedAt": "2026-10-20T03:52:51.885Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
