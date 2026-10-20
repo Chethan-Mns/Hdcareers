@@ -272,10 +272,18 @@ private fun EmptyReport() {
 internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
     val result=vm.checker.optJSONObject("results")
     val source=result?.optJSONArray("items")
-    // Only manual-review items belong in the LazyColumn; empty rows caused huge gaps.
+    // Keep all published jobs reviewable. LazyColumn composes only visible rows.
     val reviews=remember(vm.checker) {
         (0 until (source?.length() ?: 0)).mapNotNull { source?.optJSONObject(it) }
-            .filter { it.optString("state")=="review" }
+            .filter { it.optString("state") in listOf("active","expired","review") }
+            .sortedBy { when(it.optString("state")) { "review"->0;"active"->1;else->2 } }
+    }
+    var statusFilter by remember { mutableStateOf("All") }
+    val visibleReviews=reviews.filter { j ->
+        statusFilter=="All" ||
+            (statusFilter=="Pending"&&j.optString("state")=="review") ||
+            (statusFilter=="Live"&&j.optString("state")=="active") ||
+            (statusFilter=="Expired"&&j.optString("state")=="expired")
     }
     val ready=vm.readyExpiryReviews
     val stages=vm.expiryStages
@@ -306,7 +314,7 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
             MetricsGrid(listOf(
                 MetricSpec("Checked",(result?.optInt("checked")?:0).toString(),
                     Icons.Default.FactCheck,Brand.blue),
-                MetricSpec("Needs review",reviews.size.toString(),
+                MetricSpec("Needs review",reviews.count{it.optString("state")=="review"}.toString(),
                     Icons.Default.WarningAmber,Brand.amber),
                 MetricSpec("Publish Ready",ready.size.toString(),
                     Icons.Default.CheckCircle,Brand.green),
@@ -338,20 +346,58 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                     shape=RoundedCornerShape(13.dp)) {
                     Icon(Icons.Default.Refresh,null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Refresh pending reviews")
+                    Text("Refresh all review statuses")
                 }
             }
         }
-        if(reviews.isEmpty()) item {
+        item {
             ProCard {
-                SectionHead(Icons.Default.CheckCircle,"No pending expiry reviews",
-                    "New exceptions appear here after the checker completes",Brand.green)
+                SectionHead(Icons.Default.FactCheck,"Review all job statuses",
+                    "Tap Live or Unsure instantly. Expired asks for confirmation. Nothing is saved until Publish.",Brand.blue)
+                Row(horizontalArrangement=Arrangement.spacedBy(6.dp),
+                    modifier=Modifier.fillMaxWidth()) {
+                    listOf("All","Pending","Live","Expired").forEach { label ->
+                        OutlinedButton(onClick={statusFilter=label},
+                            modifier=Modifier.weight(1f),
+                            contentPadding=PaddingValues(horizontal=3.dp,vertical=8.dp)) {
+                            Text(label,fontSize=11.sp,maxLines=1,
+                                color=if(statusFilter==label)Brand.blue else Brand.gray)
+                        }
+                    }
+                }
+                Text("Showing ${visibleReviews.size} of ${reviews.size} jobs · ${vm.expiryDraft.size} staged changes",
+                    fontSize=12.sp,color=Brand.gray)
+                Button(onClick=vm::publishExpiryDraft,
+                    enabled=vm.expiryDraft.isNotEmpty()&&!vm.busy,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=50.dp)) {
+                    Icon(Icons.Default.CheckCircle,null,modifier=Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(if(vm.busy)"Saving review changes…" else
+                        "Publish ${vm.expiryDraft.size} review change(s)")
+                }
+                Text("This updates website job statuses together in one commit. It does not post existing jobs to Telegram.",
+                    fontSize=11.sp,color=Brand.gray)
             }
         }
-        itemsIndexed(reviews,key={ index,j -> j.optInt("id",-1).toString()+"-"+index }) { _, j ->
+        if(visibleReviews.isEmpty()) item {
+            ProCard {
+                SectionHead(Icons.Default.CheckCircle,"No jobs in this filter",
+                    "Choose All to review any published job",Brand.green)
+            }
+        }
+        itemsIndexed(visibleReviews,key={ index,j -> j.optInt("id",-1).toString()+"-"+index }) { _, j ->
             ProCard(padding=13) {
                 Column(verticalArrangement=Arrangement.spacedBy(9.dp)) {
-                    ProPill("NEEDS REVIEW",Brand.amber)
+                    val jobId=j.optInt("id",-1)
+                    val current=j.optString("state","review")
+                    ProPill(when(current) { "active"->"LIVE";"expired"->"EXPIRED";else->"NEEDS REVIEW" },
+                        when(current) { "active"->Brand.green;"expired"->Brand.red;else->Brand.amber })
+                    vm.expiryDraft[jobId]?.let { staged ->
+                        ProPill("STAGED: "+when(staged){"keep"->"LIVE";"expire"->"EXPIRED";else->"UNSURE"},Brand.blue)
+                        Text("Not applied yet · tap another option to change your decision",
+                            fontSize=11.sp,color=Brand.gray)
+                        TextButton(onClick={vm.unstageExpiryReview(jobId)}){Text("Undo selection")}
+                    }
                     Text(j.optString("company","Unknown employer"),fontSize=16.sp,
                         fontWeight=FontWeight.Bold,color=Brand.navy)
                     Text(j.optString("role"),fontSize=13.sp,color=Brand.navy,lineHeight=18.sp)
@@ -375,27 +421,26 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                             Text("Open official job",maxLines=1)
                         }
                     }
-                    val jobId=j.optInt("id",-1)
-                    Button(onClick={confirmation=jobId to "keep"},
-                        enabled=jobId>=0&&!vm.busy,
+                    Button(onClick={vm.stageExpiryReview(jobId,"keep")},
+                        enabled=jobId>=0,
                         modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
                         shape=RoundedCornerShape(12.dp)) {
                         Icon(Icons.Default.Check,null,modifier=Modifier.size(16.dp))
                         Spacer(Modifier.width(6.dp))
-                        Text(if(j.optString("reviewType")=="new_job")"Live · add to Publish Ready" else "Live · keep listed",maxLines=1)
+                        Text("Mark Live",maxLines=1)
                     }
-                    OutlinedButton(onClick={confirmation=jobId to "unsure"},
-                        enabled=jobId>=0&&!vm.busy,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)) {
+                    OutlinedButton(onClick={vm.stageExpiryReview(jobId,"unsure")},
+                        enabled=jobId>=0,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)) {
                         Icon(Icons.Default.HelpOutline,null,modifier=Modifier.size(16.dp))
-                        Spacer(Modifier.width(6.dp)); Text("Unsure · keep pending")
+                        Spacer(Modifier.width(6.dp)); Text("Mark Unsure")
                     }
                     OutlinedButton(onClick={confirmation=jobId to "expire"},
-                        enabled=jobId>=0&&!vm.busy,
+                        enabled=jobId>=0,
                         modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
                         shape=RoundedCornerShape(12.dp)) {
                         Icon(Icons.Default.Cancel,null,modifier=Modifier.size(16.dp))
                         Spacer(Modifier.width(6.dp))
-                        Text("Confirm expired",maxLines=1)
+                        Text("Mark Expired",maxLines=1)
                     }
                 }
             }
@@ -426,7 +471,7 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
                     }
                     if(dispatched)Text("Website: "+stage?.optString("website")+" · Telegram: "+
                         stage?.optString("telegram"),fontSize=11.sp,color=Brand.gray)
-                    if(!dispatched) TextButton(onClick={confirmation=id to "unsure"}) {
+                    if(!dispatched) TextButton(onClick={vm.stageExpiryReview(id,"unsure")}) {
                         Text("Return to Unsure")
                     }
                 }
@@ -467,11 +512,11 @@ internal fun ProChecker(vm:AdminViewModel,onBack:()->Unit) {
     confirmation?.let { (id,decision) ->
         AlertDialog(
             onDismissRequest={confirmation=null},
-            title={Text(when(decision){"expire"->"Confirm job expired?";"unsure"->"Keep as Unsure?";else->"Confirm Live?"})},
-            text={Text("Live for new jobs means Publish Ready, not website publication. Unsure stays pending. Expired is archived and removed from active review.")},
+            title={Text("Confirm job expired?")},
+            text={Text("Mark this job as Expired in your review. You can still change the selection before publishing. No website changes are made now.")},
             confirmButton={
-                TextButton(onClick={confirmation=null;vm.checkerResolve(id,decision)}) {
-                    Text(if(decision=="expire")"Mark expired" else if(decision=="unsure")"Keep Unsure" else "Confirm Live")
+                TextButton(onClick={confirmation=null;vm.stageExpiryReview(id,decision)}) {
+                    Text("Mark Expired")
                 }
             },
             dismissButton={TextButton(onClick={confirmation=null}){Text("Cancel")}}

@@ -70,18 +70,22 @@ test("Production Android requests hourly Telegram and distinguishes accepted fro
  assert.match(kotlin,/ProAnalyticsV2/);
 });
 
-test("Expiry screen has no empty rows and the Home dashboard exposes review exceptions",()=>{
+test("Expiry review lists all statuses lazily, stages clicks locally and preserves Home exceptions",()=>{
  const checker=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumMore.kt");
  const home=read("android-admin/app/src/main/java/in/hdcareers/admin/PremiumScreens.kt");
  const model=read("android-admin/app/src/main/java/in/hdcareers/admin/AdminViewModel.kt");
- assert.match(checker,/\.filter \{ it\.optString\("state"\)=="review" \}/);
+ assert.match(checker,/\.filter \{ it\.optString\("state"\) in listOf\("active","expired","review"\) \}/);
  assert.match(checker,/rememberLazyListState/);
  assert.match(checker,/scrollToItem\(0\)/);
- assert.match(checker,/itemsIndexed\(reviews/);
+ assert.match(checker,/itemsIndexed\(visibleReviews/);
+ assert.match(checker,/vm\.stageExpiryReview\(jobId,"keep"\)/);
+ assert.match(checker,/vm(?:::|\.)publishExpiryDraft/);
  assert.match(checker,/confirmation=jobId to "expire"/);
  assert.match(home,/pendingExpiryReviews/);
  assert.match(home,/Review "\+pending\.size\+" pending jobs/);
  assert.match(model,/fun refreshOperationsQuietly/);
+ assert.match(model,/fun publishExpiryDraft/);
+ assert.match(model,/api\.resolveCheckerBatch\(submission\)/);
 });
 test("Checker and publishing transitions trigger independently deduplicated FCM notifications",()=>{
  const push=read("lib/admin-push-handler.js");

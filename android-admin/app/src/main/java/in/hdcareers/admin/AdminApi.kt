@@ -124,6 +124,17 @@ class AdminApi {
         if(!result.optBoolean("queued"))throw IOException("Expiry publishing was not accepted.")
         return result
     }
+    suspend fun resolveCheckerBatch(decisions:Map<Int,String>):JSONObject {
+        require(decisions.isNotEmpty() && decisions.size<=200) { "Choose between 1 and 200 review decisions." }
+        val array=JSONArray()
+        decisions.toSortedMap().forEach { (jobId,action) ->
+            require(action in listOf("keep","expire","unsure")) { "Invalid review action." }
+            array.put(JSONObject().put("jobId",jobId).put("action",action))
+        }
+        val response=JSONObject(request("/api/admin/review",JSONObject().put("decisions",array)))
+        if(!response.optBoolean("ok")) throw IOException("Review decisions were not committed.")
+        return response
+    }
     suspend fun runChecker():String =
         JSONObject(request("/api/admin/availability",JSONObject())).optString("message","Checker requested.")
     suspend fun resolveChecker(jobId:Int,action:String):String =
