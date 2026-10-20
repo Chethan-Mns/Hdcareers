@@ -503,7 +503,7 @@
       "apply": "https://job-boards.eu.greenhouse.io/groww/jobs/4956817101",
       "cat": "internship",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Groww Greenhouse requisition 4956817101 opened today with matching title and active application form.",
       "postedDate": null,
@@ -517,7 +517,7 @@
         "expYears": "Internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Groww Greenhouse",
         "desc": "Video editing internship supporting production of social-media and internal video assets.",
         "elig": "Intern applicant with video-editing software proficiency, basic production knowledge, visual-storytelling ability and a portfolio or demo reel; no prior employment requirement is stated.",
@@ -538,16 +538,19 @@
         "workMode": "Not Specified",
         "jobId": "4956817101",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:52:30.030Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:52:30.030Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Groww Greenhouse requisition 4956817101 opened today with matching title and active application form."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:52:30.030Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "paytm-a2f53649",
@@ -703,7 +706,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:52:22.789Z",
+  "updatedAt": "2026-10-20T03:52:30.030Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
