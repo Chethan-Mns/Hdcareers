@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-19T20:14:10.174798+00:00",
+  "checkedAt": "2026-10-20T04:13:18.731Z",
   "checked": 129,
   "active": 106,
-  "expired": 0,
-  "review": 23,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 22,
+  "changedExpired": 1,
   "items": [
     {
       "id": 186,
@@ -42,9 +42,11 @@
       "role": "Assistant (AI Specialist) – Valuation and Analytics Advisory",
       "page": "jobs/deloitte-usi-assistant-ai-specialist-valuation-analytics-advisory-364049.html",
       "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/FY27-USI-Audit-Services-FTH-Assistant-AI-Specialist-Valuation-and-Analytics-Advisory/364049",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-19T20:10:52.918191+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-20T04:13:18.731Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-20T04:13:18.731Z"
     },
     {
       "id": 175,

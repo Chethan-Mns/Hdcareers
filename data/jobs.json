@@ -737,8 +737,8 @@
       "Cloud ML platforms"
     ],
     "apply": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/FY27-USI-Audit-Services-FTH-Assistant-AI-Specialist-Valuation-and-Analytics-Advisory/364049",
-    "status": "active",
-    "verifiedDate": "18 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "20 Oct 2026",
     "sourceName": "Deloitte USI official careers, requisition 364049",
     "who": "Candidates with 0–1 year of experience and a related bachelor’s degree who can demonstrate foundational AI/ML and Python or cloud ML experience should review the official requirements. This is a six-month fixed-term position.",
     "workMode": "Not Specified",
@@ -750,7 +750,14 @@
     "sourceVerificationMethod": "Official exact job URL supplied by publisher; availability is not independently confirmed due to HTTP 406 in outside checker; only publish if the repo's independent official-source check confirms active.",
     "id": 185,
     "logoPath": "assets/company-icons/deloitte-b9f6b19.png",
-    "logoSourceDomain": "deloitte.com"
+    "logoSourceDomain": "deloitte.com",
+    "availabilityCheck": {
+      "id": 185,
+      "url": "https://usijobs.deloitte.com/en_US/careersUSI/JobDetail/FY27-USI-Audit-Services-FTH-Assistant-AI-Specialist-Valuation-and-Analytics-Advisory/364049",
+      "checkedAt": "2026-10-20T04:13:18.731Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review."
+    }
   },
   {
     "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667983_en&title=IT+Customer+Service+New+Associate",
