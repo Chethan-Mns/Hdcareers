@@ -237,9 +237,11 @@
     {
       "page": "jobs/paytm-talent-acquisition-intern.html",
       "batchId": "admin-39366680205",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T08:58:48.883884+00:00"
+      "dueAt": "2026-10-20T08:58:48.883884+00:00",
+      "claimId": "39397317316",
+      "claimedAt": "2026-10-20T08:58:58.525057+00:00"
     },
     {
       "page": "jobs/qube-research-technologies-2027-internship-or-graduate-software-engineer-and-qua.html",
