@@ -217,9 +217,11 @@
     {
       "page": "jobs/groww-video-editor-intern.html",
       "batchId": "admin-39366680205",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T06:55:47.772542+00:00"
+      "dueAt": "2026-10-20T06:55:47.772542+00:00",
+      "claimId": "39383278718",
+      "claimedAt": "2026-10-20T06:55:57.414941+00:00"
     },
     {
       "page": "jobs/neuron7-frontend-apprentice.html",
