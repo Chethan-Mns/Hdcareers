@@ -277,9 +277,11 @@
     {
       "page": "jobs/yash-technologies-trainee-consultant-sap-nextgen-technical-innovation.html",
       "batchId": "admin-39366680205",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T12:59:58.958743+00:00"
+      "dueAt": "2026-10-20T12:59:58.958743+00:00",
+      "claimId": "39426693536",
+      "claimedAt": "2026-10-20T13:00:08.934227+00:00"
     }
   ]
 }
