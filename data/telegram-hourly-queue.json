@@ -247,32 +247,33 @@
     {
       "page": "jobs/qube-research-technologies-2027-internship-or-graduate-software-engineer-and-qua.html",
       "batchId": "admin-39366680205",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T09:59:01.212724+00:00",
       "claimId": "39404642303",
-      "claimedAt": "2026-10-20T09:59:13.570016+00:00"
+      "claimedAt": "2026-10-20T09:59:13.570016+00:00",
+      "messageId": 539,
+      "deliveredAt": "2026-10-20T09:59:31.706875+00:00"
     },
     {
       "page": "jobs/stripe-software-engineer-intern.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T10:59:01.212724+00:00"
+      "dueAt": "2026-10-20T10:59:31.706875+00:00"
     },
     {
       "page": "jobs/sutherland-campus-associates-fy-27.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T11:59:01.212724+00:00"
+      "dueAt": "2026-10-20T11:59:31.706875+00:00"
     },
     {
       "page": "jobs/yash-technologies-trainee-consultant-sap-nextgen-technical-innovation.html",
       "batchId": "admin-39366680205",
       "status": "pending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T12:59:01.212724+00:00"
+      "dueAt": "2026-10-20T12:59:31.706875+00:00"
     }
   ]
 }
