@@ -283,7 +283,7 @@
       "apply": "https://stripe.com/careers/listing/software-engineer-intern/8031833",
       "cat": "internship",
       "expYears": "University student / intern",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Stripe listing 8031833 opened today with matching University-team internship title, Bengaluru location and Apply for this role route.",
       "postedDate": null,
@@ -297,7 +297,7 @@
         "expYears": "University student / intern",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Stripe Careers",
         "desc": "Software engineering internship working on production systems and projects across Stripe’s stack.",
         "elig": "Pursuing a bachelor’s or master’s degree in computer science, mathematics or a related discipline; programming experience from classwork or projects.",
@@ -319,16 +319,19 @@
         "workMode": "Office-assigned; attendance expectations vary",
         "jobId": "8031833",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:52:22.789Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:52:22.789Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Stripe listing 8031833 opened today with matching University-team internship title, Bengaluru location and Apply for this role route."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:52:22.789Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "neuron7-3e5b2afa",
@@ -700,7 +703,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:52:17.765Z",
+  "updatedAt": "2026-10-20T03:52:22.789Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
