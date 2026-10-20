@@ -227,9 +227,11 @@
     {
       "page": "jobs/neuron7-frontend-apprentice.html",
       "batchId": "admin-39366680205",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T07:56:00.225224+00:00"
+      "dueAt": "2026-10-20T07:56:00.225224+00:00",
+      "claimId": "39389835569",
+      "claimedAt": "2026-10-20T07:58:45.645834+00:00"
     },
     {
       "page": "jobs/paytm-talent-acquisition-intern.html",
