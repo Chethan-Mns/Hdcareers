@@ -69,7 +69,7 @@
       "apply": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
       "cat": "non-it",
       "expYears": "2026 graduate / campus entry-level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts.",
       "postedDate": null,
@@ -83,7 +83,7 @@
         "expYears": "2026 graduate / campus entry-level",
         "salary": "Not Disclosed",
         "batch": "2026 passout",
-        "status": "review",
+        "status": "active",
         "sourceName": "Sutherland SmartRecruiters",
         "desc": "Campus Associate role providing customer support through calls, email, chat or social channels.",
         "elig": "Any full-time UG/PG graduate in Arts, Science, Commerce, Engineering, Pharmacy, MBA or MCA; 2026 passouts can apply and must live within 25 km of the office.",
@@ -102,16 +102,19 @@
         "workMode": "Not Specified",
         "jobId": "744000151046829",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:08.230Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:08.230Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Sutherland SmartRecruiters posting 744000151046829 opened today with matching title and qualifications; the page provides an application route and explicitly allows 2026 passouts."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:08.230Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deloitte-60805744",
@@ -715,7 +718,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:53:02.213Z",
+  "updatedAt": "2026-10-20T03:53:08.231Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
