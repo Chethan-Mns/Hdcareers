@@ -404,7 +404,7 @@
       "apply": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6216621004",
       "cat": "internship",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Zynga Early Careers Greenhouse requisition 6216621004 opened today with matching title, Bengaluru location, application form and internship-specific requirements.",
       "postedDate": null,
@@ -418,7 +418,7 @@
         "expYears": "Internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Zynga Early Careers Greenhouse",
         "desc": "Animation internship contributing 3D, 2D/2.5D and game-engine animation assets under senior guidance.",
         "elig": "Intern applicant with an animation portfolio or reel and the stated animation/tool fundamentals; no prior employment requirement is stated.",
@@ -440,16 +440,19 @@
         "workMode": "Not Specified",
         "jobId": "6216621004",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:17.016Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:17.016Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Zynga Early Careers Greenhouse requisition 6216621004 opened today with matching title, Bengaluru location, application form and internship-specific requirements."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:17.016Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "scopely-5448999008",
@@ -718,7 +721,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:53:08.231Z",
+  "updatedAt": "2026-10-20T03:53:17.017Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
