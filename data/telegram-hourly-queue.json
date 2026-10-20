@@ -197,9 +197,11 @@
     {
       "page": "jobs/deloitte-south-asia-intern-income-tax-laws-hyderabad-business-tax.html",
       "batchId": "admin-39366680205",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-20T03:54:05.690699+00:00",
-      "dueAt": "2026-10-20T04:55:19.461359+00:00"
+      "dueAt": "2026-10-20T04:55:19.461359+00:00",
+      "claimId": "39372122185",
+      "claimedAt": "2026-10-20T04:55:29.833447+00:00"
     },
     {
       "page": "jobs/google-silicon-engineering-intern-phd-summer-2027.html",
