@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-20T04:18:53.543Z",
+  "checkedAt": "2026-10-20T04:19:08.018Z",
   "checked": 129,
   "active": 122,
-  "expired": 5,
-  "review": 2,
-  "changedExpired": 5,
+  "expired": 6,
+  "review": 1,
+  "changedExpired": 6,
   "items": [
     {
       "id": 186,
@@ -1114,9 +1114,11 @@
       "role": "Project Co-ordinator – Walk-in Interview",
       "page": "jobs/actrec-project-coordinator-walkin-october-2026.html",
       "url": "https://www.actrec.gov.in/jobs",
-      "state": "review",
-      "reason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "checkedAt": "2026-10-19T20:13:24.893711+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-20T04:19:08.018Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-20T04:19:08.018Z"
     },
     {
       "id": 45,

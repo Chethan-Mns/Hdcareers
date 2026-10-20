@@ -8453,8 +8453,8 @@
       "Attend the walk-in interview according to ACTREC's stated schedule"
     ],
     "apply": "https://www.actrec.gov.in/jobs",
-    "status": "active",
-    "verifiedDate": "19 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "20 Oct 2026",
     "sourceName": "Official ACTREC Jobs – OS-A/118/2026",
     "skills": [
       "Project coordination",
@@ -8471,9 +8471,9 @@
     "availabilityCheck": {
       "id": 46,
       "url": "https://www.actrec.gov.in/jobs",
-      "checkedAt": "2026-10-15T16:51:02.186Z",
-      "state": "active",
-      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026."
+      "checkedAt": "2026-10-20T04:19:08.018Z",
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review."
     },
     "logoPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-fba2fe72aa.svg",
     "logoSourceDomain": "actrec.gov.in",
