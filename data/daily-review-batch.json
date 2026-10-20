@@ -227,7 +227,7 @@
       "apply": "https://www.google.com/about/careers/applications/jobs/results/109375266236572358",
       "cat": "internship",
       "expYears": "Current PhD student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Google job 109375266236572358 opened today with matching title, India locations and active Apply control; official deadline is 30 Apr 2027.",
       "postedDate": null,
@@ -241,7 +241,7 @@
         "expYears": "Current PhD student",
         "salary": "Not Disclosed",
         "batch": "Summer 2027",
-        "status": "review",
+        "status": "active",
         "sourceName": "Google Careers",
         "desc": "PhD internship in silicon engineering covering hardware design, verification, integration and related systems work.",
         "elig": "Currently pursuing a PhD in Computer Engineering, Computer Science, Electronics and Communication Engineering, Electrical Engineering or a related technical field.",
@@ -261,16 +261,19 @@
         "workMode": "Not Specified",
         "jobId": "109375266236572358",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:52:17.765Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:52:17.765Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Google job 109375266236572358 opened today with matching title, India locations and active Apply control; official deadline is 30 Apr 2027."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:52:17.765Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "stripe-8031833",
@@ -697,7 +700,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:52:12.396Z",
+  "updatedAt": "2026-10-20T03:52:17.765Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
