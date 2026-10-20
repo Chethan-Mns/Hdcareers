@@ -11,7 +11,7 @@
       "apply": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
       "cat": "it",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route.",
       "postedDate": "2026-10-01",
@@ -25,7 +25,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "YASH Technologies Careers",
         "desc": "Trainee SAP NextGen technical consultant role supporting development, unit testing and implementation to technical specifications.",
         "elig": "0–1 years of experience; knowledge of SAP BTP Integration Suite or UI5 is mandatory.",
@@ -47,16 +47,19 @@
         "workMode": "Not Specified",
         "jobId": "66559",
         "date": "2026-10-01",
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:02.213Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:02.213Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact YASH requisition 66559 opened today with matching title, 0–1 years eligibility and Apply now route."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:02.213Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "sutherland-744000151046829",
@@ -712,7 +715,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:52:51.885Z",
+  "updatedAt": "2026-10-20T03:53:02.213Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
