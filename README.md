@@ -241,15 +241,15 @@ Current important workflows:
 - `logo-preview-refresh.yml` — company-logo refresh/preview workflow
 - `ios-admin-build.yml` — iOS Admin simulator build validation
 
-## Native Android Admin — current v1.3.2
+## Native Android Admin — current v1.3.3
 
-The Android Admin is a native Kotlin / Jetpack Compose / Material 3 app for Pixel devices. The latest privately release-signed build is **v1.3.2, versionCode 8**, produced by Android Admin Private Signed APK workflow. Do not confuse this with a differently signed temporary debug APK. For an existing private release install, use the new signed version for an in-place update; uninstalling erases local login, preferences and notification permissions.
+The Android Admin is a native Kotlin / Jetpack Compose / Material 3 app for Pixel devices. The latest privately release-signed build is **v1.3.3, versionCode 9**, produced by Android Admin Private Signed APK workflow. Do not confuse this with a differently signed temporary debug APK. For an existing private release install, use the new signed version for an in-place update; uninstalling erases local login, preferences and notification permissions.
 
 - **Home:** real pending review counts and quick access to expiry exceptions.
 - **Review:** daily Priority, Backup, Publish Ready and read-only History; explicitly saved Live/Expired/Unsure decisions, safe one-employer-per-batch publishing and post-publication cleanup.
 - **Jobs:** browse existing website records and run approved single VIP publishing through authenticated APIs.
 - **More:** job expiry checker, selected new-job publishing, visual GA4 analytics, security/notification controls.
-- **Expiry:** only actual unresolved jobs occupy list rows, preventing giant white gaps; confirmable Live, Expired and Unsure buttons. Existing published jobs can be kept/expired but are never re-published from this screen. New Live candidates move to Publish Ready, then require a separate explicit Publish action.
+- **Expiry:** browse all published jobs using All / Pending / Live / Expired filters. Live and Unsure stage immediately without backend calls; Expired asks for confirmation. A single **Publish review changes** commits all staged decisions atomically. Separate Publish Ready remains for genuinely new jobs. Existing published jobs can be kept/expired but are never re-published from this screen. New Live candidates move to Publish Ready, then require a separate explicit Publish action.
 - **Publishing cards:** GitHub, committed data, verified public website page and Telegram receipt are separate stages; expandable cards show due times, queue position, delivery timestamps and links to confirmed messages.
 - **Push/local alerts:** FCM integration supports review batches, checker completion, publish workflow outcomes and confirmed hourly Telegram receipts. Notification permission, Firebase/server secrets, connectivity, battery optimization and real-device testing affect delivery. An accepted publish request is NOT proof of completed Telegram delivery.
 - **Security:** Android Keystore/optional biometrics plus server-side Admin RBAC; signing keys, tokens and FCM service-account secrets remain private.
@@ -316,7 +316,7 @@ experienced
 
 - [ ] Verify on-time delivery of the first autonomous hourly Telegram relay and actual Telegram receipt (do not trust an armed timer alone).
 - [ ] Alert on an overdue pending job, failed self-dispatch or unresolved sending/uncertain claims.
-- [ ] Test Android v1.3.2 on a real Pixel: Expiry list scrolling, Live/Expired/Unsure, Ready clearing, history and push delivery.
+- [ ] Test Android v1.3.3 on a real Pixel: Expiry list scrolling, Live/Expired/Unsure, Ready clearing, history and push delivery.
 - [ ] If a hard 5–10-minute upper delay bound is required, evaluate a dedicated scheduler; GitHub Actions runner startup is best effort.
 
 - [ ] **Resume score checker:** improve matching visibility, scoring logic and result presentation
