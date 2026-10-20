@@ -59,7 +59,7 @@ test("Android only clears selected daily jobs after confirmed public website sta
  assert.match(kotlin,/Review.*History|History.*Review|listOf\("Priority","Backup","Ready","History"\)/);
  assert.match(checker,/vm\.stageExpiryReview\(jobId,"unsure"\)/);
  assert.match(checker,/confirmation=jobId to "expire"/);
- assert.match(checker,/vm\.publishExpiryDraft/);
+ assert.match(checker,/vm(?:::|\.)publishExpiryDraft/);
  assert.match(checker,/vm\.publishExpirySelected\(\)/);
  assert.match(checker,/Expiry|Publish Ready/);
 });
