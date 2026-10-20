@@ -118,7 +118,7 @@
       "apply": "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Income-Tax-Laws-Hyderabad-Business-Tax/60805744/",
       "cat": "internship",
       "expYears": "Fresher / no prior experience accepted",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Deloitte requisition 60805744 opened today with matching title and Apply now route; the posting explicitly allows graduate/fresher candidates with no prior experience.",
       "postedDate": null,
@@ -132,7 +132,7 @@
         "expYears": "Fresher / no prior experience accepted",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "Business Tax internship supporting US individual tax return preparation and review work.",
         "elig": "Graduate with minimum bachelor’s degree; B.Com/BBM preferred with basic understanding of US individual tax returns. The posting explicitly allows a graduate/fresher with no prior experience.",
@@ -149,16 +149,19 @@
         "workMode": "Work from office",
         "jobId": "60805744",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:51:35.446Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:51:35.446Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Deloitte requisition 60805744 opened today with matching title and Apply now route; the posting explicitly allows graduate/fresher candidates with no prior experience."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:51:35.446Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -691,7 +694,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:33:30Z",
+  "updatedAt": "2026-10-20T03:51:35.471Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
