@@ -1,10 +1,10 @@
 {
-  "batchId": "2026-10-18-0900-ist",
-  "checkedAt": "2026-10-18T03:36:59.598175+00:00",
+  "batchId": "2026-10-20-0900-ist",
+  "checkedAt": "2026-10-20T03:34:12.210723+00:00",
   "httpCode": "200",
   "fcmSent": 1,
-  "fcmProcessed": 6,
-  "fcmFailed": 5,
+  "fcmProcessed": 9,
+  "fcmFailed": 8,
   "duplicateSuppressed": false,
   "responseOk": true,
   "note": "FCM acceptance is not proof that Android displayed the notification."
