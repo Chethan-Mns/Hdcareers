@@ -633,7 +633,7 @@
       "apply": "https://job-boards.greenhouse.io/quberesearchandtechnologies/jobs/8617401002",
       "cat": "internship",
       "expYears": "2027 internship or graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact QRT Greenhouse requisition 8617401002 opened today with matching 2027 internship/graduate title, active application form and Mumbai as an available preferred work location.",
       "postedDate": null,
@@ -647,7 +647,7 @@
         "expYears": "2027 internship or graduate",
         "salary": "Not Disclosed",
         "batch": "2027",
-        "status": "review",
+        "status": "active",
         "sourceName": "Qube Research & Technologies Greenhouse",
         "desc": "2027 software engineering and quantitative developer opportunity available as an internship or graduate pathway.",
         "elig": "Current academic-degree candidates; the application requests degree, school, field of study, graduation date and internship availability. Exact degree discipline is Not Specified in the accessible evidence.",
@@ -662,16 +662,19 @@
         "workMode": "Not Specified",
         "jobId": "8617401002",
         "date": null,
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:24.274Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:24.274Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact QRT Greenhouse requisition 8617401002 opened today with matching 2027 internship/graduate title, active application form and Mumbai as an available preferred work location."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:24.274Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "drdo-drde-2026-03",
@@ -724,7 +727,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-20T03:53:20.402Z",
+  "updatedAt": "2026-10-20T03:53:24.275Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
