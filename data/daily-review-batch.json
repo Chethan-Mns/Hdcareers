@@ -684,7 +684,7 @@
       "apply": "https://drdo.gov.in/drdo/en/offerings/vacancies/drde-gwalior-invites-applications-paid-internship-scheme-drdo-0",
       "cat": "internship",
       "expYears": "Current graduate/postgraduate student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact DRDO notice and official PDF opened today. Advertisement DRDE/HRD/Paid Intern/2026/03 is open through 14 Nov 2026 and provides the application form and submission route.",
       "postedDate": "2026-10-18",
@@ -698,7 +698,7 @@
         "expYears": "Current graduate/postgraduate student",
         "salary": "₹5,000 per month",
         "batch": "Internship starts 1 Jan 2027",
-        "status": "review",
+        "status": "active",
         "sourceName": "DRDO official vacancies",
         "desc": "Six-month paid internship at DRDE Gwalior for students in biological sciences, chemical sciences and specified engineering disciplines.",
         "elig": "Indian citizens pursuing eligible M.Sc./equivalent (3rd/4th semester) or B.E./B.Tech (7th/8th semester) programs; 75% or 7.5 CGPA or above, college sponsorship and age below 28 as of 14 Nov 2026.",
@@ -715,19 +715,22 @@
         "workMode": "On-site",
         "jobId": "DRDE/HRD/Paid Intern/2026/03",
         "date": "2026-10-18",
-        "verifiedDate": "2026-10-20",
+        "verifiedDate": "20 Oct 2026",
         "sourceVerificationMethod": "Exact official job page and requisition-bound application route checked",
-        "browserVerifiedAt": "2026-10-20T03:29:38Z"
+        "browserVerifiedAt": "2026-10-20T03:53:27.252Z",
+        "manualLiveVerifiedAt": "2026-10-20T03:53:27.252Z"
       },
       "sourceEvidence": {
         "ownerManualLiveDate": "2026-10-19",
         "currentCheckAt": "2026-10-20T03:29:38Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact DRDO notice and official PDF opened today. Advertisement DRDE/HRD/Paid Intern/2026/03 is open through 14 Nov 2026 and provides the application form and submission route."
-      }
+      },
+      "reviewedAt": "2026-10-20T03:53:27.252Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-20T03:53:24.275Z",
+  "updatedAt": "2026-10-20T03:53:27.252Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
