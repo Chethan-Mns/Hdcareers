@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-20-0900-ist",
   "generatedAt": "2026-10-20T03:33:30Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "yash-66559",
@@ -730,7 +730,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-20T03:53:27.252Z",
+  "updatedAt": "2026-10-20T03:53:49.088Z",
   "discoverySummary": {
     "specialRun": "Reused the owner-verified 19 Oct exact-link sample after fresh 20 Oct rechecks; not newly discovered today.",
     "employerPortalsVisited": 23,
@@ -829,11 +829,49 @@
     "warning": "Only confirmed Live-evidenced jobs reach Priority/Backup. Unconfirmed exact URLs are saved for separate source rechecking, never silently marked Expired."
   },
   "publication": {
-    "authorized": false,
-    "reason": "Morning automation stages review only. Owner Verify & Publish approval is required; no website or Telegram publication was initiated."
+    "candidateIds": [
+      "citi-26992827",
+      "deloitte-60805744",
+      "google-109375266236572358",
+      "groww-4956817101",
+      "neuron7-3e5b2afa",
+      "paytm-a2f53649",
+      "qrt-8617401002",
+      "stripe-8031833",
+      "sutherland-744000151046829",
+      "yash-66559"
+    ],
+    "companies": [
+      "Citi",
+      "Deloitte South Asia",
+      "Google",
+      "Groww",
+      "Neuron7",
+      "Paytm",
+      "Qube Research & Technologies",
+      "Stripe",
+      "Sutherland",
+      "YASH Technologies"
+    ],
+    "urls": [
+      "https://jobs.citi.com/job/mumbai/india-apprenticeship-program-commercial-banking/287/101944263280",
+      "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Income-Tax-Laws-Hyderabad-Business-Tax/60805744/",
+      "https://www.google.com/about/careers/applications/jobs/results/109375266236572358",
+      "https://job-boards.eu.greenhouse.io/groww/jobs/4956817101",
+      "https://jobs.lever.co/neuron7/3e5b2afa-c8f0-4ad0-adea-34e7604773cc",
+      "https://jobs.lever.co/paytm/a2f53649-1fe8-4a0d-97ee-24dab719a9e8",
+      "https://job-boards.greenhouse.io/quberesearchandtechnologies/jobs/8617401002",
+      "https://stripe.com/careers/listing/software-engineer-intern/8031833",
+      "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
+      "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/"
+    ],
+    "requestId": "1dd01e5f297a39adece9610d",
+    "count": 10,
+    "submittedAt": "2026-10-20T03:53:49.088Z"
   },
   "notificationRetry": {
     "reason": "Final ranked batch contains only confirmed Live candidates; timestamp corrected to the actual current UTC window after the first refresh was ahead of the runner clock.",
     "requestedAt": "2026-10-20T03:33:30Z"
-  }
+  },
+  "submittedAt": "2026-10-20T03:53:49.088Z"
 }
