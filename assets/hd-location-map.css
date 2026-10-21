@@ -1,2 +1,23 @@
-
-.hd-map-panel{position:relative;overflow:hidden;border-radius:22px;border:1px solid #d7e7fb;background:#eaf3ff;box-shadow:0 17px 38px rgba(12,49,101,.12);min-height:300px}.hd-map-panel.full{min-height:480px}.hd-map-canvas{height:325px;width:100%;background:#dcecff}.hd-map-panel.full .hd-map-canvas{height:460px}.hd-map-layer{position:relative}.hd-map-label{color:#254167;font-size:12px;margin-top:12px}.hd-map-overlay{position:absolute;top:14px;left:15px;z-index:500;background:#fffffff2;border:1px solid #dfebfc;border-radius:13px;padding:12px 14px;box-shadow:0 7px 20px #1448931e;pointer-events:none}.hd-map-overlay strong{display:block;font-size:13px;color:#0d2854}.hd-map-overlay small{color:#6684a6;font-size:11px}.hd-map-pulse{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#166cf3ba;box-shadow:0 0 0 0 #246fffaa;animation:hdMapPulse 2.1s ease-out infinite;border:2px solid #fff;color:#fff;font-size:11px;font-weight:900;text-shadow:0 1px 2px #16408880;transition:transform .2s}.hd-map-pulse:hover{transform:scale(1.15);background:#084aba}.hd-map-pulse:after{content:"";position:absolute;inset:8px;border-radius:50%;background:#0a6cff;z-index:-1}.hd-map-panel .leaflet-container{background:#eaf3ff;font-family:Inter,'Segoe UI',system-ui,sans-serif}.hd-map-panel .leaflet-popup-content-wrapper{border-radius:13px}.hd-map-panel .leaflet-popup-content{font-size:12px;line-height:1.7}.hd-map-panel .leaflet-control-attribution{font-size:9px!important}.hd-map-fallback{display:flex;align-items:center;justify-content:center;height:100%;min-height:270px;padding:22px;text-align:center;color:#4a6286;font-size:13px}.hd-map-legend{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 2px}.hd-map-legend span{border:1px solid #d9e5fa;background:white;border-radius:99px;color:#245b9e;font-size:11px;font-weight:780;padding:8px 11px;white-space:nowrap}.hd-map-legend b{color:#105fd8}.hd-map-legend-note{font-size:11px;color:#7386a1;line-height:1.6;margin-top:7px}@keyframes hdMapPulse{0%{box-shadow:0 0 0 0 #246fff9c}70%{box-shadow:0 0 0 14px #246fff00}100%{box-shadow:0 0 0 0 #246fff00}}@media(max-width:670px){.hd-map-panel.full .hd-map-canvas{height:360px}.hd-map-canvas{height:290px}.hd-map-overlay{padding:9px 11px}.hd-map-pulse{width:32px;height:32px;font-size:10px}}@media(prefers-reduced-motion:reduce){.hd-map-pulse{animation:none}}
+/* Self-contained India SVG map: no CDN, tiles, workers or map-service dependencies. */
+.hd-map-panel{position:relative;overflow:hidden;border-radius:22px;border:1px solid #d4e4fb;background:radial-gradient(circle at 50% 38%,#fff 0,#edf5ff 72%);box-shadow:0 13px 35px rgba(10,44,93,.09);min-height:340px}
+.hd-map-panel.full{min-height:480px}
+.hd-map-canvas{height:365px;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px}
+.hd-map-panel.full .hd-map-canvas{height:485px}
+.hd-india-svg{display:block;width:100%;height:100%;max-width:650px;max-height:100%;touch-action:manipulation}
+.hd-map-overlay{position:absolute;top:15px;left:16px;z-index:3;background:#ffffffed;border:1px solid #e2edff;border-radius:14px;padding:12px 15px;box-shadow:0 8px 21px #18549f1e;pointer-events:none}
+.hd-map-overlay strong{display:block;color:#0d2e62;font-weight:850;font-size:12px}
+.hd-map-overlay small{display:block;margin-top:4px;color:#6281a5;font-size:11px}
+.hd-india-marker{cursor:pointer;outline:0}
+.hd-india-halo{fill:#3b82f6;fill-opacity:.22;stroke:#2a70f5;stroke-opacity:.45;stroke-width:2.5;animation:hdMapGlow 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.hd-india-dot{fill:#186cf0;fill-opacity:.87;stroke:#fff;stroke-width:2.2;filter:drop-shadow(0 3px 5px #1760bf4c);transition:fill .2s,stroke-width .2s}
+.hd-india-marker:hover .hd-india-dot,.hd-india-marker:focus .hd-india-dot,.hd-india-marker.hd-selected .hd-india-dot{fill:#0042bc;stroke-width:4}
+.hd-india-marker:focus-visible .hd-india-halo{stroke:#0637a6;stroke-width:6}
+.hd-india-hover{position:absolute;right:14px;bottom:14px;background:#062c68;color:white;padding:12px 16px;font-size:12px;font-weight:770;border-radius:12px;box-shadow:0 8px 20px #061c4c38;pointer-events:none;z-index:3}
+.hd-india-hover[hidden]{display:none}
+.hd-map-legend{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:10px 2px}
+.hd-map-legend span{background:#fff;border:1px solid #dce7f8;color:#345787;font-size:11px;font-weight:780;padding:7px 10px;border-radius:99px;white-space:nowrap}
+.hd-map-legend b{color:#0965de}
+.hd-map-legend-note{font-size:11px;color:#6c82a4;line-height:1.65;margin-top:7px}
+@keyframes hdMapGlow{0%,100%{fill-opacity:.19;stroke-opacity:.45;transform:scale(1)}50%{fill-opacity:.37;stroke-opacity:.08;transform:scale(1.33)}}
+@media(max-width:720px){.hd-map-panel.full .hd-map-canvas{height:370px}.hd-map-canvas{height:300px}.hd-map-overlay{top:10px;left:10px;padding:9px 11px}.hd-map-overlay strong{font-size:11px}.hd-map-overlay small{font-size:10px}.hd-india-hover{padding:9px 12px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.hd-india-halo{animation:none}.hd-india-dot{transition:none}}
