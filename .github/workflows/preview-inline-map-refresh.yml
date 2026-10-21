@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: preview/final-replica-20261021
           fetch-depth: 0
           persist-credentials: true
       - uses: actions/setup-python@v5
