@@ -399,7 +399,7 @@
       "apply": "https://jobs.smartrecruiters.com/BlueberryLabsPrivateLimited/91749878-software-engineer-intern",
       "cat": "internship",
       "expYears": "Final-year student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Blueberry Labs SmartRecruiters job 91749878 is open with an application action and lists a six-month internship for final-year graduates.",
       "postedDate": null,
@@ -435,13 +435,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:51.113Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:51.113Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Blueberry Labs SmartRecruiters job 91749878 is open with an application action and lists a six-month internship for final-year graduates."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:51.113Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nec-744000154970739",
@@ -604,7 +607,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:47.543Z",
+  "updatedAt": "2026-10-21T08:07:51.114Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
