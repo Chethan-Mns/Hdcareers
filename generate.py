@@ -957,6 +957,16 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if not re.search(pattern, updated, flags=re.S):
         raise SystemExit("Static homepage job link marker is missing")
     updated = re.sub(pattern, lambda _: fallback, updated, count=1, flags=re.S)
+    # Embed verified city markers into generated HTML. This avoids CDN, blocked JSON routes,
+    # authentication/caching failures and blank previews; refreshed on each publishing run.
+    map_json = json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]},
+                          ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    map_tag = '<script type="application/json" id="hd-map-data">' + map_json + '</script>'
+    map_pattern = r'<script type="application/json" id="hd-map-data">.*?</script>'
+    if re.search(map_pattern, updated, flags=re.S):
+        updated = re.sub(map_pattern, lambda _: map_tag, updated, count=1, flags=re.S)
+    else:
+        updated = updated.replace("</body>", map_tag + "\n</body>", 1)
 
     if updated == source:
         return False
@@ -1038,6 +1048,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
                 .replace("{{CANONICAL}}", canonical)
                 .replace("{{INTRO}}", introduction)
                 .replace("{{SNAPSHOT}}", _snapshot_date(active_jobs))
+                .replace("{{MAP_DATA}}", json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c"))
                 .replace("{{PREFIX}}", prefix))
     active = [job for job in jobs if job.get("status") == "active"]
     companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
