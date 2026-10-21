@@ -168,8 +168,11 @@ def main() -> None:
     used_pages = {str(j.get("page", "")).lower() for j in current}
 
     prepared = []
+    batch_published_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     for raw in verified:
         job = dict(raw)
+        # Timestamp of this approved, successfully source-verified batch, not a guessed posting date.
+        job["publishedAt"] = batch_published_at
         job["id"] = next_id
         next_id += 1
 

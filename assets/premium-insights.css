@@ -103,3 +103,22 @@
 .hi-skillwrap{gap:10px;min-height:290px;padding:12px 0}
 }
 @media(prefers-reduced-motion:reduce){.hi-art-card,.hi-art-ping,.hi-skill{animation:none!important}}
+
+/* Preserve the distinct dark lettering of real JS and C++ SVG logos.
+   A uniform blue CSS filter recolored both foreground and background identically. */
+.hi-skill-logo[src$="/javascript.svg"],.hi-skill-logo[src$="/cplusplus.svg"]{filter:none!important;width:42px;height:42px}
+@media(max-width:790px){.hi-skill-logo[src$="/javascript.svg"],.hi-skill-logo[src$="/cplusplus.svg"]{width:32px;height:32px}}
+/* Same navy footer structure, colors, social channels and links as the homepage. */
+.hi-footer{background:#071a33;color:#cbd5e1;border-top:0;padding:32px 0 24px;margin-top:8px;font-size:14px}
+.hi-footer .hi-container.hi-footer-inner{display:flex;flex-direction:row;justify-content:space-between;gap:25px;align-items:flex-start}
+.hi-footer-brand{display:inline-block;color:#fff;font-size:18px;font-weight:850;letter-spacing:-.02em}
+.hi-footer-about p{margin:5px 0 0;color:#94a3b8;font-size:12px;line-height:1.55;max-width:350px}
+.hi-footer-social{display:flex;align-items:center;gap:8px;margin-top:16px}
+.hi-footer-social a{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:#ffffff1a;color:#dbe7fa;transition:background .2s}
+.hi-footer-social a:hover{background:#145ecc;color:#fff}
+.hi-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:9px 23px;max-width:685px;align-self:center}
+.hi-footer-links a{color:#cbd5e1;font-size:14px;line-height:1.5}
+.hi-footer-links a:hover{color:#fff}
+.hi-footer-copy{color:#64748b;text-align:center;font-size:12px;margin:28px 16px 0}
+@media(max-width:760px){.hi-footer .hi-container.hi-footer-inner{flex-direction:column;gap:24px}.hi-footer-links{align-self:flex-start;gap:9px 16px}.hi-footer-links a{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.hi-footer-social a{transition:none}}

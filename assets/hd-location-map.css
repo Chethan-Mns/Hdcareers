@@ -62,3 +62,8 @@
 .hd-map-legend-note{color:#717780}
 @keyframes hdGABubble{0%,100%{fill-opacity:.16;transform:scale(1)}50%{fill-opacity:.26;transform:scale(1.11)}}
 @media(prefers-reduced-motion:reduce){.hd-india-halo{animation:none}}
+
+/* Allow the real state-boundary SVG to scale to its available wide map region. */
+.hd-india-svg{max-width:none}
+.hd-map-panel.full .hd-map-canvas{height:590px}
+@media(max-width:720px){.hd-map-panel.full .hd-map-canvas{height:405px}}

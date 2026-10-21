@@ -90,3 +90,20 @@ header.glass-nav .social-icon:hover{transform:translateY(-3px);box-shadow:0 8px 
 }
 @media(max-width:420px){.hdp-art{min-height:330px}.hdp-art-card{width:88%}.hdp-art-badge{font-size:8px}.hdp-art-badge.one{top:2px;right:0}}
 @media(prefers-reduced-motion:reduce){.hdp-art-card,.hdp-art-job,.hdp-art-badge{animation:none!important}}
+
+/* Verified-job eligibility summary on homepage opportunity cards. */
+.hdp-featured-item .hdp-eligibility{font-size:11px;color:#526987;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* Full-width India hiring canvas: expand the actual map, not a tall empty panel. */
+.hdp-map-layout{display:flex;flex-direction:column;gap:12px}
+.hdp-map-layout>.hd-map-panel{width:100%;min-height:610px}
+.hdp-map-layout .hd-map-canvas{height:610px;padding:14px 18px}
+.hdp-map-layout .hd-india-svg{width:100%;height:100%;max-width:none}
+.hdp-map-summary{display:flex;align-items:center;flex-wrap:wrap;gap:13px 19px;padding:15px 20px;background:linear-gradient(125deg,#fff,#f5f9ff);border:1px solid #dbe7fa;border-radius:17px}
+.hdp-map-summary-copy{display:flex;flex-direction:column;gap:3px;min-width:170px}
+.hdp-map-summary-copy strong{font-size:13px;font-weight:850;color:#103064}
+.hdp-map-summary-copy span,.hdp-map-summary>small{font-size:11px;color:#6a7e9c;line-height:1.5}
+.hdp-map-summary .hd-map-legend{flex:1 1 420px;padding:0}
+.hdp-map-summary>small{flex:1 0 100%}
+@media(max-width:760px){.hdp-map-layout>.hd-map-panel{min-height:390px}.hdp-map-layout .hd-map-canvas{height:390px;padding:2px}.hdp-map-summary{padding:13px}.hdp-map-summary .hd-map-legend{flex-basis:100%}}
+@media(max-width:420px){.hdp-map-layout>.hd-map-panel{min-height:340px}.hdp-map-layout .hd-map-canvas{height:340px}}
