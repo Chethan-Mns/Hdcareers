@@ -1159,6 +1159,46 @@ def build_public_insights(jobs: list[dict]) -> dict:
             verified[day.strftime("%Y-%m-%d")] += 1
         except ValueError:
             continue
+    # Map markers represent only unambiguous, city-specific Active job listings.
+    # Multi-city, statewide and unspecified locations are not assigned guessed pins.
+    city_geo = {
+        "Bengaluru": (12.9716, 77.5946, ("bengaluru", "bangalore")),
+        "Mumbai": (19.0760, 72.8777, ("mumbai",)),
+        "Hyderabad": (17.3850, 78.4867, ("hyderabad",)),
+        "Chennai": (13.0827, 80.2707, ("chennai",)),
+        "Delhi": (28.6139, 77.2090, ("new delhi", "delhi")),
+        "Gurugram": (28.4595, 77.0266, ("gurugram", "gurgaon")),
+        "Noida": (28.5355, 77.3910, ("noida",)),
+        "Pune": (18.5204, 73.8567, ("pune",)),
+        "Kolkata": (22.5726, 88.3639, ("kolkata",)),
+        "Madurai": (9.9252, 78.1198, ("madurai",)),
+        "Indore": (22.7196, 75.8577, ("indore",)),
+        "Ahmedabad": (23.0225, 72.5714, ("ahmedabad",)),
+        "Jaipur": (26.9124, 75.7873, ("jaipur",)),
+        "Kochi": (9.9312, 76.2673, ("kochi",)),
+        "Nagpur": (21.1458, 79.0882, ("nagpur",)),
+        "Mohali": (30.7046, 76.7179, ("mohali",)),
+        "Saharanpur": (29.9680, 77.5510, ("saharanpur",)),
+        "Navi Mumbai": (19.0330, 73.0297, ("navi mumbai",)),
+    }
+    city_counts = Counter()
+    for job in active:
+        loc = str(job.get("locationFilter") or job.get("loc") or "").casefold().strip()
+        if not loc or "/" in loc or " or " in loc or "preferred location" in loc or "multiple location" in loc or "india -" in loc:
+            continue
+        # Avoid double-mapping Navi Mumbai as Mumbai.
+        if "navi mumbai" in loc:
+            city_counts["Navi Mumbai"] += 1
+            continue
+        found = [name for name, (_, _, aliases) in city_geo.items()
+                 if name != "Navi Mumbai" and any(re.search(r"(?<![a-z])" + re.escape(alias) + r"(?![a-z])", loc)
+                 for alias in aliases)]
+        if len(found) == 1:
+            city_counts[found[0]] += 1
+    city_pins = [
+        {"city": city, "lat": city_geo[city][0], "lng": city_geo[city][1], "count": count}
+        for city, count in city_counts.most_common()
+    ]
     return {
         "verifiedThrough": _snapshot_date(active),
         "active": len(active),
@@ -1166,6 +1206,7 @@ def build_public_insights(jobs: list[dict]) -> dict:
         "freshers": sum(j.get("expType") == "fresher" for j in active),
         "experienced": sum(j.get("expType") == "experienced" for j in active),
         "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)],
+        "cityPins": city_pins,
         "topCompanies": [{"name": k, "count": v} for k, v in employers.most_common(12)],
         "topSkills": [{"label": k, "count": v} for k, v in skills.most_common(14)],
         "categories": [{"label": k, "count": v} for k, v in categories.most_common()],
