@@ -454,7 +454,7 @@
       "apply": "https://jobs.smartrecruiters.com/NECSWS/744000154970739-finance-intern",
       "cat": "internship",
       "expYears": "Student / 2026-2027 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official NEC Software Solutions SmartRecruiters requisition is open with an application action and lists B.Com/M.Com 2026-2027 candidates with a 60% academic threshold.",
       "postedDate": null,
@@ -490,13 +490,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:08:00.362Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:08:00.362Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official NEC Software Solutions SmartRecruiters requisition is open with an application action and lists B.Com/M.Com 2026-2027 candidates with a 60% academic threshold."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:08:00.362Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "konecranes-744000073752350",
@@ -607,7 +610,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:51.114Z",
+  "updatedAt": "2026-10-21T08:08:00.362Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
