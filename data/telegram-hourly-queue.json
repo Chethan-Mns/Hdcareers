@@ -298,9 +298,11 @@
     {
       "page": "jobs/deloitte-consultant-ft-strategy-ops-finance-transformation-finance-strategy.html",
       "batchId": "admin-39567073132",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T09:20:42.774318+00:00"
+      "dueAt": "2026-10-21T09:20:42.774318+00:00",
+      "claimId": "39576220740",
+      "claimedAt": "2026-10-21T09:20:52.263954+00:00"
     },
     {
       "page": "jobs/drivetrain-quality-assurance-engineering-qae-intern.html",
