@@ -130,8 +130,7 @@ $structured_data
 <script defer src="../assets/public-header.js"></script>
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js" defer></script>
+<!-- PDF and DOCX readers are downloaded only when a visitor selects a resume. -->
 <style>
 :root{--primary:#0b6fe8;--primary2:#0058c7;--dark:#071b35;--slate:#f4f7fb}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--slate);font-family:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark);-webkit-font-smoothing:antialiased}
@@ -225,10 +224,12 @@ const revealObserver=('IntersectionObserver' in window)?new IntersectionObserver
 document.querySelectorAll('.card, aside > div').forEach(el=>{el.classList.add('reveal-on-scroll');if(revealObserver)revealObserver.observe(el);else el.classList.add('is-visible')});
 const MATCH_PROFILE=$match_profile;
 const SAMPLE_RESUME=$sample_resume;
-if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
+
 const resumeFile=document.getElementById('resumeFile');
 if(resumeFile)resumeFile.addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;document.getElementById('resumeFileName').textContent=file.name+' • '+Math.max(1,Math.round(file.size/1024))+' KB';if(file.size>5*1024*1024){showMatchError('Please choose a resume smaller than 5 MB.');return}setMatchLoading(true);try{const text=await readResumeFile(file);if(text.trim().length<80)throw new Error('Could not read enough text from this resume. Try a text-based PDF, DOCX or TXT file.');renderMatch(analyzeResume(text));if(window.hdTrack)window.hdTrack('resume_checker_use')}catch(err){showMatchError(err&&err.message?err.message:'Could not read this resume.')}finally{setMatchLoading(false)}});
-async function readResumeFile(file){const name=file.name.toLowerCase();if(name.endsWith('.txt'))return await file.text();if(name.endsWith('.docx')){if(!window.mammoth)throw new Error('DOCX reader is still loading. Please try again in a moment.');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value||''}if(name.endsWith('.pdf')){if(!window.pdfjsLib)throw new Error('PDF reader is still loading. Please try again in a moment.');const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let text='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();text+='\\n'+content.items.map(x=>x.str+(x.hasEOL?'\\n':' ')).join('')}return text}throw new Error('Supported formats are PDF, DOCX and TXT.')}
+const resumeLibraryLoads={};
+function ensureResumeLibrary(url,key){if(window[key])return Promise.resolve();if(!resumeLibraryLoads[key])resumeLibraryLoads[key]=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=url;script.async=true;script.onload=()=>window[key]?resolve():reject(new Error('Resume file reader unavailable. Please try again.'));script.onerror=()=>reject(new Error('Could not load '+key+' reader. Check your connection.'));document.head.appendChild(script)});return resumeLibraryLoads[key]}
+async function readResumeFile(file){const name=file.name.toLowerCase();if(name.endsWith('.txt'))return await file.text();if(name.endsWith('.docx')){await ensureResumeLibrary('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js','mammoth');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value||''}if(name.endsWith('.pdf')){await ensureResumeLibrary('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js','pdfjsLib');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let text='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();text+='\\n'+content.items.map(x=>x.str+(x.hasEOL?'\\n':' ')).join('')}return text}throw new Error('Supported formats are PDF, DOCX and TXT.')}
 function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9+#.]+/g,' ').replace(/\\s+/g,' ').trim()}
 function requiredYears(s){const t=String(s||'').toLowerCase();if(/entry|fresher|0\\s*year/.test(t))return 0;const m=t.match(/(\\d+(?:\\.\\d+)?)\\s*(?:\\+|[-–]\\s*\\d+)?\\s*years?/);return m?Number(m[1]):null}
 function resumeYears(text){const vals=[...String(text).matchAll(/(\\d+(?:\\.\\d+)?)\\s*\\+?\\s*(?:years?|yrs?)/gi)].map(m=>Number(m[1])).filter(x=>x>=0&&x<50);return vals.length?Math.max(...vals):null}
@@ -924,7 +925,18 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
     active_jobs = [job for job in jobs if job.get("status") == "active"]
-    jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
+    # Keep only card/search/modal fields in the homepage payload; full verified
+    # job records stay in data/jobs.json and detailed job pages.
+    public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
+                     "batch", "cat", "categories", "expType", "expYears", "date",
+                     "desc", "elig", "resp", "skills", "apply", "page", "salary",
+                     "status", "domain", "logo", "logoPath", "logoSourceDomain",
+                     "careerIconUrl", "_verification_pending")
+    jobs_json = "[\n" + ",\n".join(
+        json.dumps({key: job[key] for key in public_fields if key in job},
+                   ensure_ascii=False, separators=(",", ":"))
+        for job in active_jobs
+    ) + "\n]"
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
     # Real HTML job links remain discoverable when the interactive JavaScript UI fails.
@@ -1087,7 +1099,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 <title>{esc(title)} | HD Careers</title>
 <meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script>
+<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script><script defer src="{prefix}assets/insights-live.js"></script>
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
 </head><body>
 <header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
@@ -1113,11 +1125,33 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 </body></html>'''
 
 
+def build_public_insights(jobs: list[dict]) -> dict:
+    """Small public, non-sensitive dashboard dataset regenerated on every job-data publish."""
+    active = [job for job in jobs if job.get("status") == "active"]
+    locations = Counter()
+    for job in active:
+        label = str(job.get("locationFilter") or job.get("loc") or "Other").strip()
+        if "/" not in label and " or " not in label.casefold() and " - " not in label:
+            city = label.split(",", 1)[0].strip().casefold()
+            label = {"bengaluru": "Bengaluru", "bangalore": "Bengaluru",
+                     "mumbai": "Mumbai", "hyderabad": "Hyderabad"}.get(city, label)
+        locations[label] += 1
+    return {
+        "verifiedThrough": _snapshot_date(active),
+        "active": len(active),
+        "employers": len({str(j.get("company", "")).strip() for j in active if j.get("company")}),
+        "freshers": sum(j.get("expType") == "fresher" for j in active),
+        "experienced": sum(j.get("expType") == "experienced" for j in active),
+        "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)]
+    }
+
+
 def write_insights_files(jobs: list[dict], dry_run: bool) -> int:
     changed = 0
     targets = [
         (ROOT / "insights.html", render_insights_page(jobs, detailed=False)),
         (ROOT / "insights" / "weekly-hiring-insights.html", render_insights_page(jobs, detailed=True)),
+        (ROOT / "data" / "insights-summary.json", json.dumps(build_public_insights(jobs), ensure_ascii=False, indent=2) + "\n"),
     ]
     for path, content in targets:
         current = path.read_text(encoding="utf-8") if path.exists() else ""
