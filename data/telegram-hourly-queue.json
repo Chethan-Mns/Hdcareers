@@ -328,46 +328,47 @@
     {
       "page": "jobs/mactores-data-engineer-intern.html",
       "batchId": "admin-39567073132",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T12:21:25.469401+00:00",
       "claimId": "39598940247",
-      "claimedAt": "2026-10-21T12:21:34.573884+00:00"
+      "claimedAt": "2026-10-21T12:21:34.573884+00:00",
+      "messageId": 547,
+      "deliveredAt": "2026-10-21T12:21:38.052678+00:00"
     },
     {
       "page": "jobs/nec-software-solutions-india-finance-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T13:21:25.469401+00:00"
+      "dueAt": "2026-10-21T13:21:38.052678+00:00"
     },
     {
       "page": "jobs/portcast-data-analyst-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T14:21:25.469401+00:00"
+      "dueAt": "2026-10-21T14:21:38.052678+00:00"
     },
     {
       "page": "jobs/rubrik-eng-project-program-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T15:21:25.469401+00:00"
+      "dueAt": "2026-10-21T15:21:38.052678+00:00"
     },
     {
       "page": "jobs/stripe-operations-associate-apprenticeship.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T16:21:25.469401+00:00"
+      "dueAt": "2026-10-21T16:21:38.052678+00:00"
     },
     {
       "page": "jobs/zynga-technical-artist-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T17:21:25.469401+00:00"
+      "dueAt": "2026-10-21T17:21:38.052678+00:00"
     }
   ]
 }
