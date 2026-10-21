@@ -38,54 +38,176 @@
       "count": 2
     }
   ],
-  "topCompanies": [
+  "cityPins": [
     {
-      "name": "HCLTech",
-      "count": 10
+      "city": "Bengaluru",
+      "lat": 12.9716,
+      "lng": 77.5946,
+      "count": 55
     },
     {
-      "name": "EY",
+      "city": "Mumbai",
+      "lat": 19.076,
+      "lng": 72.8777,
+      "count": 12
+    },
+    {
+      "city": "Hyderabad",
+      "lat": 17.385,
+      "lng": 78.4867,
       "count": 9
     },
     {
+      "city": "Gurugram",
+      "lat": 28.4595,
+      "lng": 77.0266,
+      "count": 6
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
+      "count": 4
+    },
+    {
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
+      "count": 3
+    },
+    {
+      "city": "Madurai",
+      "lat": 9.9252,
+      "lng": 78.1198,
+      "count": 3
+    },
+    {
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "count": 3
+    },
+    {
+      "city": "Navi Mumbai",
+      "lat": 19.033,
+      "lng": 73.0297,
+      "count": 2
+    },
+    {
+      "city": "Kolkata",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "count": 2
+    },
+    {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 2
+    },
+    {
+      "city": "Ahmedabad",
+      "lat": 23.0225,
+      "lng": 72.5714,
+      "count": 2
+    },
+    {
+      "city": "Chennai",
+      "lat": 13.0827,
+      "lng": 80.2707,
+      "count": 2
+    },
+    {
+      "city": "Mohali",
+      "lat": 30.7046,
+      "lng": 76.7179,
+      "count": 1
+    },
+    {
+      "city": "Jaipur",
+      "lat": 26.9124,
+      "lng": 75.7873,
+      "count": 1
+    },
+    {
+      "city": "Nagpur",
+      "lat": 21.1458,
+      "lng": 79.0882,
+      "count": 1
+    },
+    {
+      "city": "Saharanpur",
+      "lat": 29.968,
+      "lng": 77.551,
+      "count": 1
+    },
+    {
+      "city": "Kochi",
+      "lat": 9.9312,
+      "lng": 76.2673,
+      "count": 1
+    }
+  ],
+  "topCompanies": [
+    {
+      "name": "HCLTech",
+      "count": 10,
+      "logo": "assets/company-icons/hcltech-4735861.png"
+    },
+    {
+      "name": "EY",
+      "count": 9,
+      "logo": "assets/company-approved/ey.webp"
+    },
+    {
       "name": "Amazon",
-      "count": 7
+      "count": 7,
+      "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
       "name": "Google",
-      "count": 5
+      "count": 5,
+      "logo": "assets/company-approved/google-owner-20261019.svg"
     },
     {
       "name": "Accenture",
-      "count": 4
+      "count": 4,
+      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Cognizant",
-      "count": 4
+      "count": 4,
+      "logo": "assets/company-icons/cognizant-8d169ac.png"
     },
     {
       "name": "Deloitte",
-      "count": 3
+      "count": 3,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "Rubrik",
-      "count": 3
+      "count": 3,
+      "logo": "assets/company-icons/rubrik-c33fd7a.png"
     },
     {
       "name": "Bosch",
-      "count": 3
+      "count": 3,
+      "logo": "assets/company-marks-review/bosch.svg"
     },
     {
       "name": "Wipro",
-      "count": 3
+      "count": 3,
+      "logo": "assets/company-icons/wipro-6507802.png"
     },
     {
       "name": "Capgemini",
-      "count": 3
+      "count": 3,
+      "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
       "name": "Stripe",
-      "count": 2
+      "count": 2,
+      "logo": "assets/company-owner-submitted/stripe-owner-20261021.png"
     }
   ],
   "topSkills": [
