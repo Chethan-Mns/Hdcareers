@@ -63,7 +63,7 @@
       "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Consultant-Business-Consulting-Risk-National-CNS-Risk-Risk-Management-Mumbai-MH-400028/1430050633/",
       "cat": "it",
       "expYears": "0 years (Fresher)",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1738778 is open with Apply now, dated 24 Sep 2026, and explicitly lists Experience: Fresher and B.Tech in Computer Science.",
       "postedDate": "2026-09-24",
@@ -100,13 +100,16 @@
         "date": "2026-09-24",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:28.531Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:28.531Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact EY requisition 1738778 is open with Apply now, dated 24 Sep 2026, and explicitly lists Experience: Fresher and B.Tech in Computer Science."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:28.531Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "rubrik-8166514",
@@ -586,7 +589,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:19.567Z",
+  "updatedAt": "2026-10-21T08:07:28.531Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
