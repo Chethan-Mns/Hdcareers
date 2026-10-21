@@ -6,6 +6,7 @@ function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;",
 function parseDate(j){for(const raw of [j.verifiedDate,j.date]){const d=Date.parse(raw||"");if(Number.isFinite(d))return d}return 0}
 function goToResults(){const s=el("resultsSection");if(s)s.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
 function pickCompany(name){const input=el("companyFilter");if(!input)return;resetFilters();input.value=name;filterAndScrollNow();goToResults()}
+function exploreAll(){if(typeof resetFilters==="function")resetFilters();const u=new URL(location.href);if(u.searchParams.has("company")){u.searchParams.delete("company");history.replaceState(null,"",u.pathname+u.search+u.hash)}goToResults()}
 function iconLogo(j,size){return typeof companyLogo==="function"?companyLogo(j,size||"w-14 h-14"):"<span>★</span>"}
 function render(){
   if(typeof JOBS==="undefined")return;
@@ -24,8 +25,8 @@ function render(){
     const records=active.slice().sort((a,b)=>parseDate(b)-parseDate(a)).slice(0,4);
     recent.innerHTML=records.map(j=>'<article class="hdp-featured-item"><div class="hdp-job-company">'+iconLogo(j,"w-10 h-10")+'<span>'+escapeHTML(j.company)+'</span></div><h3>'+escapeHTML(j.role)+'</h3><p><i class="fa-solid fa-location-dot"></i> '+escapeHTML(j.loc||"Check official listing")+'</p><div class="flex flex-wrap gap-1.5"><span class="hdp-tag">'+escapeHTML(j.cat||"Job")+'</span><span class="hdp-tag">'+escapeHTML(j.expType==="not-specified"?"Eligibility on official listing":j.expType||"See eligibility")+'</span></div><a class="hdp-apply" href="'+escapeHTML(j.page)+'">View &amp; Apply →</a></article>').join("")
   }
-  const all=el("hdpAllJobs");if(all)all.addEventListener("click",goToResults);
-  const view=el("hdpViewJobs");if(view)view.addEventListener("click",goToResults);
+  const all=el("hdpAllJobs");if(all)all.addEventListener("click",exploreAll);
+  const view=el("hdpViewJobs");if(view)view.addEventListener("click",exploreAll);
 }
 function init(){render();const company=new URLSearchParams(window.location.search).get("company");if(company&&el("companyFilter")&&typeof resetFilters==="function"){resetFilters();el("companyFilter").value=company;if(typeof renderJobs==="function")renderJobs();goToResults()}}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
