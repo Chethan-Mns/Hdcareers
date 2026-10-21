@@ -928,7 +928,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     # Keep only card/search/modal fields in the homepage payload; full verified
     # job records stay in data/jobs.json and detailed job pages.
     public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
-                     "batch", "cat", "categories", "expType", "expYears", "date",
+                     "batch", "cat", "categories", "expType", "expYears", "date", "verifiedDate",
                      "desc", "elig", "resp", "skills", "apply", "page", "salary",
                      "status", "domain", "logo", "logoPath", "logoSourceDomain",
                      "careerIconUrl", "_verification_pending")
@@ -957,6 +957,16 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if not re.search(pattern, updated, flags=re.S):
         raise SystemExit("Static homepage job link marker is missing")
     updated = re.sub(pattern, lambda _: fallback, updated, count=1, flags=re.S)
+    # Embed verified city markers into generated HTML. This avoids CDN, blocked JSON routes,
+    # authentication/caching failures and blank previews; refreshed on each publishing run.
+    map_json = json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]},
+                          ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    map_tag = '<script type="application/json" id="hd-map-data">' + map_json + '</script>'
+    map_pattern = r'<script type="application/json" id="hd-map-data">.*?</script>'
+    if re.search(map_pattern, updated, flags=re.S):
+        updated = re.sub(map_pattern, lambda _: map_tag, updated, count=1, flags=re.S)
+    else:
+        updated = updated.replace("</body>", map_tag + "\n</body>", 1)
 
     if updated == source:
         return False
@@ -1026,6 +1036,20 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
 
 
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
+    premium = ROOT / "assets" / "premium-insights-template.html"
+    if premium.exists():
+        active_jobs = [job for job in jobs if job.get("status") == "active"]
+        prefix = "../" if detailed else ""
+        title = "Weekly Hiring Insights" if detailed else "Hiring Insights"
+        canonical = "https://hdcareers.in/insights/weekly-hiring-insights.html" if detailed else "https://hdcareers.in/insights.html"
+        introduction = "A detailed breakdown of our active job listings." if detailed else "Data-driven hiring insights for candidates and recruiters."
+        return (premium.read_text(encoding="utf-8")
+                .replace("{{TITLE}}", title)
+                .replace("{{CANONICAL}}", canonical)
+                .replace("{{INTRO}}", introduction)
+                .replace("{{SNAPSHOT}}", _snapshot_date(active_jobs))
+                .replace("{{MAP_DATA}}", json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c"))
+                .replace("{{PREFIX}}", prefix))
     active = [job for job in jobs if job.get("status") == "active"]
     companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
     def insight_location(raw):
@@ -1136,13 +1160,80 @@ def build_public_insights(jobs: list[dict]) -> dict:
             label = {"bengaluru": "Bengaluru", "bangalore": "Bengaluru",
                      "mumbai": "Mumbai", "hyderabad": "Hyderabad"}.get(city, label)
         locations[label] += 1
+    employers = Counter(str(j.get("company", "")).strip() for j in active if str(j.get("company", "")).strip())
+    skills = Counter(str(skill).strip() for j in active for skill in j.get("skills", []) if str(skill).strip())
+    categories = Counter(str(j.get("cat") or "Other") for j in active)
+    verified = Counter()
+    for j in active:
+        try:
+            day = datetime.strptime(str(j.get("verifiedDate", "")).strip(), "%d %b %Y")
+            verified[day.strftime("%Y-%m-%d")] += 1
+        except ValueError:
+            continue
+    # Map markers represent only unambiguous, city-specific Active job listings.
+    # Multi-city, statewide and unspecified locations are not assigned guessed pins.
+    city_geo = {
+        "Bengaluru": (12.9716, 77.5946, ("bengaluru", "bangalore")),
+        "Mumbai": (19.0760, 72.8777, ("mumbai",)),
+        "Hyderabad": (17.3850, 78.4867, ("hyderabad",)),
+        "Chennai": (13.0827, 80.2707, ("chennai",)),
+        "Delhi": (28.6139, 77.2090, ("new delhi", "delhi")),
+        "Gurugram": (28.4595, 77.0266, ("gurugram", "gurgaon")),
+        "Noida": (28.5355, 77.3910, ("noida",)),
+        "Pune": (18.5204, 73.8567, ("pune",)),
+        "Kolkata": (22.5726, 88.3639, ("kolkata",)),
+        "Madurai": (9.9252, 78.1198, ("madurai",)),
+        "Indore": (22.7196, 75.8577, ("indore",)),
+        "Ahmedabad": (23.0225, 72.5714, ("ahmedabad",)),
+        "Jaipur": (26.9124, 75.7873, ("jaipur",)),
+        "Kochi": (9.9312, 76.2673, ("kochi",)),
+        "Nagpur": (21.1458, 79.0882, ("nagpur",)),
+        "Mohali": (30.7046, 76.7179, ("mohali",)),
+        "Saharanpur": (29.9680, 77.5510, ("saharanpur",)),
+        "Navi Mumbai": (19.0330, 73.0297, ("navi mumbai",)),
+    }
+    city_counts = Counter()
+    for job in active:
+        loc = str(job.get("locationFilter") or job.get("loc") or "").casefold().strip()
+        if not loc or "/" in loc or " or " in loc or "preferred location" in loc or "multiple location" in loc or "india -" in loc:
+            continue
+        # Avoid double-mapping Navi Mumbai as Mumbai.
+        if "navi mumbai" in loc:
+            city_counts["Navi Mumbai"] += 1
+            continue
+        found = [name for name, (_, _, aliases) in city_geo.items()
+                 if name != "Navi Mumbai" and any(re.search(r"(?<![a-z])" + re.escape(alias) + r"(?![a-z])", loc)
+                 for alias in aliases)]
+        if len(found) == 1:
+            city_counts[found[0]] += 1
+    city_pins = [
+        {"city": city, "lat": city_geo[city][0], "lng": city_geo[city][1], "count": count}
+        for city, count in city_counts.most_common()
+    ]
+    curated_logos = {}
+    logo_path = ROOT / "data" / "company-logos.json"
+    if logo_path.exists():
+        try:
+            curated_logos = json.loads(logo_path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            curated_logos = {}
+    def company_logo_for(name):
+        icon = APPROVED_COMPANY_LOGOS.get(name.lower(), "")
+        if not icon:
+            icon = str((curated_logos.get(name) or {}).get("localPath") or "")
+        return icon if icon.startswith("assets/") and ".." not in icon else ""
     return {
         "verifiedThrough": _snapshot_date(active),
         "active": len(active),
-        "employers": len({str(j.get("company", "")).strip() for j in active if j.get("company")}),
+        "employers": len(employers),
         "freshers": sum(j.get("expType") == "fresher" for j in active),
         "experienced": sum(j.get("expType") == "experienced" for j in active),
-        "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)]
+        "locations": [{"label": k, "count": v} for k, v in city_counts.most_common(8)],
+        "cityPins": city_pins,
+        "topCompanies": [{"name": k, "count": v, "logo": company_logo_for(k)} for k, v in employers.most_common(12)],
+        "topSkills": [{"label": k, "count": v} for k, v in skills.most_common(14)],
+        "categories": [{"label": k, "count": v} for k, v in categories.most_common()],
+        "verificationDaily": [{"date": k, "count": v} for k, v in sorted(verified.items())]
     }
 
 

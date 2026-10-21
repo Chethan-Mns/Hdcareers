@@ -7,7 +7,7 @@
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 53
+      "count": 55
     },
     {
       "label": "Mumbai",
@@ -19,10 +19,14 @@
     },
     {
       "label": "Gurugram",
+      "count": 6
+    },
+    {
+      "label": "Noida",
       "count": 4
     },
     {
-      "label": "India",
+      "label": "Pune",
       "count": 3
     },
     {
@@ -30,12 +34,354 @@
       "count": 3
     },
     {
-      "label": "Noida",
+      "label": "Delhi",
+      "count": 3
+    }
+  ],
+  "cityPins": [
+    {
+      "city": "Bengaluru",
+      "lat": 12.9716,
+      "lng": 77.5946,
+      "count": 55
+    },
+    {
+      "city": "Mumbai",
+      "lat": 19.076,
+      "lng": 72.8777,
+      "count": 12
+    },
+    {
+      "city": "Hyderabad",
+      "lat": 17.385,
+      "lng": 78.4867,
+      "count": 9
+    },
+    {
+      "city": "Gurugram",
+      "lat": 28.4595,
+      "lng": 77.0266,
+      "count": 6
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
+      "count": 4
+    },
+    {
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
       "count": 3
     },
     {
-      "label": "Pune",
+      "city": "Madurai",
+      "lat": 9.9252,
+      "lng": 78.1198,
+      "count": 3
+    },
+    {
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "count": 3
+    },
+    {
+      "city": "Navi Mumbai",
+      "lat": 19.033,
+      "lng": 73.0297,
       "count": 2
+    },
+    {
+      "city": "Kolkata",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "count": 2
+    },
+    {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 2
+    },
+    {
+      "city": "Ahmedabad",
+      "lat": 23.0225,
+      "lng": 72.5714,
+      "count": 2
+    },
+    {
+      "city": "Chennai",
+      "lat": 13.0827,
+      "lng": 80.2707,
+      "count": 2
+    },
+    {
+      "city": "Mohali",
+      "lat": 30.7046,
+      "lng": 76.7179,
+      "count": 1
+    },
+    {
+      "city": "Jaipur",
+      "lat": 26.9124,
+      "lng": 75.7873,
+      "count": 1
+    },
+    {
+      "city": "Nagpur",
+      "lat": 21.1458,
+      "lng": 79.0882,
+      "count": 1
+    },
+    {
+      "city": "Saharanpur",
+      "lat": 29.968,
+      "lng": 77.551,
+      "count": 1
+    },
+    {
+      "city": "Kochi",
+      "lat": 9.9312,
+      "lng": 76.2673,
+      "count": 1
+    }
+  ],
+  "topCompanies": [
+    {
+      "name": "HCLTech",
+      "count": 10,
+      "logo": "assets/company-icons/hcltech-4735861.png"
+    },
+    {
+      "name": "EY",
+      "count": 9,
+      "logo": "assets/company-approved/ey.webp"
+    },
+    {
+      "name": "Amazon",
+      "count": 7,
+      "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
+      "name": "Google",
+      "count": 5,
+      "logo": "assets/company-approved/google-owner-20261019.svg"
+    },
+    {
+      "name": "Accenture",
+      "count": 4,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
+      "name": "Cognizant",
+      "count": 4,
+      "logo": "assets/company-icons/cognizant-8d169ac.png"
+    },
+    {
+      "name": "Deloitte",
+      "count": 3,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
+    },
+    {
+      "name": "Rubrik",
+      "count": 3,
+      "logo": "assets/company-icons/rubrik-c33fd7a.png"
+    },
+    {
+      "name": "Bosch",
+      "count": 3,
+      "logo": "assets/company-marks-review/bosch.svg"
+    },
+    {
+      "name": "Wipro",
+      "count": 3,
+      "logo": "assets/company-icons/wipro-6507802.png"
+    },
+    {
+      "name": "Capgemini",
+      "count": 3,
+      "logo": "assets/company-icons/capgemini-10eefd0.png"
+    },
+    {
+      "name": "Stripe",
+      "count": 2,
+      "logo": "assets/company-owner-submitted/stripe-owner-20261021.png"
+    }
+  ],
+  "topSkills": [
+    {
+      "label": "Python",
+      "count": 20
+    },
+    {
+      "label": "Java",
+      "count": 18
+    },
+    {
+      "label": "SQL",
+      "count": 16
+    },
+    {
+      "label": "Problem solving",
+      "count": 10
+    },
+    {
+      "label": "JavaScript",
+      "count": 10
+    },
+    {
+      "label": "Communication",
+      "count": 8
+    },
+    {
+      "label": "REST APIs",
+      "count": 8
+    },
+    {
+      "label": "Algorithms",
+      "count": 8
+    },
+    {
+      "label": "Networking",
+      "count": 8
+    },
+    {
+      "label": "C++",
+      "count": 7
+    },
+    {
+      "label": "Documentation",
+      "count": 7
+    },
+    {
+      "label": "Troubleshooting",
+      "count": 7
+    },
+    {
+      "label": "Linux",
+      "count": 7
+    },
+    {
+      "label": "Excel",
+      "count": 6
+    }
+  ],
+  "categories": [
+    {
+      "label": "it",
+      "count": 71
+    },
+    {
+      "label": "internship",
+      "count": 27
+    },
+    {
+      "label": "nonit",
+      "count": 20
+    },
+    {
+      "label": "experienced",
+      "count": 7
+    },
+    {
+      "label": "apprenticeship",
+      "count": 3
+    },
+    {
+      "label": "walkin",
+      "count": 2
+    },
+    {
+      "label": "campus",
+      "count": 2
+    }
+  ],
+  "verificationDaily": [
+    {
+      "date": "2026-09-29",
+      "count": 4
+    },
+    {
+      "date": "2026-09-30",
+      "count": 1
+    },
+    {
+      "date": "2026-10-01",
+      "count": 1
+    },
+    {
+      "date": "2026-10-02",
+      "count": 6
+    },
+    {
+      "date": "2026-10-03",
+      "count": 1
+    },
+    {
+      "date": "2026-10-04",
+      "count": 1
+    },
+    {
+      "date": "2026-10-05",
+      "count": 3
+    },
+    {
+      "date": "2026-10-06",
+      "count": 7
+    },
+    {
+      "date": "2026-10-07",
+      "count": 1
+    },
+    {
+      "date": "2026-10-08",
+      "count": 1
+    },
+    {
+      "date": "2026-10-09",
+      "count": 3
+    },
+    {
+      "date": "2026-10-10",
+      "count": 5
+    },
+    {
+      "date": "2026-10-11",
+      "count": 4
+    },
+    {
+      "date": "2026-10-12",
+      "count": 5
+    },
+    {
+      "date": "2026-10-13",
+      "count": 8
+    },
+    {
+      "date": "2026-10-15",
+      "count": 8
+    },
+    {
+      "date": "2026-10-17",
+      "count": 25
+    },
+    {
+      "date": "2026-10-18",
+      "count": 10
+    },
+    {
+      "date": "2026-10-19",
+      "count": 3
+    },
+    {
+      "date": "2026-10-20",
+      "count": 9
+    },
+    {
+      "date": "2026-10-21",
+      "count": 26
     }
   ]
 }
