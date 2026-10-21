@@ -924,7 +924,18 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
     active_jobs = [job for job in jobs if job.get("status") == "active"]
-    jobs_json = json.dumps(active_jobs, ensure_ascii=False, indent=2)
+    # Keep only card/search/modal fields in the homepage payload; full verified
+    # job records stay in data/jobs.json and detailed job pages.
+    public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
+                     "batch", "cat", "categories", "expType", "expYears", "date",
+                     "desc", "elig", "resp", "skills", "apply", "page", "salary",
+                     "status", "domain", "logo", "logoPath", "logoSourceDomain",
+                     "careerIconUrl", "_verification_pending")
+    jobs_json = "[\\n" + ",\\n".join(
+        json.dumps({key: job[key] for key in public_fields if key in job},
+                   ensure_ascii=False, separators=(",", ":"))
+        for job in active_jobs
+    ) + "\\n]"
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
     # Real HTML job links remain discoverable when the interactive JavaScript UI fails.
