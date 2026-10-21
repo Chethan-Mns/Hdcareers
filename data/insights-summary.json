@@ -37,5 +37,229 @@
       "label": "Pune",
       "count": 2
     }
+  ],
+  "topCompanies": [
+    {
+      "name": "HCLTech",
+      "count": 10
+    },
+    {
+      "name": "EY",
+      "count": 9
+    },
+    {
+      "name": "Amazon",
+      "count": 7
+    },
+    {
+      "name": "Google",
+      "count": 5
+    },
+    {
+      "name": "Accenture",
+      "count": 4
+    },
+    {
+      "name": "Cognizant",
+      "count": 4
+    },
+    {
+      "name": "Deloitte",
+      "count": 3
+    },
+    {
+      "name": "Rubrik",
+      "count": 3
+    },
+    {
+      "name": "Bosch",
+      "count": 3
+    },
+    {
+      "name": "Wipro",
+      "count": 3
+    },
+    {
+      "name": "Capgemini",
+      "count": 3
+    },
+    {
+      "name": "Stripe",
+      "count": 2
+    }
+  ],
+  "topSkills": [
+    {
+      "label": "Python",
+      "count": 20
+    },
+    {
+      "label": "Java",
+      "count": 18
+    },
+    {
+      "label": "SQL",
+      "count": 16
+    },
+    {
+      "label": "Problem solving",
+      "count": 10
+    },
+    {
+      "label": "JavaScript",
+      "count": 10
+    },
+    {
+      "label": "Communication",
+      "count": 8
+    },
+    {
+      "label": "REST APIs",
+      "count": 8
+    },
+    {
+      "label": "Algorithms",
+      "count": 8
+    },
+    {
+      "label": "Networking",
+      "count": 8
+    },
+    {
+      "label": "C++",
+      "count": 7
+    },
+    {
+      "label": "Documentation",
+      "count": 7
+    },
+    {
+      "label": "Troubleshooting",
+      "count": 7
+    },
+    {
+      "label": "Linux",
+      "count": 7
+    },
+    {
+      "label": "Excel",
+      "count": 6
+    }
+  ],
+  "categories": [
+    {
+      "label": "it",
+      "count": 71
+    },
+    {
+      "label": "internship",
+      "count": 27
+    },
+    {
+      "label": "nonit",
+      "count": 20
+    },
+    {
+      "label": "experienced",
+      "count": 7
+    },
+    {
+      "label": "apprenticeship",
+      "count": 3
+    },
+    {
+      "label": "walkin",
+      "count": 2
+    },
+    {
+      "label": "campus",
+      "count": 2
+    }
+  ],
+  "verificationDaily": [
+    {
+      "date": "2026-09-29",
+      "count": 4
+    },
+    {
+      "date": "2026-09-30",
+      "count": 1
+    },
+    {
+      "date": "2026-10-01",
+      "count": 1
+    },
+    {
+      "date": "2026-10-02",
+      "count": 6
+    },
+    {
+      "date": "2026-10-03",
+      "count": 1
+    },
+    {
+      "date": "2026-10-04",
+      "count": 1
+    },
+    {
+      "date": "2026-10-05",
+      "count": 3
+    },
+    {
+      "date": "2026-10-06",
+      "count": 7
+    },
+    {
+      "date": "2026-10-07",
+      "count": 1
+    },
+    {
+      "date": "2026-10-08",
+      "count": 1
+    },
+    {
+      "date": "2026-10-09",
+      "count": 3
+    },
+    {
+      "date": "2026-10-10",
+      "count": 5
+    },
+    {
+      "date": "2026-10-11",
+      "count": 4
+    },
+    {
+      "date": "2026-10-12",
+      "count": 5
+    },
+    {
+      "date": "2026-10-13",
+      "count": 8
+    },
+    {
+      "date": "2026-10-15",
+      "count": 8
+    },
+    {
+      "date": "2026-10-17",
+      "count": 25
+    },
+    {
+      "date": "2026-10-18",
+      "count": 10
+    },
+    {
+      "date": "2026-10-19",
+      "count": 3
+    },
+    {
+      "date": "2026-10-20",
+      "count": 9
+    },
+    {
+      "date": "2026-10-21",
+      "count": 26
+    }
   ]
 }
