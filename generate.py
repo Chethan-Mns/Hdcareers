@@ -1199,6 +1199,18 @@ def build_public_insights(jobs: list[dict]) -> dict:
         {"city": city, "lat": city_geo[city][0], "lng": city_geo[city][1], "count": count}
         for city, count in city_counts.most_common()
     ]
+    curated_logos = {}
+    logo_path = ROOT / "data" / "company-logos.json"
+    if logo_path.exists():
+        try:
+            curated_logos = json.loads(logo_path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            curated_logos = {}
+    def company_logo_for(name):
+        icon = APPROVED_COMPANY_LOGOS.get(name.lower(), "")
+        if not icon:
+            icon = str((curated_logos.get(name) or {}).get("localPath") or "")
+        return icon if icon.startswith("assets/") and ".." not in icon else ""
     return {
         "verifiedThrough": _snapshot_date(active),
         "active": len(active),
@@ -1207,7 +1219,7 @@ def build_public_insights(jobs: list[dict]) -> dict:
         "experienced": sum(j.get("expType") == "experienced" for j in active),
         "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)],
         "cityPins": city_pins,
-        "topCompanies": [{"name": k, "count": v} for k, v in employers.most_common(12)],
+        "topCompanies": [{"name": k, "count": v, "logo": company_logo_for(k)} for k, v in employers.most_common(12)],
         "topSkills": [{"label": k, "count": v} for k, v in skills.most_common(14)],
         "categories": [{"label": k, "count": v} for k, v in categories.most_common()],
         "verificationDaily": [{"date": k, "count": v} for k, v in sorted(verified.items())]
