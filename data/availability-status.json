@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-20T18:51:13.220477+00:00",
+  "checkedAt": "2026-10-21T08:38:52.212Z",
   "checked": 132,
-  "active": 106,
-  "expired": 0,
-  "review": 26,
-  "changedExpired": 0,
+  "active": 122,
+  "expired": 10,
+  "review": 0,
+  "changedExpired": 10,
   "items": [
     {
       "id": 190,
@@ -472,9 +472,11 @@
       "role": "Digital Workplace Practice – Service Desk",
       "page": "jobs/cognizant-digital-workplace-practice-service-desk-freshers-2026.html",
       "url": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:43:41.767352+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 139,
@@ -502,9 +504,11 @@
       "role": "Associate Consultant - Tech Consulting - Cyber Security",
       "page": "jobs/ey-associate-consultant-tech-consulting-cyber-security.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Associate-Consultant-Tech-Consulting-National-CNS-TC-Cyber-Security-New-Delhi-Nati-110037/1446333333/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:43:58.334184+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 143,
@@ -582,9 +586,11 @@
       "role": "MS – EUS Apprentice/Intern (6 months)",
       "page": "jobs/ahead-ms-eus-apprentice-intern-6-months.html",
       "url": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:09.129959+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 129,
@@ -602,9 +608,11 @@
       "role": "Graduate Engineer Trainee",
       "page": "jobs/ge-healthcare-graduate-engineer-trainee.html",
       "url": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-20T18:44:10.103751+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 132,
@@ -612,9 +620,11 @@
       "role": "People Services Intern",
       "page": "jobs/erm-people-services-intern.html",
       "url": "https://erm.wd3.myworkdayjobs.com/en-US/ERM_EarlyCareers/job/New-Delhi-India/People-Services-Intern_R00032044",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-20T18:44:11.255470+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 133,
@@ -622,9 +632,11 @@
       "role": "Analyst – D365 F&O Functional SCM",
       "page": "jobs/deloitte-south-asia-analyst-d365-f-o-functional-scm.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:12.935651+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 134,
@@ -712,9 +724,11 @@
       "role": "Analyst – Indirect Tax – Core",
       "page": "jobs/ey-analyst-indirect-tax-core.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:24.173363+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 126,
@@ -722,9 +736,11 @@
       "role": "Technical Internship 2027",
       "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
       "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-20T18:44:26.612269+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 127,
@@ -732,9 +748,11 @@
       "role": "Software Development Engineer I, IESP Merchant Tech",
       "page": "jobs/amazon-software-development-engineer-i-iesp-merchant-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:28.358646+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 112,
@@ -802,9 +820,11 @@
       "role": "Associate Analyst – TAX – Indirect Tax – Core",
       "page": "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:35.552215+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 109,
@@ -812,9 +832,11 @@
       "role": "Software Engineer – Cloud: Azure",
       "page": "jobs/rubrik-software-engineer-cloud-azure.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:44:38.145412+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 108,
@@ -822,9 +844,11 @@
       "role": "New Grad – Software Engineer (Evergreen PPO)",
       "page": "jobs/visa-new-grad-software-engineer-evergreen-ppo.html",
       "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:44:39.450336+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 107,
@@ -832,9 +856,11 @@
       "role": "Software Engineer – SaaS O365",
       "page": "jobs/rubrik-software-engineer-saas-o365.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8256407?gh_jid=8256407",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:44:39.957343+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 105,
@@ -882,9 +908,11 @@
       "role": "Associate Analyst – Tax GCR",
       "page": "jobs/ey-associate-analyst-tax-gcr.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445262833",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:43.933357+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 89,
@@ -902,9 +930,11 @@
       "role": "Software Engineer – Graduates 2026",
       "page": "jobs/zycus-software-engineer-graduates-2026.html",
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-20T18:44:46.510188+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 78,
@@ -922,9 +952,11 @@
       "role": "Procurement Operations New Associate",
       "page": "jobs/accenture-procurement-operations-new-associate-mumbai-aioc-s01661115.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01661115_en",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-20T18:44:47.882958+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 86,
@@ -932,9 +964,11 @@
       "role": "Junior Research Fellowship – Walk-in Interview",
       "page": "jobs/drdo-cair-junior-research-fellow-walkin-bengaluru-november-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/cair-bengaluru-invites-eligible-candidates-walk-interview-post-jrf-24th",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:44:49.369348+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 74,
@@ -1002,9 +1036,11 @@
       "role": "Graduate, Diploma & ITI Apprentices – 195 Vacancies",
       "page": "jobs/drdo-rci-graduate-diploma-iti-apprentices-195-2027.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/rci-hyderabad-invites-eligible-candidates-engagement-apprentices-under",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:45:40.091257+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 65,
@@ -1022,9 +1058,11 @@
       "role": "Associate – Software Testing Engineer",
       "page": "jobs/virtusa-associate-software-testing-engineer-creq260022.html",
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "state": "review",
-      "reason": "HTTP 403; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:46:26.478733+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 63,
@@ -1062,9 +1100,11 @@
       "role": "ITI Trade Apprentices – 24 Vacancies",
       "page": "jobs/drdo-dipr-delhi-iti-trade-apprentices-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/dipr-delhi-invites-eligible-candidates-engagement-iti-pass-out-aprentices",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:46:34.110561+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 54,
@@ -1112,9 +1152,11 @@
       "role": "Junior Research Fellowship (JRF) – Walk-in Interview",
       "page": "jobs/drdo-vrde-ahilyanagar-jrf-walkin-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/vrde-ahilyanagar-invites-eligible-candidates-walk-interview-post-junior",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:47:26.222370+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 44,
@@ -1122,9 +1164,11 @@
       "role": "Junior Research Fellowship – 2026 Walk-in Interview",
       "page": "jobs/drdo-lrde-bengaluru-jrf-walkin-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/lrde-bengaluru-invites-eligible-candidates-walk-interview-post-junior-research",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:48:06.776432+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 43,
@@ -1132,9 +1176,11 @@
       "role": "Junior Research Fellowship (JRF) – Walk-in Interview",
       "page": "jobs/drdo-dysl-sm-hyderabad-jrf-walkin-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/dysl-sm-hyderabad-invites-eligible-candidates-walk-interview-award-junior",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:48:47.346333+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 42,
@@ -1162,9 +1208,11 @@
       "role": "Apprenticeship Engagement 2027",
       "page": "jobs/drdo-rci-hyderabad-apprentices-2027.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/Skill-Seeker",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:49:35.343026+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 37,
@@ -1252,9 +1300,11 @@
       "role": "Graduate & Technician Apprentice Recruitment 2026 – 50 Vacancies",
       "page": "jobs/drdo-pxe-graduate-technician-apprentices-balasore-2026.html",
       "url": "https://drdo.gov.in/drdo/en/offerings/vacancies/pxe-balasore-invites-eligible-candidates-engagement-apprentices-under",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-20T18:50:23.016335+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     },
     {
       "id": 26,
@@ -1322,9 +1372,11 @@
       "role": "AWS Data Engineer",
       "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-20T18:51:11.394046+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-10-21T08:38:52.212Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-21T08:38:52.212Z"
     }
   ]
 }
