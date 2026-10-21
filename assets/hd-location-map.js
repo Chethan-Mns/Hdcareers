@@ -41,6 +41,12 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
     marker.addEventListener("click",()=>{show();if(info)info.scrollIntoView({block:"nearest",behavior:"smooth"})});
     marker.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();show()}});
     g.append(marker);
+    if(["Bengaluru","Mumbai","Hyderabad","Gurugram"].includes(p.city)){
+      const yy=p.city==="Bengaluru"?y+23:y-13;
+      const lab=el("text",{class:"hd-city-label",x:x+12,y:yy,"text-anchor":"start"});
+      lab.textContent=p.city+" · "+p.count;
+      g.append(lab);
+    }
   }
   const holder=container.parentElement;let legend=holder&&holder.querySelector(".hd-map-legend");
   if(!legend&&container.nextElementSibling&&container.nextElementSibling.classList.contains("hd-map-legend"))legend=container.nextElementSibling;
@@ -50,6 +56,14 @@ for(const n of nodes){const c=n.querySelector(".hd-map-canvas");if(!c)continue;c
   const tip=document.createElement("div");tip.className="hd-india-hover";tip.hidden=true;tip.setAttribute("aria-live","polite");n.append(tip);
 }
 if(!nodes.length)return;
+const embedded=document.getElementById("hd-map-data");
+if(embedded&&embedded.textContent.trim()){
+  try{
+    const data=JSON.parse(embedded.textContent);
+    if(Array.isArray(data.cityPins)&&data.cityPins.length){nodes.forEach(n=>draw(n,data));return}
+  }catch(err){console.warn("Embedded India job map data malformed",err)}
+}
+// Supplemental fallback for older generated pages; latest previews embed their marker data.
 const prefix=document.body.dataset.prefix||"";
-fetch(prefix+"data/insights-summary.json",{cache:"no-store",credentials:"omit"}).then(r=>{if(!r.ok)throw Error("Stats unavailable");return r.json()}).then(d=>nodes.forEach(n=>draw(n,d))).catch(()=>{nodes.forEach(n=>{const note=n.querySelector("[data-hd-map-title]");if(note)note.textContent="Map outline loaded · city data temporarily unavailable";});});
+fetch(prefix+"data/insights-summary.json",{cache:"no-store",credentials:"same-origin"}).then(r=>{if(!r.ok)throw Error("Stats unavailable");return r.json()}).then(d=>nodes.forEach(n=>draw(n,d))).catch(()=>{nodes.forEach(n=>{const note=n.querySelector("[data-hd-map-title]");if(note)note.textContent="India map outline is available · city data temporarily unavailable";});});
 })();
