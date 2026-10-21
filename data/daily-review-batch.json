@@ -509,7 +509,7 @@
       "apply": "https://jobs.smartrecruiters.com/Konecranes/744000073752350-trainee-project-management",
       "cat": "nonit",
       "expYears": "0-1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Konecranes SmartRecruiters requisition is open with an application action and explicitly identifies a Project Management Fresher with 0-1 year experience.",
       "postedDate": null,
@@ -545,13 +545,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:08:04.552Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:08:04.552Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Konecranes SmartRecruiters requisition is open with an application action and explicitly identifies a Project Management Fresher with 0-1 year experience."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:08:04.552Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -610,7 +613,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:08:00.362Z",
+  "updatedAt": "2026-10-21T08:08:04.552Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
