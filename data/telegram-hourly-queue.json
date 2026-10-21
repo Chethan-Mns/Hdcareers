@@ -308,9 +308,11 @@
     {
       "page": "jobs/drivetrain-quality-assurance-engineering-qae-intern.html",
       "batchId": "admin-39567073132",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T10:20:57.079664+00:00"
+      "dueAt": "2026-10-21T10:20:57.079664+00:00",
+      "claimId": "39583934978",
+      "claimedAt": "2026-10-21T10:21:06.349371+00:00"
     },
     {
       "page": "jobs/ey-associate-consultant-business-consulting-risk-risk-management.html",
