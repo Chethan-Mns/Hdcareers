@@ -348,9 +348,11 @@
     {
       "page": "jobs/portcast-data-analyst-intern.html",
       "batchId": "admin-39567073132",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T14:21:53.708284+00:00"
+      "dueAt": "2026-10-21T14:21:53.708284+00:00",
+      "claimId": "39616216482",
+      "claimedAt": "2026-10-21T14:22:02.319558+00:00"
     },
     {
       "page": "jobs/rubrik-eng-project-program-intern.html",
