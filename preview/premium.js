@@ -9,7 +9,7 @@ if(n==="Veeva Systems")return '<svg viewBox="0 0 60 60"><path d="M1 2h17l12 28-7
 if(n==="SuperApp")return '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#6968ae"/><path d="M29 23C20 12 11 20 11 30s9 18 18 7c8-12 18-13 20-6 2 12-13 15-20 5-6-9-17-8-18-4" fill="none" stroke="white" stroke-width="7" stroke-linecap="round"/></svg>';
 return '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#eaf1ff"/><path d="m13 31 11 10 23-24" fill="none" stroke="#2478ed" stroke-width="6" stroke-linecap="round"/></svg>';
 };
-const logo=n=>'<span class="logo" aria-label="'+esc(n)+' logo illustration">'+symbol(n)+'</span>';
+const logo=n=>'<span class="logo" aria-label="'+esc(n)+' logo">' + (window.hdUploadedLogos && window.hdUploadedLogos[n] ? '<img src="'+window.hdUploadedLogos[n]+'" alt="'+esc(n)+' logo" loading="lazy" style="width:90%;height:90%;object-fit:contain">' : symbol(n)) + '</span>';
 const getDate=j=>{for(const s of [j.verifiedDate,j.manualLiveVerifiedAt,j.date]){const ms=Date.parse(s||"");if(Number.isFinite(ms))return ms;}return 0};
 let all=[],view=[],page=1,filter="all",query="",companyOnly="";const pageSize=12;
 function matches(j){const allText=[j.company,j.role,j.roleTag,j.loc,j.elig,j.desc].join(" ").toLowerCase(),categories=[j.cat,...(Array.isArray(j.categories)?j.categories:[])].join(" ").toLowerCase();if(companyOnly&&j.company!==companyOnly)return false;if(query&&!allText.includes(query))return false;
