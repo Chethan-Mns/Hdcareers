@@ -285,7 +285,7 @@
       "apply": "https://jobs.lever.co/portcast/f18cc64e-c34a-416c-b213-62a39906260e",
       "cat": "internship",
       "expYears": "Final-year student or recent graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Portcast Lever requisition is open with Apply for this job and explicitly accepts final-year students or recent graduates at multiple India locations.",
       "postedDate": null,
@@ -322,13 +322,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:43.438Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:43.438Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Portcast Lever requisition is open with Apply for this job and explicitly accepts final-year students or recent graduates at multiple India locations."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:43.438Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zynga-6194313004",
@@ -598,7 +601,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:39.902Z",
+  "updatedAt": "2026-10-21T08:07:43.438Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
