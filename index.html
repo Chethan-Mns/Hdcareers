@@ -230,15 +230,6 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 </div>
 
-<div class="mt-5 category-shell" aria-label="Job categories">
-<div class="category-track-wrap">
-<button type="button" onclick="scrollCategories(-1)" class="cat-arrow shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm hover:text-[var(--primary)] hover:border-blue-200" aria-label="Scroll categories left"><i class="fa-solid fa-chevron-left text-[10px]"></i></button>
-<div id="filterTabs" class="category-scroll"></div>
-<button type="button" onclick="scrollCategories(1)" class="cat-arrow shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm hover:text-[var(--primary)] hover:border-blue-200" aria-label="Scroll categories right"><i class="fa-solid fa-chevron-right text-[10px]"></i></button>
-<div class="category-edge left"></div>
-<div class="category-edge right"></div>
-</div>
-</div>
 </section>
 <div class="hdp-shell">
 <div class="hdp-metrics" aria-label="Current job statistics">
@@ -270,6 +261,15 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <option value="latest">Latest first</option>
 <option value="company">Company A-Z</option>
 </select>
+</div>
+<div class="category-shell hdp-category-near-filters" aria-label="Job categories">
+<div class="category-track-wrap">
+<button type="button" onclick="scrollCategories(-1)" class="cat-arrow shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm hover:text-[var(--primary)] hover:border-blue-200" aria-label="Scroll categories left"><i class="fa-solid fa-chevron-left text-[10px]"></i></button>
+<div id="filterTabs" class="category-scroll"></div>
+<button type="button" onclick="scrollCategories(1)" class="cat-arrow shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm hover:text-[var(--primary)] hover:border-blue-200" aria-label="Scroll categories right"><i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+<div class="category-edge left"></div>
+<div class="category-edge right"></div>
+</div>
 </div>
 <div class="reveal-card bg-white border border-slate-200 rounded-2xl p-4 shadow-sm mb-4">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
