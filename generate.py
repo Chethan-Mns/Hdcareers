@@ -1098,7 +1098,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 <title>{esc(title)} | HD Careers</title>
 <meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script>
+<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script><script defer src="{prefix}assets/insights-live.js"></script>
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
 </head><body>
 <header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
@@ -1124,11 +1124,33 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 </body></html>'''
 
 
+def build_public_insights(jobs: list[dict]) -> dict:
+    """Small public, non-sensitive dashboard dataset regenerated on every job-data publish."""
+    active = [job for job in jobs if job.get("status") == "active"]
+    locations = Counter()
+    for job in active:
+        label = str(job.get("locationFilter") or job.get("loc") or "Other").strip()
+        if "/" not in label and " or " not in label.casefold() and " - " not in label:
+            city = label.split(",", 1)[0].strip().casefold()
+            label = {"bengaluru": "Bengaluru", "bangalore": "Bengaluru",
+                     "mumbai": "Mumbai", "hyderabad": "Hyderabad"}.get(city, label)
+        locations[label] += 1
+    return {
+        "verifiedThrough": _snapshot_date(active),
+        "active": len(active),
+        "employers": len({str(j.get("company", "")).strip() for j in active if j.get("company")}),
+        "freshers": sum(j.get("expType") == "fresher" for j in active),
+        "experienced": sum(j.get("expType") == "experienced" for j in active),
+        "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)]
+    }
+
+
 def write_insights_files(jobs: list[dict], dry_run: bool) -> int:
     changed = 0
     targets = [
         (ROOT / "insights.html", render_insights_page(jobs, detailed=False)),
         (ROOT / "insights" / "weekly-hiring-insights.html", render_insights_page(jobs, detailed=True)),
+        (ROOT / "data" / "insights-summary.json", json.dumps(build_public_insights(jobs), ensure_ascii=False, indent=2) + "\n"),
     ]
     for path, content in targets:
         current = path.read_text(encoding="utf-8") if path.exists() else ""
