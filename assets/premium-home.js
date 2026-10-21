@@ -14,6 +14,8 @@ function render(){
   const unique=new Set(active.map(j=>j.company).filter(Boolean));
   const count=el("hdpJobs"),employers=el("hdpEmployers");
   if(count)count.textContent=active.length;if(employers)employers.textContent=unique.size;
+  const mini=el("hdpArtJobs");
+  if(mini){mini.innerHTML=active.slice().sort((a,b)=>parseDate(b)-parseDate(a)).slice(0,3).map((j,i)=>'<div class="hdp-art-job" style="--i:'+i+'"><span class="hdp-art-mini-logo">'+iconLogo(j,"w-8 h-8")+'</span><span class="hdp-art-mini-copy"><b>'+escapeHTML(j.company)+'</b><small>'+escapeHTML(j.role)+'</small></span><span class="hdp-art-mini-arrow">↗</span></div>').join('')}
   const preferred=["Deloitte","EY","Google","Amazon","Accenture","Microsoft"];
   const candidates=preferred.map(name=>({name,jobs:active.filter(j=>j.company===name)})).filter(x=>x.jobs.length);
   const comps=el("hdpCompanies");
