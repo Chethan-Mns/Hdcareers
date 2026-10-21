@@ -341,7 +341,7 @@
       "apply": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6194313004",
       "cat": "internship",
       "expYears": "Student / 2027 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Zynga Early Careers requisition 6194313004 contains the full role and active application form and states it is only for students graduating in 2027.",
       "postedDate": null,
@@ -380,13 +380,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:47.543Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:47.543Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Zynga Early Careers requisition 6194313004 contains the full role and active application form and states it is only for students graduating in 2027."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:47.543Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "blueberry-91749878",
@@ -601,7 +604,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:43.438Z",
+  "updatedAt": "2026-10-21T08:07:47.543Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
