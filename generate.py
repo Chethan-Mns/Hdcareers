@@ -932,11 +932,11 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
                      "desc", "elig", "resp", "skills", "apply", "page", "salary",
                      "status", "domain", "logo", "logoPath", "logoSourceDomain",
                      "careerIconUrl", "_verification_pending")
-    jobs_json = "[\\n" + ",\\n".join(
+    jobs_json = "[\n" + ",\n".join(
         json.dumps({key: job[key] for key in public_fields if key in job},
                    ensure_ascii=False, separators=(",", ":"))
         for job in active_jobs
-    ) + "\\n]"
+    ) + "\n]"
     replacement = "const JOBS = " + jobs_json
     updated = source[:start] + replacement + source[end + skip:]
     # Real HTML job links remain discoverable when the interactive JavaScript UI fails.
