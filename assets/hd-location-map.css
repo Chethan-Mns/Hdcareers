@@ -38,3 +38,27 @@
 .hd-map-panel{background:#f5f6f8}
 .hd-india-svg rect:first-child{fill:#f5f6f8}
 @media(prefers-reduced-motion:reduce){.hd-india-state{transition:none}}
+
+/* HD Careers map palette matched to the user-provided Google Analytics reference.
+ * Canvas #f8f9fa, land #dadce0, state borders white, location blue #799ce0.
+ * Only visual styles change; pin coordinates/counts remain publication-driven. */
+.hd-map-panel,.hd-map-canvas{background:#f8f9fa!important}
+.hd-map-panel{border-color:#e2e5e9;box-shadow:0 10px 30px rgba(60,64,67,.08)}
+.hd-india-svg rect:first-child{fill:#f8f9fa!important}
+.hd-india-state{fill:#dadce0!important;stroke:#fff!important;stroke-width:1.6;stroke-linejoin:round}
+.hd-india-state:hover{fill:#cdd1d7!important}
+.hd-state-boundaries{filter:none}
+.hd-india-dot{fill:#799ce0!important;fill-opacity:.8!important;stroke:#799ce0!important;stroke-opacity:.45;stroke-width:.75!important;filter:none!important}
+.hd-india-halo{fill:#799ce0!important;fill-opacity:.21;stroke:none!important;animation:hdGABubble 3s ease-in-out infinite}
+.hd-india-marker:hover .hd-india-dot,.hd-india-marker:focus .hd-india-dot,.hd-india-marker.hd-selected .hd-india-dot{fill:#6693e9!important;fill-opacity:.94!important;stroke:#477dd7!important;stroke-width:1.3!important}
+.hd-india-marker:focus-visible .hd-india-halo{stroke:#5d90db!important;stroke-width:2!important}
+.hd-city-label{fill:#5f6368!important;stroke:#f8f9fa!important;stroke-width:3.4!important;font-size:12px;font-weight:750;letter-spacing:-.012em}
+.hd-map-overlay{background:#fff!important;border-color:#e2e5e9!important;box-shadow:0 5px 16px rgba(60,64,67,.12);border-radius:12px}
+.hd-map-overlay strong{color:#30343b}
+.hd-map-overlay small{color:#6e7680}
+.hd-india-hover{background:#fff;color:#30343b;border:1px solid #e1e5eb;box-shadow:0 7px 22px rgba(60,64,67,.18)}
+.hd-map-legend span{background:#fff;border-color:#e2e5e9;color:#5f6368}
+.hd-map-legend b{color:#5685d7}
+.hd-map-legend-note{color:#717780}
+@keyframes hdGABubble{0%,100%{fill-opacity:.16;transform:scale(1)}50%{fill-opacity:.26;transform:scale(1.11)}}
+@media(prefers-reduced-motion:reduce){.hd-india-halo{animation:none}}
