@@ -566,7 +566,7 @@
       "apply": "https://jobs.lever.co/mactores/88f23deb-bc0d-4f21-b01b-5a74c00b61f3",
       "cat": "internship",
       "expYears": "Internship / no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Mactores Lever requisition is open with Apply for this job, describes the position as an apprenticeship in data-platform modernization, and states no mandatory prior-experience threshold.",
       "postedDate": null,
@@ -604,16 +604,19 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:08:15.891Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:08:15.891Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Mactores Lever requisition is open with Apply for this job, describes the position as an apprenticeship in data-platform modernization, and states no mandatory prior-experience threshold."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:08:15.891Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-21T08:08:04.552Z",
+  "updatedAt": "2026-10-21T08:08:15.892Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
