@@ -22,6 +22,7 @@ jobs:
         run: |
           python3 -m py_compile generate.py
           python3 generate.py
+          echo 'Rebuilt map and location counters using current jobs'
           git diff --check
           python3 generate.py --dry-run
       - name: Commit only generated files to preview branch
