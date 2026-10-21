@@ -378,9 +378,11 @@
     {
       "page": "jobs/zynga-technical-artist-intern.html",
       "batchId": "admin-39567073132",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T17:22:31.102232+00:00"
+      "dueAt": "2026-10-21T17:22:31.102232+00:00",
+      "claimId": "39643227966",
+      "claimedAt": "2026-10-21T17:22:42.362785+00:00"
     }
   ]
 }
