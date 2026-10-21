@@ -21,3 +21,12 @@
 @keyframes hdMapGlow{0%,100%{fill-opacity:.19;stroke-opacity:.45;transform:scale(1)}50%{fill-opacity:.37;stroke-opacity:.08;transform:scale(1.33)}}
 @media(max-width:720px){.hd-map-panel.full .hd-map-canvas{height:370px}.hd-map-canvas{height:300px}.hd-map-overlay{top:10px;left:10px;padding:9px 11px}.hd-map-overlay strong{font-size:11px}.hd-map-overlay small{font-size:10px}.hd-india-hover{padding:9px 12px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.hd-india-halo{animation:none}.hd-india-dot{transition:none}}
+
+
+/* Legible, interactive city labels; positive data-backed pins remain visible without map tiles. */
+.hd-city-label{font-size:11px;font-weight:800;fill:#114b99;paint-order:stroke fill;stroke:#fff;stroke-width:3.4px;stroke-linejoin:round;pointer-events:none}
+.hd-india-dot{fill:#0b66e4;stroke:#fff;stroke-width:2.4}
+.hd-india-halo{fill:#367ef7;fill-opacity:.26}
+.hd-map-overlay{background:#fffffff1}
+.hd-map-legend:empty{min-height:0}
+@media(max-width:680px){.hd-city-label{font-size:10px}.hd-map-overlay{max-width:calc(100% - 28px)}}
