@@ -35,3 +35,27 @@
 @media(max-width:800px){.hi-hero{width:calc(100% - 24px);margin-top:12px;border-radius:21px}.hi-hero-row{padding:34px 22px}.hi-art{min-height:250px}.hi-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.hi-experience-visual{min-height:325px}.hi-company-gallery{gap:9px}}
 @media(max-width:680px){.hi-brand-stack strong{font-size:16px}.hi-brand-stack small{font-size:9px}.hi-hero-row{padding:34px 18px}.hi-art{display:none}.hi-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hi-experience-visual{min-height:0;flex-direction:column;gap:19px;padding:15px 0}.hi-ring-large{width:258px;height:258px}.hi-ring-large .hi-ring-center{width:175px;height:175px}.hi-legend-large{max-width:100%;width:100%}.hi-company-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.hi-employer{padding:10px;min-height:72px;gap:7px}.hi-employer-logo{width:41px;height:41px;flex:0 0 41px;padding:5px}.hi-employer-copy strong{font-size:11px}.hi-employer-copy small{font-size:10px}.hi-employer-arrow{display:none}.hi-city-chart{grid-template-columns:1fr;justify-items:center;gap:20px}.hi-city-ring{width:235px;height:235px}.hi-city-ring .hi-ring-center{width:156px;height:156px}.hi-city-legend{width:100%}.hi-skillwrap{gap:7px}.hi-skill{min-width:82px;max-width:105px;width:min(var(--size),105px);height:min(var(--size),105px)}.hi-skill b{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.hi-ring-large,.hi-city-ring,.hi-skill,.hi-employer{animation:none}.hi-employer,.hi-city-legend-row{transition:none}}
+
+
+/* Shared premium navigation treatment for Insights. */
+.hi-nav{background:rgba(255,255,255,.96);border-bottom:1px solid #d9e7fa;box-shadow:0 8px 28px #0b326a12}
+.hi-nav-row{min-height:75px;gap:15px}.hi-brand img{border-radius:15px;box-shadow:0 5px 15px #0c438e16}
+.hi-links{gap:5px}.hi-links a{border-radius:11px;padding:11px 13px;transition:background .2s,color .2s}.hi-links a.active{background:#e9f3ff;border:0;padding:11px 13px}.hi-links a:hover{background:#e7f2ff;color:#145bd0}
+.hi-alerts{border-radius:13px;background:#ecf9f2;border:1px solid #bee7d0;color:#108451;padding:11px 15px;font-size:12px;font-weight:850;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;box-shadow:0 3px 12px #175f4d0e}.hi-alerts:hover{background:#d8f4e4}
+/* Expanded floating logo-led skills and a single authoritative location map. */
+.hi-skills-full{grid-template-columns:1fr!important}
+.hi-skills-card{overflow:hidden;background:radial-gradient(circle at 80% 15%,#f1f7ff 0,transparent 38%),#fff}
+.hi-skillwrap{min-height:355px;display:flex;align-items:center;justify-content:center;gap:15px 20px;padding:25px 12px}
+.hi-skill{width:var(--size)!important;height:var(--size)!important;min-width:106px!important;max-width:156px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border-radius:50%;border:2px solid rgba(255,255,255,.8);box-shadow:0 13px 25px #08224c29, inset 0 0 0 1px #ffffff2b;animation:hiSkillEnter .55s backwards,hiSkillFloat var(--drift) ease-in-out infinite!important;animation-delay:calc(var(--step) * 65ms),calc(var(--step) * -180ms)!important}
+.hi-skill-mark{width:48px;height:48px;display:grid;place-items:center;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.8);border-radius:16px;box-shadow:0 4px 12px #071d401c}
+.hi-skill-logo{width:37px;height:37px;object-fit:contain;display:block}
+.hi-skill-generic{padding:5px;stroke:#184b91}
+.hi-skill b{font-size:12px!important;line-height:1.18;text-align:center;max-width:calc(100% - 12px);color:#fff}
+.hi-skill small{font-size:11px!important;color:#eaf4ff!important;font-weight:700}
+.hi-skill:nth-child(4n+1){background:linear-gradient(150deg,#114cc5,#052b71)}
+.hi-skill:nth-child(4n+2){background:linear-gradient(150deg,#08749b,#034360)}
+.hi-skill:nth-child(4n+3){background:linear-gradient(150deg,#5b47bd,#382783)}
+.hi-skill:nth-child(4n+4){background:linear-gradient(150deg,#138968,#07503f)}
+@media(max-width:790px){.hi-links a{padding:8px 10px}.hi-alerts{padding:9px 11px}.hi-skillwrap{gap:10px;padding:15px 0}.hi-skill{width:min(var(--size),118px)!important;height:min(var(--size),118px)!important;min-width:92px!important}.hi-skill-mark{height:38px;width:38px;border-radius:12px}.hi-skill-logo{height:30px;width:30px}.hi-skill b{font-size:10px!important}}
+@media(max-width:620px){.hi-alerts{font-size:0;padding:10px}.hi-alerts svg{font-size:14px}.hi-skillwrap{min-height:310px}.hi-skill{max-width:113px!important}}
+@media(prefers-reduced-motion:reduce){.hi-skill{animation:none!important}}
