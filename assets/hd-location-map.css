@@ -30,3 +30,11 @@
 .hd-map-overlay{background:#fffffff1}
 .hd-map-legend:empty{min-height:0}
 @media(max-width:680px){.hd-city-label{font-size:10px}.hd-map-overlay{max-width:calc(100% - 28px)}}
+
+/* GA-style muted India state map with accurate blue hiring locations. */
+.hd-india-state{fill:#e5e7eb;stroke:#fff;stroke-width:1.75;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:fill .24s ease,stroke .24s ease}
+.hd-india-state:hover{fill:#cbdcf4;stroke:#fff}
+.hd-state-boundaries{filter:drop-shadow(0 3px 3px rgba(20,50,90,.10))}
+.hd-map-panel{background:#f5f6f8}
+.hd-india-svg rect:first-child{fill:#f5f6f8}
+@media(prefers-reduced-motion:reduce){.hd-india-state{transition:none}}
