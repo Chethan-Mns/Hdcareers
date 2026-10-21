@@ -1016,7 +1016,15 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
     active = [job for job in jobs if job.get("status") == "active"]
     companies = Counter(str(job.get("company", "")).strip() for job in active if str(job.get("company", "")).strip())
-    locations = Counter(str(job.get("locationFilter") or job.get("loc") or "Other").strip() for job in active)
+    def insight_location(raw):
+        label = str(raw or "Other").strip()
+        if "/" in label or " or " in label.casefold() or " - " in label:
+            return label
+        city = label.split(",", 1)[0].strip().casefold()
+        return {"bengaluru": "Bengaluru", "bangalore": "Bengaluru",
+                "mumbai": "Mumbai", "hyderabad": "Hyderabad"}.get(city, label)
+
+    locations = Counter(insight_location(job.get("locationFilter") or job.get("loc") or "Other") for job in active)
     skills = Counter(
         str(skill).strip()
         for job in active
@@ -1093,7 +1101,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 </div>
 <section class="section grid cols-3">
 <div class="card"><h2 class="section-title">Most-mentioned skills</h2><p class="section-copy">Exact skill phrases appearing across active listings.</p>{_rank_rows(skills)}</div>
-<div class="card"><h2 class="section-title">Top location tags</h2><p class="section-copy">Location filters attached to current active jobs.</p>{_rank_rows(locations)}</div>
+<div class="card"><h2 class="section-title">Top location tags</h2><p class="section-copy">City names normalized for these statistics; multi-location tags kept separate.</p>{_rank_rows(locations)}</div>
 <div class="card"><h2 class="section-title">Listing categories</h2><p class="section-copy">A job can belong to more than one category.</p>{_rank_rows(categories)}</div>
 </section>
 <div class="note"><strong>Important:</strong> this is an analysis of the HD Careers database, not a survey of the entire Indian or global labour market. Counts change as jobs are published, expire or are corrected.</div>
