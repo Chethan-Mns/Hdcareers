@@ -1217,7 +1217,7 @@ def build_public_insights(jobs: list[dict]) -> dict:
         "employers": len(employers),
         "freshers": sum(j.get("expType") == "fresher" for j in active),
         "experienced": sum(j.get("expType") == "experienced" for j in active),
-        "locations": [{"label": k, "count": v} for k, v in locations.most_common(8)],
+        "locations": [{"label": k, "count": v} for k, v in city_counts.most_common(8)],
         "cityPins": city_pins,
         "topCompanies": [{"name": k, "count": v, "logo": company_logo_for(k)} for k, v in employers.most_common(12)],
         "topSkills": [{"label": k, "count": v} for k, v in skills.most_common(14)],
