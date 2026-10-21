@@ -43,3 +43,20 @@ body{background:linear-gradient(180deg,#f5f9ff 0%,#f8faff 900px,#f4f7fb 100%)}
 @media(max-width:1020px){.hdp-art-live-card{width:min(340px,94%)}.hdp-art-badge{font-size:10px}.hdp-art-mini-copy small{max-width:175px}}
 @media(max-width:750px){.hdp-category-near-filters{padding:9px 6px}.hdp-art{display:none}}
 @media(prefers-reduced-motion:reduce){.hdp-art-job{animation:none}}
+
+
+/* Final navigation polish and company-hover refinement. */
+header.glass-nav{background:rgba(255,255,255,.96)!important;backdrop-filter:blur(20px);border-bottom:1px solid #d9e7fa!important;box-shadow:0 8px 28px rgba(11,50,106,.08)}
+header.glass-nav .max-w-\[1240px\]>div:first-child{min-height:75px}
+header.glass-nav .logo-home img{border-radius:15px;box-shadow:0 5px 15px #0c438e16}
+header.glass-nav .logo-home p:first-child{font-weight:900;letter-spacing:-.045em;color:#08285c}
+header.glass-nav nav>.nav-link,header.glass-nav nav>div>.nav-link{position:relative;border-radius:11px;padding:10px 11px;transition:background .2s,color .2s}
+header.glass-nav nav>.nav-link:hover,header.glass-nav nav>div>.nav-link:hover{background:#e8f2ff;color:#145bd0}
+header.glass-nav .social-icon{box-shadow:0 4px 12px #204d8620;transition:transform .2s,box-shadow .2s}
+header.glass-nav .social-icon:hover{transform:translateY(-3px);box-shadow:0 8px 18px #1e519b27}
+/* No top blue stripe or hovering decorative highlight on company cards. */
+.hdp-company:before,.hdp-company:hover:before{display:none!important;opacity:0!important;content:none!important}
+.hdp-company:hover{border-color:#dfe9f8;box-shadow:0 13px 30px #0d3c7318;transform:translateY(-3px)}
+.hdp-company:focus-visible{outline:2px solid #387cdb;outline-offset:2px}
+.hdp-category-near-filters{margin-bottom:15px;background:linear-gradient(120deg,#fff,#f4f9ff);padding:14px;border:1px solid #d7e5fa;box-shadow:0 8px 25px #083b8110}
+@media(max-width:790px){header.glass-nav .logo-home p:first-child{font-size:17px}}
