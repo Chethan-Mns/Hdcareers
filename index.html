@@ -308,7 +308,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Company</label>
-<input id="companyFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. TCS" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
+<input id="companyFilter" oninput="window.hdpExactCompany=null;filterAndScrollDebounced()" placeholder="e.g. TCS" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
 <label class="block text-xs font-bold text-slate-500 mb-1.5">Location</label>
@@ -592,7 +592,7 @@ const termOk=term===''||text.includes(term);
 const expTypeOk=expType==='all'||j.expType===expType;
 const expYearsOk=expYears===''||j.expYears.toLowerCase().includes(expYears);
 const roleOk=role===''||(j.roleTag+' '+j.role).toLowerCase().includes(role);
-const companyOk=company===''||j.company.toLowerCase().includes(company);
+const companyOk=company===''||(window.hdpExactCompany ? j.company.trim().toLowerCase()===String(window.hdpExactCompany).trim().toLowerCase() : j.company.toLowerCase().includes(company));
 const locationOk=location===''||(j.locationFilter+' '+j.loc).toLowerCase().includes(location);
 return catOk&&termOk&&expTypeOk&&expYearsOk&&roleOk&&companyOk&&locationOk
 });
@@ -641,7 +641,7 @@ if(pager){
 function goToPage(page){if(page<1)return;currentPage=page;renderJobs();requestAnimationFrame(scrollToResults)}
 
 function clearSearch(){const input=document.getElementById('searchInput');input.value='';filterAndScrollNow()}
-function resetFilters(){currentPage=1;activeCat='all';document.getElementById('searchInput').value='';document.getElementById('sortSelect').value='latest';document.getElementById('expTypeFilter').value='all';syncLevelTone();document.getElementById('expYearsFilter').value='';document.getElementById('roleFilter').value='';document.getElementById('companyFilter').value='';document.getElementById('locationFilter').value='';document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));renderJobs();requestAnimationFrame(scrollToResults)}
+function resetFilters(){window.hdpExactCompany=null;currentPage=1;activeCat='all';document.getElementById('searchInput').value='';document.getElementById('sortSelect').value='latest';document.getElementById('expTypeFilter').value='all';syncLevelTone();document.getElementById('expYearsFilter').value='';document.getElementById('roleFilter').value='';document.getElementById('companyFilter').value='';document.getElementById('locationFilter').value='';document.querySelectorAll('#filterTabs .pill').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));renderJobs();requestAnimationFrame(scrollToResults)}
 
 const STEPS=["Open the official company career page","Review the role and eligibility","Complete the application on the official site","Save confirmation/details for your reference"];
 function openJob(id){const j=JOBS.find(x=>x.id===id);document.getElementById('jobModalBody').innerHTML=`

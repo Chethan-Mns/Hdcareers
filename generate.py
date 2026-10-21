@@ -929,6 +929,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     # job records stay in data/jobs.json and detailed job pages.
     public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
                      "batch", "cat", "categories", "expType", "expYears", "date", "verifiedDate",
+                     "publishedAt", "manualPublishRequestedAt", "manualLiveVerifiedAt", "browserVerifiedAt",
                      "desc", "elig", "resp", "skills", "apply", "page", "salary",
                      "status", "domain", "logo", "logoPath", "logoSourceDomain",
                      "careerIconUrl", "_verification_pending")
