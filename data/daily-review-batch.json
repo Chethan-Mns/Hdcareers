@@ -175,7 +175,7 @@
       "apply": "https://stripe.com/careers/listing/operations-associate-apprenticeship/8131339?gh_jid=8131339",
       "cat": "internship",
       "expYears": "Current student or 2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Stripe listing 8131339 is open with Apply now and states a six-month January 2027 apprenticeship for current students or people who recently graduated in 2026.",
       "postedDate": null,
@@ -211,13 +211,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:36.348Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:36.348Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Stripe listing 8131339 is open with Apply now and states a six-month January 2027 apprenticeship for current students or people who recently graduated in 2026."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:36.348Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "drivetrain-edb8a8f7",
@@ -592,7 +595,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:32.329Z",
+  "updatedAt": "2026-10-21T08:07:36.348Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
