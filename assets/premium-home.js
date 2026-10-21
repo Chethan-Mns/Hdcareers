@@ -34,12 +34,16 @@ function render(){
     if(record){record.jobs.push(job);record.lastVerified=Math.max(record.lastVerified,parseDate(job))}
     else byEmployer.set(name,{name,jobs:[job],lastVerified:parseDate(job)});
   }
-  const candidates=[...byEmployer.values()].sort((a,b)=>
-    b.jobs.length-a.jobs.length ||
+  const rank=(a,b)=>b.jobs.length-a.jobs.length ||
     Number(recognized.has(b.name))-Number(recognized.has(a.name)) ||
-    b.lastVerified-a.lastVerified ||
-    a.name.localeCompare(b.name)
-  ).slice(0,6);
+    b.lastVerified-a.lastVerified || a.name.localeCompare(b.name);
+  const ranked=[...byEmployer.values()].sort(rank);
+  // Priority brands are shown only if they have Active published jobs.
+  // Fill remaining positions by actual Active listing count.
+  const priority=new Set(["Deloitte","EY","Google","Amazon","Microsoft","Accenture"]);
+  const candidates=ranked.filter(c=>priority.has(c.name));
+  for(const c of ranked){if(candidates.length>=12)break;if(!priority.has(c.name))candidates.push(c)}
+  candidates.sort(rank);
   const comps=el("hdpCompanies");
   if(comps){comps.innerHTML=candidates.map(c=>{
     return '<button type="button" class="hdp-company" data-hdp-company="'+escapeHTML(c.name)+'">'+iconLogo(c.jobs[0])+'<h3>'+escapeHTML(c.name)+'</h3><span class="hdp-count">'+c.jobs.length+' active '+(c.jobs.length===1?"listing":"listings")+' →</span></button>'
@@ -47,7 +51,7 @@ function render(){
   const recent=el("hdpRecent");
   if(recent){
     const records=active.slice().sort(latest).slice(0,4);
-    recent.innerHTML=records.map(j=>'<article class="hdp-featured-item"><div class="hdp-job-company">'+iconLogo(j,"w-10 h-10")+'<span>'+escapeHTML(j.company)+'</span></div><h3>'+escapeHTML(j.role)+'</h3><p><i class="fa-solid fa-location-dot"></i> '+escapeHTML(j.loc||"Check official listing")+'</p><div class="flex flex-wrap gap-1.5"><span class="hdp-tag">'+escapeHTML(j.cat||"Job")+'</span><span class="hdp-tag">'+escapeHTML(j.expType==="not-specified"?"Eligibility on official listing":j.expType||"See eligibility")+'</span></div><a class="hdp-apply" href="'+escapeHTML(j.page)+'">View &amp; Apply →</a></article>').join("")
+    recent.innerHTML=records.map(j=>'<article class="hdp-featured-item"><div class="hdp-job-company">'+iconLogo(j,"w-10 h-10")+'<span>'+escapeHTML(j.company)+'</span></div><h3>'+escapeHTML(j.role)+'</h3><p><i class="fa-solid fa-location-dot"></i> '+escapeHTML(j.loc||"Check official listing")+'</p><p class="hdp-eligibility">'+escapeHTML(j.elig||j.batch||"Review employer criteria")+'</p><div class="flex flex-wrap gap-1.5"><span class="hdp-tag">'+escapeHTML(j.cat||"Job")+'</span><span class="hdp-tag">'+escapeHTML(j.expType==="not-specified"?"Eligibility on official listing":j.expType||"See eligibility")+'</span></div><a class="hdp-apply" href="'+escapeHTML(j.page)+'">View &amp; Apply →</a></article>').join("")
   }
   const all=el("hdpAllJobs");if(all)all.addEventListener("click",exploreAll);
   const view=el("hdpViewJobs");if(view)view.addEventListener("click",exploreAll);
