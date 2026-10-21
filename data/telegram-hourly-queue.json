@@ -308,60 +308,61 @@
     {
       "page": "jobs/drivetrain-quality-assurance-engineering-qae-intern.html",
       "batchId": "admin-39567073132",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T10:20:57.079664+00:00",
       "claimId": "39583934978",
-      "claimedAt": "2026-10-21T10:21:06.349371+00:00"
+      "claimedAt": "2026-10-21T10:21:06.349371+00:00",
+      "messageId": 545,
+      "deliveredAt": "2026-10-21T10:21:08.989263+00:00"
     },
     {
       "page": "jobs/ey-associate-consultant-business-consulting-risk-risk-management.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T11:20:57.079664+00:00"
+      "dueAt": "2026-10-21T11:21:08.989263+00:00"
     },
     {
       "page": "jobs/mactores-data-engineer-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T12:20:57.079664+00:00"
+      "dueAt": "2026-10-21T12:21:08.989263+00:00"
     },
     {
       "page": "jobs/nec-software-solutions-india-finance-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T13:20:57.079664+00:00"
+      "dueAt": "2026-10-21T13:21:08.989263+00:00"
     },
     {
       "page": "jobs/portcast-data-analyst-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T14:20:57.079664+00:00"
+      "dueAt": "2026-10-21T14:21:08.989263+00:00"
     },
     {
       "page": "jobs/rubrik-eng-project-program-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T15:20:57.079664+00:00"
+      "dueAt": "2026-10-21T15:21:08.989263+00:00"
     },
     {
       "page": "jobs/stripe-operations-associate-apprenticeship.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T16:20:57.079664+00:00"
+      "dueAt": "2026-10-21T16:21:08.989263+00:00"
     },
     {
       "page": "jobs/zynga-technical-artist-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T17:20:57.079664+00:00"
+      "dueAt": "2026-10-21T17:21:08.989263+00:00"
     }
   ]
 }
