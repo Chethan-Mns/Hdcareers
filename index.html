@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://hdcareers.in/assets/hd-careers-logo.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HD Careers","url":"https://hdcareers.in/","logo":"https://hdcareers.in/assets/hd-careers-logo.png","sameAs":["https://instagram.com/hd_careers","https://t.me/HD_Careers"]}</script>
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="shortcut icon" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
@@ -136,6 +136,8 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <script defer src="/assets/analytics.js"></script>
 <link rel="stylesheet" href="assets/public-header.css">
 <script defer src="assets/public-header.js"></script>
+<link rel="stylesheet" href="assets/premium-home.css">
+<script defer src="assets/premium-home.js"></script>
 </head>
 <body id="top">
 
@@ -207,26 +209,21 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 
 <div id="homeView" class="soft-enter">
 <section id="jobs" class="max-w-[1240px] mx-auto px-4 pt-6">
-<div class="hero-shell relative overflow-hidden rounded-[28px] text-white px-6 sm:px-10 py-10 sm:py-14">
-<div class="hero-orb -top-12 -right-12 w-44 h-44 bg-blue-300/30"></div>
-<div class="hero-orb two -bottom-16 right-1/3 w-36 h-36 bg-cyan-300/20"></div>
-<div class="relative max-w-3xl">
-<div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-xs font-semibold px-3 py-1.5 rounded-full mb-4"><span class="w-2 h-2 rounded-full bg-green-400"></span> Fresh opportunities added regularly</div>
-<h1 class="hero-title text-3xl sm:text-5xl lg:text-[58px] font-black leading-[1.05]">Find the job that moves your career <span class="text-cyan-300">forward.</span></h1>
-<p class="mt-4 text-slate-300 text-sm sm:text-base max-w-2xl">Jobs, internships, apprenticeships, off-campus drives, remote roles, walk-ins and experienced openings — organized in one clean place for job seekers across India.</p>
-<div class="search-shell mt-7 flex flex-col sm:flex-row gap-2 max-w-2xl bg-white/10 border border-white/20 rounded-2xl p-2">
-<div class="relative flex-1">
-<i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-<input id="searchInput" oninput="filterAndScrollDebounced()" onkeydown="if(event.key==='Enter'){event.preventDefault();filterAndScrollNow()}" placeholder="Search role, company, skill..." class="w-full pl-11 pr-10 py-3.5 rounded-xl text-[var(--dark)] bg-white outline-none" autocomplete="off">
-<button id="clearSearch" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+<div class="hdp-hero">
+<div class="hdp-hero-grid">
+<div>
+<span class="hdp-eyebrow"><i class="fa-solid fa-sparkles"></i> Official career opportunities · Updated with verified jobs</span>
+<h1>Verified Jobs for<br><span>Freshers &amp; Early Careers</span></h1>
+<p>Discover employer-linked opportunities, internships and early-career roles, with transparent details and direct application paths.</p>
+<div class="hdp-hero-search">
+<i class="fa-solid fa-magnifying-glass text-blue-500 ml-3"></i>
+<input id="searchInput" oninput="filterAndScrollDebounced()" onkeydown="if(event.key==='Enter'){event.preventDefault();filterAndScrollNow()}" placeholder="Search by role, company or keyword…" autocomplete="off" aria-label="Search jobs">
+<button id="clearSearch" onclick="clearSearch()" class="hidden bg-slate-100 text-slate-600" aria-label="Clear search">×</button>
+<button onclick="filterAndScrollNow()">Search jobs <i class="fa-solid fa-arrow-right ml-1"></i></button>
 </div>
-<button onclick="filterAndScrollNow()" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3.5 rounded-xl shrink-0 transition">Search Jobs</button>
+<div class="hdp-hero-notes"><span><i class="fa-solid fa-circle-check"></i> Official employer links</span><span><i class="fa-solid fa-shield-halved"></i> Expiry monitoring</span><span><i class="fa-solid fa-filter"></i> Fresher-friendly filters</span></div>
 </div>
-<div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 text-xs sm:text-sm text-slate-300">
-<span><i class="fa-solid fa-circle-check text-green-400 mr-1.5"></i> Free to use</span>
-<span><i class="fa-solid fa-shield-halved text-green-400 mr-1.5"></i> Official apply links</span>
-<span><i class="fa-solid fa-bolt text-yellow-300 mr-1.5"></i> Social alerts</span>
-</div>
+<div class="hdp-art" aria-hidden="true"><div class="hdp-orb"></div><div class="hdp-art-card"><div class="hdp-art-head"><i class="fa-solid fa-graduation-cap mr-1"></i> HD CAREERS · Opportunities</div><div class="hdp-art-row"></div><div class="hdp-art-row"></div><div class="hdp-art-row"></div><div class="hdp-art-row"></div><div class="hdp-art-row"></div></div><div class="hdp-art-badge one"><i class="fa-solid fa-circle-check mr-1"></i> Verified links</div><div class="hdp-art-badge two"><i class="fa-solid fa-users mr-1"></i> Early careers</div><div class="hdp-art-badge three"><i class="fa-solid fa-arrow-trend-up mr-1"></i> New opportunities</div></div>
 </div>
 </div>
 
@@ -240,7 +237,17 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 </div>
 </section>
-
+<div class="hdp-shell">
+<div class="hdp-metrics" aria-label="Current job statistics">
+<div class="hdp-metric"><span class="hdp-metric-icon"><i class="fa-solid fa-briefcase"></i></span><span><b id="hdpJobs">—</b><small>Active jobs</small></span></div>
+<div class="hdp-metric"><span class="hdp-metric-icon"><i class="fa-solid fa-users"></i></span><span><b id="hdpEmployers">—</b><small>Employers</small></span></div>
+<div class="hdp-metric"><span class="hdp-metric-icon" style="background:#e6fbef;color:#0a986d"><i class="fa-solid fa-shield-halved"></i></span><span><b>Official</b><small>Employer Apply links</small></span></div>
+<div class="hdp-metric"><span class="hdp-metric-icon"><i class="fa-solid fa-rotate"></i></span><span><b>Updated</b><small>As jobs are verified</small></span></div>
+</div>
+<section class="hdp-block" aria-labelledby="hdpCompaniesTitle"><div class="hdp-heading"><div><h2 id="hdpCompaniesTitle">Top companies hiring now</h2><p>Recognizable employers with active job listings on HD Careers.</p></div><button id="hdpAllJobs" class="hdp-quick">Explore all jobs <i class="fa-solid fa-arrow-right ml-1"></i></button></div><div id="hdpCompanies" class="hdp-companies"></div></section>
+<section class="hdp-block" aria-labelledby="hdpRecentTitle"><div class="hdp-heading"><div><h2 id="hdpRecentTitle">Recently verified opportunities <span class="text-green-600 text-sm ml-1"><i class="fa-solid fa-circle-check"></i></span></h2><p>Published Active jobs, ordered using recorded verification dates where available.</p></div><button id="hdpViewJobs" class="hdp-quick">All opportunities <i class="fa-solid fa-arrow-right ml-1"></i></button></div><div id="hdpRecent" class="hdp-featured"></div></section>
+<section class="hdp-block" aria-label="Why trust HD Careers"><div class="hdp-heading"><div><h2>Why trust HD Careers?</h2><p>Useful, direct and transparent job discovery.</p></div></div><div class="hdp-trust"><article class="hdp-trust-item"><i class="fa-solid fa-shield-halved"></i><b>Employer links</b><p>Visit the official employer portal to complete your application.</p></article><article class="hdp-trust-item"><i class="fa-solid fa-clock-rotate-left"></i><b>Expiry checks</b><p>Job status is evaluated as part of our publishing process.</p></article><article class="hdp-trust-item"><i class="fa-solid fa-people-group"></i><b>Fresher filters</b><p>Quickly discover internships and entry-level opportunities.</p></article><article class="hdp-trust-item"><i class="fa-solid fa-book-open"></i><b>Career guidance</b><p>Explore application guides and preparation resources.</p></article></div></section>
+</div>
 <main id="resultsSection" class="max-w-[1240px] mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
 <div class="lg:col-span-2">
 <div class="reveal-card flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
@@ -602,7 +609,7 @@ if(pager){
         ${nums.join('')}
         <button type="button" onclick="goToPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''} class="px-3 h-9 rounded-lg border border-slate-200 font-semibold text-sm text-slate-700 disabled:opacity-40" aria-label="Next page">Next →</button>
       </div>
-      <a href="#footer" class="text-xs font-bold text-blue-700 hover:underline">Jump to footer ↓</a>
+      
     </div>`;
   }
 }
