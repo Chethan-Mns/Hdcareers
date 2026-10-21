@@ -59,3 +59,47 @@
 @media(max-width:790px){.hi-links a{padding:8px 10px}.hi-alerts{padding:9px 11px}.hi-skillwrap{gap:10px;padding:15px 0}.hi-skill{width:min(var(--size),118px)!important;height:min(var(--size),118px)!important;min-width:92px!important}.hi-skill-mark{height:38px;width:38px;border-radius:12px}.hi-skill-logo{height:30px;width:30px}.hi-skill b{font-size:10px!important}}
 @media(max-width:620px){.hi-alerts{font-size:0;padding:10px}.hi-alerts svg{font-size:14px}.hi-skillwrap{min-height:310px}.hi-skill{max-width:113px!important}}
 @media(prefers-reduced-motion:reduce){.hi-skill{animation:none!important}}
+
+
+/* HD Careers brand logo and user-focused, subtle illustrated iconography */
+.hi-art-mark{width:43px;height:43px;display:grid;place-items:center;padding:2px;background:#fff;border:1px solid #ddeafa;border-radius:12px;flex:none;overflow:hidden}
+.hi-art-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.hi-art-icon svg{width:23px;height:23px;display:block;stroke:#1769df}
+.hi-art-icon.two svg{stroke:#1567d6}
+.hi-art-icon.three svg{stroke:#165dc0}
+.hi-art-card{animation:hiMobileCardFloat 7s ease-in-out infinite;transform:rotate(-2deg)}
+@keyframes hiMobileCardFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(-1deg)}}
+.hi-art-ping{z-index:5;padding:9px 12px;background:#fff;border:1px solid #dce9fc;box-shadow:0 10px 22px #06194455}
+.hi-art-ping svg,.hi-art-ping i{margin-right:4px}
+.hi-art-ping:first-of-type{top:0;right:-4px}
+.hi-art-ping.two{bottom:2px;right:-3px}
+/* Clean white and HD blue Skills in demand palette, recognizable icons tinted consistently blue */
+.hi-skills-card{background:linear-gradient(145deg,#fff 30%,#f3f8ff)!important;border-color:#dae8fb}
+.hi-skillwrap{min-height:340px;align-content:center;gap:17px 21px}
+.hi-skill,.hi-skill:nth-child(n),.hi-skill:nth-child(4n+1),.hi-skill:nth-child(4n+2),.hi-skill:nth-child(4n+3),.hi-skill:nth-child(4n+4),.hi-skill:nth-child(5n+1),.hi-skill:nth-child(5n+2),.hi-skill:nth-child(5n+3),.hi-skill:nth-child(5n+4),.hi-skill:nth-child(5n+5){
+ background:linear-gradient(150deg,#fff,#e9f3ff)!important;
+ color:#124eab!important;
+ border:2px solid #bedaff!important;
+ box-shadow:0 9px 25px #104a9822,inset 0 0 0 2px #ffffffbf!important;
+}
+.hi-skill:nth-child(3n+2){background:linear-gradient(150deg,#fff,#deedff)!important}
+.hi-skill:hover{box-shadow:0 15px 27px #1055af32,inset 0 0 0 2px #fff!important;transform:scale(1.055)}
+.hi-skill-mark{background:#e6f2ff!important;border:1px solid #c6dcfa!important;box-shadow:none}
+.hi-skill-logo{filter:brightness(0) saturate(100%) invert(25%) sepia(82%) saturate(2233%) hue-rotate(206deg) brightness(93%) contrast(94%)}
+.hi-skill-generic{stroke:#145bb9;filter:none}
+.hi-skill b{color:#124481!important;font-weight:850;overflow-wrap:anywhere;hyphens:auto;max-width:95%!important}
+.hi-skill small{color:#4774b3!important;font-weight:800}
+@media(max-width:680px){
+.hi-hero-row{display:flex!important;flex-direction:column;align-items:stretch;gap:8px;padding:29px 18px 25px}
+.hi-art{display:grid!important;position:relative;width:100%;max-width:395px;min-height:335px;margin:9px auto 0;place-items:center}
+.hi-art-card{position:relative;z-index:3;display:block;width:min(320px,85%);margin:auto;padding:12px;animation:hiMobileCardFloat 6s ease-in-out infinite!important}
+.hi-art-ping{display:block;position:absolute;font-size:9px;padding:7px 9px}
+.hi-art-ping:first-of-type{top:9px;right:0}
+.hi-art-ping.two{bottom:6px;right:0}
+.hi-art:before{inset:10% 12%;width:auto}
+.hi-art-visual{gap:5px;padding:9px 0}
+.hi-art-visual>div{padding:7px}
+.hi-art-bottom{font-size:9px}
+.hi-skillwrap{gap:10px;min-height:290px;padding:12px 0}
+}
+@media(prefers-reduced-motion:reduce){.hi-art-card,.hi-art-ping,.hi-skill{animation:none!important}}
