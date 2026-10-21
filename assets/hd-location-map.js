@@ -14,9 +14,14 @@ function staticOutline(parent){const svg=el("svg",{viewBox:"0 0 "+W+" "+H,"aria-
   const bg=el("rect",{width:W,height:H,fill:"#f3f8ff",rx:20});svg.append(bg);
   for(let x=48;x<540;x+=72)svg.append(el("line",{x1:x,x2:x,y1:5,y2:445,stroke:"#d9e8fc","stroke-dasharray":"2 7","stroke-width":1}));
   for(let y=30;y<450;y+=72)svg.append(el("line",{x1:5,x2:W-5,y1:y,y2:y,stroke:"#d9e8fc","stroke-dasharray":"2 7","stroke-width":1}));
-  const g=el("path",{d:SHAPE,fill:"url(#hdIndiaGradient)",stroke:"#7eb3ea","stroke-width":"2.2","stroke-linejoin":"round"});svg.append(g);
-  // Andaman and Nicobar island cues drawn separately on the same geographical projection.
-  for(const [lon,lat] of [[92.75,12.1],[92.72,11.65],[93.0,10.7],[93.6,8.4]]){const [x,y]=project(lon,lat);svg.append(el("circle",{cx:x,cy:y,r:1.75,fill:"#91bde9"}))}
+  const states=Array.isArray(window.HD_INDIA_STATE_PATHS)?window.HD_INDIA_STATE_PATHS:[];
+  if(states.length>=30){
+    const all=el("g",{class:"hd-state-boundaries",role:"group","aria-label":"State and union territory outlines"});
+    for(const state of states){const path=el("path",{d:state.d,class:"hd-india-state","data-state":state.n});const tip=el("title");tip.textContent=state.n;path.append(tip);all.append(path)}
+    svg.append(all);
+  }else{
+    svg.append(el("path",{d:SHAPE,fill:"url(#hdIndiaGradient)",stroke:"#7eb3ea","stroke-width":"2.2","stroke-linejoin":"round"}));
+  }
   const cities=el("g",{class:"hd-india-cities"});svg.append(cities);parent.append(svg);
   return {svg,cities};
 }
