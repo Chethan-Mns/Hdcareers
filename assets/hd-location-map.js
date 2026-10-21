@@ -9,18 +9,16 @@ const ns="http://www.w3.org/2000/svg";
 function el(tag,attrs){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));return n}
 function staticOutline(parent){const svg=el("svg",{viewBox:"0 0 "+W+" "+H,"aria-label":"Map of India with active job city markers",role:"img",preserveAspectRatio:"xMidYMid meet",class:"hd-india-svg"});
   const defs=el("defs"),gradient=el("linearGradient",{id:"hdIndiaGradient",x1:"0%",y1:"0%",x2:"100%",y2:"100%"});
-  const one=el("stop",{offset:"0%","stop-color":"#e0eeff"}),two=el("stop",{offset:"100%","stop-color":"#bad8ff"});
+  const one=el("stop",{offset:"0%","stop-color":"#dadce0"}),two=el("stop",{offset:"100%","stop-color":"#dadce0"});
   gradient.append(one,two);defs.append(gradient);svg.append(defs);
-  const bg=el("rect",{width:W,height:H,fill:"#f3f8ff",rx:20});svg.append(bg);
-  for(let x=48;x<540;x+=72)svg.append(el("line",{x1:x,x2:x,y1:5,y2:445,stroke:"#d9e8fc","stroke-dasharray":"2 7","stroke-width":1}));
-  for(let y=30;y<450;y+=72)svg.append(el("line",{x1:5,x2:W-5,y1:y,y2:y,stroke:"#d9e8fc","stroke-dasharray":"2 7","stroke-width":1}));
+  const bg=el("rect",{width:W,height:H,fill:"#f8f9fa",rx:20});svg.append(bg);
   const states=Array.isArray(window.HD_INDIA_STATE_PATHS)?window.HD_INDIA_STATE_PATHS:[];
   if(states.length>=30){
     const all=el("g",{class:"hd-state-boundaries",role:"group","aria-label":"State and union territory outlines"});
     for(const state of states){const path=el("path",{d:state.d,class:"hd-india-state","data-state":state.n});const tip=el("title");tip.textContent=state.n;path.append(tip);all.append(path)}
     svg.append(all);
   }else{
-    svg.append(el("path",{d:SHAPE,fill:"url(#hdIndiaGradient)",stroke:"#7eb3ea","stroke-width":"2.2","stroke-linejoin":"round"}));
+    svg.append(el("path",{d:SHAPE,fill:"#dadce0",stroke:"#ffffff","stroke-width":"2.2","stroke-linejoin":"round"}));
   }
   const cities=el("g",{class:"hd-india-cities"});svg.append(cities);parent.append(svg);
   return {svg,cities};
@@ -35,11 +33,10 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
   for(const p of pins){
     const [x,y]=project(p.lng,p.lat),count=p.count;
     const marker=el("g",{class:"hd-india-marker",role:"button",tabindex:"0","aria-label":p.city+": "+count+" active jobs"});
-    const halo=el("circle",{class:"hd-india-halo",cx:x,cy:y,r:Math.min(18,7+Math.sqrt(count)*1.3)});
-    const disk=el("circle",{class:"hd-india-dot",cx:x,cy:y,r:Math.min(13,4.6+Math.sqrt(count)*.75)});
-    const center=el("circle",{cx:x,cy:y,r:2.5,fill:"#fff"});
+    const halo=el("circle",{class:"hd-india-halo",cx:x,cy:y,r:Math.min(33,12+Math.sqrt(count)*2.7)});
+    const disk=el("circle",{class:"hd-india-dot",cx:x,cy:y,r:Math.min(28,8+Math.sqrt(count)*2.45)});
     const title=el("title");title.textContent=p.city+" · "+count+" Active "+(count===1?"job":"jobs");
-    marker.append(halo,disk,center,title);
+    marker.append(halo,disk,title);
     const show=()=>{if(info){info.hidden=false;info.textContent=p.city+" · "+count+" active "+(count===1?"listing":"listings")}marker.classList.add("hd-selected")};
     const hide=()=>{marker.classList.remove("hd-selected")};
     marker.addEventListener("mouseenter",show);marker.addEventListener("focus",show);marker.addEventListener("mouseleave",hide);marker.addEventListener("blur",hide);
