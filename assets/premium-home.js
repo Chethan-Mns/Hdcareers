@@ -30,6 +30,6 @@ function render(){
   const all=el("hdpAllJobs");if(all)all.addEventListener("click",exploreAll);
   const view=el("hdpViewJobs");if(view)view.addEventListener("click",exploreAll);
 }
-function init(){render();const company=new URLSearchParams(window.location.search).get("company");if(company&&el("companyFilter")&&typeof resetFilters==="function"){resetFilters();el("companyFilter").value=company;if(typeof renderJobs==="function")renderJobs();goToResults()}}
+function init(){render();const query=new URLSearchParams(window.location.search);const company=query.get("company"),city=query.get("location");if((company||city)&&typeof resetFilters==="function"){resetFilters();if(company&&el("companyFilter"))el("companyFilter").value=company;if(city&&el("locationFilter"))el("locationFilter").value=city;if(typeof renderJobs==="function")renderJobs();goToResults()}}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
