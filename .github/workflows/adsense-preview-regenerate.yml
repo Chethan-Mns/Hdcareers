@@ -1,0 +1,34 @@
+name: Temporary AdSense Branch Page Generation
+on:
+  push:
+    branches:
+      - feature/adsense-navigation-editorial-mobile-20261021
+    paths:
+      - .github/workflows/adsense-preview-regenerate.yml
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate and validate public pages
+        run: |
+          python3 -m py_compile generate.py
+          python3 generate.py
+          git diff --check
+      - name: Commit generated files on isolated feature branch
+        run: |
+          git config user.name "HD Careers Preview Generator"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html jobs/ insights.html insights/ data/insights-summary.json robots.txt sitemap.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Build AdSense preview pages from approved branch data"
+            git push origin HEAD:feature/adsense-navigation-editorial-mobile-20261021
+          fi
