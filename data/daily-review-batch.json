@@ -230,7 +230,7 @@
       "apply": "https://jobs.lever.co/drivetrain/edb8a8f7-16ac-4177-bf2e-99c36ab47d5f",
       "cat": "internship",
       "expYears": "Recent graduate / no prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Drivetrain Lever requisition is open with Apply for this job and lists a QA internship for Computer Science or Computer Engineering graduates from 2023-2025 without a prior-experience minimum.",
       "postedDate": null,
@@ -266,13 +266,16 @@
         "date": "Not Specified",
         "verifiedDate": "21 Oct 2026",
         "sourceVerificationMethod": "Exact official requisition page and job-bound application route checked",
-        "browserVerifiedAt": "2026-10-21T03:36:55Z"
+        "browserVerifiedAt": "2026-10-21T08:07:39.901Z",
+        "manualLiveVerifiedAt": "2026-10-21T08:07:39.901Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-21T03:36:55Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Drivetrain Lever requisition is open with Apply for this job and lists a QA internship for Computer Science or Computer Engineering graduates from 2023-2025 without a prior-experience minimum."
-      }
+      },
+      "reviewedAt": "2026-10-21T08:07:39.901Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "portcast-f18cc64e",
@@ -595,7 +598,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-21T08:07:36.348Z",
+  "updatedAt": "2026-10-21T08:07:39.902Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 35,
