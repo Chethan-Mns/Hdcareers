@@ -16,8 +16,23 @@ function render(){
   if(count)count.textContent=active.length;if(employers)employers.textContent=unique.size;
   const mini=el("hdpArtJobs");
   if(mini){mini.innerHTML=active.slice().sort((a,b)=>parseDate(b)-parseDate(a)).slice(0,3).map((j,i)=>'<div class="hdp-art-job" style="--i:'+i+'"><span class="hdp-art-mini-logo">'+iconLogo(j,"w-8 h-8")+'</span><span class="hdp-art-mini-copy"><b>'+escapeHTML(j.company)+'</b><small>'+escapeHTML(j.role)+'</small></span><span class="hdp-art-mini-arrow">↗</span></div>').join('')}
-  const preferred=["Deloitte","EY","Google","Amazon","Accenture","Microsoft"];
-  const candidates=preferred.map(name=>({name,jobs:active.filter(j=>j.company===name)})).filter(x=>x.jobs.length);
+  // Data-driven featured employers: every Active employer can qualify. Recognizable
+  // brands are favored only on a TIE, never hard-pinned over a higher Active count.
+  const recognized=new Set(["Deloitte","Deloitte South Asia","EY","PwC","KPMG","Google","Microsoft","Amazon","Accenture","HCLTech","Cognizant","TCS","Infosys","Wipro","IBM","Visa","Rubrik","Capgemini","Bosch","Cisco","Salesforce","MongoDB","Oracle","Adobe","JPMorganChase","JPMorgan Chase","GE HealthCare","Qualcomm","Walmart","Apple","Flipkart","Intel","Samsung","State Street"]);
+  const byEmployer=new Map();
+  for(const job of active){
+    const name=String(job.company||"").trim();
+    if(!name)continue;
+    const record=byEmployer.get(name);
+    if(record){record.jobs.push(job);record.lastVerified=Math.max(record.lastVerified,parseDate(job))}
+    else byEmployer.set(name,{name,jobs:[job],lastVerified:parseDate(job)});
+  }
+  const candidates=[...byEmployer.values()].sort((a,b)=>
+    b.jobs.length-a.jobs.length ||
+    Number(recognized.has(b.name))-Number(recognized.has(a.name)) ||
+    b.lastVerified-a.lastVerified ||
+    a.name.localeCompare(b.name)
+  ).slice(0,6);
   const comps=el("hdpCompanies");
   if(comps){comps.innerHTML=candidates.map(c=>{
     return '<button type="button" class="hdp-company" data-hdp-company="'+escapeHTML(c.name)+'">'+iconLogo(c.jobs[0])+'<h3>'+escapeHTML(c.name)+'</h3><span class="hdp-count">'+c.jobs.length+' active '+(c.jobs.length===1?"listing":"listings")+' →</span></button>'
