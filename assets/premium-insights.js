@@ -16,19 +16,35 @@ root.innerHTML=entries.map((item,i)=>{const path=typeof item.logo==="string"&&/^
 const image=path?'<img loading="lazy" src="'+esc(path)+'" alt="'+esc(item.name)+' logo" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="hi-logo-fallback" hidden>'+esc(item.name.slice(0,1))+'</span>':'<span class="hi-logo-fallback">'+esc(item.name.slice(0,1))+'</span>';
 return '<button type="button" class="hi-employer" style="--order:'+i+'" data-company="'+esc(item.name)+'" aria-label="View '+esc(item.name)+' jobs"><span class="hi-employer-logo">'+image+'</span><span class="hi-employer-copy"><strong>'+esc(item.name)+'</strong><small>'+item.count+' '+(item.count===1?'Active job':'Active jobs')+'</small></span><span class="hi-employer-arrow">↗</span></button>'}).join("");
 root.querySelectorAll("[data-company]").forEach(b=>b.addEventListener("click",()=>location.assign(prefix+"index.html?company="+encodeURIComponent(b.dataset.company))))}
-function showSkills(d){const root=$("hiSkills"),items=(d.topSkills||[]).slice(0,10);if(!items.length){root.innerHTML='<p class="hi-empty">Skill data is not available.</p>';return}const max=Math.max(1,items[0].count);
-root.innerHTML=items.map((p,i)=>{const size=Math.max(94,Math.min(128,94+34*p.count/max));return '<span class="hi-skill" style="--size:'+size.toFixed(0)+'px;--step:'+i+';--drift:'+(i%3+3)+'s" title="'+esc(p.label)+": "+p.count+' job mentions"><b>'+esc(p.label)+'</b><small>'+p.count+'</small></span>'}).join("")}
-function showCities(d){const arr=(d.cityPins||[]).filter(p=>Number.isFinite(p.count)&&p.count>0),total=arr.reduce((v,p)=>v+p.count,0);
-if(!arr.length){$("hiCityLegend").innerHTML='<p class="hi-empty">Location data not yet available.</p>';return}
-const top=arr.slice(0,5).map(p=>({label:p.city,count:p.count})),rest=total-top.reduce((v,p)=>v+p.count,0);
-if(rest>0)top.push({label:"Other cities",count:rest});
-$("hiCityRing").style.background=ringGradient(top);countTo($("hiCityTotal"),total);
-$("hiCityLegend").innerHTML=top.map((p,i)=>'<button type="button" class="hi-city-legend-row" '+(p.label==="Other cities"?'disabled':'data-city="'+esc(p.label)+'"')+' aria-label="'+esc(p.label)+", "+p.count+' mapped jobs"><span class="hi-legend-dot" style="background:'+colors[i]+'"></span><span>'+esc(p.label)+'</span><b>'+p.count+'</b></button>').join("");
-$("hiCityLegend").querySelectorAll("[data-city]").forEach(b=>b.addEventListener("click",()=>location.assign(prefix+"index.html?location="+encodeURIComponent(b.dataset.city))))}
+function skillMark(name){
+ const k=String(name||"").toLowerCase().replace(/[^a-z+]/g,"");
+ const files={"python":"python","java":"java","javascript":"javascript","c++":"cplusplus","linux":"linux"};
+ const img=files[k];
+ if(img)return '<img class="hi-skill-logo" src="'+prefix+'assets/skill-logos/'+img+'.svg" loading="lazy" alt="'+esc(name)+' logo">';
+ const paths={
+  "sql":'<ellipse cx="24" cy="11" rx="15" ry="6"/><path d="M9 11v25c0 9 30 9 30 0V11M9 23c0 8 30 8 30 0"/>',
+  "restapis":'<circle cx="24" cy="24" r="15"/><path d="M9 24h30M24 9c-8 8-8 22 0 30M24 9c8 8 8 22 0 30"/>',
+  "algorithms":'<path d="m12 12 12-7 12 7v11l-12 7-12-7zM24 30v10M16 40h16M12 23l-7 6 7 6M36 23l7 6-7 6"/>',
+  "networking":'<circle cx="24" cy="9" r="5"/><circle cx="9" cy="37" r="5"/><circle cx="39" cy="37" r="5"/><path d="M21 14 12 32M27 14l9 18M14 37h20"/>',
+  "problemsolving":'<path d="M18 12a9 9 0 0 1 16 6c0 7-10 8-10 15M20 41h8M24 5v4M11 10l3 3M37 10l-3 3"/>',
+  "communication":'<path d="M9 11h30v22H22l-10 7v-7H9zM16 19h16M16 25h12"/>',
+ };
+ const shape=paths[k]||'<path d="M10 15h28v19H22l-7 7v-7h-5zM16 23h16"/>';
+ return '<svg class="hi-skill-logo hi-skill-generic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+shape+'</svg>'
+}
+function showSkills(d){
+ const root=$("hiSkills"),items=(d.topSkills||[]).slice(0,12);
+ if(!items.length){root.innerHTML='<p class="hi-empty">Skill data is not available.</p>';return}
+ const max=Math.max(1,...items.map(x=>x.count));
+ root.innerHTML=items.map((p,i)=>{
+   const size=Math.max(116,Math.min(155,116+39*p.count/max));
+   return '<div class="hi-skill" style="--size:'+Math.round(size)+'px;--step:'+i+';--drift:'+(4+i%4)+'s" title="'+esc(p.label)+' · '+p.count+' job mentions" aria-label="'+esc(p.label)+', mentioned in '+p.count+' active job records"><span class="hi-skill-mark">'+skillMark(p.label)+'</span><b>'+esc(p.label)+'</b><small>'+p.count+' jobs</small></div>'
+ }).join("")
+}
 function render(data){countTo($("hiActive"),data.active||0);countTo($("hiEmployers"),data.employers||0);countTo($("hiFreshers"),data.freshers||0);
 const cats=Object.fromEntries((data.categories||[]).map(it=>[it.label,it.count]));countTo($("hiIT"),cats.it||0);countTo($("hiInternships"),cats.internship||0);
 countTo($("hiArtActive"),data.active||0);countTo($("hiArtCompanies"),data.employers||0);
 const updated=$("hiLastUpdated");if(updated)updated.textContent="Current published job data · Verified through "+(data.verifiedThrough||"latest release");
-showExperience(data);showEmployers(data);showSkills(data);showCities(data);showCards()}
-fetch(prefix+"data/insights-summary.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Summary fetch failed");return r.json()}).then(render).catch(error=>{console.error("Insights preview data:",error);for(const id of ["hiCompanies","hiSkills","hiCityLegend"]){const target=$(id);if(target)target.textContent="Published job summary is temporarily unavailable."}showCards()});
+showExperience(data);showEmployers(data);showSkills(data);showCards()}
+fetch(prefix+"data/insights-summary.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Summary fetch failed");return r.json()}).then(render).catch(error=>{console.error("Insights preview data:",error);for(const id of ["hiCompanies","hiSkills"]){const target=$(id);if(target)target.textContent="Published job summary is temporarily unavailable."}showCards()});
 })();
