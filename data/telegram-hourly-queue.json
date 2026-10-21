@@ -358,25 +358,26 @@
     {
       "page": "jobs/rubrik-eng-project-program-intern.html",
       "batchId": "admin-39567073132",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T15:22:05.594036+00:00",
       "claimId": "39625001087",
-      "claimedAt": "2026-10-21T15:22:14.874674+00:00"
+      "claimedAt": "2026-10-21T15:22:14.874674+00:00",
+      "messageId": 550,
+      "deliveredAt": "2026-10-21T15:22:18.590602+00:00"
     },
     {
       "page": "jobs/stripe-operations-associate-apprenticeship.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T16:22:05.594036+00:00"
+      "dueAt": "2026-10-21T16:22:18.590602+00:00"
     },
     {
       "page": "jobs/zynga-technical-artist-intern.html",
       "batchId": "admin-39567073132",
       "status": "pending",
       "queuedAt": "2026-10-21T08:19:35.524129+00:00",
-      "dueAt": "2026-10-21T17:22:05.594036+00:00"
+      "dueAt": "2026-10-21T17:22:18.590602+00:00"
     }
   ]
 }
