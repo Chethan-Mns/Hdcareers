@@ -7,7 +7,7 @@
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 53
+      "count": 55
     },
     {
       "label": "Mumbai",
@@ -19,10 +19,14 @@
     },
     {
       "label": "Gurugram",
+      "count": 6
+    },
+    {
+      "label": "Noida",
       "count": 4
     },
     {
-      "label": "India",
+      "label": "Pune",
       "count": 3
     },
     {
@@ -30,12 +34,8 @@
       "count": 3
     },
     {
-      "label": "Noida",
+      "label": "Delhi",
       "count": 3
-    },
-    {
-      "label": "Pune",
-      "count": 2
     }
   ],
   "cityPins": [
