@@ -27,5 +27,6 @@ function render(){
   const all=el("hdpAllJobs");if(all)all.addEventListener("click",goToResults);
   const view=el("hdpViewJobs");if(view)view.addEventListener("click",goToResults);
 }
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",render);else render();
+function init(){render();const company=new URLSearchParams(window.location.search).get("company");if(company&&el("companyFilter")&&typeof resetFilters==="function"){resetFilters();el("companyFilter").value=company;if(typeof renderJobs==="function")renderJobs();goToResults()}}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
