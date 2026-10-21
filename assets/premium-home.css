@@ -60,3 +60,33 @@ header.glass-nav .social-icon:hover{transform:translateY(-3px);box-shadow:0 8px 
 .hdp-company:focus-visible{outline:2px solid #387cdb;outline-offset:2px}
 .hdp-category-near-filters{margin-bottom:15px;background:linear-gradient(120deg,#fff,#f4f9ff);padding:14px;border:1px solid #d7e5fa;box-shadow:0 8px 25px #083b8110}
 @media(max-width:790px){header.glass-nav .logo-home p:first-child{font-size:17px}}
+
+
+/* Final review: real HD Careers identity and mobile-visible animated hero card */
+.hdp-art-logo{display:grid;place-items:center;width:41px;height:41px;border-radius:12px;background:white;border:1px solid #dce8f9;overflow:hidden;flex:none}
+.hdp-art-logo img{width:96%;height:96%;object-fit:contain}
+.hdp-hero-notes span{display:inline-flex;align-items:center;gap:7px}
+.hdp-note-icon{display:inline-grid!important;place-items:center;width:22px;height:22px;border-radius:7px;background:rgba(126,187,255,.23)}
+.hdp-note-icon svg{display:block;width:15px;height:15px;stroke:#8ee4fa}
+.hdp-art-live-card{transform:rotate(-2deg);animation:hdCardMobileFloat 7s ease-in-out infinite}
+.hdp-art-badge{z-index:4}
+.hdp-art-badge.one{top:-7px;right:-5px}
+.hdp-art-badge.two{bottom:2px;right:-6px}
+.hdp-art-badge.three{left:-9px;bottom:2px}
+@keyframes hdCardMobileFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(-1deg)}}
+@media(max-width:750px){
+.hdp-hero-grid{display:flex!important;flex-direction:column;gap:13px;padding:26px 17px 28px!important}
+.hdp-art{display:grid!important;position:relative;isolation:isolate;width:100%;max-width:410px;min-height:345px;margin:14px auto 4px;overflow:visible;place-items:center}
+.hdp-orb{inset:10% 10% 8% 10%;opacity:.65}
+.hdp-art-card{width:min(345px,86%);position:relative;z-index:3;padding:12px 12px 9px;animation:hdCardMobileFloat 6s ease-in-out infinite!important}
+.hdp-art-top{padding:2px 1px 10px}
+.hdp-art-live{padding:8px 0;gap:6px}
+.hdp-art-job{padding:6px 8px;min-height:44px}
+.hdp-art-badge{font-size:9px;padding:7px 9px}
+.hdp-art-badge.one{right:0;top:5px}
+.hdp-art-badge.two{right:0;bottom:10px}
+.hdp-art-badge.three{left:0;bottom:10px}
+.hdp-hero-notes{gap:8px 11px;font-size:11px}
+}
+@media(max-width:420px){.hdp-art{min-height:330px}.hdp-art-card{width:88%}.hdp-art-badge{font-size:8px}.hdp-art-badge.one{top:2px;right:0}}
+@media(prefers-reduced-motion:reduce){.hdp-art-card,.hdp-art-job,.hdp-art-badge{animation:none!important}}
