@@ -1,13 +1,13 @@
 {
   "verifiedThrough": "22 October 2026",
-  "active": 141,
+  "active": 142,
   "employers": 90,
-  "freshers": 87,
+  "freshers": 88,
   "experienced": 49,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 58
+      "count": 59
     },
     {
       "label": "Mumbai",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 58
+      "count": 59
     },
     {
       "city": "Mumbai",
@@ -205,9 +205,9 @@
       "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
-      "name": "Endeavor IT Solution",
+      "name": "NTT DATA",
       "count": 2,
-      "logo": ""
+      "logo": "assets/company-marks-review/ntt-data.svg"
     }
   ],
   "topSkills": [
@@ -224,6 +224,10 @@
       "count": 16
     },
     {
+      "label": "Communication",
+      "count": 10
+    },
+    {
       "label": "Problem solving",
       "count": 10
     },
@@ -232,8 +236,8 @@
       "count": 10
     },
     {
-      "label": "Communication",
-      "count": 9
+      "label": "Documentation",
+      "count": 8
     },
     {
       "label": "REST APIs",
@@ -252,10 +256,6 @@
       "count": 7
     },
     {
-      "label": "Documentation",
-      "count": 7
-    },
-    {
       "label": "Troubleshooting",
       "count": 7
     },
@@ -271,7 +271,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 72
+      "count": 73
     },
     {
       "label": "internship",
@@ -385,7 +385,7 @@
     },
     {
       "date": "2026-10-22",
-      "count": 9
+      "count": 10
     }
   ]
 }
