@@ -54,6 +54,13 @@ jobs:
       - name: Test mobile performance and company/map layout
         run: python3 -m unittest discover -s tests -p test_home_mobile.py -v
 
+      - name: Test data-driven India map designs and mobile loading
+        run: |
+          python3 -m unittest discover -s tests -p test_premium_india.py -v
+          node --check assets/premium-india-v2.js
+          node --check assets/hd-map-lazy.js
+          node --check assets/hd-location-map.js
+
       - name: Run generator
         run: python3 generate.py
 
