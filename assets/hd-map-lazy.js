@@ -1,5 +1,5 @@
-(function(){"use strict";const map=document.getElementById("hdpLocationMap");if(!map)return;let once=false;
+(function(){"use strict";const map=document.getElementById("hdpLocationMap")||document.getElementById("hiLocationMap");if(!map)return;let once=false;
 function load(src){return new Promise((resolve,reject)=>{const s=document.createElement("script");s.src=src;s.async=true;s.onload=resolve;s.onerror=reject;document.head.append(s)})}
-function go(){if(once)return;once=true;load("assets/india-state-paths.js").then(()=>load("assets/hd-location-map.js")).catch(()=>{const p=map.querySelector("[data-hd-map-title]");if(p)p.textContent="Map unavailable · Please browse city jobs below."})}
+function go(){if(once)return;once=true;const prefix=document.body.dataset.prefix||"";load(prefix+"assets/india-state-paths.js").then(()=>load(prefix+"assets/hd-location-map.js")).catch(()=>{const p=map.querySelector("[data-hd-map-title]");if(p)p.textContent="Map unavailable · Please browse city jobs below."})}
 if("IntersectionObserver" in window){const o=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){o.disconnect();go()}},{rootMargin:"300px 0px"});o.observe(map)}else if("requestIdleCallback" in window){requestIdleCallback(go,{timeout:2500})}else addEventListener("load",go,{once:true})
 })();

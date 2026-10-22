@@ -3,7 +3,7 @@
 .hdj3-hero:before,.hdj3-hero:after{content:"";position:absolute;pointer-events:none;z-index:-1;border-radius:50%}
 .hdj3-hero:before{width:850px;height:850px;right:-470px;top:-410px;border:90px solid rgba(255,255,255,.28);background:radial-gradient(circle,#dbeafd60,transparent 65%)}
 .hdj3-hero:after{width:600px;height:600px;left:-470px;bottom:-470px;border:80px solid rgba(255,255,255,.28)}
-.hdj3-shell{max-width:1280px;margin:auto;padding:28px 26px 45px}
+.hdj3-shell{max-width:72rem;margin:auto;padding:28px 16px 35px}
 .hdj3-crumb{display:flex;align-items:center;flex-wrap:wrap;gap:16px;color:#6583aa;font-size:13px;font-weight:750;margin-bottom:23px}
 .hdj3-crumb i{font-size:9px;color:#adc0dd}.hdj3-crumb strong{color:#1263cf}.hdj3-crumb a:hover{color:#125fdf}
 .hdj3-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(360px,1fr);align-items:center;gap:34px}
