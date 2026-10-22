@@ -395,7 +395,7 @@
       "apply": "https://jobs.smartrecruiters.com/LinuxBeanSolutionPvtLtd/743999653274272-business-development-executive-fresher",
       "cat": "nonit",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact LinuxBean SmartRecruiters requisition displayed the matching fresher title, MBA/BE qualification, role content and an active I'm interested application control during the final check.",
       "postedDate": null,
@@ -431,17 +431,20 @@
         "date": "Not Specified",
         "verifiedDate": "22 Oct 2026",
         "sourceVerificationMethod": "Exact LinuxBean SmartRecruiters requisition displayed the matching fresher title, MBA/BE qualification, role content and an active I'm interested application control during the final check.",
-        "browserVerifiedAt": "2026-10-22T03:31:33.622Z"
+        "browserVerifiedAt": "2026-10-22T03:48:16.874Z",
+        "manualLiveVerifiedAt": "2026-10-22T03:48:16.874Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-22T03:31:33.622Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact LinuxBean SmartRecruiters requisition displayed the matching fresher title, MBA/BE qualification, role content and an active I'm interested application control during the final check."
-      }
+      },
+      "reviewedAt": "2026-10-22T03:48:16.874Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-22T03:48:12.710Z",
+  "updatedAt": "2026-10-22T03:48:16.875Z",
   "discoverySummary": {
     "portalsVisited": 24,
     "uniqueOfficialExactCandidatesScreened": 34,
