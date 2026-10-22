@@ -129,8 +129,8 @@ $structured_data
 <link rel="stylesheet" href="../assets/public-header.css">
 <link rel="stylesheet" href="../assets/job-hero.css">
 <script defer src="../assets/public-header.js"></script>
-<script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<script defer src="/assets/analytics.js"></script>\n<link rel="stylesheet" href="../assets/tailwind-built.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 <!-- PDF and DOCX readers are downloaded only when a visitor selects a resume. -->
 <style>
 :root{--primary:#0b6fe8;--primary2:#0058c7;--dark:#071b35;--slate:#f4f7fb}

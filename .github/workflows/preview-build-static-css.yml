@@ -1,0 +1,39 @@
+name: Build static CSS for P0 mobile release
+on:
+  push:
+    branches: [release/p0-mobile-four-companies-india-map-edgeverve-20261022]
+    paths: [.github/workflows/preview-build-static-css.yml]
+permissions: {contents: write}
+concurrency: {group: p0-site-build, cancel-in-progress: false}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: release/p0-mobile-four-companies-india-map-edgeverve-20261022, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: "20"}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Compile Tailwind CSS offline for browsers
+        run: npx --yes --package=tailwindcss@3.4.17 tailwindcss -c tailwind.config.cjs -i assets/tailwind-source.css -o assets/tailwind-built.css --minify
+      - name: Generate job pages and homepage
+        run: python3 generate.py
+      - name: Validate static pages and scripts
+        run: |
+          python3 -m unittest discover -s tests -p test_job_hero.py -v
+          python3 -m unittest discover -s tests -p test_home_mobile.py -v
+          python3 generate.py --dry-run
+          node --check assets/premium-home.js
+          node --check assets/hd-map-lazy.js
+          node --check assets/mobile-performance.js
+          node --check assets/hd-location-map.js
+          git diff --check
+          test -s assets/tailwind-built.css
+      - name: Save built styles and regenerated pages
+        run: |
+          git config user.name "HD Careers Performance Build"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/tailwind-built.css index.html jobs/ insights.html insights/ sitemap.xml robots.txt
+          git commit -m "Build static Tailwind and regenerate 200 lightweight job pages"
+          git push origin HEAD:release/p0-mobile-four-companies-india-map-edgeverve-20261022
