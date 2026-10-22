@@ -429,9 +429,11 @@
     {
       "page": "jobs/meesho-trainee-recruitment-coordinator.html",
       "batchId": "admin-39718878462",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T07:50:38.052195+00:00"
+      "dueAt": "2026-10-22T07:50:38.052195+00:00",
+      "claimId": "39743359833",
+      "claimedAt": "2026-10-22T07:50:48.046350+00:00"
     },
     {
       "page": "jobs/pentoz-technology-business-development-executive-internship.html",
