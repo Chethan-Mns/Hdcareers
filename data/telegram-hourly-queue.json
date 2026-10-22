@@ -439,25 +439,26 @@
     {
       "page": "jobs/pentoz-technology-business-development-executive-internship.html",
       "batchId": "admin-39718878462",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T08:50:51.088235+00:00",
       "claimId": "39750824533",
-      "claimedAt": "2026-10-22T08:51:01.422866+00:00"
+      "claimedAt": "2026-10-22T08:51:01.422866+00:00",
+      "messageId": 560,
+      "deliveredAt": "2026-10-22T08:51:04.689193+00:00"
     },
     {
       "page": "jobs/zeta-executive-assistant.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T09:50:51.088235+00:00"
+      "dueAt": "2026-10-22T09:51:04.689193+00:00"
     },
     {
       "page": "jobs/zynga-marketing-artist-intern.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T10:50:51.088235+00:00"
+      "dueAt": "2026-10-22T10:51:04.689193+00:00"
     }
   ]
 }
