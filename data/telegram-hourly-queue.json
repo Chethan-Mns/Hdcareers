@@ -399,9 +399,11 @@
     {
       "page": "jobs/kredx-corporate-sales-trainee-freshers.html",
       "batchId": "admin-39718878462",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T04:49:54.920776+00:00"
+      "dueAt": "2026-10-22T04:49:54.920776+00:00",
+      "claimId": "39724559011",
+      "claimedAt": "2026-10-22T04:50:04.284759+00:00"
     },
     {
       "page": "jobs/linuxbean-solution-business-development-executive-fresher.html",
