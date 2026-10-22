@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "reviewId": 1792641690750,
+    "kind": "new_job",
+    "state": "review",
+    "company": "NTT DATA",
+    "role": "Graduate Trainee",
+    "page": "jobs/ntt-data-graduate-trainee-r-151473.html",
+    "url": "https://careers.nttdata.com/global/en/job/R-151473/Graduate-Trainee",
+    "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
+    "checkedAt": "2026-10-22T04:01:28.044247+00:00",
+    "queuedAt": "2026-10-22T04:01:30.749958+00:00",
+    "source": "admin_publish",
+    "job": {
+      "company": "NTT DATA",
+      "role": "Graduate Trainee",
+      "roleTag": "Graduate Trainee",
+      "loc": "Bengaluru, Karnataka",
+      "locationFilter": "Bengaluru",
+      "apply": "https://careers.nttdata.com/global/en/job/R-151473/Graduate-Trainee",
+      "domain": "careers.nttdata.com",
+      "cat": "it",
+      "expType": "fresher",
+      "expYears": "Graduate / early career (confirm official requirements)",
+      "salary": "Not Disclosed",
+      "batch": "Not Specified",
+      "status": "active",
+      "sourceName": "NTT DATA official careers",
+      "desc": "NTT DATA Graduate Trainee opening associated with entry-level managed-services client service desk support, including incident and service-request coordination. Exact eligibility and current availability must be confirmed on the official requisition.",
+      "elig": "Graduate / entry-level opportunity. Confirm the employer's official degree or diploma requirements, experience conditions, location and work schedule before applying.",
+      "resp": [
+        "Assist with coordination and tracking of client service desk requests.",
+        "Record and organize tickets, requests and supporting documentation.",
+        "Follow incident escalation procedures and help categorize incoming support issues.",
+        "Communicate with service desk stakeholders and maintain service request information."
+      ],
+      "skills": [
+        "Service desk support",
+        "Ticket management",
+        "Incident coordination",
+        "Communication",
+        "Documentation"
+      ],
+      "workMode": "Not Specified",
+      "jobId": "R-151473",
+      "date": "Not Specified",
+      "verifiedDate": "22 Oct 2026",
+      "sourceVerificationMethod": "User-supplied exact employer URL; independent automated verification required before publication; no manual-live override.",
+      "page": "jobs/ntt-data-graduate-trainee-r-151473.html",
+      "who": "Candidates interested in an early-career IT service desk role; check all exact education and experience requirements on the official NTT DATA posting.",
+      "logo": [
+        "NT",
+        "#0b6fe8"
+      ]
+    }
+  }
+]
