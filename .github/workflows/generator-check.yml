@@ -48,6 +48,9 @@ jobs:
           subprocess.run(['node','--check','/tmp/hd-admin-inline.js'], check=True)
           PY
 
+      - name: Verify all job page hero and original body content
+        run: python3 -m unittest discover -s tests -p test_job_hero.py -v
+
       - name: Run generator
         run: python3 generate.py
 

@@ -43,6 +43,9 @@ jobs:
       - name: Generate homepage and job pages
         run: python3 generate.py
 
+      - name: Verify generated job page hero and legacy content
+        run: python3 -m unittest discover -s tests -p test_job_hero.py -v
+
       - name: Validate generated output
         run: |
           git diff --check
