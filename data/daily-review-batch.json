@@ -65,7 +65,7 @@
       "apply": "https://jobs.lever.co/zeta/66fc10b7-8b22-4cf2-8d9a-557f9d517bbc",
       "cat": "nonit",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Zeta Lever requisition displayed the matching Bangalore role, explicitly welcomed freshers and exposed an active Apply for this job route during the final check.",
       "postedDate": null,
@@ -100,13 +100,16 @@
         "date": "Not Specified",
         "verifiedDate": "22 Oct 2026",
         "sourceVerificationMethod": "Exact Zeta Lever requisition displayed the matching Bangalore role, explicitly welcomed freshers and exposed an active Apply for this job route during the final check.",
-        "browserVerifiedAt": "2026-10-22T03:31:33.622Z"
+        "browserVerifiedAt": "2026-10-22T03:47:48.956Z",
+        "manualLiveVerifiedAt": "2026-10-22T03:47:48.956Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-22T03:31:33.622Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Zeta Lever requisition displayed the matching Bangalore role, explicitly welcomed freshers and exposed an active Apply for this job route during the final check."
-      }
+      },
+      "reviewedAt": "2026-10-22T03:47:48.956Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zynga-6194305004",
@@ -423,7 +426,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-22T03:47:36.833Z",
+  "updatedAt": "2026-10-22T03:47:48.956Z",
   "discoverySummary": {
     "portalsVisited": 24,
     "uniqueOfficialExactCandidatesScreened": 34,
