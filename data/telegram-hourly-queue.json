@@ -419,9 +419,11 @@
     {
       "page": "jobs/mactores-cloud-engineer-intern.html",
       "batchId": "admin-39718878462",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T06:50:22.181159+00:00"
+      "dueAt": "2026-10-22T06:50:22.181159+00:00",
+      "claimId": "39736478267",
+      "claimedAt": "2026-10-22T06:50:34.073472+00:00"
     },
     {
       "page": "jobs/meesho-trainee-recruitment-coordinator.html",
