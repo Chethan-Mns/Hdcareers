@@ -67,5 +67,36 @@ class SharedHeroTests(unittest.TestCase):
         self.assertEqual(body.count('class="hdj3-card"'), 1)
 
 
+    def test_job_hero_uses_identical_content_gutters_as_original_body(self):
+        css = (ROOT / "assets/job-hero.css").read_text(encoding="utf-8")
+        self.assertIn(".hdj3-shell{max-width:72rem;margin:0 auto;padding:28px 1rem 35px}", css)
+        self.assertIn(".hdj3-shell{padding-inline:1rem}", css)
+        self.assertNotIn(".hdj3-shell{max-width:1280px", css)
+        for job in self.jobs:
+            with self.subTest(page=job["page"]):
+                body = generate.render_job_page(job, self.jobs)
+                self.assertIn('<section class="max-w-6xl mx-auto px-4 py-7', body)
+                self.assertIn('<div class="hdj3-shell">', body)
+
+    def test_low_end_mobile_job_content_never_waits_for_scroll_animation(self):
+        css = (ROOT / "assets/job-hero.css").read_text(encoding="utf-8")
+        # Both independent scroll animation systems must be overridden by a
+        # visible-by-default stylesheet scoped to the generated job pages.
+        self.assertIn(".reveal-on-scroll,.hd-motion{", css)
+        for rule in ("opacity:1!important;", "visibility:visible!important;",
+                     "transform:none!important;", "will-change:auto!important;"):
+            self.assertIn(rule, css)
+        self.assertIn(".hdj3-hero::before,.hdj3-hero::after{display:none}", css)
+        for job in self.jobs:
+            with self.subTest(page=job["page"]):
+                body = generate.render_job_page(job, self.jobs)
+                self.assertIn('href="../assets/job-hero.css"', body)
+                self.assertIn("Job Overview</h2>", body)
+                self.assertIn("Skills Mentioned</h2>", body)
+                self.assertIn("Key Responsibilities</h2>", body)
+                self.assertIn('id="resumeMatch"', body)
+                self.assertIn('src="/assets/resume-assessment.js"', body)
+
+
 if __name__ == "__main__":
     unittest.main()
