@@ -409,9 +409,11 @@
     {
       "page": "jobs/linuxbean-solution-business-development-executive-fresher.html",
       "batchId": "admin-39718878462",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T05:50:06.634162+00:00"
+      "dueAt": "2026-10-22T05:50:06.634162+00:00",
+      "claimId": "39730291943",
+      "claimedAt": "2026-10-22T05:50:19.048812+00:00"
     },
     {
       "page": "jobs/mactores-cloud-engineer-intern.html",
