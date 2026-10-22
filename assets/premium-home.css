@@ -139,3 +139,8 @@ header.glass-nav .social-icon:hover{transform:translateY(-3px);box-shadow:0 8px 
 @media(max-width:500px){.hdp-map-layout>.hd-map-panel{min-height:340px}.hdp-map-layout .hd-map-canvas{height:340px}.hdp-map-bars{grid-template-columns:1fr}.hdp-map-dash-top h3{font-size:21px}}
 html.hd-lite .hdp-art-card,html.hd-lite .hdp-art-job,html.hd-lite .hdp-orb,html.hd-lite .hdp-art-live-card,html.hd-lite .hd-india-halo{animation:none!important}
 html.hd-lite .hdp-featured-item,html.hd-lite .hdp-company{box-shadow:none!important}
+
+/* P0 phones: never let scroll-reveal opacity hide job links on slow devices. */
+html.hd-lite .reveal-on-scroll,html.hd-lite .reveal-card{opacity:1!important;transform:none!important;transition:none!important;will-change:auto!important}
+html.hd-lite .glass-nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#fff!important}
+html.hd-lite .job-card,html.hd-lite .hdp-hero,html.hd-lite .hdp-featured-item{transition:none!important;animation:none!important}
