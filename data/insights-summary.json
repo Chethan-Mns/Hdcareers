@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "21 October 2026",
-  "active": 132,
-  "employers": 84,
-  "freshers": 81,
-  "experienced": 46,
+  "verifiedThrough": "22 October 2026",
+  "active": 140,
+  "employers": 89,
+  "freshers": 86,
+  "experienced": 49,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 55
+      "count": 58
     },
     {
       "label": "Mumbai",
-      "count": 12
+      "count": 13
     },
     {
       "label": "Hyderabad",
@@ -26,15 +26,15 @@
       "count": 4
     },
     {
+      "label": "Indore",
+      "count": 3
+    },
+    {
       "label": "Pune",
       "count": 3
     },
     {
       "label": "Madurai",
-      "count": 3
-    },
-    {
-      "label": "Delhi",
       "count": 3
     }
   ],
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 55
+      "count": 58
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 12
+      "count": 13
     },
     {
       "city": "Hyderabad",
@@ -68,6 +68,12 @@
       "lat": 28.5355,
       "lng": 77.391,
       "count": 4
+    },
+    {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 3
     },
     {
       "city": "Pune",
@@ -97,12 +103,6 @@
       "city": "Kolkata",
       "lat": 22.5726,
       "lng": 88.3639,
-      "count": 2
-    },
-    {
-      "city": "Indore",
-      "lat": 22.7196,
-      "lng": 75.8577,
       "count": 2
     },
     {
@@ -205,9 +205,9 @@
       "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
-      "name": "Stripe",
+      "name": "Endeavor IT Solution",
       "count": 2,
-      "logo": "assets/company-owner-submitted/stripe-owner-20261021.png"
+      "logo": ""
     }
   ],
   "topSkills": [
@@ -233,7 +233,7 @@
     },
     {
       "label": "Communication",
-      "count": 8
+      "count": 9
     },
     {
       "label": "REST APIs",
@@ -275,11 +275,11 @@
     },
     {
       "label": "internship",
-      "count": 27
+      "count": 31
     },
     {
       "label": "nonit",
-      "count": 20
+      "count": 24
     },
     {
       "label": "experienced",
@@ -382,6 +382,10 @@
     {
       "date": "2026-10-21",
       "count": 26
+    },
+    {
+      "date": "2026-10-22",
+      "count": 8
     }
   ]
 }
