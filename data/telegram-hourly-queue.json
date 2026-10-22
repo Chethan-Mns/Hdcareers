@@ -459,11 +459,12 @@
     {
       "page": "jobs/zynga-marketing-artist-intern.html",
       "batchId": "admin-39718878462",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T10:51:19.508382+00:00",
       "claimId": "39766211725",
-      "claimedAt": "2026-10-22T10:51:29.657102+00:00"
+      "claimedAt": "2026-10-22T10:51:29.657102+00:00",
+      "messageId": 562,
+      "deliveredAt": "2026-10-22T10:51:32.619642+00:00"
     }
   ]
 }
