@@ -40,7 +40,7 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
     const show=()=>{if(info){info.hidden=false;info.textContent=p.city+" · "+count+" active "+(count===1?"listing":"listings")}marker.classList.add("hd-selected")};
     const hide=()=>{marker.classList.remove("hd-selected")};
     marker.addEventListener("mouseenter",show);marker.addEventListener("focus",show);marker.addEventListener("mouseleave",hide);marker.addEventListener("blur",hide);
-    marker.addEventListener("click",()=>{show();if(info)info.scrollIntoView({block:"nearest",behavior:"smooth"})});
+    marker.addEventListener("click",()=>{show();const rail=container.closest(".hdp-map-layout");const b=rail&&[...rail.querySelectorAll(".hdp-map-bar")].find(x=>x.dataset.city===p.city);if(b){b.focus({preventScroll:true})}else if(info){info.scrollIntoView({block:"nearest"})}});
     marker.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();show()}});
     g.append(marker);
     if(["Bengaluru","Mumbai","Hyderabad","Gurugram"].includes(p.city)){
@@ -50,8 +50,9 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
       g.append(lab);
     }
   }
-  const dash=document.querySelector(".hdp-map-dashboard");
-  if(dash&&container.id==="hdpLocationMap"){
+  const layout=container.closest(".hdp-map-layout");
+  const dash=layout&&layout.querySelector(".hdp-map-dashboard");
+  if(dash){
     const top=pins.slice().sort((a,b)=>b.count-a.count).slice(0,5);
     const total=dash.querySelector("[data-hd-map-total]"),cities=dash.querySelector("[data-hd-map-cities]"),leader=dash.querySelector("[data-hd-map-leader]");
     if(total)total.textContent=pins.reduce((n,p)=>n+p.count,0).toLocaleString("en-IN");
@@ -59,12 +60,12 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
     if(leader&&top[0])leader.textContent=top[0].city+" leads with "+top[0].count+" openings";
     const bars=dash.querySelector(".hdp-map-bars");
     if(bars){bars.replaceChildren();for(const c of top){
-      const button=document.createElement("button");button.type="button";button.className="hdp-map-bar";button.title="Browse "+c.city+" jobs";
+      const button=document.createElement("button");button.type="button";button.className="hdp-map-bar";button.dataset.city=c.city;button.title="Browse "+c.city+" jobs";
       const name=document.createElement("span");name.textContent=c.city;
       const rail=document.createElement("span");rail.className="hdp-map-bar-rail";
       const fill=document.createElement("span");fill.className="hdp-map-bar-fill";fill.style.width=(c.count/top[0].count*100).toFixed(1)+"%";rail.append(fill);
       const count=document.createElement("strong");count.className="hdp-map-bar-count";count.textContent=String(c.count);
-      button.append(name,rail,count);button.addEventListener("click",()=>{const u=new URL(location.href);u.searchParams.set("location",c.city);location.href=u.href});bars.append(button);
+      button.append(name,rail,count);button.addEventListener("click",()=>{const prefix=document.body.dataset.prefix||"";location.assign(prefix+"index.html?location="+encodeURIComponent(c.city))});bars.append(button);
     }}
   }
   const holder=container.parentElement;let legend=holder&&holder.querySelector(".hd-map-legend");
