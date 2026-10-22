@@ -11,7 +11,7 @@
       "apply": "https://jobs.lever.co/meesho/1de2fc88-e203-4f1a-8046-55df700de4be",
       "cat": "nonit",
       "expYears": "0–1 years; freshers can apply",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Meesho Lever requisition displayed the matching trainee role, Bangalore location, freshers-can-apply eligibility and an active Apply for this job route during the final check.",
       "postedDate": null,
@@ -46,13 +46,16 @@
         "date": "Not Specified",
         "verifiedDate": "22 Oct 2026",
         "sourceVerificationMethod": "Exact Meesho Lever requisition displayed the matching trainee role, Bangalore location, freshers-can-apply eligibility and an active Apply for this job route during the final check.",
-        "browserVerifiedAt": "2026-10-22T03:31:33.622Z"
+        "browserVerifiedAt": "2026-10-22T03:47:36.805Z",
+        "manualLiveVerifiedAt": "2026-10-22T03:47:36.805Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-22T03:31:33.622Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Meesho Lever requisition displayed the matching trainee role, Bangalore location, freshers-can-apply eligibility and an active Apply for this job route during the final check."
-      }
+      },
+      "reviewedAt": "2026-10-22T03:47:36.805Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zeta-66fc10b7",
@@ -420,7 +423,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-22T03:33:31.966Z",
+  "updatedAt": "2026-10-22T03:47:36.833Z",
   "discoverySummary": {
     "portalsVisited": 24,
     "uniqueOfficialExactCandidatesScreened": 34,
