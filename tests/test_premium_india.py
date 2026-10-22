@@ -59,7 +59,7 @@ class PremiumIndiaDashboardTests(unittest.TestCase):
     def test_only_map_sections_replaced(self):
         src=(ROOT/"assets/premium-insights-template.html").read_text()
         self.assertEqual(src.count('id="hiLocationMap"'),1)
-        self.assertIn('>Skills in demand</h2>',src)
+        self.assertIn('> Skills in demand</h2>',src)
         self.assertIn('> Companies hiring on HD Careers</h2>',src)
         self.assertIn('> Experience distribution</h2>',src)
         self.assertIn('HD Careers (hdcareers.in)',src)
