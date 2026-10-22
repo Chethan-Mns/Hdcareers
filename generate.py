@@ -127,6 +127,7 @@ $structured_data
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <link rel="stylesheet" href="../assets/public-header.css">
+<link rel="stylesheet" href="../assets/job-hero.css">
 <script defer src="../assets/public-header.js"></script>
 <script defer src="/assets/analytics.js"></script>\n<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
@@ -153,16 +154,37 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 </div>
 </header>
 <main>
-<section class="hero text-white">
-<div class="max-w-6xl mx-auto px-4 py-9 sm:py-12">
-<div class="text-xs text-blue-100 flex flex-wrap items-center gap-2 mb-5"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right text-[9px]"></i><a href="../index.html#jobs">$breadcrumb</a><i class="fa-solid fa-chevron-right text-[9px]"></i><span class="text-white">$breadcrumb_job</span></div>
-<div class="bg-white/10 border border-white/15 rounded-[28px] p-5 sm:p-7 backdrop-blur-sm">
-<div class="flex flex-col lg:flex-row lg:items-center gap-5">
-<div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-lg overflow-hidden">$logo_image</div>
-<div class="flex-1 min-w-0"><div class="flex flex-wrap gap-2 mb-3"><span class="bg-blue-400/20 border border-blue-200/20 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid $cat_icon mr-1"></i> $cat_label</span><span class="bg-emerald-400/20 border border-emerald-200/20 px-3 py-1 rounded-full text-xs font-bold">$candidate</span>$status_badge</div><h1 class="text-2xl sm:text-4xl font-black tracking-tight">$heading</h1><p class="text-blue-100 mt-2">$loc • $work_mode</p><p class="text-blue-200 text-xs mt-2">Posted $date • Last verified $verified_date</p></div>
-<div class="flex flex-wrap lg:flex-col items-stretch gap-2 lg:w-48">$hero_action<button data-hd-track="share_click" onclick="shareJob()" class="h-12 lg:h-11 px-4 rounded-xl border border-white/20 bg-white/10 hover:bg-white/15 font-bold"><i class="fa-solid fa-share-nodes mr-1.5"></i> Share</button></div>
-</div></div></div>
-</section>
+<section class="hdj3-hero" aria-label="Job introduction">
+<div class="hdj3-shell">
+<nav class="hdj3-crumb" aria-label="Breadcrumb"><a href="../index.html">HD Careers</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><a href="../index.html#jobs">Opportunities</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><strong>$company</strong></nav>
+<div class="hdj3-layout">
+<div class="hdj3-intro">
+<div class="hdj3-verified"><span class="hdj3-pill $hero_status_class"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> $hero_status</span><span class="hdj3-date">Checked $verified_date · $hero_status_note</span></div>
+<div class="hdj3-employer"><span class="hdj3-logo">$logo_image</span><span><strong>$company</strong><small>Careers · Exact employer link provided</small></span></div>
+<h1>$hero_role</h1>
+<div class="hdj3-tags">$hero_tags</div>
+<p class="hdj3-desc">$hero_intro</p>
+<div class="hdj3-facts">
+<span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>$loc</span>
+<span><i class="fa-solid fa-briefcase" aria-hidden="true"></i>$hero_experience</span>
+<span><i class="fa-solid $cat_icon" aria-hidden="true"></i>$cat_label</span>
+</div>
+<div class="hdj3-cta">$hero_apply_cta
+<a class="hdj3-secondary" href="#resumeMatch" data-hd-track="resume_checker_open"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Check My Resume</a>
+<button class="hdj3-share" type="button" onclick="shareJob()" data-hd-track="share_click"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+</div>
+<p class="hdj3-disclaimer">Applications are submitted only on the employer's website. A previous verification does not guarantee that a vacancy is still open.</p>
+</div>
+<div class="hdj3-card" aria-labelledby="hdj3-resume-heading">
+<div class="hdj3-card-head"><span class="hdj3-card-icon"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span><span class="hdj3-card-head-copy"><strong id="hdj3-resume-heading">Resume Readiness Check</strong><small>Job-specific. Instant. Private.</small></span><span class="hdj3-free">FREE</span></div>
+<div class="hdj3-card-body"><h2>How well does your resume match?</h2><p>Check for role-relevant skills before you apply. Helpful insights, without inflated ATS scores.</p>
+<div class="hdj3-drop"><div class="hdj3-upload-icon"><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i></div><strong>Upload your resume or explore a sample</strong><small>PDF, DOCX or TXT · No account needed</small><div class="hdj3-upload-actions">
+<button type="button" class="hdj3-primary" onclick="document.getElementById('resumeFile').click()" data-hd-track="resume_checker_open">Choose Resume</button>
+<button type="button" class="hdj3-secondary" onclick="runSampleMatch()" data-hd-track="resume_checker_sample">See Sample Analysis</button>
+</div><small>Uses the existing HD Careers resume matcher below. Maximum 5 MB.</small></div>
+<div class="hdj3-privacy"><span><i class="fa-solid fa-lock" aria-hidden="true"></i> Processed only in your browser</span><strong>No upload · No login</strong></div>
+</div><div class="hdj3-card-foot"><span><i class="fa-solid fa-check" aria-hidden="true"></i> Missing skills</span><span><i class="fa-solid fa-check" aria-hidden="true"></i> Skill evidence</span><span><i class="fa-solid fa-check" aria-hidden="true"></i> Improve honestly</span></div>
+</div></div></div></section>
 <section class="max-w-6xl mx-auto px-4 py-7 sm:py-9 grid lg:grid-cols-[1fr_320px] gap-6 items-start">
 <div class="space-y-5">
 $status_notice
@@ -840,6 +862,39 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         apply_section = '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black">Application Closed</h2><p class="mt-3 text-slate-600">This job is no longer treated as an active opening on HD Careers. Browse current jobs instead of relying on an old application link.</p><a href="../index.html#jobs" class="mt-5 inline-flex bg-[var(--primary)] text-white font-bold px-5 py-3 rounded-xl">Browse Latest Jobs</a></div>'
         sidebar_action = '<a href="../index.html#jobs" class="mt-4 block text-center bg-slate-900 text-white font-extrabold py-3 rounded-xl">Browse Active Jobs</a>'
 
+    # Source-backed metadata only: do not invent qualifications, salary or a Live status.
+    skill_names = [str(s).strip() for s in job.get("skills", []) if str(s).strip()]
+    hero_keywords = []
+    role_text = str(job["role"])
+    if "risk management" in role_text.casefold():
+        hero_keywords.append("Risk Management")
+    for skill in skill_names:
+        if skill.casefold() not in {s.casefold() for s in hero_keywords}:
+            hero_keywords.append(skill)
+        if len(hero_keywords) == 2:
+            break
+    hero_tags = "".join(
+        '<span><i class="fa-solid ' + ("fa-chart-simple" if n == 0 else "fa-database") +
+        '" aria-hidden="true"></i> ' + esc(label) + '</span>'
+        for n, label in enumerate(hero_keywords)
+    )
+    hero_description = str(job.get("desc", "")).strip()
+    hero_intro = re.split(r"(?<=[.!?])\s+", hero_description, maxsplit=1)[0]
+    if len(hero_intro) > 250:
+        hero_intro = hero_intro[:247].rsplit(" ", 1)[0] + "…"
+    hero_status = ("RECHECK AVAILABILITY" if pending else
+                   "VERIFIED SNAPSHOT" if status == "active" else "ARCHIVED JOB")
+    hero_status_note = ("Availability unconfirmed" if pending else
+                        "Live status may change" if status == "active" else
+                        "Application marked closed")
+    hero_apply_cta = (
+        f'<a class="hdj3-primary" href="{esc(job["apply"])}" target="_blank" '
+        'rel="noopener nofollow" data-hd-track="job_apply_click">'
+        'Official Apply <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>'
+        if status == "active" else
+        '<a class="hdj3-primary" href="../index.html#jobs">Browse Active Jobs</a>'
+    )
+
     values = {
         "page_title": esc(page_title),
         "meta_description": esc(meta_description),
@@ -859,6 +914,14 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "status_label": status_label,
         "salary": esc(job["salary"]),
         "heading": esc(heading),
+        "hero_role": esc(role.replace(" - ", " — ")),
+        "hero_experience": esc(f"{candidate} · {job['expYears']}"),
+        "hero_intro": esc(hero_intro),
+        "hero_tags": hero_tags,
+        "hero_status": hero_status,
+        "hero_status_class": "hdj3-pending" if pending else "hdj3-closed" if status != "active" else "",
+        "hero_status_note": hero_status_note,
+        "hero_apply_cta": hero_apply_cta,
         "loc": esc(job["loc"]),
         "work_mode": esc(job["workMode"]),
         "batch": esc(job["batch"]),
