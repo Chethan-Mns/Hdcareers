@@ -449,9 +449,11 @@
     {
       "page": "jobs/zeta-executive-assistant.html",
       "batchId": "admin-39718878462",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T09:51:04.689193+00:00"
+      "dueAt": "2026-10-22T09:51:04.689193+00:00",
+      "claimId": "39758596133",
+      "claimedAt": "2026-10-22T09:51:13.927870+00:00"
     },
     {
       "page": "jobs/zynga-marketing-artist-intern.html",
