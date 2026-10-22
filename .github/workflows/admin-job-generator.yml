@@ -85,6 +85,7 @@ jobs:
 
       - name: Validate generated output
         run: |
+          python3 -m unittest discover -s tests -p test_job_hero.py -v
           git diff --check
           python3 generate.py --dry-run
 
