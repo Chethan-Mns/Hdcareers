@@ -3,7 +3,7 @@
 .hdj3-hero:before,.hdj3-hero:after{content:"";position:absolute;pointer-events:none;z-index:-1;border-radius:50%}
 .hdj3-hero:before{width:850px;height:850px;right:-470px;top:-410px;border:90px solid rgba(255,255,255,.28);background:radial-gradient(circle,#dbeafd60,transparent 65%)}
 .hdj3-hero:after{width:600px;height:600px;left:-470px;bottom:-470px;border:80px solid rgba(255,255,255,.28)}
-.hdj3-shell{max-width:1280px;margin:auto;padding:28px 26px 45px}
+.hdj3-shell{max-width:72rem;margin:0 auto;padding:28px 1rem 35px}
 .hdj3-crumb{display:flex;align-items:center;flex-wrap:wrap;gap:16px;color:#6583aa;font-size:13px;font-weight:750;margin-bottom:23px}
 .hdj3-crumb i{font-size:9px;color:#adc0dd}.hdj3-crumb strong{color:#1263cf}.hdj3-crumb a:hover{color:#125fdf}
 .hdj3-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(360px,1fr);align-items:center;gap:34px}
@@ -38,7 +38,7 @@
 .hdj3-upload-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:2px 0 1px}.hdj3-upload-actions button{min-height:40px;padding:10px 14px;font-size:11px}
 .hdj3-privacy{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px;color:#7991b1;font-size:10px}.hdj3-privacy strong{color:#007c59;font-size:10px;font-weight:850}
 .hdj3-card-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px;border-top:1px solid #e5ecf8;padding:13px 20px;font-size:10px;color:#7088aa}.hdj3-card-foot i{color:#5f81b7;margin-right:5px}
-@media(max-width:1060px){.hdj3-layout{grid-template-columns:minmax(0,1fr) minmax(310px,.9fr);gap:22px}.hdj3-intro h1{font-size:clamp(27px,3.4vw,42px)}.hdj3-shell{padding-inline:20px}}
+@media(max-width:1060px){.hdj3-layout{grid-template-columns:minmax(0,1fr) minmax(310px,.9fr);gap:22px}.hdj3-intro h1{font-size:clamp(27px,3.4vw,42px)}.hdj3-shell{padding-inline:1rem}}
 @media(max-width:780px){.hdj3-shell{padding:22px 16px 26px}.hdj3-crumb{font-size:11px;gap:10px;margin-bottom:18px}.hdj3-layout{display:flex;flex-direction:column;align-items:stretch;gap:25px}.hdj3-employer{margin:13px 0 17px}.hdj3-intro h1{font-size:clamp(29px,7.2vw,41px)}.hdj3-card{width:100%}.hdj3-cta a,.hdj3-cta button{flex:1 1 auto}.hdj3-card-body{padding:20px 15px}.hdj3-card-head{padding:18px 14px}}
 @media(max-width:390px){.hdj3-facts span{font-size:11px}.hdj3-card-head-copy strong{font-size:16px}.hdj3-upload-actions{flex-direction:column;align-self:stretch}.hdj3-upload-actions button{width:100%}}
 @media(prefers-reduced-motion:reduce){.hdj3-cta button,.hdj3-cta a,.hdj3-upload-actions button{transition:none}}
@@ -46,3 +46,21 @@
 /* Never call unverified or archived listings currently verified/live. */
 .hdj3-pill.hdj3-pending{background:#fff1d9;border-color:#f5d292;color:#945300}
 .hdj3-pill.hdj3-closed{background:#ffe5e5;border-color:#f3b4b4;color:#a02828}
+
+/* P0 low-end mobile and slow-network safeguard:
+   job page details are server-rendered HTML, not asynchronous content.
+   Global header and legacy card observers may attach opacity:0 classes.
+   Never let a delayed, blocked, or unsupported IntersectionObserver make
+   Overview, Eligibility, Skills, Resume Match or sidebar disappear. */
+.reveal-on-scroll,.hd-motion{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  transition:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:780px){
+  /* Avoid expensive offscreen decorative layers on low-end phones. */
+  .hdj3-hero::before,.hdj3-hero::after{display:none}
+}
