@@ -419,39 +419,40 @@
     {
       "page": "jobs/mactores-cloud-engineer-intern.html",
       "batchId": "admin-39718878462",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T06:50:22.181159+00:00",
       "claimId": "39736478267",
-      "claimedAt": "2026-10-22T06:50:34.073472+00:00"
+      "claimedAt": "2026-10-22T06:50:34.073472+00:00",
+      "messageId": 558,
+      "deliveredAt": "2026-10-22T06:50:38.052195+00:00"
     },
     {
       "page": "jobs/meesho-trainee-recruitment-coordinator.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T07:50:22.181159+00:00"
+      "dueAt": "2026-10-22T07:50:38.052195+00:00"
     },
     {
       "page": "jobs/pentoz-technology-business-development-executive-internship.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T08:50:22.181159+00:00"
+      "dueAt": "2026-10-22T08:50:38.052195+00:00"
     },
     {
       "page": "jobs/zeta-executive-assistant.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T09:50:22.181159+00:00"
+      "dueAt": "2026-10-22T09:50:38.052195+00:00"
     },
     {
       "page": "jobs/zynga-marketing-artist-intern.html",
       "batchId": "admin-39718878462",
       "status": "pending",
       "queuedAt": "2026-10-22T03:48:51.174763+00:00",
-      "dueAt": "2026-10-22T10:50:22.181159+00:00"
+      "dueAt": "2026-10-22T10:50:38.052195+00:00"
     }
   ]
 }
