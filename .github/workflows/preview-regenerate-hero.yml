@@ -1,0 +1,51 @@
+name: Regenerate job pages on temporary hero-review branch
+on:
+  push:
+    branches:
+      - feature/all-job-pages-hero-20261022
+    paths:
+      - .github/workflows/preview-regenerate-hero.yml
+      - generate.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: temporary-hero-regen-feature-all-job-pages
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    if: github.ref == 'refs/heads/feature/all-job-pages-hero-20261022'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/all-job-pages-hero-20261022
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate every page from the shared template
+        run: python3 generate.py
+      - name: Validate complete source-backed pages and remaining content
+        run: |
+          python3 -m unittest discover -s tests -p test_job_hero.py -v
+          python3 generate.py --dry-run
+          git diff --check
+      - name: Commit generated job pages back to feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers Preview Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add jobs/ index.html insights.html insights/ sitemap.xml robots.txt
+          if git diff --cached --quiet; then
+            echo "No generated pages changed."
+            exit 0
+          fi
+          git commit -m "Regenerate all job pages for approved hero preview"
+          git push origin HEAD:feature/all-job-pages-hero-20261022
