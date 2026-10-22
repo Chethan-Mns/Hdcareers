@@ -50,6 +50,23 @@ function draw(container,data){const canvas=container.querySelector(".hd-map-canv
       g.append(lab);
     }
   }
+  const dash=document.querySelector(".hdp-map-dashboard");
+  if(dash&&container.id==="hdpLocationMap"){
+    const top=pins.slice().sort((a,b)=>b.count-a.count).slice(0,5);
+    const total=dash.querySelector("[data-hd-map-total]"),cities=dash.querySelector("[data-hd-map-cities]"),leader=dash.querySelector("[data-hd-map-leader]");
+    if(total)total.textContent=pins.reduce((n,p)=>n+p.count,0).toLocaleString("en-IN");
+    if(cities)cities.textContent=String(pins.length);
+    if(leader&&top[0])leader.textContent=top[0].city+" leads with "+top[0].count+" openings";
+    const bars=dash.querySelector(".hdp-map-bars");
+    if(bars){bars.replaceChildren();for(const c of top){
+      const button=document.createElement("button");button.type="button";button.className="hdp-map-bar";button.title="Browse "+c.city+" jobs";
+      const name=document.createElement("span");name.textContent=c.city;
+      const rail=document.createElement("span");rail.className="hdp-map-bar-rail";
+      const fill=document.createElement("span");fill.className="hdp-map-bar-fill";fill.style.width=(c.count/top[0].count*100).toFixed(1)+"%";rail.append(fill);
+      const count=document.createElement("strong");count.className="hdp-map-bar-count";count.textContent=String(c.count);
+      button.append(name,rail,count);button.addEventListener("click",()=>{const u=new URL(location.href);u.searchParams.set("location",c.city);location.href=u.href});bars.append(button);
+    }}
+  }
   const holder=container.parentElement;let legend=holder&&holder.querySelector(".hd-map-legend");
   if(!legend&&container.nextElementSibling&&container.nextElementSibling.classList.contains("hd-map-legend"))legend=container.nextElementSibling;
   if(legend){legend.replaceChildren();for(const p of pins.slice(0,7)){const span=document.createElement("span");const strong=document.createElement("b");span.textContent=p.city+" ";strong.textContent=String(p.count);span.append(strong);legend.append(span)}}

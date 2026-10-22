@@ -19,8 +19,8 @@
 <link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
 <link rel="shortcut icon" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<link rel="stylesheet" href="assets/tailwind-built.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 <style>
 :root{
 --primary:#0969da;
@@ -136,11 +136,11 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <script defer src="/assets/analytics.js"></script>
 <link rel="stylesheet" href="assets/public-header.css">
 <script defer src="assets/public-header.js"></script>
-<script src="assets/hd-user-logos.js"></script>
+<script defer src="assets/hd-user-logos.js"></script>
 <link rel="stylesheet" href="assets/premium-home.css">
 <link rel="stylesheet" href="assets/hd-location-map.css">
-<script defer src="assets/india-state-paths.js"></script>
-<script defer src="assets/hd-location-map.js"></script>
+<script defer src="assets/hd-map-lazy.js"></script>
+<script defer src="assets/mobile-performance.js"></script>
 <script defer src="assets/premium-home.js"></script>
 </head>
 <body id="top">
@@ -248,7 +248,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <div class="hdp-metric"><span class="hdp-metric-icon" style="background:#e6fbef;color:#0a986d"><i class="fa-solid fa-shield-halved"></i></span><span><b>Official</b><small>Employer Apply links</small></span></div>
 <div class="hdp-metric"><span class="hdp-metric-icon"><i class="fa-solid fa-rotate"></i></span><span><b>Updated</b><small>As jobs are verified</small></span></div>
 </div>
-<section class="hdp-block" aria-labelledby="hdpCompaniesTitle"><div class="hdp-heading"><div><h2 id="hdpCompaniesTitle">Top companies hiring now</h2><p>Recognizable employers with active job listings on HD Careers.</p></div><button id="hdpAllJobs" class="hdp-quick">Explore all jobs <i class="fa-solid fa-arrow-right ml-1"></i></button></div><div id="hdpCompanies" class="hdp-companies"></div></section>
+<section class="hdp-block" aria-labelledby="hdpCompaniesTitle"><div class="hdp-heading"><div><h2 id="hdpCompaniesTitle">Top companies hiring now</h2><p>Only Deloitte, EY, Amazon and Accenture — with Active openings.</p></div><button id="hdpAllJobs" class="hdp-quick">Explore all jobs <i class="fa-solid fa-arrow-right ml-1"></i></button></div><div id="hdpCompanies" class="hdp-companies"></div></section>
 <section class="hdp-block" aria-labelledby="hdpRecentTitle"><div class="hdp-heading"><div><h2 id="hdpRecentTitle">Recently verified opportunities <span class="text-green-600 text-sm ml-1"><i class="fa-solid fa-circle-check"></i></span></h2><p>Published Active jobs, ordered using recorded verification dates where available.</p></div><button id="hdpViewJobs" class="hdp-quick">All opportunities <i class="fa-solid fa-arrow-right ml-1"></i></button></div><div id="hdpRecent" class="hdp-featured"></div></section>
 <section class="hdp-block" aria-label="Why trust HD Careers"><div class="hdp-heading"><div><h2>Why trust HD Careers?</h2><p>Discover genuine company-linked opportunities with clarity.</p></div></div><div class="hdp-trust">
 <article class="hdp-trust-item"><span class="hdp-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 2 20 5v6c0 5.1-3.5 9-8 11-4.5-2-8-5.9-8-11V5l8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Official links only</h3><p>Apply directly on company career websites, with source URLs in each job listing.</p></article>
@@ -259,13 +259,15 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <section class="hdp-block hdp-map-block" aria-label="India jobs map">
 <div class="hdp-heading"><div><h2><i class="fa-solid fa-map-location-dot text-blue-600 mr-2"></i> Explore jobs across India</h2><p>Actual city locations from our Active job listings, highlighted on an interactive map.</p></div><a class="hdp-quick" href="insights.html">View location insights <i class="fa-solid fa-arrow-right ml-1"></i></a></div>
 <div class="hdp-map-layout">
-<div class="hd-map-panel" id="hdpLocationMap"><div class="hd-map-overlay"><strong>India career opportunities</strong><small data-hd-map-title>Loading city-level job data…</small></div><div class="hd-map-canvas"></div></div>
-<div class="hdp-map-summary">
-<div class="hdp-map-summary-copy"><strong>Explore active jobs by city</strong><span>Select a blue map marker to view its Active job count.</span></div>
-<div class="hd-map-legend" aria-label="Current active city-level job totals"></div>
-<small>Counts include only identifiable single-city Active jobs; remote and multi-city roles are not assigned guessed pins.</small>
-</div>
-</div></section>
+<div class="hd-map-panel" id="hdpLocationMap"><div class="hd-map-overlay"><strong>India career opportunities</strong><small data-hd-map-title>Map loads as you scroll</small></div><div class="hd-map-canvas" aria-label="Interactive India job map"></div></div>
+<aside class="hdp-map-dashboard" aria-label="Hiring by city">
+<div class="hdp-map-dash-top"><span class="hdp-map-eyebrow">REAL ACTIVE JOB LISTINGS</span><h3>Discover your next opportunity by city.</h3><p>Explore real single-city job listings. Remote and multi-location jobs aren't given guessed pins.</p></div>
+<div class="hdp-map-metrics"><div><strong data-hd-map-total>—</strong><span>Mapped openings</span></div><div><strong data-hd-map-cities>—</strong><span>Hiring cities</span></div></div>
+<div class="hdp-map-chart-title"><span>Where opportunities cluster</span><small>Top locations</small></div>
+<div class="hdp-map-bars" aria-label="Top cities by active jobs"><p>Scroll here to load live location insights.</p></div>
+<div class="hdp-map-dash-bottom"><span class="hdp-map-pulse"></span><strong data-hd-map-leader>From published HD Careers jobs</strong><p>Choose a city to filter current job listings.</p></div>
+</aside></div>
+</section>
 </div>
 <main id="resultsSection" class="max-w-[1240px] mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">
 <div class="lg:col-span-2">

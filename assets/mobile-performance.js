@@ -1,0 +1,3 @@
+(function(){"use strict";const c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+if((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||(c&&(c.saveData||/^(slow-2g|2g)$/.test(c.effectiveType||"")))||(matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("hd-lite")
+})();

@@ -38,12 +38,12 @@ function render(){
     Number(recognized.has(b.name))-Number(recognized.has(a.name)) ||
     b.lastVerified-a.lastVerified || a.name.localeCompare(b.name);
   const ranked=[...byEmployer.values()].sort(rank);
-  // Priority brands are shown only if they have Active published jobs.
-  // Fill remaining positions by actual Active listing count.
-  const priority=new Set(["Deloitte","EY","Google","Amazon","Microsoft","Accenture"]);
-  const candidates=ranked.filter(c=>priority.has(c.name));
-  for(const c of ranked){if(candidates.length>=12)break;if(!priority.has(c.name))candidates.push(c)}
-  candidates.sort(rank);
+  // Four owner-selected brands only; group Deloitte and Amazon aliases for totals.
+  const names=["Deloitte","EY","Amazon","Accenture"];
+  const canonical=s=>s==="Deloitte"||s.startsWith("Deloitte ")?"Deloitte":s==="Amazon"||s.startsWith("Amazon.")||s.startsWith("Amazon ")?"Amazon":s;
+  const found=new Map(names.map(name=>[name,{name,jobs:[]}]));
+  for(const employer of ranked){const key=canonical(employer.name);if(found.has(key))found.get(key).jobs.push(...employer.jobs)}
+  const candidates=names.map(name=>found.get(name)).filter(c=>c.jobs.length);
   const comps=el("hdpCompanies");
   if(comps){comps.innerHTML=candidates.map(c=>{
     return '<button type="button" class="hdp-company" data-hdp-company="'+escapeHTML(c.name)+'">'+iconLogo(c.jobs[0])+'<h3>'+escapeHTML(c.name)+'</h3><span class="hdp-count">'+c.jobs.length+' active '+(c.jobs.length===1?"listing":"listings")+' →</span></button>'

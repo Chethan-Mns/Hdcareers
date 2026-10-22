@@ -107,3 +107,40 @@ header.glass-nav .social-icon:hover{transform:translateY(-3px);box-shadow:0 8px 
 .hdp-map-summary>small{flex:1 0 100%}
 @media(max-width:760px){.hdp-map-layout>.hd-map-panel{min-height:390px}.hdp-map-layout .hd-map-canvas{height:390px;padding:2px}.hdp-map-summary{padding:13px}.hdp-map-summary .hd-map-legend{flex-basis:100%}}
 @media(max-width:420px){.hdp-map-layout>.hd-map-panel{min-height:340px}.hdp-map-layout .hd-map-canvas{height:340px}}
+
+/* Only four curated companies, two per row on phones. */
+.hdp-companies{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media(max-width:760px){.hdp-companies{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hdp-company{padding:15px 8px}}
+/* Map plus useful, source-backed metrics fills the previous empty canvas. */
+.hdp-map-layout{display:grid!important;grid-template-columns:minmax(0,1.4fr) minmax(285px,.75fr);align-items:stretch;gap:17px}
+.hdp-map-layout>.hd-map-panel{min-height:545px}
+.hdp-map-layout .hd-map-canvas{height:545px}
+.hdp-map-dashboard{min-width:0;display:flex;flex-direction:column;gap:15px;padding:24px;background:linear-gradient(160deg,#fff,#e8f3ff);border:1px solid #cfe0f9;border-radius:22px}
+.hdp-map-eyebrow{font-size:10px;letter-spacing:.12em;color:#196ad8;font-weight:900}
+.hdp-map-dash-top h3{font-size:24px;letter-spacing:-.04em;line-height:1.18;color:#102c59;margin:9px 0 10px;font-weight:900}
+.hdp-map-dash-top p{font-size:12px;line-height:1.65;color:#6580a3}
+.hdp-map-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hdp-map-metrics>div{background:#fff;border:1px solid #d7e6fc;border-radius:14px;padding:14px}
+.hdp-map-metrics strong{display:block;color:#075ad6;font-size:25px;font-weight:900}
+.hdp-map-metrics span{display:block;color:#6c84a5;font-size:10px;margin-top:6px}
+.hdp-map-chart-title{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#183c69;font-weight:850;font-size:13px}
+.hdp-map-chart-title small{font-size:10px;color:#7992b0}
+.hdp-map-bars{display:flex;flex-direction:column;gap:8px;flex:1}
+.hdp-map-bar{display:grid;grid-template-columns:82px minmax(0,1fr) 30px;gap:8px;align-items:center;width:100%;border:0;background:#fff;border-radius:10px;padding:9px 10px;cursor:pointer;color:#21466e;font-size:11px;font-weight:800;text-align:left}
+.hdp-map-bar:hover,.hdp-map-bar:focus-visible{outline:2px solid #8cbbff}
+.hdp-map-bar-rail{height:8px;display:block;background:#e8f0fb;border-radius:50px;overflow:hidden}
+.hdp-map-bar-fill{height:100%;display:block;border-radius:50px;background:linear-gradient(90deg,#1b69e4,#81b4ff)}
+.hdp-map-bar-count{text-align:right;color:#0e65d7;font-size:12px}
+.hdp-map-dash-bottom{border-top:1px solid #cee0f6;padding-top:13px;display:grid;grid-template-columns:9px 1fr;gap:2px 8px;align-items:center}
+.hdp-map-pulse{width:8px;height:8px;background:#159874;border-radius:50%}
+.hdp-map-dash-bottom strong{color:#16416f;font-size:12px}
+.hdp-map-dash-bottom p{grid-column:1/-1;font-size:10px;color:#738aa8;margin:4px 0 0}
+@media(max-width:900px){.hdp-map-layout{grid-template-columns:1fr!important}.hdp-map-layout>.hd-map-panel{min-height:420px}.hdp-map-layout .hd-map-canvas{height:420px}.hdp-map-dashboard{padding:18px}.hdp-map-bars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hdp-map-bar{grid-template-columns:1fr 1fr 27px}}
+@media(max-width:500px){.hdp-map-layout>.hd-map-panel{min-height:340px}.hdp-map-layout .hd-map-canvas{height:340px}.hdp-map-bars{grid-template-columns:1fr}.hdp-map-dash-top h3{font-size:21px}}
+html.hd-lite .hdp-art-card,html.hd-lite .hdp-art-job,html.hd-lite .hdp-orb,html.hd-lite .hdp-art-live-card,html.hd-lite .hd-india-halo{animation:none!important}
+html.hd-lite .hdp-featured-item,html.hd-lite .hdp-company{box-shadow:none!important}
+
+/* P0 phones: never let scroll-reveal opacity hide job links on slow devices. */
+html.hd-lite .reveal-on-scroll,html.hd-lite .reveal-card{opacity:1!important;transform:none!important;transition:none!important;will-change:auto!important}
+html.hd-lite .glass-nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#fff!important}
+html.hd-lite .job-card,html.hd-lite .hdp-hero,html.hd-lite .hdp-featured-item{transition:none!important;animation:none!important}

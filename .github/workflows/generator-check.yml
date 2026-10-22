@@ -51,6 +51,9 @@ jobs:
       - name: Verify all job page hero and original body content
         run: python3 -m unittest discover -s tests -p test_job_hero.py -v
 
+      - name: Test mobile performance and company/map layout
+        run: python3 -m unittest discover -s tests -p test_home_mobile.py -v
+
       - name: Run generator
         run: python3 generate.py
 
