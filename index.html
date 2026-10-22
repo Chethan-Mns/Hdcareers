@@ -139,7 +139,9 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <script defer src="assets/hd-user-logos.js"></script>
 <link rel="stylesheet" href="assets/premium-home.css">
 <link rel="stylesheet" href="assets/hd-location-map.css">
+<link rel="stylesheet" href="assets/premium-india-v2.css">
 <script defer src="assets/hd-map-lazy.js"></script>
+<script defer src="assets/premium-india-v2.js"></script>
 <script defer src="assets/mobile-performance.js"></script>
 <script defer src="assets/premium-home.js"></script>
 </head>
@@ -256,17 +258,30 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <article class="hdp-trust-item"><span class="hdp-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2"/><path d="M16 6a3 3 0 0 1 0 6"/><path d="M17 15a5 5 0 0 1 4 5"/></svg></span><h3>Fresher-friendly</h3><p>Explore internships, apprenticeships and early-career roles using filters.</p></article>
 <article class="hdp-trust-item"><span class="hdp-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 6c-3.5-2.5-6.3-2.5-10-1v14c4-1.5 7-1.2 10 1 3-2.2 6-2.5 10-1V5c-3.7-1.5-6.5-1.5-10 1Z"/><path d="M12 6v14"/></svg></span><h3>Career resources</h3><p>Practical application, resume and job-verification guides.</p></article>
 </div></section>
-<section class="hdp-block hdp-map-block" aria-label="India jobs map">
-<div class="hdp-heading"><div><h2><i class="fa-solid fa-map-location-dot text-blue-600 mr-2"></i> Explore jobs across India</h2><p>Actual city locations from our Active job listings, highlighted on an interactive map.</p></div><a class="hdp-quick" href="insights.html">View location insights <i class="fa-solid fa-arrow-right ml-1"></i></a></div>
-<div class="hdp-map-layout">
-<div class="hd-map-panel" id="hdpLocationMap"><div class="hd-map-overlay"><strong>India career opportunities</strong><small data-hd-map-title>Map loads as you scroll</small></div><div class="hd-map-canvas" aria-label="Interactive India job map"></div></div>
-<aside class="hdp-map-dashboard" aria-label="Hiring by city">
-<div class="hdp-map-dash-top"><span class="hdp-map-eyebrow">REAL ACTIVE JOB LISTINGS</span><h3>Discover your next opportunity by city.</h3><p>Explore real single-city job listings. Remote and multi-location jobs aren't given guessed pins.</p></div>
-<div class="hdp-map-metrics"><div><strong data-hd-map-total>—</strong><span>Mapped openings</span></div><div><strong data-hd-map-cities>—</strong><span>Hiring cities</span></div></div>
-<div class="hdp-map-chart-title"><span>Where opportunities cluster</span><small>Top locations</small></div>
-<div class="hdp-map-bars" aria-label="Top cities by active jobs"><p>Scroll here to load live location insights.</p></div>
-<div class="hdp-map-dash-bottom"><span class="hdp-map-pulse"></span><strong data-hd-map-leader>From published HD Careers jobs</strong><p>Choose a city to filter current job listings.</p></div>
-</aside></div>
+<section class="hdp-block hdp-map-block hdm-widget hdm-home" aria-labelledby="hdmHomeTitle">
+<div class="hdm-map-layout">
+  <div class="hdm-map-surface" aria-label="India hiring map and city opportunities">
+    <div class="hdm-map-heading">
+      <span class="hdm-eyebrow"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> India opportunities</span>
+      <h2 id="hdmHomeTitle" class="hdm-title">Explore jobs <em>across India</em></h2>
+      <p class="hdm-copy">Discover real, current opportunities across Indian cities. Explore where HD Careers has verified active listings.</p>
+    </div>
+    <div class="hdm-map-pins"><div class="hd-map-panel" id="hdpLocationMap"><div class="hd-map-overlay"><strong>India hiring locations</strong><small data-hd-map-title>Map loads when this section appears</small></div><div class="hd-map-canvas" aria-label="India map with active city job markers"></div></div></div>
+    <span class="hdm-inline-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Official job locations only</span>
+  </div>
+  <aside class="hdm-panel hdm-card" aria-label="India hiring overview">
+    <div class="hdm-panel-title"><h3>India hiring overview</h3><span class="hdm-flag" aria-label="India">🇮🇳 India</span></div>
+    <div class="hdm-metrics">
+      <div class="hdm-card hdm-metric"><span class="hdm-metric-icon"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span><strong data-hdm-total>—</strong><span>Mapped job openings</span></div>
+      <div class="hdm-card hdm-metric"><span class="hdm-metric-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span><strong data-hdm-cities>—</strong><span>Cities with listings</span></div>
+    </div>
+    <div class="hdm-bars-title"><h4>Top hiring cities</h4><small>Current HD Careers listings</small></div>
+    <div class="hdm-bar-list" data-hdm-bars aria-label="Browse the six cities with the most jobs"><p class="hdm-fineprint">Loading current city counts…</p></div>
+    <div class="hdm-leader"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i><span><strong><span data-hdm-leader>Top city</span> leads with <span data-hdm-leader-count>—</span> listings</strong><small><span data-hdm-share>—</span> of mapped openings. Next: <span data-hdm-runnerup>—</span>.</small></span></div>
+    <a class="hdm-cta" href="insights.html">Explore location insights <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <p class="hdm-fineprint" data-hdm-local-note>All figures are from live HD Careers job records, not nationwide hiring estimates.</p>
+  </aside>
+</div>
 </section>
 </div>
 <main id="resultsSection" class="max-w-[1240px] mx-auto px-4 py-8 grid lg:grid-cols-3 gap-6 items-start">

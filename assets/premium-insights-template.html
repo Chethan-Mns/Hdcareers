@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#071a33"><title>{{TITLE}} | HD Careers</title><link rel="canonical" href="{{CANONICAL}}"><meta name="description" content="Interactive HD Careers job insights showing current active roles, hiring employers, popular skills and verification trends."><link rel="icon" href="{{PREFIX}}assets/hd-careers-logo.png"><link rel="stylesheet" href="{{PREFIX}}assets/premium-insights.css"><link rel="stylesheet" href="{{PREFIX}}assets/hd-location-map.css"><script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script><script defer src="{{PREFIX}}assets/premium-insights.js"></script><script defer src="{{PREFIX}}assets/india-state-paths.js"></script><script defer src="{{PREFIX}}assets/hd-location-map.js"></script><script defer src="{{PREFIX}}assets/analytics.js"></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#071a33"><title>{{TITLE}} | HD Careers</title><link rel="canonical" href="{{CANONICAL}}"><meta name="description" content="Interactive HD Careers job insights showing current active roles, hiring employers, popular skills and verification trends."><link rel="icon" href="{{PREFIX}}assets/hd-careers-logo.png"><link rel="stylesheet" href="{{PREFIX}}assets/premium-insights.css"><link rel="stylesheet" href="{{PREFIX}}assets/hd-location-map.css"><link rel="stylesheet" href="{{PREFIX}}assets/premium-india-v2.css"><script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script><script defer src="{{PREFIX}}assets/premium-insights.js"></script><script defer src="{{PREFIX}}assets/premium-india-v2.js"></script><script defer src="{{PREFIX}}assets/hd-map-lazy.js"></script><script defer src="{{PREFIX}}assets/analytics.js"></script></head>
 <body data-prefix="{{PREFIX}}">
 <header class="hi-nav"><nav class="hi-container hi-nav-row" aria-label="Main navigation"><a class="hi-brand" href="{{PREFIX}}index.html"><img src="{{PREFIX}}assets/hd-careers-logo.png" alt="HD Careers"><span class="hi-brand-stack"><strong>HD Careers</strong><small>Jobs • Internships • Apprenticeships</small></span></a><div class="hi-links"><a href="{{PREFIX}}index.html">Jobs</a><a class="active" href="{{PREFIX}}insights.html" aria-current="page">Insights</a><a href="{{PREFIX}}career-resources.html">Career Resources</a><a href="{{PREFIX}}editorial-policy.html">Verification Policy</a><a href="{{PREFIX}}about.html">About</a><a href="{{PREFIX}}contact.html">Contact</a></div><a class="hi-alerts" href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener"><i class="fa-solid fa-bell"></i><span>Job alerts</span></a></nav></header>
 <section class="hi-hero"><div class="hi-container hi-hero-row"><div><span class="hi-eyebrow"><i class="fa-solid fa-chart-line"></i> HD Careers own-data analysis</span><h1>Explore <span>Hiring Insights</span></h1><p>{{INTRO}} Discover where jobs are hiring, the employers behind them and the skills appearing in current opportunities. The job data refreshes with each verified publishing deployment.</p><p class="hi-meta" id="hiLastUpdated">Current job-data snapshot · {{SNAPSHOT}}</p></div><div class="hi-art" aria-hidden="true">
@@ -31,14 +31,41 @@
 <div id="hiSkills" class="hi-skillwrap" aria-label="Skills mentioned in current job descriptions"></div>
 </article>
 </section>
-<section class="hi-card hi-shown" style="margin-bottom:22px">
-<div class="hi-cardhead"><h2><i class="fa-solid fa-map-location-dot"></i> India hiring map</h2><span class="hi-preview">CITY-LEVEL JOBS</span></div>
-<p class="hi-sub">Explore Indian cities where we have Active job listings. Blinking blue circles are tied to exact city coordinates, with current counts. Unspecified and multi-city roles are excluded from map markers.</p>
-<div class="hd-map-panel full" id="hiLocationMap"><div class="hd-map-overlay"><strong>Where jobs are located</strong><small data-hd-map-title>Loading current city data…</small></div><div class="hd-map-canvas"></div></div>
-<div class="hd-map-legend" aria-label="Top cities and job counts"></div>
-<p class="hd-map-legend-note">Counts represent job listings with a clearly identifiable single city—not regional totals or website visitor locations. Select a marker for details.</p>
-</section>
-<p class="hi-caption">Method: this dashboard analyses HD Careers' currently Active job records. Counts, company cards, skills and city pins update when job data is published.</p>
+<section class="hi-card hi-shown hdm-widget hdm-insights" aria-labelledby="hdmInsightsTitle">
+  <div class="hdm-insights-top">
+    <div class="hdm-insights-intro">
+      <span class="hdm-eyebrow"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> India hiring map</span>
+      <h2 id="hdmInsightsTitle" class="hdm-title">Explore jobs <em>across India</em></h2>
+      <p class="hdm-copy">Verified city-level opportunities from HD Careers. Select a location to see matching jobs — not estimates for India's overall job market.</p>
+      <div class="hdm-leader"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><strong><span data-hdm-cities>—</span> Indian cities mapped</strong><small><span data-hdm-total>—</span> active single-city listings</small></span></div>
+      <a class="hdm-cta" href="{{PREFIX}}index.html#resultsSection">Browse verified jobs <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="hdm-insights-map hdm-map-surface">
+      <div class="hdm-map-pins"><div class="hd-map-panel full" id="hiLocationMap"><div class="hd-map-overlay"><strong>Where opportunities are</strong><small data-hd-map-title>Loading the map near this section…</small></div><div class="hd-map-canvas" aria-label="Map of India showing cities with current openings"></div></div></div>
+    </div>
+    <aside class="hdm-insights-side" aria-label="India hiring statistics">
+      <div class="hdm-card hdm-side-stat"><i class="hdm-stat-icon fa-solid fa-briefcase" aria-hidden="true"></i><strong class="hdm-stat-value" data-hdm-total>—</strong><span class="hdm-stat-text">Active single-city listings</span></div>
+      <div class="hdm-card hdm-side-stat"><i class="hdm-stat-icon fa-solid fa-city" aria-hidden="true"></i><strong class="hdm-stat-value" data-hdm-cities>—</strong><span class="hdm-stat-text">Cities with verified openings</span></div>
+      <div class="hdm-card hdm-side-feature">
+        <h4>Top hiring city · <span data-hdm-leader>—</span></h4>
+        <p><strong data-hdm-leader-count>—</strong> mapped listings · <strong data-hdm-share>—</strong> of our mapped city jobs</p>
+      </div>
+      <div class="hdm-card hdm-side-feature">
+        <h4>Listings by region</h4>
+        <div class="hdm-region-layout"><div class="hdm-donut" data-hdm-ring role="img" aria-label="Region distribution of mapped jobs"><span><b data-hdm-total>—</b><small>listings</small></span></div><div class="hdm-regions" data-hdm-regions aria-label="Regional counts"></div></div>
+      </div>
+      <div class="hdm-card hdm-side-feature">
+        <h4>Coverage of other cities</h4>
+        <p><strong data-hdm-other>—</strong> mapped jobs outside the leading city. Counts are refreshed from current Active listings.</p>
+      </div>
+    </aside>
+  </div>
+  <div class="hdm-card hdm-insights-cities">
+    <div class="hdm-bars-title"><h3>Top cities by job openings</h3><small>Tap any city to browse roles</small></div>
+    <div class="hdm-city-cards" data-hdm-citycards aria-label="Top cities with current active job listings"><p class="hdm-fineprint">Loading current city data…</p></div>
+  </div>
+  <p class="hdm-caption" data-hdm-local-note>Only single-city Active HD Careers job listings are mapped. Remote and multi-location roles are not assigned estimated pins.</p>
+</section><p class="hi-caption">Method: this dashboard analyses HD Careers' currently Active job records. Counts, company cards, skills and city pins update when job data is published.</p>
 </main>
 <footer class="hi-footer" id="footer"><div class="hi-container hi-footer-inner">
 <div class="hi-footer-about"><a class="hi-footer-brand" href="{{PREFIX}}index.html">HD Careers</a><p>Jobs, internships, off-campus drives &amp; career updates for job seekers across India.</p>
