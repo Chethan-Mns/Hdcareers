@@ -175,7 +175,7 @@
       "apply": "https://jobs.lever.co/mactores/d237505f-5e6a-4eae-9b06-fa8dd0686236",
       "cat": "internship",
       "expYears": "Intern; no mandatory prior-experience threshold stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Mactores Lever requisition displayed the matching Mumbai remote internship, detailed responsibilities and requirements, and an active Apply for this job route during the final check.",
       "postedDate": null,
@@ -211,13 +211,16 @@
         "date": "Not Specified",
         "verifiedDate": "22 Oct 2026",
         "sourceVerificationMethod": "Exact Mactores Lever requisition displayed the matching Mumbai remote internship, detailed responsibilities and requirements, and an active Apply for this job route during the final check.",
-        "browserVerifiedAt": "2026-10-22T03:31:33.622Z"
+        "browserVerifiedAt": "2026-10-22T03:47:57.851Z",
+        "manualLiveVerifiedAt": "2026-10-22T03:47:57.851Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-22T03:31:33.622Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Mactores Lever requisition displayed the matching Mumbai remote internship, detailed responsibilities and requirements, and an active Apply for this job route during the final check."
-      }
+      },
+      "reviewedAt": "2026-10-22T03:47:57.851Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "kredx-744000123904890",
@@ -429,7 +432,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-22T03:47:52.619Z",
+  "updatedAt": "2026-10-22T03:47:57.851Z",
   "discoverySummary": {
     "portalsVisited": 24,
     "uniqueOfficialExactCandidatesScreened": 34,
