@@ -530,32 +530,33 @@
     {
       "page": "jobs/nielsen-content-operations-editor-i.html",
       "batchId": "admin-39896335434",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T09:43:36.213401+00:00",
       "claimId": "39933953984",
-      "claimedAt": "2026-10-23T09:43:48.667464+00:00"
+      "claimedAt": "2026-10-23T09:43:48.667464+00:00",
+      "messageId": 569,
+      "deliveredAt": "2026-10-23T09:43:51.658487+00:00"
     },
     {
       "page": "jobs/phonepe-operations-executive.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T10:43:36.213401+00:00"
+      "dueAt": "2026-10-23T10:43:51.658487+00:00"
     },
     {
       "page": "jobs/sprinto-information-security-compliance-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T11:43:36.213401+00:00"
+      "dueAt": "2026-10-23T11:43:51.658487+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T12:43:36.213401+00:00"
+      "dueAt": "2026-10-23T12:43:51.658487+00:00"
     }
   ]
 }
