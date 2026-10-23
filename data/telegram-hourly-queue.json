@@ -500,53 +500,54 @@
     {
       "page": "jobs/highlevel-bdr-support-apprentice.html",
       "batchId": "admin-39896335434",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T06:42:54.465781+00:00",
       "claimId": "39913189398",
-      "claimedAt": "2026-10-23T06:43:05.825979+00:00"
+      "claimedAt": "2026-10-23T06:43:05.825979+00:00",
+      "messageId": 566,
+      "deliveredAt": "2026-10-23T06:43:08.925082+00:00"
     },
     {
       "page": "jobs/instawork-hr-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T07:42:54.465781+00:00"
+      "dueAt": "2026-10-23T07:43:08.925082+00:00"
     },
     {
       "page": "jobs/konovo-talent-acquisition-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T08:42:54.465781+00:00"
+      "dueAt": "2026-10-23T08:43:08.925082+00:00"
     },
     {
       "page": "jobs/nielsen-content-operations-editor-i.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T09:42:54.465781+00:00"
+      "dueAt": "2026-10-23T09:43:08.925082+00:00"
     },
     {
       "page": "jobs/phonepe-operations-executive.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T10:42:54.465781+00:00"
+      "dueAt": "2026-10-23T10:43:08.925082+00:00"
     },
     {
       "page": "jobs/sprinto-information-security-compliance-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T11:42:54.465781+00:00"
+      "dueAt": "2026-10-23T11:43:08.925082+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T12:42:54.465781+00:00"
+      "dueAt": "2026-10-23T12:43:08.925082+00:00"
     }
   ]
 }
