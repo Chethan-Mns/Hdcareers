@@ -490,9 +490,11 @@
     {
       "page": "jobs/drivetrain-engineering-intern-gen-ai-for-fp-a-platform.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T05:42:42.490606+00:00"
+      "dueAt": "2026-10-23T05:42:42.490606+00:00",
+      "claimId": "39907273433",
+      "claimedAt": "2026-10-23T05:42:51.737743+00:00"
     },
     {
       "page": "jobs/highlevel-bdr-support-apprentice.html",
