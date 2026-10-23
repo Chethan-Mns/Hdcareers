@@ -229,7 +229,7 @@
       "apply": "https://jobs.lever.co/gohighlevel/48265533-1a1c-405b-a805-7dae16ce8c16",
       "cat": "internship",
       "expYears": "6-month apprenticeship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact HighLevel Lever requisition displayed the India remote apprenticeship, programme details and active Apply for this job control during the 23 Oct check.",
       "postedDate": null,
@@ -264,13 +264,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact HighLevel Lever requisition displayed the India remote apprenticeship, programme details and active Apply for this job control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:39:44.065Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:39:44.065Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact HighLevel Lever requisition displayed the India remote apprenticeship, programme details and active Apply for this job control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:39:44.065Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "drivetrain-bc1c17bc",
@@ -587,7 +590,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:39:37.878Z",
+  "updatedAt": "2026-10-23T03:39:44.065Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
