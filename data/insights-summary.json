@@ -1,13 +1,13 @@
 {
   "verifiedThrough": "23 October 2026",
-  "active": 148,
-  "employers": 96,
-  "freshers": 87,
-  "experienced": 56,
+  "active": 144,
+  "employers": 95,
+  "freshers": 85,
+  "experienced": 54,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 60
+      "count": 57
     },
     {
       "label": "Mumbai",
@@ -30,12 +30,12 @@
       "count": 3
     },
     {
-      "label": "Pune",
+      "label": "Madurai",
       "count": 3
     },
     {
-      "label": "Madurai",
-      "count": 3
+      "label": "Navi Mumbai",
+      "count": 2
     }
   ],
   "cityPins": [
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 60
+      "count": 57
     },
     {
       "city": "Mumbai",
@@ -76,12 +76,6 @@
       "count": 3
     },
     {
-      "city": "Pune",
-      "lat": 18.5204,
-      "lng": 73.8567,
-      "count": 3
-    },
-    {
       "city": "Madurai",
       "lat": 9.9252,
       "lng": 78.1198,
@@ -97,6 +91,12 @@
       "city": "Kolkata",
       "lat": 22.5726,
       "lng": 88.3639,
+      "count": 2
+    },
+    {
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
       "count": 2
     },
     {
@@ -155,24 +155,19 @@
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
-      "name": "Amazon",
-      "count": 7,
-      "logo": "assets/company-approved/amazon-owner-20261019.png"
-    },
-    {
       "name": "EY",
       "count": 6,
       "logo": "assets/company-approved/ey.webp"
     },
     {
+      "name": "Amazon",
+      "count": 6,
+      "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
       "name": "Google",
       "count": 5,
       "logo": "assets/company-approved/google-owner-20261019.svg"
-    },
-    {
-      "name": "Accenture",
-      "count": 4,
-      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Cognizant",
@@ -185,6 +180,11 @@
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
+      "name": "Accenture",
+      "count": 3,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
       "name": "Bosch",
       "count": 3,
       "logo": "assets/company-marks-review/bosch.svg"
@@ -195,11 +195,6 @@
       "logo": "assets/company-icons/wipro-6507802.png"
     },
     {
-      "name": "Capgemini",
-      "count": 3,
-      "logo": "assets/company-icons/capgemini-10eefd0.png"
-    },
-    {
       "name": "Cisco",
       "count": 2,
       "logo": "assets/company-marks-review/cisco.svg"
@@ -208,6 +203,11 @@
       "name": "Drivetrain",
       "count": 2,
       "logo": ""
+    },
+    {
+      "name": "Instawork",
+      "count": 2,
+      "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
     }
   ],
   "topSkills": [
@@ -221,14 +221,10 @@
     },
     {
       "label": "SQL",
-      "count": 17
+      "count": 16
     },
     {
       "label": "Communication",
-      "count": 10
-    },
-    {
-      "label": "Problem solving",
       "count": 10
     },
     {
@@ -236,8 +232,8 @@
       "count": 10
     },
     {
-      "label": "Documentation",
-      "count": 8
+      "label": "Problem solving",
+      "count": 9
     },
     {
       "label": "REST APIs",
@@ -260,6 +256,10 @@
       "count": 7
     },
     {
+      "label": "Documentation",
+      "count": 7
+    },
+    {
       "label": "C++",
       "count": 7
     },
@@ -271,7 +271,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 71
+      "count": 67
     },
     {
       "label": "internship",
@@ -341,7 +341,7 @@
     },
     {
       "date": "2026-10-09",
-      "count": 3
+      "count": 2
     },
     {
       "date": "2026-10-10",
@@ -349,7 +349,7 @@
     },
     {
       "date": "2026-10-11",
-      "count": 4
+      "count": 3
     },
     {
       "date": "2026-10-12",
@@ -361,7 +361,7 @@
     },
     {
       "date": "2026-10-15",
-      "count": 8
+      "count": 7
     },
     {
       "date": "2026-10-17",
@@ -369,11 +369,11 @@
     },
     {
       "date": "2026-10-18",
-      "count": 7
+      "count": 5
     },
     {
       "date": "2026-10-20",
-      "count": 9
+      "count": 7
     },
     {
       "date": "2026-10-21",
@@ -385,7 +385,7 @@
     },
     {
       "date": "2026-10-23",
-      "count": 28
+      "count": 31
     }
   ]
 }
