@@ -1021,6 +1021,31 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if not re.search(pattern, updated, flags=re.S):
         raise SystemExit("Static homepage job link marker is missing")
     updated = re.sub(pattern, lambda _: fallback, updated, count=1, flags=re.S)
+    # Refresh the visible, crawlable featured links on every publish/expiry run.
+    # Only owner-approved active records are eligible; never resurrect archived jobs.
+    featured = [job for job in active_jobs if re.fullmatch(r"jobs/[a-z0-9-]+\\.html", str(job.get("page", "")))][:24]
+    featured_rows = "\\n".join(
+        '<a class="block rounded-lg border border-slate-200 bg-white p-3 hover:border-blue-400" href="/'
+        + esc(job["page"]) + '"><span class="block text-sm font-bold text-slate-900">'
+        + esc(job["company"]) + '</span><span class="block text-sm text-slate-600">'
+        + esc(job["role"]) + '</span></a>'
+        for job in featured
+    )
+    featured_html = (
+        '<section id="featured-job-links-seo" aria-labelledby="featured-job-links-heading" class="max-w-[1240px] mx-auto px-4 py-6">\\n'
+        '<h2 id="featured-job-links-heading" class="text-xl font-extrabold text-slate-900 mb-2">Recently verified job opportunities</h2>\\n'
+        '<p class="text-sm text-slate-600 mb-4">Explore current opportunities and check the verification details before applying.</p>\\n'
+        '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">\\n'
+        + featured_rows + '\\n</div></section>\\n'
+    )
+    featured_pattern = r'<section id="featured-job-links-seo"\\b.*?</section>\\s*'
+    if re.search(featured_pattern, updated, flags=re.S):
+        updated = re.sub(featured_pattern, lambda _: featured_html, updated, count=1, flags=re.S)
+    else:
+        guide_marker = '<section id="career-guides-seo"'
+        if guide_marker not in updated:
+            raise SystemExit("Homepage career guides marker missing; cannot insert featured job links")
+        updated = updated.replace(guide_marker, featured_html + guide_marker, 1)
     # Embed verified city markers into generated HTML. This avoids CDN, blocked JSON routes,
     # authentication/caching failures and blank previews; refreshed on each publishing run.
     map_json = json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]},
