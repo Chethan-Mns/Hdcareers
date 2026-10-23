@@ -503,7 +503,7 @@
       "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000105344195-associate-operations",
       "cat": "nonit",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact WNS SmartRecruiters requisition displayed the matching graduate role, 0–2 year requirement, full duties and a requisition-bound I'm interested application control during the 23 Oct check.",
       "postedDate": null,
@@ -539,13 +539,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact WNS SmartRecruiters requisition displayed the matching graduate role, 0–2 year requirement, full duties and a requisition-bound I'm interested application control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:43.161Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:43.161Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact WNS SmartRecruiters requisition displayed the matching graduate role, 0–2 year requirement, full duties and a requisition-bound I'm interested application control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:43.161Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -602,7 +605,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:40:39.191Z",
+  "updatedAt": "2026-10-23T03:40:43.161Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
