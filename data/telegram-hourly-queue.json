@@ -530,9 +530,11 @@
     {
       "page": "jobs/nielsen-content-operations-editor-i.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T09:43:36.213401+00:00"
+      "dueAt": "2026-10-23T09:43:36.213401+00:00",
+      "claimId": "39933953984",
+      "claimedAt": "2026-10-23T09:43:48.667464+00:00"
     },
     {
       "page": "jobs/phonepe-operations-executive.html",
