@@ -1,17 +1,17 @@
 {
   "verifiedThrough": "23 October 2026",
-  "active": 152,
-  "employers": 97,
-  "freshers": 89,
-  "experienced": 58,
+  "active": 147,
+  "employers": 96,
+  "freshers": 86,
+  "experienced": 56,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 61
+      "count": 59
     },
     {
       "label": "Mumbai",
-      "count": 15
+      "count": 13
     },
     {
       "label": "Hyderabad",
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 61
+      "count": 59
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 15
+      "count": 13
     },
     {
       "city": "Hyderabad",
@@ -88,12 +88,6 @@
       "count": 3
     },
     {
-      "city": "Delhi",
-      "lat": 28.6139,
-      "lng": 77.209,
-      "count": 3
-    },
-    {
       "city": "Navi Mumbai",
       "lat": 19.033,
       "lng": 73.0297,
@@ -115,6 +109,12 @@
       "city": "Chennai",
       "lat": 13.0827,
       "lng": 80.2707,
+      "count": 2
+    },
+    {
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
       "count": 2
     },
     {
@@ -155,14 +155,14 @@
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
-      "name": "EY",
-      "count": 9,
-      "logo": "assets/company-approved/ey.webp"
-    },
-    {
       "name": "Amazon",
       "count": 7,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
+      "name": "EY",
+      "count": 6,
+      "logo": "assets/company-approved/ey.webp"
     },
     {
       "name": "Google",
@@ -185,11 +185,6 @@
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
-      "name": "Rubrik",
-      "count": 3,
-      "logo": "assets/company-icons/rubrik-c33fd7a.png"
-    },
-    {
       "name": "Bosch",
       "count": 3,
       "logo": "assets/company-marks-review/bosch.svg"
@@ -208,6 +203,11 @@
       "name": "Drivetrain",
       "count": 2,
       "logo": ""
+    },
+    {
+      "name": "Instawork",
+      "count": 2,
+      "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
     }
   ],
   "topSkills": [
@@ -271,7 +271,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 74
+      "count": 70
     },
     {
       "label": "internship",
@@ -279,7 +279,7 @@
     },
     {
       "label": "nonit",
-      "count": 27
+      "count": 26
     },
     {
       "label": "experienced",
@@ -369,11 +369,7 @@
     },
     {
       "date": "2026-10-18",
-      "count": 10
-    },
-    {
-      "date": "2026-10-19",
-      "count": 3
+      "count": 7
     },
     {
       "date": "2026-10-20",
@@ -381,7 +377,7 @@
     },
     {
       "date": "2026-10-21",
-      "count": 26
+      "count": 10
     },
     {
       "date": "2026-10-22",
@@ -389,7 +385,7 @@
     },
     {
       "date": "2026-10-23",
-      "count": 10
+      "count": 27
     }
   ]
 }
