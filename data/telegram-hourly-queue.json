@@ -500,9 +500,11 @@
     {
       "page": "jobs/highlevel-bdr-support-apprentice.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T06:42:54.465781+00:00"
+      "dueAt": "2026-10-23T06:42:54.465781+00:00",
+      "claimId": "39913189398",
+      "claimedAt": "2026-10-23T06:43:05.825979+00:00"
     },
     {
       "page": "jobs/instawork-hr-intern.html",
