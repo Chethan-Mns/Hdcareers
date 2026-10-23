@@ -338,7 +338,7 @@
       "apply": "https://jobs.smartrecruiters.com/TheNielsenCompany/3743990016052475-content-operations-editor-i",
       "cat": "nonit",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Nielsen SmartRecruiters requisition displayed the matching Mumbai hybrid role, graduate and 0–2 year requirements and a requisition-bound I'm interested application control during the 23 Oct check.",
       "postedDate": null,
@@ -374,13 +374,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Nielsen SmartRecruiters requisition displayed the matching Mumbai hybrid role, graduate and 0–2 year requirements and a requisition-bound I'm interested application control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:16.958Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:16.958Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Nielsen SmartRecruiters requisition displayed the matching Mumbai hybrid role, graduate and 0–2 year requirements and a requisition-bound I'm interested application control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:16.958Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "instawork-4686783006",
@@ -593,7 +596,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:40:12.063Z",
+  "updatedAt": "2026-10-23T03:40:16.958Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
