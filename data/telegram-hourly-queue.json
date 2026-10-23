@@ -469,74 +469,76 @@
     {
       "page": "jobs/caribou-media-php-developer.html",
       "batchId": "admin-39896335434",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
       "dueAt": "2026-10-23T03:41:34.569062+00:00",
       "claimId": "39896335434",
-      "claimedAt": "2026-10-23T03:42:06.857407+00:00"
+      "claimedAt": "2026-10-23T03:42:06.857407+00:00",
+      "messageId": 563,
+      "deliveredAt": "2026-10-23T03:42:29.412310+00:00"
     },
     {
       "page": "jobs/dun-bradstreet-apprentice-r-19971.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T04:42:29.412310+00:00"
     },
     {
       "page": "jobs/drivetrain-engineering-intern-gen-ai-for-fp-a-platform.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T05:42:29.412310+00:00"
     },
     {
       "page": "jobs/highlevel-bdr-support-apprentice.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T06:42:29.412310+00:00"
     },
     {
       "page": "jobs/instawork-hr-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T07:42:29.412310+00:00"
     },
     {
       "page": "jobs/konovo-talent-acquisition-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T08:42:29.412310+00:00"
     },
     {
       "page": "jobs/nielsen-content-operations-editor-i.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T09:42:29.412310+00:00"
     },
     {
       "page": "jobs/phonepe-operations-executive.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T10:42:29.412310+00:00"
     },
     {
       "page": "jobs/sprinto-information-security-compliance-intern.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T11:42:29.412310+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T03:41:34.569062+00:00"
+      "dueAt": "2026-10-23T12:42:29.412310+00:00"
     }
   ]
 }
