@@ -560,9 +560,11 @@
     {
       "page": "jobs/wns-global-services-associate-operations.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T12:44:22.870582+00:00"
+      "dueAt": "2026-10-23T12:44:22.870582+00:00",
+      "claimId": "39955598817",
+      "claimedAt": "2026-10-23T12:44:32.900823+00:00"
     }
   ]
 }
