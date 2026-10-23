@@ -393,7 +393,7 @@
       "apply": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
       "cat": "internship",
       "expYears": "Fresher (0–1 year)",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Instawork Greenhouse requisition displayed the Bengaluru HR internship, fresher 0–1 year requirement and a complete application form with Submit application during the 23 Oct check.",
       "postedDate": null,
@@ -429,13 +429,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Instawork Greenhouse requisition displayed the Bengaluru HR internship, fresher 0–1 year requirement and a complete application form with Submit application during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:21.531Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:21.531Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Instawork Greenhouse requisition displayed the Bengaluru HR internship, fresher 0–1 year requirement and a complete application form with Submit application during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:21.531Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "konovo-5455984008",
@@ -596,7 +599,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:40:16.958Z",
+  "updatedAt": "2026-10-23T03:40:21.532Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
