@@ -560,7 +560,7 @@
       "apply": "https://jobs.smartrecruiters.com/CaribouMediaPvtLtd/84098168-php-developer",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Caribou Media SmartRecruiters requisition displayed the matching Hyderabad company context, 0–2 year qualification, role content and a requisition-bound I'm interested application control during the 23 Oct check.",
       "postedDate": null,
@@ -596,16 +596,19 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Caribou Media SmartRecruiters requisition displayed the matching Hyderabad company context, 0–2 year qualification, role content and a requisition-bound I'm interested application control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:55.810Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:55.810Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Caribou Media SmartRecruiters requisition displayed the matching Hyderabad company context, 0–2 year qualification, role content and a requisition-bound I'm interested application control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:55.810Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-23T03:40:43.161Z",
+  "updatedAt": "2026-10-23T03:40:55.810Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
