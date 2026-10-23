@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-23-0900-ist",
   "generatedAt": "2026-10-23T03:35:27.232Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "ey-1731119",
@@ -608,7 +608,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-23T03:40:55.810Z",
+  "updatedAt": "2026-10-23T03:41:16.804Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
@@ -640,5 +640,47 @@
     "policy": "Zero-experience eligibility, exact current application evidence, Deloitte/watchlist priority, usefulness and source completeness; one employer per combined batch.",
     "priorityCount": 10,
     "backupCount": 1
+  },
+  "submittedAt": "2026-10-23T03:41:16.803Z",
+  "publication": {
+    "candidateIds": [
+      "caribou-84098168",
+      "dnb-r-19971",
+      "drivetrain-bc1c17bc",
+      "highlevel-48265533",
+      "instawork-4686783006",
+      "konovo-5455984008",
+      "nielsen-3743990016052475",
+      "phonepe-1000000000002921",
+      "sprinto-b0f52d4a",
+      "wns-744000105344195"
+    ],
+    "companies": [
+      "Caribou Media",
+      "Dun & Bradstreet",
+      "Drivetrain",
+      "HighLevel",
+      "Instawork",
+      "Konovo",
+      "Nielsen",
+      "PhonePe",
+      "Sprinto",
+      "WNS Global Services"
+    ],
+    "urls": [
+      "https://jobs.smartrecruiters.com/CaribouMediaPvtLtd/84098168-php-developer",
+      "https://jobs.lever.co/dnb/d6f935d0-5fdd-4f07-8dab-96b49dcce2a7",
+      "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
+      "https://jobs.lever.co/gohighlevel/48265533-1a1c-405b-a805-7dae16ce8c16",
+      "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
+      "https://job-boards.greenhouse.io/konovo/jobs/5455984008",
+      "https://jobs.smartrecruiters.com/TheNielsenCompany/3743990016052475-content-operations-editor-i",
+      "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000002921-operations-executive",
+      "https://jobs.lever.co/Sprinto/b0f52d4a-c9ac-414d-86c9-2f2f35868aef",
+      "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000105344195-associate-operations"
+    ],
+    "requestId": "231aa913df59d0dbc7a91aab",
+    "count": 10,
+    "submittedAt": "2026-10-23T03:41:16.803Z"
   }
 }
