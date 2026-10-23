@@ -550,18 +550,19 @@
     {
       "page": "jobs/sprinto-information-security-compliance-intern.html",
       "batchId": "admin-39896335434",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T11:44:06.492333+00:00",
       "claimId": "39948162928",
-      "claimedAt": "2026-10-23T11:44:18.498600+00:00"
+      "claimedAt": "2026-10-23T11:44:18.498600+00:00",
+      "messageId": 572,
+      "deliveredAt": "2026-10-23T11:44:22.870582+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations.html",
       "batchId": "admin-39896335434",
       "status": "pending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T12:44:06.492333+00:00"
+      "dueAt": "2026-10-23T12:44:22.870582+00:00"
     }
   ]
 }
