@@ -510,9 +510,11 @@
     {
       "page": "jobs/instawork-hr-intern.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T07:43:08.925082+00:00"
+      "dueAt": "2026-10-23T07:43:08.925082+00:00",
+      "claimId": "39919652615",
+      "claimedAt": "2026-10-23T07:43:19.320646+00:00"
     },
     {
       "page": "jobs/konovo-talent-acquisition-intern.html",
