@@ -448,7 +448,7 @@
       "apply": "https://job-boards.greenhouse.io/konovo/jobs/5455984008",
       "cat": "internship",
       "expYears": "Student or recent graduate; no prior recruiting experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Konovo Greenhouse requisition displayed the new Bengaluru internship, no-experience-required eligibility and a complete application form with Submit application during the 23 Oct check.",
       "postedDate": null,
@@ -484,13 +484,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Konovo Greenhouse requisition displayed the new Bengaluru internship, no-experience-required eligibility and a complete application form with Submit application during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:39.190Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:39.190Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Konovo Greenhouse requisition displayed the new Bengaluru internship, no-experience-required eligibility and a complete application form with Submit application during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:39.190Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wns-744000105344195",
@@ -599,7 +602,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:40:21.532Z",
+  "updatedAt": "2026-10-23T03:40:39.191Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
