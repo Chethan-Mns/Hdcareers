@@ -520,9 +520,11 @@
     {
       "page": "jobs/konovo-talent-acquisition-intern.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T08:43:22.626532+00:00"
+      "dueAt": "2026-10-23T08:43:22.626532+00:00",
+      "claimId": "39926669988",
+      "claimedAt": "2026-10-23T08:43:32.888485+00:00"
     },
     {
       "page": "jobs/nielsen-content-operations-editor-i.html",
