@@ -11,7 +11,7 @@
       "apply": "https://careers.ey.com/ey/job/Bengaluru-IDT-VAT-Compliance-Staff-KA-560016/1424628833/",
       "cat": "nonit",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1731119 displayed the matching title, Bengaluru location, 20 Oct 2026 date, 0–2 year qualification and an active Apply now control during the 23 Oct check.",
       "postedDate": "20 Oct 2026",
@@ -25,7 +25,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "EY Careers",
         "desc": "Indirect-tax compliance staff role supporting VAT return preparation, multi-country client work and process improvement.",
         "elig": "Graduate or postgraduate, preferably in Commerce; 0–2 years of experience, preferably in accounting or tax.",
@@ -46,14 +46,15 @@
         "jobId": "1731119",
         "date": "20 Oct 2026",
         "verifiedDate": "23 Oct 2026",
-        "sourceVerificationMethod": "Exact EY requisition 1731119 displayed the matching title, Bengaluru location, 20 Oct 2026 date, 0–2 year qualification and an active Apply now control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "sourceVerificationMethod": "Exact EY requisition 1731119 displayed the matching title, Bengaluru location, 20 Oct 2026 date, 0–2 year qualification and an active Apply now control during the 23 Oct check."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact EY requisition 1731119 displayed the matching title, Bengaluru location, 20 Oct 2026 date, 0–2 year qualification and an active Apply now control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:39:17.240Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "phonepe-1000000000002921",
@@ -577,7 +578,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:35:27.232Z",
+  "updatedAt": "2026-10-23T03:39:17.240Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
