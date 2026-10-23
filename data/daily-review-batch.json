@@ -119,7 +119,7 @@
       "apply": "https://jobs.lever.co/Sprinto/b0f52d4a-c9ac-414d-86c9-2f2f35868aef",
       "cat": "internship",
       "expYears": "Internship; prior audit exposure is a plus",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Sprinto Lever requisition displayed the matching India internship, graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check.",
       "postedDate": null,
@@ -155,13 +155,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Sprinto Lever requisition displayed the matching India internship, graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:39:31.139Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:39:31.139Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Sprinto Lever requisition displayed the matching India internship, graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:39:31.139Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "dnb-r-19971",
@@ -581,7 +584,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:39:24.908Z",
+  "updatedAt": "2026-10-23T03:39:31.140Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
