@@ -174,7 +174,7 @@
       "apply": "https://jobs.lever.co/dnb/d6f935d0-5fdd-4f07-8dab-96b49dcce2a7",
       "cat": "internship",
       "expYears": "12-month apprenticeship; experience requirement not specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Dun & Bradstreet Lever requisition R-19971 displayed the Mumbai apprenticeship, 12-month tenure, substantive responsibilities and active Apply for this job route during the 23 Oct check.",
       "postedDate": null,
@@ -210,13 +210,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Dun & Bradstreet Lever requisition R-19971 displayed the Mumbai apprenticeship, 12-month tenure, substantive responsibilities and active Apply for this job route during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:39:37.878Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:39:37.878Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Dun & Bradstreet Lever requisition R-19971 displayed the Mumbai apprenticeship, 12-month tenure, substantive responsibilities and active Apply for this job route during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:39:37.878Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "highlevel-48265533",
@@ -584,7 +587,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:39:31.140Z",
+  "updatedAt": "2026-10-23T03:39:37.878Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
