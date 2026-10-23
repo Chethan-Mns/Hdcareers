@@ -1,13 +1,13 @@
 {
   "verifiedThrough": "23 October 2026",
-  "active": 147,
+  "active": 148,
   "employers": 96,
-  "freshers": 86,
+  "freshers": 87,
   "experienced": 56,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 59
+      "count": 60
     },
     {
       "label": "Mumbai",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 59
+      "count": 60
     },
     {
       "city": "Mumbai",
@@ -200,14 +200,14 @@
       "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
+      "name": "Cisco",
+      "count": 2,
+      "logo": "assets/company-marks-review/cisco.svg"
+    },
+    {
       "name": "Drivetrain",
       "count": 2,
       "logo": ""
-    },
-    {
-      "name": "Instawork",
-      "count": 2,
-      "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
     }
   ],
   "topSkills": [
@@ -271,7 +271,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 70
+      "count": 71
     },
     {
       "label": "internship",
@@ -385,7 +385,7 @@
     },
     {
       "date": "2026-10-23",
-      "count": 27
+      "count": 28
     }
   ]
 }
