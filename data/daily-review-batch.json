@@ -283,7 +283,7 @@
       "apply": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
       "cat": "internship",
       "expYears": "Student or recent graduate internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Drivetrain Lever requisition displayed the India internship, student/recent-graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check.",
       "postedDate": null,
@@ -319,13 +319,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact Drivetrain Lever requisition displayed the India internship, student/recent-graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:40:12.063Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:40:12.063Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Drivetrain Lever requisition displayed the India internship, student/recent-graduate eligibility, full role content and active Apply for this job controls during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:40:12.063Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nielsen-3743990016052475",
@@ -590,7 +593,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:39:44.065Z",
+  "updatedAt": "2026-10-23T03:40:12.063Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
