@@ -1,0 +1,48 @@
+name: Mobile Lighthouse audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 3 * * 1'
+permissions:
+  contents: read
+jobs:
+  mobile-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit production homepage and a verified job page
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p lighthouse-results
+          JOB_PAGE=$(python3 - <<'PY'
+          import json
+          from pathlib import Path
+          jobs=json.loads(Path("data/jobs.json").read_text())
+          for job in jobs:
+              if job.get("status")=="active" and str(job.get("page","")).startswith("jobs/"):
+                  print("https://hdcareers.in/"+job["page"])
+                  break
+          PY
+          )
+          npx --yes lighthouse@12 https://hdcareers.in/ --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=./lighthouse-results/home --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --quiet
+          npx --yes lighthouse@12 "$JOB_PAGE" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=./lighthouse-results/job --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --quiet
+          node - <<'JS'
+          const fs=require('fs');
+          for(const page of ['home','job']){
+            const d=JSON.parse(fs.readFileSync('lighthouse-results/'+page+'.report.json','utf8'));
+            const categories=Object.fromEntries(Object.entries(d.categories).map(([k,v])=>[k,Math.round(v.score*100)]));
+            const metrics=Object.fromEntries(['first-contentful-paint','largest-contentful-paint','cumulative-layout-shift','total-blocking-time','speed-index'].map(k=>[k,d.audits[k]?.displayValue||'N/A']));
+            console.log(JSON.stringify({page,url:d.finalDisplayedUrl,categories,metrics}));
+          }
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-lighthouse-reports
+          path: lighthouse-results/
+          retention-days: 14
