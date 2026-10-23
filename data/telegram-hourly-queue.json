@@ -540,9 +540,11 @@
     {
       "page": "jobs/phonepe-operations-executive.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T10:43:51.658487+00:00"
+      "dueAt": "2026-10-23T10:43:51.658487+00:00",
+      "claimId": "39941156195",
+      "claimedAt": "2026-10-23T10:44:02.870596+00:00"
     },
     {
       "page": "jobs/sprinto-information-security-compliance-intern.html",
