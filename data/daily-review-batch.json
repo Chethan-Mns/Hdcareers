@@ -64,7 +64,7 @@
       "apply": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000002921-operations-executive",
       "cat": "nonit",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact PhonePe SmartRecruiters requisition displayed the matching title, 0–2 year qualification, substantive role content and a requisition-bound I'm interested application control during the 23 Oct check.",
       "postedDate": null,
@@ -100,13 +100,16 @@
         "date": "Not Specified",
         "verifiedDate": "23 Oct 2026",
         "sourceVerificationMethod": "Exact PhonePe SmartRecruiters requisition displayed the matching title, 0–2 year qualification, substantive role content and a requisition-bound I'm interested application control during the 23 Oct check.",
-        "browserVerifiedAt": "2026-10-23T03:35:27.232Z"
+        "browserVerifiedAt": "2026-10-23T03:39:24.878Z",
+        "manualLiveVerifiedAt": "2026-10-23T03:39:24.878Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-23T03:35:27.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact PhonePe SmartRecruiters requisition displayed the matching title, 0–2 year qualification, substantive role content and a requisition-bound I'm interested application control during the 23 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-23T03:39:24.878Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "sprinto-b0f52d4a",
@@ -578,7 +581,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-23T03:39:17.240Z",
+  "updatedAt": "2026-10-23T03:39:24.908Z",
   "discoverySummary": {
     "portalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 36,
