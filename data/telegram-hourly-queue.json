@@ -480,9 +480,11 @@
     {
       "page": "jobs/dun-bradstreet-apprentice-r-19971.html",
       "batchId": "admin-39896335434",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-23T03:41:34.569062+00:00",
-      "dueAt": "2026-10-23T04:42:29.412310+00:00"
+      "dueAt": "2026-10-23T04:42:29.412310+00:00",
+      "claimId": "39901753111",
+      "claimedAt": "2026-10-23T04:42:39.521015+00:00"
     },
     {
       "page": "jobs/drivetrain-engineering-intern-gen-ai-for-fp-a-platform.html",
