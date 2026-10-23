@@ -132,6 +132,14 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background:#9aa8ba;border-radius:999px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal-on-scroll{opacity:1!important;transform:none!important}}
+/* HD-LITE-RENDER-OPTIMIZATION */
+@media(max-width:640px){
+  html.hd-lite .glass-nav,html.hd-lite .modal-backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  html.hd-lite .hero-orb,html.hd-lite .ticker-dot{animation:none!important}
+  html.hd-lite .job-card,html.hd-lite .company-logo,html.hd-lite .channel-card,html.hd-lite .social-icon{transition:none!important}
+  html.hd-lite .job-card:hover,html.hd-lite .channel-card:hover,html.hd-lite .social-icon:hover{transform:none!important;box-shadow:none!important}
+  html.hd-lite .soft-enter,html.hd-lite .modal-card{animation:none!important}
+}
 </style>
 <script defer src="/assets/analytics.js"></script>
 <link rel="stylesheet" href="assets/public-header.css">
