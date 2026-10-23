@@ -1,21 +1,21 @@
 {
-  "verifiedThrough": "22 October 2026",
-  "active": 142,
-  "employers": 90,
-  "freshers": 88,
-  "experienced": 49,
+  "verifiedThrough": "23 October 2026",
+  "active": 152,
+  "employers": 97,
+  "freshers": 89,
+  "experienced": 58,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 59
+      "count": 61
     },
     {
       "label": "Mumbai",
-      "count": 13
+      "count": 15
     },
     {
       "label": "Hyderabad",
-      "count": 9
+      "count": 10
     },
     {
       "label": "Gurugram",
@@ -43,19 +43,19 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 59
+      "count": 61
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 13
+      "count": 15
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 9
+      "count": 10
     },
     {
       "city": "Gurugram",
@@ -205,9 +205,9 @@
       "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
-      "name": "NTT DATA",
+      "name": "Drivetrain",
       "count": 2,
-      "logo": "assets/company-marks-review/ntt-data.svg"
+      "logo": ""
     }
   ],
   "topSkills": [
@@ -221,7 +221,7 @@
     },
     {
       "label": "SQL",
-      "count": 16
+      "count": 17
     },
     {
       "label": "Communication",
@@ -252,34 +252,34 @@
       "count": 8
     },
     {
+      "label": "Attention to detail",
+      "count": 7
+    },
+    {
+      "label": "Excel",
+      "count": 7
+    },
+    {
       "label": "C++",
       "count": 7
     },
     {
       "label": "Troubleshooting",
       "count": 7
-    },
-    {
-      "label": "Linux",
-      "count": 7
-    },
-    {
-      "label": "Excel",
-      "count": 6
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 73
+      "count": 74
     },
     {
       "label": "internship",
-      "count": 31
+      "count": 37
     },
     {
       "label": "nonit",
-      "count": 24
+      "count": 27
     },
     {
       "label": "experienced",
@@ -385,6 +385,10 @@
     },
     {
       "date": "2026-10-22",
+      "count": 10
+    },
+    {
+      "date": "2026-10-23",
       "count": 10
     }
   ]
