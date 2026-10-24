@@ -1,18 +1,4 @@
 {
-  "Blueberry Labs": {
-    "status": "needs_review",
-    "company": "Blueberry Labs",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/blueberry-labs-software-engineer-intern.html"
-  },
-  "Capco": {
-    "status": "needs_review",
-    "company": "Capco",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/capco-hr-resource-management-intern.html"
-  },
   "Caribou Media": {
     "status": "needs_review",
     "company": "Caribou Media",
@@ -30,57 +16,29 @@
   "DataFlair Web Services Pvt Ltd": {
     "status": "needs_review",
     "company": "DataFlair Web Services Pvt Ltd",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "data-flair.training",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/dataflair-software-engineer-fresher-indore.html"
   },
   "Drivetrain": {
     "status": "needs_review",
     "company": "Drivetrain",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "drivetrain.ai",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/drivetrain-engineering-intern-gen-ai-for-fp-a-platform.html"
-  },
-  "Dun & Bradstreet": {
-    "status": "needs_review",
-    "company": "Dun & Bradstreet",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/dun-bradstreet-apprentice-r-19971.html"
   },
   "Endeavor IT Solution": {
     "status": "needs_review",
     "company": "Endeavor IT Solution",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "endeavoritsolution.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/endeavor-it-solution-internship-opportunities-for-graduates.html"
-  },
-  "Enterpret": {
-    "status": "needs_review",
-    "company": "Enterpret",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/enterpret-backend-software-engineering-intern.html"
-  },
-  "ERM": {
-    "status": "needs_review",
-    "company": "ERM",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/erm-people-services-intern.html"
-  },
-  "Fretron Private Ltd.": {
-    "status": "needs_review",
-    "company": "Fretron Private Ltd.",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/fretron-technical-engineer-gurugram.html"
   },
   "Graviton Research Capital": {
     "status": "needs_review",
     "company": "Graviton Research Capital",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "gravitontrading.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/graviton-research-capital-software-engineer-2027-graduate.html"
   },
   "HighLevel": {
@@ -90,40 +48,12 @@
     "reason": "no quality-approved official icon found",
     "jobPage": "jobs/highlevel-bdr-support-apprentice.html"
   },
-  "Hyreo": {
-    "status": "needs_review",
-    "company": "Hyreo",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/hyreo-software-engineer-java-bengaluru-5322122004.html"
-  },
   "IndianOil": {
     "status": "needs_review",
     "company": "IndianOil",
     "officialDomain": "iocl.com",
     "reason": "no quality-approved official icon found",
     "jobPage": "jobs/indianoil-trade-technician-graduate-apprentices-western-region.html"
-  },
-  "ION Group": {
-    "status": "needs_review",
-    "company": "ION Group",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/ion-group-software-developer-2027-leadership-development-program.html"
-  },
-  "Konovo": {
-    "status": "needs_review",
-    "company": "Konovo",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/konovo-talent-acquisition-intern.html"
-  },
-  "KredX": {
-    "status": "needs_review",
-    "company": "KredX",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/kredx-corporate-sales-trainee-freshers.html"
   },
   "LinuxBean Solution": {
     "status": "needs_review",
@@ -135,58 +65,37 @@
   "Mactores": {
     "status": "needs_review",
     "company": "Mactores",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "mactores.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/mactores-cloud-engineer-intern.html"
   },
   "MarkTeQ": {
     "status": "needs_review",
     "company": "MarkTeQ",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "markteq.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/markteq-web-software-developer-ahmedabad.html"
   },
   "NEC Software Solutions (India)": {
     "status": "needs_review",
     "company": "NEC Software Solutions (India)",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "necsws.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/nec-software-solutions-india-finance-intern.html"
   },
   "NEC Software Solutions India": {
     "status": "needs_review",
     "company": "NEC Software Solutions India",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "necsws.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/nec-software-solutions-india-software-engineer-full-stack-developer-java-react.html"
-  },
-  "Nielsen": {
-    "status": "needs_review",
-    "company": "Nielsen",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/nielsen-content-operations-editor-i.html"
   },
   "Pentoz Technology": {
     "status": "needs_review",
     "company": "Pentoz Technology",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "pentoz.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/pentoz-technology-business-development-executive-internship.html"
-  },
-  "PhonePe": {
-    "status": "needs_review",
-    "company": "PhonePe",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/phonepe-operations-executive.html"
-  },
-  "Playto Labs": {
-    "status": "needs_review",
-    "company": "Playto Labs",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/playto-labs-business-development-representative-fresher.html"
   },
   "Sprinto": {
     "status": "needs_review",
@@ -194,13 +103,6 @@
     "officialDomain": "sprinto.com",
     "reason": "no quality-approved official icon found",
     "jobPage": "jobs/sprinto-information-security-compliance-intern.html"
-  },
-  "SuperApp": {
-    "status": "needs_review",
-    "company": "SuperApp",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/superapp-software-engineer-backend-early-careers.html"
   },
   "Swappit Web & Software Solutions": {
     "status": "needs_review",
@@ -219,8 +121,8 @@
   "Taurus Hard Soft Solutions Pvt Ltd": {
     "status": "needs_review",
     "company": "Taurus Hard Soft Solutions Pvt Ltd",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "taurusgroups.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/taurus-hard-soft-solutions-java-developer-bengaluru.html"
   },
   "Veeva Systems": {
@@ -233,29 +135,22 @@
   "WNS Global Services": {
     "status": "needs_review",
     "company": "WNS Global Services",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "wns.com",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/wns-global-services-associate-operations.html"
   },
   "Zeta": {
     "status": "needs_review",
     "company": "Zeta",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
+    "officialDomain": "zeta.tech",
+    "reason": "no quality-approved official icon found",
     "jobPage": "jobs/zeta-executive-assistant.html"
   },
-  "Zinnov": {
+  "Fam": {
     "status": "needs_review",
-    "company": "Zinnov",
+    "company": "Fam",
     "officialDomain": null,
     "reason": "no trusted official domain",
-    "jobPage": "jobs/zinnov-intern-people-success-partner.html"
-  },
-  "Zynga": {
-    "status": "needs_review",
-    "company": "Zynga",
-    "officialDomain": null,
-    "reason": "no trusted official domain",
-    "jobPage": "jobs/zynga-marketing-artist-intern.html"
+    "jobPage": "jobs/fam-copy-intern.html"
   }
 }
