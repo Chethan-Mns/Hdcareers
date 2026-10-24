@@ -24,6 +24,10 @@
 .hd-logo-summary img[src*="company-icons/dataflair-web-services-pvt-ltd-"],
 .hdj3-logo+* img[src*="company-icons/caribou-media-"],
 .hdj3-logo+* img[src*="company-icons/dataflair-web-services-pvt-ltd-"]{transform:scale(1.25)!important;transform-origin:center}
+.hdj3-logo.hd-dataflair-logo{width:80px;height:80px;flex:0 0 80px}
+.hd-logo-summary.hd-dataflair-logo{width:80px!important;height:80px!important;min-width:80px}
+.hdj3-logo.hd-dataflair-logo img[src*="dataflair-web-services-pvt-ltd-"],
+.hd-logo-summary.hd-dataflair-logo img[src*="dataflair-web-services-pvt-ltd-"]{width:96%!important;height:96%!important;transform:scale(1.14)!important;transform-origin:center}
 .hdj3-employer strong{display:block;font-weight:900;font-size:20px}.hdj3-employer small{display:block;color:#728caf;font-size:12px;margin-top:3px}
 .hdj3-intro h1{font-size:clamp(30px,3.35vw,48px);letter-spacing:-.045em;line-height:1.14;font-weight:900;color:#0a2040;margin:0 0 20px;overflow-wrap:break-word}
 .hdj3-tags{display:flex;gap:9px;flex-wrap:wrap}.hdj3-tags span{background:#e1ebff;border-radius:30px;padding:7px 13px;color:#0d5cc9;font-size:12px;font-weight:850;display:inline-flex;align-items:center;gap:9px}

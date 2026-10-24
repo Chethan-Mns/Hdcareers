@@ -88,6 +88,28 @@ class CompanyLogoRules(unittest.TestCase):
                 self.assertTrue((ROOT/path).is_file(),path)
                 self.assertEqual(Path(path).suffix,".webp")
 
+    def test_logo_refresh_is_visible_for_four_requested_employers(self):
+        from PIL import Image
+        expected={
+            "MongoDB": "mongodb-leaf-v2-20261024.webp",
+            "SuperApp": "superapp-chat-v2-20261024.webp",
+            "Blueberry Labs": "blueberry-labs-compact-v2-20261024.webp",
+        }
+        for company,name in expected.items():
+            with self.subTest(company=company):
+                asset=self.approved.get(company,"")
+                self.assertEqual(Path(asset).name,name)
+                with Image.open(ROOT/asset) as img:
+                    self.assertEqual(img.size,(384,384))
+                    self.assertEqual(img.format,"WEBP")
+        self.assertIn("hd-dataflair-logo",self.home)
+        self.assertIn("dataflairLogo=key==='dataflair web services pvt ltd'",self.home)
+        self.assertIn("dataflair_logo = company.casefold()",self.generator)
+        hero=(ROOT/"assets/job-hero.css").read_text(encoding="utf-8")
+        self.assertIn(".hdj3-logo.hd-dataflair-logo{width:80px",hero)
+        self.assertIn(".hd-logo-summary.hd-dataflair-logo{width:80px",hero)
+        self.assertIn(".company-logo.hd-dataflair-logo{width:80px",self.home)
+
     def test_company_ats_examples_are_configured(self):
         domains=json.loads((ROOT/"data/company-logo-domains.json").read_text())
         for name in ("Glance","Instawork","66degrees"):

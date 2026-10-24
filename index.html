@@ -67,6 +67,8 @@ a{text-decoration:none}
 /* Owner-requested logo enlargement: only Caribou Media and DataFlair. Other logos remain unchanged. */
 .company-logo img[src*="company-icons/caribou-media-"],
 .company-logo img[src*="company-icons/dataflair-web-services-pvt-ltd-"]{transform:scale(1.25)!important;transform-origin:center}
+.company-logo.hd-dataflair-logo{width:80px!important;height:80px!important;min-width:80px}
+.company-logo.hd-dataflair-logo img[src*="company-icons/dataflair-web-services-pvt-ltd-"]{width:96%;height:96%;transform:scale(1.14)!important;transform-origin:center}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
@@ -630,6 +632,7 @@ function companyLogo(j,size='w-16 h-16'){
   const first=unique.shift();
   // Never change display rules for pre-existing logos (e.g. PhonePe).
   const ownerLogo=String(first||'').startsWith('assets/company-owner/');
+  const dataflairLogo=key==='dataflair web services pvt ltd';
   const backups=JSON.stringify(unique).replace(/"/g,'&quot;');
   const mark=String((j.logo&&j.logo[0])||company.slice(0,2)||'HD').slice(0,8).replace(/"/g,'&quot;');
   const color=String((j.logo&&j.logo[1])||'#0b6fe8').replace(/"/g,'&quot;');
@@ -637,7 +640,7 @@ function companyLogo(j,size='w-16 h-16'){
   const visible=first
     ?'<img '+(ownerLogo?'data-hd-employer-logo="1" onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" ':'')+'src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="'+(ownerLogo?'hd-logo-art w-[96%] h-[96%]':'w-[94%] h-[94%]')+' object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
     :'<span style="color:'+color+';font-weight:900;font-size:16px">'+mark+'</span>';
-  return '<div class="company-logo '+(ownerLogo?'hd-owner-logo ':'')+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
+  return '<div class="company-logo '+(ownerLogo?'hd-owner-logo ':'')+(dataflairLogo?'hd-dataflair-logo ':'')+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
 }
 
 function parseJobDate(s){const m=s.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);if(!m)return 0;const months={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};return new Date(+m[3],months[m[2]]??0,+m[1]).getTime()}

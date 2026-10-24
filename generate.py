@@ -827,6 +827,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     candidates = logo_candidates(job)
     favicon_url = candidates[0] if candidates else ""
     owner_logo = favicon_url.startswith("../assets/company-owner/")
+    dataflair_logo = company.casefold() == "dataflair web services pvt ltd"
     if favicon_url:
         if owner_logo:
             mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:3]
@@ -851,7 +852,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         )
     else:
         summary_logo = (
-            '<div class="w-14 h-14 rounded-xl border border-slate-200 bg-white flex items-center justify-center overflow-hidden">'
+            '<div class="' + ('hd-dataflair-logo ' if dataflair_logo else '') + 'w-14 h-14 rounded-xl border border-slate-200 bg-white flex items-center justify-center overflow-hidden">'
             + f'<img src="{esc(favicon_url)}" alt="{esc(company)} logo" class="w-[72%] h-[72%] object-contain" '
             + logo_onerror(job) + '></div>'
         )
@@ -929,7 +930,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "favicon_url": favicon_url,
         "logo_image": logo_image,
         "summary_logo": summary_logo,
-        "hero_logo_class": "hd-owner-logo" if owner_logo else "",
+        "hero_logo_class": "hd-owner-logo" if owner_logo else ("hd-dataflair-logo" if dataflair_logo else ""),
         "company": esc(company),
         "logo_onerror": logo_onerror(job),
         "cat_icon": CAT_ICON[cat],
