@@ -12,7 +12,9 @@ import re
 import socket
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urljoin, urlparse
-from urllib.request import Request, build_opener
+from urllib.request import Request, build_opener, HTTPRedirectHandler
+
+from employer_brand_sources import official_logo_candidates, safe_svg_bytes
 
 from PIL import Image, ImageChops, ImageOps
 
@@ -22,6 +24,7 @@ DOMAIN_PATH = ROOT / "data" / "company-logo-domains.json"
 DIRECT_PATH = ROOT / "data" / "company-logo-direct.json"
 QUALITY_FALLBACK_PATH = ROOT / "data" / "company-logo-quality-fallbacks.json"
 MANIFEST_PATH = ROOT / "data" / "company-logos.json"
+REVIEW_PATH = ROOT / "data" / "company-logo-review.json"
 ASSET_DIR = ROOT / "assets" / "company-icons"
 
 GENERIC_HOSTS = (
@@ -29,7 +32,9 @@ GENERIC_HOSTS = (
     "successfactors.com", "taleo.net", "oraclecloud.com", "icims.com",
     "smartrecruiters.com", "workable.com", "infosysapps.com", "ashbyhq.com",
     "teamtailor.com", "jobvite.com", "bamboohr.com", "recruitee.com",
-    "applytojob.com", "ultipro.com", "workday.com",
+    "applytojob.com", "ultipro.com", "workday.com", "airtable.com",
+    "forms.gle", "docs.google.com", "forms.office.com", "jotform.com",
+    "typeform.com", "tally.so", "formstack.com", "smartsheet.com",
 )
 
 USER_AGENT = "HD-Careers-Official-Logo-Resolver/2.0"
@@ -95,7 +100,9 @@ def is_generic(host: str) -> bool:
 def public_https(url: str) -> bool:
     try:
         parsed = urlparse(url)
-        if parsed.scheme != "https" or not parsed.hostname:
+        if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+            return False
+        if parsed.port not in (None, 443):
             return False
         addresses = socket.getaddrinfo(parsed.hostname, 443, type=socket.SOCK_STREAM)
         return bool(addresses) and all(ipaddress.ip_address(row[4][0]).is_global for row in addresses)
@@ -127,7 +134,15 @@ def fetch(url: str, limit: int) -> tuple[bytes, str, str]:
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,image/svg+xml,image/avif,image/webp,image/png,image/jpeg,image/x-icon,*/*;q=0.7",
     })
-    with build_opener().open(req, timeout=7) as res:
+    class PublicHttpsRedirect(HTTPRedirectHandler):
+        def redirect_request(self, request, fp, code, msg, headers, newurl):
+            if not public_https(newurl):
+                raise ValueError("redirect to non-public or non-HTTPS URL")
+            return super().redirect_request(request, fp, code, msg, headers, newurl)
+
+    with build_opener(PublicHttpsRedirect()).open(req, timeout=7) as res:
+        if not public_https(res.geturl()):
+            raise ValueError("response URL was not public HTTPS")
         body = res.read(limit + 1)
         if len(body) > limit:
             raise ValueError("response too large")
@@ -164,7 +179,7 @@ def slugify(company: str) -> str:
     return f"{base}-{digest}"
 
 
-def candidate_urls(domain: str, direct_url: str = "") -> list[tuple[int, str, str]]:
+def candidate_urls(domain: str, direct_url: str = "", company: str = "") -> list[tuple[int, str, str]]:
     base = f"https://{domain}/"
     candidates: list[tuple[int, str, str]] = []
 
@@ -174,10 +189,7 @@ def candidate_urls(domain: str, direct_url: str = "") -> list[tuple[int, str, st
     try:
         html_body, content_type, final_url = fetch(base, MAX_HTML)
         if "text/html" in content_type or html_body.lstrip().startswith((b"<!DOCTYPE", b"<html", b"<HTML")):
-            parser = IconParser()
-            parser.feed(html_body.decode("utf-8", errors="replace"))
-            for score, href, rel in parser.icons:
-                candidates.append((score, urljoin(final_url, href), rel))
+            candidates.extend(official_logo_candidates(html_body.decode("utf-8", errors="replace"), final_url, company))
     except Exception:
         pass
 
@@ -193,12 +205,6 @@ def candidate_urls(domain: str, direct_url: str = "") -> list[tuple[int, str, st
     ]
     candidates.extend(defaults)
 
-    proxy = (
-        "https://www.google.com/s2/favicons?domain_url="
-        + quote("https://" + domain + "/", safe="")
-        + "&sz=256"
-    )
-    candidates.append((75, proxy, "official-domain favicon proxy fallback"))
 
     seen = set()
     out = []
@@ -212,17 +218,7 @@ def candidate_urls(domain: str, direct_url: str = "") -> list[tuple[int, str, st
 
 
 def clean_svg(body: bytes) -> bytes | None:
-    try:
-        text = body.decode("utf-8", errors="strict")
-    except UnicodeDecodeError:
-        return None
-    if "<svg" not in text.lower():
-        return None
-    text = re.sub(r"<script\b[^>]*>.*?</script\s*>", "", text, flags=re.I | re.S)
-    text = re.sub(r'\\son[a-z]+\\s*=\\s*"[^"]*"', "", text, flags=re.I | re.S)
-    text = re.sub(r"\\son[a-z]+\\s*=\\s*'[^']*'", "", text, flags=re.I | re.S)
-    return text.encode("utf-8")
-
+    return safe_svg_bytes(body)
 
 def raster_dimensions(body: bytes) -> tuple[int, int] | None:
     try:
@@ -232,12 +228,12 @@ def raster_dimensions(body: bytes) -> tuple[int, int] | None:
         return None
 
 
-def raster_score(width: int, height: int, base_score: int) -> int | None:
+def raster_score(width: int, height: int, base_score: int, wordmark: bool = False) -> int | None:
     short = min(width, height)
     long = max(width, height)
     if short < MIN_RASTER_SIDE:
         return None
-    if long / max(short, 1) > 3.2:
+    if long / max(short, 1) > (8.0 if wordmark else 3.2):
         return None
     quality = min(short, 512)
     if short >= GOOD_RASTER_SIDE:
@@ -295,7 +291,7 @@ def evaluate_remote_candidate(base_score: int, url: str, label: str):
         dims = raster_dimensions(body)
         if not dims:
             return None
-        score = raster_score(dims[0], dims[1], base_score)
+        score = raster_score(dims[0], dims[1], base_score, wordmark=("logo" in label and "icon" not in label))
         if score is None:
             return None
         normalized = normalize_raster(body)
@@ -321,7 +317,7 @@ def resolve_icon(company: str, domain: str, direct_url: str = "", local_vector: 
     if local:
         return local
 
-    for base_score, url, label in candidate_urls(domain, direct_url):
+    for base_score, url, label in candidate_urls(domain, direct_url, company):
         result = evaluate_remote_candidate(base_score, url, label)
         if result:
             return result
@@ -364,6 +360,9 @@ def main() -> None:
     changed = False
     resolved = 0
     failed = 0
+    review = load_json(REVIEW_PATH, {})
+    if not isinstance(review, dict):
+        review = {}
 
     def work(item):
         company, sample = item
@@ -423,6 +422,9 @@ def main() -> None:
 
         if not payload:
             failed += 1
+            review[company] = {"status": "needs_review", "company": company,
+                               "officialDomain": domain or None, "reason": error,
+                               "jobPage": str(_sample.get("page", ""))}
             # Failed employer-logo resolution must not preserve provider images.
             old_entry = manifest.get(company, {})
             if isinstance(old_entry, dict) and (
@@ -439,6 +441,7 @@ def main() -> None:
             print(f"[MISS] {company}: {error}")
             continue
 
+        review.pop(company, None)
         kind = payload[0]
         if kind == "resolved":
             score, body, ext, source_url, source_type, dims = payload[1]
@@ -451,6 +454,7 @@ def main() -> None:
                 "officialDomain": domain,
                 "sourceUrl": source_url,
                 "sourceType": source_type,
+                "verificationStatus": "official-site-auto" if ("logo" in source_type.lower() or "header" in source_type.lower()) else "official-domain-icon-auto",
                 "localPath": local_path,
                 "sourceDimensions": list(dims) if dims else None,
                 "qualityScore": score,
@@ -476,6 +480,7 @@ def main() -> None:
                         job["logoSourceDomain"] = domain
                         changed = True
 
+    REVIEW_PATH.write_text(json.dumps(review, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     JOBS_PATH.write_text(json.dumps(jobs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Quality-approved/cached: {resolved}; unresolved: {failed}; changed: {changed}")
