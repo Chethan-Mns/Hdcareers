@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:13:24.828Z",
+  "checkedAt": "2026-10-24T05:13:36.296Z",
   "checked": 144,
-  "active": 134,
+  "active": 135,
   "expired": 1,
-  "review": 9,
+  "review": 8,
   "changedExpired": 1,
   "items": [
     {
@@ -996,9 +996,11 @@
       "role": "Technical Internship 2027",
       "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
       "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-10-23T18:43:56.875941+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:13:36.296Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:13:36.296Z"
     },
     {
       "id": 127,
