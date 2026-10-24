@@ -39,6 +39,30 @@ class CompanyLogoRules(unittest.TestCase):
         for name,path in self.approved.items():
             self.assertTrue((ROOT/path).is_file(),f"{name} logo missing: {path}")
 
+    def test_stale_logo_overrides_never_beat_owner_approvals(self):
+        script=(ROOT/"assets/hd-user-logos.js").read_text(encoding="utf-8")
+        mapping=json.loads(script.split("window.hdUploadedLogos=",1)[1].strip().rstrip(";"))
+        for company in ("MongoDB","SuperApp","Blueberry Labs"):
+            self.assertNotIn(company,mapping)
+            self.assertTrue(self.approved[company].startswith("assets/company-owner/"))
+        self.assertIn("curated.startsWith('assets/company-owner/')?curated",self.home)
+        self.assertIn("assets/hd-user-logos.js?v=owner-logos-20261024-2",self.home)
+        self.assertIn("Veeva Systems",mapping)
+
+    def test_dataflair_cropped_brand_is_not_small_artwork_in_white_box(self):
+        from PIL import Image
+        asset=ROOT/self.approved.get("DataFlair Web Services Pvt Ltd","")
+        self.assertEqual(asset.name,"dataflair-compact-v2-20261024.png")
+        self.assertTrue(asset.is_file())
+        with Image.open(asset) as image:
+            self.assertEqual(image.size,(384,384))
+            rgb=image.convert("RGB")
+            from PIL import ImageChops
+            mask=ImageChops.difference(rgb,Image.new("RGB",rgb.size,"white")).convert("L")
+            bbox=mask.point(lambda x:255 if x>24 else 0).getbbox()
+            self.assertIsNotNone(bbox)
+            self.assertGreater(max(bbox[2]-bbox[0],bbox[3]-bbox[1]),280)
+
     def test_provider_domains_are_rejected(self):
         from scripts.resolve_company_logos import is_generic
         for host in PROVIDERS:

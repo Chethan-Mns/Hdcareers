@@ -154,7 +154,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <script defer src="/assets/analytics.js"></script>
 <link rel="stylesheet" href="assets/public-header.css">
 <script defer src="assets/public-header.js"></script>
-<script defer src="assets/hd-user-logos.js"></script>
+<script defer src="assets/hd-user-logos.js?v=owner-logos-20261024-2"></script>
 <link rel="stylesheet" href="assets/premium-home.css">
 <link rel="stylesheet" href="assets/hd-location-map.css">
 <link rel="stylesheet" href="assets/premium-india-v2.css">
@@ -621,7 +621,10 @@ function logoFallback(img){let backups=[];try{backups=JSON.parse(img.dataset.bac
 function companyLogo(j,size='w-16 h-16'){
   const company=String(j.company||'').trim();
   const key=company.toLowerCase();
-  const approved=(window.hdUploadedLogos&&window.hdUploadedLogos[company])||APPROVED_COMPANY_LOGOS[key]||(/^drdo\b/.test(key)?APPROVED_COMPANY_LOGOS.drdo:'')||'';
+  const curated=APPROVED_COMPANY_LOGOS[key]||(/^drdo\b/.test(key)?APPROVED_COMPANY_LOGOS.drdo:'')||'';
+  // Curated owner-uploaded company logos always win. Legacy 32px data URLs
+  // may still exist for unrelated companies, but must never shadow approval.
+  const approved=curated.startsWith('assets/company-owner/')?curated:((window.hdUploadedLogos&&window.hdUploadedLogos[company])||curated);
   const sourceHost=String(j.logoSourceDomain||'').trim().toLowerCase();
   const safeCache=!sourceHost||!genericRecruitingHost(sourceHost);
   const cached=safeCache&&String(j.logoPath||'').startsWith('assets/company-icons/')?j.logoPath:'';
