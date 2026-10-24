@@ -64,6 +64,9 @@ a{text-decoration:none}
 .company-logo.hd-owner-logo img[data-hd-employer-logo]{display:block;width:96%!important;height:96%!important;object-fit:contain}
 .company-logo.hd-owner-logo.hd-logo-dark{background:#10325a!important;border-color:#10325a!important}
 .company-logo.hd-owner-logo .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
+/* Owner-requested logo enlargement: only Caribou Media and DataFlair. Other logos remain unchanged. */
+.company-logo img[src*="company-icons/caribou-media-"],
+.company-logo img[src*="company-icons/dataflair-web-services-pvt-ltd-"]{transform:scale(1.25)!important;transform-origin:center}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}

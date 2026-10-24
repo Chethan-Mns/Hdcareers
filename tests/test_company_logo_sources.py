@@ -67,6 +67,27 @@ class CompanyLogoRules(unittest.TestCase):
             self.assertIn(n,self.generator.split("def logo_zoom_style(",1)[1])
         self.assertNotIn("old.unlink()",self.resolver)
 
+    def test_owner_requested_zoom_only_for_caribou_and_dataflair(self):
+        css=(ROOT/"assets/job-hero.css").read_text(encoding="utf-8")
+        homepage=self.home.split("<style>",1)[1].split("</style>",1)[0]
+        for key in ("company-icons/caribou-media-","company-icons/dataflair-web-services-pvt-ltd-"):
+            self.assertIn(key,homepage)
+            self.assertIn(key,css)
+        self.assertIn("scale(1.25)!important",homepage)
+        self.assertIn("scale(1.25)!important",css)
+        # Prevent the change from affecting other employer icons or their fallback logic.
+        self.assertNotIn(".company-logo img{transform:scale(1.25)",homepage)
+        self.assertNotIn(".hdj3-logo img{transform:scale(1.25)",css)
+
+    def test_new_owner_logo_replacements_are_registered(self):
+        for company in ("LinuxBean Solution","Blueberry Labs","Mactores","Portcast",
+                        "MongoDB","ION Group","Turner & Townsend"):
+            path=self.approved.get(company,"")
+            with self.subTest(company=company):
+                self.assertTrue(path.startswith("assets/company-owner/"),path)
+                self.assertTrue((ROOT/path).is_file(),path)
+                self.assertEqual(Path(path).suffix,".webp")
+
     def test_company_ats_examples_are_configured(self):
         domains=json.loads((ROOT/"data/company-logo-domains.json").read_text())
         for name in ("Glance","Instawork","66degrees"):

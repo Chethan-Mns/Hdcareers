@@ -17,7 +17,14 @@
 .hdj3-logo.hd-owner-logo img[data-hd-employer-logo],.hd-logo-summary.hd-owner-logo img[data-hd-employer-logo]{display:block;width:96%;height:96%;object-fit:contain}
 .hdj3-logo.hd-owner-logo.hd-logo-dark,.hd-logo-summary.hd-owner-logo.hd-logo-dark{background:#10325a;border-color:#10325a}
 .hdj3-logo.hd-owner-logo .hd-logo-initials,.hd-logo-summary.hd-owner-logo .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
-.hd-logo-summary.hd-owner-logo .hd-logo-art{max-width:100%;max-height:100%}.hdj3-employer strong{display:block;font-weight:900;font-size:20px}.hdj3-employer small{display:block;color:#728caf;font-size:12px;margin-top:3px}
+.hd-logo-summary.hd-owner-logo .hd-logo-art{max-width:100%;max-height:100%}/* Owner-requested size adjustments; no clipping/changes to other employer logos. */
+.hdj3-logo img[src*="company-icons/caribou-media-"],
+.hdj3-logo img[src*="company-icons/dataflair-web-services-pvt-ltd-"],
+.hd-logo-summary img[src*="company-icons/caribou-media-"],
+.hd-logo-summary img[src*="company-icons/dataflair-web-services-pvt-ltd-"],
+.hdj3-logo+* img[src*="company-icons/caribou-media-"],
+.hdj3-logo+* img[src*="company-icons/dataflair-web-services-pvt-ltd-"]{transform:scale(1.25)!important;transform-origin:center}
+.hdj3-employer strong{display:block;font-weight:900;font-size:20px}.hdj3-employer small{display:block;color:#728caf;font-size:12px;margin-top:3px}
 .hdj3-intro h1{font-size:clamp(30px,3.35vw,48px);letter-spacing:-.045em;line-height:1.14;font-weight:900;color:#0a2040;margin:0 0 20px;overflow-wrap:break-word}
 .hdj3-tags{display:flex;gap:9px;flex-wrap:wrap}.hdj3-tags span{background:#e1ebff;border-radius:30px;padding:7px 13px;color:#0d5cc9;font-size:12px;font-weight:850;display:inline-flex;align-items:center;gap:9px}
 .hdj3-desc{font-size:14px;color:#597699;line-height:1.76;max-width:620px;margin:18px 0 20px}
