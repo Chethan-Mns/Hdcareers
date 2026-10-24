@@ -337,7 +337,7 @@
       "apply": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
       "cat": "it",
       "expYears": "Internship; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Hevo Data Lever page displayed the Bangalore UX Design Intern role, responsibilities, skills and an active Apply for this job route during the 24 Oct check.",
       "job": {
@@ -372,13 +372,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Hevo Data Lever page displayed the Bangalore UX Design Intern role, responsibilities, skills and an active Apply for this job route during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:59.843Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:59.843Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Hevo Data Lever page displayed the Bangalore UX Design Intern role, responsibilities, skills and an active Apply for this job route during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:37:59.843Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zinnov-4410812009",
@@ -638,7 +641,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:52.576Z",
+  "updatedAt": "2026-10-24T03:37:59.844Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
