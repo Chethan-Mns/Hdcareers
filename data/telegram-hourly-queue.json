@@ -570,62 +570,74 @@
     {
       "page": "jobs/accenture-learning-operations-new-associate.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "status": "sending",
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00",
+      "claimId": "40059148203",
+      "claimedAt": "2026-10-24T03:40:24.056021+00:00"
     },
     {
       "page": "jobs/amazon-data-engineer-intern-2027.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/american-express-apprentice-marketing-offers-operations.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/capco-hr-resource-management-intern.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/ey-analyst-tax-transfer-pricing.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/fam-copy-intern.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/hevo-data-ux-design-intern.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/merkle-science-software-engineer-intern-frontend.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-representative-fresher.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     },
     {
       "page": "jobs/zinnov-intern-people-success-partner.html",
       "batchId": "admin-40059148203",
       "status": "pending",
-      "queuedAt": "2026-10-24T03:39:13.761384+00:00"
+      "queuedAt": "2026-10-24T03:39:13.761384+00:00",
+      "dueAt": "2026-10-24T03:39:13.761384+00:00"
     }
   ]
 }
