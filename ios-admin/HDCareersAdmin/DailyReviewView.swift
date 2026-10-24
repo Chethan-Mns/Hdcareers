@@ -131,6 +131,24 @@ struct DailyReviewView: View {
                 overviewMetric("Backups", batch?.backup.count ?? 0)
                 overviewMetric("Reviewed", batch?.reviewedCount ?? 0)
             }
+            VStack(alignment: .leading, spacing: 8) {
+                Button {
+                    Task { await state.enableRemotePush() }
+                } label: {
+                    Label("Enable real-time job alerts", systemImage: "bell.badge.fill")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(.white)
+                }
+                Text(state.pushStatus)
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.80))
+                HStack(spacing: 18) {
+                    Button("Send test alert") { Task { await state.sendTestPush() } }
+                    Button("Disable push") { Task { await state.disableRemotePush() } }
+                }
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.90))
+            }
             Button {
                 Task {
                     do {
