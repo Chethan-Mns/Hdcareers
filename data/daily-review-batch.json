@@ -499,7 +499,7 @@
       "apply": "https://jobs.lever.co/fampay/23dd18f9-a331-4115-98e9-e98c404c47c6",
       "cat": "internship",
       "expYears": "Student internship; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Fam Lever page displayed the Bengaluru Copy Intern role, student-oriented application questions, role details and an active Apply for this job route during the 24 Oct check.",
       "job": {
@@ -534,13 +534,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Fam Lever page displayed the Bengaluru Copy Intern role, student-oriented application questions, role details and an active Apply for this job route during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:38:12.931Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:38:12.931Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Fam Lever page displayed the Bengaluru Copy Intern role, student-oriented application questions, role details and an active Apply for this job route during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:38:12.931Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -647,7 +650,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:38:08.423Z",
+  "updatedAt": "2026-10-24T03:38:12.932Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
