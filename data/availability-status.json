@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:12:10.789Z",
+  "checkedAt": "2026-10-24T05:12:20.879Z",
   "checked": 144,
-  "active": 126,
+  "active": 127,
   "expired": 1,
-  "review": 17,
+  "review": 16,
   "changedExpired": 1,
   "items": [
     {
@@ -470,9 +470,11 @@
       "role": "Apprentice – Non-Technology",
       "page": "jobs/deutsche-bank-apprentice-non-technology.html",
       "url": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-23T18:43:01.333050+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:12:20.879Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:12:20.879Z"
     },
     {
       "id": 180,
