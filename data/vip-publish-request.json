@@ -3,50 +3,43 @@
   "client_payload": {
     "jobs": [
       {
-        "company": "Cisco",
+        "company": "Barclays",
         "role": "Software Engineer",
         "roleTag": "Software Engineer",
-        "loc": "Bengaluru, Karnataka",
-        "locationFilter": "Bengaluru",
-        "apply": "https://talentbridge.cisco.com/en/job/software-engineer-56867",
-        "domain": "talentbridge.cisco.com",
+        "loc": "Not specified on accessible official page",
+        "locationFilter": "",
+        "apply": "https://search.jobs.barclays/job/-/-/13015/99013663152?src=JB-12860",
+        "domain": "search.jobs.barclays",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years (check listing)",
+        "expYears": "Entry-level eligibility not independently confirmed",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Cisco TalentBridge",
-        "desc": "Early-career Software Engineer opportunity listed on Cisco TalentBridge. Application availability at the linked Cisco requisition has conflicting evidence; owner manually reviewed and confirmed the TalentBridge listing live.",
-        "elig": "Bachelor's degree graduates; review exact qualification and experience requirements on the linked listing before applying.",
+        "sourceName": "Barclays Careers",
+        "desc": "Barclays Software Engineer opportunity. The owner manually confirmed this exact official listing is live. Verify full responsibilities and eligibility directly on the employer's application page.",
+        "elig": "See the official Barclays listing for required qualifications and experience.",
         "resp": [
-          "Contribute to software development and engineering tasks.",
-          "Collaborate with engineers on implementation and testing.",
-          "Investigate issues and improve code quality."
+          "Review the official job description and responsibilities on Barclays Careers."
         ],
-        "skills": [
-          "Software engineering",
-          "Programming",
-          "Testing",
-          "Collaboration"
-        ],
+        "skills": [],
         "workMode": "Not Specified",
-        "jobId": "56867",
+        "jobId": "99013663152",
         "date": "Not Specified",
-        "verifiedDate": "23 Oct 2026",
-        "sourceVerificationMethod": "Owner explicitly manually reviewed and verified TalentBridge listing live on 23 Oct 2026. Conflicting evidence: linked Cisco official requisition was reported closed; do not claim independently verified accepting applications.",
-        "page": "jobs/cisco-software-engineer-talentbridge-56867.html",
-        "who": "Early-career software engineering candidates; confirm exact requirements on the employer listing.",
+        "verifiedDate": "24 Oct 2026",
+        "sourceVerificationMethod": "Owner manually verified this exact Barclays URL live on 24 Oct 2026; independent retrieval of the Barclays job details was blocked. Role title corroborated by third-party job alert, not official text.",
+        "page": "jobs/barclays-software-engineer-99013663152.html",
+        "who": "Applicants meeting the official Barclays job requirements.",
         "logo": [
-          "CS",
-          "#049fd9"
+          "B",
+          "#00aeef"
         ],
-        "manualLiveVerifiedAt": "2026-10-23T00:00:00Z",
-        "manualLiveVerifiedUrl": "https://talentbridge.cisco.com/en/job/software-engineer-56867"
+        "manualLiveVerifiedAt": "2026-10-24T00:00:00Z",
+        "manualLiveVerifiedUrl": "https://search.jobs.barclays/job/-/-/13015/99013663152?src=JB-12860"
       }
     ],
     "telegramDeliveryMode": "instant",
-    "requestId": "owner-confirmed-cisco-talentbridge-56867-vip-20261023",
-    "ownerRequest": "Owner manually verified exact TalentBridge listing live and explicitly approved VIP publication; record conflicting Cisco requisition status."
+    "requestId": "owner-confirmed-barclays-software-engineer-99013663152-vip-20261024",
+    "ownerRequest": "Owner explicitly confirmed Barclays exact official URL Live and authorized immediate VIP publication. Do not fabricate missing job details."
   }
 }
