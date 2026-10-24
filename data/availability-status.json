@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-24T05:14:43.096Z",
+  "checkedAt": "2026-10-24T05:14:48.620Z",
   "checked": 144,
   "active": 142,
-  "expired": 1,
-  "review": 1,
-  "changedExpired": 1,
+  "expired": 2,
+  "review": 0,
+  "changedExpired": 2,
   "items": [
     {
       "id": 229,
@@ -1238,9 +1238,11 @@
       "role": "Research Project Staff – Walk-in Interviews",
       "page": "jobs/cppri-research-project-staff-walkin-october-2026.html",
       "url": "https://www.cppri.res.in/en/careers",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-10-23T18:44:24.352439+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-24T05:14:48.620Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-24T05:14:48.620Z"
     },
     {
       "id": 64,
