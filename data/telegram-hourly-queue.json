@@ -631,9 +631,11 @@
     {
       "page": "jobs/hevo-data-ux-design-intern.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T09:42:15.023590+00:00"
+      "dueAt": "2026-10-24T09:42:15.023590+00:00",
+      "claimId": "40083005353",
+      "claimedAt": "2026-10-24T09:42:24.580107+00:00"
     },
     {
       "page": "jobs/merkle-science-software-engineer-intern-frontend.html",
