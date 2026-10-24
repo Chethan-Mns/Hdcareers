@@ -37,12 +37,19 @@ jobs:
           assert dst.stat().st_size<30000, 'Logo must be under 30 KiB'
           with Image.open(dst) as verify:
               verify.verify()
+          icon=Path('assets/hd-careers-icon-64.png')
+          with Image.open(src) as original:
+              small=ImageOps.exif_transpose(original).convert('RGBA')
+              small.thumbnail((64,64),Image.Resampling.LANCZOS)
+              small.save(icon,format='PNG',optimize=True)
+          assert icon.stat().st_size<25000
+          print('Favicon original:',src.stat().st_size,'bytes; small PNG:',icon.stat().st_size,'bytes')
           PY
       - name: Commit the derived logo without replacing the approved original
         run: |
           git config user.name "HD Careers Quality Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/hd-careers-logo-small.webp
+          git add assets/hd-careers-logo-small.webp assets/hd-careers-icon-64.png
           if ! git diff --staged --quiet; then
             git commit -m "Add small lossless HD Careers logo for faster mobile rendering"
             git push origin HEAD:main
