@@ -31,11 +31,14 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("batch",nargs="?",default="data/daily-review-batch.json")
     p.add_argument("--output",default="")
+    p.add_argument("--require-complete",action="store_true",help="Fail if any job lacks verified required content")
     a=p.parse_args()
     result=inspect(json.loads(Path(a.batch).read_text()))
     if a.output:Path(a.output).write_text(json.dumps(result,indent=2)+"\n")
     print(f"Content preflight: {result['complete']}/{result['total']} complete; {result['needsSourceContent']} need source recovery.")
     for item in result["items"]:
         if item["missing"]:print(f"- {item['company']}: {', '.join(item['missing'])}")
+    if a.require_complete and result["needsSourceContent"]:
+        raise SystemExit("Content gate blocked incomplete daily shortlist; recover or replace candidates before dispatching to admin.")
 
 if __name__=="__main__":main()
