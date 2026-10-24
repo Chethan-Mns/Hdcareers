@@ -641,9 +641,11 @@
     {
       "page": "jobs/merkle-science-software-engineer-intern-frontend.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T10:42:28.130885+00:00"
+      "dueAt": "2026-10-24T10:42:28.130885+00:00",
+      "claimId": "40086979652",
+      "claimedAt": "2026-10-24T10:42:37.938002+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-representative-fresher.html",
