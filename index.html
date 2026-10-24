@@ -158,6 +158,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 <link rel="stylesheet" href="assets/premium-home.css">
 <link rel="stylesheet" href="assets/hd-location-map.css">
 <link rel="stylesheet" href="assets/premium-india-v2.css">
+<link rel="stylesheet" href="assets/adsense-mobile-a11y.css">
 <script defer src="assets/hd-map-lazy.js"></script>
 <script defer src="assets/premium-india-v2.js"></script>
 <script defer src="assets/mobile-performance.js"></script>
@@ -315,7 +316,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 <div class="reveal-card flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
 <div><p class="text-xs font-bold uppercase tracking-[.16em] text-[var(--primary)]">Latest openings</p><h2 class="text-2xl font-black tracking-tight">Jobs you can explore</h2><p id="jobCount" class="text-sm text-slate-500 mt-1"></p></div>
-<select id="sortSelect" onchange="filterAndScrollNow()" class="clean-select bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 outline-none focus:border-blue-400">
+<select id="sortSelect" aria-label="Sort job listings" onchange="filterAndScrollNow()" class="clean-select bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 outline-none focus:border-blue-400">
 <option value="latest">Latest first</option>
 <option value="company">Company A-Z</option>
 </select>
@@ -330,7 +331,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div>
 <div class="grid sm:grid-cols-2 xl:grid-cols-5 gap-3 mt-4">
 <div>
-<label class="block text-xs font-bold text-slate-500 mb-1.5">Level</label>
+<label for="expTypeFilter" class="block text-xs font-bold text-slate-500 mb-1.5">Level</label>
 <select id="expTypeFilter" onchange="syncLevelTone();filterAndScrollNow()" class="clean-select w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-400 outline-none focus:border-blue-400">
 <option value="all">All</option>
 <option value="fresher">Fresher</option>
@@ -338,19 +339,19 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </select>
 </div>
 <div>
-<label class="block text-xs font-bold text-slate-500 mb-1.5">Experience</label>
+<label for="expYearsFilter" class="block text-xs font-bold text-slate-500 mb-1.5">Experience</label>
 <input id="expYearsFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. 0 or 2-5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
-<label class="block text-xs font-bold text-slate-500 mb-1.5">Role</label>
+<label for="roleFilter" class="block text-xs font-bold text-slate-500 mb-1.5">Role</label>
 <input id="roleFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. Developer" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
-<label class="block text-xs font-bold text-slate-500 mb-1.5">Company</label>
+<label for="companyFilter" class="block text-xs font-bold text-slate-500 mb-1.5">Company</label>
 <input id="companyFilter" oninput="window.hdpExactCompany=null;filterAndScrollDebounced()" placeholder="e.g. TCS" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 <div>
-<label class="block text-xs font-bold text-slate-500 mb-1.5">Location</label>
+<label for="locationFilter" class="block text-xs font-bold text-slate-500 mb-1.5">Location</label>
 <input id="locationFilter" oninput="filterAndScrollDebounced()" placeholder="e.g. Bengaluru" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-400">
 </div>
 </div>
@@ -394,7 +395,7 @@ button,.channel-card,.job-card a,.job-card button{transition-property:transform,
 </div></section>
 <footer id="footer" class="bg-[var(--dark)] text-slate-300 py-8 mt-2">
 <div class="max-w-[1240px] mx-auto px-4 flex flex-col sm:flex-row justify-between gap-6">
-<div><button onclick="showHome();window.scrollTo({top:0,behavior:'smooth'})" class="text-left"><p class="text-white font-extrabold text-lg">HD Careers</p><p class="text-xs mt-1 max-w-sm text-slate-400">Jobs, internships, off-campus drives & career updates for job seekers across India.</p></button><div class="flex gap-2 mt-4"><a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-green-500"><i class="fa-brands fa-whatsapp"></i></a><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-pink-500"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sky-500"><i class="fa-brands fa-telegram"></i></a></div></div>
+<div><button onclick="showHome();window.scrollTo({top:0,behavior:'smooth'})" class="text-left"><p class="text-white font-extrabold text-lg">HD Careers</p><p class="text-xs mt-1 max-w-sm text-slate-400">Jobs, internships, off-campus drives & career updates for job seekers across India.</p></button><div class="flex gap-2 mt-4"><a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" aria-label="HD Careers WhatsApp channel" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-green-500"><i class="fa-brands fa-whatsapp"></i></a><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" aria-label="HD Careers Instagram" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-pink-500"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" aria-label="HD Careers Telegram" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sky-500"><i class="fa-brands fa-telegram"></i></a></div></div>
 <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm self-start sm:self-center"><a href="insights.html" class="hover:text-white">Insights</a><a href="career-resources.html" class="hover:text-white">Career Resources</a><a href="editorial-policy.html" class="hover:text-white">Verification Policy</a><a href="about.html" class="hover:text-white">About</a><a href="contact.html" class="hover:text-white">Contact</a><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a><a href="terms.html" class="hover:text-white">Terms</a><a href="disclaimer.html" class="hover:text-white">Disclaimer</a></div>
 </div>
 <p class="text-center text-xs text-slate-500 mt-7">&copy; 2026 HD Careers (hdcareers.in). All rights reserved.</p>
@@ -746,7 +747,7 @@ function observeReveals(root=document){const els=root.querySelectorAll('.reveal-
 document.addEventListener('click',e=>{if(e.target.classList.contains('modal-backdrop'))closeModal(e.target.id);if(!e.target.closest('#catMenuBtn')&&!e.target.closest('#catMenu'))closeCatMenu();if(!e.target.closest('#mobileMenu')&&!e.target.closest('[onclick="toggleMobileMenu()"]'))closeMobileMenu()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){['jobModal'].forEach(id=>{const el=document.getElementById(id);if(el&&!el.classList.contains('hidden'))closeModal(id)});closeCatMenu();closeMobileMenu()}});
 
-buildTabs();renderJobs();observeReveals();
+buildTabs();observeReveals();if("requestIdleCallback" in window){window.requestIdleCallback(()=>renderJobs(),{timeout:1100})}else{window.setTimeout(renderJobs,0)}
 </script>
 <script type="application/json" id="hd-map-data">{"cityPins":[{"city":"Bengaluru","lat":12.9716,"lng":77.5946,"count":62},{"city":"Mumbai","lat":19.076,"lng":72.8777,"count":15},{"city":"Hyderabad","lat":17.385,"lng":78.4867,"count":9},{"city":"Gurugram","lat":28.4595,"lng":77.0266,"count":7},{"city":"Noida","lat":28.5355,"lng":77.391,"count":4},{"city":"Indore","lat":22.7196,"lng":75.8577,"count":3},{"city":"Madurai","lat":9.9252,"lng":78.1198,"count":3},{"city":"Navi Mumbai","lat":19.033,"lng":73.0297,"count":2},{"city":"Kolkata","lat":22.5726,"lng":88.3639,"count":2},{"city":"Pune","lat":18.5204,"lng":73.8567,"count":2},{"city":"Ahmedabad","lat":23.0225,"lng":72.5714,"count":2},{"city":"Chennai","lat":13.0827,"lng":80.2707,"count":2},{"city":"Delhi","lat":28.6139,"lng":77.209,"count":2},{"city":"Mohali","lat":30.7046,"lng":76.7179,"count":1},{"city":"Jaipur","lat":26.9124,"lng":75.7873,"count":1},{"city":"Nagpur","lat":21.1458,"lng":79.0882,"count":1},{"city":"Kochi","lat":9.9312,"lng":76.2673,"count":1}]}</script>
 </body>
