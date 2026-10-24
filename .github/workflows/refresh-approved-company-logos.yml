@@ -7,6 +7,7 @@ on:
       - scripts/resolve_company_logos.py
       - scripts/employer_brand_sources.py
       - tests/test_employer_brand_sources.py
+      - tests/test_company_logo_sources.py
       - data/company-logo-domains.json
       - data/company-logo-direct.json
       - data/company-logo-vetted-careers-assets.json

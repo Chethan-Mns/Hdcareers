@@ -73,6 +73,32 @@ class CompanyLogoRules(unittest.TestCase):
             self.assertIn(name,domains)
             self.assertNotIn("greenhouse.io",domains[name])
 
+    def test_all_registered_job_logos_are_local_existing_assets(self):
+        for job in self.jobs:
+            logo = str(job.get("logoPath") or "").strip()
+            if not logo:
+                continue  # Reviewed missing logos intentionally display the initials fallback.
+            with self.subTest(company=job["company"], page=job["page"]):
+                self.assertTrue(logo.startswith("assets/"), logo)
+                self.assertNotIn("..", Path(logo).parts)
+                self.assertTrue((ROOT/logo).is_file(), f"Broken image path: {logo}")
+
+    def test_cached_company_logos_never_use_shared_ats_branding(self):
+        from urllib.parse import urlparse
+        manifest=json.loads((ROOT/"data/company-logos.json").read_text())
+        for company, entry in manifest.items():
+            with self.subTest(company=company):
+                path = entry.get("localPath", "")
+                self.assertTrue(path.startswith("assets/"), path)
+                self.assertTrue((ROOT/path).is_file(), f"Missing logo asset: {company} {path}")
+                source_host=(urlparse(entry.get("sourceUrl") or "").hostname or "").lower()
+                if source_host == "c.smartrecruiters.com":
+                    self.assertEqual(entry.get("verificationStatus"), "employer-managed-careers-asset")
+                    self.assertEqual(entry.get("sourceType"), "employer-uploaded careers brand logo")
+                else:
+                    self.assertFalse(any(source_host == h or source_host.endswith("."+h)
+                        for h in PROVIDERS), f"Shared ATS logo was cached: {company}, {source_host}")
+
 
 if __name__=="__main__":
     unittest.main()
