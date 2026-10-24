@@ -1023,7 +1023,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     updated = re.sub(pattern, lambda _: fallback, updated, count=1, flags=re.S)
     # Remove legacy featured-job SEO grids. The interactive Jobs section already
     # exposes the listings; repeated static grids clutter the homepage.
-    featured_pattern = r'<section id="featured-job-links-seo"\\b.*?</section>\\s*'
+    featured_pattern = r'<section id="featured-job-links-seo".*?</section>\s*'
     updated = re.sub(featured_pattern, "", updated, flags=re.S)
     # Embed verified city markers into generated HTML. This avoids CDN, blocked JSON routes,
     # authentication/caching failures and blank previews; refreshed on each publishing run.
