@@ -7,6 +7,10 @@ on:
       - 'index.html'
       - 'assets/analytics.js'
       - 'assets/adsense-mobile-a11y.css'
+      - 'assets/public-header.js'
+      - 'assets/hd-careers-logo-small.webp'
+      - 'assets/hd-careers-icon-64.png'
+      - 'generate.py'
       - 'tests/test_adsense_home_layout.py'
       - '.github/workflows/mobile-a11y-release.yml'
   workflow_dispatch:
@@ -47,6 +51,11 @@ jobs:
           assert s.count('aria-label="HD Careers Telegram"')==1
           for name in ("sortSelect","expTypeFilter","expYearsFilter","roleFilter","companyFilter","locationFilter"):
               assert (f'for="{name}"' in s or f'id="{name}" aria-label=' in s),name
+          for path, limit in (("assets/hd-careers-logo-small.webp",30000),("assets/hd-careers-icon-64.png",25000)):
+              assert Path(path).stat().st_size < limit, path
+          assert 'src="assets/hd-careers-logo-small.webp"' in s
+          assert 'assets/hd-careers-icon-64.png' in s
+          assert 'assets/hd-location-map.css" media="print"' in s
           assert s.count('<article class="hdp-featured-item">')==4
           assert s.count('class="hdp-company"')==4
           print("PASS: Accessibility attributes, existing card grid and page generator")
