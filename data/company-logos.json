@@ -3,19 +3,21 @@
     "officialDomain": "actrec.gov.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/actrec-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/actrec-217b242-fba2fe72aa.svg",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/actrec-217b242-7def3ac8e6.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
-    "bytes": 479
+    "bytes": 482
   },
   "Advanced Centre for Treatment, Research and Education in Cancer (ACTREC)": {
     "officialDomain": "actrec.gov.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/actrec-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-fba2fe72aa.svg",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-7def3ac8e6.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
-    "bytes": 479
+    "bytes": 482
   },
   "Amazon": {
     "officialDomain": "amazon.jobs",
@@ -48,19 +50,21 @@
     "officialDomain": "cochinshipyard.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/cochin-shipyard-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/cochin-shipyard-limited-556509f-1f25fa7259.svg",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/cochin-shipyard-limited-556509f-c6947073dd.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
-    "bytes": 376
+    "bytes": 378
   },
   "Cochin Shipyard Limited – CMSRU": {
     "officialDomain": "cochinshipyard.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/cochin-shipyard-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-1f25fa7259.svg",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-c6947073dd.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
-    "bytes": 376
+    "bytes": 378
   },
   "Cognizant": {
     "officialDomain": "cognizant.com",
@@ -268,10 +272,11 @@
     "officialDomain": "ecil.co.in",
     "sourceUrl": "/home/runner/work/Hdcareers/Hdcareers/assets/logos/ecil-mark.svg",
     "sourceType": "curated crisp vector fallback",
-    "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-1e9ea634a0.svg",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-d96db01ea7.svg",
     "sourceDimensions": null,
     "qualityScore": 1450,
-    "bytes": 353
+    "bytes": 356
   },
   "Virtusa": {
     "officialDomain": "virtusa.com",
@@ -947,5 +952,71 @@
     ],
     "qualityScore": 375,
     "bytes": 4219
+  },
+  "Fam": {
+    "officialDomain": "famapp.in",
+    "sourceUrl": "https://www.famapp.in/assets/images/icons/common/famappLogoWhite.svg",
+    "sourceType": "company-named logo image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/fam-6c4576b-e33985b4e3.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1660,
+    "bytes": 5882
+  },
+  "MongoDB": {
+    "officialDomain": "mongodb.com",
+    "sourceUrl": "https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/mongodb-f0c6acf-473f59d532.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1700,
+    "bytes": 11398
+  },
+  "Needl.ai": {
+    "officialDomain": "needl.ai",
+    "sourceUrl": "https://framerusercontent.com/images/obja9NBC3ksVhIqbYmfNCtJ897o.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/needl-ai-71ded6d-0fc3986ec0.png",
+    "sourceDimensions": [
+      963,
+      192
+    ],
+    "qualityScore": 1312,
+    "bytes": 15970
+  },
+  "Omnidian": {
+    "officialDomain": "omnidian.com",
+    "sourceUrl": "https://www.omnidian.com/wp-content/uploads/2021/07/omnidianlogo_orange.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/omnidian-8aaa29a-79b830de9b.png",
+    "sourceDimensions": [
+      901,
+      213
+    ],
+    "qualityScore": 1333,
+    "bytes": 18259
+  },
+  "Portcast": {
+    "officialDomain": "portcast.io",
+    "sourceUrl": "https://cdn.prod.website-files.com/643006af9e6f61169be0dfb1/643006af9e6f611743e0dfee_Logo-Black-big.svg",
+    "sourceType": "employer site header logo",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/portcast-b61e7f8-3c29597de4.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1530,
+    "bytes": 6487
+  },
+  "Turner & Townsend": {
+    "officialDomain": "turnerandtownsend.com",
+    "sourceUrl": "https://www.turnerandtownsend.com/media/sdqpgmhu/logo-blue.svg?height=40&quality=95&v=1dd3a0409919940",
+    "sourceType": "employer site header logo",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/turner-townsend-f264692-1328bfaba1.svg",
+    "sourceDimensions": null,
+    "qualityScore": 1530,
+    "bytes": 17417
   }
 }

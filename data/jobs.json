@@ -34,7 +34,9 @@
     "manualLiveVerifiedAt": "2026-10-24T00:00:00Z",
     "manualLiveVerifiedUrl": "https://search.jobs.barclays/job/-/-/13015/99013663152?src=JB-12860",
     "publishedAt": "2026-10-24T05:27:31Z",
-    "id": 240
+    "id": 240,
+    "logoPath": "assets/company-owner-submitted/barclays-owner-20261024.svg",
+    "logoSourceDomain": "barclays.com"
   },
   {
     "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01664425_en",
@@ -377,7 +379,9 @@
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "On-site",
     "publishedAt": "2026-10-24T03:39:13Z",
-    "id": 235
+    "id": 235,
+    "logoPath": "assets/company-icons/fam-6c4576b-e33985b4e3.svg",
+    "logoSourceDomain": "famapp.in"
   },
   {
     "apply": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
@@ -1580,7 +1584,8 @@
     "workMode": "On-site",
     "publishedAt": "2026-10-22T03:48:51Z",
     "id": 213,
-    "logoPath": "assets/company-marks-review/meesho.png"
+    "logoPath": "assets/company-marks-review/meesho.png",
+    "logoSourceDomain": "meesho.io"
   },
   {
     "apply": "https://jobs.smartrecruiters.com/PentozTechnology/743999709555215-business-development-executive-internship",
@@ -2159,7 +2164,9 @@
     "id": 205,
     "editorialOriginalDesc": "Data-analysis internship supporting data quality, QA automation, customer data queries, dashboards and new data-source integrations for a logistics platform.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "logoPath": "assets/company-icons/portcast-b61e7f8-3c29597de4.svg",
+    "logoSourceDomain": "portcast.io"
   },
   {
     "apply": "https://www.rubrik.com/company/careers/departments/job.8166514?gh_jid=8166514",
@@ -2741,7 +2748,8 @@
     },
     "editorialOriginalDesc": "Talent Acquisition internship supporting candidate sourcing, screening, interviews and recruitment tracking.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "logoSourceDomain": "paytm.com"
   },
   {
     "apply": "https://job-boards.greenhouse.io/quberesearchandtechnologies/jobs/8617401002",
@@ -5735,7 +5743,9 @@
     "id": 144,
     "editorialOriginalDesc": "Product engineering role developing a new platform for deploying AI applications at scale with MongoDB.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "logoPath": "assets/company-icons/mongodb-f0c6acf-473f59d532.svg",
+    "logoSourceDomain": "mongodb.com"
   },
   {
     "company": "StarTree",
@@ -6516,7 +6526,9 @@
     "id": 135,
     "editorialOriginalDesc": "Omnidian is hiring a Software Engineer I/II in Bangalore for its Performance and Financial Products team. The role focuses on software feature implementation, Java full-stack components and Databricks data pipelines supporting the distributed solar and energy-storage business.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "logoPath": "assets/company-icons/omnidian-8aaa29a-79b830de9b.png",
+    "logoSourceDomain": "omnidian.com"
   },
   {
     "company": "Synopsys",
@@ -8326,7 +8338,7 @@
       "#374151"
     ],
     "skills": [],
-    "logoPath": "assets/company-icons/actrec-217b242-fba2fe72aa.svg",
+    "logoPath": "assets/company-icons/actrec-217b242-7def3ac8e6.svg",
     "logoSourceDomain": "actrec.gov.in",
     "browserVerifiedAt": "2026-10-08T06:15:33.797Z",
     "verificationTerms": [
@@ -9168,7 +9180,9 @@
       "scanCheckedAt": "2026-10-15T07:46:50.578277+00:00"
     },
     "manualClosedVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "manualClosedVerifiedUrl": "https://needl.ai/careers/software-engineering-intern"
+    "manualClosedVerifiedUrl": "https://needl.ai/careers/software-engineering-intern",
+    "logoPath": "assets/company-icons/needl-ai-71ded6d-0fc3986ec0.png",
+    "logoSourceDomain": "needl.ai"
   },
   {
     "page": "jobs/drdo-cair-junior-research-fellow-walkin-bengaluru-november-2026.html",
@@ -9900,7 +9914,9 @@
     },
     "editorialOriginalDesc": "Turner & Townsend is hiring a Graduate Trainee in Gurugram to support procurement, sourcing, vendor management, documentation and supply-chain coordination.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "logoPath": "assets/company-icons/turner-townsend-f264692-1328bfaba1.svg",
+    "logoSourceDomain": "turnerandtownsend.com"
   },
   {
     "page": "jobs/servicenow-software-engineer-hyderabad-jb0075721.html",
@@ -10453,7 +10469,7 @@
       "state": "expired",
       "reason": "HD Careers Owner manually verified exact official job URL as EXPIRED on 15 Oct 2026."
     },
-    "logoPath": "assets/company-icons/actrec-217b242-fba2fe72aa.svg",
+    "logoPath": "assets/company-icons/actrec-217b242-7def3ac8e6.svg",
     "logoSourceDomain": "actrec.gov.in",
     "manualReviewedAt": "2026-10-15T16:51:02.186Z",
     "manualReviewedBy": "HD Careers Owner",
@@ -11273,7 +11289,7 @@
       "state": "expired",
       "reason": "Marked expired manually from HD Careers Admin review."
     },
-    "logoPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-fba2fe72aa.svg",
+    "logoPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-7def3ac8e6.svg",
     "logoSourceDomain": "actrec.gov.in",
     "browserVerifiedAt": "2026-10-19T03:15:41.926Z",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
@@ -11519,7 +11535,7 @@
       "state": "active",
       "reason": "Official ECIL Current Job Openings page lists Advt. No. 11/2026 inviting online applications for ITI Trade Apprentices for 2026-27 with Apply Online."
     },
-    "logoPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-1e9ea634a0.svg",
+    "logoPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-d96db01ea7.svg",
     "logoSourceDomain": "ecil.co.in",
     "editorialOriginalDesc": "Electronics Corporation of India Limited (ECIL) is recruiting ITI Trade Apprentices for 2026-27. The current official ECIL Job Openings page lists Advertisement No. 11/2026 together with the official advertisement and Apply Online route.",
     "editorialUpdatedAt": "2026-10-21",
@@ -11580,7 +11596,7 @@
       "state": "expired",
       "reason": "Marked expired manually from HD Careers Admin review."
     },
-    "logoPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-1f25fa7259.svg",
+    "logoPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-c6947073dd.svg",
     "logoSourceDomain": "cochinshipyard.in"
   },
   {
@@ -11639,7 +11655,7 @@
       "state": "active",
       "reason": "Official Cochin Shipyard vacancy detail shows Technician (Vocational)/Trade Apprentices with last date 08-10-2026 and an application submission link."
     },
-    "logoPath": "assets/company-icons/cochin-shipyard-limited-556509f-1f25fa7259.svg",
+    "logoPath": "assets/company-icons/cochin-shipyard-limited-556509f-c6947073dd.svg",
     "logoSourceDomain": "cochinshipyard.in",
     "editorialOriginalDesc": "Cochin Shipyard Limited is recruiting Technician (Vocational) and Trade Apprentices at Kochi. The official careers page lists 8 October 2026 as the last date and provides a submission-of-application link.",
     "editorialUpdatedAt": "2026-10-21",
