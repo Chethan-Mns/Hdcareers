@@ -37,6 +37,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/adsense_readiness.py scripts/audit_public_sitemap.py generate.py
           python3 -m unittest discover -s tests -p test_job_hero.py -v
+          python3 -m unittest discover -s tests -p test_adsense_home_layout.py -v
           git diff --check
           python3 generate.py --dry-run
       - name: Validate source data, page generation, and sitemap
