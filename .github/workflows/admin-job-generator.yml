@@ -77,8 +77,11 @@ jobs:
           fi
           python3 scripts/hourly_telegram.py enqueue "$approved_event"
 
-      - name: Resolve official company favicons
+      - name: Resolve logos from official employer websites (not ATS platforms)
         run: python3 scripts/resolve_company_logos.py
+
+      - name: Verify employer brand source and SVG safety
+        run: python3 -m unittest discover -s tests -p test_employer_brand_sources.py -v
 
       - name: Generate homepage and job pages
         run: python3 generate.py
@@ -97,7 +100,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/insights-summary.json data/company-logos.json data/review-queue.json data/telegram-hourly-queue.json assets/company-icons index.html jobs/ insights.html insights/ robots.txt sitemap.xml data/telegram-approved-batch.json
+            git add data/jobs.json data/insights-summary.json data/company-logos.json data/company-logo-review.json data/review-queue.json data/telegram-hourly-queue.json assets/company-icons index.html jobs/ insights.html insights/ robots.txt sitemap.xml data/telegram-approved-batch.json
 
             if git diff --cached --quiet; then
               echo "No changes to publish."
