@@ -144,5 +144,37 @@ class EmployerBrandSourceTests(unittest.TestCase):
         self.assertIsNone(logos.raster_score(600, 110, 300, wordmark=False))
 
 
+    def test_vetted_employer_careers_asset_accepts_only_exact_employer_upload(self):
+        source = {
+            "Caribou Media": {
+                "sourceUrl": "https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/55a62c83e4b0dda8e68ef188/huge?r=1",
+                "evidenceUrl": "https://jobs.smartrecruiters.com/CaribouMediaPvtLtd/743999677660729-business-analyst-it-experience-",
+                "sourceType": "employer-uploaded careers brand logo"
+            }
+        }
+        with patch.object(logos, "evaluate_remote_candidate", return_value=(850, b"PNG", ".png", source["Caribou Media"]["sourceUrl"], "employer-uploaded careers brand logo", (128, 128))) as evaluate:
+            self.assertIsNotNone(logos.vetted_employer_careers_logo("Caribou Media", source))
+            self.assertTrue(evaluate.call_args.kwargs["allow_employer_ats_brand"])
+            self.assertIsNone(logos.vetted_employer_careers_logo("Other Co", source))
+
+    def test_vetted_careers_asset_rejects_provider_icon_or_untrusted_host(self):
+        example = {"evidenceUrl": "https://jobs.smartrecruiters.com/Example/123",
+                   "sourceType": "employer-uploaded careers brand logo"}
+        with patch.object(logos, "evaluate_remote_candidate") as evaluate:
+            for invalid in ("https://c.smartrecruiters.com/favicon.ico",
+                            "https://attacker.example/sr-company-logo-prod-aws-dc5/55a62c83e4b0dda8e68ef188/huge",
+                            "https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/not-an-id/huge"):
+                self.assertIsNone(logos.vetted_employer_careers_logo("Example", {"Example": {**example, "sourceUrl": invalid}}))
+            evaluate.assert_not_called()
+
+    def test_vetted_careers_assets_have_reviewable_provenance(self):
+        entries = json.loads((ROOT / "data/company-logo-vetted-careers-assets.json").read_text(encoding="utf-8"))
+        for company, asset in entries.items():
+            with self.subTest(company=company):
+                self.assertTrue(asset["evidenceUrl"].startswith("https://jobs.smartrecruiters.com/"))
+                self.assertEqual(asset["sourceType"], "employer-uploaded careers brand logo")
+                self.assertTrue(asset["sourceUrl"].startswith("https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/"))
+
+
 if __name__ == "__main__":
     unittest.main()

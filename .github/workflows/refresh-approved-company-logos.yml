@@ -9,6 +9,8 @@ on:
       - tests/test_employer_brand_sources.py
       - data/company-logo-domains.json
       - data/company-logo-direct.json
+      - data/company-logo-vetted-careers-assets.json
+      - data/jobs.json
       - data/approved-company-logos.json
       - .github/workflows/refresh-approved-company-logos.yml
   workflow_dispatch:

@@ -378,6 +378,29 @@ def employer_uploaded_careers_logo(job: dict):
     return None
 
 
+
+def vetted_employer_careers_logo(company: str, vetted: dict):
+    """Accept only an individually researched, employer-named upload from its own ATS tenant.
+
+    Never promote a generic SmartRecruiters favicon or an unreviewed CDN image.
+    This explicit, audited source list is separate from the owner-approved logos.
+    """
+    info = vetted.get(company, {})
+    if not isinstance(info, dict):
+        return None
+    source = str(info.get("sourceUrl", "")).strip()
+    evidence = str(info.get("evidenceUrl", "")).strip()
+    if (info.get("sourceType") != "employer-uploaded careers brand logo"
+            or host_of(source) != "c.smartrecruiters.com"
+            or host_of(evidence) != "jobs.smartrecruiters.com"
+            or not re.fullmatch(r"/sr-company-logo-prod-aws-dc5/[0-9a-f]{24}/huge", urlparse(source).path)
+            or len(urlparse(evidence).path.strip("/").split("/")) < 2):
+        return None
+    return evaluate_remote_candidate(
+        610, source, "employer-uploaded careers brand logo",
+        allow_employer_ats_brand=True
+    )
+
 def load_json(path: Path, default):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -397,6 +420,7 @@ def main() -> None:
     approved = {str(k).casefold(): str(v) for k, v in load_json(ROOT / "data" / "approved-company-logos.json", {}).items()}
     overrides = load_json(DOMAIN_PATH, {})
     direct_assets = load_json(DIRECT_PATH, {})
+    vetted_careers_assets = load_json(ROOT / "data" / "company-logo-vetted-careers-assets.json", {})
     quality_fallbacks = load_json(QUALITY_FALLBACK_PATH, {})
     manifest = load_json(MANIFEST_PATH, {})
     if not isinstance(manifest, dict):
@@ -450,6 +474,8 @@ def main() -> None:
             return company, domain, ("cache", cached_path, cached), ""
 
         result = resolve_icon(company, domain, direct_url, local_vector) if domain else None
+        if not result:
+            result = vetted_employer_careers_logo(company, vetted_careers_assets)
         if not result:
             result = employer_uploaded_careers_logo(sample)
         if result:
