@@ -35,7 +35,7 @@ if(result.changed&&process.argv.includes("--apply")){
   console.log("Deferred "+held.length+" source-uncertain jobs to "+sidecar+" without losing exact URLs.");
  }
 
- console.log("Selected fresher-first 8/1/1 shortlist, excluded published duplicates, and preserved manual review status.");
+ console.log("Selected two 6 technical / 2 non-IT / 2 internship shortlists, excluded published duplicates, and preserved manual review status.");
  if(result.batch.ranking?.shortfalls){
   console.log("Category shortfalls (new discovery required):",JSON.stringify(result.batch.ranking.shortfalls));
  }
