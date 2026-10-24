@@ -123,5 +123,18 @@ class CompanyLogoRules(unittest.TestCase):
         self.assertNotIn('fetch(',display)
         self.assertNotIn('toDataURL(',display)
 
+
+    def test_latest_owner_selected_employer_logos_have_priority(self):
+        # Uploaded assets are the final source of truth, ahead of ATS and cached icons.
+        for company in ("Drivetrain","Endeavor IT Solution","Pentoz Technology","Swappit Web & Software Solutions","Central Pulp & Paper Research Institute","Hyreo","Taurus Hard Soft Solutions Pvt Ltd","MarkTeQ","Zynga","WNS Global Services","KredX","Zeta","Blueberry Labs","Capco"):
+            with self.subTest(company=company):
+                path=self.approved.get(company)
+                self.assertTrue(path and path.startswith("assets/company-owner/"),company)
+                self.assertTrue((ROOT/path).is_file(),company)
+        self.assertIn("const approved=",self.home)
+        self.assertIn("const sources=[approved,cached,local,direct]",self.home)
+        self.assertIn("sources = [",self.generator)
+        self.assertIn("approved if approved else",self.generator)
+
 if __name__=="__main__":
     unittest.main()
