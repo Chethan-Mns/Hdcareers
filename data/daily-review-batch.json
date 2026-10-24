@@ -445,7 +445,7 @@
       "apply": "https://job-boards.greenhouse.io/capco/jobs/8280810",
       "cat": "internship",
       "expYears": "Six-month internship; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Capco Greenhouse page displayed the Bengaluru HR Intern role, a six-month internship confirmation, graduation questions and a complete active application form during the 24 Oct check.",
       "job": {
@@ -480,13 +480,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Capco Greenhouse page displayed the Bengaluru HR Intern role, a six-month internship confirmation, graduation questions and a complete active application form during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:38:08.423Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:38:08.423Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Capco Greenhouse page displayed the Bengaluru HR Intern role, a six-month internship confirmation, graduation questions and a complete active application form during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:38:08.423Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "fam-23dd18f9",
@@ -644,7 +647,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:38:04.065Z",
+  "updatedAt": "2026-10-24T03:38:08.423Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
