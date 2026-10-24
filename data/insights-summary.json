@@ -1,13 +1,13 @@
 {
   "verifiedThrough": "24 October 2026",
-  "active": 153,
+  "active": 152,
   "employers": 99,
   "freshers": 85,
-  "experienced": 63,
+  "experienced": 62,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 63
+      "count": 62
     },
     {
       "label": "Mumbai",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 63
+      "count": 62
     },
     {
       "city": "Mumbai",
@@ -145,7 +145,7 @@
   "topCompanies": [
     {
       "name": "HCLTech",
-      "count": 10,
+      "count": 9,
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
@@ -265,7 +265,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 70
+      "count": 69
     },
     {
       "label": "internship",
@@ -351,7 +351,7 @@
     },
     {
       "date": "2026-10-13",
-      "count": 8
+      "count": 7
     },
     {
       "date": "2026-10-15",
@@ -359,7 +359,7 @@
     },
     {
       "date": "2026-10-17",
-      "count": 24
+      "count": 23
     },
     {
       "date": "2026-10-18",
@@ -383,7 +383,7 @@
     },
     {
       "date": "2026-10-24",
-      "count": 30
+      "count": 31
     }
   ]
 }
