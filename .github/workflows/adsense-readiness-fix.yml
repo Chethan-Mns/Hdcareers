@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/adsense-readiness-fix.yml'
+      - 'scripts/adsense_readiness.py'
   workflow_dispatch:
 
 permissions:
