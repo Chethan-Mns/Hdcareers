@@ -26,6 +26,8 @@
 .hd-public-nav a.is-active:after,.hd-public-nav a[aria-current="page"]:after{background:#10469d}
 #filterTabs .pill span.ml-1{opacity:1!important;color:inherit!important}
 #jobCount,.hdm-fineprint,.hdm-inline-note{color:#42526b}
+#footer > p.text-center{color:#cbd5e1!important}
+#footer a:focus-visible{outline-color:#bfdbfe!important}
 
 /* Keep the top heading visible immediately on slower phones: no entrance
    opacity/transform animation for the initial viewport. Other interactions remain. */
