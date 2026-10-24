@@ -1406,6 +1406,10 @@ def main() -> None:
     from scripts.adsense_readiness import pre_render_site
     snapshot_changed = pre_render_site(jobs, args.dry_run)
 
+    # Keep Google's AdSense site-connection code on every published public page.
+    from scripts.adsense_install import install as install_adsense
+    adsense_changed = install_adsense(args.dry_run)
+
     mode = "DRY RUN" if args.dry_run else "DONE"
     active = sum(1 for job in jobs if job.get("status") == "active")
     expired = len(jobs) - active
@@ -1415,6 +1419,7 @@ def main() -> None:
     print(f"insights pages: {insights_changed} changed")
     print(f"support files: {support_changed} changed")
     print(f"crawler-ready static snapshots: {snapshot_changed} changed")
+    print(f"AdSense verification: {len(adsense_changed)} public HTML pages tagged")
 
     if not args.dry_run:
         print("Run: python3 generate.py")
