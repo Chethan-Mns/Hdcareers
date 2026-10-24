@@ -295,11 +295,11 @@ def normalize_raster(body: bytes) -> bytes:
     return out.getvalue()
 
 
-def evaluate_remote_candidate(base_score: int, url: str, label: str):
+def evaluate_remote_candidate(base_score: int, url: str, label: str, allow_employer_ats_brand: bool = False):
     try:
         body, content_type, final_url = fetch(url, MAX_ICON)
-        if is_generic(host_of(final_url)):
-            return None  # Employer redirect to a shared ATS must never provide a logo.
+        if is_generic(host_of(final_url)) and not (allow_employer_ats_brand and host_of(final_url) == "c.smartrecruiters.com"):
+            return None  # Shared ATS icon is not a company brand; only proven employer-uploaded media is allowed.
         ext = sniff_ext(body, content_type, final_url)
         if ext == ".svg":
             cleaned = clean_svg(body)
@@ -342,6 +342,39 @@ def resolve_icon(company: str, domain: str, direct_url: str = "", local_vector: 
         if result:
             return result
 
+    return None
+
+
+def employer_uploaded_careers_logo(job: dict):
+    """Conservative last resort: the image explicitly named as the employer's
+    logo on their own official SmartRecruiters job page (not provider favicon).
+    The image must be served by the provider's employer-managed brand CDN.
+    """
+    apply = str(job.get("apply", "")).strip()
+    if host_of(apply) != "jobs.smartrecruiters.com":
+        return None
+    company = str(job.get("company", "")).strip()
+    if not company:
+        return None
+    try:
+        body, content_type, final_url = fetch(apply, MAX_HTML)
+        if host_of(final_url) != "jobs.smartrecruiters.com":
+            return None
+        if "html" not in content_type and not body.lstrip().lower().startswith(b"<!doctype html"):
+            return None
+        candidates = official_logo_candidates(body.decode("utf-8", errors="replace"), final_url, company)
+        for _score, image_url, label in candidates:
+            if label != "company-named logo image" or host_of(image_url) != "c.smartrecruiters.com":
+                continue
+            result = evaluate_remote_candidate(
+                400, image_url, "employer-uploaded careers brand logo", allow_employer_ats_brand=True
+            )
+            if result:
+                return result
+    except (HTTPError, URLError, ValueError, TimeoutError, OSError):
+        return None
+    except Exception:
+        return None
     return None
 
 
@@ -393,15 +426,18 @@ def main() -> None:
             domain = official_domain(sample, overrides)
             return company, domain, ("cache", approved_path, {}), ""
         domain = official_domain(sample, overrides)
-        if not domain:
-            return company, domain, None, "no trusted official domain"
 
         cached = manifest.get(company, {}) if isinstance(manifest.get(company), dict) else {}
         # Existing icons may have been cached from a shared ATS. Never trust
         # those files as a company logo merely because they are local.
         old_source_host = host_of(cached.get("sourceUrl", ""))
         old_official_host = host_of(cached.get("officialDomain", ""))
-        if is_generic(old_source_host) or is_generic(old_official_host):
+        allowed_ats_brand = (
+            old_source_host == "c.smartrecruiters.com"
+            and cached.get("sourceType") == "employer-uploaded careers brand logo"
+            and cached.get("verificationStatus") == "employer-managed-careers-asset"
+        )
+        if (is_generic(old_source_host) and not allowed_ats_brand) or is_generic(old_official_host):
             cached = {}
         cached_path = str(cached.get("localPath", "")).strip()
         target_exists = bool(cached_path and (ROOT / cached_path).exists())
@@ -413,17 +449,17 @@ def main() -> None:
         if not args.refresh and target_exists and str(cached.get("officialDomain", "")) == domain and not quality_upgrade_needed:
             return company, domain, ("cache", cached_path, cached), ""
 
-        result = resolve_icon(
-            company,
-            domain,
-            direct_url,
-            local_vector,
-        )
+        result = resolve_icon(company, domain, direct_url, local_vector) if domain else None
+        if not result:
+            result = employer_uploaded_careers_logo(sample)
         if result:
             return company, domain, ("resolved", result, cached), ""
         if target_exists:
             return company, domain, ("cache", cached_path, cached), ""
-        return company, domain, None, "no quality-approved official icon found"
+        return company, domain, None, (
+            "no quality-approved corporate logo or employer-uploaded careers brand found"
+            if domain else "no trusted official domain or employer-branded careers logo"
+        )
 
     items = sorted(companies.items(), key=lambda x: x[0].lower())
     results = {}
@@ -448,8 +484,10 @@ def main() -> None:
             # Failed employer-logo resolution must not preserve provider images.
             old_entry = manifest.get(company, {})
             if isinstance(old_entry, dict) and (
-                is_generic(host_of(old_entry.get("sourceUrl", ""))) or
-                is_generic(host_of(old_entry.get("officialDomain", "")))
+                (is_generic(host_of(old_entry.get("sourceUrl", ""))) and not (
+                    host_of(old_entry.get("sourceUrl", "")) == "c.smartrecruiters.com"
+                    and old_entry.get("verificationStatus") == "employer-managed-careers-asset"
+                )) or is_generic(host_of(old_entry.get("officialDomain", "")))
             ):
                 manifest.pop(company, None)
                 changed = True
@@ -474,7 +512,11 @@ def main() -> None:
                 "officialDomain": domain,
                 "sourceUrl": source_url,
                 "sourceType": source_type,
-                "verificationStatus": "official-site-auto" if ("logo" in source_type.lower() or "header" in source_type.lower()) else "official-domain-icon-auto",
+                "verificationStatus": (
+                    "employer-managed-careers-asset" if source_type == "employer-uploaded careers brand logo"
+                    else "official-site-auto" if ("logo" in source_type.lower() or "header" in source_type.lower())
+                    else "official-domain-icon-auto"
+                ),
                 "localPath": local_path,
                 "sourceDimensions": list(dims) if dims else None,
                 "qualityScore": score,
