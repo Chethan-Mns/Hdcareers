@@ -11,7 +11,7 @@
       "apply": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
       "cat": "nonit",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1738768 showed the matching Mumbai role, 23 Oct 2026 posting date, an Apply now route and a role-specific 0–1 year eligibility statement during the 24 Oct check.",
       "job": {
@@ -46,14 +46,17 @@
         "date": "23 Oct 2026",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "Exact EY requisition 1738768 showed the matching Mumbai role, 23 Oct 2026 posting date, an Apply now route and a role-specific 0–1 year eligibility statement during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:12.297Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:12.297Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact EY requisition 1738768 showed the matching Mumbai role, 23 Oct 2026 posting date, an Apply now route and a role-specific 0–1 year eligibility statement during the 24 Oct check."
       },
-      "postedDate": "23 Oct 2026"
+      "postedDate": "23 Oct 2026",
+      "reviewedAt": "2026-10-24T03:37:12.297Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-aioc-s01664425",
@@ -620,7 +623,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:34:24.591Z",
+  "updatedAt": "2026-10-24T03:37:12.325Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
