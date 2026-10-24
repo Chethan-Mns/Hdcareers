@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check official sources and close confirmed expired jobs
-        run: python3 scripts/check_job_availability.py --write
+        run: python3 scripts/check_job_availability.py --write --recheck-expired
       - name: Audit listing content for review
         run: python3 scripts/check_content_quality.py
       - name: Regenerate pages using existing expired design
@@ -59,7 +59,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
 
-            python3 scripts/check_job_availability.py --write
+            python3 scripts/check_job_availability.py --write --recheck-expired
             python3 scripts/check_content_quality.py
             python3 generate.py
             git diff --check

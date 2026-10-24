@@ -1,4 +1,5 @@
 import io
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -86,11 +87,15 @@ class WorkflowSafetyTests(unittest.TestCase):
         self.assertIn("group: main-job-data-publish", content)
         self.assertNotIn("git add -A", content)
 
-    def test_telegram_approval_sender_is_manual_fallback_only(self):
+    def test_telegram_sender_push_is_only_for_approved_manifest(self):
         content = self.read("publish-verified-telegram.yml")
         self.assertIn("workflow_dispatch:", content)
-        self.assertNotIn("  push:", content)
+        self.assertIn("  push:", content)
+        push_section = content.split("  push:", 1)[1].split("  workflow_dispatch:", 1)[0]
+        watched_paths = re.findall(r"^\s+- (data/[^\n ]+)", push_section, re.M)
+        self.assertEqual(watched_paths, ["data/telegram-approved-batch.json"])
         self.assertIn("group: main-job-data-publish", content)
+        self.assertIn("scripts/publish_approved_telegram.py", content)
 
     def test_unsafe_legacy_sender_retired(self):
         self.assertFalse((ROOT / ".github" / "workflows" / "telegram-owner-batch-20261010.yml").exists())
