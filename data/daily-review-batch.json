@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-24-0900-ist",
   "generatedAt": "2026-10-24T03:34:24.591Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "ey-1738768",
@@ -656,7 +656,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-24T03:38:32.567Z",
+  "updatedAt": "2026-10-24T03:38:46.395Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
@@ -688,5 +688,47 @@
     "policy": "Zero-experience or current-student eligibility, exact current application evidence, Deloitte/watchlist priority, usefulness, source completeness and one employer per combined batch.",
     "priorityCount": 10,
     "backupCount": 2
+  },
+  "submittedAt": "2026-10-24T03:38:46.395Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01664425",
+      "amazon-10496769",
+      "amex-26014753",
+      "capco-8280810",
+      "ey-1738768",
+      "fam-23dd18f9",
+      "hevodata-433ffdef",
+      "merklescience-20675d00",
+      "playtolabs-744000154392811",
+      "zinnov-4410812009"
+    ],
+    "companies": [
+      "Accenture",
+      "Amazon",
+      "American Express",
+      "Capco",
+      "EY",
+      "Fam",
+      "Hevo Data",
+      "Merkle Science",
+      "Playto Labs",
+      "Zinnov"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01664425_en",
+      "https://www.amazon.jobs/en/jobs/10496769/data-engineer-intern-2027",
+      "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
+      "https://job-boards.greenhouse.io/capco/jobs/8280810",
+      "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
+      "https://jobs.lever.co/fampay/23dd18f9-a331-4115-98e9-e98c404c47c6",
+      "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
+      "https://jobs.lever.co/merklescience/20675d00-156c-4f3f-a9bf-4cacee176bc2",
+      "https://jobs.smartrecruiters.com/PlaytoLabs/744000154392811-business-development-representative-bdr-",
+      "https://job-boards.greenhouse.io/zinnov/jobs/4410812009"
+    ],
+    "requestId": "132937b09fca6b7f2d31ea1c",
+    "count": 10,
+    "submittedAt": "2026-10-24T03:38:46.395Z"
   }
 }
