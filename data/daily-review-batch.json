@@ -228,7 +228,7 @@
       "apply": "https://jobs.lever.co/merklescience/20675d00-156c-4f3f-a9bf-4cacee176bc2",
       "cat": "it",
       "expYears": "Final-year student internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Merkle Science Lever page displayed the Frontend Intern role, Bangalore location, detailed 2027 student eligibility and an active Apply for this job route during the 24 Oct check.",
       "job": {
@@ -264,13 +264,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Merkle Science Lever page displayed the Frontend Intern role, Bangalore location, detailed 2027 student eligibility and an active Apply for this job route during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:47.378Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:47.378Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Merkle Science Lever page displayed the Frontend Intern role, Bangalore location, detailed 2027 student eligibility and an active Apply for this job route during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:37:47.378Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "playtolabs-744000154392811",
@@ -632,7 +635,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:40.892Z",
+  "updatedAt": "2026-10-24T03:37:47.378Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
