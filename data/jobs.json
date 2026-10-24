@@ -4586,8 +4586,8 @@
       "MS Excel"
     ],
     "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000149790449",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "24 Oct 2026",
     "sourceName": "Bosch official careers",
     "who": "Graduates fluent in English, Hindi and Kannada; note that the official page conflicts about whether a minimum one year of experience is mandatory.",
     "workMode": "Not specified",
@@ -4605,7 +4605,14 @@
     "logoPath": "assets/company-marks-review/bosch.svg",
     "editorialOriginalDesc": "Bosch Global Software Technologies is recruiting a Process Associate for multilingual customer support in a 24/7 shift-based environment.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 167,
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149790449",
+      "checkedAt": "2026-10-24T17:35:48.582246+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    }
   },
   {
     "page": "jobs/google-software-engineer-search-122710813273137862.html",
