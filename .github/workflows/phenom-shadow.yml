@@ -1,0 +1,40 @@
+name: Phenom shadow validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [job-verifier-v2-shadow]
+    paths:
+      - 'scripts/phenom_network_probe.py'
+      - 'scripts/job_verifier_v2.py'
+      - 'tests/fixtures/v2_phenom_live_controls.json'
+      - '.github/workflows/phenom-shadow.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Probe Phenom controls
+        run: python3 scripts/phenom_network_probe.py tests/fixtures/v2_phenom_live_controls.json
+      - name: Verify Phenom controls through V2
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, "scripts")
+          from job_verifier_v2 import verify_url
+          jobs=json.load(open("tests/fixtures/v2_phenom_live_controls.json"))
+          for j in jobs:
+              v=verify_url(j["apply"])
+              print(j["company"], j.get("manualGroundTruth") or j.get("storedStatus"), v.state, v.reasons)
+              if j["id"] in {76,77}:
+                  assert v.state=="UNCONFIRMED", (j["company"], v.state, v.reasons)
+              if j["id"]==14:
+                  assert v.state=="EXPIRED", (j["company"], v.state, v.reasons)
+          PY

@@ -1,0 +1,68 @@
+name: SuccessFactors shadow validation
+on:
+  push:
+    branches:
+      - job-verifier-v2-shadow
+    paths:
+      - 'scripts/successfactors_network_probe.py'
+      - 'scripts/job_verifier_v2.py'
+      - 'tests/fixtures/v2_universal_portal_manual_10.json'
+      - 'tests/fixtures/v2_successfactors_14.json'
+      - '.github/workflows/successfactors-shadow.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install chromium
+      - name: Probe HCL and Wipro controls
+        run: python3 scripts/successfactors_network_probe.py tests/fixtures/v2_universal_portal_manual_10.json
+      - name: Verify HCL and Wipro through V2
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, "scripts")
+          from job_verifier_v2 import verify_url
+          jobs=json.load(open("tests/fixtures/v2_universal_portal_manual_10.json"))
+          for j in jobs:
+              if j.get("company") in {"HCLTech","Wipro"}:
+                  v=verify_url(j["apply"])
+                  print(j["company"], j["manualGroundTruth"], v.state, v.reasons)
+                  expected="EXPIRED" if j["manualGroundTruth"]=="expired" else "UNCONFIRMED"
+                  assert v.state==expected, (j["company"], expected, v.state, v.reasons)
+          PY
+      - name: Calibrate all discovered SuccessFactors jobs
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, "scripts")
+          from job_verifier_v2 import verify_url
+          jobs=json.load(open("tests/fixtures/v2_successfactors_14.json"))
+          counts={}
+          for j in jobs:
+              v=verify_url(j["apply"])
+              counts[v.state]=counts.get(v.state,0)+1
+              print(f'{j["id"]} | {j["company"]} | {j["role"]} | stored={j.get("status")} | V2={v.state} | {",".join(v.reasons)}')
+          print("SUMMARY", counts)
+          for j in jobs:
+              truth=j.get("manualGroundTruth")
+              if not truth:
+                  continue
+              v=verify_url(j["apply"])
+              if j["id"] == 30:
+                  assert v.state == "UNCONFIRMED", (j["company"], v.state, v.reasons)
+              elif truth == "expired":
+                  assert v.state == "EXPIRED", (j["company"], v.state, v.reasons)
+              else:
+                  assert v.state == "UNCONFIRMED", (j["company"], v.state, v.reasons)
+          PY

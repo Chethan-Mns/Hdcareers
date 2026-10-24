@@ -1,0 +1,72 @@
+name: V2 shadow job verifier
+# Oracle CE diagnostics enabled
+on:
+  push:
+    branches:
+      - job-verifier-v2-shadow
+    paths:
+      - 'scripts/job_verifier_v2.py'
+      - 'tests/test_job_verifier_v2.py'
+      - 'tests/fixtures/v2_live_jobs.json'
+      - 'tests/fixtures/v2_expired_jobs.json'
+      - 'tests/fixtures/v2_provider_live_jobs.json'
+      - 'tests/fixtures/v2_workday_live_jobs.json'
+      - 'tests/fixtures/v2_workday_expired_jobs.json'
+      - 'tests/fixtures/v2_provider_expired_candidates.json'
+      - 'tests/fixtures/v2_oracle_live_candidates.json'
+      - 'tests/fixtures/v2_oracle_old_candidates.json'
+      - '.github/workflows/job-verifier-v2-shadow.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser fallback
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install chromium
+      - name: Run V2 unit tests
+        run: python3 -m unittest tests/test_job_verifier_v2.py
+      - name: Verify current production-supported jobs in shadow mode
+        run: python3 scripts/job_verifier_v2.py --limit 5 --output shadow-production-report.json
+      - name: Verify known-live validation set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_live_jobs.json --output shadow-live-validation-report.json
+      - name: Verify known-expired validation set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_expired_jobs.json --output shadow-expired-validation-report.json
+      - name: Verify SmartRecruiters and Ashby live set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_live_jobs.json --output shadow-provider-live-report.json
+      - name: Verify provider negative candidates
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_provider_expired_candidates.json --output shadow-provider-negative-report.json
+      - name: Probe Oracle Candidate Experience network
+        run: python3 scripts/oracle_ce_network_probe.py tests/fixtures/v2_oracle_live_candidates.json
+      - name: Verify Oracle HCM live candidates
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_oracle_live_candidates.json --output shadow-oracle-live-report.json
+      - name: Verify Oracle HCM old candidates
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_oracle_old_candidates.json --output shadow-oracle-old-report.json
+      - name: Verify Workday live set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_workday_live_jobs.json --output shadow-workday-live-report.json
+      - name: Verify Workday expired regression set
+        run: python3 scripts/job_verifier_v2.py --jobs tests/fixtures/v2_workday_expired_jobs.json --output shadow-workday-expired-report.json
+      - name: Upload shadow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-shadow-verification-report
+          path: |
+            shadow-production-report.json
+            shadow-live-validation-report.json
+            shadow-expired-validation-report.json
+            shadow-provider-live-report.json
+            shadow-provider-negative-report.json
+            shadow-oracle-live-report.json
+            shadow-oracle-old-report.json
+            shadow-workday-live-report.json
+            shadow-workday-expired-report.json
+          retention-days: 30
