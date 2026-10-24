@@ -1402,6 +1402,10 @@ def main() -> None:
     insights_changed = write_insights_files(jobs, args.dry_run)
     support_changed = write_support_files(jobs, args.dry_run)
 
+    # Render meaningful initial content even with JavaScript disabled.
+    from scripts.adsense_readiness import pre_render_site
+    snapshot_changed = pre_render_site(jobs, args.dry_run)
+
     mode = "DRY RUN" if args.dry_run else "DONE"
     active = sum(1 for job in jobs if job.get("status") == "active")
     expired = len(jobs) - active
@@ -1410,6 +1414,7 @@ def main() -> None:
     print(f"job pages: {created} new, {changed} updated, {deleted} removed")
     print(f"insights pages: {insights_changed} changed")
     print(f"support files: {support_changed} changed")
+    print(f"crawler-ready static snapshots: {snapshot_changed} changed")
 
     if not args.dry_run:
         print("Run: python3 generate.py")
