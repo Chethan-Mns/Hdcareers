@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:11:42.708Z",
+  "checkedAt": "2026-10-24T05:11:50.295Z",
   "checked": 144,
-  "active": 124,
+  "active": 125,
   "expired": 0,
-  "review": 20,
+  "review": 19,
   "changedExpired": 0,
   "items": [
     {
@@ -414,9 +414,11 @@
       "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
       "page": "jobs/tieto-2812.html",
       "url": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-23T18:42:54.844652+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:11:50.295Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:11:50.295Z"
     },
     {
       "id": 188,
