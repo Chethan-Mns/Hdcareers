@@ -1,4 +1,5 @@
 (() => {
+  "use strict";
   const GA4_ID = "G-0QQR0MNHJR";
   const CLARITY_ID = "yrcbz82zju";
   const OPT_OUT_KEY = "hd_analytics_optout";
@@ -18,15 +19,13 @@
     return path === "/index.html" ? "/" : path;
   }
 
+  // Queue measurements without downloading large third-party tracking bundles
+  // during the page's initial render. Do not discard clicks that happen early.
   if (/^G-[A-Z0-9]+$/i.test(GA4_ID)) {
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA4_ID);
-    document.head.appendChild(s);
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    gtag("js", new Date());
-    gtag("config", GA4_ID, {
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA4_ID, {
       anonymize_ip: true,
       page_location: window.location.origin + normalizedPath() + window.location.search,
       page_title: document.title
@@ -89,11 +88,45 @@
     } catch {}
   }, true);
 
-  if (/^[a-z0-9]+$/i.test(CLARITY_ID) && CLARITY_ID.length >= 6) {
+  function addTrackingScript(url) {
+    if (optedOut()) return;
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = url;
+    document.head.appendChild(script);
+  }
+
+  let loadedGA = false;
+  function loadGA() {
+    if (loadedGA || !window.gtag || optedOut()) return;
+    loadedGA = true;
+    addTrackingScript("https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA4_ID));
+  }
+
+  let loadedClarity = false;
+  function loadClarity() {
+    if (loadedClarity || optedOut() || !/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) return;
+    loadedClarity = true;
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", CLARITY_ID);
+    })(window,document,"clarity","script",CLARITY_ID);
   }
+
+  // Preserve analytics measurement while giving the critical headline,
+  // navigation and first interaction priority over third-party scripts.
+  function startAfterLoad() {
+    const schedule = () => {
+      window.setTimeout(loadGA, 2200);
+      window.setTimeout(loadClarity, 8500);
+    };
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(schedule, { timeout: 3000 });
+    } else {
+      window.setTimeout(schedule, 900);
+    }
+  }
+  if (document.readyState === "complete") startAfterLoad();
+  else window.addEventListener("load", startAfterLoad, { once: true });
 })();
