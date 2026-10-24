@@ -15,9 +15,14 @@ JOBS = ROOT / "data" / "jobs.json"
 
 # Internal records explicitly describe student/graduate/intern roles with no
 # substantiated experienced-only requirement. Preserve other ambiguous cases.
-STUDENT_IDS = {231, 235, 237, 239, 221, 224, 209, 199, 201, 204, 205, 206, 207, 208, 191, 196, 173}
-UNSPECIFIED_IDS = {232, 233, 236, 227, 212, 203}
+STUDENT_IDS = {231, 235, 237, 239, 221, 224, 209, 199, 201, 204, 205, 206, 207, 208, 191, 196, 173, 220, 216, 194, 195, 198, 177, 178}
+UNSPECIFIED_IDS = {232, 233, 236, 227, 212, 203, 222, 192, 193, 180, 174}
 OVERRIDES = {
+    220: {
+        "elig": "Recent graduate or postgraduate with internship or project experience in market research, consulting, business analytics or a related field. MS Excel, PowerPoint, research ability, communication and analytical skills required; Power BI experience is an advantage.",
+        "expYears": "Recent graduate/postgraduate with relevant internship or project exposure",
+        "sourceVerificationMethod": "Official Dun & Bradstreet Lever Apprentice R-19971 posting reviewed on 24 Oct 2026."
+    },
     183: {
         "expType": "fresher",
         "expYears": "Final-year 2027 students; previous internships preferred, not required",
@@ -150,8 +155,9 @@ def pre_render_site(jobs: list[dict], dry_run: bool = False) -> int:
                   home, count=1, flags=re.S)
     bars = ', '.join('<a href="index.html#resultsSection">' + safe(p["city"]) +
                      ' (' + str(p["count"]) + ')</a>' for p in pins[:6])
-    home = home.replace('<p class="hdm-fineprint">Loading current city counts…</p>',
-                        '<p class="hdm-fineprint">Current city listings: ' + bars + '</p>')
+    home = re.sub(r'(<div class="hdm-bar-list" data-hdm-bars[^>]*>).*?(</div>)',
+                  lambda m: m[1] + '<p class="hdm-fineprint">Current city listings: ' + bars + '</p>' + m[2],
+                  home, count=1, flags=re.S)
     home = home.replace("Only Deloitte, EY, Amazon and Accenture — with Active openings.",
                         "Current active opportunities from selected employers.")
     targets += write(index_path, home, dry_run)
@@ -171,7 +177,8 @@ def pre_render_site(jobs: list[dict], dry_run: bool = False) -> int:
         prefix = "../" if "weekly" in path.name else ""
         city_text = ''.join('<a href="' + prefix + 'index.html#resultsSection" class="hdm-fineprint">' +
                             safe(p["city"]) + ': ' + str(p["count"]) + ' listings</a> ' for p in pins[:6])
-        s = s.replace('<p class="hdm-fineprint">Loading current city data…</p>', city_text)
+        s = re.sub(r'(<div class="hdm-city-cards" data-hdm-citycards[^>]*>).*?(</div>)',
+                   lambda m: m[1] + city_text + m[2], s, count=1, flags=re.S)
         company_text = ''.join('<a href="' + prefix + 'index.html#resultsSection" class="hi-company">' +
                                safe(name) + ' — ' + str(count) + ' jobs</a> ' for name, count in companies.most_common(12))
         s = re.sub(r'(<div id="hiCompanies" class="hi-company-gallery">).*?(</div>)',
