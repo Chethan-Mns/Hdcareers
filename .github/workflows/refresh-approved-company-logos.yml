@@ -1,23 +1,29 @@
-name: Refresh Job Page Logos After Approved Mapping Changes
+name: Refresh Verified Employer Logos
 
 on:
   push:
     branches: [main]
     paths:
+      - scripts/resolve_company_logos.py
+      - scripts/employer_brand_sources.py
+      - tests/test_employer_brand_sources.py
+      - data/company-logo-domains.json
+      - data/company-logo-direct.json
       - data/approved-company-logos.json
       - .github/workflows/refresh-approved-company-logos.yml
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: hdcareers-approved-company-logo-pages
+  group: main-job-data-publish
   cancel-in-progress: false
 
 jobs:
-  regenerate:
+  refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,7 +32,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Regenerate job pages from approved logo mapping
+      - name: Install safe raster processing
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Validate source verification and HTML / SVG parsing
+        run: |
+          python3 -m unittest discover -s tests -p test_employer_brand_sources.py -v
+          python3 -m unittest discover -s tests -p test_company_logo_sources.py -v
+      - name: Refresh only verified corporate domains and generated pages
         shell: bash
         run: |
           set -euo pipefail
@@ -35,21 +47,23 @@ jobs:
           for attempt in 1 2 3 4 5 6; do
             git fetch origin main
             git reset --hard origin/main
+            python3 scripts/resolve_company_logos.py
             python3 generate.py
             python3 generate.py --dry-run
+            python3 -m unittest discover -s tests -p test_job_hero.py -v
             git diff --check
-            git add index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+            git add data/jobs.json data/company-logos.json data/company-logo-review.json assets/company-icons index.html jobs/ insights.html insights/ robots.txt sitemap.xml
             if git diff --cached --quiet; then
-              echo "Approved logo job pages already current."
+              echo "Employer branding and generated pages already current."
               exit 0
             fi
-            git commit -m "Generate job pages with approved company logo assets"
+            git commit -m "Refresh verified employer branding and job pages"
             if git push origin HEAD:main; then
-              echo "Published current job pages with approved logo assets."
+              echo "Published verified logo assets; unresolved companies stay in review."
               exit 0
             fi
-            echo "::warning::main moved before push, retrying"
+            echo "::warning::main moved during employer branding refresh; retrying"
             sleep 3
           done
-          echo "::error::Could not publish generated job pages; main kept changing."
+          echo "::error::Could not publish brand refresh after safe retries."
           exit 1
