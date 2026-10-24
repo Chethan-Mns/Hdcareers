@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:12:39.625Z",
+  "checkedAt": "2026-10-24T05:12:49.144Z",
   "checked": 144,
-  "active": 129,
+  "active": 130,
   "expired": 1,
-  "review": 14,
+  "review": 13,
   "changedExpired": 1,
   "items": [
     {
@@ -766,9 +766,11 @@
       "role": "Digital Workplace Practice – Service Desk",
       "page": "jobs/cognizant-digital-workplace-practice-service-desk-freshers-2026.html",
       "url": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-23T18:43:31.197814+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:12:49.144Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:12:49.144Z"
     },
     {
       "id": 139,
