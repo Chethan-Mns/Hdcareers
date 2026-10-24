@@ -1,0 +1,49 @@
+/* HD Careers mobile and accessibility improvements.
+   This stylesheet is loaded AFTER the existing site styles. It does not
+   replace company logos, home-page cards, or India map visuals. */
+
+/* Higher-contrast text for the actual Lighthouse findings. */
+.hdp-art-status{color:#075c3c!important;background:#e0faeb!important;font-size:11px!important}
+.hdp-art-mini-copy small{color:#475569!important;font-size:12px!important;line-height:1.4!important}
+.hdp-art-badge.one{color:#086c4e!important}
+.hdp-art-badge.two{color:#49349a!important}
+.hdp-art-badge.three{color:#114a9d!important}
+.hdp-metric small{color:#42526b!important;font-size:13px!important}
+.hdp-featured-item p{color:#475569!important;font-size:13px!important}
+.hdp-tag{color:#1e4594!important;background:#eaf1ff!important}
+.hdp-heading p,.hdp-trust-item p{color:#42526b!important}
+.hdp-hero p,.hdp-hero-notes{color:#485d79!important}
+.hdp-art-top small{color:#485d79!important}
+
+/* Keep official HD Careers visual system, but ensure keyboard navigation works. */
+:where(a,button,input,select,textarea,[role="button"]):focus-visible{
+  outline:3px solid #0b60d6!important;
+  outline-offset:3px!important;
+}
+.hd-public-nav a.is-active,.hd-public-nav a[aria-current="page"]{
+  color:#10469d!important;background:#e6f0ff!important
+}
+.hd-public-nav a.is-active:after,.hd-public-nav a[aria-current="page"]:after{background:#10469d}
+#filterTabs .pill span.ml-1{opacity:1!important;color:inherit!important}
+#jobCount,.hdm-fineprint,.hdm-inline-note{color:#42526b}
+
+/* Keep the top heading visible immediately on slower phones: no entrance
+   opacity/transform animation for the initial viewport. Other interactions remain. */
+@media(max-width:767px){
+  #homeView.soft-enter{animation:none!important;opacity:1!important;transform:none!important}
+  .hdp-hero h1{animation:none!important;opacity:1!important;transform:none!important}
+  .hdp-orb{animation:none!important}
+  .hdp-art-card,.hdp-art-badge{transition:none!important}
+  .hdp-art-job{animation:none!important}
+  .hdp-hero-search button{min-height:44px}
+  .hdp-quick{min-height:44px}
+  .hdp-art{contain:layout style}
+}
+
+/* Respect assistive-technology preferences without disabling essential UI. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  #homeView.soft-enter,.hdp-orb,.hdp-art-job,.hdp-featured-item,
+  .reveal-on-scroll,.reveal-card{animation:none!important;transition:none!important}
+  #homeView,.reveal-on-scroll,.reveal-card{opacity:1!important;transform:none!important}
+}
