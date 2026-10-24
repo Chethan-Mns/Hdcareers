@@ -1,0 +1,95 @@
+name: AdSense content and crawler readiness
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/adsense-readiness-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: adsense-site-readiness
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply verified eligibility and experience fixes
+        run: python3 scripts/adsense_readiness.py --apply-data
+      - name: Generate crawler-readable pages
+        run: python3 generate.py
+      - name: Check generated files and job templates
+        run: |
+          python3 -m py_compile scripts/adsense_readiness.py scripts/audit_public_sitemap.py generate.py
+          python3 -m unittest discover -s tests -p test_job_hero.py -v
+          git diff --check
+          python3 generate.py --dry-run
+      - name: Validate source data, page generation, and sitemap
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          root=Path('.')
+          jobs=json.loads((root/'data/jobs.json').read_text())
+          active=[j for j in jobs if j.get('status')=='active']
+          assert all((root/j['page']).is_file() for j in jobs)
+          sitemap=ET.fromstring((root/'sitemap.xml').read_text())
+          urls=[e.text for e in sitemap.findall('.//{*}loc')]
+          assert len([u for u in urls if '/jobs/' in u])==len(active)
+          assert all('https://hdcareers.in/'+j['page'] in urls for j in active)
+          assert all('https://hdcareers.in/'+j['page'] not in urls for j in jobs if j.get('status')!='active')
+          assert 'id="hdpJobs">'+str(len(active))+'</b>' in (root/'index.html').read_text()
+          assert 'Loading current city data…' not in (root/'insights.html').read_text()
+          assert '<p style=' not in str(next(j for j in jobs if j['id']==183).get('resp'))
+          print('PASS:',len(jobs),'records,',len(active),'active,',len(urls),'sitemap URLs')
+          PY
+      - name: Commit verified generated updates to production source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers Quality Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jobs.json data/insights-summary.json index.html insights.html insights/weekly-hiring-insights.html jobs/ sitemap.xml robots.txt
+          if git diff --staged --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Fix AdSense crawler fallbacks and source-backed job quality"
+            git push origin HEAD:main
+          fi
+      - name: Crawl production sitemap after deployment
+        id: crawl
+        continue-on-error: true
+        run: python3 scripts/audit_public_sitemap.py
+      - name: Publish crawler report as build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adsense-public-crawler-audit
+          path: adsense-crawl-report.json
+          if-no-files-found: warn
+      - name: Summarize crawl status
+        if: always()
+        run: |
+          if [ -f adsense-crawl-report.json ]; then
+            python3 - <<'PY'
+          import json
+          d=json.load(open('adsense-crawl-report.json'))
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'],'a') as out:
+            out.write(f"### External HTTP crawl\n\n- URLs: {d['urls_checked']}\n- Passed: {d['passed']}\n- Failed: {d['failed']}\n- New homepage live: {d['expected_generated_homepage']}\n- robots.txt status: {d['robots_status']}\n")
+          PY
+          fi
