@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "23 October 2026",
-  "active": 144,
-  "employers": 95,
+  "verifiedThrough": "24 October 2026",
+  "active": 154,
+  "employers": 99,
   "freshers": 85,
-  "experienced": 54,
+  "experienced": 64,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 57
+      "count": 63
     },
     {
       "label": "Mumbai",
-      "count": 13
+      "count": 15
     },
     {
       "label": "Hyderabad",
@@ -19,7 +19,7 @@
     },
     {
       "label": "Gurugram",
-      "count": 6
+      "count": 7
     },
     {
       "label": "Noida",
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 57
+      "count": 63
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 13
+      "count": 15
     },
     {
       "city": "Hyderabad",
@@ -61,7 +61,7 @@
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
-      "count": 6
+      "count": 7
     },
     {
       "city": "Noida",
@@ -155,14 +155,14 @@
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
-      "name": "EY",
-      "count": 6,
-      "logo": "assets/company-approved/ey.webp"
+      "name": "Amazon",
+      "count": 7,
+      "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
-      "name": "Amazon",
-      "count": 6,
-      "logo": "assets/company-approved/amazon-owner-20261019.png"
+      "name": "EY",
+      "count": 7,
+      "logo": "assets/company-approved/ey.webp"
     },
     {
       "name": "Google",
@@ -170,19 +170,24 @@
       "logo": "assets/company-approved/google-owner-20261019.svg"
     },
     {
+      "name": "Accenture",
+      "count": 4,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
       "name": "Cognizant",
       "count": 4,
       "logo": "assets/company-icons/cognizant-8d169ac.png"
     },
     {
+      "name": "Hevo Data",
+      "count": 3,
+      "logo": "assets/company-icons/hevo-data-998c6b2.png"
+    },
+    {
       "name": "Deloitte",
       "count": 3,
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
-    },
-    {
-      "name": "Accenture",
-      "count": 3,
-      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Bosch",
@@ -195,25 +200,20 @@
       "logo": "assets/company-icons/wipro-6507802.png"
     },
     {
-      "name": "Cisco",
+      "name": "Merkle Science",
       "count": 2,
-      "logo": "assets/company-marks-review/cisco.svg"
+      "logo": "assets/company-icons/merkle-science-1bc635f-b2ba2ed62d.png"
     },
     {
-      "name": "Drivetrain",
+      "name": "Playto Labs",
       "count": 2,
       "logo": ""
-    },
-    {
-      "name": "Instawork",
-      "count": 2,
-      "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 20
+      "count": 21
     },
     {
       "label": "Java",
@@ -221,22 +221,26 @@
     },
     {
       "label": "SQL",
-      "count": 16
+      "count": 17
     },
     {
       "label": "Communication",
-      "count": 10
+      "count": 13
     },
     {
       "label": "JavaScript",
-      "count": 10
+      "count": 11
     },
     {
       "label": "Problem solving",
-      "count": 9
+      "count": 10
     },
     {
       "label": "REST APIs",
+      "count": 9
+    },
+    {
+      "label": "Documentation",
       "count": 8
     },
     {
@@ -248,6 +252,10 @@
       "count": 8
     },
     {
+      "label": "Git",
+      "count": 7
+    },
+    {
       "label": "Attention to detail",
       "count": 7
     },
@@ -256,30 +264,22 @@
       "count": 7
     },
     {
-      "label": "Documentation",
-      "count": 7
-    },
-    {
       "label": "C++",
-      "count": 7
-    },
-    {
-      "label": "Troubleshooting",
       "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 67
+      "count": 70
     },
     {
       "label": "internship",
-      "count": 37
+      "count": 41
     },
     {
       "label": "nonit",
-      "count": 26
+      "count": 29
     },
     {
       "label": "experienced",
@@ -386,6 +386,10 @@
     {
       "date": "2026-10-23",
       "count": 31
+    },
+    {
+      "date": "2026-10-24",
+      "count": 10
     }
   ]
 }
