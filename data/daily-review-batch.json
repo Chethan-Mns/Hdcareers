@@ -609,7 +609,7 @@
       "apply": "https://job-boards.greenhouse.io/karya/jobs/5416262008",
       "cat": "it",
       "expYears": "Current student or recent graduate internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Karya Greenhouse page displayed the Bengaluru Research Intern role, current or recent graduate eligibility and a complete active application form during the 24 Oct check.",
       "job": {
@@ -644,16 +644,19 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Karya Greenhouse page displayed the Bengaluru Research Intern role, current or recent graduate eligibility and a complete active application form during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:38:32.567Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:38:32.567Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Karya Greenhouse page displayed the Bengaluru Research Intern role, current or recent graduate eligibility and a complete active application form during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:38:32.567Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-24T03:38:28.131Z",
+  "updatedAt": "2026-10-24T03:38:32.567Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
