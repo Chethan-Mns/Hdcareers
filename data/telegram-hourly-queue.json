@@ -611,9 +611,11 @@
     {
       "page": "jobs/ey-analyst-tax-transfer-pricing.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T07:41:38.632444+00:00"
+      "dueAt": "2026-10-24T07:41:38.632444+00:00",
+      "claimId": "40075143230",
+      "claimedAt": "2026-10-24T07:41:56.868566+00:00"
     },
     {
       "page": "jobs/fam-copy-intern.html",
