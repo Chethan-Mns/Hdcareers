@@ -581,9 +581,11 @@
     {
       "page": "jobs/amazon-data-engineer-intern-2027.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T04:40:56.873517+00:00"
+      "dueAt": "2026-10-24T04:40:56.873517+00:00",
+      "claimId": "40063305722",
+      "claimedAt": "2026-10-24T04:41:07.824675+00:00"
     },
     {
       "page": "jobs/american-express-apprentice-marketing-offers-operations.html",
