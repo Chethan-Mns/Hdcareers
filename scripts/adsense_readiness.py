@@ -145,14 +145,30 @@ def pre_render_site(jobs: list[dict], dry_run: bool = False) -> int:
         if listings:
             featured.append('<a class="hdp-company" href="' + safe(listings[0]["page"]) + '"><h3>' + safe(name) +
                             '</h3><span class="hdp-count">' + str(len(listings)) + ' active listings →</span></a>')
-    home = re.sub(r'(<div id="hdpCompanies" class="hdp-companies">).*?(</div>)',
-                  lambda m: m[1] + "".join(featured) + m[2], home, count=1, flags=re.S)
+    # Replace the WHOLE component up to its section boundary. A generic
+    # </div> search truncates at nested markup and leaves orphan cards behind.
+    # Keep this operation safe and idempotent as generation runs after every publish.
+    companies_pattern = r'(<div id="hdpCompanies" class="hdp-companies">).*?(</section>)'
+    home, companies_matches = re.subn(
+        companies_pattern,
+        lambda m: m[1] + "".join(featured) + "</div>" + m[2],
+        home, count=1, flags=re.S)
+    if companies_matches != 1:
+        raise ValueError("Homepage companies section anchor missing")
     last = sorted(active, key=lambda j: str(j.get("publishedAt") or ""), reverse=True)[:4]
     recent = ''.join('<article class="hdp-featured-item"><div class="hdp-job-company">' + safe(j.get("company", "")) +
        '</div><h3>' + safe(j.get("role", "")) + '</h3><p>' + safe(j.get("loc", "")) +
        '</p><a class="hdp-apply" href="' + safe(j.get("page", "")) + '">View &amp; Apply →</a></article>' for j in last)
-    home = re.sub(r'(<div id="hdpRecent" class="hdp-featured">).*?(</div>)', lambda m: m[1] + recent + m[2],
-                  home, count=1, flags=re.S)
+    # Each job card contains nested <div> tags. Stop at the enclosing
+    # </section>, not the first card's closing </div>. Also repair pages
+    # previously damaged by non-idempotent replacements.
+    recent_pattern = r'(<div id="hdpRecent" class="hdp-featured">).*?(</section>)'
+    home, recent_matches = re.subn(
+        recent_pattern,
+        lambda m: m[1] + recent + "</div>" + m[2],
+        home, count=1, flags=re.S)
+    if recent_matches != 1:
+        raise ValueError("Homepage recent-jobs section anchor missing")
     bars = ', '.join('<a href="index.html#resultsSection">' + safe(p["city"]) +
                      ' (' + str(p["count"]) + ')</a>' for p in pins[:6])
     home = re.sub(r'(<div class="hdm-bar-list" data-hdm-bars[^>]*>).*?(</div>)',
