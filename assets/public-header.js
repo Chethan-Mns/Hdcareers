@@ -24,7 +24,7 @@
   header.dataset.hdPublicHeaderReady='true';
   header.innerHTML=`<div class="hd-public-inner">
     <a class="hd-public-brand" href="${href('index.html')}" aria-label="HD Careers home">
-      <img src="${href('assets/hd-careers-logo.png')}" alt="HD Careers">
+      <img src="${href('assets/hd-careers-logo-small.webp')}" width="112" height="94" alt="HD Careers">
       <span class="hd-public-brand-copy"><span class="hd-public-brand-title">HD Careers</span><span class="hd-public-brand-tagline">Jobs • Insights • Career resources</span></span>
     </a>
     <nav class="hd-public-nav" aria-label="Primary navigation">${navLinks}</nav>
