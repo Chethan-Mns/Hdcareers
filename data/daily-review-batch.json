@@ -391,7 +391,7 @@
       "apply": "https://job-boards.greenhouse.io/zinnov/jobs/4410812009",
       "cat": "internship",
       "expYears": "Student internship; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Zinnov Greenhouse page displayed the Bangalore internship, current qualifications and a complete active application form during the 24 Oct check.",
       "job": {
@@ -426,13 +426,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Zinnov Greenhouse page displayed the Bangalore internship, current qualifications and a complete active application form during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:38:04.064Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:38:04.064Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Zinnov Greenhouse page displayed the Bangalore internship, current qualifications and a complete active application form during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:38:04.064Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "capco-8280810",
@@ -641,7 +644,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:59.844Z",
+  "updatedAt": "2026-10-24T03:38:04.065Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
