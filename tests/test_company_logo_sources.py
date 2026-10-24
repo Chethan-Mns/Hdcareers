@@ -100,5 +100,28 @@ class CompanyLogoRules(unittest.TestCase):
                         for h in PROVIDERS), f"Shared ATS logo was cached: {company}, {source_host}")
 
 
+    def test_employer_logo_presentation_is_shared_by_home_and_job_pages(self):
+        display=(ROOT/"assets/employer-logo-display.js").read_text(encoding="utf-8")
+        hero=(ROOT/"assets/job-hero.css").read_text(encoding="utf-8")
+        self.assertIn('assets/employer-logo-display.js',self.home)
+        self.assertIn('../assets/employer-logo-display.js',self.generator)
+        self.assertIn('data-hd-employer-logo="1"',self.home)
+        self.assertIn('data-hd-employer-logo="1"',self.generator)
+        self.assertIn('hd-logo-summary',self.generator)
+        self.assertIn('$logo_image</div>',self.generator)
+        for key in ("SAMPLE = 64","source.origin !== location.origin",
+                    "white / visible > 0.74", "bw / Math.max(1, bh) >= 3.15",
+                    "hd-logo-dark", "hd-logo-initials"):
+            self.assertIn(key,display)
+        self.assertIn('.company-logo.hd-logo-dark',self.home)
+        self.assertIn('.hdj3-logo.hd-logo-dark',hero)
+        self.assertIn('.hd-logo-summary.hd-logo-dark',hero)
+        self.assertIn('width:96%',hero)
+        # Wide logos use the existing initials instead of being shrunk further.
+        self.assertIn('ratio >= 3.15',display)
+        # Image delivery remains local and does not overwrite approved files.
+        self.assertNotIn('fetch(',display)
+        self.assertNotIn('toDataURL(',display)
+
 if __name__=="__main__":
     unittest.main()

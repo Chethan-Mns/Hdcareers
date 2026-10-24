@@ -8,6 +8,10 @@ on:
       - scripts/employer_brand_sources.py
       - tests/test_employer_brand_sources.py
       - tests/test_company_logo_sources.py
+      - assets/employer-logo-display.js
+      - assets/job-hero.css
+      - generate.py
+      - index.html
       - data/company-logo-domains.json
       - data/company-logo-direct.json
       - data/company-logo-vetted-careers-assets.json
@@ -37,6 +41,8 @@ jobs:
           python-version: '3.12'
       - name: Install safe raster processing
         run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Validate logo presentation JavaScript syntax
+        run: node --check assets/employer-logo-display.js
       - name: Validate source verification and HTML / SVG parsing
         run: |
           python3 -m unittest discover -s tests -p test_employer_brand_sources.py -v

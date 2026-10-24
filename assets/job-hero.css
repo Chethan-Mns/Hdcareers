@@ -12,7 +12,11 @@
 .hdj3-date{font-size:11px;color:#6480a6;font-weight:750}
 .hdj3-employer{display:flex;align-items:center;gap:14px;margin:20px 0 24px}
 .hdj3-logo{display:grid;place-items:center;width:62px;height:62px;flex:0 0 62px;border:1px solid #e0ebff;border-radius:17px;background:white;box-shadow:0 10px 25px #0c35581c;color:#0c2147;font-size:22px;font-weight:900}
-.hdj3-logo img{display:block;width:83%;height:83%;object-fit:contain}.hdj3-employer strong{display:block;font-weight:900;font-size:20px}.hdj3-employer small{display:block;color:#728caf;font-size:12px;margin-top:3px}
+.hdj3-logo img[data-hd-employer-logo],.hd-logo-summary img[data-hd-employer-logo]{display:block;width:96%;height:96%;object-fit:contain}
+.hdj3-logo,.hd-logo-summary{background:#f8fbff;isolation:isolate}
+.hdj3-logo.hd-logo-dark,.hd-logo-summary.hd-logo-dark{background:#10325a;border-color:#10325a}
+.hdj3-logo .hd-logo-initials,.hd-logo-summary .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
+.hd-logo-summary .hd-logo-art{max-width:100%;max-height:100%}.hdj3-employer strong{display:block;font-weight:900;font-size:20px}.hdj3-employer small{display:block;color:#728caf;font-size:12px;margin-top:3px}
 .hdj3-intro h1{font-size:clamp(30px,3.35vw,48px);letter-spacing:-.045em;line-height:1.14;font-weight:900;color:#0a2040;margin:0 0 20px;overflow-wrap:break-word}
 .hdj3-tags{display:flex;gap:9px;flex-wrap:wrap}.hdj3-tags span{background:#e1ebff;border-radius:30px;padding:7px 13px;color:#0d5cc9;font-size:12px;font-weight:850;display:inline-flex;align-items:center;gap:9px}
 .hdj3-desc{font-size:14px;color:#597699;line-height:1.76;max-width:620px;margin:18px 0 20px}

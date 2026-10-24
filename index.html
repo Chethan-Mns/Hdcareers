@@ -20,6 +20,7 @@
 <link rel="shortcut icon" href="/assets/hd-careers-logo.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <link rel="stylesheet" href="assets/tailwind-built.css">
+<script defer src="assets/employer-logo-display.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 <style>
 :root{
@@ -58,7 +59,10 @@ a{text-decoration:none}
 .pill.active{background:var(--primary)!important;color:#fff!important;border-color:var(--primary)!important;box-shadow:0 8px 18px rgba(9,105,218,.2)}
 .job-card{transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .24s ease,border-color .24s ease;background:linear-gradient(180deg,#fff,#fff)}
 .job-card:hover{transform:translateY(-5px);box-shadow:0 20px 45px rgba(15,23,42,.11);border-color:#c9d7eb}
-.company-logo{transition:transform .22s ease}
+.company-logo{transition:transform .22s ease;background:#f8fbff!important;isolation:isolate}
+.company-logo img[data-hd-employer-logo]{display:block;width:96%!important;height:96%!important;object-fit:contain}
+.company-logo.hd-logo-dark{background:#10325a!important;border-color:#10325a!important}
+.company-logo .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
@@ -625,7 +629,7 @@ function companyLogo(j,size='w-16 h-16'){
   const color=String((j.logo&&j.logo[1])||'#0b6fe8').replace(/"/g,'&quot;');
   const zoom={'arm':1.22,'rubrik':1.24,'new street technologies':1.25,'wayfair':1.24}[key]||1;
   const visible=first
-    ?'<img src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="w-[94%] h-[94%] object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
+    ?'<img data-hd-employer-logo="1" onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="hd-logo-art w-[96%] h-[96%] object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
     :'<span style="color:'+color+';font-weight:900;font-size:16px">'+mark+'</span>';
   return '<div class="company-logo '+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
 }
