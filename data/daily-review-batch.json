@@ -283,7 +283,7 @@
       "apply": "https://jobs.smartrecruiters.com/PlaytoLabs/744000154392811-business-development-representative-bdr-",
       "cat": "nonit",
       "expYears": "No prior experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "The exact Playto Labs SmartRecruiters page displayed a Bengaluru fresher role, 2024–2026 graduate eligibility, no prior experience requirement and an active application control during the 24 Oct check.",
       "job": {
@@ -318,13 +318,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "The exact Playto Labs SmartRecruiters page displayed a Bengaluru fresher role, 2024–2026 graduate eligibility, no prior experience requirement and an active application control during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:52.576Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:52.576Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact Playto Labs SmartRecruiters page displayed a Bengaluru fresher role, 2024–2026 graduate eligibility, no prior experience requirement and an active application control during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:37:52.576Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hevodata-433ffdef",
@@ -635,7 +638,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:47.378Z",
+  "updatedAt": "2026-10-24T03:37:52.576Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
