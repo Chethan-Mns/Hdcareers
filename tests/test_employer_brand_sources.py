@@ -103,6 +103,38 @@ class EmployerBrandSourceTests(unittest.TestCase):
         self.assertEqual(candidates[0][1], "https://www.sc.com/static/logo.svg")
         self.assertFalse(any("google.com/s2" in row[1] for row in candidates))
 
+    def test_smartrecruiters_company_uploaded_brand_can_be_used_safely(self):
+        page = b"""<html><body>
+          <img alt="Caribou Media Pvt Ltd logo"
+               src="https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/employer/huge"/>
+          <img alt="SmartRecruiters logo"
+               src="https://c.smartrecruiters.com/provider-logo.svg"/>
+        </body></html>"""
+        source = "https://jobs.smartrecruiters.com/CaribouMediaPvtLtd/84098168-php-developer"
+        sample = {"company": "Caribou Media", "apply": source}
+        with patch.object(logos, "fetch", return_value=(page, "text/html", source)):
+            with patch.object(logos, "evaluate_remote_candidate", return_value=(900, b"sample", ".png", "https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/employer/huge", "employer-uploaded careers brand logo", (120, 120))) as evaluate:
+                result = logos.employer_uploaded_careers_logo(sample)
+        self.assertIsNotNone(result)
+        self.assertTrue(evaluate.call_args.kwargs["allow_employer_ats_brand"])
+        self.assertIn("sr-company-logo-prod-aws", evaluate.call_args.args[1])
+
+    def test_no_ats_employer_brand_fallback_without_exact_named_image(self):
+        source = "https://jobs.smartrecruiters.com/Company/123"
+        page = b'<img alt="SmartRecruiters logo" src="https://c.smartrecruiters.com/provider.svg">'
+        with patch.object(logos, "fetch", return_value=(page, "text/html", source)):
+            with patch.object(logos, "evaluate_remote_candidate") as evaluate:
+                result = logos.employer_uploaded_careers_logo({"company": "Caribou Media", "apply": source})
+        self.assertIsNone(result)
+        evaluate.assert_not_called()
+
+    def test_non_smartrecruiters_form_never_supplies_brand_logo(self):
+        with patch.object(logos, "fetch") as fetcher:
+            self.assertIsNone(logos.employer_uploaded_careers_logo({
+                "company": "Company", "apply": "https://airtable.com/abc"
+            }))
+        fetcher.assert_not_called()
+
     def test_accepts_wide_wordmark_when_source_is_branded_logo(self):
         self.assertIsNotNone(logos.raster_score(600, 110, 800, wordmark=True))
         self.assertIsNone(logos.raster_score(600, 110, 300, wordmark=False))
