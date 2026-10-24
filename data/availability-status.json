@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-23T18:45:46.386079+00:00",
+  "checkedAt": "2026-10-24T05:11:42.708Z",
   "checked": 144,
-  "active": 123,
+  "active": 124,
   "expired": 0,
-  "review": 21,
+  "review": 20,
   "changedExpired": 0,
   "items": [
     {
@@ -382,9 +382,11 @@
       "role": "Software Engineer Intern",
       "page": "jobs/stripe-software-engineer-intern.html",
       "url": "https://stripe.com/careers/listing/software-engineer-intern/8031833",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-23T18:42:51.949376+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:11:42.708Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:11:42.708Z"
     },
     {
       "id": 197,
