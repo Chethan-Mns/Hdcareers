@@ -7,6 +7,8 @@ on:
       - '.github/workflows/adsense-readiness-fix.yml'
       - 'scripts/adsense_readiness.py'
       - 'generate.py'
+      - 'scripts/adsense_install.py'
+      - 'tests/test_adsense_connection.py'
   workflow_dispatch:
 
 permissions:
@@ -39,6 +41,7 @@ jobs:
           python3 -m py_compile scripts/adsense_readiness.py scripts/audit_public_sitemap.py generate.py
           python3 -m unittest discover -s tests -p test_job_hero.py -v
           python3 -m unittest discover -s tests -p test_adsense_home_layout.py -v
+          python3 -m unittest discover -s tests -p test_adsense_connection.py -v
           git diff --check
           python3 generate.py --dry-run
       - name: Validate source data, page generation, and sitemap
@@ -68,6 +71,7 @@ jobs:
           git config user.name "HD Careers Quality Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/jobs.json data/insights-summary.json index.html insights.html insights/weekly-hiring-insights.html jobs/ sitemap.xml robots.txt
+          git add -- '*.html' 'resources/*.html' 'insights/*.html' 'jobs/*.html'
           if git diff --staged --quiet; then
             echo "No generated changes"
           else
