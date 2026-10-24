@@ -6,6 +6,7 @@
     "verificationStatus": "official-domain-icon-auto",
     "localPath": "assets/company-icons/actrec-217b242-7def3ac8e6.svg",
     "sourceDimensions": null,
+    "needsQualityUpgrade": false,
     "qualityScore": 1450,
     "bytes": 482
   },
@@ -16,6 +17,7 @@
     "verificationStatus": "official-domain-icon-auto",
     "localPath": "assets/company-icons/advanced-centre-for-treatment-research-and-education-in-cancer-actrec-56e6c9e-7def3ac8e6.svg",
     "sourceDimensions": null,
+    "needsQualityUpgrade": false,
     "qualityScore": 1450,
     "bytes": 482
   },
@@ -53,6 +55,7 @@
     "verificationStatus": "official-domain-icon-auto",
     "localPath": "assets/company-icons/cochin-shipyard-limited-556509f-c6947073dd.svg",
     "sourceDimensions": null,
+    "needsQualityUpgrade": false,
     "qualityScore": 1450,
     "bytes": 378
   },
@@ -63,6 +66,7 @@
     "verificationStatus": "official-domain-icon-auto",
     "localPath": "assets/company-icons/cochin-shipyard-limited-cmsru-833c985-c6947073dd.svg",
     "sourceDimensions": null,
+    "needsQualityUpgrade": false,
     "qualityScore": 1450,
     "bytes": 378
   },
@@ -275,6 +279,7 @@
     "verificationStatus": "official-domain-icon-auto",
     "localPath": "assets/company-icons/electronics-corporation-of-india-limited-ecil-9dc640b-d96db01ea7.svg",
     "sourceDimensions": null,
+    "needsQualityUpgrade": false,
     "qualityScore": 1450,
     "bytes": 356
   },
@@ -1224,5 +1229,75 @@
     ],
     "qualityScore": 983,
     "bytes": 28800
+  },
+  "Graviton Research Capital": {
+    "officialDomain": "gravitontrading.com",
+    "sourceUrl": "https://www.gravitontrading.com/assets/images/logo.png",
+    "sourceType": "company-named logo image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/graviton-research-capital-ea2fa9b-8fbc04284a.png",
+    "sourceDimensions": [
+      263,
+      61
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 1021,
+    "bytes": 17061
+  },
+  "Mactores": {
+    "officialDomain": "mactores.com",
+    "sourceUrl": "https://mactores.com/hubfs/mactores-logo.webp",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/mactores-df3d325-b4158b9a15.png",
+    "sourceDimensions": [
+      195,
+      61
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 1061,
+    "bytes": 6214
+  },
+  "MarkTeQ": {
+    "officialDomain": "markteq.com",
+    "sourceUrl": "https://markteq.com/assets/images/favicon.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/markteq-a25a7c7-783c0e9fbc.png",
+    "sourceDimensions": [
+      50,
+      50
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 330,
+    "bytes": 3313
+  },
+  "WNS Global Services": {
+    "officialDomain": "wns.com",
+    "sourceUrl": "https://s3.wns.com/S3_5/Images/WNS-Home/favicon.ico",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/wns-global-services-b18e800-0a564afa90.png",
+    "sourceDimensions": [
+      48,
+      48
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 328,
+    "bytes": 2094
+  },
+  "Zeta": {
+    "officialDomain": "zeta.tech",
+    "sourceUrl": "https://www.zeta.tech/us/wp-content/uploads/sites/2/2022/01/favicon-1.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/zeta-d4dde75-7302f73c97.png",
+    "sourceDimensions": [
+      48,
+      48
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 478,
+    "bytes": 1846
   }
 }

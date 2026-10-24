@@ -34,13 +34,6 @@
     "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
     "jobPage": "jobs/endeavor-it-solution-internship-opportunities-for-graduates.html"
   },
-  "Graviton Research Capital": {
-    "status": "needs_review",
-    "company": "Graviton Research Capital",
-    "officialDomain": "gravitontrading.com",
-    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
-    "jobPage": "jobs/graviton-research-capital-software-engineer-2027-graduate.html"
-  },
   "HighLevel": {
     "status": "needs_review",
     "company": "HighLevel",
@@ -61,20 +54,6 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/linuxbean-solution-business-development-executive-fresher.html"
-  },
-  "Mactores": {
-    "status": "needs_review",
-    "company": "Mactores",
-    "officialDomain": "mactores.com",
-    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
-    "jobPage": "jobs/mactores-cloud-engineer-intern.html"
-  },
-  "MarkTeQ": {
-    "status": "needs_review",
-    "company": "MarkTeQ",
-    "officialDomain": "markteq.com",
-    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
-    "jobPage": "jobs/markteq-web-software-developer-ahmedabad.html"
   },
   "NEC Software Solutions (India)": {
     "status": "needs_review",
@@ -118,18 +97,39 @@
     "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
     "jobPage": "jobs/taurus-hard-soft-solutions-java-developer-bengaluru.html"
   },
+  "Graviton Research Capital": {
+    "status": "quality_upgrade",
+    "company": "Graviton Research Capital",
+    "officialDomain": "gravitontrading.com",
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/graviton-research-capital-ea2fa9b-8fbc04284a.png"
+  },
+  "Mactores": {
+    "status": "quality_upgrade",
+    "company": "Mactores",
+    "officialDomain": "mactores.com",
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/mactores-df3d325-b4158b9a15.png"
+  },
+  "MarkTeQ": {
+    "status": "quality_upgrade",
+    "company": "MarkTeQ",
+    "officialDomain": "markteq.com",
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/markteq-a25a7c7-783c0e9fbc.png"
+  },
   "WNS Global Services": {
-    "status": "needs_review",
+    "status": "quality_upgrade",
     "company": "WNS Global Services",
     "officialDomain": "wns.com",
-    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
-    "jobPage": "jobs/wns-global-services-associate-operations.html"
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/wns-global-services-b18e800-0a564afa90.png"
   },
   "Zeta": {
-    "status": "needs_review",
+    "status": "quality_upgrade",
     "company": "Zeta",
     "officialDomain": "zeta.tech",
-    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
-    "jobPage": "jobs/zeta-executive-assistant.html"
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/zeta-d4dde75-7302f73c97.png"
   }
 }
