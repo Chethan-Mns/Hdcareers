@@ -59,6 +59,18 @@ jobs:
           PY
       - name: Validate revised shortlist contract
         run: python3 scripts/validate_daily_review_batch.py data/daily-review-batch.json
+      - name: Enforce 20 new employers and 6-2-2 quotas before owner review
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          batch=json.loads(Path("data/daily-review-batch.json").read_text())
+          candidates=(batch.get("priority") or [])+(batch.get("backup") or [])
+          if batch.get("status")=="reviewing" and not any(x.get("reviewedAt") for x in candidates):
+              subprocess.run(["python3","scripts/validate_daily_review_batch.py","--strict-discovery"],check=True)
+          else:
+              print("Owner-reviewed or historical batch: preserve existing decisions; quota applies to future discovery.")
+          PY
       - name: Recover missing fields from exact official job pages
         timeout-minutes: 8
         run: node scripts/recover_daily_review_content.mjs data/daily-review-batch.json --apply
