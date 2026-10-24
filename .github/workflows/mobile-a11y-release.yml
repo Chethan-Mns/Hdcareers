@@ -1,0 +1,99 @@
+name: HD Careers mobile accessibility release checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/analytics.js'
+      - 'assets/adsense-mobile-a11y.css'
+      - 'tests/test_adsense_home_layout.py'
+      - '.github/workflows/mobile-a11y-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hd-mobile-release-audit
+  cancel-in-progress: true
+
+jobs:
+  validate-mobile-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+      - name: Verify JavaScript, static site and HTML structure
+        run: |
+          node --check assets/analytics.js
+          node --check assets/premium-home.js
+          node --check assets/mobile-performance.js
+          python3 -m unittest discover -s tests -p test_adsense_home_layout.py -v
+          python3 generate.py --dry-run
+          git diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("index.html").read_text()
+          assert s.count('assets/adsense-mobile-a11y.css')==1
+          assert s.count('aria-label="HD Careers WhatsApp channel"')==1
+          assert s.count('aria-label="HD Careers Instagram"')==1
+          assert s.count('aria-label="HD Careers Telegram"')==1
+          for name in ("sortSelect","expTypeFilter","expYearsFilter","roleFilter","companyFilter","locationFilter"):
+              assert (f'for="{name}"' in s or f'id="{name}" aria-label=' in s),name
+          assert s.count('<article class="hdp-featured-item">')==4
+          assert s.count('class="hdp-company"')==4
+          print("PASS: Accessibility attributes, existing card grid and page generator")
+          PY
+      - name: Serve generated site locally
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/hdsite.log 2>&1 &
+          for i in $(seq 1 25); do
+            curl -fsS http://127.0.0.1:8765/ >/dev/null && break
+            sleep 1
+          done
+      - name: Lighthouse mobile on candidate build
+        continue-on-error: true
+        run: |
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:8765/ --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=lh-candidate-mobile.json --quiet --max-wait-for-load=60000
+      - name: Lighthouse desktop on candidate build
+        continue-on-error: true
+        run: |
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:8765/ --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=lh-candidate-desktop.json --quiet --max-wait-for-load=60000
+      - name: Summarize score and flag remaining issues
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+            for name in ('mobile','desktop'):
+              try:
+                data=json.load(open('lh-candidate-'+name+'.json'))
+                scores={k:round(v['score']*100) for k,v in data['categories'].items()}
+                lcp=data['audits']['largest-contentful-paint'].get('displayValue')
+                issues=[(k, v.get('title','')) for k,v in data['audits'].items() if v.get('score')==0 and k in ('link-name','color-contrast','label','button-name','image-alt','aria-valid-attr-value')]
+                print(name,scores,lcp,'a11y issues:',issues)
+                f.write(f"### Candidate {name}\n- Scores: {scores}\n- LCP: {lcp}\n- Accessibility findings: {issues}\n")
+              except Exception as e:
+                print('Lighthouse failed for',name,str(e))
+                f.write(f"Candidate {name} Lighthouse unavailable: {e}\n")
+          PY
+      - name: Capture mobile screenshot of local candidate
+        continue-on-error: true
+        run: |
+          google-chrome --headless --no-sandbox --disable-dev-shm-usage --hide-scrollbars --window-size=390,844 --screenshot=hd-mobile-candidate.png http://127.0.0.1:8765/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hd-mobile-release-candidate
+          path: |
+            lh-candidate-mobile.json
+            lh-candidate-desktop.json
+            hd-mobile-candidate.png
+          if-no-files-found: warn
