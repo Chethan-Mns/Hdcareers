@@ -115,10 +115,22 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
     if strict_discovery:
         if len(priority) != 10 or len(backup) != 10 or len(employers) != 20:
             raise ValueError("Discovery requires 10 priority + 10 backup jobs from 20 different employers")
-        available = sum(fresher_it(j) for j in priority + backup)
-        selected_freshers = sum(fresher_it(j) for j in priority)
-        if selected_freshers < min(8, available):
-            raise ValueError(f"Fresher IT preference not met: {selected_freshers}/10 priority, {available} verified candidates available")
+        for label, group in (("Priority", priority), ("Backup", backup)):
+            counts = {"technical": 0, "nonit": 0, "intern": 0}
+            for row in group:
+                job = row.get("job") or {}
+                cat = str(job.get("cat") or row.get("cat") or "").lower()
+                role = str(job.get("role") or row.get("role") or "").lower()
+                if cat in {"internship", "apprenticeship"} or re.search(r"\\b(intern|internship|apprentice|apprenticeship)\\b", role):
+                    counts["intern"] += 1
+                elif cat == "nonit":
+                    counts["nonit"] += 1
+                elif fresher_it(row):
+                    counts["technical"] += 1
+                else:
+                    raise ValueError(f"{label}: unclassified or non-fresher candidate {row.get('id')}")
+            if counts != {"technical": 6, "nonit": 2, "intern": 2}:
+                raise ValueError(f"{label} must contain 6 fresher technical, 2 non-IT and 2 internship/apprenticeship jobs; got {counts}")
     if state in ("submitted", "published"):
         publication = payload.get("publication") or {}
         chosen = publication.get("candidateIds")
@@ -141,7 +153,7 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("path", nargs="?", default=str(DEFAULT))
-    parser.add_argument("--strict-discovery", action="store_true", help="Validate 20 unique employers and Fresher IT preference")
+    parser.add_argument("--strict-discovery", action="store_true", help="Validate 20 unique employers and both 6/2/2 category quotas")
     args = parser.parse_args()
     try:
         result = check(json.loads(Path(args.path).read_text(encoding="utf-8")), strict_discovery=args.strict_discovery)
