@@ -19,6 +19,11 @@
 
   function adapt(img) {
     if (!img || img.dataset.hdLogoChecked === '1' || !img.complete || !img.naturalWidth || !img.naturalHeight) return;
+    // Only optimize images explicitly supplied by the owner. Existing employer
+    // logos must retain the previous background, size and fallback behavior.
+    let assetPath = '';
+    try { assetPath = new URL(img.currentSrc || img.src, location.href).pathname; } catch (_error) { return; }
+    if (!assetPath.startsWith('/assets/company-owner/')) return;
     img.dataset.hdLogoChecked = '1';
     const host = img.closest(SELECTOR) || img.parentElement;
     if (!host) return;

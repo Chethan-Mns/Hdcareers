@@ -107,15 +107,21 @@ class CompanyLogoRules(unittest.TestCase):
         self.assertIn('../assets/employer-logo-display.js',self.generator)
         self.assertIn('data-hd-employer-logo="1"',self.home)
         self.assertIn('data-hd-employer-logo="1"',self.generator)
-        self.assertIn('hd-logo-summary',self.generator)
-        self.assertIn('$logo_image</div>',self.generator)
+        self.assertIn('hd-logo-summary hd-owner-logo',self.generator)
+        self.assertIn('$summary_logo',self.generator)
+        self.assertIn('owner_logo = favicon_url.startswith("../assets/company-owner/")',self.generator)
+        self.assertIn('w-[72%] h-[72%]',self.generator)
         for key in ("SAMPLE = 64","source.origin !== location.origin",
                     "white / visible > 0.74", "bw / Math.max(1, bh) >= 3.15",
                     "hd-logo-dark", "hd-logo-initials"):
             self.assertIn(key,display)
-        self.assertIn('.company-logo.hd-logo-dark',self.home)
-        self.assertIn('.hdj3-logo.hd-logo-dark',hero)
-        self.assertIn('.hd-logo-summary.hd-logo-dark',hero)
+        self.assertIn('.company-logo.hd-owner-logo.hd-logo-dark',self.home)
+        self.assertIn('.hdj3-logo.hd-owner-logo.hd-logo-dark',hero)
+        self.assertIn('.hd-logo-summary.hd-owner-logo.hd-logo-dark',hero)
+        self.assertIn("ownerLogo=String(first||'').startsWith('assets/company-owner/')",self.home)
+        self.assertIn('w-[94%] h-[94%]',self.home)
+        self.assertIn('width:83%',hero)
+        self.assertIn("assetPath.startsWith('/assets/company-owner/')",display)
         self.assertIn('width:96%',hero)
         # Wide logos use the existing initials instead of being shrunk further.
         self.assertIn('ratio >= 3.15',display)

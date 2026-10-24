@@ -161,7 +161,7 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 <div class="hdj3-layout">
 <div class="hdj3-intro">
 <div class="hdj3-verified"><span class="hdj3-pill $hero_status_class"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> $hero_status</span><span class="hdj3-date">Checked $verified_date · $hero_status_note</span></div>
-<div class="hdj3-employer"><span class="hdj3-logo">$logo_image</span><span><strong>$company</strong><small>Careers · Exact employer link provided</small></span></div>
+<div class="hdj3-employer"><span class="hdj3-logo $hero_logo_class">$logo_image</span><span><strong>$company</strong><small>Careers · Exact employer link provided</small></span></div>
 <h1>$hero_role</h1>
 <div class="hdj3-tags">$hero_tags</div>
 <p class="hdj3-desc">$hero_intro</p>
@@ -232,7 +232,7 @@ $related_jobs
 <div class="rounded-2xl bg-amber-50 border border-amber-200 p-5 text-sm text-amber-900"><p class="font-extrabold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Important</p><p class="mt-1 leading-relaxed">HD Careers is an independent job information platform. We do not charge candidates for applications and we are not the employer or recruitment agency for the jobs listed here.</p></div>
 </div>
 <aside class="space-y-5 lg:sticky lg:top-24">
-<div class="card bg-white border border-slate-200 rounded-2xl p-5"><div class="flex items-center gap-3"><div class="hd-logo-summary w-14 h-14 rounded-xl border border-slate-200 flex items-center justify-center overflow-hidden">$logo_image</div><div><h3 class="font-black text-lg">Job Summary</h3><p class="text-xs text-slate-500">$company</p></div></div><div class="mt-4 divide-y divide-slate-100 text-sm"><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Status</span><span class="font-bold text-right">$status_label</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Category</span><span class="font-bold text-right">$cat_label</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Experience</span><span class="font-bold text-right">$exp_years</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Work mode</span><span class="font-bold text-right">$work_mode</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Verified</span><span class="font-bold text-right">$verified_date</span></div></div>$sidebar_action</div>
+<div class="card bg-white border border-slate-200 rounded-2xl p-5"><div class="flex items-center gap-3">$summary_logo<div><h3 class="font-black text-lg">Job Summary</h3><p class="text-xs text-slate-500">$company</p></div></div><div class="mt-4 divide-y divide-slate-100 text-sm"><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Status</span><span class="font-bold text-right">$status_label</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Category</span><span class="font-bold text-right">$cat_label</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Experience</span><span class="font-bold text-right">$exp_years</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Work mode</span><span class="font-bold text-right">$work_mode</span></div><div class="py-3 flex justify-between gap-4"><span class="text-slate-500">Verified</span><span class="font-bold text-right">$verified_date</span></div></div>$sidebar_action</div>
 <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#0f9d58,#128c4c)"><h3 class="font-black text-lg">Get the next job first</h3><p class="text-sm text-green-50 mt-1">Join HD Careers for fresh job alerts.</p><a href="https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z" target="_blank" rel="noopener" class="mt-4 block text-center bg-white text-green-700 font-bold py-2.5 rounded-xl">Join WhatsApp</a></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5"><h3 class="font-black">Need a correction?</h3><p class="text-sm text-slate-500 mt-2">Report an expired or inaccurate listing.</p><a href="../contact.html" class="text-sm text-[var(--primary)] font-semibold mt-3 block">Contact HD Careers</a></div>
 </aside>
@@ -826,17 +826,35 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     status_label = "Verification pending" if pending else "Active" if status == "active" else "Expired / Closed"
     candidates = logo_candidates(job)
     favicon_url = candidates[0] if candidates else ""
+    owner_logo = favicon_url.startswith("../assets/company-owner/")
     if favicon_url:
-        mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:3]
-        color = str((job.get("logo") or ["HD", "#0b6fe8"])[1]) if len(job.get("logo") or []) > 1 else "#0b6fe8"
-        logo_image = (f'<img src="{esc(favicon_url)}" alt="{esc(job["company"])} logo" '
-                      f'data-hd-employer-logo="1" data-mark="{esc(mark)}" data-color="{esc(color)}" '
-                      f'onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" '
-                      f'class="hd-logo-art object-contain" style="{logo_zoom_style(job["company"])}" '
-                      + logo_onerror(job) + '>')
+        if owner_logo:
+            mark = str((job.get("logo") or [company[:2] or "HD"])[0])[:3]
+            color = str((job.get("logo") or ["HD", "#0b6fe8"])[1]) if len(job.get("logo") or []) > 1 else "#0b6fe8"
+            logo_image = (f'<img src="{esc(favicon_url)}" alt="{esc(company)} logo" '
+                          f'data-hd-employer-logo="1" data-mark="{esc(mark)}" data-color="{esc(color)}" '
+                          f'onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" '
+                          f'class="hd-logo-art object-contain" style="{logo_zoom_style(company)}" '
+                          + logo_onerror(job) + '>')
+        else:
+            # Restore original fit and markup for existing approved/cached logos.
+            logo_image = (f'<img src="{esc(favicon_url)}" alt="{esc(company)} logo" '
+                          f'class="w-[88%] h-[88%] object-contain" style="{logo_zoom_style(company)}" '
+                          + logo_onerror(job) + '>')
     else:
-        initials = esc(str((job.get("logo") or [job["company"][:2]])[0])[:8])
+        initials = esc(str((job.get("logo") or [company[:2]])[0])[:8])
         logo_image = f'<span class="font-black text-blue-700 text-xl">{initials}</span>'
+    if owner_logo:
+        summary_logo = (
+            '<div class="hd-logo-summary hd-owner-logo w-14 h-14 rounded-xl border border-slate-200 flex items-center justify-center overflow-hidden">'
+            + logo_image + '</div>'
+        )
+    else:
+        summary_logo = (
+            '<div class="w-14 h-14 rounded-xl border border-slate-200 bg-white flex items-center justify-center overflow-hidden">'
+            + f'<img src="{esc(favicon_url)}" alt="{esc(company)} logo" class="w-[72%] h-[72%] object-contain" '
+            + logo_onerror(job) + '></div>'
+        )
     canonical = f"https://hdcareers.in/{str(job['page']).lstrip('/')}"
     meta_description = f"{heading} in {job.get('loc', '')}: eligibility, responsibilities and employer application link. Checked {job.get('verifiedDate', '')}."
     robots_meta = "index,follow,max-image-preview:large" if status == "active" else "noindex,follow"
@@ -910,6 +928,8 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "breadcrumb_job": esc(f"{company} {job['roleTag']}"),
         "favicon_url": favicon_url,
         "logo_image": logo_image,
+        "summary_logo": summary_logo,
+        "hero_logo_class": "hd-owner-logo" if owner_logo else "",
         "company": esc(company),
         "logo_onerror": logo_onerror(job),
         "cat_icon": CAT_ICON[cat],

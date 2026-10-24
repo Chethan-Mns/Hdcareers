@@ -59,10 +59,11 @@ a{text-decoration:none}
 .pill.active{background:var(--primary)!important;color:#fff!important;border-color:var(--primary)!important;box-shadow:0 8px 18px rgba(9,105,218,.2)}
 .job-card{transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .24s ease,border-color .24s ease;background:linear-gradient(180deg,#fff,#fff)}
 .job-card:hover{transform:translateY(-5px);box-shadow:0 20px 45px rgba(15,23,42,.11);border-color:#c9d7eb}
-.company-logo{transition:transform .22s ease;background:#f8fbff!important;isolation:isolate}
-.company-logo img[data-hd-employer-logo]{display:block;width:96%!important;height:96%!important;object-fit:contain}
-.company-logo.hd-logo-dark{background:#10325a!important;border-color:#10325a!important}
-.company-logo .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
+.company-logo{transition:transform .22s ease}
+.company-logo.hd-owner-logo{background:#f8fbff!important;isolation:isolate}
+.company-logo.hd-owner-logo img[data-hd-employer-logo]{display:block;width:96%!important;height:96%!important;object-fit:contain}
+.company-logo.hd-owner-logo.hd-logo-dark{background:#10325a!important;border-color:#10325a!important}
+.company-logo.hd-owner-logo .hd-logo-initials{display:grid;place-items:center;font-size:18px;line-height:1;font-weight:900;letter-spacing:-.04em}
 .job-card:hover .company-logo{transform:scale(1.06)}
 .channel-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .channel-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,.09);border-color:#cdd8e7}
@@ -624,14 +625,16 @@ function companyLogo(j,size='w-16 h-16'){
   const sources=[approved,cached,local,direct].filter(Boolean);
   const unique=[...new Set(sources)];
   const first=unique.shift();
+  // Never change display rules for pre-existing logos (e.g. PhonePe).
+  const ownerLogo=String(first||'').startsWith('assets/company-owner/');
   const backups=JSON.stringify(unique).replace(/"/g,'&quot;');
   const mark=String((j.logo&&j.logo[0])||company.slice(0,2)||'HD').slice(0,8).replace(/"/g,'&quot;');
   const color=String((j.logo&&j.logo[1])||'#0b6fe8').replace(/"/g,'&quot;');
   const zoom={'arm':1.22,'rubrik':1.24,'new street technologies':1.25,'wayfair':1.24}[key]||1;
   const visible=first
-    ?'<img data-hd-employer-logo="1" onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="hd-logo-art w-[96%] h-[96%] object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
+    ?'<img '+(ownerLogo?'data-hd-employer-logo="1" onload="if(window.hdEnhanceLogo)window.hdEnhanceLogo(this)" ':'')+'src="'+first+'" data-backups="'+backups+'" data-mark="'+mark+'" data-color="'+color+'" alt="'+company+' logo" class="'+(ownerLogo?'hd-logo-art w-[96%] h-[96%]':'w-[94%] h-[94%]')+' object-contain" style="transform:scale('+zoom+');transform-origin:center" loading="lazy" referrerpolicy="no-referrer" onerror="logoFallback(this)">'
     :'<span style="color:'+color+';font-weight:900;font-size:16px">'+mark+'</span>';
-  return '<div class="company-logo '+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
+  return '<div class="company-logo '+(ownerLogo?'hd-owner-logo ':'')+size+' shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center overflow-hidden">'+visible+'</div>';
 }
 
 function parseJobDate(s){const m=s.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);if(!m)return 0;const months={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};return new Date(+m[3],months[m[2]]??0,+m[1]).getTime()}

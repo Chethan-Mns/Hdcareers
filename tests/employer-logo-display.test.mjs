@@ -6,7 +6,7 @@ import vm from 'node:vm';
 const source = readFileSync(new URL('../assets/employer-logo-display.js', import.meta.url), 'utf8');
 const SIDE = 64;
 
-function fixture({ color = [33, 91, 163, 255], rect = [18, 18, 45, 45], opaqueWhite = false, width = 384, height = 384 } = {}) {
+function fixture({ color = [33, 91, 163, 255], rect = [18, 18, 45, 45], opaqueWhite = false, width = 384, height = 384, src = 'https://hdcareers.in/assets/company-owner/sample.png' } = {}) {
   const pixels = new Uint8ClampedArray(SIDE * SIDE * 4);
   for (let y = 0; y < SIDE; y++) for (let x = 0; x < SIDE; x++) {
     const k = (y * SIDE + x) * 4;
@@ -34,7 +34,7 @@ function fixture({ color = [33, 91, 163, 255], rect = [18, 18, 45, 45], opaqueWh
     alt: 'Sample logo',
     dataset: { mark: 'SM', color: '#0969da' },
     naturalWidth: width, naturalHeight: height,
-    complete: true, src: 'https://hdcareers.in/assets/company-icons/sample.png',
+    complete: true, src,
     style: { transform: '' },
     closest: () => host,
     replaceWith: (node) => { host.replacement = node; }
@@ -74,4 +74,15 @@ test('opaque white background with colored emblem stays light', () => {
   const { host, classes } = fixture({ opaqueWhite: true });
   assert.equal(classes.has('hd-logo-dark'), false);
   assert.equal(host.replacement, undefined);
+});
+
+test('PhonePe and all existing cached icons retain their original presentation', () => {
+  const { host, classes, img } = fixture({
+    src: 'https://hdcareers.in/assets/company-icons/phonepe-1590c80-28a3879cec.svg',
+    width: 900, height: 100, color: [255, 255, 255, 255]
+  });
+  assert.equal(host.replacement, undefined, 'Never turn PhonePe logo into initials');
+  assert.equal(classes.has('hd-logo-dark'), false, 'Keep the old background');
+  assert.equal(img.dataset.hdLogoChecked, undefined, 'Do not apply auto fit');
+  assert.equal(img.style.transform, '', 'Do not overwrite zoom');
 });
