@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:12:31.832Z",
+  "checkedAt": "2026-10-24T05:12:39.625Z",
   "checked": 144,
-  "active": 128,
+  "active": 129,
   "expired": 1,
-  "review": 15,
+  "review": 14,
   "changedExpired": 1,
   "items": [
     {
@@ -754,9 +754,11 @@
       "role": "Software Engineer Intern",
       "page": "jobs/wayfair-software-engineer-intern-ai-first-genai-bengaluru-20829.html",
       "url": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
-      "state": "review",
-      "reason": "Official page renders disagree: browser=review (HTTP 429; availability unconfirmed); bot=active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-23T18:43:30.553769+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:12:39.625Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:12:39.625Z"
     },
     {
       "id": 149,
