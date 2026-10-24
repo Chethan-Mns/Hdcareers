@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-24T05:11:58.056Z",
+  "checkedAt": "2026-10-24T05:12:10.789Z",
   "checked": 144,
   "active": 126,
-  "expired": 0,
-  "review": 18,
-  "changedExpired": 0,
+  "expired": 1,
+  "review": 17,
+  "changedExpired": 1,
   "items": [
     {
       "id": 229,
@@ -438,9 +438,11 @@
       "role": "IT Customer Service New Associate",
       "page": "jobs/accenture-it-customer-service-new-associate.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667983_en&title=IT+Customer+Service+New+Associate",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-10-23T18:42:59.247118+00:00"
+      "state": "expired",
+      "reason": "Marked expired manually from HD Careers Admin review.",
+      "checkedAt": "2026-10-24T05:12:10.789Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-24T05:12:10.789Z"
     },
     {
       "id": 176,
