@@ -591,9 +591,11 @@
     {
       "page": "jobs/american-express-apprentice-marketing-offers-operations.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T05:41:11.476815+00:00"
+      "dueAt": "2026-10-24T05:41:11.476815+00:00",
+      "claimId": "40067222915",
+      "claimedAt": "2026-10-24T05:41:22.956110+00:00"
     },
     {
       "page": "jobs/capco-hr-resource-management-intern.html",
