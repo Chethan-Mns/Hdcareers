@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-24T05:13:43.243Z",
+  "checkedAt": "2026-10-24T05:13:51.001Z",
   "checked": 144,
-  "active": 136,
+  "active": 137,
   "expired": 1,
-  "review": 7,
+  "review": 6,
   "changedExpired": 1,
   "items": [
     {
@@ -1080,9 +1080,11 @@
       "role": "Associate Analyst – TAX – Indirect Tax – Core",
       "page": "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-10-23T18:44:06.370781+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin.",
+      "checkedAt": "2026-10-24T05:13:51.001Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-10-24T05:13:51.001Z"
     },
     {
       "id": 109,
