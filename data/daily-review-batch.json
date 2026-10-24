@@ -119,7 +119,7 @@
       "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
       "cat": "internship",
       "expYears": "Apprenticeship; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "American Express's exact job record 26014753 showed the Gurugram Apprentice role, Bachelor's Degree, 19 Oct posting date and 27 Oct 2026 application deadline during the 24 Oct check.",
       "job": {
@@ -153,14 +153,17 @@
         "date": "19 Oct 2026",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "American Express's exact job record 26014753 showed the Gurugram Apprentice role, Bachelor's Degree, 19 Oct posting date and 27 Oct 2026 application deadline during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:34.720Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:34.720Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "American Express's exact job record 26014753 showed the Gurugram Apprentice role, Bachelor's Degree, 19 Oct posting date and 27 Oct 2026 application deadline during the 24 Oct check."
       },
-      "postedDate": "19 Oct 2026"
+      "postedDate": "19 Oct 2026",
+      "reviewedAt": "2026-10-24T03:37:34.720Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "amazon-10496769",
@@ -626,7 +629,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:18.349Z",
+  "updatedAt": "2026-10-24T03:37:34.721Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
