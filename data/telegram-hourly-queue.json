@@ -601,9 +601,11 @@
     {
       "page": "jobs/capco-hr-resource-management-intern.html",
       "batchId": "admin-40059148203",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-24T03:39:13.761384+00:00",
-      "dueAt": "2026-10-24T06:41:26.939946+00:00"
+      "dueAt": "2026-10-24T06:41:26.939946+00:00",
+      "claimId": "40071196936",
+      "claimedAt": "2026-10-24T06:41:35.952934+00:00"
     },
     {
       "page": "jobs/ey-analyst-tax-transfer-pricing.html",
