@@ -1,0 +1,49 @@
+name: Generate lightweight HD Careers logo for on-page UI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/optimize-hd-logo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate small, visually faithful lossless WebP logo
+        run: |
+          python3 -m pip install --disable-pip-version-check Pillow
+          python3 - <<'PY'
+          from PIL import Image,ImageOps
+          from pathlib import Path
+          src=Path('assets/hd-careers-logo.png')
+          dst=Path('assets/hd-careers-logo-small.webp')
+          with Image.open(src) as im:
+              im=ImageOps.exif_transpose(im).convert('RGBA')
+              im.thumbnail((112,112),Image.Resampling.LANCZOS)
+              im.save(dst,format='WEBP',lossless=True,method=6)
+              print('Original:',src.stat().st_size,'bytes, optimized:',dst.stat().st_size,'bytes, image:',im.size)
+          assert dst.stat().st_size<30000, 'Logo must be under 30 KiB'
+          with Image.open(dst) as verify:
+              verify.verify()
+          PY
+      - name: Commit the derived logo without replacing the approved original
+        run: |
+          git config user.name "HD Careers Quality Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/hd-careers-logo-small.webp
+          if ! git diff --staged --quiet; then
+            git commit -m "Add small lossless HD Careers logo for faster mobile rendering"
+            git push origin HEAD:main
+          fi
