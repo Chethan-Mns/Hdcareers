@@ -1,0 +1,115 @@
+name: AdSense production technical audit
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/adsense-production-audit.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit every sitemap URL, internal links, and image/script/style assets
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures, html.parser, json, re
+          from urllib.parse import urljoin,urlparse,urlunparse
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError, URLError
+          import xml.etree.ElementTree as ET
+          from collections import Counter
+          ORIGIN="https://hdcareers.in/"
+          UAG="HD-Careers-AdSense-Production-Audit/1.0"
+          def fetch(url):
+              try:
+                  with urlopen(Request(url,headers={"User-Agent":UAG}),timeout=16) as r:
+                      body=r.read(850000)
+                      return {"status":r.status,"url":r.geturl(),"contentType":r.headers.get("Content-Type",""),"body":body.decode("utf-8","replace")}
+              except HTTPError as e: return {"status":e.code,"error":str(e)}
+              except (URLError,OSError,TimeoutError) as e: return {"status":None,"error":str(e)}
+          class Links(html.parser.HTMLParser):
+              def __init__(self): super().__init__();self.refs=[]
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if tag=="a" and a.get("href"): self.refs.append(("link",a["href"]))
+                  if tag in ("img","script","source","iframe") and a.get("src"): self.refs.append((tag,a["src"]))
+                  if tag=="link" and a.get("href") and a.get("rel","").lower() in ("stylesheet","icon","preload","apple-touch-icon"): self.refs.append((tag,a["href"]))
+          def normalized(url,base):
+              if not url or url.startswith(("data:","mailto:","tel:","javascript:","#")):return None
+              full=urljoin(base,url)
+              p=urlparse(full)
+              if p.netloc.lower() not in ("hdcareers.in","www.hdcareers.in"):return None
+              return urlunparse(("https","hdcareers.in",p.path or "/", "", "", ""))
+          sr=fetch(ORIGIN+"sitemap.xml")
+          if sr["status"]!=200: raise SystemExit("FAIL: sitemap.xml not HTTP 200: "+str(sr))
+          urls=[x.text for x in ET.fromstring(sr["body"]).findall(".//{*}loc") if x.text]
+          def getpage(url):
+              r=fetch(url)
+              b=r.pop("body","")
+              refs=[]
+              p=Links()
+              if r["status"]==200:
+                  p.feed(b);refs=p.refs
+              return {"url":url,"status":r["status"],"readable":"<html" in b[:1500].lower(),"title":bool(re.search(r"<title[^>]*>[^<]+",b,re.I)),"meta_description":bool(re.search(r'<meta[^>]+name=["\x27]description',b,re.I)),"canonical":bool(re.search(r'<link[^>]+rel=["\x27]canonical',b,re.I)),"noindex":bool(re.search(r'<meta[^>]+content=["\x27][^"\x27]*noindex',b,re.I)),"links":refs}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=9) as pool: pages=list(pool.map(getpage,urls))
+          refs={};externalRefs=Counter()
+          for pg in pages:
+              for type_,raw in pg["links"]:
+                  url=normalized(raw,pg["url"])
+                  if url:refs.setdefault(url,{"types":set(),"referers":set()});refs[url]["types"].add(type_);refs[url]["referers"].add(pg["url"])
+                  else:externalRefs[type_]+=1
+              del pg["links"]
+          missing=[]
+          sitemapSet=set(urls)
+          refsToCheck=[u for u in refs if u not in sitemapSet]
+          with concurrent.futures.ThreadPoolExecutor(max_workers=9) as pool: results=list(pool.map(fetch,refsToCheck))
+          for u,r in zip(refsToCheck,results):
+              if r["status"]!=200:missing.append({"url":u,"status":r["status"],"types":list(refs[u]["types"]),"sampleReferer":next(iter(refs[u]["referers"]))})
+          robots=fetch(ORIGIN+"robots.txt")
+          sitemapProblems=[{"url":p["url"],"status":p["status"],"noindex":p["noindex"],"title":p["title"],"canonical":p["canonical"]} for p in pages if p["status"]!=200 or not p["readable"] or not p["title"] or not p["canonical"] or p["noindex"]]
+          report={"sitemap_urls":len(urls),"sitemap_http":sr["status"],"sitemap_issues":sitemapProblems,"internal_non_sitemap_urls_checked":len(refsToCheck),"broken_internal_links_or_assets":missing,"external_refs_by_type":dict(externalRefs),"robots_status":robots["status"],"robots_sitemap_present":"Sitemap: https://hdcareers.in/sitemap.xml" in robots.get("body",""),"pages_without_description":sum(not p["meta_description"] for p in pages)}
+          with open("adsense-live-audit.json","w") as f:json.dump(report,f,indent=2)
+          print(json.dumps(report,indent=2)[:16000])
+          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"],"a") as out:
+              out.write(f"## HD Careers production audit\n- Sitemap URL checks: {len(urls)-len(sitemapProblems)}/{len(urls)}\n- Additional internal links/assets checked: {len(refsToCheck)}\n- Broken internal URLs: {len(missing)}\n- robots.txt: {robots['status']}\n- Pages missing meta description: {report['pages_without_description']}\n")
+          PY
+      - uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+      - name: Lighthouse — mobile homepage
+        continue-on-error: true
+        run: |
+          npx --yes lighthouse@12.8.2 https://hdcareers.in/ --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=lh-mobile.json --quiet --max-wait-for-load=60000
+      - name: Lighthouse — desktop homepage
+        continue-on-error: true
+        run: |
+          npx --yes lighthouse@12.8.2 https://hdcareers.in/ --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=lh-desktop.json --quiet --max-wait-for-load=60000
+      - name: Summarize Lighthouse scores
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os
+          for device in ("mobile","desktop"):
+              try:
+                  d=json.load(open("lh-"+device+".json"))
+                  cats={k:round(v["score"]*100) for k,v in d["categories"].items()}
+                  metrics={k:d["audits"][k]["displayValue"] for k in ("first-contentful-paint","largest-contentful-paint","total-blocking-time","cumulative-layout-shift","speed-index") if k in d["audits"]}
+                  print(device,cats,metrics)
+                  with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:f.write(f"\n### Lighthouse {device}\n- Scores: {cats}\n- Metrics: {metrics}\n")
+              except Exception as e:print("Lighthouse unavailable for",device,str(e))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: adsense-production-audit
+          path: |
+            adsense-live-audit.json
+            lh-mobile.json
+            lh-desktop.json
+          if-no-files-found: warn
