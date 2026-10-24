@@ -14,7 +14,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urljoin, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
-from employer_brand_sources import official_logo_candidates, safe_svg_bytes
+from employer_brand_sources import official_logo_candidates, safe_svg_bytes, employer_website_candidates
 
 from PIL import Image, ImageChops, ImageOps
 
@@ -111,21 +111,38 @@ def public_https(url: str) -> bool:
 
 
 def official_domain(job: dict, overrides: dict[str, str]) -> str:
+    """Resolve the employer, not its recruiting/application provider."""
     company = str(job.get("company", "")).strip()
     direct = host_of(overrides.get(company, ""))
-    if direct:
+    if direct and not is_generic(direct):
         return direct
 
-    for field in ("companyWebsite", "careersUrl", "domain", "apply"):
+    for field in ("companyWebsite", "employerWebsite", "companySite", "careersUrl", "domain", "apply"):
         host = host_of(job.get(field, ""))
         if host and not is_generic(host):
-            for prefix in ("careers.", "jobs.", "careersglobal.", "globalcareers."):
+            for prefix in ("search.jobs.", "careers.", "jobs.", "careersglobal.", "globalcareers."):
                 if host.startswith(prefix) and host.count(".") >= 2:
                     host = host[len(prefix):]
                     break
             return host
-    return ""
 
+    # Lever, Oracle, Greenhouse, Airtable and other hosted job URLs can expose
+    # an employer homepage in hiringOrganization JSON-LD or a labelled link.
+    # Never infer an employer logo from the application host itself.
+    apply_url = str(job.get("apply", "")).strip()
+    if apply_url.startswith("https://") and is_generic(host_of(apply_url)):
+        try:
+            body, content_type, final_url = fetch(apply_url, MAX_HTML)
+            if "html" in content_type or body.lstrip().lower().startswith(b"<!doctype html"):
+                for site in employer_website_candidates(
+                    body.decode("utf-8", errors="replace"), final_url, company
+                ):
+                    host = host_of(site)
+                    if host and not is_generic(host) and host not in {"linkedin.com", "facebook.com", "instagram.com"}:
+                        return host
+        except (HTTPError, URLError, ValueError, TimeoutError, OSError):
+            pass
+    return ""
 
 def fetch(url: str, limit: int) -> tuple[bytes, str, str]:
     if not public_https(url):
