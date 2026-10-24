@@ -42,6 +42,14 @@ fun PremiumAdminRoot(
     onRequestNotificationPermission:()->Unit
 ) {
     var moreOpen by remember { mutableStateOf(false) }
+    // A preview belongs only to the current authenticated review session.
+    var previewCandidateId by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(vm.loggedIn) {
+        if(!vm.loggedIn) previewCandidateId=null
+    }
+    val previewCandidate=if(vm.loggedIn) vm.batch.all.firstOrNull {
+        it.id==previewCandidateId && it.approved
+    } else null
     MaterialTheme(colorScheme=Brand.scheme,typography=Typography()) {
         if(!vm.loggedIn) {
             ProLogin(vm,onBiometricSignIn)
@@ -60,13 +68,17 @@ fun PremiumAdminRoot(
                         Row(Modifier.fillMaxWidth().padding(horizontal=16.dp,vertical=12.dp),
                             verticalAlignment=Alignment.CenterVertically,
                             horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                            if(previewCandidate!=null) IconButton(onClick={previewCandidateId=null}) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack,"Back to review",tint=Brand.navy)
+                            }
                             BrandLogo(39,false)
                             Column(Modifier.weight(1f)) {
                                 Text("HD CAREERS",fontSize=10.sp,fontWeight=FontWeight.Black,
                                     letterSpacing=1.1.sp,color=Brand.blue)
-                                Text(if(moreOpen)"Settings" else listOf("Today","Publish","Expiry","Jobs","Analytics")[vm.tab.coerceIn(0,4)],
+                                Text(if(previewCandidate!=null)"Job Page Preview" else if(moreOpen)"Settings" else listOf("Today","Publish","Expiry","Jobs","Analytics")[vm.tab.coerceIn(0,4)],
                                     fontSize=19.sp,fontWeight=FontWeight.Black,color=Brand.navy)
                             }
+                            if(previewCandidate==null) {
                             BadgedBox(badge={if(vm.pendingExpiryReviews.isNotEmpty() || (vm.batch.id.isNotBlank()&&vm.batch.reviewed<vm.batch.all.size))
                                 Badge(containerColor=Brand.amber){} }) {
                                 IconButton(onClick={moreOpen=false;vm.tab=if(vm.pendingExpiryReviews.isNotEmpty())2 else 1}) {
@@ -79,11 +91,12 @@ fun PremiumAdminRoot(
                             IconButton(onClick={vm::refreshClicked}) {
                                 Icon(Icons.Default.Refresh,"Refresh server data",tint=Brand.blue)
                             }
+                            }
                         }
                     }
                 },
                 bottomBar={
-                    NavigationBar(containerColor=Color.White,tonalElevation=4.dp) {
+                    if(previewCandidate==null) NavigationBar(containerColor=Color.White,tonalElevation=4.dp) {
                         val labels=listOf("Today","Publish","Expiry","Jobs","Analytics")
                         val symbols=listOf(Icons.Default.Dashboard,Icons.Default.FactCheck,
                             Icons.Default.Shield,Icons.Default.BusinessCenter,Icons.Default.Insights)
@@ -100,9 +113,11 @@ fun PremiumAdminRoot(
                 }
             ) { insets ->
                 Box(Modifier.fillMaxSize().padding(insets)) {
-                    if(moreOpen) ProMore(vm,onEnableBiometric,onRequestNotificationPermission) else when(vm.tab) {
+                    if(previewCandidate!=null) {
+                        ReviewedJobPagePreview(previewCandidate,vm.companyLogos,onBack={previewCandidateId=null})
+                    } else if(moreOpen) ProMore(vm,onEnableBiometric,onRequestNotificationPermission) else when(vm.tab) {
                         0 -> ProHome(vm,onAnalytics={vm.tab=4})
-                        1 -> ProReview(vm)
+                        1 -> ProReview(vm,onPreview={id->previewCandidateId=id;moreOpen=false})
                         2 -> ProChecker(vm,onBack={vm.tab=0})
                         3 -> ProJobs(vm)
                         else -> ProAnalyticsV2(vm)
@@ -320,7 +335,7 @@ private fun ProHome(vm:AdminViewModel,onAnalytics:()->Unit) {
     }
 }
 @Composable
-private fun ProReview(vm:AdminViewModel) {
+private fun ProReview(vm:AdminViewModel,onPreview:(String)->Unit) {
     var selected by remember { mutableIntStateOf(0) }
     var confirm by remember { mutableStateOf(false) }
     val chosen=vm.batch.all.filter { it.id in vm.selectedIds && it.id !in vm.publishedReviewIds }
@@ -504,7 +519,7 @@ private fun ProReview(vm:AdminViewModel) {
                 }
             } else ProCandidateCard(job,i,selected==0,vm.companyLogos,vm.busy,
                 chosen=job.id in vm.selectedIds,published=job.id in vm.publishedReviewIds,
-                inReady=selected==2,decide={vm.decide(job.id,it)},
+                inReady=selected==2,preview={onPreview(job.id)},decide={vm.decide(job.id,it)},
                  verifyAndAdd={vm.verifyAndAdd(job.id)},
                 toggle={vm.toggleSelected(job.id,it)})
         }
@@ -710,7 +725,7 @@ private fun ProPipelineStep(number:String,title:String,state:String,detail:Strin
 private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
     logos:Map<String,CompanyLogoSource>,busy:Boolean,
     chosen:Boolean,published:Boolean,inReady:Boolean,
-    decide:(String)->Unit,verifyAndAdd:()->Unit,toggle:(Boolean)->Unit) {
+    preview:()->Unit,decide:(String)->Unit,verifyAndAdd:()->Unit,toggle:(Boolean)->Unit) {
     val ctx=LocalContext.current
     val category=when(c.group) {"nonit"->"Non-IT";"training"->"Internship / Apprentice";else->"Fresher IT"}
     val decisionColor=when(c.decision) {
@@ -731,6 +746,14 @@ private fun ProCandidateCard(c:Candidate,index:Int,priority:Boolean,
             ProPill(category,Brand.blue)
             ProPill(c.decision.ifBlank{"Needs review"}.replaceFirstChar{it.uppercase()},decisionColor)
             if(inReady) ProPill("Selected",Brand.green)
+        }
+        if(c.approved && !published) OutlinedButton(
+            onClick=preview,enabled=!busy,modifier=Modifier.fillMaxWidth(),
+            shape=RoundedCornerShape(12.dp)
+        ) {
+            Icon(Icons.Default.Visibility,"Preview candidate job page",Modifier.size(17.dp))
+            Spacer(Modifier.width(7.dp))
+            Text("Preview job page",fontSize=12.sp,fontWeight=FontWeight.Bold)
         }
         if(c.apply.startsWith("https://")) TextButton(onClick={
             ctx.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(c.apply)))
