@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/adsense-readiness-fix.yml'
       - 'scripts/adsense_readiness.py'
+      - 'generate.py'
   workflow_dispatch:
 
 permissions:
