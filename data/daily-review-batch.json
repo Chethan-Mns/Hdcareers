@@ -173,7 +173,7 @@
       "apply": "https://www.amazon.jobs/en/jobs/10496769/data-engineer-intern-2027",
       "cat": "it",
       "expYears": "Final-year student internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Amazon's exact job page showed job ID 10496769, India locations, final-year degree eligibility and an active Apply now route during the 24 Oct check.",
       "job": {
@@ -209,13 +209,16 @@
         "date": "Not Specified",
         "verifiedDate": "24 Oct 2026",
         "sourceVerificationMethod": "Amazon's exact job page showed job ID 10496769, India locations, final-year degree eligibility and an active Apply now route during the 24 Oct check.",
-        "browserVerifiedAt": "2026-10-24T03:34:24.591Z"
+        "browserVerifiedAt": "2026-10-24T03:37:40.892Z",
+        "manualLiveVerifiedAt": "2026-10-24T03:37:40.892Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-24T03:34:24.591Z",
         "currentVerdict": "live",
         "officialEvidence": "Amazon's exact job page showed job ID 10496769, India locations, final-year degree eligibility and an active Apply now route during the 24 Oct check."
-      }
+      },
+      "reviewedAt": "2026-10-24T03:37:40.892Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "merklescience-20675d00",
@@ -629,7 +632,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T03:37:34.721Z",
+  "updatedAt": "2026-10-24T03:37:40.892Z",
   "discoverySummary": {
     "portalsVisited": 31,
     "uniqueOfficialExactCandidatesScreened": 44,
