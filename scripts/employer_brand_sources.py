@@ -179,3 +179,85 @@ def safe_svg_bytes(body: bytes) -> bytes | None:
         return ET.tostring(root, encoding="utf-8")
     except (ValueError, ET.ParseError, UnicodeDecodeError):
         return None
+
+
+class EmployerWebsiteLinkParser(HTMLParser):
+    """Find a first-party employer URL explicitly attributed to the hiring company."""
+    def __init__(self, company: str):
+        super().__init__(convert_charrefs=True)
+        self.company = normalized_name(company)
+        self.sites: list[tuple[int, str]] = []
+        self._anchor: str | None = None
+        self._anchor_text: list[str] = []
+        self._script_ld = False
+        self._script_buffer: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        values = {str(k).casefold(): str(v or "") for k, v in attrs}
+        if tag.casefold() == "a":
+            self._anchor = values.get("href", "")
+            self._anchor_text = []
+        if tag.casefold() == "script" and "ld+json" in values.get("type", "").casefold():
+            self._script_ld = True
+            self._script_buffer = []
+
+    def handle_data(self, data):
+        if self._anchor is not None and sum(map(len, self._anchor_text)) < 2000:
+            self._anchor_text.append(data)
+        if self._script_ld and sum(map(len, self._script_buffer)) < 200_000:
+            self._script_buffer.append(data)
+
+    def handle_endtag(self, tag):
+        if tag.casefold() == "a" and self._anchor is not None:
+            label = " ".join(self._anchor_text).casefold()
+            key = normalized_name(label)
+            if self.company and self.company in key and any(
+                phrase in key for phrase in ("home", "website", "company", "about")
+            ):
+                self.sites.append((800, self._anchor))
+            self._anchor = None
+            self._anchor_text = []
+        if tag.casefold() == "script" and self._script_ld:
+            try:
+                self.sites.extend((900, u) for u in hiring_company_urls(
+                    json.loads("".join(self._script_buffer)), self.company))
+            except (ValueError, TypeError):
+                pass
+            self._script_ld = False
+            self._script_buffer = []
+
+
+def hiring_company_urls(node, company_key: str) -> list[str]:
+    if isinstance(node, list):
+        return [url for item in node for url in hiring_company_urls(item, company_key)]
+    if not isinstance(node, dict):
+        return []
+    found = []
+    employer = node.get("hiringOrganization")
+    if isinstance(employer, dict):
+        name = normalized_name(str(employer.get("name", "")))
+        if name and (name == company_key or
+                (len(company_key) > 5 and name.startswith(company_key))):
+            for field in ("url", "sameAs"):
+                value = employer.get(field)
+                if isinstance(value, str):
+                    found.append(value)
+    for child in ("@graph", "mainEntity", "itemListElement"):
+        if child in node:
+            found.extend(hiring_company_urls(node[child], company_key))
+    return found
+
+
+def employer_website_candidates(html: str, job_url: str, company: str) -> list[str]:
+    parser = EmployerWebsiteLinkParser(company)
+    parser.feed(html[:1_500_000])
+    urls = []
+    seen = set()
+    for _score, raw in sorted(parser.sites, key=lambda x: -x[0]):
+        url = urljoin(job_url, raw)
+        parsed = urlparse(url)
+        if parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password:
+            if url not in seen:
+                seen.add(url)
+                urls.append(url)
+    return urls
