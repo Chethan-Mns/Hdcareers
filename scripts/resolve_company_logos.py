@@ -14,7 +14,10 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urljoin, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
-from employer_brand_sources import official_logo_candidates, safe_svg_bytes, employer_website_candidates
+if __package__:
+    from .employer_brand_sources import official_logo_candidates, safe_svg_bytes, employer_website_candidates
+else:
+    from employer_brand_sources import official_logo_candidates, safe_svg_bytes, employer_website_candidates
 
 from PIL import Image, ImageChops, ImageOps
 
