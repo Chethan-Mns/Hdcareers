@@ -135,6 +135,10 @@ class EmployerBrandSourceTests(unittest.TestCase):
             }))
         fetcher.assert_not_called()
 
+    def test_official_48px_icons_allowed_when_higher_resolution_unavailable(self):
+        self.assertIsNotNone(logos.raster_score(64, 64, 200))
+        self.assertIsNone(logos.raster_score(32, 32, 200))
+
     def test_accepts_wide_wordmark_when_source_is_branded_logo(self):
         self.assertIsNotNone(logos.raster_score(600, 110, 800, wordmark=True))
         self.assertIsNone(logos.raster_score(600, 110, 300, wordmark=False))

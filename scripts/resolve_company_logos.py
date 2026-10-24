@@ -43,7 +43,7 @@ GENERIC_HOSTS = (
 USER_AGENT = "HD-Careers-Official-Logo-Resolver/2.0"
 MAX_HTML = 1_500_000
 MAX_ICON = 1_500_000
-MIN_RASTER_SIDE = 96
+MIN_RASTER_SIDE = 48
 GOOD_RASTER_SIDE = 160
 OUTPUT_SIZE = 384
 
@@ -519,6 +519,7 @@ def main() -> None:
                 ),
                 "localPath": local_path,
                 "sourceDimensions": list(dims) if dims else None,
+                "needsQualityUpgrade": bool(dims and min(dims) < 96),
                 "qualityScore": score,
                 "bytes": len(body),
             }
@@ -526,6 +527,11 @@ def main() -> None:
             changed = True
             resolved += 1
             dims_text = f" {dims[0]}x{dims[1]}" if dims else " vector"
+            if dims and min(dims) < 96:
+                review[company] = {"status": "quality_upgrade", "company": company,
+                                   "officialDomain": domain or None,
+                                   "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+                                   "logoPath": local_path}
             print(f"[OK] {company}:{dims_text} {source_type} -> {local_path}")
         else:
             cached_path = payload[1]
