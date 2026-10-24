@@ -124,7 +124,7 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
 <meta property="og:description" content="$meta_description">
 <meta property="og:url" content="$canonical">
 $structured_data
-<link rel="icon" type="image/png" href="/assets/hd-careers-logo.png">
+<link rel="icon" type="image/png" href="/assets/hd-careers-icon-64.png">
 <link rel="apple-touch-icon" href="/assets/hd-careers-logo.png">
 <link rel="stylesheet" href="../assets/public-header.css">
 <link rel="stylesheet" href="../assets/job-hero.css">
@@ -149,7 +149,7 @@ a,button{transition:.18s ease}.card{transition:transform .18s ease,box-shadow .1
 <div class="bg-[var(--primary)] text-white text-xs sm:text-sm"><div class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center"><span class="bg-white/20 font-bold px-2 py-0.5 rounded text-[10px]">HD</span><span>Fresh job updates with official application sources</span><a href="/telegram.html" class="font-bold underline">Join Telegram</a></div></div>
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
 <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-<a href="../index.html" class="flex items-center gap-3 min-w-0"><img src="../assets/hd-careers-logo.png" alt="HD Careers logo" class="w-11 h-11 object-contain rounded-xl bg-white border border-slate-100 p-1"><div><p class="font-black leading-none text-lg">HD Careers</p><p class="text-[10px] text-slate-500 mt-1">Jobs • Internships • Career updates</p></div></a>
+<a href="../index.html" class="flex items-center gap-3 min-w-0"><img src="../assets/hd-careers-logo-small.webp" alt="HD Careers logo" width="112" height="94" class="w-11 h-11 object-contain rounded-xl bg-white border border-slate-100 p-1"><div><p class="font-black leading-none text-lg">HD Careers</p><p class="text-[10px] text-slate-500 mt-1">Jobs • Internships • Career updates</p></div></a>
 <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600"><a href="../index.html">Home</a><a href="../index.html#jobs">Latest Jobs</a><a href="../insights.html">Insights</a><a href="../career-resources.html">Resources</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
 <div class="flex items-center gap-2"><a href="https://instagram.com/hd_careers" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="/telegram.html" class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a></div>
 </div>
@@ -1217,10 +1217,10 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
 <title>{esc(title)} | HD Careers</title>
 <meta name="description" content="Data-driven hiring insights calculated from active HD Careers job listings, including employers, locations, skills and categories.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="{prefix}assets/hd-careers-logo.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script><script defer src="{prefix}assets/insights-live.js"></script>
+<link rel="icon" href="{prefix}assets/hd-careers-icon-64.png"><link rel="stylesheet" href="{prefix}assets/editorial.css"><link rel="stylesheet" href="{prefix}assets/public-header.css"><script defer src="{prefix}assets/public-header.js"></script><script defer src="{prefix}assets/analytics.js"></script><script defer src="{prefix}assets/insights-live.js"></script>
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Organization","name":"HD Careers"},"publisher":{"@type":"Organization","name":"HD Careers"},"dateModified":snapshot,"mainEntityOfPage":canonical}, ensure_ascii=False)}</script>
 </head><body>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo.png" alt="HD Careers"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="{prefix}index.html"><img src="{prefix}assets/hd-careers-logo-small.webp" alt="HD Careers" width="112" height="94"><span><strong>HD Careers</strong><span>Jobs • Insights • Career resources</span></span></a><nav class="nav-links"><a href="{prefix}index.html">Jobs</a><a class="active" href="{prefix}insights.html">Insights</a><a href="{prefix}career-resources.html">Career Resources</a><a href="{prefix}editorial-policy.html">Verification Policy</a><a href="{prefix}about.html">About</a><a href="{prefix}contact.html">Contact</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="eyebrow">HD Careers own-data analysis</div><h1>{esc(title)}</h1><p>{esc(subtitle)}</p><p style="font-size:12px;margin-top:15px;color:#93c5fd">Snapshot based on listings verified through {esc(snapshot)}.</p></div></section>
 <main class="wrap section">
 <div class="grid cols-4">
