@@ -63,7 +63,7 @@
       "apply": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6233109004",
       "cat": "it",
       "expYears": "Internship; students graduating in 2027",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Zynga Early Careers Greenhouse page is live with a complete application form and states the six-month internship is only for students graduating in 2027.",
       "postedDate": null,
@@ -99,13 +99,16 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Greenhouse job page and embedded application form checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:49:36.211Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:49:36.211Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Greenhouse page shows Bengaluru, a six-month internship, 2027 graduation requirement and live Submit application form."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:49:36.211Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "instawork-4706444006",
@@ -475,7 +478,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:49:30.870Z",
+  "updatedAt": "2026-10-25T03:49:36.211Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
