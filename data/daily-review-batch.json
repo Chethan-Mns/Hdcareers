@@ -173,7 +173,7 @@
       "apply": "https://jobs.lever.co/Sprinto/6dfd5f41-57b6-40e8-9eab-ba4083c1a7c4",
       "cat": "it",
       "expYears": "Internship; currently pursuing a relevant degree",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Sprinto Lever posting and application form are live and specify current students in Computer Science, Engineering, Data Science or a related technical field.",
       "postedDate": null,
@@ -209,13 +209,16 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Lever posting and submission form checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:49:44.547Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:49:44.547Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Lever page shows the matching Bengaluru remote internship, student eligibility, detailed duties and an active application form."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:49:44.547Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "enterpret-7847134003",
@@ -481,7 +484,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:49:41.066Z",
+  "updatedAt": "2026-10-25T03:49:44.547Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
