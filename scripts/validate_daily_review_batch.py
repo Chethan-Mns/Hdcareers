@@ -70,8 +70,7 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
         raise ValueError("Non-empty batchId is required")
     if not payload.get("generatedAt"):
         raise ValueError("Every shortlist must have a generatedAt timestamp")
-    if not priority:
-        raise ValueError("At least one real priority candidate is required")
+    # Empty and partial shortlists are valid after deduplication; never invent fillers.
     ids, urls, company_req, employers = set(), set(), set(), {}
     ready = 0
     for index, row in enumerate(priority + backup, 1):
@@ -108,15 +107,15 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
             raise ValueError(f"Candidate {uid} needs a concrete verification reason")
         full = all(str(job.get(k) or "").strip() for k in ("company", "role", "loc", "elig", "desc", "apply"))
         full = full and isinstance(job.get("resp"), list) and bool(job["resp"])
-        if strict_discovery and not full:
+        if strict_discovery and len(priority)+len(backup)==20 and not full:
             raise ValueError(f"Candidate {uid} has incomplete job content; enrich during discovery before review")
         if full:
             ready += 1
+    composition = {}
+    complete_target = len(priority) == 10 and len(backup) == 10 and len(employers) == 20
     if strict_discovery:
-        if len(priority) != 10 or len(backup) != 10 or len(employers) != 20:
-            raise ValueError("Discovery requires 10 priority + 10 backup jobs from 20 different employers")
         for label, group in (("Priority", priority), ("Backup", backup)):
-            counts = {"technical": 0, "nonit": 0, "intern": 0}
+            counts = {"technical": 0, "nonit": 0, "intern": 0, "other": 0}
             for row in group:
                 job = row.get("job") or {}
                 cat = str(job.get("cat") or row.get("cat") or "").lower()
@@ -128,9 +127,17 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
                 elif fresher_it(row):
                     counts["technical"] += 1
                 else:
-                    raise ValueError(f"{label}: unclassified or non-fresher candidate {row.get('id')}")
-            if counts != {"technical": 6, "nonit": 2, "intern": 2}:
-                raise ValueError(f"{label} must contain 6 fresher technical, 2 non-IT and 2 internship/apprenticeship jobs; got {counts}")
+                    counts["other"] += 1
+            target = {"technical": 6, "nonit": 2, "intern": 2}
+            composition[label.lower()] = {
+                "counts": counts,
+                "shortfalls": {k: max(0, v-counts[k]) for k,v in target.items()},
+            }
+            if complete_target:
+                if counts["other"]:
+                    raise ValueError(f"{label}: unclassified or non-fresher candidate in complete shortlist")
+                if any(counts[k] != n for k, n in target.items()):
+                    raise ValueError(f"{label} must contain 6 fresher technical, 2 non-IT and 2 internship/apprenticeship jobs; got {counts}")
     if state in ("submitted", "published"):
         publication = payload.get("publication") or {}
         chosen = publication.get("candidateIds")
@@ -146,6 +153,8 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
                or not j["job"].get("resp") or j["job"].get("status") != "active" for j in picked):
             raise ValueError("Submitted batch cannot include incomplete or inactive jobs")
     return {"state": state, "priority": len(priority), "backup": len(backup),
+            "completeTarget": complete_target, "needsMore": max(0, 20-len(priority)-len(backup)),
+            "categoryShortfalls": composition,
             "uniqueEmployers": len(employers), "fresherITPriority": sum(fresher_it(j) for j in priority),
             "complete": ready, "unreviewed": sum(x.get("reviewedStatus", "unreviewed") == "unreviewed" for x in priority + backup)}
 
