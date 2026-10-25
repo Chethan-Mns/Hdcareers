@@ -11,7 +11,7 @@
       "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01666783_en",
       "cat": "non-it",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Accenture requisition AIOC-S01666783 currently shows the matching role, Hyderabad location, Any Graduation, 0–1 years, and an Apply for this job route.",
       "postedDate": null,
@@ -44,13 +44,16 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Accenture job-detail page and job-bound apply link checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:49:30.842Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:49:30.842Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official page lists Job No. AIOC-S01666783, Hyderabad, Any Graduation, 0–1 years, and an active Apply for this job link."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:49:30.842Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zynga-6233109004",
@@ -472,7 +475,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:39:38.232Z",
+  "updatedAt": "2026-10-25T03:49:30.870Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
