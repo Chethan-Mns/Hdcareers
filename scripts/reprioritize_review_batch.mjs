@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import {reprioritizeBeforeReview} from "../lib/review-ranking.js";
+import {filterDiscoveryDuplicates} from "../lib/review-dedup.js";
 
 const file=process.argv[2]||"data/daily-review-batch.json";
 const safeLoad=(path,fallback)=>{
@@ -16,8 +17,20 @@ const deliveries=safeLoad("data/telegram-deliveries.json",{});
 const evidence=safeLoad("data/verification-benchmark-2026-10-17.json",{items:[]});
 const ownerVerdicts=Array.isArray(evidence.items)?evidence.items:[];
 const watchlist=safeLoad("data/employer-watchlist-87.json",null);
-const result=reprioritizeBeforeReview(batch,{publishedJobs,deliveries,ownerVerdicts,watchlist});
+const archiveDir="data/review-batch-archive";
+const archivedBatches=fs.existsSync(archiveDir)?fs.readdirSync(archiveDir)
+ .filter(n=>n.endsWith(".json")).map(n=>safeLoad(archiveDir+"/"+n,null)).filter(Boolean):[];
+// This runs even when discovery found just 1-14 jobs. Ranking quotas must never gate deduplication.
+const scrub=filterDiscoveryDuplicates(batch,{publishedJobs,deliveries,archivedBatches,ownerVerdicts});
+console.log(scrub.reason);
+if(scrub.changed&&process.argv.includes("--apply")){
+ fs.writeFileSync(file,JSON.stringify(scrub.batch,null,2)+"\n");
+ console.log("Pre-review duplicate check removed "+scrub.removed.length+" jobs; "+scrub.batch.discoveryAudit.remaining+"/20 unique jobs remain.");
+}
+const result=reprioritizeBeforeReview(scrub.batch,{publishedJobs,deliveries,ownerVerdicts,watchlist});
 console.log(result.reason);
+if(scrub.batch?.discoveryAudit?.needsFreshDiscovery)
+ console.log("DISCOVERY SHORTFALL (do not pad): "+JSON.stringify({priority:scrub.batch.discoveryAudit.priority,backup:scrub.batch.discoveryAudit.backup}));
 if(result.changed&&process.argv.includes("--apply")){
  fs.writeFileSync(file,JSON.stringify(result.batch,null,2)+"\n");
 
