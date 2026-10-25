@@ -70,7 +70,17 @@ class TestDailyReviewContract(unittest.TestCase):
         p=batch()
         for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
         for i,c in enumerate(p["priority"]+p["backup"]):c["job"]["expType"]="fresher" if i>=10 else "experienced";c["job"]["cat"]="it"
-        with self.assertRaisesRegex(ValueError,"Fresher IT preference"):mod.check(p,strict_discovery=True)
+        with self.assertRaisesRegex(ValueError,"unclassified or non-fresher"):mod.check(p,strict_discovery=True)
+    def test_strict_discovery_does_not_count_it_intern_as_full_time_technical(self):
+        p=batch()
+        for x in p["backup"]:
+            x["job"].update(status="active",elig="Degree",desc="Verified role",resp=["Verified task"],sourceName="Official Careers")
+        for i,c in enumerate(p["priority"]+p["backup"]):
+            c["job"]["cat"]="it"
+            c["job"]["expType"]="fresher"
+            c["job"]["role"]="Software Engineer Intern" if i in (0,10) else "Software Engineer"
+        with self.assertRaisesRegex(ValueError,"6 fresher technical"):mod.check(p,strict_discovery=True)
+
     def test_invalid_json_document(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/"batch.json";path.write_text(json.dumps(batch(3,2)))
