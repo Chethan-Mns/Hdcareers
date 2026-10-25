@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "lastUpdated": "2026-10-17",
+  "lastUpdated": "2026-10-25",
   "focus": "India fresher, entry-level and graduate recruitment",
   "dailyTarget": {
-    "fresherIT": 8,
-    "nonIT": 1,
-    "internshipOrApprenticeship": 1
+    "fresherIT": 6,
+    "nonIT": 2,
+    "internshipOrApprenticeship": 2
   },
-  "deloitteRule": "Search Deloitte IT fresher first, then fresher non-IT; no same employer twice; do not publish unverified or existing roles.",
+  "deloitteRule": "Search official Deloitte India/USI/South Asia roles first. Reserve exactly one slot in the Priority 10 for a genuinely new, exact-source-verified, zero-experience-eligible Deloitte posting if available; otherwise report the Deloitte vacancy shortfall rather than inventing a job. Never include more than one Deloitte posting across Priority and Backup, including employer aliases. No previously published, expired, or unverified roles.",
   "fallbackRule": "Other employers only when fewer than ten distinct verified qualified roles exist from the 87 watchlisted employers.",
   "companyPriority": {
     "deloitte": [
