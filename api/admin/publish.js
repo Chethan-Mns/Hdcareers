@@ -344,8 +344,8 @@ export default async function handler(req,res){
     if(!submitted.length)return res.status(400).json({error:"Select at least one job to publish."});
     if(submitted.length>(fromReview?10:MAX_JOBS))return res.status(400).json({error:"Maximum "+(fromReview?10:MAX_JOBS)+" jobs per deployment."});
     const normalized=submitted.map(canonicalJob);
-    const incoming=fromReview?attachReviewedProof(normalized,reviewBatch,selectedIds):normalized;
-    incoming.forEach(validateJob);
+    const reviewed=fromReview?attachReviewedProof(normalized,reviewBatch,selectedIds):normalized;
+    reviewed.forEach(validateJob);
 
     const file=await github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token);
     const current=JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
@@ -355,24 +355,37 @@ export default async function handler(req,res){
     const existingPairs=new Set(current.map(j=>(String(j.company||"")+"\n"+String(j.role||"")).toLowerCase()));
     const incomingUrls=new Set();
     const incomingPairs=new Set();
+    const skippedAlreadyPublished=[];
     const duplicates=[];
+    const incoming=[];
 
-    for(const job of incoming){
+    for(const job of reviewed){
       const url=normalizeUrl(job.apply);
       const pair=(job.company+"\n"+job.role).toLowerCase();
-      if(existingUrls.has(url)||incomingUrls.has(url)||existingPairs.has(pair)||incomingPairs.has(pair)){
+      if(existingUrls.has(url)||existingPairs.has(pair)){
+        if(!fromReview)duplicates.push(job.company+" — "+job.role);
+        else skippedAlreadyPublished.push(job.company+" — "+job.role);
+        continue;
+      }
+      if(incomingUrls.has(url)||incomingPairs.has(pair)){
         duplicates.push(job.company+" — "+job.role);
+        continue;
       }
       incomingUrls.add(url);
       incomingPairs.add(pair);
+      incoming.push(job);
     }
 
     if(duplicates.length)return res.status(409).json({error:"Duplicate job detected.",duplicates});
+    if(!incoming.length)return res.status(409).json({
+      error:"All selected jobs were already published; nothing was reposted.",
+      duplicates:skippedAlreadyPublished
+    });
 
     const requestId=fromReview?crypto.createHash("sha256").update(reviewBatch.batchId+"|"+selectedIds.join("|")).digest("hex").slice(0,24):
       fromTest?crypto.createHash("sha256").update(testInbox.id+"|"+req.body.candidateIds.join("|")).digest("hex").slice(0,24):
       fromExpiry?crypto.createHash("sha256").update("expiry|"+expiryIds.slice().sort((a,b)=>a-b).join("|")).digest("hex").slice(0,24):null;
-    const telegramDeliveryMode=fromTest||fromReview||incoming.length>1||req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
+    const telegramDeliveryMode=req.body?.telegramDeliveryMode==="hourly"?"hourly":"instant";
      const payload=JSON.stringify({event_type:"admin_publish_jobs",client_payload:{jobs:incoming,telegramDeliveryMode,...(fromReview?{reviewBatchId:reviewBatch.batchId,reviewCandidateIds:selectedIds,requestId}:requestId?{requestId}:{})}});
     if(Buffer.byteLength(payload,"utf8")>60000){
       return res.status(413).json({error:"Selected job data is too large for one deployment. Publish fewer jobs at a time."});
@@ -426,7 +439,8 @@ export default async function handler(req,res){
       queued:true,
       count:incoming.length,
       requestId,
-      message:"GitHub accepted the publishing request. Website deployment and Telegram delivery are not confirmed yet."
+      skippedAlreadyPublished,
+      message:"GitHub accepted the new jobs only; already published jobs were excluded. Website deployment and Telegram delivery are not confirmed yet."
     });
   }catch(error){
     const status=Number(error&&error.status);
