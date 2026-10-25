@@ -42,6 +42,15 @@ class HourlyTest(unittest.TestCase):
             hourly.enqueue(self.event)
         self.assertEqual(len(hourly.queue()["items"]),2)
 
+    def test_multi_job_default_mode_queues_and_claims_first_immediately(self):
+        hourly.save(self.event, {"client_payload": {"jobs": ["approved batch"]}})
+        with patch.dict(os.environ, {"GITHUB_RUN_ID": "123"}):
+            hourly.enqueue(self.event)
+            self.assertEqual([x["status"] for x in hourly.queue()["items"]], ["pending", "pending"])
+            hourly.claim(prime=True)
+        self.assertEqual([x["status"] for x in hourly.queue()["items"]], ["sending", "pending"])
+        self.assertEqual(hourly.queue()["items"][0]["page"], "jobs/ergomed.html")
+
     def test_claim_must_be_persisted_before_send_and_never_double_claim(self):
         hourly.save(hourly.QUEUE,{"version":1,"intervalMinutes":60,"items":[
             {"page":"jobs/ergomed.html","batchId":"admin-123","status":"pending"},
