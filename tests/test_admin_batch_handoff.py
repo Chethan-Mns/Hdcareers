@@ -62,21 +62,32 @@ class ApprovedBatchHandoffTests(unittest.TestCase):
         self.assertEqual(current[0]["cat"], "nonit")
         self.assertEqual(current[0]["skills"], [])
 
-    def test_one_unconfirmed_blocks_entire_batch(self):
+    def test_one_unconfirmed_holds_one_and_publishes_nine(self):
         self.write_event()
         with patch.object(admin, "check", side_effect=lambda j: {"state": "review" if j["company"] == "Company 5" else "active", "reason": "needs exact review"}):
-            with self.assertRaisesRegex(SystemExit, "9 of 10 passed, 1 need manual review"):
-                admin.main()
-        self.assertEqual(json.loads(self.jobs_file.read_text()), self.existing)
-        self.assertFalse(self.batch_file.exists())
+            admin.main()
+        current = json.loads(self.jobs_file.read_text())
+        manifest = json.loads(self.batch_file.read_text())
+        review_queue = json.loads(self.reviews_file.read_text())
+        self.assertEqual(len(current), 10)
+        self.assertEqual(len(manifest["pages"]), 9)
+        self.assertTrue(manifest["approved"])
+        self.assertFalse(any(job["company"] == "Company 5" for job in current))
+        self.assertEqual(len(review_queue), 1)
+        self.assertEqual(review_queue[0]["company"], "Company 5")
+        self.assertEqual(review_queue[0]["state"], "review")
 
-    def test_one_expired_blocks_entire_batch(self):
+    def test_one_expired_skips_one_and_publishes_nine(self):
         self.write_event()
         with patch.object(admin, "check", side_effect=lambda j: {"state": "expired" if j["company"] == "Company 4" else "active", "reason": "closed"}):
-            with self.assertRaisesRegex(SystemExit, "1 were closed"):
-                admin.main()
-        self.assertEqual(json.loads(self.jobs_file.read_text()), self.existing)
-        self.assertFalse(self.batch_file.exists())
+            admin.main()
+        current = json.loads(self.jobs_file.read_text())
+        manifest = json.loads(self.batch_file.read_text())
+        self.assertEqual(len(current), 10)
+        self.assertEqual(len(manifest["pages"]), 9)
+        self.assertTrue(manifest["approved"])
+        self.assertFalse(any(job["company"] == "Company 4" for job in current))
+        self.assertEqual(json.loads(self.reviews_file.read_text()), [])
 
 
 if __name__ == "__main__":
