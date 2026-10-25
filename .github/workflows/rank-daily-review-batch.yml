@@ -33,6 +33,8 @@ jobs:
           node-version: "22"
       - name: Unit test quality rules
         run: node --test tests/review-ranking.test.mjs tests/review-dedup.test.mjs
+      - name: Test Python short-batch validation contract
+        run: python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
       - name: Re-rank only if no manual reviews exist
         run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
       - name: Normalize official job categories before owner review
