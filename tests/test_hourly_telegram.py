@@ -29,16 +29,18 @@ class HourlyTest(unittest.TestCase):
         self.temp.cleanup()
 
     def test_enqueue_requires_exact_run_and_hourly_mode(self):
-        hourly.save(self.event,{"client_payload":{"telegramDeliveryMode":"instant"}})
-        with patch.dict(os.environ,{"GITHUB_RUN_ID":"123"}):
-            hourly.enqueue(self.event)
-        self.assertEqual(hourly.queue()["items"],[])
         hourly.save(self.event,{"client_payload":{"telegramDeliveryMode":"hourly"}})
         with patch.dict(os.environ,{"GITHUB_RUN_ID":"321"}):
             hourly.enqueue(self.event)
         self.assertEqual(hourly.queue()["items"],[])
         with patch.dict(os.environ,{"GITHUB_RUN_ID":"123"}):
             hourly.enqueue(self.event)
+            hourly.enqueue(self.event)
+        self.assertEqual(len(hourly.queue()["items"]),2)
+
+    def test_multi_job_explicit_instant_still_uses_hourly_queue(self):
+        hourly.save(self.event,{"client_payload":{"telegramDeliveryMode":"instant"}})
+        with patch.dict(os.environ,{"GITHUB_RUN_ID":"123"}):
             hourly.enqueue(self.event)
         self.assertEqual(len(hourly.queue()["items"]),2)
 
