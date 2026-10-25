@@ -8,7 +8,7 @@
     "internshipOrApprenticeship": 2
   },
   "deloitteRule": "Search official Deloitte India/USI/South Asia roles first. Reserve exactly one slot in the Priority 10 for a genuinely new, exact-source-verified, zero-experience-eligible Deloitte posting if available; otherwise report the Deloitte vacancy shortfall rather than inventing a job. Never include more than one Deloitte posting across Priority and Backup, including employer aliases. No previously published, expired, or unverified roles.",
-  "fallbackRule": "Other employers only when fewer than ten distinct verified qualified roles exist from the 87 watchlisted employers.",
+  "fallbackRule": "Search Deloitte and the 87 watchlisted employers first. When fewer than 20 distinct, newly verified, fresher-eligible roles satisfy the independent Priority 6/2/2 and Backup 6/2/2 quotas, continue searching unvisited watchlist employers, and only then expand to other official employers. Never fabricate 20 jobs; record employer coverage, verification holds, duplicate exclusions and each remaining category shortfall.",
   "companyPriority": {
     "deloitte": [
       "Deloitte",
