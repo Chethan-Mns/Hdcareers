@@ -118,7 +118,7 @@
       "apply": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
       "cat": "it",
       "expYears": "Internship; pursuing or recently completed degree/diploma",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Instawork Greenhouse page is live with an application form and explicitly accepts candidates pursuing or recently completing a relevant degree or diploma.",
       "postedDate": null,
@@ -154,13 +154,16 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Greenhouse job page and job-bound application form checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:49:41.066Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:49:41.066Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Official page identifies a Bengaluru full-time on-site internship, lists student/recent-completer eligibility and exposes a live application form."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:49:41.066Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "sprinto-6dfd5f41",
@@ -478,7 +481,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:49:36.211Z",
+  "updatedAt": "2026-10-25T03:49:41.066Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
