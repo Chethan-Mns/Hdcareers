@@ -96,3 +96,19 @@
 @media(max-width:390px){.hdm-insights .hdm-insights-side{grid-template-columns:1fr}.hdm-insights .hdm-city-cards{grid-template-columns:1fr}.hdm-widget .hdm-metrics{gap:7px}.hdm-widget .hdm-metric{padding:12px!important}}
 html.hd-lite .hdm-widget .hdm-animate{animation:none!important}
 @media(prefers-reduced-motion:reduce){.hdm-widget .hdm-animate,.hdm-widget .hdm-map-pins .hd-india-halo{animation:none!important}}
+
+/* City-specific original SVG thumbnails, replacing generic glyphs.
+   Small local assets load independently of the interactive map. */
+.hdm-insights .hdm-city-card{min-height:89px;gap:10px;padding:9px;background:linear-gradient(140deg,#fff,#f4f9ff);border-color:#dce9fa}
+.hdm-insights .hdm-city-art{display:block;overflow:hidden;width:62px;height:66px;flex:0 0 62px;border-radius:11px;background:#dceeff;box-shadow:inset 0 0 0 1px #bed6f2}
+.hdm-insights .hdm-city-art img{display:block;width:100%;height:100%;object-fit:cover}
+.hdm-insights .hdm-city-card-copy{gap:5px}
+.hdm-insights .hdm-city-card-copy b{font-size:12px}
+.hdm-insights .hdm-city-card-copy small{font-size:11px}
+@media(max-width:670px){
+ .hdm-insights .hdm-city-card{gap:9px;padding:8px;min-height:81px}
+ .hdm-insights .hdm-city-art{width:54px;height:59px;flex-basis:54px}
+ .hdm-insights .hdm-city-card-copy b{font-size:11px}
+ .hdm-insights .hdm-city-card-copy small{font-size:10px}
+}
+@media(max-width:390px){.hdm-insights .hdm-city-art{width:62px;height:66px;flex-basis:62px}}
