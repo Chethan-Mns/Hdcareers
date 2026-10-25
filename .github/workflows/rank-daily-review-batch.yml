@@ -6,6 +6,9 @@ on:
       - data/daily-review-batch.json
       - lib/review-ranking.js
       - scripts/reprioritize_review_batch.mjs
+      - lib/review-dedup.js
+      - tests/review-dedup.test.mjs
+      - scripts/validate_daily_review_batch.py
       - scripts/preflight_review_content.py
       - scripts/recover_daily_review_content.mjs
       - .github/workflows/rank-daily-review-batch.yml
@@ -29,7 +32,7 @@ jobs:
         with:
           node-version: "22"
       - name: Unit test quality rules
-        run: node --test tests/review-ranking.test.mjs
+        run: node --test tests/review-ranking.test.mjs tests/review-dedup.test.mjs
       - name: Re-rank only if no manual reviews exist
         run: node scripts/reprioritize_review_batch.mjs data/daily-review-batch.json --apply
       - name: Normalize official job categories before owner review
@@ -59,7 +62,7 @@ jobs:
           PY
       - name: Validate revised shortlist contract
         run: python3 scripts/validate_daily_review_batch.py data/daily-review-batch.json
-      - name: Enforce 20 new employers and 6-2-2 quotas before owner review
+      - name: Enforce dedup and audit 6-2-2 shortfalls before owner review
         run: |
           python3 - <<'PY'
           import json, subprocess
