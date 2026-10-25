@@ -450,7 +450,7 @@
       "apply": "https://job-boards.greenhouse.io/formaaiinc3/jobs/4235664005",
       "cat": "it",
       "expYears": "Internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Forma.ai India Campus Greenhouse page is live, labels the role as an internship, requests education and graduation details, and provides an active application form.",
       "postedDate": null,
@@ -486,17 +486,20 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Greenhouse job page and application form checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:50:16.489Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:50:16.489Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Official page lists the Pune internship, detailed responsibilities and skills, and an active Submit application form."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:50:16.489Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:50:12.388Z",
+  "updatedAt": "2026-10-25T03:50:16.489Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
