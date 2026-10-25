@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-25-0900-ist",
   "generatedAt": "2026-10-25T03:39:38.232Z",
-  "status": "reviewing",
+  "status": "published",
   "priority": [
     {
       "id": "accenture-aioc-s01666783",
@@ -499,7 +499,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:50:16.489Z",
+  "updatedAt": "2026-10-25T05:12:34.552818Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
@@ -516,5 +516,59 @@
   "ranking": {
     "policy": "Deloitte first, then approved 87 employers, then fully verified fresher-only fallback employers; one employer per candidate.",
     "note": "All source verdicts are automated evidence only. reviewedStatus remains unreviewed until the owner checks each official link."
-  }
+  },
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01666783",
+      "zynga-6233109004",
+      "instawork-4706444006",
+      "encardio-6010",
+      "forma-4235664005"
+    ],
+    "companies": [
+      "Accenture",
+      "Zynga",
+      "Instawork",
+      "Encardio Rite",
+      "Forma.ai"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01666783_en",
+      "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6233109004",
+      "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
+      "https://encardio.keka.com/careers/jobdetails/6010",
+      "https://job-boards.greenhouse.io/formaaiinc3/jobs/4235664005"
+    ],
+    "requestId": "owner-reviewed-20261025-five-new-jobs",
+    "count": 5,
+    "submittedAt": "2026-10-25T05:04:26Z",
+    "skippedAlreadyPublished": [
+      {
+        "id": "sprinto-6dfd5f41",
+        "company": "Sprinto",
+        "role": "AI Implementation Intern"
+      },
+      {
+        "id": "enterpret-7847134003",
+        "company": "Enterpret",
+        "role": "Software Engineering Intern — Backend"
+      },
+      {
+        "id": "66degrees-6127315004",
+        "company": "66degrees",
+        "role": "IT Service Desk Intern"
+      },
+      {
+        "id": "portcast-f18cc64e",
+        "company": "Portcast",
+        "role": "Data Analyst Intern"
+      }
+    ],
+    "telegramDeliveryWorkflowRunId": 40164671360,
+    "telegramDelivered": 5,
+    "websiteProductionDeploymentId": "dpl_EJGnYPwfoze8jJEzeh79DqaTy2Ka",
+    "publishedAt": "2026-10-25T05:12:34.552818Z"
+  },
+  "submittedAt": "2026-10-25T05:04:26Z",
+  "publishedAt": "2026-10-25T05:12:34.552818Z"
 }
