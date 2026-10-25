@@ -65,7 +65,10 @@ class TestDailyReviewContract(unittest.TestCase):
     def test_strict_discovery_requires_all_twenty(self):
         p=batch(10,8)
         for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
-        with self.assertRaisesRegex(ValueError,"10 priority"):mod.check(p,strict_discovery=True)
+        result=mod.check(p,strict_discovery=True)
+        self.assertFalse(result["completeTarget"])
+        self.assertEqual(result["needsMore"],2)
+        self.assertIn("priority",result["categoryShortfalls"])
     def test_strict_discovery_prioritizes_fresher_it(self):
         p=batch()
         for x in p["backup"]:x["job"].update(status="active",elig="Degree",desc="Source description",resp=["Verified task"],sourceName="Official Careers")
@@ -81,6 +84,12 @@ class TestDailyReviewContract(unittest.TestCase):
             c["job"]["role"]="Software Engineer Intern" if i in (0,10) else "Software Engineer"
         with self.assertRaisesRegex(ValueError,"6 fresher technical"):mod.check(p,strict_discovery=True)
 
+    def test_empty_clean_batch_reports_twenty_missing_without_fabricating(self):
+        p=batch(0,0)
+        result=mod.check(p,strict_discovery=True)
+        self.assertEqual(result["needsMore"],20)
+        self.assertEqual(result["priority"],0)
+        self.assertFalse(result["completeTarget"])
     def test_invalid_json_document(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/"batch.json";path.write_text(json.dumps(batch(3,2)))
