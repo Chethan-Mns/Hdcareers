@@ -69,7 +69,7 @@ def enqueue(event_path):
     event = load(Path(event_path), {})
     batch_id, pages = approved_batch()
     mode = event.get("client_payload", {}).get("telegramDeliveryMode", "")
-    hourly = mode == "hourly" or (len(pages) > 1 and mode != "instant")
+    hourly = len(pages) > 1 or mode == "hourly"
     if not hourly or not pages:
         print("One-off VIP or no verified pages: use immediate Telegram sender")
         output("deferred", "false")
