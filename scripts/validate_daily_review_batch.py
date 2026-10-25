@@ -121,7 +121,7 @@ def check(payload: dict, strict_discovery: bool = False) -> dict:
                 job = row.get("job") or {}
                 cat = str(job.get("cat") or row.get("cat") or "").lower()
                 role = str(job.get("role") or row.get("role") or "").lower()
-                if cat in {"internship", "apprenticeship"} or re.search(r"\\b(intern|internship|apprentice|apprenticeship)\\b", role):
+                if cat in {"internship", "apprenticeship"} or re.search(r"\b(intern|internship|apprentice|apprenticeship)\b", role):
                     counts["intern"] += 1
                 elif cat == "nonit":
                     counts["nonit"] += 1
