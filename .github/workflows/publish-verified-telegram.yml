@@ -1,6 +1,10 @@
 name: Publish verified jobs to Telegram
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - data/telegram-retry-request.json
   workflow_dispatch:
     inputs:
       pages:
@@ -25,6 +29,24 @@ jobs:
           ref: main
           fetch-depth: 0
           persist-credentials: true
+      - name: Validate explicitly approved Telegram-only retry
+        if: github.event_name == 'push'
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          retry=json.loads(Path("data/telegram-retry-request.json").read_text())
+          manifest=json.loads(Path("data/telegram-approved-batch.json").read_text())
+          assert retry.get("requestId")=="retry-owner-reviewed-five-20261025"
+          assert retry.get("approvedBy")=="HD Careers Owner"
+          assert retry.get("batchId")=="admin-40164194484"
+          assert retry["batchId"]==manifest.get("batchId")
+          assert manifest.get("approved") is True
+          assert isinstance(retry.get("pages"),list)
+          assert len(retry["pages"])==5 and len(set(retry["pages"]))==5
+          assert retry["pages"]==manifest.get("pages")
+          print("Exact owner-approved five pages verified; retry sends only, no job republishing.")
+          PY
       - name: Verify approved batch and deliver Telegram messages
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
