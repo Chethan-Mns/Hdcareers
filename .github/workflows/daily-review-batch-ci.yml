@@ -95,6 +95,7 @@ jobs:
           node --check lib/review-enrichment.js
           node --check scripts/recover_daily_review_content.mjs
           python3 -m py_compile scripts/preflight_review_content.py
+          python3 -m unittest discover -s tests -p test_review_content_gate.py -v
           node --check lib/review-ranking.js
           node --check scripts/reprioritize_review_batch.mjs
           node --check api/admin/publish.js
