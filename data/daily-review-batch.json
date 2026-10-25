@@ -283,7 +283,7 @@
       "apply": "https://job-boards.greenhouse.io/66degrees/jobs/6127315004",
       "cat": "it",
       "expYears": "Fresher with prior IT support internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official 66degrees Greenhouse page is live with a complete form and explicitly seeks a fresher who has completed an IT Service Desk, Technical Support or Helpdesk internship.",
       "postedDate": null,
@@ -320,13 +320,16 @@
         "date": "Not Specified",
         "verifiedDate": "25 Oct 2026",
         "sourceVerificationMethod": "Exact official Greenhouse job page and required application questions checked on 25 Oct 2026.",
-        "browserVerifiedAt": "2026-10-25T03:39:38.232Z"
+        "browserVerifiedAt": "2026-10-25T03:49:54.746Z",
+        "manualLiveVerifiedAt": "2026-10-25T03:49:54.746Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-25T03:39:38.232Z",
         "currentVerdict": "live",
         "officialEvidence": "Official form asks for the relevant bachelor's qualification and completed IT support internship, and remains open for submission."
-      }
+      },
+      "reviewedAt": "2026-10-25T03:49:54.746Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "portcast-f18cc64e",
@@ -487,7 +490,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-25T03:49:49.843Z",
+  "updatedAt": "2026-10-25T03:49:54.746Z",
   "discoverySummary": {
     "employerPortalsVisited": 25,
     "uniqueOfficialExactCandidatesScreened": 30,
