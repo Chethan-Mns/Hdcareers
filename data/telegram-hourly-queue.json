@@ -692,9 +692,11 @@
     {
       "page": "jobs/ejobs-hr-solutions-software-engineer-web-application-fresher.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T06:08:44.748475+00:00"
+      "dueAt": "2026-10-26T06:08:44.748475+00:00",
+      "claimId": "40278116419",
+      "claimedAt": "2026-10-26T06:08:55.776102+00:00"
     },
     {
       "page": "jobs/linuxbean-solution-it-business-analyst-fresher.html",
