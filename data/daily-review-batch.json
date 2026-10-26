@@ -500,7 +500,7 @@
       "apply": "https://jobs.smartrecruiters.com/MovingPictureCompany/94087102-mpc-academy-roto",
       "cat": "non-it",
       "expYears": "Internship; fresh graduates with no employee experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, labels the role Intern, explicitly accepts fresh graduates with no employee experience and exposes the application control.",
       "postedDate": null,
@@ -514,7 +514,7 @@
         "expYears": "Internship; fresh graduates with no employee experience",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Moving Picture Company / SmartRecruiters",
         "desc": "Eight-week paid RotoPrep academy internship for fresh animation graduates and diploma holders in Bengaluru.",
         "elig": "Fresh animation graduate or diploma holder; no employee work experience; less than one year of internship or trainee experience accepted.",
@@ -532,17 +532,21 @@
         "jobId": "94087102",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:53.607Z",
+        "browserVerifiedAt": "2026-10-26T04:06:53.607Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official page shows job 94087102, Bengaluru, eight-week internship, zero-employee-experience condition and active I'm interested control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:53.607Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:49.996Z",
+  "updatedAt": "2026-10-26T04:06:53.607Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
