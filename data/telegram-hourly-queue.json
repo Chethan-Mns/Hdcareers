@@ -732,9 +732,11 @@
     {
       "page": "jobs/point72-2027-software-engineer-campus-graduate-program-iit-hyderabad.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T10:10:02.413812+00:00"
+      "dueAt": "2026-10-26T10:10:02.413812+00:00",
+      "claimId": "40305258687",
+      "claimedAt": "2026-10-26T10:10:15.749266+00:00"
     },
     {
       "page": "jobs/vivify-healthcare-software-engineer-trainee.html",
