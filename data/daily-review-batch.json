@@ -64,7 +64,7 @@
       "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002",
       "cat": "it",
       "expYears": "2027 graduate role; no prior experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Greenhouse requisition is open with a complete application form and is explicitly titled for 2027 graduates.",
       "postedDate": null,
@@ -78,7 +78,7 @@
         "expYears": "2027 graduate role; no prior experience required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Graviton Research Capital / Greenhouse",
         "desc": "Graduate software engineering role building performance-sensitive systems, distributed infrastructure and tools for quantitative research and trading.",
         "elig": "Degree in Computer Science, Mathematics, Electrical Engineering or another highly analytical field; CGPA 8.5 or above; no active backlogs.",
@@ -99,13 +99,17 @@
         "jobId": "8764240002",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official Greenhouse page and embedded application form checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official Greenhouse page and embedded application form checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:03.998Z",
+        "browserVerifiedAt": "2026-10-26T04:06:03.998Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official form identifies job 8764240002, Gurugram, 2027 graduate eligibility and an active Submit application control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:03.998Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "point72-8893936002",
@@ -510,7 +514,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:00.211Z",
+  "updatedAt": "2026-10-26T04:06:03.998Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
