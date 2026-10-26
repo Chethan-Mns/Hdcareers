@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "25 October 2026",
-  "active": 156,
-  "employers": 101,
-  "freshers": 114,
-  "experienced": 26,
+  "verifiedThrough": "26 October 2026",
+  "active": 164,
+  "employers": 107,
+  "freshers": 117,
+  "experienced": 31,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 64
+      "count": 67
     },
     {
       "label": "Mumbai",
@@ -22,19 +22,19 @@
       "count": 7
     },
     {
+      "label": "Indore",
+      "count": 4
+    },
+    {
       "label": "Noida",
       "count": 4
     },
     {
+      "label": "Ahmedabad",
+      "count": 3
+    },
+    {
       "label": "Pune",
-      "count": 3
-    },
-    {
-      "label": "Indore",
-      "count": 3
-    },
-    {
-      "label": "Madurai",
       "count": 3
     }
   ],
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 64
+      "count": 67
     },
     {
       "city": "Mumbai",
@@ -64,21 +64,27 @@
       "count": 7
     },
     {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 4
+    },
+    {
       "city": "Noida",
       "lat": 28.5355,
       "lng": 77.391,
       "count": 4
     },
     {
-      "city": "Pune",
-      "lat": 18.5204,
-      "lng": 73.8567,
+      "city": "Ahmedabad",
+      "lat": 23.0225,
+      "lng": 72.5714,
       "count": 3
     },
     {
-      "city": "Indore",
-      "lat": 22.7196,
-      "lng": 75.8577,
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
       "count": 3
     },
     {
@@ -97,12 +103,6 @@
       "city": "Kolkata",
       "lat": 22.5726,
       "lng": 88.3639,
-      "count": 2
-    },
-    {
-      "city": "Ahmedabad",
-      "lat": 23.0225,
-      "lng": 72.5714,
       "count": 2
     },
     {
@@ -174,6 +174,11 @@
       "logo": "assets/company-icons/cognizant-8d169ac.png"
     },
     {
+      "name": "Drivetrain",
+      "count": 3,
+      "logo": "assets/company-owner/drivetrain.png"
+    },
+    {
       "name": "Zynga",
       "count": 3,
       "logo": "assets/company-owner/zynga.png"
@@ -197,17 +202,12 @@
       "name": "Wipro",
       "count": 3,
       "logo": "assets/company-icons/wipro-6507802.png"
-    },
-    {
-      "name": "Merkle Science",
-      "count": 2,
-      "logo": "assets/company-icons/merkle-science-1bc635f-b2ba2ed62d.png"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 24
+      "count": 25
     },
     {
       "label": "SQL",
@@ -219,15 +219,15 @@
     },
     {
       "label": "Communication",
-      "count": 13
+      "count": 15
+    },
+    {
+      "label": "JavaScript",
+      "count": 12
     },
     {
       "label": "Problem solving",
       "count": 12
-    },
-    {
-      "label": "JavaScript",
-      "count": 11
     },
     {
       "label": "REST APIs",
@@ -235,6 +235,10 @@
     },
     {
       "label": "Git",
+      "count": 10
+    },
+    {
+      "label": "C++",
       "count": 9
     },
     {
@@ -243,10 +247,6 @@
     },
     {
       "label": "Documentation",
-      "count": 8
-    },
-    {
-      "label": "C++",
       "count": 8
     },
     {
@@ -265,7 +265,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 73
+      "count": 78
     },
     {
       "label": "internship",
@@ -273,7 +273,7 @@
     },
     {
       "label": "nonit",
-      "count": 29
+      "count": 32
     },
     {
       "label": "experienced",
@@ -388,6 +388,10 @@
     {
       "date": "2026-10-25",
       "count": 5
+    },
+    {
+      "date": "2026-10-26",
+      "count": 8
     }
   ]
 }
