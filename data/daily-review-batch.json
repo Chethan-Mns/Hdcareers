@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-26-0900-ist",
   "generatedAt": "2026-10-26T03:30:31Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "ion-6f66cbb4",
@@ -546,7 +546,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:07:11.080Z",
+  "updatedAt": "2026-10-26T04:07:32.779Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
@@ -597,5 +597,47 @@
   "ranking": {
     "policy": "Deloitte first; then approved 87 employers; then exact-source, zero-experience-eligible fallback employers. One normalized employer across the saved batch.",
     "note": "Automated source verdicts are separate from owner review. All reviewedStatus fields remain unreviewed; no publication or Telegram action is authorized."
+  },
+  "submittedAt": "2026-10-26T04:07:32.779Z",
+  "publication": {
+    "candidateIds": [
+      "connectionphase-90713530",
+      "drivetrain-d7808cbe",
+      "ejobs-71309406",
+      "graviton-8764240002",
+      "ion-6f66cbb4",
+      "linuxbean-92873752",
+      "mpc-94087102",
+      "omnidesign-8e008a89",
+      "point72-8893936002",
+      "vivify-744000062986529"
+    ],
+    "companies": [
+      "Connectionphase",
+      "Drivetrain",
+      "EJOBS HR Solutions",
+      "Graviton Research Capital",
+      "ION Group",
+      "LinuxBean Solution",
+      "Moving Picture Company",
+      "Omni Design Technologies",
+      "Point72",
+      "Vivify Healthcare"
+    ],
+    "urls": [
+      "https://jobs.smartrecruiters.com/Connectionphase/90713530-hr-executive",
+      "https://jobs.lever.co/drivetrain/d7808cbe-0c2f-47f0-9261-f10f6cfea9aa",
+      "https://jobs.smartrecruiters.com/EJOBS/71309406-software-engineer-web-application-fresher",
+      "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002",
+      "https://jobs.lever.co/ion/6f66cbb4-c882-4234-b84e-68baea56e1ea/",
+      "https://jobs.smartrecruiters.com/LinuxBeanSolutionPvtLtd/92873752-it-business-analyst-be-mba-fresher",
+      "https://jobs.smartrecruiters.com/MovingPictureCompany/94087102-mpc-academy-roto",
+      "https://jobs.lever.co/omnidesigntech/8e008a89-5fc8-40b2-9ba7-f5a8a9e6297d",
+      "https://job-boards.greenhouse.io/point72/jobs/8893936002?gh_jid=8893936002",
+      "https://jobs.smartrecruiters.com/VivifyHealthcarePvtLtd/744000062986529-software-engineer-trainee"
+    ],
+    "requestId": "27141b26fe28c8af5bf15055",
+    "count": 10,
+    "submittedAt": "2026-10-26T04:07:32.779Z"
   }
 }
