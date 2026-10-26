@@ -227,7 +227,7 @@
       "apply": "https://jobs.lever.co/omnidesigntech/8e008a89-5fc8-40b2-9ba7-f5a8a9e6297d",
       "cat": "it",
       "expYears": "New college graduate; recent or near-graduating MS/PhD",
-      "reviewedStatus": "live",
+      "reviewedStatus": "unsure",
       "verificationVerdict": "live",
       "verificationReason": "Exact Lever requisition is open, full-time, includes Bangalore and is explicitly a new-college-graduate hire.",
       "postedDate": null,
@@ -241,7 +241,7 @@
         "expYears": "New college graduate; recent or near-graduating MS/PhD",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "review",
         "sourceName": "Omni Design Technologies / Lever",
         "desc": "New-graduate analog and mixed-signal IC design role covering circuit design, layout supervision, silicon evaluation and product introduction.",
         "elig": "MS or PhD in Electrical Engineering focused on analog/mixed-signal circuit design; recent graduates or students close to PhD graduation preferred.",
@@ -262,16 +262,14 @@
         "jobId": "8e008a89-5fc8-40b2-9ba7-f5a8a9e6297d",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official Lever posting and Apply for this job route checked on 26 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-26T04:06:29.006Z",
-        "browserVerifiedAt": "2026-10-26T04:06:29.006Z"
+        "sourceVerificationMethod": "Exact official Lever posting and Apply for this job route checked on 26 Oct 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Lever page identifies the new-college-graduate role, Bangalore among locations, full-time status and active Apply route."
       },
-      "reviewedAt": "2026-10-26T04:06:29.006Z",
+      "reviewedAt": "2026-10-26T04:07:04.602Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
@@ -546,7 +544,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:53.607Z",
+  "updatedAt": "2026-10-26T04:07:04.602Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
