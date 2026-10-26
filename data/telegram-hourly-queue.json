@@ -722,25 +722,26 @@
     {
       "page": "jobs/omni-design-technologies-analog-mixed-signal-ic-design-engineer-new-college-grad.html",
       "batchId": "admin-40267433708",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T09:09:48.909727+00:00",
       "claimId": "40297440185",
-      "claimedAt": "2026-10-26T09:09:59.698028+00:00"
+      "claimedAt": "2026-10-26T09:09:59.698028+00:00",
+      "messageId": 595,
+      "deliveredAt": "2026-10-26T09:10:02.413812+00:00"
     },
     {
       "page": "jobs/point72-2027-software-engineer-campus-graduate-program-iit-hyderabad.html",
       "batchId": "admin-40267433708",
       "status": "pending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T10:09:48.909727+00:00"
+      "dueAt": "2026-10-26T10:10:02.413812+00:00"
     },
     {
       "page": "jobs/vivify-healthcare-software-engineer-trainee.html",
       "batchId": "admin-40267433708",
       "status": "pending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T11:09:48.909727+00:00"
+      "dueAt": "2026-10-26T11:10:02.413812+00:00"
     }
   ]
 }
