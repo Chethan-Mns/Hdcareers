@@ -722,9 +722,11 @@
     {
       "page": "jobs/omni-design-technologies-analog-mixed-signal-ic-design-engineer-new-college-grad.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T09:09:48.909727+00:00"
+      "dueAt": "2026-10-26T09:09:48.909727+00:00",
+      "claimId": "40297440185",
+      "claimedAt": "2026-10-26T09:09:59.698028+00:00"
     },
     {
       "page": "jobs/point72-2027-software-engineer-campus-graduate-program-iit-hyderabad.html",
