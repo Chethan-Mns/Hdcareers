@@ -742,9 +742,11 @@
     {
       "page": "jobs/vivify-healthcare-software-engineer-trainee.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T11:10:18.729290+00:00"
+      "dueAt": "2026-10-26T11:10:18.729290+00:00",
+      "claimId": "40313047036",
+      "claimedAt": "2026-10-26T11:10:30.830895+00:00"
     }
   ]
 }
