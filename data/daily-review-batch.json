@@ -11,7 +11,7 @@
       "apply": "https://jobs.lever.co/ion/6f66cbb4-c882-4234-b84e-68baea56e1ea/",
       "cat": "it",
       "expYears": "2027 graduate programme",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact ION Lever requisition is open with a job-bound Apply route and is explicitly a full-time 2027 graduate programme in India.",
       "postedDate": null,
@@ -25,7 +25,7 @@
         "expYears": "2027 graduate programme",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "ION Group / Lever",
         "desc": "Graduate software development role building and maintaining software solutions for financial institutions and other global clients.",
         "elig": "2027 graduate programme applicant; the official page does not state a prior-work-experience minimum.",
@@ -44,13 +44,17 @@
         "jobId": "6f66cbb4-c882-4234-b84e-68baea56e1ea",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official Lever job page and job-bound Apply route checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official Lever job page and job-bound Apply route checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:00.187Z",
+        "browserVerifiedAt": "2026-10-26T04:06:00.187Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official ION Lever page shows the India graduate programme, full-time employment, locations and active Apply for this job route."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:00.187Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "graviton-8764240002",
@@ -506,7 +510,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T03:30:31Z",
+  "updatedAt": "2026-10-26T04:06:00.211Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
