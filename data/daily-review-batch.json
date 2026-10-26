@@ -174,7 +174,7 @@
       "apply": "https://jobs.smartrecruiters.com/EJOBS/71309406-software-engineer-web-application-fresher",
       "cat": "it",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, full-time, explicitly labelled Fresher and exposes the job-bound application control.",
       "postedDate": null,
@@ -188,7 +188,7 @@
         "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "EJOBS / SmartRecruiters",
         "desc": "Entry-level web application development and maintenance role using ASP.NET and C# technologies.",
         "elig": "B.Tech or MCA; fresher.",
@@ -207,13 +207,17 @@
         "jobId": "71309406",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:10.830Z",
+        "browserVerifiedAt": "2026-10-26T04:06:10.830Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows job 71309406, full-time status, fresher experience, qualifications and active I'm interested control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:10.830Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "omnidesign-8e008a89",
@@ -518,7 +522,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:07.051Z",
+  "updatedAt": "2026-10-26T04:06:10.831Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
