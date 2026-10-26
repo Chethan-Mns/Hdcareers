@@ -712,9 +712,11 @@
     {
       "page": "jobs/moving-picture-company-mpc-academy-roto-intern.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T08:09:14.069426+00:00"
+      "dueAt": "2026-10-26T08:09:14.069426+00:00",
+      "claimId": "40290299149",
+      "claimedAt": "2026-10-26T08:09:45.710671+00:00"
     },
     {
       "page": "jobs/omni-design-technologies-analog-mixed-signal-ic-design-engineer-new-college-grad.html",
