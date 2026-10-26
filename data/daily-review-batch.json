@@ -282,7 +282,7 @@
       "apply": "https://jobs.smartrecruiters.com/LinuxBeanSolutionPvtLtd/92873752-it-business-analyst-be-mba-fresher",
       "cat": "it",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, full-time and explicitly labelled Fresher with a job-bound application control.",
       "postedDate": null,
@@ -296,7 +296,7 @@
         "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "LinuxBean Solution / SmartRecruiters",
         "desc": "Entry-level IT business analysis role connecting client business needs with development teams and supporting solution execution.",
         "elig": "MBA or BE in Electronics and Communication; fresher role.",
@@ -316,13 +316,17 @@
         "jobId": "92873752",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official SmartRecruiters job page and application control checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:34.103Z",
+        "browserVerifiedAt": "2026-10-26T04:06:34.103Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows job 92873752, full-time status, fresher title, stated qualifications and active I'm interested control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:34.103Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "drivetrain-d7808cbe",
@@ -526,7 +530,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:29.007Z",
+  "updatedAt": "2026-10-26T04:06:34.104Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
