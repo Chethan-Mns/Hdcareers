@@ -445,7 +445,7 @@
       "apply": "https://jobs.smartrecruiters.com/VivifyHealthcarePvtLtd/744000062986529-software-engineer-trainee",
       "cat": "it",
       "expYears": "Six-month paid training period; fresher conversion based on assessment",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting was crawled current today, is full-time, provides a six-month stipend training period and exposes the job-bound application control.",
       "postedDate": null,
@@ -459,7 +459,7 @@
         "expYears": "Six-month paid training period; fresher conversion based on assessment",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Vivify Healthcare / SmartRecruiters",
         "desc": "Software engineering training role learning the codebase, assisting development work, maintaining code and supporting testing and troubleshooting.",
         "elig": "Basic programming experience; knowledge of C++, HTML5 and JavaScript; Python is a plus; database and operating-system fundamentals.",
@@ -480,13 +480,17 @@
         "jobId": "744000062986529",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official SmartRecruiters page, current posting content and application control checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official SmartRecruiters page, current posting content and application control checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:49.996Z",
+        "browserVerifiedAt": "2026-10-26T04:06:49.996Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows requisition 744000062986529, trainee duties, six-month stipend training and active I'm interested control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:49.996Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "mpc-94087102",
@@ -538,7 +542,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:46.810Z",
+  "updatedAt": "2026-10-26T04:06:49.996Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
