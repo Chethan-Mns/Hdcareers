@@ -119,7 +119,7 @@
       "apply": "https://job-boards.greenhouse.io/point72/jobs/8893936002?gh_jid=8893936002",
       "cat": "it",
       "expYears": "Campus graduate programme; IIT Hyderabad students",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Point72 Greenhouse requisition is open with a complete application form and explicitly targets IIT Hyderabad campus graduates.",
       "postedDate": null,
@@ -133,7 +133,7 @@
         "expYears": "Campus graduate programme; IIT Hyderabad students",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Point72 / Greenhouse",
         "desc": "Campus graduate software engineering role building applications, data pipelines, cloud-native services and AI-enabled technology for investment teams.",
         "elig": "Expected bachelor's or master's degree in engineering in 2026; currently studying at IIT Hyderabad; programming in Python, Java, C++ or similar.",
@@ -154,13 +154,17 @@
         "jobId": "8893936002",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official Greenhouse job page and embedded application form checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official Greenhouse job page and embedded application form checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:07.050Z",
+        "browserVerifiedAt": "2026-10-26T04:06:07.050Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official page shows Bengaluru, required 2026 engineering degree, IIT Hyderabad question and active Submit application form."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:07.050Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ejobs-71309406",
@@ -514,7 +518,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:03.998Z",
+  "updatedAt": "2026-10-26T04:06:07.051Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
