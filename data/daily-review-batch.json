@@ -336,7 +336,7 @@
       "apply": "https://jobs.lever.co/drivetrain/d7808cbe-0c2f-47f0-9261-f10f6cfea9aa",
       "cat": "non-it",
       "expYears": "Fresh graduates explicitly accepted; 1–1.5 years ideal but not required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Lever requisition is open, full-time in India and explicitly says fresh graduates are welcome even without prior GTM operations work.",
       "postedDate": null,
@@ -350,7 +350,7 @@
         "expYears": "Fresh graduates explicitly accepted; 1–1.5 years ideal but not required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Drivetrain / Lever",
         "desc": "Go-to-market operations role supporting CRM data quality, pipeline reporting, forecasting, campaigns and sales tooling.",
         "elig": "Fresh graduate in any discipline accepted; structured thinking, spreadsheet comfort and ability to learn tools quickly.",
@@ -371,13 +371,17 @@
         "jobId": "d7808cbe-0c2f-47f0-9261-f10f6cfea9aa",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official Lever page and job-bound Apply route checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official Lever page and job-bound Apply route checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:43.431Z",
+        "browserVerifiedAt": "2026-10-26T04:06:43.431Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "Official page shows India, full-time remote status, fresh-graduate eligibility and active Apply for this job route."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:43.431Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "connectionphase-90713530",
@@ -530,7 +534,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:34.104Z",
+  "updatedAt": "2026-10-26T04:06:43.432Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
