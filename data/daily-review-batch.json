@@ -391,7 +391,7 @@
       "apply": "https://jobs.smartrecruiters.com/Connectionphase/90713530-hr-executive",
       "cat": "non-it",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, full-time and states 0–1 years with an active job-bound application control.",
       "postedDate": null,
@@ -405,7 +405,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Connectionphase / SmartRecruiters",
         "desc": "Entry-level HR role covering recruitment, onboarding, employee relations, administration and exit processes.",
         "elig": "MBA in HR; 0–1 years of experience.",
@@ -425,13 +425,17 @@
         "jobId": "90713530",
         "date": "Not Specified",
         "verifiedDate": "26 Oct 2026",
-        "sourceVerificationMethod": "Exact official SmartRecruiters page and application control checked on 26 Oct 2026."
+        "sourceVerificationMethod": "Exact official SmartRecruiters page and application control checked on 26 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-26T04:06:46.810Z",
+        "browserVerifiedAt": "2026-10-26T04:06:46.810Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-26T03:30:31Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows job 90713530, Ahmedabad, full-time status, 0–1 years, MBA-HR and active I'm interested control."
-      }
+      },
+      "reviewedAt": "2026-10-26T04:06:46.810Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "vivify-744000062986529",
@@ -534,7 +538,7 @@
     }
   ],
   "backup": [],
-  "updatedAt": "2026-10-26T04:06:43.432Z",
+  "updatedAt": "2026-10-26T04:06:46.810Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
