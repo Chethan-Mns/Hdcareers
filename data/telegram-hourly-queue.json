@@ -702,9 +702,11 @@
     {
       "page": "jobs/linuxbean-solution-it-business-analyst-fresher.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T07:08:59.000495+00:00"
+      "dueAt": "2026-10-26T07:08:59.000495+00:00",
+      "claimId": "40284012105",
+      "claimedAt": "2026-10-26T07:09:10.669068+00:00"
     },
     {
       "page": "jobs/moving-picture-company-mpc-academy-roto-intern.html",
