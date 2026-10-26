@@ -682,9 +682,11 @@
     {
       "page": "jobs/drivetrain-gtm-operations-associate.html",
       "batchId": "admin-40267433708",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-26T04:07:45.694141+00:00",
-      "dueAt": "2026-10-26T05:08:21.702574+00:00"
+      "dueAt": "2026-10-26T05:08:21.702574+00:00",
+      "claimId": "40272635804",
+      "claimedAt": "2026-10-26T05:08:33.197964+00:00"
     },
     {
       "page": "jobs/ejobs-hr-solutions-software-engineer-web-application-fresher.html",
