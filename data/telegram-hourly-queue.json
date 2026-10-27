@@ -763,9 +763,11 @@
     {
       "page": "jobs/gamecloud-technologies-pvt-ltd-game-testing-quality-assurance-engineer-graduate-.html",
       "batchId": "admin-40448898825",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-27T04:17:28.796986+00:00",
-      "dueAt": "2026-10-27T05:17:59.267535+00:00"
+      "dueAt": "2026-10-27T05:17:59.267535+00:00",
+      "claimId": "40454526901",
+      "claimedAt": "2026-10-27T05:18:09.490085+00:00"
     },
     {
       "page": "jobs/lokal-hr-operations-intern.html",
