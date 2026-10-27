@@ -233,7 +233,7 @@
       "apply": "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
       "cat": "internship",
       "expYears": "Three-month full-time trainee period before payroll conversion",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is current, targets graduates, requires a three-month paid full-time trainee period and provides the job-bound application control.",
       "postedDate": null,
@@ -247,7 +247,7 @@
         "expYears": "Three-month full-time trainee period before payroll conversion",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "GameCloud / SmartRecruiters",
         "desc": "Graduate game-testing trainee role testing games across PC, mobile and other platforms before possible conversion to a permanent Junior Game QA Engineer role.",
         "elig": "Any graduate; strong English and substantial familiarity with games and gaming platforms.",
@@ -268,13 +268,17 @@
         "jobId": "106961508",
         "date": "Not Specified",
         "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-27T04:16:50.196Z",
+        "browserVerifiedAt": "2026-10-27T04:16:50.196Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-27T03:33:05Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows the exact graduate QA role, Kothrud location, trainee structure, qualification, duties and active application control."
-      }
+      },
+      "reviewedAt": "2026-10-27T04:16:50.196Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wiingy-743999791757305",
@@ -328,7 +332,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-27T04:16:40.605Z",
+  "updatedAt": "2026-10-27T04:16:50.196Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
