@@ -1,11 +1,71 @@
 {
-  "checkedAt": "2026-10-27T07:59:23.519Z",
+  "checkedAt": "2026-10-27T08:24:47.318373+00:00",
   "checked": 164,
-  "active": 158,
-  "expired": 6,
-  "review": 0,
-  "changedExpired": 6,
+  "active": 137,
+  "expired": 0,
+  "review": 27,
+  "changedExpired": 0,
   "items": [
+    {
+      "id": 254,
+      "company": "EY",
+      "role": "Analyst — Forensics, Investigations & Compliance",
+      "page": "jobs/ey-analyst-forensics-investigations-compliance.html",
+      "url": "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
+      "state": "active",
+      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Official page loaded but role/application evidence was insufficient); verified at 2026-10-27T04:16:29.902Z",
+      "checkedAt": "2026-10-27T08:21:54.620406+00:00"
+    },
+    {
+      "id": 255,
+      "company": "GameCloud Technologies Pvt. Ltd.",
+      "role": "Game Testing & Quality Assurance Engineer — Graduate Trainee",
+      "page": "jobs/gamecloud-technologies-pvt-ltd-game-testing-quality-assurance-engineer-graduate-.html",
+      "url": "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
+      "state": "active",
+      "reason": "SmartRecruiters public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:21:56.778867+00:00"
+    },
+    {
+      "id": 256,
+      "company": "Lokal",
+      "role": "HR Operations Intern",
+      "page": "jobs/lokal-hr-operations-intern.html",
+      "url": "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
+      "state": "active",
+      "reason": "SmartRecruiters public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:21:57.531189+00:00"
+    },
+    {
+      "id": 257,
+      "company": "ProcDNA",
+      "role": "Business Analyst",
+      "page": "jobs/procdna-business-analyst.html",
+      "url": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
+      "state": "active",
+      "reason": "SmartRecruiters public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:21:57.990617+00:00"
+    },
+    {
+      "id": 258,
+      "company": "VizExperts India Pvt. Ltd.",
+      "role": "QA Engineer",
+      "page": "jobs/vizexperts-india-pvt-ltd-qa-engineer.html",
+      "url": "https://jobs.smartrecruiters.com/VizExperts/85947251",
+      "state": "active",
+      "reason": "SmartRecruiters public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:21:58.499340+00:00"
+    },
+    {
+      "id": 259,
+      "company": "Wiingy",
+      "role": "Marketing Intern",
+      "page": "jobs/wiingy-marketing-intern.html",
+      "url": "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern",
+      "state": "active",
+      "reason": "SmartRecruiters public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:21:58.945635+00:00"
+    },
     {
       "id": 246,
       "company": "Connectionphase",
@@ -14,7 +74,7 @@
       "url": "https://jobs.smartrecruiters.com/Connectionphase/90713530-hr-executive",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:07.622682+00:00"
+      "checkedAt": "2026-10-27T08:21:59.422874+00:00"
     },
     {
       "id": 247,
@@ -24,7 +84,7 @@
       "url": "https://jobs.lever.co/drivetrain/d7808cbe-0c2f-47f0-9261-f10f6cfea9aa",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:08.292417+00:00"
+      "checkedAt": "2026-10-27T08:21:59.877615+00:00"
     },
     {
       "id": 248,
@@ -34,7 +94,7 @@
       "url": "https://jobs.smartrecruiters.com/EJOBS/71309406-software-engineer-web-application-fresher",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:08.751483+00:00"
+      "checkedAt": "2026-10-27T08:22:15.854220+00:00"
     },
     {
       "id": 249,
@@ -44,7 +104,7 @@
       "url": "https://jobs.smartrecruiters.com/LinuxBeanSolutionPvtLtd/92873752-it-business-analyst-be-mba-fresher",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:09.225322+00:00"
+      "checkedAt": "2026-10-27T08:22:16.345630+00:00"
     },
     {
       "id": 250,
@@ -54,7 +114,7 @@
       "url": "https://jobs.smartrecruiters.com/MovingPictureCompany/94087102-mpc-academy-roto",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:09.709301+00:00"
+      "checkedAt": "2026-10-27T08:22:16.776430+00:00"
     },
     {
       "id": 251,
@@ -64,7 +124,7 @@
       "url": "https://jobs.lever.co/omnidesigntech/8e008a89-5fc8-40b2-9ba7-f5a8a9e6297d",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:10.161294+00:00"
+      "checkedAt": "2026-10-27T08:22:17.243911+00:00"
     },
     {
       "id": 252,
@@ -74,7 +134,7 @@
       "url": "https://job-boards.greenhouse.io/point72/jobs/8893936002?gh_jid=8893936002",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:10.494702+00:00"
+      "checkedAt": "2026-10-27T08:22:17.597266+00:00"
     },
     {
       "id": 253,
@@ -84,7 +144,7 @@
       "url": "https://jobs.smartrecruiters.com/VivifyHealthcarePvtLtd/744000062986529-software-engineer-trainee",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:10.735775+00:00"
+      "checkedAt": "2026-10-27T08:22:17.920620+00:00"
     },
     {
       "id": 241,
@@ -94,7 +154,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01666783_en",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:11.429003+00:00"
+      "checkedAt": "2026-10-27T08:22:18.386740+00:00"
     },
     {
       "id": 242,
@@ -104,7 +164,7 @@
       "url": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6233109004",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:12.858151+00:00"
+      "checkedAt": "2026-10-27T08:22:19.742944+00:00"
     },
     {
       "id": 243,
@@ -114,7 +174,7 @@
       "url": "https://job-boards.greenhouse.io/instawork/jobs/4706444006",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:12.953514+00:00"
+      "checkedAt": "2026-10-27T08:22:19.845014+00:00"
     },
     {
       "id": 244,
@@ -124,7 +184,7 @@
       "url": "https://encardio.keka.com/careers/jobdetails/6010",
       "state": "active",
       "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Official page loaded but role/application evidence was insufficient); verified at 2026-10-25T03:50:12.388Z",
-      "checkedAt": "2026-10-26T20:08:13.118529+00:00"
+      "checkedAt": "2026-10-27T08:22:19.990778+00:00"
     },
     {
       "id": 245,
@@ -134,7 +194,7 @@
       "url": "https://job-boards.greenhouse.io/formaaiinc3/jobs/4235664005",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:14.446523+00:00"
+      "checkedAt": "2026-10-27T08:22:21.276562+00:00"
     },
     {
       "id": 240,
@@ -142,9 +202,9 @@
       "role": "Software Engineer",
       "page": "jobs/barclays-software-engineer-99013663152.html",
       "url": "https://search.jobs.barclays/job/-/-/13015/99013663152?src=JB-12860",
-      "state": "active",
-      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (HTTP 404; availability unconfirmed); verified at 2026-10-24T00:00:00Z",
-      "checkedAt": "2026-10-26T20:08:14.537497+00:00"
+      "state": "review",
+      "reason": "HTTP 404; availability unconfirmed",
+      "checkedAt": "2026-10-27T08:22:21.394488+00:00"
     },
     {
       "id": 230,
@@ -154,7 +214,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01664425_en",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:15.136927+00:00"
+      "checkedAt": "2026-10-27T08:22:22.207726+00:00"
     },
     {
       "id": 231,
@@ -162,9 +222,9 @@
       "role": "Data Engineer Intern - 2027",
       "page": "jobs/amazon-data-engineer-intern-2027.html",
       "url": "https://www.amazon.jobs/en/jobs/10496769/data-engineer-intern-2027",
-      "state": "active",
-      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Official page loaded but role/application evidence was insufficient); verified at 2026-10-24T03:37:40.892Z",
-      "checkedAt": "2026-10-26T20:08:16.749717+00:00"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:23.493531+00:00"
     },
     {
       "id": 232,
@@ -172,9 +232,9 @@
       "role": "Apprentice - Marketing Offers Operations",
       "page": "jobs/american-express-apprentice-marketing-offers-operations.html",
       "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
-      "state": "active",
-      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Official page loaded but role/application evidence was insufficient); verified at 2026-10-24T03:37:34.720Z",
-      "checkedAt": "2026-10-26T20:08:18.053852+00:00"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:24.400207+00:00"
     },
     {
       "id": 233,
@@ -184,7 +244,7 @@
       "url": "https://job-boards.greenhouse.io/capco/jobs/8280810",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:19.525762+00:00"
+      "checkedAt": "2026-10-27T08:22:25.709942+00:00"
     },
     {
       "id": 234,
@@ -192,9 +252,9 @@
       "role": "Analyst - Tax - Transfer Pricing",
       "page": "jobs/ey-analyst-tax-transfer-pricing.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
-      "state": "active",
-      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Official page loaded but role/application evidence was insufficient); verified at 2026-10-24T03:37:12.297Z",
-      "checkedAt": "2026-10-26T20:08:19.613128+00:00"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:25.933180+00:00"
     },
     {
       "id": 235,
@@ -204,7 +264,7 @@
       "url": "https://jobs.lever.co/fampay/23dd18f9-a331-4115-98e9-e98c404c47c6",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:22.316529+00:00"
+      "checkedAt": "2026-10-27T08:22:27.693729+00:00"
     },
     {
       "id": 236,
@@ -214,7 +274,7 @@
       "url": "https://jobs.lever.co/hevodata/433ffdef-3125-48ed-a131-52c697c321ee",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:22.697014+00:00"
+      "checkedAt": "2026-10-27T08:22:28.404681+00:00"
     },
     {
       "id": 237,
@@ -224,7 +284,7 @@
       "url": "https://jobs.lever.co/merklescience/20675d00-156c-4f3f-a9bf-4cacee176bc2",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:28.956871+00:00"
+      "checkedAt": "2026-10-27T08:22:29.244960+00:00"
     },
     {
       "id": 238,
@@ -234,7 +294,7 @@
       "url": "https://jobs.smartrecruiters.com/PlaytoLabs/744000154392811-business-development-representative-bdr-",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:29.314638+00:00"
+      "checkedAt": "2026-10-27T08:22:32.809658+00:00"
     },
     {
       "id": 239,
@@ -242,9 +302,9 @@
       "role": "Intern - People Success Partner",
       "page": "jobs/zinnov-intern-people-success-partner.html",
       "url": "https://job-boards.greenhouse.io/zinnov/jobs/4410812009",
-      "state": "active",
-      "reason": "Recent exact-job manual confirmation overrides inconclusive automated review result within its verification window (Redirected source requires browser/ATS verification); verified at 2026-10-24T03:38:04.064Z",
-      "checkedAt": "2026-10-26T20:08:29.809725+00:00"
+      "state": "review",
+      "reason": "Redirected source requires browser/ATS verification",
+      "checkedAt": "2026-10-27T08:22:33.256218+00:00"
     },
     {
       "id": 229,
@@ -254,7 +314,7 @@
       "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2028048EXTERNALENGLOBAL/Software-Engineer?utm_source=talentbridge&utm_medium=referral",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:30.361431+00:00"
+      "checkedAt": "2026-10-27T08:22:33.764869+00:00"
     },
     {
       "id": 219,
@@ -264,7 +324,7 @@
       "url": "https://jobs.smartrecruiters.com/CaribouMediaPvtLtd/84098168-php-developer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:31.360273+00:00"
+      "checkedAt": "2026-10-27T08:22:35.430513+00:00"
     },
     {
       "id": 220,
@@ -274,7 +334,7 @@
       "url": "https://jobs.lever.co/dnb/d6f935d0-5fdd-4f07-8dab-96b49dcce2a7",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:31.814785+00:00"
+      "checkedAt": "2026-10-27T08:22:35.893464+00:00"
     },
     {
       "id": 221,
@@ -284,7 +344,7 @@
       "url": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:32.782710+00:00"
+      "checkedAt": "2026-10-27T08:22:36.316540+00:00"
     },
     {
       "id": 222,
@@ -294,7 +354,7 @@
       "url": "https://jobs.lever.co/gohighlevel/48265533-1a1c-405b-a805-7dae16ce8c16",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:33.225451+00:00"
+      "checkedAt": "2026-10-27T08:22:36.761487+00:00"
     },
     {
       "id": 223,
@@ -304,7 +364,7 @@
       "url": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:34.018783+00:00"
+      "checkedAt": "2026-10-27T08:22:37.130719+00:00"
     },
     {
       "id": 224,
@@ -314,7 +374,7 @@
       "url": "https://job-boards.greenhouse.io/konovo/jobs/5455984008",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:34.141700+00:00"
+      "checkedAt": "2026-10-27T08:22:37.463352+00:00"
     },
     {
       "id": 225,
@@ -324,7 +384,7 @@
       "url": "https://jobs.smartrecruiters.com/TheNielsenCompany/3743990016052475-content-operations-editor-i",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:34.225544+00:00"
+      "checkedAt": "2026-10-27T08:22:37.564272+00:00"
     },
     {
       "id": 226,
@@ -334,7 +394,7 @@
       "url": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000002921-operations-executive",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:34.373841+00:00"
+      "checkedAt": "2026-10-27T08:22:37.702639+00:00"
     },
     {
       "id": 227,
@@ -344,7 +404,7 @@
       "url": "https://jobs.lever.co/Sprinto/b0f52d4a-c9ac-414d-86c9-2f2f35868aef",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:35.327061+00:00"
+      "checkedAt": "2026-10-27T08:22:38.598844+00:00"
     },
     {
       "id": 228,
@@ -354,19 +414,7 @@
       "url": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000105344195-associate-operations",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:49.782607+00:00"
-    },
-    {
-      "id": 218,
-      "company": "NTT DATA",
-      "role": "Graduate Trainee",
-      "page": "jobs/ntt-data-graduate-trainee-r-151473.html",
-      "url": "https://careers.nttdata.com/global/en/job/R-151473/Graduate-Trainee",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "checkedAt": "2026-10-27T08:22:39.092236+00:00"
     },
     {
       "id": 217,
@@ -376,7 +424,7 @@
       "url": "https://sjobs.brassring.com/TGnewUI/Search/home/HomeWithPreLoad?partnerid=26209&siteid=5179&PageType=JobDetails&jobid=1434746#jobDetails=1434746_5179",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:52.257021+00:00"
+      "checkedAt": "2026-10-27T08:22:39.768174+00:00"
     },
     {
       "id": 209,
@@ -386,7 +434,7 @@
       "url": "https://jobs.smartrecruiters.com/EndeavorITSolution/109077867-internship-opportunities-for-graduates",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:54.752052+00:00"
+      "checkedAt": "2026-10-27T08:22:41.380927+00:00"
     },
     {
       "id": 210,
@@ -396,7 +444,7 @@
       "url": "https://jobs.smartrecruiters.com/Kredx/744000123904890-corporate-sales-trainee-freshers-",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:55.162926+00:00"
+      "checkedAt": "2026-10-27T08:22:41.813182+00:00"
     },
     {
       "id": 211,
@@ -406,31 +454,7 @@
       "url": "https://jobs.smartrecruiters.com/LinuxBeanSolutionPvtLtd/743999653274272-business-development-executive-fresher",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:55.642495+00:00"
-    },
-    {
-      "id": 212,
-      "company": "Mactores",
-      "role": "Cloud Engineer (Intern)",
-      "page": "jobs/mactores-cloud-engineer-intern.html",
-      "url": "https://jobs.lever.co/mactores/d237505f-5e6a-4eae-9b06-fa8dd0686236",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
-    },
-    {
-      "id": 213,
-      "company": "Meesho",
-      "role": "Trainee - Recruitment Coordinator",
-      "page": "jobs/meesho-trainee-recruitment-coordinator.html",
-      "url": "https://jobs.lever.co/meesho/1de2fc88-e203-4f1a-8046-55df700de4be",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "checkedAt": "2026-10-27T08:22:42.285360+00:00"
     },
     {
       "id": 214,
@@ -440,7 +464,7 @@
       "url": "https://jobs.smartrecruiters.com/PentozTechnology/743999709555215-business-development-executive-internship",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:08:57.945121+00:00"
+      "checkedAt": "2026-10-27T08:22:42.710356+00:00"
     },
     {
       "id": 215,
@@ -450,7 +474,7 @@
       "url": "https://jobs.lever.co/zeta/66fc10b7-8b22-4cf2-8d9a-557f9d517bbc",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:08:58.431987+00:00"
+      "checkedAt": "2026-10-27T08:22:43.536668+00:00"
     },
     {
       "id": 216,
@@ -458,11 +482,9 @@
       "role": "Marketing Artist Intern",
       "page": "jobs/zynga-marketing-artist-intern.html",
       "url": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6194305004",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Redirected source requires browser/ATS verification",
+      "checkedAt": "2026-10-27T08:22:44.881085+00:00"
     },
     {
       "id": 199,
@@ -472,7 +494,7 @@
       "url": "https://jobs.smartrecruiters.com/BlueberryLabsPrivateLimited/91749878-software-engineer-intern",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:00.055181+00:00"
+      "checkedAt": "2026-10-27T08:22:45.356533+00:00"
     },
     {
       "id": 200,
@@ -480,11 +502,9 @@
       "role": "Consultant FT: Strategy & Ops | Finance Transformation | Finance Strategy",
       "page": "jobs/deloitte-consultant-ft-strategy-ops-finance-transformation-finance-strategy.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Consultant-FT-Strategy-%26-Ops-Bengaluru-Finance-Transformation-Finance-Strategy/59276544/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:45.924219+00:00"
     },
     {
       "id": 201,
@@ -494,7 +514,7 @@
       "url": "https://jobs.lever.co/drivetrain/edb8a8f7-16ac-4177-bf2e-99c36ab47d5f",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:02.837388+00:00"
+      "checkedAt": "2026-10-27T08:22:48.541737+00:00"
     },
     {
       "id": 202,
@@ -502,23 +522,9 @@
       "role": "Associate Consultant - Business Consulting Risk - Risk Management",
       "page": "jobs/ey-associate-consultant-business-consulting-risk-risk-management.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Consultant-Business-Consulting-Risk-National-CNS-Risk-Risk-Management-Mumbai-MH-400028/1430050633/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
-    },
-    {
-      "id": 203,
-      "company": "Mactores",
-      "role": "Data Engineer Intern",
-      "page": "jobs/mactores-data-engineer-intern.html",
-      "url": "https://jobs.lever.co/mactores/88f23deb-bc0d-4f21-b01b-5a74c00b61f3",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:50.097567+00:00"
     },
     {
       "id": 204,
@@ -528,7 +534,7 @@
       "url": "https://jobs.smartrecruiters.com/NECSWS/744000154970739-finance-intern",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:07.856391+00:00"
+      "checkedAt": "2026-10-27T08:22:51.795412+00:00"
     },
     {
       "id": 205,
@@ -538,7 +544,7 @@
       "url": "https://jobs.lever.co/portcast/f18cc64e-c34a-416c-b213-62a39906260e",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:08.386917+00:00"
+      "checkedAt": "2026-10-27T08:22:52.215723+00:00"
     },
     {
       "id": 206,
@@ -546,11 +552,9 @@
       "role": "ENG Project/Program Intern",
       "page": "jobs/rubrik-eng-project-program-intern.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8166514?gh_jid=8166514",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "HTTP 403; availability unconfirmed",
+      "checkedAt": "2026-10-27T08:22:52.613564+00:00"
     },
     {
       "id": 207,
@@ -560,7 +564,7 @@
       "url": "https://stripe.com/careers/listing/operations-associate-apprenticeship/8131339?gh_jid=8131339",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:09.811305+00:00"
+      "checkedAt": "2026-10-27T08:22:53.524156+00:00"
     },
     {
       "id": 208,
@@ -570,7 +574,7 @@
       "url": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6194313004",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:10.502274+00:00"
+      "checkedAt": "2026-10-27T08:22:54.211635+00:00"
     },
     {
       "id": 190,
@@ -580,7 +584,7 @@
       "url": "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Income-Tax-Laws-Hyderabad-Business-Tax/60805744/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:10.590992+00:00"
+      "checkedAt": "2026-10-27T08:22:54.330770+00:00"
     },
     {
       "id": 191,
@@ -590,7 +594,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results/109375266236572358",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:12.791228+00:00"
+      "checkedAt": "2026-10-27T08:22:56.785492+00:00"
     },
     {
       "id": 192,
@@ -600,7 +604,7 @@
       "url": "https://job-boards.eu.greenhouse.io/groww/jobs/4956817101",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:13.536866+00:00"
+      "checkedAt": "2026-10-27T08:22:57.594805+00:00"
     },
     {
       "id": 193,
@@ -610,7 +614,7 @@
       "url": "https://jobs.lever.co/neuron7/3e5b2afa-c8f0-4ad0-adea-34e7604773cc",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:13.758323+00:00"
+      "checkedAt": "2026-10-27T08:22:57.726382+00:00"
     },
     {
       "id": 194,
@@ -620,7 +624,7 @@
       "url": "https://jobs.lever.co/paytm/a2f53649-1fe8-4a0d-97ee-24dab719a9e8",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:14.103932+00:00"
+      "checkedAt": "2026-10-27T08:22:58.155959+00:00"
     },
     {
       "id": 195,
@@ -630,7 +634,7 @@
       "url": "https://job-boards.greenhouse.io/quberesearchandtechnologies/jobs/8617401002",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:14.697402+00:00"
+      "checkedAt": "2026-10-27T08:22:58.594602+00:00"
     },
     {
       "id": 196,
@@ -638,11 +642,9 @@
       "role": "Software Engineer Intern",
       "page": "jobs/stripe-software-engineer-intern.html",
       "url": "https://stripe.com/careers/listing/software-engineer-intern/8031833",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:22:58.667193+00:00"
     },
     {
       "id": 197,
@@ -652,7 +654,7 @@
       "url": "https://jobs.smartrecruiters.com/Sutherland/744000151046829",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:15.187225+00:00"
+      "checkedAt": "2026-10-27T08:22:58.904612+00:00"
     },
     {
       "id": 198,
@@ -662,7 +664,7 @@
       "url": "https://careers.yash.com/job/Hyderabad-Trainee-Consultant-SAP-NextGen-Technical-Innovation-Job-TG/1368219166/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:15.631368+00:00"
+      "checkedAt": "2026-10-27T08:22:59.367070+00:00"
     },
     {
       "id": 187,
@@ -670,11 +672,9 @@
       "role": "Junior Service Desk Specialist – Tieto Tech Consulting",
       "page": "jobs/tieto-2812.html",
       "url": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:01.378601+00:00"
     },
     {
       "id": 188,
@@ -682,11 +682,9 @@
       "role": "Analyst – Tax, Global Compliance & Reporting",
       "page": "jobs/ey-1749819.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:02.564038+00:00"
     },
     {
       "id": 176,
@@ -696,7 +694,7 @@
       "url": "https://jobs.ashbyhq.com/aiprise/3763c791-a387-4078-9ca4-00cbfbf9b1a6",
       "state": "active",
       "reason": "Ashby public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:20.784509+00:00"
+      "checkedAt": "2026-10-27T08:23:04.608446+00:00"
     },
     {
       "id": 177,
@@ -706,7 +704,7 @@
       "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135641599-in-bosch-rexroth-india-graduate-management-traninee-engineering-application",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:20.854794+00:00"
+      "checkedAt": "2026-10-27T08:23:04.725535+00:00"
     },
     {
       "id": 178,
@@ -714,11 +712,9 @@
       "role": "Apprentice – Non-Technology",
       "page": "jobs/deutsche-bank-apprentice-non-technology.html",
       "url": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:05.167123+00:00"
     },
     {
       "id": 180,
@@ -728,7 +724,7 @@
       "url": "https://job-boards.greenhouse.io/hackerrank/jobs/8229735?gh_src=514fhkze1us",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:23.283345+00:00"
+      "checkedAt": "2026-10-27T08:23:07.205683+00:00"
     },
     {
       "id": 181,
@@ -736,11 +732,9 @@
       "role": "Campus-Beginner – Design Engineer",
       "page": "jobs/hcltech-campus-beginner-design-engineer.html",
       "url": "https://careers.hcltech.com/job/Campus-Beginner/142115-en_US/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:07.285624+00:00"
     },
     {
       "id": 183,
@@ -750,7 +744,7 @@
       "url": "https://jobs.lever.co/merklescience/e663b69b-264a-4bd7-b04d-fb3c0a824a28",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:25.474445+00:00"
+      "checkedAt": "2026-10-27T08:23:09.345785+00:00"
     },
     {
       "id": 184,
@@ -760,7 +754,7 @@
       "url": "https://careers.oracle.com/en/sites/jobsearch/job/346482",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:25.849940+00:00"
+      "checkedAt": "2026-10-27T08:23:09.821552+00:00"
     },
     {
       "id": 173,
@@ -770,7 +764,7 @@
       "url": "https://job-boards.greenhouse.io/glance/jobs/7916115",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:27.652836+00:00"
+      "checkedAt": "2026-10-27T08:23:11.594782+00:00"
     },
     {
       "id": 174,
@@ -780,7 +774,7 @@
       "url": "https://job-boards.greenhouse.io/instawork/jobs/4646670006",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:27.732145+00:00"
+      "checkedAt": "2026-10-27T08:23:11.678857+00:00"
     },
     {
       "id": 172,
@@ -790,7 +784,7 @@
       "url": "https://job-boards.greenhouse.io/66degrees/jobs/6127315004",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:27.880282+00:00"
+      "checkedAt": "2026-10-27T08:23:11.757553+00:00"
     },
     {
       "id": 170,
@@ -800,7 +794,7 @@
       "url": "https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:27.963770+00:00"
+      "checkedAt": "2026-10-27T08:23:11.826438+00:00"
     },
     {
       "id": 171,
@@ -810,7 +804,7 @@
       "url": "https://job-boards.greenhouse.io/skildai-careers/jobs/4136373008",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:28.415265+00:00"
+      "checkedAt": "2026-10-27T08:23:12.404377+00:00"
     },
     {
       "id": 161,
@@ -820,7 +814,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/170239-en_US/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:28.512862+00:00"
+      "checkedAt": "2026-10-27T08:23:12.475016+00:00"
     },
     {
       "id": 162,
@@ -830,7 +824,7 @@
       "url": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:30.089065+00:00"
+      "checkedAt": "2026-10-27T08:23:14.093224+00:00"
     },
     {
       "id": 163,
@@ -840,7 +834,7 @@
       "url": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:31.767563+00:00"
+      "checkedAt": "2026-10-27T08:23:14.779815+00:00"
     },
     {
       "id": 164,
@@ -850,7 +844,7 @@
       "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Mumbai-MH-400028/1426376333/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:32.114687+00:00"
+      "checkedAt": "2026-10-27T08:23:15.249931+00:00"
     },
     {
       "id": 165,
@@ -860,7 +854,7 @@
       "url": "https://careers.wipro.com/job/Process-Associate/207145-en_US/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:34.211310+00:00"
+      "checkedAt": "2026-10-27T08:23:16.910942+00:00"
     },
     {
       "id": 166,
@@ -870,7 +864,7 @@
       "url": "https://careers.cognizant.com/global-en/jobs/00069443878/analyst-cash-position-reconciliation/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:35.875145+00:00"
+      "checkedAt": "2026-10-27T08:23:19.081201+00:00"
     },
     {
       "id": 168,
@@ -880,7 +874,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:36.233928+00:00"
+      "checkedAt": "2026-10-27T08:23:19.345490+00:00"
     },
     {
       "id": 151,
@@ -890,7 +884,7 @@
       "url": "https://jobs.smartrecruiters.com/FretronPrivateLtd/743999812282138-technical-engineer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:36.992559+00:00"
+      "checkedAt": "2026-10-27T08:23:20.107866+00:00"
     },
     {
       "id": 152,
@@ -900,7 +894,7 @@
       "url": "https://jobs.smartrecruiters.com/DataFlairWebServicesPvtLtd/743999667075811-software-engineer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:37.493741+00:00"
+      "checkedAt": "2026-10-27T08:23:20.733186+00:00"
     },
     {
       "id": 153,
@@ -910,7 +904,7 @@
       "url": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:38.005058+00:00"
+      "checkedAt": "2026-10-27T08:23:21.216846+00:00"
     },
     {
       "id": 154,
@@ -920,7 +914,7 @@
       "url": "https://jobs.smartrecruiters.com/TaurusHardSoftSolutionsPvtLtd/82091961-java-developer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:38.453881+00:00"
+      "checkedAt": "2026-10-27T08:23:21.641758+00:00"
     },
     {
       "id": 155,
@@ -930,7 +924,7 @@
       "url": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:38.954765+00:00"
+      "checkedAt": "2026-10-27T08:23:22.104900+00:00"
     },
     {
       "id": 156,
@@ -940,7 +934,7 @@
       "url": "https://jobs.smartrecruiters.com/SwappitWebSoftwareSolutions/743999679880263-android-application-developer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:39.861768+00:00"
+      "checkedAt": "2026-10-27T08:23:22.470730+00:00"
     },
     {
       "id": 157,
@@ -950,7 +944,7 @@
       "url": "https://tudip.com/jobs/india/graduate-engineering-trainee-fresher/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:40.328503+00:00"
+      "checkedAt": "2026-10-27T08:23:22.949279+00:00"
     },
     {
       "id": 158,
@@ -960,7 +954,7 @@
       "url": "https://jobs.smartrecruiters.com/MarkTeQ/80440901-web-software-developer",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:42.950151+00:00"
+      "checkedAt": "2026-10-27T08:23:25.695670+00:00"
     },
     {
       "id": 159,
@@ -970,7 +964,7 @@
       "url": "https://jobs.smartrecruiters.com/PlaytoLabs/744000154718244-business-development-representative-fresher-",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:43.431795+00:00"
+      "checkedAt": "2026-10-27T08:23:26.168720+00:00"
     },
     {
       "id": 160,
@@ -980,7 +974,7 @@
       "url": "https://jobs.lever.co/Sprinto/6dfd5f41-57b6-40e8-9eab-ba4083c1a7c4",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:43.944911+00:00"
+      "checkedAt": "2026-10-27T08:23:26.639961+00:00"
     },
     {
       "id": 150,
@@ -990,7 +984,7 @@
       "url": "https://www.wayfair.com/careers/job/software-engineer-intern/2-20829",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:09:44.498136+00:00"
+      "checkedAt": "2026-10-27T08:23:27.028798+00:00"
     },
     {
       "id": 149,
@@ -998,11 +992,9 @@
       "role": "Digital Workplace Practice – Service Desk",
       "page": "jobs/cognizant-digital-workplace-practice-service-desk-freshers-2026.html",
       "url": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:28.491439+00:00"
     },
     {
       "id": 139,
@@ -1012,7 +1004,7 @@
       "url": "https://jobs.lever.co/thinkahead/3fd5cb37-6541-4e97-a827-d644468e6535",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:47.775693+00:00"
+      "checkedAt": "2026-10-27T08:23:29.261104+00:00"
     },
     {
       "id": 140,
@@ -1022,7 +1014,7 @@
       "url": "https://careers.capgemini.com/job/Bangalore-Data-Science-Architect/1416207133/?feedId=388633&tcsource=apply",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:48.738646+00:00"
+      "checkedAt": "2026-10-27T08:23:30.179593+00:00"
     },
     {
       "id": 144,
@@ -1032,7 +1024,7 @@
       "url": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/7922676",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:50.165618+00:00"
+      "checkedAt": "2026-10-27T08:23:31.495922+00:00"
     },
     {
       "id": 145,
@@ -1042,7 +1034,7 @@
       "url": "https://job-boards.greenhouse.io/startree/jobs/6147925004",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:50.250811+00:00"
+      "checkedAt": "2026-10-27T08:23:31.631513+00:00"
     },
     {
       "id": 146,
@@ -1052,7 +1044,7 @@
       "url": "https://job-boards.greenhouse.io/superapp/jobs/8859685002",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:50.332563+00:00"
+      "checkedAt": "2026-10-27T08:23:31.738382+00:00"
     },
     {
       "id": 147,
@@ -1062,7 +1054,7 @@
       "url": "https://jobs.lever.co/trackmind/ad66c0ec-1ae9-47cb-9d5d-83ae1cb6d200",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:50.459780+00:00"
+      "checkedAt": "2026-10-27T08:23:31.811426+00:00"
     },
     {
       "id": 148,
@@ -1072,7 +1064,7 @@
       "url": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:50.824297+00:00"
+      "checkedAt": "2026-10-27T08:23:32.163177+00:00"
     },
     {
       "id": 138,
@@ -1082,7 +1074,7 @@
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445632533/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:09:53.507623+00:00"
+      "checkedAt": "2026-10-27T08:23:32.981697+00:00"
     },
     {
       "id": 128,
@@ -1090,11 +1082,9 @@
       "role": "MS – EUS Apprentice/Intern (6 months)",
       "page": "jobs/ahead-ms-eus-apprentice-intern-6-months.html",
       "url": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:34.754633+00:00"
     },
     {
       "id": 129,
@@ -1104,7 +1094,7 @@
       "url": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:09:57.398718+00:00"
+      "checkedAt": "2026-10-27T08:23:35.653136+00:00"
     },
     {
       "id": 131,
@@ -1112,11 +1102,9 @@
       "role": "Graduate Engineer Trainee",
       "page": "jobs/ge-healthcare-graduate-engineer-trainee.html",
       "url": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "checkedAt": "2026-10-27T08:23:35.793943+00:00"
     },
     {
       "id": 133,
@@ -1124,11 +1112,9 @@
       "role": "Analyst – D365 F&O Functional SCM",
       "page": "jobs/deloitte-south-asia-analyst-d365-f-o-functional-scm.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:36.708094+00:00"
     },
     {
       "id": 134,
@@ -1138,7 +1124,7 @@
       "url": "https://jobs.smartrecruiters.com/necsws/744000152589569",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:00.429468+00:00"
+      "checkedAt": "2026-10-27T08:23:39.103021+00:00"
     },
     {
       "id": 135,
@@ -1148,7 +1134,7 @@
       "url": "https://jobs.lever.co/omnidian/e4bd2d30-9fb0-443f-a7c6-628851828074",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:00.910652+00:00"
+      "checkedAt": "2026-10-27T08:23:39.517162+00:00"
     },
     {
       "id": 137,
@@ -1158,7 +1144,7 @@
       "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152388899",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:03.420398+00:00"
+      "checkedAt": "2026-10-27T08:23:41.216151+00:00"
     },
     {
       "id": 119,
@@ -1168,7 +1154,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results/73379279982731974-silicon-engineer-platform-and-devices-university-graduate-2026",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:03.860871+00:00"
+      "checkedAt": "2026-10-27T08:23:41.643196+00:00"
     },
     {
       "id": 121,
@@ -1178,7 +1164,7 @@
       "url": "https://careers.arm.com/en/job/bengaluru/associate-engineer/33099/101597570352",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:04.697185+00:00"
+      "checkedAt": "2026-10-27T08:23:42.380444+00:00"
     },
     {
       "id": 122,
@@ -1188,7 +1174,7 @@
       "url": "https://careers.wipro.com/job/Chennai-DEVELOPER-L2-IND-600119/207151-en_US/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:05.332043+00:00"
+      "checkedAt": "2026-10-27T08:23:42.859585+00:00"
     },
     {
       "id": 124,
@@ -1198,7 +1184,7 @@
       "url": "https://careers.cognizant.com/apj-en/jobs/00070164991/dx-associate-business-analyst/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:06.994961+00:00"
+      "checkedAt": "2026-10-27T08:23:44.434015+00:00"
     },
     {
       "id": 125,
@@ -1206,11 +1192,9 @@
       "role": "Analyst – Indirect Tax – Core",
       "page": "jobs/ey-analyst-indirect-tax-core.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:44.640053+00:00"
     },
     {
       "id": 126,
@@ -1218,11 +1202,9 @@
       "role": "Technical Internship 2027",
       "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
       "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "checkedAt": "2026-10-27T08:23:46.612370+00:00"
     },
     {
       "id": 127,
@@ -1230,11 +1212,9 @@
       "role": "Software Development Engineer I, IESP Merchant Tech",
       "page": "jobs/amazon-software-development-engineer-i-iesp-merchant-tech.html",
       "url": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:48.646509+00:00"
     },
     {
       "id": 112,
@@ -1244,7 +1224,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01665344_en",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:11.444424+00:00"
+      "checkedAt": "2026-10-27T08:23:49.829119+00:00"
     },
     {
       "id": 113,
@@ -1254,7 +1234,7 @@
       "url": "https://newstreettech.com/careers/associate-software-engineer",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:11.704236+00:00"
+      "checkedAt": "2026-10-27T08:23:51.201252+00:00"
     },
     {
       "id": 114,
@@ -1264,7 +1244,7 @@
       "url": "https://job-boards.greenhouse.io/singlestore/jobs/8000966",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:14.338458+00:00"
+      "checkedAt": "2026-10-27T08:23:53.677607+00:00"
     },
     {
       "id": 115,
@@ -1274,7 +1254,7 @@
       "url": "https://job-boards.greenhouse.io/hyreo/jobs/5322122004",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:14.483024+00:00"
+      "checkedAt": "2026-10-27T08:23:53.752810+00:00"
     },
     {
       "id": 116,
@@ -1284,7 +1264,7 @@
       "url": "https://job-boards.greenhouse.io/superapp/jobs/8829824002",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:14.626453+00:00"
+      "checkedAt": "2026-10-27T08:23:53.946080+00:00"
     },
     {
       "id": 117,
@@ -1294,7 +1274,7 @@
       "url": "https://careers.capgemini.com/job/Navi-Mumbai-Group-Internal-Auditor/1445633133/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:14.733700+00:00"
+      "checkedAt": "2026-10-27T08:23:54.093616+00:00"
     },
     {
       "id": 111,
@@ -1302,11 +1282,9 @@
       "role": "Associate Analyst – TAX – Indirect Tax – Core",
       "page": "jobs/ey-associate-analyst-indirect-tax-mumbai-1751057.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:23:55.444819+00:00"
     },
     {
       "id": 109,
@@ -1314,11 +1292,9 @@
       "role": "Software Engineer – Cloud: Azure",
       "page": "jobs/rubrik-software-engineer-cloud-azure.html",
       "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "HTTP 403; availability unconfirmed",
+      "checkedAt": "2026-10-27T08:23:57.032767+00:00"
     },
     {
       "id": 108,
@@ -1326,11 +1302,9 @@
       "role": "New Grad – Software Engineer (Evergreen PPO)",
       "page": "jobs/visa-new-grad-software-engineer-evergreen-ppo.html",
       "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "HTTP 403; availability unconfirmed",
+      "checkedAt": "2026-10-27T08:23:58.011214+00:00"
     },
     {
       "id": 105,
@@ -1340,7 +1314,7 @@
       "url": "https://apply.careers.microsoft.com/careers/job/1970393557026313?hl=en",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:19.667376+00:00"
+      "checkedAt": "2026-10-27T08:23:58.550947+00:00"
     },
     {
       "id": 101,
@@ -1350,7 +1324,7 @@
       "url": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003",
       "state": "active",
       "reason": "Greenhouse public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:21.268558+00:00"
+      "checkedAt": "2026-10-27T08:24:00.473726+00:00"
     },
     {
       "id": 99,
@@ -1360,7 +1334,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results/120415858164933318-software-engineer-phd-early-career-2026",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:10:21.393970+00:00"
+      "checkedAt": "2026-10-27T08:24:00.632652+00:00"
     },
     {
       "id": 89,
@@ -1370,7 +1344,7 @@
       "url": "https://jobs.lever.co/ion/6f66cbb4-c882-4234-b84e-68baea56e1ea",
       "state": "active",
       "reason": "Lever public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:22.153954+00:00"
+      "checkedAt": "2026-10-27T08:24:01.386312+00:00"
     },
     {
       "id": 88,
@@ -1378,11 +1352,9 @@
       "role": "Software Engineer – Graduates 2026",
       "page": "jobs/zycus-software-engineer-graduates-2026.html",
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Official page loaded but role/application evidence was insufficient",
+      "checkedAt": "2026-10-27T08:24:02.499754+00:00"
     },
     {
       "id": 78,
@@ -1392,7 +1364,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results/109976286780105414-software-engineering-phd-intern-summer-2027",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:23.504454+00:00"
+      "checkedAt": "2026-10-27T08:24:03.642462+00:00"
     },
     {
       "id": 74,
@@ -1402,31 +1374,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/153688-en_US/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:25.193089+00:00"
-    },
-    {
-      "id": 73,
-      "company": "HCLTech",
-      "role": "Graduate Trainee – Monitoring Operations",
-      "page": "jobs/hcltech-graduate-trainee-monitoring-operations-nagpur-154181.html",
-      "url": "https://careers.hcltech.com/job/Campus-Beginner/154181-en_US",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
-    },
-    {
-      "id": 72,
-      "company": "HCLTech",
-      "role": "Monitoring Fresher",
-      "page": "jobs/hcltech-monitoring-fresher-noida-154178.html",
-      "url": "https://careers.hcltech.com/job/Campus-Beginner/154178-en_US/",
-      "state": "expired",
-      "reason": "Marked expired by HD Careers owner in a bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "expire",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "checkedAt": "2026-10-27T08:24:04.403394+00:00"
     },
     {
       "id": 71,
@@ -1436,7 +1384,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/158292-en_US",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:30.117562+00:00"
+      "checkedAt": "2026-10-27T08:24:05.905838+00:00"
     },
     {
       "id": 70,
@@ -1446,7 +1394,7 @@
       "url": "https://jobs.smartrecruiters.com/boschgroup/744000135641599",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:31.572521+00:00"
+      "checkedAt": "2026-10-27T08:24:07.445550+00:00"
     },
     {
       "id": 69,
@@ -1456,7 +1404,7 @@
       "url": "https://jobs.smartrecruiters.com/TurnerTownsend/744000150146400-graduate-trainee-procurement",
       "state": "active",
       "reason": "SmartRecruiters public posting inventory contains the exact published job",
-      "checkedAt": "2026-10-26T20:10:32.011110+00:00"
+      "checkedAt": "2026-10-27T08:24:08.041700+00:00"
     },
     {
       "id": 64,
@@ -1464,11 +1412,9 @@
       "role": "Associate – Software Testing Engineer",
       "page": "jobs/virtusa-associate-software-testing-engineer-creq260022.html",
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "HTTP 403; availability unconfirmed",
+      "checkedAt": "2026-10-27T08:24:08.465993+00:00"
     },
     {
       "id": 62,
@@ -1478,7 +1424,7 @@
       "url": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:33.961065+00:00"
+      "checkedAt": "2026-10-27T08:24:10.040859+00:00"
     },
     {
       "id": 60,
@@ -1488,7 +1434,7 @@
       "url": "https://nitm.ac.in/beta/news_details.php?p=1794",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:34.646908+00:00"
+      "checkedAt": "2026-10-27T08:24:11.895613+00:00"
     },
     {
       "id": 54,
@@ -1498,7 +1444,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/156839-en_US/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:37.811572+00:00"
+      "checkedAt": "2026-10-27T08:24:15.237514+00:00"
     },
     {
       "id": 53,
@@ -1508,7 +1454,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/154180-en_US",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:39.318562+00:00"
+      "checkedAt": "2026-10-27T08:24:16.550817+00:00"
     },
     {
       "id": 51,
@@ -1518,7 +1464,7 @@
       "url": "https://careers.jio.com/frmjobdescription.aspx?JBTITLE=VqySuCrFow14eZ2rOn+yig%3D%3D&funcCode=ni4dknKJ6TY%3D&jbID=BUxHArlZOX+6OKUYqwb4og%3D%3D",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:40.752762+00:00"
+      "checkedAt": "2026-10-27T08:24:17.982369+00:00"
     },
     {
       "id": 48,
@@ -1528,7 +1474,7 @@
       "url": "https://southasiacareers.deloitte.com/job/Delhi-Senior-Consultant-Data-Analytics-Delhi-Artificial-Intelligence-&-Data-AI-Insights-&-Engageme/59869044/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:45.173826+00:00"
+      "checkedAt": "2026-10-27T08:24:21.964636+00:00"
     },
     {
       "id": 42,
@@ -1538,7 +1484,7 @@
       "url": "https://www.ecil.co.in/jobopenings",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:47.352478+00:00"
+      "checkedAt": "2026-10-27T08:24:24.585733+00:00"
     },
     {
       "id": 40,
@@ -1548,7 +1494,7 @@
       "url": "https://cochinshipyard.in/careerdetail/career_locations/815",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:51.152009+00:00"
+      "checkedAt": "2026-10-27T08:24:28.828194+00:00"
     },
     {
       "id": 37,
@@ -1558,7 +1504,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:54.732869+00:00"
+      "checkedAt": "2026-10-27T08:24:31.804518+00:00"
     },
     {
       "id": 36,
@@ -1568,7 +1514,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10498163/support-engineer-intern-2027",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:56.099007+00:00"
+      "checkedAt": "2026-10-27T08:24:32.873868+00:00"
     },
     {
       "id": 35,
@@ -1578,7 +1524,7 @@
       "url": "https://www.amazon.jobs/en-gb/jobs/10498161/systems-development-engineer-intern-2027",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:57.121134+00:00"
+      "checkedAt": "2026-10-27T08:24:33.671194+00:00"
     },
     {
       "id": 34,
@@ -1588,7 +1534,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:58.248763+00:00"
+      "checkedAt": "2026-10-27T08:24:34.445715+00:00"
     },
     {
       "id": 33,
@@ -1598,7 +1544,7 @@
       "url": "https://careers.qualcomm.com/careers/job/446719783487?hl=en-US",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:10:59.964072+00:00"
+      "checkedAt": "2026-10-27T08:24:35.269690+00:00"
     },
     {
       "id": 31,
@@ -1608,7 +1554,7 @@
       "url": "https://jobs.sap.com/en/jobs/744000152662098/senior-machine-learning-engineer-int-abs-api-business-services/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:11:00.762526+00:00"
+      "checkedAt": "2026-10-27T08:24:36.079400+00:00"
     },
     {
       "id": 29,
@@ -1618,7 +1564,7 @@
       "url": "https://careers.hcltech.com/job/Campus-Beginner/168116-en_US",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:11:01.334736+00:00"
+      "checkedAt": "2026-10-27T08:24:36.541384+00:00"
     },
     {
       "id": 28,
@@ -1627,8 +1573,8 @@
       "page": "jobs/hevo-data-associate-software-development-engineer-bangalore.html",
       "url": "https://jobs.lever.co/hevodata/993a3ed3-3014-432f-b0f4-28d300d58d9a",
       "state": "active",
-      "reason": "Browser-compatible official-page render is active (Verification terms and registration/submit control found on official URL)",
-      "checkedAt": "2026-10-26T20:11:02.891971+00:00"
+      "reason": "Lever public posting inventory contains the exact published job",
+      "checkedAt": "2026-10-27T08:24:37.877339+00:00"
     },
     {
       "id": 26,
@@ -1638,7 +1584,7 @@
       "url": "https://careers.priceline.com/job/r5631/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:23.672347+00:00"
+      "checkedAt": "2026-10-27T08:24:38.441235+00:00"
     },
     {
       "id": 25,
@@ -1648,7 +1594,7 @@
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:24.310633+00:00"
+      "checkedAt": "2026-10-27T08:24:39.250584+00:00"
     },
     {
       "id": 22,
@@ -1658,7 +1604,7 @@
       "url": "https://southasiacareers.deloitte.com/job/Ahmedabad-Analyst-Onestream-All-Ahmedabad-Finance-Transformation-Business-Finance/59843244/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:25.769294+00:00"
+      "checkedAt": "2026-10-27T08:24:40.667805+00:00"
     },
     {
       "id": 21,
@@ -1668,7 +1614,7 @@
       "url": "https://careers.cognizant.com/india-en/jobs/00070744381/data-engineer-data-architect/",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:28.184603+00:00"
+      "checkedAt": "2026-10-27T08:24:43.114286+00:00"
     },
     {
       "id": 17,
@@ -1678,7 +1624,7 @@
       "url": "https://careers.wipro.com/job/Java-Fullstack-Developer/99036-en_US",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:28.382541+00:00"
+      "checkedAt": "2026-10-27T08:24:43.336935+00:00"
     },
     {
       "id": 15,
@@ -1688,7 +1634,7 @@
       "url": "https://www.amazon.jobs/en/jobs/10499657/data-engineer-i-cmt",
       "state": "active",
       "reason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "checkedAt": "2026-10-26T20:11:30.086506+00:00"
+      "checkedAt": "2026-10-27T08:24:44.801186+00:00"
     },
     {
       "id": 12,
@@ -1696,11 +1642,9 @@
       "role": "AWS Data Engineer",
       "page": "jobs/pricewaterhousecoopers-services-llp-aws-data-engineer-bangalore.html",
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "state": "active",
-      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "manualReview": "keep",
-      "manualReviewedAt": "2026-10-27T07:59:23.519Z"
+      "state": "review",
+      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "checkedAt": "2026-10-27T08:24:45.721746+00:00"
     }
   ]
 }
