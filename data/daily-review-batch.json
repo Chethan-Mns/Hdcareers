@@ -288,7 +288,7 @@
       "apply": "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern",
       "cat": "internship",
       "expYears": "Fresher internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is current, labels the role Intern, explicitly asks for a fresher and exposes the job-bound application control.",
       "postedDate": null,
@@ -302,7 +302,7 @@
         "expYears": "Fresher internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Wiingy / SmartRecruiters",
         "desc": "Entry-level marketing internship supporting campaign research, reporting, social content and event planning.",
         "elig": "Fresher with an educational background in marketing, communications, journalism or a similar field.",
@@ -323,16 +323,20 @@
         "jobId": "743999791757305",
         "date": "Not Specified",
         "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-27T04:16:54.750Z",
+        "browserVerifiedAt": "2026-10-27T04:16:54.750Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-27T03:33:05Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows the exact internship, fresher qualification, responsibilities, Bengaluru company context and active application control."
-      }
+      },
+      "reviewedAt": "2026-10-27T04:16:54.750Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-27T04:16:50.196Z",
+  "updatedAt": "2026-10-27T04:16:54.750Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
