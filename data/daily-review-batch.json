@@ -1,7 +1,7 @@
 {
   "batchId": "2026-10-27-0900-ist",
   "generatedAt": "2026-10-27T03:33:05Z",
-  "status": "reviewing",
+  "status": "submitted",
   "priority": [
     {
       "id": "vizexperts-85947251",
@@ -336,7 +336,7 @@
       "reviewedBy": "HD Careers Admin"
     }
   ],
-  "updatedAt": "2026-10-27T04:16:54.750Z",
+  "updatedAt": "2026-10-27T04:17:14.933Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
@@ -445,5 +445,35 @@
     "excludedCount": 3,
     "needsFreshDiscovery": true,
     "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+  },
+  "submittedAt": "2026-10-27T04:17:14.933Z",
+  "publication": {
+    "candidateIds": [
+      "ey-1737740",
+      "gamecloud-106961508",
+      "lokal-744000096104605",
+      "procdna-743999738938617",
+      "vizexperts-85947251",
+      "wiingy-743999791757305"
+    ],
+    "companies": [
+      "EY",
+      "GameCloud Technologies Pvt. Ltd.",
+      "Lokal",
+      "ProcDNA",
+      "VizExperts India Pvt. Ltd.",
+      "Wiingy"
+    ],
+    "urls": [
+      "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
+      "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
+      "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
+      "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
+      "https://jobs.smartrecruiters.com/VizExperts/85947251",
+      "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern"
+    ],
+    "requestId": "0a8adc4c52cc86351eb20e2f",
+    "count": 6,
+    "submittedAt": "2026-10-27T04:17:14.933Z"
   }
 }
