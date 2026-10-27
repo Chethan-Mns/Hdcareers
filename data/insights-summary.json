@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "26 October 2026",
-  "active": 164,
-  "employers": 107,
-  "freshers": 117,
-  "experienced": 31,
+  "verifiedThrough": "27 October 2026",
+  "active": 170,
+  "employers": 112,
+  "freshers": 118,
+  "experienced": 36,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 67
+      "count": 69
     },
     {
       "label": "Mumbai",
@@ -19,7 +19,11 @@
     },
     {
       "label": "Gurugram",
-      "count": 7
+      "count": 8
+    },
+    {
+      "label": "Pune",
+      "count": 4
     },
     {
       "label": "Indore",
@@ -32,10 +36,6 @@
     {
       "label": "Ahmedabad",
       "count": 3
-    },
-    {
-      "label": "Pune",
-      "count": 3
     }
   ],
   "cityPins": [
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 67
+      "count": 69
     },
     {
       "city": "Mumbai",
@@ -61,7 +61,13 @@
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
-      "count": 7
+      "count": 8
+    },
+    {
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
+      "count": 4
     },
     {
       "city": "Indore",
@@ -79,12 +85,6 @@
       "city": "Ahmedabad",
       "lat": 23.0225,
       "lng": 72.5714,
-      "count": 3
-    },
-    {
-      "city": "Pune",
-      "lat": 18.5204,
-      "lng": 73.8567,
       "count": 3
     },
     {
@@ -149,14 +149,14 @@
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
+      "name": "EY",
+      "count": 8,
+      "logo": "assets/company-approved/ey.webp"
+    },
+    {
       "name": "Amazon",
       "count": 7,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
-    },
-    {
-      "name": "EY",
-      "count": 7,
-      "logo": "assets/company-approved/ey.webp"
     },
     {
       "name": "Google",
@@ -258,22 +258,22 @@
       "count": 8
     },
     {
-      "label": "English communication",
+      "label": "Data analysis",
       "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 78
+      "count": 79
     },
     {
       "label": "internship",
-      "count": 41
+      "count": 44
     },
     {
       "label": "nonit",
-      "count": 32
+      "count": 34
     },
     {
       "label": "experienced",
@@ -392,6 +392,10 @@
     {
       "date": "2026-10-26",
       "count": 8
+    },
+    {
+      "date": "2026-10-27",
+      "count": 6
     }
   ]
 }
