@@ -358,7 +358,7 @@
     "duplicatesExcluded": 13,
     "distinctEmployers": 6,
     "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. The exact current Deloitte Associate Analyst Application Support requisition inspected required a minimum of two years and was excluded.",
-    "shortfall": "Priority saved 1 technical full-time, 2 non-technical full-time and 1 internship role; it is short by 5 technical and 1 training role. Backup saved 2 internship/training roles; it is short by 6 technical and 2 non-technical roles."
+    "shortfall": "4/10 Priority and 2/10 Backup; fresh verified category-matched employers needed"
   },
   "ranking": {
     "policy": "Deloitte first, then approved 87 employers, then source-complete fallback employers. One normalized employer across Priority and Backup.",
@@ -369,13 +369,13 @@
       "size": 4,
       "counts": {
         "fresherIT": 1,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 1,
-        "unclassified": 2
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 5,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 1
       }
     },
@@ -384,13 +384,13 @@
       "counts": {
         "fresherIT": 0,
         "nonIT": 0,
-        "training": 1,
-        "unclassified": 1
+        "training": 2,
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 1
+        "training": 0
       }
     },
     "target": {
