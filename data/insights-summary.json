@@ -1,17 +1,17 @@
 {
   "verifiedThrough": "27 October 2026",
-  "active": 170,
-  "employers": 112,
-  "freshers": 118,
+  "active": 164,
+  "employers": 110,
+  "freshers": 114,
   "experienced": 36,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 69
+      "count": 67
     },
     {
       "label": "Mumbai",
-      "count": 15
+      "count": 13
     },
     {
       "label": "Hyderabad",
@@ -30,11 +30,11 @@
       "count": 4
     },
     {
-      "label": "Noida",
-      "count": 4
+      "label": "Ahmedabad",
+      "count": 3
     },
     {
-      "label": "Ahmedabad",
+      "label": "Noida",
       "count": 3
     }
   ],
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 69
+      "count": 67
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 15
+      "count": 13
     },
     {
       "city": "Hyderabad",
@@ -76,15 +76,15 @@
       "count": 4
     },
     {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
-      "count": 4
-    },
-    {
       "city": "Ahmedabad",
       "lat": 23.0225,
       "lng": 72.5714,
+      "count": 3
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
       "count": 3
     },
     {
@@ -130,12 +130,6 @@
       "count": 1
     },
     {
-      "city": "Nagpur",
-      "lat": 21.1458,
-      "lng": 79.0882,
-      "count": 1
-    },
-    {
       "city": "Kochi",
       "lat": 9.9312,
       "lng": 76.2673,
@@ -143,11 +137,6 @@
     }
   ],
   "topCompanies": [
-    {
-      "name": "HCLTech",
-      "count": 9,
-      "logo": "assets/company-icons/hcltech-4735861.png"
-    },
     {
       "name": "EY",
       "count": 8,
@@ -157,6 +146,11 @@
       "name": "Amazon",
       "count": 7,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
+      "name": "HCLTech",
+      "count": 7,
+      "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
       "name": "Google",
@@ -210,16 +204,16 @@
       "count": 25
     },
     {
-      "label": "SQL",
-      "count": 20
-    },
-    {
       "label": "Java",
       "count": 20
     },
     {
+      "label": "SQL",
+      "count": 19
+    },
+    {
       "label": "Communication",
-      "count": 15
+      "count": 14
     },
     {
       "label": "JavaScript",
@@ -227,7 +221,7 @@
     },
     {
       "label": "Problem solving",
-      "count": 12
+      "count": 11
     },
     {
       "label": "REST APIs",
@@ -242,38 +236,38 @@
       "count": 9
     },
     {
-      "label": "Excel",
-      "count": 8
-    },
-    {
-      "label": "Documentation",
-      "count": 8
-    },
-    {
       "label": "Algorithms",
       "count": 8
     },
     {
-      "label": "Networking",
-      "count": 8
+      "label": "Data analysis",
+      "count": 7
     },
     {
-      "label": "Data analysis",
+      "label": "English communication",
+      "count": 7
+    },
+    {
+      "label": "Excel",
+      "count": 7
+    },
+    {
+      "label": "Documentation",
       "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 79
+      "count": 76
     },
     {
       "label": "internship",
-      "count": 44
+      "count": 42
     },
     {
       "label": "nonit",
-      "count": 34
+      "count": 33
     },
     {
       "label": "experienced",
@@ -323,7 +317,7 @@
     },
     {
       "date": "2026-10-06",
-      "count": 6
+      "count": 4
     },
     {
       "date": "2026-10-07",
@@ -371,11 +365,11 @@
     },
     {
       "date": "2026-10-21",
-      "count": 10
+      "count": 6
     },
     {
       "date": "2026-10-22",
-      "count": 10
+      "count": 6
     },
     {
       "date": "2026-10-23",
@@ -383,7 +377,7 @@
     },
     {
       "date": "2026-10-24",
-      "count": 31
+      "count": 13
     },
     {
       "date": "2026-10-25",
@@ -395,7 +389,7 @@
     },
     {
       "date": "2026-10-27",
-      "count": 6
+      "count": 28
     }
   ]
 }
