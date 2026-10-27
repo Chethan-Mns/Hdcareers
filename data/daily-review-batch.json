@@ -176,7 +176,7 @@
       "apply": "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
       "cat": "internship",
       "expYears": "Six-month internship; pursuing or completed degree",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, labels the role Intern, accepts pursuing/completed students and exposes the job-bound application control.",
       "postedDate": null,
@@ -190,7 +190,7 @@
         "expYears": "Six-month internship; pursuing or completed degree",
         "salary": "INR 25,000–30,000 monthly (employer-stated range)",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Lokal / SmartRecruiters",
         "desc": "Six-month HR operations internship supporting records, communications, events, reporting and employee-engagement activities.",
         "elig": "Pursuing or completed degree in HR, Business Administration, Mass Communications, English Literature or a related field; current students must not have regular college attendance.",
@@ -211,13 +211,17 @@
         "jobId": "744000096104605",
         "date": "Not Specified",
         "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-27T04:16:40.604Z",
+        "browserVerifiedAt": "2026-10-27T04:16:40.604Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-27T03:33:05Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows the exact internship, six-month duration, qualification rules, responsibilities, compensation range and active application control."
-      }
+      },
+      "reviewedAt": "2026-10-27T04:16:40.604Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
@@ -324,7 +328,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-27T04:16:36.532Z",
+  "updatedAt": "2026-10-27T04:16:40.605Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
