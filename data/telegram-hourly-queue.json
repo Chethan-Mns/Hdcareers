@@ -803,9 +803,11 @@
     {
       "page": "jobs/wiingy-marketing-intern.html",
       "batchId": "admin-40448898825",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-27T04:17:28.796986+00:00",
-      "dueAt": "2026-10-27T09:18:57.229107+00:00"
+      "dueAt": "2026-10-27T09:18:57.229107+00:00",
+      "claimId": "40479842439",
+      "claimedAt": "2026-10-27T09:19:08.943942+00:00"
     }
   ]
 }
