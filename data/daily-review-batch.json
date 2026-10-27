@@ -4,56 +4,6 @@
   "status": "reviewing",
   "priority": [
     {
-      "id": "arm-2026-19179",
-      "company": "Arm",
-      "role": "Associate Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://careers.arm.com/job/bengaluru/associate-engineer/33099/101597570352",
-      "cat": "it",
-      "expYears": "Graduate software engineer; no prior-work minimum stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Arm requisition 2026-19179 is current, identifies the role as Graduate Software Engineer and provides a requisition-bound Apply route.",
-      "postedDate": "2026-10-06",
-      "job": {
-        "company": "Arm",
-        "role": "Associate Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://careers.arm.com/job/bengaluru/associate-engineer/33099/101597570352",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Graduate software engineer; no prior-work minimum stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Arm Careers",
-        "desc": "Graduate software engineering role in Arm Physical IP Design Enablement, building and maintaining software tools and automated EDA workflows.",
-        "elig": "Bachelor’s or master’s degree or equivalent experience in Computer Science, Information Science, Electronics and Communication Engineering, or a related technical field.",
-        "resp": [
-          "Develop and sustain software applications and automated workflows for custom-cell and macro development.",
-          "Write maintainable Java or Python code with Tcl or shell automation.",
-          "Integrate build methodologies and EDA tools, test changes and debug failures."
-        ],
-        "skills": [
-          "Java",
-          "Python",
-          "Object-oriented programming",
-          "Data structures",
-          "Version control and automated testing"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "2026-19179",
-        "date": "2026-10-06",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:40:00Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official page shows job ID 2026-19179, Bengaluru, Graduate Software Engineer wording, qualifications, responsibilities and an active Apply link."
-      }
-    },
-    {
       "id": "vizexperts-85947251",
       "company": "VizExperts India Pvt. Ltd.",
       "role": "QA Engineer",
@@ -105,57 +55,6 @@
       }
     },
     {
-      "id": "endeavor-743999651528856",
-      "company": "Endeavor IT Solution",
-      "role": "Software Engineer — Java — Fresher",
-      "loc": "Indore, Madhya Pradesh, India",
-      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher",
-      "cat": "it",
-      "expYears": "0–6 months / Freshers",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters posting is open, full-time and explicitly states 0–6 months/Freshers with a job-bound application control.",
-      "postedDate": null,
-      "job": {
-        "company": "Endeavor IT Solution",
-        "role": "Software Engineer — Java — Fresher",
-        "loc": "Indore, Madhya Pradesh, India",
-        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–6 months / Freshers",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Endeavor IT Solution / SmartRecruiters",
-        "desc": "Entry-level Java software engineering role developing web applications and working with Java, web technologies and MySQL.",
-        "elig": "BE, MCA or BCA; 0–6 months of experience or fresher.",
-        "resp": [
-          "Analyze technical requirements and develop structured code.",
-          "Work with Java/J2EE, JSP, servlets, JavaScript and MySQL.",
-          "Deliver development work on time in a Linux-based environment."
-        ],
-        "skills": [
-          "Java",
-          "J2EE",
-          "JSP and Servlets",
-          "JavaScript and HTML/CSS",
-          "MySQL",
-          "Linux"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "743999651528856",
-        "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:40:00Z",
-        "currentVerdict": "live",
-        "officialEvidence": "SmartRecruiters page shows the exact title, full-time status, 0–6 months/Freshers eligibility, Indore location, qualifications and active application control."
-      }
-    },
-    {
       "id": "ey-1737740",
       "company": "EY",
       "role": "Analyst — Forensics, Investigations & Compliance",
@@ -172,7 +71,7 @@
         "role": "Analyst — Forensics, Investigations & Compliance",
         "loc": "Gurugram, Haryana, India",
         "apply": "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 years",
         "salary": "Competitive",
@@ -223,7 +122,7 @@
         "role": "Business Analyst",
         "loc": "India — exact city not specified",
         "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 year",
         "salary": "8.5 LPA total compensation stated by employer",
@@ -258,57 +157,6 @@
       }
     },
     {
-      "id": "amazon-10541345",
-      "company": "Amazon",
-      "role": "SDE I Intern — Amazon University Talent Acquisition",
-      "loc": "Multiple India locations",
-      "apply": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition",
-      "cat": "it",
-      "expYears": "Six-month internship; 2027 graduating students",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Amazon job ID 10541345 is current, has an Apply now route and explicitly targets currently enrolled 2027 CS/Computer Engineering students for a six-month India internship.",
-      "postedDate": null,
-      "job": {
-        "company": "Amazon",
-        "role": "SDE I Intern — Amazon University Talent Acquisition",
-        "loc": "Multiple India locations",
-        "apply": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition",
-        "cat": "it",
-        "expType": "internship",
-        "expYears": "Six-month internship; 2027 graduating students",
-        "salary": "Not Disclosed",
-        "batch": "2027",
-        "status": "review",
-        "sourceName": "Amazon Jobs",
-        "desc": "Six-month software development engineering internship working on distributed systems, scalable services and production software.",
-        "elig": "Currently enrolled in a bachelor’s or master’s degree in Computer Science, Computer Engineering or a related field; graduation year 2027.",
-        "resp": [
-          "Design and build technologies in distributed computing environments.",
-          "Develop scalable, fault-tolerant storage and query systems.",
-          "Code solutions to broadly defined problems.",
-          "Work in an agile environment to deliver software."
-        ],
-        "skills": [
-          "Object-oriented design",
-          "Algorithms and data structures",
-          "Operating systems",
-          "C/C++, Python, Java or Perl",
-          "Distributed systems"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "10541345",
-        "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:40:00Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Amazon page shows job ID 10541345, India locations, 2027 enrolment requirement, internship duration, responsibilities and Apply now."
-      }
-    },
-    {
       "id": "lokal-744000096104605",
       "company": "Lokal",
       "role": "HR Operations Intern",
@@ -325,7 +173,7 @@
         "role": "HR Operations Intern",
         "loc": "Not Specified",
         "apply": "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "internship",
         "expYears": "Six-month internship; pursuing or completed degree",
         "salary": "INR 25,000–30,000 monthly (employer-stated range)",
@@ -429,7 +277,7 @@
         "role": "Marketing Intern",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "internship",
         "expYears": "Fresher internship",
         "salary": "Not Disclosed",
@@ -504,16 +352,74 @@
     "uniqueOfficialExactCandidatesScreened": 30,
     "approved87CandidatesSelected": 2,
     "fallbackCandidatesSelected": 7,
-    "liveSelected": 9,
+    "liveSelected": 6,
     "expiredFound": 0,
     "reviewHeld": 8,
     "duplicatesExcluded": 13,
-    "distinctEmployers": 9,
+    "distinctEmployers": 6,
     "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. The exact current Deloitte Associate Analyst Application Support requisition inspected required a minimum of two years and was excluded.",
-    "shortfall": "Priority saved 3 technical full-time, 2 non-technical full-time and 2 internship/training roles; technical full-time is short by 3. Backup saved 2 internship/training roles; it is short by 6 technical full-time and 2 non-technical full-time. Blocked, location-inconclusive, experience-required and duplicate postings were not used as fillers."
+    "shortfall": "4/10 Priority and 2/10 Backup; fresh verified category-matched employers needed"
   },
   "ranking": {
     "policy": "Deloitte first, then approved 87 employers, then source-complete fallback employers. One normalized employer across Priority and Backup.",
     "note": "All reviewedStatus fields are unreviewed. This commit is staging only and authorizes no publication, website generation or Telegram delivery."
+  },
+  "discoveryAudit": {
+    "priority": {
+      "size": 4,
+      "counts": {
+        "fresherIT": 1,
+        "nonIT": 0,
+        "training": 1,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 5,
+        "nonIT": 2,
+        "training": 1
+      }
+    },
+    "backup": {
+      "size": 2,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 1,
+        "unclassified": 1
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 1
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 6,
+    "duplicateExclusions": [
+      {
+        "id": "arm-2026-19179",
+        "company": "Arm",
+        "reason": "already_published",
+        "officialUrl": "https://careers.arm.com/job/bengaluru/associate-engineer/33099/101597570352"
+      },
+      {
+        "id": "endeavor-743999651528856",
+        "company": "Endeavor IT Solution",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher"
+      },
+      {
+        "id": "amazon-10541345",
+        "company": "Amazon",
+        "reason": "already_published",
+        "officialUrl": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition"
+      }
+    ],
+    "excludedCount": 3,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   }
 }
