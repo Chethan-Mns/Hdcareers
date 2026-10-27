@@ -121,7 +121,7 @@
       "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
       "cat": "nonit",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting is open, full-time, permits 0–1 year and exposes the job-bound application control.",
       "postedDate": null,
@@ -135,7 +135,7 @@
         "expYears": "0–1 year",
         "salary": "8.5 LPA total compensation stated by employer",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "ProcDNA / SmartRecruiters",
         "desc": "Healthcare and life-sciences business analytics role using data, statistical models and business-intelligence tools to support client decisions.",
         "elig": "Bachelor’s or master’s degree in Engineering; 0–1 year of relevant healthcare or pharma consulting experience.",
@@ -156,13 +156,17 @@
         "jobId": "743999738938617",
         "date": "Not Specified",
         "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-27T04:16:36.532Z",
+        "browserVerifiedAt": "2026-10-27T04:16:36.532Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-27T03:33:05Z",
         "currentVerdict": "live",
         "officialEvidence": "SmartRecruiters page shows the exact full-time role, 0–1 year qualification, engineering degree requirement, duties and active application control."
-      }
+      },
+      "reviewedAt": "2026-10-27T04:16:36.532Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "lokal-744000096104605",
@@ -320,7 +324,7 @@
       }
     }
   ],
-  "updatedAt": "2026-10-27T04:16:29.902Z",
+  "updatedAt": "2026-10-27T04:16:36.532Z",
   "quotaAudit": {
     "targetPerList": {
       "technicalFullTime": 6,
