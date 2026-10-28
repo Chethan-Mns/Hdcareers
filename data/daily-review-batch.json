@@ -1,479 +1,477 @@
 {
-  "batchId": "2026-10-27-0900-ist",
-  "generatedAt": "2026-10-27T03:33:05Z",
-  "status": "submitted",
+  "batchId": "2026-10-28-0900-ist",
+  "generatedAt": "2026-10-28T03:38:31.009Z",
+  "status": "reviewing",
+  "updatedAt": "2026-10-28T03:38:31.009Z",
   "priority": [
     {
-      "id": "vizexperts-85947251",
-      "company": "VizExperts India Pvt. Ltd.",
-      "role": "QA Engineer",
-      "loc": "Bengaluru, India",
-      "apply": "https://jobs.smartrecruiters.com/VizExperts/85947251",
+      "id": "amazon-10454438",
+      "company": "Amazon",
+      "role": "Software Dev Engineer I, Amazon University Talent Acquisition",
+      "loc": "Bengaluru / Hyderabad / Chennai, India",
+      "apply": "https://www.amazon.jobs/en/jobs/10454438/software-dev-engineer-i-amazon-university-talent-acquisition",
       "cat": "it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "expYears": "2026 graduate",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters requisition is open, full-time, permits 0–2 years and exposes the job-bound application control.",
+      "verificationReason": "Exact Amazon Jobs requisition is open with an Apply now control and explicitly requires students who graduated in 2026.",
       "postedDate": null,
       "job": {
-        "company": "VizExperts India Pvt. Ltd.",
-        "role": "QA Engineer",
-        "loc": "Bengaluru, India",
-        "apply": "https://jobs.smartrecruiters.com/VizExperts/85947251",
+        "company": "Amazon",
+        "role": "Software Dev Engineer I, Amazon University Talent Acquisition",
+        "loc": "Bengaluru / Hyderabad / Chennai, India",
+        "apply": "https://www.amazon.jobs/en/jobs/10454438/software-dev-engineer-i-amazon-university-talent-acquisition",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "2026 graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Amazon Jobs",
+        "desc": "University-talent software engineering role building distributed products, storage, indexing and query systems.",
+        "elig": "Bachelor's degree or above in computer science, computer engineering or a related field; students who graduated in 2026.",
+        "resp": [
+          "Design and build technologies in distributed computing environments.",
+          "Build scalable distributed storage, index and query systems.",
+          "Design and code solutions from broadly defined problems.",
+          "Deliver high-quality software in an agile environment."
+        ],
+        "skills": [
+          "Software development",
+          "Distributed systems",
+          "Algorithms",
+          "Relational databases",
+          "Problem solving"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "10454438",
+        "date": "Not Specified",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Amazon Jobs page shows Job ID 10454438, Apply now, three India locations, 2026-graduate eligibility and a live job-bound application route."
+      }
+    },
+    {
+      "id": "zycus-JQ2742JNY",
+      "company": "Zycus",
+      "role": "AI-Native Java Engineer – Graduate Trainee (2026 Passouts)",
+      "loc": "Bengaluru, India (Hybrid)",
+      "apply": "https://zycus.talismatic.com/jobs/JQ2742JNY",
+      "cat": "it",
+      "expYears": "0–1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact employer ATS requisition is open with an Apply control, full-time status, 0–1 year experience and explicit 2026-graduate eligibility.",
+      "postedDate": null,
+      "job": {
+        "company": "Zycus",
+        "role": "AI-Native Java Engineer – Graduate Trainee (2026 Passouts)",
+        "loc": "Bengaluru, India (Hybrid)",
+        "apply": "https://zycus.talismatic.com/jobs/JQ2742JNY",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Zycus / Talismatic",
+        "desc": "Graduate software engineering role developing Java/Spring Boot backend services, REST APIs, microservices and AI-assisted workflows.",
+        "elig": "BE/BTech 2026 graduates in Computer Science, IT, Electronics, AI/ML, Data Science or related branches; minimum 80% or equivalent in 10th, 12th and degree; no current or historical backlogs.",
+        "resp": [
+          "Use AI tools for coding, debugging, testing and documentation.",
+          "Develop Java and Spring Boot backend applications.",
+          "Build REST APIs and microservices.",
+          "Write clean, maintainable and testable code."
+        ],
+        "skills": [
+          "Java",
+          "Spring Boot",
+          "REST APIs",
+          "Microservices",
+          "Data structures and algorithms",
+          "DBMS",
+          "AI-assisted development"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "JQ2742JNY",
+        "date": "Not Specified",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Zycus Talismatic page identifies JQ2742JNY, 0–1 years, full-time, 2026 graduates, detailed eligibility and an active Apply control."
+      }
+    },
+    {
+      "id": "charles-schwab-2026-128264",
+      "company": "Charles Schwab",
+      "role": "Associate – Software Development & Engineering (Java Developer)",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://www.schwabjobs.in/job/hyderabad/associate-software-development-and-engineering-java-developer/33995/102280077856",
+      "cat": "it",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Charles Schwab requisition is open with a job-bound Apply link and explicitly accepts 0–2 years of professional software-development experience.",
+      "postedDate": null,
+      "job": {
+        "company": "Charles Schwab",
+        "role": "Associate – Software Development & Engineering (Java Developer)",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://www.schwabjobs.in/job/hyderabad/associate-software-development-and-engineering-java-developer/33995/102280077856",
         "cat": "it",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "VizExperts / SmartRecruiters",
-        "desc": "Software testing role covering test planning, execution, issue reporting, environment management and automation.",
-        "elig": "BE, BTech, MTech, MSc or MCA; 0–2 years of experience.",
+        "status": "review",
+        "sourceName": "Charles Schwab India Careers",
+        "desc": "Entry-level software development role contributing to cloud-based, high-volume applications through design, development, testing, deployment and support.",
+        "elig": "Bachelor's degree in Computer Science or related field, or equivalent work experience; 0–2 years of professional software-development experience.",
         "resp": [
-          "Plan and execute software test plans.",
-          "Write test cases and report issues.",
-          "Build and manage test environments.",
-          "Support white-box, black-box and automated testing."
+          "Contribute to design, development, testing, deployment and support.",
+          "Collaborate with engineers, architects and product owners.",
+          "Develop applications using engineering standards and best practices.",
+          "Support solutions through the software development lifecycle."
         ],
         "skills": [
-          "Software testing",
-          "Windows and Linux",
-          "C/C++ fundamentals",
-          "Shell or batch scripting",
-          "Test-case design"
+          "Java, C# or C++",
+          "SQL",
+          "Relational databases",
+          "Unit testing",
+          "Agile development"
         ],
         "workMode": "Not Specified",
-        "jobId": "85947251",
+        "jobId": "2026-128264",
         "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:20.995Z",
-        "browserVerifiedAt": "2026-10-27T04:16:20.995Z"
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
-        "officialEvidence": "Employer-authorized SmartRecruiters page shows full-time status, Bengaluru, 0–2 years, qualifications, duties and an active application control."
-      },
-      "reviewedAt": "2026-10-27T04:16:20.995Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Official Schwab India page shows requisition 2026-128264, regular position, Hyderabad, 0–2 years and a linked requisition-specific application route."
+      }
     },
     {
-      "id": "ey-1737740",
-      "company": "EY",
-      "role": "Analyst — Forensics, Investigations & Compliance",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
-      "cat": "nonit",
-      "expYears": "0–1 years",
-      "reviewedStatus": "live",
+      "id": "jll-REQ510700",
+      "company": "JLL",
+      "role": "Software Engineer I",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jll.wd1.myworkdayjobs.com/en-GB/jllcareers/job/Software-Engineer-I_REQ510700",
+      "cat": "it",
+      "expYears": "0–2 years / recent graduate",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Official EY requisition 1737740 is current, dated 18 Oct 2026, explicitly permits 0–1 years and offers the job-bound Apply route.",
-      "postedDate": "2026-10-18",
-      "job": {
-        "company": "EY",
-        "role": "Analyst — Forensics, Investigations & Compliance",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Competitive",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level forensic investigations and compliance role examining financial records, supporting audits and preparing findings.",
-        "elig": "Graduate or postgraduate; 0–1 years of experience.",
-        "resp": [
-          "Examine financial documents and transactions for irregularities.",
-          "Support audits, validation and verification activities.",
-          "Prepare reports and maintain records.",
-          "Collaborate with relevant teams while protecting confidential information."
-        ],
-        "skills": [
-          "Analytical reasoning",
-          "Financial-document review",
-          "Audit support",
-          "Excel and record keeping",
-          "Written and verbal communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1737740",
-        "date": "2026-10-18",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:29.902Z",
-        "browserVerifiedAt": "2026-10-27T04:16:29.902Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official EY page shows requisition 1737740, Gurugram, 0–1 years, Graduate/Post Graduate qualification, responsibilities and Apply now."
-      },
-      "reviewedAt": "2026-10-27T04:16:29.902Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "procdna-743999738938617",
-      "company": "ProcDNA",
-      "role": "Business Analyst",
-      "loc": "India — exact city not specified",
-      "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
-      "cat": "nonit",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters posting is open, full-time, permits 0–1 year and exposes the job-bound application control.",
+      "verificationReason": "Exact JLL Workday requisition is open, full-time, and explicitly accepts 0–2 years or recent graduates.",
       "postedDate": null,
       "job": {
-        "company": "ProcDNA",
-        "role": "Business Analyst",
-        "loc": "India — exact city not specified",
-        "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
+        "company": "JLL",
+        "role": "Software Engineer I",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jll.wd1.myworkdayjobs.com/en-GB/jllcareers/job/Software-Engineer-I_REQ510700",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years / recent graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "JLL Careers / Workday",
+        "desc": "Early-career full-stack engineering role on customer-facing applications across frontend and backend systems.",
+        "elig": "0–2 years of professional software-engineering experience, or a recent graduate with relevant foundations; coding exposure through academic, bootcamp or personal projects is accepted.",
+        "resp": [
+          "Build and maintain customer-facing frontend and backend features.",
+          "Write and debug code with guidance from experienced engineers.",
+          "Apply object-oriented programming fundamentals.",
+          "Collaborate and iterate on reviewed code."
+        ],
+        "skills": [
+          "C# or Java",
+          "React",
+          "TypeScript",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Object-oriented programming",
+          "Debugging"
+        ],
+        "workMode": "On-site",
+        "jobId": "REQ510700",
+        "date": "Not Specified",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
+        "currentVerdict": "live",
+        "officialEvidence": "JLL Workday record REQ510700 shows full-time Bengaluru employment and explicitly states 0–2 years or recent-graduate eligibility."
+      }
+    },
+    {
+      "id": "graviton-8764240002",
+      "company": "Graviton Research Capital",
+      "role": "Software Engineer (2027 Graduate)",
+      "loc": "Gurugram, Haryana, India",
+      "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
+      "cat": "it",
+      "expYears": "2027 graduate",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact employer Greenhouse requisition is open with an embedded application form and is explicitly designated for 2027 graduates.",
+      "postedDate": null,
+      "job": {
+        "company": "Graviton Research Capital",
+        "role": "Software Engineer (2027 Graduate)",
+        "loc": "Gurugram, Haryana, India",
+        "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "2027 graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Graviton Research Capital / Greenhouse",
+        "desc": "Graduate software engineering role building high-performance C++ systems, distributed infrastructure and tools for quantitative research and trading.",
+        "elig": "2027 graduate with a degree in Computer Science, Mathematics, Electrical Engineering or another highly analytical field; CGPA 8.5 or above; no active backlogs.",
+        "resp": [
+          "Build high-performance and low-latency C++ systems.",
+          "Develop distributed systems for large market-data workloads.",
+          "Profile, debug and optimize production systems.",
+          "Build internal platforms and developer tools."
+        ],
+        "skills": [
+          "C++",
+          "Data structures and algorithms",
+          "Operating systems",
+          "Computer architecture",
+          "Networking",
+          "Linux",
+          "Concurrency",
+          "Distributed systems"
+        ],
+        "workMode": "On-site",
+        "jobId": "8764240002",
+        "date": "Not Specified",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Employer Greenhouse page for job 8764240002 displays the live role, Gurugram location, graduate criteria and a complete application form."
+      }
+    },
+    {
+      "id": "egis-744000123769623",
+      "company": "Egis Group",
+      "role": "Graduate Engineer – AV/IT",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.smartrecruiters.com/EgisGroup/744000123769623-graduate-engineer-av-it",
+      "cat": "it",
+      "expYears": "Graduate / entry-level",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact employer-authorized SmartRecruiters requisition is open, full-time/permanent and explicitly classified as Graduate Engineer / Entry-Level; prior experience is only preferred.",
+      "postedDate": null,
+      "job": {
+        "company": "Egis Group",
+        "role": "Graduate Engineer – AV/IT",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.smartrecruiters.com/EgisGroup/744000123769623-graduate-engineer-av-it",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Graduate / entry-level",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Egis Group / SmartRecruiters",
+        "desc": "Graduate engineering role supporting the design, installation, configuration and maintenance of integrated audio-visual and IT systems.",
+        "elig": "Graduate/entry-level applicants with AV and IT fundamentals; relevant certifications and previous AV installation or IT-support experience are preferred rather than mandatory.",
+        "resp": [
+          "Install, configure and test AV systems.",
+          "Troubleshoot and document AV/IT issues.",
+          "Assist with AV/IT infrastructure design and planning.",
+          "Integrate AV systems with network infrastructure.",
+          "Prepare technical documentation and user guidance."
+        ],
+        "skills": [
+          "AV systems",
+          "Networking",
+          "Hardware and software fundamentals",
+          "Troubleshooting",
+          "System configuration",
+          "Technical documentation"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "744000123769623",
+        "date": "Not Specified",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Egis employer career page and authorized SmartRecruiters requisition 744000123769623 show a live full-time permanent Graduate Engineer role with application controls."
+      }
+    },
+    {
+      "id": "ey-1750438",
+      "company": "EY",
+      "role": "Associate Analyst – Global Compliance & Reporting",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445265533/",
+      "cat": "nonit",
+      "expYears": "0–1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact EY requisition remains open with Apply now, a 0–1 year requirement and BCom eligibility.",
+      "postedDate": "2026-10-07",
+      "job": {
+        "company": "EY",
+        "role": "Associate Analyst – Global Compliance & Reporting",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445265533/",
         "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 year",
-        "salary": "8.5 LPA total compensation stated by employer",
+        "salary": "Competitive",
         "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "ProcDNA / SmartRecruiters",
-        "desc": "Healthcare and life-sciences business analytics role using data, statistical models and business-intelligence tools to support client decisions.",
-        "elig": "Bachelor’s or master’s degree in Engineering; 0–1 year of relevant healthcare or pharma consulting experience.",
+        "status": "review",
+        "sourceName": "EY Careers",
+        "desc": "Entry-level tax compliance and reporting role supporting global compliance deliverables, tax data analysis and cross-functional operations.",
+        "elig": "BCom; 0–1 year of experience.",
         "resp": [
-          "Structure and model data for business problems.",
-          "Design and run analyses for strategic decisions.",
-          "Develop statistical, BI and healthcare analytics tools.",
-          "Work with clients to develop tailored solutions."
+          "Support tax-compliance and reporting processes.",
+          "Prepare and review compliance deliverables.",
+          "Analyze tax data and identify issues.",
+          "Maintain accurate documentation for compliance activities."
         ],
         "skills": [
+          "Tax compliance",
+          "Financial information",
           "Data analysis",
-          "Business intelligence",
-          "Statistical modelling",
-          "Tableau, SAS, R or Alteryx",
-          "Client communication"
+          "Documentation",
+          "Cross-functional collaboration"
         ],
         "workMode": "Not Specified",
-        "jobId": "743999738938617",
-        "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:36.532Z",
-        "browserVerifiedAt": "2026-10-27T04:16:36.532Z"
+        "jobId": "1750438",
+        "date": "2026-10-07",
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
-        "officialEvidence": "SmartRecruiters page shows the exact full-time role, 0–1 year qualification, engineering degree requirement, duties and active application control."
-      },
-      "reviewedAt": "2026-10-27T04:16:36.532Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "EY page shows Apply now, requisition 1750438, Mumbai, BCom, 0–1 year and posting date 7 Oct 2026."
+      }
     },
     {
-      "id": "lokal-744000096104605",
-      "company": "Lokal",
-      "role": "HR Operations Intern",
-      "loc": "Not Specified",
-      "apply": "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
-      "cat": "internship",
-      "expYears": "Six-month internship; pursuing or completed degree",
-      "reviewedStatus": "live",
+      "id": "accenture-AIOC-S01667831",
+      "company": "Accenture",
+      "role": "Supply Chain Planning & Analytics New Associate",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667831_en",
+      "cat": "nonit",
+      "expYears": "0–1 year",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters posting is open, labels the role Intern, accepts pursuing/completed students and exposes the job-bound application control.",
+      "verificationReason": "Exact Accenture job page is open with a job-bound application link, any-graduation eligibility and 0–1 year experience.",
       "postedDate": null,
       "job": {
-        "company": "Lokal",
-        "role": "HR Operations Intern",
-        "loc": "Not Specified",
-        "apply": "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Six-month internship; pursuing or completed degree",
-        "salary": "INR 25,000–30,000 monthly (employer-stated range)",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Lokal / SmartRecruiters",
-        "desc": "Six-month HR operations internship supporting records, communications, events, reporting and employee-engagement activities.",
-        "elig": "Pursuing or completed degree in HR, Business Administration, Mass Communications, English Literature or a related field; current students must not have regular college attendance.",
-        "resp": [
-          "Coordinate HR operations with internal and external stakeholders.",
-          "Maintain HR records accurately and confidentially.",
-          "Create internal and social content.",
-          "Support events, employee engagement, reports and documentation."
-        ],
-        "skills": [
-          "Written and verbal communication",
-          "MS Office and Google Workspace",
-          "Canva or Figma basics",
-          "Content creation",
-          "HR operations"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000096104605",
-        "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:40.604Z",
-        "browserVerifiedAt": "2026-10-27T04:16:40.604Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
-        "currentVerdict": "live",
-        "officialEvidence": "SmartRecruiters page shows the exact internship, six-month duration, qualification rules, responsibilities, compensation range and active application control."
-      },
-      "reviewedAt": "2026-10-27T04:16:40.604Z",
-      "reviewedBy": "HD Careers Admin"
-    }
-  ],
-  "backup": [
-    {
-      "id": "gamecloud-106961508",
-      "company": "GameCloud Technologies Pvt. Ltd.",
-      "role": "Game Testing & Quality Assurance Engineer — Graduate Trainee",
-      "loc": "Kothrud, Pune, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
-      "cat": "internship",
-      "expYears": "Three-month full-time trainee period before payroll conversion",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters posting is current, targets graduates, requires a three-month paid full-time trainee period and provides the job-bound application control.",
-      "postedDate": null,
-      "job": {
-        "company": "GameCloud Technologies Pvt. Ltd.",
-        "role": "Game Testing & Quality Assurance Engineer — Graduate Trainee",
-        "loc": "Kothrud, Pune, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Three-month full-time trainee period before payroll conversion",
+        "company": "Accenture",
+        "role": "Supply Chain Planning & Analytics New Associate",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667831_en",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "GameCloud / SmartRecruiters",
-        "desc": "Graduate game-testing trainee role testing games across PC, mobile and other platforms before possible conversion to a permanent Junior Game QA Engineer role.",
-        "elig": "Any graduate; strong English and substantial familiarity with games and gaming platforms.",
+        "status": "review",
+        "sourceName": "Accenture Careers",
+        "desc": "New Associate role supporting supply planning, order management and fulfillment operations.",
+        "elig": "Any graduation; 0–1 year of experience.",
         "resp": [
-          "Test games across desktop and mobile platforms.",
-          "Identify, report and track defects.",
-          "Provide structured feedback to developers.",
-          "Complete the three-month full-time trainee assessment period."
+          "Support end-to-end supply planning and execution.",
+          "Work on order management from creation through fulfillment and settlement.",
+          "Solve routine problems using established guidelines.",
+          "Complete supervised individual-contributor tasks within a defined scope."
         ],
         "skills": [
-          "Game testing",
-          "Defect reporting",
-          "Quality assurance",
-          "Client communication",
-          "Gaming-platform knowledge"
+          "Order management",
+          "Supply-chain planning",
+          "Procurement and distribution operations",
+          "Problem solving"
         ],
         "workMode": "Not Specified",
-        "jobId": "106961508",
+        "jobId": "AIOC-S01667831",
         "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:50.196Z",
-        "browserVerifiedAt": "2026-10-27T04:16:50.196Z"
+        "verifiedDate": "28 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
+        "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
-        "officialEvidence": "SmartRecruiters page shows the exact graduate QA role, Kothrud location, trainee structure, qualification, duties and active application control."
-      },
-      "reviewedAt": "2026-10-27T04:16:50.196Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "wiingy-743999791757305",
-      "company": "Wiingy",
-      "role": "Marketing Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern",
-      "cat": "internship",
-      "expYears": "Fresher internship",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact SmartRecruiters posting is current, labels the role Intern, explicitly asks for a fresher and exposes the job-bound application control.",
-      "postedDate": null,
-      "job": {
-        "company": "Wiingy",
-        "role": "Marketing Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Fresher internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Wiingy / SmartRecruiters",
-        "desc": "Entry-level marketing internship supporting campaign research, reporting, social content and event planning.",
-        "elig": "Fresher with an educational background in marketing, communications, journalism or a similar field.",
-        "resp": [
-          "Support new marketing initiatives and daily reporting.",
-          "Research competitors and generate campaign ideas.",
-          "Assist with administration, presentations and social-media planning.",
-          "Help plan and host marketing events."
-        ],
-        "skills": [
-          "Marketing research",
-          "Writing and editing",
-          "Social media",
-          "Presentations",
-          "Time management"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "743999791757305",
-        "date": "Not Specified",
-        "verifiedDate": "27 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 27 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-27T04:16:54.750Z",
-        "browserVerifiedAt": "2026-10-27T04:16:54.750Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-27T03:33:05Z",
-        "currentVerdict": "live",
-        "officialEvidence": "SmartRecruiters page shows the exact internship, fresher qualification, responsibilities, Bengaluru company context and active application control."
-      },
-      "reviewedAt": "2026-10-27T04:16:54.750Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Accenture page shows Job No. AIOC-S01667831, Mumbai, 0–1 years, Any Graduation and a requisition-bound Apply link."
+      }
     }
   ],
-  "updatedAt": "2026-10-27T04:17:14.933Z",
+  "backup": [],
   "quotaAudit": {
     "targetPerList": {
-      "technicalFullTime": 6,
-      "nonTechnicalFullTime": 2,
-      "internshipOrApprenticeship": 2,
-      "total": 10
+      "it": 6,
+      "nonit": 2,
+      "internship": 2
     },
     "priority": {
-      "technicalFullTime": 1,
-      "nonTechnicalFullTime": 2,
-      "internshipOrApprenticeship": 1,
-      "total": 4,
+      "it": 6,
+      "nonit": 2,
+      "internship": 0,
+      "total": 8,
       "shortfall": {
-        "technicalFullTime": 5,
-        "nonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 1,
-        "total": 6
+        "it": 0,
+        "nonit": 0,
+        "internship": 2
       }
     },
     "backup": {
-      "technicalFullTime": 0,
-      "nonTechnicalFullTime": 0,
-      "internshipOrApprenticeship": 2,
-      "total": 2,
+      "it": 0,
+      "nonit": 0,
+      "internship": 0,
+      "total": 0,
       "shortfall": {
-        "technicalFullTime": 6,
-        "nonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 0,
-        "total": 8
+        "it": 6,
+        "nonit": 2,
+        "internship": 2
       }
-    }
+    },
+    "distinctEmployers": 8
   },
   "discoverySummary": {
-    "watchlistedEmployersVisited": 12,
-    "watchlistedEmployersNotVisited": 75,
-    "watchlistedEmployersBlocked": 0,
-    "uniqueOfficialExactCandidatesScreened": 30,
-    "approved87CandidatesSelected": 1,
-    "fallbackCandidatesSelected": 5,
-    "liveSelected": 6,
-    "expiredFound": 0,
-    "reviewHeld": 8,
-    "duplicatesExcluded": 13,
-    "distinctEmployers": 6,
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. The exact current Deloitte Associate Analyst Application Support requisition inspected required a minimum of two years and was excluded.",
-    "shortfall": "4/10 Priority and 2/10 Backup; fresh verified category-matched employers needed"
+    "watchlistEmployersVisited": 30,
+    "watchlistEmployersNotVisited": 57,
+    "fallbackEmployerPortalsVisited": 7,
+    "blockedOrInconclusiveChecks": 6,
+    "uniqueOfficialExactCandidatesScreened": 41,
+    "verifiedLiveNewCandidates": 8,
+    "authoritativelyClosedCandidates": 4,
+    "duplicateCandidatesExcluded": 6,
+    "experiencedOrSourceIncompleteHeld": 23,
+    "watchlistCandidatesSaved": 3,
+    "fallbackCandidatesSaved": 5,
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Exact requisitions 60900244 and 60967844 currently state that the position has been filled; newer index-only Deloitte listings were not staged without an exact verified job-bound page."
   },
-  "ranking": {
-    "policy": "Deloitte first, then approved 87 employers, then source-complete fallback employers. One normalized employer across Priority and Backup.",
-    "note": "All reviewedStatus fields are unreviewed. This commit is staging only and authorizes no publication, website generation or Telegram delivery."
-  },
-  "discoveryAudit": {
-    "priority": {
-      "size": 4,
-      "counts": {
-        "fresherIT": 1,
-        "nonIT": 2,
-        "training": 1,
-        "unclassified": 0
-      },
-      "shortfalls": {
-        "fresherIT": 5,
-        "nonIT": 0,
-        "training": 1
-      }
-    },
-    "backup": {
-      "size": 2,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 0
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 6,
-    "duplicateExclusions": [
-      {
-        "id": "arm-2026-19179",
-        "company": "Arm",
-        "reason": "already_published",
-        "officialUrl": "https://careers.arm.com/job/bengaluru/associate-engineer/33099/101597570352"
-      },
-      {
-        "id": "endeavor-743999651528856",
-        "company": "Endeavor IT Solution",
-        "reason": "already_published",
-        "officialUrl": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651528856-software-engineer-java-fresher"
-      },
-      {
-        "id": "amazon-10541345",
-        "company": "Amazon",
-        "reason": "already_published",
-        "officialUrl": "https://www.amazon.jobs/en/jobs/10541345/sde-i-intern-amazon-university-talent-acquisition"
-      }
-    ],
-    "excludedCount": 3,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
-  },
-  "submittedAt": "2026-10-27T04:17:14.933Z",
-  "publication": {
-    "candidateIds": [
-      "ey-1737740",
-      "gamecloud-106961508",
-      "lokal-744000096104605",
-      "procdna-743999738938617",
-      "vizexperts-85947251",
-      "wiingy-743999791757305"
-    ],
-    "companies": [
-      "EY",
-      "GameCloud Technologies Pvt. Ltd.",
-      "Lokal",
-      "ProcDNA",
-      "VizExperts India Pvt. Ltd.",
-      "Wiingy"
-    ],
-    "urls": [
-      "https://careers.ey.com/ey/job/Gurugram-Analyst-Forensics-National-ASU-Forensics-Investigations-%26-Compliance-Gurgaon-HR-122003/1428921033/",
-      "https://jobs.smartrecruiters.com/GameCloudTechnologiesPvtLtd/106961508-hiring-graduates-for-the-position-of-game-testing-quality-assurance-engineer-",
-      "https://jobs.smartrecruiters.com/Lokal/744000096104605-hr-operations-intern",
-      "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
-      "https://jobs.smartrecruiters.com/VizExperts/85947251",
-      "https://jobs.smartrecruiters.com/Wiingy/743999791757305-marketing-intern"
-    ],
-    "requestId": "0a8adc4c52cc86351eb20e2f",
-    "count": 6,
-    "submittedAt": "2026-10-27T04:17:14.933Z"
-  }
+  "notes": [
+    "Discovery and staging only; no publication or Telegram action authorized.",
+    "Priority meets the 6 technical and 2 non-technical targets but has a 2-role training shortfall.",
+    "No Backup candidate met the exact-source, zero-experience, full-content and duplicate checks.",
+    "IBM 137471 was held because the exact employer route presented a bot verification wall; Bank of America 26038760 and Danfoss 52316 were not staged because the exact routes were unavailable/closed."
+  ],
+  "archivedPreviousBatch": "data/review-batch-archive/2026-10-27-0900-ist.json"
 }
