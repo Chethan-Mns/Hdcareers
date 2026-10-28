@@ -401,16 +401,18 @@
     "bytes": 9432
   },
   "Zycus": {
-    "officialDomain": "zycus.sensehq.com",
-    "sourceUrl": "https://zycus.sensehq.com/favicon.ico",
-    "sourceType": "icon",
-    "localPath": "assets/company-icons/zycus-f324297.png",
+    "officialDomain": "zycus.talismatic.com",
+    "sourceUrl": "https://zycus.talismatic.com/favicon.ico",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/zycus-f324297-03a76131f4.png",
     "sourceDimensions": [
       256,
       256
     ],
-    "qualityScore": 596,
-    "bytes": 6099
+    "needsQualityUpgrade": false,
+    "qualityScore": 660,
+    "bytes": 6813
   },
   "Microsoft": {
     "officialDomain": "apply.careers.microsoft.com",
@@ -1439,5 +1441,16 @@
     "needsQualityUpgrade": false,
     "qualityScore": 775,
     "bytes": 21549
+  },
+  "Charles Schwab": {
+    "officialDomain": "schwabjobs.in",
+    "sourceUrl": "https://tbcdn.talentbrew.com/company/1554/proto-schwab/img/charles-schwab-logo.svg",
+    "sourceType": "employer site branded header image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/charles-schwab-a896119-be22d51835.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1500,
+    "bytes": 7413
   }
 }

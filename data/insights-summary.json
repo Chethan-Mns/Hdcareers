@@ -1,21 +1,21 @@
 {
-  "verifiedThrough": "27 October 2026",
-  "active": 164,
-  "employers": 110,
+  "verifiedThrough": "28 October 2026",
+  "active": 171,
+  "employers": 113,
   "freshers": 114,
-  "experienced": 36,
+  "experienced": 43,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 67
+      "count": 70
     },
     {
       "label": "Mumbai",
-      "count": 13
+      "count": 15
     },
     {
       "label": "Hyderabad",
-      "count": 10
+      "count": 11
     },
     {
       "label": "Gurugram",
@@ -43,19 +43,19 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 67
+      "count": 70
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 13
+      "count": 15
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 10
+      "count": 11
     },
     {
       "city": "Gurugram",
@@ -139,12 +139,12 @@
   "topCompanies": [
     {
       "name": "EY",
-      "count": 8,
+      "count": 9,
       "logo": "assets/company-approved/ey.webp"
     },
     {
       "name": "Amazon",
-      "count": 7,
+      "count": 8,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
@@ -153,14 +153,14 @@
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
+      "name": "Accenture",
+      "count": 5,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
       "name": "Google",
       "count": 5,
       "logo": "assets/company-approved/google-owner-20261019.svg"
-    },
-    {
-      "name": "Accenture",
-      "count": 4,
-      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Cognizant",
@@ -205,61 +205,61 @@
     },
     {
       "label": "Java",
-      "count": 20
+      "count": 21
     },
     {
       "label": "SQL",
-      "count": 19
+      "count": 20
     },
     {
       "label": "Communication",
       "count": 14
     },
     {
-      "label": "JavaScript",
-      "count": 12
+      "label": "Problem solving",
+      "count": 13
     },
     {
-      "label": "Problem solving",
-      "count": 11
+      "label": "JavaScript",
+      "count": 13
     },
     {
       "label": "REST APIs",
-      "count": 11
+      "count": 12
     },
     {
       "label": "Git",
       "count": 10
     },
     {
+      "label": "Algorithms",
+      "count": 9
+    },
+    {
       "label": "C++",
       "count": 9
     },
     {
-      "label": "Algorithms",
+      "label": "Networking",
       "count": 8
     },
     {
       "label": "Data analysis",
-      "count": 7
-    },
-    {
-      "label": "English communication",
-      "count": 7
-    },
-    {
-      "label": "Excel",
-      "count": 7
+      "count": 8
     },
     {
       "label": "Documentation",
+      "count": 8
+    },
+    {
+      "label": "Distributed systems",
       "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 76
+      "count": 81
     },
     {
       "label": "internship",
@@ -267,7 +267,7 @@
     },
     {
       "label": "nonit",
-      "count": 33
+      "count": 35
     },
     {
       "label": "experienced",
@@ -390,6 +390,10 @@
     {
       "date": "2026-10-27",
       "count": 28
+    },
+    {
+      "date": "2026-10-28",
+      "count": 7
     }
   ]
 }
