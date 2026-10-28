@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:00.607Z",
+  "updatedAt": "2026-10-28T03:41:09.308Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -124,7 +124,7 @@
       "apply": "https://www.schwabjobs.in/job/hyderabad/associate-software-development-and-engineering-java-developer/33995/102280077856",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Charles Schwab requisition is open with a job-bound Apply link and explicitly accepts 0–2 years of professional software-development experience.",
       "postedDate": null,
@@ -138,7 +138,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Charles Schwab India Careers",
         "desc": "Entry-level software development role contributing to cloud-based, high-volume applications through design, development, testing, deployment and support.",
         "elig": "Bachelor's degree in Computer Science or related field, or equivalent work experience; 0–2 years of professional software-development experience.",
@@ -159,13 +159,17 @@
         "jobId": "2026-128264",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:09.307Z",
+        "browserVerifiedAt": "2026-10-28T03:41:09.307Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Schwab India page shows requisition 2026-128264, regular position, Hyderabad, 0–2 years and a linked requisition-specific application route."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:09.307Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "jll-REQ510700",
