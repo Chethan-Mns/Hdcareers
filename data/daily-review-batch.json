@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:21.964Z",
+  "updatedAt": "2026-10-28T03:41:25.767Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -295,7 +295,7 @@
       "apply": "https://jobs.smartrecruiters.com/EgisGroup/744000123769623-graduate-engineer-av-it",
       "cat": "it",
       "expYears": "Graduate / entry-level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer-authorized SmartRecruiters requisition is open, full-time/permanent and explicitly classified as Graduate Engineer / Entry-Level; prior experience is only preferred.",
       "postedDate": null,
@@ -309,7 +309,7 @@
         "expYears": "Graduate / entry-level",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Egis Group / SmartRecruiters",
         "desc": "Graduate engineering role supporting the design, installation, configuration and maintenance of integrated audio-visual and IT systems.",
         "elig": "Graduate/entry-level applicants with AV and IT fundamentals; relevant certifications and previous AV installation or IT-support experience are preferred rather than mandatory.",
@@ -332,13 +332,17 @@
         "jobId": "744000123769623",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:25.767Z",
+        "browserVerifiedAt": "2026-10-28T03:41:25.767Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Egis employer career page and authorized SmartRecruiters requisition 744000123769623 show a live full-time permanent Graduate Engineer role with application controls."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:25.767Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1750438",
