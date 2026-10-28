@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:30.220Z",
+  "updatedAt": "2026-10-28T03:41:36.427Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -407,7 +407,7 @@
       "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667831_en",
       "cat": "nonit",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Accenture job page is open with a job-bound application link, any-graduation eligibility and 0–1 year experience.",
       "postedDate": null,
@@ -421,7 +421,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Accenture Careers",
         "desc": "New Associate role supporting supply planning, order management and fulfillment operations.",
         "elig": "Any graduation; 0–1 year of experience.",
@@ -441,13 +441,17 @@
         "jobId": "AIOC-S01667831",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:36.427Z",
+        "browserVerifiedAt": "2026-10-28T03:41:36.427Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Accenture page shows Job No. AIOC-S01667831, Mumbai, 0–1 years, Any Graduation and a requisition-bound Apply link."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:36.427Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
