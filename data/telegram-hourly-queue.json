@@ -824,9 +824,11 @@
     {
       "page": "jobs/amazon-software-dev-engineer-i-amazon-university-talent-acquisition.html",
       "batchId": "admin-40628157885",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-28T03:42:13.877906+00:00",
-      "dueAt": "2026-10-28T04:42:59.072242+00:00"
+      "dueAt": "2026-10-28T04:42:59.072242+00:00",
+      "claimId": "40633875939",
+      "claimedAt": "2026-10-28T04:43:09.183984+00:00"
     },
     {
       "page": "jobs/charles-schwab-associate-software-development-engineering-java-developer.html",
