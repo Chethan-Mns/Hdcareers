@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:09.308Z",
+  "updatedAt": "2026-10-28T03:41:18.728Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -179,7 +179,7 @@
       "apply": "https://jll.wd1.myworkdayjobs.com/en-GB/jllcareers/job/Software-Engineer-I_REQ510700",
       "cat": "it",
       "expYears": "0–2 years / recent graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact JLL Workday requisition is open, full-time, and explicitly accepts 0–2 years or recent graduates.",
       "postedDate": null,
@@ -193,7 +193,7 @@
         "expYears": "0–2 years / recent graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "JLL Careers / Workday",
         "desc": "Early-career full-stack engineering role on customer-facing applications across frontend and backend systems.",
         "elig": "0–2 years of professional software-engineering experience, or a recent graduate with relevant foundations; coding exposure through academic, bootcamp or personal projects is accepted.",
@@ -217,13 +217,17 @@
         "jobId": "REQ510700",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:18.728Z",
+        "browserVerifiedAt": "2026-10-28T03:41:18.728Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "JLL Workday record REQ510700 shows full-time Bengaluru employment and explicitly states 0–2 years or recent-graduate eligibility."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:18.728Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "graviton-8764240002",
