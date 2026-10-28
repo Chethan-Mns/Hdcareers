@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:18.728Z",
+  "updatedAt": "2026-10-28T03:41:21.964Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -237,7 +237,7 @@
       "apply": "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
       "cat": "it",
       "expYears": "2027 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer Greenhouse requisition is open with an embedded application form and is explicitly designated for 2027 graduates.",
       "postedDate": null,
@@ -251,7 +251,7 @@
         "expYears": "2027 graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Graviton Research Capital / Greenhouse",
         "desc": "Graduate software engineering role building high-performance C++ systems, distributed infrastructure and tools for quantitative research and trading.",
         "elig": "2027 graduate with a degree in Computer Science, Mathematics, Electrical Engineering or another highly analytical field; CGPA 8.5 or above; no active backlogs.",
@@ -275,13 +275,17 @@
         "jobId": "8764240002",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:21.963Z",
+        "browserVerifiedAt": "2026-10-28T03:41:21.963Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer Greenhouse page for job 8764240002 displays the live role, Gurugram location, graduate criteria and a complete application form."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:21.963Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "egis-744000123769623",
