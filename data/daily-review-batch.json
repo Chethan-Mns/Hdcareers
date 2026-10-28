@@ -1,8 +1,8 @@
 {
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
-  "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:36.427Z",
+  "status": "submitted",
+  "updatedAt": "2026-10-28T03:41:52.004Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -505,5 +505,41 @@
     "No Backup candidate met the exact-source, zero-experience, full-content and duplicate checks.",
     "IBM 137471 was held because the exact employer route presented a bot verification wall; Bank of America 26038760 and Danfoss 52316 were not staged because the exact routes were unavailable/closed."
   ],
-  "archivedPreviousBatch": "data/review-batch-archive/2026-10-27-0900-ist.json"
+  "archivedPreviousBatch": "data/review-batch-archive/2026-10-27-0900-ist.json",
+  "submittedAt": "2026-10-28T03:41:52.004Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-AIOC-S01667831",
+      "amazon-10454438",
+      "charles-schwab-2026-128264",
+      "egis-744000123769623",
+      "ey-1750438",
+      "graviton-8764240002",
+      "jll-REQ510700",
+      "zycus-JQ2742JNY"
+    ],
+    "companies": [
+      "Accenture",
+      "Amazon",
+      "Charles Schwab",
+      "Egis Group",
+      "EY",
+      "Graviton Research Capital",
+      "JLL",
+      "Zycus"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01667831_en",
+      "https://www.amazon.jobs/en/jobs/10454438/software-dev-engineer-i-amazon-university-talent-acquisition",
+      "https://www.schwabjobs.in/job/hyderabad/associate-software-development-and-engineering-java-developer/33995/102280077856",
+      "https://jobs.smartrecruiters.com/EgisGroup/744000123769623-graduate-engineer-av-it",
+      "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445265533/",
+      "https://job-boards.greenhouse.io/gravitonresearchcapital/jobs/8764240002?gh_jid=8764240002",
+      "https://jll.wd1.myworkdayjobs.com/en-GB/jllcareers/job/Software-Engineer-I_REQ510700",
+      "https://zycus.talismatic.com/jobs/JQ2742JNY"
+    ],
+    "requestId": "97ea91f1af1c7139682b9f26",
+    "count": 8,
+    "submittedAt": "2026-10-28T03:41:52.004Z"
+  }
 }
