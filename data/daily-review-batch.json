@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:41:25.767Z",
+  "updatedAt": "2026-10-28T03:41:30.220Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -352,7 +352,7 @@
       "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445265533/",
       "cat": "nonit",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition remains open with Apply now, a 0–1 year requirement and BCom eligibility.",
       "postedDate": "2026-10-07",
@@ -366,7 +366,7 @@
         "expYears": "0–1 year",
         "salary": "Competitive",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "EY Careers",
         "desc": "Entry-level tax compliance and reporting role supporting global compliance deliverables, tax data analysis and cross-functional operations.",
         "elig": "BCom; 0–1 year of experience.",
@@ -387,13 +387,17 @@
         "jobId": "1750438",
         "date": "2026-10-07",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:30.219Z",
+        "browserVerifiedAt": "2026-10-28T03:41:30.219Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "EY page shows Apply now, requisition 1750438, Mumbai, BCom, 0–1 year and posting date 7 Oct 2026."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:30.219Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-AIOC-S01667831",
