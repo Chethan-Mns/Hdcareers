@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:38:31.009Z",
+  "updatedAt": "2026-10-28T03:40:56.480Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -12,7 +12,7 @@
       "apply": "https://www.amazon.jobs/en/jobs/10454438/software-dev-engineer-i-amazon-university-talent-acquisition",
       "cat": "it",
       "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Amazon Jobs requisition is open with an Apply now control and explicitly requires students who graduated in 2026.",
       "postedDate": null,
@@ -26,7 +26,7 @@
         "expYears": "2026 graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Amazon Jobs",
         "desc": "University-talent software engineering role building distributed products, storage, indexing and query systems.",
         "elig": "Bachelor's degree or above in computer science, computer engineering or a related field; students who graduated in 2026.",
@@ -47,13 +47,17 @@
         "jobId": "10454438",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:40:56.452Z",
+        "browserVerifiedAt": "2026-10-28T03:40:56.452Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Amazon Jobs page shows Job ID 10454438, Apply now, three India locations, 2026-graduate eligibility and a live job-bound application route."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:40:56.452Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "zycus-JQ2742JNY",
