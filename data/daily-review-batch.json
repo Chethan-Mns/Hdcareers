@@ -2,7 +2,7 @@
   "batchId": "2026-10-28-0900-ist",
   "generatedAt": "2026-10-28T03:38:31.009Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-28T03:40:56.480Z",
+  "updatedAt": "2026-10-28T03:41:00.607Z",
   "priority": [
     {
       "id": "amazon-10454438",
@@ -67,7 +67,7 @@
       "apply": "https://zycus.talismatic.com/jobs/JQ2742JNY",
       "cat": "it",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer ATS requisition is open with an Apply control, full-time status, 0–1 year experience and explicit 2026-graduate eligibility.",
       "postedDate": null,
@@ -81,7 +81,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Zycus / Talismatic",
         "desc": "Graduate software engineering role developing Java/Spring Boot backend services, REST APIs, microservices and AI-assisted workflows.",
         "elig": "BE/BTech 2026 graduates in Computer Science, IT, Electronics, AI/ML, Data Science or related branches; minimum 80% or equivalent in 10th, 12th and degree; no current or historical backlogs.",
@@ -104,13 +104,17 @@
         "jobId": "JQ2742JNY",
         "date": "Not Specified",
         "verifiedDate": "28 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 28 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-28T03:41:00.606Z",
+        "browserVerifiedAt": "2026-10-28T03:41:00.606Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-28T03:38:31.009Z",
         "currentVerdict": "live",
         "officialEvidence": "Zycus Talismatic page identifies JQ2742JNY, 0–1 years, full-time, 2026 graduates, detailed eligibility and an active Apply control."
-      }
+      },
+      "reviewedAt": "2026-10-28T03:41:00.606Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "charles-schwab-2026-128264",
