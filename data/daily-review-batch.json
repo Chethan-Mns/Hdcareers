@@ -1,8 +1,8 @@
 {
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
-  "status": "reviewing",
-  "updatedAt": "2026-10-29T06:12:43.965Z",
+  "status": "submitted",
+  "updatedAt": "2026-10-29T06:12:55.541Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -857,5 +857,44 @@
     "excludedCount": 2,
     "needsFreshDiscovery": true,
     "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+  },
+  "submittedAt": "2026-10-29T06:12:55.541Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01644014",
+      "endeavor-113800610",
+      "ey-1727886",
+      "lennox-lennox-job-8",
+      "revrag-frontend-intern",
+      "stripe-8157838",
+      "willsmarg-40",
+      "wns-744000111543195",
+      "zeta-global-6151249004"
+    ],
+    "companies": [
+      "Accenture",
+      "Endeavor IT Solution",
+      "EY",
+      "Lennox Software",
+      "RevRag AI",
+      "Stripe",
+      "Willsmarg Technologies",
+      "WNS Global Services",
+      "Zeta Global"
+    ],
+    "urls": [
+      "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Procure-to-Pay-Operations-New-Associate_AIOC-S01644014-1",
+      "https://jobs.smartrecruiters.com/EndeavorITSolution/113800610-junior-programmer-java-freshers-indore-",
+      "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-New-Delhi-Nati-110037/1416906133/",
+      "https://lennoxsoft.co.in/career/junior-software-engineer-freshers-jodhpur",
+      "https://www.revrag.ai/careers/software-developer-intern-frontend",
+      "https://stripe.com/careers/listing/software-engineer-new-grad/8157838",
+      "https://www.willsmarg.com/MainPage/JobDetails/40",
+      "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195",
+      "https://job-boards.greenhouse.io/zetaglobal/jobs/6151249004"
+    ],
+    "requestId": "68ffa7bee812efdb284cecab",
+    "count": 9,
+    "submittedAt": "2026-10-29T06:12:55.541Z"
   }
 }
