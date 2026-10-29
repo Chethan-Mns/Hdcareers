@@ -5,55 +5,6 @@
   "updatedAt": "2026-10-29T03:34:01.566Z",
   "priority": [
     {
-      "id": "deloitte-110963",
-      "company": "Deloitte",
-      "role": "Analyst – D365 F&O Functional SCM",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-      "cat": "it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Deloitte requisition 110963 is open with an Apply now control; the posting states a minimum of 0–2 years and lists Bengaluru.",
-      "postedDate": null,
-      "job": {
-        "company": "Deloitte",
-        "role": "Analyst – D365 F&O Functional SCM",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Deloitte South Asia Careers",
-        "desc": "Entry-level ERP consulting role supporting Microsoft Dynamics 365 Finance & Operations supply-chain implementations.",
-        "elig": "MBA in Supply Chain and Operations, BE in Industrial/Production Engineering or Mechanical Engineering, or equivalent supply-chain/operations education.",
-        "resp": [
-          "Support requirements gathering and supply-chain process configuration.",
-          "Assist with functional design documentation, unit testing and system-integration testing.",
-          "Support user-acceptance testing, training, data migration and post-go-live activities."
-        ],
-        "skills": [
-          "Microsoft Dynamics 365 F&O",
-          "Supply chain management",
-          "Functional testing",
-          "Requirements gathering"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "110963",
-        "date": "Not Specified",
-        "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-29T03:34:01.566Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Deloitte requisition 110963 is open with an Apply now control; the posting states a minimum of 0–2 years and lists Bengaluru."
-      }
-    },
-    {
       "id": "stripe-8157838",
       "company": "Stripe",
       "role": "Software Engineer, New Grad",
@@ -751,56 +702,6 @@
         "currentVerdict": "live",
         "officialEvidence": "Exact RevRag employer careers page is live with a role-bound apply form and states a six-month Bengaluru internship for students or recent graduates."
       }
-    },
-    {
-      "id": "enterpret-7847134003",
-      "company": "Enterpret",
-      "role": "Software Engineering Intern – Backend",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003",
-      "cat": "internship",
-      "expYears": "Student internship",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Enterpret Greenhouse requisition 7847134003 is open with Apply and states an onsite Bengaluru internship for current engineering students.",
-      "postedDate": null,
-      "job": {
-        "company": "Enterpret",
-        "role": "Software Engineering Intern – Backend",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003",
-        "cat": "internship",
-        "expType": "fresher",
-        "expYears": "Student internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Enterpret Greenhouse",
-        "desc": "Backend engineering internship building serverless and AI-native customer-intelligence systems.",
-        "elig": "Pursuing Computer Science or Engineering at a Tier 1 college; one prior relevant internship is required.",
-        "resp": [
-          "Contribute to system design and implementation discussions.",
-          "Build serverless AWS backend components and proofs of concept.",
-          "Ship backend and AI integrations to production with mentorship."
-        ],
-        "skills": [
-          "Backend engineering",
-          "AWS",
-          "Distributed systems",
-          "AI integration",
-          "Programming"
-        ],
-        "workMode": "On-site",
-        "jobId": "7847134003",
-        "date": "Not Specified",
-        "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-29T03:34:01.566Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Enterpret Greenhouse requisition 7847134003 is open with Apply and states an onsite Bengaluru internship for current engineering students."
-      }
     }
   ],
   "quotaAudit": {
@@ -846,7 +747,11 @@
     "acceptedWatchlistEmployers": 6,
     "acceptedFallbackEmployers": 10,
     "distinctEmployersSaved": 16,
-    "deloitteOutcome": "Qualified: Deloitte requisition 110963, Analyst – D365 F&O Functional SCM, explicitly accepts 0–2 years and is reserved as the single Deloitte entry."
+    "deloitteOutcome": "Qualified: Deloitte requisition 110963, Analyst – D365 F&O Functional SCM, explicitly accepts 0–2 years and is reserved as the single Deloitte entry.",
+    "duplicatesExcluded": 2,
+    "distinctEmployers": 14,
+    "liveSelected": 14,
+    "shortfall": "9/10 Priority and 5/10 Backup; fresh verified category-matched employers needed"
   },
   "notes": [
     "Discovery/staging only. No website publication, data/jobs.json edit, vip-publish-request update or Telegram send was authorized or performed.",
@@ -854,5 +759,57 @@
     "Backup is four technical full-time roles short. No internships, experienced roles, generic career pages or duplicate employers were used to fill the gap.",
     "Source-native exact records that were closed or no longer routed to the requisition were excluded, including Razorpay 4744129005 and Adobe R173016."
   ],
-  "archivedPreviousBatch": "data/review-batch-archive/2026-10-28-0900-ist.json"
+  "archivedPreviousBatch": "data/review-batch-archive/2026-10-28-0900-ist.json",
+  "discoveryAudit": {
+    "priority": {
+      "size": 9,
+      "counts": {
+        "fresherIT": 5,
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 1,
+        "nonIT": 0,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 5,
+      "counts": {
+        "fresherIT": 2,
+        "nonIT": 2,
+        "training": 1,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 4,
+        "nonIT": 0,
+        "training": 1
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 14,
+    "duplicateExclusions": [
+      {
+        "id": "deloitte-110963",
+        "company": "Deloitte",
+        "reason": "already_published",
+        "officialUrl": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/"
+      },
+      {
+        "id": "enterpret-7847134003",
+        "company": "Enterpret",
+        "reason": "already_published",
+        "officialUrl": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003"
+      }
+    ],
+    "excludedCount": 2,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+  }
 }
