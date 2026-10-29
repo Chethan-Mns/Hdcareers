@@ -884,67 +884,69 @@
     {
       "page": "jobs/accenture-procure-to-pay-operations-new-associate.html",
       "batchId": "admin-40827867914",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
       "dueAt": "2026-10-29T06:13:13.354838+00:00",
       "claimId": "40827867914",
-      "claimedAt": "2026-10-29T06:13:21.453371+00:00"
+      "claimedAt": "2026-10-29T06:13:21.453371+00:00",
+      "messageId": 611,
+      "deliveredAt": "2026-10-29T06:13:46.849054+00:00"
     },
     {
       "page": "jobs/endeavor-it-solution-junior-programmer-java-freshers.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T07:13:46.849054+00:00"
     },
     {
       "page": "jobs/ey-analyst-global-compliance-reporting.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T08:13:46.849054+00:00"
     },
     {
       "page": "jobs/lennox-software-junior-software-engineer.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T09:13:46.849054+00:00"
     },
     {
       "page": "jobs/revrag-ai-software-developer-intern-frontend.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T10:13:46.849054+00:00"
     },
     {
       "page": "jobs/stripe-software-engineer-new-grad.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T11:13:46.849054+00:00"
     },
     {
       "page": "jobs/willsmarg-technologies-junior-software-engineer.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T12:13:46.849054+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations-2.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T13:13:46.849054+00:00"
     },
     {
       "page": "jobs/zeta-global-fp-a-associate-analyst.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T06:13:13.354838+00:00"
+      "dueAt": "2026-10-29T14:13:46.849054+00:00"
     }
   ]
 }
