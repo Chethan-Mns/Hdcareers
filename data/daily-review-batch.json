@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:47.813Z",
+  "updatedAt": "2026-10-29T06:11:52.189Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -385,7 +385,7 @@
       "apply": "https://www.amazon.jobs/en/jobs/10508052/sde-i-intern-amazon-university-talent-acquisition",
       "cat": "internship",
       "expYears": "Student / 2027 internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Amazon Jobs requisition 10508052 is open with Apply now and identifies a six-month 2027 internship across India locations.",
       "postedDate": null,
@@ -399,7 +399,7 @@
         "expYears": "Student / 2027 internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Amazon Jobs",
         "desc": "Six-month software-development internship working on production systems with an Amazon engineering team and mentor.",
         "elig": "Currently enrolled in a relevant bachelor’s or master’s program and eligible for a full-time 24–26 week internship in India; exact degree criteria are on the posting.",
@@ -424,7 +424,9 @@
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Amazon Jobs requisition 10508052 is open with Apply now and identifies a six-month 2027 internship across India locations."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:52.189Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "airbus-jr10449465",
