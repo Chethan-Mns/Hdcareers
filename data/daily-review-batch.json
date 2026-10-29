@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:52.189Z",
+  "updatedAt": "2026-10-29T06:12:13.714Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -489,7 +489,7 @@
       "apply": "https://www.willsmarg.com/MainPage/JobDetails/40",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Willsmarg role 40 is open with Apply, full-time Hyderabad location and 0–2 years.",
       "postedDate": null,
@@ -503,7 +503,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Willsmarg Careers",
         "desc": "Junior engineering role contributing to enterprise product features, APIs, UI updates and delivery quality.",
         "elig": "Bachelor’s in Computer Science, Engineering, IT, Electronics, Data Science, Cybersecurity or a related discipline preferred.",
@@ -523,13 +523,17 @@
         "jobId": "40",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:12:13.714Z",
+        "browserVerifiedAt": "2026-10-29T06:12:13.714Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Willsmarg role 40 is open with Apply, full-time Hyderabad location and 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:12:13.714Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "endeavor-113800610",
