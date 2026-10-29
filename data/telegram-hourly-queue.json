@@ -965,9 +965,11 @@
     {
       "page": "jobs/zeta-global-fp-a-associate-analyst.html",
       "batchId": "admin-40827867914",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T14:15:39.239497+00:00"
+      "dueAt": "2026-10-29T14:15:39.239497+00:00",
+      "claimId": "40889706029",
+      "claimedAt": "2026-10-29T14:15:51.788916+00:00"
     }
   ]
 }
