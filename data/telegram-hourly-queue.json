@@ -895,9 +895,11 @@
     {
       "page": "jobs/endeavor-it-solution-junior-programmer-java-freshers.html",
       "batchId": "admin-40827867914",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T07:13:46.849054+00:00"
+      "dueAt": "2026-10-29T07:13:46.849054+00:00",
+      "claimId": "40834085817",
+      "claimedAt": "2026-10-29T07:14:01.706130+00:00"
     },
     {
       "page": "jobs/ey-analyst-global-compliance-reporting.html",
