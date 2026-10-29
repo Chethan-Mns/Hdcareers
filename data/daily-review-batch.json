@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:24.992Z",
+  "updatedAt": "2026-10-29T06:11:35.342Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -173,7 +173,7 @@
       "apply": "https://lennoxsoft.co.in/career/junior-software-engineer-freshers-jodhpur",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Lennox role LENNOX-JOB-8 is listed open through 31 Dec 2026 with Apply, full-time Jodhpur location and 0–2 years.",
       "postedDate": "2026-09-28",
@@ -187,7 +187,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Lennox Software Careers",
         "desc": "Full-time junior software role building product features, APIs, database logic and tests under engineering mentorship.",
         "elig": "BE/BTech/MCA/BCA in Computer Science, IT or a related technical discipline; fresh 2025/2026 graduates are welcome.",
@@ -208,13 +208,17 @@
         "jobId": "LENNOX-JOB-8",
         "date": "2026-09-28",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:11:35.342Z",
+        "browserVerifiedAt": "2026-10-29T06:11:35.342Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Lennox role LENNOX-JOB-8 is listed open through 31 Dec 2026 with Apply, full-time Jodhpur location and 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:35.342Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cognizant-genc-2026",
