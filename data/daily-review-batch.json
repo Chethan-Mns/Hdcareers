@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:11.737Z",
+  "updatedAt": "2026-10-29T06:11:24.992Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -328,7 +328,7 @@
       "apply": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Procure-to-Pay-Operations-New-Associate_AIOC-S01644014-1",
       "cat": "nonit",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Accenture Workday requisition AIOC-S01644014 is open with Apply, full-time Jaipur location, Any Graduation and 0–1 years.",
       "postedDate": "2026-10-29",
@@ -342,7 +342,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Accenture Workday",
         "desc": "Entry-level procure-to-pay operations role focused on accounts-payable processing.",
         "elig": "Any Graduation.",
@@ -361,13 +361,17 @@
         "jobId": "AIOC-S01644014",
         "date": "2026-10-29",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:11:24.992Z",
+        "browserVerifiedAt": "2026-10-29T06:11:24.992Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native Accenture Workday requisition AIOC-S01644014 is open with Apply, full-time Jaipur location, Any Graduation and 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:24.992Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "amazon-10508052",
