@@ -945,9 +945,11 @@
     {
       "page": "jobs/willsmarg-technologies-junior-software-engineer.html",
       "batchId": "admin-40827867914",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T12:15:07.731179+00:00"
+      "dueAt": "2026-10-29T12:15:07.731179+00:00",
+      "claimId": "40871728555",
+      "claimedAt": "2026-10-29T12:15:19.644498+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations-2.html",
