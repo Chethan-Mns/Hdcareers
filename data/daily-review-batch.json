@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:12:22.364Z",
+  "updatedAt": "2026-10-29T06:12:25.896Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -649,7 +649,7 @@
       "apply": "https://job-boards.greenhouse.io/zetaglobal/jobs/6151249004",
       "cat": "nonit",
       "expYears": "Fresher eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Zeta Global Greenhouse requisition 6151249004 is open with Apply and explicitly encourages freshers.",
       "postedDate": null,
@@ -663,7 +663,7 @@
         "expYears": "Fresher eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Zeta Global Greenhouse",
         "desc": "Finance planning and analysis support role covering reporting, data consolidation, budgeting and process improvement.",
         "elig": "Any graduate with strong interest in finance, business operations or data analysis; freshers are encouraged to apply.",
@@ -682,13 +682,17 @@
         "jobId": "6151249004",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:12:25.895Z",
+        "browserVerifiedAt": "2026-10-29T06:12:25.895Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Zeta Global Greenhouse requisition 6151249004 is open with Apply and explicitly encourages freshers."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:12:25.895Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "revrag-frontend-intern",
