@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:06:42.309Z",
+  "updatedAt": "2026-10-29T06:06:46.841Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -119,7 +119,7 @@
       "apply": "https://job-boards.greenhouse.io/point72/jobs/8893940002?gh_jid=8893940002",
       "cat": "it",
       "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Point72 Greenhouse requisition 8893940002 is open with an Apply button and states Bengaluru plus expected 2026 engineering graduation.",
       "postedDate": null,
@@ -133,7 +133,7 @@
         "expYears": "2026 graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Point72 Greenhouse",
         "desc": "Campus graduate software engineering program building data, analytics, trading and cloud-native systems for Point72 technology teams.",
         "elig": "Expected bachelor’s or master’s degree in engineering in 2026; this posting is specifically for IIT BHU campus graduates.",
@@ -155,13 +155,17 @@
         "jobId": "8893940002",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:06:46.841Z",
+        "browserVerifiedAt": "2026-10-29T06:06:46.841Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Point72 Greenhouse requisition 8893940002 is open with an Apply button and states Bengaluru plus expected 2026 engineering graduation."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:06:46.841Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "lennox-lennox-job-8",
