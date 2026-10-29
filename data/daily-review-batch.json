@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:06:32.878Z",
+  "updatedAt": "2026-10-29T06:06:42.309Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -67,7 +67,7 @@
       "apply": "https://hpe.wd5.myworkdayjobs.com/en-US/ACJobSite/job/Systems-Software-Engineer-I_1210150",
       "cat": "it",
       "expYears": "Entry level / limited-scope assignments",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native HPE Workday record 1210150 remains indexed with Apply, full-time Bengaluru location and TCP_01 entry job level.",
       "postedDate": null,
@@ -81,7 +81,7 @@
         "expYears": "Entry level / limited-scope assignments",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "HPE Workday",
         "desc": "Entry-level systems/software quality engineering role contributing to test strategy, validation and product quality.",
         "elig": "Technical education or training supporting foundational software quality-assurance and systems knowledge; exact degree wording is not specified in the accessible posting.",
@@ -107,7 +107,9 @@
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native HPE Workday record 1210150 remains indexed with Apply, full-time Bengaluru location and TCP_01 entry job level."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:06:42.308Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "point72-8893940002",
