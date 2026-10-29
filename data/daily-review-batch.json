@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:12:13.714Z",
+  "updatedAt": "2026-10-29T06:12:18.127Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -543,7 +543,7 @@
       "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/113800610-junior-programmer-java-freshers-indore-",
       "cat": "it",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact SmartRecruiters posting 113800610 is accessible, full-time, located in Indore and explicitly says fresher can apply.",
       "postedDate": null,
@@ -557,7 +557,7 @@
         "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Endeavor IT Solution SmartRecruiters",
         "desc": "Full-time software trainee role in Java and C++ development.",
         "elig": "Fresh graduates with programming fundamentals; exact degree requirements are not specified on the posting.",
@@ -576,13 +576,17 @@
         "jobId": "113800610",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:12:18.127Z",
+        "browserVerifiedAt": "2026-10-29T06:12:18.127Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact SmartRecruiters posting 113800610 is accessible, full-time, located in Indore and explicitly says fresher can apply."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:12:18.127Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wns-744000111543195",
