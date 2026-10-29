@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T03:34:01.566Z",
+  "updatedAt": "2026-10-29T06:06:32.878Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -12,7 +12,7 @@
       "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8157838",
       "cat": "it",
       "expYears": "New graduate; no more than 18 months professional experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Stripe new-grad requisition 8157838 is live and states Bengaluru plus a maximum of 18 months professional experience.",
       "postedDate": null,
@@ -26,7 +26,7 @@
         "expYears": "New graduate; no more than 18 months professional experience",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Stripe Careers",
         "desc": "New-graduate software engineering role building and operating Stripe’s financial infrastructure and product systems.",
         "elig": "Bachelor’s or Master’s in Computer Science or a directly related field obtained by summer 2027, or equivalent work experience; no more than 18 months professional experience excluding internships.",
@@ -47,13 +47,17 @@
         "jobId": "8157838",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:06:32.853Z",
+        "browserVerifiedAt": "2026-10-29T06:06:32.853Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Stripe new-grad requisition 8157838 is live and states Bengaluru plus a maximum of 18 months professional experience."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:06:32.853Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hpe-1210150",
