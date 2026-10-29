@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:12:25.896Z",
+  "updatedAt": "2026-10-29T06:12:31.918Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -702,7 +702,7 @@
       "apply": "https://www.revrag.ai/careers/software-developer-intern-frontend",
       "cat": "internship",
       "expYears": "Student or recent graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact RevRag employer careers page is live with a role-bound apply form and states a six-month Bengaluru internship for students or recent graduates.",
       "postedDate": null,
@@ -716,7 +716,7 @@
         "expYears": "Student or recent graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "RevRag AI Careers",
         "desc": "Six-month frontend software internship building production React interfaces for AI-powered products.",
         "elig": "Currently pursuing or recently completed a degree in Computer Science, IT or a related field.",
@@ -737,13 +737,17 @@
         "jobId": "software-developer-intern-frontend",
         "date": "Not Specified",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:12:31.918Z",
+        "browserVerifiedAt": "2026-10-29T06:12:31.918Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact RevRag employer careers page is live with a role-bound apply form and states a six-month Bengaluru internship for students or recent graduates."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:12:31.918Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "quotaAudit": {
