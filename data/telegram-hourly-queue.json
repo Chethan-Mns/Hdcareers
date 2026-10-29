@@ -915,9 +915,11 @@
     {
       "page": "jobs/lennox-software-junior-software-engineer.html",
       "batchId": "admin-40827867914",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T09:14:23.016879+00:00"
+      "dueAt": "2026-10-29T09:14:23.016879+00:00",
+      "claimId": "40848074407",
+      "claimedAt": "2026-10-29T09:14:33.950965+00:00"
     },
     {
       "page": "jobs/revrag-ai-software-developer-intern-frontend.html",
