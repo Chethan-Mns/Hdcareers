@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:35.342Z",
+  "updatedAt": "2026-10-29T06:11:47.813Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -434,7 +434,7 @@
       "apply": "https://ag.wd3.myworkdayjobs.com/en-US/Airbus/job/Internship---Digital-CoE-for-ERP-India_JR10449465",
       "cat": "internship",
       "expYears": "Student internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Airbus Workday requisition JR10449465 is open with Apply, Bangalore Area location and a stated six-month internship start in Jan/Feb 2027.",
       "postedDate": null,
@@ -448,7 +448,7 @@
         "expYears": "Student internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Airbus Workday",
         "desc": "Six-month SAP developer internship within Airbus India’s Digital CoE for ERP, planned to start in January or February 2027.",
         "elig": "Student seeking an internship that validates a degree; technical education aligned with SAP platforms and digital ERP work.",
@@ -473,7 +473,9 @@
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native Airbus Workday requisition JR10449465 is open with Apply, Bangalore Area location and a stated six-month internship start in Jan/Feb 2027."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:47.813Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
