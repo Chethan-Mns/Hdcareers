@@ -955,18 +955,19 @@
     {
       "page": "jobs/wns-global-services-associate-operations-2.html",
       "batchId": "admin-40827867914",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T13:15:23.189577+00:00",
       "claimId": "40880267211",
-      "claimedAt": "2026-10-29T13:15:35.173320+00:00"
+      "claimedAt": "2026-10-29T13:15:35.173320+00:00",
+      "messageId": 618,
+      "deliveredAt": "2026-10-29T13:15:39.239497+00:00"
     },
     {
       "page": "jobs/zeta-global-fp-a-associate-analyst.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T14:15:23.189577+00:00"
+      "dueAt": "2026-10-29T14:15:39.239497+00:00"
     }
   ]
 }
