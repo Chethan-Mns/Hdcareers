@@ -925,39 +925,40 @@
     {
       "page": "jobs/revrag-ai-software-developer-intern-frontend.html",
       "batchId": "admin-40827867914",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T10:14:38.175097+00:00",
       "claimId": "40856001564",
-      "claimedAt": "2026-10-29T10:14:50.144250+00:00"
+      "claimedAt": "2026-10-29T10:14:50.144250+00:00",
+      "messageId": 615,
+      "deliveredAt": "2026-10-29T10:14:53.252766+00:00"
     },
     {
       "page": "jobs/stripe-software-engineer-new-grad.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T11:14:38.175097+00:00"
+      "dueAt": "2026-10-29T11:14:53.252766+00:00"
     },
     {
       "page": "jobs/willsmarg-technologies-junior-software-engineer.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T12:14:38.175097+00:00"
+      "dueAt": "2026-10-29T12:14:53.252766+00:00"
     },
     {
       "page": "jobs/wns-global-services-associate-operations-2.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T13:14:38.175097+00:00"
+      "dueAt": "2026-10-29T13:14:53.252766+00:00"
     },
     {
       "page": "jobs/zeta-global-fp-a-associate-analyst.html",
       "batchId": "admin-40827867914",
       "status": "pending",
       "queuedAt": "2026-10-29T06:13:13.354838+00:00",
-      "dueAt": "2026-10-29T14:14:38.175097+00:00"
+      "dueAt": "2026-10-29T14:14:53.252766+00:00"
     }
   ]
 }
