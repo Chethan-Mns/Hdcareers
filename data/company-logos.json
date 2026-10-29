@@ -1452,5 +1452,47 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1500,
     "bytes": 7413
+  },
+  "Lennox Software": {
+    "officialDomain": "lennoxsoft.co.in",
+    "sourceUrl": "https://lennoxsoft.co.in/images/lennoxlogo.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/lennox-software-2957400-fc09f4c525.png",
+    "sourceDimensions": [
+      2188,
+      981
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1632,
+    "bytes": 27167
+  },
+  "RevRag AI": {
+    "officialDomain": "revrag.ai",
+    "sourceUrl": "https://www.revrag.ai/logo.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/revrag-ai-53c0bdc-07c2e53ec4.png",
+    "sourceDimensions": [
+      940,
+      260
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1380,
+    "bytes": 19608
+  },
+  "Willsmarg Technologies": {
+    "officialDomain": "willsmarg.com",
+    "sourceUrl": "https://willsmarg.com/images/willsmarg_trasnsparent_logo.png",
+    "sourceType": "employer site branded header image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/willsmarg-technologies-9201003-ef8ddd3384.png",
+    "sourceDimensions": [
+      602,
+      449
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1369,
+    "bytes": 77860
   }
 }

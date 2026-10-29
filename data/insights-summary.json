@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "28 October 2026",
-  "active": 171,
-  "employers": 113,
-  "freshers": 114,
-  "experienced": 43,
+  "verifiedThrough": "29 October 2026",
+  "active": 180,
+  "employers": 117,
+  "freshers": 117,
+  "experienced": 49,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 70
+      "count": 72
     },
     {
       "label": "Mumbai",
@@ -15,26 +15,26 @@
     },
     {
       "label": "Hyderabad",
-      "count": 11
+      "count": 14
     },
     {
       "label": "Gurugram",
       "count": 8
     },
     {
+      "label": "Indore",
+      "count": 5
+    },
+    {
       "label": "Pune",
       "count": 4
     },
     {
-      "label": "Indore",
-      "count": 4
-    },
-    {
-      "label": "Ahmedabad",
+      "label": "Delhi",
       "count": 3
     },
     {
-      "label": "Noida",
+      "label": "Ahmedabad",
       "count": 3
     }
   ],
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 70
+      "count": 72
     },
     {
       "city": "Mumbai",
@@ -55,7 +55,7 @@
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 11
+      "count": 14
     },
     {
       "city": "Gurugram",
@@ -64,16 +64,22 @@
       "count": 8
     },
     {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 5
+    },
+    {
       "city": "Pune",
       "lat": 18.5204,
       "lng": 73.8567,
       "count": 4
     },
     {
-      "city": "Indore",
-      "lat": 22.7196,
-      "lng": 75.8577,
-      "count": 4
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "count": 3
     },
     {
       "city": "Ahmedabad",
@@ -94,6 +100,12 @@
       "count": 3
     },
     {
+      "city": "Jaipur",
+      "lat": 26.9124,
+      "lng": 75.7873,
+      "count": 2
+    },
+    {
       "city": "Navi Mumbai",
       "lat": 19.033,
       "lng": 73.0297,
@@ -112,21 +124,9 @@
       "count": 2
     },
     {
-      "city": "Delhi",
-      "lat": 28.6139,
-      "lng": 77.209,
-      "count": 2
-    },
-    {
       "city": "Mohali",
       "lat": 30.7046,
       "lng": 76.7179,
-      "count": 1
-    },
-    {
-      "city": "Jaipur",
-      "lat": 26.9124,
-      "lng": 75.7873,
       "count": 1
     },
     {
@@ -139,7 +139,7 @@
   "topCompanies": [
     {
       "name": "EY",
-      "count": 9,
+      "count": 10,
       "logo": "assets/company-approved/ey.webp"
     },
     {
@@ -154,7 +154,7 @@
     },
     {
       "name": "Accenture",
-      "count": 5,
+      "count": 6,
       "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
@@ -166,6 +166,16 @@
       "name": "Cognizant",
       "count": 4,
       "logo": "assets/company-icons/cognizant-8d169ac.png"
+    },
+    {
+      "name": "Endeavor IT Solution",
+      "count": 3,
+      "logo": "assets/company-owner/endeavor-it-solution.png"
+    },
+    {
+      "name": "Stripe",
+      "count": 3,
+      "logo": "assets/company-owner-submitted/stripe-owner-20261021.png"
     },
     {
       "name": "Drivetrain",
@@ -186,88 +196,78 @@
       "name": "Hevo Data",
       "count": 3,
       "logo": "assets/company-icons/hevo-data-998c6b2.png"
-    },
-    {
-      "name": "Deloitte",
-      "count": 3,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
-    },
-    {
-      "name": "Wipro",
-      "count": 3,
-      "logo": "assets/company-icons/wipro-6507802.png"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 25
+      "count": 26
     },
     {
       "label": "Java",
-      "count": 21
+      "count": 23
     },
     {
       "label": "SQL",
-      "count": 20
+      "count": 21
+    },
+    {
+      "label": "JavaScript",
+      "count": 17
     },
     {
       "label": "Communication",
-      "count": 14
+      "count": 15
+    },
+    {
+      "label": "REST APIs",
+      "count": 13
     },
     {
       "label": "Problem solving",
       "count": 13
     },
     {
-      "label": "JavaScript",
-      "count": 13
-    },
-    {
-      "label": "REST APIs",
-      "count": 12
-    },
-    {
       "label": "Git",
+      "count": 11
+    },
+    {
+      "label": "C++",
       "count": 10
+    },
+    {
+      "label": "Attention to detail",
+      "count": 9
+    },
+    {
+      "label": "HTML",
+      "count": 9
     },
     {
       "label": "Algorithms",
       "count": 9
     },
     {
-      "label": "C++",
-      "count": 9
+      "label": "CSS",
+      "count": 8
     },
     {
       "label": "Networking",
       "count": 8
-    },
-    {
-      "label": "Data analysis",
-      "count": 8
-    },
-    {
-      "label": "Documentation",
-      "count": 8
-    },
-    {
-      "label": "Distributed systems",
-      "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 81
+      "count": 85
     },
     {
       "label": "internship",
-      "count": 42
+      "count": 43
     },
     {
       "label": "nonit",
-      "count": 35
+      "count": 39
     },
     {
       "label": "experienced",
@@ -394,6 +394,10 @@
     {
       "date": "2026-10-28",
       "count": 7
+    },
+    {
+      "date": "2026-10-29",
+      "count": 9
     }
   ]
 }
