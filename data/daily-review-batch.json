@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:06:49.725Z",
+  "updatedAt": "2026-10-29T06:11:03.459Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -224,7 +224,7 @@
       "apply": "https://app.joinsuperset.com/company/cognizant/GenC-2026.html",
       "cat": "it",
       "expYears": "Entry level / 2026 batch",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Cognizant’s official GenC page says it is hiring Analyst Trainees and links to the employer-recognized Superset 2026 entry-level route; the exact Superset program page is accessible.",
       "postedDate": null,
@@ -238,7 +238,7 @@
         "expYears": "Entry level / 2026 batch",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Cognizant-recognized Superset",
         "desc": "Cognizant’s official entry-level technology hiring program for 2026 engineering graduates across GenC, GenC Pro and GenC Next tracks.",
         "elig": "2026 batch BE/BTech/ME/MTech in specified engineering streams; programming knowledge required. Excluded streams are listed on the official Cognizant-recognized Superset page.",
@@ -263,7 +263,9 @@
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Cognizant’s official GenC page says it is hiring Analyst Trainees and links to the employer-recognized Superset 2026 entry-level route; the exact Superset program page is accessible."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:03.459Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1727886",
