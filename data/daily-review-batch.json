@@ -2,7 +2,7 @@
   "batchId": "2026-10-29-0900-ist",
   "generatedAt": "2026-10-29T03:34:01.566Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-29T06:11:03.459Z",
+  "updatedAt": "2026-10-29T06:11:11.737Z",
   "priority": [
     {
       "id": "stripe-8157838",
@@ -275,7 +275,7 @@
       "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-New-Delhi-Nati-110037/1416906133/",
       "cat": "nonit",
       "expYears": "Fresher / 1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact EY requisition 1727886 is open with Apply now and explicitly lists Fresher alongside one year of experience.",
       "postedDate": "2026-10-15",
@@ -289,7 +289,7 @@
         "expYears": "Fresher / 1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "EY Careers",
         "desc": "Tax compliance and reporting analyst role supporting direct-tax filings, assessments and client deliverables.",
         "elig": "Bachelor of Commerce or Master of Commerce.",
@@ -308,13 +308,17 @@
         "jobId": "1727886",
         "date": "2026-10-15",
         "verifiedDate": "29 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 29 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-29T06:11:11.737Z",
+        "browserVerifiedAt": "2026-10-29T06:11:11.737Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-29T03:34:01.566Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact EY requisition 1727886 is open with Apply now and explicitly lists Fresher alongside one year of experience."
-      }
+      },
+      "reviewedAt": "2026-10-29T06:11:11.737Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-aioc-s01644014",
