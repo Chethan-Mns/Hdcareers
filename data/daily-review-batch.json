@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:21.164Z",
+  "updatedAt": "2026-10-30T03:43:27.050Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -287,7 +287,7 @@
       "apply": "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
       "cat": "it",
       "expYears": "0–1 year; no prior experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Circuvent employer careers record JOB-48 is open and explicitly states full-time, 0–1 year and no prior experience required.",
       "postedDate": null,
@@ -301,7 +301,7 @@
         "expYears": "0–1 year; no prior experience required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Circuvent Careers",
         "desc": "Graduate engineering trainee role for early-career electrical, electronics and computing graduates.",
         "elig": "B.E./B.Tech in EEE, ECE, CSE or IT; 0–1 year; no prior experience required.",
@@ -320,13 +320,17 @@
         "jobId": "JOB-48",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:27.050Z",
+        "browserVerifiedAt": "2026-10-30T03:43:27.050Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Circuvent employer careers record JOB-48 is open and explicitly states full-time, 0–1 year and no prior experience required."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:27.050Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "globallogic-irc306734",
