@@ -3684,14 +3684,21 @@
       "Attention to detail"
     ],
     "sourceName": "Nielsen Careers (SmartRecruiters)",
-    "status": "active",
-    "verifiedDate": "23 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Hybrid",
     "publishedAt": "2026-10-23T03:41:34Z",
     "id": 225,
     "logoPath": "assets/company-icons/nielsen-3a76445-6b922a540a.png",
-    "logoSourceDomain": "nielsen.com"
+    "logoSourceDomain": "nielsen.com",
+    "availabilityCheck": {
+      "id": 225,
+      "url": "https://jobs.smartrecruiters.com/TheNielsenCompany/3743990016052475-content-operations-editor-i",
+      "checkedAt": "2026-10-30T19:41:51.742309+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    }
   },
   {
     "apply": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000002921-operations-executive",
