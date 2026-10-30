@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:44:33.353Z",
+  "updatedAt": "2026-10-30T03:44:40.783Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -718,7 +718,7 @@
       "apply": "https://walmart.wd504.myworkdayjobs.com/en-US/WalmartExternal/job/IN-KA-BANGALORE-Home-Office-PTPP1/XMLNAME--IND--Grad-Intern---No-Work-Experience_R-2607497",
       "cat": "it",
       "expYears": "No work experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Walmart Workday requisition R-2607497 is currently provider-indexed for Bengaluru and its official title explicitly states 'No Work Experience'.",
       "postedDate": null,
@@ -732,7 +732,7 @@
         "expYears": "No work experience",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Walmart Workday",
         "desc": "Graduate internship supporting engineering work related to generative AI and machine-learning systems.",
         "elig": "Graduate-intern profile; official title explicitly states no work experience.",
@@ -757,7 +757,9 @@
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Walmart Workday requisition R-2607497 is currently provider-indexed for Bengaluru and its official title explicitly states 'No Work Experience'."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:44:40.783Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
