@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:44.483Z",
+  "updatedAt": "2026-10-30T03:43:49.163Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -447,7 +447,7 @@
       "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Income-Tax-Laws-Bengaluru-Business-Tax/61065444/",
       "cat": "non-it",
       "expYears": "Fresher; no experience accepted",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Deloitte was checked first. Exact requisition 61065444 is open with Apply now and explicitly accepts B.Com/BBM freshers with no experience.",
       "postedDate": null,
@@ -461,7 +461,7 @@
         "expYears": "Fresher; no experience accepted",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "Business Tax internship supporting income-tax compliance, research and engagement delivery.",
         "elig": "Graduate B.Com/BBM; fresher with no experience accepted; bachelor's degree minimum.",
@@ -486,7 +486,9 @@
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Deloitte was checked first. Exact requisition 61065444 is open with Apply now and explicitly accepts B.Com/BBM freshers with no experience."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:49.163Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "altera-r03117",
