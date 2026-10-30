@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:44:23.801Z",
+  "updatedAt": "2026-10-30T03:44:28.569Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -607,7 +607,7 @@
       "apply": "https://jobs.lever.co/brillio-2/f7f9f468-7bda-42c4-9904-2a191eabc5fb",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Brillio Lever requisition R01571250 is open with Apply and states entry-level 0–2 years. Brillio is outside the approved 87 and is used only as a shortage fallback.",
       "postedDate": null,
@@ -621,7 +621,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Brillio Lever",
         "desc": "Entry-level AWS data engineering role supporting enterprise data-lake ingestion, validation and pipeline performance.",
         "elig": "Bachelor's in Computer Science, IT, Data Engineering or related field; 0–2 years hands-on AWS data engineering exposure.",
@@ -643,13 +643,17 @@
         "jobId": "R01571250",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:44:28.568Z",
+        "browserVerifiedAt": "2026-10-30T03:44:28.568Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Brillio Lever requisition R01571250 is open with Apply and states entry-level 0–2 years. Brillio is outside the approved 87 and is used only as a shortage fallback."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:44:28.568Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "apna-357ceb0335",
