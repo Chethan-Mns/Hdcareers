@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:38.801Z",
+  "updatedAt": "2026-10-30T03:43:44.483Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -394,7 +394,7 @@
       "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
       "cat": "non-it",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Accenture requisition AIOC-S01668426 is open for a Noida New Associate role and states any graduate with 0–1 year.",
       "postedDate": null,
@@ -408,7 +408,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Accenture Careers",
         "desc": "Entry-level procurement operations role supporting process execution, data accuracy and business service delivery.",
         "elig": "Any graduate; 0–1 year of experience.",
@@ -427,13 +427,17 @@
         "jobId": "AIOC-S01668426",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:44.482Z",
+        "browserVerifiedAt": "2026-10-30T03:43:44.482Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Accenture requisition AIOC-S01668426 is open for a Noida New Associate role and states any graduate with 0–1 year."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:44.482Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deloitte-61065444",
