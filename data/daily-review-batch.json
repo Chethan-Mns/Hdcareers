@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:15.627Z",
+  "updatedAt": "2026-10-30T03:43:21.164Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -120,7 +120,7 @@
       "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236649-graduate-engineer-trainee-order-management",
       "cat": "it",
       "expYears": "0–1 year; freshers eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Konecranes SmartRecruiters requisition 744000143236649 is open, full-time in Pune and states 0–1 year with freshers eligible.",
       "postedDate": null,
@@ -134,7 +134,7 @@
         "expYears": "0–1 year; freshers eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Konecranes SmartRecruiters",
         "desc": "Graduate engineering role supporting order management, production planning and cross-functional execution.",
         "elig": "BE in Mechanical or Electrical Engineering; 0–1 year and freshers eligible.",
@@ -153,13 +153,17 @@
         "jobId": "744000143236649",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:21.163Z",
+        "browserVerifiedAt": "2026-10-30T03:43:21.163Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Konecranes SmartRecruiters requisition 744000143236649 is open, full-time in Pune and states 0–1 year with freshers eligible."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:21.163Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "beryl-get-20261005",
