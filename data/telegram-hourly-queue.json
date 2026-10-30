@@ -1046,9 +1046,11 @@
     {
       "page": "jobs/heizen-associate-software-engineer.html",
       "batchId": "admin-40999090253",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T10:47:39.184395+00:00"
+      "dueAt": "2026-10-30T10:47:39.184395+00:00",
+      "claimId": "41043350699",
+      "claimedAt": "2026-10-30T10:47:50.277469+00:00"
     },
     {
       "page": "jobs/konecranes-graduate-engineer-trainee-order-management.html",
