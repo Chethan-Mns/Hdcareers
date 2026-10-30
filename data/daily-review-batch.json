@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:04.741Z",
+  "updatedAt": "2026-10-30T03:43:10.257Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -169,7 +169,7 @@
       "apply": "https://berylsystems.com/careers/graduate-engineer-trainee",
       "cat": "it",
       "expYears": "Recent graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Beryl's exact employer application page is open with an embedded application form, full-time Faridabad location and recent-graduate eligibility.",
       "postedDate": "2026-10-05",
@@ -183,7 +183,7 @@
         "expYears": "Recent graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Beryl Systems Careers",
         "desc": "Graduate software engineering role working on production web applications, APIs, automation and business-system integrations.",
         "elig": "Recently completed degree in Computer Science, IT, Engineering or related field; programming and problem-solving fundamentals.",
@@ -206,13 +206,17 @@
         "jobId": "GET-20261005",
         "date": "2026-10-05",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:10.228Z",
+        "browserVerifiedAt": "2026-10-30T03:43:10.228Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Beryl's exact employer application page is open with an embedded application form, full-time Faridabad location and recent-graduate eligibility."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:10.228Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "heizen-associate-software-engineer",
