@@ -1754,7 +1754,7 @@
     "expYears": "Internship; students graduating in 2027",
     "salary": "Not Disclosed",
     "batch": "Not Specified",
-    "status": "active",
+    "status": "expired",
     "sourceName": "Zynga Early Careers / Greenhouse",
     "desc": "Data analytics internship supporting Zynga's Social Games portfolio through performance analysis, KPI reporting, experiments and data visualization.",
     "elig": "Students graduating in 2027; basic statistics and data analysis; Excel and SQL proficiency.",
@@ -1774,7 +1774,7 @@
     "workMode": "Not Specified",
     "jobId": "6233109004",
     "date": "Not Specified",
-    "verifiedDate": "25 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceVerificationMethod": "Exact official Greenhouse job page and embedded application form checked on 25 Oct 2026.",
     "browserVerifiedAt": "2026-10-25T03:49:36.211Z",
     "manualLiveVerifiedAt": "2026-10-25T03:49:36.211Z",
@@ -1791,7 +1791,14 @@
     "publishedAt": "2026-10-25T05:04:36Z",
     "id": 242,
     "logoPath": "assets/company-owner/zynga.png",
-    "logoSourceDomain": "zynga.com"
+    "logoSourceDomain": "zynga.com",
+    "availabilityCheck": {
+      "id": 242,
+      "url": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6233109004",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "company": "Instawork",
@@ -1872,9 +1879,9 @@
     "workMode": "On-site",
     "jobId": "6010",
     "date": "22 Oct 2026",
-    "verifiedDate": "25 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceVerificationMethod": "Official Encardio careers detail and exact Keka application page checked on 25 Oct 2026.",
-    "browserVerifiedAt": "2026-10-25T03:50:12.388Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedAt": "2026-10-25T03:50:12.388Z",
     "roleTag": "Engineering Intern — Encademy",
     "locationFilter": "Lucknow, Uttar Pradesh",
@@ -1889,7 +1896,14 @@
     "publishedAt": "2026-10-25T05:04:36Z",
     "id": 244,
     "logoPath": "assets/company-icons/encardio-rite-0616de7-342c5ec1a1.png",
-    "logoSourceDomain": "encardio.keka.com"
+    "logoSourceDomain": "encardio.keka.com",
+    "availabilityCheck": {
+      "id": 244,
+      "url": "https://encardio.keka.com/careers/jobdetails/6010",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "active",
+      "reason": "Owner confirmed the exact posting Live in a bulk review."
+    }
   },
   {
     "company": "Forma.ai",
@@ -1951,7 +1965,7 @@
     "expYears": "Not independently confirmed",
     "salary": "Not Disclosed",
     "batch": "Not Specified",
-    "status": "active",
+    "status": "expired",
     "sourceName": "Barclays Careers",
     "desc": "Barclays has an official Software Engineer opening with a manually verified application link. HD Careers has not independently confirmed its degree, years-of-experience or technology requirements, so this opportunity is listed with eligibility unverified rather than advertised as guaranteed fresher hiring.",
     "elig": "Barclays Software Engineer role. The exact official listing was manually confirmed active, but its degree, graduation batch and years-of-experience requirements could not be independently retrieved. The 'fresher' designation is not yet substantiated; verify eligibility directly with Barclays.",
@@ -1962,7 +1976,7 @@
     "workMode": "Not Specified",
     "jobId": "99013663152",
     "date": "Not Specified",
-    "verifiedDate": "24 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceVerificationMethod": "Owner manually verified this exact Barclays URL live on 24 Oct 2026; independent retrieval of the Barclays job details was blocked. Role title corroborated by third-party job alert, not official text.",
     "page": "jobs/barclays-software-engineer-99013663152.html",
     "who": "Applicants meeting the official Barclays job requirements.",
@@ -1975,7 +1989,14 @@
     "publishedAt": "2026-10-24T05:27:31Z",
     "id": 240,
     "logoPath": "assets/company-owner-submitted/barclays-owner-20261024.svg",
-    "logoSourceDomain": "barclays.com"
+    "logoSourceDomain": "barclays.com",
+    "availabilityCheck": {
+      "id": 240,
+      "url": "https://search.jobs.barclays/job/-/-/13015/99013663152?src=JB-12860",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01664425_en",
@@ -2085,13 +2106,21 @@
     ],
     "sourceName": "Amazon Jobs",
     "status": "active",
-    "verifiedDate": "24 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "publishedAt": "2026-10-24T03:39:13Z",
     "id": 231,
     "logoPath": "assets/company-approved/amazon-owner-20261019.png",
-    "logoSourceDomain": "amazon.jobs"
+    "logoSourceDomain": "amazon.jobs",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "availabilityCheck": {
+      "id": 231,
+      "url": "https://www.amazon.jobs/en/jobs/10496769/data-engineer-intern-2027",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "active",
+      "reason": "Owner confirmed the exact posting Live in a bulk review."
+    }
   },
   {
     "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
@@ -2142,13 +2171,21 @@
     ],
     "sourceName": "American Express Careers",
     "status": "active",
-    "verifiedDate": "24 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Hybrid",
     "publishedAt": "2026-10-24T03:39:13Z",
     "id": 232,
     "logoPath": "assets/company-marks-review/american-express.svg",
-    "logoSourceDomain": "americanexpress.com"
+    "logoSourceDomain": "americanexpress.com",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "availabilityCheck": {
+      "id": 232,
+      "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "active",
+      "reason": "Owner confirmed the exact posting Live in a bulk review."
+    }
   },
   {
     "apply": "https://job-boards.greenhouse.io/capco/jobs/8280810",
@@ -2258,13 +2295,21 @@
     ],
     "sourceName": "EY Careers",
     "status": "active",
-    "verifiedDate": "24 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "publishedAt": "2026-10-24T03:39:13Z",
     "id": 234,
     "logoPath": "assets/company-approved/ey.webp",
-    "logoSourceDomain": "ey.com"
+    "logoSourceDomain": "ey.com",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "availabilityCheck": {
+      "id": 234,
+      "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "active",
+      "reason": "Owner confirmed the exact posting Live in a bulk review."
+    }
   },
   {
     "apply": "https://jobs.lever.co/fampay/23dd18f9-a331-4115-98e9-e98c404c47c6",
@@ -2548,14 +2593,21 @@
       "Confidentiality"
     ],
     "sourceName": "Zinnov Careers via Greenhouse",
-    "status": "active",
-    "verifiedDate": "24 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "publishedAt": "2026-10-24T03:39:13Z",
     "id": 239,
     "logoPath": "assets/company-icons/zinnov-1c17049-5d05e558c9.png",
-    "logoSourceDomain": "zinnov.com"
+    "logoSourceDomain": "zinnov.com",
+    "availabilityCheck": {
+      "id": 239,
+      "url": "https://job-boards.greenhouse.io/zinnov/jobs/4410812009",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "company": "Cisco",
@@ -2941,14 +2993,21 @@
       "Candidate experience"
     ],
     "sourceName": "Konovo Careers (Greenhouse)",
-    "status": "active",
-    "verifiedDate": "23 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Hybrid",
     "publishedAt": "2026-10-23T03:41:34Z",
     "id": 224,
     "logoPath": "assets/company-icons/konovo-cb8daa0-3ad9b725bb.png",
-    "logoSourceDomain": "konovo.com"
+    "logoSourceDomain": "konovo.com",
+    "availabilityCheck": {
+      "id": 224,
+      "url": "https://job-boards.greenhouse.io/konovo/jobs/5455984008",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "apply": "https://jobs.smartrecruiters.com/TheNielsenCompany/3743990016052475-content-operations-editor-i",
@@ -3743,8 +3802,8 @@
       "AI image and video tools"
     ],
     "sourceName": "Zynga Early Careers (Greenhouse)",
-    "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "On-site",
     "publishedAt": "2026-10-22T03:48:51Z",
@@ -3755,9 +3814,9 @@
     "availabilityCheck": {
       "id": 216,
       "url": "https://job-boards.greenhouse.io/zyngaearlycareers/jobs/6194305004",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "state": "active",
-      "reason": "Owner confirmed the exact posting Live in a bulk review."
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
     }
   },
   {
@@ -3867,7 +3926,7 @@
     ],
     "sourceName": "Deloitte South Asia Careers",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "id": 200,
@@ -3876,11 +3935,11 @@
     "editorialOriginalDesc": "Entry-level finance strategy and operations role supporting financial analysis, research workflows, compliance documentation and record verification.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 200,
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Consultant-FT-Strategy-%26-Ops-Bengaluru-Finance-Transformation-Finance-Strategy/59276544/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -3996,7 +4055,7 @@
     ],
     "sourceName": "EY Careers",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "id": 202,
@@ -4005,11 +4064,11 @@
     "editorialOriginalDesc": "Fresher associate-consultant role supporting risk-management engagements through data engineering, analytics and production-ready data pipelines.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 202,
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Consultant-Business-Consulting-Risk-National-CNS-Risk-Risk-Management-Mumbai-MH-400028/1430050633/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -4255,7 +4314,7 @@
     ],
     "sourceName": "Rubrik Careers",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "On-site",
     "id": 206,
@@ -4264,11 +4323,11 @@
     "editorialOriginalDesc": "Technical program-management internship supporting delivery planning, execution, reporting, stakeholder coordination and risk management for engineering products.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 206,
       "url": "https://www.rubrik.com/company/careers/departments/job.8166514?gh_jid=8166514",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -4504,8 +4563,8 @@
       "Tax computation"
     ],
     "sourceName": "Deloitte South Asia Careers",
-    "status": "active",
-    "verifiedDate": "23 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Work from office",
     "id": 190,
@@ -4515,9 +4574,9 @@
     "availabilityCheck": {
       "id": 190,
       "url": "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Income-Tax-Laws-Hyderabad-Business-Tax/60805744/",
-      "checkedAt": "2026-10-23T15:46:47.719Z",
-      "state": "active",
-      "reason": "Owner confirmed the exact posting Live in a bulk review."
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
     },
     "editorialOriginalDesc": "Business Tax internship supporting US individual tax return preparation and review work.",
     "editorialUpdatedAt": "2026-10-21",
@@ -4911,17 +4970,17 @@
     ],
     "sourceName": "Stripe Careers",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Office-assigned; attendance expectations vary",
     "id": 196,
     "logoPath": "assets/company-owner-submitted/stripe-owner-20261021.png",
     "logoSourceDomain": "stripe.com",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 196,
       "url": "https://stripe.com/careers/listing/software-engineer-intern/8031833",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -5154,9 +5213,9 @@
     "workMode": "Onsite",
     "jobId": "2812",
     "date": "Not Specified",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceVerificationMethod": "Exact Tieto job JID 2812 opened on the official portal with matching title/location, full role content and a job-bound Apply control; it explicitly describes an entry-level role for recent graduates.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedAt": "2026-10-19T03:49:15.435Z",
     "page": "jobs/tieto-2812.html",
     "domain": "careers.tieto.com",
@@ -5177,7 +5236,7 @@
     "availabilityCheck": {
       "id": 187,
       "url": "https://careers.tieto.com/job/junior-service-desk-specialist-tieto-tech-consulting-m-f-d-in-mohali-india-jid-2812",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -5210,9 +5269,9 @@
     "workMode": "Not Specified",
     "jobId": "1749819",
     "date": "6 Oct 2026",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceVerificationMethod": "Exact EY requisition 1749819 opened with matching Mumbai title, job details and job-bound Apply route; the official posting lists graduate eligibility and 0–2 years.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedAt": "2026-10-19T03:49:01.600Z",
     "page": "jobs/ey-1749819.html",
     "domain": "careers.ey.com",
@@ -5233,7 +5292,7 @@
     "availabilityCheck": {
       "id": 188,
       "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1444748133/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -5523,7 +5582,7 @@
     "skills": [],
     "sourceName": "Deutsche Bank official Workday",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "id": 178,
@@ -5532,11 +5591,11 @@
     "editorialOriginalDesc": "Non-technology apprenticeship opportunity for fresh graduates in Mumbai; full responsibilities require confirmation from the official Workday page.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 178,
       "url": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Mumbai-Nirlon-Know-Pk-B4-B5/Apprentice---Non-Technology_R0357981",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -5705,7 +5764,7 @@
     ],
     "sourceName": "HCLTech official careers",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
     "id": 181,
@@ -5714,11 +5773,11 @@
     "editorialOriginalDesc": "Design Engineer role supporting optical and electromechanical component design, project work, research and documentation.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "availabilityCheck": {
       "id": 181,
       "url": "https://careers.hcltech.com/job/Campus-Beginner/142115-en_US/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     }
@@ -6309,8 +6368,8 @@
       "Test automation"
     ],
     "apply": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "NTT DATA official careers",
     "who": "QA and data-testing applicants with the testing, SQL and data-pipeline skills specified by NTT DATA.",
     "workMode": "Not specified",
@@ -6329,7 +6388,14 @@
     "logoSourceDomain": "nttdata.com",
     "editorialOriginalDesc": "NTT DATA is recruiting a QA Engineer (Test Engineer, Data Platform) for its Databricks environment in Bengaluru.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 162,
+      "url": "https://careers-inc.nttdata.com/job/Bangalore-QA-Engineer-KA/1439894800/",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "page": "jobs/caterpillar-it-analyst-applications-r0000377078.html",
@@ -6365,8 +6431,8 @@
       "Systems integration"
     ],
     "apply": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Caterpillar official careers",
     "who": "Applicants with business-analysis, Power BI and integration capabilities who meet Caterpillar's posted role requirements.",
     "workMode": "On-site, five days a week",
@@ -6385,7 +6451,14 @@
     "logoSourceDomain": "caterpillar.com",
     "editorialOriginalDesc": "Caterpillar is seeking an IT Analyst Applications supporting procurement data, analytics dashboards and enterprise application integrations in Bengaluru.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 163,
+      "url": "https://careers.caterpillar.com/en/jobs/r0000377078/it-analyst-applications/",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "page": "jobs/ey-analyst-forensics-national-asu-forensics-investigations-compliance-mumbai-1735771.html",
@@ -6647,8 +6720,8 @@
       "Debugging"
     ],
     "apply": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Google official careers",
     "who": "Candidates with a bachelor's degree or equivalent experience and at least one year of software development experience.",
     "workMode": "Not specified",
@@ -6667,7 +6740,14 @@
     "logoSourceDomain": "google.com",
     "editorialOriginalDesc": "Google is recruiting an early-career Software Engineer for Search in Bengaluru to develop, test and maintain software systems used by global search users.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 168,
+      "url": "https://www.google.com/about/careers/applications/jobs/results/122710813273137862-software-engineer-search",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "page": "jobs/cloudsek-sde-intern-backend-6222340004.html",
@@ -7449,7 +7529,7 @@
     ],
     "apply": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Cognizant official Superset fresher hiring page and applicant screenshot",
     "who": "2025 and 2026 three-year full-time UG graduates, including BCA, BSc, BA, BCom, BBA, BVoc and BMS, with at least 50% academic marks as specified by Cognizant. Selected candidates join as freshers.",
     "workMode": "Not specified",
@@ -7465,7 +7545,7 @@
     ],
     "manualLiveVerifiedAt": "2026-10-14T10:09:00Z",
     "manualLiveVerifiedUrl": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "sourceVerificationMethod": "owner-browser-screenshot-apply-control",
     "verificationEvidence": {
       "observedAt": "2026-10-14T10:09:00Z",
@@ -7477,7 +7557,7 @@
     "availabilityCheck": {
       "id": 149,
       "url": "https://app.joinsuperset.com/join/#/signup/student/jobprofiles/a8af19f3-444e-43bd-8828-e8656f637a17",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -8144,8 +8224,8 @@
     "expType": "fresher",
     "workMode": "Hybrid",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
-    "verifiedDate": "27 Oct 2026",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "verifiedDate": "30 Oct 2026",
     "page": "jobs/ahead-ms-eus-apprentice-intern-6-months.html",
     "domain": "jobs.lever.co",
     "logo": [
@@ -8176,7 +8256,7 @@
     "availabilityCheck": {
       "id": 128,
       "url": "https://jobs.lever.co/thinkahead/7950d5ca-0cf8-4fa5-a2fc-6210c711411f",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -8315,8 +8395,8 @@
     "desc": "GE HealthCare is recruiting a Graduate Engineer Trainee to support manufacturing and quality activities for its Ultrasound and PCS product lines. The trainee assists with production operations, engineering documentation, calibration, validation, supplier quality and continuous improvement in a medical-device environment. Responsibilities described for this opening include support day-to-day ultrasound and PCS manufacturing operations; investigate production-line quality issues and support corrective actions; maintain calibration schedules, records and equipment validation reports. The role record identifies Manufacturing, Quality management, Equipment calibration, Documentation, Kaizen as relevant skills or tools to review before applying. The available eligibility description notes: B.E./B.Tech in Electrical, Electronics, Biomedical or Mechanical Engineering; fresh graduates or candidates with up to one year of relevant experience. Applicants can use the exact GE HealthCare employer link on this page to check the latest application status, selection details, and requirements before submitting.",
     "expType": "fresher",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
-    "verifiedDate": "27 Oct 2026",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "verifiedDate": "30 Oct 2026",
     "resp": [
       "Support day-to-day ultrasound and PCS manufacturing operations.",
       "Investigate production-line quality issues and support corrective actions.",
@@ -8364,7 +8444,7 @@
     "availabilityCheck": {
       "id": 131,
       "url": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/GRADUATE-ENGINEERING-TRAINEE_R4043087-1",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -8474,8 +8554,8 @@
     "expType": "fresher",
     "date": "2026-10-11",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
-    "verifiedDate": "27 Oct 2026",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
+    "verifiedDate": "30 Oct 2026",
     "workMode": "Not specified",
     "page": "jobs/deloitte-south-asia-analyst-d365-f-o-functional-scm.html",
     "domain": "southasiacareers.deloitte.com",
@@ -8508,7 +8588,7 @@
     "availabilityCheck": {
       "id": 133,
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-D365-F%26O-Functional-SCM-Bengaluru-Emerging-ERP-Solutions/58824844/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -9098,7 +9178,7 @@
     ],
     "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "EY Careers",
     "skills": [
       "GST",
@@ -9111,7 +9191,7 @@
     ],
     "workMode": "Not specified",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedUrl": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
     "id": 125,
     "logoPath": "assets/company-approved/ey.webp",
@@ -9131,7 +9211,7 @@
     "availabilityCheck": {
       "id": 125,
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-New-Delhi-Nati-110037/1446287633/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -9148,9 +9228,9 @@
     "cat": "internship",
     "expYears": "Student internship",
     "sourceName": "NXP Semiconductors Workday Careers",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "page": "jobs/nxp-technical-internship-2027-r-10066434.html",
     "domain": "nxp.wd3.myworkdayjobs.com",
     "salary": "Not Disclosed",
@@ -9199,7 +9279,7 @@
     "availabilityCheck": {
       "id": 126,
       "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Technical-Internship-2027_R-10066434",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -9238,7 +9318,7 @@
     ],
     "apply": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Amazon Jobs",
     "skills": [
       "Software Development",
@@ -9253,7 +9333,7 @@
     ],
     "workMode": "Not specified",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedUrl": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
     "id": 127,
     "logoPath": "assets/company-approved/amazon-owner-20261019.png",
@@ -9273,7 +9353,7 @@
     "availabilityCheck": {
       "id": 127,
       "url": "https://www.amazon.jobs/en/jobs/10511883/software-development-engineer-i-iesp-merchant-tech",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -9721,7 +9801,7 @@
     ],
     "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official employer careers page",
     "who": "Bachelor of Commerce; 3+ years financial analysis experience.",
     "workMode": "Not Specified",
@@ -9740,7 +9820,7 @@
     ],
     "availabilityCheck": {
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review.",
       "id": 111
@@ -9761,7 +9841,7 @@
       "source": "owner-direct-manual-careers-portal-check",
       "scanCheckedAt": "2026-10-15T07:46:50.578277+00:00"
     },
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "editorialReviewedOn": "2026-10-17",
     "editorialSource": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-National-TAX-Indirect-Tax-Core-Mumbai-MH-400028/1445891333/"
   },
@@ -9792,7 +9872,7 @@
     ],
     "apply": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official employer careers or recognized application provider",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
@@ -9812,12 +9892,12 @@
     ],
     "availabilityCheck": {
       "url": "https://www.rubrik.com/company/careers/departments/job.8258200?gh_jid=8258200",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review.",
       "id": 109
     },
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "logoPath": "assets/company-icons/rubrik-c33fd7a.png",
     "logoSourceDomain": "rubrik.com",
     "manualReviewedAt": "2026-10-15T16:51:02.186Z",
@@ -9865,7 +9945,7 @@
     ],
     "apply": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official employer careers or recognized application provider",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
@@ -9876,12 +9956,12 @@
     "skills": [],
     "availabilityCheck": {
       "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Visa/publication/52f4fc97-d38d-4c3e-bb5f-da70fe699bab?dcr_ci=Visa",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review.",
       "id": 108
     },
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "logoPath": "assets/company-marks-review/visa.svg",
     "manualReviewedAt": "2026-10-15T16:51:02.186Z",
     "manualReviewedBy": "HD Careers Owner",
@@ -10734,13 +10814,13 @@
     ],
     "apply": "https://zycus.sensehq.com/careers/jobs/57681",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official employer career portal",
     "who": "Refer to the official listing for eligibility.",
     "workMode": "Not Specified",
     "availabilityCheck": {
       "url": "https://zycus.sensehq.com/careers/jobs/57681",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review.",
       "id": 88
@@ -10761,7 +10841,7 @@
     ],
     "logoPath": "assets/company-icons/zycus-f324297-03a76131f4.png",
     "logoSourceDomain": "zycus.talismatic.com",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "manualLiveVerifiedAt": "2026-10-15T16:51:02.186Z",
     "manualLiveVerifiedUrl": "https://zycus.sensehq.com/careers/jobs/57681",
     "manualLiveConfirmedBy": "HD Careers owner",
@@ -11901,8 +11981,8 @@
       "Follow standard operating procedures and service-desk processes"
     ],
     "apply": "https://careers.hcltech.com/job/Campus-Beginner/158292-en_US",
-    "status": "active",
-    "verifiedDate": "06 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official HCLTech Careers – Job 158292",
     "skills": [
       "Windows",
@@ -11925,9 +12005,9 @@
     "availabilityCheck": {
       "id": 71,
       "url": "https://careers.hcltech.com/job/Campus-Beginner/158292-en_US",
-      "checkedAt": "2026-10-06T03:35:35.286Z",
-      "state": "active",
-      "reason": "Exact official role or event page re-opened on 06 Oct 2026; specific role/event details and current application, registration, notification or walk-in instructions were present."
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
     },
     "logoPath": "assets/company-icons/hcltech-4735861.png",
     "logoSourceDomain": "hcltech.com",
@@ -12353,7 +12433,7 @@
     ],
     "apply": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
     "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official Virtusa Careers – Requisition CREQ260022",
     "skills": [
       "REST Assured",
@@ -12366,7 +12446,7 @@
     ],
     "who": "Candidates with 0–2 years of experience, a relevant bachelor's degree and a foundation in software/API testing should review Virtusa's official posting. REST Assured knowledge is particularly relevant for this role.",
     "workMode": "On-site",
-    "browserVerifiedAt": "2026-10-27T07:59:23.519Z",
+    "browserVerifiedAt": "2026-10-30T03:42:06.203Z",
     "verificationTerms": [
       "Associate",
       "CREQ260022",
@@ -12378,7 +12458,7 @@
     "availabilityCheck": {
       "id": 64,
       "url": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ260022/Associate",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
       "state": "active",
       "reason": "Owner confirmed the exact posting Live in a bulk review."
     },
@@ -14729,8 +14809,8 @@
       "Work as an individual contributor and support rotational shifts when required"
     ],
     "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
-    "status": "active",
-    "verifiedDate": "15 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official Accenture India Careers job page",
     "skills": [
       "Accounts Payable / Procure to Pay",
@@ -14745,9 +14825,9 @@
     "availabilityCheck": {
       "id": 25,
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01659105_en",
-      "checkedAt": "2026-10-15T16:51:02.186Z",
-      "state": "active",
-      "reason": "HD Careers Owner manually verified exact official job URL as ACTIVE on 15 Oct 2026."
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
     },
     "logoPath": "assets/company-icons/accenture-05dffab.png",
     "logoSourceDomain": "accenture.com",
@@ -14955,8 +15035,8 @@
       "Document architectures and collaborate with analysts, business stakeholders and application teams"
     ],
     "apply": "https://careers.cognizant.com/india-en/jobs/00070744381/data-engineer-data-architect/",
-    "status": "active",
-    "verifiedDate": "29 Sep 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official Cognizant India Careers job page",
     "skills": [
       "PySpark",
@@ -14972,7 +15052,14 @@
     "logoSourceDomain": "cognizant.com",
     "editorialOriginalDesc": "Cognizant is hiring a Data Engineer / Data Architect in Kolkata for a hybrid Technology & Engineering role focused on cloud-based analytics solutions using PySpark and Databricks. The position covers scalable data pipelines, Databricks SQL optimization, data modeling, data quality, governance and production support.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 21,
+      "url": "https://careers.cognizant.com/india-en/jobs/00070744381/data-engineer-data-architect/",
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "id": 20,
@@ -15434,8 +15521,8 @@
       "Maintain technical documentation and support testing and defect resolution"
     ],
     "apply": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-    "status": "active",
-    "verifiedDate": "27 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "30 Oct 2026",
     "sourceName": "Official PwC Workday careers page",
     "skills": [
       "AWS EMR, Redshift, S3, Glue, Kinesis and Lambda",
@@ -15468,9 +15555,9 @@
     "availabilityCheck": {
       "id": 12,
       "url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Bengaluru-Millenia/AWS-Data-Engineer-Bangalore_546858WD",
-      "checkedAt": "2026-10-27T07:59:23.519Z",
-      "state": "active",
-      "reason": "Owner confirmed the exact posting Live in a bulk review."
+      "checkedAt": "2026-10-30T03:42:06.203Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
     },
     "editorialOriginalDesc": "PwC is hiring an AWS Data Engineer in Bengaluru for its Data, Analytics & AI practice. The role focuses on large-scale data extraction, ingestion and processing using AWS services, SQL, ETL and reusable engineering scripts.",
     "editorialUpdatedAt": "2026-10-21",
