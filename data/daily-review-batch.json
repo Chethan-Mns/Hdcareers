@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:40:13.883Z",
+  "updatedAt": "2026-10-30T03:42:59.251Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -12,7 +12,7 @@
       "apply": "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
       "cat": "it",
       "expYears": "0–3 years, including fresh graduates",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact HCLTech requisition 167256 is publicly open and explicitly accepts engineering fresh graduates within 0–3 years.",
       "postedDate": null,
@@ -26,7 +26,7 @@
         "expYears": "0–3 years, including fresh graduates",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "HCLTech Careers",
         "desc": "Entry-level Generative AI engineering role developing AI agents and supporting model data, evaluation, deployment and optimization.",
         "elig": "Engineering degree; 0–3 years including fresh graduates; Python knowledge and academic, internship or self-initiated AI/ML projects.",
@@ -47,13 +47,17 @@
         "jobId": "167256",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:42:59.224Z",
+        "browserVerifiedAt": "2026-10-30T03:42:59.224Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact HCLTech requisition 167256 is publicly open and explicitly accepts engineering fresh graduates within 0–3 years."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:42:59.224Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "moodys-14415",
