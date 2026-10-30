@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "29 October 2026",
-  "active": 180,
-  "employers": 117,
-  "freshers": 117,
-  "experienced": 49,
+  "verifiedThrough": "30 October 2026",
+  "active": 167,
+  "employers": 111,
+  "freshers": 109,
+  "experienced": 47,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 72
+      "count": 63
     },
     {
       "label": "Mumbai",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 72
+      "count": 63
     },
     {
       "city": "Mumbai",
@@ -88,12 +88,6 @@
       "count": 3
     },
     {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
-      "count": 3
-    },
-    {
       "city": "Madurai",
       "lat": 9.9252,
       "lng": 78.1198,
@@ -112,9 +106,9 @@
       "count": 2
     },
     {
-      "city": "Kolkata",
-      "lat": 22.5726,
-      "lng": 88.3639,
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
       "count": 2
     },
     {
@@ -127,6 +121,12 @@
       "city": "Mohali",
       "lat": 30.7046,
       "lng": 76.7179,
+      "count": 1
+    },
+    {
+      "city": "Kolkata",
+      "lat": 22.5726,
+      "lng": 88.3639,
       "count": 1
     },
     {
@@ -149,23 +149,18 @@
     },
     {
       "name": "HCLTech",
-      "count": 7,
+      "count": 6,
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
       "name": "Accenture",
-      "count": 6,
+      "count": 5,
       "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Google",
-      "count": 5,
-      "logo": "assets/company-approved/google-owner-20261019.svg"
-    },
-    {
-      "name": "Cognizant",
       "count": 4,
-      "logo": "assets/company-icons/cognizant-8d169ac.png"
+      "logo": "assets/company-approved/google-owner-20261019.svg"
     },
     {
       "name": "Endeavor IT Solution",
@@ -183,11 +178,6 @@
       "logo": "assets/company-owner/drivetrain.png"
     },
     {
-      "name": "Zynga",
-      "count": 3,
-      "logo": "assets/company-owner/zynga.png"
-    },
-    {
       "name": "Instawork",
       "count": 3,
       "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
@@ -196,28 +186,38 @@
       "name": "Hevo Data",
       "count": 3,
       "logo": "assets/company-icons/hevo-data-998c6b2.png"
+    },
+    {
+      "name": "Deloitte",
+      "count": 3,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
+    },
+    {
+      "name": "Wipro",
+      "count": 3,
+      "logo": "assets/company-icons/wipro-6507802.png"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 26
+      "count": 24
     },
     {
       "label": "Java",
-      "count": 23
+      "count": 22
     },
     {
       "label": "SQL",
-      "count": 21
-    },
-    {
-      "label": "JavaScript",
       "count": 17
     },
     {
+      "label": "JavaScript",
+      "count": 16
+    },
+    {
       "label": "Communication",
-      "count": 15
+      "count": 14
     },
     {
       "label": "REST APIs",
@@ -233,10 +233,6 @@
     },
     {
       "label": "C++",
-      "count": 10
-    },
-    {
-      "label": "Attention to detail",
       "count": 9
     },
     {
@@ -248,48 +244,52 @@
       "count": 9
     },
     {
+      "label": "Attention to detail",
+      "count": 8
+    },
+    {
       "label": "CSS",
       "count": 8
     },
     {
-      "label": "Networking",
+      "label": "Documentation",
       "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 85
-    },
-    {
-      "label": "internship",
-      "count": 43
+      "count": 79
     },
     {
       "label": "nonit",
       "count": 39
     },
     {
+      "label": "internship",
+      "count": 39
+    },
+    {
       "label": "experienced",
-      "count": 7
+      "count": 5
     },
     {
       "label": "apprenticeship",
       "count": 3
     },
     {
-      "label": "campus",
-      "count": 2
+      "label": "walkin",
+      "count": 1
     },
     {
-      "label": "walkin",
+      "label": "campus",
       "count": 1
     }
   ],
   "verificationDaily": [
     {
       "date": "2026-09-29",
-      "count": 4
+      "count": 3
     },
     {
       "date": "2026-09-30",
@@ -317,7 +317,7 @@
     },
     {
       "date": "2026-10-06",
-      "count": 4
+      "count": 3
     },
     {
       "date": "2026-10-07",
@@ -349,11 +349,11 @@
     },
     {
       "date": "2026-10-15",
-      "count": 7
+      "count": 6
     },
     {
       "date": "2026-10-17",
-      "count": 22
+      "count": 19
     },
     {
       "date": "2026-10-18",
@@ -373,15 +373,15 @@
     },
     {
       "date": "2026-10-23",
-      "count": 12
+      "count": 10
     },
     {
       "date": "2026-10-24",
-      "count": 13
+      "count": 8
     },
     {
       "date": "2026-10-25",
-      "count": 5
+      "count": 3
     },
     {
       "date": "2026-10-26",
@@ -389,7 +389,7 @@
     },
     {
       "date": "2026-10-27",
-      "count": 28
+      "count": 6
     },
     {
       "date": "2026-10-28",
@@ -398,6 +398,10 @@
     {
       "date": "2026-10-29",
       "count": 9
+    },
+    {
+      "date": "2026-10-30",
+      "count": 24
     }
   ]
 }
