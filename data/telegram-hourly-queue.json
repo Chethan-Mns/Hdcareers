@@ -1026,39 +1026,40 @@
     {
       "page": "jobs/globallogic-associate-analyst-freshers-non-technical-non-voice.html",
       "batchId": "admin-40999090253",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T08:47:05.361893+00:00",
       "claimId": "41028787123",
-      "claimedAt": "2026-10-30T08:47:17.276763+00:00"
+      "claimedAt": "2026-10-30T08:47:17.276763+00:00",
+      "messageId": 626,
+      "deliveredAt": "2026-10-30T08:47:21.369600+00:00"
     },
     {
       "page": "jobs/hcltech-analyst-generative-ai.html",
       "batchId": "admin-40999090253",
       "status": "pending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T09:47:05.361893+00:00"
+      "dueAt": "2026-10-30T09:47:21.369600+00:00"
     },
     {
       "page": "jobs/heizen-associate-software-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T10:47:05.361893+00:00"
+      "dueAt": "2026-10-30T10:47:21.369600+00:00"
     },
     {
       "page": "jobs/konecranes-graduate-engineer-trainee-order-management.html",
       "batchId": "admin-40999090253",
       "status": "pending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T11:47:05.361893+00:00"
+      "dueAt": "2026-10-30T11:47:21.369600+00:00"
     },
     {
       "page": "jobs/medpace-junior-data-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T12:47:05.361893+00:00"
+      "dueAt": "2026-10-30T12:47:21.369600+00:00"
     }
   ]
 }
