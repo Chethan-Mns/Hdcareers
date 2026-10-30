@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-30T03:42:06.203Z",
+  "checkedAt": "2026-10-30T03:42:25.344Z",
   "checked": 180,
   "active": 166,
-  "expired": 13,
-  "review": 1,
-  "changedExpired": 13,
+  "expired": 14,
+  "review": 0,
+  "changedExpired": 1,
   "items": [
     {
       "id": 267,
@@ -1266,9 +1266,11 @@
       "role": "Associate Software Engineer - Release Engineer",
       "page": "jobs/veeva-systems-associate-software-engineer-release-engineer.html",
       "url": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-10-29T19:52:25.729429+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-10-30T03:42:25.344Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-10-30T03:42:25.344Z"
     },
     {
       "id": 138,

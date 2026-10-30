@@ -8119,9 +8119,9 @@
       "AWS"
     ],
     "apply": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0",
-    "status": "active",
+    "status": "expired",
     "sourceName": "Veeva Systems official Lever careers",
-    "verifiedDate": "13 Oct 2026",
+    "verifiedDate": "30 Oct 2026",
     "who": "1+ years in software release engineering or test automation; basic Java, Linux, scripting and CI/CD knowledge.",
     "workMode": "On-site",
     "jobId": "90e4e761-8dce-407c-a8bb-73781cc8b0d0",
@@ -8141,7 +8141,14 @@
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
     "logoPath": "assets/company-owner-submitted/veeva-owner-web-upload.webp",
-    "logoSourceDomain": "veeva.com"
+    "logoSourceDomain": "veeva.com",
+    "availabilityCheck": {
+      "id": 148,
+      "url": "https://jobs.lever.co/veeva/90e4e761-8dce-407c-a8bb-73781cc8b0d0",
+      "checkedAt": "2026-10-30T03:42:25.344Z",
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review."
+    }
   },
   {
     "page": "jobs/ey-associate-analyst-tax-global-compliance-reporting-mumbai-1750731.html",
