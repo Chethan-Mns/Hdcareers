@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:57.441Z",
+  "updatedAt": "2026-10-30T03:44:23.801Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -551,7 +551,7 @@
       "apply": "https://careers.medpace.com/jobs/11932?iis=Job+Board&iisn=LinkedIn&lang=en-us",
       "cat": "it",
       "expYears": "Entry level; internship experience in data or software engineering",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Medpace requisition 11932 is open for a full-time Navi Mumbai Junior Data Engineer and specifies a bachelor's degree plus internship-level experience.",
       "postedDate": null,
@@ -565,7 +565,7 @@
         "expYears": "Entry level; internship experience in data or software engineering",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Medpace Careers",
         "desc": "Junior data engineering role building and supporting data warehousing, ETL/ELT and business-intelligence systems.",
         "elig": "Bachelor's in Computer Science, Data Science or related field; internship experience in Data or Software Engineering.",
@@ -587,13 +587,17 @@
         "jobId": "11932",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:44:23.801Z",
+        "browserVerifiedAt": "2026-10-30T03:44:23.801Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Medpace requisition 11932 is open for a full-time Navi Mumbai Junior Data Engineer and specifies a bachelor's degree plus internship-level experience."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:44:23.801Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "brillio-r01571250",
