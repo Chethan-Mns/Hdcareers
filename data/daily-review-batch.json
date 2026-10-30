@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:27.050Z",
+  "updatedAt": "2026-10-30T03:43:38.801Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -340,7 +340,7 @@
       "apply": "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
       "cat": "non-it",
       "expYears": "Fresh graduate / entry level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Hitachi-hosted GlobalLogic requisition IRC306734 has Apply Now, was posted 26 Oct 2026 and explicitly requests fresh graduates.",
       "postedDate": "2026-10-26",
@@ -354,7 +354,7 @@
         "expYears": "Fresh graduate / entry level",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Hitachi / GlobalLogic Careers",
         "desc": "Entry-level non-technical analyst role supporting data research, trend analysis, risk detection and operational quality.",
         "elig": "Any fresh graduate with provisional certificate and consolidated marks memo; immediate joining, office and rotational-shift readiness.",
@@ -374,13 +374,17 @@
         "jobId": "IRC306734",
         "date": "2026-10-26",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:38.801Z",
+        "browserVerifiedAt": "2026-10-30T03:43:38.801Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Hitachi-hosted GlobalLogic requisition IRC306734 has Apply Now, was posted 26 Oct 2026 and explicitly requests fresh graduates."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:38.801Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-aioc-s01668426",
