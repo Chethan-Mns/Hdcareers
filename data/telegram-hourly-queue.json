@@ -1016,9 +1016,11 @@
     {
       "page": "jobs/circuvent-graduate-engineer-trainee-eee-ece-cse.html",
       "batchId": "admin-40999090253",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T07:46:48.711885+00:00"
+      "dueAt": "2026-10-30T07:46:48.711885+00:00",
+      "claimId": "41022181033",
+      "claimedAt": "2026-10-30T07:46:59.872879+00:00"
     },
     {
       "page": "jobs/globallogic-associate-analyst-freshers-non-technical-non-voice.html",
