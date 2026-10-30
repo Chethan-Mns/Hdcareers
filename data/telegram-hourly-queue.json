@@ -975,62 +975,74 @@
     {
       "page": "jobs/accenture-procurement-practice-new-associate.html",
       "batchId": "admin-40999090253",
-      "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "status": "sending",
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00",
+      "claimId": "40999090253",
+      "claimedAt": "2026-10-30T03:45:40.323748+00:00"
     },
     {
       "page": "jobs/apna-product-operations-associate.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/beryl-systems-graduate-engineer-trainee.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/brillio-associate-data-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/circuvent-graduate-engineer-trainee-eee-ece-cse.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/globallogic-associate-analyst-freshers-non-technical-non-voice.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/hcltech-analyst-generative-ai.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/heizen-associate-software-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/konecranes-graduate-engineer-trainee-order-management.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     },
     {
       "page": "jobs/medpace-junior-data-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
-      "queuedAt": "2026-10-30T03:45:25.745655+00:00"
+      "queuedAt": "2026-10-30T03:45:25.745655+00:00",
+      "dueAt": "2026-10-30T03:45:25.745655+00:00"
     }
   ]
 }
