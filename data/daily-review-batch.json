@@ -1,8 +1,8 @@
 {
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
-  "status": "reviewing",
-  "updatedAt": "2026-10-30T03:44:40.783Z",
+  "status": "submitted",
+  "updatedAt": "2026-10-30T03:44:52.811Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -837,5 +837,47 @@
         "internshipOrApprenticeship": 1
       }
     }
+  },
+  "submittedAt": "2026-10-30T03:44:52.811Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01668426",
+      "apna-357ceb0335",
+      "beryl-get-20261005",
+      "brillio-r01571250",
+      "circuvent-job-48",
+      "globallogic-irc306734",
+      "hcltech-167256",
+      "heizen-associate-software-engineer",
+      "konecranes-744000143236649",
+      "medpace-11932"
+    ],
+    "companies": [
+      "Accenture",
+      "Apna",
+      "Beryl Systems",
+      "Brillio",
+      "Circuvent",
+      "GlobalLogic",
+      "HCLTech",
+      "Heizen",
+      "Konecranes",
+      "Medpace"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
+      "https://careers.apna.co/_/j/357CEB0335",
+      "https://berylsystems.com/careers/graduate-engineer-trainee",
+      "https://jobs.lever.co/brillio-2/f7f9f468-7bda-42c4-9904-2a191eabc5fb",
+      "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
+      "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
+      "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
+      "https://www.heizen.work/careers/associate-software-engineer",
+      "https://jobs.smartrecruiters.com/Konecranes/744000143236649-graduate-engineer-trainee-order-management",
+      "https://careers.medpace.com/jobs/11932?iis=Job+Board&iisn=LinkedIn&lang=en-us"
+    ],
+    "requestId": "d3b85d3b1dedb863aebe8750",
+    "count": 10,
+    "submittedAt": "2026-10-30T03:44:52.811Z"
   }
 }
