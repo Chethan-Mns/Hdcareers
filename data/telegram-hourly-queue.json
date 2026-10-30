@@ -1066,11 +1066,12 @@
     {
       "page": "jobs/medpace-junior-data-engineer.html",
       "batchId": "admin-40999090253",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T12:48:11.637590+00:00",
       "claimId": "41058109037",
-      "claimedAt": "2026-10-30T12:48:26.882117+00:00"
+      "claimedAt": "2026-10-30T12:48:26.882117+00:00",
+      "messageId": 630,
+      "deliveredAt": "2026-10-30T12:48:29.965709+00:00"
     }
   ]
 }
