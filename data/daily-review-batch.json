@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:49.163Z",
+  "updatedAt": "2026-10-30T03:43:57.441Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -498,7 +498,7 @@
       "apply": "https://altera.wd1.myworkdayjobs.com/en-US/Altera/job/AI-Automation-Intern_R03117",
       "cat": "it",
       "expYears": "Current student or recent graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Altera Workday requisition R03117 is currently indexed with a job-bound application route for Bengaluru and current students or recent graduates.",
       "postedDate": null,
@@ -512,7 +512,7 @@
         "expYears": "Current student or recent graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Altera Workday",
         "desc": "AI automation internship supporting software and workflow automation using scripting and AI tools.",
         "elig": "Currently pursuing or recently completed a relevant degree; programming exposure in Python or JavaScript.",
@@ -537,7 +537,9 @@
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native Altera Workday requisition R03117 is currently indexed with a job-bound application route for Bengaluru and current students or recent graduates."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:57.441Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
