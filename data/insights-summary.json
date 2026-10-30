@@ -1,8 +1,8 @@
 {
   "verifiedThrough": "30 October 2026",
-  "active": 176,
-  "employers": 118,
-  "freshers": 109,
+  "active": 177,
+  "employers": 119,
+  "freshers": 110,
   "experienced": 56,
   "locations": [
     {
@@ -201,11 +201,11 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 29
+      "count": 30
     },
     {
       "label": "Java",
-      "count": 22
+      "count": 23
     },
     {
       "label": "SQL",
@@ -278,11 +278,11 @@
       "count": 3
     },
     {
-      "label": "walkin",
-      "count": 1
+      "label": "campus",
+      "count": 2
     },
     {
-      "label": "campus",
+      "label": "walkin",
       "count": 1
     }
   ],
@@ -401,7 +401,7 @@
     },
     {
       "date": "2026-10-30",
-      "count": 34
+      "count": 35
     }
   ]
 }
