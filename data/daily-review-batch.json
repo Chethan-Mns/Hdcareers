@@ -327,7 +327,7 @@
         "role": "Associate Analyst – Freshers (Non Technical / Non Voice)",
         "loc": "Hyderabad, Telangana, India",
         "apply": "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Fresh graduate / entry level",
         "salary": "Not Disclosed",
@@ -377,7 +377,7 @@
         "role": "Procurement Practice New Associate",
         "loc": "Noida, Uttar Pradesh, India",
         "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
@@ -426,7 +426,7 @@
         "role": "Intern – Income Tax Laws",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Income-Tax-Laws-Bengaluru-Business-Tax/61065444/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "internship",
         "expYears": "Fresher; no experience accepted",
         "salary": "Not Disclosed",
@@ -679,7 +679,7 @@
         "role": "Product Operations Associate",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://careers.apna.co/_/j/357CEB0335",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
@@ -814,33 +814,43 @@
     }
   ],
   "discoveryAudit": {
-    "watchlistEmployerCount": 87,
-    "watchlistEmployersVisited": 32,
-    "watchlistEmployersNotVisited": 55,
-    "blockedWatchlistPortalChecks": 5,
-    "uniqueOfficialExactCandidatesScreened": 31,
-    "stagedCandidates": 16,
-    "watchlistCandidatesStaged": 5,
-    "fallbackCandidatesStaged": 11,
-    "verificationVerdicts": {
-      "live": 14,
-      "review": 2,
-      "expired": 0
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
     },
-    "duplicateCandidatesExcluded": 8,
-    "confirmedExpiredCandidatesExcluded": 5,
-    "sourceUnconfirmedOrIneligibleHeld": 11,
-    "duplicateExamples": [
-      "Pitney Bowes R22023 (prior reviewed archive)",
-      "Ingram Micro R-115589 (prior reviewed archive)",
-      "Jio 87176911 (existing employer+role)",
-      "Amazon 10453457 (existing employer+role)",
-      "EY 1719745 (existing employer+role)",
-      "Wipro 207749 (existing employer+role)",
-      "GE HealthCare R4044668 (existing employer+role)",
-      "Hevo 993a3ed3 (existing exact requisition)"
-    ],
-    "notes": "Deloitte was checked first. Discovery continued beyond the priority group; candidates without an exact employer-bound application URL, zero-experience evidence or complete source content were held instead of staged."
+    "backup": {
+      "size": 6,
+      "counts": {
+        "fresherIT": 3,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 1
+      },
+      "shortfalls": {
+        "fresherIT": 3,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 16,
+    "duplicateExclusions": [],
+    "excludedCount": 0,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "targetPerList": {
