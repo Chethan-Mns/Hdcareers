@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:42:59.251Z",
+  "updatedAt": "2026-10-30T03:43:04.741Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -67,7 +67,7 @@
       "apply": "https://careers.moodys.com/en/job/greater-noida/assc-analytics-and-model-analyst/49841/100712304752",
       "cat": "it",
       "expYears": "0–2 years of academic, internship or professional experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Moody's job reference 14415 has Apply now, Noida location, 12 Oct 2026 posting date and explicitly permits 0–2 years including academic or internship experience.",
       "postedDate": "2026-10-12",
@@ -81,7 +81,7 @@
         "expYears": "0–2 years of academic, internship or professional experience",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Moody's Careers",
         "desc": "Early-career data analytics role supporting property, geospatial and risk datasets and analytical products.",
         "elig": "Bachelor's or Master's in Engineering, Data Science, Statistics, Mathematics, Computer Science, Applied Statistics, GIS, Remote Sensing, Actuarial Science, or MBA/PGDM in Data Analytics; 0–2 years.",
@@ -108,7 +108,9 @@
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Moody's job reference 14415 has Apply now, Noida location, 12 Oct 2026 posting date and explicitly permits 0–2 years including academic or internship experience."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:04.741Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "konecranes-744000143236649",
