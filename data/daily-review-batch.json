@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:44:28.569Z",
+  "updatedAt": "2026-10-30T03:44:33.353Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -663,7 +663,7 @@
       "apply": "https://careers.apna.co/_/j/357CEB0335",
       "cat": "non-it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Apna employer requisition 357CEB0335 is indexed with a job-bound application route, Bengaluru location and 0–2 year requirement.",
       "postedDate": null,
@@ -677,7 +677,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Apna Careers",
         "desc": "Early-career product operations role improving user journeys, operational workflows, analytics and AI-assisted experiences.",
         "elig": "0–2 years in product operations, business operations, product, analytics, consulting, founder's office or similar; strong analytical and communication ability.",
@@ -698,13 +698,17 @@
         "jobId": "357CEB0335",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:44:33.353Z",
+        "browserVerifiedAt": "2026-10-30T03:44:33.353Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Apna employer requisition 357CEB0335 is indexed with a job-bound application route, Bengaluru location and 0–2 year requirement."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:44:33.353Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "walmart-r-2607497",
