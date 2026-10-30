@@ -1056,18 +1056,19 @@
     {
       "page": "jobs/konecranes-graduate-engineer-trainee-order-management.html",
       "batchId": "admin-40999090253",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T11:47:53.358278+00:00",
       "claimId": "41050660743",
-      "claimedAt": "2026-10-30T11:48:06.551884+00:00"
+      "claimedAt": "2026-10-30T11:48:06.551884+00:00",
+      "messageId": 629,
+      "deliveredAt": "2026-10-30T11:48:11.637590+00:00"
     },
     {
       "page": "jobs/medpace-junior-data-engineer.html",
       "batchId": "admin-40999090253",
       "status": "pending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T12:47:53.358278+00:00"
+      "dueAt": "2026-10-30T12:48:11.637590+00:00"
     }
   ]
 }
