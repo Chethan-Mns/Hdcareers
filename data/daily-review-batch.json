@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:38:51.124Z",
+  "updatedAt": "2026-10-30T03:40:13.883Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -562,55 +562,6 @@
       }
     },
     {
-      "id": "reliaquest-r15032",
-      "company": "ReliaQuest",
-      "role": "Associate Software Engineer",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Engineer_R15032",
-      "cat": "it",
-      "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "review",
-      "verificationReason": "Exact ReliaQuest Workday requisition R15032 remains provider-indexed today with 0–1 year eligibility, but the page body was not readable in the automated recheck; owner should confirm current Apply before selection.",
-      "postedDate": null,
-      "job": {
-        "company": "ReliaQuest",
-        "role": "Associate Software Engineer",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Engineer_R15032",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "ReliaQuest Workday",
-        "desc": "Associate software engineering role building code and data automation for cybersecurity detection and response.",
-        "elig": "0–1 year of software-development experience; Java, Spring Boot and microservices knowledge.",
-        "resp": [
-          "Write code supporting security detection and response automation.",
-          "Develop Java and Spring Boot microservices.",
-          "Work with data and engineering teams to improve product capabilities."
-        ],
-        "skills": [
-          "Java",
-          "Spring Boot",
-          "Microservices",
-          "Data automation"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R15032",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "review",
-        "officialEvidence": "Exact ReliaQuest Workday requisition R15032 remains provider-indexed today with 0–1 year eligibility, but the page body was not readable in the automated recheck; owner should confirm current Apply before selection."
-      }
-    },
-    {
       "id": "brillio-r01571250",
       "company": "Brillio",
       "role": "Associate Data Engineer",
@@ -714,56 +665,6 @@
       }
     },
     {
-      "id": "infobip-jr104878",
-      "company": "Infobip",
-      "role": "Solution Engineering Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://infobip.wd3.myworkdayjobs.com/en-US/InfobipCareers/job/Solution-Engineering-Intern_JR104878",
-      "cat": "it",
-      "expYears": "Current student or recent graduate",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "review",
-      "verificationReason": "Exact Infobip Workday requisition JR104878 is provider-indexed for Bengaluru, but the page body was not readable in the automated current recheck; owner should confirm Apply remains open.",
-      "postedDate": null,
-      "job": {
-        "company": "Infobip",
-        "role": "Solution Engineering Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://infobip.wd3.myworkdayjobs.com/en-US/InfobipCareers/job/Solution-Engineering-Intern_JR104878",
-        "cat": "it",
-        "expType": "internship",
-        "expYears": "Current student or recent graduate",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Infobip Workday",
-        "desc": "Solution engineering internship supporting technical discovery, integrations and customer-facing solution work.",
-        "elig": "Current bachelor's/master's student or recent graduate; programming exposure such as Python or JavaScript is advantageous.",
-        "resp": [
-          "Support technical solution discovery and demonstrations.",
-          "Assist with integrations, testing and documentation.",
-          "Collaborate with solution engineers and customer-facing teams."
-        ],
-        "skills": [
-          "Python",
-          "JavaScript",
-          "APIs",
-          "Solution engineering",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR104878",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "review",
-        "officialEvidence": "Exact Infobip Workday requisition JR104878 is provider-indexed for Bengaluru, but the page body was not readable in the automated current recheck; owner should confirm Apply remains open."
-      }
-    },
-    {
       "id": "walmart-r-2607497",
       "company": "Walmart",
       "role": "Grad Intern – No Work Experience",
@@ -850,7 +751,15 @@
     "duplicateExclusions": [],
     "excludedCount": 0,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "stagedCandidates": 14,
+    "fallbackCandidatesStaged": 9,
+    "verificationVerdicts": {
+      "live": 14,
+      "review": 0,
+      "expired": 0
+    },
+    "sourceUnconfirmedOrIneligibleHeld": 13
   },
   "quotaAudit": {
     "targetPerList": {
@@ -870,14 +779,14 @@
       }
     },
     "backup": {
-      "total": 6,
-      "technicalFullTime": 3,
+      "total": 4,
+      "technicalFullTime": 2,
       "nonTechnicalFullTime": 1,
-      "internshipOrApprenticeship": 2,
+      "internshipOrApprenticeship": 1,
       "shortfall": {
-        "technicalFullTime": 3,
+        "technicalFullTime": 4,
         "nonTechnicalFullTime": 1,
-        "internshipOrApprenticeship": 0
+        "internshipOrApprenticeship": 1
       }
     }
   }
