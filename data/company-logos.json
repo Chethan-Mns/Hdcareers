@@ -1494,5 +1494,72 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1369,
     "bytes": 77860
+  },
+  "Apna": {
+    "officialDomain": "apna.co",
+    "sourceUrl": "https://apna.co/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon default",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/apna-c4ca5df-5e97ab7306.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 640,
+    "bytes": 7017
+  },
+  "Beryl Systems": {
+    "officialDomain": "berylsystems.com",
+    "sourceUrl": "https://berylsystems.com/bs-logo.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/beryl-systems-a3193be-76e658bcdc.png",
+    "sourceDimensions": [
+      200,
+      200
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1320,
+    "bytes": 27232
+  },
+  "Circuvent": {
+    "officialDomain": "career.circuvent.com",
+    "sourceUrl": "https://circuvent.com/logo-mark.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/circuvent-858dfe4-35b55a10a5.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1632,
+    "bytes": 145348
+  },
+  "Heizen": {
+    "officialDomain": "heizen.work",
+    "sourceUrl": "https://www.heizen.work/web-app-manifest-512x512.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/heizen-dcf06e2-399895e8c5.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1632,
+    "bytes": 6071
+  },
+  "Medpace": {
+    "officialDomain": "medpace.com",
+    "sourceUrl": "https://www.medpace.com/wp-content/uploads/2023/04/medpace-logo_2023.svg",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/medpace-c32a563-ad022f01ad.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1700,
+    "bytes": 9232
   }
 }

@@ -103,5 +103,19 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/zeta-global-fp-a-associate-analyst.html"
+  },
+  "GlobalLogic": {
+    "status": "needs_review",
+    "company": "GlobalLogic",
+    "officialDomain": "hitachi.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
+    "jobPage": "jobs/globallogic-associate-analyst-freshers-non-technical-non-voice.html"
+  },
+  "Konecranes": {
+    "status": "needs_review",
+    "company": "Konecranes",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/konecranes-graduate-engineer-trainee-order-management.html"
   }
 }

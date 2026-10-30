@@ -1,13 +1,13 @@
 {
   "verifiedThrough": "30 October 2026",
-  "active": 167,
-  "employers": 111,
+  "active": 176,
+  "employers": 118,
   "freshers": 109,
-  "experienced": 47,
+  "experienced": 56,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 63
+      "count": 65
     },
     {
       "label": "Mumbai",
@@ -22,19 +22,19 @@
       "count": 8
     },
     {
+      "label": "Pune",
+      "count": 5
+    },
+    {
       "label": "Indore",
       "count": 5
     },
     {
-      "label": "Pune",
-      "count": 4
-    },
-    {
-      "label": "Delhi",
+      "label": "Noida",
       "count": 3
     },
     {
-      "label": "Ahmedabad",
+      "label": "Navi Mumbai",
       "count": 3
     }
   ],
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 63
+      "count": 65
     },
     {
       "city": "Mumbai",
@@ -64,16 +64,28 @@
       "count": 8
     },
     {
+      "city": "Pune",
+      "lat": 18.5204,
+      "lng": 73.8567,
+      "count": 5
+    },
+    {
       "city": "Indore",
       "lat": 22.7196,
       "lng": 75.8577,
       "count": 5
     },
     {
-      "city": "Pune",
-      "lat": 18.5204,
-      "lng": 73.8567,
-      "count": 4
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
+      "count": 3
+    },
+    {
+      "city": "Navi Mumbai",
+      "lat": 19.033,
+      "lng": 73.0297,
+      "count": 3
     },
     {
       "city": "Delhi",
@@ -97,18 +109,6 @@
       "city": "Jaipur",
       "lat": 26.9124,
       "lng": 75.7873,
-      "count": 2
-    },
-    {
-      "city": "Navi Mumbai",
-      "lat": 19.033,
-      "lng": 73.0297,
-      "count": 2
-    },
-    {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
       "count": 2
     },
     {
@@ -149,12 +149,12 @@
     },
     {
       "name": "HCLTech",
-      "count": 6,
+      "count": 7,
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
       "name": "Accenture",
-      "count": 5,
+      "count": 6,
       "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
@@ -201,7 +201,7 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 24
+      "count": 29
     },
     {
       "label": "Java",
@@ -209,27 +209,31 @@
     },
     {
       "label": "SQL",
+      "count": 21
+    },
+    {
+      "label": "Communication",
       "count": 17
     },
     {
       "label": "JavaScript",
-      "count": 16
-    },
-    {
-      "label": "Communication",
-      "count": 14
+      "count": 17
     },
     {
       "label": "REST APIs",
-      "count": 13
+      "count": 15
     },
     {
       "label": "Problem solving",
-      "count": 13
+      "count": 14
     },
     {
       "label": "Git",
-      "count": 11
+      "count": 12
+    },
+    {
+      "label": "Attention to detail",
+      "count": 9
     },
     {
       "label": "C++",
@@ -244,10 +248,6 @@
       "count": 9
     },
     {
-      "label": "Attention to detail",
-      "count": 8
-    },
-    {
       "label": "CSS",
       "count": 8
     },
@@ -259,11 +259,11 @@
   "categories": [
     {
       "label": "it",
-      "count": 79
+      "count": 85
     },
     {
       "label": "nonit",
-      "count": 39
+      "count": 42
     },
     {
       "label": "internship",
@@ -345,7 +345,7 @@
     },
     {
       "date": "2026-10-13",
-      "count": 7
+      "count": 6
     },
     {
       "date": "2026-10-15",
@@ -401,7 +401,7 @@
     },
     {
       "date": "2026-10-30",
-      "count": 24
+      "count": 34
     }
   ]
 }
