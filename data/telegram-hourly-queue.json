@@ -996,9 +996,11 @@
     {
       "page": "jobs/beryl-systems-graduate-engineer-trainee.html",
       "batchId": "admin-40999090253",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T05:46:18.976478+00:00"
+      "dueAt": "2026-10-30T05:46:18.976478+00:00",
+      "claimId": "41010271084",
+      "claimedAt": "2026-10-30T05:46:29.883431+00:00"
     },
     {
       "page": "jobs/brillio-associate-data-engineer.html",
