@@ -1026,9 +1026,11 @@
     {
       "page": "jobs/globallogic-associate-analyst-freshers-non-technical-non-voice.html",
       "batchId": "admin-40999090253",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-30T03:45:25.745655+00:00",
-      "dueAt": "2026-10-30T08:47:05.361893+00:00"
+      "dueAt": "2026-10-30T08:47:05.361893+00:00",
+      "claimId": "41028787123",
+      "claimedAt": "2026-10-30T08:47:17.276763+00:00"
     },
     {
       "page": "jobs/hcltech-analyst-generative-ai.html",
