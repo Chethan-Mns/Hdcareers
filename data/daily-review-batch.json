@@ -2,7 +2,7 @@
   "batchId": "2026-10-30-0900-ist",
   "generatedAt": "2026-10-30T03:38:51.124Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-30T03:43:10.257Z",
+  "updatedAt": "2026-10-30T03:43:15.627Z",
   "priority": [
     {
       "id": "hcltech-167256",
@@ -226,7 +226,7 @@
       "apply": "https://www.heizen.work/careers/associate-software-engineer",
       "cat": "it",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Heizen employer page has a job-bound application route and explicitly states 0–2 years, Hyderabad/remote location and degree requirements.",
       "postedDate": null,
@@ -240,7 +240,7 @@
         "expYears": "0–2 years",
         "salary": "₹6–8 lakh fixed plus performance bonus and ESOPs (as posted)",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Heizen Careers",
         "desc": "Entry-level software engineering role contributing to backend and frontend features, APIs, databases, testing and deployment.",
         "elig": "Bachelor's degree in Computer Science, Engineering or related field; 0–2 years; proficiency in a programming language.",
@@ -263,13 +263,17 @@
         "jobId": "associate-software-engineer",
         "date": "Not Specified",
         "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-30T03:43:15.627Z",
+        "browserVerifiedAt": "2026-10-30T03:43:15.627Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-30T03:38:51.124Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Heizen employer page has a job-bound application route and explicitly states 0–2 years, Hyderabad/remote location and degree requirements."
-      }
+      },
+      "reviewedAt": "2026-10-30T03:43:15.627Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "circuvent-job-48",
