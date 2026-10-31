@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:44.384Z",
+  "updatedAt": "2026-10-31T05:37:49.545Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -831,7 +831,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Three-month internship; no prior work-experience requirement stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Paytm Lever requisition is open with a job-bound Apply form and explicitly lists a graduate/MBA three-month internship.",
       "postedDate": null,
@@ -865,13 +865,17 @@
         "jobId": "0ecd9d93-e4f3-4dd0-a22e-852fec9b6e02",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:49.545Z",
+        "browserVerifiedAt": "2026-10-31T05:37:49.545Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Paytm Lever requisition is open with a job-bound Apply form and explicitly lists a graduate/MBA three-month internship."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:49.545Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
