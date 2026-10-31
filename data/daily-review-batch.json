@@ -1,8 +1,8 @@
 {
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:49.545Z",
+  "status": "submitted",
+  "updatedAt": "2026-10-31T05:38:32.380Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -950,8 +950,45 @@
     ]
   },
   "publication": {
-    "authorized": false,
-    "status": "not_started",
-    "note": "Discovery and owner review only. No website, jobs.json, publish request, or Telegram action was performed."
-  }
+    "candidateIds": [
+      "accenture-aioc-s01672816",
+      "capgemini-530902",
+      "cognizant-00070764861",
+      "deloitte-60770544",
+      "manulife-jr26100119",
+      "metro-744000157778959",
+      "microsoft-1970393557050388",
+      "motorola-r69389",
+      "paytm-0ecd9d93",
+      "pitney-bowes-r22357"
+    ],
+    "companies": [
+      "Accenture",
+      "Capgemini",
+      "Cognizant",
+      "Deloitte",
+      "Manulife",
+      "METRO Global Solution Center",
+      "Microsoft",
+      "Motorola Solutions",
+      "Paytm",
+      "Pitney Bowes"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672816_en",
+      "https://careers.capgemini.com/job/Navi-Mumbai-Chartered-Accountant-%28CA-Fresher%29/1447602933/",
+      "https://careers.cognizant.com/global-en/jobs/00070764861/pe-policy-servicing/",
+      "https://southasiacareers.deloitte.com/job/Delhi-Intern-CEO%27S-OFFICE-Delhi-CEO%27s-Office/60770544/",
+      "https://manulife.wd3.myworkdayjobs.com/en-US/MFCJH_Jobs/job/Kuala-Lumpur-Wilayah-Persekutuan-Kuala-Lumpur/Associate-Full-stack-Software-Engineer_JR26100119",
+      "https://jobs.smartrecruiters.com/METROMAKRO/744000157778959-associate-accounts-payable-fresher-",
+      "https://apply.careers.microsoft.com/careers/job/1970393557050388?hl=en",
+      "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Software-Engineer--Fresh-Graduate-_R69389-1",
+      "https://jobs.lever.co/paytm/0ecd9d93-e4f3-4dd0-a22e-852fec9b6e02",
+      "https://pitneybowes.wd1.myworkdayjobs.com/en-US/PBCareers/job/Graduate-Engineer-Trainee_R22357"
+    ],
+    "requestId": "7ddfad125f5e71126a3510c4",
+    "count": 10,
+    "submittedAt": "2026-10-31T05:38:32.380Z"
+  },
+  "submittedAt": "2026-10-31T05:38:32.380Z"
 }
