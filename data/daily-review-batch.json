@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:14.706Z",
+  "updatedAt": "2026-10-31T05:36:21.684Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -231,7 +231,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Accenture job AIOC-S01672816 is open with a job-bound Apply route and states any graduation with 0–1 years.",
       "postedDate": null,
@@ -265,13 +265,17 @@
         "jobId": "AIOC-S01672816",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:36:21.684Z",
+        "browserVerifiedAt": "2026-10-31T05:36:21.684Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Accenture job AIOC-S01672816 is open with a job-bound Apply route and states any graduation with 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:36:21.684Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cognizant-00070764861",
