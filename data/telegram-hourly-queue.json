@@ -1147,25 +1147,26 @@
     {
       "page": "jobs/motorola-solutions-software-engineer-fresh-graduate.html",
       "batchId": "admin-41173410408",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T12:41:09.085849+00:00",
       "claimId": "41202204151",
-      "claimedAt": "2026-10-31T12:41:18.536416+00:00"
+      "claimedAt": "2026-10-31T12:41:18.536416+00:00",
+      "messageId": 638,
+      "deliveredAt": "2026-10-31T12:41:22.072113+00:00"
     },
     {
       "page": "jobs/paytm-hr-onboarding-intern.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T13:41:09.085849+00:00"
+      "dueAt": "2026-10-31T13:41:22.072113+00:00"
     },
     {
       "page": "jobs/pitney-bowes-graduate-engineer-trainee.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T14:41:09.085849+00:00"
+      "dueAt": "2026-10-31T14:41:22.072113+00:00"
     }
   ]
 }
