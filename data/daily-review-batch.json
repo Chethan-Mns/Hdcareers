@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:08.385Z",
+  "updatedAt": "2026-10-31T05:37:15.625Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -558,7 +558,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduates encouraged",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Manulife Workday requisition JR26100119 is open with a 31 Dec 2026 closing date and explicitly encourages fresh graduates.",
       "postedDate": "2026-10-30",
@@ -592,13 +592,17 @@
         "jobId": "JR26100119",
         "date": "2026-10-30",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:15.625Z",
+        "browserVerifiedAt": "2026-10-31T05:37:15.625Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Manulife Workday requisition JR26100119 is open with a 31 Dec 2026 closing date and explicitly encourages fresh graduates."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:15.625Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cadence-r55538",
