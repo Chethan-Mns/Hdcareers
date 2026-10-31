@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:28.440Z",
+  "updatedAt": "2026-10-31T05:36:34.967Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -341,7 +341,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; no prior work-experience requirement stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Deloitte was checked first. Exact Deloitte South Asia requisition 60770544 is open with a job-bound Apply route and is an internship with no prior-experience requirement shown.",
       "postedDate": null,
@@ -374,13 +374,17 @@
         "jobId": "60770544",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:36:34.967Z",
+        "browserVerifiedAt": "2026-10-31T05:36:34.967Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Deloitte was checked first. Exact Deloitte South Asia requisition 60770544 is open with a job-bound Apply route and is an internship with no prior-experience requirement shown."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:36:34.967Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "honeywell-160481",
