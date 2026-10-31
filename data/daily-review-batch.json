@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:40.442Z",
+  "updatedAt": "2026-10-31T05:37:44.384Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -776,7 +776,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Six-month internship; no prior work-experience requirement stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Stable Money Lever requisition is open with a job-bound Apply form and states a six-month Bengaluru internship.",
       "postedDate": null,
@@ -810,13 +810,17 @@
         "jobId": "0ad30e4b-eed9-4a48-9bfd-80479ad86771",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:44.384Z",
+        "browserVerifiedAt": "2026-10-31T05:37:44.384Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Stable Money Lever requisition is open with a job-bound Apply form and states a six-month Bengaluru internship."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:44.384Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "paytm-0ecd9d93",
