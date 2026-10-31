@@ -1157,18 +1157,19 @@
     {
       "page": "jobs/paytm-hr-onboarding-intern.html",
       "batchId": "admin-41173410408",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T13:41:22.072113+00:00",
       "claimId": "41206697685",
-      "claimedAt": "2026-10-31T13:41:33.655438+00:00"
+      "claimedAt": "2026-10-31T13:41:33.655438+00:00",
+      "messageId": 639,
+      "deliveredAt": "2026-10-31T13:41:36.149787+00:00"
     },
     {
       "page": "jobs/pitney-bowes-graduate-engineer-trainee.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T14:41:22.072113+00:00"
+      "dueAt": "2026-10-31T14:41:36.149787+00:00"
     }
   ]
 }
