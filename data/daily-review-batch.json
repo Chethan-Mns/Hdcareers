@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:46.454Z",
+  "updatedAt": "2026-10-31T05:36:59.503Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -448,7 +448,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduates encouraged; internships, projects and training count",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact DXC Workday requisition 51587968 is open and explicitly encourages fresh graduates, while counting internships and academic projects as experience.",
       "postedDate": "2026-10-10",
@@ -462,7 +462,7 @@
         "expYears": "Fresh graduates encouraged; internships, projects and training count",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "DXC Technology Careers",
         "desc": "Junior Java application-support engineering role maintaining business-critical systems and resolving technical incidents.",
         "elig": "Bachelor's degree in Computer Science, IT, Software Engineering or related field; fresh graduates with Java project or internship experience are encouraged.",
@@ -489,7 +489,9 @@
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact DXC Workday requisition 51587968 is open and explicitly encourages fresh graduates, while counting internships and academic projects as experience."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:36:59.503Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "motorola-r69389",
