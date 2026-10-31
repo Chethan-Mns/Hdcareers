@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T03:30:00.000Z",
+  "updatedAt": "2026-10-31T05:35:42.431Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "No required prior experience stated; 1+ year is preferred, not mandatory",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Microsoft job-bound application page is open, updated 29 Oct 2026, and lists a bachelor's degree plus coding skills without mandatory prior work experience.",
       "postedDate": "2026-10-29",
@@ -46,13 +46,17 @@
         "jobId": "1970393557050388",
         "date": "2026-10-29",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:35:42.403Z",
+        "browserVerifiedAt": "2026-10-31T05:35:42.403Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Microsoft job-bound application page is open, updated 29 Oct 2026, and lists a bachelor's degree plus coding skills without mandatory prior work experience."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:35:42.403Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "micron-jr115187",
