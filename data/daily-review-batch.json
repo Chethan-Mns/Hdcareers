@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:59.503Z",
+  "updatedAt": "2026-10-31T05:37:08.385Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -502,7 +502,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduate / entry level",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Motorola Solutions Workday requisition R69389 is open, labeled New Grad, and explicitly welcomes fresh graduates and entry-level applicants.",
       "postedDate": null,
@@ -537,13 +537,17 @@
         "jobId": "R69389",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:08.385Z",
+        "browserVerifiedAt": "2026-10-31T05:37:08.385Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Motorola Solutions Workday requisition R69389 is open, labeled New Grad, and explicitly welcomes fresh graduates and entry-level applicants."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:08.385Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "manulife-jr26100119",
