@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:35.900Z",
+  "updatedAt": "2026-10-31T05:37:40.442Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -721,7 +721,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresher; no work experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact employer-authorized SmartRecruiters requisition 744000157778959 is open and explicitly says fresher with no work experience.",
       "postedDate": null,
@@ -755,13 +755,17 @@
         "jobId": "744000157778959",
         "date": "Not Specified",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:40.441Z",
+        "browserVerifiedAt": "2026-10-31T05:37:40.441Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact employer-authorized SmartRecruiters requisition 744000157778959 is open and explicitly says fresher with no work experience."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:40.441Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "stable-money-0ad30e4b",
