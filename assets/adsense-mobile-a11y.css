@@ -49,3 +49,24 @@
   .reveal-on-scroll,.reveal-card{animation:none!important;transition:none!important}
   #homeView,.reveal-on-scroll,.reveal-card{opacity:1!important;transform:none!important}
 }
+
+/* AdSense review readiness: keep important content immediately visible and
+   reachable on low-end mobile devices without changing HD Careers branding. */
+@media (max-width:767px){
+  /* The desktop hero entrance can otherwise delay the mobile LCP element. */
+  .hdp-hero .hdp-hero-grid > div:first-child{
+    animation:none!important;opacity:1!important;transform:none!important;
+  }
+  .hdp-hero h1{font-size:clamp(30px,8vw,38px);line-height:1.16}
+  .hdp-hero p,.hdp-heading p,.hdp-trust-item p,
+  .hdp-featured-item p,.hdp-map-side p{font-size:14px!important;line-height:1.6!important}
+  .hdp-hero-notes,.hdp-featured-item .hdp-eligibility{font-size:13px!important;line-height:1.55!important}
+  .hdp-quick,.hdp-company,.hdp-apply,.hdp-hero-search button,
+  .category-scroll .pill,#filterTabs .pill{
+    min-height:44px;
+  }
+  .hdp-apply{display:flex!important;justify-content:center;align-items:center}
+  .hdp-hero-search{min-width:0;max-width:100%}
+  .hdp-hero-search input{min-width:0;font-size:16px}
+  .hdp-company h3{overflow-wrap:anywhere}
+}
