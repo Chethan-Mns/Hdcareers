@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:34.967Z",
+  "updatedAt": "2026-10-31T05:36:46.454Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -395,7 +395,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Bachelor-level internship; prior experience not required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Honeywell job 160481 is open on the official Oracle Recruiting career site and is explicitly a bachelor-level software engineering internship.",
       "postedDate": "2026-10-22",
@@ -409,7 +409,7 @@
         "expYears": "Bachelor-level internship; prior experience not required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Honeywell Careers",
         "desc": "Software engineering internship providing hands-on development experience on real projects with experienced engineers.",
         "elig": "Bachelor-level internship; the accessible official posting does not state a specific degree branch or graduation batch.",
@@ -433,7 +433,9 @@
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Honeywell job 160481 is open on the official Oracle Recruiting career site and is explicitly a bachelor-level software engineering internship."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:36:46.454Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
