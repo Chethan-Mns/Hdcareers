@@ -1117,9 +1117,11 @@
     {
       "page": "jobs/manulife-associate-full-stack-software-engineer.html",
       "batchId": "admin-41173410408",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T09:40:27.711229+00:00"
+      "dueAt": "2026-10-31T09:40:27.711229+00:00",
+      "claimId": "41189648592",
+      "claimedAt": "2026-10-31T09:40:38.017972+00:00"
     },
     {
       "page": "jobs/metro-global-solution-center-associate-accounts-payable-fresher.html",
