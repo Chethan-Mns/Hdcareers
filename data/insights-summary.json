@@ -1,20 +1,20 @@
 {
-  "verifiedThrough": "30 October 2026",
-  "active": 177,
-  "employers": 119,
-  "freshers": 110,
-  "experienced": 56,
+  "verifiedThrough": "31 October 2026",
+  "active": 186,
+  "employers": 122,
+  "freshers": 112,
+  "experienced": 63,
   "locations": [
     {
       "label": "Bengaluru",
       "count": 65
     },
     {
-      "label": "Mumbai",
-      "count": 15
+      "label": "Hyderabad",
+      "count": 14
     },
     {
-      "label": "Hyderabad",
+      "label": "Mumbai",
       "count": 14
     },
     {
@@ -23,19 +23,19 @@
     },
     {
       "label": "Pune",
+      "count": 7
+    },
+    {
+      "label": "Navi Mumbai",
+      "count": 5
+    },
+    {
+      "label": "Noida",
       "count": 5
     },
     {
       "label": "Indore",
       "count": 5
-    },
-    {
-      "label": "Noida",
-      "count": 3
-    },
-    {
-      "label": "Navi Mumbai",
-      "count": 3
     }
   ],
   "cityPins": [
@@ -46,15 +46,15 @@
       "count": 65
     },
     {
-      "city": "Mumbai",
-      "lat": 19.076,
-      "lng": 72.8777,
-      "count": 15
-    },
-    {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
+      "count": 14
+    },
+    {
+      "city": "Mumbai",
+      "lat": 19.076,
+      "lng": 72.8777,
       "count": 14
     },
     {
@@ -67,6 +67,18 @@
       "city": "Pune",
       "lat": 18.5204,
       "lng": 73.8567,
+      "count": 7
+    },
+    {
+      "city": "Navi Mumbai",
+      "lat": 19.033,
+      "lng": 73.0297,
+      "count": 5
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
       "count": 5
     },
     {
@@ -76,22 +88,10 @@
       "count": 5
     },
     {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
-      "count": 3
-    },
-    {
-      "city": "Navi Mumbai",
-      "lat": 19.033,
-      "lng": 73.0297,
-      "count": 3
-    },
-    {
       "city": "Delhi",
       "lat": 28.6139,
       "lng": 77.209,
-      "count": 3
+      "count": 4
     },
     {
       "city": "Ahmedabad",
@@ -148,19 +148,34 @@
       "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
+      "name": "Accenture",
+      "count": 7,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
       "name": "HCLTech",
       "count": 7,
       "logo": "assets/company-icons/hcltech-4735861.png"
     },
     {
-      "name": "Accenture",
-      "count": 6,
-      "logo": "assets/company-icons/accenture-05dffab.png"
+      "name": "Cognizant",
+      "count": 4,
+      "logo": "assets/company-icons/cognizant-8d169ac.png"
+    },
+    {
+      "name": "Deloitte",
+      "count": 4,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "Google",
       "count": 4,
       "logo": "assets/company-approved/google-owner-20261019.svg"
+    },
+    {
+      "name": "Capgemini",
+      "count": 3,
+      "logo": "assets/company-icons/capgemini-10eefd0.png"
     },
     {
       "name": "Endeavor IT Solution",
@@ -181,21 +196,6 @@
       "name": "Instawork",
       "count": 3,
       "logo": "assets/company-icons/instawork-1354fb3-766611ddc5.png"
-    },
-    {
-      "name": "Hevo Data",
-      "count": 3,
-      "logo": "assets/company-icons/hevo-data-998c6b2.png"
-    },
-    {
-      "name": "Deloitte",
-      "count": 3,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
-    },
-    {
-      "name": "Wipro",
-      "count": 3,
-      "logo": "assets/company-icons/wipro-6507802.png"
     }
   ],
   "topSkills": [
@@ -205,7 +205,7 @@
     },
     {
       "label": "Java",
-      "count": 23
+      "count": 24
     },
     {
       "label": "SQL",
@@ -213,7 +213,7 @@
     },
     {
       "label": "Communication",
-      "count": 17
+      "count": 18
     },
     {
       "label": "JavaScript",
@@ -232,11 +232,11 @@
       "count": 12
     },
     {
-      "label": "Attention to detail",
-      "count": 9
+      "label": "C++",
+      "count": 10
     },
     {
-      "label": "C++",
+      "label": "Attention to detail",
       "count": 9
     },
     {
@@ -248,26 +248,26 @@
       "count": 9
     },
     {
-      "label": "CSS",
+      "label": "Excel",
       "count": 8
     },
     {
-      "label": "Documentation",
+      "label": "CSS",
       "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 85
+      "count": 89
     },
     {
       "label": "nonit",
-      "count": 42
+      "count": 45
     },
     {
       "label": "internship",
-      "count": 39
+      "count": 41
     },
     {
       "label": "experienced",
@@ -373,7 +373,7 @@
     },
     {
       "date": "2026-10-23",
-      "count": 10
+      "count": 9
     },
     {
       "date": "2026-10-24",
@@ -402,6 +402,10 @@
     {
       "date": "2026-10-30",
       "count": 35
+    },
+    {
+      "date": "2026-10-31",
+      "count": 10
     }
   ]
 }
