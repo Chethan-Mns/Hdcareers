@@ -1127,9 +1127,11 @@
     {
       "page": "jobs/metro-global-solution-center-associate-accounts-payable-fresher.html",
       "batchId": "admin-41173410408",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T10:40:41.388653+00:00"
+      "dueAt": "2026-10-31T10:40:41.388653+00:00",
+      "claimId": "41193724335",
+      "claimedAt": "2026-10-31T10:40:51.939112+00:00"
     },
     {
       "page": "jobs/microsoft-software-engineering.html",
