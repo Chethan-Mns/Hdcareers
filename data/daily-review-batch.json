@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:37:23.330Z",
+  "updatedAt": "2026-10-31T05:37:35.900Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -666,7 +666,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "CA fresher, 2025 or 2026 batch",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Capgemini requisition 530902 remains open and explicitly requires a CA fresher from the 2025 or 2026 batch.",
       "postedDate": "2026-10-14",
@@ -700,13 +700,17 @@
         "jobId": "530902",
         "date": "2026-10-14",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:37:35.899Z",
+        "browserVerifiedAt": "2026-10-31T05:37:35.899Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Capgemini requisition 530902 remains open and explicitly requires a CA fresher from the 2025 or 2026 batch."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:37:35.899Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "metro-744000157778959",
