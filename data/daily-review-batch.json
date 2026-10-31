@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:35:42.431Z",
+  "updatedAt": "2026-10-31T05:35:57.301Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -67,7 +67,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduates may apply",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Micron Workday requisition JR115187 is present in the current official inventory; the posting identifies an associate role and explicitly allows fresh graduates.",
       "postedDate": "2026-10-27",
@@ -81,7 +81,7 @@
         "expYears": "Fresh graduates may apply",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Micron Careers",
         "desc": "Associate automation engineering role supporting manufacturing systems and software automation in Micron's Sanand operation.",
         "elig": "Degree in Electrical/Electronics, Computer Engineering, Computer Science or related field; fresh graduates may apply.",
@@ -109,7 +109,9 @@
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Micron Workday requisition JR115187 is present in the current official inventory; the posting identifies an associate role and explicitly allows fresh graduates."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:35:57.301Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "pitney-bowes-r22357",
