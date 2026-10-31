@@ -1,883 +1,903 @@
 {
-  "batchId": "2026-10-30-0900-ist",
-  "generatedAt": "2026-10-30T03:38:51.124Z",
-  "status": "submitted",
-  "updatedAt": "2026-10-30T03:44:52.811Z",
+  "batchId": "2026-10-31-0900-ist",
+  "generatedAt": "2026-10-31T03:30:00.000Z",
+  "status": "reviewing",
+  "updatedAt": "2026-10-31T03:30:00.000Z",
   "priority": [
     {
-      "id": "hcltech-167256",
-      "company": "HCLTech",
-      "role": "Analyst – Generative AI",
-      "loc": "Noida / Hyderabad / Chennai / Bengaluru / Pune, India",
-      "apply": "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
+      "id": "microsoft-1970393557050388",
+      "company": "Microsoft",
+      "role": "Software Engineering",
+      "loc": "Multiple locations, India",
+      "apply": "https://apply.careers.microsoft.com/careers/job/1970393557050388?hl=en",
       "cat": "it",
-      "expYears": "0–3 years, including fresh graduates",
-      "reviewedStatus": "live",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "No required prior experience stated; 1+ year is preferred, not mandatory",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact HCLTech requisition 167256 is publicly open and explicitly accepts engineering fresh graduates within 0–3 years.",
-      "postedDate": null,
+      "verificationReason": "Official Microsoft job-bound application page is open, updated 29 Oct 2026, and lists a bachelor's degree plus coding skills without mandatory prior work experience.",
+      "postedDate": "2026-10-29",
       "job": {
-        "company": "HCLTech",
-        "role": "Analyst – Generative AI",
-        "loc": "Noida / Hyderabad / Chennai / Bengaluru / Pune, India",
-        "apply": "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
+        "company": "Microsoft",
+        "role": "Software Engineering",
+        "loc": "Multiple locations, India",
+        "apply": "https://apply.careers.microsoft.com/careers/job/1970393557050388?hl=en",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–3 years, including fresh graduates",
+        "expYears": "No required prior experience stated; 1+ year is preferred, not mandatory",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "HCLTech Careers",
-        "desc": "Entry-level Generative AI engineering role developing AI agents and supporting model data, evaluation, deployment and optimization.",
-        "elig": "Engineering degree; 0–3 years including fresh graduates; Python knowledge and academic, internship or self-initiated AI/ML projects.",
+        "sourceName": "Microsoft Careers",
+        "desc": "Entry-level software engineering role contributing to product planning, design, development, testing and operational quality.",
+        "elig": "Bachelor's degree in Computer Science or related technical field; coding ability in C, C++, C#, Java, JavaScript or Python.",
         "resp": [
-          "Develop AI agents using LangGraph, LangChain and Python on cloud AI platforms.",
-          "Collect and preprocess data for model training, evaluation and deployment.",
-          "Optimize AI models and maintain technical documentation."
+          "Contribute to planning, design, implementation and testing of software features.",
+          "Write maintainable code and use automation to improve quality.",
+          "Work with guidance to diagnose issues and deliver reliable product improvements."
         ],
         "skills": [
-          "Python",
-          "Generative AI",
-          "LangGraph",
-          "LangChain",
-          "AI/ML",
-          "LLM applications"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "167256",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:42:59.224Z",
-        "browserVerifiedAt": "2026-10-30T03:42:59.224Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact HCLTech requisition 167256 is publicly open and explicitly accepts engineering fresh graduates within 0–3 years."
-      },
-      "reviewedAt": "2026-10-30T03:42:59.224Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "moodys-14415",
-      "company": "Moody's",
-      "role": "Associate Analytics & Model Analyst",
-      "loc": "Noida, India",
-      "apply": "https://careers.moodys.com/en/job/greater-noida/assc-analytics-and-model-analyst/49841/100712304752",
-      "cat": "it",
-      "expYears": "0–2 years of academic, internship or professional experience",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Moody's job reference 14415 has Apply now, Noida location, 12 Oct 2026 posting date and explicitly permits 0–2 years including academic or internship experience.",
-      "postedDate": "2026-10-12",
-      "job": {
-        "company": "Moody's",
-        "role": "Associate Analytics & Model Analyst",
-        "loc": "Noida, India",
-        "apply": "https://careers.moodys.com/en/job/greater-noida/assc-analytics-and-model-analyst/49841/100712304752",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years of academic, internship or professional experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Moody's Careers",
-        "desc": "Early-career data analytics role supporting property, geospatial and risk datasets and analytical products.",
-        "elig": "Bachelor's or Master's in Engineering, Data Science, Statistics, Mathematics, Computer Science, Applied Statistics, GIS, Remote Sensing, Actuarial Science, or MBA/PGDM in Data Analytics; 0–2 years.",
-        "resp": [
-          "Analyze structured, semi-structured and geospatial datasets for patterns and anomalies.",
-          "Perform validation, reconciliation, testing and data quality assurance.",
-          "Support analytical reports, dashboards, automation and AI-driven workflow improvements."
-        ],
-        "skills": [
-          "SQL",
-          "Python",
-          "Pandas",
-          "NumPy",
-          "Data analytics",
-          "Statistical analysis"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "14415",
-        "date": "2026-10-12",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Moody's job reference 14415 has Apply now, Noida location, 12 Oct 2026 posting date and explicitly permits 0–2 years including academic or internship experience."
-      },
-      "reviewedAt": "2026-10-30T03:43:04.741Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "konecranes-744000143236649",
-      "company": "Konecranes",
-      "role": "Graduate Engineer Trainee – Order Management",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236649-graduate-engineer-trainee-order-management",
-      "cat": "it",
-      "expYears": "0–1 year; freshers eligible",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Konecranes SmartRecruiters requisition 744000143236649 is open, full-time in Pune and states 0–1 year with freshers eligible.",
-      "postedDate": null,
-      "job": {
-        "company": "Konecranes",
-        "role": "Graduate Engineer Trainee – Order Management",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236649-graduate-engineer-trainee-order-management",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year; freshers eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Konecranes SmartRecruiters",
-        "desc": "Graduate engineering role supporting order management, production planning and cross-functional execution.",
-        "elig": "BE in Mechanical or Electrical Engineering; 0–1 year and freshers eligible.",
-        "resp": [
-          "Support order management and production-planning activities.",
-          "Coordinate engineering and operational inputs across teams.",
-          "Maintain accurate order and planning information."
-        ],
-        "skills": [
-          "Engineering fundamentals",
-          "Order management",
-          "Production planning",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000143236649",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:21.163Z",
-        "browserVerifiedAt": "2026-10-30T03:43:21.163Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Konecranes SmartRecruiters requisition 744000143236649 is open, full-time in Pune and states 0–1 year with freshers eligible."
-      },
-      "reviewedAt": "2026-10-30T03:43:21.163Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "beryl-get-20261005",
-      "company": "Beryl Systems",
-      "role": "Graduate Engineer Trainee",
-      "loc": "Faridabad, Haryana, India",
-      "apply": "https://berylsystems.com/careers/graduate-engineer-trainee",
-      "cat": "it",
-      "expYears": "Recent graduate",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Beryl's exact employer application page is open with an embedded application form, full-time Faridabad location and recent-graduate eligibility.",
-      "postedDate": "2026-10-05",
-      "job": {
-        "company": "Beryl Systems",
-        "role": "Graduate Engineer Trainee",
-        "loc": "Faridabad, Haryana, India",
-        "apply": "https://berylsystems.com/careers/graduate-engineer-trainee",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Recent graduate",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Beryl Systems Careers",
-        "desc": "Graduate software engineering role working on production web applications, APIs, automation and business-system integrations.",
-        "elig": "Recently completed degree in Computer Science, IT, Engineering or related field; programming and problem-solving fundamentals.",
-        "resp": [
-          "Build and improve features in web applications and APIs.",
-          "Write tests, fix bugs and learn production monitoring and support.",
-          "Work on CRM and ERP integrations and participate in code reviews."
-        ],
-        "skills": [
-          "Programming",
-          "Web applications",
-          "APIs",
+          "Software development",
+          "C/C++/C#/Java/JavaScript/Python",
           "Testing",
-          "SQL",
-          "React",
-          "Node.js",
-          "Python"
+          "Automation"
         ],
-        "workMode": "Not Specified",
-        "jobId": "GET-20261005",
-        "date": "2026-10-05",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:10.228Z",
-        "browserVerifiedAt": "2026-10-30T03:43:10.228Z"
+        "workMode": "Hybrid – 3 days per week in office",
+        "jobId": "1970393557050388",
+        "date": "2026-10-29",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Beryl's exact employer application page is open with an embedded application form, full-time Faridabad location and recent-graduate eligibility."
-      },
-      "reviewedAt": "2026-10-30T03:43:10.228Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Official Microsoft job-bound application page is open, updated 29 Oct 2026, and lists a bachelor's degree plus coding skills without mandatory prior work experience."
+      }
     },
     {
-      "id": "heizen-associate-software-engineer",
-      "company": "Heizen",
-      "role": "Associate Software Engineer",
-      "loc": "Remote / Hyderabad, India",
-      "apply": "https://www.heizen.work/careers/associate-software-engineer",
+      "id": "micron-jr115187",
+      "company": "Micron Technology",
+      "role": "Associate Automation Engineer",
+      "loc": "Sanand, Gujarat, India",
+      "apply": "https://micron.wd1.myworkdayjobs.com/en-US/External/job/Sanand---303A---ATSSDMOD-India/Associate-Automation-Engineer_JR115187",
       "cat": "it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresh graduates may apply",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Heizen employer page has a job-bound application route and explicitly states 0–2 years, Hyderabad/remote location and degree requirements.",
-      "postedDate": null,
+      "verificationReason": "Exact Micron Workday requisition JR115187 is present in the current official inventory; the posting identifies an associate role and explicitly allows fresh graduates.",
+      "postedDate": "2026-10-27",
       "job": {
-        "company": "Heizen",
-        "role": "Associate Software Engineer",
-        "loc": "Remote / Hyderabad, India",
-        "apply": "https://www.heizen.work/careers/associate-software-engineer",
+        "company": "Micron Technology",
+        "role": "Associate Automation Engineer",
+        "loc": "Sanand, Gujarat, India",
+        "apply": "https://micron.wd1.myworkdayjobs.com/en-US/External/job/Sanand---303A---ATSSDMOD-India/Associate-Automation-Engineer_JR115187",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "₹6–8 lakh fixed plus performance bonus and ESOPs (as posted)",
+        "expYears": "Fresh graduates may apply",
+        "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Heizen Careers",
-        "desc": "Entry-level software engineering role contributing to backend and frontend features, APIs, databases, testing and deployment.",
-        "elig": "Bachelor's degree in Computer Science, Engineering or related field; 0–2 years; proficiency in a programming language.",
+        "sourceName": "Micron Careers",
+        "desc": "Associate automation engineering role supporting manufacturing systems and software automation in Micron's Sanand operation.",
+        "elig": "Degree in Electrical/Electronics, Computer Engineering, Computer Science or related field; fresh graduates may apply.",
         "resp": [
-          "Write maintainable backend and frontend code.",
-          "Work with APIs, databases and basic cloud infrastructure.",
-          "Participate in code reviews, testing and debugging."
+          "Develop and support automation software used in manufacturing operations.",
+          "Troubleshoot system issues and improve automation reliability.",
+          "Work with engineering teams across the software and data lifecycle."
         ],
         "skills": [
-          "Python",
+          "C#",
+          "C++",
+          "Java",
+          "Perl",
+          "HTML5",
+          "SQL",
+          "Automation"
+        ],
+        "workMode": "On-site",
+        "jobId": "JR115187",
+        "date": "2026-10-27",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Micron Workday requisition JR115187 is present in the current official inventory; the posting identifies an associate role and explicitly allows fresh graduates."
+      }
+    },
+    {
+      "id": "pitney-bowes-r22357",
+      "company": "Pitney Bowes",
+      "role": "Graduate Engineer Trainee",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://pitneybowes.wd1.myworkdayjobs.com/en-US/PBCareers/job/Graduate-Engineer-Trainee_R22357",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Pitney Bowes Workday requisition R22357 is open, recently posted, and explicitly states 0–1 years.",
+      "postedDate": "2026-10-28",
+      "job": {
+        "company": "Pitney Bowes",
+        "role": "Graduate Engineer Trainee",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://pitneybowes.wd1.myworkdayjobs.com/en-US/PBCareers/job/Graduate-Engineer-Trainee_R22357",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Pitney Bowes Careers",
+        "desc": "Graduate Java engineering role contributing to application design, coding, debugging, testing and production support.",
+        "elig": "0–1 years of experience; education details are not specified in the accessible official posting evidence.",
+        "resp": [
+          "Design, code and debug Java application components.",
+          "Create and run unit tests for assigned work.",
+          "Support production issues and collaborate with the engineering team."
+        ],
+        "skills": [
+          "Java",
+          "Software design",
+          "Debugging",
+          "Unit testing",
+          "Production support"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R22357",
+        "date": "2026-10-28",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Pitney Bowes Workday requisition R22357 is open, recently posted, and explicitly states 0–1 years."
+      }
+    },
+    {
+      "id": "transunion-19042895",
+      "company": "TransUnion",
+      "role": "Associate Software Engineer",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://transunion.wd5.myworkdayjobs.com/en-US/TransUnion/job/Bengaluru/Associate-Software-Engineer_19042895",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years, including projects or internships",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact TransUnion Workday requisition 19042895 is current and explicitly permits 0–2 years including project and internship experience.",
+      "postedDate": "2026-10-29",
+      "job": {
+        "company": "TransUnion",
+        "role": "Associate Software Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://transunion.wd5.myworkdayjobs.com/en-US/TransUnion/job/Bengaluru/Associate-Software-Engineer_19042895",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years, including projects or internships",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "TransUnion Careers",
+        "desc": "Associate software engineering role building and supporting full-stack and data-driven applications.",
+        "elig": "Bachelor's or master's degree in Computer Science, Engineering or related field; 0–2 years including academic projects or internships.",
+        "resp": [
+          "Develop and test application features across the software stack.",
+          "Collaborate on scalable services, user interfaces and data workflows.",
+          "Diagnose defects and contribute to code quality and delivery."
+        ],
+        "skills": [
           "Java",
           "JavaScript",
-          "TypeScript",
-          "SQL",
-          "NoSQL",
-          "REST APIs",
-          "Git"
+          "Python",
+          "React",
+          "Spark",
+          "Full-stack development"
         ],
-        "workMode": "Remote",
-        "jobId": "associate-software-engineer",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:15.627Z",
-        "browserVerifiedAt": "2026-10-30T03:43:15.627Z"
+        "workMode": "Not Specified",
+        "jobId": "19042895",
+        "date": "2026-10-29",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact Heizen employer page has a job-bound application route and explicitly states 0–2 years, Hyderabad/remote location and degree requirements."
-      },
-      "reviewedAt": "2026-10-30T03:43:15.627Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact TransUnion Workday requisition 19042895 is current and explicitly permits 0–2 years including project and internship experience."
+      }
     },
     {
-      "id": "circuvent-job-48",
-      "company": "Circuvent",
-      "role": "Graduate Engineer Trainee – EEE/ECE/CSE",
-      "loc": "Hyderabad, Telangana, India (hybrid/remote)",
-      "apply": "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
-      "cat": "it",
-      "expYears": "0–1 year; no prior experience required",
-      "reviewedStatus": "live",
+      "id": "accenture-aioc-s01672816",
+      "company": "Accenture",
+      "role": "Record to Report Ops New Associate",
+      "loc": "Navi Mumbai, Maharashtra, India",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672816_en",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Circuvent employer careers record JOB-48 is open and explicitly states full-time, 0–1 year and no prior experience required.",
+      "verificationReason": "Official Accenture job AIOC-S01672816 is open with a job-bound Apply route and states any graduation with 0–1 years.",
       "postedDate": null,
       "job": {
-        "company": "Circuvent",
-        "role": "Graduate Engineer Trainee – EEE/ECE/CSE",
-        "loc": "Hyderabad, Telangana, India (hybrid/remote)",
-        "apply": "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
-        "cat": "it",
+        "company": "Accenture",
+        "role": "Record to Report Ops New Associate",
+        "loc": "Navi Mumbai, Maharashtra, India",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672816_en",
+        "cat": "non-it",
         "expType": "fresher",
-        "expYears": "0–1 year; no prior experience required",
+        "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Circuvent Careers",
-        "desc": "Graduate engineering trainee role for early-career electrical, electronics and computing graduates.",
-        "elig": "B.E./B.Tech in EEE, ECE, CSE or IT; 0–1 year; no prior experience required.",
+        "sourceName": "Accenture Careers",
+        "desc": "Finance operations role supporting financial consolidation, closing, ledgers, journals, reconciliation and reporting.",
+        "elig": "Any graduation; 0–1 years of experience.",
         "resp": [
-          "Support engineering and technology work under team guidance.",
-          "Apply academic technical fundamentals to assigned projects.",
-          "Learn tools, document work and collaborate with engineering teams."
+          "Collect operational reports, analyze data and reconcile transactions.",
+          "Support general-ledger processes, journal entries and period-end closing.",
+          "Create and maintain ledgers, budgets, reports and accounting records under supervision."
         ],
         "skills": [
-          "Engineering fundamentals",
-          "Problem solving",
-          "Technical documentation",
-          "Team collaboration"
+          "Record to report",
+          "Financial consolidation",
+          "Reconciliation",
+          "General ledger",
+          "Reporting"
         ],
-        "workMode": "Hybrid / Remote",
-        "jobId": "JOB-48",
+        "workMode": "May require rotational shifts",
+        "jobId": "AIOC-S01672816",
         "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:27.050Z",
-        "browserVerifiedAt": "2026-10-30T03:43:27.050Z"
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact Circuvent employer careers record JOB-48 is open and explicitly states full-time, 0–1 year and no prior experience required."
-      },
-      "reviewedAt": "2026-10-30T03:43:27.050Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Official Accenture job AIOC-S01672816 is open with a job-bound Apply route and states any graduation with 0–1 years."
+      }
     },
     {
-      "id": "globallogic-irc306734",
-      "company": "GlobalLogic",
-      "role": "Associate Analyst – Freshers (Non Technical / Non Voice)",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
+      "id": "cognizant-00070764861",
+      "company": "Cognizant",
+      "role": "PE – Policy Servicing",
+      "loc": "Noida, Uttar Pradesh, India",
+      "apply": "https://careers.cognizant.com/global-en/jobs/00070764861/pe-policy-servicing/",
       "cat": "non-it",
-      "expYears": "Fresh graduate / entry level",
-      "reviewedStatus": "live",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Entry level; no prior experience requirement stated",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Hitachi-hosted GlobalLogic requisition IRC306734 has Apply Now, was posted 26 Oct 2026 and explicitly requests fresh graduates.",
-      "postedDate": "2026-10-26",
+      "verificationReason": "Official Cognizant requisition 00070764861 is open, published 30 Oct 2026, and expressly identifies the job as entry level.",
+      "postedDate": "2026-10-30",
       "job": {
-        "company": "GlobalLogic",
-        "role": "Associate Analyst – Freshers (Non Technical / Non Voice)",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
-        "cat": "nonit",
+        "company": "Cognizant",
+        "role": "PE – Policy Servicing",
+        "loc": "Noida, Uttar Pradesh, India",
+        "apply": "https://careers.cognizant.com/global-en/jobs/00070764861/pe-policy-servicing/",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Entry level; no prior experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Cognizant Careers",
+        "desc": "Entry-level property and casualty insurance operations role handling policy documentation, data updates and service requests.",
+        "elig": "Strong spoken and written English, MS Office proficiency, basic analytical ability and willingness to learn insurance operations.",
+        "resp": [
+          "Process policy servicing activities, endorsements and data updates.",
+          "Review records for discrepancies and maintain trackers and audit trails.",
+          "Respond to stakeholder queries and prepare routine status reports."
+        ],
+        "skills": [
+          "MS Office",
+          "Data entry",
+          "Insurance operations",
+          "English communication",
+          "Attention to detail"
+        ],
+        "workMode": "Work from office; night shift",
+        "jobId": "00070764861",
+        "date": "2026-10-30",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Cognizant requisition 00070764861 is open, published 30 Oct 2026, and expressly identifies the job as entry level."
+      }
+    },
+    {
+      "id": "deloitte-60770544",
+      "company": "Deloitte",
+      "role": "Intern – CEO's Office",
+      "loc": "Delhi, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Delhi-Intern-CEO%27S-OFFICE-Delhi-CEO%27s-Office/60770544/",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Internship; no prior work-experience requirement stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Deloitte was checked first. Exact Deloitte South Asia requisition 60770544 is open with a job-bound Apply route and is an internship with no prior-experience requirement shown.",
+      "postedDate": null,
+      "job": {
+        "company": "Deloitte",
+        "role": "Intern – CEO's Office",
+        "loc": "Delhi, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Delhi-Intern-CEO%27S-OFFICE-Delhi-CEO%27s-Office/60770544/",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Internship; no prior work-experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Deloitte South Asia Careers",
+        "desc": "CEO's Office internship supporting strategic initiatives, market research, analysis and executive communication.",
+        "elig": "Academic discipline and graduation-year restrictions are not specified on the accessible official posting.",
+        "resp": [
+          "Support strategic initiatives and market or competitor research.",
+          "Analyze information and prepare insights for leadership.",
+          "Create clear presentations and coordinate work across stakeholders."
+        ],
+        "skills": [
+          "Research",
+          "Data analysis",
+          "Presentation",
+          "Stakeholder coordination"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "60770544",
+        "date": "Not Specified",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Deloitte was checked first. Exact Deloitte South Asia requisition 60770544 is open with a job-bound Apply route and is an internship with no prior-experience requirement shown."
+      }
+    },
+    {
+      "id": "honeywell-160481",
+      "company": "Honeywell",
+      "role": "Intern Bachelors Software Engineering",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160481",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Bachelor-level internship; prior experience not required",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Honeywell job 160481 is open on the official Oracle Recruiting career site and is explicitly a bachelor-level software engineering internship.",
+      "postedDate": "2026-10-22",
+      "job": {
+        "company": "Honeywell",
+        "role": "Intern Bachelors Software Engineering",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160481",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Bachelor-level internship; prior experience not required",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Honeywell Careers",
+        "desc": "Software engineering internship providing hands-on development experience on real projects with experienced engineers.",
+        "elig": "Bachelor-level internship; the accessible official posting does not state a specific degree branch or graduation batch.",
+        "resp": [
+          "Contribute to software development work on real projects.",
+          "Collaborate with experienced engineers and learn new technologies.",
+          "Support development of software solutions that improve product efficiency and quality."
+        ],
+        "skills": [
+          "Software development",
+          "Collaboration",
+          "Learning agility"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "160481",
+        "date": "2026-10-22",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Honeywell job 160481 is open on the official Oracle Recruiting career site and is explicitly a bachelor-level software engineering internship."
+      }
+    }
+  ],
+  "backup": [
+    {
+      "id": "dxc-51587968",
+      "company": "DXC Technology",
+      "role": "Junior Software Engineer (Java)",
+      "loc": "Singapore",
+      "apply": "https://dxctechnology.wd1.myworkdayjobs.com/en-US/DXCJobs/job/Junior-Software-Engineer--Java-_51587968",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresh graduates encouraged; internships, projects and training count",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact DXC Workday requisition 51587968 is open and explicitly encourages fresh graduates, while counting internships and academic projects as experience.",
+      "postedDate": "2026-10-10",
+      "job": {
+        "company": "DXC Technology",
+        "role": "Junior Software Engineer (Java)",
+        "loc": "Singapore",
+        "apply": "https://dxctechnology.wd1.myworkdayjobs.com/en-US/DXCJobs/job/Junior-Software-Engineer--Java-_51587968",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresh graduates encouraged; internships, projects and training count",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "DXC Technology Careers",
+        "desc": "Junior Java application-support engineering role maintaining business-critical systems and resolving technical incidents.",
+        "elig": "Bachelor's degree in Computer Science, IT, Software Engineering or related field; fresh graduates with Java project or internship experience are encouraged.",
+        "resp": [
+          "Support applications and resolve technical incidents and service requests.",
+          "Debug issues, perform root-cause analysis and assist deployments.",
+          "Maintain technical documentation and improve support processes."
+        ],
+        "skills": [
+          "Java",
+          "Spring",
+          "Spring Boot",
+          "SQL",
+          "REST APIs",
+          "Troubleshooting"
+        ],
+        "workMode": "Primarily in-person",
+        "jobId": "51587968",
+        "date": "2026-10-10",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact DXC Workday requisition 51587968 is open and explicitly encourages fresh graduates, while counting internships and academic projects as experience."
+      }
+    },
+    {
+      "id": "motorola-r69389",
+      "company": "Motorola Solutions",
+      "role": "Software Engineer (Fresh Graduate)",
+      "loc": "Bayan Lepas, Penang, Malaysia",
+      "apply": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Software-Engineer--Fresh-Graduate-_R69389-1",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresh graduate / entry level",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Motorola Solutions Workday requisition R69389 is open, labeled New Grad, and explicitly welcomes fresh graduates and entry-level applicants.",
+      "postedDate": null,
+      "job": {
+        "company": "Motorola Solutions",
+        "role": "Software Engineer (Fresh Graduate)",
+        "loc": "Bayan Lepas, Penang, Malaysia",
+        "apply": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Software-Engineer--Fresh-Graduate-_R69389-1",
+        "cat": "it",
         "expType": "fresher",
         "expYears": "Fresh graduate / entry level",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Hitachi / GlobalLogic Careers",
-        "desc": "Entry-level non-technical analyst role supporting data research, trend analysis, risk detection and operational quality.",
-        "elig": "Any fresh graduate with provisional certificate and consolidated marks memo; immediate joining, office and rotational-shift readiness.",
+        "sourceName": "Motorola Solutions Careers",
+        "desc": "New-graduate embedded software role developing and testing features for mission-critical two-way radio products.",
+        "elig": "Bachelor's or master's degree in Electrical, Electronics, Telecommunications, Computer Engineering or Computer Science; fresh graduates welcome.",
         "resp": [
-          "Research and evaluate data for accuracy and completeness.",
-          "Identify transaction trends, anomalies, fraud and operational risks.",
-          "Collaborate with stakeholders and meet quality and productivity targets."
+          "Design, develop and enhance embedded software features.",
+          "Participate in requirements, implementation, testing and deployment.",
+          "Write and review C/C++ code and troubleshoot embedded-system issues."
         ],
         "skills": [
-          "Analytical skills",
-          "Communication",
-          "Data research",
-          "Risk detection",
-          "Attention to detail"
+          "C",
+          "C++",
+          "Embedded systems",
+          "RTOS",
+          "Object-oriented programming",
+          "Debugging"
         ],
-        "workMode": "Onsite",
-        "jobId": "IRC306734",
-        "date": "2026-10-26",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:38.801Z",
-        "browserVerifiedAt": "2026-10-30T03:43:38.801Z"
+        "workMode": "On-site",
+        "jobId": "R69389",
+        "date": "Not Specified",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact Hitachi-hosted GlobalLogic requisition IRC306734 has Apply Now, was posted 26 Oct 2026 and explicitly requests fresh graduates."
-      },
-      "reviewedAt": "2026-10-30T03:43:38.801Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact Motorola Solutions Workday requisition R69389 is open, labeled New Grad, and explicitly welcomes fresh graduates and entry-level applicants."
+      }
     },
     {
-      "id": "accenture-aioc-s01668426",
-      "company": "Accenture",
-      "role": "Procurement Practice New Associate",
-      "loc": "Noida, Uttar Pradesh, India",
-      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
-      "cat": "non-it",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
+      "id": "manulife-jr26100119",
+      "company": "Manulife",
+      "role": "Associate Full-stack Software Engineer",
+      "loc": "Kuala Lumpur, Malaysia",
+      "apply": "https://manulife.wd3.myworkdayjobs.com/en-US/MFCJH_Jobs/job/Kuala-Lumpur-Wilayah-Persekutuan-Kuala-Lumpur/Associate-Full-stack-Software-Engineer_JR26100119",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresh graduates encouraged",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Accenture requisition AIOC-S01668426 is open for a Noida New Associate role and states any graduate with 0–1 year.",
-      "postedDate": null,
+      "verificationReason": "Exact Manulife Workday requisition JR26100119 is open with a 31 Dec 2026 closing date and explicitly encourages fresh graduates.",
+      "postedDate": "2026-10-30",
       "job": {
-        "company": "Accenture",
-        "role": "Procurement Practice New Associate",
-        "loc": "Noida, Uttar Pradesh, India",
-        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
-        "cat": "nonit",
+        "company": "Manulife",
+        "role": "Associate Full-stack Software Engineer",
+        "loc": "Kuala Lumpur, Malaysia",
+        "apply": "https://manulife.wd3.myworkdayjobs.com/en-US/MFCJH_Jobs/job/Kuala-Lumpur-Wilayah-Persekutuan-Kuala-Lumpur/Associate-Full-stack-Software-Engineer_JR26100119",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "0–1 year",
+        "expYears": "Fresh graduates encouraged",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Accenture Careers",
-        "desc": "Entry-level procurement operations role supporting process execution, data accuracy and business service delivery.",
-        "elig": "Any graduate; 0–1 year of experience.",
+        "sourceName": "Manulife Careers",
+        "desc": "Associate full-stack role developing, testing, deploying and supporting web and digital applications.",
+        "elig": "Bachelor's degree in Computer Science, Software Engineering, IT, Information Systems or related field; fresh graduates with project or internship work are encouraged.",
         "resp": [
-          "Support procurement-process transactions and service delivery.",
-          "Maintain accurate operational records and follow defined controls.",
-          "Coordinate with team members to resolve process issues."
+          "Develop, test, deploy and maintain web applications.",
+          "Translate requirements into secure and maintainable technical solutions.",
+          "Build APIs, integrations and database features and support testing."
         ],
         "skills": [
-          "Procurement operations",
-          "Communication",
-          "Process execution",
-          "Data accuracy"
+          "Full-stack development",
+          "APIs",
+          "Databases",
+          "Testing",
+          "AI-assisted engineering"
         ],
         "workMode": "Not Specified",
-        "jobId": "AIOC-S01668426",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:43:44.482Z",
-        "browserVerifiedAt": "2026-10-30T03:43:44.482Z"
+        "jobId": "JR26100119",
+        "date": "2026-10-30",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact Accenture requisition AIOC-S01668426 is open for a Noida New Associate role and states any graduate with 0–1 year."
-      },
-      "reviewedAt": "2026-10-30T03:43:44.482Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact Manulife Workday requisition JR26100119 is open with a 31 Dec 2026 closing date and explicitly encourages fresh graduates."
+      }
     },
     {
-      "id": "deloitte-61065444",
-      "company": "Deloitte",
-      "role": "Intern – Income Tax Laws",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Income-Tax-Laws-Bengaluru-Business-Tax/61065444/",
-      "cat": "non-it",
-      "expYears": "Fresher; no experience accepted",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Deloitte was checked first. Exact requisition 61065444 is open with Apply now and explicitly accepts B.Com/BBM freshers with no experience.",
-      "postedDate": null,
-      "job": {
-        "company": "Deloitte",
-        "role": "Intern – Income Tax Laws",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Income-Tax-Laws-Bengaluru-Business-Tax/61065444/",
-        "cat": "nonit",
-        "expType": "internship",
-        "expYears": "Fresher; no experience accepted",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Deloitte South Asia Careers",
-        "desc": "Business Tax internship supporting income-tax compliance, research and engagement delivery.",
-        "elig": "Graduate B.Com/BBM; fresher with no experience accepted; bachelor's degree minimum.",
-        "resp": [
-          "Support income-tax research and compliance work.",
-          "Assist engagement teams with documentation and analysis.",
-          "Work from office and collaborate with tax professionals."
-        ],
-        "skills": [
-          "Income tax laws",
-          "Research",
-          "Documentation",
-          "Communication"
-        ],
-        "workMode": "Work from office",
-        "jobId": "61065444",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Deloitte was checked first. Exact requisition 61065444 is open with Apply now and explicitly accepts B.Com/BBM freshers with no experience."
-      },
-      "reviewedAt": "2026-10-30T03:43:49.163Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "altera-r03117",
-      "company": "Altera",
-      "role": "AI Automation Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://altera.wd1.myworkdayjobs.com/en-US/Altera/job/AI-Automation-Intern_R03117",
+      "id": "cadence-r55538",
+      "company": "Cadence",
+      "role": "Software Engineer II – FastSPICE",
+      "loc": "Hsinchu, Taiwan",
+      "apply": "https://cadence.wd1.myworkdayjobs.com/en-US/External_Careers/job/Software-Engineer-II_R55538",
       "cat": "it",
-      "expYears": "Current student or recent graduate",
-      "reviewedStatus": "expired",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresh graduates with a relevant background may apply",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Provider-native Altera Workday requisition R03117 is currently indexed with a job-bound application route for Bengaluru and current students or recent graduates.",
+      "verificationReason": "Exact Cadence Workday requisition R55538 is open and explicitly welcomes fresh graduates with strong relevant backgrounds.",
       "postedDate": null,
       "job": {
-        "company": "Altera",
-        "role": "AI Automation Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://altera.wd1.myworkdayjobs.com/en-US/Altera/job/AI-Automation-Intern_R03117",
+        "company": "Cadence",
+        "role": "Software Engineer II – FastSPICE",
+        "loc": "Hsinchu, Taiwan",
+        "apply": "https://cadence.wd1.myworkdayjobs.com/en-US/External_Careers/job/Software-Engineer-II_R55538",
         "cat": "it",
-        "expType": "internship",
-        "expYears": "Current student or recent graduate",
+        "expType": "fresher",
+        "expYears": "Fresh graduates with a relevant background may apply",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Altera Workday",
-        "desc": "AI automation internship supporting software and workflow automation using scripting and AI tools.",
-        "elig": "Currently pursuing or recently completed a relevant degree; programming exposure in Python or JavaScript.",
+        "status": "active",
+        "sourceName": "Cadence Careers",
+        "desc": "R&D software role contributing to circuit-simulation technologies and mixed-signal engineering tools.",
+        "elig": "MS in Computer Science, Electrical Engineering, Math or Physics, or BS plus two years; fresh graduates with strong relevant backgrounds are welcome.",
         "resp": [
-          "Build and test automation scripts and AI-assisted workflows.",
-          "Support integration and validation of automation solutions.",
-          "Document results and collaborate with engineering stakeholders."
+          "Develop and enhance FastSPICE and mixed-signal simulation technology.",
+          "Analyze product issues and recommend technical solutions.",
+          "Collaborate with global engineering teams on implementation plans."
         ],
         "skills": [
-          "Python",
-          "JavaScript",
-          "Automation",
-          "AI tools"
+          "C",
+          "C++",
+          "Unix/Linux",
+          "Algorithms",
+          "Circuit simulation"
         ],
         "workMode": "Not Specified",
-        "jobId": "R03117",
+        "jobId": "R55538",
         "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Provider-native Altera Workday requisition R03117 is currently indexed with a job-bound application route for Bengaluru and current students or recent graduates."
-      },
-      "reviewedAt": "2026-10-30T03:43:57.441Z",
-      "reviewedBy": "HD Careers Admin"
-    }
-  ],
-  "backup": [
+        "officialEvidence": "Exact Cadence Workday requisition R55538 is open and explicitly welcomes fresh graduates with strong relevant backgrounds."
+      }
+    },
     {
-      "id": "medpace-11932",
-      "company": "Medpace",
-      "role": "Junior Data Engineer",
+      "id": "capgemini-530902",
+      "company": "Capgemini",
+      "role": "Chartered Accountant (CA Fresher)",
       "loc": "Navi Mumbai, Maharashtra, India",
-      "apply": "https://careers.medpace.com/jobs/11932?iis=Job+Board&iisn=LinkedIn&lang=en-us",
-      "cat": "it",
-      "expYears": "Entry level; internship experience in data or software engineering",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Medpace requisition 11932 is open for a full-time Navi Mumbai Junior Data Engineer and specifies a bachelor's degree plus internship-level experience.",
-      "postedDate": null,
-      "job": {
-        "company": "Medpace",
-        "role": "Junior Data Engineer",
-        "loc": "Navi Mumbai, Maharashtra, India",
-        "apply": "https://careers.medpace.com/jobs/11932?iis=Job+Board&iisn=LinkedIn&lang=en-us",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Entry level; internship experience in data or software engineering",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Medpace Careers",
-        "desc": "Junior data engineering role building and supporting data warehousing, ETL/ELT and business-intelligence systems.",
-        "elig": "Bachelor's in Computer Science, Data Science or related field; internship experience in Data or Software Engineering.",
-        "resp": [
-          "Develop and support ETL/ELT, data warehouse and Power BI solutions.",
-          "Gather requirements and participate in software validation and testing.",
-          "Support application setup, installation and maintenance."
-        ],
-        "skills": [
-          "SQL",
-          "Snowflake",
-          "dbt",
-          "Azure Data Factory",
-          "Power BI",
-          "Python",
-          "REST APIs"
-        ],
-        "workMode": "Office-based",
-        "jobId": "11932",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:44:23.801Z",
-        "browserVerifiedAt": "2026-10-30T03:44:23.801Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Medpace requisition 11932 is open for a full-time Navi Mumbai Junior Data Engineer and specifies a bachelor's degree plus internship-level experience."
-      },
-      "reviewedAt": "2026-10-30T03:44:23.801Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "brillio-r01571250",
-      "company": "Brillio",
-      "role": "Associate Data Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.lever.co/brillio-2/f7f9f468-7bda-42c4-9904-2a191eabc5fb",
-      "cat": "it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Brillio Lever requisition R01571250 is open with Apply and states entry-level 0–2 years. Brillio is outside the approved 87 and is used only as a shortage fallback.",
-      "postedDate": null,
-      "job": {
-        "company": "Brillio",
-        "role": "Associate Data Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.lever.co/brillio-2/f7f9f468-7bda-42c4-9904-2a191eabc5fb",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Brillio Lever",
-        "desc": "Entry-level AWS data engineering role supporting enterprise data-lake ingestion, validation and pipeline performance.",
-        "elig": "Bachelor's in Computer Science, IT, Data Engineering or related field; 0–2 years hands-on AWS data engineering exposure.",
-        "resp": [
-          "Manage manufacturing-data ingestion into enterprise data lakes.",
-          "Configure ingestion frameworks, mappings and metadata.",
-          "Validate data and troubleshoot production pipeline issues."
-        ],
-        "skills": [
-          "Python",
-          "SQL",
-          "Databricks",
-          "AWS S3",
-          "AWS Lambda",
-          "ETL",
-          "Data quality"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R01571250",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:44:28.568Z",
-        "browserVerifiedAt": "2026-10-30T03:44:28.568Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Brillio Lever requisition R01571250 is open with Apply and states entry-level 0–2 years. Brillio is outside the approved 87 and is used only as a shortage fallback."
-      },
-      "reviewedAt": "2026-10-30T03:44:28.568Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "apna-357ceb0335",
-      "company": "Apna",
-      "role": "Product Operations Associate",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://careers.apna.co/_/j/357CEB0335",
+      "apply": "https://careers.capgemini.com/job/Navi-Mumbai-Chartered-Accountant-%28CA-Fresher%29/1447602933/",
       "cat": "non-it",
-      "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "CA fresher, 2025 or 2026 batch",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Exact Apna employer requisition 357CEB0335 is indexed with a job-bound application route, Bengaluru location and 0–2 year requirement.",
-      "postedDate": null,
+      "verificationReason": "Exact Capgemini requisition 530902 remains open and explicitly requires a CA fresher from the 2025 or 2026 batch.",
+      "postedDate": "2026-10-14",
       "job": {
-        "company": "Apna",
-        "role": "Product Operations Associate",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://careers.apna.co/_/j/357CEB0335",
-        "cat": "nonit",
+        "company": "Capgemini",
+        "role": "Chartered Accountant (CA Fresher)",
+        "loc": "Navi Mumbai, Maharashtra, India",
+        "apply": "https://careers.capgemini.com/job/Navi-Mumbai-Chartered-Accountant-%28CA-Fresher%29/1447602933/",
+        "cat": "non-it",
         "expType": "fresher",
-        "expYears": "0–2 years",
+        "expYears": "CA fresher, 2025 or 2026 batch",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Apna Careers",
-        "desc": "Early-career product operations role improving user journeys, operational workflows, analytics and AI-assisted experiences.",
-        "elig": "0–2 years in product operations, business operations, product, analytics, consulting, founder's office or similar; strong analytical and communication ability.",
+        "sourceName": "Capgemini Careers",
+        "desc": "Permanent finance role supporting statutory reporting, audits, consolidation, close and management reporting.",
+        "elig": "Chartered Accountant fresher from the 2025 or 2026 batch; knowledge of Ind AS, IFRS and financial reporting.",
         "resp": [
-          "Analyze funnels, CRM data and user behavior for product gaps.",
-          "Translate operational problems into product requirements and experiments.",
-          "Own dashboards, SOPs and launch processes across product and operations."
+          "Prepare statutory financial statements and support audits and consolidation.",
+          "Support accounting operations, close and control compliance.",
+          "Analyze results and prepare management reports and dashboards."
         ],
         "skills": [
-          "Product operations",
-          "Analytics",
-          "Spreadsheets",
-          "CRM",
-          "Process improvement",
-          "AI tools"
-        ],
-        "workMode": "Work from office",
-        "jobId": "357CEB0335",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026.",
-        "manualLiveVerifiedAt": "2026-10-30T03:44:33.353Z",
-        "browserVerifiedAt": "2026-10-30T03:44:33.353Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Apna employer requisition 357CEB0335 is indexed with a job-bound application route, Bengaluru location and 0–2 year requirement."
-      },
-      "reviewedAt": "2026-10-30T03:44:33.353Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "walmart-r-2607497",
-      "company": "Walmart",
-      "role": "Grad Intern – No Work Experience",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://walmart.wd504.myworkdayjobs.com/en-US/WalmartExternal/job/IN-KA-BANGALORE-Home-Office-PTPP1/XMLNAME--IND--Grad-Intern---No-Work-Experience_R-2607497",
-      "cat": "it",
-      "expYears": "No work experience",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Walmart Workday requisition R-2607497 is currently provider-indexed for Bengaluru and its official title explicitly states 'No Work Experience'.",
-      "postedDate": null,
-      "job": {
-        "company": "Walmart",
-        "role": "Grad Intern – No Work Experience",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://walmart.wd504.myworkdayjobs.com/en-US/WalmartExternal/job/IN-KA-BANGALORE-Home-Office-PTPP1/XMLNAME--IND--Grad-Intern---No-Work-Experience_R-2607497",
-        "cat": "it",
-        "expType": "internship",
-        "expYears": "No work experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Walmart Workday",
-        "desc": "Graduate internship supporting engineering work related to generative AI and machine-learning systems.",
-        "elig": "Graduate-intern profile; official title explicitly states no work experience.",
-        "resp": [
-          "Support development and evaluation of AI/ML engineering solutions.",
-          "Assist with data, experimentation and software implementation tasks.",
-          "Document findings and collaborate with engineering teams."
-        ],
-        "skills": [
-          "Generative AI",
-          "Machine learning",
-          "Software engineering",
-          "Data analysis"
+          "Ind AS",
+          "IFRS",
+          "Financial reporting",
+          "Audit support",
+          "Excel"
         ],
         "workMode": "Not Specified",
-        "jobId": "R-2607497",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 30 Oct 2026."
+        "jobId": "530902",
+        "date": "2026-10-14",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-10-30T03:38:51.124Z",
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact Walmart Workday requisition R-2607497 is currently provider-indexed for Bengaluru and its official title explicitly states 'No Work Experience'."
+        "officialEvidence": "Exact Capgemini requisition 530902 remains open and explicitly requires a CA fresher from the 2025 or 2026 batch."
+      }
+    },
+    {
+      "id": "metro-744000157778959",
+      "company": "METRO Global Solution Center",
+      "role": "Associate – Accounts Payable (Fresher)",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157778959-associate-accounts-payable-fresher-",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresher; no work experience",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact employer-authorized SmartRecruiters requisition 744000157778959 is open and explicitly says fresher with no work experience.",
+      "postedDate": null,
+      "job": {
+        "company": "METRO Global Solution Center",
+        "role": "Associate – Accounts Payable (Fresher)",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157778959-associate-accounts-payable-fresher-",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Fresher; no work experience",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "METRO/Makro SmartRecruiters",
+        "desc": "Accounts-payable role processing invoices, payments, master data and routine financial reports.",
+        "elig": "BCom, BBA, BCA or BSc with MBA Finance; explicitly for a fresher with no work experience.",
+        "resp": [
+          "Maintain master data and process invoices.",
+          "Prepare SAP FI postings and standard reports.",
+          "Support payment processing and period-end activities."
+        ],
+        "skills": [
+          "Accounting",
+          "Accounts payable",
+          "Excel",
+          "SAP FI",
+          "MS Office"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "744000157778959",
+        "date": "Not Specified",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
       },
-      "reviewedAt": "2026-10-30T03:44:40.783Z",
-      "reviewedBy": "HD Careers Admin"
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact employer-authorized SmartRecruiters requisition 744000157778959 is open and explicitly says fresher with no work experience."
+      }
+    },
+    {
+      "id": "stable-money-0ad30e4b",
+      "company": "Stable Money",
+      "role": "Business Intern – Credit Cards",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.lever.co/stable-money1/0ad30e4b-eed9-4a48-9bfd-80479ad86771",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Six-month internship; no prior work-experience requirement stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Stable Money Lever requisition is open with a job-bound Apply form and states a six-month Bengaluru internship.",
+      "postedDate": null,
+      "job": {
+        "company": "Stable Money",
+        "role": "Business Intern – Credit Cards",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.lever.co/stable-money1/0ad30e4b-eed9-4a48-9bfd-80479ad86771",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Six-month internship; no prior work-experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Stable Money Lever",
+        "desc": "Business and product internship owning credit-card category initiatives from analysis through launch and measurement.",
+        "elig": "No degree, graduation-year or prior-experience restriction is stated; strong analytical, structured problem-solving and ownership skills are requested.",
+        "resp": [
+          "Scope initiatives and coordinate design, engineering, partners, QA and launch.",
+          "Analyze funnel and product data and measure improvements.",
+          "Research competitors, policies, eligibility logic and customer feedback."
+        ],
+        "skills": [
+          "Data analysis",
+          "Product thinking",
+          "Structured problem solving",
+          "SQL (nice to have)",
+          "Analytics"
+        ],
+        "workMode": "On-site, five days per week",
+        "jobId": "0ad30e4b-eed9-4a48-9bfd-80479ad86771",
+        "date": "Not Specified",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Stable Money Lever requisition is open with a job-bound Apply form and states a six-month Bengaluru internship."
+      }
+    },
+    {
+      "id": "paytm-0ecd9d93",
+      "company": "Paytm",
+      "role": "HR Onboarding Intern",
+      "loc": "Noida, Uttar Pradesh, India",
+      "apply": "https://jobs.lever.co/paytm/0ecd9d93-e4f3-4dd0-a22e-852fec9b6e02",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Three-month internship; no prior work-experience requirement stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Paytm Lever requisition is open with a job-bound Apply form and explicitly lists a graduate/MBA three-month internship.",
+      "postedDate": null,
+      "job": {
+        "company": "Paytm",
+        "role": "HR Onboarding Intern",
+        "loc": "Noida, Uttar Pradesh, India",
+        "apply": "https://jobs.lever.co/paytm/0ecd9d93-e4f3-4dd0-a22e-852fec9b6e02",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Three-month internship; no prior work-experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Paytm Lever",
+        "desc": "HR onboarding internship supporting new-joiner orientation, documentation, records and onboarding tracking.",
+        "elig": "Graduate or MBA candidate; strong communication, basic MS Office or Google Workspace skills and discretion with confidential information.",
+        "resp": [
+          "Guide new employees and support orientation sessions.",
+          "Complete joining formalities and maintain employee records.",
+          "Update onboarding trackers and coordinate with departments."
+        ],
+        "skills": [
+          "HR onboarding",
+          "Communication",
+          "MS Office",
+          "Google Workspace",
+          "Record keeping"
+        ],
+        "workMode": "On-site, five days per week",
+        "jobId": "0ecd9d93-e4f3-4dd0-a22e-852fec9b6e02",
+        "date": "Not Specified",
+        "verifiedDate": "31 Oct 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-10-31T03:30:00.000Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Paytm Lever requisition is open with a job-bound Apply form and explicitly lists a graduate/MBA three-month internship."
+      }
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 10,
-      "counts": {
-        "fresherIT": 6,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 2
-      },
-      "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 6,
-      "counts": {
-        "fresherIT": 3,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 1
-      },
-      "shortfalls": {
-        "fresherIT": 3,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 16,
-    "duplicateExclusions": [],
-    "excludedCount": 0,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
-    "stagedCandidates": 14,
-    "fallbackCandidatesStaged": 9,
+    "watchlistTotal": 87,
+    "watchlistEmployersVisited": 28,
+    "watchlistEmployersNotVisited": 59,
+    "fallbackEmployerPortalsVisited": 22,
+    "blockedOrInconclusivePortals": 4,
+    "uniqueExactJobIdsFound": 28,
+    "stagedCandidates": 16,
+    "watchlistCandidatesStaged": 10,
+    "fallbackCandidatesStaged": 6,
+    "duplicatePostingsExcluded": 6,
+    "sourceUnconfirmedOrIneligibleHeld": 5,
+    "authoritativelyExpired": 1,
     "verificationVerdicts": {
-      "live": 14,
-      "review": 0,
-      "expired": 0
+      "live": 16,
+      "review": 5,
+      "expired": 1
     },
-    "sourceUnconfirmedOrIneligibleHeld": 13
+    "deloitteOutcome": "Deloitte exact requisition 60770544 qualified as the single reserved Priority internship.",
+    "note": "Counts reflect official employer or employer-authorized ATS portals actually queried or inspected in this run. Search-only, blocked, duplicate, experienced, and source-incomplete results were not staged."
   },
   "quotaAudit": {
-    "targetPerList": {
-      "technicalFullTime": 6,
-      "nonTechnicalFullTime": 2,
-      "internshipOrApprenticeship": 2
-    },
     "priority": {
-      "total": 10,
-      "technicalFullTime": 6,
-      "nonTechnicalFullTime": 2,
-      "internshipOrApprenticeship": 2,
-      "shortfall": {
-        "technicalFullTime": 0,
-        "nonTechnicalFullTime": 0,
+      "size": 8,
+      "counts": {
+        "fresherTechnicalFullTime": 4,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
+      },
+      "shortfalls": {
+        "fresherTechnicalFullTime": 2,
+        "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       }
     },
     "backup": {
-      "total": 4,
-      "technicalFullTime": 2,
-      "nonTechnicalFullTime": 1,
-      "internshipOrApprenticeship": 1,
-      "shortfall": {
-        "technicalFullTime": 4,
-        "nonTechnicalFullTime": 1,
-        "internshipOrApprenticeship": 1
+      "size": 8,
+      "counts": {
+        "fresherTechnicalFullTime": 4,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
+      },
+      "shortfalls": {
+        "fresherTechnicalFullTime": 2,
+        "fresherNonTechnicalFullTime": 0,
+        "internshipOrApprenticeship": 0
       }
-    }
+    },
+    "targetPerList": {
+      "fresherTechnicalFullTime": 6,
+      "fresherNonTechnicalFullTime": 2,
+      "internshipOrApprenticeship": 2
+    },
+    "distinctEmployers": 16,
+    "remainingTotalSlots": 4,
+    "duplicateExclusions": [
+      "Salesforce JR334858",
+      "HCLTech 168116",
+      "NielsenIQ 744000152930140",
+      "EY 1727886",
+      "Amazon 10508052",
+      "Rockwell Automation R26-6282"
+    ],
+    "heldExamples": [
+      "Oracle 344317 – exact official page unreadable in current check",
+      "Emerson 26011142 – zero-experience eligibility not source-confirmed",
+      "NEC 1376017857 – official source states position filled",
+      "Cisco 1424746 – official page says this exact role may not be open today",
+      "Greendzine 395901000024339001 – source content unavailable for complete publish-ready record"
+    ]
   },
-  "submittedAt": "2026-10-30T03:44:52.811Z",
   "publication": {
-    "candidateIds": [
-      "accenture-aioc-s01668426",
-      "apna-357ceb0335",
-      "beryl-get-20261005",
-      "brillio-r01571250",
-      "circuvent-job-48",
-      "globallogic-irc306734",
-      "hcltech-167256",
-      "heizen-associate-software-engineer",
-      "konecranes-744000143236649",
-      "medpace-11932"
-    ],
-    "companies": [
-      "Accenture",
-      "Apna",
-      "Beryl Systems",
-      "Brillio",
-      "Circuvent",
-      "GlobalLogic",
-      "HCLTech",
-      "Heizen",
-      "Konecranes",
-      "Medpace"
-    ],
-    "urls": [
-      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668426_en",
-      "https://careers.apna.co/_/j/357CEB0335",
-      "https://berylsystems.com/careers/graduate-engineer-trainee",
-      "https://jobs.lever.co/brillio-2/f7f9f468-7bda-42c4-9904-2a191eabc5fb",
-      "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
-      "https://careers.hitachi.com/associate-analyst-freshers-non-technical-non-voice/job/IRC306734",
-      "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
-      "https://www.heizen.work/careers/associate-software-engineer",
-      "https://jobs.smartrecruiters.com/Konecranes/744000143236649-graduate-engineer-trainee-order-management",
-      "https://careers.medpace.com/jobs/11932?iis=Job+Board&iisn=LinkedIn&lang=en-us"
-    ],
-    "requestId": "d3b85d3b1dedb863aebe8750",
-    "count": 10,
-    "submittedAt": "2026-10-30T03:44:52.811Z"
+    "authorized": false,
+    "status": "not_started",
+    "note": "Discovery and owner review only. No website, jobs.json, publish request, or Telegram action was performed."
   }
 }
