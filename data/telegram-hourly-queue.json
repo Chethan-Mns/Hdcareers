@@ -1167,9 +1167,11 @@
     {
       "page": "jobs/pitney-bowes-graduate-engineer-trainee.html",
       "batchId": "admin-41173410408",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T14:41:36.149787+00:00"
+      "dueAt": "2026-10-31T14:41:36.149787+00:00",
+      "claimId": "41211308778",
+      "claimedAt": "2026-10-31T14:41:48.313153+00:00"
     }
   ]
 }
