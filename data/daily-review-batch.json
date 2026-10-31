@@ -2,7 +2,7 @@
   "batchId": "2026-10-31-0900-ist",
   "generatedAt": "2026-10-31T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-10-31T05:36:06.789Z",
+  "updatedAt": "2026-10-31T05:36:14.706Z",
   "priority": [
     {
       "id": "microsoft-1970393557050388",
@@ -122,7 +122,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Pitney Bowes Workday requisition R22357 is open, recently posted, and explicitly states 0–1 years.",
       "postedDate": "2026-10-28",
@@ -156,13 +156,17 @@
         "jobId": "R22357",
         "date": "2026-10-28",
         "verifiedDate": "31 Oct 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 31 Oct 2026.",
+        "manualLiveVerifiedAt": "2026-10-31T05:36:14.706Z",
+        "browserVerifiedAt": "2026-10-31T05:36:14.706Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-10-31T03:30:00.000Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Pitney Bowes Workday requisition R22357 is open, recently posted, and explicitly states 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-10-31T05:36:14.706Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "transunion-19042895",
