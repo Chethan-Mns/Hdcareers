@@ -1137,9 +1137,11 @@
     {
       "page": "jobs/microsoft-software-engineering.html",
       "batchId": "admin-41173410408",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T11:40:54.886350+00:00"
+      "dueAt": "2026-10-31T11:40:54.886350+00:00",
+      "claimId": "41197859430",
+      "claimedAt": "2026-10-31T11:41:05.196378+00:00"
     },
     {
       "page": "jobs/motorola-solutions-software-engineer-fresh-graduate.html",
