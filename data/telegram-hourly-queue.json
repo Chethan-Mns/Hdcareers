@@ -1127,39 +1127,40 @@
     {
       "page": "jobs/metro-global-solution-center-associate-accounts-payable-fresher.html",
       "batchId": "admin-41173410408",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T10:40:41.388653+00:00",
       "claimId": "41193724335",
-      "claimedAt": "2026-10-31T10:40:51.939112+00:00"
+      "claimedAt": "2026-10-31T10:40:51.939112+00:00",
+      "messageId": 636,
+      "deliveredAt": "2026-10-31T10:40:54.886350+00:00"
     },
     {
       "page": "jobs/microsoft-software-engineering.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T11:40:41.388653+00:00"
+      "dueAt": "2026-10-31T11:40:54.886350+00:00"
     },
     {
       "page": "jobs/motorola-solutions-software-engineer-fresh-graduate.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T12:40:41.388653+00:00"
+      "dueAt": "2026-10-31T12:40:54.886350+00:00"
     },
     {
       "page": "jobs/paytm-hr-onboarding-intern.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T13:40:41.388653+00:00"
+      "dueAt": "2026-10-31T13:40:54.886350+00:00"
     },
     {
       "page": "jobs/pitney-bowes-graduate-engineer-trainee.html",
       "batchId": "admin-41173410408",
       "status": "pending",
       "queuedAt": "2026-10-31T05:38:52.385129+00:00",
-      "dueAt": "2026-10-31T14:40:41.388653+00:00"
+      "dueAt": "2026-10-31T14:40:54.886350+00:00"
     }
   ]
 }
