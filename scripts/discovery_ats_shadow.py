@@ -18,7 +18,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlsplit, urlunsplit
-from urllib.request import Request, urlopen
+from ats_http_client import fetch_json
 
 ROOT = Path(__file__).resolve().parents[1]
 ATS_HOSTS = {
@@ -150,26 +150,6 @@ def boards_from_jobs(jobs, providers=SOURCE_PROVIDER):
     return sorted(boards.values(), key=lambda x: (
         x["company"].lower() != "deloitte", x["company"].lower(),
         x["provider"], x["board"].lower()))
-
-
-def fetch_json(url, body=None, *, timeout=15):
-    parsed = urlsplit(url)
-    if parsed.scheme != "https" or parsed.username or parsed.password:
-        raise ValueError("Non-HTTPS or credentialed API URL")
-    host = (parsed.hostname or "").lower()
-    if host not in API_ALLOWLIST and not WORKDAY_HOST_RE.fullmatch(host):
-        raise ValueError("API host is not allowlisted")
-    headers = {"Accept": "application/json", "User-Agent": "HDCareersATSResearch/1.0"}
-    data = None
-    if body is not None:
-        data = json.dumps(body).encode("utf-8")
-        headers["Content-Type"] = "application/json"
-    req = Request(url, data=data, headers=headers, method="POST" if data else "GET")
-    # No HTTP redirects to arbitrary hosts or authentication bypasses.
-    with urlopen(req, timeout=timeout) as response:
-        if (urlsplit(response.url).hostname or "").lower() not in API_ALLOWLIST and not WORKDAY_HOST_RE.fullmatch((urlsplit(response.url).hostname or "").lower()):
-            raise ValueError("API redirected outside approved hosts")
-        return json.load(response)
 
 
 def is_india(location, country=""):
@@ -420,8 +400,11 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
     boards = boards_from_jobs(jobs, providers)
     site_urls = {canonical(x.get("apply")) for x in jobs if isinstance(x, dict)}
     # Existing site identity is also employer + role when a requisition ID is absent.
-    site_pairs = {(str(x.get("company") or "").lower().strip(),
-                   str(x.get("role") or "").lower().strip())
+    # Only exact URL or same role AND location within the same employer is a
+    # likely duplicate. Different locations can represent real requisitions.
+    site_pairs = {(str(x.get("company") or "").casefold().strip(),
+                   str(x.get("role") or "").casefold().strip(),
+                   clean_html(x.get("loc") or "").casefold().strip())
                   for x in jobs if isinstance(x, dict)}
     results, scans, seen, seen_roles = [], [], set(), set()
     for board in boards[:max_boards]:
@@ -443,7 +426,8 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                 if not candidate:
                     continue
                 key = canonical(candidate["apply"])
-                pair = (candidate["company"].lower(), candidate["role"].lower())
+                pair = (candidate["company"].casefold(), candidate["role"].casefold(),
+                        candidate["loc"].casefold())
                 if profile == "fresher" and (key in site_urls or pair in site_pairs):
                     scan["duplicateOnSite"] += 1
                     continue
@@ -471,6 +455,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
         "candidateCount": len(results), "scans": scans, "candidates": results,
         "publicationAllowed": False, "expiryDecisionsAllowed": False,
         "notes": [
+            "Source API calls are rate-limited per host; retries honor Retry-After and do not permit redirects.",
             "Only heuristic discovery candidates. Experience eligibility, India location, source URL and completeness require independent validation.",
             "A failed, capped, or partial crawl NEVER implies a previously published job is expired.",
             "No writes to jobs.json, review queue, Admin, Telegram or website.",
