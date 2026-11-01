@@ -185,8 +185,12 @@ def fresher_signal(title, description):
     if SENIOR_RE.search(title):
         return ""
     # An explicit 4+ year minimum is inconsistent with the HD fresher policy.
+    matches = list(EXP_RE.finditer(description[:5500]))
     years = [(int(m.group(1)), int(m.group(2) or m.group(1)))
-             for m in EXP_RE.finditer(description[:5500])]
+             for m in matches]
+    # "2+ years" is an open-ended minimum, not evidence of a 0-2/0-3 role.
+    if any(("+" in m.group(0) and int(m.group(1)) >= 1) for m in matches):
+        return ""
     if any(max(lo, hi) > 3 for lo, hi in years):
         return ""
     if JUNIOR_RE.search(title):
