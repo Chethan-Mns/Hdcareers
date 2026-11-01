@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:17:11.557Z",
+  "updatedAt": "2026-11-01T05:17:20.768Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -493,7 +493,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Bachelor's internship; no required prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Honeywell requisition 160935 appears in the current India inventory with a job-bound page, Pune location and 30 Oct posting date.",
       "postedDate": "2026-10-30",
@@ -527,13 +527,16 @@
         "date": "2026-10-30",
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:17:20.768Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:17:20.768Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Honeywell requisition 160935 appears in the current India inventory with a job-bound page, Pune location and 30 Oct posting date."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:17:20.768Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
