@@ -1198,39 +1198,40 @@
     {
       "page": "jobs/deloitte-talent-acquisition-intern.html",
       "batchId": "admin-41276395768",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T07:19:09.718099+00:00",
       "claimId": "41284305141",
-      "claimedAt": "2026-11-01T07:19:21.054426+00:00"
+      "claimedAt": "2026-11-01T07:19:21.054426+00:00",
+      "messageId": 643,
+      "deliveredAt": "2026-11-01T07:19:25.951632+00:00"
     },
     {
       "page": "jobs/ey-analyst-transfer-pricing.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T08:19:09.718099+00:00"
+      "dueAt": "2026-11-01T08:19:25.951632+00:00"
     },
     {
       "page": "jobs/honeywell-intern-bachelors-app-eng.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T09:19:09.718099+00:00"
+      "dueAt": "2026-11-01T09:19:25.951632+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-associate-fresher.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T10:19:09.718099+00:00"
+      "dueAt": "2026-11-01T10:19:25.951632+00:00"
     },
     {
       "page": "jobs/salesforce-software-engineering-amts.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T11:19:09.718099+00:00"
+      "dueAt": "2026-11-01T11:19:25.951632+00:00"
     }
   ]
 }
