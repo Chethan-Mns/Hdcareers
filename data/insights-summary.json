@@ -1,21 +1,21 @@
 {
   "verifiedThrough": "1 November 2026",
-  "active": 192,
-  "employers": 125,
-  "freshers": 113,
-  "experienced": 68,
+  "active": 180,
+  "employers": 115,
+  "freshers": 106,
+  "experienced": 65,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 67
+      "count": 60
     },
     {
       "label": "Mumbai",
-      "count": 16
+      "count": 15
     },
     {
       "label": "Hyderabad",
-      "count": 14
+      "count": 12
     },
     {
       "label": "Pune",
@@ -43,19 +43,19 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 67
+      "count": 60
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 16
+      "count": 15
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 14
+      "count": 12
     },
     {
       "city": "Pune",
@@ -112,12 +112,6 @@
       "count": 2
     },
     {
-      "city": "Chennai",
-      "lat": 13.0827,
-      "lng": 80.2707,
-      "count": 2
-    },
-    {
       "city": "Mohali",
       "lat": 30.7046,
       "lng": 76.7179,
@@ -134,12 +128,18 @@
       "lat": 9.9312,
       "lng": 76.2673,
       "count": 1
+    },
+    {
+      "city": "Chennai",
+      "lat": 13.0827,
+      "lng": 80.2707,
+      "count": 1
     }
   ],
   "topCompanies": [
     {
       "name": "EY",
-      "count": 11,
+      "count": 10,
       "logo": "assets/company-approved/ey.webp"
     },
     {
@@ -201,26 +201,22 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 30
+      "count": 29
     },
     {
       "label": "Java",
-      "count": 24
-    },
-    {
-      "label": "SQL",
-      "count": 21
+      "count": 23
     },
     {
       "label": "Communication",
-      "count": 19
+      "count": 18
+    },
+    {
+      "label": "SQL",
+      "count": 18
     },
     {
       "label": "JavaScript",
-      "count": 17
-    },
-    {
-      "label": "REST APIs",
       "count": 15
     },
     {
@@ -228,8 +224,12 @@
       "count": 14
     },
     {
+      "label": "REST APIs",
+      "count": 14
+    },
+    {
       "label": "Git",
-      "count": 12
+      "count": 11
     },
     {
       "label": "C++",
@@ -244,22 +244,22 @@
       "count": 9
     },
     {
-      "label": "HTML",
-      "count": 9
-    },
-    {
       "label": "Algorithms",
       "count": 9
     },
     {
       "label": "Testing",
       "count": 8
+    },
+    {
+      "label": "Programming",
+      "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 91
+      "count": 82
     },
     {
       "label": "nonit",
@@ -267,7 +267,7 @@
     },
     {
       "label": "internship",
-      "count": 41
+      "count": 38
     },
     {
       "label": "experienced",
@@ -333,11 +333,11 @@
     },
     {
       "date": "2026-10-10",
-      "count": 5
+      "count": 4
     },
     {
       "date": "2026-10-11",
-      "count": 3
+      "count": 2
     },
     {
       "date": "2026-10-12",
@@ -349,11 +349,11 @@
     },
     {
       "date": "2026-10-15",
-      "count": 6
+      "count": 5
     },
     {
       "date": "2026-10-17",
-      "count": 19
+      "count": 18
     },
     {
       "date": "2026-10-18",
@@ -361,7 +361,7 @@
     },
     {
       "date": "2026-10-20",
-      "count": 7
+      "count": 5
     },
     {
       "date": "2026-10-21",
@@ -377,7 +377,7 @@
     },
     {
       "date": "2026-10-24",
-      "count": 8
+      "count": 6
     },
     {
       "date": "2026-10-25",
@@ -389,11 +389,11 @@
     },
     {
       "date": "2026-10-27",
-      "count": 6
+      "count": 5
     },
     {
       "date": "2026-10-28",
-      "count": 7
+      "count": 4
     },
     {
       "date": "2026-10-29",
@@ -401,7 +401,7 @@
     },
     {
       "date": "2026-10-30",
-      "count": 34
+      "count": 11
     },
     {
       "date": "2026-10-31",
@@ -409,7 +409,7 @@
     },
     {
       "date": "2026-11-01",
-      "count": 7
+      "count": 30
     }
   ]
 }
