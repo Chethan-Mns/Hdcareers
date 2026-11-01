@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - scripts/discovery_ats_shadow.py
+      - scripts/ats_http_client.py
+      - scripts/ats_discovery_history.py
+      - data/ats-discovery-history.json
+      - tests/test_ats_http_client.py
+      - tests/test_ats_discovery_history.py
       - tests/test_discovery_ats_shadow.py
       - scripts/validate_ats_shadow_report.py
       - tests/test_validate_ats_shadow_report.py
@@ -45,6 +50,9 @@ jobs:
           python3 -m py_compile scripts/discovery_ats_shadow.py
           python3 -m unittest discover -s tests -p 'test_discovery_ats_shadow.py' -v
           python3 -m unittest discover -s tests -p 'test_validate_ats_shadow_report.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_http_client.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_discovery_history.py' -v
+          python3 -m py_compile scripts/ats_http_client.py scripts/ats_discovery_history.py
       - name: Generate offline ATS seed catalogue
         run: |
           python3 scripts/discovery_ats_shadow.py --catalog-only --output official-ats-board-catalog.json
@@ -132,6 +140,23 @@ jobs:
         run: |
           python3 scripts/validate_ats_shadow_report.py --report ats-discovery-shadow.json --summary ats-discovery-quality.json
           python3 scripts/validate_ats_shadow_report.py --report personal-de-shadow.json --summary personal-de-quality.json
+      - name: Produce repeat-safe discovery history and brand-new candidates (no website writes)
+        run: |
+          python3 scripts/ats_discovery_history.py             --history data/ats-discovery-history.json             --report ats-discovery-shadow.json             --output ats-discovery-history-next.json             --new-output ats-discovery-new-candidates.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          history=json.loads(Path("ats-discovery-history-next.json").read_text())
+          fresh=json.loads(Path("ats-discovery-new-candidates.json").read_text())
+          assert history["mode"] == "discovery_history_only"
+          assert fresh["mode"] == "review_candidate_draft_only"
+          assert fresh["publicationAllowed"] is False
+          assert fresh["expiryDecisionsAllowed"] is False
+          assert all(not row["eligibleForPublishing"] and not row["expired"]
+                     for row in history["jobs"].values())
+          print("SHADOW HISTORY:", history["lastRunStats"])
+          PY
+          git diff --exit-code -- data/jobs.json data/review-queue.json data/daily-review-batch.json
       - name: Upload pilot results (never publish)
         uses: actions/upload-artifact@v4
         if: always()
@@ -140,5 +165,7 @@ jobs:
           path: |
             ats-discovery-shadow.json
             ats-discovery-quality.json
+            ats-discovery-history-next.json
+            ats-discovery-new-candidates.json
           if-no-files-found: warn
           retention-days: 7
