@@ -43,6 +43,24 @@ class RealExtractionGateTests(unittest.TestCase):
         r["candidates"][0]["loc"] = "London, UK"
         self.assertFalse(audit(r, [])["passed"])
 
+    def test_india_country_evidence_sufficient_when_location_is_remote(self):
+        r = sample()
+        r["candidates"][0]["loc"] = "Remote"
+        r["candidates"][0]["countryEvidence"] = "IN"
+        self.assertTrue(audit(r, [])["passed"])
+        r["candidates"][0]["countryEvidence"] = "US"
+        self.assertFalse(audit(r, [])["passed"])
+
+    def test_long_source_description_preserves_classification_evidence(self):
+        r = sample()
+        r["candidates"][0]["role"] = "Quality Engineer"
+        r["candidates"][0]["descriptionExcerpt"] = "Company background " * 70
+        r["candidates"][0]["descriptionForValidation"] = (
+            r["candidates"][0]["descriptionExcerpt"] + " 0-2 years experience")
+        self.assertTrue(audit(r, [])["passed"], audit(r, [])["errors"])
+        r["candidates"][0].pop("descriptionForValidation")
+        self.assertFalse(audit(r, [])["passed"])
+
     def test_expiry_or_publication_mutations_are_blocked(self):
         for key in ("expiryDecisionsAllowed", "publicationAllowed"):
             r = sample()
