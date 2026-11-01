@@ -86,6 +86,65 @@ class BoardsTests(unittest.TestCase):
         self.assertEqual(result["candidateCount"], 2)
         self.assertEqual(result["scans"][0]["duplicateInDiscovery"], 1)
 
+    def test_data_engineer_two_year_profile_is_isolated_from_fresher_site(self):
+        board = a.parse_board("Sample", "https://jobs.lever.co/sample/previous")
+        base = {"id": "de-2", "url": "https://jobs.lever.co/sample/de-2",
+                "title": "Data Engineer", "location": "Hyderabad, India",
+                "description": "2+ years of experience with Python SQL Snowflake Airflow"}
+        self.assertIsNone(a.normalize_posting(board, base))  # website fresher policy
+        candidate = a.normalize_posting(board, base, profile="data-engineer-2y")
+        self.assertEqual(candidate["searchProfile"], "data-engineer-2y")
+        self.assertIn("snowflake", candidate["skillsMatched"])
+        self.assertIn("python", candidate["skillsMatched"])
+        self.assertFalse(candidate["fresherSignal"])
+        self.assertEqual(candidate["eligibilityStatus"], "needs_manual_verification")
+        self.assertIsNone(a.normalize_posting(board, dict(base, title="Senior Data Engineer"),
+                                               profile="data-engineer-2y"))
+        self.assertIsNone(a.normalize_posting(board, dict(base, title="Data Engineering Intern"),
+                                               profile="data-engineer-2y"))
+        self.assertIsNone(a.normalize_posting(board, dict(base, description="5+ years of experience"),
+                                               profile="data-engineer-2y"))
+        self.assertIsNone(a.normalize_posting(board, dict(base, location="London, UK", country="GB"),
+                                               profile="data-engineer-2y"))
+
+    def test_personal_profile_can_surface_existing_hd_site_jobs_but_never_publish(self):
+        original = [{"company": "Sample", "role": "Data Engineer",
+                     "apply": "https://job-boards.greenhouse.io/sample/jobs/22"}]
+        def fake(url, body=None):
+            return {"jobs": [{"id": 22, "title": "Data Engineer",
+                    "absolute_url": original[0]["apply"],
+                    "location": {"name": "Bengaluru, India"},
+                    "content": "2 years of experience. SQL Snowflake"}]}
+        fresher = a.discover(original, fetcher=fake)
+        personal = a.discover(original, fetcher=fake, profile="data-engineer-2y")
+        self.assertEqual(fresher["candidateCount"], 0)
+        self.assertEqual(personal["candidateCount"], 1)
+        self.assertFalse(personal["publicationAllowed"])
+        self.assertFalse(personal["expiryDecisionsAllowed"])
+        self.assertEqual(personal["candidates"][0]["reviewedStatus"], "unreviewed")
+
+    def test_profile_filters_smartrecruiters_and_workday_listing_candidates(self):
+        sr = {"provider": "smartrecruiters", "company": "SR", "board": "srco"}
+        wd = {"provider": "workday", "company": "WD", "board": "Careers",
+              "host": "company.wd3.myworkdayjobs.com", "tenant": "company"}
+        def fake(url, body=None):
+            if "smartrecruiters.com" in url and "postings?" in url:
+                return {"totalFound": 1, "content": [{"id": "12", "name": "Data Engineer",
+                     "location": {"city": "Hyderabad", "country": "in"}}]}
+            if "smartrecruiters.com" in url:
+                return {"postingUrl": "https://jobs.smartrecruiters.com/srco/12",
+                        "jobAd": {"sections": {"jobDescription": {"text": "Python SQL 1-3 years"}}}}
+            if body is not None:
+                return {"total": 1, "jobPostings": [
+                    {"title": "Data Engineer", "externalPath": "/job/Hyderabad/Data-Engineer_R2",
+                     "locationsText": "Hyderabad, India"}]}
+            return {"jobPostingInfo": {"title": "Data Engineer", "jobDescription": "2 years SQL ETL"}}
+        for board in (sr, wd):
+            posts, notes, complete = a.source_posts(board, fetcher=fake, profile="data-engineer-2y")
+            self.assertTrue(complete, notes)
+            self.assertEqual(len(posts), 1)
+        self.assertEqual(a.source_posts(sr, fetcher=fake)[0], [])
+
     def test_lever_and_ashby(self):
         def fake(url, body=None):
             if "lever.co" in url:
