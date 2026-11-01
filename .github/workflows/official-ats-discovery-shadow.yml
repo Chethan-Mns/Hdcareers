@@ -61,8 +61,7 @@ jobs:
           path: official-ats-board-catalog.json
           retention-days: 14
 
-  manual-shadow:
-    if: github.event_name == 'workflow_dispatch'
+  live-shadow-pilot:
     needs: offline-tests-and-catalog
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -71,7 +70,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Read-only official ATS API discovery (capped requests)
+      - name: Read-only official ATS API discovery (PR and manual; capped requests)
         run: |
           python3 scripts/discovery_ats_shadow.py \
             --max-boards "${{ inputs.max_boards || '12' }}" \
