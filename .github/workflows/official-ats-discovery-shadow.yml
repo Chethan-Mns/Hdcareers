@@ -10,6 +10,8 @@ on:
       - scripts/ats_job_status_report.py
       - tests/test_ats_job_status_report.py
       - data/discovery-drafts/**
+      - data/owner-discovery-suppression.json
+      - tests/test_owner_discovery_suppression.py
       - data/ats-discovery-history.json
       - tests/test_ats_http_client.py
       - tests/test_ats_discovery_history.py
@@ -61,6 +63,7 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_ats_http_client.py' -v
           python3 -m unittest discover -s tests -p 'test_ats_discovery_history.py' -v
           python3 -m unittest discover -s tests -p 'test_ats_job_status_report.py' -v
+          python3 -m unittest discover -s tests -p 'test_owner_discovery_suppression.py' -v
           python3 -m py_compile scripts/ats_job_status_report.py
           python3 -m py_compile scripts/ats_http_client.py scripts/ats_discovery_history.py
       - name: Generate offline ATS seed catalogue
@@ -105,6 +108,8 @@ jobs:
           assert d["publicationAllowed"] is False and d["expiryDecisionsAllowed"] is False
           assert all(c["reviewedStatus"] == "unreviewed" for c in d["candidates"])
           assert all(c["eligibilityStatus"] == "needs_manual_verification" for c in d["candidates"])
+          assert all(c.get('apply') != 'https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/Graduate-Trainee-Engineer_R4043154-1' for c in d['candidates'])
+          print('OWNER EXPIRED SUPPRESSION:', d.get('excludedByOwnerExpired', 0))
           print("Pilot:", d["scannedBoards"], "boards;",
                 d["candidateCount"], "unreviewed candidates;",
                 d["partialOrFailedBoards"], "partial/failed board scans")
