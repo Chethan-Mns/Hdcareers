@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:34.659Z",
+  "updatedAt": "2026-11-01T05:16:40.252Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -224,7 +224,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Freshers / 0–1 year; 2025/2026 graduates",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates.",
       "postedDate": null,
@@ -258,13 +258,16 @@
         "date": null,
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:16:40.251Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:16:40.251Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:40.251Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "konecranes-744000143236689",
