@@ -50,6 +50,21 @@ API_ALLOWLIST = {
 }
 SOURCE_PROVIDER = {"greenhouse", "lever", "ashby", "smartrecruiters", "workday"}
 
+# Separate PERSONAL job-search profile. Never used by the website's fresher-only
+# discovery default or publication pipeline.
+DATA_ENGINEER_ROLE = re.compile(
+    r"\b(?:data engineers?|data engineering|etl (?:developer|engineer)|"
+    r"snowflake (?:developer|engineer)|analytics engineer|data platform engineer|"
+    r"big data engineer|data pipeline engineer|databricks (?:developer|engineer)|"
+    r"data integration engineer|pyspark developer)\b", re.I)
+PERSONAL_EXCLUDE = re.compile(r"\b(?:intern(?:ship)?|apprentice(?:ship)?|student)\b", re.I)
+YEAR_MENTION = re.compile(
+    r"\b(\d{1,2})\s*(?:(?:to|-|–)\s*(\d{1,2})|\+)?\s*(?:years?|yrs?)\b", re.I)
+DATA_ENGINEER_SKILLS = ("snowflake", "python", "sql", "airflow", "databricks",
+                        "pyspark", "spark", "azure", "etl", "data pipelines")
+PERSONAL_PROFILE = "data-engineer-2y"
+
+
 
 class PlainText(HTMLParser):
     def __init__(self):
@@ -181,6 +196,26 @@ def fresher_signal(title, description):
     return ""
 
 
+
+def data_engineer_signal(title, description):
+    """Potential 2-year experience fit, never a claim of eligibility."""
+    if not DATA_ENGINEER_ROLE.search(title) or SENIOR_RE.search(title) or PERSONAL_EXCLUDE.search(title):
+        return ""
+    # Conservative: any stated 3+ year minimum is a hold, not an eligible role.
+    requirements = [(int(m.group(1)), int(m.group(2) or m.group(1)))
+                    for m in YEAR_MENTION.finditer(description[:5500])]
+    if requirements and any(lo > 2 for lo, _ in requirements):
+        return ""
+    return "title_match_experience_unverified"
+
+
+def match_signal(profile, title, description):
+    if profile == "fresher":
+        return fresher_signal(title, description)
+    if profile == PERSONAL_PROFILE:
+        return data_engineer_signal(title, description)
+    raise ValueError("Unknown discovery profile")
+
 def category_hint(title):
     if re.search(r"\b(intern|internship|apprentice|apprenticeship)\b", title, re.I):
         return "internship"
@@ -189,7 +224,7 @@ def category_hint(title):
     return "technical"
 
 
-def normalize_posting(board, row):
+def normalize_posting(board, row, profile="fresher"):
     provider = board["provider"]
     url = canonical(row.get("url"))
     host = (urlsplit(url).hostname or "").lower() if url else ""
@@ -206,7 +241,7 @@ def normalize_posting(board, row):
     description = clean_html(row.get("description"))
     if not title or not is_india(location, row.get("country")):
         return None
-    signal = fresher_signal(title, description)
+    signal = match_signal(profile, title, description)
     if not signal:
         return None
     external_id = str(row.get("id") or "").strip()
@@ -219,14 +254,19 @@ def normalize_posting(board, row):
         "apply": url, "externalId": external_id, "sourceProvider": provider,
         "sourceBoard": board["board"], "sourceName": board["company"] + " official ATS",
         "categoryHint": category_hint(title),
-        "fresherSignal": signal, "eligibilityStatus": "needs_manual_verification",
+        "fresherSignal": signal if profile == "fresher" else "",
+        "searchProfile": profile,
+        "profileMatchSignal": signal,
+        "skillsMatched": [skill for skill in DATA_ENGINEER_SKILLS
+                          if profile == PERSONAL_PROFILE and skill in description.lower()],
+        "eligibilityStatus": "needs_manual_verification",
         "reviewedStatus": "unreviewed", "sourceStatus": "listed_on_official_ATS",
         "descriptionExcerpt": description[:1200],
         "publishedAtSource": str(row.get("posted") or "")[:64],
     }
 
 
-def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12):
+def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, profile="fresher"):
     """Return (raw_postings, notes, complete). Incomplete scans must not imply expiry."""
     provider, slug = board["provider"], quote(board["board"], safe="")
     if provider == "greenhouse":
@@ -285,7 +325,7 @@ def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12):
         for j in all_posts:
             l = j.get("location") or {}
             place = ", ".join(str(x) for x in (l.get("city"), l.get("region"), l.get("country")) if x)
-            if is_india(place, l.get("country", "")) and fresher_signal(str(j.get("name") or ""), ""):
+            if is_india(place, l.get("country", "")) and match_signal(profile, str(j.get("name") or ""), ""):
                 selected.append((j, place))
         if len(selected) > max_details:
             complete = False
@@ -338,7 +378,7 @@ def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12):
         chosen = []
         for j in all_posts:
             loc = str(j.get("locationsText") or "")
-            if is_india(loc) and fresher_signal(str(j.get("title") or ""), ""):
+            if is_india(loc) and match_signal(profile, str(j.get("title") or ""), ""):
                 chosen.append(j)
         if len(chosen) > max_details:
             complete = False
@@ -366,7 +406,9 @@ def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12):
 
 
 def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=30,
-             max_pages=5, max_details=12):
+             max_pages=5, max_details=12, profile="fresher"):
+    if profile not in {"fresher", PERSONAL_PROFILE}:
+        raise ValueError("Unsupported profile")
     if max_boards < 1 or max_pages < 1 or max_details < 1:
         raise ValueError("Crawl budgets must be positive")
     boards = boards_from_jobs(jobs, providers)
@@ -385,18 +427,18 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                 "notes": [], "elapsedSeconds": 0}
         try:
             posts, notes, complete = source_posts(board, fetcher=fetcher,
-                max_pages=max_pages, max_details=max_details)
+                max_pages=max_pages, max_details=max_details, profile=profile)
             scan["listed"] = len(posts)
             scan["notes"] = notes[:50]
             scan["complete"] = complete
             scan["status"] = "ok" if complete else "partial"
             for post in posts:
-                candidate = normalize_posting(board, post)
+                candidate = normalize_posting(board, post, profile=profile)
                 if not candidate:
                     continue
                 key = canonical(candidate["apply"])
                 pair = (candidate["company"].lower(), candidate["role"].lower())
-                if key in site_urls or pair in site_pairs:
+                if profile == "fresher" and (key in site_urls or pair in site_pairs):
                     scan["duplicateOnSite"] += 1
                     continue
                 if key in seen or pair in seen_roles:
@@ -413,7 +455,8 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
         scan["elapsedSeconds"] = round(time.monotonic() - started, 2)
         scans.append(scan)
     return {
-        "mode": "shadow_only", "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "mode": "shadow_only", "profile": profile,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
         "source": "Official ATS APIs from existing HD Careers employer job links",
         "license": "Independent client; no FreeHire hosted job catalogue or API used",
         "totalSeedBoards": len(boards), "scannedBoards": len(scans),
@@ -422,7 +465,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
         "candidateCount": len(results), "scans": scans, "candidates": results,
         "publicationAllowed": False, "expiryDecisionsAllowed": False,
         "notes": [
-            "Only heuristic discovery candidates. Freshers, India location, source URL and completeness require independent validation.",
+            "Only heuristic discovery candidates. Experience eligibility, India location, source URL and completeness require independent validation.",
             "A failed, capped, or partial crawl NEVER implies a previously published job is expired.",
             "No writes to jobs.json, review queue, Admin, Telegram or website.",
             "Employer ATS API use remains subject to each host's terms and rate limits.",
@@ -433,6 +476,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--jobs", default=str(ROOT / "data/jobs.json"))
+    parser.add_argument("--profile", choices=["fresher", PERSONAL_PROFILE], default="fresher")
     parser.add_argument("--providers", default="greenhouse,lever,ashby,smartrecruiters,workday")
     parser.add_argument("--max-boards", type=int, default=30)
     parser.add_argument("--max-pages", type=int, default=5)
@@ -453,10 +497,10 @@ def main():
                   "publicationAllowed": False, "expiryDecisionsAllowed": False}
     else:
         result = discover(jobs, providers=providers, max_boards=args.max_boards,
-            max_pages=args.max_pages, max_details=args.max_details)
+            max_pages=args.max_pages, max_details=args.max_details, profile=args.profile)
     Path(args.output).write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({k: result.get(k) for k in
-                      ("mode", "totalSeedBoards", "scannedBoards", "candidateCount", "partialOrFailedBoards")},
+                      ("mode", "profile", "totalSeedBoards", "scannedBoards", "candidateCount", "partialOrFailedBoards")},
                      ensure_ascii=False))
 
 
