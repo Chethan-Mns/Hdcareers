@@ -6,10 +6,12 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from ats_job_status_report import (duplicate_verdict, expand_sources, inspect,
-                                   write_csv, write_html)
+                                   probe_official, write_csv, write_html)
 
 
 def candidate(id="ats-test", url="https://jobs.lever.co/acme/123",
@@ -127,6 +129,53 @@ class StatusReportTests(unittest.TestCase):
             self.assertIn("&lt;script&gt;", page)
             self.assertIn("HD Careers", page)
             self.assertIn("company,role,location", cp.read_text(encoding="utf-8-sig"))
+
+    def test_exact_lever_api_probe_live_and_explicit_inactive(self):
+        c = candidate()
+        with patch("ats_job_status_report.ats_fetch_json",
+                   return_value={"id": "123", "text": "Graduate Trainee", "active": True}) as fetch:
+            state, reason = probe_official(c)
+        self.assertEqual(state, "active")
+        self.assertIn("Exact requisition", reason)
+        self.assertIn("api.lever.co", fetch.call_args.args[0])
+        with patch("ats_job_status_report.ats_fetch_json",
+                   return_value={"id": "123", "text": "Graduate Trainee", "active": False}):
+            state, reason = probe_official(c)
+        self.assertEqual(state, "expired")
+        self.assertIn("explicitly", reason)
+
+    def test_exact_api_404_mismatched_id_or_changed_role_not_expired(self):
+        c = candidate()
+        err = HTTPError(c["apply"], 404, "missing", {}, None)
+        for result in (err,
+                       {"id": "another", "text": "Graduate Trainee"},
+                       {"id": "123", "text": "Senior Director"}):
+            with patch("ats_job_status_report.ats_fetch_json", side_effect=result if isinstance(result, Exception) else None,
+                       return_value=result if isinstance(result, dict) else None):
+                state, reason = probe_official(c)
+            self.assertEqual(state, "review")
+            self.assertTrue(reason)
+
+    def test_greenhouse_ashby_and_workday_exact_identity(self):
+        examples = [
+            (candidate("a", "https://job-boards.greenhouse.io/cloudsek/jobs/515", "CloudSEK",
+                       "Graduate Trainee"), {"id": 515, "title": "Graduate Trainee"}),
+            (candidate("b", "https://jobs.ashbyhq.com/example/abc", "Example",
+                       "Graduate Trainee"), {"jobs": [{"id": "123", "title": "Graduate Trainee"}]}),
+            (candidate("c", "https://example.wd3.myworkdayjobs.com/External/job/Bengaluru/Graduate_123",
+                       "Example", "Graduate Trainee"),
+             {"jobPostingInfo": {"title": "Graduate Trainee", "jobDescription": "full"}}),
+        ]
+        for row, payload in examples:
+            if "greenhouse" in row["apply"]:
+                row["sourceProvider"],row["externalId"]="greenhouse","515"
+            elif "ashby" in row["apply"]:
+                row["sourceProvider"],row["externalId"]="ashby","123"
+            else:
+                row["sourceProvider"],row["externalId"]="workday","/job/Bengaluru/Graduate_123"
+            with self.subTest(url=row["apply"]), patch("ats_job_status_report.ats_fetch_json",return_value=payload):
+                state, reason = probe_official(row)
+                self.assertEqual(state, "active", reason)
 
     def test_invalid_url_not_new(self):
         self.assertEqual(duplicate_verdict(candidate(url="http://localhost/"), [])[0],
