@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:17:20.768Z",
+  "updatedAt": "2026-11-01T05:17:27.745Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -549,7 +549,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "No prior experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Employer-authorized SmartRecruiters requisition 744000154717769 is open, full-time and explicitly states no prior experience required.",
       "postedDate": null,
@@ -583,13 +583,16 @@
         "date": null,
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:17:27.745Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:17:27.745Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer-authorized SmartRecruiters requisition 744000154717769 is open, full-time and explicitly states no prior experience required."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:17:27.745Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
