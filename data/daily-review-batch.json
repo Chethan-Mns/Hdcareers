@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T03:34:23.369Z",
+  "updatedAt": "2026-11-01T05:16:21.704Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years; 2025/2026 graduates",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Salesforce requisition JR307116 is open with a job-bound application route and explicitly targets 2025/2026 BE/BTech graduates.",
       "postedDate": "2026-10-30",
@@ -47,13 +47,16 @@
         "date": "2026-10-30",
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:16:21.675Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:16:21.675Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Salesforce requisition JR307116 is open with a job-bound application route and explicitly targets 2025/2026 BE/BTech graduates."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:21.675Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "dentsu-r1125419",
