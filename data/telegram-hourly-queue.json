@@ -1188,46 +1188,47 @@
     {
       "page": "jobs/businessnext-graduate-engineer-trainee.html",
       "batchId": "admin-41276395768",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T06:18:52.575361+00:00",
       "claimId": "41280321566",
-      "claimedAt": "2026-11-01T06:19:03.966031+00:00"
+      "claimedAt": "2026-11-01T06:19:03.966031+00:00",
+      "messageId": 642,
+      "deliveredAt": "2026-11-01T06:19:09.718099+00:00"
     },
     {
       "page": "jobs/deloitte-talent-acquisition-intern.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T07:18:52.575361+00:00"
+      "dueAt": "2026-11-01T07:19:09.718099+00:00"
     },
     {
       "page": "jobs/ey-analyst-transfer-pricing.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T08:18:52.575361+00:00"
+      "dueAt": "2026-11-01T08:19:09.718099+00:00"
     },
     {
       "page": "jobs/honeywell-intern-bachelors-app-eng.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T09:18:52.575361+00:00"
+      "dueAt": "2026-11-01T09:19:09.718099+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-associate-fresher.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T10:18:52.575361+00:00"
+      "dueAt": "2026-11-01T10:19:09.718099+00:00"
     },
     {
       "page": "jobs/salesforce-software-engineering-amts.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T11:18:52.575361+00:00"
+      "dueAt": "2026-11-01T11:19:09.718099+00:00"
     }
   ]
 }
