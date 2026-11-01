@@ -571,25 +571,43 @@
     }
   ],
   "discoveryAudit": {
-    "watchlistTotal": 87,
-    "watchlistEmployersVisited": 17,
-    "watchlistEmployersNotVisited": 70,
-    "fallbackEmployerPortalsVisited": 21,
-    "blockedOrInconclusivePortals": 6,
-    "uniqueExactJobIdsFound": 30,
-    "stagedCandidates": 11,
-    "watchlistCandidatesStaged": 5,
-    "fallbackCandidatesStaged": 6,
-    "duplicatePostingsExcluded": 8,
-    "sourceUnconfirmedOrIneligibleHeld": 12,
-    "authoritativelyExpired": 2,
-    "verificationVerdicts": {
-      "live": 11,
-      "review": 12,
-      "expired": 2
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 0
+      }
     },
-    "deloitteOutcome": "Deloitte exact requisition 60813044 qualified as the single reserved Priority internship.",
-    "note": "Counts reflect official employer or employer-authorized ATS portals actually queried or inspected on 1 Nov 2026. Search-only, blocked, duplicate, experienced and source-incomplete results were not staged."
+    "backup": {
+      "size": 1,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 1,
+        "training": 0,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 1,
+        "training": 2
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 11,
+    "duplicateExclusions": [],
+    "excludedCount": 0,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
