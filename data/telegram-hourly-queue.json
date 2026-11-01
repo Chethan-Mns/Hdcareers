@@ -1188,9 +1188,11 @@
     {
       "page": "jobs/businessnext-graduate-engineer-trainee.html",
       "batchId": "admin-41276395768",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T06:18:52.575361+00:00"
+      "dueAt": "2026-11-01T06:18:52.575361+00:00",
+      "claimId": "41280321566",
+      "claimedAt": "2026-11-01T06:19:03.966031+00:00"
     },
     {
       "page": "jobs/deloitte-talent-acquisition-intern.html",
