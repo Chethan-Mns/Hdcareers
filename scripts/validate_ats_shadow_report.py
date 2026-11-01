@@ -60,13 +60,13 @@ def audit(report, existing_jobs):
         p = parse_board(company, url)
         if not p or p["provider"] != c["sourceProvider"] or p["board"].lower() != c["sourceBoard"].lower():
             errors.append(f"Candidate {idx}: official ATS board mismatch")
-        if not is_india(c["loc"]):
+        if not is_india(c["loc"], c.get("countryEvidence", "")):
             errors.append(f"Candidate {idx}: lacks India location evidence")
         if c.get("reviewedStatus") != "unreviewed" or c.get("eligibilityStatus") != "needs_manual_verification":
             errors.append(f"Candidate {idx}: incorrectly authorized")
         if c.get("searchProfile") != profile:
             errors.append(f"Candidate {idx}: cross-profile contamination")
-        if not match_signal(profile, role, c.get("descriptionExcerpt") or ""):
+        if not match_signal(profile, role, c.get("descriptionForValidation") or c.get("descriptionExcerpt") or ""):
             errors.append(f"Candidate {idx}: failed role/profile signal")
         if profile == "fresher" and url in existing:
             errors.append(f"Candidate {idx}: duplicate already on site")
