@@ -375,12 +375,13 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
     site_pairs = {(str(x.get("company") or "").lower().strip(),
                    str(x.get("role") or "").lower().strip())
                   for x in jobs if isinstance(x, dict)}
-    results, scans, seen = [], [], set()
+    results, scans, seen, seen_roles = [], [], set(), set()
     for board in boards[:max_boards]:
         started = time.monotonic()
         scan = {"company": board["company"], "provider": board["provider"],
                 "board": board["board"], "status": "ok", "complete": False,
                 "listed": 0, "newReviewCandidates": 0, "duplicateOnSite": 0,
+                "duplicateInDiscovery": 0,
                 "notes": [], "elapsedSeconds": 0}
         try:
             posts, notes, complete = source_posts(board, fetcher=fetcher,
@@ -398,9 +399,11 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                 if key in site_urls or pair in site_pairs:
                     scan["duplicateOnSite"] += 1
                     continue
-                if key in seen:
+                if key in seen or pair in seen_roles:
+                    scan["duplicateInDiscovery"] = scan.get("duplicateInDiscovery", 0) + 1
                     continue
                 seen.add(key)
+                seen_roles.add(pair)
                 scan["newReviewCandidates"] += 1
                 results.append(candidate)
         except (ValueError, HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError) as error:
