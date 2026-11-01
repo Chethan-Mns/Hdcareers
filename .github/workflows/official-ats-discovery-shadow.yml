@@ -95,6 +95,34 @@ jobs:
               print("CANDIDATE:", candidate["company"], "|", candidate["role"], "|",
                     candidate["loc"], "|", candidate["apply"])
           PY
+      - name: Read-only personal Data Engineering 2-year search profile
+        run: |
+          python3 scripts/discovery_ats_shadow.py \
+            --profile data-engineer-2y \
+            --max-boards 20 \
+            --max-pages 2 \
+            --max-details 6 \
+            --output personal-de-shadow.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("personal-de-shadow.json"))
+          assert d["profile"] == "data-engineer-2y" and d["mode"] == "shadow_only"
+          assert d["publicationAllowed"] is False and d["expiryDecisionsAllowed"] is False
+          assert all(x["searchProfile"] == "data-engineer-2y" for x in d["candidates"])
+          print("PERSONAL DE PILOT:", d["scannedBoards"], "boards,",
+                d["candidateCount"], "unreviewed possible matches")
+          for c in d["candidates"][:15]:
+              print("DE CANDIDATE:", c["company"], "|", c["role"], "|",
+                    c["loc"], "|", ",".join(c["skillsMatched"]), "|", c["apply"])
+          PY
+      - name: Upload personal DE pilot (not website publishing)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hd-personal-de-search-report
+          path: personal-de-shadow.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Upload pilot results (never publish)
         uses: actions/upload-artifact@v4
         if: always()
