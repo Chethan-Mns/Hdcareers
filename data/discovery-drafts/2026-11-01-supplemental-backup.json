@@ -8,7 +8,7 @@
     "publicationAllowed": false,
     "expiryDecisionsAllowed": false,
     "adminSubmissionAllowed": false,
-    "ownerLiveVerificationRequired": true
+    "ownerLiveVerificationRequired": false
   },
   "origins": {
     "officialATSShadowRun": "https://github.com/Chethan-Mns/Hdcareers/actions/runs/41286277562",
@@ -44,11 +44,13 @@
       "expYears": "1–3 years",
       "verificationReason": "Official Brillio Lever posting specifies 1–3 years, Python/Appium mobile QA, direct Apply for this job.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-02",
@@ -61,11 +63,13 @@
       "expYears": "Freshers only",
       "verificationReason": "Official SmartRecruiters job page states 'Only Fresher can apply' and full-time Java/J2EE role.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-03",
@@ -78,11 +82,13 @@
       "expYears": "0–3 years; strong freshers encouraged",
       "verificationReason": "Official Greenhouse application form accepts direct applications; employer board lists this role. Requirement text reproduced on Built In with up to 3 years and freshers encouraged.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-04",
@@ -96,11 +102,13 @@
       "verificationReason": "Official Greenhouse role specifies 0–2 years in hardware service and 1-year contract; review contract eligibility before approving technical full-time slot.",
       "reviewNote": "1-year contract; on-site / rotational shifts",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-05",
@@ -113,11 +121,13 @@
       "expYears": "Graduate / entry level (degree in Mechanical Engineering)",
       "verificationReason": "Official GE HealthCare Workday listing R4043154 states full-time entry-level role, Mechanical Engineering graduate, application available; reconfirm application is active.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "expired",
+      "eligibilityStatus": "excluded_owner_confirmed_expired",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-06",
@@ -131,11 +141,13 @@
       "verificationReason": "First-party Advance Sensing career job page explicitly specifies 0–2 years and provides job-bound Apply Now link to a company-directed form.",
       "reviewNote": "Company directs applicants to Google Forms; owner must confirm form remains valid",
       "sourceType": "official_employer_page",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-07",
@@ -148,11 +160,13 @@
       "expYears": "0–3 years",
       "verificationReason": "Official Drivetrain Lever full-time remote India page explicitly requires 0–3 years of relevant experience.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-08",
@@ -165,11 +179,13 @@
       "expYears": "Current students or recent graduates",
       "verificationReason": "Official CloudSEK Greenhouse application is present and lists current/recent CS or security graduates as target candidates.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     },
     {
       "id": "supp-20261101-09",
@@ -182,19 +198,15 @@
       "expYears": "MBA Finance freshers",
       "verificationReason": "Official Dun & Bradstreet Lever apprenticeship states 12-month tenure and MBA Finance fresher eligibility.",
       "sourceType": "official_ats",
-      "reviewedStatus": "unreviewed",
-      "eligibilityStatus": "needs_owner_verification",
+      "reviewedStatus": "live",
+      "eligibilityStatus": "availability_live_eligibility_pending",
       "publicationAllowed": false,
       "duplicateCheck": "not_in_main_published_285_or_current_submitted_11_by_exact_url_and_company_role_at_check_time",
-      "approvalRequired": true
+      "approvalRequired": true,
+      "ownerReviewBatchId": "2026-11-01-freehire-style-20",
+      "ownerVerifiedOn": "2026-11-01"
     }
   ],
-  "notes": [
-    "This file is NOT the data/daily-review-batch.json submission and is NOT connected to Admin or publishing.",
-    "9 candidate roles are selected from 9 employers to fill backup quotas, but actual source/application liveness and exact eligibility must still be manually verified.",
-    "GE HealthCare similarly titled requisitions exist on the site; the selected Graduate Trainee Engineer R4043154 is a separate requisition and different role title.",
-    "Instawork job is a 1-year contract; needs category-owner acceptance.",
-    "Only after manual verification and a new, explicitly authorized review-batch version may any candidates be moved into Admin.",
-    "No jobs, site pages or Telegram messages were altered."
-  ]
+  "notes": "Superseded as a standalone review draft by batch 2026-11-01-freehire-style-20. Eight overlapping links owner-marked Live, GE HealthCare R4043154 owner-marked Expired. Preserve as history only; do not re-submit as a new batch.",
+  "supersededByBatchId": "2026-11-01-freehire-style-20"
 }
