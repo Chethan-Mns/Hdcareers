@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:49.251Z",
+  "updatedAt": "2026-11-01T05:16:52.498Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -279,7 +279,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year; freshers can apply",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible.",
       "postedDate": null,
@@ -293,7 +293,7 @@
         "expYears": "0–1 year; freshers can apply",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Konecranes Careers (SmartRecruiters)",
         "desc": "Graduate engineering role supporting production planning, material requirements, capacity planning and ERP/MRP records.",
         "elig": "BE Mechanical or BE Electrical; 0–1 year and freshers can apply.",
@@ -313,14 +313,15 @@
         "jobId": "744000143236689",
         "date": null,
         "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:34:23.369Z"
+        "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:34:23.369Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:52.498Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1719745",
