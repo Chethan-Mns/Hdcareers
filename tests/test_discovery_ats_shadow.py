@@ -117,7 +117,8 @@ class BoardsTests(unittest.TestCase):
             return {"postingUrl": "https://jobs.smartrecruiters.com/smartemployer/" + url.rsplit("/",1)[-1],
                     "jobAd": {"sections": {"jobDescription": {"text": "0-2 years"}}}}
         report = a.discover(site, fetcher=fake, max_pages=1, max_details=2)
-        self.assertEqual(report["candidateCount"], 2)
+        self.assertEqual(report["candidateCount"], 1)
+        self.assertEqual(report["scans"][0]["duplicateInDiscovery"], 1)
         self.assertEqual(report["scans"][0]["status"], "partial")
         self.assertFalse(report["scans"][0]["complete"])
         self.assertEqual(len([x for x in calls if "postings?" in x]), 1)
