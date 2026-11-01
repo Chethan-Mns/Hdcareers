@@ -14,6 +14,7 @@ on:
       - scripts/validate_ats_shadow_report.py
       - tests/test_validate_ats_shadow_report.py
       - .github/workflows/official-ats-discovery-shadow.yml
+      - .github/workflows/official-ats-history-persist.yml
   workflow_dispatch:
     inputs:
       max_boards:
