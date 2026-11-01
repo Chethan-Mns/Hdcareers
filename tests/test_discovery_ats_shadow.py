@@ -67,6 +67,25 @@ class BoardsTests(unittest.TestCase):
         self.assertFalse(result["expiryDecisionsAllowed"])
         self.assertEqual(result["candidates"][0]["role"], "Graduate Engineer Trainee")
 
+    def test_repeated_ats_ids_for_same_employer_role_are_not_distinct_jobs(self):
+        site = [{"company": "Example", "role": "Old Job",
+                 "apply": "https://job-boards.greenhouse.io/example/jobs/1"}]
+        def fake(url, body=None):
+            return {"jobs": [
+                {"id": 2, "title": "HR Intern",
+                 "absolute_url": "https://job-boards.greenhouse.io/example/jobs/2",
+                 "location": {"name": "Hyderabad"}, "content": "0-1 years experience"},
+                {"id": 3, "title": "HR Intern",
+                 "absolute_url": "https://job-boards.greenhouse.io/example/jobs/3",
+                 "location": {"name": "Hyderabad"}, "content": "0-1 years experience"},
+                {"id": 4, "title": "Graduate Engineer Trainee",
+                 "absolute_url": "https://job-boards.greenhouse.io/example/jobs/4",
+                 "location": {"name": "Bengaluru"}, "content": "0-2 years experience"},
+            ]}
+        result = a.discover(site, fetcher=fake)
+        self.assertEqual(result["candidateCount"], 2)
+        self.assertEqual(result["scans"][0]["duplicateInDiscovery"], 1)
+
     def test_lever_and_ashby(self):
         def fake(url, body=None):
             if "lever.co" in url:
