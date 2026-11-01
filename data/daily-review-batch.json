@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:17:07.025Z",
+  "updatedAt": "2026-11-01T05:17:11.557Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -439,7 +439,7 @@
       "cat": "non-it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; no required prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Deloitte South Asia requisition 60813044 is open with Apply and lists an internship supporting Talent Acquisition without mandatory prior experience.",
       "postedDate": null,
@@ -473,13 +473,16 @@
         "date": null,
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:17:11.557Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:17:11.557Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Deloitte South Asia requisition 60813044 is open with Apply and lists an internship supporting Talent Acquisition without mandatory prior experience."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:17:11.557Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "honeywell-160935",
