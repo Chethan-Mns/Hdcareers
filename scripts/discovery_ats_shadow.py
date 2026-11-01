@@ -266,6 +266,8 @@ def normalize_posting(board, row, profile="fresher"):
         "eligibilityStatus": "needs_manual_verification",
         "reviewedStatus": "unreviewed", "sourceStatus": "listed_on_official_ATS",
         "descriptionExcerpt": description[:1200],
+        "descriptionForValidation": description,
+        "countryEvidence": str(row.get("country") or "")[:64],
         "publishedAtSource": str(row.get("posted") or "")[:64],
     }
 
