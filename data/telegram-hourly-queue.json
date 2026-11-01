@@ -1198,9 +1198,11 @@
     {
       "page": "jobs/deloitte-talent-acquisition-intern.html",
       "batchId": "admin-41276395768",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T07:19:09.718099+00:00"
+      "dueAt": "2026-11-01T07:19:09.718099+00:00",
+      "claimId": "41284305141",
+      "claimedAt": "2026-11-01T07:19:21.054426+00:00"
     },
     {
       "page": "jobs/ey-analyst-transfer-pricing.html",
