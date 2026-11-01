@@ -3,7 +3,7 @@
   "batchId": "2026-11-01-freehire-style-20",
   "mode": "owner_manual_review_only",
   "createdAt": "2026-11-01",
-  "status": "unreviewed",
+  "status": "owner_review_complete",
   "source": "HD Careers FreeHire-style ATS adapters + first-party career portals; not FreeHire hosted catalogue",
   "recordsCompared": {
     "publishedJobs": 285,
@@ -39,7 +39,8 @@
     "Not submitted to production Admin, website, or Telegram. No statuses will change until owner submits decisions.",
     "Some roles already appeared in the previous unsubmitted 9-job discovery draft; they are consolidated here, not duplicates in the live site.",
     "Official job-page availability and experience eligibility remain subject to the owner's Live/Expired/Unsure decisions; old pages may be stale.",
-    "Deloitte researched first; the November 1 submitted batch already includes a Deloitte internship. No duplicate Deloitte entry was added."
+    "Deloitte researched first; the November 1 submitted batch already includes a Deloitte internship. No duplicate Deloitte entry was added.",
+    "Owner confirmed 19 Live and 1 Expired (GE HealthCare R4043154); 0 Unsure. GE HealthCare is discovery-excluded by exact employer/requisition match; no website or Telegram mutation."
   ],
   "jobs": [
     {
@@ -51,10 +52,14 @@
       "cat": "technical",
       "apply": "https://jobs.lever.co/brillio-2/13586197-04af-4500-8a62-d856916bf3da",
       "experienceEvidence": "1–3 years",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-02",
@@ -65,10 +70,14 @@
       "cat": "technical",
       "apply": "https://jobs.smartrecruiters.com/Connectionphase/114435142-java-trainee",
       "experienceEvidence": "Freshers only",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-03",
@@ -79,10 +88,14 @@
       "cat": "technical",
       "apply": "https://job-boards.greenhouse.io/hackerrank/jobs/8127535",
       "experienceEvidence": "L1; confirm ≤3 years",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-04",
@@ -93,10 +106,14 @@
       "cat": "technical",
       "apply": "https://job-boards.greenhouse.io/instawork/jobs/4676145006",
       "experienceEvidence": "0–2 years; contract",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-05",
@@ -107,10 +124,14 @@
       "cat": "technical",
       "apply": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/Graduate-Trainee-Engineer_R4043154-1",
       "experienceEvidence": "Graduate-level; confirm Workday Apply",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "expired",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "expired",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "exclude_owner_confirmed_expired"
     },
     {
       "id": "fh26-1101-06",
@@ -121,10 +142,14 @@
       "cat": "technical",
       "apply": "https://advancesensing.com/pages/careers/careers/software-engineer.html",
       "experienceEvidence": "0–2 years",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-07",
@@ -135,10 +160,14 @@
       "cat": "nonit",
       "apply": "https://careers.ey.com/ey/job/Bengaluru-ITTS-TTA-Staff-KA-560016/1452167133/",
       "experienceEvidence": "0–1 year; CA / commerce",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-08",
@@ -149,10 +178,14 @@
       "cat": "nonit",
       "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999928318017-associate-operations",
       "experienceEvidence": "Freshers; old requisition may be stale",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-09",
@@ -163,10 +196,14 @@
       "cat": "internship",
       "apply": "https://job-boards.greenhouse.io/cloudsek/jobs/6115382004",
       "experienceEvidence": "Students / recent graduates",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-10",
@@ -177,10 +214,14 @@
       "cat": "internship",
       "apply": "https://jobs.lever.co/dnb/a61b6368-4c4f-4e1b-b125-d0d7ba7f8278",
       "experienceEvidence": "MBA Finance freshers; 12 months",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-11",
@@ -191,10 +232,14 @@
       "cat": "technical",
       "apply": "https://job-boards.greenhouse.io/bswiftindia/jobs/4714418006",
       "experienceEvidence": "1–3 years",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-12",
@@ -205,10 +250,14 @@
       "cat": "technical",
       "apply": "https://job-boards.greenhouse.io/redwoodsoftware/jobs/4403355009",
       "experienceEvidence": "Entry-level; no prior experience required",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-13",
@@ -219,10 +268,14 @@
       "cat": "technical",
       "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/105380004-java-developer-trainee",
       "experienceEvidence": "Freshers; old source may be stale",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-14",
@@ -233,10 +286,14 @@
       "cat": "technical",
       "apply": "https://jobs.ashbyhq.com/sciencelogic/bda1b48c-64f7-4c92-a9eb-9863fc59f56c/",
       "experienceEvidence": "Associate; 3 years preferred",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-15",
@@ -247,10 +304,14 @@
       "cat": "technical",
       "apply": "https://job-boards.greenhouse.io/point72/jobs/8893939002",
       "experienceEvidence": "2026 graduates; campus restriction",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-16",
@@ -261,10 +322,14 @@
       "cat": "technical",
       "apply": "https://jobs.lever.co/veeva/d0704c83-8c0f-4545-8a40-eb48bcfec299/",
       "experienceEvidence": "1+ years; verify upper bound",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-17",
@@ -275,10 +340,14 @@
       "cat": "nonit",
       "apply": "https://jobs.smartrecruiters.com/IELTSMaterialcom/744000000086545-business-development-executive-associate-freshers",
       "experienceEvidence": "0–6 months",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-18",
@@ -289,10 +358,14 @@
       "cat": "nonit",
       "apply": "https://jobs.lever.co/drivetrain/01cd2a2f-cc4a-471e-9fc7-b812d503f9bc",
       "experienceEvidence": "0–3 years",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-19",
@@ -303,10 +376,14 @@
       "cat": "internship",
       "apply": "https://job-boards.greenhouse.io/sigmoid/jobs/8921297002",
       "experienceEvidence": "Freshers; 6-month internship",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     },
     {
       "id": "fh26-1101-20",
@@ -317,10 +394,25 @@
       "cat": "internship",
       "apply": "https://job-boards.greenhouse.io/scopely/jobs/5448999008",
       "experienceEvidence": "Internship; confirm degree criteria",
-      "reviewedStatus": "unsure",
+      "reviewedStatus": "live",
       "publicationAllowed": false,
       "autoExpiryAllowed": false,
-      "verificationRequired": true
+      "verificationRequired": false,
+      "ownerDecision": "live",
+      "ownerReviewSource": "explicit_user_verified_job_link",
+      "ownerVerifiedOn": "2026-11-01",
+      "discoveryDisposition": "retain_live_reviewed_not_published"
     }
-  ]
+  ],
+  "reviewedOn": "2026-11-01",
+  "ownerReview": {
+    "live": 19,
+    "expired": 1,
+    "unsure": 0,
+    "all20DecisionsRecorded": true,
+    "publicationApproved": false,
+    "adminSubmissionApproved": false,
+    "telegramApproved": false,
+    "websiteExpiryMutationApproved": false
+  }
 }
