@@ -1238,9 +1238,11 @@
     {
       "page": "jobs/salesforce-software-engineering-amts.html",
       "batchId": "admin-41276395768",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T11:20:06.546552+00:00"
+      "dueAt": "2026-11-01T11:20:06.546552+00:00",
+      "claimId": "41301429765",
+      "claimedAt": "2026-11-01T11:20:17.160568+00:00"
     }
   ]
 }
