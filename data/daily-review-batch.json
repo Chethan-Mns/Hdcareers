@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T03:33:09.536Z",
+  "updatedAt": "2026-11-01T03:34:23.369Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -259,6 +259,58 @@
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates."
+      }
+    },
+    {
+      "id": "konecranes-744000143236689",
+      "company": "Konecranes",
+      "role": "Graduate Engineer Trainee, Order Management",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236689",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year; freshers can apply",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible.",
+      "postedDate": null,
+      "job": {
+        "company": "Konecranes",
+        "role": "Graduate Engineer Trainee, Order Management",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236689",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year; freshers can apply",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Konecranes Careers (SmartRecruiters)",
+        "desc": "Graduate engineering role supporting production planning, material requirements, capacity planning and ERP/MRP records.",
+        "elig": "BE Mechanical or BE Electrical; 0–1 year and freshers can apply.",
+        "resp": [
+          "Prepare and manage production plans and schedules.",
+          "Coordinate material and capacity planning using ERP/MRP systems.",
+          "Monitor production progress, bottlenecks and delivery commitments."
+        ],
+        "skills": [
+          "Production planning",
+          "MRP",
+          "ERP",
+          "Capacity planning",
+          "Cross-functional coordination"
+        ],
+        "workMode": "On-site",
+        "jobId": "744000143236689",
+        "date": null,
+        "verifiedDate": "1 Nov 2026",
+        "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
+        "browserVerifiedAt": "2026-11-01T03:34:23.369Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-01T03:34:23.369Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible."
       }
     },
     {
@@ -519,50 +571,25 @@
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 9,
-      "counts": {
-        "fresherIT": 5,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 2
-      },
-      "shortfalls": {
-        "fresherIT": 1,
-        "nonIT": 2,
-        "training": 0
-      }
+    "watchlistTotal": 87,
+    "watchlistEmployersVisited": 17,
+    "watchlistEmployersNotVisited": 70,
+    "fallbackEmployerPortalsVisited": 21,
+    "blockedOrInconclusivePortals": 6,
+    "uniqueExactJobIdsFound": 30,
+    "stagedCandidates": 11,
+    "watchlistCandidatesStaged": 5,
+    "fallbackCandidatesStaged": 6,
+    "duplicatePostingsExcluded": 8,
+    "sourceUnconfirmedOrIneligibleHeld": 12,
+    "authoritativelyExpired": 2,
+    "verificationVerdicts": {
+      "live": 11,
+      "review": 12,
+      "expired": 2
     },
-    "backup": {
-      "size": 1,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 0,
-        "unclassified": 1
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 2
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 10,
-    "duplicateExclusions": [
-      {
-        "id": "zycus-jq2742jny",
-        "company": "Zycus",
-        "reason": "already_published",
-        "officialUrl": "https://zycus.talismatic.com/jobs/JQ2742JNY"
-      }
-    ],
-    "excludedCount": 1,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "deloitteOutcome": "Deloitte exact requisition 60813044 qualified as the single reserved Priority internship.",
+    "note": "Counts reflect official employer or employer-authorized ATS portals actually queried or inspected on 1 Nov 2026. Search-only, blocked, duplicate, experienced and source-incomplete results were not staged."
   },
   "quotaAudit": {
     "priority": {
@@ -605,7 +632,8 @@
       "Microsoft 1970393557050388",
       "METRO 744000157778959",
       "EY 1727886",
-      "Motorola Solutions R69389"
+      "Motorola Solutions R69389",
+      "Zycus JQ2742JNY (CI duplicate scrub: already published)"
     ],
     "heldExamples": [
       "EY 1757496 – requires 2+ years",
