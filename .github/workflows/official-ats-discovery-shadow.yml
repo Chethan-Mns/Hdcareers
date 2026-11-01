@@ -103,7 +103,7 @@ jobs:
               print("BOARD:", scan["company"], scan["provider"], scan["status"],
                     "listed="+str(scan["listed"]), "new="+str(scan["newReviewCandidates"]),
                     "note="+str(scan["notes"][:1]))
-          for candidate in d["candidates"][:20]:
+          for candidate in d["candidates"][:75]:
               print("CANDIDATE:", candidate["company"], "|", candidate["role"], "|",
                     candidate["loc"], "|", candidate["apply"])
           PY
