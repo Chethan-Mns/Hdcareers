@@ -87,6 +87,13 @@ jobs:
           print("Pilot:", d["scannedBoards"], "boards;",
                 d["candidateCount"], "unreviewed candidates;",
                 d["partialOrFailedBoards"], "partial/failed board scans")
+          for scan in d["scans"]:
+              print("BOARD:", scan["company"], scan["provider"], scan["status"],
+                    "listed="+str(scan["listed"]), "new="+str(scan["newReviewCandidates"]),
+                    "note="+str(scan["notes"][:1]))
+          for candidate in d["candidates"][:20]:
+              print("CANDIDATE:", candidate["company"], "|", candidate["role"], "|",
+                    candidate["loc"], "|", candidate["apply"])
           PY
       - name: Upload pilot results (never publish)
         uses: actions/upload-artifact@v4
