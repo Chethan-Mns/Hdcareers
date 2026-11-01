@@ -71,7 +71,8 @@ def audit(report, existing_jobs):
         if profile == "fresher" and url in existing:
             errors.append(f"Candidate {idx}: duplicate already on site")
         rid = (c["sourceProvider"], c["sourceBoard"].lower(), str(c["externalId"]))
-        rkey = (company.casefold().strip(), role.casefold().strip())
+        rkey = (company.casefold().strip(), role.casefold().strip(),
+                str(c.get("loc") or "").casefold().strip())
         if url in seen_url or rid in seen_id or rkey in seen_role:
             errors.append(f"Candidate {idx}: duplicate URL/ID/role")
         seen_url.add(url)
