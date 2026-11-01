@@ -1561,5 +1561,30 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1700,
     "bytes": 9232
+  },
+  "BUSINESSNEXT": {
+    "officialDomain": "businessnext.com",
+    "sourceUrl": "https://www.businessnext.com/assets/images/logo-white.svg",
+    "sourceType": "employer site branded header image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/businessnext-3bb6e3a-ccd329cafb.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1500,
+    "bytes": 38789
+  },
+  "Honeywell": {
+    "officialDomain": "honeywell.com",
+    "sourceUrl": "https://www.honeywell.com/content/dam/honcorp/us-en/common-assets/logos/hon-honeywell-technologies-logo-mini.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/honeywell-cf125fb-112b4ec43e.png",
+    "sourceDimensions": [
+      224,
+      240
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1344,
+    "bytes": 1242
   }
 }
