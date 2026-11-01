@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:44.231Z",
+  "updatedAt": "2026-11-01T05:16:49.251Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -227,7 +227,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Freshers / 0–1 year; 2025/2026 graduates",
-      "reviewedStatus": "live",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates.",
       "postedDate": null,
@@ -241,7 +241,7 @@
         "expYears": "Freshers / 0–1 year; 2025/2026 graduates",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Robro Systems Careers (Zoho Recruit)",
         "desc": "Graduate trainee role supporting technical operations, production, installation and customer support for AI automation and machine-vision systems.",
         "elig": "2025 or 2026 engineering graduates; exact degree branches are not specified on the accessible source extract.",
@@ -260,16 +260,14 @@
         "jobId": "41546000008234236",
         "date": null,
         "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:16:40.251Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:16:40.251Z"
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates."
       },
-      "reviewedAt": "2026-11-01T05:16:40.251Z",
+      "reviewedAt": "2026-11-01T05:16:49.251Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
