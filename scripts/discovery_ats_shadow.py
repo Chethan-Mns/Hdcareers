@@ -255,7 +255,7 @@ def normalize_posting(board, row, profile="fresher"):
     }
 
 
-def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, profile="fresher", suppressed=None):
+def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, profile="fresher"):
     """Return (raw_postings, notes, complete). Incomplete scans must not imply expiry."""
     provider, slug = board["provider"], quote(board["board"], safe="")
     if provider == "greenhouse":
@@ -440,7 +440,7 @@ def owner_suppression_match(candidate, records):
 
 
 def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=30,
-             max_pages=5, max_details=12, profile="fresher"):
+             max_pages=5, max_details=12, profile="fresher", suppressed=None):
     if profile not in {"fresher", PERSONAL_PROFILE}:
         raise ValueError("Unsupported profile")
     if max_boards < 1 or max_pages < 1 or max_details < 1:
