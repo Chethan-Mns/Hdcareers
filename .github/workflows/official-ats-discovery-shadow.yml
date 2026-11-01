@@ -7,6 +7,9 @@ on:
       - scripts/discovery_ats_shadow.py
       - scripts/ats_http_client.py
       - scripts/ats_discovery_history.py
+      - scripts/ats_job_status_report.py
+      - tests/test_ats_job_status_report.py
+      - data/discovery-drafts/**
       - data/ats-discovery-history.json
       - tests/test_ats_http_client.py
       - tests/test_ats_discovery_history.py
@@ -29,6 +32,10 @@ on:
         description: "Maximum detail requests for SmartRecruiters or Workday per board"
         required: false
         default: "8"
+      verify_limit:
+        description: "Number of extracted fresher jobs to verify against exact official ATS requisition (0..200)"
+        required: false
+        default: "60"
 
 permissions:
   contents: read
@@ -53,6 +60,8 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_validate_ats_shadow_report.py' -v
           python3 -m unittest discover -s tests -p 'test_ats_http_client.py' -v
           python3 -m unittest discover -s tests -p 'test_ats_discovery_history.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_job_status_report.py' -v
+          python3 -m py_compile scripts/ats_job_status_report.py
           python3 -m py_compile scripts/ats_http_client.py scripts/ats_discovery_history.py
       - name: Generate offline ATS seed catalogue
         run: |
@@ -141,6 +150,34 @@ jobs:
         run: |
           python3 scripts/validate_ats_shadow_report.py --report ats-discovery-shadow.json --summary ats-discovery-quality.json
           python3 scripts/validate_ats_shadow_report.py --report personal-de-shadow.json --summary personal-de-quality.json
+      - name: Independently verify LIVE / EXPIRED / REVIEW and duplicate status for each discovered job
+        env:
+          VERIFY_LIMIT: ${{ inputs.verify_limit || '60' }}
+        run: |
+          python3 scripts/ats_job_status_report.py             --report ats-discovery-shadow.json             --history data/ats-discovery-history.json             --draft data/discovery-drafts/2026-11-01-supplemental-backup.json             --verify-limit "$VERIFY_LIMIT"             --output-prefix ats-job-status
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          r=json.loads(Path("ats-job-status.json").read_text())
+          assert r["mode"] == "owner_availability_duplicate_review_only"
+          assert r["publicationAllowed"] is False and r["expiryDecisionsAllowed"] is False
+          assert all(row["eligibleForPublishing"] is False for row in r["rows"])
+          summary=r["summary"]
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as fd:
+              fd.write("## HD Careers — ATS Live / Expired / Duplicate Verification\n\n")
+              fd.write(f"Checked {summary['verifiedCandidates']} of {summary['extractedCandidates']} ATS candidates.\n\n")
+              fd.write("| Availability | Count |\n|---|---:|\n")
+              for label,key in (("Live","live"),("Expired","expired"),("Needs Review","needsReview")):
+                  fd.write(f"| {label} | {summary[key]} |\n")
+              fd.write("\n| Duplicate status | Count |\n|---|---:|\n")
+              for label,key in (("New","new"),("Duplicate","duplicate"),
+                                ("Previously Seen","previouslySeen"),("Possible Duplicate","possibleDuplicate")):
+                  fd.write(f"| {label} | {summary[key]} |\n")
+              fd.write("\n**Download the `hd-official-ats-shadow-report` artifact, then open "
+                       "`ats-job-status.html` for searchable/filterable job links and evidence.**\n\n")
+              fd.write("No jobs were published, modified or expired.\n")
+          PY
+          git diff --exit-code -- data/jobs.json data/review-queue.json data/daily-review-batch.json
       - name: Produce repeat-safe discovery history and brand-new candidates (no website writes)
         run: |
           python3 scripts/ats_discovery_history.py             --history data/ats-discovery-history.json             --report ats-discovery-shadow.json             --output ats-discovery-history-next.json             --new-output ats-discovery-new-candidates.json
@@ -168,5 +205,8 @@ jobs:
             ats-discovery-quality.json
             ats-discovery-history-next.json
             ats-discovery-new-candidates.json
+            ats-job-status.json
+            ats-job-status.csv
+            ats-job-status.html
           if-no-files-found: warn
           retention-days: 7
