@@ -231,7 +231,10 @@ def normalize_posting(board, row, profile="fresher"):
     external_id = str(row.get("id") or "").strip()
     if not external_id:
         return None
-    fingerprint = hashlib.sha256((provider + "\n" + board["board"].lower() + "\n" + external_id).encode()).hexdigest()[:24]
+    # Host/region matters: two Workday tenants can share board and requisition paths.
+    scope = board.get("host") or board.get("region") or ""
+    fingerprint = hashlib.sha256((provider + "\n" + scope.lower() + "\n" +
+                                  board["board"].lower() + "\n" + external_id).encode()).hexdigest()[:24]
     return {
         "id": "ats-" + fingerprint,
         "company": board["company"], "role": title, "loc": location,
