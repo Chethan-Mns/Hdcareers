@@ -262,59 +262,6 @@
       }
     },
     {
-      "id": "zycus-jq2742jny",
-      "company": "Zycus",
-      "role": "AI-Native Java Engineer – Graduate Trainee",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://zycus.talismatic.com/jobs/JQ2742JNY",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 year; 2026 graduates",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Employer-authorized Zycus requisition JQ2742JNY is open, full-time and explicitly targets 2026 graduates with 0–1 year experience.",
-      "postedDate": null,
-      "job": {
-        "company": "Zycus",
-        "role": "AI-Native Java Engineer – Graduate Trainee",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://zycus.talismatic.com/jobs/JQ2742JNY",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year; 2026 graduates",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Zycus Careers (Talismatic)",
-        "desc": "Graduate software engineering role building Java/Spring Boot services, REST APIs and AI-assisted enterprise applications.",
-        "elig": "BE/BTech 2026 in Computer Science, IT, Electronics, AI/ML, Data Science or related branches; 80% or equivalent throughout and no backlogs.",
-        "resp": [
-          "Develop Java and Spring Boot backend applications.",
-          "Build REST APIs and microservices with senior guidance.",
-          "Use AI tools for coding, debugging, testing and documentation."
-        ],
-        "skills": [
-          "Java",
-          "Spring Boot",
-          "REST APIs",
-          "SQL",
-          "Git",
-          "AI-assisted development"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "JQ2742JNY",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Employer-authorized Zycus requisition JQ2742JNY is open, full-time and explicitly targets 2026 graduates with 0–1 year experience."
-      }
-    },
-    {
       "id": "ey-1719745",
       "company": "EY",
       "role": "Analyst – Transfer Pricing",
@@ -332,7 +279,7 @@
         "role": "Analyst – Transfer Pricing",
         "loc": "Pune, Maharashtra, India",
         "apply": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Fresher or up to 1 year accounting experience",
         "salary": "Not Disclosed",
@@ -383,7 +330,7 @@
         "role": "Order to Cash Operations New Associate",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01670923_en",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
@@ -433,7 +380,7 @@
         "role": "Talent Acquisition Intern",
         "loc": "Mumbai, Maharashtra, India",
         "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Not-Applicable-Mumbai-Talent/60813044/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Internship; no required prior experience stated",
         "salary": "Not Disclosed",
@@ -537,7 +484,7 @@
         "role": "Business Development Associate (Fresher)",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://jobs.smartrecruiters.com/playtolabs/744000154717769-business-development-associate-fresher",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "No prior experience required",
         "salary": "Not Disclosed",
@@ -572,25 +519,50 @@
     }
   ],
   "discoveryAudit": {
-    "watchlistTotal": 87,
-    "watchlistEmployersVisited": 17,
-    "watchlistEmployersNotVisited": 70,
-    "fallbackEmployerPortalsVisited": 20,
-    "blockedOrInconclusivePortals": 6,
-    "uniqueExactJobIdsFound": 29,
-    "stagedCandidates": 11,
-    "watchlistCandidatesStaged": 5,
-    "fallbackCandidatesStaged": 6,
-    "duplicatePostingsExcluded": 7,
-    "sourceUnconfirmedOrIneligibleHeld": 12,
-    "authoritativelyExpired": 2,
-    "verificationVerdicts": {
-      "live": 11,
-      "review": 12,
-      "expired": 2
+    "priority": {
+      "size": 9,
+      "counts": {
+        "fresherIT": 5,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 1,
+        "nonIT": 2,
+        "training": 0
+      }
     },
-    "deloitteOutcome": "Deloitte exact requisition 60813044 qualified as the single reserved Priority internship.",
-    "note": "Counts reflect official employer or employer-authorized ATS portals actually queried or inspected on 1 Nov 2026. Search-only, blocked, duplicate, experienced and source-incomplete results were not staged."
+    "backup": {
+      "size": 1,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 0,
+        "unclassified": 1
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 2
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 10,
+    "duplicateExclusions": [
+      {
+        "id": "zycus-jq2742jny",
+        "company": "Zycus",
+        "reason": "already_published",
+        "officialUrl": "https://zycus.talismatic.com/jobs/JQ2742JNY"
+      }
+    ],
+    "excludedCount": 1,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
