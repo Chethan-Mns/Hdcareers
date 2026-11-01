@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-01T05:17:27.745Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-01T05:17:57.851Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -686,5 +686,38 @@
       "Honeywell Systems Engineer I – exact requisition identity not established",
       "Cisco 1424746 – stale source and current opening not established"
     ]
+  },
+  "submittedAt": "2026-11-01T05:17:57.851Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01670923",
+      "businessnext-graduate-engineer-trainee",
+      "deloitte-60813044",
+      "ey-1719745",
+      "honeywell-160935",
+      "playto-744000154717769",
+      "salesforce-jr307116"
+    ],
+    "companies": [
+      "Accenture",
+      "BUSINESSNEXT",
+      "Deloitte",
+      "EY",
+      "Honeywell",
+      "Playto Labs",
+      "Salesforce"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01670923_en",
+      "https://careers.businessnext.com/default/position_details/current-openings/graduate-engineer-trainee",
+      "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Not-Applicable-Mumbai-Talent/60813044/",
+      "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
+      "https://careers.honeywell.com/en/sites/Honeywell/job/160935/",
+      "https://jobs.smartrecruiters.com/playtolabs/744000154717769-business-development-associate-fresher",
+      "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR307116"
+    ],
+    "requestId": "7fa509e70a2b4a0a3ffc19da",
+    "count": 7,
+    "submittedAt": "2026-11-01T05:17:57.851Z"
   }
 }
