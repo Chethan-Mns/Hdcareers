@@ -41,7 +41,7 @@ JUNIOR_RE = re.compile(
 SENIOR_RE = re.compile(
     r"\b(senior|sr\.?|staff|principal|lead|manager|director|architect|head of|"
     r"vice president|vp|experienced hire)\b", re.I)
-EXP_RE = re.compile(r"\b(\d{1,2})\s*(?:\+|to|-|–)?\s*(?:\d{1,2})?\s*years?\s*(?:of )?(?:relevant |professional |work )?experience\b", re.I)
+EXP_RE = re.compile(r"\b(\d{1,2})\s*(?:(?:to|-|–)\s*(\d{1,2})|\+)?\s*years?\s*(?:of )?(?:relevant |professional |work )?experience\b", re.I)
 EXTERNAL_APPLY_HOSTS = set().union(*ATS_HOSTS.values())
 API_ALLOWLIST = {
     "boards-api.greenhouse.io",
@@ -170,12 +170,13 @@ def fresher_signal(title, description):
     if SENIOR_RE.search(title):
         return ""
     # An explicit 4+ year minimum is inconsistent with the HD fresher policy.
-    years = [int(m.group(1)) for m in EXP_RE.finditer(description[:5500])]
-    if years and min(years) >= 4:
+    years = [(int(m.group(1)), int(m.group(2) or m.group(1)))
+             for m in EXP_RE.finditer(description[:5500])]
+    if any(max(lo, hi) > 3 for lo, hi in years):
         return ""
     if JUNIOR_RE.search(title):
         return "title_match_requires_manual_eligibility_check"
-    if years and min(years) <= 2:
+    if years and min(lo for lo, _ in years) <= 2:
         return "description_years_requires_manual_eligibility_check"
     return ""
 
