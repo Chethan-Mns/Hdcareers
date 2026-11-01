@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:52.498Z",
+  "updatedAt": "2026-11-01T05:17:01.234Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -332,7 +332,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresher or up to 1 year accounting experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official EY requisition 1719745 is open with Apply and explicitly lists Fresher or one year of accounting experience.",
       "postedDate": "2026-10-25",
@@ -366,13 +366,16 @@
         "date": "2026-10-25",
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:17:01.233Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:17:01.233Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official EY requisition 1719745 is open with Apply and explicitly lists Fresher or one year of accounting experience."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:17:01.233Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "accenture-aioc-s01670923",
