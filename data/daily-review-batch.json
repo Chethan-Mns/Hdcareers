@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:28.390Z",
+  "updatedAt": "2026-11-01T05:16:34.659Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -120,7 +120,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher / 0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Harris Computer Workday requisition R0045319 is open and lists fresher/0–1 year eligibility.",
       "postedDate": null,
@@ -134,7 +134,7 @@
         "expYears": "Fresher / 0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Harris Computer Careers (Workday)",
         "desc": "Entry-level technical support role troubleshooting software, Windows, networking and SQL issues for customers.",
         "elig": "Bachelor's degree in Computer Science, IT, Computer Engineering, Electronics or a related discipline.",
@@ -154,14 +154,15 @@
         "jobId": "R0045319",
         "date": null,
         "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Harris Computer Workday requisition R0045319 is open and lists fresher/0–1 year eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:34.659Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "businessnext-graduate-engineer-trainee",
