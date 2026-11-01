@@ -1218,9 +1218,11 @@
     {
       "page": "jobs/honeywell-intern-bachelors-app-eng.html",
       "batchId": "admin-41276395768",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T09:19:38.961393+00:00"
+      "dueAt": "2026-11-01T09:19:38.961393+00:00",
+      "claimId": "41292645923",
+      "claimedAt": "2026-11-01T09:19:48.281233+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-associate-fresher.html",
