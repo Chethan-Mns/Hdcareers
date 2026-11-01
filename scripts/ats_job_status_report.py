@@ -18,7 +18,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from discovery_ats_shadow import canonical, parse_board, clean_html
-from check_job_availability import check, official_inventory_probe
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote
+from ats_http_client import fetch_json as ats_fetch_json
 
 STATUS = {"active": "Live", "expired": "Expired", "review": "Needs Review"}
 SOURCES = ("Published website", "Current Admin batch", "Review queue", "Earlier discovery draft")
@@ -79,23 +81,73 @@ def duplicate_verdict(candidate, records, history=None):
 
 
 def probe_official(candidate):
-    """One exact public ATS inventory check, or conservative Workday page check."""
-    try:
-        provider = candidate.get("sourceProvider")
-        if provider == "workday":
-            result = check({"id": candidate.get("id"), "company": candidate.get("company"),
-                            "role": candidate.get("role"), "apply": candidate.get("apply")})
-            return result["state"], result["reason"]
-        if provider not in {"greenhouse", "lever", "ashby", "smartrecruiters"}:
-            return "review", "Unsupported ATS provider; verify the job-bound employer page manually"
-        probe = official_inventory_probe({"role": candidate.get("role"),
-                                          "apply": candidate.get("apply")})
-        if probe is None:
-            return "review", "No exact ATS inventory verification supported"
-        return probe
-    except Exception as exc:
-        return "review", "ATS verification failed (" + type(exc).__name__ + "); manual check needed"
+    """Independently verify the exact requisition via a rate-limited official ATS API.
 
+    HTTP 404, forbidden, rate limits, missing IDs and incomplete pages are
+    inconclusive. Never infer expiry from a missing filtered-list result.
+    """
+    provider = candidate.get("sourceProvider")
+    job_id = str(candidate.get("externalId") or "")
+    official = canonical(candidate.get("apply"))
+    board = parse_board(candidate.get("company"), official)
+    if not board or board.get("provider") != provider or not job_id:
+        return "review", "Official ATS source identity does not match candidate"
+    slug = quote(board["board"], safe="")
+    try:
+        if provider == "greenhouse":
+            result = ats_fetch_json(
+                f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs/{quote(job_id, safe='')}")
+            actual = str(result.get("id") or "")
+            active = result.get("active")
+            role = result.get("title")
+        elif provider == "lever":
+            host = "api.eu.lever.co" if board.get("region") == "eu" else "api.lever.co"
+            result = ats_fetch_json(
+                f"https://{host}/v0/postings/{slug}/{quote(job_id, safe='')}")
+            actual = str(result.get("id") or "")
+            active = result.get("active")
+            role = result.get("text")
+        elif provider == "smartrecruiters":
+            result = ats_fetch_json(
+                f"https://api.smartrecruiters.com/v1/companies/{slug}/postings/{quote(job_id, safe='')}")
+            actual = str(result.get("id") or "")
+            active = result.get("active")
+            role = result.get("name")
+        elif provider == "ashby":
+            result = ats_fetch_json(f"https://api.ashbyhq.com/posting-api/job-board/{slug}")
+            matches = [j for j in result.get("jobs", []) if
+                       isinstance(j, dict) and str(j.get("id") or "") == job_id]
+            if not matches:
+                return "review", "ATS board did not return exact Ashby requisition; absence is not expiry"
+            result = matches[0]
+            actual = str(result.get("id") or "")
+            active = result.get("isListed", result.get("active"))
+            role = result.get("title")
+        elif provider == "workday":
+            endpoint = (f"https://{board['host']}/wday/cxs/"
+                        f"{quote(board['tenant'], safe='')}/{slug}{job_id}")
+            if not job_id.startswith("/job/"):
+                return "review", "Invalid Workday requisition path"
+            result = ats_fetch_json(endpoint)
+            info = result.get("jobPostingInfo", {})
+            actual = job_id if isinstance(info, dict) and info.get("title") else ""
+            active = info.get("active", result.get("active"))
+            role = info.get("title")
+        else:
+            return "review", "ATS provider not supported for exact job verification"
+        if not isinstance(result, dict) or str(actual).casefold() != job_id.casefold():
+            return "review", "Official API returned different or missing requisition identity"
+        if role and clean_html(role).casefold() != clean_html(candidate.get("role")).casefold():
+            return "review", "Official requisition title changed; owner must review updated listing"
+        if active is False:
+            return "expired", "Official exact requisition explicitly marked inactive by ATS API"
+        if not role:
+            return "review", "Exact ATS posting lacks a usable job title"
+        return "active", "Exact requisition and role currently returned by official ATS API"
+    except HTTPError as exc:
+        return "review", f"Official ATS HTTP {exc.code}; closure cannot be inferred from this alone"
+    except (URLError, TimeoutError, ValueError, OSError, TypeError, KeyError) as exc:
+        return "review", f"Exact ATS check inconclusive ({type(exc).__name__})"
 
 def inspect(report, *, published, batch, queue, drafts, history=None,
             verifier=probe_official, max_verify=60):
