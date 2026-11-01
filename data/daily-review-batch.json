@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:17:01.234Z",
+  "updatedAt": "2026-11-01T05:17:07.025Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -386,7 +386,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Accenture job AIOC-S01670923 is open with a job-bound Apply route and states BCom with 0–1 year experience.",
       "postedDate": null,
@@ -419,13 +419,16 @@
         "date": null,
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:17:07.025Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:17:07.025Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Accenture job AIOC-S01670923 is open with a job-bound Apply route and states BCom with 0–1 year experience."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:17:07.025Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deloitte-60813044",
