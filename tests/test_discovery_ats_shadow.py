@@ -28,7 +28,7 @@ class BoardsTests(unittest.TestCase):
         for url in ("http://jobs.lever.co/a/123", "https://evil.test/company/123",
                     "https://jobs.lever.co@evil.test/test/123",
                     "https://jobs.lever.co/a", "https://job-boards.greenhouse.io/a/notjobs/123",
-                    "https://test.wd1.myworkdayjobs.com/a/job/123"):
+                    "https://test.wd1.myworkdayjobs.com/a/notjob/123"):
             self.assertIsNone(a.parse_board("Fake", url), url)
 
     def test_source_filtering_avoids_experienced_and_nonindia(self):
