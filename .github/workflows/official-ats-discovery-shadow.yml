@@ -6,21 +6,23 @@ on:
     paths:
       - scripts/discovery_ats_shadow.py
       - tests/test_discovery_ats_shadow.py
+      - scripts/validate_ats_shadow_report.py
+      - tests/test_validate_ats_shadow_report.py
       - .github/workflows/official-ats-discovery-shadow.yml
   workflow_dispatch:
     inputs:
       max_boards:
         description: "Maximum ATS employer boards to query (pilot only)"
         required: false
-        default: "12"
+        default: "36"
       max_pages:
         description: "Maximum SmartRecruiters or Workday pages per board"
         required: false
-        default: "2"
+        default: "3"
       max_details:
         description: "Maximum detail requests for SmartRecruiters or Workday per board"
         required: false
-        default: "6"
+        default: "8"
 
 permissions:
   contents: read
@@ -42,6 +44,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/discovery_ats_shadow.py
           python3 -m unittest discover -s tests -p 'test_discovery_ats_shadow.py' -v
+          python3 -m unittest discover -s tests -p 'test_validate_ats_shadow_report.py' -v
       - name: Generate offline ATS seed catalogue
         run: |
           python3 scripts/discovery_ats_shadow.py --catalog-only --output official-ats-board-catalog.json
@@ -73,9 +76,9 @@ jobs:
       - name: Read-only official ATS API discovery (PR and manual; capped requests)
         run: |
           python3 scripts/discovery_ats_shadow.py \
-            --max-boards "${{ inputs.max_boards || '12' }}" \
-            --max-pages "${{ inputs.max_pages || '2' }}" \
-            --max-details "${{ inputs.max_details || '6' }}" \
+            --max-boards "${{ inputs.max_boards || '36' }}" \
+            --max-pages "${{ inputs.max_pages || '3' }}" \
+            --max-details "${{ inputs.max_details || '8' }}" \
             --output ats-discovery-shadow.json
           python3 - <<'PY'
           import json
@@ -120,14 +123,22 @@ jobs:
         if: always()
         with:
           name: hd-personal-de-search-report
-          path: personal-de-shadow.json
+          path: |
+            personal-de-shadow.json
+            personal-de-quality.json
           if-no-files-found: warn
           retention-days: 7
+      - name: Validate extracted fresher and personal candidates against official ATS identity
+        run: |
+          python3 scripts/validate_ats_shadow_report.py --report ats-discovery-shadow.json --summary ats-discovery-quality.json
+          python3 scripts/validate_ats_shadow_report.py --report personal-de-shadow.json --summary personal-de-quality.json
       - name: Upload pilot results (never publish)
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: hd-official-ats-shadow-report
-          path: ats-discovery-shadow.json
+          path: |
+            ats-discovery-shadow.json
+            ats-discovery-quality.json
           if-no-files-found: warn
           retention-days: 7
