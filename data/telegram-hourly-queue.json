@@ -1218,25 +1218,26 @@
     {
       "page": "jobs/honeywell-intern-bachelors-app-eng.html",
       "batchId": "admin-41276395768",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T09:19:38.961393+00:00",
       "claimId": "41292645923",
-      "claimedAt": "2026-11-01T09:19:48.281233+00:00"
+      "claimedAt": "2026-11-01T09:19:48.281233+00:00",
+      "messageId": 645,
+      "deliveredAt": "2026-11-01T09:19:52.456558+00:00"
     },
     {
       "page": "jobs/playto-labs-business-development-associate-fresher.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T10:19:38.961393+00:00"
+      "dueAt": "2026-11-01T10:19:52.456558+00:00"
     },
     {
       "page": "jobs/salesforce-software-engineering-amts.html",
       "batchId": "admin-41276395768",
       "status": "pending",
       "queuedAt": "2026-11-01T05:18:16.739513+00:00",
-      "dueAt": "2026-11-01T11:19:38.961393+00:00"
+      "dueAt": "2026-11-01T11:19:52.456558+00:00"
     }
   ]
 }
