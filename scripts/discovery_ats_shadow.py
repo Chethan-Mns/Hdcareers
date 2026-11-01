@@ -255,7 +255,7 @@ def normalize_posting(board, row, profile="fresher"):
     }
 
 
-def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, profile="fresher"):
+def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, profile="fresher", suppressed=None):
     """Return (raw_postings, notes, complete). Incomplete scans must not imply expiry."""
     provider, slug = board["provider"], quote(board["board"], safe="")
     if provider == "greenhouse":
@@ -394,6 +394,51 @@ def source_posts(board, *, fetcher=fetch_json, max_pages=5, max_details=12, prof
     raise ValueError("Unsupported ATS provider")
 
 
+
+def load_owner_suppression(path):
+    """Read the explicit owner decision ledger; refuse malformed or unauthorized data."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if (not isinstance(data, dict) or data.get("schemaVersion") != 1
+        or data.get("mode") != "owner_discovery_suppression"
+        or not isinstance(data.get("records"), list)):
+        raise ValueError("Invalid owner suppression ledger; refusing discovery")
+    seen = set()
+    for entry in data["records"]:
+        if (not isinstance(entry, dict) or entry.get("decision") != "expired"
+            or not entry.get("company") or not entry.get("officialUrl")
+            or not canonical(entry.get("officialUrl"))):
+            raise ValueError("Owner suppression must be a complete exact-expiry decision")
+        url = canonical(entry["officialUrl"])
+        if url in seen:
+            raise ValueError("Duplicate owner suppression URL")
+        seen.add(url)
+    return data["records"]
+
+
+def owner_suppression_match(candidate, records):
+    """Exact URL or exact company/ATS-board/requisition; other jobs stay eligible."""
+    url = canonical(candidate.get("apply"))
+    company = str(candidate.get("company") or "").strip().casefold()
+    provider = str(candidate.get("sourceProvider") or "").strip().casefold()
+    board = str(candidate.get("sourceBoard") or "").strip().casefold()
+    for item in records:
+        if (item.get("decision") != "expired"
+            or str(item.get("company") or "").strip().casefold() != company):
+            continue
+        if url and url == canonical(item.get("officialUrl")):
+            return item
+        req = str(item.get("requisitionId") or "").strip()
+        if (provider == "workday" and item.get("provider") == "workday"
+            and str(item.get("sourceBoard") or "").strip().casefold() == board and req):
+            target = str(candidate.get("externalId") or "") + " " + str(candidate.get("apply") or "")
+            # Workday may return a path with a location segment, rather than
+            # the owner's locationless URL. Do not suppress unrelated req IDs.
+            if re.search(r"(?<![A-Za-z0-9])" + re.escape(req) +
+                         r"(?:-\d+)?(?![A-Za-z0-9])", target, re.I):
+                return item
+    return None
+
+
 def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=30,
              max_pages=5, max_details=12, profile="fresher"):
     if profile not in {"fresher", PERSONAL_PROFILE}:
@@ -410,12 +455,14 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                    clean_html(x.get("loc") or "").casefold().strip())
                   for x in jobs if isinstance(x, dict)}
     results, scans, seen, seen_roles, exclusions = [], [], set(), set(), []
+    suppressed = suppressed or []
+    suppressed_count = 0
     for board in boards[:max_boards]:
         started = time.monotonic()
         scan = {"company": board["company"], "provider": board["provider"],
                 "board": board["board"], "status": "ok", "complete": False,
                 "listed": 0, "newReviewCandidates": 0, "duplicateOnSite": 0,
-                "duplicateInDiscovery": 0,
+                "duplicateInDiscovery": 0, "excludedByOwnerExpired": 0,
                 "notes": [], "elapsedSeconds": 0}
         try:
             posts, notes, complete = source_posts(board, fetcher=fetcher,
@@ -429,6 +476,18 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                 if not candidate:
                     continue
                 key = canonical(candidate["apply"])
+                if profile == "fresher":
+                    owner_expired = owner_suppression_match(candidate, suppressed)
+                    if owner_expired:
+                        suppressed_count += 1
+                        scan["excludedByOwnerExpired"] += 1
+                        if len(exclusions) < 500:
+                            exclusions.append({k: candidate[k] for k in
+                                ("id", "company", "role", "loc", "apply", "externalId",
+                                 "sourceProvider", "sourceBoard")})
+                            exclusions[-1]["duplicateReason"] = "owner_expired"
+                            exclusions[-1]["ownerDecisionBatch"] = owner_expired.get("sourceBatchId")
+                        continue
                 pair = (candidate["company"].casefold(), candidate["role"].casefold(),
                         candidate["loc"].casefold())
                 if profile == "fresher" and (key in site_urls or pair in site_pairs):
@@ -469,6 +528,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
         "partialOrFailedBoards": sum(not s["complete"] for s in scans),
         "candidateCount": len(results), "scans": scans, "candidates": results,
         "excludedCandidates": exclusions, "excludedCaptured": len(exclusions),
+        "excludedByOwnerExpired": suppressed_count,
         "publicationAllowed": False, "expiryDecisionsAllowed": False,
         "notes": [
             "Source API calls are rate-limited per host; retries honor Retry-After and do not permit redirects.",
@@ -489,6 +549,7 @@ def main():
     parser.add_argument("--max-pages", type=int, default=5)
     parser.add_argument("--max-details", type=int, default=12)
     parser.add_argument("--output", default="ats-discovery-shadow.json")
+    parser.add_argument("--suppression", default=str(ROOT / "data/owner-discovery-suppression.json"))
     parser.add_argument("--catalog-only", action="store_true", help="No network; report supported ATS boards seeded by HD Careers")
     args = parser.parse_args()
     with open(args.jobs, encoding="utf-8") as f:
@@ -504,7 +565,8 @@ def main():
                   "publicationAllowed": False, "expiryDecisionsAllowed": False}
     else:
         result = discover(jobs, providers=providers, max_boards=args.max_boards,
-            max_pages=args.max_pages, max_details=args.max_details, profile=args.profile)
+            max_pages=args.max_pages, max_details=args.max_details, profile=args.profile,
+            suppressed=load_owner_suppression(args.suppression) if args.profile == "fresher" else [])
     Path(args.output).write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({k: result.get(k) for k in
                       ("mode", "profile", "totalSeedBoards", "scannedBoards", "candidateCount", "partialOrFailedBoards")},
