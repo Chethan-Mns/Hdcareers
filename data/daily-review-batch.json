@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:21.704Z",
+  "updatedAt": "2026-11-01T05:16:28.390Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -67,7 +67,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduates and final-year students welcome",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Dentsu Workday requisition R1125419 is open and explicitly welcomes fresh graduates and final-year students.",
       "postedDate": null,
@@ -81,7 +81,7 @@
         "expYears": "Fresh graduates and final-year students welcome",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Dentsu Careers (Workday)",
         "desc": "Junior AI development role supporting machine-learning, data-engineering and generative-AI solutions.",
         "elig": "Bachelor's degree or final year in Engineering, Computer Science, Data Science, Generative AI or a related field.",
@@ -101,14 +101,15 @@
         "jobId": "R1125419",
         "date": null,
         "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Dentsu Workday requisition R1125419 is open and explicitly welcomes fresh graduates and final-year students."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:28.390Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "harris-r0045319",
