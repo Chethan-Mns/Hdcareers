@@ -2,7 +2,7 @@
   "batchId": "2026-11-01-0900-ist",
   "generatedAt": "2026-11-01T03:33:09.536Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-01T05:16:40.252Z",
+  "updatedAt": "2026-11-01T05:16:44.231Z",
   "priority": [
     {
       "id": "salesforce-jr307116",
@@ -173,7 +173,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official BUSINESSNEXT role page is open with a job-specific Apply route and labels the position Fresher.",
       "postedDate": null,
@@ -207,13 +207,16 @@
         "date": null,
         "verifiedDate": "1 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T03:33:09.536Z"
+        "browserVerifiedAt": "2026-11-01T05:16:44.231Z",
+        "manualLiveVerifiedAt": "2026-11-01T05:16:44.231Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-01T03:33:09.536Z",
         "currentVerdict": "live",
         "officialEvidence": "Official BUSINESSNEXT role page is open with a job-specific Apply route and labels the position Fresher."
-      }
+      },
+      "reviewedAt": "2026-11-01T05:16:44.231Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "robro-41546000008234236",
