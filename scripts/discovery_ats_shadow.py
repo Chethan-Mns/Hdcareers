@@ -409,7 +409,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                    str(x.get("role") or "").casefold().strip(),
                    clean_html(x.get("loc") or "").casefold().strip())
                   for x in jobs if isinstance(x, dict)}
-    results, scans, seen, seen_roles = [], [], set(), set()
+    results, scans, seen, seen_roles, exclusions = [], [], set(), set(), []
     for board in boards[:max_boards]:
         started = time.monotonic()
         scan = {"company": board["company"], "provider": board["provider"],
@@ -433,9 +433,21 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
                         candidate["loc"].casefold())
                 if profile == "fresher" and (key in site_urls or pair in site_pairs):
                     scan["duplicateOnSite"] += 1
+                    # Show source-filtered duplicates in the owner's verification report,
+                    # without ever admitting them to publishable candidates.
+                    if len(exclusions) < 500:
+                        exclusions.append({k: candidate[k] for k in
+                            ("id", "company", "role", "loc", "apply", "externalId",
+                             "sourceProvider", "sourceBoard")})
+                        exclusions[-1]["duplicateReason"] = "site"
                     continue
                 if key in seen or pair in seen_roles:
                     scan["duplicateInDiscovery"] = scan.get("duplicateInDiscovery", 0) + 1
+                    if len(exclusions) < 500:
+                        exclusions.append({k: candidate[k] for k in
+                            ("id", "company", "role", "loc", "apply", "externalId",
+                             "sourceProvider", "sourceBoard")})
+                        exclusions[-1]["duplicateReason"] = "in_run"
                     continue
                 seen.add(key)
                 seen_roles.add(pair)
@@ -456,6 +468,7 @@ def discover(jobs, *, fetcher=fetch_json, providers=SOURCE_PROVIDER, max_boards=
         "unscannedBoards": max(0, len(boards) - len(scans)),
         "partialOrFailedBoards": sum(not s["complete"] for s in scans),
         "candidateCount": len(results), "scans": scans, "candidates": results,
+        "excludedCandidates": exclusions, "excludedCaptured": len(exclusions),
         "publicationAllowed": False, "expiryDecisionsAllowed": False,
         "notes": [
             "Source API calls are rate-limited per host; retries honor Retry-After and do not permit redirects.",
