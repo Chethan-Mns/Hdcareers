@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "1 November 2026",
-  "active": 180,
-  "employers": 115,
-  "freshers": 106,
-  "experienced": 65,
+  "verifiedThrough": "2 November 2026",
+  "active": 190,
+  "employers": 122,
+  "freshers": 107,
+  "experienced": 74,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 60
+      "count": 64
     },
     {
       "label": "Mumbai",
@@ -15,15 +15,19 @@
     },
     {
       "label": "Hyderabad",
-      "count": 12
+      "count": 14
     },
     {
       "label": "Pune",
-      "count": 9
+      "count": 10
     },
     {
       "label": "Gurugram",
       "count": 8
+    },
+    {
+      "label": "Delhi",
+      "count": 5
     },
     {
       "label": "Navi Mumbai",
@@ -32,10 +36,6 @@
     {
       "label": "Noida",
       "count": 5
-    },
-    {
-      "label": "Indore",
-      "count": 5
     }
   ],
   "cityPins": [
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 60
+      "count": 64
     },
     {
       "city": "Mumbai",
@@ -55,19 +55,25 @@
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 12
+      "count": 14
     },
     {
       "city": "Pune",
       "lat": 18.5204,
       "lng": 73.8567,
-      "count": 9
+      "count": 10
     },
     {
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
       "count": 8
+    },
+    {
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "count": 5
     },
     {
       "city": "Navi Mumbai",
@@ -86,12 +92,6 @@
       "lat": 22.7196,
       "lng": 75.8577,
       "count": 5
-    },
-    {
-      "city": "Delhi",
-      "lat": 28.6139,
-      "lng": 77.209,
-      "count": 4
     },
     {
       "city": "Ahmedabad",
@@ -159,7 +159,7 @@
     },
     {
       "name": "Deloitte",
-      "count": 5,
+      "count": 6,
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
@@ -201,19 +201,23 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 29
+      "count": 31
     },
     {
       "label": "Java",
-      "count": 23
-    },
-    {
-      "label": "Communication",
-      "count": 18
+      "count": 24
     },
     {
       "label": "SQL",
-      "count": 18
+      "count": 21
+    },
+    {
+      "label": "Communication",
+      "count": 19
+    },
+    {
+      "label": "REST APIs",
+      "count": 15
     },
     {
       "label": "JavaScript",
@@ -224,16 +228,20 @@
       "count": 14
     },
     {
-      "label": "REST APIs",
-      "count": 14
+      "label": "Git",
+      "count": 12
     },
     {
-      "label": "Git",
-      "count": 11
+      "label": "Algorithms",
+      "count": 10
     },
     {
       "label": "C++",
       "count": 10
+    },
+    {
+      "label": "Testing",
+      "count": 9
     },
     {
       "label": "Documentation",
@@ -244,14 +252,6 @@
       "count": 9
     },
     {
-      "label": "Algorithms",
-      "count": 9
-    },
-    {
-      "label": "Testing",
-      "count": 8
-    },
-    {
       "label": "Programming",
       "count": 8
     }
@@ -259,11 +259,11 @@
   "categories": [
     {
       "label": "it",
-      "count": 82
+      "count": 91
     },
     {
       "label": "nonit",
-      "count": 49
+      "count": 50
     },
     {
       "label": "internship",
@@ -410,6 +410,10 @@
     {
       "date": "2026-11-01",
       "count": 30
+    },
+    {
+      "date": "2026-11-02",
+      "count": 10
     }
   ]
 }
