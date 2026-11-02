@@ -1289,46 +1289,47 @@
     {
       "page": "jobs/honeywell-intern-bachelor-s-data-engineering.html",
       "batchId": "admin-41389468328",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T08:38:44.186557+00:00",
       "claimId": "41414584965",
-      "claimedAt": "2026-11-02T08:38:56.550767+00:00"
+      "claimedAt": "2026-11-02T08:38:56.550767+00:00",
+      "messageId": 652,
+      "deliveredAt": "2026-11-02T08:39:00.531415+00:00"
     },
     {
       "page": "jobs/lseg-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T09:38:44.186557+00:00"
+      "dueAt": "2026-11-02T09:39:00.531415+00:00"
     },
     {
       "page": "jobs/marvell-intern-software-engineer-bachelor-s-degree.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T10:38:44.186557+00:00"
+      "dueAt": "2026-11-02T10:39:00.531415+00:00"
     },
     {
       "page": "jobs/mydbops-associate-database-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T11:38:44.186557+00:00"
+      "dueAt": "2026-11-02T11:39:00.531415+00:00"
     },
     {
       "page": "jobs/origin-apprentice-mechanical-design.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T12:38:44.186557+00:00"
+      "dueAt": "2026-11-02T12:39:00.531415+00:00"
     },
     {
       "page": "jobs/reliaquest-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T13:38:44.186557+00:00"
+      "dueAt": "2026-11-02T13:39:00.531415+00:00"
     }
   ]
 }
