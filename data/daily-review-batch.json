@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:36:03.620Z",
+  "updatedAt": "2026-11-02T04:36:11.064Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -1050,7 +1050,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "0–2 years; six-month apprenticeship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Origin Workable requisition 870CD94FAF is current, job-bound and explicitly accepts 0–2 years for a six-month apprenticeship.",
       "postedDate": "2026-10-23",
@@ -1085,13 +1085,16 @@
         "date": "2026-10-23",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:36:11.064Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:36:11.064Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Origin Workable requisition 870CD94FAF is current, job-bound and explicitly accepts 0–2 years for a six-month apprenticeship."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:36:11.064Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
