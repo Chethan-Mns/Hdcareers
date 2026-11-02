@@ -1269,9 +1269,11 @@
     {
       "page": "jobs/deutsche-bank-operations-early-talent-2026-2027.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T06:38:11.020024+00:00"
+      "dueAt": "2026-11-02T06:38:11.020024+00:00",
+      "claimId": "41401162361",
+      "claimedAt": "2026-11-02T06:38:21.493747+00:00"
     },
     {
       "page": "jobs/duck-creek-technologies-associate-software-engineer.html",
