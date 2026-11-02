@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:47.293Z",
+  "updatedAt": "2026-11-02T04:35:51.205Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -835,7 +835,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher; 0 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Mydbops Keka requisition 142736 is current and explicitly describes the role as suitable for freshers.",
       "postedDate": "2026-09-24",
@@ -870,13 +870,16 @@
         "date": "2026-09-24",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:35:51.205Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:51.205Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native Mydbops Keka requisition 142736 is current and explicitly describes the role as suitable for freshers."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:51.205Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "analog-devices-r264285",
