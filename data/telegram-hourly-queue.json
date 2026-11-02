@@ -1309,32 +1309,33 @@
     {
       "page": "jobs/marvell-intern-software-engineer-bachelor-s-degree.html",
       "batchId": "admin-41389468328",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T10:39:25.923206+00:00",
       "claimId": "41430556296",
-      "claimedAt": "2026-11-02T10:39:38.134456+00:00"
+      "claimedAt": "2026-11-02T10:39:38.134456+00:00",
+      "messageId": 654,
+      "deliveredAt": "2026-11-02T10:39:41.801582+00:00"
     },
     {
       "page": "jobs/mydbops-associate-database-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T11:39:25.923206+00:00"
+      "dueAt": "2026-11-02T11:39:41.801582+00:00"
     },
     {
       "page": "jobs/origin-apprentice-mechanical-design.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T12:39:25.923206+00:00"
+      "dueAt": "2026-11-02T12:39:41.801582+00:00"
     },
     {
       "page": "jobs/reliaquest-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T13:39:25.923206+00:00"
+      "dueAt": "2026-11-02T13:39:41.801582+00:00"
     }
   ]
 }
