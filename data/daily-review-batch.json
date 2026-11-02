@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:34:52.698Z",
+  "updatedAt": "2026-11-02T04:35:02.658Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -502,7 +502,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; student route",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Honeywell requisition 160486 is live in the employer's Oracle recruiting inventory with a current job-bound application route.",
       "postedDate": "2026-10-26",
@@ -537,13 +537,16 @@
         "date": "2026-10-26",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:35:02.658Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:02.658Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Honeywell requisition 160486 is live in the employer's Oracle recruiting inventory with a current job-bound application route."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:02.658Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
