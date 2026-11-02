@@ -1289,9 +1289,11 @@
     {
       "page": "jobs/honeywell-intern-bachelor-s-data-engineering.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T08:38:44.186557+00:00"
+      "dueAt": "2026-11-02T08:38:44.186557+00:00",
+      "claimId": "41414584965",
+      "claimedAt": "2026-11-02T08:38:56.550767+00:00"
     },
     {
       "page": "jobs/lseg-associate-software-engineer.html",
