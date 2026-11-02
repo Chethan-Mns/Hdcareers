@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:34:11.776Z",
+  "updatedAt": "2026-11-02T04:34:25.073Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -173,7 +173,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Early career; projects/internships accepted",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official LSEG Workday requisition R0124079 is open with an Apply route and expressly treats university projects, internships and graduate programmes as qualifying foundations.",
       "postedDate": "2026-10-31",
@@ -208,13 +208,16 @@
         "date": "2026-10-31",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:34:25.073Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:34:25.073Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official LSEG Workday requisition R0124079 is open with an Apply route and expressly treats university projects, internships and graduate programmes as qualifying foundations."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:34:25.073Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "duckcreek-reqid55227",
