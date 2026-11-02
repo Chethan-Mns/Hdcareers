@@ -1,638 +1,1087 @@
 {
-  "batchId": "2026-11-01-0900-ist",
-  "generatedAt": "2026-11-01T03:33:09.536Z",
-  "status": "submitted",
-  "updatedAt": "2026-11-01T05:17:57.851Z",
+  "batchId": "2026-11-02-0900-ist",
+  "generatedAt": "2026-11-02T03:36:15.194Z",
+  "status": "reviewing",
+  "updatedAt": "2026-11-02T03:36:15.194Z",
   "priority": [
     {
-      "id": "salesforce-jr307116",
-      "company": "Salesforce",
-      "role": "Software Engineering AMTS",
-      "loc": "Bengaluru / Hyderabad, India",
-      "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR307116",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0 years; 2025/2026 graduates",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Salesforce requisition JR307116 is open with a job-bound application route and explicitly targets 2025/2026 BE/BTech graduates.",
-      "postedDate": "2026-10-30",
-      "job": {
-        "company": "Salesforce",
-        "role": "Software Engineering AMTS",
-        "loc": "Bengaluru / Hyderabad, India",
-        "apply": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR307116",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0 years; 2025/2026 graduates",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Salesforce Careers (Workday)",
-        "desc": "Entry-level software engineering role designing, implementing and testing scalable Salesforce products.",
-        "elig": "BE/BTech graduating in 2025 or 2026 in Computer Science, Electrical, Electronics or an equivalent discipline; minimum 7 CGPA and no active backlogs.",
-        "resp": [
-          "Design, implement and test product features.",
-          "Develop test strategies and automation.",
-          "Collaborate with engineering teams on scalable product delivery."
-        ],
-        "skills": [
-          "Software engineering",
-          "Programming",
-          "Testing",
-          "Automation"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR307116",
-        "date": "2026-10-30",
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:16:21.675Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:16:21.675Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Salesforce requisition JR307116 is open with a job-bound application route and explicitly targets 2025/2026 BE/BTech graduates."
-      },
-      "reviewedAt": "2026-11-01T05:16:21.675Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "dentsu-r1125419",
-      "company": "Dentsu",
-      "role": "Junior AI Developer",
-      "loc": "Bengaluru / Pune, India",
-      "apply": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Junior-AI-Developer_R1125419",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Fresh graduates and final-year students welcome",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Dentsu Workday requisition R1125419 is open and explicitly welcomes fresh graduates and final-year students.",
-      "postedDate": null,
-      "job": {
-        "company": "Dentsu",
-        "role": "Junior AI Developer",
-        "loc": "Bengaluru / Pune, India",
-        "apply": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Junior-AI-Developer_R1125419",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresh graduates and final-year students welcome",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Dentsu Careers (Workday)",
-        "desc": "Junior AI development role supporting machine-learning, data-engineering and generative-AI solutions.",
-        "elig": "Bachelor's degree or final year in Engineering, Computer Science, Data Science, Generative AI or a related field.",
-        "resp": [
-          "Develop and test Python and SQL components for AI solutions.",
-          "Support machine-learning and data-engineering workflows.",
-          "Collaborate on generative-AI prototypes and documentation."
-        ],
-        "skills": [
-          "Python",
-          "SQL",
-          "Machine learning",
-          "Data engineering",
-          "Generative AI"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R1125419",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Dentsu Workday requisition R1125419 is open and explicitly welcomes fresh graduates and final-year students."
-      },
-      "reviewedAt": "2026-11-01T05:16:28.390Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "harris-r0045319",
-      "company": "Harris Computer",
-      "role": "Associate Technical Support Consultant",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Associate-Technical-Support-Consultant_R0045319-1",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Fresher / 0–1 year",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Harris Computer Workday requisition R0045319 is open and lists fresher/0–1 year eligibility.",
-      "postedDate": null,
-      "job": {
-        "company": "Harris Computer",
-        "role": "Associate Technical Support Consultant",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1/job/Associate-Technical-Support-Consultant_R0045319-1",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher / 0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Harris Computer Careers (Workday)",
-        "desc": "Entry-level technical support role troubleshooting software, Windows, networking and SQL issues for customers.",
-        "elig": "Bachelor's degree in Computer Science, IT, Computer Engineering, Electronics or a related discipline.",
-        "resp": [
-          "Diagnose and resolve customer technical issues.",
-          "Troubleshoot Windows, networking and SQL-related problems.",
-          "Document cases and coordinate escalations."
-        ],
-        "skills": [
-          "Technical support",
-          "Windows",
-          "Networking",
-          "SQL",
-          "Troubleshooting"
-        ],
-        "workMode": "Rotational US shifts",
-        "jobId": "R0045319",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Harris Computer Workday requisition R0045319 is open and lists fresher/0–1 year eligibility."
-      },
-      "reviewedAt": "2026-11-01T05:16:34.659Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "businessnext-graduate-engineer-trainee",
-      "company": "BUSINESSNEXT",
-      "role": "Graduate Engineer Trainee",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://careers.businessnext.com/default/position_details/current-openings/graduate-engineer-trainee",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Fresher",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Official BUSINESSNEXT role page is open with a job-specific Apply route and labels the position Fresher.",
-      "postedDate": null,
-      "job": {
-        "company": "BUSINESSNEXT",
-        "role": "Graduate Engineer Trainee",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://careers.businessnext.com/default/position_details/current-openings/graduate-engineer-trainee",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "BUSINESSNEXT Careers",
-        "desc": "Graduate engineering role supporting software delivery, requirements analysis, system configuration and project schedules.",
-        "elig": "BTech in Computer Science or IT with 80% throughout academics.",
-        "resp": [
-          "Support SDLC activities and project schedules.",
-          "Assist with requirements analysis and system configuration.",
-          "Coordinate with delivery teams on implementation tasks."
-        ],
-        "skills": [
-          "Software development life cycle",
-          "Requirements analysis",
-          "System configuration",
-          "Project coordination"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "graduate-engineer-trainee",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:16:44.231Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:16:44.231Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official BUSINESSNEXT role page is open with a job-specific Apply route and labels the position Fresher."
-      },
-      "reviewedAt": "2026-11-01T05:16:44.231Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "robro-41546000008234236",
-      "company": "Robro Systems",
-      "role": "Graduate Engineer Trainee – Operations & Support",
-      "loc": "Indore, Madhya Pradesh, India",
-      "apply": "https://robrosystems.zohorecruit.in/jobs/Careers/41546000008234236/Graduate-Engineer-Trainee-Operations-Support?source=Google",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Freshers / 0–1 year; 2025/2026 graduates",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates.",
-      "postedDate": null,
-      "job": {
-        "company": "Robro Systems",
-        "role": "Graduate Engineer Trainee – Operations & Support",
-        "loc": "Indore, Madhya Pradesh, India",
-        "apply": "https://robrosystems.zohorecruit.in/jobs/Careers/41546000008234236/Graduate-Engineer-Trainee-Operations-Support?source=Google",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Freshers / 0–1 year; 2025/2026 graduates",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Robro Systems Careers (Zoho Recruit)",
-        "desc": "Graduate trainee role supporting technical operations, production, installation and customer support for AI automation and machine-vision systems.",
-        "elig": "2025 or 2026 engineering graduates; exact degree branches are not specified on the accessible source extract.",
-        "resp": [
-          "Support production and technical operations.",
-          "Assist with installation and field support.",
-          "Troubleshoot AI automation and machine-vision systems."
-        ],
-        "skills": [
-          "Technical operations",
-          "Installation support",
-          "Troubleshooting",
-          "Automation systems"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "41546000008234236",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Employer-authorized Zoho Recruit requisition 41546000008234236 is open and states freshers/0–1 year and 2025/2026 graduates."
-      },
-      "reviewedAt": "2026-11-01T05:16:49.251Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "konecranes-744000143236689",
-      "company": "Konecranes",
-      "role": "Graduate Engineer Trainee, Order Management",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236689",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 year; freshers can apply",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible.",
-      "postedDate": null,
-      "job": {
-        "company": "Konecranes",
-        "role": "Graduate Engineer Trainee, Order Management",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/Konecranes/744000143236689",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year; freshers can apply",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Konecranes Careers (SmartRecruiters)",
-        "desc": "Graduate engineering role supporting production planning, material requirements, capacity planning and ERP/MRP records.",
-        "elig": "BE Mechanical or BE Electrical; 0–1 year and freshers can apply.",
-        "resp": [
-          "Prepare and manage production plans and schedules.",
-          "Coordinate material and capacity planning using ERP/MRP systems.",
-          "Monitor production progress, bottlenecks and delivery commitments."
-        ],
-        "skills": [
-          "Production planning",
-          "MRP",
-          "ERP",
-          "Capacity planning",
-          "Cross-functional coordination"
-        ],
-        "workMode": "On-site",
-        "jobId": "744000143236689",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:34:23.369Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Employer-authorized SmartRecruiters requisition 744000143236689 is open, full-time and explicitly states 0–1 year with freshers eligible."
-      },
-      "reviewedAt": "2026-11-01T05:16:52.498Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "ey-1719745",
-      "company": "EY",
-      "role": "Analyst – Transfer Pricing",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Fresher or up to 1 year accounting experience",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Official EY requisition 1719745 is open with Apply and explicitly lists Fresher or one year of accounting experience.",
-      "postedDate": "2026-10-25",
-      "job": {
-        "company": "EY",
-        "role": "Analyst – Transfer Pricing",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher or up to 1 year accounting experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "EY Careers",
-        "desc": "Transfer-pricing analyst role supporting benchmarking, comparability analysis, documentation and tax-data research.",
-        "elig": "BCom, MCom, BBA or MBA.",
-        "resp": [
-          "Support transfer-pricing benchmarking and comparability analysis.",
-          "Prepare documentation, reports and supporting analyses.",
-          "Manage tax data, financial information and research inputs."
-        ],
-        "skills": [
-          "Analytical research",
-          "Transfer pricing",
-          "Financial data",
-          "Documentation"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1719745",
-        "date": "2026-10-25",
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:17:01.233Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:17:01.233Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official EY requisition 1719745 is open with Apply and explicitly lists Fresher or one year of accounting experience."
-      },
-      "reviewedAt": "2026-11-01T05:17:01.233Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "accenture-aioc-s01670923",
-      "company": "Accenture",
-      "role": "Order to Cash Operations New Associate",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01670923_en",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Accenture job AIOC-S01670923 is open with a job-bound Apply route and states BCom with 0–1 year experience.",
-      "postedDate": null,
-      "job": {
-        "company": "Accenture",
-        "role": "Order to Cash Operations New Associate",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01670923_en",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Accenture Careers",
-        "desc": "Entry-level operations role supporting order-to-cash and collections processing.",
-        "elig": "BCom.",
-        "resp": [
-          "Support order-to-cash operations.",
-          "Process collections-related work.",
-          "Maintain accurate operational records and follow process controls."
-        ],
-        "skills": [
-          "Order to cash",
-          "Collections processing",
-          "Operations"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "AIOC-S01670923",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:17:07.025Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:17:07.025Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Accenture job AIOC-S01670923 is open with a job-bound Apply route and states BCom with 0–1 year experience."
-      },
-      "reviewedAt": "2026-11-01T05:17:07.025Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "deloitte-60813044",
+      "id": "deloitte-60961044",
       "company": "Deloitte",
-      "role": "Talent Acquisition Intern",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Not-Applicable-Mumbai-Talent/60813044/",
-      "cat": "non-it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Internship; no required prior experience stated",
-      "reviewedStatus": "live",
+      "role": "Associate Analyst | Digital | DigiGov",
+      "loc": "Delhi, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Delhi-Associate-Analyst-Digital-Delhi-Operations%2C-Industry-%26-Domain-Solutions-DigiGov/60961044",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0 years; no prior experience requirement stated",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Official Deloitte South Asia requisition 60813044 is open with Apply and lists an internship supporting Talent Acquisition without mandatory prior experience.",
-      "postedDate": null,
+      "verificationReason": "Official Deloitte requisition 60961044 is currently indexed on Deloitte South Asia Careers with its exact job-bound route; the posting contains no mandatory prior-experience requirement and current fresher recruitment evidence points to the same requisition.",
+      "postedDate": "2026-10-26",
       "job": {
         "company": "Deloitte",
-        "role": "Talent Acquisition Intern",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Not-Applicable-Mumbai-Talent/60813044/",
-        "cat": "nonit",
+        "role": "Associate Analyst | Digital | DigiGov",
+        "loc": "Delhi, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Delhi-Associate-Analyst-Digital-Delhi-Operations%2C-Industry-%26-Domain-Solutions-DigiGov/60961044",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "Internship; no required prior experience stated",
+        "expYears": "0 years; no prior experience requirement stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
         "sourceName": "Deloitte South Asia Careers",
-        "desc": "Talent Acquisition internship supporting sourcing, screening, interviews, recruiting trackers and campus activities.",
-        "elig": "Academic qualification is not specified on the official posting.",
+        "desc": "Entry-level application support role for the IAFIS application, helping users with onboarding and support tickets.",
+        "elig": "Fresher-eligible; the official posting states no prior-experience requirement. Exact degree and graduation batch: Not Specified.",
         "resp": [
-          "Source and screen candidates.",
-          "Coordinate interviews and maintain recruiting trackers.",
-          "Support campus hiring events and reporting."
+          "Support users of the IAFIS application and assist with onboarding.",
+          "Attend support calls and guide users on application use.",
+          "Assign and coordinate tickets in the ticket-management system."
         ],
         "skills": [
-          "Recruitment coordination",
-          "Candidate sourcing",
-          "Microsoft Excel",
+          "Customer support",
+          "Application support",
+          "Ticket management",
           "Communication"
         ],
         "workMode": "Not Specified",
-        "jobId": "60813044",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:17:11.557Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:17:11.557Z"
+        "jobId": "60961044",
+        "date": "2026-10-26",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
-        "officialEvidence": "Official Deloitte South Asia requisition 60813044 is open with Apply and lists an internship supporting Talent Acquisition without mandatory prior experience."
-      },
-      "reviewedAt": "2026-11-01T05:17:11.557Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Official Deloitte requisition 60961044 is currently indexed on Deloitte South Asia Careers with its exact job-bound route; the posting contains no mandatory prior-experience requirement and current fresher recruitment evidence points to the same requisition."
+      }
     },
     {
-      "id": "honeywell-160935",
-      "company": "Honeywell",
-      "role": "Intern Bachelors App Eng",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160935/",
+      "id": "cisco-2018940",
+      "company": "Cisco",
+      "role": "Network Support Engineer - Bachelor's (Full Time)",
+      "loc": "Bengaluru, India",
+      "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Network-Support-Engineer---Bachelor-s--Full-Time----India-Customer-Experience---Meraki-UHR_2018940",
       "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Bachelor's internship; no required prior experience stated",
-      "reviewedStatus": "live",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Official Honeywell requisition 160935 appears in the current India inventory with a job-bound page, Pune location and 30 Oct posting date.",
-      "postedDate": "2026-10-30",
+      "verificationReason": "Official Cisco Workday requisition 2018940 is open with an Apply route and explicitly accepts 0–2 years.",
+      "postedDate": null,
       "job": {
-        "company": "Honeywell",
-        "role": "Intern Bachelors App Eng",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160935/",
+        "company": "Cisco",
+        "role": "Network Support Engineer - Bachelor's (Full Time)",
+        "loc": "Bengaluru, India",
+        "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Network-Support-Engineer---Bachelor-s--Full-Time----India-Customer-Experience---Meraki-UHR_2018940",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Bachelor's internship; no required prior experience stated",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Honeywell Careers",
-        "desc": "Application engineering internship providing hands-on work on real projects and technical skill development.",
-        "elig": "Current bachelor's engineering student; exact branch and graduation year are not specified in the accessible official source extract.",
+        "sourceName": "Cisco Careers (Workday)",
+        "desc": "Graduate network-support role in Cisco Meraki Customer Experience, resolving technical issues and supporting enterprise customers.",
+        "elig": "Bachelor's degree route; 0–2 years supporting or troubleshooting LANs, VLANs, VPNs, devices and DHCP servers.",
         "resp": [
-          "Support application engineering projects.",
-          "Assist with design, development and testing tasks.",
-          "Document work and collaborate with experienced engineers."
+          "Troubleshoot customer network issues.",
+          "Collaborate with engineering and escalation teams.",
+          "Complete technical and AI-focused training and support rotational weekends."
         ],
         "skills": [
-          "Application engineering",
-          "Design",
-          "Development",
-          "Testing"
+          "Networking",
+          "LAN/VLAN/VPN",
+          "DHCP",
+          "Customer support",
+          "AI tools"
         ],
-        "workMode": "Not Specified",
-        "jobId": "160935",
-        "date": "2026-10-30",
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:17:20.768Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:17:20.768Z"
+        "workMode": "Hybrid",
+        "jobId": "2018940",
+        "date": "Not Specified",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
-        "officialEvidence": "Official Honeywell requisition 160935 appears in the current India inventory with a job-bound page, Pune location and 30 Oct posting date."
+        "officialEvidence": "Official Cisco Workday requisition 2018940 is open with an Apply route and explicitly accepts 0–2 years."
+      }
+    },
+    {
+      "id": "gehc-r4047718",
+      "company": "GE HealthCare",
+      "role": "Graduate Engineer Trainee",
+      "loc": "Bengaluru, India",
+      "apply": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Recent graduate or up to 1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official GE HealthCare requisition R4047718 is open through 6 Nov 2026 and explicitly accepts recent graduates or up to one year of internship/industrial experience.",
+      "postedDate": "2026-10-29",
+      "job": {
+        "company": "GE HealthCare",
+        "role": "Graduate Engineer Trainee",
+        "loc": "Bengaluru, India",
+        "apply": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Recent graduate or up to 1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "GE HealthCare Careers (Workday)",
+        "desc": "Graduate engineering role supporting manufacturing engineering, product quality and continuous-improvement work for ultrasound products.",
+        "elig": "Bachelor's degree in Mechanical, Electronics, Electrical Engineering or a related engineering discipline; recent graduate or up to one year of relevant internship/industrial experience.",
+        "resp": [
+          "Support manufacturing-process and quality-improvement activities.",
+          "Assist with root-cause analysis, CAPA and validation work.",
+          "Maintain engineering documentation and calibration records."
+        ],
+        "skills": [
+          "Manufacturing engineering",
+          "Root-cause analysis",
+          "Lean/Kaizen",
+          "Quality systems",
+          "Microsoft Office"
+        ],
+        "workMode": "On-site",
+        "jobId": "R4047718",
+        "date": "2026-10-29",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
       },
-      "reviewedAt": "2026-11-01T05:17:20.768Z",
-      "reviewedBy": "HD Careers Admin"
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official GE HealthCare requisition R4047718 is open through 6 Nov 2026 and explicitly accepts recent graduates or up to one year of internship/industrial experience."
+      }
+    },
+    {
+      "id": "lseg-r0124079",
+      "company": "LSEG",
+      "role": "Associate Software Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://lseg.wd3.myworkdayjobs.com/Careers/job/IND-BLR-Divyasree-Technopolis/Associate-Software-Engineer_R0124079",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Early career; projects/internships accepted",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official LSEG Workday requisition R0124079 is open with an Apply route and expressly treats university projects, internships and graduate programmes as qualifying foundations.",
+      "postedDate": "2026-10-31",
+      "job": {
+        "company": "LSEG",
+        "role": "Associate Software Engineer",
+        "loc": "Bengaluru, India",
+        "apply": "https://lseg.wd3.myworkdayjobs.com/Careers/job/IND-BLR-Divyasree-Technopolis/Associate-Software-Engineer_R0124079",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Early career; projects/internships accepted",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "LSEG Careers (Workday)",
+        "desc": "Early-career software role building and operating Python-based index-data services for FTSE Russell.",
+        "elig": "Software-development foundation from university projects, internships, graduate programmes, open source, personal projects or professional work; no minimum professional tenure stated.",
+        "resp": [
+          "Write and test maintainable production code.",
+          "Build services, APIs and shared libraries.",
+          "Investigate defects and contribute to cloud-based data systems."
+        ],
+        "skills": [
+          "Python or modern programming language",
+          "SQL",
+          "Git",
+          "Automated testing",
+          "AWS exposure"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R0124079",
+        "date": "2026-10-31",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official LSEG Workday requisition R0124079 is open with an Apply route and expressly treats university projects, internships and graduate programmes as qualifying foundations."
+      }
+    },
+    {
+      "id": "duckcreek-reqid55227",
+      "company": "Duck Creek Technologies",
+      "role": "Associate Software Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://duckcreek.wd1.myworkdayjobs.com/en-US/duckcreek-linkedin/job/Bengaluru-India/Associate-Software-Engineer_REQID55227",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Duck Creek Workday requisition REQID55227 is open and explicitly lists 0–2 years.",
+      "postedDate": "2026-10-31",
+      "job": {
+        "company": "Duck Creek Technologies",
+        "role": "Associate Software Engineer",
+        "loc": "Bengaluru, India",
+        "apply": "https://duckcreek.wd1.myworkdayjobs.com/en-US/duckcreek-linkedin/job/Bengaluru-India/Associate-Software-Engineer_REQID55227",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Duck Creek Careers (Workday)",
+        "desc": "Early-career AI engineering role building LLM evaluation, knowledge-graph and Python GenAI pipelines.",
+        "elig": "B.Tech/M.Tech with AI/ML specialization, or CS/IT with strong AI coursework/projects; 0–2 years; working GitHub profile with an original AI/LLM project.",
+        "resp": [
+          "Build LLM evaluation harnesses and datasets.",
+          "Design knowledge-graph structures and queries.",
+          "Develop tested Python GenAI pipelines and documentation."
+        ],
+        "skills": [
+          "Python",
+          "LLM evaluation",
+          "Knowledge graphs",
+          "RAG",
+          "Data structures and algorithms"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "REQID55227",
+        "date": "2026-10-31",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Duck Creek Workday requisition REQID55227 is open and explicitly lists 0–2 years."
+      }
+    },
+    {
+      "id": "rockwell-r26-6289",
+      "company": "Rockwell Automation",
+      "role": "Graduate Engineer Trainee",
+      "loc": "Pune, India",
+      "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/external-rockwell-automation-early-careers/job/Pune-India/Graduate-Engineer-Trainee_R26-6289",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Graduate trainee; prior experience not specified",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Rockwell Automation early-careers requisition R26-6289 is open with a job-bound Apply route and is explicitly designated Graduate Engineer Trainee.",
+      "postedDate": "2026-10-29",
+      "job": {
+        "company": "Rockwell Automation",
+        "role": "Graduate Engineer Trainee",
+        "loc": "Pune, India",
+        "apply": "https://rockwellautomation.wd1.myworkdayjobs.com/en-US/external-rockwell-automation-early-careers/job/Pune-India/Graduate-Engineer-Trainee_R26-6289",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Graduate trainee; prior experience not specified",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Rockwell Automation Early Careers (Workday)",
+        "desc": "Graduate IT trainee role providing structured professional development and hands-on exposure within Rockwell Automation's IT department.",
+        "elig": "Graduate-trainee route; exact degree, batch and CGPA details for this requisition: Not Specified.",
+        "resp": [
+          "Participate in structured IT training.",
+          "Support technology systems and project work.",
+          "Learn from senior engineers and contribute to technical problem solving."
+        ],
+        "skills": [
+          "IT fundamentals",
+          "Problem solving",
+          "Collaboration",
+          "Learning agility"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "R26-6289",
+        "date": "2026-10-29",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Rockwell Automation early-careers requisition R26-6289 is open with a job-bound Apply route and is explicitly designated Graduate Engineer Trainee."
+      }
+    },
+    {
+      "id": "citi-261000921",
+      "company": "Citi",
+      "role": "Operations Support Analyst",
+      "loc": "Gurugram, India",
+      "apply": "https://citi.wd5.myworkdayjobs.com/2/job/DLF-CYBERCITY-12B/Operations-Support-Analyst_261000921",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Entry level; previous experience preferred, not required",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Citi Workday requisition 261000921 remains available; Citi labels the role entry level and lists prior experience only as preferred.",
+      "postedDate": "2026-10-28",
+      "job": {
+        "company": "Citi",
+        "role": "Operations Support Analyst",
+        "loc": "Gurugram, India",
+        "apply": "https://citi.wd5.myworkdayjobs.com/2/job/DLF-CYBERCITY-12B/Operations-Support-Analyst_261000921",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Entry level; previous experience preferred, not required",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Citi Careers (Workday)",
+        "desc": "Entry-level operations-support role handling records, accounts, reporting, coordination and client-deliverable support.",
+        "elig": "Bachelor's or university degree, or equivalent experience; previous relevant experience is preferred rather than mandatory.",
+        "resp": [
+          "Maintain records and support account operations.",
+          "Coordinate status reporting and stakeholder follow-up.",
+          "Support compliance, testing and operational projects."
+        ],
+        "skills": [
+          "Microsoft Office",
+          "SQL awareness",
+          "Organisation",
+          "Communication",
+          "Problem solving"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "261000921",
+        "date": "2026-10-28",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Citi Workday requisition 261000921 remains available; Citi labels the role entry level and lists prior experience only as preferred."
+      }
+    },
+    {
+      "id": "deutsche-r0452987",
+      "company": "Deutsche Bank",
+      "role": "Operations Early Talent 2026–2027",
+      "loc": "Bengaluru / Jaipur / Pune, India",
+      "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Operations-Early-Talent-2026-2027_R0452987",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0 years; 2027 graduates",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Deutsche Bank requisition R0452987 is open and explicitly targets 2027 B.Com/BBA graduates with no active backlogs.",
+      "postedDate": null,
+      "job": {
+        "company": "Deutsche Bank",
+        "role": "Operations Early Talent 2026–2027",
+        "loc": "Bengaluru / Jaipur / Pune, India",
+        "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Operations-Early-Talent-2026-2027_R0452987",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0 years; 2027 graduates",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Deutsche Bank Careers (Workday)",
+        "desc": "Early-talent banking operations programme across payments, settlements, reconciliation, trade finance and client lifecycle processes.",
+        "elig": "2027 B.Com/BBA graduates with at least 7 CGPA to date and no active backlogs.",
+        "resp": [
+          "Process and reconcile banking transactions.",
+          "Support settlements, payments and client lifecycle work.",
+          "Follow operating procedures and escalate risks or exceptions."
+        ],
+        "skills": [
+          "Operations",
+          "Reconciliation",
+          "Risk awareness",
+          "Stakeholder communication",
+          "Microsoft Office"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R0452987",
+        "date": "Not Specified",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Deutsche Bank requisition R0452987 is open and explicitly targets 2027 B.Com/BBA graduates with no active backlogs."
+      }
+    },
+    {
+      "id": "honeywell-160486",
+      "company": "Honeywell",
+      "role": "Intern (Bachelor's) – Data Engineering",
+      "loc": "Bengaluru, India",
+      "apply": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Honeywell/job/160486",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Internship; student route",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Honeywell requisition 160486 is live in the employer's Oracle recruiting inventory with a current job-bound application route.",
+      "postedDate": "2026-10-26",
+      "job": {
+        "company": "Honeywell",
+        "role": "Intern (Bachelor's) – Data Engineering",
+        "loc": "Bengaluru, India",
+        "apply": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Honeywell/job/160486",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Internship; student route",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Honeywell Careers (Oracle Recruiting)",
+        "desc": "Data-engineering internship focused on pipelines, ETL, data quality and applied analysis.",
+        "elig": "Pursuing an advanced degree in Computer Science, Engineering or a related field is valued; basic data-engineering and programming knowledge required.",
+        "resp": [
+          "Assist with data-pipeline and ETL development.",
+          "Analyze data and support business insights.",
+          "Improve data-quality and engineering practices."
+        ],
+        "skills": [
+          "Python/Java/Scala",
+          "ETL",
+          "Data pipelines",
+          "Data analysis",
+          "Data quality"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "160486",
+        "date": "2026-10-26",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Honeywell requisition 160486 is live in the employer's Oracle recruiting inventory with a current job-bound application route."
+      }
+    },
+    {
+      "id": "ey-1755452",
+      "company": "EY",
+      "role": "Intern 1 – Assurance – Audit Services",
+      "loc": "Hyderabad, India",
+      "apply": "https://careers.ey.com/ey/job/Hyderabad-Intern-1-Assurance-TMT-ASU-Audit-Audit-Services-Hyderabad-500032/1450606733/",
+      "cat": "non-it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Internship; prior experience not specified",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official EY Careers requisition 1755452 is currently accessible with the exact Intern 1 title and job-bound application route.",
+      "postedDate": "2026-10-23",
+      "job": {
+        "company": "EY",
+        "role": "Intern 1 – Assurance – Audit Services",
+        "loc": "Hyderabad, India",
+        "apply": "https://careers.ey.com/ey/job/Hyderabad-Intern-1-Assurance-TMT-ASU-Audit-Audit-Services-Hyderabad-500032/1450606733/",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Internship; prior experience not specified",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "EY Careers",
+        "desc": "Assurance internship supporting statutory-audit testing, documentation and control review.",
+        "elig": "Internship route; exact education, batch and prior-experience requirements: Not Specified in the accessible official posting.",
+        "resp": [
+          "Carry out audit testing under the audit plan.",
+          "Document work performed and identify accounting or control issues.",
+          "Support clear audit reporting and recommendations."
+        ],
+        "skills": [
+          "Audit",
+          "Documentation",
+          "Analytical review",
+          "Accounting awareness",
+          "Communication"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "1755452",
+        "date": "2026-10-23",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official EY Careers requisition 1755452 is currently accessible with the exact Intern 1 title and job-bound application route."
+      }
     }
   ],
   "backup": [
     {
-      "id": "playto-744000154717769",
-      "company": "Playto Labs",
-      "role": "Business Development Associate (Fresher)",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/playtolabs/744000154717769-business-development-associate-fresher",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "No prior experience required",
-      "reviewedStatus": "live",
+      "id": "intel-jr0283518",
+      "company": "Intel",
+      "role": "Analog Layout Design Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/India-Bangalore/Analog-Layout-Design-Engineer_JR0283518-1",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
       "verificationVerdict": "live",
-      "verificationReason": "Employer-authorized SmartRecruiters requisition 744000154717769 is open, full-time and explicitly states no prior experience required.",
+      "verificationReason": "Official Intel Workday requisition JR0283518 is available with an Apply route and explicitly accepts 0–2 years or strong academic exposure.",
       "postedDate": null,
       "job": {
-        "company": "Playto Labs",
-        "role": "Business Development Associate (Fresher)",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/playtolabs/744000154717769-business-development-associate-fresher",
-        "cat": "nonit",
+        "company": "Intel",
+        "role": "Analog Layout Design Engineer",
+        "loc": "Bengaluru, India",
+        "apply": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/India-Bangalore/Analog-Layout-Design-Engineer_JR0283518-1",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "No prior experience required",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Playto Labs Careers (SmartRecruiters)",
-        "desc": "Entry-level pre-sales role supporting prospect research, lead qualification, proposals, demos and CRM tracking.",
-        "elig": "Bachelor's degree in Business, Marketing, Commerce or a related field; any graduates are also listed in the qualifications section.",
+        "sourceName": "Intel Careers (Workday)",
+        "desc": "Entry-level analog-layout engineering role supporting analog and mixed-signal IP development and physical verification.",
+        "elig": "B.Tech in Electrical, Electronics or a related field; 0–2 years or strong academic exposure in analog/custom layout design.",
         "resp": [
-          "Research and qualify sales leads.",
-          "Schedule demos and follow-ups.",
-          "Track opportunities in CRM systems and support proposals."
+          "Implement custom analog layouts under guidance.",
+          "Run and debug DRC, LVS and reliability checks.",
+          "Support layout iterations, ECOs and signoff closure."
+        ],
+        "skills": [
+          "Analog layout",
+          "Virtuoso/Custom Compiler",
+          "DRC/LVS",
+          "Physical verification",
+          "Python/Tcl exposure"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "JR0283518",
+        "date": "Not Specified",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Intel Workday requisition JR0283518 is available with an Apply route and explicitly accepts 0–2 years or strong academic exposure."
+      }
+    },
+    {
+      "id": "reliaquest-r15032",
+      "company": "ReliaQuest",
+      "role": "Associate Software Engineer",
+      "loc": "Pune, India",
+      "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Engineer_R15032",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official ReliaQuest requisition R15032 is available through its Workday Apply route and explicitly lists 0–1 years.",
+      "postedDate": null,
+      "job": {
+        "company": "ReliaQuest",
+        "role": "Associate Software Engineer",
+        "loc": "Pune, India",
+        "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Engineer_R15032",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "ReliaQuest Careers (Workday)",
+        "desc": "Entry-level security software role building APIs, integrations and automation for the GreyMatter platform.",
+        "elig": "0–1 years of software-development experience with Java, Spring Boot and microservices; higher education or relevant certifications valued.",
+        "resp": [
+          "Develop APIs and product integrations.",
+          "Improve CI/CD and software lifecycle automation.",
+          "Collaborate on code reviews and product support."
+        ],
+        "skills": [
+          "Java",
+          "Spring Boot",
+          "Microservices",
+          "REST APIs",
+          "CI/CD"
+        ],
+        "workMode": "On-site",
+        "jobId": "R15032",
+        "date": "Not Specified",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official ReliaQuest requisition R15032 is available through its Workday Apply route and explicitly lists 0–1 years."
+      }
+    },
+    {
+      "id": "r1rcm-r260000004437",
+      "company": "R1 RCM",
+      "role": "Software Engineer I – Data",
+      "loc": "Noida, India",
+      "apply": "https://r1rcm.wd1.myworkdayjobs.com/R1RCM/job/Noida-India/Software-Engineer-I_R260000004437",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–3 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official R1 RCM Workday requisition R260000004437 is present in current ATS inventory and explicitly lists 0–3 years.",
+      "postedDate": "2026-07-15",
+      "job": {
+        "company": "R1 RCM",
+        "role": "Software Engineer I – Data",
+        "loc": "Noida, India",
+        "apply": "https://r1rcm.wd1.myworkdayjobs.com/R1RCM/job/Noida-India/Software-Engineer-I_R260000004437",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–3 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "R1 RCM Careers (Workday)",
+        "desc": "Junior data-engineering role building data pipelines and analytics solutions with SQL, Snowflake, Databricks and Python.",
+        "elig": "Bachelor's degree in Computer Science, IT, Engineering or a related field; 0–3 years in software development or data engineering.",
+        "resp": [
+          "Build and maintain ETL/ELT data pipelines.",
+          "Develop SQL and Python data transformations.",
+          "Monitor data quality and troubleshoot pipeline issues."
+        ],
+        "skills": [
+          "SQL",
+          "Python",
+          "Snowflake",
+          "Databricks",
+          "ETL/ELT"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R260000004437",
+        "date": "2026-07-15",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official R1 RCM Workday requisition R260000004437 is present in current ATS inventory and explicitly lists 0–3 years."
+      }
+    },
+    {
+      "id": "argano-2010",
+      "company": "Argano",
+      "role": "Associate Data & Analytics Engineer",
+      "loc": "Hyderabad, India",
+      "apply": "https://fa-eyau-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2010",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Provider-native Argano Oracle requisition 2010 was present in the current ATS inventory on 2 Nov 2026 and explicitly lists 0–2 years.",
+      "postedDate": "2026-10-30",
+      "job": {
+        "company": "Argano",
+        "role": "Associate Data & Analytics Engineer",
+        "loc": "Hyderabad, India",
+        "apply": "https://fa-eyau-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2010",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Argano Careers (Oracle Recruiting)",
+        "desc": "Associate data role building transformations, dashboards and AI-assisted analytics workflows in modern cloud data tools.",
+        "elig": "0–2 years; education requirement: Not Specified in the accessible provider-native record.",
+        "resp": [
+          "Develop SQL and Python transformations in Snowflake and Databricks.",
+          "Build Power BI dashboards and data models.",
+          "Create validation checks and document schemas and metrics."
+        ],
+        "skills": [
+          "SQL",
+          "Python",
+          "Snowflake",
+          "Databricks",
+          "Power BI",
+          "GenAI tools"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "2010",
+        "date": "2026-10-30",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Provider-native Argano Oracle requisition 2010 was present in the current ATS inventory on 2 Nov 2026 and explicitly lists 0–2 years."
+      }
+    },
+    {
+      "id": "chi-195532000000394129",
+      "company": "Chi Networks",
+      "role": "Graduate Engineer Trainee (Helpdesk)",
+      "loc": "New Delhi, India",
+      "apply": "https://chinetworks.zohorecruit.in/jobs/Careers/195532000000394129",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Recent graduate; 0 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Provider-native Chi Networks Zoho Recruit requisition 195532000000394129 remains in current ATS inventory and explicitly targets recent graduates.",
+      "postedDate": "2025-12-09",
+      "job": {
+        "company": "Chi Networks",
+        "role": "Graduate Engineer Trainee (Helpdesk)",
+        "loc": "New Delhi, India",
+        "apply": "https://chinetworks.zohorecruit.in/jobs/Careers/195532000000394129",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Recent graduate; 0 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Chi Networks Careers (Zoho Recruit)",
+        "desc": "Graduate IT trainee role supporting managed services, cloud resources, networking and security operations.",
+        "elig": "Recent BCA, MCA, B.Tech or B.E. graduate; must be based in or willing to relocate to New Delhi and work in a 24×7 environment.",
+        "resp": [
+          "Assist with IT infrastructure maintenance and monitoring.",
+          "Support cloud deployments and first-line troubleshooting.",
+          "Learn SOC/NOC operations and incident response."
+        ],
+        "skills": [
+          "Networking",
+          "Windows/Linux",
+          "AWS/Azure/GCP basics",
+          "Troubleshooting",
+          "Communication"
+        ],
+        "workMode": "On-site",
+        "jobId": "195532000000394129",
+        "date": "2025-12-09",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Provider-native Chi Networks Zoho Recruit requisition 195532000000394129 remains in current ATS inventory and explicitly targets recent graduates."
+      }
+    },
+    {
+      "id": "mydbops-142736",
+      "company": "Mydbops",
+      "role": "Associate Database Engineer",
+      "loc": "Kanniyakumari, India",
+      "apply": "https://mydbops.keka.com/careers/jobdetails/142736",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresher; 0 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Provider-native Mydbops Keka requisition 142736 is current and explicitly describes the role as suitable for freshers.",
+      "postedDate": "2026-09-24",
+      "job": {
+        "company": "Mydbops",
+        "role": "Associate Database Engineer",
+        "loc": "Kanniyakumari, India",
+        "apply": "https://mydbops.keka.com/careers/jobdetails/142736",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresher; 0 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Mydbops Careers (Keka)",
+        "desc": "Entry-level PostgreSQL database-engineering role supporting monitoring, maintenance, backup, recovery and routine operations.",
+        "elig": "Fresher; B.Tech/B.E./M.Tech/M.E. or equivalent degree in CS, IT or a related field preferred.",
+        "resp": [
+          "Monitor PostgreSQL database health and performance.",
+          "Assist with backup, recovery and routine maintenance.",
+          "Troubleshoot basic database issues and document resolutions."
+        ],
+        "skills": [
+          "PostgreSQL",
+          "SQL",
+          "Linux",
+          "Database administration",
+          "Python/Bash basics"
+        ],
+        "workMode": "On-site",
+        "jobId": "142736",
+        "date": "2026-09-24",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Provider-native Mydbops Keka requisition 142736 is current and explicitly describes the role as suitable for freshers."
+      }
+    },
+    {
+      "id": "analog-devices-r264285",
+      "company": "Analog Devices",
+      "role": "Associate Analyst, Supply Chain Planning",
+      "loc": "Gandhinagar, India",
+      "apply": "https://analogdevices.wd1.myworkdayjobs.com/External/job/India-Gandhinagar/Associate-Analyst--Supply-Chain-Planning_R264285",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–3 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Analog Devices Workday requisition R264285 remains in current ATS inventory and its provider-native record states 0–3 years.",
+      "postedDate": "2026-08-05",
+      "job": {
+        "company": "Analog Devices",
+        "role": "Associate Analyst, Supply Chain Planning",
+        "loc": "Gandhinagar, India",
+        "apply": "https://analogdevices.wd1.myworkdayjobs.com/External/job/India-Gandhinagar/Associate-Analyst--Supply-Chain-Planning_R264285",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–3 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Analog Devices Careers (Workday)",
+        "desc": "Junior supply-chain planning role analyzing planning issues, improving processes and supporting analytics.",
+        "elig": "B.E. in Mechanical, Chemical, Industrial, Manufacturing, Operations Research or Production Engineering; 0–3 years.",
+        "resp": [
+          "Analyze supply-chain performance and planning issues.",
+          "Support process and system improvements.",
+          "Create analytics and automate recurring work."
+        ],
+        "skills": [
+          "Supply chain planning",
+          "Excel",
+          "SQL",
+          "Analytics",
+          "Python preferred"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R264285",
+        "date": "2026-08-05",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Analog Devices Workday requisition R264285 remains in current ATS inventory and its provider-native record states 0–3 years."
+      }
+    },
+    {
+      "id": "concentrix-r1769081",
+      "company": "Concentrix",
+      "role": "Associate, Operations Support",
+      "loc": "Gurugram, India",
+      "apply": "https://cnx.wd1.myworkdayjobs.com/external_global/job/IND-Gurugram---2nd-3rd-and-4th-Flrs-RMZ-Infinity/Associate--Operations-Support_R1769081",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresh graduates to 2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Concentrix requisition R1769081 is currently accessible and explicitly encourages fresh graduates and candidates with up to two years.",
+      "postedDate": "2026-10-30",
+      "job": {
+        "company": "Concentrix",
+        "role": "Associate, Operations Support",
+        "loc": "Gurugram, India",
+        "apply": "https://cnx.wd1.myworkdayjobs.com/external_global/job/IND-Gurugram---2nd-3rd-and-4th-Flrs-RMZ-Infinity/Associate--Operations-Support_R1769081",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Fresh graduates to 2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Concentrix Careers (Workday)",
+        "desc": "Entry-level operations-support role coordinating daily activities, customer queries, documentation and process improvement.",
+        "elig": "Bachelor's degree in any discipline; fresh graduates and candidates with up to two years are encouraged to apply.",
+        "resp": [
+          "Support operational planning and daily execution.",
+          "Respond to customer queries and route escalations.",
+          "Maintain records, reporting and coordination activities."
         ],
         "skills": [
           "Communication",
-          "Lead qualification",
-          "CRM",
-          "Pre-sales"
+          "Microsoft Office",
+          "Organisation",
+          "Problem solving",
+          "Customer support"
         ],
         "workMode": "Not Specified",
-        "jobId": "744000154717769",
-        "date": null,
-        "verifiedDate": "1 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 1 Nov 2026.",
-        "browserVerifiedAt": "2026-11-01T05:17:27.745Z",
-        "manualLiveVerifiedAt": "2026-11-01T05:17:27.745Z"
+        "jobId": "R1769081",
+        "date": "2026-10-30",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-01T03:33:09.536Z",
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
-        "officialEvidence": "Employer-authorized SmartRecruiters requisition 744000154717769 is open, full-time and explicitly states no prior experience required."
+        "officialEvidence": "Official Concentrix requisition R1769081 is currently accessible and explicitly encourages fresh graduates and candidates with up to two years."
+      }
+    },
+    {
+      "id": "marvell-2604624",
+      "company": "Marvell",
+      "role": "Intern, Software Engineer – Bachelor's Degree",
+      "loc": "Hyderabad, India",
+      "apply": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Hyderabad/Intern--Software-Engineer---Bachelor-s-Degree_2604624",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Internship; 0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Marvell Workday requisition 2604624 is present in current ATS inventory as an internship approved for the 2027 calendar year.",
+      "postedDate": "2026-10-23",
+      "job": {
+        "company": "Marvell",
+        "role": "Intern, Software Engineer – Bachelor's Degree",
+        "loc": "Hyderabad, India",
+        "apply": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Hyderabad/Intern--Software-Engineer---Bachelor-s-Degree_2604624",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Internship; 0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Marvell Careers (Workday)",
+        "desc": "Software-engineering internship working on prototypes, open-source products and AI research for semiconductor platforms.",
+        "elig": "Bachelor's-degree internship approved for the 2027 calendar year; exact major requirement: Not Specified in the accessible official record.",
+        "resp": [
+          "Develop software prototypes and case studies.",
+          "Collaborate on Marvell and open-source software products.",
+          "Research and prototype AI algorithms and frameworks."
+        ],
+        "skills": [
+          "C/C++/Python",
+          "Linux",
+          "Data structures",
+          "Algorithms",
+          "Computer architecture"
+        ],
+        "workMode": "On-site",
+        "jobId": "2604624",
+        "date": "2026-10-23",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
       },
-      "reviewedAt": "2026-11-01T05:17:27.745Z",
-      "reviewedBy": "HD Careers Admin"
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Marvell Workday requisition 2604624 is present in current ATS inventory as an internship approved for the 2027 calendar year."
+      }
+    },
+    {
+      "id": "origin-870cd94faf",
+      "company": "Origin",
+      "role": "Apprentice – Mechanical Design",
+      "loc": "Bengaluru, India",
+      "apply": "https://apply.workable.com/j/870CD94FAF",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "0–2 years; six-month apprenticeship",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Origin Workable requisition 870CD94FAF is current, job-bound and explicitly accepts 0–2 years for a six-month apprenticeship.",
+      "postedDate": "2026-10-23",
+      "job": {
+        "company": "Origin",
+        "role": "Apprentice – Mechanical Design",
+        "loc": "Bengaluru, India",
+        "apply": "https://apply.workable.com/j/870CD94FAF",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years; six-month apprenticeship",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Origin Careers (Workable)",
+        "desc": "Six-month mechanical-design apprenticeship building and testing subsystems for autonomous construction robots.",
+        "elig": "Bachelor's degree in Mechanical Engineering, Mechatronics, Robotics or related field; 0–2 years; strong physical-project portfolio required.",
+        "resp": [
+          "Design robot subassemblies and manufacturing drawings.",
+          "Build and assemble prototypes and test fixtures.",
+          "Run load, cycle, thermal, drop and vibration tests."
+        ],
+        "skills": [
+          "Onshape/SolidWorks",
+          "Mechanical design",
+          "Prototyping",
+          "Robotics",
+          "Testing"
+        ],
+        "workMode": "On-site",
+        "jobId": "870CD94FAF",
+        "date": "2026-10-23",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:36:15.194Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Origin Workable requisition 870CD94FAF is current, job-bound and explicitly accepts 0–2 years for a six-month apprenticeship."
+      }
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 10,
-      "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 2,
-        "unclassified": 0
-      },
-      "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 1,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 1,
-        "training": 0,
-        "unclassified": 0
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 1,
-        "training": 2
-      }
-    },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "remaining": 11,
-    "duplicateExclusions": [],
-    "excludedCount": 0,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "watchlistEmployersVisited": 21,
+    "watchlistEmployersNotVisited": 66,
+    "blockedPortals": 3,
+    "uniqueExactCandidatesEvaluated": 61,
+    "uniqueExactLiveIdsFound": 20,
+    "selectedApproved87": 8,
+    "selectedFallback": 12,
+    "duplicateExclusions": [
+      "Google 73379279982731974 — already published/reviewed",
+      "Fretron 743999812282138 — exact requisition already published",
+      "Hevo Data 993a3ed3-3014-432f-b0f4-28d300d58d9a — exact URL already published",
+      "Scopely 5448999008 — previously reviewed exact requisition",
+      "Pitney Bowes R22357 — previously reviewed",
+      "Ingram Micro R-115589 — previously reviewed",
+      "METRO 744000157778959 — already published/reviewed",
+      "Amazon 10508052 — owner/archive expired verdict"
+    ],
+    "excludedCount": 8,
+    "heldCount": 33,
+    "heldExamples": [
+      "UiPath a6ed0fbe-3505-46ab-9ec5-469d8356f8d8 — requires 1–2 years",
+      "Equifax J00179300 — requires 1+ years",
+      "NTT DATA 1445249800/1445250000/1445250200 — requires 1–3+ years",
+      "Amgen R-250957 — requires 2–6 years",
+      "Priceline R5880 — requires 2 years",
+      "HPE 1210218 — conflicting closure evidence; held for recheck",
+      "Cisco 2015541 — talent-pool wording says exact role may not be open",
+      "Blue Yonder 263236 — approximately one year hands-on experience",
+      "WRI 2026-JR100319 — requires 2–4 years"
+    ],
+    "note": "Deloitte searched first. Both lists were independently category-audited; exact URLs, requisitions, employer aliases, published jobs, archives and Telegram/publication records were scrubbed before staging."
   },
   "quotaAudit": {
     "priority": {
@@ -649,16 +1098,16 @@
       }
     },
     "backup": {
-      "size": 1,
+      "size": 10,
       "counts": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 1,
-        "internshipOrApprenticeship": 0
+        "fresherTechnicalFullTime": 6,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
       },
       "shortfalls": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 1,
-        "internshipOrApprenticeship": 2
+        "fresherTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 0,
+        "internshipOrApprenticeship": 0
       }
     },
     "targetPerList": {
@@ -666,58 +1115,25 @@
       "fresherNonTechnicalFullTime": 2,
       "internshipOrApprenticeship": 2
     },
-    "distinctEmployers": 11,
-    "remainingTotalSlots": 9,
+    "distinctEmployers": 20,
+    "remainingTotalSlots": 0,
     "duplicateExclusions": [
-      "Ingram Micro R-115589",
-      "Amazon 10454438",
       "Google 73379279982731974",
-      "Microsoft 1970393557050388",
+      "Fretron 743999812282138",
+      "Hevo Data 993a3ed3-3014-432f-b0f4-28d300d58d9a",
+      "Scopely 5448999008",
+      "Pitney Bowes R22357",
+      "Ingram Micro R-115589",
       "METRO 744000157778959",
-      "EY 1727886",
-      "Motorola Solutions R69389",
-      "Zycus JQ2742JNY (CI duplicate scrub: already published)"
+      "Amazon 10508052"
     ],
     "heldExamples": [
-      "EY 1757496 – requires 2+ years",
-      "EY 1752870 – source body states 1–3 years despite fresher tag",
-      "United Airlines GGN00002194 – requires prior full-time or internship experience",
-      "United Airlines GGN00002661 – zero-experience eligibility not source-confirmed",
-      "Honeywell Systems Engineer I – exact requisition identity not established",
-      "Cisco 1424746 – stale source and current opening not established"
+      "UiPath requires 1–2 years",
+      "Equifax requires 1+ years",
+      "NTT DATA requires 1–3+ years",
+      "Amgen requires 2–6 years",
+      "HPE has conflicting closure evidence",
+      "Cisco 2015541 is a talent-pool notice"
     ]
-  },
-  "submittedAt": "2026-11-01T05:17:57.851Z",
-  "publication": {
-    "candidateIds": [
-      "accenture-aioc-s01670923",
-      "businessnext-graduate-engineer-trainee",
-      "deloitte-60813044",
-      "ey-1719745",
-      "honeywell-160935",
-      "playto-744000154717769",
-      "salesforce-jr307116"
-    ],
-    "companies": [
-      "Accenture",
-      "BUSINESSNEXT",
-      "Deloitte",
-      "EY",
-      "Honeywell",
-      "Playto Labs",
-      "Salesforce"
-    ],
-    "urls": [
-      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01670923_en",
-      "https://careers.businessnext.com/default/position_details/current-openings/graduate-engineer-trainee",
-      "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Not-Applicable-Mumbai-Talent/60813044/",
-      "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
-      "https://careers.honeywell.com/en/sites/Honeywell/job/160935/",
-      "https://jobs.smartrecruiters.com/playtolabs/744000154717769-business-development-associate-fresher",
-      "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Software-Engineering-AMTS_JR307116"
-    ],
-    "requestId": "7fa509e70a2b4a0a3ffc19da",
-    "count": 7,
-    "submittedAt": "2026-11-01T05:17:57.851Z"
   }
 }
