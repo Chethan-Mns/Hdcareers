@@ -1279,9 +1279,11 @@
     {
       "page": "jobs/duck-creek-technologies-associate-software-engineer.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T07:38:25.402035+00:00"
+      "dueAt": "2026-11-02T07:38:25.402035+00:00",
+      "claimId": "41407606147",
+      "claimedAt": "2026-11-02T07:38:36.024259+00:00"
     },
     {
       "page": "jobs/honeywell-intern-bachelor-s-data-engineering.html",
