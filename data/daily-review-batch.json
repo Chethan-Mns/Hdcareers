@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:57.696Z",
+  "updatedAt": "2026-11-02T04:36:03.620Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -945,7 +945,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresh graduates to 2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Concentrix requisition R1769081 is currently accessible and explicitly encourages fresh graduates and candidates with up to two years.",
       "postedDate": "2026-10-30",
@@ -959,7 +959,7 @@
         "expYears": "Fresh graduates to 2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Concentrix Careers (Workday)",
         "desc": "Entry-level operations-support role coordinating daily activities, customer queries, documentation and process improvement.",
         "elig": "Bachelor's degree in any discipline; fresh graduates and candidates with up to two years are encouraged to apply.",
@@ -979,14 +979,15 @@
         "jobId": "R1769081",
         "date": "2026-10-30",
         "verifiedDate": "2 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Concentrix requisition R1769081 is currently accessible and explicitly encourages fresh graduates and candidates with up to two years."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:36:03.620Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "marvell-2604624",
