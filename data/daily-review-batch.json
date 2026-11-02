@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:02.658Z",
+  "updatedAt": "2026-11-02T04:35:16.789Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -559,7 +559,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years; freshers considered",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Hostin Services GreytHR requisition l1-cloud-delivery-engineer-423 was present in the current ATS inventory on 2 Nov 2026 and explicitly accepts 0–2 years, including freshers with strong AWS and Linux fundamentals.",
       "postedDate": "2026-10-26",
@@ -594,13 +594,16 @@
         "date": "2026-10-26",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:38:29.349Z"
+        "browserVerifiedAt": "2026-11-02T04:35:16.788Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:16.788Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:38:29.349Z",
         "currentVerdict": "live",
         "officialEvidence": "Current provider-native GreytHR record explicitly states 0–2 years and that freshers with AWS/Linux fundamentals may be considered."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:16.788Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "reliaquest-r15032",
