@@ -1309,9 +1309,11 @@
     {
       "page": "jobs/marvell-intern-software-engineer-bachelor-s-degree.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T10:39:25.923206+00:00"
+      "dueAt": "2026-11-02T10:39:25.923206+00:00",
+      "claimId": "41430556296",
+      "claimedAt": "2026-11-02T10:39:38.134456+00:00"
     },
     {
       "page": "jobs/mydbops-associate-database-engineer.html",
