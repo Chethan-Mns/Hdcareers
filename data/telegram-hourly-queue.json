@@ -1269,60 +1269,61 @@
     {
       "page": "jobs/deutsche-bank-operations-early-talent-2026-2027.html",
       "batchId": "admin-41389468328",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T06:38:11.020024+00:00",
       "claimId": "41401162361",
-      "claimedAt": "2026-11-02T06:38:21.493747+00:00"
+      "claimedAt": "2026-11-02T06:38:21.493747+00:00",
+      "messageId": 650,
+      "deliveredAt": "2026-11-02T06:38:25.402035+00:00"
     },
     {
       "page": "jobs/duck-creek-technologies-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T07:38:11.020024+00:00"
+      "dueAt": "2026-11-02T07:38:25.402035+00:00"
     },
     {
       "page": "jobs/honeywell-intern-bachelor-s-data-engineering.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T08:38:11.020024+00:00"
+      "dueAt": "2026-11-02T08:38:25.402035+00:00"
     },
     {
       "page": "jobs/lseg-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T09:38:11.020024+00:00"
+      "dueAt": "2026-11-02T09:38:25.402035+00:00"
     },
     {
       "page": "jobs/marvell-intern-software-engineer-bachelor-s-degree.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T10:38:11.020024+00:00"
+      "dueAt": "2026-11-02T10:38:25.402035+00:00"
     },
     {
       "page": "jobs/mydbops-associate-database-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T11:38:11.020024+00:00"
+      "dueAt": "2026-11-02T11:38:25.402035+00:00"
     },
     {
       "page": "jobs/origin-apprentice-mechanical-design.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T12:38:11.020024+00:00"
+      "dueAt": "2026-11-02T12:38:25.402035+00:00"
     },
     {
       "page": "jobs/reliaquest-associate-software-engineer.html",
       "batchId": "admin-41389468328",
       "status": "pending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T13:38:11.020024+00:00"
+      "dueAt": "2026-11-02T13:38:25.402035+00:00"
     }
   ]
 }
