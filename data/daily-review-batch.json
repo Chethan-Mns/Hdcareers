@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:34:04.622Z",
+  "updatedAt": "2026-11-02T04:34:11.776Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -225,7 +225,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Duck Creek Workday requisition REQID55227 is open and explicitly lists 0–2 years.",
       "postedDate": "2026-10-31",
@@ -260,13 +260,16 @@
         "date": "2026-10-31",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:34:11.775Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:34:11.775Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Duck Creek Workday requisition REQID55227 is open and explicitly lists 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:34:11.775Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "rockwell-r26-6289",
