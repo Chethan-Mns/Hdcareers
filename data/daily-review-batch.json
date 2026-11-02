@@ -108,58 +108,6 @@
       }
     },
     {
-      "id": "gehc-r4047718",
-      "company": "GE HealthCare",
-      "role": "Graduate Engineer Trainee",
-      "loc": "Bengaluru, India",
-      "apply": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Recent graduate or up to 1 year",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official GE HealthCare requisition R4047718 is open through 6 Nov 2026 and explicitly accepts recent graduates or up to one year of internship/industrial experience.",
-      "postedDate": "2026-10-29",
-      "job": {
-        "company": "GE HealthCare",
-        "role": "Graduate Engineer Trainee",
-        "loc": "Bengaluru, India",
-        "apply": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Recent graduate or up to 1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "GE HealthCare Careers (Workday)",
-        "desc": "Graduate engineering role supporting manufacturing engineering, product quality and continuous-improvement work for ultrasound products.",
-        "elig": "Bachelor's degree in Mechanical, Electronics, Electrical Engineering or a related engineering discipline; recent graduate or up to one year of relevant internship/industrial experience.",
-        "resp": [
-          "Support manufacturing-process and quality-improvement activities.",
-          "Assist with root-cause analysis, CAPA and validation work.",
-          "Maintain engineering documentation and calibration records."
-        ],
-        "skills": [
-          "Manufacturing engineering",
-          "Root-cause analysis",
-          "Lean/Kaizen",
-          "Quality systems",
-          "Microsoft Office"
-        ],
-        "workMode": "On-site",
-        "jobId": "R4047718",
-        "date": "2026-10-29",
-        "verifiedDate": "2 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-02T03:36:15.194Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official GE HealthCare requisition R4047718 is open through 6 Nov 2026 and explicitly accepts recent graduates or up to one year of internship/industrial experience."
-      }
-    },
-    {
       "id": "lseg-r0124079",
       "company": "LSEG",
       "role": "Associate Software Engineer",
@@ -332,7 +280,7 @@
         "role": "Operations Support Analyst",
         "loc": "Gurugram, India",
         "apply": "https://citi.wd5.myworkdayjobs.com/2/job/DLF-CYBERCITY-12B/Operations-Support-Analyst_261000921",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Entry level; previous experience preferred, not required",
         "salary": "Not Disclosed",
@@ -384,7 +332,7 @@
         "role": "Operations Early Talent 2026–2027",
         "loc": "Bengaluru / Jaipur / Pune, India",
         "apply": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Operations-Early-Talent-2026-2027_R0452987",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0 years; 2027 graduates",
         "salary": "Not Disclosed",
@@ -488,7 +436,7 @@
         "role": "Intern 1 – Assurance – Audit Services",
         "loc": "Hyderabad, India",
         "apply": "https://careers.ey.com/ey/job/Hyderabad-Intern-1-Assurance-TMT-ASU-Audit-Audit-Services-Hyderabad-500032/1450606733/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Internship; prior experience not specified",
         "salary": "Not Disclosed",
@@ -855,7 +803,7 @@
         "role": "Associate Analyst, Supply Chain Planning",
         "loc": "Gandhinagar, India",
         "apply": "https://analogdevices.wd1.myworkdayjobs.com/External/job/India-Gandhinagar/Associate-Analyst--Supply-Chain-Planning_R264285",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–3 years",
         "salary": "Not Disclosed",
@@ -907,7 +855,7 @@
         "role": "Associate, Operations Support",
         "loc": "Gurugram, India",
         "apply": "https://cnx.wd1.myworkdayjobs.com/external_global/job/IND-Gurugram---2nd-3rd-and-4th-Flrs-RMZ-Infinity/Associate--Operations-Support_R1769081",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Fresh graduates to 2 years",
         "salary": "Not Disclosed",
@@ -1047,17 +995,39 @@
     }
   ],
   "discoveryAudit": {
+    "priority": {
+      "size": 9,
+      "counts": {
+        "fresherIT": 5,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 1,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "watchlistEmployersVisited": 21,
-    "watchlistEmployersNotVisited": 66,
-    "blockedPortals": 3,
-    "uniqueExactCandidatesEvaluated": 61,
-    "uniqueExactLiveIdsFound": 20,
-    "selectedApproved87": 8,
-    "selectedFallback": 12,
+    "remaining": 19,
     "duplicateExclusions": [
       "Google 73379279982731974 — already published/reviewed",
       "Fretron 743999812282138 — exact requisition already published",
@@ -1066,22 +1036,17 @@
       "Pitney Bowes R22357 — previously reviewed",
       "Ingram Micro R-115589 — previously reviewed",
       "METRO 744000157778959 — already published/reviewed",
-      "Amazon 10508052 — owner/archive expired verdict"
+      "Amazon 10508052 — owner/archive expired verdict",
+      {
+        "id": "gehc-r4047718",
+        "company": "GE HealthCare",
+        "reason": "already_published",
+        "officialUrl": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1"
+      }
     ],
-    "excludedCount": 8,
-    "heldCount": 33,
-    "heldExamples": [
-      "UiPath a6ed0fbe-3505-46ab-9ec5-469d8356f8d8 — requires 1–2 years",
-      "Equifax J00179300 — requires 1+ years",
-      "NTT DATA 1445249800/1445250000/1445250200 — requires 1–3+ years",
-      "Amgen R-250957 — requires 2–6 years",
-      "Priceline R5880 — requires 2 years",
-      "HPE 1210218 — conflicting closure evidence; held for recheck",
-      "Cisco 2015541 — talent-pool wording says exact role may not be open",
-      "Blue Yonder 263236 — approximately one year hands-on experience",
-      "WRI 2026-JR100319 — requires 2–4 years"
-    ],
-    "note": "Deloitte searched first. Both lists were independently category-audited; exact URLs, requisitions, employer aliases, published jobs, archives and Telegram/publication records were scrubbed before staging."
+    "excludedCount": 9,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
