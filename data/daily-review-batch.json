@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T03:38:29.349Z",
+  "updatedAt": "2026-11-02T04:33:45.898Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years; no prior experience requirement stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Deloitte requisition 60961044 is currently indexed on Deloitte South Asia Careers with its exact job-bound route; the posting contains no mandatory prior-experience requirement and current fresher recruitment evidence points to the same requisition.",
       "postedDate": "2026-10-26",
@@ -47,13 +47,16 @@
         "date": "2026-10-26",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:33:45.868Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:33:45.868Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Deloitte requisition 60961044 is currently indexed on Deloitte South Asia Careers with its exact job-bound route; the posting contains no mandatory prior-experience requirement and current fresher recruitment evidence points to the same requisition."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:33:45.868Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "intel-jr0283518",
