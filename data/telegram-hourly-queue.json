@@ -1339,9 +1339,11 @@
     {
       "page": "jobs/reliaquest-associate-software-engineer.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T13:40:36.174107+00:00"
+      "dueAt": "2026-11-02T13:40:36.174107+00:00",
+      "claimId": "41455034175",
+      "claimedAt": "2026-11-02T13:41:05.231168+00:00"
     }
   ]
 }
