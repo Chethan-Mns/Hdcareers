@@ -1329,9 +1329,11 @@
     {
       "page": "jobs/origin-apprentice-mechanical-design.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T12:40:09.271709+00:00"
+      "dueAt": "2026-11-02T12:40:09.271709+00:00",
+      "claimId": "41446578718",
+      "claimedAt": "2026-11-02T12:40:23.001130+00:00"
     },
     {
       "page": "jobs/reliaquest-associate-software-engineer.html",
