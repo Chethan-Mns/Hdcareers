@@ -1,6 +1,7 @@
 {
-  "requestId": "activate-hourly-receipt-relay-20261018",
-  "reason": "Arm self-waking relay from confirmed AiPrise message #521; do not send before Bosch due time",
+  "requestId": "owner-telegram-deloitte-digigov-20261102-now",
+  "reason": "Owner requested immediate Telegram posting of Deloitte Associate Analyst Digital DigiGov. Wake existing hourly queue relay for this already-approved job without creating a duplicate, and preserve receipt-based 60-minute spacing.",
   "mode": "due-check-only-and-relay",
-  "scheduledBatchId": "admin-39101979018"
+  "scheduledBatchId": "admin-41389468328",
+  "requestedPage": "jobs/deloitte-associate-analyst-digital-digigov.html"
 }
