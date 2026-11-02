@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:16.789Z",
+  "updatedAt": "2026-11-02T04:35:25.577Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -614,7 +614,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official ReliaQuest requisition R15032 is available through its Workday Apply route and explicitly lists 0–1 years.",
       "postedDate": null,
@@ -649,13 +649,16 @@
         "date": "Not Specified",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:35:25.577Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:25.577Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official ReliaQuest requisition R15032 is available through its Workday Apply route and explicitly lists 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:25.577Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "r1rcm-r260000004437",
