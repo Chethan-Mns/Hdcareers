@@ -1259,9 +1259,11 @@
     {
       "page": "jobs/deloitte-associate-analyst-digital-digigov.html",
       "batchId": "admin-41389468328",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-02T04:37:29.554956+00:00",
-      "dueAt": "2026-11-02T05:37:54.040813+00:00"
+      "dueAt": "2026-11-02T05:37:54.040813+00:00",
+      "claimId": "41395154850",
+      "claimedAt": "2026-11-02T05:38:06.106955+00:00"
     },
     {
       "page": "jobs/deutsche-bank-operations-early-talent-2026-2027.html",
