@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:34:48.150Z",
+  "updatedAt": "2026-11-02T04:34:52.698Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -447,7 +447,7 @@
       "cat": "non-it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; prior experience not specified",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official EY Careers requisition 1755452 is currently accessible with the exact Intern 1 title and job-bound application route.",
       "postedDate": "2026-10-23",
@@ -482,13 +482,16 @@
         "date": "2026-10-23",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:34:52.697Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:34:52.697Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official EY Careers requisition 1755452 is currently accessible with the exact Intern 1 title and job-bound application route."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:34:52.697Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "honeywell-160486",
