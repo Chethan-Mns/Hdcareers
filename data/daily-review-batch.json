@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T03:36:15.194Z",
+  "updatedAt": "2026-11-02T03:38:29.349Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -260,6 +260,58 @@
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Rockwell Automation early-careers requisition R26-6289 is open with a job-bound Apply route and is explicitly designated Graduate Engineer Trainee."
+      }
+    },
+    {
+      "id": "hostin-l1-cloud-delivery-engineer-423",
+      "company": "Hostin Services",
+      "role": "Junior Cloud Engineer – L1",
+      "loc": "Pune, India",
+      "apply": "https://hostinservices.greythr.com/hire/jobs/l1-cloud-delivery-engineer-423",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years; freshers considered",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Provider-native Hostin Services GreytHR requisition l1-cloud-delivery-engineer-423 was present in the current ATS inventory on 2 Nov 2026 and explicitly accepts 0–2 years, including freshers with strong AWS and Linux fundamentals.",
+      "postedDate": "2026-10-26",
+      "job": {
+        "company": "Hostin Services",
+        "role": "Junior Cloud Engineer – L1",
+        "loc": "Pune, India",
+        "apply": "https://hostinservices.greythr.com/hire/jobs/l1-cloud-delivery-engineer-423",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years; freshers considered",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Hostin Services Careers (GreytHR)",
+        "desc": "Junior AWS cloud-operations role providing monitoring, first-line troubleshooting, incident handling and routine administration.",
+        "elig": "B.E./B.Tech/B.Sc./BCA/MCA or equivalent technical qualification; 0–2 years, with freshers considered when they have strong AWS and Linux fundamentals.",
+        "resp": [
+          "Monitor AWS infrastructure, alerts, logs and service health.",
+          "Perform first-level cloud and operating-system troubleshooting.",
+          "Handle incidents and service requests, document work and escalate complex issues."
+        ],
+        "skills": [
+          "AWS",
+          "Linux/Windows administration",
+          "Networking",
+          "Cloud monitoring",
+          "Incident management"
+        ],
+        "workMode": "On-site / rotational 24×7",
+        "jobId": "l1-cloud-delivery-engineer-423",
+        "date": "2026-10-26",
+        "verifiedDate": "2 Nov 2026",
+        "sourceVerificationMethod": "Exact employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
+        "browserVerifiedAt": "2026-11-02T03:38:29.349Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-02T03:38:29.349Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Current provider-native GreytHR record explicitly states 0–2 years and that freshers with AWS/Linux fundamentals may be considered."
       }
     },
     {
@@ -1042,11 +1094,17 @@
         "company": "GE HealthCare",
         "reason": "already_published",
         "officialUrl": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/Bengaluru/Graduate-Engineer-Trainee_R4047718-1"
-      }
+      },
+      "GE HealthCare R4047718 — same employer + Graduate Engineer Trainee role already present in publication history; removed by repository pre-review scrub"
     ],
     "excludedCount": 9,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "uniqueExactCandidatesEvaluated": 62,
+    "uniqueExactLiveIdsFound": 20,
+    "selectedApproved87": 8,
+    "selectedFallback": 12,
+    "heldCount": 33
   },
   "quotaAudit": {
     "priority": {
@@ -1090,7 +1148,8 @@
       "Pitney Bowes R22357",
       "Ingram Micro R-115589",
       "METRO 744000157778959",
-      "Amazon 10508052"
+      "Amazon 10508052",
+      "GE HealthCare R4047718"
     ],
     "heldExamples": [
       "UiPath requires 1–2 years",
