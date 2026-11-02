@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:51.205Z",
+  "updatedAt": "2026-11-02T04:35:57.696Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -890,7 +890,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–3 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Analog Devices Workday requisition R264285 remains in current ATS inventory and its provider-native record states 0–3 years.",
       "postedDate": "2026-08-05",
@@ -925,13 +925,16 @@
         "date": "2026-08-05",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:35:57.695Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:57.695Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Analog Devices Workday requisition R264285 remains in current ATS inventory and its provider-native record states 0–3 years."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:57.695Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "concentrix-r1769081",
