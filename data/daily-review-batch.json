@@ -2,7 +2,7 @@
   "batchId": "2026-11-02-0900-ist",
   "generatedAt": "2026-11-02T03:36:15.194Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-02T04:35:42.893Z",
+  "updatedAt": "2026-11-02T04:35:47.293Z",
   "priority": [
     {
       "id": "deloitte-60961044",
@@ -780,7 +780,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Recent graduate; 0 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Provider-native Chi Networks Zoho Recruit requisition 195532000000394129 remains in current ATS inventory and explicitly targets recent graduates.",
       "postedDate": "2025-12-09",
@@ -815,13 +815,16 @@
         "date": "2025-12-09",
         "verifiedDate": "2 Nov 2026",
         "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 2 Nov 2026.",
-        "browserVerifiedAt": "2026-11-02T03:36:15.194Z"
+        "browserVerifiedAt": "2026-11-02T04:35:47.292Z",
+        "manualLiveVerifiedAt": "2026-11-02T04:35:47.292Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-02T03:36:15.194Z",
         "currentVerdict": "live",
         "officialEvidence": "Provider-native Chi Networks Zoho Recruit requisition 195532000000394129 remains in current ATS inventory and explicitly targets recent graduates."
-      }
+      },
+      "reviewedAt": "2026-11-02T04:35:47.292Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "mydbops-142736",
