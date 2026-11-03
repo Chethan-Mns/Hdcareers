@@ -1370,9 +1370,11 @@
     {
       "page": "jobs/cigna-back-office-operations-analyst-band-1.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T06:48:02.961565+00:00"
+      "dueAt": "2026-11-03T06:48:02.961565+00:00",
+      "claimId": "41592174452",
+      "claimedAt": "2026-11-03T06:48:14.116521+00:00"
     },
     {
       "page": "jobs/circles-intern-engineering-operations.html",
