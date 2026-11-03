@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T03:36:41.754Z",
+  "updatedAt": "2026-11-03T03:38:00.473Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -416,6 +416,107 @@
         "currentVerdict": "live",
         "officialEvidence": "Official P&G Workday requisition R000161858 is open with an Apply route, identifies a six-month internship and requires current study in CS or a related technical field."
       }
+    },
+    {
+      "id": "cigna-26007839",
+      "company": "Cigna",
+      "role": "Back Office Operations Analyst – Band 1",
+      "loc": "Bengaluru, India",
+      "apply": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–1+ years; internship or entry-level experience welcomed",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience.",
+      "postedDate": null,
+      "job": {
+        "company": "Cigna",
+        "role": "Back Office Operations Analyst – Band 1",
+        "loc": "Bengaluru, India",
+        "apply": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–1+ years; internship or entry-level experience welcomed",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Cigna Careers (Workday)",
+        "desc": "Entry-level back-office operations role executing structured processing, data validation and workflow support.",
+        "elig": "0–1+ years; internships or entry-level experience are welcomed. Exact degree requirement is Not Specified.",
+        "resp": [
+          "Complete operational processing to SOPs",
+          "Validate data and maintain accurate records",
+          "Escalate exceptions and support reporting"
+        ],
+        "skills": [
+          "Operations processing",
+          "Data accuracy",
+          "SOP compliance",
+          "Communication",
+          "Basic analysis"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "26007839",
+        "postedDate": null,
+        "verifiedDate": "3 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-03T03:36:41.754Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience."
+      }
+    },
+    {
+      "id": "maersk-r190147",
+      "company": "Maersk",
+      "role": "Executive Operations",
+      "loc": "Thane, Maharashtra, India",
+      "apply": "https://maersk.wd3.myworkdayjobs.com/en-US/Maersk_Careers/job/India-Maharashtra-Thane-421101/Executive-Operations_R190147",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Little or no prior work experience",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required.",
+      "postedDate": null,
+      "job": {
+        "company": "Maersk",
+        "role": "Executive Operations",
+        "loc": "Thane, Maharashtra, India",
+        "apply": "https://maersk.wd3.myworkdayjobs.com/en-US/Maersk_Careers/job/India-Maharashtra-Thane-421101/Executive-Operations_R190147",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Little or no prior work experience",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Maersk Careers (Workday)",
+        "desc": "Entry-level logistics operations role performing structured warehouse, fulfilment and administrative execution tasks.",
+        "elig": "The official role profile states little or no prior functional work experience; exact degree requirement is Not Specified.",
+        "resp": [
+          "Execute inventory, warehouse or fulfilment activities",
+          "Follow defined operational procedures",
+          "Support administrative and routine logistics tasks"
+        ],
+        "skills": [
+          "Operations execution",
+          "Process adherence",
+          "Logistics support",
+          "Documentation"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R190147",
+        "postedDate": null,
+        "verifiedDate": "3 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-03T03:36:41.754Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required."
+      }
     }
   ],
   "backup": [
@@ -728,107 +829,6 @@
       }
     },
     {
-      "id": "cigna-26007839",
-      "company": "Cigna",
-      "role": "Back Office Operations Analyst – Band 1",
-      "loc": "Bengaluru, India",
-      "apply": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1+ years; internship or entry-level experience welcomed",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience.",
-      "postedDate": null,
-      "job": {
-        "company": "Cigna",
-        "role": "Back Office Operations Analyst – Band 1",
-        "loc": "Bengaluru, India",
-        "apply": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1+ years; internship or entry-level experience welcomed",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Cigna Careers (Workday)",
-        "desc": "Entry-level back-office operations role executing structured processing, data validation and workflow support.",
-        "elig": "0–1+ years; internships or entry-level experience are welcomed. Exact degree requirement is Not Specified.",
-        "resp": [
-          "Complete operational processing to SOPs",
-          "Validate data and maintain accurate records",
-          "Escalate exceptions and support reporting"
-        ],
-        "skills": [
-          "Operations processing",
-          "Data accuracy",
-          "SOP compliance",
-          "Communication",
-          "Basic analysis"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "26007839",
-        "postedDate": null,
-        "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-03T03:36:41.754Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience."
-      }
-    },
-    {
-      "id": "maersk-r190147",
-      "company": "Maersk",
-      "role": "Executive Operations",
-      "loc": "Thane, Maharashtra, India",
-      "apply": "https://maersk.wd3.myworkdayjobs.com/en-US/Maersk_Careers/job/India-Maharashtra-Thane-421101/Executive-Operations_R190147",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Little or no prior work experience",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required.",
-      "postedDate": null,
-      "job": {
-        "company": "Maersk",
-        "role": "Executive Operations",
-        "loc": "Thane, Maharashtra, India",
-        "apply": "https://maersk.wd3.myworkdayjobs.com/en-US/Maersk_Careers/job/India-Maharashtra-Thane-421101/Executive-Operations_R190147",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Little or no prior work experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Maersk Careers (Workday)",
-        "desc": "Entry-level logistics operations role performing structured warehouse, fulfilment and administrative execution tasks.",
-        "elig": "The official role profile states little or no prior functional work experience; exact degree requirement is Not Specified.",
-        "resp": [
-          "Execute inventory, warehouse or fulfilment activities",
-          "Follow defined operational procedures",
-          "Support administrative and routine logistics tasks"
-        ],
-        "skills": [
-          "Operations execution",
-          "Process adherence",
-          "Logistics support",
-          "Documentation"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R190147",
-        "postedDate": null,
-        "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-03T03:36:41.754Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required."
-      }
-    },
-    {
       "id": "acron-a464b1a4",
       "company": "Acron Aviation",
       "role": "Software Engineer Intern – India Site",
@@ -929,20 +929,126 @@
         "currentVerdict": "live",
         "officialEvidence": "Official Circles Workday requisition R-100492 is a six-month internship and explicitly welcomes university students and fresh graduates."
       }
+    },
+    {
+      "id": "statestreet-r799807",
+      "company": "State Street",
+      "role": "Operations Early Career Entry Program",
+      "loc": "Bengaluru / Hyderabad / Chennai / Coimbatore / Pune, India",
+      "apply": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Bangalore-India/Operations-Early-Career-Entry-Program_R-799807",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Graduate early-career program; final-year students",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official State Street Workday requisition R-799807 is open with a November 13, 2026 application end date and is explicitly designed for final-year graduate applicants.",
+      "postedDate": null,
+      "job": {
+        "company": "State Street",
+        "role": "Operations Early Career Entry Program",
+        "loc": "Bengaluru / Hyderabad / Chennai / Coimbatore / Pune, India",
+        "apply": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Bangalore-India/Operations-Early-Career-Entry-Program_R-799807",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Graduate early-career program; final-year students",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "State Street Careers (Workday)",
+        "desc": "Graduate operations program combining structured training, mentoring and entry-level financial-services operations work.",
+        "elig": "Final-year undergraduate students; Finance, Accounting or Economics preferred, with other disciplines also considered.",
+        "resp": [
+          "Complete structured operations training",
+          "Support business processes under mentoring",
+          "Apply risk, accountability and communication practices"
+        ],
+        "skills": [
+          "MS Office",
+          "Analytical thinking",
+          "Communication",
+          "Problem solving",
+          "Financial-services interest"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R-799807",
+        "postedDate": null,
+        "verifiedDate": "3 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-03T03:38:00.473Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official State Street Workday requisition R-799807 is open with a November 13, 2026 application end date and is explicitly designed for final-year graduate applicants."
+      }
+    },
+    {
+      "id": "quantiq-4366797009",
+      "company": "Quantiq",
+      "role": "Market Operations Analyst",
+      "loc": "Gurugram, India",
+      "apply": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Entry level; 1+ year analytical experience preferred, not required",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "Official Quantiq Greenhouse requisition 4366797009 has an active Apply form; its qualifications make prior analytical experience preferred rather than mandatory.",
+      "postedDate": null,
+      "job": {
+        "company": "Quantiq",
+        "role": "Market Operations Analyst",
+        "loc": "Gurugram, India",
+        "apply": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Entry level; 1+ year analytical experience preferred, not required",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "Quantiq via Greenhouse",
+        "desc": "Market-operations role monitoring live trading activity, calculating daily positions and supporting production issue resolution.",
+        "elig": "Entry-level applicants with analytical ability; bachelor’s degree in a quantitative discipline and 1+ year analytical experience are preferred rather than mandatory.",
+        "resp": [
+          "Monitor and analyze live market operations",
+          "Calculate daily P&L and position balances",
+          "Document unusual behavior and support production issue resolution"
+        ],
+        "skills": [
+          "Excel",
+          "Market analysis",
+          "Attention to detail",
+          "Communication",
+          "Python/R/MATLAB preferred"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "4366797009",
+        "postedDate": null,
+        "verifiedDate": "3 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-03T03:38:00.473Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Official Quantiq Greenhouse requisition 4366797009 has an active Apply form; its qualifications make prior analytical experience preferred rather than mandatory."
+      }
     }
   ],
   "discoveryAudit": {
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
     "priority": {
-      "size": 8,
+      "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
@@ -950,21 +1056,22 @@
       "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
-        "unclassified": 2
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 18,
+    "watchlistEmployersVisited": 15,
+    "watchlistEmployersNotVisited": 72,
+    "blockedOrInconclusivePortals": 3,
+    "exactOfficialCandidatesScreened": 70,
+    "approvedWatchlistSelected": 8,
+    "fallbackSelected": 12,
     "duplicateExclusions": [
       "HCLTech 168116 — already published",
       "Accenture ATCI-5637353-S2059863 — already published",
@@ -977,22 +1084,14 @@
       "Salesforce JR307116 — previously reviewed exact requisition",
       "Pitney Bowes R22357 — previously reviewed exact requisition",
       "Konecranes 744000143236689 — previously reviewed exact requisition",
-      {
-        "id": "ey-1752209",
-        "company": "EY",
-        "reason": "already_published",
-        "officialUrl": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-national-tax-itts-transfer-pricing-new-delhi-nati-110037/1446494833"
-      },
-      {
-        "id": "accenture-aioc-s01642079",
-        "company": "Accenture",
-        "reason": "already_published",
-        "officialUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01642079_en"
-      }
+      "EY 1752209 — removed by repository employer-role publication-history scrub",
+      "Accenture AIOC-S01642079 — removed by repository employer-role publication-history scrub"
     ],
     "excludedCount": 13,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "authoritativelyExpiredCount": 5,
+    "heldCount": 32,
+    "needsFreshDiscovery": false,
+    "note": "Repository pre-review scrub removed EY and Accenture company-role history matches. Cigna and Maersk were promoted; State Street R-799807 and Quantiq 4366797009 were independently verified as distinct replacements."
   },
   "quotaAudit": {
     "priority": {
