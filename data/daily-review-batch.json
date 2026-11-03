@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:39:11.392Z",
+  "updatedAt": "2026-11-03T04:39:14.949Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -68,7 +68,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Intel Workday requisition JR0283515 identifies an Entry Level assignment, exposes an Apply route and explicitly accepts 0–2 years or strong academic exposure.",
       "postedDate": null,
@@ -82,7 +82,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Intel Careers (Workday)",
         "desc": "Entry-level physical-design engineering assignment supporting block- and chip-level implementation and signoff on advanced nodes.",
         "elig": "Master’s degree in Electrical, Electronics, Computer Engineering or a related field; 0–2 years or strong academic exposure.",
@@ -109,7 +109,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Intel Workday requisition JR0283515 identifies an Entry Level assignment, exposes an Apply route and explicitly accepts 0–2 years or strong academic exposure."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:39:14.949Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hpe-1210743",
