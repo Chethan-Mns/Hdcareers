@@ -1380,9 +1380,11 @@
     {
       "page": "jobs/circles-intern-engineering-operations.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T07:48:17.633492+00:00"
+      "dueAt": "2026-11-03T07:48:17.633492+00:00",
+      "claimId": "41598746503",
+      "claimedAt": "2026-11-03T07:48:28.378545+00:00"
     },
     {
       "page": "jobs/deloitte-analyst-it-strategy-operating-model-tester.html",
