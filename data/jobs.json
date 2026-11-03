@@ -8950,8 +8950,8 @@
       "SQL preferred"
     ],
     "apply": "https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours",
-    "status": "active",
-    "verifiedDate": "17 Oct 2026",
+    "status": "expired",
+    "verifiedDate": "03 Nov 2026",
     "sourceName": "Ergomed official SmartRecruiters posting",
     "who": "Recent Computer Science or Software Engineering graduates with practical C#/.NET full-stack development skills; 1–2 years preferred, CET/GMT hours required.",
     "workMode": "Not specified",
@@ -8971,7 +8971,14 @@
     "logoSourceDomain": "ergomedgroup.com",
     "editorialOriginalDesc": "Ergomed is recruiting an Associate Software Engineer for its Systems Engineering team. The role supports full-stack software used in pharmaceutical research services. The official posting requires CET/GMT business-hour availability and does not clearly state the job's work location.",
     "editorialUpdatedAt": "2026-10-21",
-    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements."
+    "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
+    "availabilityCheck": {
+      "id": 170,
+      "url": "https://jobs.smartrecruiters.com/Ergomed/744000154090889-associate-software-engineer-european-hours",
+      "checkedAt": "2026-11-03T10:04:00.420436+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    }
   },
   {
     "page": "jobs/skild-ai-robotics-software-engineer-bengaluru-4136373008.html",
