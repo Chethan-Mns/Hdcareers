@@ -1420,9 +1420,11 @@
     {
       "page": "jobs/ntt-data-associate-engineer-ai-services.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T11:49:21.330363+00:00"
+      "dueAt": "2026-11-03T11:49:21.330363+00:00",
+      "claimId": "41630608485",
+      "claimedAt": "2026-11-03T11:49:31.207429+00:00"
     },
     {
       "page": "jobs/procter-gamble-information-technology-intern.html",
