@@ -314,108 +314,6 @@
       }
     },
     {
-      "id": "ey-1752209",
-      "company": "EY",
-      "role": "Analyst – Transfer Pricing",
-      "loc": "New Delhi, India",
-      "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-national-tax-itts-transfer-pricing-new-delhi-nati-110037/1446494833",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official EY requisition 1752209 is open with an Apply route and explicitly states B.Com/PGDM and 0–1 year.",
-      "postedDate": "2026-10-13",
-      "job": {
-        "company": "EY",
-        "role": "Analyst – Transfer Pricing",
-        "loc": "New Delhi, India",
-        "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-national-tax-itts-transfer-pricing-new-delhi-nati-110037/1446494833",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level transfer-pricing analyst role supporting financial analysis, benchmarking, documentation and compliance work.",
-        "elig": "Bachelor of Commerce and Post Graduate Diploma in Management; 0–1 year.",
-        "resp": [
-          "Support transfer-pricing policy and benchmarking analysis",
-          "Prepare documentation and compliance reports",
-          "Perform ratio and economic analysis"
-        ],
-        "skills": [
-          "Financial statements",
-          "Transfer pricing",
-          "Benchmarking",
-          "Ratio analysis",
-          "Documentation"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1752209",
-        "postedDate": "2026-10-13",
-        "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-03T03:36:41.754Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official EY requisition 1752209 is open with an Apply route and explicitly states B.Com/PGDM and 0–1 year."
-      }
-    },
-    {
-      "id": "accenture-aioc-s01642079",
-      "company": "Accenture",
-      "role": "Order to Cash Operations New Associate",
-      "loc": "Jaipur, India",
-      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01642079_en",
-      "cat": "non-it",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Official Accenture Job No. AIOC-S01642079 has a current Apply action, Jaipur location, Any Graduation qualification and 0–1 year.",
-      "postedDate": null,
-      "job": {
-        "company": "Accenture",
-        "role": "Order to Cash Operations New Associate",
-        "loc": "Jaipur, India",
-        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01642079_en",
-        "cat": "non-it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Accenture Careers",
-        "desc": "New Associate role supporting billing, accounts receivable, cash applications and reconciliations across the order-to-cash cycle.",
-        "elig": "Any graduation; finance specialization is described in the role profile; 0–1 year.",
-        "resp": [
-          "Execute order-to-cash activities",
-          "Support billing and accounts receivable processing",
-          "Apply payments and perform bank, cash and AR reconciliations"
-        ],
-        "skills": [
-          "Accounts receivable",
-          "Billing",
-          "Cash application",
-          "Reconciliation",
-          "Attention to detail"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "AIOC-S01642079",
-        "postedDate": null,
-        "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-03T03:36:41.754Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official Accenture Job No. AIOC-S01642079 has a current Apply action, Jaipur location, Any Graduation qualification and 0–1 year."
-      }
-    },
-    {
       "id": "iqvia-r1567860",
       "company": "IQVIA",
       "role": "Software Engineer Intern – Product Engineering, AI & Test Automation",
@@ -847,7 +745,7 @@
         "role": "Back Office Operations Analyst – Band 1",
         "loc": "Bengaluru, India",
         "apply": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–1+ years; internship or entry-level experience welcomed",
         "salary": "Not Disclosed",
@@ -898,7 +796,7 @@
         "role": "Executive Operations",
         "loc": "Thane, Maharashtra, India",
         "apply": "https://maersk.wd3.myworkdayjobs.com/en-US/Maersk_Careers/job/India-Maharashtra-Thane-421101/Executive-Operations_R190147",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Little or no prior work experience",
         "salary": "Not Disclosed",
@@ -1034,21 +932,17 @@
     }
   ],
   "discoveryAudit": {
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
     "priority": {
-      "size": 10,
+      "size": 8,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 0
       }
     },
@@ -1056,22 +950,21 @@
       "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 2
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 0
       }
     },
-    "watchlistEmployersVisited": 15,
-    "watchlistEmployersNotVisited": 72,
-    "blockedOrInconclusivePortals": 3,
-    "exactOfficialCandidatesScreened": 68,
-    "approvedWatchlistSelected": 7,
-    "fallbackSelected": 13,
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 18,
     "duplicateExclusions": [
       "HCLTech 168116 — already published",
       "Accenture ATCI-5637353-S2059863 — already published",
@@ -1083,13 +976,23 @@
       "LSEG R0124079 — previously reviewed exact requisition",
       "Salesforce JR307116 — previously reviewed exact requisition",
       "Pitney Bowes R22357 — previously reviewed exact requisition",
-      "Konecranes 744000143236689 — previously reviewed exact requisition"
+      "Konecranes 744000143236689 — previously reviewed exact requisition",
+      {
+        "id": "ey-1752209",
+        "company": "EY",
+        "reason": "already_published",
+        "officialUrl": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-national-tax-itts-transfer-pricing-new-delhi-nati-110037/1446494833"
+      },
+      {
+        "id": "accenture-aioc-s01642079",
+        "company": "Accenture",
+        "reason": "already_published",
+        "officialUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01642079_en"
+      }
     ],
-    "excludedCount": 11,
-    "authoritativelyExpiredCount": 5,
-    "heldCount": 32,
-    "needsFreshDiscovery": false,
-    "note": "Both lists meet 6/2/2 after exact URL, requisition, employer-role, prior review and publication-history screening. Owner approval remains required."
+    "excludedCount": 13,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
