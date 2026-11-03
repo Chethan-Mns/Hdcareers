@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:42:46.291Z",
+  "updatedAt": "2026-11-03T04:42:53.787Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -230,7 +230,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Entry level; no mandatory prior-experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official NTT DATA Workday requisition R-151207 is active with an Apply route and explicitly labels the Associate Software Development Engineer work as entry level.",
       "postedDate": null,
@@ -244,7 +244,7 @@
         "expYears": "Entry level; no mandatory prior-experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "NTT DATA Careers (Workday)",
         "desc": "Entry-level software development role assisting with design, development and testing of cloud and internet-related applications.",
         "elig": "Entry-level applicants; exact degree and batch are Not Specified in the accessible official source record.",
@@ -263,13 +263,17 @@
         "jobId": "R-151207",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:42:53.787Z",
+        "browserVerifiedAt": "2026-11-03T04:42:53.787Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official NTT DATA Workday requisition R-151207 is active with an Apply route and explicitly labels the Associate Software Development Engineer work as entry level."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:42:53.787Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "championx-r00136049",
