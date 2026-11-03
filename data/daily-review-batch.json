@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:43:29.190Z",
+  "updatedAt": "2026-11-03T04:43:44.101Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -500,7 +500,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "6-month internship; current degree student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official P&G Workday requisition R000161858 is open with an Apply route, identifies a six-month internship and requires current study in CS or a related technical field.",
       "postedDate": null,
@@ -514,7 +514,7 @@
         "expYears": "6-month internship; current degree student",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "P&G Careers (Workday)",
         "desc": "Six-month IT internship aligned to software engineering and data/analytics applications on cloud-native platforms.",
         "elig": "Currently pursuing Computer Science, a related technical degree or equivalent practical experience.",
@@ -535,13 +535,17 @@
         "jobId": "R000161858",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:43:44.100Z",
+        "browserVerifiedAt": "2026-11-03T04:43:44.100Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official P&G Workday requisition R000161858 is open with an Apply route, identifies a six-month internship and requires current study in CS or a related technical field."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:43:44.100Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
