@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-03T04:45:41.413Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-03T04:46:20.307Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -1218,5 +1218,47 @@
     "deferredForFreshDiscovery": [],
     "needsSourceVerification": [],
     "warning": "Only confirmed Live-evidenced jobs reach Priority/Backup. Unconfirmed exact URLs are saved for separate source rechecking, never silently marked Expired."
+  },
+  "submittedAt": "2026-11-03T04:46:20.307Z",
+  "publication": {
+    "candidateIds": [
+      "acron-a464b1a4",
+      "azeus-india-software-tester",
+      "cigna-26007839",
+      "circles-r100492",
+      "deloitte-61212744",
+      "eurofins-744000083386435",
+      "hcltech-156275",
+      "ntt-r151207",
+      "pg-r000161858",
+      "statestreet-r799807"
+    ],
+    "companies": [
+      "Acron Aviation",
+      "Azeus Systems",
+      "Cigna",
+      "Circles",
+      "Deloitte",
+      "Eurofins",
+      "HCLTech",
+      "NTT DATA",
+      "Procter & Gamble",
+      "State Street"
+    ],
+    "urls": [
+      "https://jobs.lever.co/acronaviation/a464b1a4-01f4-4a28-b636-41dc508b3254",
+      "https://www.azeus.com/careers/career-opportunities/india/software-tester/",
+      "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
+      "https://circles.wd103.myworkdayjobs.com/Circles/job/India/Intern--Engineering-Operations_R-100492",
+      "https://southasiacareers.deloitte.com/job/Delhi-Analyst-IT-STRATEGY-%26-OPERATING-MODEL-Delhi-Technology-Strategy-%26-Transformation/61212744/",
+      "https://jobs.smartrecruiters.com/Eurofins/744000083386435-it-test-automation-engineer",
+      "https://careers.hcltech.com/job/Campus-Beginner/156275-en_US/",
+      "https://nttlimited.wd3.myworkdayjobs.com/en-US/NTT_Careers/job/Associate-Engineer---AI-services_R-151207",
+      "https://pg.wd5.myworkdayjobs.com/en-GB/1000/job/MUMBAI-GENERAL-OFFICE/Information-Technology-Intern_R000161858/",
+      "https://statestreet.wd1.myworkdayjobs.com/Global/job/Bangalore-India/Operations-Early-Career-Entry-Program_R-799807"
+    ],
+    "requestId": "2e68f127fa03d37ebcdd9850",
+    "count": 10,
+    "submittedAt": "2026-11-03T04:46:20.307Z"
   }
 }
