@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:38:18.544Z",
+  "updatedAt": "2026-11-03T04:39:11.392Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -120,7 +120,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official HPE Workday requisition 1210743 is open with an Apply route and states a CS/IS degree plus typically 0–2 years.",
       "postedDate": null,
@@ -134,7 +134,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "HPE Careers (Workday)",
         "desc": "Entry-level software systems engineering role contributing to design and development of reliable product solutions.",
         "elig": "Bachelor’s or Master’s degree in Computer Science, Information Systems or equivalent; typically 0–2 years.",
@@ -160,7 +160,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official HPE Workday requisition 1210743 is open with an Apply route and states a CS/IS degree plus typically 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:39:11.392Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hcltech-156275",
