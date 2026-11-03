@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:43:19.011Z",
+  "updatedAt": "2026-11-03T04:43:29.190Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -446,7 +446,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; students or fresh graduates",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official IQVIA Workday requisition R1567860 is a job-bound Software Engineer Intern record for Bengaluru/Gurugram with an application deadline of 3 November 2026.",
       "postedDate": null,
@@ -460,7 +460,7 @@
         "expYears": "Internship; students or fresh graduates",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "IQVIA Careers (Workday)",
         "desc": "Software engineering internship contributing to AI-powered enterprise applications, test automation and scalable product engineering.",
         "elig": "Student or recent graduate eligibility is supported by the internship designation; exact degree and batch are Not Specified in the accessible official source record.",
@@ -487,7 +487,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official IQVIA Workday requisition R1567860 is a job-bound Software Engineer Intern record for Bengaluru/Gurugram with an application deadline of 3 November 2026."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:43:29.190Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "pg-r000161858",
