@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:44:45.995Z",
+  "updatedAt": "2026-11-03T04:44:50.930Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -775,7 +775,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–4 years; zero-experience applicants eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Eurofins SmartRecruiters requisition 744000083386435 is open with an application action and explicitly accepts 0–4 years, including zero experience.",
       "postedDate": null,
@@ -789,7 +789,7 @@
         "expYears": "0–4 years; zero-experience applicants eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Eurofins via SmartRecruiters",
         "desc": "QA automation role testing web applications, services, integrations and APIs for Eurofins IT Solutions India.",
         "elig": "BE, MCA or equivalent; the official posting accepts 0–4 years.",
@@ -810,13 +810,17 @@
         "jobId": "744000083386435",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:44:50.930Z",
+        "browserVerifiedAt": "2026-11-03T04:44:50.930Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Eurofins SmartRecruiters requisition 744000083386435 is open with an application action and explicitly accepts 0–4 years, including zero experience."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:44:50.930Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "azeus-india-software-tester",
