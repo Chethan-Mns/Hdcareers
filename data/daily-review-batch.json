@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:43:44.101Z",
+  "updatedAt": "2026-11-03T04:44:07.530Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -558,7 +558,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Entry level; no mandatory prior-experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Blue Yonder Workday requisition 263236 is available with a job-bound Apply route and describes supervised associate-level DevOps and Kubernetes work; no mandatory prior-experience minimum is stated.",
       "postedDate": null,
@@ -572,7 +572,7 @@
         "expYears": "Entry level; no mandatory prior-experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Blue Yonder Careers (Workday)",
         "desc": "Associate engineering role supporting reliability and delivery of cloud applications through DevOps and SRE practices.",
         "elig": "Entry-level applicants; exact degree requirement is Not Specified on the accessible source record.",
@@ -598,7 +598,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Blue Yonder Workday requisition 263236 is available with a job-bound Apply route and describes supervised associate-level DevOps and Kubernetes work; no mandatory prior-experience minimum is stated."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:44:07.530Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "adtran-r005790",
