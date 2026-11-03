@@ -1410,9 +1410,11 @@
     {
       "page": "jobs/hcltech-campus-beginner-service-desk.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T10:49:03.922416+00:00"
+      "dueAt": "2026-11-03T10:49:03.922416+00:00",
+      "claimId": "41622401412",
+      "claimedAt": "2026-11-03T10:49:15.662898+00:00"
     },
     {
       "page": "jobs/ntt-data-associate-engineer-ai-services.html",
