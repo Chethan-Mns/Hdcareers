@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:45:32.168Z",
+  "updatedAt": "2026-11-03T04:45:41.413Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -1048,7 +1048,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Internship; current student or fresh graduate",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Circles Workday requisition R-100492 is a six-month internship and explicitly welcomes university students and fresh graduates.",
       "postedDate": null,
@@ -1062,7 +1062,7 @@
         "expYears": "Internship; current student or fresh graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Circles Careers (Workday)",
         "desc": "Six-month engineering-operations internship building contractor, procurement and reporting processes across engineering teams.",
         "elig": "Current students or fresh graduates in CS, IT, MIS, Data Science, Statistics, Mathematics, Business or a related field.",
@@ -1082,13 +1082,17 @@
         "jobId": "R-100492",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:45:41.413Z",
+        "browserVerifiedAt": "2026-11-03T04:45:41.413Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Circles Workday requisition R-100492 is a six-month internship and explicitly welcomes university students and fresh graduates."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:45:41.413Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
