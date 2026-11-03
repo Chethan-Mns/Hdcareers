@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:44:07.530Z",
+  "updatedAt": "2026-11-03T04:44:19.760Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -611,7 +611,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official ADTRAN Workday requisition R005790 is open through a requisition-bound Apply route and explicitly accepts 0–2 years.",
       "postedDate": null,
@@ -625,7 +625,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "ADTRAN Careers (Workday)",
         "desc": "Cloud-network software engineering role developing server-side Java applications, REST APIs and scalable multi-tenant services.",
         "elig": "Bachelor’s degree in Computer Science, Electrical Engineering or a related field; 0–2 years of relevant experience.",
@@ -653,7 +653,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official ADTRAN Workday requisition R005790 is open through a requisition-bound Apply route and explicitly accepts 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:44:19.760Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "airbus-jr10412879",
