@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:44:57.852Z",
+  "updatedAt": "2026-11-03T04:45:05.138Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -886,7 +886,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Little or no prior work experience",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required.",
       "postedDate": null,
@@ -900,7 +900,7 @@
         "expYears": "Little or no prior work experience",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Maersk Careers (Workday)",
         "desc": "Entry-level logistics operations role performing structured warehouse, fulfilment and administrative execution tasks.",
         "elig": "The official role profile states little or no prior functional work experience; exact degree requirement is Not Specified.",
@@ -925,7 +925,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Maersk Workday requisition R190147 is job-bound and states that little or no prior work experience is required."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:45:05.137Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "statestreet-r799807",
