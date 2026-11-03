@@ -1400,9 +1400,11 @@
     {
       "page": "jobs/eurofins-it-test-automation-engineer.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T09:48:48.105747+00:00"
+      "dueAt": "2026-11-03T09:48:48.105747+00:00",
+      "claimId": "41614058699",
+      "claimedAt": "2026-11-03T09:49:00.460611+00:00"
     },
     {
       "page": "jobs/hcltech-campus-beginner-service-desk.html",
