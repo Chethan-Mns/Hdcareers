@@ -1400,39 +1400,40 @@
     {
       "page": "jobs/eurofins-it-test-automation-engineer.html",
       "batchId": "admin-41580041577",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T09:48:48.105747+00:00",
       "claimId": "41614058699",
-      "claimedAt": "2026-11-03T09:49:00.460611+00:00"
+      "claimedAt": "2026-11-03T09:49:00.460611+00:00",
+      "messageId": 663,
+      "deliveredAt": "2026-11-03T09:49:03.922416+00:00"
     },
     {
       "page": "jobs/hcltech-campus-beginner-service-desk.html",
       "batchId": "admin-41580041577",
       "status": "pending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T10:48:48.105747+00:00"
+      "dueAt": "2026-11-03T10:49:03.922416+00:00"
     },
     {
       "page": "jobs/ntt-data-associate-engineer-ai-services.html",
       "batchId": "admin-41580041577",
       "status": "pending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T11:48:48.105747+00:00"
+      "dueAt": "2026-11-03T11:49:03.922416+00:00"
     },
     {
       "page": "jobs/procter-gamble-information-technology-intern.html",
       "batchId": "admin-41580041577",
       "status": "pending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T12:48:48.105747+00:00"
+      "dueAt": "2026-11-03T12:49:03.922416+00:00"
     },
     {
       "page": "jobs/state-street-operations-early-career-entry-program.html",
       "batchId": "admin-41580041577",
       "status": "pending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T13:48:48.105747+00:00"
+      "dueAt": "2026-11-03T13:49:03.922416+00:00"
     }
   ]
 }
