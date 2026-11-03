@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:39:14.949Z",
+  "updatedAt": "2026-11-03T04:42:46.291Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -175,7 +175,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official HCLTech Campus-Beginner requisition 156275 is currently accessible and expressly describes a fresher Service Desk profile.",
       "postedDate": null,
@@ -189,7 +189,7 @@
         "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "HCLTech Careers",
         "desc": "Fresher service-desk role providing first-level support for user, hardware, software and network issues.",
         "elig": "Fresher; exact degree and graduation batch are Not Specified on the official posting.",
@@ -209,13 +209,17 @@
         "jobId": "156275",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:42:46.291Z",
+        "browserVerifiedAt": "2026-11-03T04:42:46.291Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official HCLTech Campus-Beginner requisition 156275 is currently accessible and expressly describes a fresher Service Desk profile."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:42:46.291Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ntt-r151207",
