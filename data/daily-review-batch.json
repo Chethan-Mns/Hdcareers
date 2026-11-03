@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T03:38:00.473Z",
+  "updatedAt": "2026-11-03T04:38:18.544Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years; no prior experience requirement stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Deloitte South Asia requisition 61212744 is open with an Apply route, lists Any Graduate, and states tester responsibilities without a mandatory experience minimum.",
       "postedDate": "2026-11-02",
@@ -27,7 +27,7 @@
         "expYears": "0 years; no prior experience requirement stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "Entry-level testing role supporting pre-release website quality through manual functional and UI testing.",
         "elig": "Any graduate; the official posting does not state a mandatory prior-experience requirement.",
@@ -47,13 +47,17 @@
         "jobId": "61212744",
         "postedDate": "2026-11-02",
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:38:18.513Z",
+        "browserVerifiedAt": "2026-11-03T04:38:18.513Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Deloitte South Asia requisition 61212744 is open with an Apply route, lists Any Graduate, and states tester responsibilities without a mandatory experience minimum."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:38:18.513Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "intel-jr0283515",
