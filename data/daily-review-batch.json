@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:43:10.741Z",
+  "updatedAt": "2026-11-03T04:43:19.011Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -336,7 +336,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Entry level; 1+ year analytical experience preferred, not required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Quantiq Greenhouse requisition 4366797009 has an active Apply form; its qualifications make prior analytical experience preferred rather than mandatory.",
       "postedDate": null,
@@ -350,7 +350,7 @@
         "expYears": "Entry level; 1+ year analytical experience preferred, not required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Quantiq via Greenhouse",
         "desc": "Market-operations role monitoring live trading activity, calculating daily positions and supporting production issue resolution.",
         "elig": "Entry-level applicants with analytical ability; bachelor’s degree in a quantitative discipline and 1+ year analytical experience are preferred rather than mandatory.",
@@ -370,13 +370,17 @@
         "jobId": "4366797009",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:43:19.011Z",
+        "browserVerifiedAt": "2026-11-03T04:43:19.011Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:38:00.473Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Quantiq Greenhouse requisition 4366797009 has an active Apply form; its qualifications make prior analytical experience preferred rather than mandatory."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:43:19.011Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cigna-26007839",
