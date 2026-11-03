@@ -1440,11 +1440,12 @@
     {
       "page": "jobs/state-street-operations-early-career-entry-program.html",
       "batchId": "admin-41580041577",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T13:49:49.291603+00:00",
       "claimId": "41647854888",
-      "claimedAt": "2026-11-03T13:50:00.430991+00:00"
+      "claimedAt": "2026-11-03T13:50:00.430991+00:00",
+      "messageId": 667,
+      "deliveredAt": "2026-11-03T13:50:04.558250+00:00"
     }
   ]
 }
