@@ -1390,9 +1390,11 @@
     {
       "page": "jobs/deloitte-analyst-it-strategy-operating-model-tester.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T08:48:32.673956+00:00"
+      "dueAt": "2026-11-03T08:48:32.673956+00:00",
+      "claimId": "41606038772",
+      "claimedAt": "2026-11-03T08:48:43.339861+00:00"
     },
     {
       "page": "jobs/eurofins-it-test-automation-engineer.html",
