@@ -1360,9 +1360,11 @@
     {
       "page": "jobs/azeus-systems-software-tester.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T05:47:36.988749+00:00"
+      "dueAt": "2026-11-03T05:47:36.988749+00:00",
+      "claimId": "41585970377",
+      "claimedAt": "2026-11-03T05:47:52.447996+00:00"
     },
     {
       "page": "jobs/cigna-back-office-operations-analyst-band-1.html",
