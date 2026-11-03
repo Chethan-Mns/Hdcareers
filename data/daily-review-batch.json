@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:43:04.979Z",
+  "updatedAt": "2026-11-03T04:43:08.373Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -387,7 +387,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–1+ years; internship or entry-level experience welcomed",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience.",
       "postedDate": null,
@@ -401,7 +401,7 @@
         "expYears": "0–1+ years; internship or entry-level experience welcomed",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Cigna Careers (Workday)",
         "desc": "Entry-level back-office operations role executing structured processing, data validation and workflow support.",
         "elig": "0–1+ years; internships or entry-level experience are welcomed. Exact degree requirement is Not Specified.",
@@ -421,13 +421,17 @@
         "jobId": "26007839",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:43:08.373Z",
+        "browserVerifiedAt": "2026-11-03T04:43:08.373Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Cigna Workday requisition 26007839 is accessible through a job-bound route and explicitly welcomes internship or entry-level experience."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:43:08.373Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "iqvia-r1567860",
