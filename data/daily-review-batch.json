@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:44:42.322Z",
+  "updatedAt": "2026-11-03T04:44:45.995Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -721,7 +721,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Official R1 RCM Workday requisition R260000003987 exposes an Apply route and states 0–2 years for the full-time Software Engineer role.",
       "postedDate": null,
@@ -735,7 +735,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "R1 RCM Careers (Workday)",
         "desc": "Full-stack engineering role building .NET Core and React applications, APIs and cloud-deployed services.",
         "elig": "Bachelor’s degree in Computer Science, IT or a related field; 0–2 years.",
@@ -762,7 +762,9 @@
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official R1 RCM Workday requisition R260000003987 exposes an Apply route and states 0–2 years for the full-time Software Engineer role."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:44:45.995Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "eurofins-744000083386435",
