@@ -187,5 +187,47 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/reliaquest-associate-software-engineer.html"
+  },
+  "Azeus Systems": {
+    "status": "needs_review",
+    "company": "Azeus Systems",
+    "officialDomain": "azeus.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
+    "jobPage": "jobs/azeus-systems-software-tester.html"
+  },
+  "Cigna": {
+    "status": "needs_review",
+    "company": "Cigna",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/cigna-back-office-operations-analyst-band-1.html"
+  },
+  "Circles": {
+    "status": "needs_review",
+    "company": "Circles",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/circles-intern-engineering-operations.html"
+  },
+  "Eurofins": {
+    "status": "needs_review",
+    "company": "Eurofins",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/eurofins-it-test-automation-engineer.html"
+  },
+  "Procter & Gamble": {
+    "status": "needs_review",
+    "company": "Procter & Gamble",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/procter-gamble-information-technology-intern.html"
+  },
+  "State Street": {
+    "status": "needs_review",
+    "company": "State Street",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/state-street-operations-early-career-entry-program.html"
   }
 }
