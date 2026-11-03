@@ -1430,9 +1430,11 @@
     {
       "page": "jobs/procter-gamble-information-technology-intern.html",
       "batchId": "admin-41580041577",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-03T04:46:45.566887+00:00",
-      "dueAt": "2026-11-03T12:49:35.183515+00:00"
+      "dueAt": "2026-11-03T12:49:35.183515+00:00",
+      "claimId": "41638979396",
+      "claimedAt": "2026-11-03T12:49:45.598376+00:00"
     },
     {
       "page": "jobs/state-street-operations-early-career-entry-program.html",
