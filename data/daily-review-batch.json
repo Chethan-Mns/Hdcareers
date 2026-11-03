@@ -2,7 +2,7 @@
   "batchId": "2026-11-03-0900-ist",
   "generatedAt": "2026-11-03T03:36:41.754Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-03T04:44:50.930Z",
+  "updatedAt": "2026-11-03T04:44:57.852Z",
   "priority": [
     {
       "id": "deloitte-61212744",
@@ -831,7 +831,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresh graduates welcome",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Azeus Systems India careers page provides a direct application route and explicitly welcomes fresh graduates for regular employment.",
       "postedDate": null,
@@ -845,7 +845,7 @@
         "expYears": "Fresh graduates welcome",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Azeus Systems Careers",
         "desc": "Graduate software testing role covering regression testing, test planning, defect reporting and production-risk prevention.",
         "elig": "Diploma/certificate in CS, Engineering, Programming, IT or IS; or any bachelor’s degree with willingness to pursue an IT career. Fresh graduates are welcome.",
@@ -865,13 +865,17 @@
         "jobId": "india-software-tester",
         "postedDate": null,
         "verifiedDate": "3 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 3 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-03T04:44:57.851Z",
+        "browserVerifiedAt": "2026-11-03T04:44:57.851Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-03T03:36:41.754Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Azeus Systems India careers page provides a direct application route and explicitly welcomes fresh graduates for regular employment."
-      }
+      },
+      "reviewedAt": "2026-11-03T04:44:57.851Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "maersk-r190147",
