@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:22.141Z",
+  "updatedAt": "2026-11-04T06:20:32.099Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -235,7 +235,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Emerson Oracle Recruiting requisition 26011225 remains job-bound and identifies a full-time Software Engineer 1 posting in Pune; the role is listed for 0–1 years.",
       "postedDate": "2026-10-16",
@@ -249,7 +249,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Emerson Careers",
         "desc": "Software-testing role for process field-device descriptions and integrations on Emerson automation systems.",
         "elig": "Freshers with 0–1 years; Bachelor’s degree in Instrumentation Engineering preferred.",
@@ -270,13 +270,17 @@
         "jobId": "26011225",
         "postedDate": "2026-10-16",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:32.099Z",
+        "browserVerifiedAt": "2026-11-04T06:20:32.099Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Emerson Oracle Recruiting requisition 26011225 remains job-bound and identifies a full-time Software Engineer 1 posting in Pune; the role is listed for 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:32.099Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "unisys-REQ576504",
