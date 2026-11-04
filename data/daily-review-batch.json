@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T03:44:46.029Z",
+  "updatedAt": "2026-11-04T06:20:02.227Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Official Deloitte South Asia requisition page is open, shows requisition ID 114743, a job-bound Apply route, Bachelor’s/Master’s eligibility and 0–2 years including academic projects and internships.",
       "postedDate": "2026-11-02",
@@ -27,7 +27,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "Entry-level cyber incident-response role supporting triage, evidence collection, investigation documentation and recovery activities.",
         "elig": "Bachelor’s or Master’s degree; 0–2 years in cybersecurity, including internships, academic projects, lab work or related exposure.",
@@ -48,13 +48,17 @@
         "jobId": "114743",
         "postedDate": "2026-11-02",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:02.197Z",
+        "browserVerifiedAt": "2026-11-04T06:20:02.197Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Official Deloitte South Asia requisition page is open, shows requisition ID 114743, a job-bound Apply route, Bachelor’s/Master’s eligibility and 0–2 years including academic projects and internships."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:02.197Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-2023504",
