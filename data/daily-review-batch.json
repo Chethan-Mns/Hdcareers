@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:05.806Z",
+  "updatedAt": "2026-11-04T06:20:13.675Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -125,7 +125,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "New college graduate; 0 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact NVIDIA Workday requisition JR2028897 resolves to a live New College Graduate 2026 role in Gurugram with a job-bound application route.",
       "postedDate": "2026-11-03",
@@ -139,7 +139,7 @@
         "expYears": "New college graduate; 0 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "NVIDIA Careers",
         "desc": "New-graduate hardware verification role applying formal methods to complex digital designs, IP blocks and systems-on-chip.",
         "elig": "B.Tech or M.Tech in Electrical Engineering, Computer Science or a related field; new college graduate 2026.",
@@ -159,13 +159,17 @@
         "jobId": "JR2028897",
         "postedDate": "2026-11-03",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:13.675Z",
+        "browserVerifiedAt": "2026-11-04T06:20:13.675Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact NVIDIA Workday requisition JR2028897 resolves to a live New College Graduate 2026 role in Gurugram with a job-bound application route."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:13.675Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "infineon-563808971970202",
