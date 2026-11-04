@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:39.147Z",
+  "updatedAt": "2026-11-04T06:20:44.045Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -347,7 +347,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Freshers eligible; experienced applicants considered separately",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact WNS SmartRecruiters requisition 743999903984093 is open with an active application form and explicitly states that non-technical graduates and freshers may apply.",
       "postedDate": "Not Specified",
@@ -361,7 +361,7 @@
         "expYears": "Freshers eligible; experienced applicants considered separately",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "WNS SmartRecruiters",
         "desc": "Non-voice back-office operations role supporting customers across travel, insurance and banking processes.",
         "elig": "Non-technical graduate; freshers may apply. Basic computer knowledge and good English are required.",
@@ -380,13 +380,17 @@
         "jobId": "743999903984093",
         "postedDate": "Not Specified",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:44.045Z",
+        "browserVerifiedAt": "2026-11-04T06:20:44.045Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact WNS SmartRecruiters requisition 743999903984093 is open with an active application form and explicitly states that non-technical graduates and freshers may apply."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:44.045Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "playto-744000157725989",
