@@ -30,7 +30,10 @@ class SharedHeroTests(unittest.TestCase):
                 self.assertIn(">Eligibility</h2>", body)
                 self.assertIn("Skills Mentioned</h2>", body)
                 self.assertIn("Key Responsibilities</h2>", body)
-                self.assertIn("Who Should Apply?</h2>", body)
+                if "review the official requirements and apply if" in str(job.get("who", "")).casefold():
+                    self.assertNotIn("Who Should Apply?</h2>", body)
+                else:
+                    self.assertIn("Who Should Apply?</h2>", body)
                 self.assertIn('id="resumeMatch"', body)
                 self.assertEqual(body.count('id="resumeFile"'), 1)
                 self.assertEqual(body.count('id="resumeMatch"'), 1)
