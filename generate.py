@@ -1001,6 +1001,46 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
     )
 
 
+def render_editorial_insights(jobs: list[dict]) -> str:
+    """Evidence-led interpretation of the current HD Careers sample, rendered without JS."""
+    active = [j for j in jobs if j.get("status") == "active"]
+    if not active:
+        return ""
+    employers = Counter(str(j.get("company") or "").strip() for j in active if j.get("company"))
+    skills = Counter(str(x).strip() for j in active for x in j.get("skills", []) if str(x).strip())
+    mapped = build_public_insights(jobs).get("cityPins", [])
+    fresher = sum(j.get("expType") == "fresher" for j in active)
+    company_name, company_count = employers.most_common(1)[0] if employers else ("None", 0)
+    skill_name, skill_count = skills.most_common(1)[0] if skills else ("None stated", 0)
+    mapped_total = sum(int(p["count"]) for p in mapped)
+    top_city = mapped[0] if mapped else None
+    fresher_pct = round(100 * fresher / len(active))
+    city_insight = (
+        f'{esc(top_city["city"])} accounts for <strong>{top_city["count"]} of {mapped_total}</strong> '
+        'active single-city listings in this sample. Multi-city and remote roles are not assigned a guessed city.'
+        if top_city and mapped_total else
+        'No single-city location breakdown is available for the current sample.'
+    )
+    return f"""
+<section class="hi-card hi-shown" aria-labelledby="hiEditorialTitle">
+  <h2 id="hiEditorialTitle">What the current listings actually show</h2>
+  <p class="hi-sub">HD Careers editorial interpretation of its own actively listed roles, based on employer-linked records. These are listing counts, not vacancy estimates or national hiring statistics.</p>
+  <div class="hi-grid equal">
+    <div><h3>Who can use this sample?</h3>
+      <p>Of <strong>{len(active)}</strong> active listings, <strong>{fresher}</strong> ({fresher_pct}%) are tagged fresher or early-career based on recorded eligibility. This is a navigation aid, not a claim that every graduate qualifies; check each employer's requirements.</p>
+      <p>We use a separate "experience not specified" tag where a firm requirement could not be confirmed.</p></div>
+    <div><h3>What skill terms appear?</h3>
+      <p><strong>{esc(skill_name)}</strong> appears in <strong>{skill_count}</strong> active listing records. A mention reflects our recorded source information, not the strength or level of skill the employer expects.</p>
+      <p>Compare each job's required qualifications before deciding what to learn or add to your resume.</p></div>
+    <div><h3>Where are these roles concentrated?</h3>
+      <p>{city_insight}</p>
+      <p>The most frequently represented employer in this database is <strong>{esc(company_name)}</strong> with <strong>{company_count}</strong> listings. This count does not measure total employer hiring.</p></div>
+  </div>
+  <p class="hi-caption"><strong>Method:</strong> We count one currently Active HD Careers record per listing; skill phrases are counted from stored job fields, and locations only when they can be mapped unambiguously. Records can change after re-verification, closure or an editorial correction. <a href="{{PREFIX}}editorial-policy.html">Read the verification policy.</a></p>
+</section>
+"""
+
+
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
     premium = ROOT / "assets" / "premium-insights-template.html"
     if premium.exists():
@@ -1014,6 +1054,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
                 .replace("{{CANONICAL}}", canonical)
                 .replace("{{INTRO}}", introduction)
                 .replace("{{SNAPSHOT}}", _snapshot_date(active_jobs))
+                .replace("{{EDITORIAL_INSIGHTS}}", render_editorial_insights(jobs).replace("{{PREFIX}}", prefix))
                 .replace("{{MAP_DATA}}", json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c"))
                 .replace("{{PREFIX}}", prefix))
     active = [job for job in jobs if job.get("status") == "active"]
