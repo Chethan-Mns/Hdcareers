@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:52.411Z",
+  "updatedAt": "2026-11-04T06:21:00.941Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -512,7 +512,7 @@
       "cat": "non-it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "12-month apprenticeship; MBA Finance freshers",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Dun & Bradstreet Lever requisition R-20025 is open with an active application route and explicitly targets MBA Finance freshers for a 12-month apprenticeship.",
       "postedDate": "Not Specified",
@@ -526,7 +526,7 @@
         "expYears": "12-month apprenticeship; MBA Finance freshers",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Dun & Bradstreet Lever",
         "desc": "Twelve-month operations apprenticeship preparing credit reports, maintaining ratings and supporting research and reporting.",
         "elig": "MBA Finance freshers with knowledge of financial statements, business models and industry analysis.",
@@ -546,13 +546,17 @@
         "jobId": "a61b6368-4c4f-4e1b-b125-d0d7ba7f8278",
         "postedDate": "Not Specified",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:21:00.941Z",
+        "browserVerifiedAt": "2026-11-04T06:21:00.941Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Dun & Bradstreet Lever requisition R-20025 is open with an active application route and explicitly targets MBA Finance freshers for a 12-month apprenticeship."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:00.941Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
