@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:21:46.242Z",
+  "updatedAt": "2026-11-04T06:21:54.412Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -847,7 +847,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact WEX Workday requisition R22746 is a current job-bound Software Development Engineer 1 route and explicitly accepts 0–1 year of professional experience.",
       "postedDate": "Not Specified",
@@ -861,7 +861,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "WEX Careers",
         "desc": "Entry-level software engineering role building and supporting production components across mobility payment and platform systems.",
         "elig": "B.S. or M.S. in Computer Science with 0–1 year of professional experience.",
@@ -888,7 +888,9 @@
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact WEX Workday requisition R22746 is a current job-bound Software Development Engineer 1 route and explicitly accepts 0–1 year of professional experience."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:54.412Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
