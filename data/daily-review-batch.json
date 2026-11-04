@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:44.045Z",
+  "updatedAt": "2026-11-04T06:20:47.907Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -401,7 +401,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0 years; no prior work experience required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Playto Labs SmartRecruiters requisition 744000157725989 is open with an application form and explicitly says freshers with 0 years and no prior experience may apply.",
       "postedDate": "Not Specified",
@@ -415,7 +415,7 @@
         "expYears": "0 years; no prior work experience required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Playto Labs SmartRecruiters",
         "desc": "Entry-level business-development role generating and qualifying leads and supporting the sales pipeline.",
         "elig": "Freshers with 0 years are encouraged; no prior work experience is required.",
@@ -435,13 +435,17 @@
         "jobId": "744000157725989",
         "postedDate": "Not Specified",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:47.906Z",
+        "browserVerifiedAt": "2026-11-04T06:20:47.906Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Playto Labs SmartRecruiters requisition 744000157725989 is open with an application form and explicitly says freshers with 0 years and no prior experience may apply."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:47.906Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "karya-5469564008",
