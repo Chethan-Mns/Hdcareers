@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:02.227Z",
+  "updatedAt": "2026-11-04T06:20:05.806Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -69,7 +69,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years for Master’s graduates; Bachelor’s plus 2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Cisco Workday requisition 2023504 resolves to the Cloud Engineer posting and explicitly accepts a Master’s degree with 0 years of experience.",
       "postedDate": "2026-10-27",
@@ -83,7 +83,7 @@
         "expYears": "0 years for Master’s graduates; Bachelor’s plus 2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Cisco Careers",
         "desc": "Cloud-platform engineering role building and maintaining backend services and cloud infrastructure.",
         "elig": "Master’s degree in Computer Science, Engineering or related field with 0 years of related experience; the official posting also accepts Bachelor’s plus 2 years.",
@@ -104,13 +104,17 @@
         "jobId": "2023504",
         "postedDate": "2026-10-27",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:05.806Z",
+        "browserVerifiedAt": "2026-11-04T06:20:05.806Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Cisco Workday requisition 2023504 resolves to the Cloud Engineer posting and explicitly accepts a Master’s degree with 0 years of experience."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:05.806Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "nvidia-JR2028897",
