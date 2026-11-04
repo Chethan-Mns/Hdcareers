@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:21:16.493Z",
+  "updatedAt": "2026-11-04T06:21:23.350Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -625,7 +625,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact MaytrixTech career page is open with a role-specific Apply control and labels the Associate System Engineer role Fresher, Full time and India hybrid.",
       "postedDate": "Not Specified",
@@ -639,7 +639,7 @@
         "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "MaytrixTech Careers",
         "desc": "Fresher engineering role supporting enterprise system setup, monitoring, incident response and delivery operations.",
         "elig": "Fresh graduate with CS, IT or related fundamentals; 2026–2029 graduating batches are preferred.",
@@ -659,13 +659,17 @@
         "jobId": "ase",
         "postedDate": "Not Specified",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:21:23.350Z",
+        "browserVerifiedAt": "2026-11-04T06:21:23.350Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact MaytrixTech career page is open with a role-specific Apply control and labels the Associate System Engineer role Fresher, Full time and India hybrid."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:23.350Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "endeavor-743999657741451",
