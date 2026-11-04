@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:21:37.262Z",
+  "updatedAt": "2026-11-04T06:21:46.242Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -791,7 +791,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2+ years; freshers eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Oracle Recruiting requisition 349128 is job-bound, currently indexed by Oracle Careers and presented as Platform Software Engineer 1 for freshers/0–2+ years.",
       "postedDate": "2026-11-01",
@@ -805,7 +805,7 @@
         "expYears": "0–2+ years; freshers eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Oracle Careers",
         "desc": "Entry-level platform engineering role implementing supervised SDK, API, observability and software-maintenance tasks.",
         "elig": "Entry-level candidates with 0–2+ years and software-development fundamentals.",
@@ -826,13 +826,17 @@
         "jobId": "349128",
         "postedDate": "2026-11-01",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:21:46.241Z",
+        "browserVerifiedAt": "2026-11-04T06:21:46.241Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Oracle Recruiting requisition 349128 is job-bound, currently indexed by Oracle Careers and presented as Platform Software Engineer 1 for freshers/0–2+ years."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:46.241Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wex-R22746",
