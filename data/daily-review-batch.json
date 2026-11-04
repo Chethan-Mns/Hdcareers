@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:21:00.941Z",
+  "updatedAt": "2026-11-04T06:21:16.493Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -569,7 +569,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years; freshers welcome",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Spektra Systems Zoho Recruit posting is live and explicitly welcomes freshers and 0–1-year candidates; it states that prior job experience is not required.",
       "postedDate": "2026-10-28",
@@ -583,7 +583,7 @@
         "expYears": "0–1 years; freshers welcome",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Spektra Systems Zoho Recruit",
         "desc": "Remote trainee role shipping full-stack product work with AI coding agents across web, API, testing and cloud deployment tasks.",
         "elig": "Freshers and early-career candidates with 0–1 years; projects count and prior job experience is not required.",
@@ -604,13 +604,17 @@
         "jobId": "627374000027511357",
         "postedDate": "2026-10-28",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:21:16.493Z",
+        "browserVerifiedAt": "2026-11-04T06:21:16.493Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Spektra Systems Zoho Recruit posting is live and explicitly welcomes freshers and 0–1-year candidates; it states that prior job experience is not required."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:16.493Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "maytrix-ase",
