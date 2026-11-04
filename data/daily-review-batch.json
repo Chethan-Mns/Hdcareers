@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:32.099Z",
+  "updatedAt": "2026-11-04T06:20:39.147Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -291,7 +291,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Unisys Workday requisition REQ576504 is a job-bound Network Security Engineer route and the posting states BA/BS with 0–2 years.",
       "postedDate": "2026-11-03",
@@ -305,7 +305,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Unisys Careers",
         "desc": "Entry-level network-security engineering role supporting firewall operations, incident triage and security reporting.",
         "elig": "BA/BS degree and 0–2 years of relevant experience, or an equivalent combination of education and experience.",
@@ -326,13 +326,17 @@
         "jobId": "REQ576504",
         "postedDate": "2026-11-03",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:39.147Z",
+        "browserVerifiedAt": "2026-11-04T06:20:39.147Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Unisys Workday requisition REQ576504 is a job-bound Network Security Engineer route and the posting states BA/BS with 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:39.147Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wns-743999903984093",
