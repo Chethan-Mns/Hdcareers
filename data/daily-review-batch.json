@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:21:28.343Z",
+  "updatedAt": "2026-11-04T06:21:37.262Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -735,7 +735,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years for Master’s graduates; Bachelor’s plus 2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact KLA Workday requisition 2636690 is job-bound and explicitly lists a Master’s degree with 0 years of related experience.",
       "postedDate": "Not Specified",
@@ -749,7 +749,7 @@
         "expYears": "0 years for Master’s graduates; Bachelor’s plus 2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "KLA Careers",
         "desc": "Full-stack engineering role developing web applications and real-time data visualizations for semiconductor equipment monitoring.",
         "elig": "Master’s degree with 0 years of related experience; the posting also accepts Bachelor’s plus 2 years.",
@@ -770,13 +770,17 @@
         "jobId": "2636690",
         "postedDate": "Not Specified",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:21:37.261Z",
+        "browserVerifiedAt": "2026-11-04T06:21:37.261Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact KLA Workday requisition 2636690 is job-bound and explicitly lists a Master’s degree with 0 years of related experience."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:21:37.261Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "oracle-349128",
