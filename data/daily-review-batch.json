@@ -332,7 +332,7 @@
         "role": "Associate / Sr. Associate – Operations",
         "loc": "India (location on official posting)",
         "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Freshers eligible; experienced applicants considered separately",
         "salary": "Not Disclosed",
@@ -382,7 +382,7 @@
         "role": "Business Development Representative – Fresher",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://jobs.smartrecruiters.com/PlaytoLabs/744000157725989-business-development-representative-fresher-",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0 years; no prior work experience required",
         "salary": "Not Disclosed",
@@ -485,7 +485,7 @@
         "role": "Apprentice – Operations (R-20025)",
         "loc": "Turbhe, Navi Mumbai, Maharashtra, India",
         "apply": "https://jobs.lever.co/dnb/a61b6368-4c4f-4e1b-b125-d0d7ba7f8278",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "12-month apprenticeship; MBA Finance freshers",
         "salary": "Not Disclosed",
@@ -832,19 +832,43 @@
     }
   ],
   "discoveryAudit": {
-    "watchlistEmployersTotal": 87,
-    "watchlistEmployersVisited": 23,
-    "watchlistEmployersNotVisited": 64,
-    "watchlistEmployersBlockedOrInconclusive": 5,
-    "fallbackEmployersVisited": 9,
-    "officialCandidatesScreened": 48,
-    "uniqueExactLiveJobIdsFound": 16,
-    "watchlistSelected": 4,
-    "fallbackSelected": 12,
-    "duplicatePostingsExcluded": 10,
-    "authoritativelyExpiredExcluded": 2,
-    "sourceUnconfirmedOrExperiencedHeld": 20,
-    "deloitteOutcome": "Deloitte requisition 60941544 / job requisition ID 114743 qualified for the Priority technical slot: exact official page, job-bound Apply route, Bachelor’s/Master’s, and 0–2 years including internships/projects."
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 6,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 0,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 2
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 16,
+    "duplicateExclusions": [],
+    "excludedCount": 0,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
