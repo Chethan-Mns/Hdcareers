@@ -1,9 +1,9 @@
 {
   "verifiedThrough": "3 November 2026",
-  "active": 200,
-  "employers": 130,
-  "freshers": 108,
-  "experienced": 83,
+  "active": 199,
+  "employers": 129,
+  "freshers": 130,
+  "experienced": 60,
   "locations": [
     {
       "label": "Bengaluru",
@@ -225,11 +225,11 @@
     },
     {
       "label": "JavaScript",
-      "count": 15
+      "count": 14
     },
     {
       "label": "Git",
-      "count": 12
+      "count": 11
     },
     {
       "label": "Testing",
@@ -259,7 +259,7 @@
   "categories": [
     {
       "label": "it",
-      "count": 99
+      "count": 98
     },
     {
       "label": "nonit",
@@ -353,7 +353,7 @@
     },
     {
       "date": "2026-10-17",
-      "count": 18
+      "count": 17
     },
     {
       "date": "2026-10-18",

@@ -214,7 +214,7 @@ $status_notice
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-circle-check text-[var(--primary)] mr-2"></i>Eligibility</h2><p class="mt-4 text-slate-600 leading-relaxed">$elig</p></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-screwdriver-wrench text-[var(--primary)] mr-2"></i>Skills Mentioned</h2><div class="flex flex-wrap gap-2 mt-4">$skills</div></div>
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-list-check text-[var(--primary)] mr-2"></i>Key Responsibilities</h2><ul class="mt-4 space-y-3 text-slate-600">$responsibilities</ul></div>
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6"><h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2><p class="mt-4 text-slate-600 leading-relaxed">$who</p></div>
+$who_section
 $job_content_sections
 $role_evidence
 <div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
@@ -388,203 +388,65 @@ def render_role_evidence(job: dict) -> str:
 
 
 def render_job_content_sections(job: dict, jobs: list[dict]) -> str:
-    """Render useful job-specific content using only verified fields already stored for the listing."""
-    company = str(job["company"])
-    role = str(job["roleTag"])
-    location = str(job["loc"])
-    work_mode = str(job["workMode"])
-    experience = str(job["expYears"])
-    qualification = str(job["batch"])
-    salary = str(job["salary"])
-    source_name = str(job["sourceName"])
-    domain = str(job.get("domain", "")).strip().lower().replace("https://", "").replace("http://", "").split("/")[0]
-    source_host = domain or "the employer's official recruitment site"
-    skills = [str(x).strip() for x in job.get("skills", []) if str(x).strip()]
-    responsibilities = [str(x).strip() for x in job.get("resp", []) if str(x).strip()]
-    company_overview = str(job.get("companyOverview", "")).strip()
-    industry = str(job.get("industry", "")).strip()
-    headquarters = str(job.get("headquarters", "")).strip()
-    founded_year = str(job.get("foundedYear", "")).strip()
-    company_website = str(job.get("companyWebsite", "")).strip()
-    careers_url = str(job.get("careersUrl", "")).strip()
-    job_ref = str(job.get("jobId", "")).strip()
-    selection_process = [str(x).strip() for x in job.get("selectionProcess", []) if str(x).strip()]
-    important_dates = [str(x).strip() for x in job.get("importantDates", []) if str(x).strip()]
-    if company_website and not company_website.startswith("https://"):
-        company_website = ""
-    if careers_url and not careers_url.startswith("https://"):
-        careers_url = ""
+    """Show additional verified facts only; do not pad every listing with generic FAQs."""
+    company = str(job.get("company", "")).strip()
+    sections = []
+    job_ref = str(job.get("jobId") or "").strip()
+    industry = str(job.get("industry") or "").strip()
+    headquarters = str(job.get("headquarters") or "").strip()
+    company_overview = str(job.get("companyOverview") or "").strip()
+    selection = [str(x).strip() for x in job.get("selectionProcess", []) if str(x).strip()]
+    dates = [str(x).strip() for x in job.get("importantDates", []) if str(x).strip()]
+
+    # Employer profiles and hiring steps appear only when those facts are actually present.
+    facts = [("Requisition / job ID", job_ref), ("Industry", industry),
+             ("Headquarters", headquarters)]
+    facts_html = "".join(
+        f'<div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><dt class="text-xs text-slate-500">{esc(label)}</dt><dd class="font-semibold text-slate-900 mt-1">{esc(value)}</dd></div>'
+        for label, value in facts if value
+    )
+    if company_overview or facts_html:
+        sections.append(
+            '<section class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+            f'<h2 class="text-xl font-black">Employer and requisition details</h2>'
+            + (f'<p class="mt-3 text-slate-600">{esc(company_overview)}</p>' if company_overview else '')
+            + (f'<dl class="grid sm:grid-cols-2 gap-3 mt-4">{facts_html}</dl>' if facts_html else '')
+            + '</section>'
+        )
+
+    if selection:
+        rows = "".join(f'<li class="mt-2">{esc(step)}</li>' for step in selection)
+        sections.append(
+            '<section class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+            '<h2 class="text-xl font-black">Employer-stated selection process</h2>'
+            f'<ol class="list-decimal pl-5 mt-3 text-slate-600">{rows}</ol></section>'
+        )
+    if dates:
+        rows = "".join(f'<li class="mt-2">{esc(day)}</li>' for day in dates)
+        sections.append(
+            '<section class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+            '<h2 class="text-xl font-black">Dates specified by the employer</h2>'
+            f'<ul class="list-disc pl-5 mt-3 text-slate-600">{rows}</ul></section>'
+        )
 
     same_company = [
         other for other in jobs
-        if other["id"] != job["id"]
+        if other.get("id") != job.get("id")
         and other.get("status") == "active"
-        and str(other.get("company", "")).strip().lower() == company.strip().lower()
+        and str(other.get("company", "")).strip().casefold() == company.casefold()
     ]
-
-    glance = [
-        ("Qualification / Batch", qualification),
-        ("Experience", experience),
-        ("Location", location),
-        ("Work mode", work_mode),
-        ("Salary / Stipend", salary),
-        ("Status", "Active" if job.get("status") == "active" else "Expired / Closed"),
-    ]
-    glance_html = "".join(
-        f'<div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4"><p class="text-[11px] font-bold uppercase tracking-wide text-slate-500">{esc(label)}</p><p class="font-extrabold mt-1 text-slate-800">{esc(value)}</p></div>'
-        for label, value in glance
-    )
-
-    focus_skills = skills[:6]
-    skills_html = "".join(
-        f'<li class="rounded-xl border border-slate-200 bg-white p-4"><p class="font-extrabold text-slate-900">{esc(skill)}</p><p class="text-sm text-slate-600 mt-1 leading-relaxed">This skill is mentioned for the role. If you include it on your resume, connect it to a real work, internship or project example you can explain.</p></li>'
-        for skill in focus_skills
-    )
-    if not skills_html:
-        skills_html = '<li class="text-sm text-slate-500">The employer did not publish a detailed skills list for this role.</li>'
-
-    role_focus = ", ".join(focus_skills[:4]) if focus_skills else "the responsibilities listed by the employer"
-    first_tasks = responsibilities[:3]
-    task_html = "".join(f'<li class="flex gap-2"><i class="fa-solid fa-check text-blue-600 mt-1 text-xs"></i><span>{esc(item)}</span></li>' for item in first_tasks)
-    if not task_html:
-        task_html = '<li class="text-slate-500">Review the official source for the employer-published responsibilities.</li>'
-
-    if company_website:
-        company_domain = f'<a href="{esc(company_website)}" target="_blank" rel="noopener nofollow" class="font-bold text-[var(--primary)] break-all">Official website <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>'
-    elif domain:
-        company_domain = f'<a href="https://{esc(domain)}" target="_blank" rel="noopener nofollow" class="font-bold text-[var(--primary)] break-all">{esc(domain)} <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>'
-    else:
-        company_domain = '<span class="font-bold">Official source linked on this page</span>'
-
-    company_fact_items = [
-        ("Industry", industry),
-        ("Headquarters", headquarters),
-        ("Founded", founded_year),
-        ("Job / Requisition ID", job_ref),
-    ]
-    company_fact_html = "".join(
-        f'<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">{esc(label)}</p><p class="font-extrabold mt-1">{esc(value)}</p></div>'
-        for label, value in company_fact_items if value
-    )
-    company_overview_html = (
-        f'<p class="text-slate-600 leading-relaxed mt-4">{esc(company_overview)}</p>'
-        if company_overview else
-        f'<p class="text-slate-600 leading-relaxed mt-4">{esc(company)} is the employer named on the official source used for this job. HD Careers verified this listing against <strong>{esc(source_host)}</strong>. This section only shows facts available from the verified job record.</p>'
-    )
-    careers_link = (
-        f'<a href="{esc(careers_url)}" target="_blank" rel="noopener nofollow" class="inline-flex items-center font-bold text-[var(--primary)]">Open official careers source <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>'
-        if careers_url else ""
-    )
-
     if same_company:
-        same_cards = "".join(
-            '<a class="block rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50/40" '
-            f'href="{esc(Path(str(other["page"])).name)}"><p class="font-black">{esc(other["role"])}</p>'
-            f'<p class="text-xs text-slate-500 mt-2">{esc(other["loc"])}</p></a>'
+        cards = "".join(
+            f'<a class="block rounded-xl border border-slate-200 p-3 hover:bg-blue-50" href="{esc(Path(str(other["page"])).name)}">'
+            f'<strong>{esc(other["role"])}</strong><span class="block mt-1 text-xs text-slate-500">{esc(other["loc"])}</span></a>'
             for other in same_company[:3]
         )
-        company_jobs = (
-            '<div class="mt-5"><p class="text-sm font-black text-slate-800">More active jobs from this company on HD Careers</p>'
-            f'<div class="grid sm:grid-cols-2 gap-3 mt-3">{same_cards}</div></div>'
+        sections.append(
+            '<section class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+            f'<h2 class="text-xl font-black">Other active {esc(company)} jobs</h2>'
+            f'<div class="grid sm:grid-cols-2 gap-3 mt-4">{cards}</div></section>'
         )
-    else:
-        company_jobs = '<p class="text-sm text-slate-500 mt-4">No other active listings from this company are currently published on HD Careers.</p>'
-
-    prep_items = []
-    if focus_skills:
-        prep_items.append(f"Review your hands-on examples for {', '.join(focus_skills[:3])}.")
-    if responsibilities:
-        prep_items.append(f"Prepare one clear example related to this responsibility: {responsibilities[0]}.")
-    prep_items.extend([
-        "Keep your employment dates, degree details and contact information consistent across your resume and the employer application form.",
-        "Use the official employer page as the final source if any requirement, deadline or application step changes.",
-    ])
-    prep_html = "".join(f'<li class="flex gap-3"><span class="w-6 h-6 rounded-full bg-blue-50 text-blue-700 text-xs font-black flex items-center justify-center shrink-0">{i}</span><span>{esc(item)}</span></li>' for i, item in enumerate(prep_items, 1))
-
-    selection_html = ""
-    if selection_process:
-        rows = "".join(f'<li class="flex gap-3"><span class="w-6 h-6 rounded-full bg-violet-50 text-violet-700 text-xs font-black flex items-center justify-center shrink-0">{i}</span><span>{esc(item)}</span></li>' for i, item in enumerate(selection_process, 1))
-        selection_html = f'''<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-violet-700">Employer-published process</p>
-<h2 class="text-xl font-black mt-2">Selection / Hiring Process</h2>
-<ul class="mt-5 space-y-4 text-slate-600">{rows}</ul>
-</div>'''
-
-    dates_html = ""
-    if important_dates:
-        rows = "".join(f'<li class="flex gap-3"><i class="fa-solid fa-calendar-day text-blue-600 mt-1"></i><span>{esc(item)}</span></li>' for item in important_dates)
-        dates_html = f'''<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Timeline</p>
-<h2 class="text-xl font-black mt-2">Important Dates</h2>
-<ul class="mt-5 space-y-3 text-slate-600">{rows}</ul>
-</div>'''
-
-    faq = [
-        ("Is this vacancy still accepting applications?",
-         f"Check the exact source link for {company} and confirm the application form still accepts submissions. Availability can change after HD Careers checks the listing."),
-        ("How can I correct inaccurate job information?",
-         "Use the HD Careers Contact page with the job URL, official application link and a description of the discrepancy."),
-    ]
-    if job_ref:
-        faq.insert(1, ("Which job ID should I verify with the employer?",
-                       f"Compare job ID {job_ref} against the official posting before applying." ))
-    faq_html = "".join(
-        f'<details class="rounded-xl border border-slate-200 bg-white p-4"><summary class="cursor-pointer font-extrabold text-slate-900">{esc(q)}</summary><p class="text-sm text-slate-600 mt-2 leading-relaxed">{esc(a)}</p></details>'
-        for q, a in faq
-    )
-
-    return f'''
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Quick eligibility check</p>
-<h2 class="text-xl font-black mt-2">Eligibility at a Glance</h2>
-<p class="text-sm text-slate-500 mt-2">These values come from the verified job record. Re-check the employer page before applying because requirements can change.</p>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">{glance_html}</div>
-</div>
-
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Role breakdown</p>
-<h2 class="text-xl font-black mt-2">What This Role Involves</h2>
-<p class="text-slate-600 leading-relaxed mt-4">The official listing is for <strong>{esc(role)}</strong> at <strong>{esc(company)}</strong> in <strong>{esc(location)}</strong>. Based on the published information, the main areas to review include {esc(role_focus)}.</p>
-<ul class="mt-4 space-y-3 text-slate-600">{task_html}</ul>
-</div>
-
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Employer information</p>
-<h2 class="text-xl font-black mt-2">About {esc(company)} on This Listing</h2>
-{company_overview_html}
-<div class="grid sm:grid-cols-2 gap-3 mt-5">
-<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Employer</p><p class="font-extrabold mt-1">{esc(company)}</p></div>
-<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Official website / hiring domain</p><p class="mt-1">{company_domain}</p></div>
-<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Role location</p><p class="font-extrabold mt-1">{esc(location)}</p></div>
-<div class="rounded-xl bg-slate-50 p-4"><p class="text-xs text-slate-500">Active HD Careers listings</p><p class="font-extrabold mt-1">{len(same_company) + (1 if job.get("status") == "active" else 0)}</p></div>
-{company_fact_html}
-</div>
-<div class="mt-4">{careers_link}</div>
-{company_jobs}
-</div>
-
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Resume & interview focus</p>
-<h2 class="text-xl font-black mt-2">Skills to Demonstrate</h2>
-<p class="text-sm text-slate-500 mt-2">Use these as evidence prompts, not as keywords to add without real experience.</p>
-<ul class="grid sm:grid-cols-2 gap-3 mt-5">{skills_html}</ul>
-</div>
-
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Preparation</p>
-<h2 class="text-xl font-black mt-2">Before You Apply</h2>
-<ul class="mt-5 space-y-4 text-slate-600">{prep_html}</ul>
-</div>
-
-{selection_html}
-{dates_html}
-
-<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">
-<p class="text-xs font-black uppercase tracking-[.12em] text-[var(--primary)]">Common questions</p>
-<h2 class="text-xl font-black mt-2">Job FAQ</h2>
-<div class="mt-5 space-y-3">{faq_html}</div>
-</div>'''
-
+    return "\n".join(sections)
 
 
 def _host(value: str) -> str:
@@ -919,6 +781,15 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         '<a class="hdj3-primary" href="../index.html#jobs">Browse Active Jobs</a>'
     )
 
+    who_text = str(job.get("who", "")).strip()
+    generic_who = "review the official requirements and apply if" in who_text.casefold()
+    who_section = (
+        '<div class="card bg-white border border-slate-200 rounded-2xl p-5 sm:p-6">'
+        '<h2 class="text-xl font-black"><i class="fa-solid fa-user-check text-[var(--primary)] mr-2"></i>Who Should Apply?</h2>'
+        f'<p class="mt-4 text-slate-600 leading-relaxed">{esc(who_text)}</p></div>'
+        if who_text and not generic_who else ""
+    )
+
     values = {
         "page_title": esc(page_title),
         "meta_description": esc(meta_description),
@@ -960,6 +831,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "elig": esc(job["elig"]),
         "skills": render_skills(job["skills"]),
         "who": esc(job["who"]),
+        "who_section": who_section,
         "responsibilities": render_responsibilities(job["resp"]),
         "job_content_sections": render_job_content_sections(job, jobs),
         "role_evidence": render_role_evidence(job),
@@ -1129,6 +1001,46 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
     )
 
 
+def render_editorial_insights(jobs: list[dict], prefix: str = "") -> str:
+    """Evidence-led interpretation of the current HD Careers sample, rendered without JS."""
+    active = [j for j in jobs if j.get("status") == "active"]
+    if not active:
+        return ""
+    employers = Counter(str(j.get("company") or "").strip() for j in active if j.get("company"))
+    skills = Counter(str(x).strip() for j in active for x in j.get("skills", []) if str(x).strip())
+    mapped = build_public_insights(jobs).get("cityPins", [])
+    fresher = sum(j.get("expType") == "fresher" for j in active)
+    company_name, company_count = employers.most_common(1)[0] if employers else ("None", 0)
+    skill_name, skill_count = skills.most_common(1)[0] if skills else ("None stated", 0)
+    mapped_total = sum(int(p["count"]) for p in mapped)
+    top_city = mapped[0] if mapped else None
+    fresher_pct = round(100 * fresher / len(active))
+    city_insight = (
+        f'{esc(top_city["city"])} accounts for <strong>{top_city["count"]} of {mapped_total}</strong> '
+        'active single-city listings in this sample. Multi-city and remote roles are not assigned a guessed city.'
+        if top_city and mapped_total else
+        'No single-city location breakdown is available for the current sample.'
+    )
+    return f"""
+<section class="hi-card hi-shown" aria-labelledby="hiEditorialTitle">
+  <h2 id="hiEditorialTitle">What the current listings actually show</h2>
+  <p class="hi-sub">HD Careers editorial interpretation of its own actively listed roles, based on employer-linked records. These are listing counts, not vacancy estimates or national hiring statistics.</p>
+  <div class="hi-grid equal">
+    <div><h3>Who can use this sample?</h3>
+      <p>Of <strong>{len(active)}</strong> active listings, <strong>{fresher}</strong> ({fresher_pct}%) are tagged fresher or early-career based on recorded eligibility. This is a navigation aid, not a claim that every graduate qualifies; check each employer's requirements.</p>
+      <p>We use a separate "experience not specified" tag where a firm requirement could not be confirmed.</p></div>
+    <div><h3>What skill terms appear?</h3>
+      <p><strong>{esc(skill_name)}</strong> appears in <strong>{skill_count}</strong> active listing records. A mention reflects our recorded source information, not the strength or level of skill the employer expects.</p>
+      <p>Compare each job's required qualifications before deciding what to learn or add to your resume.</p></div>
+    <div><h3>Where are these roles concentrated?</h3>
+      <p>{city_insight}</p>
+      <p>The most frequently represented employer in this database is <strong>{esc(company_name)}</strong> with <strong>{company_count}</strong> listings. This count does not measure total employer hiring.</p></div>
+  </div>
+  <p class="hi-caption"><strong>Method:</strong> We count one currently Active HD Careers record per listing; skill phrases are counted from stored job fields, and locations only when they can be mapped unambiguously. Records can change after re-verification, closure or an editorial correction. <a href="{prefix}editorial-policy.html">Read the verification policy.</a></p>
+</section>
+"""
+
+
 def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
     premium = ROOT / "assets" / "premium-insights-template.html"
     if premium.exists():
@@ -1142,6 +1054,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
                 .replace("{{CANONICAL}}", canonical)
                 .replace("{{INTRO}}", introduction)
                 .replace("{{SNAPSHOT}}", _snapshot_date(active_jobs))
+                .replace("{{EDITORIAL_INSIGHTS}}", render_editorial_insights(jobs, prefix))
                 .replace("{{MAP_DATA}}", json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c"))
                 .replace("{{PREFIX}}", prefix))
     active = [job for job in jobs if job.get("status") == "active"]
