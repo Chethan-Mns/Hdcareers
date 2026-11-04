@@ -1001,7 +1001,7 @@ def _rank_rows(counter: Counter, limit: int = 8) -> str:
     )
 
 
-def render_editorial_insights(jobs: list[dict]) -> str:
+def render_editorial_insights(jobs: list[dict], prefix: str = "") -> str:
     """Evidence-led interpretation of the current HD Careers sample, rendered without JS."""
     active = [j for j in jobs if j.get("status") == "active"]
     if not active:
@@ -1036,7 +1036,7 @@ def render_editorial_insights(jobs: list[dict]) -> str:
       <p>{city_insight}</p>
       <p>The most frequently represented employer in this database is <strong>{esc(company_name)}</strong> with <strong>{company_count}</strong> listings. This count does not measure total employer hiring.</p></div>
   </div>
-  <p class="hi-caption"><strong>Method:</strong> We count one currently Active HD Careers record per listing; skill phrases are counted from stored job fields, and locations only when they can be mapped unambiguously. Records can change after re-verification, closure or an editorial correction. <a href="{{PREFIX}}editorial-policy.html">Read the verification policy.</a></p>
+  <p class="hi-caption"><strong>Method:</strong> We count one currently Active HD Careers record per listing; skill phrases are counted from stored job fields, and locations only when they can be mapped unambiguously. Records can change after re-verification, closure or an editorial correction. <a href="{prefix}editorial-policy.html">Read the verification policy.</a></p>
 </section>
 """
 
@@ -1054,7 +1054,7 @@ def render_insights_page(jobs: list[dict], detailed: bool = False) -> str:
                 .replace("{{CANONICAL}}", canonical)
                 .replace("{{INTRO}}", introduction)
                 .replace("{{SNAPSHOT}}", _snapshot_date(active_jobs))
-                .replace("{{EDITORIAL_INSIGHTS}}", render_editorial_insights(jobs).replace("{{PREFIX}}", prefix))
+                .replace("{{EDITORIAL_INSIGHTS}}", render_editorial_insights(jobs, prefix))
                 .replace("{{MAP_DATA}}", json.dumps({"cityPins": build_public_insights(jobs)["cityPins"]}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c"))
                 .replace("{{PREFIX}}", prefix))
     active = [job for job in jobs if job.get("status") == "active"]
