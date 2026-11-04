@@ -2,7 +2,7 @@
   "batchId": "2026-11-04-0900-ist",
   "generatedAt": "2026-11-04T03:44:46.029Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-04T06:20:13.675Z",
+  "updatedAt": "2026-11-04T06:20:22.141Z",
   "priority": [
     {
       "id": "deloitte-60941544",
@@ -180,7 +180,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years; freshers eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Infineon employer career URL is open in its native ATS inventory and is bound to the Trainee Engineer – Digital Design Verification requisition; the posting is listed for 0–1 years.",
       "postedDate": "2026-11-03",
@@ -194,7 +194,7 @@
         "expYears": "0–1 years; freshers eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Infineon Careers",
         "desc": "Trainee engineering role supporting digital-design verification and validation activities.",
         "elig": "Fresher or early-career candidate with 0–1 years and foundations in digital design or verification.",
@@ -214,13 +214,17 @@
         "jobId": "563808971970202",
         "postedDate": "2026-11-03",
         "verifiedDate": "4 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 4 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-04T06:20:22.141Z",
+        "browserVerifiedAt": "2026-11-04T06:20:22.141Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-04T03:44:46.029Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Infineon employer career URL is open in its native ATS inventory and is bound to the Trainee Engineer – Digital Design Verification requisition; the posting is listed for 0–1 years."
-      }
+      },
+      "reviewedAt": "2026-11-04T06:20:22.141Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "emerson-26011225",
