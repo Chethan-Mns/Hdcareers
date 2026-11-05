@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:41.933Z",
+  "updatedAt": "2026-11-05T06:42:49.060Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -775,7 +775,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Navi TurboHire route is open for CloudOps Engineer I, Bengaluru and 0–2 years.",
       "postedDate": "2026-11-02",
@@ -789,7 +789,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Navi Careers",
         "desc": "Early-career cloud operations role automating scalable infrastructure.",
         "elig": "Relevant technical qualification; 0–2 years.",
@@ -810,13 +810,17 @@
         "jobId": "c_7L_1GpylznBtH3NyOg75W7EhzgU4Q1JHo97gA1jEplUNsOxT3nGpOm6fiLvjjW",
         "postedDate": "2026-11-02",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:49.060Z",
+        "browserVerifiedAt": "2026-11-05T06:42:49.060Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Navi TurboHire route is open for CloudOps Engineer I, Bengaluru and 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:49.060Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "eaton-687239808454",
