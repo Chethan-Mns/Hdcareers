@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:55.295Z",
+  "updatedAt": "2026-11-05T06:42:58.588Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -888,7 +888,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Entry level / no prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Future Standard Greenhouse requisition 8452204002 is open with Apply, Bengaluru and no stated experience minimum.",
       "postedDate": "Not Specified",
@@ -902,7 +902,7 @@
         "expYears": "Entry level / no prior experience stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Future Standard Careers",
         "desc": "Core operations role supporting investment data, reconciliations and controls.",
         "elig": "Bachelor’s in Business, Finance, Accounting, Economics, Engineering or related; no experience minimum stated.",
@@ -920,13 +920,17 @@
         "jobId": "8452204002",
         "postedDate": "Not Specified",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:58.587Z",
+        "browserVerifiedAt": "2026-11-05T06:42:58.587Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Future Standard Greenhouse requisition 8452204002 is open with Apply, Bengaluru and no stated experience minimum."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:58.587Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "razorpay-4747560005",
