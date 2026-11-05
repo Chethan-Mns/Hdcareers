@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:43:02.336Z",
+  "updatedAt": "2026-11-05T06:43:10.234Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -993,7 +993,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student or fresher internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact AtkinsRéalis requisition R-164535 is open with Apply for a Bengaluru student/fresher internship.",
       "postedDate": "2026-11-03",
@@ -1007,7 +1007,7 @@
         "expYears": "Student or fresher internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "AtkinsRéalis Careers",
         "desc": "Data engineering internship supporting pipelines and analytics datasets.",
         "elig": "Student or recent graduate in CS, Data Engineering or related meeting the posting requirements.",
@@ -1035,7 +1035,9 @@
         "currentVerdict": "live",
         "officialEvidence": "Exact AtkinsRéalis requisition R-164535 is open with Apply for a Bengaluru student/fresher internship."
       },
-      "expType": "internship"
+      "expType": "internship",
+      "reviewedAt": "2026-11-05T06:43:10.234Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "mongodb-8127579",
