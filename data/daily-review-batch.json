@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:26.386Z",
+  "updatedAt": "2026-11-05T06:41:35.479Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -227,7 +227,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Oracle requisition 349173 is open with Apply, Bengaluru and 0–2 years/fresher eligibility.",
       "postedDate": "Not Specified",
@@ -241,7 +241,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Oracle Careers",
         "desc": "Early-career application support role troubleshooting customer incidents.",
         "elig": "Relevant graduate qualification; 0–2 years including fresh graduates.",
@@ -259,13 +259,17 @@
         "jobId": "349173",
         "postedDate": "Not Specified",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:41:35.479Z",
+        "browserVerifiedAt": "2026-11-05T06:41:35.479Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Oracle requisition 349173 is open with Apply, Bengaluru and 0–2 years/fresher eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:35.479Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "wolters-kluwer-r0056653",
