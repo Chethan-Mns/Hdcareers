@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-05T06:43:14.699Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-05T06:43:53.594Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -1222,8 +1222,45 @@
     "warning": "Only confirmed Live-evidenced jobs reach Priority/Backup. Unconfirmed exact URLs are saved for separate source rechecking, never silently marked Expired."
   },
   "publication": {
-    "authorized": false,
-    "status": "not_started",
-    "note": "Owner review and explicit Verify & Publish approval are required. This batch does not publish website pages or Telegram messages."
-  }
+    "candidateIds": [
+      "cigna-healthcare-26013237",
+      "deloitte-61208344",
+      "eaton-687239808454",
+      "future-standard-8452204002",
+      "global-payments-r0073884-1",
+      "infineon-technologies-563808972052390",
+      "intel-jr0288631",
+      "michelin-r-2026039927-1",
+      "navi-c-7l-1gpylznbth3nyog75w7ehzgu4q1jho97ga1jeplunsoxt3ngpom6filvjjw",
+      "wolters-kluwer-r0056653"
+    ],
+    "companies": [
+      "Cigna Healthcare",
+      "Deloitte",
+      "Eaton",
+      "Future Standard",
+      "Global Payments",
+      "Infineon Technologies",
+      "Intel",
+      "Michelin",
+      "Navi",
+      "Wolters Kluwer"
+    ],
+    "urls": [
+      "https://cigna.wd5.myworkdayjobs.com/CignaCareers/job/Bengaluru-India/Automation-Engineer-Associate-Analysts---Cigna-Healthcare_26013237",
+      "https://southasiacareers.deloitte.com/job/Delhi-CEC-Executive-Whistleblower-Hotline-%26-Case-Management-Delhi-CEC-Forensic-%26-Financial-Crime/61208344/",
+      "https://eaton.eightfold.ai/careers/job/687239808454",
+      "https://job-boards.greenhouse.io/futurestandard/jobs/8452204002",
+      "https://tsys.wd1.myworkdayjobs.com/Tsys/job/PUNE--INDIA/Software-Engineer_R0073884-1",
+      "https://jobs.infineon.com/careers/job/563808972052390",
+      "https://intel.wd1.myworkdayjobs.com/External/job/India-Bangalore/GPU-Logic-Design-Engineer_JR0288631",
+      "https://michelinhr.wd3.myworkdayjobs.com/michelin/job/Pune/Data-Scientist_R-2026039927-1",
+      "https://navi.turbohire.co/job/publicjobs/c_7L_1GpylznBtH3NyOg75W7EhzgU4Q1JHo97gA1jEplUNsOxT3nGpOm6fiLvjjW",
+      "https://wk.wd3.myworkdayjobs.com/External/job/IND---Chennai-Neville-Towers/Associate-Support-Engineer_R0056653"
+    ],
+    "requestId": "b489ed7051f669957da923ec",
+    "count": 10,
+    "submittedAt": "2026-11-05T06:43:53.594Z"
+  },
+  "submittedAt": "2026-11-05T06:43:53.594Z"
 }
