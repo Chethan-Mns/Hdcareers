@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T03:40:42.498Z",
+  "updatedAt": "2026-11-05T03:43:07.895Z",
   "priority": [
     {
       "id": "qualcomm-446720952925",
@@ -968,6 +968,58 @@
         "currentVerdict": "live",
         "officialEvidence": "Exact AtkinsRéalis requisition R-164535 is open with Apply for a Bengaluru student/fresher internship."
       }
+    },
+    {
+      "id": "sap-ref3279m",
+      "company": "SAP",
+      "role": "Forward Deployed Developer Associate",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.sap.com/en/jobs/744000159118439/forward-deployed-developer-associate/",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Entry level / no minimum prior experience stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "live",
+      "verificationReason": "The exact SAP Careers job 744000159118439 / reference REF3279M is open today with Apply, Bengaluru, full-time Associate level and foundational rather than prior-year requirements.",
+      "postedDate": "2026-11-03",
+      "job": {
+        "company": "SAP",
+        "role": "Forward Deployed Developer Associate",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.sap.com/en/jobs/744000159118439/forward-deployed-developer-associate/",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level / no minimum prior experience stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "review",
+        "sourceName": "SAP Careers",
+        "desc": "Associate engineering role contributing to AI-native enterprise applications in customer delivery teams.",
+        "elig": "Foundational Python and basic cloud, AI/ML, Git, CI/CD and container knowledge; the posting states no minimum prior-experience requirement.",
+        "resp": [
+          "Contribute to coding, testing and debugging AI-enabled features",
+          "Support prototypes and AI output validation",
+          "Participate in code reviews, sprint planning and documentation"
+        ],
+        "skills": [
+          "Python",
+          "Cloud platforms",
+          "AI/ML fundamentals",
+          "Git",
+          "CI/CD",
+          "Containers"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "REF3279M / 744000159118439",
+        "postedDate": "2026-11-03",
+        "verifiedDate": "5 Nov 2026",
+        "sourceVerificationMethod": "Exact official SAP Careers requisition and job-bound application route checked on 5 Nov 2026."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-05T03:43:07.895Z",
+        "currentVerdict": "live",
+        "officialEvidence": "The exact SAP Careers job 744000159118439 / reference REF3279M is open today with Apply, Bengaluru, full-time Associate level and foundational rather than prior-year requirements."
+      }
     }
   ],
   "discoveryAudit": {
@@ -975,35 +1027,41 @@
       "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
-        "unclassified": 2
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
     "backup": {
-      "size": 9,
+      "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
-        "training": 1,
-        "unclassified": 2
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
-        "training": 1
+        "nonIT": 0,
+        "training": 0
       }
     },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "remaining": 19,
+    "remaining": 20,
+    "approvedWatchlist87": 9,
+    "fallbackEmployers": 11,
+    "watchlistedVisited": 12,
+    "watchlistedNotVisited": 75,
+    "blockedOrPartiallyRendered": 2,
+    "uniqueExactLiveJobIdsFound": 21,
     "duplicateExclusions": [
       "Deloitte 60941544",
       "Cisco 2023504",
@@ -1019,8 +1077,11 @@
       }
     ],
     "excludedCount": 7,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "sourceUnconfirmedOrExperiencedHeld": 5,
+    "authoritativelyExpired": 1,
+    "needsFreshDiscovery": false,
+    "deloitteOutcome": "One new Deloitte non-technical fresher role reserved in Priority: Executive – Whistleblower Hotline & Case Management, URL ID 61208344.",
+    "note": "Independent scrub removed published Stripe requisition 8130876. Fresh SAP reference REF3279M replaced it; both lists now contain 6 technical full-time, 2 non-technical full-time and 2 training roles."
   },
   "quotaAudit": {
     "priority": {
@@ -1061,7 +1122,7 @@
   },
   "ranking": {
     "policy": "Deloitte first; then approved watchlist; fallback only for category shortages. Priority and Backup independently audited 6/2/2.",
-    "notes": "All 20 are distinct employers and new exact requisitions after published, archived-review, queue and delivery deduplication."
+    "notes": "The repository scrub removed published Stripe 8130876; SAP REF3279M is the verified fresh technical replacement. All 20 employers are distinct."
   },
   "publication": {
     "authorized": false,
