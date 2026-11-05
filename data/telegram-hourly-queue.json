@@ -1491,9 +1491,11 @@
     {
       "page": "jobs/global-payments-software-engineer-c.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T10:46:08.636358+00:00"
+      "dueAt": "2026-11-05T10:46:08.636358+00:00",
+      "claimId": "42013446039",
+      "claimedAt": "2026-11-05T10:46:18.900038+00:00"
     },
     {
       "page": "jobs/infineon-technologies-trainee-engineer-analog-design.html",
