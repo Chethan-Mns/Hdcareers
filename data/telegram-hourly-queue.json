@@ -1471,60 +1471,61 @@
     {
       "page": "jobs/eaton-associate-engineer-verification-validation.html",
       "batchId": "admin-41982382495",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T08:45:36.168276+00:00",
       "claimId": "41996953787",
-      "claimedAt": "2026-11-05T08:45:48.548268+00:00"
+      "claimedAt": "2026-11-05T08:45:48.548268+00:00",
+      "messageId": 671,
+      "deliveredAt": "2026-11-05T08:45:52.794683+00:00"
     },
     {
       "page": "jobs/future-standard-associate-core-operations.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T09:45:36.168276+00:00"
+      "dueAt": "2026-11-05T09:45:52.794683+00:00"
     },
     {
       "page": "jobs/global-payments-software-engineer-c.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T10:45:36.168276+00:00"
+      "dueAt": "2026-11-05T10:45:52.794683+00:00"
     },
     {
       "page": "jobs/infineon-technologies-trainee-engineer-analog-design.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T11:45:36.168276+00:00"
+      "dueAt": "2026-11-05T11:45:52.794683+00:00"
     },
     {
       "page": "jobs/intel-gpu-logic-design-engineer.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T12:45:36.168276+00:00"
+      "dueAt": "2026-11-05T12:45:52.794683+00:00"
     },
     {
       "page": "jobs/michelin-junior-genai-data-scientist.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T13:45:36.168276+00:00"
+      "dueAt": "2026-11-05T13:45:52.794683+00:00"
     },
     {
       "page": "jobs/navi-cloudops-engineer-i.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T14:45:36.168276+00:00"
+      "dueAt": "2026-11-05T14:45:52.794683+00:00"
     },
     {
       "page": "jobs/wolters-kluwer-associate-support-engineer.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T15:45:36.168276+00:00"
+      "dueAt": "2026-11-05T15:45:52.794683+00:00"
     }
   ]
 }
