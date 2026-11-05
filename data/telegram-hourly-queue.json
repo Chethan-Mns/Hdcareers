@@ -1531,9 +1531,11 @@
     {
       "page": "jobs/navi-cloudops-engineer-i.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T14:47:10.282899+00:00"
+      "dueAt": "2026-11-05T14:47:10.282899+00:00",
+      "claimId": "42048376597",
+      "claimedAt": "2026-11-05T14:47:21.399004+00:00"
     },
     {
       "page": "jobs/wolters-kluwer-associate-support-engineer.html",
