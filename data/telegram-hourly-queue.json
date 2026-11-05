@@ -1471,9 +1471,11 @@
     {
       "page": "jobs/eaton-associate-engineer-verification-validation.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T08:45:36.168276+00:00"
+      "dueAt": "2026-11-05T08:45:36.168276+00:00",
+      "claimId": "41996953787",
+      "claimedAt": "2026-11-05T08:45:48.548268+00:00"
     },
     {
       "page": "jobs/future-standard-associate-core-operations.html",
