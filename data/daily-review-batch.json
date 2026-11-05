@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:34.790Z",
+  "updatedAt": "2026-11-05T06:42:41.933Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -720,7 +720,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact TSYS requisition R0073884-1 is open with Apply, Pune, 0–1 year and 11 Nov deadline.",
       "postedDate": "2026-10-30",
@@ -734,7 +734,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Global Payments / TSYS Careers",
         "desc": "Entry-level software role developing payment-platform services in C++.",
         "elig": "Degree in CS, IT, MIS or related; 0–1 year/no prior experience required.",
@@ -754,13 +754,17 @@
         "jobId": "R0073884-1",
         "postedDate": "2026-10-30",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:41.933Z",
+        "browserVerifiedAt": "2026-11-05T06:42:41.933Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact TSYS requisition R0073884-1 is open with Apply, Pune, 0–1 year and 11 Nov deadline."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:41.933Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "navi-c-7l-1gpylznbth3nyog75w7ehzgu4q1jho97ga1jeplunsoxt3ngpom6filvjjw",
