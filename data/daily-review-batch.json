@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:49.060Z",
+  "updatedAt": "2026-11-05T06:42:55.295Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -831,7 +831,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Eaton requisition 687239808454 is open with Apply, Pune and 0–2 years.",
       "postedDate": "2026-11-02",
@@ -845,7 +845,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Eaton Careers",
         "desc": "Associate role verifying embedded products and communication interfaces.",
         "elig": "Engineering degree in Electronics, ECE, Instrumentation or related; 0–2 years.",
@@ -867,13 +867,17 @@
         "jobId": "687239808454",
         "postedDate": "2026-11-02",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:55.295Z",
+        "browserVerifiedAt": "2026-11-05T06:42:55.295Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Eaton requisition 687239808454 is open with Apply, Pune and 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:55.295Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "future-standard-8452204002",
