@@ -1450,62 +1450,74 @@
     {
       "page": "jobs/cigna-healthcare-automation-engineer-associate-analyst.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00",
+      "claimId": "41982382495",
+      "claimedAt": "2026-11-05T06:44:44.487282+00:00"
     },
     {
       "page": "jobs/deloitte-executive-whistleblower-hotline-case-management.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/eaton-associate-engineer-verification-validation.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/future-standard-associate-core-operations.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/global-payments-software-engineer-c.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/infineon-technologies-trainee-engineer-analog-design.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/intel-gpu-logic-design-engineer.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/michelin-junior-genai-data-scientist.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/navi-cloudops-engineer-i.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     },
     {
       "page": "jobs/wolters-kluwer-associate-support-engineer.html",
       "batchId": "admin-41982382495",
       "status": "pending",
-      "queuedAt": "2026-11-05T06:44:15.525329+00:00"
+      "queuedAt": "2026-11-05T06:44:15.525329+00:00",
+      "dueAt": "2026-11-05T06:44:15.525329+00:00"
     }
   ]
 }
