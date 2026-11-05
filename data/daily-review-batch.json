@@ -328,7 +328,7 @@
         "role": "Executive – Whistleblower Hotline & Case Management",
         "loc": "Delhi, India",
         "apply": "https://southasiacareers.deloitte.com/job/Delhi-CEC-Executive-Whistleblower-Hotline-%26-Case-Management-Delhi-CEC-Forensic-%26-Financial-Crime/61208344/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0 years / no prior experience stated",
         "salary": "Not Disclosed",
@@ -377,7 +377,7 @@
         "role": "Associate Product Manager, University Graduate, 2027 Start",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://www.google.com/about/careers/applications/jobs/results/101007950268506822-associate-product-manager-university-graduate-2027-start",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "University graduate / no prior experience stated",
         "salary": "Not Disclosed",
@@ -664,57 +664,6 @@
       }
     },
     {
-      "id": "stripe-8130876",
-      "company": "Stripe",
-      "role": "Software Engineer, New Grad",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876?gh_jid=8130876",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "New graduate; up to 18 months professional experience",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Stripe requisition 8130876 is open with Apply, Bengaluru and explicit new-grad eligibility.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Stripe",
-        "role": "Software Engineer, New Grad",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876?gh_jid=8130876",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "New graduate; up to 18 months professional experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "review",
-        "sourceName": "Stripe Careers",
-        "desc": "New-graduate software role building and operating Stripe products.",
-        "elig": "BS/MS/PhD in CS or related by summer 2027; up to 18 months professional experience excluding internships.",
-        "resp": [
-          "Build and maintain production software",
-          "Contribute to design and code review",
-          "Diagnose and improve reliability"
-        ],
-        "skills": [
-          "Java",
-          "Ruby",
-          "JavaScript",
-          "Scala",
-          "Go"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "8130876",
-        "postedDate": "Not Specified",
-        "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-05T03:40:42.498Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Stripe requisition 8130876 is open with Apply, Bengaluru and explicit new-grad eligibility."
-      }
-    },
-    {
       "id": "global-payments-r0073884-1",
       "company": "Global Payments",
       "role": "Software Engineer – C++",
@@ -835,7 +784,7 @@
         "role": "Associate – Core Operations",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://job-boards.greenhouse.io/futurestandard/jobs/8452204002",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Entry level / no prior experience stated",
         "salary": "Not Disclosed",
@@ -884,7 +833,7 @@
         "role": "Analyst – Financial Operations",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4747560005",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
@@ -1022,39 +971,56 @@
     }
   ],
   "discoveryAudit": {
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 9,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 1,
+        "unclassified": 2
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 1
+      }
+    },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "staged": 20,
-    "distinctEmployers": 20,
-    "approvedWatchlist87": 8,
-    "fallbackEmployers": 12,
-    "employerCoverage": {
-      "watchlistedVisited": 11,
-      "watchlistedNotVisited": 76,
-      "blockedOrPartiallyRendered": 2
-    },
-    "uniqueExactLiveJobIdsFound": 20,
-    "duplicatePostingsExcluded": 6,
-    "sourceUnconfirmedOrExperiencedHeld": 5,
-    "authoritativelyExpired": 1,
+    "remaining": 19,
     "duplicateExclusions": [
       "Deloitte 60941544",
       "Cisco 2023504",
       "KLA 2636690",
       "Unisys REQ576504",
       "NVIDIA JR2028897",
-      "Emerson 26011225"
+      "Emerson 26011225",
+      {
+        "id": "stripe-8130876",
+        "company": "Stripe",
+        "reason": "already_published",
+        "officialUrl": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876?gh_jid=8130876"
+      }
     ],
-    "heldOrExcluded": [
-      "HCLTech 184349 – official page says job no longer available",
-      "EXL 22118 – posting states 1–5 years despite conflicting summary",
-      "Cisco 2027380 – official posting states 2–4 years",
-      "Other candidates withheld where zero-experience or application evidence was incomplete"
-    ],
-    "deloitteOutcome": "One new Deloitte non-technical fresher role reserved in Priority: Executive – Whistleblower Hotline & Case Management, URL ID 61208344.",
-    "note": "Fallback employers were used only after watchlist category shortages. No duplicate, owner-closed, experienced-only or generic careers link was staged."
+    "excludedCount": 7,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
