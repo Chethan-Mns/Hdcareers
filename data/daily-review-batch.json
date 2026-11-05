@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:07.642Z",
+  "updatedAt": "2026-11-05T06:42:17.149Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -557,7 +557,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Infineon requisition 563808972052390 is open with Apply, Hyderabad and 0–1 year.",
       "postedDate": "2026-11-04",
@@ -571,7 +571,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Infineon Careers",
         "desc": "Trainee role supporting analog circuit design and simulation.",
         "elig": "B.E./B.Tech or M.E./M.Tech in ECE, EE, Microelectronics, VLSI or related; 0–1 year.",
@@ -590,13 +590,17 @@
         "jobId": "563808972052390",
         "postedDate": "2026-11-04",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:17.149Z",
+        "browserVerifiedAt": "2026-11-05T06:42:17.149Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Infineon requisition 563808972052390 is open with Apply, Hyderabad and 0–1 year."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:17.149Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "michelin-r-2026039927-1",
