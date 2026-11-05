@@ -1521,25 +1521,26 @@
     {
       "page": "jobs/michelin-junior-genai-data-scientist.html",
       "batchId": "admin-41982382495",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T13:46:53.205715+00:00",
       "claimId": "42038811726",
-      "claimedAt": "2026-11-05T13:47:05.562621+00:00"
+      "claimedAt": "2026-11-05T13:47:05.562621+00:00",
+      "messageId": 676,
+      "deliveredAt": "2026-11-05T13:47:10.282899+00:00"
     },
     {
       "page": "jobs/navi-cloudops-engineer-i.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T14:46:53.205715+00:00"
+      "dueAt": "2026-11-05T14:47:10.282899+00:00"
     },
     {
       "page": "jobs/wolters-kluwer-associate-support-engineer.html",
       "batchId": "admin-41982382495",
       "status": "pending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T15:46:53.205715+00:00"
+      "dueAt": "2026-11-05T15:47:10.282899+00:00"
     }
   ]
 }
