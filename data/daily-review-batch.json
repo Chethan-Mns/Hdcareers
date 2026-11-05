@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:09.059Z",
+  "updatedAt": "2026-11-05T06:41:16.316Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -122,7 +122,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Qualcomm requisition 446720952925 is open with Apply, Hyderabad and 0–1 year.",
       "postedDate": "2026-11-04",
@@ -136,7 +136,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Qualcomm Careers",
         "desc": "Entry-level systems test role validating WLAN and Bluetooth features.",
         "elig": "Bachelor’s in CS, Electronics or related engineering; 0–1 year.",
@@ -161,7 +161,9 @@
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Qualcomm requisition 446720952925 is open with Apply, Hyderabad and 0–1 year."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:16.316Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hewlett-packard-enterprise-1209121",
