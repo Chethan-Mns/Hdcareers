@@ -1521,9 +1521,11 @@
     {
       "page": "jobs/michelin-junior-genai-data-scientist.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T13:46:53.205715+00:00"
+      "dueAt": "2026-11-05T13:46:53.205715+00:00",
+      "claimId": "42038811726",
+      "claimedAt": "2026-11-05T13:47:05.562621+00:00"
     },
     {
       "page": "jobs/navi-cloudops-engineer-i.html",
