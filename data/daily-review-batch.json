@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:05.075Z",
+  "updatedAt": "2026-11-05T06:41:09.059Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -68,7 +68,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Entry level / no minimum prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "The exact SAP Careers job 744000159118439 / reference REF3279M is open today with Apply, Bengaluru, full-time Associate level and foundational rather than prior-year requirements.",
       "postedDate": "2026-11-03",
@@ -82,7 +82,7 @@
         "expYears": "Entry level / no minimum prior experience stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "SAP Careers",
         "desc": "Associate engineering role contributing to AI-native enterprise applications in customer delivery teams.",
         "elig": "Foundational Python and basic cloud, AI/ML, Git, CI/CD and container knowledge; the posting states no minimum prior-experience requirement.",
@@ -109,7 +109,9 @@
         "currentCheckAt": "2026-11-05T03:43:07.895Z",
         "currentVerdict": "live",
         "officialEvidence": "The exact SAP Careers job 744000159118439 / reference REF3279M is open today with Apply, Bengaluru, full-time Associate level and foundational rather than prior-year requirements."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:09.059Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-446720952925",
