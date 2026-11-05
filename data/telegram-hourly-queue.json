@@ -1481,9 +1481,11 @@
     {
       "page": "jobs/future-standard-associate-core-operations.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T09:45:52.794683+00:00"
+      "dueAt": "2026-11-05T09:45:52.794683+00:00",
+      "claimId": "42005067662",
+      "claimedAt": "2026-11-05T09:46:05.427356+00:00"
     },
     {
       "page": "jobs/global-payments-software-engineer-c.html",
