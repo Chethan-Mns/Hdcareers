@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:17.149Z",
+  "updatedAt": "2026-11-05T06:42:24.809Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -611,7 +611,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Michelin requisition R-2026039927-1 is open with Apply, Pune, 0–1 year and 7 Nov deadline.",
       "postedDate": "2026-11-04",
@@ -625,7 +625,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Michelin Careers",
         "desc": "Junior data science role building GenAI and retrieval-augmented applications.",
         "elig": "Relevant graduate qualification; 0–1 year; apply through 7 Nov 2026.",
@@ -645,13 +645,17 @@
         "jobId": "R-2026039927-1",
         "postedDate": "2026-11-04",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:24.809Z",
+        "browserVerifiedAt": "2026-11-05T06:42:24.809Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Michelin requisition R-2026039927-1 is open with Apply, Pune, 0–1 year and 7 Nov deadline."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:42:24.809Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cigna-healthcare-26013237",
