@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:59.006Z",
+  "updatedAt": "2026-11-05T06:42:07.642Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -498,7 +498,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Final-year student program",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Nasdaq requisition R0027122 is open with Apply for a six-month Bengaluru final-year program.",
       "postedDate": "2026-11-03",
@@ -512,7 +512,7 @@
         "expYears": "Final-year student program",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Nasdaq Careers",
         "desc": "Six-month campus program providing technical project experience.",
         "elig": "Final-year students in the eligible AI, CS, IT, Data or MBA programs; available Jan–Jun 2027.",
@@ -533,14 +533,18 @@
         "jobId": "R0027122",
         "postedDate": "2026-11-03",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:42:07.642Z",
+        "browserVerifiedAt": "2026-11-05T06:42:07.642Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Nasdaq requisition R0027122 is open with Apply for a six-month Bengaluru final-year program."
       },
-      "expType": "internship"
+      "expType": "internship",
+      "reviewedAt": "2026-11-05T06:42:07.642Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
