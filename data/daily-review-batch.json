@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:43.061Z",
+  "updatedAt": "2026-11-05T06:41:47.621Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -336,7 +336,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0 years / no prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Deloitte South Asia URL ID 61208344 is open with Apply, Delhi, any-graduate eligibility and no experience minimum.",
       "postedDate": "2026-11-02",
@@ -350,7 +350,7 @@
         "expYears": "0 years / no prior experience stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "Case-management role receiving whistleblower reports and supporting confidential escalation.",
         "elig": "Any graduate; no minimum prior experience stated; Hindi and English plus a South Indian language requested.",
@@ -368,13 +368,17 @@
         "jobId": "61208344",
         "postedDate": "2026-11-02",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:41:47.621Z",
+        "browserVerifiedAt": "2026-11-05T06:41:47.621Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Deloitte South Asia URL ID 61208344 is open with Apply, Delhi, any-graduate eligibility and no experience minimum."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:47.621Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "google-101007950268506822",
