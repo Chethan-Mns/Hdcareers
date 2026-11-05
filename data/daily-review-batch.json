@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:41:16.316Z",
+  "updatedAt": "2026-11-05T06:41:26.386Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -174,7 +174,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Entry level / no prior experience stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact HPE Workday job route 1209121 remains active and identifies an entry-level Bengaluru role without an experience minimum.",
       "postedDate": "2026-10-28",
@@ -188,7 +188,7 @@
         "expYears": "Entry level / no prior experience stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "HPE Careers",
         "desc": "Associate support role diagnosing enterprise networking and platform issues.",
         "elig": "Entry-level candidate meeting the official technical qualifications; no minimum prior experience stated.",
@@ -214,7 +214,9 @@
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact HPE Workday job route 1209121 remains active and identifies an entry-level Bengaluru role without an experience minimum."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:26.386Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "oracle-349173",
