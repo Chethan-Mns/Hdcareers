@@ -1461,9 +1461,11 @@
     {
       "page": "jobs/deloitte-executive-whistleblower-hotline-case-management.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T07:45:20.234290+00:00"
+      "dueAt": "2026-11-05T07:45:20.234290+00:00",
+      "claimId": "41989456744",
+      "claimedAt": "2026-11-05T07:45:31.393475+00:00"
     },
     {
       "page": "jobs/eaton-associate-engineer-verification-validation.html",
