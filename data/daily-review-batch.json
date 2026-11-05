@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T03:44:02.203Z",
+  "updatedAt": "2026-11-05T03:47:08.947Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -1076,7 +1076,9 @@
     ],
     "excludedCount": 7,
     "needsFreshDiscovery": false,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "approvedWatchlist87": 8,
+    "fallbackEmployers": 12
   },
   "quotaAudit": {
     "priority": {
