@@ -3,54 +3,53 @@
   "client_payload": {
     "jobs": [
       {
-        "company": "Infosys",
-        "role": "Digital Specialist Engineer (Trainee)",
-        "roleTag": "Digital Specialist Engineer (Trainee)",
-        "loc": "Hyderabad, Bengaluru, Delhi / NCR",
-        "locationFilter": "Hyderabad, Bengaluru, Delhi / NCR",
-        "apply": "https://www.naukri.com/job-listings-digital-specialist-engineer-trainee-infosys-hyderabad-bengaluru-delhi-ncr-0-to-2-years-151026022319",
-        "domain": "naukri.com",
-        "cat": "campus",
+        "company": "Cepheid",
+        "role": "Software Engineering Intern — Intern Hiring Challenge 2026",
+        "roleTag": "Software Engineering Intern",
+        "loc": "Bengaluru, Karnataka (Danaher India Development Center)",
+        "locationFilter": "Bengaluru",
+        "apply": "https://www.hackerearth.com/community/challenges/competitive/cepheid-hiring-challenge-2026-4/",
+        "domain": "hackerearth.com",
+        "cat": "internship",
         "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "₹6.25 LPA + ₹75,000 joining bonus",
-        "batch": "2024–2026 graduates",
+        "expYears": "Student / early-career internship; check challenge eligibility",
+        "salary": "Not Disclosed",
+        "batch": "2026 and 2027 (reported)",
         "status": "active",
-        "sourceName": "Naukri — Infosys job listing",
-        "desc": "Infosys is hiring Digital Specialist Engineers (Trainee) to design, develop, test, validate and support digital solutions. The listing is for eligible 2024–2026 UG/PG graduates with up to two years of experience.",
-        "elig": "2024, 2025 or 2026 UG/PG graduates; B.E./B.Tech in any specialization, M.Tech, MCA or MS/M.Sc. (Science); up to 2 years of experience. Confirm the full requirements on the listing before applying.",
+        "sourceName": "Cepheid — HackerEarth official challenge",
+        "desc": "Cepheid Intern Hiring Challenge 2026 is an online, employment-linked assessment for a Software Engineering Intern opportunity associated with the Cepheid team at Danaher India Development Center, Bengaluru. The official challenge window is 27 November–6 December 2026 (6:00 PM–11:59 PM IST each day). The challenge lasts 2 hours 15 minutes and requires a webcam. The official public page identifies this as a job opportunity and shows registrations; signing in to HackerEarth may be needed to register or participate.",
+        "elig": "Independent listings report 2026/2027 graduating batches pursuing B.E. in Computer Science or Artificial Intelligence. Java and Angular knowledge is expected. The public HackerEarth overview does not display these academic conditions without login; verify the official challenge instructions before registering.",
         "resp": [
-          "Design, develop, validate and support digital solutions.",
-          "Review requirements and contribute to design, development and testing.",
-          "Prepare and review code, documentation and unit test scripts.",
-          "Support go-live activities and help resolve production issues."
+          "Register/sign in to HackerEarth and check the official eligibility and instructions.",
+          "Complete the 2-hour-15-minute online hiring challenge during its November 27–December 6 window.",
+          "Prepare for 10 Angular multiple-choice questions and one Data Structures & Algorithms coding question in Java (as described in recent challenge summaries).",
+          "Use a desktop or laptop with a working webcam and follow the proctoring instructions."
         ],
         "skills": [
-          "Full-stack development",
-          "Programming",
           "Java",
-          "Python",
-          "AI and machine learning",
-          "Software testing"
+          "Angular",
+          "Data Structures & Algorithms",
+          "Problem solving",
+          "Web development fundamentals"
         ],
-        "workMode": "Not Specified",
-        "jobId": "151026022319",
-        "date": "Not Specified",
-        "verifiedDate": "30 Oct 2026",
-        "sourceVerificationMethod": "Exact Naukri Infosys job listing opened and checked on 30 Oct 2026; title, employer, locations, experience, eligibility, compensation and active Apply button were visible.",
-        "browserVerifiedAt": "2026-10-30T05:11:54.434Z",
-        "manualLiveVerifiedAt": "2026-10-30T05:11:54.434Z",
-        "manualLiveVerifiedUrl": "https://www.naukri.com/job-listings-digital-specialist-engineer-trainee-infosys-hyderabad-bengaluru-delhi-ncr-0-to-2-years-151026022319",
-        "who": "UG/PG graduates from 2024, 2025 or 2026 with up to two years of experience, a listed eligible degree and programming skills.",
+        "workMode": "Online assessment; internship based in Bengaluru",
+        "jobId": "HackerEarth cepheid-hiring-challenge-2026-4",
+        "date": "2026-11-05",
+        "verifiedDate": "5 Nov 2026",
+        "closingAt": "2026-12-06T18:29:00Z",
+        "manualLiveVerifiedAt": "2026-11-05T07:12:00Z",
+        "manualLiveVerifiedUrl": "https://www.hackerearth.com/community/challenges/competitive/cepheid-hiring-challenge-2026-4/",
+        "sourceVerificationMethod": "Exact official public HackerEarth challenge page read on 5 Nov 2026: upcoming Nov 27–Dec 6 dates, job opportunity designation, 4.2K registrations, online duration and webcam requirement displayed. Registration workflow itself requires sign-in and was not completed. Academic criteria/assessment pattern supported by contemporaneous secondary sources only.",
+        "who": "2026 or 2027 B.E. Computer Science / Artificial Intelligence students with Java, Angular and DSA skills who meet the exact HackerEarth challenge eligibility after login.",
         "logo": [
-          "IN",
-          "#0b6fe8"
+          "CE",
+          "#007eb8"
         ],
-        "page": "jobs/infosys-digital-specialist-engineer-trainee-2026.html",
+        "page": "jobs/cepheid-software-engineering-intern-hiring-challenge-2026.html",
         "telegramDeliveryMode": "instant"
       }
     ],
     "telegramDeliveryMode": "instant",
-    "requestId": "vip-infosys-dse-trainee-20261030"
+    "requestId": "vip-cepheid-intern-hiring-challenge-20261105"
   }
 }
