@@ -229,5 +229,47 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/state-street-operations-early-career-entry-program.html"
+  },
+  "Cigna Healthcare": {
+    "status": "needs_review",
+    "company": "Cigna Healthcare",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/cigna-healthcare-automation-engineer-associate-analyst.html"
+  },
+  "Future Standard": {
+    "status": "needs_review",
+    "company": "Future Standard",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/future-standard-associate-core-operations.html"
+  },
+  "Global Payments": {
+    "status": "needs_review",
+    "company": "Global Payments",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/global-payments-software-engineer-c.html"
+  },
+  "Infineon Technologies": {
+    "status": "needs_review",
+    "company": "Infineon Technologies",
+    "officialDomain": "infineon.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
+    "jobPage": "jobs/infineon-technologies-trainee-engineer-analog-design.html"
+  },
+  "Michelin": {
+    "status": "needs_review",
+    "company": "Michelin",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/michelin-junior-genai-data-scientist.html"
+  },
+  "Wolters Kluwer": {
+    "status": "needs_review",
+    "company": "Wolters Kluwer",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/wolters-kluwer-associate-support-engineer.html"
   }
 }
