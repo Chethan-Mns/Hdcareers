@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T03:47:08.947Z",
+  "updatedAt": "2026-11-05T06:41:05.075Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Intel Workday job route JR0288631 remains active; source-native posting states Bengaluru and 0–1 year.",
       "postedDate": "2026-10-29",
@@ -27,7 +27,7 @@
         "expYears": "0–1 year",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "active",
         "sourceName": "Intel Careers",
         "desc": "Entry-level GPU logic design role supporting RTL and design-for-test work.",
         "elig": "Graduate/postgraduate degree in Electrical or Computer Engineering; 0–1 year and no professional experience required.",
@@ -47,13 +47,17 @@
         "jobId": "JR0288631",
         "postedDate": "2026-10-29",
         "verifiedDate": "5 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 5 Nov 2026.",
+        "manualLiveVerifiedAt": "2026-11-05T06:41:05.045Z",
+        "browserVerifiedAt": "2026-11-05T06:41:05.045Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Intel Workday job route JR0288631 remains active; source-native posting states Bengaluru and 0–1 year."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:41:05.045Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "sap-ref3279m",
