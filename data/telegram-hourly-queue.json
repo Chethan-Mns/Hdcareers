@@ -1501,9 +1501,11 @@
     {
       "page": "jobs/infineon-technologies-trainee-engineer-analog-design.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T11:46:22.745837+00:00"
+      "dueAt": "2026-11-05T11:46:22.745837+00:00",
+      "claimId": "42021669601",
+      "claimedAt": "2026-11-05T11:46:34.434689+00:00"
     },
     {
       "page": "jobs/intel-gpu-logic-design-engineer.html",
