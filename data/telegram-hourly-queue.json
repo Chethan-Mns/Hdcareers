@@ -1541,9 +1541,11 @@
     {
       "page": "jobs/wolters-kluwer-associate-support-engineer.html",
       "batchId": "admin-41982382495",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-05T06:44:15.525329+00:00",
-      "dueAt": "2026-11-05T15:47:25.045116+00:00"
+      "dueAt": "2026-11-05T15:47:25.045116+00:00",
+      "claimId": "42058539597",
+      "claimedAt": "2026-11-05T15:47:34.823141+00:00"
     }
   ]
 }
