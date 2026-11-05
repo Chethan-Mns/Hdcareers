@@ -2,7 +2,7 @@
   "batchId": "2026-11-05-0900-ist",
   "generatedAt": "2026-11-05T03:40:42.498Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-05T06:42:58.588Z",
+  "updatedAt": "2026-11-05T06:43:02.336Z",
   "priority": [
     {
       "id": "intel-jr0288631",
@@ -941,7 +941,7 @@
       "cat": "non-it",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact Razorpay Greenhouse requisition 4747560005 is open with Apply, Bengaluru and 0–2 years.",
       "postedDate": "Not Specified",
@@ -955,7 +955,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "review",
+        "status": "expired",
         "sourceName": "Razorpay Careers",
         "desc": "Financial operations role supporting reconciliations, settlements and treasury.",
         "elig": "Bachelor’s in Commerce, Accounting, Finance, Business or related; 0–2 years.",
@@ -980,7 +980,9 @@
         "currentCheckAt": "2026-11-05T03:40:42.498Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Razorpay Greenhouse requisition 4747560005 is open with Apply, Bengaluru and 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-05T06:43:02.336Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "atkinsr-alis-r-164535",
