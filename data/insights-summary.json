@@ -1,33 +1,33 @@
 {
   "verifiedThrough": "5 November 2026",
-  "active": 209,
-  "employers": 138,
-  "freshers": 130,
-  "experienced": 70,
+  "active": 195,
+  "employers": 129,
+  "freshers": 120,
+  "experienced": 66,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 71
-    },
-    {
-      "label": "Mumbai",
-      "count": 16
+      "count": 66
     },
     {
       "label": "Hyderabad",
-      "count": 15
+      "count": 14
+    },
+    {
+      "label": "Mumbai",
+      "count": 14
     },
     {
       "label": "Pune",
-      "count": 13
-    },
-    {
-      "label": "Gurugram",
-      "count": 8
+      "count": 10
     },
     {
       "label": "Delhi",
       "count": 7
+    },
+    {
+      "label": "Gurugram",
+      "count": 6
     },
     {
       "label": "Navi Mumbai",
@@ -43,37 +43,37 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 71
-    },
-    {
-      "city": "Mumbai",
-      "lat": 19.076,
-      "lng": 72.8777,
-      "count": 16
+      "count": 66
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 15
+      "count": 14
+    },
+    {
+      "city": "Mumbai",
+      "lat": 19.076,
+      "lng": 72.8777,
+      "count": 14
     },
     {
       "city": "Pune",
       "lat": 18.5204,
       "lng": 73.8567,
-      "count": 13
-    },
-    {
-      "city": "Gurugram",
-      "lat": 28.4595,
-      "lng": 77.0266,
-      "count": 8
+      "count": 10
     },
     {
       "city": "Delhi",
       "lat": 28.6139,
       "lng": 77.209,
       "count": 7
+    },
+    {
+      "city": "Gurugram",
+      "lat": 28.4595,
+      "lng": 77.0266,
+      "count": 6
     },
     {
       "city": "Navi Mumbai",
@@ -139,13 +139,8 @@
   "topCompanies": [
     {
       "name": "EY",
-      "count": 10,
+      "count": 9,
       "logo": "assets/company-approved/ey.webp"
-    },
-    {
-      "name": "Deloitte",
-      "count": 8,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "HCLTech",
@@ -161,6 +156,11 @@
       "name": "Amazon",
       "count": 8,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
+      "name": "Deloitte",
+      "count": 7,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "Google",
@@ -201,23 +201,19 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 34
+      "count": 32
     },
     {
       "label": "Java",
-      "count": 26
+      "count": 24
     },
     {
       "label": "SQL",
-      "count": 25
+      "count": 24
     },
     {
       "label": "Communication",
-      "count": 22
-    },
-    {
-      "label": "Problem solving",
-      "count": 15
+      "count": 20
     },
     {
       "label": "REST APIs",
@@ -228,19 +224,15 @@
       "count": 14
     },
     {
-      "label": "C++",
-      "count": 11
+      "label": "Problem solving",
+      "count": 13
     },
     {
       "label": "Git",
       "count": 11
     },
     {
-      "label": "Testing",
-      "count": 10
-    },
-    {
-      "label": "Algorithms",
+      "label": "C++",
       "count": 10
     },
     {
@@ -248,37 +240,45 @@
       "count": 9
     },
     {
+      "label": "Algorithms",
+      "count": 9
+    },
+    {
       "label": "Documentation",
       "count": 9
     },
     {
-      "label": "Attention to detail",
-      "count": 9
+      "label": "Linux",
+      "count": 8
+    },
+    {
+      "label": "Reporting",
+      "count": 7
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 106
+      "count": 98
     },
     {
       "label": "nonit",
-      "count": 54
+      "count": 50
     },
     {
       "label": "internship",
-      "count": 38
+      "count": 37
     },
     {
       "label": "experienced",
       "count": 5
     },
     {
-      "label": "apprenticeship",
-      "count": 3
+      "label": "campus",
+      "count": 2
     },
     {
-      "label": "campus",
+      "label": "apprenticeship",
       "count": 2
     },
     {
@@ -302,14 +302,6 @@
     {
       "date": "2026-10-02",
       "count": 6
-    },
-    {
-      "date": "2026-10-03",
-      "count": 1
-    },
-    {
-      "date": "2026-10-04",
-      "count": 1
     },
     {
       "date": "2026-10-05",
@@ -341,7 +333,7 @@
     },
     {
       "date": "2026-10-12",
-      "count": 5
+      "count": 4
     },
     {
       "date": "2026-10-13",
@@ -349,11 +341,11 @@
     },
     {
       "date": "2026-10-15",
-      "count": 5
+      "count": 4
     },
     {
       "date": "2026-10-17",
-      "count": 17
+      "count": 15
     },
     {
       "date": "2026-10-18",
@@ -369,11 +361,11 @@
     },
     {
       "date": "2026-10-22",
-      "count": 6
+      "count": 5
     },
     {
       "date": "2026-10-23",
-      "count": 9
+      "count": 7
     },
     {
       "date": "2026-10-24",
@@ -385,7 +377,7 @@
     },
     {
       "date": "2026-10-26",
-      "count": 8
+      "count": 7
     },
     {
       "date": "2026-10-27",
@@ -397,19 +389,19 @@
     },
     {
       "date": "2026-10-29",
-      "count": 9
+      "count": 5
     },
     {
       "date": "2026-10-30",
-      "count": 11
+      "count": 5
     },
     {
       "date": "2026-10-31",
-      "count": 10
+      "count": 5
     },
     {
       "date": "2026-11-01",
-      "count": 30
+      "count": 3
     },
     {
       "date": "2026-11-02",
@@ -421,7 +413,7 @@
     },
     {
       "date": "2026-11-05",
-      "count": 10
+      "count": 48
     }
   ]
 }
