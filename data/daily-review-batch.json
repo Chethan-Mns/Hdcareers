@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:24:12.839Z",
+  "updatedAt": "2026-11-06T05:24:23.406Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -617,7 +617,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Recent graduate or final-year student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Celonis Careers requisition 7665962003 has a current job-bound application route; role evidence confirms Recent graduate or final-year student eligibility.",
       "postedDate": "2026-10-28",
@@ -651,13 +651,17 @@
         "jobId": "7665962003",
         "postedDate": "2026-10-28",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:24:23.406Z",
+        "browserVerifiedAt": "2026-11-06T05:24:23.406Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Celonis Careers requisition 7665962003 has a current job-bound application route; role evidence confirms Recent graduate or final-year student eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:24:23.406Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "avnet-jr-024615",
