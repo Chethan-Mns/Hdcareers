@@ -1562,9 +1562,11 @@
     {
       "page": "jobs/avnet-cybersecurity-analyst-i.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T06:28:15.001065+00:00"
+      "dueAt": "2026-11-06T06:28:15.001065+00:00",
+      "claimId": "42174627492",
+      "claimedAt": "2026-11-06T06:28:24.462023+00:00"
     },
     {
       "page": "jobs/cencora-ai-developer-1.html",
