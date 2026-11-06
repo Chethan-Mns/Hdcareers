@@ -1642,5 +1642,33 @@
     "needsQualityUpgrade": false,
     "qualityScore": 806,
     "bytes": 3888
+  },
+  "GoComet": {
+    "officialDomain": "gocomet.keka.com",
+    "sourceUrl": "https://gocomet.keka.com/assets/icons/favicons/apple-touch-icon-180x180.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/gocomet-6c7e4f7-342c5ec1a1.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 775,
+    "bytes": 21549
+  },
+  "OpenGov": {
+    "officialDomain": "opengov.com",
+    "sourceUrl": "https://opengov.com/wp-content/uploads/2026/08/OpenGov-Logo.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/opengov-3532ae2-3fee222983.png",
+    "sourceDimensions": [
+      1200,
+      1200
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1632,
+    "bytes": 10893
   }
 }
