@@ -1622,25 +1622,26 @@
     {
       "page": "jobs/pwc-india-associate-data-science.html",
       "batchId": "admin-42168473735",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T12:29:44.183160+00:00",
       "claimId": "42218091133",
-      "claimedAt": "2026-11-06T12:29:55.617124+00:00"
+      "claimedAt": "2026-11-06T12:29:55.617124+00:00",
+      "messageId": 686,
+      "deliveredAt": "2026-11-06T12:29:59.089342+00:00"
     },
     {
       "page": "jobs/qualcomm-associate-engineer-rf-software.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T13:29:44.183160+00:00"
+      "dueAt": "2026-11-06T13:29:59.089342+00:00"
     },
     {
       "page": "jobs/revvity-software-developer-intern.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T14:29:44.183160+00:00"
+      "dueAt": "2026-11-06T14:29:59.089342+00:00"
     }
   ]
 }
