@@ -1612,9 +1612,11 @@
     {
       "page": "jobs/opengov-associate-implementation-engineer.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T11:29:28.685886+00:00"
+      "dueAt": "2026-11-06T11:29:28.685886+00:00",
+      "claimId": "42210629560",
+      "claimedAt": "2026-11-06T11:29:41.118475+00:00"
     },
     {
       "page": "jobs/pwc-india-associate-data-science.html",
