@@ -1582,9 +1582,11 @@
     {
       "page": "jobs/cisco-ai-operations-engineer.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T08:28:40.384835+00:00"
+      "dueAt": "2026-11-06T08:28:40.384835+00:00",
+      "claimId": "42187951759",
+      "claimedAt": "2026-11-06T08:28:52.737097+00:00"
     },
     {
       "page": "jobs/freudenberg-vibracoustic-junior-professional-ai-engineer.html",
