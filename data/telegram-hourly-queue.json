@@ -1551,62 +1551,74 @@
     {
       "page": "jobs/amazon-programmer-analyst-intern-2027.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00",
+      "claimId": "42168473735",
+      "claimedAt": "2026-11-06T05:27:40.142961+00:00"
     },
     {
       "page": "jobs/avnet-cybersecurity-analyst-i.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/cencora-ai-developer-1.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/cisco-ai-operations-engineer.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/freudenberg-vibracoustic-junior-professional-ai-engineer.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/gocomet-full-stack-developer-intern-python-and-react.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/opengov-associate-implementation-engineer.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/pwc-india-associate-data-science.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/qualcomm-associate-engineer-rf-software.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     },
     {
       "page": "jobs/revvity-software-developer-intern.html",
       "batchId": "admin-42168473735",
       "status": "pending",
-      "queuedAt": "2026-11-06T05:27:11.063590+00:00"
+      "queuedAt": "2026-11-06T05:27:11.063590+00:00",
+      "dueAt": "2026-11-06T05:27:11.063590+00:00"
     }
   ]
 }
