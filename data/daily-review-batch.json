@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:15:22.270Z",
+  "updatedAt": "2026-11-06T05:23:58.710Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -507,7 +507,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Altera Digital Health Careers requisition R0046542 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
       "postedDate": "2026-11-02",
@@ -541,13 +541,17 @@
         "jobId": "R0046542",
         "postedDate": "2026-11-02",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:23:58.687Z",
+        "browserVerifiedAt": "2026-11-06T05:23:58.687Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Altera Digital Health Careers requisition R0046542 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:23:58.687Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "idfy-ehki9amqlgqclhwkrkzzksgze",
