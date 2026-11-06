@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:07:53.158Z",
+  "updatedAt": "2026-11-06T05:12:02.358Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -124,7 +124,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Qualcomm Careers requisition 446720761539 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
       "postedDate": "2026-11-05",
@@ -158,13 +158,17 @@
         "jobId": "446720761539",
         "postedDate": "2026-11-05",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:12:02.332Z",
+        "browserVerifiedAt": "2026-11-06T05:12:02.332Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Qualcomm Careers requisition 446720761539 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:12:02.332Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "comcast-r443109",
