@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-06T05:25:40.264Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-06T05:26:51.416Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -1012,5 +1012,47 @@
     ],
     "needsSourceVerification": [],
     "warning": "Only source-complete, exact-requisition candidates are staged. Missing non-technical slots are left empty."
+  },
+  "submittedAt": "2026-11-06T05:26:51.416Z",
+  "publication": {
+    "candidateIds": [
+      "amazon-10506542",
+      "avnet-jr-024615",
+      "cencora-r2617120",
+      "cisco-2030493-1",
+      "freudenberg-r-00106593",
+      "gocomet-98057",
+      "opengov-3a47a711-c75c-4d90-a596-09c09f409938",
+      "pwc-db-005563-1",
+      "qualcomm-446720761539",
+      "revvity-jr-045916"
+    ],
+    "companies": [
+      "Amazon",
+      "Avnet",
+      "Cencora",
+      "Cisco",
+      "Freudenberg (Vibracoustic)",
+      "GoComet",
+      "OpenGov",
+      "PwC India",
+      "Qualcomm",
+      "Revvity"
+    ],
+    "urls": [
+      "https://www.amazon.jobs/en/jobs/10506542/programmer-analyst-intern-2027",
+      "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
+      "https://myhrabc.wd5.myworkdayjobs.com/global/job/Pune-India/AI-Developer-1_R2617120",
+      "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/AI-Operations-Engineer_2030493-1",
+      "https://freudenberg.wd3.myworkdayjobs.com/freudenberg-group/job/Morinda/Junior-Professional-AI-Engineer_R_00106593",
+      "https://gocomet.keka.com/careers/jobdetails/98057",
+      "https://jobs.ashbyhq.com/opengov/3a47a711-c75c-4d90-a596-09c09f409938",
+      "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/IN-Associate-Data-Science---Engineering-Data---Analytics-Advisory-Kolkata_DB_005563-1",
+      "https://careers.qualcomm.com/careers/job/446720761539",
+      "https://revvity.wd103.myworkdayjobs.com/External/job/Mumbai/Intern---Software-Developer_JR-045916"
+    ],
+    "requestId": "9f5756f89b0a19921c25fc36",
+    "count": 10,
+    "submittedAt": "2026-11-06T05:26:51.416Z"
   }
 }
