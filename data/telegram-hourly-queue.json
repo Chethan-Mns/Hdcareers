@@ -1602,9 +1602,11 @@
     {
       "page": "jobs/gocomet-full-stack-developer-intern-python-and-react.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T10:29:12.731345+00:00"
+      "dueAt": "2026-11-06T10:29:12.731345+00:00",
+      "claimId": "42203029989",
+      "claimedAt": "2026-11-06T10:29:24.161753+00:00"
     },
     {
       "page": "jobs/opengov-associate-implementation-engineer.html",
