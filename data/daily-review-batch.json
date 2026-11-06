@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T03:36:33.329Z",
+  "updatedAt": "2026-11-06T05:07:46.333Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact PwC Workday requisition DB_005563-1 has a current job-bound route; current role evidence states Kolkata, BE/B.Tech/M.Tech and freshers or 0–2 years.",
       "postedDate": "2026-11-05",
@@ -48,13 +48,17 @@
         "jobId": "DB_005563-1",
         "postedDate": "2026-11-05",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:07:46.304Z",
+        "browserVerifiedAt": "2026-11-06T05:07:46.304Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact PwC Workday requisition DB_005563-1 has a current job-bound route; current role evidence states Kolkata, BE/B.Tech/M.Tech and freshers or 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:07:46.304Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-2030493-1",
