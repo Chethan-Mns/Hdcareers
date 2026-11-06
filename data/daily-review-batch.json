@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:12:38.108Z",
+  "updatedAt": "2026-11-06T05:13:35.155Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -232,7 +232,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official OpenGov Careers requisition 3a47a711-c75c-4d90-a596-09c09f409938 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
       "postedDate": "2026-10-29",
@@ -266,13 +266,17 @@
         "jobId": "3a47a711-c75c-4d90-a596-09c09f409938",
         "postedDate": "2026-10-29",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:13:35.155Z",
+        "browserVerifiedAt": "2026-11-06T05:13:35.155Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official OpenGov Careers requisition 3a47a711-c75c-4d90-a596-09c09f409938 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:13:35.155Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cencora-r2617120",
