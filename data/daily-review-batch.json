@@ -826,25 +826,39 @@
     }
   ],
   "discoveryAudit": {
-    "employerCoverage": {
-      "watchlistVisited": 6,
-      "watchlistNotVisited": 81,
-      "watchlistBlockedOrContentLimited": 2,
-      "watchlistEmployersVisited": [
-        "Deloitte",
-        "PwC",
-        "Cisco",
-        "HCLTech",
-        "Qualcomm",
-        "Amazon"
-      ],
-      "fallbackEmployersVisited": 15
+    "priority": {
+      "size": 8,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
     },
-    "exactCandidatesExamined": 23,
-    "uniqueExactLiveJobIdsFound": 21,
-    "accepted": 16,
-    "approved87Accepted": 4,
-    "fallbackAccepted": 12,
+    "backup": {
+      "size": 8,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 16,
     "duplicateExclusions": [
       {
         "id": "deloitte-60941544",
@@ -859,48 +873,9 @@
         "officialUrl": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003"
       }
     ],
-    "expiredExclusions": [
-      {
-        "id": "hcltech-184349",
-        "company": "HCLTech",
-        "reason": "official page says job is not available"
-      },
-      {
-        "id": "amber-146146",
-        "company": "Amber",
-        "reason": "official Keka page says posting is no longer available"
-      }
-    ],
-    "held": [
-      {
-        "company": "Deloitte",
-        "role": "Associate Analyst – Application Support",
-        "reason": "minimum two years required"
-      },
-      {
-        "company": "Deloitte",
-        "role": "Intern – Talent Acquisition",
-        "reason": "official page lacks substantive eligibility and duties for a publish-ready record"
-      },
-      {
-        "company": "SiFive",
-        "role": "Engineer II, Physical Design – Cores",
-        "reason": "posting lists a 3+ year minimum despite also mentioning exceptional graduates"
-      }
-    ],
-    "quotaShortages": {
-      "priority": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 0
-      },
-      "backup": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 0
-      }
-    },
-    "note": "No qualified roles were invented or substituted. Both non-technical full-time quotas remain short."
+    "excludedCount": 2,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
