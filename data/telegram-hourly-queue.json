@@ -1592,46 +1592,47 @@
     {
       "page": "jobs/freudenberg-vibracoustic-junior-professional-ai-engineer.html",
       "batchId": "admin-42168473735",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T09:28:56.128132+00:00",
       "claimId": "42195373097",
-      "claimedAt": "2026-11-06T09:29:08.015463+00:00"
+      "claimedAt": "2026-11-06T09:29:08.015463+00:00",
+      "messageId": 683,
+      "deliveredAt": "2026-11-06T09:29:12.731345+00:00"
     },
     {
       "page": "jobs/gocomet-full-stack-developer-intern-python-and-react.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T10:28:56.128132+00:00"
+      "dueAt": "2026-11-06T10:29:12.731345+00:00"
     },
     {
       "page": "jobs/opengov-associate-implementation-engineer.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T11:28:56.128132+00:00"
+      "dueAt": "2026-11-06T11:29:12.731345+00:00"
     },
     {
       "page": "jobs/pwc-india-associate-data-science.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T12:28:56.128132+00:00"
+      "dueAt": "2026-11-06T12:29:12.731345+00:00"
     },
     {
       "page": "jobs/qualcomm-associate-engineer-rf-software.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T13:28:56.128132+00:00"
+      "dueAt": "2026-11-06T13:29:12.731345+00:00"
     },
     {
       "page": "jobs/revvity-software-developer-intern.html",
       "batchId": "admin-42168473735",
       "status": "pending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T14:28:56.128132+00:00"
+      "dueAt": "2026-11-06T14:29:12.731345+00:00"
     }
   ]
 }
