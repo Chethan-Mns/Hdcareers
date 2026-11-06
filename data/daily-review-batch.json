@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:24:53.021Z",
+  "updatedAt": "2026-11-06T05:25:32.199Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -782,7 +782,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Revvity Careers requisition JR-045916 has a current job-bound application route; role evidence confirms Student internship eligibility.",
       "postedDate": "2026-11-05",
@@ -816,13 +816,17 @@
         "jobId": "JR-045916",
         "postedDate": "2026-11-05",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:25:32.198Z",
+        "browserVerifiedAt": "2026-11-06T05:25:32.198Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Revvity Careers requisition JR-045916 has a current job-bound application route; role evidence confirms Student internship eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:25:32.198Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "gocomet-98057",
