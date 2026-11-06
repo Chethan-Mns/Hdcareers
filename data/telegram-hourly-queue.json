@@ -1572,9 +1572,11 @@
     {
       "page": "jobs/cencora-ai-developer-1.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T07:28:27.352980+00:00"
+      "dueAt": "2026-11-06T07:28:27.352980+00:00",
+      "claimId": "42181101186",
+      "claimedAt": "2026-11-06T07:28:37.447313+00:00"
     },
     {
       "page": "jobs/cisco-ai-operations-engineer.html",
