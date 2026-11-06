@@ -1,0 +1,217 @@
+name: Official ATS Discovery Shadow (Greenhouse Lever Ashby SmartRecruiters Workday)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/discovery_ats_shadow.py
+      - scripts/ats_http_client.py
+      - scripts/ats_discovery_history.py
+      - scripts/ats_job_status_report.py
+      - tests/test_ats_job_status_report.py
+      - data/discovery-drafts/**
+      - data/owner-discovery-suppression.json
+      - tests/test_owner_discovery_suppression.py
+      - data/ats-discovery-history.json
+      - tests/test_ats_http_client.py
+      - tests/test_ats_discovery_history.py
+      - tests/test_discovery_ats_shadow.py
+      - scripts/validate_ats_shadow_report.py
+      - tests/test_validate_ats_shadow_report.py
+      - .github/workflows/official-ats-discovery-shadow.yml
+      - .github/workflows/official-ats-history-persist.yml
+  workflow_dispatch:
+    inputs:
+      max_boards:
+        description: "Maximum ATS employer boards to query (pilot only)"
+        required: false
+        default: "36"
+      max_pages:
+        description: "Maximum SmartRecruiters or Workday pages per board"
+        required: false
+        default: "3"
+      max_details:
+        description: "Maximum detail requests for SmartRecruiters or Workday per board"
+        required: false
+        default: "8"
+      verify_limit:
+        description: "Number of extracted fresher jobs to verify against exact official ATS requisition (0..200)"
+        required: false
+        default: "60"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hd-official-ats-shadow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  offline-tests-and-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile crawler and run offline regressions
+        run: |
+          python3 -m py_compile scripts/discovery_ats_shadow.py
+          python3 -m unittest discover -s tests -p 'test_discovery_ats_shadow.py' -v
+          python3 -m unittest discover -s tests -p 'test_validate_ats_shadow_report.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_http_client.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_discovery_history.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_job_status_report.py' -v
+          python3 -m unittest discover -s tests -p 'test_owner_discovery_suppression.py' -v
+          python3 -m py_compile scripts/ats_job_status_report.py
+          python3 -m py_compile scripts/ats_http_client.py scripts/ats_discovery_history.py
+      - name: Generate offline ATS seed catalogue
+        run: |
+          python3 scripts/discovery_ats_shadow.py --catalog-only --output official-ats-board-catalog.json
+          python3 - <<'PY'
+          import json
+          report=json.load(open("official-ats-board-catalog.json"))
+          assert report["mode"] == "catalog_only"
+          assert report["totalSeedBoards"] > 0
+          assert report["publicationAllowed"] is False
+          assert report["expiryDecisionsAllowed"] is False
+          print("Seeded official ATS boards:", report["totalSeedBoards"])
+          PY
+      - name: Upload offline ATS board catalogue
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-official-ats-board-catalog
+          path: official-ats-board-catalog.json
+          retention-days: 14
+
+  live-shadow-pilot:
+    needs: offline-tests-and-catalog
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read-only official ATS API discovery (PR and manual; capped requests)
+        run: |
+          python3 scripts/discovery_ats_shadow.py \
+            --max-boards "${{ inputs.max_boards || '36' }}" \
+            --max-pages "${{ inputs.max_pages || '3' }}" \
+            --max-details "${{ inputs.max_details || '8' }}" \
+            --output ats-discovery-shadow.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("ats-discovery-shadow.json"))
+          assert d["mode"] == "shadow_only"
+          assert d["publicationAllowed"] is False and d["expiryDecisionsAllowed"] is False
+          assert all(c["reviewedStatus"] == "unreviewed" for c in d["candidates"])
+          assert all(c["eligibilityStatus"] == "needs_manual_verification" for c in d["candidates"])
+          assert all(c.get('apply') != 'https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/Graduate-Trainee-Engineer_R4043154-1' for c in d['candidates'])
+          print('OWNER EXPIRED SUPPRESSION:', d.get('excludedByOwnerExpired', 0))
+          print("Pilot:", d["scannedBoards"], "boards;",
+                d["candidateCount"], "unreviewed candidates;",
+                d["partialOrFailedBoards"], "partial/failed board scans")
+          for scan in d["scans"]:
+              print("BOARD:", scan["company"], scan["provider"], scan["status"],
+                    "listed="+str(scan["listed"]), "new="+str(scan["newReviewCandidates"]),
+                    "note="+str(scan["notes"][:1]))
+          for candidate in d["candidates"][:75]:
+              print("CANDIDATE:", candidate["company"], "|", candidate["role"], "|",
+                    candidate["loc"], "|", candidate["apply"])
+          PY
+      - name: Read-only personal Data Engineering 2-year search profile
+        run: |
+          python3 scripts/discovery_ats_shadow.py \
+            --profile data-engineer-2y \
+            --max-boards 20 \
+            --max-pages 2 \
+            --max-details 6 \
+            --output personal-de-shadow.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("personal-de-shadow.json"))
+          assert d["profile"] == "data-engineer-2y" and d["mode"] == "shadow_only"
+          assert d["publicationAllowed"] is False and d["expiryDecisionsAllowed"] is False
+          assert all(x["searchProfile"] == "data-engineer-2y" for x in d["candidates"])
+          print("PERSONAL DE PILOT:", d["scannedBoards"], "boards,",
+                d["candidateCount"], "unreviewed possible matches")
+          for c in d["candidates"][:15]:
+              print("DE CANDIDATE:", c["company"], "|", c["role"], "|",
+                    c["loc"], "|", ",".join(c["skillsMatched"]), "|", c["apply"])
+          PY
+      - name: Upload personal DE pilot (not website publishing)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hd-personal-de-search-report
+          path: |
+            personal-de-shadow.json
+            personal-de-quality.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Validate extracted fresher and personal candidates against official ATS identity
+        run: |
+          python3 scripts/validate_ats_shadow_report.py --report ats-discovery-shadow.json --summary ats-discovery-quality.json
+          python3 scripts/validate_ats_shadow_report.py --report personal-de-shadow.json --summary personal-de-quality.json
+      - name: Independently verify LIVE / EXPIRED / REVIEW and duplicate status for each discovered job
+        env:
+          VERIFY_LIMIT: ${{ inputs.verify_limit || '60' }}
+        run: |
+          python3 scripts/ats_job_status_report.py             --report ats-discovery-shadow.json             --history data/ats-discovery-history.json             --draft data/discovery-drafts/2026-11-01-supplemental-backup.json             --verify-limit "$VERIFY_LIMIT"             --output-prefix ats-job-status
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          r=json.loads(Path("ats-job-status.json").read_text())
+          assert r["mode"] == "owner_availability_duplicate_review_only"
+          assert r["publicationAllowed"] is False and r["expiryDecisionsAllowed"] is False
+          assert all(row["eligibleForPublishing"] is False for row in r["rows"])
+          summary=r["summary"]
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as fd:
+              fd.write("## HD Careers — ATS Live / Expired / Duplicate Verification\n\n")
+              fd.write(f"Checked {summary['verifiedCandidates']} of {summary['extractedCandidates']} ATS candidates.\n\n")
+              fd.write("| Availability | Count |\n|---|---:|\n")
+              for label,key in (("Live","live"),("Expired","expired"),("Needs Review","needsReview")):
+                  fd.write(f"| {label} | {summary[key]} |\n")
+              fd.write("\n| Duplicate status | Count |\n|---|---:|\n")
+              for label,key in (("New","new"),("Duplicate","duplicate"),
+                                ("Previously Seen","previouslySeen"),("Possible Duplicate","possibleDuplicate")):
+                  fd.write(f"| {label} | {summary[key]} |\n")
+              fd.write("\n**Download the `hd-official-ats-shadow-report` artifact, then open "
+                       "`ats-job-status.html` for searchable/filterable job links and evidence.**\n\n")
+              fd.write("No jobs were published, modified or expired.\n")
+          PY
+          git diff --exit-code -- data/jobs.json data/review-queue.json data/daily-review-batch.json
+      - name: Produce repeat-safe discovery history and brand-new candidates (no website writes)
+        run: |
+          python3 scripts/ats_discovery_history.py             --history data/ats-discovery-history.json             --report ats-discovery-shadow.json             --output ats-discovery-history-next.json             --new-output ats-discovery-new-candidates.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          history=json.loads(Path("ats-discovery-history-next.json").read_text())
+          fresh=json.loads(Path("ats-discovery-new-candidates.json").read_text())
+          assert history["mode"] == "discovery_history_only"
+          assert fresh["mode"] == "review_candidate_draft_only"
+          assert fresh["publicationAllowed"] is False
+          assert fresh["expiryDecisionsAllowed"] is False
+          assert all(not row["eligibleForPublishing"] and not row["expired"]
+                     for row in history["jobs"].values())
+          print("SHADOW HISTORY:", history["lastRunStats"])
+          PY
+          git diff --exit-code -- data/jobs.json data/review-queue.json data/daily-review-batch.json
+      - name: Upload pilot results (never publish)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hd-official-ats-shadow-report
+          path: |
+            ats-discovery-shadow.json
+            ats-discovery-quality.json
+            ats-discovery-history-next.json
+            ats-discovery-new-candidates.json
+            ats-job-status.json
+            ats-job-status.csv
+            ats-job-status.html
+          if-no-files-found: warn
+          retention-days: 7

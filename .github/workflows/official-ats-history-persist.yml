@@ -1,0 +1,107 @@
+name: Official ATS Discovery History Persistence (manual, safe)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_ledger_only:
+        description: "Type DISCOVERY_ONLY to approve a ledger-only main commit; no job publishing"
+        required: true
+        type: string
+      max_boards:
+        description: "Maximum employer ATS boards for a bounded scan"
+        type: number
+        required: false
+        default: 36
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  persist-observations-only:
+    if: github.ref == 'refs/heads/main' && inputs.confirm_ledger_only == 'DISCOVERY_ONLY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Safety tests and payload quality checks
+        run: |
+          python3 -m unittest discover -s tests -p 'test_discovery_ats_shadow.py' -v
+          python3 -m unittest discover -s tests -p 'test_validate_ats_shadow_report.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_http_client.py' -v
+          python3 -m unittest discover -s tests -p 'test_ats_discovery_history.py' -v
+      - name: Read official ATS listings only
+        env:
+          MAX_BOARDS: ${{ inputs.max_boards }}
+        run: |
+          python3 - <<'PY'
+          import os
+          n = int(os.environ["MAX_BOARDS"])
+          assert 1 <= n <= 90, "Board budget must be within 1..90"
+          PY
+          python3 scripts/discovery_ats_shadow.py --profile fresher \
+            --max-boards "$MAX_BOARDS" --max-pages 3 --max-details 8 \
+            --output ats-discovery-shadow.json
+          python3 scripts/validate_ats_shadow_report.py --report ats-discovery-shadow.json \
+            --summary ats-discovery-quality.json
+      - name: Derive a new durable history and suppress previously seen candidates
+        run: |
+          python3 scripts/ats_discovery_history.py \
+            --history data/ats-discovery-history.json \
+            --report ats-discovery-shadow.json \
+            --output data/ats-discovery-history.json \
+            --new-output ats-discovery-new-candidates.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          state=json.loads(Path('data/ats-discovery-history.json').read_text())
+          assert state['mode']=='discovery_history_only'
+          assert all(not row['expired'] and not row['eligibleForPublishing']
+              for row in state['jobs'].values())
+          print('Ledger-only update', state['lastRunStats'])
+          PY
+      - name: Enforce strict change allowlist before committing
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          expected='data/ats-discovery-history.json'
+          changed=subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'],text=True).splitlines()
+          changed=[line[3:] for line in changed if line]
+          assert set(changed).issubset({expected}), "Unexpected tracked file changes: "+str(changed)
+          print('Permitted changes:',changed)
+          PY
+      - name: Persist only the discovery history JSON in GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers ATS Discovery"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- data/ats-discovery-history.json
+          if git diff --cached --quiet; then
+            echo "No history updates to persist."
+            exit 0
+          fi
+          test "$(git diff --cached --name-only)" = "data/ats-discovery-history.json"
+          git commit -m "Record ATS source sightings only (no publication or expiry)"
+          # Do not overwrite newer main; reject conflicts and require a fresh rescan.
+          git push origin HEAD:main
+      - name: Store report evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-official-ats-persistent-history-evidence
+          path: |
+            ats-discovery-shadow.json
+            ats-discovery-quality.json
+            ats-discovery-new-candidates.json
+          if-no-files-found: warn
+          retention-days: 14

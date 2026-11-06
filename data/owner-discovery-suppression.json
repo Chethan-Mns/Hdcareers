@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "mode": "owner_discovery_suppression",
+  "updatedOn": "2026-11-01",
+  "records": [
+    {
+      "id": "fh26-1101-05",
+      "company": "GE HealthCare",
+      "provider": "workday",
+      "sourceBoard": "GEHC_ExternalSite",
+      "officialUrl": "https://gehc.wd5.myworkdayjobs.com/en-US/GEHC_ExternalSite/job/Graduate-Trainee-Engineer_R4043154-1",
+      "requisitionId": "R4043154",
+      "decision": "expired",
+      "decisionMadeOn": "2026-11-01",
+      "sourceBatchId": "2026-11-01-freehire-style-20",
+      "reason": "Owner manually checked exact official job link and marked Expired",
+      "discoveryAction": "suppress_until_fresh_official_reopening_evidence",
+      "websiteStatusChangeAllowed": false,
+      "publicationAllowed": false
+    }
+  ],
+  "notes": [
+    "Suppress only exact employer+requisition or exact official URL; do not block other GE HealthCare requisitions.",
+    "Owner-expired statuses exclude future discovery review candidates; do not update jobs.json or mark any existing published job expired.",
+    "Reopening requires separate authoritative evidence and owner review.",
+    "Missing candidates/partial ATS scans are not closure evidence."
+  ]
+}
