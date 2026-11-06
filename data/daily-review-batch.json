@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:12:16.711Z",
+  "updatedAt": "2026-11-06T05:12:38.108Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -179,7 +179,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Comcast Careers requisition R443109 has a current job-bound application route; role evidence confirms 0–2 years eligibility.",
       "postedDate": "2026-11-05",
@@ -193,7 +193,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Comcast Careers",
         "desc": "Entry-level cyber security operations role monitoring alerts and supporting incident response and vulnerability testing.",
         "elig": "Bachelor’s degree preferred; 0–2 years of relevant experience; variable schedules including nights/weekends.",
@@ -213,16 +213,14 @@
         "jobId": "R443109",
         "postedDate": "2026-11-05",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:12:16.711Z",
-        "browserVerifiedAt": "2026-11-06T05:12:16.711Z"
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Comcast Careers requisition R443109 has a current job-bound application route; role evidence confirms 0–2 years eligibility."
       },
-      "reviewedAt": "2026-11-06T05:12:16.711Z",
+      "reviewedAt": "2026-11-06T05:12:38.108Z",
       "reviewedBy": "HD Careers Admin"
     },
     {
