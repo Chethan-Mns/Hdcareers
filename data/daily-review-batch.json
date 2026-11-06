@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:14:41.785Z",
+  "updatedAt": "2026-11-06T05:14:56.499Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -397,7 +397,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student internship",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "live",
       "verificationReason": "Exact official Novartis Careers requisition REQ-10091880-1 has a current job-bound application route; role evidence confirms Student internship eligibility.",
       "postedDate": "2026-11-05",
@@ -411,7 +411,7 @@
         "expYears": "Student internship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "Novartis Careers",
         "desc": "Analytics internship supporting pharmaceutical field operations through dashboards, validation checks and process reporting.",
         "elig": "Student candidate with analytical and data-tool foundations; posting asks for Power BI/Alteryx/SQL or similar ETL exposure plus Excel/Python familiarity.",
@@ -437,7 +437,9 @@
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact official Novartis Careers requisition REQ-10091880-1 has a current job-bound application route; role evidence confirms Student internship eligibility."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:14:56.499Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
