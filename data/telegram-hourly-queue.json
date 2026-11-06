@@ -1592,9 +1592,11 @@
     {
       "page": "jobs/freudenberg-vibracoustic-junior-professional-ai-engineer.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T09:28:56.128132+00:00"
+      "dueAt": "2026-11-06T09:28:56.128132+00:00",
+      "claimId": "42195373097",
+      "claimedAt": "2026-11-06T09:29:08.015463+00:00"
     },
     {
       "page": "jobs/gocomet-full-stack-developer-intern-python-and-react.html",
