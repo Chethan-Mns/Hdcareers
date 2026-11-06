@@ -2,7 +2,7 @@
   "batchId": "2026-11-06-0900-ist",
   "generatedAt": "2026-11-06T03:36:33.329Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-06T05:07:46.333Z",
+  "updatedAt": "2026-11-06T05:07:53.158Z",
   "priority": [
     {
       "id": "pwc-db-005563-1",
@@ -69,7 +69,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years with Master’s; 2 years with Bachelor’s",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Cisco Workday requisition 2030493-1 is current; source evidence explicitly allows a Master’s graduate with zero years (Bachelor’s route requires two years).",
       "postedDate": "2026-11-05",
@@ -103,13 +103,17 @@
         "jobId": "2030493-1",
         "postedDate": "2026-11-05",
         "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
+        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
+        "manualLiveVerifiedAt": "2026-11-06T05:07:53.157Z",
+        "browserVerifiedAt": "2026-11-06T05:07:53.157Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-06T03:36:33.329Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Cisco Workday requisition 2030493-1 is current; source evidence explicitly allows a Master’s graduate with zero years (Bachelor’s route requires two years)."
-      }
+      },
+      "reviewedAt": "2026-11-06T05:07:53.157Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-446720761539",
