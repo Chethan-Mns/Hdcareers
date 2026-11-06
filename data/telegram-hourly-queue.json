@@ -1642,11 +1642,12 @@
     {
       "page": "jobs/revvity-software-developer-intern.html",
       "batchId": "admin-42168473735",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T14:30:13.199304+00:00",
       "claimId": "42234482782",
-      "claimedAt": "2026-11-06T14:30:24.168026+00:00"
+      "claimedAt": "2026-11-06T14:30:24.168026+00:00",
+      "messageId": 688,
+      "deliveredAt": "2026-11-06T14:30:28.318613+00:00"
     }
   ]
 }
