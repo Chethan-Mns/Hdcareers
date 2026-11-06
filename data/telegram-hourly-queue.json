@@ -1622,9 +1622,11 @@
     {
       "page": "jobs/pwc-india-associate-data-science.html",
       "batchId": "admin-42168473735",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-06T05:27:11.063590+00:00",
-      "dueAt": "2026-11-06T12:29:44.183160+00:00"
+      "dueAt": "2026-11-06T12:29:44.183160+00:00",
+      "claimId": "42218091133",
+      "claimedAt": "2026-11-06T12:29:55.617124+00:00"
     },
     {
       "page": "jobs/qualcomm-associate-engineer-rf-software.html",
