@@ -2,7 +2,7 @@
   "batchId": "2026-11-07-0900-ist",
   "generatedAt": "2026-11-07T03:41:56.556Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-07T03:44:52.235Z",
+  "updatedAt": "2026-11-07T03:45:45.651Z",
   "priority": [
     {
       "id": "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
@@ -1118,17 +1118,17 @@
         "internshipOrApprenticeship": 2
       },
       "actual": {
-        "fresherTechnicalFullTime": 6,
+        "fresherTechnicalFullTime": 5,
         "fresherNonTechnicalFullTime": 2,
         "internshipOrApprenticeship": 2
       },
       "shortfall": {
-        "fresherTechnicalFullTime": 0,
+        "fresherTechnicalFullTime": 1,
         "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       }
     },
-    "distinctEmployers": 20
+    "distinctEmployers": 19
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
@@ -1144,7 +1144,7 @@
       "training": 2
     },
     "backupSelected": {
-      "fresherIT": 6,
+      "fresherIT": 5,
       "nonIT": 2,
       "training": 2
     },
@@ -1155,7 +1155,7 @@
         "training": 0
       },
       "backup": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
         "training": 0
       }
