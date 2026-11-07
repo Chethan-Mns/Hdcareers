@@ -1663,53 +1663,54 @@
     {
       "page": "jobs/episode-six-graduate-trainee-security-soc.html",
       "batchId": "admin-42350938072",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T08:22:46.481694+00:00",
       "claimId": "42355235083",
-      "claimedAt": "2026-11-07T08:22:59.937125+00:00"
+      "claimedAt": "2026-11-07T08:22:59.937125+00:00",
+      "messageId": 690,
+      "deliveredAt": "2026-11-07T08:23:03.876000+00:00"
     },
     {
       "page": "jobs/medibuddy-operations-associate.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T09:22:46.481694+00:00"
+      "dueAt": "2026-11-07T09:23:03.876000+00:00"
     },
     {
       "page": "jobs/nestack-technologies-cybersecurity-intern.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T10:22:46.481694+00:00"
+      "dueAt": "2026-11-07T10:23:03.876000+00:00"
     },
     {
       "page": "jobs/oracle-support-engineer-i.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T11:22:46.481694+00:00"
+      "dueAt": "2026-11-07T11:23:03.876000+00:00"
     },
     {
       "page": "jobs/rippling-software-engineer-1.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T12:22:46.481694+00:00"
+      "dueAt": "2026-11-07T12:23:03.876000+00:00"
     },
     {
       "page": "jobs/softmason-technologies-business-analyst.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T13:22:46.481694+00:00"
+      "dueAt": "2026-11-07T13:23:03.876000+00:00"
     },
     {
       "page": "jobs/tvs-next-graduate-engineer-trainee-sap-abap.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T14:22:46.481694+00:00"
+      "dueAt": "2026-11-07T14:23:03.876000+00:00"
     }
   ]
 }
