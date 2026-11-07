@@ -2,7 +2,7 @@
   "batchId": "2026-11-07-0900-ist",
   "generatedAt": "2026-11-07T03:41:56.556Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-07T07:19:19.854Z",
+  "updatedAt": "2026-11-07T07:19:25.728Z",
   "priority": [
     {
       "id": "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
@@ -282,7 +282,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact requisition-bound official application route for 6237558004 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
       "postedDate": "2026-10-28",
@@ -318,13 +318,17 @@
         "jobId": "6237558004",
         "postedDate": "2026-10-28",
         "verifiedDate": "7 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-07T07:19:25.728Z",
+        "browserVerifiedAt": "2026-11-07T07:19:25.728Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact requisition-bound official application route for 6237558004 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
-      }
+      },
+      "reviewedAt": "2026-11-07T07:19:25.728Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "softmason-145720",
