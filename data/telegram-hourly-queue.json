@@ -1703,9 +1703,11 @@
     {
       "page": "jobs/rippling-software-engineer-1.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T12:23:52.281212+00:00"
+      "dueAt": "2026-11-07T12:23:52.281212+00:00",
+      "claimId": "42372297584",
+      "claimedAt": "2026-11-07T12:24:01.932031+00:00"
     },
     {
       "page": "jobs/softmason-technologies-business-analyst.html",
