@@ -1723,11 +1723,12 @@
     {
       "page": "jobs/tvs-next-graduate-engineer-trainee-sap-abap.html",
       "batchId": "admin-42350938072",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T14:24:18.334113+00:00",
       "claimId": "42381443281",
-      "claimedAt": "2026-11-07T14:24:28.589694+00:00"
+      "claimedAt": "2026-11-07T14:24:28.589694+00:00",
+      "messageId": 696,
+      "deliveredAt": "2026-11-07T14:24:32.176299+00:00"
     }
   ]
 }
