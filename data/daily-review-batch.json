@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-07-0900-ist",
   "generatedAt": "2026-11-07T03:41:56.556Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-07T07:20:50.651Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-07T07:21:21.367Z",
   "priority": [
     {
       "id": "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
@@ -1243,5 +1243,41 @@
     "deferredForFreshDiscovery": [],
     "needsSourceVerification": [],
     "warning": "Review only. Owner must verify status and explicitly select Verify & Publish before any website or Telegram action."
+  },
+  "submittedAt": "2026-11-07T07:21:21.367Z",
+  "publication": {
+    "candidateIds": [
+      "deloitte-61353044",
+      "episode-six-6237558004",
+      "medibuddy-job-0119",
+      "nestack-cybersecurity-intern",
+      "oracle-345517",
+      "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
+      "softmason-145720",
+      "tvs-next-143692"
+    ],
+    "companies": [
+      "Deloitte",
+      "Episode Six",
+      "MediBuddy",
+      "Nestack Technologies",
+      "Oracle",
+      "Rippling",
+      "Softmason Technologies",
+      "TVS NEXT"
+    ],
+    "urls": [
+      "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Financial-Accounts-Bengaluru-Finance-%26-Accounts/61353044/",
+      "https://job-boards.greenhouse.io/episodesixlinkedin/jobs/6237558004",
+      "https://hire.medibuddy.in/careers/operations-associate-5nedlq",
+      "https://neilp.nestack.ai/career/cybersecurity-intern",
+      "https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_45001/job/345517",
+      "https://ats.rippling.com/rippling/jobs/277b7caf-3092-44a7-9e8c-45769e5a3ea5",
+      "https://softmason.keka.com/careers/jobdetails/145720",
+      "https://tvsnext.keka.com/careers/jobdetails/143692"
+    ],
+    "requestId": "ded337b0c743a94b3977d3d3",
+    "count": 8,
+    "submittedAt": "2026-11-07T07:21:21.367Z"
   }
 }
