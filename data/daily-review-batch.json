@@ -979,61 +979,6 @@
         "currentVerdict": "live",
         "officialEvidence": "Exact requisition-bound official application route for cybersecurity-intern resolved on 7 Nov 2026; current source evidence states Student or recent graduate; 6 months eligibility and the listed location."
       }
-    },
-    {
-      "id": "r1-rcm-r260000003987",
-      "company": "R1 RCM",
-      "role": "Software Engineer",
-      "loc": "Noida, India",
-      "apply": "https://r1rcm.wd1.myworkdayjobs.com/en-US/R1RCM/job/Software-Engineer_R260000003987",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Workday requisition R260000003987 currently exposes an Apply route, Full-time status, Noida location and 0–2 years experience eligibility.",
-      "postedDate": "",
-      "job": {
-        "company": "R1 RCM",
-        "role": "Software Engineer",
-        "loc": "Noida, India",
-        "apply": "https://r1rcm.wd1.myworkdayjobs.com/en-US/R1RCM/job/Software-Engineer_R260000003987",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "R1 RCM Careers",
-        "desc": "Full-stack software engineering role building .NET Core and React applications, REST APIs, data integrations and cloud-hosted services.",
-        "elig": "Bachelor’s degree in Computer Science, IT or related field; posting states 0–2 years of experience.",
-        "resp": [
-          "Develop and maintain full-stack applications using .NET Core and React",
-          "Build and consume REST APIs and work with SQL or NoSQL databases",
-          "Write tests, participate in code reviews and support cloud deployments"
-        ],
-        "skills": [
-          "C#",
-          ".NET Core",
-          "React.js",
-          "JavaScript",
-          "REST APIs",
-          "SQL",
-          "Azure",
-          "Google Cloud",
-          "Git"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "R260000003987",
-        "postedDate": "",
-        "verifiedDate": "7 Nov 2026",
-        "sourceVerificationMethod": "Exact employer Workday requisition and job-bound application route checked on 7 Nov 2026; current official record shows Apply, Full time, Noida and 0–2 years."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-07T03:44:52.235Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Official R1 RCM Workday requisition R260000003987 shows Apply, Full time, Noida, 0–2 years, bachelor’s degree criteria and the listed responsibilities."
-      }
     }
   ],
   "discoveryAudit": {
@@ -1052,15 +997,15 @@
       }
     },
     "backup": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
         "training": 0
       }
@@ -1069,7 +1014,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 20,
+    "remaining": 19,
     "duplicateExclusions": [
       {
         "id": "114743",
@@ -1136,21 +1081,17 @@
         "company": "Salesforce",
         "reason": "already_published",
         "officialUrl": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580"
+      },
+      {
+        "id": "r1-rcm-r260000003987",
+        "company": "R1 RCM",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://r1rcm.wd1.myworkdayjobs.com/en-US/R1RCM/job/Software-Engineer_R260000003987"
       }
     ],
-    "excludedCount": 16,
-    "needsFreshDiscovery": false,
-    "note": "Both shortlists are category-audited 6/2/2 and contain 20 distinct employer groups. No publication is authorized by this review batch.",
-    "employerCoverage": {
-      "watchlistVisited": 11,
-      "watchlistNotVisited": 76,
-      "watchlistBlocked": 0,
-      "totalOfficialEmployerPortalsVisited": 36,
-      "selectedWatchlistEmployers": 5,
-      "selectedFallbackEmployers": 15
-    },
-    "uniqueExactLiveJobIdsFound": 36,
-    "sourceUnconfirmedOrExperiencedHeld": 28
+    "excludedCount": 17,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
