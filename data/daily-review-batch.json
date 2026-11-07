@@ -2,7 +2,7 @@
   "batchId": "2026-11-07-0900-ist",
   "generatedAt": "2026-11-07T03:41:56.556Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-07T07:19:34.814Z",
+  "updatedAt": "2026-11-07T07:19:38.171Z",
   "priority": [
     {
       "id": "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
@@ -449,7 +449,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student or recent graduate; fresher",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "live",
       "verificationReason": "Exact Deloitte South Asia requisition 61353044 is open with an Apply Now route; the official posting identifies a Bengaluru Finance internship and explicitly accepts pursuing/recently completed finance qualifications and freshers.",
       "postedDate": "2026-11-06",
@@ -483,13 +483,17 @@
         "jobId": "61353044",
         "postedDate": "2026-11-06",
         "verifiedDate": "7 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-07T07:19:38.171Z",
+        "browserVerifiedAt": "2026-11-07T07:19:38.171Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
         "officialEvidence": "Exact Deloitte South Asia requisition 61353044 is open with an Apply Now route; the official posting identifies a Bengaluru Finance internship and explicitly accepts pursuing/recently completed finance qualifications and freshers."
-      }
+      },
+      "reviewedAt": "2026-11-07T07:19:38.171Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "kla-2641096",
