@@ -1673,9 +1673,11 @@
     {
       "page": "jobs/medibuddy-operations-associate.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T09:23:03.876000+00:00"
+      "dueAt": "2026-11-07T09:23:03.876000+00:00",
+      "claimId": "42359510615",
+      "claimedAt": "2026-11-07T09:23:15.026414+00:00"
     },
     {
       "page": "jobs/nestack-technologies-cybersecurity-intern.html",
