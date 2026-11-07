@@ -1663,9 +1663,11 @@
     {
       "page": "jobs/episode-six-graduate-trainee-security-soc.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T08:22:46.481694+00:00"
+      "dueAt": "2026-11-07T08:22:46.481694+00:00",
+      "claimId": "42355235083",
+      "claimedAt": "2026-11-07T08:22:59.937125+00:00"
     },
     {
       "page": "jobs/medibuddy-operations-associate.html",
