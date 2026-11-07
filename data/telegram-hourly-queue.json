@@ -1652,50 +1652,60 @@
     {
       "page": "jobs/deloitte-finance-intern.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00",
+      "claimId": "42350938072",
+      "claimedAt": "2026-11-07T07:22:31.752055+00:00"
     },
     {
       "page": "jobs/episode-six-graduate-trainee-security-soc.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/medibuddy-operations-associate.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/nestack-technologies-cybersecurity-intern.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/oracle-support-engineer-i.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/rippling-software-engineer-1.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/softmason-technologies-business-analyst.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     },
     {
       "page": "jobs/tvs-next-graduate-engineer-trainee-sap-abap.html",
       "batchId": "admin-42350938072",
       "status": "pending",
-      "queuedAt": "2026-11-07T07:22:00.326455+00:00"
+      "queuedAt": "2026-11-07T07:22:00.326455+00:00",
+      "dueAt": "2026-11-07T07:22:00.326455+00:00"
     }
   ]
 }
