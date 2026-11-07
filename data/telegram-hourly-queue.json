@@ -1693,9 +1693,11 @@
     {
       "page": "jobs/oracle-support-engineer-i.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T11:23:33.972947+00:00"
+      "dueAt": "2026-11-07T11:23:33.972947+00:00",
+      "claimId": "42367990072",
+      "claimedAt": "2026-11-07T11:23:48.019758+00:00"
     },
     {
       "page": "jobs/rippling-software-engineer-1.html",
