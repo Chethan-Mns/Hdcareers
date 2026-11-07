@@ -1683,9 +1683,11 @@
     {
       "page": "jobs/nestack-technologies-cybersecurity-intern.html",
       "batchId": "admin-42350938072",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T10:23:18.228154+00:00"
+      "dueAt": "2026-11-07T10:23:18.228154+00:00",
+      "claimId": "42363746396",
+      "claimedAt": "2026-11-07T10:23:29.963601+00:00"
     },
     {
       "page": "jobs/oracle-support-engineer-i.html",
