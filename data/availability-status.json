@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-06T20:37:53.095164+00:00",
+  "checkedAt": "2026-11-07T07:29:50.045Z",
   "checked": 206,
-  "active": 147,
-  "expired": 0,
-  "review": 59,
-  "changedExpired": 0,
+  "active": 171,
+  "expired": 17,
+  "review": 18,
+  "changedExpired": 17,
   "items": [
     {
       "id": 335,
@@ -222,9 +222,11 @@
       "role": "Software Engineer Intern – India Site",
       "page": "jobs/acron-aviation-software-engineer-intern-india-site.html",
       "url": "https://jobs.lever.co/acronaviation/a464b1a4-01f4-4a28-b636-41dc508b3254",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:44.195241+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 315,
@@ -232,9 +234,11 @@
       "role": "Software Tester",
       "page": "jobs/azeus-systems-software-tester.html",
       "url": "https://www.azeus.com/careers/career-opportunities/india/software-tester/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:45.018030+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 316,
@@ -242,9 +246,11 @@
       "role": "Back Office Operations Analyst – Band 1",
       "page": "jobs/cigna-back-office-operations-analyst-band-1.html",
       "url": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Back-Office-Operations-Analyst---Band-1_26007839",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:48.497692+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 317,
@@ -252,9 +258,11 @@
       "role": "Intern – Engineering Operations",
       "page": "jobs/circles-intern-engineering-operations.html",
       "url": "https://circles.wd103.myworkdayjobs.com/Circles/job/India/Intern--Engineering-Operations_R-100492",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:49.389052+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 318,
@@ -262,9 +270,11 @@
       "role": "Analyst – IT Strategy & Operating Model (Tester)",
       "page": "jobs/deloitte-analyst-it-strategy-operating-model-tester.html",
       "url": "https://southasiacareers.deloitte.com/job/Delhi-Analyst-IT-STRATEGY-%26-OPERATING-MODEL-Delhi-Technology-Strategy-%26-Transformation/61212744/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:50.778656+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 319,
@@ -282,9 +292,11 @@
       "role": "Campus Beginner – Service Desk",
       "page": "jobs/hcltech-campus-beginner-service-desk.html",
       "url": "https://careers.hcltech.com/job/Campus-Beginner/156275-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:53.161260+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 321,
@@ -292,9 +304,11 @@
       "role": "Associate Engineer – AI Services",
       "page": "jobs/ntt-data-associate-engineer-ai-services.html",
       "url": "https://nttlimited.wd3.myworkdayjobs.com/en-US/NTT_Careers/job/Associate-Engineer---AI-services_R-151207",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:55.869114+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 322,
@@ -302,9 +316,11 @@
       "role": "Information Technology Intern",
       "page": "jobs/procter-gamble-information-technology-intern.html",
       "url": "https://pg.wd5.myworkdayjobs.com/en-GB/1000/job/MUMBAI-GENERAL-OFFICE/Information-Technology-Intern_R000161858/",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:33:57.541511+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 323,
@@ -312,9 +328,11 @@
       "role": "Operations Early Career Entry Program",
       "page": "jobs/state-street-operations-early-career-entry-program.html",
       "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Bangalore-India/Operations-Early-Career-Entry-Program_R-799807",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:33:58.315965+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 304,
@@ -322,9 +340,11 @@
       "role": "Associate Data & Analytics Engineer",
       "page": "jobs/argano-associate-data-analytics-engineer.html",
       "url": "https://fa-eyau-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2010",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:33:59.588292+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 305,
@@ -332,9 +352,11 @@
       "role": "Associate Analyst | Digital | DigiGov",
       "page": "jobs/deloitte-associate-analyst-digital-digigov.html",
       "url": "https://southasiacareers.deloitte.com/job/Delhi-Associate-Analyst-Digital-Delhi-Operations%2C-Industry-%26-Domain-Solutions-DigiGov/60961044",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:01.224039+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 306,
@@ -342,9 +364,11 @@
       "role": "Operations Early Talent 2026–2027",
       "page": "jobs/deutsche-bank-operations-early-talent-2026-2027.html",
       "url": "https://db.wd3.myworkdayjobs.com/en-US/DBWebsite/job/Operations-Early-Talent-2026-2027_R0452987",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:03.139333+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 307,
@@ -352,9 +376,11 @@
       "role": "Associate Software Engineer",
       "page": "jobs/duck-creek-technologies-associate-software-engineer.html",
       "url": "https://duckcreek.wd1.myworkdayjobs.com/en-US/duckcreek-linkedin/job/Bengaluru-India/Associate-Software-Engineer_REQID55227",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:05.037677+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 308,
@@ -362,9 +388,11 @@
       "role": "Intern (Bachelor's) – Data Engineering",
       "page": "jobs/honeywell-intern-bachelor-s-data-engineering.html",
       "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Honeywell/job/160486",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:05.887840+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 309,
@@ -372,9 +400,11 @@
       "role": "Associate Software Engineer",
       "page": "jobs/lseg-associate-software-engineer.html",
       "url": "https://lseg.wd3.myworkdayjobs.com/Careers/job/IND-BLR-Divyasree-Technopolis/Associate-Software-Engineer_R0124079",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:07.333707+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 310,
@@ -382,9 +412,11 @@
       "role": "Intern, Software Engineer – Bachelor's Degree",
       "page": "jobs/marvell-intern-software-engineer-bachelor-s-degree.html",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Hyderabad/Intern--Software-Engineer---Bachelor-s-Degree_2604624",
-      "state": "review",
-      "reason": "TimeoutError; availability unconfirmed",
-      "checkedAt": "2026-11-06T20:34:08.968021+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 311,
@@ -402,9 +434,11 @@
       "role": "Apprentice – Mechanical Design",
       "page": "jobs/origin-apprentice-mechanical-design.html",
       "url": "https://apply.workable.com/j/870CD94FAF",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-11-06T20:34:50.978568+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 313,
@@ -412,9 +446,11 @@
       "role": "Associate Software Engineer",
       "page": "jobs/reliaquest-associate-software-engineer.html",
       "url": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Engineer_R15032",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:34:51.862102+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 297,
@@ -442,9 +478,11 @@
       "role": "Analyst – Transfer Pricing",
       "page": "jobs/ey-analyst-transfer-pricing.html",
       "url": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-AMI-TAX-ITTS-Transfer-Pricing-Pune-MH-411001/1431351433/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:34:57.515337+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 302,
@@ -482,9 +520,11 @@
       "role": "PE – Policy Servicing",
       "page": "jobs/cognizant-pe-policy-servicing.html",
       "url": "https://careers.cognizant.com/global-en/jobs/00070764861/pe-policy-servicing/",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-11-06T20:35:04.616723+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 290,
@@ -492,9 +532,11 @@
       "role": "Intern – CEO's Office",
       "page": "jobs/deloitte-intern-ceo-s-office.html",
       "url": "https://southasiacareers.deloitte.com/job/Delhi-Intern-CEO%27S-OFFICE-Delhi-CEO%27s-Office/60770544/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:05.238023+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 291,
@@ -502,9 +544,11 @@
       "role": "Associate Full-stack Software Engineer",
       "page": "jobs/manulife-associate-full-stack-software-engineer.html",
       "url": "https://manulife.wd3.myworkdayjobs.com/en-US/MFCJH_Jobs/job/Kuala-Lumpur-Wilayah-Persekutuan-Kuala-Lumpur/Associate-Full-stack-Software-Engineer_JR26100119",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:35:07.161638+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 292,
@@ -532,9 +576,11 @@
       "role": "Software Engineer (Fresh Graduate)",
       "page": "jobs/motorola-solutions-software-engineer-fresh-graduate.html",
       "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Software-Engineer--Fresh-Graduate-_R69389-1",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:35:11.417996+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 295,
@@ -552,9 +598,11 @@
       "role": "Digital Specialist Engineer (Trainee)",
       "page": "jobs/infosys-digital-specialist-engineer-trainee-2026.html",
       "url": "https://www.naukri.com/job-listings-digital-specialist-engineer-trainee-infosys-hyderabad-bengaluru-delhi-ncr-0-to-2-years-151026022319",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:12.230978+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 276,
@@ -572,9 +620,11 @@
       "role": "Product Operations Associate",
       "page": "jobs/apna-product-operations-associate.html",
       "url": "https://careers.apna.co/_/j/357CEB0335",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:14.891932+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 278,
@@ -592,9 +642,11 @@
       "role": "Graduate Engineer Trainee – EEE/ECE/CSE",
       "page": "jobs/circuvent-graduate-engineer-trainee-eee-ece-cse.html",
       "url": "https://career.circuvent.com/jobs/graduate-engineer-trainee-eee-ece-cse?company=circuvent.com",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:35:17.043531+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 282,
@@ -602,9 +654,11 @@
       "role": "Analyst – Generative AI",
       "page": "jobs/hcltech-analyst-generative-ai.html",
       "url": "https://careers.hcltech.com/job/Analyst-%28Support-%26-Operations%29/167256-en_US/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:19.421985+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 283,
@@ -642,9 +696,11 @@
       "role": "Procure to Pay Operations New Associate",
       "page": "jobs/accenture-procure-to-pay-operations-new-associate.html",
       "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Procure-to-Pay-Operations-New-Associate_AIOC-S01644014-1",
-      "state": "review",
-      "reason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "checkedAt": "2026-11-06T20:35:24.006700+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 268,
@@ -662,9 +718,11 @@
       "role": "Analyst – Global Compliance & Reporting",
       "page": "jobs/ey-analyst-global-compliance-reporting.html",
       "url": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-New-Delhi-Nati-110037/1416906133/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:27.972135+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 270,
@@ -682,9 +740,11 @@
       "role": "Software Developer Intern (Frontend)",
       "page": "jobs/revrag-ai-software-developer-intern-frontend.html",
       "url": "https://www.revrag.ai/careers/software-developer-intern-frontend",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:31.929964+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 272,
@@ -702,9 +762,11 @@
       "role": "Junior Software Engineer",
       "page": "jobs/willsmarg-technologies-junior-software-engineer.html",
       "url": "https://www.willsmarg.com/MainPage/JobDetails/40",
-      "state": "review",
-      "reason": "URLError; availability unconfirmed",
-      "checkedAt": "2026-11-06T20:35:32.412918+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 274,
@@ -762,9 +824,11 @@
       "role": "Associate Analyst – Global Compliance & Reporting",
       "page": "jobs/ey-associate-analyst-global-compliance-reporting.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-FS-TAX-GCR-Global-Compliance-%26-Reporting-Mumbai-MH-400028/1445265533/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:36.464154+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 266,
@@ -892,9 +956,11 @@
       "role": "2027 Software Engineer — Campus Graduate Program, IIT Hyderabad",
       "page": "jobs/point72-2027-software-engineer-campus-graduate-program-iit-hyderabad.html",
       "url": "https://job-boards.greenhouse.io/point72/jobs/8893936002?gh_jid=8893936002",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-11-06T20:35:46.330352+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 253,
@@ -912,9 +978,11 @@
       "role": "Trust & Safety New Associate",
       "page": "jobs/accenture-trust-safety-new-associate.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01666783_en",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-11-06T20:35:49.549303+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 243,
@@ -932,9 +1000,11 @@
       "role": "Engineering Intern — Encademy",
       "page": "jobs/encardio-rite-engineering-intern-encademy.html",
       "url": "https://encardio.keka.com/careers/jobdetails/6010",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:50.989332+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 245,
@@ -952,9 +1022,11 @@
       "role": "Learning Operations New Associate",
       "page": "jobs/accenture-learning-operations-new-associate.html",
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01664425_en",
-      "state": "review",
-      "reason": "Redirected source requires browser/ATS verification",
-      "checkedAt": "2026-11-06T20:35:52.689621+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 231,
@@ -962,9 +1034,11 @@
       "role": "Data Engineer Intern - 2027",
       "page": "jobs/amazon-data-engineer-intern-2027.html",
       "url": "https://www.amazon.jobs/en/jobs/10496769/data-engineer-intern-2027",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:53.864106+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 232,
@@ -972,9 +1046,11 @@
       "role": "Apprentice - Marketing Offers Operations",
       "page": "jobs/american-express-apprentice-marketing-offers-operations.html",
       "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014753",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:54.719955+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 234,
@@ -982,9 +1058,11 @@
       "role": "Analyst - Tax - Transfer Pricing",
       "page": "jobs/ey-analyst-tax-transfer-pricing.html",
       "url": "https://careers.ey.com/ey/job/Mumbai-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1430003233/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:35:56.018807+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 235,
@@ -992,9 +1070,11 @@
       "role": "Copy Intern",
       "page": "jobs/fam-copy-intern.html",
       "url": "https://jobs.lever.co/fampay/23dd18f9-a331-4115-98e9-e98c404c47c6",
-      "state": "review",
-      "reason": "HTTP 404; availability unconfirmed",
-      "checkedAt": "2026-11-06T20:35:58.395361+00:00"
+      "state": "expired",
+      "reason": "Marked expired by HD Careers owner in a bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "expire",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 236,
@@ -1063,8 +1143,10 @@
       "page": "jobs/highlevel-bdr-support-apprentice.html",
       "url": "https://jobs.lever.co/gohighlevel/48265533-1a1c-405b-a805-7dae16ce8c16",
       "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:36:01.077223+00:00"
+      "reason": "Owner marked Unsure; hold for further verification.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "unsure",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 223,
@@ -1172,9 +1254,11 @@
       "role": "Consultant FT: Strategy & Ops | Finance Transformation | Finance Strategy",
       "page": "jobs/deloitte-consultant-ft-strategy-ops-finance-transformation-finance-strategy.html",
       "url": "https://southasiacareers.deloitte.com/job/Bengaluru-Consultant-FT-Strategy-%26-Ops-Bengaluru-Finance-Transformation-Finance-Strategy/59276544/",
-      "state": "review",
-      "reason": "Official page loaded but role/application evidence was insufficient",
-      "checkedAt": "2026-11-06T20:36:10.944047+00:00"
+      "state": "active",
+      "reason": "Manually browser-verified in HD Careers Admin bulk review.",
+      "checkedAt": "2026-11-07T07:29:50.045Z",
+      "manualReview": "keep",
+      "manualReviewedAt": "2026-11-07T07:29:50.045Z"
     },
     {
       "id": 201,
