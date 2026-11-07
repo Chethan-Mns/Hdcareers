@@ -722,57 +722,6 @@
       }
     },
     {
-      "id": "salesforce-jr356580",
-      "company": "Salesforce",
-      "role": "Software Engineering AMTS",
-      "loc": "Bengaluru / Hyderabad, India",
-      "apply": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "2027 graduate / fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact requisition-bound official application route for JR356580 resolved on 7 Nov 2026; current source evidence states 2027 graduate / fresher eligibility and the listed location.",
-      "postedDate": "2026-11-06",
-      "job": {
-        "company": "Salesforce",
-        "role": "Software Engineering AMTS",
-        "loc": "Bengaluru / Hyderabad, India",
-        "apply": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "2027 graduate / fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Salesforce Careers",
-        "desc": "Futureforce graduate software-engineering role contributing to development, testing and reliable delivery of Salesforce products.",
-        "elig": "2027 graduating student or fresh graduate meeting the official degree and location requirements.",
-        "resp": [
-          "Develop and test production software",
-          "Write unit and automation tests",
-          "Collaborate with engineering teams on reliable delivery"
-        ],
-        "skills": [
-          "Software development",
-          "Test automation",
-          "Unit testing",
-          "Problem solving",
-          "LLM coding assistants"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR356580",
-        "postedDate": "2026-11-06",
-        "verifiedDate": "7 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-07T03:41:56.556Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact requisition-bound official application route for JR356580 resolved on 7 Nov 2026; current source evidence states 2027 graduate / fresher eligibility and the listed location."
-      }
-    },
-    {
       "id": "syndigo-6220163004",
       "company": "Syndigo",
       "role": "Product Support Engineer I",
@@ -1048,15 +997,15 @@
       }
     },
     "backup": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
         "training": 0
       }
@@ -1065,16 +1014,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 20,
-    "employerCoverage": {
-      "watchlistVisited": 11,
-      "watchlistNotVisited": 76,
-      "watchlistBlocked": 0,
-      "totalOfficialEmployerPortalsVisited": 34,
-      "selectedWatchlistEmployers": 5,
-      "selectedFallbackEmployers": 15
-    },
-    "uniqueExactLiveJobIdsFound": 35,
+    "remaining": 19,
     "duplicateExclusions": [
       {
         "id": "114743",
@@ -1135,18 +1075,17 @@
       {
         "id": "R0056653",
         "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "salesforce-jr356580",
+        "company": "Salesforce",
+        "reason": "already_published",
+        "officialUrl": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580"
       }
     ],
     "excludedCount": 16,
-    "expiredExclusions": [
-      {
-        "id": "hcltech-184349",
-        "reason": "official employer page states the job is not available"
-      }
-    ],
-    "sourceUnconfirmedOrExperiencedHeld": 27,
-    "needsFreshDiscovery": false,
-    "note": "Both shortlists are category-audited 6/2/2 and contain 20 distinct employer groups. No publication is authorized by this review batch."
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
