@@ -1,916 +1,1063 @@
 {
-  "batchId": "2026-11-06-0900-ist",
-  "generatedAt": "2026-11-06T03:36:33.329Z",
-  "status": "submitted",
-  "updatedAt": "2026-11-06T05:26:51.416Z",
+  "batchId": "2026-11-07-0900-ist",
+  "generatedAt": "2026-11-07T03:41:56.556Z",
+  "status": "reviewing",
+  "updatedAt": "2026-11-07T03:41:56.556Z",
   "priority": [
     {
-      "id": "pwc-db-005563-1",
-      "company": "PwC India",
-      "role": "Associate, Data Science",
-      "loc": "Kolkata, West Bengal, India",
-      "apply": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/IN-Associate-Data-Science---Engineering-Data---Analytics-Advisory-Kolkata_DB_005563-1",
+      "id": "rippling-277b7caf-3092-44a7-9e8c-45769e5a3ea5",
+      "company": "Rippling",
+      "role": "Software Engineer-1",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://ats.rippling.com/rippling/jobs/277b7caf-3092-44a7-9e8c-45769e5a3ea5",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "reviewedStatus": "pending",
       "verificationVerdict": "live",
-      "verificationReason": "Exact PwC Workday requisition DB_005563-1 has a current job-bound route; current role evidence states Kolkata, BE/B.Tech/M.Tech and freshers or 0–2 years.",
-      "postedDate": "2026-11-05",
+      "verificationReason": "Exact requisition-bound official application route for 277b7caf-3092-44a7-9e8c-45769e5a3ea5 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
+      "postedDate": "2026-11-06",
       "job": {
-        "company": "PwC India",
-        "role": "Associate, Data Science",
-        "loc": "Kolkata, West Bengal, India",
-        "apply": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/IN-Associate-Data-Science---Engineering-Data---Analytics-Advisory-Kolkata_DB_005563-1",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "PwC Careers",
-        "desc": "Entry-level Data & Analytics role building analytical models, data pipelines and cloud-based AI solutions.",
-        "elig": "BE, B.Tech or M.Tech; freshers or candidates with 0–2 years; Python, AWS and data-engineering foundations.",
-        "resp": [
-          "Build analytical, machine-learning and deep-learning models",
-          "Develop scalable data pipelines",
-          "Build AWS-based analytics solutions"
-        ],
-        "skills": [
-          "Python",
-          "AWS",
-          "SQL",
-          "Machine Learning",
-          "Generative AI",
-          "R"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "DB_005563-1",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:07:46.304Z",
-        "browserVerifiedAt": "2026-11-06T05:07:46.304Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact PwC Workday requisition DB_005563-1 has a current job-bound route; current role evidence states Kolkata, BE/B.Tech/M.Tech and freshers or 0–2 years."
-      },
-      "reviewedAt": "2026-11-06T05:07:46.304Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "cisco-2030493-1",
-      "company": "Cisco",
-      "role": "AI Operations Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/AI-Operations-Engineer_2030493-1",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0 years with Master’s; 2 years with Bachelor’s",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact Cisco Workday requisition 2030493-1 is current; source evidence explicitly allows a Master’s graduate with zero years (Bachelor’s route requires two years).",
-      "postedDate": "2026-11-05",
-      "job": {
-        "company": "Cisco",
-        "role": "AI Operations Engineer",
+        "company": "Rippling",
+        "role": "Software Engineer-1",
         "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/AI-Operations-Engineer_2030493-1",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0 years with Master’s; 2 years with Bachelor’s",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Cisco Careers",
-        "desc": "AI operations role supporting network assurance, incident analysis, monitoring and automation.",
-        "elig": "Master’s degree with 0 years, or Bachelor’s degree with 2 years of related experience.",
-        "resp": [
-          "Troubleshoot AI-operations environments",
-          "Analyse network performance data",
-          "Build monitoring, alerting and automation"
-        ],
-        "skills": [
-          "Python",
-          "Machine learning pipelines",
-          "CI/CD",
-          "Monitoring",
-          "Network analytics"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "2030493-1",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:07:53.157Z",
-        "browserVerifiedAt": "2026-11-06T05:07:53.157Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact Cisco Workday requisition 2030493-1 is current; source evidence explicitly allows a Master’s graduate with zero years (Bachelor’s route requires two years)."
-      },
-      "reviewedAt": "2026-11-06T05:07:53.157Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "qualcomm-446720761539",
-      "company": "Qualcomm",
-      "role": "Associate Engineer – RF Software",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://careers.qualcomm.com/careers/job/446720761539",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Qualcomm Careers requisition 446720761539 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
-      "postedDate": "2026-11-05",
-      "job": {
-        "company": "Qualcomm",
-        "role": "Associate Engineer – RF Software",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://careers.qualcomm.com/careers/job/446720761539",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Qualcomm Careers",
-        "desc": "Entry-level modem-RF software role developing and validating drivers and RF software modules.",
-        "elig": "Bachelor’s or Master’s in Electronics and Communication Engineering or equivalent; 0–1 year.",
-        "resp": [
-          "Develop and validate modem-RF software",
-          "Build RF transceiver drivers",
-          "Investigate RF and modem issues"
-        ],
-        "skills": [
-          "C",
-          "C++",
-          "Embedded RTOS",
-          "RF theory",
-          "Wireless communications"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "446720761539",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:12:02.332Z",
-        "browserVerifiedAt": "2026-11-06T05:12:02.332Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Qualcomm Careers requisition 446720761539 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:12:02.332Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "comcast-r443109",
-      "company": "Comcast",
-      "role": "Engineer 1 – Cyber Security Operations",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://comcast.wd115.myworkdayjobs.com/Comcast_Careers/job/India---Chennai-Comcast-India-Engineering-Cent/Engineer-1---Cyber-Security-Operations_R443109",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Comcast Careers requisition R443109 has a current job-bound application route; role evidence confirms 0–2 years eligibility.",
-      "postedDate": "2026-11-05",
-      "job": {
-        "company": "Comcast",
-        "role": "Engineer 1 – Cyber Security Operations",
-        "loc": "Chennai, Tamil Nadu, India",
-        "apply": "https://comcast.wd115.myworkdayjobs.com/Comcast_Careers/job/India---Chennai-Comcast-India-Engineering-Cent/Engineer-1---Cyber-Security-Operations_R443109",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Comcast Careers",
-        "desc": "Entry-level cyber security operations role monitoring alerts and supporting incident response and vulnerability testing.",
-        "elig": "Bachelor’s degree preferred; 0–2 years of relevant experience; variable schedules including nights/weekends.",
-        "resp": [
-          "Monitor security alerts",
-          "Support incident response and restoration",
-          "Conduct vulnerability assessment and penetration testing"
-        ],
-        "skills": [
-          "Security monitoring",
-          "Incident response",
-          "Vulnerability assessment",
-          "Penetration testing",
-          "Risk analysis"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R443109",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Comcast Careers requisition R443109 has a current job-bound application route; role evidence confirms 0–2 years eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:12:38.108Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "opengov-3a47a711-c75c-4d90-a596-09c09f409938",
-      "company": "OpenGov",
-      "role": "Associate Implementation Engineer",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://jobs.ashbyhq.com/opengov/3a47a711-c75c-4d90-a596-09c09f409938",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official OpenGov Careers requisition 3a47a711-c75c-4d90-a596-09c09f409938 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
-      "postedDate": "2026-10-29",
-      "job": {
-        "company": "OpenGov",
-        "role": "Associate Implementation Engineer",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://jobs.ashbyhq.com/opengov/3a47a711-c75c-4d90-a596-09c09f409938",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "OpenGov Careers",
-        "desc": "Graduate implementation role configuring cloud software, migrating customer data and validating deployments.",
-        "elig": "0–1 year of SQL and Python or similar scripting; strong Excel, communication and data-validation skills.",
-        "resp": [
-          "Configure and test cloud software",
-          "Map and migrate customer data",
-          "Validate deployments and troubleshoot data issues"
-        ],
-        "skills": [
-          "SQL",
-          "Python",
-          "Excel",
-          "ETL",
-          "Data migration"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "3a47a711-c75c-4d90-a596-09c09f409938",
-        "postedDate": "2026-10-29",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:13:35.155Z",
-        "browserVerifiedAt": "2026-11-06T05:13:35.155Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official OpenGov Careers requisition 3a47a711-c75c-4d90-a596-09c09f409938 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:13:35.155Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "cencora-r2617120",
-      "company": "Cencora",
-      "role": "AI Developer 1",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://myhrabc.wd5.myworkdayjobs.com/global/job/Pune-India/AI-Developer-1_R2617120",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Less than 2 years",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Cencora Careers requisition R2617120 has a current job-bound application route; role evidence confirms Less than 2 years eligibility.",
-      "postedDate": "2026-10-29",
-      "job": {
-        "company": "Cencora",
-        "role": "AI Developer 1",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://myhrabc.wd5.myworkdayjobs.com/global/job/Pune-India/AI-Developer-1_R2617120",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Less than 2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Cencora Careers",
-        "desc": "Early-career AI development role designing models, preparing data and integrating AI applications.",
-        "elig": "Bachelor’s degree in CS, software engineering, data science, information systems, ML or related, or equivalent; less than 2 years.",
-        "resp": [
-          "Design AI models and applications",
-          "Build preprocessing and model-evaluation pipelines",
-          "Tune models and integrate them into systems"
-        ],
-        "skills": [
-          "Machine learning",
-          "Data preprocessing",
-          "Feature engineering",
-          "Model evaluation",
-          "EDA"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R2617120",
-        "postedDate": "2026-10-29",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:14:24.217Z",
-        "browserVerifiedAt": "2026-11-06T05:14:24.217Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Cencora Careers requisition R2617120 has a current job-bound application route; role evidence confirms Less than 2 years eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:14:24.217Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "amazon-10506542",
-      "company": "Amazon",
-      "role": "Programmer Analyst Intern – 2027",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://www.amazon.jobs/en/jobs/10506542/programmer-analyst-intern-2027",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student internship",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Amazon Jobs requisition 10506542 has a current job-bound application route; role evidence confirms Student internship eligibility.",
-      "postedDate": "2026-10-01",
-      "job": {
-        "company": "Amazon",
-        "role": "Programmer Analyst Intern – 2027",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://www.amazon.jobs/en/jobs/10506542/programmer-analyst-intern-2027",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Student internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Amazon Jobs",
-        "desc": "Programmer Analyst internship building and supporting large-scale applications, internal tools and platform migrations.",
-        "elig": "Currently pursuing a Bachelor’s degree or higher in Computer Science, Engineering or equivalent; full-time availability for the internship.",
-        "resp": [
-          "Write code and unit tests",
-          "Support migrations and troubleshoot tools",
-          "Automate manual configuration tasks"
-        ],
-        "skills": [
-          "Data structures",
-          "Algorithms",
-          "Java",
-          "SQL",
-          "AWS"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "10506542",
-        "postedDate": "2026-10-01",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:14:41.784Z",
-        "browserVerifiedAt": "2026-11-06T05:14:41.784Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Amazon Jobs requisition 10506542 has a current job-bound application route; role evidence confirms Student internship eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:14:41.784Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "novartis-req-10091880-1",
-      "company": "Novartis",
-      "role": "Intern, Field Design Advisory",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers/job/Hyderabad-Office/Intern--Field-Design-Advisory_REQ-10091880-1",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student internship",
-      "reviewedStatus": "expired",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Novartis Careers requisition REQ-10091880-1 has a current job-bound application route; role evidence confirms Student internship eligibility.",
-      "postedDate": "2026-11-05",
-      "job": {
-        "company": "Novartis",
-        "role": "Intern, Field Design Advisory",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers/job/Hyderabad-Office/Intern--Field-Design-Advisory_REQ-10091880-1",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Student internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "expired",
-        "sourceName": "Novartis Careers",
-        "desc": "Analytics internship supporting pharmaceutical field operations through dashboards, validation checks and process reporting.",
-        "elig": "Student candidate with analytical and data-tool foundations; posting asks for Power BI/Alteryx/SQL or similar ETL exposure plus Excel/Python familiarity.",
-        "resp": [
-          "Analyse trends and variances",
-          "Build data-validation checks and dashboards",
-          "Support incentive and call-plan reporting"
-        ],
-        "skills": [
-          "Power BI",
-          "SQL",
-          "Python",
-          "Alteryx",
-          "Excel"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "REQ-10091880-1",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Novartis Careers requisition REQ-10091880-1 has a current job-bound application route; role evidence confirms Student internship eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:14:56.499Z",
-      "reviewedBy": "HD Careers Admin"
-    }
-  ],
-  "backup": [
-    {
-      "id": "kyndryl-r-71537-2",
-      "company": "Kyndryl",
-      "role": "Technical Support Specialist",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://kyndryl.wd5.myworkdayjobs.com/KyndrylEarlyCareers/job/KIN51655-Gurugram-KIN51655/Technical-Support-Specialist_R-71537-2",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–3 years; freshers eligible",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Kyndryl Careers requisition R-71537-2 has a current job-bound application route; role evidence confirms 0–3 years; freshers eligible eligibility.",
-      "postedDate": "2026-11-04",
-      "job": {
-        "company": "Kyndryl",
-        "role": "Technical Support Specialist",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://kyndryl.wd5.myworkdayjobs.com/KyndrylEarlyCareers/job/KIN51655-Gurugram-KIN51655/Technical-Support-Specialist_R-71537-2",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–3 years; freshers eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Kyndryl Careers",
-        "desc": "Early-career infrastructure support role troubleshooting enterprise networking and application-delivery systems.",
-        "elig": "Freshers through 0–3 years; networking and troubleshooting foundations stated in the role evidence.",
-        "resp": [
-          "Troubleshoot network and delivery systems",
-          "Investigate incidents",
-          "Document and escalate resolutions"
-        ],
-        "skills": [
-          "Cisco Nexus",
-          "Cisco IOS",
-          "F5 ASM",
-          "F5 LTM",
-          "Troubleshooting"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R-71537-2",
-        "postedDate": "2026-11-04",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:15:22.270Z",
-        "browserVerifiedAt": "2026-11-06T05:15:22.270Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Kyndryl Careers requisition R-71537-2 has a current job-bound application route; role evidence confirms 0–3 years; freshers eligible eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:15:22.270Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "altera-r0046542",
-      "company": "Altera Digital Health",
-      "role": "Associate Technical Support Consultant",
-      "loc": "Pune or Vadodara, India (Remote)",
-      "apply": "https://harriscomputer.wd3.myworkdayjobs.com/altera/job/Remote-Pune-Baroda-India/Associate-Technical-Support-Consultant_R0046542",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 year",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Altera Digital Health Careers requisition R0046542 has a current job-bound application route; role evidence confirms 0–1 year eligibility.",
-      "postedDate": "2026-11-02",
-      "job": {
-        "company": "Altera Digital Health",
-        "role": "Associate Technical Support Consultant",
-        "loc": "Pune or Vadodara, India (Remote)",
-        "apply": "https://harriscomputer.wd3.myworkdayjobs.com/altera/job/Remote-Pune-Baroda-India/Associate-Technical-Support-Consultant_R0046542",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Altera Digital Health Careers",
-        "desc": "Entry-level application-support role resolving healthcare-software tickets and documenting customer cases.",
-        "elig": "Bachelor’s in CS, IT, Computer Engineering, Electronics or related; fresher or 0–1 year; rotational shifts.",
-        "resp": [
-          "Provide first-level technical support",
-          "Investigate tickets and logs",
-          "Document and escalate cases"
-        ],
-        "skills": [
-          "SQL",
-          "Windows",
-          "Networking",
-          "ServiceNow",
-          "Troubleshooting"
-        ],
-        "workMode": "Remote",
-        "jobId": "R0046542",
-        "postedDate": "2026-11-02",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:23:58.687Z",
-        "browserVerifiedAt": "2026-11-06T05:23:58.687Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Altera Digital Health Careers requisition R0046542 has a current job-bound application route; role evidence confirms 0–1 year eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:23:58.687Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "idfy-ehki9amqlgqclhwkrkzzksgze",
-      "company": "IDfy",
-      "role": "Product Support Engineer",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://idfy.turbohire.co/job/publicjobs/EHki9AMqlgQcLhWKrkzZKsgzEPO7YJt5K7e7gJwfXXGS4UeVmV3BRUudEn6Ch7DO",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official IDfy Careers requisition EHki9AMqlgQcLhWKrkzZKsgzEPO7YJt5K7e7gJwfXXGS4UeVmV3BRUudEn6Ch7DO has a current job-bound application route; role evidence confirms 0–2 years eligibility.",
-      "postedDate": "2026-11-02",
-      "job": {
-        "company": "IDfy",
-        "role": "Product Support Engineer",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://idfy.turbohire.co/job/publicjobs/EHki9AMqlgQcLhWKrkzZKsgzEPO7YJt5K7e7gJwfXXGS4UeVmV3BRUudEn6Ch7DO",
+        "apply": "https://ats.rippling.com/rippling/jobs/277b7caf-3092-44a7-9e8c-45769e5a3ea5",
         "cat": "it",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "IDfy Careers",
-        "desc": "Product-support and quality role troubleshooting customer issues and supporting manual and automated testing.",
-        "elig": "0–2 years in product or technical support; REST API basics, communication and rotational-shift availability.",
+        "sourceName": "Rippling Careers",
+        "desc": "Backend engineering role building Rippling integration and API frameworks, App Shop logic and automation.",
+        "elig": "0–2 years of backend engineering experience; strong computer-science fundamentals and proficiency in a backend language such as Python or Go.",
         "resp": [
-          "Prioritise and troubleshoot tickets",
-          "Execute manual and automated tests",
-          "Track quality issues"
+          "Build and maintain integration and API framework features",
+          "Contribute to App Shop platform logic",
+          "Automate manual platform processes"
         ],
         "skills": [
-          "REST APIs",
-          "SQL",
-          "Jira",
           "Python",
-          "Troubleshooting"
+          "Go",
+          "Backend engineering",
+          "APIs",
+          "Computer science fundamentals"
         ],
-        "workMode": "Onsite",
-        "jobId": "EHki9AMqlgQcLhWKrkzZKsgzEPO7YJt5K7e7gJwfXXGS4UeVmV3BRUudEn6Ch7DO",
-        "postedDate": "2026-11-02",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:24:12.838Z",
-        "browserVerifiedAt": "2026-11-06T05:24:12.838Z"
+        "workMode": "Not Specified",
+        "jobId": "277b7caf-3092-44a7-9e8c-45769e5a3ea5",
+        "postedDate": "2026-11-06",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact official IDfy Careers requisition EHki9AMqlgQcLhWKrkzZKsgzEPO7YJt5K7e7gJwfXXGS4UeVmV3BRUudEn6Ch7DO has a current job-bound application route; role evidence confirms 0–2 years eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:24:12.838Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact requisition-bound official application route for 277b7caf-3092-44a7-9e8c-45769e5a3ea5 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
+      }
     },
     {
-      "id": "celonis-7665962003",
-      "company": "Celonis",
-      "role": "Associate Deployment Engineer – Galaxy Graduate Program",
+      "id": "oracle-345517",
+      "company": "Oracle",
+      "role": "Support Engineer I",
       "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
+      "apply": "https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_45001/job/345517",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "Recent graduate or final-year student",
-      "reviewedStatus": "live",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
       "verificationVerdict": "live",
-      "verificationReason": "Exact official Celonis Careers requisition 7665962003 has a current job-bound application route; role evidence confirms Recent graduate or final-year student eligibility.",
+      "verificationReason": "Exact requisition-bound official application route for 345517 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
       "postedDate": "2026-10-28",
       "job": {
-        "company": "Celonis",
-        "role": "Associate Deployment Engineer – Galaxy Graduate Program",
+        "company": "Oracle",
+        "role": "Support Engineer I",
         "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
+        "apply": "https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_45001/job/345517",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Recent graduate or final-year student",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Celonis Careers",
-        "desc": "Graduate deployment-engineering role implementing process-intelligence and AI solutions for customers.",
-        "elig": "Recent graduate or final-year student in CS, Data Science, Engineering, Business Information Systems or related; available full-time from February 2027.",
+        "sourceName": "Oracle Careers",
+        "desc": "Application-support role investigating customer issues, logs, workflows and database records under SLA priorities.",
+        "elig": "Fresh graduates or candidates with 0–2 years; computer-science or related background, SQL and willingness for the stated evening shift/on-call arrangement.",
         "resp": [
-          "Support platform implementations",
-          "Transform data using SQL and Python",
-          "Build AI-driven analyses and document solutions"
+          "Troubleshoot customer-reported issues",
+          "Analyze logs and reproduce problems",
+          "Document and escalate complex cases"
+        ],
+        "skills": [
+          "SQL",
+          "Troubleshooting",
+          "Incident management",
+          "Root-cause analysis"
+        ],
+        "workMode": "On-site",
+        "jobId": "345517",
+        "postedDate": "2026-10-28",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 345517 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
+      }
+    },
+    {
+      "id": "wex-r22939",
+      "company": "WEX",
+      "role": "Software Development Engineer 1-2",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://wexinc.wd5.myworkdayjobs.com/wexinc/job/India---Bangalore/Software-Development-Engineer-1-2_R22939",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for R22939 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location.",
+      "postedDate": "2026-11-03",
+      "job": {
+        "company": "WEX",
+        "role": "Software Development Engineer 1-2",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://wexinc.wd5.myworkdayjobs.com/wexinc/job/India---Bangalore/Software-Development-Engineer-1-2_R22939",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "WEX Careers",
+        "desc": "Early-career engineering role in the Data, AI and Risk Technology team working on AI/ML, data platforms and intelligent agents.",
+        "elig": "Computer-science graduate or equivalent with 0–1 year and strong coding fundamentals.",
+        "resp": [
+          "Build AI/ML services and intelligent agents",
+          "Develop data-processing platforms",
+          "Implement and evaluate machine-learning models"
         ],
         "skills": [
           "Python",
-          "SQL",
-          "Machine Learning",
-          "Process Mining",
-          "Consulting"
+          "Java",
+          "Go",
+          "Machine learning",
+          "Big data",
+          "SQL"
         ],
         "workMode": "Not Specified",
-        "jobId": "7665962003",
-        "postedDate": "2026-10-28",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:24:23.406Z",
-        "browserVerifiedAt": "2026-11-06T05:24:23.406Z"
+        "jobId": "R22939",
+        "postedDate": "2026-11-03",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact official Celonis Careers requisition 7665962003 has a current job-bound application route; role evidence confirms Recent graduate or final-year student eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:24:23.406Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact requisition-bound official application route for R22939 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location."
+      }
     },
     {
-      "id": "avnet-jr-024615",
-      "company": "Avnet",
-      "role": "Cybersecurity Analyst I",
+      "id": "abb-jr00051281",
+      "company": "ABB",
+      "role": "Associate R&D Engineer",
       "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
+      "apply": "https://abb.wd3.myworkdayjobs.com/External_Career_Page/job/Bangalore-Karnataka-India/Associate-R-D-Engineer_JR00051281",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "Less than 2 years",
-      "reviewedStatus": "live",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
       "verificationVerdict": "live",
-      "verificationReason": "Exact official Avnet Careers requisition JR-024615 has a current job-bound application route; role evidence confirms Less than 2 years eligibility.",
-      "postedDate": "2026-10-27",
+      "verificationReason": "Exact requisition-bound official application route for JR00051281 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
+      "postedDate": "2026-11-02",
       "job": {
-        "company": "Avnet",
-        "role": "Cybersecurity Analyst I",
+        "company": "ABB",
+        "role": "Associate R&D Engineer",
         "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
+        "apply": "https://abb.wd3.myworkdayjobs.com/External_Career_Page/job/Bangalore-Karnataka-India/Associate-R-D-Engineer_JR00051281",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Less than 2 years",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Avnet Careers",
-        "desc": "Entry-level security-operations role monitoring alerts, triaging incidents and maintaining investigation records.",
-        "elig": "Bachelor’s in Cybersecurity, CS, IT or related; less than 2 years; rotating-shift availability.",
+        "sourceName": "ABB Careers",
+        "desc": "R&D security-lab role configuring networks, tracking devices and supporting security scans for ABB Process Automation.",
+        "elig": "Early-career engineering candidates with 0–2 years and networking/security-lab foundations.",
         "resp": [
-          "Monitor and triage security alerts",
-          "Investigate EDR, NDR and SIEM events",
-          "Document and escalate incidents"
+          "Configure and maintain the test-lab network",
+          "Track lab devices and inventory",
+          "Run approved security scans"
+        ],
+        "skills": [
+          "Networking",
+          "Firewalls",
+          "TCP/IP",
+          "Nmap",
+          "Nessus",
+          "VMware"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "JR00051281",
+        "postedDate": "2026-11-02",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for JR00051281 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
+      }
+    },
+    {
+      "id": "hpe-1216116-2",
+      "company": "Hewlett Packard Enterprise",
+      "role": "Systems/Software Engineer I",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://hpe.wd5.myworkdayjobs.com/Jobsathpe/job/Bengaluru-Karntaka-India/Lab-Engineer-I_1216116-2",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Entry level; years not stated",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 1216116-2 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location.",
+      "postedDate": "2026-10-29",
+      "job": {
+        "company": "Hewlett Packard Enterprise",
+        "role": "Systems/Software Engineer I",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://hpe.wd5.myworkdayjobs.com/Jobsathpe/job/Bengaluru-Karntaka-India/Lab-Engineer-I_1216116-2",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level; years not stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "HPE Careers",
+        "desc": "Entry-level lab engineering role resolving tickets, maintaining network and compute equipment, and documenting device topologies.",
+        "elig": "Entry-level candidate with Unix/Linux, networking and virtual-machine fundamentals; exact degree requirements should be checked on the official posting.",
+        "resp": [
+          "Resolve lab trouble tickets",
+          "Install and replace network or compute equipment",
+          "Deploy virtual machines and document topologies"
+        ],
+        "skills": [
+          "Unix/Linux",
+          "JUNOS",
+          "Networking",
+          "VMware ESX"
+        ],
+        "workMode": "On-site",
+        "jobId": "1216116-2",
+        "postedDate": "2026-10-29",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 1216116-2 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location."
+      }
+    },
+    {
+      "id": "episode-six-6237558004",
+      "company": "Episode Six",
+      "role": "Graduate Trainee – Security (SOC)",
+      "loc": "India",
+      "apply": "https://job-boards.greenhouse.io/episodesixlinkedin/jobs/6237558004",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 6237558004 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
+      "postedDate": "2026-10-28",
+      "job": {
+        "company": "Episode Six",
+        "role": "Graduate Trainee – Security (SOC)",
+        "loc": "India",
+        "apply": "https://job-boards.greenhouse.io/episodesixlinkedin/jobs/6237558004",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Episode Six Careers",
+        "desc": "Security Operations Centre graduate-trainee role monitoring alerts, administering security tools and supporting incident response.",
+        "elig": "Fresh graduates or candidates with 0–2 years; knowledge of Linux, Windows, AWS and security monitoring.",
+        "resp": [
+          "Monitor and respond to security alerts",
+          "Administer EDR, SIEM and vulnerability tools",
+          "Support incident response and compliance reviews"
         ],
         "skills": [
           "SOC",
           "SIEM",
           "EDR",
-          "NDR",
-          "Incident response"
+          "Linux",
+          "Windows",
+          "AWS",
+          "Network security"
         ],
         "workMode": "Not Specified",
-        "jobId": "JR-024615",
-        "postedDate": "2026-10-27",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:24:39.635Z",
-        "browserVerifiedAt": "2026-11-06T05:24:39.635Z"
+        "jobId": "6237558004",
+        "postedDate": "2026-10-28",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact official Avnet Careers requisition JR-024615 has a current job-bound application route; role evidence confirms Less than 2 years eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:24:39.635Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact requisition-bound official application route for 6237558004 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
+      }
     },
     {
-      "id": "freudenberg-r-00106593",
-      "company": "Freudenberg (Vibracoustic)",
-      "role": "Junior Professional AI Engineer",
-      "loc": "Morinda, Punjab, India",
-      "apply": "https://freudenberg.wd3.myworkdayjobs.com/freudenberg-group/job/Morinda/Junior-Professional-AI-Engineer_R_00106593",
+      "id": "softmason-145720",
+      "company": "Softmason Technologies",
+      "role": "Business Analyst",
+      "loc": "India",
+      "apply": "https://softmason.keka.com/careers/jobdetails/145720",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Freshers accepted; posting range 0–5 years",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 145720 resolved on 7 Nov 2026; current source evidence states Freshers accepted; posting range 0–5 years eligibility and the listed location.",
+      "postedDate": "2026-11-02",
+      "job": {
+        "company": "Softmason Technologies",
+        "role": "Business Analyst",
+        "loc": "India",
+        "apply": "https://softmason.keka.com/careers/jobdetails/145720",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Freshers accepted; posting range 0–5 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Softmason Careers",
+        "desc": "Business-analysis role gathering requirements, documenting processes and supporting Agile delivery and user acceptance testing.",
+        "elig": "Freshers with 0–1 year are accepted within the wider 0–5-year posting range; strong analysis and communication skills.",
+        "resp": [
+          "Gather stakeholder requirements",
+          "Prepare BRDs, FRDs and user stories",
+          "Support Agile ceremonies and UAT"
+        ],
+        "skills": [
+          "Requirement gathering",
+          "Excel",
+          "SQL",
+          "JIRA",
+          "Power BI",
+          "Agile"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "145720",
+        "postedDate": "2026-11-02",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 145720 resolved on 7 Nov 2026; current source evidence states Freshers accepted; posting range 0–5 years eligibility and the listed location."
+      }
+    },
+    {
+      "id": "medibuddy-job-0119",
+      "company": "MediBuddy",
+      "role": "Operations Associate",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://hire.medibuddy.in/careers/operations-associate-5nedlq",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresher–2 years",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for JOB-0119 resolved on 7 Nov 2026; current source evidence states Fresher–2 years eligibility and the listed location.",
+      "postedDate": "",
+      "job": {
+        "company": "MediBuddy",
+        "role": "Operations Associate",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://hire.medibuddy.in/careers/operations-associate-5nedlq",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Fresher–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "MediBuddy Careers",
+        "desc": "Insurance-operations role coordinating customers and diagnostic centres, appointments, reports and turnaround times.",
+        "elig": "Any graduate; clinical or medical background is advantageous; fresher to 2 years, English and Kannada plus one additional South Indian language.",
+        "resp": [
+          "Coordinate bookings and diagnostic-centre follow-ups",
+          "Track attendance and report closure",
+          "Maintain turnaround-time targets"
+        ],
+        "skills": [
+          "Operations coordination",
+          "MS Office",
+          "Email communication",
+          "Relationship management"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "JOB-0119",
+        "postedDate": "",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for JOB-0119 resolved on 7 Nov 2026; current source evidence states Fresher–2 years eligibility and the listed location."
+      }
+    },
+    {
+      "id": "deloitte-61353044",
+      "company": "Deloitte",
+      "role": "Finance Intern",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Financial-Accounts-Bengaluru-Finance-%26-Accounts/61353044/",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Student or recent graduate; fresher",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact Deloitte South Asia requisition 61353044 is open with an Apply Now route; the official posting identifies a Bengaluru Finance internship and explicitly accepts pursuing/recently completed finance qualifications and freshers.",
+      "postedDate": "2026-11-06",
+      "job": {
+        "company": "Deloitte",
+        "role": "Finance Intern",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Intern-Financial-Accounts-Bengaluru-Finance-%26-Accounts/61353044/",
+        "cat": "internship",
+        "expType": "fresher",
+        "expYears": "Student or recent graduate; fresher",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Deloitte South Asia Careers",
+        "desc": "Finance internship supporting reporting, reconciliations, invoice validation, documentation and operational analysis.",
+        "elig": "Pursuing or recently completed B.Com, BBA Finance, M.Com, MBA Finance or equivalent; freshers accepted.",
+        "resp": [
+          "Support financial reports and MIS",
+          "Assist AP, AR, invoices and reconciliations",
+          "Maintain finance trackers and documentation"
+        ],
+        "skills": [
+          "Accounting fundamentals",
+          "Financial reporting",
+          "MS Excel",
+          "Reconciliation",
+          "Stakeholder coordination"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "61353044",
+        "postedDate": "2026-11-06",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact Deloitte South Asia requisition 61353044 is open with an Apply Now route; the official posting identifies a Bengaluru Finance internship and explicitly accepts pursuing/recently completed finance qualifications and freshers."
+      }
+    },
+    {
+      "id": "kla-2641096",
+      "company": "KLA",
+      "role": "Intern / Co-Op Technical (Software Testing)",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://kla.wd1.myworkdayjobs.com/UR/job/Chennai-India/Intern---Co-Op-Technical_2641096",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Student internship",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 2641096 resolved on 7 Nov 2026; current source evidence states Student internship eligibility and the listed location.",
+      "postedDate": "",
+      "job": {
+        "company": "KLA",
+        "role": "Intern / Co-Op Technical (Software Testing)",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://kla.wd1.myworkdayjobs.com/UR/job/Chennai-India/Intern---Co-Op-Technical_2641096",
+        "cat": "internship",
+        "expType": "fresher",
+        "expYears": "Student internship",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "KLA Careers",
+        "desc": "Technical internship supporting software testing and quality engineering in KLA's Chennai team.",
+        "elig": "Student pursuing a relevant engineering or computer-science degree; exact academic criteria are stated on the official requisition.",
+        "resp": [
+          "Support software-test execution",
+          "Document defects and test results",
+          "Collaborate with engineers on validation"
+        ],
+        "skills": [
+          "Software testing",
+          "Test cases",
+          "Defect reporting",
+          "Engineering fundamentals"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "2641096",
+        "postedDate": "",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 2641096 resolved on 7 Nov 2026; current source evidence states Student internship eligibility and the listed location."
+      }
+    }
+  ],
+  "backup": [
+    {
+      "id": "xylem-r50267",
+      "company": "Xylem",
+      "role": "GET / PGET – Power Electronics Engineer",
+      "loc": "Vadodara, Gujarat, India",
+      "apply": "https://xylem.wd5.myworkdayjobs.com/xylem-careers/job/Vadodara-73-East-Ave/GET---PGET---Power-Electronics-Engineer_R50267",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for R50267 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location.",
+      "postedDate": "2026-10-27",
+      "job": {
+        "company": "Xylem",
+        "role": "GET / PGET – Power Electronics Engineer",
+        "loc": "Vadodara, Gujarat, India",
+        "apply": "https://xylem.wd5.myworkdayjobs.com/xylem-careers/job/Vadodara-73-East-Ave/GET---PGET---Power-Electronics-Engineer_R50267",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Xylem Careers",
+        "desc": "Graduate engineering role supporting circuit design, simulation, prototype bring-up and validation for power-electronics products.",
+        "elig": "Recent electrical or electronics graduate with 0–1 year and hands-on power-electronics design exposure.",
+        "resp": [
+          "Design and validate power-electronics circuits",
+          "Review schematics and PCB designs",
+          "Support simulation and prototype bring-up"
+        ],
+        "skills": [
+          "Altium",
+          "PSIM",
+          "OrCAD",
+          "Power electronics",
+          "VFD"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R50267",
+        "postedDate": "2026-10-27",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for R50267 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location."
+      }
+    },
+    {
+      "id": "tvs-next-143692",
+      "company": "TVS NEXT",
+      "role": "Graduate Engineer Trainee – SAP ABAP",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://tvsnext.keka.com/careers/jobdetails/143692",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 143692 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location.",
+      "postedDate": "2026-10-27",
+      "job": {
+        "company": "TVS NEXT",
+        "role": "Graduate Engineer Trainee – SAP ABAP",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://tvsnext.keka.com/careers/jobdetails/143692",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "TVS NEXT Careers",
+        "desc": "Graduate trainee role developing SAP ABAP reports, forms, interfaces and enhancements under senior guidance.",
+        "elig": "Fresh engineering graduate with 0–1 year and completed SAP ABAP training.",
+        "resp": [
+          "Develop SAP ABAP programs",
+          "Translate functional requirements into technical solutions",
+          "Debug, test and document code"
+        ],
+        "skills": [
+          "SAP ABAP",
+          "SQL",
+          "Debugging",
+          "Data Dictionary"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "143692",
+        "postedDate": "2026-10-27",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 143692 resolved on 7 Nov 2026; current source evidence states 0–1 year eligibility and the listed location."
+      }
+    },
+    {
+      "id": "sabre-jr108876",
+      "company": "Sabre",
+      "role": "Product Support Analyst I",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://sabre.wd1.myworkdayjobs.com/SabreJobs/job/Bengaluru-Karnataka-India/Product-Support-Analyst-I_JR108876",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Entry level; years not stated",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for JR108876 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location.",
+      "postedDate": "2026-10-27",
+      "job": {
+        "company": "Sabre",
+        "role": "Product Support Analyst I",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://sabre.wd1.myworkdayjobs.com/SabreJobs/job/Bengaluru-Karnataka-India/Product-Support-Analyst-I_JR108876",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level; years not stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Sabre Careers",
+        "desc": "Front-line product-support role investigating customer issues on Sabre reservation systems and coordinating resolution across teams.",
+        "elig": "Entry-level graduate with analytical and customer-service skills; availability for rotating shifts including weekends and holidays.",
+        "resp": [
+          "Analyze and replicate customer issues",
+          "Resolve or escalate support cases",
+          "Coordinate with support and development teams"
+        ],
+        "skills": [
+          "Troubleshooting",
+          "SQL",
+          "XML",
+          "APIs",
+          "ITIL"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "JR108876",
+        "postedDate": "2026-10-27",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for JR108876 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location."
+      }
+    },
+    {
+      "id": "dash-93624",
+      "company": "Dash Technologies",
+      "role": "Junior DevOps Engineer",
+      "loc": "Ahmedabad, Gujarat, India",
+      "apply": "https://dashtech.keka.com/careers/jobdetails/93624",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "live",
+      "reviewedStatus": "pending",
       "verificationVerdict": "live",
-      "verificationReason": "Exact official Freudenberg Careers requisition R_00106593 has a current job-bound application route; role evidence confirms 0–2 years eligibility.",
+      "verificationReason": "Exact requisition-bound official application route for 93624 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location.",
       "postedDate": "2026-10-27",
       "job": {
-        "company": "Freudenberg (Vibracoustic)",
-        "role": "Junior Professional AI Engineer",
-        "loc": "Morinda, Punjab, India",
-        "apply": "https://freudenberg.wd3.myworkdayjobs.com/freudenberg-group/job/Morinda/Junior-Professional-AI-Engineer_R_00106593",
+        "company": "Dash Technologies",
+        "role": "Junior DevOps Engineer",
+        "loc": "Ahmedabad, Gujarat, India",
+        "apply": "https://dashtech.keka.com/careers/jobdetails/93624",
         "cat": "it",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "Freudenberg Careers",
-        "desc": "Junior AI engineering role building machine-learning models, APIs and production inference systems.",
-        "elig": "University degree in CS, AI, ML or related, or equivalent education/experience; up to 2 years.",
+        "sourceName": "Dash Technologies Careers",
+        "desc": "Junior DevOps role supporting Azure and AWS infrastructure, CI/CD pipelines, deployments and monitoring.",
+        "elig": "Freshers or candidates with 0–2 years and fundamentals in at least one cloud platform.",
         "resp": [
-          "Build ML models and APIs",
-          "Deploy multimodal AI systems",
-          "Implement validation and troubleshoot production issues"
+          "Build and troubleshoot CI/CD pipelines",
+          "Support multi-environment deployments",
+          "Monitor cloud resources and logs"
         ],
         "skills": [
-          "Python",
-          "SQL",
-          "Git",
           "Azure",
-          "MLOps"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R_00106593",
-        "postedDate": "2026-10-27",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:24:53.020Z",
-        "browserVerifiedAt": "2026-11-06T05:24:53.020Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
-        "currentVerdict": "live",
-        "officialEvidence": "Exact official Freudenberg Careers requisition R_00106593 has a current job-bound application route; role evidence confirms 0–2 years eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:24:53.020Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "revvity-jr-045916",
-      "company": "Revvity",
-      "role": "Software Developer Intern",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://revvity.wd103.myworkdayjobs.com/External/job/Mumbai/Intern---Software-Developer_JR-045916",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student internship",
-      "reviewedStatus": "live",
-      "verificationVerdict": "live",
-      "verificationReason": "Exact official Revvity Careers requisition JR-045916 has a current job-bound application route; role evidence confirms Student internship eligibility.",
-      "postedDate": "2026-11-05",
-      "job": {
-        "company": "Revvity",
-        "role": "Software Developer Intern",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://revvity.wd103.myworkdayjobs.com/External/job/Mumbai/Intern---Software-Developer_JR-045916",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Student internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Revvity Careers",
-        "desc": "Software-development internship contributing to Python services, tests and Linux-based development workflows.",
-        "elig": "Student candidate with Python, Linux, Git, REST API and testing foundations stated in the current role evidence.",
-        "resp": [
-          "Develop Python components",
-          "Write and run automated tests",
-          "Support Linux and API-based development"
-        ],
-        "skills": [
-          "Python",
-          "Linux",
+          "AWS",
+          "CI/CD",
+          "Docker",
           "Git",
-          "REST APIs",
-          "pytest"
+          "Linux"
         ],
         "workMode": "Not Specified",
-        "jobId": "JR-045916",
-        "postedDate": "2026-11-05",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:25:32.198Z",
-        "browserVerifiedAt": "2026-11-06T05:25:32.198Z"
+        "jobId": "93624",
+        "postedDate": "2026-10-27",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact official Revvity Careers requisition JR-045916 has a current job-bound application route; role evidence confirms Student internship eligibility."
-      },
-      "reviewedAt": "2026-11-06T05:25:32.198Z",
-      "reviewedBy": "HD Careers Admin"
+        "officialEvidence": "Exact requisition-bound official application route for 93624 resolved on 7 Nov 2026; current source evidence states 0–2 years eligibility and the listed location."
+      }
     },
     {
-      "id": "gocomet-98057",
-      "company": "GoComet",
-      "role": "Full Stack Developer Intern – Python and React",
-      "loc": "India",
-      "apply": "https://gocomet.keka.com/careers/jobdetails/98057",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student or fresher internship",
-      "reviewedStatus": "live",
+      "id": "salesforce-jr356580",
+      "company": "Salesforce",
+      "role": "Software Engineering AMTS",
+      "loc": "Bengaluru / Hyderabad, India",
+      "apply": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "2027 graduate / fresher",
+      "reviewedStatus": "pending",
       "verificationVerdict": "live",
-      "verificationReason": "Exact official GoComet Careers requisition 98057 has a current job-bound application route; role evidence confirms Student or fresher internship eligibility.",
-      "postedDate": "2026-11-02",
+      "verificationReason": "Exact requisition-bound official application route for JR356580 resolved on 7 Nov 2026; current source evidence states 2027 graduate / fresher eligibility and the listed location.",
+      "postedDate": "2026-11-06",
       "job": {
-        "company": "GoComet",
-        "role": "Full Stack Developer Intern – Python and React",
-        "loc": "India",
-        "apply": "https://gocomet.keka.com/careers/jobdetails/98057",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Student or fresher internship",
+        "company": "Salesforce",
+        "role": "Software Engineering AMTS",
+        "loc": "Bengaluru / Hyderabad, India",
+        "apply": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR356580",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "2027 graduate / fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "active",
-        "sourceName": "GoComet Careers",
-        "desc": "Full-stack internship building FastAPI services, React components and PostgreSQL-backed features.",
-        "elig": "Basic Python and a web framework, familiarity with React or another modern frontend library, databases and problem solving.",
+        "sourceName": "Salesforce Careers",
+        "desc": "Futureforce graduate software-engineering role contributing to development, testing and reliable delivery of Salesforce products.",
+        "elig": "2027 graduating student or fresh graduate meeting the official degree and location requirements.",
         "resp": [
-          "Develop REST APIs in FastAPI",
-          "Build React components",
-          "Work with PostgreSQL and background jobs"
+          "Develop and test production software",
+          "Write unit and automation tests",
+          "Collaborate with engineering teams on reliable delivery"
         ],
         "skills": [
-          "Python",
-          "FastAPI",
-          "React",
-          "PostgreSQL",
-          "Celery",
-          "Docker"
+          "Software development",
+          "Test automation",
+          "Unit testing",
+          "Problem solving",
+          "LLM coding assistants"
         ],
         "workMode": "Not Specified",
-        "jobId": "98057",
-        "postedDate": "2026-11-02",
-        "verifiedDate": "6 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or employer-authorized ATS requisition and job-bound application route checked on 6 Nov 2026; current role evidence and eligibility were independently reviewed.",
-        "manualLiveVerifiedAt": "2026-11-06T05:25:40.263Z",
-        "browserVerifiedAt": "2026-11-06T05:25:40.263Z"
+        "jobId": "JR356580",
+        "postedDate": "2026-11-06",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-06T03:36:33.329Z",
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
         "currentVerdict": "live",
-        "officialEvidence": "Exact official GoComet Careers requisition 98057 has a current job-bound application route; role evidence confirms Student or fresher internship eligibility."
+        "officialEvidence": "Exact requisition-bound official application route for JR356580 resolved on 7 Nov 2026; current source evidence states 2027 graduate / fresher eligibility and the listed location."
+      }
+    },
+    {
+      "id": "syndigo-6220163004",
+      "company": "Syndigo",
+      "role": "Product Support Engineer I",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://syndigo.com/open-positions/?gh_jid=6220163004",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Entry level; years not stated",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 6220163004 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location.",
+      "postedDate": "2026-10-27",
+      "job": {
+        "company": "Syndigo",
+        "role": "Product Support Engineer I",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://syndigo.com/open-positions/?gh_jid=6220163004",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level; years not stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Syndigo Careers",
+        "desc": "Entry-level L1 SaaS product-support role owning incidents and service requests in a global 24x7 environment.",
+        "elig": "Entry-level candidate with application-support, API and cloud-observability foundations; exact degree criteria should be checked on the official posting.",
+        "resp": [
+          "Own and troubleshoot incidents and service requests",
+          "Analyze logs and API traces",
+          "Write knowledge articles and support shift handovers"
+        ],
+        "skills": [
+          "API troubleshooting",
+          "Postman",
+          "JSON",
+          "XML",
+          "Azure",
+          "AWS",
+          "Kibana",
+          "Grafana"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "6220163004",
+        "postedDate": "2026-10-27",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
       },
-      "reviewedAt": "2026-11-06T05:25:40.263Z",
-      "reviewedBy": "HD Careers Admin"
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 6220163004 resolved on 7 Nov 2026; current source evidence states Entry level; years not stated eligibility and the listed location."
+      }
+    },
+    {
+      "id": "weekday-69bc9e94-a6c5-4166-a50b-95dba61d763a",
+      "company": "Weekday",
+      "role": "Talent Operations Associate",
+      "loc": "Remote, India",
+      "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–1 year / fresh graduate",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 69bc9e94-a6c5-4166-a50b-95dba61d763a resolved on 7 Nov 2026; current source evidence states 0–1 year / fresh graduate eligibility and the listed location.",
+      "postedDate": "",
+      "job": {
+        "company": "Weekday",
+        "role": "Talent Operations Associate",
+        "loc": "Remote, India",
+        "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–1 year / fresh graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Weekday Careers",
+        "desc": "Talent-operations role conducting structured screening calls, documenting assessments and coordinating candidate follow-ups.",
+        "elig": "Completed graduation; fresh graduates or candidates with 0–1 year; strong spoken and written English. Current students are not eligible.",
+        "resp": [
+          "Conduct structured candidate screening calls",
+          "Document clear evaluation notes",
+          "Maintain records and manage follow-ups"
+        ],
+        "skills": [
+          "Communication",
+          "Candidate assessment",
+          "Research",
+          "Documentation",
+          "Talent operations"
+        ],
+        "workMode": "Remote",
+        "jobId": "69bc9e94-a6c5-4166-a50b-95dba61d763a",
+        "postedDate": "",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 69bc9e94-a6c5-4166-a50b-95dba61d763a resolved on 7 Nov 2026; current source evidence states 0–1 year / fresh graduate eligibility and the listed location."
+      }
+    },
+    {
+      "id": "meesho-22c4a7a0-43be-439e-9473-2f8074b3e8d5",
+      "company": "Meesho",
+      "role": "Assistant Manager – Business Finance (CA Pass-out 2026)",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.lever.co/meesho/22c4a7a0-43be-439e-9473-2f8074b3e8d5/apply",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "CA pass-out 2026 / fresher cohort",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for 22c4a7a0-43be-439e-9473-2f8074b3e8d5 resolved on 7 Nov 2026; current source evidence states CA pass-out 2026 / fresher cohort eligibility and the listed location.",
+      "postedDate": "",
+      "job": {
+        "company": "Meesho",
+        "role": "Assistant Manager – Business Finance (CA Pass-out 2026)",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.lever.co/meesho/22c4a7a0-43be-439e-9473-2f8074b3e8d5/apply",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "CA pass-out 2026 / fresher cohort",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Meesho Careers",
+        "desc": "Business-finance opening specifically titled for the 2026 Chartered Accountant pass-out cohort.",
+        "elig": "Chartered Accountant pass-out in 2026; Bengaluru-based or willing to relocate. Other criteria are on the official application.",
+        "resp": [
+          "Support business-finance analysis",
+          "Work with finance stakeholders",
+          "Prepare and review financial information"
+        ],
+        "skills": [
+          "Business finance",
+          "Financial analysis",
+          "Stakeholder coordination",
+          "Excel"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "22c4a7a0-43be-439e-9473-2f8074b3e8d5",
+        "postedDate": "",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for 22c4a7a0-43be-439e-9473-2f8074b3e8d5 resolved on 7 Nov 2026; current source evidence states CA pass-out 2026 / fresher cohort eligibility and the listed location."
+      }
+    },
+    {
+      "id": "crowe-r-52634",
+      "company": "Crowe",
+      "role": "Data Engineer Apprentice",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://crowe.wd12.myworkdayjobs.com/External_Careers/job/Hyderabad-Telangana-India/Data-Engineer-Apprentice_R-52634",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Student or fresher; 12-month apprenticeship",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for R-52634 resolved on 7 Nov 2026; current source evidence states Student or fresher; 12-month apprenticeship eligibility and the listed location.",
+      "postedDate": "2026-11-06",
+      "job": {
+        "company": "Crowe",
+        "role": "Data Engineer Apprentice",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://crowe.wd12.myworkdayjobs.com/External_Careers/job/Hyderabad-Telangana-India/Data-Engineer-Apprentice_R-52634",
+        "cat": "internship",
+        "expType": "fresher",
+        "expYears": "Student or fresher; 12-month apprenticeship",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Crowe Careers",
+        "desc": "Twelve-month data-engineering apprenticeship supporting data pipelines, transformation and quality work.",
+        "elig": "Students and fresh graduates meeting the official degree requirements; 12-month apprenticeship.",
+        "resp": [
+          "Support data-pipeline development",
+          "Assist ETL/ELT and data-quality work",
+          "Learn Azure data services with the team"
+        ],
+        "skills": [
+          "SQL",
+          "Python",
+          "Azure data services",
+          "ETL/ELT",
+          "Data quality"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "R-52634",
+        "postedDate": "2026-11-06",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for R-52634 resolved on 7 Nov 2026; current source evidence states Student or fresher; 12-month apprenticeship eligibility and the listed location."
+      }
+    },
+    {
+      "id": "nestack-cybersecurity-intern",
+      "company": "Nestack Technologies",
+      "role": "Cybersecurity Intern",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://neilp.nestack.ai/career/cybersecurity-intern",
+      "cat": "internship",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Student or recent graduate; 6 months",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "live",
+      "verificationReason": "Exact requisition-bound official application route for cybersecurity-intern resolved on 7 Nov 2026; current source evidence states Student or recent graduate; 6 months eligibility and the listed location.",
+      "postedDate": "2026-10-23",
+      "job": {
+        "company": "Nestack Technologies",
+        "role": "Cybersecurity Intern",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://neilp.nestack.ai/career/cybersecurity-intern",
+        "cat": "internship",
+        "expType": "fresher",
+        "expYears": "Student or recent graduate; 6 months",
+        "salary": "₹12,000 per month",
+        "batch": "Not Specified",
+        "status": "active",
+        "sourceName": "Nestack Careers",
+        "desc": "Six-month cybersecurity internship supporting a healthcare-security platform through authorized testing, research and documentation.",
+        "elig": "Studying or recently completed Cybersecurity, Information Security, Computer Science or related degree; on-site Hyderabad and in-person interview required.",
+        "resp": [
+          "Research security controls and platform requirements",
+          "Perform authorized web/API security tests",
+          "Develop risk assessments and document findings"
+        ],
+        "skills": [
+          "Web/API security",
+          "Burp Suite",
+          "OWASP ZAP",
+          "Nmap",
+          "Wireshark",
+          "Linux",
+          "Python"
+        ],
+        "workMode": "On-site",
+        "jobId": "cybersecurity-intern",
+        "postedDate": "2026-10-23",
+        "verifiedDate": "7 Nov 2026",
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 7 Nov 2026; source content and fresher eligibility were reviewed without owner-publication authorization."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-07T03:41:56.556Z",
+        "currentVerdict": "live",
+        "officialEvidence": "Exact requisition-bound official application route for cybersecurity-intern resolved on 7 Nov 2026; current source evidence states Student or recent graduate; 6 months eligibility and the listed location."
+      }
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 8,
+      "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
     "backup": {
-      "size": 8,
+      "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
@@ -918,24 +1065,88 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 16,
+    "remaining": 20,
+    "employerCoverage": {
+      "watchlistVisited": 11,
+      "watchlistNotVisited": 76,
+      "watchlistBlocked": 0,
+      "totalOfficialEmployerPortalsVisited": 34,
+      "selectedWatchlistEmployers": 5,
+      "selectedFallbackEmployers": 15
+    },
+    "uniqueExactLiveJobIdsFound": 35,
     "duplicateExclusions": [
       {
-        "id": "deloitte-60941544",
-        "company": "Deloitte",
-        "reason": "previously reviewed exact requisition",
-        "officialUrl": "https://southasiacareers.deloitte.com/job/Delhi-T%26amp%3BT-Cyber-D%26amp%3BR-Analyst-Incident-Response-%26amp%3B-Handling-Delhi/60941544/"
+        "id": "114743",
+        "reason": "previously published or previously reviewed exact requisition"
       },
       {
-        "id": "enterpret-7847134003",
-        "company": "Enterpret",
-        "reason": "previously reviewed exact requisition",
-        "officialUrl": "https://job-boards.greenhouse.io/enterpret/jobs/7847134003"
+        "id": "563808972052390",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "R-2026039927-1",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "2636690",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "c_7L_1GpylznBtH3NyOg75W7EhzgU4Q1JHo97gA1jEplUNsOxT3nGpOm6fiLvjjW",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "101007950268506822",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "JR0288631",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "8130876",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "R-151207",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "REF084196W",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "R0027122",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "8127579",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "R1769081",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "160486",
+        "reason": "previously published or previously reviewed exact requisition"
+      },
+      {
+        "id": "R0056653",
+        "reason": "previously published or previously reviewed exact requisition"
       }
     ],
-    "excludedCount": 2,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "excludedCount": 16,
+    "expiredExclusions": [
+      {
+        "id": "hcltech-184349",
+        "reason": "official employer page states the job is not available"
+      }
+    ],
+    "sourceUnconfirmedOrExperiencedHeld": 27,
+    "needsFreshDiscovery": false,
+    "note": "Both shortlists are category-audited 6/2/2 and contain 20 distinct employer groups. No publication is authorized by this review batch."
   },
   "quotaAudit": {
     "priority": {
@@ -946,12 +1157,12 @@
       },
       "actual": {
         "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 2,
         "internshipOrApprenticeship": 2
       },
       "shortfall": {
         "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 2,
+        "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       }
     },
@@ -963,20 +1174,20 @@
       },
       "actual": {
         "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 2,
         "internshipOrApprenticeship": 2
       },
       "shortfall": {
         "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 2,
+        "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       }
     },
-    "distinctEmployers": 16
+    "distinctEmployers": 20
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
-    "rankedAt": "2026-11-06T03:36:33.329Z",
+    "rankedAt": "2026-11-07T03:41:56.556Z",
     "target": {
       "fresherIT": 6,
       "nonIT": 2,
@@ -984,75 +1195,48 @@
     },
     "selected": {
       "fresherIT": 6,
-      "nonIT": 0,
+      "nonIT": 2,
       "training": 2
     },
     "backupSelected": {
       "fresherIT": 6,
-      "nonIT": 0,
+      "nonIT": 2,
       "training": 2
     },
     "shortfalls": {
       "priority": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       },
       "backup": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
-    "excludedPreviouslyPublished": [],
-    "excludedOwnerExpired": [],
-    "deferredForFreshDiscovery": [
-      "Priority non-technical full-time: 2",
-      "Backup non-technical full-time: 2"
+    "excludedPreviouslyPublished": [
+      "114743",
+      "563808972052390",
+      "R-2026039927-1",
+      "2636690",
+      "c_7L_1GpylznBtH3NyOg75W7EhzgU4Q1JHo97gA1jEplUNsOxT3nGpOm6fiLvjjW",
+      "101007950268506822",
+      "JR0288631",
+      "8130876",
+      "R-151207",
+      "REF084196W",
+      "R0027122",
+      "8127579",
+      "R1769081",
+      "160486",
+      "R0056653"
     ],
+    "excludedOwnerExpired": [
+      "hcltech-184349"
+    ],
+    "deferredForFreshDiscovery": [],
     "needsSourceVerification": [],
-    "warning": "Only source-complete, exact-requisition candidates are staged. Missing non-technical slots are left empty."
-  },
-  "submittedAt": "2026-11-06T05:26:51.416Z",
-  "publication": {
-    "candidateIds": [
-      "amazon-10506542",
-      "avnet-jr-024615",
-      "cencora-r2617120",
-      "cisco-2030493-1",
-      "freudenberg-r-00106593",
-      "gocomet-98057",
-      "opengov-3a47a711-c75c-4d90-a596-09c09f409938",
-      "pwc-db-005563-1",
-      "qualcomm-446720761539",
-      "revvity-jr-045916"
-    ],
-    "companies": [
-      "Amazon",
-      "Avnet",
-      "Cencora",
-      "Cisco",
-      "Freudenberg (Vibracoustic)",
-      "GoComet",
-      "OpenGov",
-      "PwC India",
-      "Qualcomm",
-      "Revvity"
-    ],
-    "urls": [
-      "https://www.amazon.jobs/en/jobs/10506542/programmer-analyst-intern-2027",
-      "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
-      "https://myhrabc.wd5.myworkdayjobs.com/global/job/Pune-India/AI-Developer-1_R2617120",
-      "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/AI-Operations-Engineer_2030493-1",
-      "https://freudenberg.wd3.myworkdayjobs.com/freudenberg-group/job/Morinda/Junior-Professional-AI-Engineer_R_00106593",
-      "https://gocomet.keka.com/careers/jobdetails/98057",
-      "https://jobs.ashbyhq.com/opengov/3a47a711-c75c-4d90-a596-09c09f409938",
-      "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/IN-Associate-Data-Science---Engineering-Data---Analytics-Advisory-Kolkata_DB_005563-1",
-      "https://careers.qualcomm.com/careers/job/446720761539",
-      "https://revvity.wd103.myworkdayjobs.com/External/job/Mumbai/Intern---Software-Developer_JR-045916"
-    ],
-    "requestId": "9f5756f89b0a19921c25fc36",
-    "count": 10,
-    "submittedAt": "2026-11-06T05:26:51.416Z"
+    "warning": "Review only. Owner must verify status and explicitly select Verify & Publish before any website or Telegram action."
   }
 }
