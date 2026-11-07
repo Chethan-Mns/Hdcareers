@@ -1713,18 +1713,19 @@
     {
       "page": "jobs/softmason-technologies-business-analyst.html",
       "batchId": "admin-42350938072",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T13:24:04.850122+00:00",
       "claimId": "42376792844",
-      "claimedAt": "2026-11-07T13:24:14.506505+00:00"
+      "claimedAt": "2026-11-07T13:24:14.506505+00:00",
+      "messageId": 695,
+      "deliveredAt": "2026-11-07T13:24:18.334113+00:00"
     },
     {
       "page": "jobs/tvs-next-graduate-engineer-trainee-sap-abap.html",
       "batchId": "admin-42350938072",
       "status": "pending",
       "queuedAt": "2026-11-07T07:22:00.326455+00:00",
-      "dueAt": "2026-11-07T14:24:04.850122+00:00"
+      "dueAt": "2026-11-07T14:24:18.334113+00:00"
     }
   ]
 }
