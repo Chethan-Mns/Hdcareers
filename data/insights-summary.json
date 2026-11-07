@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "6 November 2026",
-  "active": 206,
-  "employers": 138,
-  "freshers": 122,
-  "experienced": 75,
+  "verifiedThrough": "7 November 2026",
+  "active": 214,
+  "employers": 144,
+  "freshers": 125,
+  "experienced": 80,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 69
+      "count": 73
     },
     {
       "label": "Hyderabad",
-      "count": 16
+      "count": 17
     },
     {
       "label": "Mumbai",
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 69
+      "count": 73
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 16
+      "count": 17
     },
     {
       "city": "Mumbai",
@@ -97,7 +97,7 @@
       "city": "Chennai",
       "lat": 13.0827,
       "lng": 80.2707,
-      "count": 3
+      "count": 4
     },
     {
       "city": "Ahmedabad",
@@ -148,6 +148,11 @@
       "logo": "assets/company-approved/ey.webp"
     },
     {
+      "name": "Deloitte",
+      "count": 8,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
+    },
+    {
       "name": "HCLTech",
       "count": 8,
       "logo": "assets/company-icons/hcltech-4735861.png"
@@ -156,11 +161,6 @@
       "name": "Accenture",
       "count": 8,
       "logo": "assets/company-icons/accenture-05dffab.png"
-    },
-    {
-      "name": "Deloitte",
-      "count": 7,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "Google",
@@ -201,11 +201,11 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 38
+      "count": 40
     },
     {
       "label": "SQL",
-      "count": 28
+      "count": 31
     },
     {
       "label": "Java",
@@ -232,6 +232,14 @@
       "count": 13
     },
     {
+      "label": "Linux",
+      "count": 11
+    },
+    {
+      "label": "Excel",
+      "count": 11
+    },
+    {
       "label": "C++",
       "count": 11
     },
@@ -240,34 +248,26 @@
       "count": 10
     },
     {
-      "label": "Excel",
-      "count": 10
-    },
-    {
-      "label": "Linux",
-      "count": 9
-    },
-    {
       "label": "Documentation",
       "count": 9
     },
     {
-      "label": "Data structures",
-      "count": 7
+      "label": "AWS",
+      "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 105
+      "count": 109
     },
     {
       "label": "nonit",
-      "count": 50
+      "count": 52
     },
     {
       "label": "internship",
-      "count": 41
+      "count": 43
     },
     {
       "label": "experienced",
@@ -418,6 +418,10 @@
     {
       "date": "2026-11-06",
       "count": 10
+    },
+    {
+      "date": "2026-11-07",
+      "count": 8
     }
   ]
 }

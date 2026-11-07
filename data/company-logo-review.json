@@ -160,13 +160,6 @@
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/duck-creek-technologies-associate-software-engineer.html"
   },
-  "LSEG": {
-    "status": "needs_review",
-    "company": "LSEG",
-    "officialDomain": null,
-    "reason": "no trusted official domain or employer-branded careers logo",
-    "jobPage": "jobs/lseg-associate-software-engineer.html"
-  },
   "Marvell": {
     "status": "needs_review",
     "company": "Marvell",
@@ -268,8 +261,8 @@
   "Wolters Kluwer": {
     "status": "needs_review",
     "company": "Wolters Kluwer",
-    "officialDomain": null,
-    "reason": "no trusted official domain or employer-branded careers logo",
+    "officialDomain": "wolterskluwer.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
     "jobPage": "jobs/wolters-kluwer-associate-support-engineer.html"
   },
   "Avnet": {
@@ -306,5 +299,12 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/revvity-software-developer-intern.html"
+  },
+  "Episode Six": {
+    "status": "needs_review",
+    "company": "Episode Six",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/episode-six-graduate-trainee-security-soc.html"
   }
 }

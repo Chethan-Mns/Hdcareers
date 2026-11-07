@@ -1670,5 +1670,86 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1632,
     "bytes": 10893
+  },
+  "LSEG": {
+    "officialDomain": "lseg.com",
+    "sourceUrl": "https://www.lseg.com/content/dam/lseg/en_us/images/logos/bespoke/lseg-logo.svg",
+    "sourceType": "company-named logo image",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/lseg-5c8c670-af38a42314.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1660,
+    "bytes": 1422
+  },
+  "MediBuddy": {
+    "officialDomain": "hire.medibuddy.in",
+    "sourceUrl": "https://hire.medibuddy.in/apple-touch-icon.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/medibuddy-944ad37-4c29ee174c.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 730,
+    "bytes": 16827
+  },
+  "Nestack Technologies": {
+    "officialDomain": "neilp.nestack.ai",
+    "sourceUrl": "https://neilp.nestack.ai/favicon.ico?favicon.4a6f867c.ico",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/nestack-technologies-527e3d2-77eed12985.png",
+    "sourceDimensions": [
+      256,
+      256
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 720,
+    "bytes": 37503
+  },
+  "Rippling": {
+    "officialDomain": "ats.rippling.com",
+    "sourceUrl": "https://rippling2.imgix.net/RipplingGoogleAvatar_250.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/rippling-bec321c-530371b5ce.png",
+    "sourceDimensions": [
+      250,
+      250
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1370,
+    "bytes": 3881
+  },
+  "Softmason Technologies": {
+    "officialDomain": "softmason.keka.com",
+    "sourceUrl": "https://softmason.keka.com/assets/icons/favicons/apple-touch-icon-180x180.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/softmason-technologies-3c3fd54-342c5ec1a1.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 775,
+    "bytes": 21549
+  },
+  "TVS NEXT": {
+    "officialDomain": "tvsnext.keka.com",
+    "sourceUrl": "https://tvsnext.keka.com/assets/icons/favicons/apple-touch-icon-180x180.png",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/tvs-next-79fc4a1-342c5ec1a1.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 775,
+    "bytes": 21549
   }
 }
