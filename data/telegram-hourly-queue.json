@@ -1744,25 +1744,26 @@
     {
       "page": "jobs/deloitte-executive-data-analysis-ms-excel.html",
       "batchId": "admin-42461331444",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T09:05:40.859794+00:00",
       "claimId": "42465698224",
-      "claimedAt": "2026-11-08T09:05:51.780337+00:00"
+      "claimedAt": "2026-11-08T09:05:51.780337+00:00",
+      "messageId": 698,
+      "deliveredAt": "2026-11-08T09:05:57.303829+00:00"
     },
     {
       "page": "jobs/ion-group-technical-product-analyst-2027-leadership-development-program.html",
       "batchId": "admin-42461331444",
       "status": "pending",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T10:05:40.859794+00:00"
+      "dueAt": "2026-11-08T10:05:57.303829+00:00"
     },
     {
       "page": "jobs/synopsys-apprentice-technical-engineer.html",
       "batchId": "admin-42461331444",
       "status": "pending",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T11:05:40.859794+00:00"
+      "dueAt": "2026-11-08T11:05:57.303829+00:00"
     }
   ]
 }
