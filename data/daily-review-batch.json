@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-08-0900-ist",
   "generatedAt": "2026-11-08T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-08T08:03:54.665Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-08T08:04:05.564Z",
   "priority": [
     {
       "id": "deloitte-112709",
@@ -587,5 +587,29 @@
       "weekday-a86efff4-1c2e-43fc-8ecb-dc8f873db2f1"
     ],
     "warning": "Review only. Owner must verify each link and explicitly select Verify & Publish before any website, data/jobs.json or Telegram action."
+  },
+  "submittedAt": "2026-11-08T08:04:05.564Z",
+  "publication": {
+    "candidateIds": [
+      "cin7-510ff0bd-2b01-4645-bf6f-89be209ad154",
+      "deloitte-112709",
+      "ion-83539ab9-431f-43e3-9179-f891eeb16db9",
+      "synopsys-19509"
+    ],
+    "companies": [
+      "Cin7",
+      "Deloitte",
+      "ION Group",
+      "Synopsys"
+    ],
+    "urls": [
+      "https://jobs.lever.co/cin7/510ff0bd-2b01-4645-bf6f-89be209ad154",
+      "https://southasiacareers.deloitte.com/job/Delhi-Enabling-Areas-National-Office-Executive-Data-Analysis-%28MS-Excel%29/59619444/",
+      "https://jobs.lever.co/ion/83539ab9-431f-43e3-9179-f891eeb16db9",
+      "https://careers.synopsys.com/en/job/bengaluru/apprentice-technical-engineer/44408/102584673248"
+    ],
+    "requestId": "3d2f07f7193567ee2a5a1f53",
+    "count": 4,
+    "submittedAt": "2026-11-08T08:04:05.564Z"
   }
 }
