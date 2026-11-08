@@ -1764,9 +1764,11 @@
     {
       "page": "jobs/synopsys-apprentice-technical-engineer.html",
       "batchId": "admin-42461331444",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T11:06:21.408772+00:00"
+      "dueAt": "2026-11-08T11:06:21.408772+00:00",
+      "claimId": "42474263714",
+      "claimedAt": "2026-11-08T11:06:35.798504+00:00"
     }
   ]
 }
