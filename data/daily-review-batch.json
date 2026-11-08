@@ -2,7 +2,7 @@
   "batchId": "2026-11-08-0900-ist",
   "generatedAt": "2026-11-08T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-08T08:03:41.651Z",
+  "updatedAt": "2026-11-08T08:03:45.526Z",
   "priority": [
     {
       "id": "deloitte-112709",
@@ -130,7 +130,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Graduate leadership-development program; prior professional experience not required",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official ION Group Lever requisition 83539ab9-431f-43e3-9179-f891eeb16db9 was live with an Apply route on 8 Nov 2026. It is explicitly categorized as a Graduates / Leadership Development Program full-time India role.",
       "postedDate": "",
@@ -144,7 +144,7 @@
         "expYears": "Graduate leadership-development program; prior professional experience not required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "reviewing",
+        "status": "active",
         "sourceName": "ION Group Careers (Lever)",
         "desc": "Graduate technical-product role spanning data analysis, dashboards, data pipelines, predictive models, AI automation and product delivery.",
         "elig": "Applicants to ION Group's 2027 graduate Leadership Development Program in India. The official posting classifies the role under Graduates and does not state a prior professional-experience minimum.",
@@ -168,13 +168,17 @@
         "jobId": "83539ab9-431f-43e3-9179-f891eeb16db9",
         "postedDate": "",
         "verifiedDate": "8 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-08T08:03:45.526Z",
+        "browserVerifiedAt": "2026-11-08T08:03:45.526Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-08T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official ION Group Lever requisition 83539ab9-431f-43e3-9179-f891eeb16db9 was live with an Apply route on 8 Nov 2026. It is explicitly categorized as a Graduates / Leadership Development Program full-time India role."
-      }
+      },
+      "reviewedAt": "2026-11-08T08:03:45.526Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "synopsys-19509",
