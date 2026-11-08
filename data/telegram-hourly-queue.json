@@ -1744,9 +1744,11 @@
     {
       "page": "jobs/deloitte-executive-data-analysis-ms-excel.html",
       "batchId": "admin-42461331444",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T09:05:40.859794+00:00"
+      "dueAt": "2026-11-08T09:05:40.859794+00:00",
+      "claimId": "42465698224",
+      "claimedAt": "2026-11-08T09:05:51.780337+00:00"
     },
     {
       "page": "jobs/ion-group-technical-product-analyst-2027-leadership-development-program.html",
