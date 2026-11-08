@@ -2,7 +2,7 @@
   "batchId": "2026-11-08-0900-ist",
   "generatedAt": "2026-11-08T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-08T03:30:00.000Z",
+  "updatedAt": "2026-11-08T08:03:37.752Z",
   "priority": [
     {
       "id": "deloitte-112709",
@@ -13,7 +13,7 @@
       "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Zero-experience eligible; no minimum experience stated",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Deloitte South Asia requisition 112709 resolved with an active Apply route on 8 Nov 2026. The page lists Delhi/NCR, graduate finance qualifications and no minimum experience requirement.",
       "postedDate": "",
@@ -27,7 +27,7 @@
         "expYears": "Zero-experience eligible; no minimum experience stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "reviewing",
+        "status": "active",
         "sourceName": "Deloitte South Asia Careers",
         "desc": "National Office project, operational and financial-data analysis role supporting leadership reporting and cross-functional initiatives.",
         "elig": "Graduate degree in B.Com/BBA, CA (Inter) or another relevant finance qualification; a master's in finance, business administration, economics or a related discipline is also listed. The posting states no minimum professional-experience requirement.",
@@ -49,13 +49,17 @@
         "jobId": "112709",
         "postedDate": "",
         "verifiedDate": "8 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-08T08:03:37.730Z",
+        "browserVerifiedAt": "2026-11-08T08:03:37.730Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-08T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Deloitte South Asia requisition 112709 resolved with an active Apply route on 8 Nov 2026. The page lists Delhi/NCR, graduate finance qualifications and no minimum experience requirement."
-      }
+      },
+      "reviewedAt": "2026-11-08T08:03:37.730Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cin7-510ff0bd-2b01-4645-bf6f-89be209ad154",
