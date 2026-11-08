@@ -2,7 +2,7 @@
   "batchId": "2026-11-08-0900-ist",
   "generatedAt": "2026-11-08T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-08T08:03:45.526Z",
+  "updatedAt": "2026-11-08T08:03:54.665Z",
   "priority": [
     {
       "id": "deloitte-112709",
@@ -189,7 +189,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Fresh graduates; 12-month apprenticeship",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Synopsys requisition 19509 was live with an Apply route on 8 Nov 2026. It was posted 5 Nov 2026 and explicitly limits eligibility to 2025/2026 B.E./B.Tech graduates for a 12-month apprenticeship.",
       "postedDate": "2026-11-05",
@@ -203,7 +203,7 @@
         "expYears": "Fresh graduates; 12-month apprenticeship",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "reviewing",
+        "status": "active",
         "sourceName": "Synopsys Careers",
         "desc": "Twelve-month digital-library characterization apprenticeship using circuit simulation, CMOS analysis and automated validation flows.",
         "elig": "Completed B.E./B.Tech in Electronics and Communication Engineering or a related field; 2025 or 2026 graduate; not enrolled in or graduated from an M.Tech/postgraduate diploma; not currently in a full-time job. Limited internship experience is accepted.",
@@ -226,13 +226,17 @@
         "jobId": "19509",
         "postedDate": "2026-11-05",
         "verifiedDate": "8 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-08T08:03:54.664Z",
+        "browserVerifiedAt": "2026-11-08T08:03:54.664Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-08T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Synopsys requisition 19509 was live with an Apply route on 8 Nov 2026. It was posted 5 Nov 2026 and explicitly limits eligibility to 2025/2026 B.E./B.Tech graduates for a 12-month apprenticeship."
-      }
+      },
+      "reviewedAt": "2026-11-08T08:03:54.664Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [],
