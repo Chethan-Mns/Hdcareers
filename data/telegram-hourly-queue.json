@@ -1733,26 +1733,32 @@
     {
       "page": "jobs/cin7-junior-software-engineer.html",
       "batchId": "admin-42461331444",
-      "status": "pending",
-      "queuedAt": "2026-11-08T08:04:35.419582+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-08T08:04:35.419582+00:00",
+      "dueAt": "2026-11-08T08:04:35.419582+00:00",
+      "claimId": "42461331444",
+      "claimedAt": "2026-11-08T08:05:07.798039+00:00"
     },
     {
       "page": "jobs/deloitte-executive-data-analysis-ms-excel.html",
       "batchId": "admin-42461331444",
       "status": "pending",
-      "queuedAt": "2026-11-08T08:04:35.419582+00:00"
+      "queuedAt": "2026-11-08T08:04:35.419582+00:00",
+      "dueAt": "2026-11-08T08:04:35.419582+00:00"
     },
     {
       "page": "jobs/ion-group-technical-product-analyst-2027-leadership-development-program.html",
       "batchId": "admin-42461331444",
       "status": "pending",
-      "queuedAt": "2026-11-08T08:04:35.419582+00:00"
+      "queuedAt": "2026-11-08T08:04:35.419582+00:00",
+      "dueAt": "2026-11-08T08:04:35.419582+00:00"
     },
     {
       "page": "jobs/synopsys-apprentice-technical-engineer.html",
       "batchId": "admin-42461331444",
       "status": "pending",
-      "queuedAt": "2026-11-08T08:04:35.419582+00:00"
+      "queuedAt": "2026-11-08T08:04:35.419582+00:00",
+      "dueAt": "2026-11-08T08:04:35.419582+00:00"
     }
   ]
 }
