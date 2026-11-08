@@ -2,7 +2,7 @@
   "batchId": "2026-11-08-0900-ist",
   "generatedAt": "2026-11-08T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-08T08:03:37.752Z",
+  "updatedAt": "2026-11-08T08:03:41.651Z",
   "priority": [
     {
       "id": "deloitte-112709",
@@ -70,7 +70,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Entry level; academic, personal-project or internship experience accepted",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Cin7 Lever requisition 510ff0bd-2b01-4645-bf6f-89be209ad154 was live with an Apply route on 8 Nov 2026. It explicitly accepts university, personal-project or internship experience and discloses the salary range.",
       "postedDate": "",
@@ -84,7 +84,7 @@
         "expYears": "Entry level; academic, personal-project or internship experience accepted",
         "salary": "₹22,00,000–₹29,00,000 per year",
         "batch": "Not Specified",
-        "status": "reviewing",
+        "status": "active",
         "sourceName": "Cin7 Careers (Lever)",
         "desc": "Junior full-stack .NET engineering role on Cin7's cloud inventory-management SaaS product.",
         "elig": "Bachelor's degree in Computer Science, Engineering or a related field, or equivalent experience. Practical software-development experience may come from internships, personal projects, university projects or professional work; residence in Ahmedabad or Pune is required.",
@@ -109,13 +109,17 @@
         "jobId": "510ff0bd-2b01-4645-bf6f-89be209ad154",
         "postedDate": "",
         "verifiedDate": "8 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 8 Nov 2026; source content, fresher eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-08T08:03:41.650Z",
+        "browserVerifiedAt": "2026-11-08T08:03:41.650Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-08T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Cin7 Lever requisition 510ff0bd-2b01-4645-bf6f-89be209ad154 was live with an Apply route on 8 Nov 2026. It explicitly accepts university, personal-project or internship experience and discloses the salary range."
-      }
+      },
+      "reviewedAt": "2026-11-08T08:03:41.650Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ion-83539ab9-431f-43e3-9179-f891eeb16db9",
