@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "7 November 2026",
-  "active": 197,
-  "employers": 130,
+  "verifiedThrough": "8 November 2026",
+  "active": 201,
+  "employers": 132,
   "freshers": 117,
-  "experienced": 71,
+  "experienced": 75,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 68
+      "count": 69
     },
     {
       "label": "Hyderabad",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 68
+      "count": 69
     },
     {
       "city": "Hyderabad",
@@ -148,14 +148,14 @@
       "logo": "assets/company-approved/ey.webp"
     },
     {
+      "name": "Deloitte",
+      "count": 8,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
+    },
+    {
       "name": "Accenture",
       "count": 8,
       "logo": "assets/company-icons/accenture-05dffab.png"
-    },
-    {
-      "name": "Deloitte",
-      "count": 7,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "HCLTech",
@@ -205,7 +205,7 @@
     },
     {
       "label": "SQL",
-      "count": 29
+      "count": 30
     },
     {
       "label": "Java",
@@ -217,19 +217,19 @@
     },
     {
       "label": "REST APIs",
-      "count": 15
+      "count": 16
     },
     {
       "label": "JavaScript",
-      "count": 14
+      "count": 15
     },
     {
       "label": "Problem solving",
-      "count": 13
+      "count": 14
     },
     {
       "label": "Git",
-      "count": 12
+      "count": 13
     },
     {
       "label": "Excel",
@@ -252,22 +252,22 @@
       "count": 9
     },
     {
-      "label": "AWS",
+      "label": "Data analysis",
       "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 96
+      "count": 98
     },
     {
       "label": "nonit",
-      "count": 49
+      "count": 50
     },
     {
       "label": "internship",
-      "count": 42
+      "count": 43
     },
     {
       "label": "experienced",
@@ -422,6 +422,10 @@
     {
       "date": "2026-11-07",
       "count": 32
+    },
+    {
+      "date": "2026-11-08",
+      "count": 4
     }
   ]
 }
