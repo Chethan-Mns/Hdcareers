@@ -1754,9 +1754,11 @@
     {
       "page": "jobs/ion-group-technical-product-analyst-2027-leadership-development-program.html",
       "batchId": "admin-42461331444",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-08T08:04:35.419582+00:00",
-      "dueAt": "2026-11-08T10:05:57.303829+00:00"
+      "dueAt": "2026-11-08T10:05:57.303829+00:00",
+      "claimId": "42469959668",
+      "claimedAt": "2026-11-08T10:06:08.957577+00:00"
     },
     {
       "page": "jobs/synopsys-apprentice-technical-engineer.html",
