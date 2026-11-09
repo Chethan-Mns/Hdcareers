@@ -1,0 +1,119 @@
+name: HD Careers Daily Reel Factory
+
+on:
+  schedule:
+    - cron: "30 13 * * *"  # 7:00 PM Asia/Kolkata, GitHub scheduling may be delayed
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: "Optional verified job ID"
+        required: false
+        type: string
+      publish:
+        description: "Explicitly publish after rendering and verification"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hd-daily-reel-factory
+  cancel-in-progress: false
+
+jobs:
+  prepare-reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+      BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+      SHOULD_PUBLISH: ${{ (github.event_name == 'workflow_dispatch' && inputs.publish == true) || (github.event_name == 'schedule' && vars.HD_REELS_AUTOPUBLISH == 'true') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install image rendering dependency
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Run safety tests and compile scripts
+        run: |
+          python3 -m py_compile scripts/reel_factory.py scripts/instagram_reel_publish.py
+          node --check scripts/reel_upload.mjs
+          python3 -m unittest discover -s tests -p test_reel_factory.py -v
+      - name: Prepare script, caption, employer card and Reel where configured
+        env:
+          PICK_ID: ${{ inputs.job_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$PICK_ID" ]; then
+            if ! [[ "$PICK_ID" =~ ^[0-9]+$ ]]; then
+              echo "::error::Invalid job ID"; exit 1
+            fi
+            python3 scripts/reel_factory.py --job-id "$PICK_ID" --render
+          else
+            python3 scripts/reel_factory.py --render
+          fi
+          if [ -f artifacts/reel/status.json ]; then cat artifacts/reel/status.json; fi
+      - name: Preserve preview assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-reel-${{ github.run_id }}
+          path: artifacts/reel/
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Publish to Instagram only after owner enabled it
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$SHOULD_PUBLISH" != "true" ]; then
+            echo "Preview mode. No Instagram publishing."
+            exit 0
+          fi
+          if [ ! -s artifacts/reel/reel.mp4 ]; then
+            echo "::warning::No completed Reel. Nothing posted."
+            exit 0
+          fi
+          if [ -z "$BLOB_READ_WRITE_TOKEN" ] || [ -z "$INSTAGRAM_ACCESS_TOKEN" ] || [ -z "$INSTAGRAM_ACCOUNT_ID" ]; then
+            echo "::warning::Publishing credentials missing. Nothing posted."
+            exit 0
+          fi
+          npm install --no-save --no-package-lock @vercel/blob
+          node scripts/reel_upload.mjs artifacts/reel/reel.mp4 > artifacts/reel/public-video-url.txt
+          VIDEO_URL="$(cat artifacts/reel/public-video-url.txt)"
+          python3 scripts/instagram_reel_publish.py --video-url "$VIDEO_URL"
+          echo "published=true" >> "$GITHUB_OUTPUT"
+      - name: Persist successful Instagram post receipt for deduplication
+        if: steps.publish.outputs.published == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          file=Path("data/reel-posts.json")
+          known=json.loads(file.read_text())
+          receipt=json.loads(Path("artifacts/reel/instagram-receipt.json").read_text())
+          if receipt.get("status")!="posted" or not receipt.get("instagramMediaId"):
+              raise SystemExit("No confirmed Instagram receipt")
+          if not any(str(x.get("jobId"))==str(receipt["jobId"]) for x in known):
+              known.append(receipt)
+          file.write_text(json.dumps(known,ensure_ascii=False,indent=2)+"\n")
+          PY
+          git config user.name "HD Careers Reel Factory"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/reel-posts.json
+          git commit -m "Record confirmed Instagram Reel publication"
+          git pull --rebase origin main
+          git push origin HEAD:main
