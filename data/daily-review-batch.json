@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T06:31:09.569Z",
+  "updatedAt": "2026-11-09T06:31:16.731Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -360,7 +360,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Currently enrolled student; internship/apprenticeship",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Google requisition 125423735539671750 is live, marked Intern & Apprentice and remote eligible in India, with an application deadline of 4 Dec 2026.",
       "postedDate": "",
@@ -394,13 +394,17 @@
         "jobId": "125423735539671750",
         "postedDate": "",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:31:16.731Z",
+        "browserVerifiedAt": "2026-11-09T06:31:16.731Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Google requisition 125423735539671750 is live, marked Intern & Apprentice and remote eligible in India, with an application deadline of 4 Dec 2026."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:31:16.731Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
