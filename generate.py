@@ -682,6 +682,9 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     heading = f"{company} {role}"
     page_title = f"{heading} | HD Careers"
     candidate = {"fresher": "Fresher", "experienced": "Experienced", "not-specified": "Experience not specified"}[job["expType"]]
+    field_label = "IT" if job.get("field") == "it" else "Non-IT" if job.get("field") == "nonit" else None
+    if field_label:
+        candidate = candidate + " " + field_label
     cat = str(job["cat"])
     status = str(job.get("status", "active"))
     pending = status == "active" and bool(job.get("_verification_pending"))
@@ -889,7 +892,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     # Keep only card/search/modal fields in the homepage payload; full verified
     # job records stay in data/jobs.json and detailed job pages.
     public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
-                     "batch", "cat", "categories", "expType", "expYears", "date", "verifiedDate",
+                     "batch", "cat", "field", "categories", "expType", "expYears", "date", "verifiedDate",
                      "publishedAt", "manualPublishRequestedAt", "manualLiveVerifiedAt", "browserVerifiedAt",
                      "desc", "elig", "resp", "skills", "apply", "page", "salary",
                      "status", "domain", "logo", "logoPath", "logoSourceDomain",
