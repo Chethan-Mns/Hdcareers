@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-09T06:31:29.045Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-09T06:31:45.189Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -694,5 +694,41 @@
     "status": "submitted",
     "publicationRequestId": "3d2f07f7193567ee2a5a1f53",
     "note": "Prior owner submission remains recorded in the repository's independent approval/publication records; this new review batch does not alter those records."
+  },
+  "submittedAt": "2026-11-09T06:31:45.189Z",
+  "publication": {
+    "candidateIds": [
+      "accenture-aioc-s01671536",
+      "amazon-10517894",
+      "cisco-2015025",
+      "citi-261004515",
+      "ey-1751025",
+      "google-125423735539671750",
+      "qualcomm-3094023",
+      "rubrik-8166537"
+    ],
+    "companies": [
+      "Accenture",
+      "Amazon",
+      "Cisco",
+      "Citi",
+      "EY",
+      "Google",
+      "Qualcomm",
+      "Rubrik"
+    ],
+    "urls": [
+      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01671536_en",
+      "https://www.amazon.jobs/en/jobs/10517894/software-development-engineer-intern-jan-2027-6-month-amazon-university-talent-acquisition",
+      "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Software-Engineer_2015025",
+      "https://jobs.citi.com/job/mumbai/kyc-operations-analyst/287/102841889728",
+      "https://careers.ey.com/ey/job/mumbai-associate-analyst-tax-chs-tax-itts-transfer-pricing-mumbai-mh-400028/1445885733",
+      "https://www.google.com/about/careers/applications/jobs/results/125423735539671750-student-researcher/",
+      "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire-Associate-Engineer-SW_3094023",
+      "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537"
+    ],
+    "requestId": "ad3ec705c10c1187301cb1a6",
+    "count": 8,
+    "submittedAt": "2026-11-09T06:31:45.189Z"
   }
 }
