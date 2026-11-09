@@ -1284,6 +1284,7 @@ def write_support_files(jobs: list[dict], dry_run: bool) -> int:
         "https://hdcareers.in/resources/online-assessment-preparation.html",
         "https://hdcareers.in/resources/resume-tips-for-freshers.html",
         "https://hdcareers.in/resources/job-application-checklist.html",
+        "https://hdcareers.in/resources/how-to-check-if-a-job-is-still-open.html",
     ]
     active_jobs = [job for job in jobs if job.get("status") == "active"]
     sitemap_rows = [f"  <url><loc>{html.escape(url)}</loc></url>\n" for url in urls]
