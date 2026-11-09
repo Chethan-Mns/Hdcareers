@@ -1835,11 +1835,12 @@
     {
       "page": "jobs/rubrik-software-engineer-cpd-winter-intern.html",
       "batchId": "admin-42573584610",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T12:34:18.305437+00:00",
       "claimId": "42618123536",
-      "claimedAt": "2026-11-09T12:34:31.299107+00:00"
+      "claimedAt": "2026-11-09T12:34:31.299107+00:00",
+      "messageId": 707,
+      "deliveredAt": "2026-11-09T12:34:35.228518+00:00"
     }
   ]
 }
