@@ -1,21 +1,21 @@
 {
-  "verifiedThrough": "8 November 2026",
-  "active": 201,
-  "employers": 132,
+  "verifiedThrough": "9 November 2026",
+  "active": 208,
+  "employers": 133,
   "freshers": 117,
-  "experienced": 75,
+  "experienced": 82,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 69
+      "count": 71
     },
     {
       "label": "Hyderabad",
-      "count": 15
+      "count": 16
     },
     {
       "label": "Mumbai",
-      "count": 14
+      "count": 16
     },
     {
       "label": "Pune",
@@ -43,19 +43,19 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 69
+      "count": 71
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 15
+      "count": 16
     },
     {
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 14
+      "count": 16
     },
     {
       "city": "Pune",
@@ -139,23 +139,23 @@
   "topCompanies": [
     {
       "name": "Amazon",
-      "count": 9,
+      "count": 10,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
       "name": "EY",
-      "count": 9,
+      "count": 10,
       "logo": "assets/company-approved/ey.webp"
+    },
+    {
+      "name": "Accenture",
+      "count": 9,
+      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Deloitte",
       "count": 8,
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
-    },
-    {
-      "name": "Accenture",
-      "count": 8,
-      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "HCLTech",
@@ -164,8 +164,18 @@
     },
     {
       "name": "Google",
-      "count": 4,
+      "count": 5,
       "logo": "assets/company-approved/google-owner-20261019.svg"
+    },
+    {
+      "name": "Qualcomm",
+      "count": 3,
+      "logo": "assets/company-approved/qualcomm.webp"
+    },
+    {
+      "name": "Rubrik",
+      "count": 3,
+      "logo": "assets/company-icons/rubrik-c33fd7a.png"
     },
     {
       "name": "Playto Labs",
@@ -186,22 +196,12 @@
       "name": "Endeavor IT Solution",
       "count": 3,
       "logo": "assets/company-owner/endeavor-it-solution.png"
-    },
-    {
-      "name": "Stripe",
-      "count": 3,
-      "logo": "assets/company-owner-submitted/stripe-owner-20261021.png"
-    },
-    {
-      "name": "Drivetrain",
-      "count": 3,
-      "logo": "assets/company-owner/drivetrain.png"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 38
+      "count": 39
     },
     {
       "label": "SQL",
@@ -209,11 +209,11 @@
     },
     {
       "label": "Java",
-      "count": 24
+      "count": 25
     },
     {
       "label": "Communication",
-      "count": 17
+      "count": 18
     },
     {
       "label": "REST APIs",
@@ -232,42 +232,42 @@
       "count": 13
     },
     {
-      "label": "Excel",
+      "label": "Algorithms",
       "count": 11
     },
     {
       "label": "Linux",
-      "count": 10
+      "count": 11
+    },
+    {
+      "label": "Excel",
+      "count": 11
     },
     {
       "label": "C++",
       "count": 10
     },
     {
-      "label": "Algorithms",
-      "count": 9
-    },
-    {
       "label": "Documentation",
       "count": 9
     },
     {
-      "label": "Data analysis",
+      "label": "English communication",
       "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 98
+      "count": 100
     },
     {
       "label": "nonit",
-      "count": 50
+      "count": 52
     },
     {
       "label": "internship",
-      "count": 43
+      "count": 46
     },
     {
       "label": "experienced",
@@ -426,6 +426,10 @@
     {
       "date": "2026-11-08",
       "count": 4
+    },
+    {
+      "date": "2026-11-09",
+      "count": 7
     }
   ]
 }
