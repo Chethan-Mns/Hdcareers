@@ -1805,9 +1805,11 @@
     {
       "page": "jobs/ey-associate-analyst-transfer-pricing.html",
       "batchId": "admin-42573584610",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T09:33:34.727943+00:00"
+      "dueAt": "2026-11-09T09:33:34.727943+00:00",
+      "claimId": "42594361104",
+      "claimedAt": "2026-11-09T09:33:45.022195+00:00"
     },
     {
       "page": "jobs/google-student-researcher-2027.html",
