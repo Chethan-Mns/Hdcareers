@@ -1815,25 +1815,26 @@
     {
       "page": "jobs/google-student-researcher-2027.html",
       "batchId": "admin-42573584610",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T10:33:49.688125+00:00",
       "claimId": "42601757498",
-      "claimedAt": "2026-11-09T10:34:00.708066+00:00"
+      "claimedAt": "2026-11-09T10:34:00.708066+00:00",
+      "messageId": 705,
+      "deliveredAt": "2026-11-09T10:34:04.257036+00:00"
     },
     {
       "page": "jobs/qualcomm-2027-campus-hire-associate-engineer-software.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T11:33:49.688125+00:00"
+      "dueAt": "2026-11-09T11:34:04.257036+00:00"
     },
     {
       "page": "jobs/rubrik-software-engineer-cpd-winter-intern.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T12:33:49.688125+00:00"
+      "dueAt": "2026-11-09T12:34:04.257036+00:00"
     }
   ]
 }
