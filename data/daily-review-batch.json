@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T06:30:38.029Z",
+  "updatedAt": "2026-11-09T06:30:56.125Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -188,7 +188,7 @@
       "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–1 years in transfer pricing/direct corporate tax; B.Com 0–2 years also stated",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official EY requisition 1751025 is live with an Apply route. It accepts graduates in Economics, Finance or Statistics or semi-qualified CAs with 0–1 years, and separately lists B.Com with 0–2 years.",
       "postedDate": "2026-10-09",
@@ -224,13 +224,17 @@
         "jobId": "1751025",
         "postedDate": "2026-10-09",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:30:56.125Z",
+        "browserVerifiedAt": "2026-11-09T06:30:56.125Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official EY requisition 1751025 is live with an Apply route. It accepts graduates in Economics, Finance or Statistics or semi-qualified CAs with 0–1 years, and separately lists B.Com with 0–2 years."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:30:56.125Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "citi-261004515",
