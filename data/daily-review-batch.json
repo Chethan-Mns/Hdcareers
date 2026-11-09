@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T03:41:39.162Z",
+  "updatedAt": "2026-11-09T06:30:12.172Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–1 years; any graduate",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Accenture requisition AIOC-S01671536 is live with a job-bound Apply route. It is full-time, lists 0–1 years, and centers on IT troubleshooting, bug-report labeling and technical operations.",
       "postedDate": "",
@@ -49,13 +49,17 @@
         "jobId": "AIOC-S01671536",
         "postedDate": "",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:30:12.149Z",
+        "browserVerifiedAt": "2026-11-09T06:30:12.149Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Accenture requisition AIOC-S01671536 is live with a job-bound Apply route. It is full-time, lists 0–1 years, and centers on IT troubleshooting, bug-report labeling and technical operations."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:30:12.149Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cisco-2015025",
