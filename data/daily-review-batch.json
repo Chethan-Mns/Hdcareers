@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T06:30:12.172Z",
+  "updatedAt": "2026-11-09T06:30:27.378Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -70,7 +70,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "B.S. EE/CS with 0–1 year, or M.S. EE/CS",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Cisco Workday requisition 2015025 remains indexed as an active Bangalore role. The official listing states B.S. EE/CS with 0–1 year, or M.S. EE/CS, and names C++/Python and networking skills.",
       "postedDate": "",
@@ -109,13 +109,17 @@
         "jobId": "2015025",
         "postedDate": "",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:30:27.377Z",
+        "browserVerifiedAt": "2026-11-09T06:30:27.377Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Cisco Workday requisition 2015025 remains indexed as an active Bangalore role. The official listing states B.S. EE/CS with 0–1 year, or M.S. EE/CS, and names C++/Python and networking skills."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:30:27.377Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "qualcomm-3094023",
