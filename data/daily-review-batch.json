@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T06:30:27.378Z",
+  "updatedAt": "2026-11-09T06:30:38.029Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -130,7 +130,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "2027 campus graduate role; no prior professional experience stated",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Qualcomm Workday requisition 3094023 is live and explicitly titled 2027 Campus Hire – Associate Engineer, Software. It lists bachelor's-level engineering/computer-science education and graduate software-development work.",
       "postedDate": "",
@@ -167,13 +167,17 @@
         "jobId": "3094023",
         "postedDate": "",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:30:38.029Z",
+        "browserVerifiedAt": "2026-11-09T06:30:38.029Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Qualcomm Workday requisition 3094023 is live and explicitly titled 2027 Campus Hire – Associate Engineer, Software. It lists bachelor's-level engineering/computer-science education and graduate software-development work."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:30:38.029Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ey-1751025",
