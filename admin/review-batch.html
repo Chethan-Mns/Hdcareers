@@ -127,7 +127,7 @@ function draw(){
  el("batchInfo").textContent=batch.batchId?("9 AM batch: "+batch.batchId+" · Prepared "+new Date(batch.generatedAt||Date.now()).toLocaleString("en-IN")+" · Status: "+(batch.status||"reviewing")+". Review changes are stored in GitHub; the website and Telegram are untouched until you approve publication."):"No saved 9 AM discovery batch has reached the Admin Review Center. The separate Expired-Job review queue is not the discovery shortlist.";
  if(!batch.batchId){const empty=node("div","banner");empty.style.gridColumn="1/-1";empty.append(node("h2",null,"Waiting for the daily discovery batch"),node("p",null,"The job discovery pipeline must first populate the server-side priority and backup list. No jobs have been invented for this preview."));root.append(empty);el("footer").hidden=true;return}
  const historyIds=new Set(publishStatus?.stages?.filter(x=>x.website==="live").map(x=>String(x.candidateId))||[]);
- const items=tab==="ready"?chosen():tab==="history"?all.filter(x=>x.reviewedStatus==="expired"||historyIds.has(String(x.id))):(tab==="priority"?batch.priority:batch.backup).filter(x=>!selected.has(String(x.id))&&x.reviewedStatus!=="expired"&&!historyIds.has(String(x.id))).sort((a,b)=>{const rank=j=>j.reviewedStatus==="live"?0:j.reviewedStatus==="unsure"?2:1;return rank(a)-rank(b)});
+ const items=tab==="ready"?chosen():tab==="history"?all.filter(x=>x.reviewedStatus==="expired"||historyIds.has(String(x.id))):(tab==="priority"?batch.priority:batch.backup).filter(x=>!selected.has(String(x.id))&&x.reviewedStatus!=="expired"&&!historyIds.has(String(x.id))).sort((a,b)=>{const rank=j=>j.reviewedStatus==="live"?0:j.precheckStatus==="source-closed"?3:j.reviewedStatus==="unsure"?2:1;return rank(a)-rank(b)});
  for(const item of items){
   const card=node("article","card"),head=node("div","head"),description=node("div");
   description.append(node("div","company",item.company||"Unknown employer"),node("h3",null,item.role||"Role not provided"),node("div","meta",[item.loc||item.job?.loc,item.expYears||item.job?.expYears].filter(Boolean).join(" · ")));
@@ -137,6 +137,13 @@ function draw(){
   const evidence=node("div","evidence","Source check: "+reason);
   if(item.postedDate)evidence.append(node("div",null,"Employer posting date: "+item.postedDate));
   card.append(evidence);
+  if(item.precheckStatus){
+    const label=item.precheckStatus==="source-active"?"Official source appears ACTIVE":
+      item.precheckStatus==="source-closed"?"Official source indicates CLOSED — confirm manually":"Official source unconfirmed — recheck manually";
+    const note=node("div","evidence",label+(item.precheckReason?" · "+item.precheckReason:""));
+    if(item.precheckStatus==="source-closed")note.style.borderLeft="4px solid #b42318";
+    card.append(note);
+  }
   const url=item.apply||item.job?.apply;if(url&&/^https:\/\//i.test(url)){const a=node("a","apply","Open official job posting ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
   if(tab==="history"){card.append(node("div","evidence",item.reviewedStatus==="expired"?"Archived: Expired · not published":"Website confirmed live · delivery history retained below"));root.append(card);continue}
    const actions=node("div","actions");for(const d of ["live","expired","unsure"]){const b=node("button",item.reviewedStatus===d?"chosen "+d:"",d[0].toUpperCase()+d.slice(1));b.disabled=busy||["submitted","published"].includes(batch.status);b.onclick=()=>modify({action:"review",candidateId:item.id,decision:d});actions.append(b)}card.append(actions);

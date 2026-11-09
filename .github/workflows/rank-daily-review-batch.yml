@@ -22,7 +22,7 @@ jobs:
   rank:
     if: github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'Admin review:')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 14
     steps:
       - uses: actions/checkout@v4
         with:
@@ -79,6 +79,11 @@ jobs:
       - name: Recover missing fields from exact official job pages
         timeout-minutes: 8
         run: node scripts/recover_daily_review_content.mjs data/daily-review-batch.json --apply
+      - name: Read exact employer availability before owner review
+        timeout-minutes: 6
+        run: |
+          python3 -m unittest discover -s tests -p test_preflight_candidate_availability.py -v
+          python3 scripts/preflight_candidate_availability.py data/daily-review-batch.json --apply
       - name: Source-backed content preflight
         run: python3 scripts/preflight_review_content.py data/daily-review-batch.json --output /tmp/content-readiness.json
       - name: Attach review readiness report
