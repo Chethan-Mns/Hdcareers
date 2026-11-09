@@ -2,7 +2,7 @@
   "batchId": "2026-11-09-0900-ist",
   "generatedAt": "2026-11-09T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-09T06:31:05.070Z",
+  "updatedAt": "2026-11-09T06:31:09.569Z",
   "priority": [
     {
       "id": "accenture-aioc-s01671536",
@@ -302,7 +302,7 @@
       "cat": "internship",
       "slotType": "internshipOrApprenticeship",
       "expYears": "2027 graduating students; internship",
-      "reviewedStatus": "pending",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Amazon job ID 10517894 is live with an Apply route. It is a 22–24 week SDE internship for students graduating in 2027 and requires programming and data-structure experience.",
       "postedDate": "",
@@ -339,13 +339,17 @@
         "jobId": "10517894",
         "postedDate": "",
         "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization."
+        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
+        "manualLiveVerifiedAt": "2026-11-09T06:31:09.568Z",
+        "browserVerifiedAt": "2026-11-09T06:31:09.568Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-09T03:30:00.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Official Amazon job ID 10517894 is live with an Apply route. It is a 22–24 week SDE internship for students graduating in 2027 and requires programming and data-structure experience."
-      }
+      },
+      "reviewedAt": "2026-11-09T06:31:09.568Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "google-125423735539671750",
