@@ -62,12 +62,12 @@ function canonicalJob(input){
   const cat=CAT_FROM_LABEL[catRaw]||catRaw;
   const sourceLogo=Array.isArray(source.logo)&&source.logo.length===2?source.logo:null;
   const publishStatus=String(input.publishStatus||input.status||source.status||"active").trim().toLowerCase();
-  const entryLevel=/(?:\\b0\\s*[-–]\\s*[123]\\s*years?\\b|\\b0\\s*years?\\b|fresher|no prior experience|student|campus|intern|apprentice|new grad|graduate trainee)/i.test(expYears+" "+role);
+  const entryLevel=/(?:\b0\s*[-–]\s*[123]\s*years?\b|\b0\s*years?\b|fresher|no prior experience|student|campus|intern|apprentice|new grad|graduate trainee)/i.test(expYears+" "+role);
   const expType=entryLevel?"fresher":(["experienced","fresher","not-specified"].includes(source.expType)
     ?source.expType:"not-specified");
   const field=source.field==="it"||source.field==="nonit"?source.field:
     cat==="it"?"it":cat==="nonit"?"nonit":
-    /\\b(software|engineer|developer|programmer|cloud|cyber|data science|it support|qa|technical|system administrator)\\b/i.test(role)?"it":"nonit";
+    /\b(software|engineer|developer|programmer|cloud|cyber|data science|it support|qa|technical|system administrator)\b/i.test(role)?"it":"nonit";
 
   return {
     page:String(source.page||input.page||"").trim(),

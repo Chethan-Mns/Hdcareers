@@ -383,6 +383,35 @@ def prune_unverified_new_jobs(jobs, old_jobs, results):
     removed = [j for j in jobs if j.get('id') in rejected]
     return [j for j in jobs if j.get('id') not in rejected], sorted(rejected), removed
 
+
+def guard_automatic_expiry(job, result, candidates, now):
+    """Never close a listing on one fragile automated result.
+
+    Official end-of-application deadlines are definitive. All other closures
+    require two matching confirmed signals at least 30 minutes apart, with no
+    intervening active/uncertain check. A 404, block or timeout is review-only.
+    """
+    key = str(job.get('id'))
+    state = result.get('state')
+    if state != 'expired':
+        candidates.pop(key, None)
+        return result, False
+    reason = str(result.get('reason', ''))
+    if reason == 'Official closingAt deadline passed' or reason == 'Official JobPosting structured-data deadline has passed':
+        candidates.pop(key, None)
+        return result, True
+    source = str(job.get('apply') or '').strip()
+    last = candidates.get(key, {})
+    try:
+        since = datetime.fromisoformat(str(last.get('firstSeenAt', '')).replace('Z', '+00:00'))
+    except (ValueError, TypeError):
+        since = None
+    if since is not None and since.tzinfo is not None and last.get('apply') == source and RECHECK_DELAY <= now - since <= timedelta(days=14):
+        candidates.pop(key, None)
+        return result, True
+    candidates[key] = {'firstSeenAt': now.isoformat(), 'apply': source, 'reason': reason}
+    return dict(result, state='review', reason='Probable closure, awaiting a second independent scheduled check: ' + reason), False
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
@@ -398,13 +427,26 @@ def main():
         old = json.loads(subprocess.check_output(['git', 'show', f'{args.before}:data/jobs.json'], cwd=ROOT))
         known = {j['id']: j for j in old}
         selected = [j for j in selected if j['id'] not in known or any(j.get(k) != known[j['id']].get(k) for k in ('apply', 'status', 'role', 'company', 'closingAt', 'verificationTerms'))]
-    results = []; changed = False
+    evidence = {'version': 1, 'candidates': {}}
+    if args.write and EXPIRY_EVIDENCE.exists():
+        try:
+            saved = json.loads(EXPIRY_EVIDENCE.read_text(encoding='utf-8'))
+            if isinstance(saved, dict) and isinstance(saved.get('candidates'), dict):
+                evidence = saved
+        except (OSError, ValueError):
+            pass
+    candidates = evidence['candidates']
+    results = []; changed = False; changed_expired = 0
     for job in selected:
-        result = check(job); results.append(result)
+        result = check(job)
+        if args.write:
+            result, confirmed = guard_automatic_expiry(job, result, candidates, datetime.now(timezone.utc))
+        results.append(result)
         print(f"{job['id']}: {result['state']} — {result['reason']}")
-        if args.write and result['state'] == 'expired':
+        if args.write and result['state'] == 'expired' and confirmed:
             job['status'] = 'expired'; job['availabilityCheck'] = result
-            job['verifiedDate'] = datetime.now(timezone.utc).strftime('%d %b %Y'); changed = True
+            job['closedAt'] = datetime.now(timezone.utc).isoformat()
+            changed = True; changed_expired += 1
     report = ROOT / 'availability-report.json'
     report.write_text(json.dumps(results, indent=2) + '\n')
     if args.write:
@@ -430,11 +472,12 @@ def main():
             'active': states.count('active'),
             'expired': states.count('expired'),
             'review': states.count('review'),
-            'changedExpired': states.count('expired'),
+            'changedExpired': changed_expired,
             'items': details,
         }
         status_path = ROOT / 'data' / 'availability-status.json'
         status_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+        EXPIRY_EVIDENCE.write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     if args.before and args.prune_unverified_new:
         jobs, pruned, removed = prune_unverified_new_jobs(jobs, old, results)
         if removed:

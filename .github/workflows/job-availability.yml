@@ -26,7 +26,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check official sources and close confirmed expired jobs
-        run: python3 scripts/check_job_availability.py --write
+        run: |
+          python3 -m unittest discover -s tests -p 'test_expiry_guard.py' -v
+          python3 scripts/check_job_availability.py --write
       - name: Audit listing content for review
         run: python3 scripts/check_content_quality.py
       - name: Regenerate pages using existing expired design
@@ -41,7 +43,7 @@ jobs:
           git config user.email 'actions@users.noreply.github.com'
 
           for attempt in 1 2 3 4 5 6 7 8; do
-            git add data/jobs.json data/availability-status.json data/review-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
+            git add data/jobs.json data/availability-status.json data/expiry-evidence.json data/review-queue.json index.html jobs/ insights.html insights/ robots.txt sitemap.xml
 
             if git diff --cached --quiet; then
               echo "No website changes to publish."

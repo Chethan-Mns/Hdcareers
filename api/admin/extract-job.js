@@ -590,25 +590,25 @@ function initials(company){
 function detectExperience(j,desc){
   const title=textValue(j&&j.title)||"";
   const raw=[textValue(j&&j.experienceRequirements),desc].join(" ");
-  const entry=/\\b(intern(ship)?|apprentice(ship)?|202[6-9] campus|campus graduate|graduate trainee|new grad|freshers?)\\b/i.test(title);
-  const m=raw.match(/(?:minimum\\s+of\\s+|at\\s+least\\s+)?(\\d+)\\s*(?:\\+|plus)?\\s*(?:-|–|to)?\\s*(\\d+)?\\s*years?\\s*(?:of\\s+)?experience/i)
-    ||raw.match(/\\b(\\d+)\\s*(?:-|–|to)\\s*(\\d+)\\s*years?\\b/i);
+  const entry=/\b(intern(ship)?|apprentice(ship)?|202[6-9] campus|campus graduate|graduate trainee|new grad|freshers?)\b/i.test(title);
+  const m=raw.match(/(?:minimum\s+of\s+|at\s+least\s+)?(\d+)\s*(?:\+|plus)?\s*(?:-|–|to)?\s*(\d+)?\s*years?\s*(?:of\s+)?experience/i)
+    ||raw.match(/\b(\d+)\s*(?:-|–|to)\s*(\d+)\s*years?\b/i);
   if(!m)return {type:entry?"fresher":"not-specified",years:entry?"Campus / Entry-level":"Not Specified",known:false};
   const min=Number(m[1]),max=m[2]?Number(m[2]):null;
   return {type:entry||min===0?"fresher":"experienced",years:max!==null?min+"–"+max+" years":min+"+ years",known:true};
 }
 function inferCategory(title,desc,domain,exp){
   const x=(title+" "+desc).toLowerCase(),role=String(title||"").toLowerCase();
-  if(/\\bintern(ship)?\\b/.test(role))return "internship";
-  if(/\\bapprentice(ship)?\\b/.test(role))return "apprenticeship";
+  if(/\bintern(ship)?\b/.test(role))return "internship";
+  if(/\bapprentice(ship)?\b/.test(role))return "apprenticeship";
   if(/walk[- ]?in/.test(role))return "walkin";
   if(domain.endsWith(".gov.in")||domain.includes("government"))return "govt";
-  if(/\\b(finance|tax|accounting|audit|recruitment|human resources|marketing|sales|procurement|operations associate|business advisory|transfer pricing)\\b/.test(role))return "nonit";
+  if(/\b(finance|tax|accounting|audit|recruitment|human resources|marketing|sales|procurement|operations associate|business advisory|transfer pricing)\b/.test(role))return "nonit";
   return "it";
 }
 function inferField(title,category){
   if(category==="it"||category==="nonit")return category;
-  return /\\b(software|developer|engineer|programmer|cloud|cyber|IT support|application support|QA|data science|data engineer|systems|hardware)\\b/i.test(title)?"it":"nonit";
+  return /\b(software|developer|engineer|programmer|cloud|cyber|IT support|application support|QA|data science|data engineer|systems|hardware)\b/i.test(title)?"it":"nonit";
 }
 
 function normalizeSpace(s){return String(s||"").replace(/\s+/g," ").trim();}
