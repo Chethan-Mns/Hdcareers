@@ -1795,9 +1795,11 @@
     {
       "page": "jobs/citi-kyc-operations-analyst.html",
       "batchId": "admin-42573584610",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T08:33:20.010900+00:00"
+      "dueAt": "2026-11-09T08:33:20.010900+00:00",
+      "claimId": "42586797073",
+      "claimedAt": "2026-11-09T08:33:31.808596+00:00"
     },
     {
       "page": "jobs/ey-associate-analyst-transfer-pricing.html",
