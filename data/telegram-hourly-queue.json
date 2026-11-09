@@ -1795,39 +1795,40 @@
     {
       "page": "jobs/citi-kyc-operations-analyst.html",
       "batchId": "admin-42573584610",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T08:33:20.010900+00:00",
       "claimId": "42586797073",
-      "claimedAt": "2026-11-09T08:33:31.808596+00:00"
+      "claimedAt": "2026-11-09T08:33:31.808596+00:00",
+      "messageId": 703,
+      "deliveredAt": "2026-11-09T08:33:34.727943+00:00"
     },
     {
       "page": "jobs/ey-associate-analyst-transfer-pricing.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T09:33:20.010900+00:00"
+      "dueAt": "2026-11-09T09:33:34.727943+00:00"
     },
     {
       "page": "jobs/google-student-researcher-2027.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T10:33:20.010900+00:00"
+      "dueAt": "2026-11-09T10:33:34.727943+00:00"
     },
     {
       "page": "jobs/qualcomm-2027-campus-hire-associate-engineer-software.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T11:33:20.010900+00:00"
+      "dueAt": "2026-11-09T11:33:34.727943+00:00"
     },
     {
       "page": "jobs/rubrik-software-engineer-cpd-winter-intern.html",
       "batchId": "admin-42573584610",
       "status": "pending",
       "queuedAt": "2026-11-09T06:32:05.018198+00:00",
-      "dueAt": "2026-11-09T12:33:20.010900+00:00"
+      "dueAt": "2026-11-09T12:33:34.727943+00:00"
     }
   ]
 }
