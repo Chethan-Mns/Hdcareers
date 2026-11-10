@@ -53,5 +53,66 @@
         "#0b6fe8"
       ]
     }
+  },
+  {
+    "reviewId": 1794296058826,
+    "kind": "new_job",
+    "state": "review",
+    "company": "Fidelity Investments",
+    "role": "Apprenticeship – Engineering (2025/2026 Graduates)",
+    "page": "jobs/fidelity-investments-apprenticeship-engineering-2025-2026.html",
+    "url": "https://www.naukri.com/job-listings-apprenticeship-engineering-chennai-bangalore-fidelity-chennai-bengaluru-0-to-0-years-130225010415",
+    "reason": "Official page loaded but role/application evidence was insufficient",
+    "checkedAt": "2026-11-10T07:34:18.151482+00:00",
+    "queuedAt": "2026-11-10T07:34:18.825789+00:00",
+    "source": "admin_publish",
+    "job": {
+      "company": "Fidelity Investments",
+      "role": "Apprenticeship – Engineering (2025/2026 Graduates)",
+      "roleTag": "Apprentice – Engineering Graduates",
+      "loc": "Bengaluru / Chennai, India",
+      "locationFilter": "Bengaluru / Chennai",
+      "apply": "https://www.naukri.com/job-listings-apprenticeship-engineering-chennai-bangalore-fidelity-chennai-bengaluru-0-to-0-years-130225010415",
+      "domain": "naukri.com",
+      "cat": "apprenticeship",
+      "field": "it",
+      "expType": "fresher",
+      "expYears": "0 years; 2025/2026 B.E. / B.Tech graduates",
+      "salary": "₹5.5 LPA (listed on Naukri; verify CTC/stipend)",
+      "batch": "2025 / 2026",
+      "status": "active",
+      "sourceName": "Fidelity Investments / FMR India – Naukri requisition 130225010415 (Naukri exact page restricted to automated checks)",
+      "desc": "Fidelity Investments (FMR India) is recruiting Apprentice – Engineering Graduates for Bengaluru and Chennai. The current Naukri-linked listing targets 2025 and 2026 B.E./B.Tech graduates with no previous work experience, for an engineering apprenticeship involving software-development activities on Agile teams. The Naukri salary listing is reported as ₹5.5 LPA, and 40 positions are reported. Program duration, work mode, stipend-vs-CTC terms and conversion to a permanent role are not specified in the accessible listing; please verify these with Fidelity before accepting any offer.",
+      "elig": "B.E. / B.Tech, 2025 or 2026 pass-outs, in a stated engineering branch: Computer Science & Engineering, Information Technology, Electronics & Communication, Computer Science & Business Systems, AI & Data Science, Cyber Security, Electronics & Computer Engineering, or AI & Machine Learning. Zero previous experience. Candidates should confirm their specific branch and other current conditions on the Naukri application form.",
+      "resp": [
+        "Support software development lifecycle activities within a cross-functional Agile engineering team.",
+        "Work with user stories, prioritization, estimates, feature development and deployment.",
+        "Use JavaScript, including Angular and Node.js, to build and maintain application components.",
+        "Contribute to databases, testing, automated build/deployment workflows and secure coding."
+      ],
+      "skills": [
+        "Software engineering fundamentals",
+        "JavaScript",
+        "Angular",
+        "Node.js",
+        "HTML5 / CSS",
+        "SQL / Oracle",
+        "Agile / SDLC",
+        "Test automation",
+        "GitHub / CI-CD"
+      ],
+      "workMode": "Not specified in accessible listing",
+      "who": "2025 or 2026 B.E./B.Tech graduates in the eligible IT/electronics branches seeking a zero-experience software-engineering apprenticeship with Fidelity Investments (FMR India). Confirm application availability in your own Naukri account.",
+      "jobId": "Naukri 130225010415",
+      "date": "10 Nov 2026",
+      "verifiedDate": "10 Nov 2026",
+      "sourceVerificationMethod": "Exact Naukri URL supplied by owner and cross-checked 10 Nov 2026 against independently refreshed listings (GetHyr, Myjobb AI) and a dated November 7 summary citing an active Naukri Apply button. Direct automated inspection of Naukri application page is blocked. The requisition ID derives from a Feb 2025 Naukri URL re-dated in November 2026. Do not imply an exact official Fidelity Careers requisition was verified.",
+      "page": "jobs/fidelity-investments-apprenticeship-engineering-2025-2026.html",
+      "logo": [
+        "FI",
+        "#1460a2"
+      ],
+      "telegramDeliveryMode": "instant"
+    }
   }
 ]
