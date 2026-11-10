@@ -1,597 +1,633 @@
 {
-  "batchId": "2026-11-09-0900-ist",
-  "generatedAt": "2026-11-09T03:30:00.000Z",
-  "status": "submitted",
-  "updatedAt": "2026-11-09T06:31:45.189Z",
+  "batchId": "2026-11-10-0900-ist",
+  "generatedAt": "2026-11-10T03:30:00.000Z",
+  "status": "reviewing",
+  "updatedAt": "2026-11-10T03:42:40.000Z",
   "priority": [
     {
-      "id": "accenture-aioc-s01671536",
-      "company": "Accenture",
-      "role": "Business Advisory New Associate",
-      "loc": "Hyderabad, India",
-      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01671536_en",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 years; any graduate",
-      "reviewedStatus": "live",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Accenture requisition AIOC-S01671536 is live with a job-bound Apply route. It is full-time, lists 0–1 years, and centers on IT troubleshooting, bug-report labeling and technical operations.",
-      "postedDate": "",
-      "job": {
-        "company": "Accenture",
-        "role": "Business Advisory New Associate",
-        "loc": "Hyderabad, India",
-        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01671536_en",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years; any graduate",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Accenture Careers",
-        "desc": "Entry-level technical operations role supporting IT troubleshooting, product issue classification and quality-focused labeling workflows.",
-        "elig": "Any graduate with 0–1 years of experience; strong English, attention to detail and ability to follow technical procedures.",
-        "resp": [
-          "Review and label bug reports using defined taxonomies",
-          "Troubleshoot technology-product issues",
-          "Flag edge cases and improve labeling guidance",
-          "Document work and collaborate with technical teams"
-        ],
-        "skills": [
-          "IT troubleshooting",
-          "Issue triage",
-          "Jira or ServiceNow",
-          "QA testing",
-          "Technical documentation",
-          "English communication"
-        ],
-        "workMode": "Full time; Hyderabad",
-        "jobId": "AIOC-S01671536",
-        "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:30:12.149Z",
-        "browserVerifiedAt": "2026-11-09T06:30:12.149Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
-        "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Accenture requisition AIOC-S01671536 is live with a job-bound Apply route. It is full-time, lists 0–1 years, and centers on IT troubleshooting, bug-report labeling and technical operations."
-      },
-      "reviewedAt": "2026-11-09T06:30:12.149Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "cisco-2015025",
-      "company": "Cisco",
-      "role": "Software Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Software-Engineer_2015025",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "B.S. EE/CS with 0–1 year, or M.S. EE/CS",
-      "reviewedStatus": "live",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Cisco Workday requisition 2015025 remains indexed as an active Bangalore role. The official listing states B.S. EE/CS with 0–1 year, or M.S. EE/CS, and names C++/Python and networking skills.",
-      "postedDate": "",
-      "job": {
-        "company": "Cisco",
-        "role": "Software Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Software-Engineer_2015025",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "B.S. EE/CS with 0–1 year, or M.S. EE/CS",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Cisco Careers (Workday)",
-        "desc": "Early-career software engineering role in Cisco Silicon One, supporting software development, integration, debugging and network-product adoption.",
-        "elig": "B.S. in Electrical Engineering or Computer Science with 0–1 year of related experience, or M.S. in EE/CS.",
-        "resp": [
-          "Develop and integrate networking software",
-          "Debug software using engineering tools",
-          "Support product adoption and technical maintenance",
-          "Work with networking protocols and scalable systems"
-        ],
-        "skills": [
-          "C++",
-          "Python",
-          "Algorithms",
-          "Data structures",
-          "L2/L3 networking",
-          "MPLS",
-          "BGP",
-          "OSPF",
-          "Debugging"
-        ],
-        "workMode": "Hybrid; Bengaluru",
-        "jobId": "2015025",
-        "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:30:27.377Z",
-        "browserVerifiedAt": "2026-11-09T06:30:27.377Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
-        "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Cisco Workday requisition 2015025 remains indexed as an active Bangalore role. The official listing states B.S. EE/CS with 0–1 year, or M.S. EE/CS, and names C++/Python and networking skills."
-      },
-      "reviewedAt": "2026-11-09T06:30:27.377Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "qualcomm-3094023",
-      "company": "Qualcomm",
-      "role": "2027 Campus Hire – Associate Engineer, Software",
-      "loc": "Hyderabad / Bengaluru / Chennai / Noida, India",
-      "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire-Associate-Engineer-SW_3094023",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "2027 campus graduate role; no prior professional experience stated",
-      "reviewedStatus": "live",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Qualcomm Workday requisition 3094023 is live and explicitly titled 2027 Campus Hire – Associate Engineer, Software. It lists bachelor's-level engineering/computer-science education and graduate software-development work.",
-      "postedDate": "",
-      "job": {
-        "company": "Qualcomm",
-        "role": "2027 Campus Hire – Associate Engineer, Software",
-        "loc": "Hyderabad / Bengaluru / Chennai / Noida, India",
-        "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire-Associate-Engineer-SW_3094023",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "2027 campus graduate role; no prior professional experience stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Qualcomm Careers (Workday)",
-        "desc": "Campus-hire software engineering role covering embedded systems, mobile platforms, connectivity, multimedia and device software.",
-        "elig": "2027 campus graduate with a bachelor's or master's degree in Computer Science Engineering, Communication Engineering, ECE or a related engineering/information-systems field.",
-        "resp": [
-          "Develop embedded and mobile software",
-          "Build drivers, protocol stacks and platform components",
-          "Work on Android, Linux or Windows-based systems",
-          "Collaborate on multimedia, wireless or IoT technologies"
-        ],
-        "skills": [
-          "C/C++",
-          "Object-oriented design",
-          "Data structures",
-          "Operating systems",
-          "Linux",
-          "Networking protocols",
-          "Embedded software"
-        ],
-        "workMode": "Full time; India locations listed",
-        "jobId": "3094023",
-        "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:30:38.029Z",
-        "browserVerifiedAt": "2026-11-09T06:30:38.029Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
-        "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Qualcomm Workday requisition 3094023 is live and explicitly titled 2027 Campus Hire – Associate Engineer, Software. It lists bachelor's-level engineering/computer-science education and graduate software-development work."
-      },
-      "reviewedAt": "2026-11-09T06:30:38.029Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "ey-1751025",
-      "company": "EY",
-      "role": "Associate Analyst – Transfer Pricing",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://careers.ey.com/ey/job/mumbai-associate-analyst-tax-chs-tax-itts-transfer-pricing-mumbai-mh-400028/1445885733",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1 years in transfer pricing/direct corporate tax; B.Com 0–2 years also stated",
-      "reviewedStatus": "live",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official EY requisition 1751025 is live with an Apply route. It accepts graduates in Economics, Finance or Statistics or semi-qualified CAs with 0–1 years, and separately lists B.Com with 0–2 years.",
-      "postedDate": "2026-10-09",
-      "job": {
-        "company": "EY",
-        "role": "Associate Analyst – Transfer Pricing",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://careers.ey.com/ey/job/mumbai-associate-analyst-tax-chs-tax-itts-transfer-pricing-mumbai-mh-400028/1445885733",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years in transfer pricing/direct corporate tax; B.Com 0–2 years also stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level transfer-pricing analyst role preparing documentation, benchmarking studies and arm's-length analyses for multinational clients.",
-        "elig": "Graduate degree, preferably Economics, Finance or Statistics, or semi-qualified Chartered Accountant; 0–1 years in transfer pricing/direct corporate tax. The posting also lists B.Com with 0–2 years.",
-        "resp": [
-          "Prepare transfer-pricing documentation reports",
-          "Identify international transactions",
-          "Perform benchmarking studies",
-          "Support arm's-length pricing analysis"
-        ],
-        "skills": [
-          "Transfer pricing",
-          "Tax research",
-          "Financial analysis",
-          "Benchmarking",
-          "Report writing",
-          "Communication"
-        ],
-        "workMode": "Full time; Mumbai",
-        "jobId": "1751025",
-        "postedDate": "2026-10-09",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:30:56.125Z",
-        "browserVerifiedAt": "2026-11-09T06:30:56.125Z"
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
-        "currentVerdict": "live_for_review",
-        "officialEvidence": "Official EY requisition 1751025 is live with an Apply route. It accepts graduates in Economics, Finance or Statistics or semi-qualified CAs with 0–1 years, and separately lists B.Com with 0–2 years."
-      },
-      "reviewedAt": "2026-11-09T06:30:56.125Z",
-      "reviewedBy": "HD Careers Admin"
-    },
-    {
-      "id": "citi-261004515",
+      "id": "citi-261001964",
       "company": "Citi",
-      "role": "KYC Operations Analyst",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://jobs.citi.com/job/mumbai/kyc-operations-analyst/287/102841889728",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–2 years of relevant experience",
-      "reviewedStatus": "live",
+      "role": "Data Analyst",
+      "loc": "Haryana, India",
+      "apply": "https://jobs.citi.com/job/haryana/data-analyst/287/102902809184",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Citi requisition 261004515 is live, full time and hybrid. It lists 0–2 years and a bachelor's/university degree or equivalent experience.",
-      "postedDate": "2026-11-04",
+      "verificationReason": "Official Citi requisition 261001964 is open and explicitly lists 0–2 years with analytics, Python/R and data tooling.",
+      "postedDate": "5 Nov 2026",
       "job": {
         "company": "Citi",
-        "role": "KYC Operations Analyst",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://jobs.citi.com/job/mumbai/kyc-operations-analyst/287/102841889728",
-        "cat": "nonit",
+        "role": "Data Analyst",
+        "loc": "Haryana, India",
+        "apply": "https://jobs.citi.com/job/haryana/data-analyst/287/102902809184",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years of relevant experience",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "live_for_review",
         "sourceName": "Citi Careers",
-        "desc": "Entry-level KYC operations role reviewing client profiles, documentation and compliance records within Citi's Business KYC function.",
-        "elig": "Bachelor's/university degree or equivalent experience and 0–2 years of relevant experience; banking-operations exposure is preferred, not stated as mandatory.",
+        "desc": "Entry-level data management analyst role supporting process and data analysis, policy evaluation and recommendations.",
+        "elig": "Bachelor’s/university degree or equivalent; 0–2 years; analytical-tool knowledge and exposure to R/Python are relevant.",
         "resp": [
-          "Review client profiles and KYC documents",
-          "Update KYC forms and records",
-          "Track expiring records and follow up for information",
-          "Support compliance, risk controls and reporting"
+          "Monitor and analyze processes and data.",
+          "Identify inconsistencies and support recommendations.",
+          "Build working knowledge of data-management practices."
         ],
         "skills": [
-          "KYC",
-          "AML awareness",
-          "Documentation review",
-          "Risk controls",
-          "Management reporting",
-          "Analytical judgement"
+          "Data analysis",
+          "Python or R",
+          "Analytical tools",
+          "Problem solving"
         ],
-        "workMode": "Hybrid; full time",
-        "jobId": "261004515",
-        "postedDate": "2026-11-04",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:31:05.069Z",
-        "browserVerifiedAt": "2026-11-09T06:31:05.069Z"
+        "workMode": "Hybrid",
+        "jobId": "261001964",
+        "postedDate": "5 Nov 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
         "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Citi requisition 261004515 is live, full time and hybrid. It lists 0–2 years and a bachelor's/university degree or equivalent experience."
+        "officialEvidence": "Citi Careers page exposes Job Req ID 261001964, Haryana, posted 5 Nov 2026, with an active Apply control and 0–2 years qualification."
       },
-      "reviewedAt": "2026-11-09T06:31:05.069Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedAt": null,
+      "reviewedBy": null
     },
     {
-      "id": "amazon-10517894",
-      "company": "Amazon",
-      "role": "Software Development Engineer Intern – Jan 2027 (6 month)",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://www.amazon.jobs/en/jobs/10517894/software-development-engineer-intern-jan-2027-6-month-amazon-university-talent-acquisition",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "2027 graduating students; internship",
-      "reviewedStatus": "live",
+      "id": "nvidia-jr2020484",
+      "company": "NVIDIA",
+      "role": "ASIC Verification Engineer",
+      "loc": "Hyderabad / Bengaluru, India",
+      "apply": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/India-Hyderabad/ASIC-Verification-Engineer_JR2020484",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Amazon job ID 10517894 is live with an Apply route. It is a 22–24 week SDE internship for students graduating in 2027 and requires programming and data-structure experience.",
+      "verificationReason": "Official NVIDIA Workday requisition JR2020484 remains open and states 0–2 years.",
       "postedDate": "",
       "job": {
-        "company": "Amazon",
-        "role": "Software Development Engineer Intern – Jan 2027 (6 month)",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://www.amazon.jobs/en/jobs/10517894/software-development-engineer-intern-jan-2027-6-month-amazon-university-talent-acquisition",
-        "cat": "internship",
+        "company": "NVIDIA",
+        "role": "ASIC Verification Engineer",
+        "loc": "Hyderabad / Bengaluru, India",
+        "apply": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/India-Hyderabad/ASIC-Verification-Engineer_JR2020484",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "2027 graduating students; internship",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Amazon Jobs",
-        "desc": "Six-month software-development internship building cloud-native, distributed and customer-facing systems with mentorship and production ownership.",
-        "elig": "Student graduating in 2027, age 18+, enrolled in or recently completed a bachelor's degree or above in Computer Science, Computer Engineering, Data Science, Information Systems or a related STEM field.",
+        "status": "live_for_review",
+        "sourceName": "NVIDIA Workday",
+        "desc": "Hardware/software verification engineering role building SoC testbench infrastructure, bare-metal tools and simulation frameworks.",
+        "elig": "BS or MS in Computer Science or Electronics Engineering or equivalent; 0–2 years; C/C++/Python and SoC fundamentals.",
         "resp": [
-          "Design and develop scalable cloud-native solutions",
-          "Write and review maintainable code",
-          "Contribute to distributed systems and CI/CD",
-          "Monitor and troubleshoot production software"
+          "Build verification tools and test frameworks.",
+          "Support RTL, model, emulation and silicon environments.",
+          "Develop scalable simulation and bring-up capabilities."
         ],
         "skills": [
-          "Java or Python or C++",
-          "Data structures",
-          "Algorithms",
-          "Object-oriented design",
-          "Cloud systems",
-          "Databases",
-          "Version control"
+          "C",
+          "C++",
+          "Python",
+          "SoC architecture",
+          "Verification"
         ],
-        "workMode": "Full-time internship; Bengaluru",
-        "jobId": "10517894",
+        "workMode": "Not Specified",
+        "jobId": "JR2020484",
         "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:31:09.568Z",
-        "browserVerifiedAt": "2026-11-09T06:31:09.568Z"
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
         "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Amazon job ID 10517894 is live with an Apply route. It is a 22–24 week SDE internship for students graduating in 2027 and requires programming and data-structure experience."
+        "officialEvidence": "NVIDIA Workday exact requisition JR2020484 currently provides an Apply route and explicitly states 0–2 years."
       },
-      "reviewedAt": "2026-11-09T06:31:09.568Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedAt": null,
+      "reviewedBy": null
     },
     {
-      "id": "google-125423735539671750",
-      "company": "Google",
-      "role": "Student Researcher, 2027",
-      "loc": "India (remote eligible)",
-      "apply": "https://www.google.com/about/careers/applications/jobs/results/125423735539671750-student-researcher/",
-      "cat": "internship",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Currently enrolled student; internship/apprenticeship",
-      "reviewedStatus": "live",
+      "id": "synopsys-19317",
+      "company": "Synopsys",
+      "role": "ASIC Infrastructure / Digital Design Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://careers.synopsys.com/job/-/-/44408/103020033392",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Google requisition 125423735539671750 is live, marked Intern & Apprentice and remote eligible in India, with an application deadline of 4 Dec 2026.",
+      "verificationReason": "Official Synopsys job 19317 is newly posted, exact, and explicitly accepts 0–2 years.",
+      "postedDate": "7 Nov 2026",
+      "job": {
+        "company": "Synopsys",
+        "role": "ASIC Infrastructure / Digital Design Engineer",
+        "loc": "Bengaluru, India",
+        "apply": "https://careers.synopsys.com/job/-/-/44408/103020033392",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "Synopsys Careers",
+        "desc": "Early-career ASIC infrastructure role supporting design flows, EDA tools, compute environments and engineering automation.",
+        "elig": "Bachelor’s or Master’s in CS, EE, Electronics or equivalent; 0–2 years; scripting and Linux foundations.",
+        "resp": [
+          "Maintain ASIC design and verification infrastructure.",
+          "Automate flow setup and reporting.",
+          "Troubleshoot Linux, EDA and compute issues."
+        ],
+        "skills": [
+          "Python",
+          "Tcl",
+          "Bash",
+          "Linux",
+          "EDA tools",
+          "ASIC flows"
+        ],
+        "workMode": "On-site",
+        "jobId": "19317",
+        "postedDate": "7 Nov 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "Synopsys Careers exact Job ID 19317 is live, posted 7 Nov 2026 and lists 0–2 years."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "trendwick-associate-software-engineer",
+      "company": "Trendwick",
+      "role": "Associate Software Engineer",
+      "loc": "Hyderabad / Delhi, India",
+      "apply": "https://trendwick.co/careers/associate-software-engineer",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year; freshers welcome",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Employer careers page is active and expressly welcomes freshers with 0–1 year.",
       "postedDate": "",
+      "job": {
+        "company": "Trendwick",
+        "role": "Associate Software Engineer",
+        "loc": "Hyderabad / Delhi, India",
+        "apply": "https://trendwick.co/careers/associate-software-engineer",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year; freshers welcome",
+        "salary": "₹3–4 LPA CTC",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "Trendwick Careers",
+        "desc": "Entry software engineering role building AI assistants, APIs and trading-platform software under senior mentorship.",
+        "elig": "Any graduate or postgraduate; 0–1 year; basic programming knowledge and willingness to learn.",
+        "resp": [
+          "Write and test Python, Java and C code.",
+          "Integrate AI model APIs and improve prompts.",
+          "Build and maintain product features with Git-based review."
+        ],
+        "skills": [
+          "Python",
+          "Java",
+          "C",
+          "SQL",
+          "Git",
+          "AI APIs"
+        ],
+        "workMode": "On-site",
+        "jobId": "trendwick-associate-software-engineer",
+        "postedDate": "",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "Trendwick’s exact employer careers page currently accepts applications and states 0–1 year, freshers welcome."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "texas-instruments-25016677",
+      "company": "Texas Instruments",
+      "role": "SRAM Bitcell Engineer",
+      "loc": "Bengaluru, India",
+      "apply": "https://careers.ti.com/en/sites/CX/job/25016677/",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–2 years",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official TI requisition 25016677 remains available and explicitly lists 0–2 years; degree restrictions are preserved for owner review.",
+      "postedDate": "23 Jul 2026",
+      "job": {
+        "company": "Texas Instruments",
+        "role": "SRAM Bitcell Engineer",
+        "loc": "Bengaluru, India",
+        "apply": "https://careers.ti.com/en/sites/CX/job/25016677/",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "Texas Instruments Careers",
+        "desc": "Entry semiconductor engineering role focused on SRAM bitcell and device/circuit design, simulation and reliability analysis.",
+        "elig": "PhD in device physics/EE/related, or Master’s with the experience stated by the employer; 0–2 years professional experience; circuit-design fundamentals.",
+        "resp": [
+          "Design and analyze SRAM bitcells.",
+          "Run circuit and device simulations.",
+          "Support process, reliability and characterization work."
+        ],
+        "skills": [
+          "SRAM",
+          "CMOS",
+          "SPICE",
+          "Cadence Virtuoso",
+          "Device physics"
+        ],
+        "workMode": "On-site",
+        "jobId": "25016677",
+        "postedDate": "23 Jul 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "Texas Instruments exact requisition 25016677 currently exposes Apply; official qualifications include 0–2 years, with restrictive graduate-degree conditions noted."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "endeavor-95365885",
+      "company": "Endeavor IT Solution",
+      "role": "Walk-in for Junior Software Engineer",
+      "loc": "Indore, India",
+      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution10/95365885-walk-in-for-junior-software-engineer",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–1 year; freshers can apply",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Exact SmartRecruiters posting remains accessible and expressly states 0–1 year and freshers can apply.",
+      "postedDate": "",
+      "job": {
+        "company": "Endeavor IT Solution",
+        "role": "Walk-in for Junior Software Engineer",
+        "loc": "Indore, India",
+        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution10/95365885-walk-in-for-junior-software-engineer",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–1 year; freshers can apply",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "SmartRecruiters / Endeavor IT Solution",
+        "desc": "Junior software engineering role covering object-oriented programming, web development and SQL fundamentals.",
+        "elig": "BE/BTech in Computer Science or related, MSc CS, MCA or equivalent; 0–1 year; freshers eligible.",
+        "resp": [
+          "Develop and support software features.",
+          "Apply object-oriented and SQL fundamentals.",
+          "Analyze and solve technical problems with the team."
+        ],
+        "skills": [
+          "OOP",
+          "SQL Server",
+          "Web development",
+          "Problem solving"
+        ],
+        "workMode": "On-site",
+        "jobId": "95365885",
+        "postedDate": "",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "Exact SmartRecruiters requisition 95365885 is accessible today and states 0–1 year; no posting date is exposed, so the owner should recheck before selection."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "ey-1759710",
+      "company": "EY",
+      "role": "Analyst - TAX - AMI - TAX - GCR - Global Compliance & Reporting",
+      "loc": "New Delhi, India",
+      "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-AMI-TAX-GCR-Global-Compliance-%26-Reporting-New-Delhi-Nati-110037/1455391333/",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresher",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official EY requisition 1759710 is newly posted and independently identified as fresher-only; owner must confirm detailed degree requirements.",
+      "postedDate": "7 Nov 2026",
+      "job": {
+        "company": "EY",
+        "role": "Analyst - TAX - AMI - TAX - GCR - Global Compliance & Reporting",
+        "loc": "New Delhi, India",
+        "apply": "https://careers.ey.com/ey/job/New-Delhi-Analyst-TAX-AMI-TAX-GCR-Global-Compliance-%26-Reporting-New-Delhi-Nati-110037/1455391333/",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "Fresher",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "EY Careers",
+        "desc": "Tax analyst role in Global Compliance and Reporting supporting tax processes, documentation and client delivery.",
+        "elig": "Fresher opportunity; role-specific tax/accounting education and the official posting’s detailed criteria apply.",
+        "resp": [
+          "Support global compliance and reporting work.",
+          "Prepare and review tax documentation.",
+          "Coordinate accurate and timely client deliverables."
+        ],
+        "skills": [
+          "Tax compliance",
+          "Reporting",
+          "Documentation",
+          "Analytical skills"
+        ],
+        "workMode": "On-site",
+        "jobId": "1759710",
+        "postedDate": "7 Nov 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "EY Careers exact requisition 1759710 is live, dated 7 Nov 2026, with active application routing; the result identifies the role as fresher."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "accenture-aioc-s01672803",
+      "company": "Accenture",
+      "role": "Measurement and Reporting New Associate",
+      "loc": "Bengaluru, India",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672803_en",
+      "cat": "non-it",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–1 year; any graduate",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Accenture requisition AIOC-S01672803 is active, full-time and explicitly lists 0–1 year and any graduation.",
+      "postedDate": "",
+      "job": {
+        "company": "Accenture",
+        "role": "Measurement and Reporting New Associate",
+        "loc": "Bengaluru, India",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672803_en",
+        "cat": "non-it",
+        "expType": "fresher",
+        "expYears": "0–1 year; any graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "live_for_review",
+        "sourceName": "Accenture Careers",
+        "desc": "Sales-operations measurement and reporting role maintaining dashboards and evaluating sales data.",
+        "elig": "Any graduation; 0–1 year; willing to work rotational shifts if required.",
+        "resp": [
+          "Maintain sales reports and dashboards.",
+          "Evaluate sales data and campaign effectiveness.",
+          "Support routine sales-operations analytics."
+        ],
+        "skills": [
+          "Reporting",
+          "Dashboards",
+          "Sales analytics",
+          "Excel"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "AIOC-S01672803",
+        "postedDate": "",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
+        "currentVerdict": "live_for_review",
+        "officialEvidence": "Accenture exact Job No. AIOC-S01672803 is live with an Apply route and explicit 0–1 year eligibility."
+      },
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "google-87534302853505734",
+      "company": "Google",
+      "role": "Research Scientist PhD Intern, Summer 2027",
+      "loc": "Hyderabad, India",
+      "apply": "https://www.google.com/about/careers/applications/jobs/results/87534302853505734-research-scientist-phd-intern-summer-2027",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Student internship; PhD enrolment required",
+      "reviewedStatus": "pending",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Google internship is open through 30 Nov 2026 and has an exact requisition route.",
+      "postedDate": "28 Oct 2026",
       "job": {
         "company": "Google",
-        "role": "Student Researcher, 2027",
-        "loc": "India (remote eligible)",
-        "apply": "https://www.google.com/about/careers/applications/jobs/results/125423735539671750-student-researcher/",
-        "cat": "internship",
+        "role": "Research Scientist PhD Intern, Summer 2027",
+        "loc": "Hyderabad, India",
+        "apply": "https://www.google.com/about/careers/applications/jobs/results/87534302853505734-research-scientist-phd-intern-summer-2027",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "Currently enrolled student; internship/apprenticeship",
+        "expYears": "Student internship; PhD enrolment required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "live_for_review",
         "sourceName": "Google Careers",
-        "desc": "Student research placement on Google research, engineering or science teams working on large-scale computer-science problems.",
-        "elig": "Currently enrolled in a bachelor's, master's or PhD program in Computer Science or another listed quantitative/natural-science discipline, with experience in at least one computer-science area.",
+        "desc": "Research internship working with scientists and engineers on machine learning and large-scale research problems.",
+        "elig": "Currently enrolled in a PhD in CS, machine intelligence/data science, AI or related technical field; Python or Java experience.",
         "resp": [
-          "Participate in research on large-scale real-world problems",
-          "Collaborate with research and engineering teams",
-          "Explore solutions across computer-science domains"
+          "Design and execute research experiments.",
+          "Prototype ML systems and analyze results.",
+          "Collaborate with research and engineering teams."
         ],
         "skills": [
-          "Computer science research",
-          "Machine learning or software engineering",
-          "Algorithms",
-          "Python or Java or C/C++",
-          "Research communication"
+          "Machine learning",
+          "Python",
+          "Java",
+          "Research methods"
         ],
-        "workMode": "Remote eligible; India",
-        "jobId": "125423735539671750",
-        "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:31:16.731Z",
-        "browserVerifiedAt": "2026-11-09T06:31:16.731Z"
+        "workMode": "On-site",
+        "jobId": "87534302853505734",
+        "postedDate": "28 Oct 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
         "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Google requisition 125423735539671750 is live, marked Intern & Apprentice and remote eligible in India, with an application deadline of 4 Dec 2026."
+        "officialEvidence": "Google Careers exact requisition is current today; official page states open 28 Oct to 30 Nov 2026."
       },
-      "reviewedAt": "2026-11-09T06:31:16.731Z",
-      "reviewedBy": "HD Careers Admin"
-    }
-  ],
-  "backup": [
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
     {
-      "id": "rubrik-8166537",
-      "company": "Rubrik",
-      "role": "Software Engineer (CPD) – Winter Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
-      "cat": "internship",
+      "id": "amazon-10498165",
+      "company": "Amazon",
+      "role": "Business Intelligence Engineer Intern – 2027",
+      "loc": "Bengaluru / Hyderabad / Gurugram, India",
+      "apply": "https://www.amazon.jobs/en/jobs/10498165/business-intelligence-engineer-intern-2027",
+      "cat": "it",
       "slotType": "internshipOrApprenticeship",
-      "expYears": "2027 graduate internship; January–May 2027",
-      "reviewedStatus": "live",
+      "expYears": "Student internship; 2027 program",
+      "reviewedStatus": "pending",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Rubrik requisition 8166537 is live. It is an onsite Bengaluru winter internship for 2027 circuital-branch graduates with CGPA 8+ and January–May 2027 availability.",
+      "verificationReason": "Exact Amazon Jobs requisition 10498165 is active for a 2027 India internship.",
       "postedDate": "",
       "job": {
-        "company": "Rubrik",
-        "role": "Software Engineer (CPD) – Winter Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537",
-        "cat": "internship",
+        "company": "Amazon",
+        "role": "Business Intelligence Engineer Intern – 2027",
+        "loc": "Bengaluru / Hyderabad / Gurugram, India",
+        "apply": "https://www.amazon.jobs/en/jobs/10498165/business-intelligence-engineer-intern-2027",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "2027 graduate internship; January–May 2027",
+        "expYears": "Student internship; 2027 program",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "Rubrik Careers",
-        "desc": "Winter software-engineering internship in Continuous Product Development, focused on designing, testing, deploying and improving production software.",
-        "elig": "2027 graduate from a circuital branch with CGPA 8 or above; available onsite in Bengaluru from January through May 2027.",
+        "status": "live_for_review",
+        "sourceName": "Amazon Jobs",
+        "desc": "Business-intelligence internship retrieving, aggregating and translating data into reports, metrics and actionable insights.",
+        "elig": "Students eligible for Amazon’s 2027 internship intake; detailed degree and availability requirements on the official requisition apply.",
         "resp": [
-          "Design, develop, test and deploy software",
-          "Identify bottlenecks in the software stack",
-          "Manage project priorities and deliverables"
+          "Retrieve and aggregate data from multiple sources.",
+          "Design and improve business metrics.",
+          "Communicate analysis and insights to stakeholders."
         ],
         "skills": [
-          "Java",
-          "C/C++",
-          "Scala",
-          "Python",
-          "Object-oriented programming",
-          "Software testing"
+          "SQL",
+          "Data analysis",
+          "Dashboards",
+          "Business intelligence"
         ],
-        "workMode": "On-site internship; Bengaluru",
-        "jobId": "8166537",
+        "workMode": "Not Specified",
+        "jobId": "10498165",
         "postedDate": "",
-        "verifiedDate": "9 Nov 2026",
-        "sourceVerificationMethod": "Exact employer or employer-authorized ATS requisition and job-bound application route checked on 9 Nov 2026; current source content, zero-experience eligibility, category and repository-wide duplicate status were reviewed. This is review staging only and is not publication authorization.",
-        "manualLiveVerifiedAt": "2026-11-09T06:31:29.045Z",
-        "browserVerifiedAt": "2026-11-09T06:31:29.045Z"
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS requisition opened or freshly crawled on 10 Nov 2026; duplicate scrubbed against jobs.json, review archives, publication records and Telegram records. Owner review still required.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": "2026-11-10T03:42:40.000Z"
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-09T03:30:00.000Z",
+        "currentCheckAt": "2026-11-10T03:42:40.000Z",
         "currentVerdict": "live_for_review",
-        "officialEvidence": "Official Rubrik requisition 8166537 is live. It is an onsite Bengaluru winter internship for 2027 circuital-branch graduates with CGPA 8+ and January–May 2027 availability."
+        "officialEvidence": "Amazon Jobs exact Job ID 10498165 is open today and names India hiring locations for the 2027 BIE internship."
       },
-      "reviewedAt": "2026-11-09T06:31:29.045Z",
-      "reviewedBy": "HD Careers Admin"
+      "reviewedAt": null,
+      "reviewedBy": null
     }
   ],
+  "backup": [],
   "discoveryAudit": {
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
+    "target": "Fresh India fresher review with independent 6 technical full-time, 2 non-tech full-time and 2 internship/apprenticeship quotas in each list.",
     "watchlistEmployersTotal": 87,
-    "watchlistVisited": 19,
-    "watchlistNotVisited": 68,
-    "watchlistBlocked": 0,
-    "fallbackEmployersVisited": 6,
-    "acceptedFromWatchlist": 7,
-    "acceptedFromFallback": 1,
-    "distinctEmployers": 8,
-    "uniqueExactLiveJobIdsFound": 18,
+    "watchlistVisited": 27,
+    "watchlistNotVisited": 60,
+    "watchlistBlocked": 8,
+    "fallbackEmployersVisited": 9,
+    "acceptedFromWatchlist": 6,
+    "acceptedFromFallback": 4,
+    "distinctEmployers": 10,
+    "uniqueExactLiveJobIdsFound": 10,
     "duplicateExclusions": [
-      {
-        "id": "deloitte-112709",
-        "company": "Deloitte",
-        "reason": "Previously reviewed in the 8 Nov batch."
-      },
-      {
-        "id": "deloitte-61353044",
-        "company": "Deloitte",
-        "reason": "Previously reviewed/published exact requisition."
-      },
-      {
-        "id": "ey-1750438",
-        "company": "EY",
-        "reason": "Previously reviewed exact requisition/URL."
-      },
-      {
-        "id": "accenture-aioc-s01668426",
-        "company": "Accenture",
-        "reason": "Previously reviewed exact requisition."
-      },
-      {
-        "id": "hackerrank-8229735",
-        "company": "HackerRank",
-        "reason": "Previously reviewed exact requisition."
-      },
-      {
-        "id": "amazon-10508052",
-        "company": "Amazon",
-        "reason": "Previously reviewed exact requisition."
-      },
-      {
-        "id": "stripe-8130876",
-        "company": "Stripe",
-        "reason": "Previously reviewed exact requisition, confirmed by the prior batch audit."
-      }
+      "Accenture AIOC-S01671536 (same role reviewed 9 Nov)",
+      "EY 1750438 (prior reviewed requisition)",
+      "Amazon 10513277 (prior record)",
+      "Amazon 10517894 (9 Nov submitted)",
+      "Google 125423735539671750 (9 Nov submitted)",
+      "Qualcomm 3094020 (same employer-role family previously reviewed)",
+      "Cisco 57623 (same employer+role previously reviewed)",
+      "Stripe 8130876 (previously reviewed/published)",
+      "Hevo Data 6cbbe304-e065-4711-bf3e-756795d2bc2a (published)",
+      "Cin7 510ff0bd-2b01-4645-bf6f-89be209ad154 (previously reviewed)",
+      "AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6 (previously reviewed)",
+      "Merkle Science 20675d00-156c-4f3f-a9bf-4cacee176bc2 (published)",
+      "Drivetrain bc1c17bc and edb8a8f7 (published)",
+      "Synopsys 19509 (prior record)"
     ],
-    "duplicateExcludedCount": 7,
+    "duplicateExcludedCount": 14,
     "held": [
-      {
-        "id": "deloitte-talent-intern",
-        "company": "Deloitte",
-        "reason": "Current listing-page evidence did not expose a new exact requisition-bound apply URL; held rather than staged."
-      },
-      {
-        "id": "deloitte-hr-intern",
-        "company": "Deloitte",
-        "reason": "Current listing-page evidence did not expose a new exact requisition-bound apply URL; held rather than staged."
-      },
-      {
-        "id": "ey-1751083",
-        "company": "EY",
-        "reason": "Official requisition requires 3+ years of financial-analysis experience."
-      },
-      {
-        "id": "honeywell-161260",
-        "company": "Honeywell",
-        "reason": "Official Project Engineer I requisition requires 2+ years."
-      },
-      {
-        "id": "honeywell-software-engr-i-2026-11-06",
-        "company": "Honeywell",
-        "reason": "Official results page was current, but no exact requisition ID or complete zero-experience qualification block was exposed."
-      },
-      {
-        "id": "cognizant-genc-analyst-trainee",
-        "company": "Cognizant",
-        "reason": "Fresh-graduate program page is current, but no requisition-bound application route was present."
-      },
-      {
-        "id": "rubrik-7956918",
-        "company": "Rubrik",
-        "reason": "Full-time Software Engineer – IAM page did not explicitly establish zero-experience eligibility."
-      },
-      {
-        "id": "amgen-r-247516",
-        "company": "Amgen",
-        "reason": "Official Associate Software Engineer requisition requires 2–5 years."
-      }
+      "Deloitte Talent Acquisition/HR/Finance intern results: generic listing only or previously known requisition; no new exact requisition accepted",
+      "Oracle/HPE/IBM/Intel/Dell/PayPal portals: no exact new zero-experience requisition confirmed",
+      "Honeywell Software Engineer I and Finance Intern: current list evidence but exact requisition route not exposed",
+      "ServiceNow JB0075721: exact route returned 404 on current recheck",
+      "Salesforce JR307116: official application deadline passed",
+      "Point72 8893936002: no longer on employer feed",
+      "Safe Security SDE I: requires 1–3 years",
+      "Twilio 8319386: experienced L3 role",
+      "Swiggy 6000000001552647: requires 1–3 years",
+      "Secfix fresh-grad roles: require 1+ year backend/startup experience",
+      "Amgen R-259334: requires 5–9 years"
     ],
-    "heldCount": 8,
-    "expired": [],
-    "expiredCount": 0,
+    "heldCount": 11,
+    "expired": [
+      "ServiceNow JB0075721",
+      "Salesforce JR307116",
+      "Point72 8893936002"
+    ],
+    "expiredCount": 3,
     "priority": {
-      "size": 7,
-      "counts": {
-        "fresherIT": 3,
-        "nonIT": 2,
-        "training": 2,
-        "unclassified": 0
+      "count": 10,
+      "actual": {
+        "fresherTechnicalFullTime": 6,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
       },
-      "shortfalls": {
-        "fresherIT": 3,
-        "nonIT": 0,
-        "training": 0
+      "shortfall": {
+        "fresherTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 0,
+        "internshipOrApprenticeship": 0
       }
     },
     "backup": {
-      "size": 1,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 1,
-        "unclassified": 0
+      "count": 0,
+      "actual": {
+        "fresherTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 0,
+        "internshipOrApprenticeship": 0
       },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 1
+      "shortfall": {
+        "fresherTechnicalFullTime": 6,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
       }
     },
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Current intern listing evidence was not requisition-bound, and known exact Deloitte requisitions were duplicates.",
-    "note": "Fresh 9 Nov discovery run. The 20 Oct owner-verified sample was not reused. Incomplete lists are intentional: no duplicate, experienced, generic-route or source-inconclusive role was used to pad the quotas."
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role",
+    "note": "Review only. Priority meets 6/2/2 exactly. Backup is intentionally empty because no additional fully deduplicated, exact-source-verified set could satisfy the independent quotas without padding. The owner must verify each link and explicitly approve publication."
   },
   "quotaAudit": {
     "priority": {
@@ -601,12 +637,12 @@
         "internshipOrApprenticeship": 2
       },
       "actual": {
-        "fresherTechnicalFullTime": 3,
+        "fresherTechnicalFullTime": 6,
         "fresherNonTechnicalFullTime": 2,
         "internshipOrApprenticeship": 2
       },
       "shortfall": {
-        "fresherTechnicalFullTime": 3,
+        "fresherTechnicalFullTime": 0,
         "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       }
@@ -620,115 +656,75 @@
       "actual": {
         "fresherTechnicalFullTime": 0,
         "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 1
+        "internshipOrApprenticeship": 0
       },
       "shortfall": {
         "fresherTechnicalFullTime": 6,
         "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 1
+        "internshipOrApprenticeship": 2
       }
     },
-    "distinctEmployers": 8
+    "distinctEmployers": 10
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
-    "rankedAt": "2026-11-09T03:41:39.162Z",
+    "rankedAt": "2026-11-10T03:42:40.000Z",
     "target": {
       "fresherIT": 6,
       "nonIT": 2,
       "training": 2
     },
     "selected": {
-      "fresherIT": 3,
+      "fresherIT": 6,
       "nonIT": 2,
       "training": 2
     },
     "backupSelected": {
       "fresherIT": 0,
       "nonIT": 0,
-      "training": 1
+      "training": 0
     },
     "shortfalls": {
       "priority": {
-        "fresherIT": 3,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0
       },
       "backup": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 1
+        "training": 2
       }
     },
     "excludedPreviouslyPublished": [
-      "deloitte-112709",
-      "deloitte-61353044",
-      "ey-1750438",
-      "accenture-aioc-s01668426",
-      "hackerrank-8229735",
-      "amazon-10508052",
-      "stripe-8130876"
+      "amazon-10513277",
+      "amazon-10517894",
+      "google-125423735539671750",
+      "stripe-8130876",
+      "hevodata-6cbbe304-e065-4711-bf3e-756795d2bc2a",
+      "cin7-510ff0bd-2b01-4645-bf6f-89be209ad154",
+      "merklescience-20675d00-156c-4f3f-a9bf-4cacee176bc2",
+      "drivetrain-bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
+      "drivetrain-edb8a8f7-16ac-4177-bf2e-99c36ab47d5f"
     ],
     "excludedOwnerExpired": [],
     "deferredForFreshDiscovery": [
-      "deloitte-talent-intern",
-      "deloitte-hr-intern",
-      "ey-1751083",
-      "honeywell-161260",
-      "honeywell-software-engr-i-2026-11-06",
-      "cognizant-genc-analyst-trainee",
-      "rubrik-7956918",
-      "amgen-r-247516"
+      "honeywell-software-engineer-i-2026-11-06",
+      "honeywell-finance-intern-2026-11-06",
+      "oracle-entry-results",
+      "hpe-early-career-results"
     ],
     "needsSourceVerification": [
-      "deloitte-talent-intern",
-      "deloitte-hr-intern",
-      "honeywell-software-engr-i-2026-11-06",
-      "cognizant-genc-analyst-trainee",
-      "rubrik-7956918"
+      "honeywell-software-engineer-i-2026-11-06",
+      "honeywell-finance-intern-2026-11-06"
     ],
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select the final Top 10 and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
   },
   "previousBatchReference": {
-    "batchId": "2026-11-08-0900-ist",
+    "batchId": "2026-11-09-0900-ist",
     "status": "submitted",
-    "publicationRequestId": "3d2f07f7193567ee2a5a1f53",
-    "note": "Prior owner submission remains recorded in the repository's independent approval/publication records; this new review batch does not alter those records."
-  },
-  "submittedAt": "2026-11-09T06:31:45.189Z",
-  "publication": {
-    "candidateIds": [
-      "accenture-aioc-s01671536",
-      "amazon-10517894",
-      "cisco-2015025",
-      "citi-261004515",
-      "ey-1751025",
-      "google-125423735539671750",
-      "qualcomm-3094023",
-      "rubrik-8166537"
-    ],
-    "companies": [
-      "Accenture",
-      "Amazon",
-      "Cisco",
-      "Citi",
-      "EY",
-      "Google",
-      "Qualcomm",
-      "Rubrik"
-    ],
-    "urls": [
-      "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01671536_en",
-      "https://www.amazon.jobs/en/jobs/10517894/software-development-engineer-intern-jan-2027-6-month-amazon-university-talent-acquisition",
-      "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Software-Engineer_2015025",
-      "https://jobs.citi.com/job/mumbai/kyc-operations-analyst/287/102841889728",
-      "https://careers.ey.com/ey/job/mumbai-associate-analyst-tax-chs-tax-itts-transfer-pricing-mumbai-mh-400028/1445885733",
-      "https://www.google.com/about/careers/applications/jobs/results/125423735539671750-student-researcher/",
-      "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire-Associate-Engineer-SW_3094023",
-      "https://www.rubrik.com/company/careers/departments/job.8166537?gh_jid=8166537"
-    ],
-    "requestId": "ad3ec705c10c1187301cb1a6",
-    "count": 8,
-    "submittedAt": "2026-11-09T06:31:45.189Z"
+    "publicationRequestId": "ad3ec705c10c1187301cb1a6",
+    "submittedAt": "2026-11-09T06:31:45.189Z",
+    "note": "Prior owner submission remains recorded in independent approval/publication records; this new reviewing batch does not alter those records."
   }
 }
