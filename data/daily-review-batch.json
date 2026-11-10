@@ -56,7 +56,10 @@
         "officialEvidence": "Citi Careers page exposes Job Req ID 261001964, Haryana, posted 5 Nov 2026, with an active Apply control and 0–2 years qualification."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "nvidia-jr2020484",
@@ -111,7 +114,10 @@
         "officialEvidence": "NVIDIA Workday exact requisition JR2020484 currently provides an Apply route and explicitly states 0–2 years."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "synopsys-19317",
@@ -167,7 +173,10 @@
         "officialEvidence": "Synopsys Careers exact Job ID 19317 is live, posted 7 Nov 2026 and lists 0–2 years."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "trendwick-associate-software-engineer",
@@ -223,7 +232,10 @@
         "officialEvidence": "Trendwick’s exact employer careers page currently accepts applications and states 0–1 year, freshers welcome."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 404; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "texas-instruments-25016677",
@@ -278,7 +290,10 @@
         "officialEvidence": "Texas Instruments exact requisition 25016677 currently exposes Apply; official qualifications include 0–2 years, with restrictive graduate-degree conditions noted."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "endeavor-95365885",
@@ -332,7 +347,10 @@
         "officialEvidence": "Exact SmartRecruiters requisition 95365885 is accessible today and states 0–1 year; no posting date is exposed, so the owner should recheck before selection."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "ey-1759710",
@@ -386,7 +404,10 @@
         "officialEvidence": "EY Careers exact requisition 1759710 is live, dated 7 Nov 2026, with active application routing; the result identifies the role as fresher."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "accenture-aioc-s01672803",
@@ -440,7 +461,10 @@
         "officialEvidence": "Accenture exact Job No. AIOC-S01672803 is live with an Apply route and explicit 0–1 year eligibility."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "google-87534302853505734",
@@ -494,7 +518,10 @@
         "officialEvidence": "Google Careers exact requisition is current today; official page states open 28 Oct to 30 Nov 2026."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry (Job not found)",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     },
     {
       "id": "amazon-10498165",
@@ -548,21 +575,47 @@
         "officialEvidence": "Amazon Jobs exact Job ID 10498165 is open today and names India hiring locations for the 2027 BIE internship."
       },
       "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedBy": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-10T03:46:36.197444+00:00"
     }
   ],
   "backup": [],
   "discoveryAudit": {
-    "target": "Fresh India fresher review with independent 6 technical full-time, 2 non-tech full-time and 2 internship/apprenticeship quotas in each list.",
-    "watchlistEmployersTotal": 87,
-    "watchlistVisited": 27,
-    "watchlistNotVisited": 60,
-    "watchlistBlocked": 8,
-    "fallbackEmployersVisited": 9,
-    "acceptedFromWatchlist": 6,
-    "acceptedFromFallback": 4,
-    "distinctEmployers": 10,
-    "uniqueExactLiveJobIdsFound": 10,
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 0,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 0,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 2
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 10,
     "duplicateExclusions": [
       "Accenture AIOC-S01671536 (same role reviewed 9 Nov)",
       "EY 1750438 (prior reviewed requisition)",
@@ -579,55 +632,9 @@
       "Drivetrain bc1c17bc and edb8a8f7 (published)",
       "Synopsys 19509 (prior record)"
     ],
-    "duplicateExcludedCount": 14,
-    "held": [
-      "Deloitte Talent Acquisition/HR/Finance intern results: generic listing only or previously known requisition; no new exact requisition accepted",
-      "Oracle/HPE/IBM/Intel/Dell/PayPal portals: no exact new zero-experience requisition confirmed",
-      "Honeywell Software Engineer I and Finance Intern: current list evidence but exact requisition route not exposed",
-      "ServiceNow JB0075721: exact route returned 404 on current recheck",
-      "Salesforce JR307116: official application deadline passed",
-      "Point72 8893936002: no longer on employer feed",
-      "Safe Security SDE I: requires 1–3 years",
-      "Twilio 8319386: experienced L3 role",
-      "Swiggy 6000000001552647: requires 1–3 years",
-      "Secfix fresh-grad roles: require 1+ year backend/startup experience",
-      "Amgen R-259334: requires 5–9 years"
-    ],
-    "heldCount": 11,
-    "expired": [
-      "ServiceNow JB0075721",
-      "Salesforce JR307116",
-      "Point72 8893936002"
-    ],
-    "expiredCount": 3,
-    "priority": {
-      "count": 10,
-      "actual": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      },
-      "shortfall": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 0
-      }
-    },
-    "backup": {
-      "count": 0,
-      "actual": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 0
-      },
-      "shortfall": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      }
-    },
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role",
-    "note": "Review only. Priority meets 6/2/2 exactly. Backup is intentionally empty because no additional fully deduplicated, exact-source-verified set could satisfy the independent quotas without padding. The owner must verify each link and explicitly approve publication."
+    "excludedCount": 14,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
