@@ -3,53 +3,55 @@
   "client_payload": {
     "jobs": [
       {
-        "company": "Cepheid",
-        "role": "Software Engineering Intern — Intern Hiring Challenge 2026",
-        "roleTag": "Software Engineering Intern",
-        "loc": "Bengaluru, Karnataka (Danaher India Development Center)",
-        "locationFilter": "Bengaluru",
-        "apply": "https://www.hackerearth.com/community/challenges/competitive/cepheid-hiring-challenge-2026-4/",
-        "domain": "hackerearth.com",
-        "cat": "internship",
+        "company": "Fidelity Investments",
+        "role": "Apprenticeship – Engineering (2025/2026 Graduates)",
+        "roleTag": "Apprentice – Engineering Graduates",
+        "loc": "Bengaluru / Chennai, India",
+        "locationFilter": "Bengaluru / Chennai",
+        "apply": "https://www.naukri.com/job-listings-apprenticeship-engineering-chennai-bangalore-fidelity-chennai-bengaluru-0-to-0-years-130225010415",
+        "domain": "naukri.com",
+        "cat": "apprenticeship",
+        "field": "it",
         "expType": "fresher",
-        "expYears": "Student / early-career internship; check challenge eligibility",
-        "salary": "Not Disclosed",
-        "batch": "2026 and 2027 (reported)",
+        "expYears": "0 years; 2025/2026 B.E. / B.Tech graduates",
+        "salary": "₹5.5 LPA (listed on Naukri; verify CTC/stipend)",
+        "batch": "2025 / 2026",
         "status": "active",
-        "sourceName": "Cepheid — HackerEarth official challenge",
-        "desc": "Cepheid Intern Hiring Challenge 2026 is an online, employment-linked assessment for a Software Engineering Intern opportunity associated with the Cepheid team at Danaher India Development Center, Bengaluru. The official challenge window is 27 November–6 December 2026 (6:00 PM–11:59 PM IST each day). The challenge lasts 2 hours 15 minutes and requires a webcam. The official public page identifies this as a job opportunity and shows registrations; signing in to HackerEarth may be needed to register or participate.",
-        "elig": "Independent listings report 2026/2027 graduating batches pursuing B.E. in Computer Science or Artificial Intelligence. Java and Angular knowledge is expected. The public HackerEarth overview does not display these academic conditions without login; verify the official challenge instructions before registering.",
+        "sourceName": "Fidelity Investments / FMR India – Naukri requisition 130225010415 (Naukri exact page restricted to automated checks)",
+        "desc": "Fidelity Investments (FMR India) is recruiting Apprentice – Engineering Graduates for Bengaluru and Chennai. The current Naukri-linked listing targets 2025 and 2026 B.E./B.Tech graduates with no previous work experience, for an engineering apprenticeship involving software-development activities on Agile teams. The Naukri salary listing is reported as ₹5.5 LPA, and 40 positions are reported. Program duration, work mode, stipend-vs-CTC terms and conversion to a permanent role are not specified in the accessible listing; please verify these with Fidelity before accepting any offer.",
+        "elig": "B.E. / B.Tech, 2025 or 2026 pass-outs, in a stated engineering branch: Computer Science & Engineering, Information Technology, Electronics & Communication, Computer Science & Business Systems, AI & Data Science, Cyber Security, Electronics & Computer Engineering, or AI & Machine Learning. Zero previous experience. Candidates should confirm their specific branch and other current conditions on the Naukri application form.",
         "resp": [
-          "Register/sign in to HackerEarth and check the official eligibility and instructions.",
-          "Complete the 2-hour-15-minute online hiring challenge during its November 27–December 6 window.",
-          "Prepare for 10 Angular multiple-choice questions and one Data Structures & Algorithms coding question in Java (as described in recent challenge summaries).",
-          "Use a desktop or laptop with a working webcam and follow the proctoring instructions."
+          "Support software development lifecycle activities within a cross-functional Agile engineering team.",
+          "Work with user stories, prioritization, estimates, feature development and deployment.",
+          "Use JavaScript, including Angular and Node.js, to build and maintain application components.",
+          "Contribute to databases, testing, automated build/deployment workflows and secure coding."
         ],
         "skills": [
-          "Java",
+          "Software engineering fundamentals",
+          "JavaScript",
           "Angular",
-          "Data Structures & Algorithms",
-          "Problem solving",
-          "Web development fundamentals"
+          "Node.js",
+          "HTML5 / CSS",
+          "SQL / Oracle",
+          "Agile / SDLC",
+          "Test automation",
+          "GitHub / CI-CD"
         ],
-        "workMode": "Online assessment; internship based in Bengaluru",
-        "jobId": "HackerEarth cepheid-hiring-challenge-2026-4",
-        "date": "2026-11-05",
-        "verifiedDate": "5 Nov 2026",
-        "closingAt": "2026-12-06T18:29:00Z",
-        "manualLiveVerifiedAt": "2026-11-05T07:12:00Z",
-        "manualLiveVerifiedUrl": "https://www.hackerearth.com/community/challenges/competitive/cepheid-hiring-challenge-2026-4/",
-        "sourceVerificationMethod": "Exact official public HackerEarth challenge page read on 5 Nov 2026: upcoming Nov 27–Dec 6 dates, job opportunity designation, 4.2K registrations, online duration and webcam requirement displayed. Registration workflow itself requires sign-in and was not completed. Academic criteria/assessment pattern supported by contemporaneous secondary sources only.",
-        "who": "2026 or 2027 B.E. Computer Science / Artificial Intelligence students with Java, Angular and DSA skills who meet the exact HackerEarth challenge eligibility after login.",
+        "workMode": "Not specified in accessible listing",
+        "who": "2025 or 2026 B.E./B.Tech graduates in the eligible IT/electronics branches seeking a zero-experience software-engineering apprenticeship with Fidelity Investments (FMR India). Confirm application availability in your own Naukri account.",
+        "jobId": "Naukri 130225010415",
+        "date": "10 Nov 2026",
+        "verifiedDate": "10 Nov 2026",
+        "sourceVerificationMethod": "Exact Naukri URL supplied by owner and cross-checked 10 Nov 2026 against independently refreshed listings (GetHyr, Myjobb AI) and a dated November 7 summary citing an active Naukri Apply button. Direct automated inspection of Naukri application page is blocked. The requisition ID derives from a Feb 2025 Naukri URL re-dated in November 2026. Do not imply an exact official Fidelity Careers requisition was verified.",
+        "page": "jobs/fidelity-investments-apprenticeship-engineering-2025-2026.html",
         "logo": [
-          "CE",
-          "#007eb8"
+          "FI",
+          "#1460a2"
         ],
-        "page": "jobs/cepheid-software-engineering-intern-hiring-challenge-2026.html",
         "telegramDeliveryMode": "instant"
       }
     ],
     "telegramDeliveryMode": "instant",
-    "requestId": "vip-cepheid-intern-hiring-challenge-20261105"
+    "requestId": "vip-fidelity-apprenticeship-engineering-20261110-130225010415"
   }
 }
