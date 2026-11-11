@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T03:34:24.000Z",
+  "updatedAt": "2026-11-11T04:57:33.907Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -70,7 +70,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0 years; fresh graduates explicitly eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Micron requisition JR112672 explicitly states fresh graduates with 0 years are eligible.",
       "postedDate": "10 Nov 2026",
@@ -84,7 +84,7 @@
         "expYears": "0 years; fresh graduates explicitly eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "Micron Workday",
         "desc": "Graduate IT engineering role supporting Linux and Windows systems, cloud infrastructure, monitoring, incidents and automation.",
         "elig": "Fresh graduates with 0 years are explicitly eligible; Linux and Windows knowledge is mandatory.",
@@ -105,16 +105,16 @@
         "postedDate": "10 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:57:33.877Z",
+        "browserVerifiedAt": "2026-11-11T04:57:33.877Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Micron Workday shows an active full-time requisition and an explicit zero-experience statement."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:57:33.877Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
