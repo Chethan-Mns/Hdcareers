@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:59:08.025Z",
+  "updatedAt": "2026-11-11T04:59:17.818Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -358,7 +358,7 @@
       "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresher for Cost Accountant or Company Secretary qualification",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official EY requisition 1751809 explicitly permits fresher Cost Accountant or Company Secretary candidates; other degree routes are excluded from the fresher claim.",
       "postedDate": "10 Nov 2026",
@@ -372,7 +372,7 @@
         "expYears": "Fresher for Cost Accountant or Company Secretary qualification",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "EY Careers",
         "desc": "Indirect-tax analyst role supporting compliance, research, documentation and client delivery.",
         "elig": "Fresher Cost Accountant or fresher Company Secretary candidates are eligible; BCom/MCom applicants require 2–4 years and are not treated as freshers here.",
@@ -392,16 +392,16 @@
         "postedDate": "10 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:59:17.818Z",
+        "browserVerifiedAt": "2026-11-11T04:59:17.818Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "EY Careers shows exact requisition 1751809 dated 10 Nov 2026 with active application routing."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:59:17.818Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
