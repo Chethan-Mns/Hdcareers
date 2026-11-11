@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:58:48.585Z",
+  "updatedAt": "2026-11-11T04:58:52.170Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -244,7 +244,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Up to 12–24 months; prior experience preferred, not mandatory",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Salesforce requisition JR356515 is full-time and frames prior support experience and French certification as preferred rather than mandatory.",
       "postedDate": "4 Nov 2026",
@@ -258,7 +258,7 @@
         "expYears": "Up to 12–24 months; prior experience preferred, not mandatory",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "Salesforce Careers",
         "desc": "Entry cloud-support role troubleshooting Salesforce products and guiding customers in a 24×7 voice-support environment.",
         "elig": "Bachelor’s in CS, IT or related field preferred; technical aptitude and English required; French certification or experience is preferred, not mandatory.",
@@ -278,16 +278,16 @@
         "postedDate": "4 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:58:52.169Z",
+        "browserVerifiedAt": "2026-11-11T04:58:52.169Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Salesforce Careers shows exact requisition JR356515, Hyderabad, posted 4 Nov 2026, with an active route."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:58:52.169Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Redirected source requires browser/ATS verification",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
