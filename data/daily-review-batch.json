@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:59:40.679Z",
+  "updatedAt": "2026-11-11T04:59:49.709Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -589,7 +589,7 @@
       "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "0–1 year; fresh graduates eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Weekday Lever requisition explicitly welcomes completed graduates with 0–1 year.",
       "postedDate": "28 Oct 2026",
@@ -603,7 +603,7 @@
         "expYears": "0–1 year; fresh graduates eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "Weekday Lever",
         "desc": "Remote recruiting-operations role screening candidates, recording assessments and coordinating follow-ups.",
         "elig": "Completed graduation; current students ineligible; 0–1 year or fresh graduate with strong spoken and written English.",
@@ -623,16 +623,16 @@
         "postedDate": "28 Oct 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:59:49.708Z",
+        "browserVerifiedAt": "2026-11-11T04:59:49.708Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "The exact Lever posting remains active and provides a requisition-bound application route."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:59:49.708Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
