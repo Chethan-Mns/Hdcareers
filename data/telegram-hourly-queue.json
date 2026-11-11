@@ -1866,9 +1866,11 @@
     {
       "page": "jobs/bnp-paribas-data-science-intern.html",
       "batchId": "admin-42962870865",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-11T05:01:08.016434+00:00",
-      "dueAt": "2026-11-11T07:02:26.430109+00:00"
+      "dueAt": "2026-11-11T07:02:26.430109+00:00",
+      "claimId": "42976594920",
+      "claimedAt": "2026-11-11T07:02:36.190598+00:00"
     },
     {
       "page": "jobs/ey-associate-analyst-indirect-tax-core.html",
