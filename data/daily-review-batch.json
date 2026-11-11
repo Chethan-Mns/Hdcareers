@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-11T05:00:00.225Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-11T05:00:29.998Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -817,5 +817,47 @@
     "batchId": "2026-11-10-0900-ist",
     "status": "reviewing",
     "note": "The prior review batch and all independent approval, publication and Telegram records remain untouched; this write replaces only the current review-batch file."
+  },
+  "submittedAt": "2026-11-11T05:00:29.998Z",
+  "publication": {
+    "candidateIds": [
+      "ametek-1441296700",
+      "blueberrylabs-93071312",
+      "bnpparibas-1234567890100124831",
+      "ey-1751809",
+      "harmonic-260140",
+      "keysight-56451",
+      "kpmg-30050404",
+      "micron-jr112672",
+      "paypal-r0138921",
+      "sigmoid-8927991002"
+    ],
+    "companies": [
+      "AMETEK",
+      "Blueberry Labs",
+      "BNP Paribas",
+      "EY",
+      "Harmonic",
+      "Keysight Technologies",
+      "KPMG Global Services",
+      "Micron Technology",
+      "PayPal",
+      "Sigmoid"
+    ],
+    "urls": [
+      "https://jobs.ametek.com/job/Bangalore-AI-Engineer-Developer-KA-560048/1441296700/",
+      "https://jobs.smartrecruiters.com/BlueberryLabsPrivateLimited/93071312-content-operations-assistant",
+      "https://group.bnpparibas/en/careers/job-offer/data-science-intern-2?SRC=interndoor",
+      "https://careers.ey.com/ey/job/Kancheepuram-District-Associate-Analyst-TAX-TMT-TAX-Indirect-Tax-Core-Chennai-603103/1446377333/",
+      "https://egmn.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Harmonic/job/260140",
+      "https://jobs.keysight.com/external/jobs/56451?lang=en-us",
+      "https://ejgk.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3/job/30050404",
+      "https://micron.wd1.myworkdayjobs.com/External/job/Hyderabad---Phoenix-Aquila-India/Associate-Engineer--IT-Eng-System-Mgr_JR112672",
+      "https://paypal.wd1.myworkdayjobs.com/jobs/job/Bangalore-Karnataka-India/Software-Engineer-Intern_R0138921",
+      "https://job-boards.greenhouse.io/sigmoid/jobs/8927991002"
+    ],
+    "requestId": "b2645406113d83ee87eb648c",
+    "count": 10,
+    "submittedAt": "2026-11-11T05:00:29.998Z"
   }
 }
