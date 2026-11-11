@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:59:24.171Z",
+  "updatedAt": "2026-11-11T04:59:32.580Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -472,7 +472,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student/recent-graduate training; 2026/2027 batches",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Sigmoid Greenhouse requisition 8927991002 is a current six-month internship/trainee intake.",
       "postedDate": "10 Nov 2026",
@@ -486,7 +486,7 @@
         "expYears": "Student/recent-graduate training; 2026/2027 batches",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "Sigmoid Greenhouse",
         "desc": "Six-month data-engineering internship and software-engineering trainee program for eligible 2026 and 2027 graduates.",
         "elig": "Eligible 2026/2027 graduating batches, minimum 7 CGPA and no active backlogs; official degree restrictions apply.",
@@ -506,16 +506,16 @@
         "postedDate": "10 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:59:32.580Z",
+        "browserVerifiedAt": "2026-11-11T04:59:32.580Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Sigmoid’s exact Greenhouse posting is active and identifies the 2026/2027 intake and academic thresholds."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:59:32.580Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "source-active",
       "precheckReason": "Greenhouse public posting inventory contains the exact published job",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
