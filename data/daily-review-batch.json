@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:59:32.580Z",
+  "updatedAt": "2026-11-11T04:59:40.679Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -529,7 +529,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Six-month internship; STEM bachelor’s/master’s",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official BNP Paribas reference 1234567890100124831 is a full-time six-month trainee/internship updated 9 Nov 2026.",
       "postedDate": "9 Nov 2026",
@@ -543,7 +543,7 @@
         "expYears": "Six-month internship; STEM bachelor’s/master’s",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "BNP Paribas Careers",
         "desc": "Data-science internship in the Global Markets Data & AI Lab covering modelling, experimentation and data pipelines.",
         "elig": "Bachelor’s or Master’s in a STEM field; Python, statistics and machine-learning foundations; six-month availability.",
@@ -564,16 +564,16 @@
         "postedDate": "9 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:59:40.678Z",
+        "browserVerifiedAt": "2026-11-11T04:59:40.678Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "BNP Paribas official page exposes an Apply route, Bengaluru location, internship type and exact reference."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:59:40.678Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 403; availability unconfirmed",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
