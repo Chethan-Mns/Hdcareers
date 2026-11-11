@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:57:33.907Z",
+  "updatedAt": "2026-11-11T04:57:51.714Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years, including internships/projects",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official AMETEK requisition 1441296700 is active and explicitly accepts 0–2 years including internship/project experience.",
       "postedDate": "19 Oct 2026",
@@ -27,7 +27,7 @@
         "expYears": "0–2 years, including internships/projects",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "AMETEK Careers",
         "desc": "Entry AI/software engineering role developing machine-learning solutions, automation and production-ready Python applications.",
         "elig": "Bachelor’s or Master’s in Computer Science, AI, ML or related field; 0–2 years including internships or substantial projects.",
@@ -47,16 +47,16 @@
         "postedDate": "19 Oct 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:57:51.714Z",
+        "browserVerifiedAt": "2026-11-11T04:57:51.714Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "AMETEK Careers shows the exact Bengaluru requisition, regular employment, and 0–2 years eligibility."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:57:51.714Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
