@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:58:25.297Z",
+  "updatedAt": "2026-11-11T04:58:37.853Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -186,7 +186,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years, including internships/projects",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official Keysight job 56451 is an entry role explicitly accepting 0–2 years including projects and internships.",
       "postedDate": "10 Nov 2026",
@@ -200,7 +200,7 @@
         "expYears": "0–2 years, including internships/projects",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "Keysight Careers",
         "desc": "Entry full-stack and AI software role building web applications, APIs, assistants and intelligent workflows.",
         "elig": "Bachelor’s in CS, IT, Software Engineering or related field; 0–2 years including internships, academic or personal projects.",
@@ -221,16 +221,16 @@
         "postedDate": "10 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:58:37.853Z",
+        "browserVerifiedAt": "2026-11-11T04:58:37.853Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "Keysight Careers exposes exact job 56451, regular employment and a current application route."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:58:37.853Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
