@@ -306,5 +306,47 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/episode-six-graduate-trainee-security-soc.html"
+  },
+  "AMETEK": {
+    "status": "needs_review",
+    "company": "AMETEK",
+    "officialDomain": "ametek.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
+    "jobPage": "jobs/ametek-ai-engineer-developer.html"
+  },
+  "Harmonic": {
+    "status": "needs_review",
+    "company": "Harmonic",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/harmonic-associate-software-development-engineer.html"
+  },
+  "KPMG Global Services": {
+    "status": "needs_review",
+    "company": "KPMG Global Services",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/kpmg-global-services-associate-2-gts-engineer.html"
+  },
+  "Micron Technology": {
+    "status": "needs_review",
+    "company": "Micron Technology",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/micron-technology-associate-engineer-it-engineering-system-management.html"
+  },
+  "PayPal": {
+    "status": "needs_review",
+    "company": "PayPal",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/paypal-software-engineer-intern.html"
+  },
+  "Sigmoid": {
+    "status": "needs_review",
+    "company": "Sigmoid",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/sigmoid-de-intern-sde-trainee-off-campus-hiring-2026.html"
   }
 }

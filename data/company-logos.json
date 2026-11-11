@@ -1762,5 +1762,33 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1700,
     "bytes": 2072
+  },
+  "BNP Paribas": {
+    "officialDomain": "group.bnpparibas",
+    "sourceUrl": "https://group.bnpparibas/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon default",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/bnp-paribas-377200f-ded4a016b9.png",
+    "sourceDimensions": [
+      180,
+      180
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 640,
+    "bytes": 10862
+  },
+  "Keysight Technologies": {
+    "officialDomain": "keysight.com",
+    "sourceUrl": "https://www.keysight.com/apple-touch-icon.png",
+    "sourceType": "apple-touch-icon default",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/keysight-technologies-68f465b-5e71c73fca.png",
+    "sourceDimensions": [
+      152,
+      152
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 492,
+    "bytes": 4798
   }
 }

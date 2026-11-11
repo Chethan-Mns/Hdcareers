@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "9 November 2026",
-  "active": 208,
-  "employers": 133,
-  "freshers": 189,
+  "verifiedThrough": "11 November 2026",
+  "active": 218,
+  "employers": 141,
+  "freshers": 199,
   "experienced": 16,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 71
+      "count": 75
     },
     {
       "label": "Hyderabad",
-      "count": 16
+      "count": 18
     },
     {
       "label": "Mumbai",
@@ -22,11 +22,11 @@
       "count": 11
     },
     {
-      "label": "Delhi",
-      "count": 6
+      "label": "Gurugram",
+      "count": 7
     },
     {
-      "label": "Gurugram",
+      "label": "Delhi",
       "count": 6
     },
     {
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 71
+      "count": 75
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 16
+      "count": 18
     },
     {
       "city": "Mumbai",
@@ -64,15 +64,15 @@
       "count": 11
     },
     {
-      "city": "Delhi",
-      "lat": 28.6139,
-      "lng": 77.209,
-      "count": 6
-    },
-    {
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
+      "count": 7
+    },
+    {
+      "city": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
       "count": 6
     },
     {
@@ -138,14 +138,14 @@
   ],
   "topCompanies": [
     {
+      "name": "EY",
+      "count": 11,
+      "logo": "assets/company-approved/ey.webp"
+    },
+    {
       "name": "Amazon",
       "count": 10,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
-    },
-    {
-      "name": "EY",
-      "count": 10,
-      "logo": "assets/company-approved/ey.webp"
     },
     {
       "name": "Accenture",
@@ -201,7 +201,7 @@
   "topSkills": [
     {
       "label": "Python",
-      "count": 39
+      "count": 43
     },
     {
       "label": "SQL",
@@ -209,34 +209,38 @@
     },
     {
       "label": "Java",
-      "count": 25
+      "count": 26
     },
     {
       "label": "Communication",
-      "count": 18
+      "count": 19
     },
     {
       "label": "REST APIs",
+      "count": 17
+    },
+    {
+      "label": "Problem solving",
       "count": 16
     },
     {
       "label": "JavaScript",
-      "count": 15
-    },
-    {
-      "label": "Problem solving",
-      "count": 14
+      "count": 16
     },
     {
       "label": "Git",
-      "count": 13
-    },
-    {
-      "label": "Algorithms",
-      "count": 11
+      "count": 14
     },
     {
       "label": "Linux",
+      "count": 13
+    },
+    {
+      "label": "C++",
+      "count": 11
+    },
+    {
+      "label": "Algorithms",
       "count": 11
     },
     {
@@ -244,26 +248,22 @@
       "count": 11
     },
     {
-      "label": "C++",
+      "label": "Documentation",
       "count": 10
     },
     {
-      "label": "Documentation",
-      "count": 9
-    },
-    {
-      "label": "English communication",
+      "label": "React",
       "count": 8
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 100
+      "count": 108
     },
     {
       "label": "nonit",
-      "count": 52
+      "count": 54
     },
     {
       "label": "internship",
@@ -430,6 +430,10 @@
     {
       "date": "2026-11-09",
       "count": 7
+    },
+    {
+      "date": "2026-11-11",
+      "count": 10
     }
   ]
 }
