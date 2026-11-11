@@ -1845,62 +1845,74 @@
     {
       "page": "jobs/ametek-ai-engineer-developer.html",
       "batchId": "admin-42962870865",
-      "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00",
+      "claimId": "42962870865",
+      "claimedAt": "2026-11-11T05:01:39.084456+00:00"
     },
     {
       "page": "jobs/blueberry-labs-content-operations-assistant.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/bnp-paribas-data-science-intern.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/ey-associate-analyst-indirect-tax-core.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/harmonic-associate-software-development-engineer.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/keysight-technologies-it-engineer-software-entry.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/kpmg-global-services-associate-2-gts-engineer.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/micron-technology-associate-engineer-it-engineering-system-management.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/paypal-software-engineer-intern.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     },
     {
       "page": "jobs/sigmoid-de-intern-sde-trainee-off-campus-hiring-2026.html",
       "batchId": "admin-42962870865",
       "status": "pending",
-      "queuedAt": "2026-11-11T05:01:08.016434+00:00"
+      "queuedAt": "2026-11-11T05:01:08.016434+00:00",
+      "dueAt": "2026-11-11T05:01:08.016434+00:00"
     }
   ]
 }
