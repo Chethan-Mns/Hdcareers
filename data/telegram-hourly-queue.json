@@ -1926,9 +1926,11 @@
     {
       "page": "jobs/paypal-software-engineer-intern.html",
       "batchId": "admin-42962870865",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-11T05:01:08.016434+00:00",
-      "dueAt": "2026-11-11T13:04:03.472147+00:00"
+      "dueAt": "2026-11-11T13:04:03.472147+00:00",
+      "claimId": "43025779323",
+      "claimedAt": "2026-11-11T13:04:13.822241+00:00"
     },
     {
       "page": "jobs/sigmoid-de-intern-sde-trainee-off-campus-hiring-2026.html",
