@@ -1896,9 +1896,11 @@
     {
       "page": "jobs/keysight-technologies-it-engineer-software-entry.html",
       "batchId": "admin-42962870865",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-11T05:01:08.016434+00:00",
-      "dueAt": "2026-11-11T10:03:13.657014+00:00"
+      "dueAt": "2026-11-11T10:03:13.657014+00:00",
+      "claimId": "43000338753",
+      "claimedAt": "2026-11-11T10:03:25.813907+00:00"
     },
     {
       "page": "jobs/kpmg-global-services-associate-2-gts-engineer.html",
