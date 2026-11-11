@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:59:49.709Z",
+  "updatedAt": "2026-11-11T05:00:00.225Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -646,7 +646,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "University internship; 2028 graduation required",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official PayPal requisition R0138921 is a current university internship and states the 2028 graduation restriction.",
       "postedDate": "10 Nov 2026",
@@ -660,7 +660,7 @@
         "expYears": "University internship; 2028 graduation required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "PayPal Workday",
         "desc": "University software-engineering internship building and testing scalable front-end or back-end payment experiences.",
         "elig": "Must graduate in 2028 with a bachelor’s in Computer Science or a related field; programming and web-technology foundations.",
@@ -681,16 +681,16 @@
         "postedDate": "10 Nov 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T05:00:00.225Z",
+        "browserVerifiedAt": "2026-11-11T05:00:00.225Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "PayPal Workday shows the exact full-time internship requisition, posted 10 Nov 2026, with active Apply."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T05:00:00.225Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
