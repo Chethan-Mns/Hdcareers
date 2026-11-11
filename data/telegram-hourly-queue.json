@@ -1856,9 +1856,11 @@
     {
       "page": "jobs/blueberry-labs-content-operations-assistant.html",
       "batchId": "admin-42962870865",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-11T05:01:08.016434+00:00",
-      "dueAt": "2026-11-11T06:02:13.067326+00:00"
+      "dueAt": "2026-11-11T06:02:13.067326+00:00",
+      "claimId": "42969624543",
+      "claimedAt": "2026-11-11T06:02:22.964725+00:00"
     },
     {
       "page": "jobs/bnp-paribas-data-science-intern.html",
