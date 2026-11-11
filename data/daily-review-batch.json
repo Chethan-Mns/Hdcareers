@@ -2,7 +2,7 @@
   "batchId": "2026-11-11-0900-ist",
   "generatedAt": "2026-11-11T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-11T04:58:52.170Z",
+  "updatedAt": "2026-11-11T04:59:08.025Z",
   "priority": [
     {
       "id": "ametek-1441296700",
@@ -301,7 +301,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–3 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official KPMG requisition 30050404 explicitly allows 0–3 years; restrictive institute criteria are preserved rather than generalized.",
       "postedDate": "5 Oct 2026",
@@ -315,7 +315,7 @@
         "expYears": "0–3 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "live_for_review",
+        "status": "active",
         "sourceName": "KPMG Oracle Careers",
         "desc": "Graduate technology-engineering role supporting global technology services and engineering delivery.",
         "elig": "BE/BTech/MCA from specified premium institutes, or qualifying dual degree; 0–3 years. The restrictive institute requirement must be checked before applying.",
@@ -335,16 +335,16 @@
         "postedDate": "5 Oct 2026",
         "verifiedDate": "11 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS requisition was freshly checked on 11 Nov 2026 and scrubbed against jobs.json, active and archived review batches, publication records and Telegram delivery records. Owner review is still required.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": "2026-11-11T03:34:24.000Z"
+        "manualLiveVerifiedAt": "2026-11-11T04:59:08.025Z",
+        "browserVerifiedAt": "2026-11-11T04:59:08.025Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-11T03:34:24.000Z",
         "currentVerdict": "live_for_review",
         "officialEvidence": "KPMG’s exact Oracle requisition is open through 29 Nov 2026 and lists 0–3 years."
       },
-      "reviewedAt": null,
-      "reviewedBy": null,
+      "reviewedAt": "2026-11-11T04:59:08.025Z",
+      "reviewedBy": "HD Careers Admin",
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-11T03:36:34.931209+00:00"
