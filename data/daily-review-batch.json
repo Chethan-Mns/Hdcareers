@@ -2,7 +2,7 @@
   "batchId": "2026-11-12-0900-ist",
   "generatedAt": "2026-11-12T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-12T04:48:13.803Z",
+  "updatedAt": "2026-11-12T04:48:32.367Z",
   "priority": [
     {
       "id": "kpmg-30051254",
@@ -68,7 +68,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "Fresher; prior work experience is not considered",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Cognizant’s official GenC page links to the exact Superset application for a full-time entry-level service-desk role and explicitly treats selected applicants as freshers.",
       "postedDate": "Not Specified",
@@ -101,7 +101,9 @@
         "jobId": "AT-UG3-2026",
         "postedDate": "Not Specified",
         "verifiedDate": "12 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 12 Nov 2026 and scrubbed against current jobs.json, the submitted 11 Nov review batch, publication selections and the review queue. Owner review is still required before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 12 Nov 2026 and scrubbed against current jobs.json, the submitted 11 Nov review batch, publication selections and the review queue. Owner review is still required before publication.",
+        "manualLiveVerifiedAt": "2026-11-12T04:48:32.338Z",
+        "browserVerifiedAt": "2026-11-12T04:48:32.338Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-12T03:30:00.000Z",
@@ -110,7 +112,9 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00"
+      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00",
+      "reviewedAt": "2026-11-12T04:48:32.338Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a",
