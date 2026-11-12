@@ -1957,9 +1957,11 @@
     {
       "page": "jobs/cognizant-analyst-trainee-digital-workplace-services.html",
       "batchId": "admin-43157295053",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T05:50:46.797419+00:00"
+      "dueAt": "2026-11-12T05:50:46.797419+00:00",
+      "claimId": "43164076081",
+      "claimedAt": "2026-11-12T05:50:57.669112+00:00"
     },
     {
       "page": "jobs/icg-medical-compliance-officer.html",
