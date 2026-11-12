@@ -1987,9 +1987,11 @@
     {
       "page": "jobs/paytm-payments-services-associate-merchant-onboarding-631.html",
       "batchId": "admin-43157295053",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T08:51:27.086565+00:00"
+      "dueAt": "2026-11-12T08:51:27.086565+00:00",
+      "claimId": "43186394342",
+      "claimedAt": "2026-11-12T08:51:38.109914+00:00"
     }
   ]
 }
