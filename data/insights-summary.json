@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "11 November 2026",
-  "active": 218,
-  "employers": 141,
-  "freshers": 199,
+  "verifiedThrough": "12 November 2026",
+  "active": 223,
+  "employers": 144,
+  "freshers": 204,
   "experienced": 16,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 75
+      "count": 76
     },
     {
       "label": "Hyderabad",
@@ -23,7 +23,11 @@
     },
     {
       "label": "Gurugram",
-      "count": 7
+      "count": 8
+    },
+    {
+      "label": "Noida",
+      "count": 6
     },
     {
       "label": "Delhi",
@@ -32,10 +36,6 @@
     {
       "label": "Navi Mumbai",
       "count": 5
-    },
-    {
-      "label": "Noida",
-      "count": 5
     }
   ],
   "cityPins": [
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 75
+      "count": 76
     },
     {
       "city": "Hyderabad",
@@ -67,7 +67,13 @@
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
-      "count": 7
+      "count": 8
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
+      "count": 6
     },
     {
       "city": "Delhi",
@@ -79,12 +85,6 @@
       "city": "Navi Mumbai",
       "lat": 19.033,
       "lng": 73.0297,
-      "count": 5
-    },
-    {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
       "count": 5
     },
     {
@@ -168,6 +168,16 @@
       "logo": "assets/company-approved/google-owner-20261019.svg"
     },
     {
+      "name": "Cognizant",
+      "count": 4,
+      "logo": "assets/company-icons/cognizant-8d169ac.png"
+    },
+    {
+      "name": "AHEAD",
+      "count": 3,
+      "logo": "assets/company-icons/ahead-0918318-afb6ded5a4.png"
+    },
+    {
       "name": "Qualcomm",
       "count": 3,
       "logo": "assets/company-approved/qualcomm.webp"
@@ -186,16 +196,6 @@
       "name": "Capgemini",
       "count": 3,
       "logo": "assets/company-icons/capgemini-10eefd0.png"
-    },
-    {
-      "name": "Cognizant",
-      "count": 3,
-      "logo": "assets/company-icons/cognizant-8d169ac.png"
-    },
-    {
-      "name": "Endeavor IT Solution",
-      "count": 3,
-      "logo": "assets/company-owner/endeavor-it-solution.png"
     }
   ],
   "topSkills": [
@@ -213,15 +213,15 @@
     },
     {
       "label": "Communication",
-      "count": 19
+      "count": 20
     },
     {
       "label": "REST APIs",
-      "count": 17
+      "count": 18
     },
     {
       "label": "Problem solving",
-      "count": 16
+      "count": 17
     },
     {
       "label": "JavaScript",
@@ -236,6 +236,10 @@
       "count": 13
     },
     {
+      "label": "Documentation",
+      "count": 11
+    },
+    {
       "label": "C++",
       "count": 11
     },
@@ -248,22 +252,18 @@
       "count": 11
     },
     {
-      "label": "Documentation",
-      "count": 10
-    },
-    {
-      "label": "React",
-      "count": 8
+      "label": "English communication",
+      "count": 9
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 108
+      "count": 111
     },
     {
       "label": "nonit",
-      "count": 54
+      "count": 56
     },
     {
       "label": "internship",
@@ -434,6 +434,10 @@
     {
       "date": "2026-11-11",
       "count": 10
+    },
+    {
+      "date": "2026-11-12",
+      "count": 5
     }
   ]
 }
