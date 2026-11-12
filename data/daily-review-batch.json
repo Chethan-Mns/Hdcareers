@@ -2,7 +2,7 @@
   "batchId": "2026-11-12-0900-ist",
   "generatedAt": "2026-11-12T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-12T03:39:00.000Z",
+  "updatedAt": "2026-11-12T03:42:00.000Z",
   "priority": [
     {
       "id": "kpmg-30051254",
@@ -358,7 +358,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 6,
+    "remaining": 14,
     "duplicateExclusions": [
       "Hevo Data 6cbbe304-e065-4711-bf3e-756795d2bc2a (exact URL/requisition already in current jobs records)",
       "AiPrise Software Engineer I / frontend variant (same employer-role family already published)",
@@ -376,7 +376,31 @@
     ],
     "excludedCount": 8,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "employerCoverage": {
+      "watchlistTotal": 87,
+      "watchlistVisited": 15,
+      "watchlistNotVisited": 72,
+      "watchlistBlocked": 3,
+      "watchlistCandidatesAccepted": 3,
+      "fallbackEmployersVisited": 12,
+      "fallbackCandidatesAccepted": 3
+    },
+    "uniqueExactLiveJobIdsFound": 7,
+    "distinctEmployers": 6,
+    "verifiedForReview": 6,
+    "heldSourceUnconfirmedOrExperienced": 7,
+    "expired": 1,
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role",
+    "held": [
+      "Deloitte Analyst S&T BPR 61398944: official page is open but does not establish zero-experience eligibility.",
+      "Deloitte Talent Acquisition and HR internships: current listings were visible but exact requisition-bound eligibility routes were not resolved.",
+      "Alcon Associate I DevSecOps: fresh-graduate evidence exists, but the exact official Workday requisition URL/ID was not resolved.",
+      "DLT Apps Software Engineer (Fresher): official careers inventory is generic and no exact requisition-bound route was exposed.",
+      "Cadence Design Engineer I: current evidence indicates 1–2 years.",
+      "KPMG Analyst-FTS 30051634/30051639: requires 1–3 years and the application deadlines have passed.",
+      "AHEAD AIC Apprentice remains staged for owner recheck because the official inventory omits degree/batch restrictions."
+    ]
   },
   "quotaAudit": {
     "priority": {
@@ -387,12 +411,12 @@
       },
       "actual": {
         "fresherTechnicalFullTime": 2,
-        "fresherNonTechnicalFullTime": 2,
+        "fresherNonTechnicalFullTime": 1,
         "internshipOrApprenticeship": 2
       },
       "shortfall": {
         "fresherTechnicalFullTime": 4,
-        "fresherNonTechnicalFullTime": 0,
+        "fresherNonTechnicalFullTime": 1,
         "internshipOrApprenticeship": 0
       }
     },
@@ -413,7 +437,7 @@
         "internshipOrApprenticeship": 2
       }
     },
-    "distinctEmployers": 7
+    "distinctEmployers": 6
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
@@ -425,7 +449,7 @@
     },
     "selected": {
       "fresherIT": 2,
-      "nonIT": 2,
+      "nonIT": 1,
       "training": 2
     },
     "backupSelected": {
@@ -436,7 +460,7 @@
     "shortfalls": {
       "priority": {
         "fresherIT": 4,
-        "nonIT": 0,
+        "nonIT": 1,
         "training": 0
       },
       "backup": {
