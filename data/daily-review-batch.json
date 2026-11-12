@@ -53,9 +53,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact KPMG Oracle job page identifies job 30051254, Gurugram, full-time schedule, six-month contract and 0–2 years eligibility."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official employer/ATS posting and requisition-bound application route were found in the current check.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     },
     {
       "id": "cognizant-at-ug3-2026",
@@ -106,62 +106,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Cognizant’s official GenC page says it is hiring Analyst Trainees and links directly to the exact Superset application, which states the batches, degrees, 50% threshold and fresher status."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official employer/ATS posting and requisition-bound application route were found in the current check.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
-    },
-    {
-      "id": "ey-1760300",
-      "company": "EY",
-      "role": "Associate Analyst – Transfer Pricing",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1456363833/",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "0–1 years (posting also lists 0–2 years for BCom/equivalent)",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official EY requisition 1760300 was posted 11 Nov 2026 and explicitly accepts 0–1 years.",
-      "postedDate": "11 Nov 2026",
-      "job": {
-        "company": "EY",
-        "role": "Associate Analyst – Transfer Pricing",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1456363833/",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years (posting also lists 0–2 years for BCom/equivalent)",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "active",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level transfer-pricing analyst role preparing documentation, benchmarking and economic analysis for tax engagements.",
-        "elig": "Graduate degree preferably in Economics, Finance or Statistics, or semi-qualified CA; BCom or equivalent also listed; 0–1 years, with a separate 0–2 years experience line.",
-        "resp": [
-          "Prepare transfer-pricing documentation reports.",
-          "Perform benchmarking and arm’s-length analyses.",
-          "Support tax teams with compliant client deliverables."
-        ],
-        "skills": [
-          "Transfer pricing",
-          "Financial analysis",
-          "Documentation",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1760300",
-        "postedDate": "11 Nov 2026",
-        "verifiedDate": "12 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 12 Nov 2026 and scrubbed against current jobs.json, the submitted 11 Nov review batch, publication selections and the review queue. Owner review is still required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-12T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact EY page is open, has an Apply action, names requisition 1760300 and states the degree and 0–1 year criteria."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official employer/ATS posting and requisition-bound application route were found in the current check.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     },
     {
       "id": "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a",
@@ -212,9 +159,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official Lever inventory entry is current and exposes the requisition-bound route, on-roll status, duties, degree and 0–1 year requirement."
       },
-      "precheckStatus": "source-active-recheck",
-      "precheckReason": "The exact Lever posting is present in the current official ATS inventory; direct page retrieval was blocked, so the owner should recheck the link rather than treat it as expired.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     },
     {
       "id": "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
@@ -266,8 +213,8 @@
         "officialEvidence": "The exact official Lever inventory entry lists the internship, Bengaluru location, student eligibility and technical requirements."
       },
       "precheckStatus": "source-active",
-      "precheckReason": "Exact official employer/ATS posting and requisition-bound application route were found in the current check.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     },
     {
       "id": "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
@@ -318,9 +265,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official Lever inventory entry identifies AIC Apprentice, Platform Engineering, India locations, intern classification and hybrid work."
       },
-      "precheckStatus": "source-active-recheck",
-      "precheckReason": "The exact Lever posting is present in the current official ATS inventory; direct page retrieval was blocked and the posting omits degree/batch restrictions, so owner recheck is required.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     }
   ],
   "backup": [
@@ -374,22 +321,22 @@
         "officialEvidence": "The exact Greenhouse posting is current, names Gurugram, marks the role fresher/entry-level and provides the requisition-bound application route."
       },
       "precheckStatus": "source-active",
-      "precheckReason": "Exact official employer/ATS posting and requisition-bound application route were found in the current check.",
-      "precheckCheckedAt": "2026-11-12T03:30:00.000Z"
+      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-12T03:38:05.010936+00:00"
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 6,
+      "size": 5,
       "counts": {
         "fresherIT": 2,
-        "nonIT": 2,
+        "nonIT": 1,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 4,
-        "nonIT": 0,
+        "nonIT": 1,
         "training": 0
       }
     },
@@ -411,21 +358,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 13,
-    "employerCoverage": {
-      "watchlistTotal": 87,
-      "watchlistVisited": 15,
-      "watchlistNotVisited": 72,
-      "watchlistBlocked": 3,
-      "watchlistCandidatesAccepted": 4,
-      "fallbackEmployersVisited": 12,
-      "fallbackCandidatesAccepted": 3
-    },
-    "uniqueExactLiveJobIdsFound": 7,
-    "distinctEmployers": 7,
-    "verifiedForReview": 7,
-    "heldSourceUnconfirmedOrExperienced": 7,
-    "expired": 1,
+    "remaining": 6,
     "duplicateExclusions": [
       "Hevo Data 6cbbe304-e065-4711-bf3e-756795d2bc2a (exact URL/requisition already in current jobs records)",
       "AiPrise Software Engineer I / frontend variant (same employer-role family already published)",
@@ -433,21 +366,17 @@
       "Enterpret 7847134003 (exact requisition already present)",
       "HackerRank 8229735 (exact requisition/role already present)",
       "Sigmoid 8927991002 (selected in the 11 Nov submitted batch)",
-      "Accenture Business Advisory New Associate AIOC-S01671538 (same employer-role previously reviewed)"
+      "Accenture Business Advisory New Associate AIOC-S01671538 (same employer-role previously reviewed)",
+      {
+        "id": "ey-1760300",
+        "company": "EY",
+        "reason": "already_published",
+        "officialUrl": "https://careers.ey.com/ey/job/Mumbai-Associate-Analyst-TAX-CHS-TAX-ITTS-Transfer-Pricing-Mumbai-MH-400028/1456363833/"
+      }
     ],
-    "excludedCount": 7,
-    "held": [
-      "Deloitte Analyst S&T BPR 61398944: official page is open but does not establish zero-experience eligibility.",
-      "Deloitte Talent Acquisition and HR internships: current listings were visible but exact requisition-bound eligibility routes were not resolved.",
-      "Alcon Associate I DevSecOps: fresh-graduate evidence exists, but the exact official Workday requisition URL/ID was not resolved.",
-      "DLT Apps Software Engineer (Fresher): official careers inventory is generic and no exact requisition-bound route was exposed.",
-      "Cadence Design Engineer I: current evidence indicates 1–2 years.",
-      "KPMG Analyst-FTS 30051634/30051639: requires 1–3 years and the application deadlines have passed.",
-      "AHEAD AIC Apprentice: staged only for owner recheck because the official inventory omits degree/batch restrictions."
-    ],
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role",
+    "excludedCount": 8,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported and were not padded with duplicate, experienced, generic-link or source-inconclusive jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
