@@ -2,7 +2,7 @@
   "batchId": "2026-11-12-0900-ist",
   "generatedAt": "2026-11-12T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-12T04:48:58.925Z",
+  "updatedAt": "2026-11-12T04:49:03.033Z",
   "priority": [
     {
       "id": "kpmg-30051254",
@@ -182,7 +182,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Student internship; final or pre-final year",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact JobTwine Lever internship is for final/pre-final-year CS/IT students and contains a requisition-bound apply route.",
       "postedDate": "12 Nov 2026",
@@ -215,7 +215,9 @@
         "jobId": "582a153b-575c-495c-8897-31b9d8a62bdb",
         "postedDate": "12 Nov 2026",
         "verifiedDate": "12 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 12 Nov 2026 and scrubbed against current jobs.json, the submitted 11 Nov review batch, publication selections and the review queue. Owner review is still required before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 12 Nov 2026 and scrubbed against current jobs.json, the submitted 11 Nov review batch, publication selections and the review queue. Owner review is still required before publication.",
+        "manualLiveVerifiedAt": "2026-11-12T04:49:03.033Z",
+        "browserVerifiedAt": "2026-11-12T04:49:03.033Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-12T03:30:00.000Z",
@@ -224,7 +226,9 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00"
+      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00",
+      "reviewedAt": "2026-11-12T04:49:03.033Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
