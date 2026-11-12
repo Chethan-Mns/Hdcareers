@@ -2,7 +2,7 @@
   "batchId": "2026-11-12-0900-ist",
   "generatedAt": "2026-11-12T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-12T03:42:00.000Z",
+  "updatedAt": "2026-11-12T04:48:13.803Z",
   "priority": [
     {
       "id": "kpmg-30051254",
@@ -13,7 +13,7 @@
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "Official KPMG Oracle requisition 30051254 is a full-time-schedule, six-month contract supporting AEM websites and accepts 0–2 years.",
       "postedDate": "2 Nov 2026",
@@ -27,7 +27,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "active",
+        "status": "expired",
         "sourceName": "KPMG Global Services Careers",
         "desc": "Technical web-operations analyst role supporting AEM content authoring, webpage maintenance, QA and compliance for KPMG US external websites.",
         "elig": "Graduate in a relevant field; 0–2 years of business experience. The posting states a six-month contractual engagement with a full-time schedule.",
@@ -55,7 +55,9 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00"
+      "precheckCheckedAt": "2026-11-12T03:39:11.746906+00:00",
+      "reviewedAt": "2026-11-12T04:48:13.803Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "cognizant-at-ug3-2026",
