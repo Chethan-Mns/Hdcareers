@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-12-0900-ist",
   "generatedAt": "2026-11-12T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-12T04:49:18.435Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-12T04:49:30.498Z",
   "priority": [
     {
       "id": "kpmg-30051254",
@@ -517,5 +517,32 @@
       "submittedAt": "2026-11-11T05:00:29.998Z"
     },
     "note": "The prior submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
+  },
+  "submittedAt": "2026-11-12T04:49:30.498Z",
+  "publication": {
+    "candidateIds": [
+      "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+      "cognizant-at-ug3-2026",
+      "icgmedical-5024601101",
+      "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
+      "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+    ],
+    "companies": [
+      "AHEAD",
+      "Cognizant",
+      "ICG Medical",
+      "JobTwine",
+      "Paytm Payments Services"
+    ],
+    "urls": [
+      "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+      "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
+      "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
+      "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
+      "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+    ],
+    "requestId": "92e57bf2eaeb18347e953809",
+    "count": 5,
+    "submittedAt": "2026-11-12T04:49:30.498Z"
   }
 }
