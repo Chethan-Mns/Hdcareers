@@ -1967,25 +1967,26 @@
     {
       "page": "jobs/icg-medical-compliance-officer.html",
       "batchId": "admin-43157295053",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T06:51:00.642970+00:00",
       "claimId": "43171017831",
-      "claimedAt": "2026-11-12T06:51:10.690775+00:00"
+      "claimedAt": "2026-11-12T06:51:10.690775+00:00",
+      "messageId": 720,
+      "deliveredAt": "2026-11-12T06:51:13.530519+00:00"
     },
     {
       "page": "jobs/jobtwine-sdet-intern.html",
       "batchId": "admin-43157295053",
       "status": "pending",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T07:51:00.642970+00:00"
+      "dueAt": "2026-11-12T07:51:13.530519+00:00"
     },
     {
       "page": "jobs/paytm-payments-services-associate-merchant-onboarding-631.html",
       "batchId": "admin-43157295053",
       "status": "pending",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T08:51:00.642970+00:00"
+      "dueAt": "2026-11-12T08:51:13.530519+00:00"
     }
   ]
 }
