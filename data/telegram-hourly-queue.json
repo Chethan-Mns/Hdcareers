@@ -1967,9 +1967,11 @@
     {
       "page": "jobs/icg-medical-compliance-officer.html",
       "batchId": "admin-43157295053",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-12T04:49:55.600924+00:00",
-      "dueAt": "2026-11-12T06:51:00.642970+00:00"
+      "dueAt": "2026-11-12T06:51:00.642970+00:00",
+      "claimId": "43171017831",
+      "claimedAt": "2026-11-12T06:51:10.690775+00:00"
     },
     {
       "page": "jobs/jobtwine-sdet-intern.html",
