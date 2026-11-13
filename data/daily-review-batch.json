@@ -55,7 +55,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -111,7 +111,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -166,7 +166,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "URLError; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -221,7 +221,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -277,7 +277,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -332,7 +332,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -387,7 +387,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -443,7 +443,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -498,7 +498,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -553,7 +553,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -610,7 +610,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
+      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -648,7 +648,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 9,
+    "remaining": 11,
     "duplicateExclusions": [
       "12 Nov batch: KPMG 30051254 plus five owner-selected/published candidates",
       "SuperApp 8829824002 (exact requisition already published)",
@@ -666,9 +666,9 @@
         "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
       }
     ],
-    "excludedCount": 22,
+    "excludedCount": 10,
     "needsFreshDiscovery": true,
-    "note": "Priority meets 6/2/2. The independent scrub removed Karya 5469564008 as previously reviewed. Backup now contains one confirmed internship; six technical, two non-technical and one training backup slots remain empty rather than using duplicates, experienced roles or unclear sources."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
