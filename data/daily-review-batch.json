@@ -342,7 +342,7 @@
       "role": "Trainee – Finance",
       "loc": "Bengaluru, Karnataka, India",
       "apply": "https://jobs.smartrecruiters.com/Eurofins/744000141900959-trainee-finance-",
-      "cat": "non-it",
+      "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresher; no prior experience minimum stated",
       "reviewedStatus": "unreviewed",
@@ -397,7 +397,7 @@
       "role": "Executive – Accounts Payable",
       "loc": "Chennai, Tamil Nadu, India",
       "apply": "https://careers.cognizant.com/india-en/jobs/00070713951/executive-accounts-payable/",
-      "cat": "non-it",
+      "cat": "nonit",
       "slotType": "fresherNonTechnicalFullTime",
       "expYears": "Fresher",
       "reviewedStatus": "unreviewed",
@@ -620,13 +620,13 @@
       "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 2,
-        "unclassified": 2
+        "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 0
       }
     },
@@ -648,7 +648,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 11,
+    "remaining": 9,
     "duplicateExclusions": [
       "12 Nov batch: KPMG 30051254 plus five owner-selected/published candidates",
       "SuperApp 8829824002 (exact requisition already published)",
@@ -666,9 +666,9 @@
         "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
       }
     ],
-    "excludedCount": 10,
+    "excludedCount": 22,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Priority meets 6/2/2. The independent scrub removed Karya 5469564008 as previously reviewed. Backup now contains one confirmed internship; six technical, two non-technical and one training backup slots remain empty rather than using duplicates, experienced roles or unclear sources."
   },
   "quotaAudit": {
     "priority": {
@@ -697,15 +697,15 @@
       "actual": {
         "fresherTechnicalFullTime": 0,
         "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 2
+        "internshipOrApprenticeship": 1
       },
       "shortfall": {
         "fresherTechnicalFullTime": 6,
         "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 0
+        "internshipOrApprenticeship": 1
       }
     },
-    "distinctEmployers": 12
+    "distinctEmployers": 11
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
@@ -723,7 +723,7 @@
     "backupSelected": {
       "fresherIT": 0,
       "nonIT": 0,
-      "training": 2
+      "training": 1
     },
     "shortfalls": {
       "priority": {
@@ -734,7 +734,7 @@
       "backup": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 0
+        "training": 1
       }
     },
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
