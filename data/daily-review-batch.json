@@ -54,8 +54,8 @@
         "officialEvidence": "The exact Deloitte South Asia page showed requisition 116959, Bengaluru, Apply now, undergraduate engineering eligibility and 0–2 years preferred."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -110,8 +110,8 @@
         "officialEvidence": "Citi’s exact requisition page showed job 261001786, Gurgaon, posted 12 Nov 2026, hybrid and 0–2 years."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -165,8 +165,8 @@
         "officialEvidence": "The exact Point72 Greenhouse page showed job 8893939002, Bengaluru and the 2027 Campus Graduate Program for IIT Kanpur."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "URLError; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -219,9 +219,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Capgemini page showed reference 578597, Noida, permanent contract and entry-level grade language."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -276,8 +276,8 @@
         "officialEvidence": "The exact Qualcomm Workday page showed 2027 Campus Hire Engineer HW, locations Bengaluru and Hyderabad, full-time and bachelor’s minimum qualification."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -331,8 +331,8 @@
         "officialEvidence": "Current discovery evidence resolves ReliaQuest requisition R15081-1 to the exact Workday application route and 0–2-year eligibility; the official page blocked automated reading."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact official Workday route is requisition-bound but blocked automated access; do not mark Live until the owner opens it.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -354,7 +354,7 @@
         "role": "Trainee – Finance",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://jobs.smartrecruiters.com/Eurofins/744000141900959-trainee-finance-",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Fresher; no prior experience minimum stated",
         "salary": "Not Disclosed",
@@ -385,9 +385,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Eurofins SmartRecruiters page showed job 744000141900959, full-time Trainee Finance and commerce/finance qualifications without a minimum experience requirement."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -409,7 +409,7 @@
         "role": "Executive – Accounts Payable",
         "loc": "Chennai, Tamil Nadu, India",
         "apply": "https://careers.cognizant.com/india-en/jobs/00070713951/executive-accounts-payable/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "fresher",
         "expYears": "Fresher",
         "salary": "Not Disclosed",
@@ -442,8 +442,8 @@
         "officialEvidence": "Cognizant’s exact page showed requisition 00070713951, Chennai, published 12 Nov 2026 and the Accounts Payable scope; current employer-linked listing evidence classifies it as Fresher."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -496,9 +496,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact QAD SmartRecruiters result showed job 744000161284809, Mumbai, Apprentice Engineer and Fresher eligibility."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -551,69 +551,14 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact MongoDB Greenhouse page showed job 8127582, Gurugram and the 2027 Winter Software Engineer Intern program."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckStatus": "source-active",
+      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "backup": [
-    {
-      "id": "karya-5469564008",
-      "company": "Karya",
-      "role": "Research Engineering Intern – AI Evaluations",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/karya/jobs/5469564008",
-      "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student or recent graduate; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Karya Greenhouse job 5469564008 is a research engineering internship for students or recent graduates.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Karya",
-        "role": "Research Engineering Intern – AI Evaluations",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/karya/jobs/5469564008",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Student or recent graduate; no prior experience minimum stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Karya Careers (Greenhouse)",
-        "desc": "AI evaluation research internship supporting experiments, datasets and engineering workflows for model assessment.",
-        "elig": "Pursuing or recently completed a bachelor’s or master’s degree in CS, ML, NLP or a related field; no experience minimum stated.",
-        "resp": [
-          "Build evaluation datasets and experiment tooling.",
-          "Run and analyze AI model evaluations.",
-          "Document findings and collaborate with research engineers."
-        ],
-        "skills": [
-          "Python",
-          "Machine learning",
-          "NLP",
-          "Data analysis"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "5469564008",
-        "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Karya Greenhouse page showed job 5469564008 and student/recent-graduate eligibility for an AI evaluations internship."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
     {
       "id": "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24",
       "company": "Fam",
@@ -663,9 +608,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Fam Lever page showed the requisition-bound Bengaluru Security Engineer Intern opening."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact role and application route found; owner must still verify Live/Expired/Unsure.",
-      "precheckCheckedAt": "2026-11-13T03:30:00.000Z",
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-13T03:40:32.956106+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -675,62 +620,35 @@
       "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 2,
+        "nonIT": 0,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 2
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 0,
+        "nonIT": 2,
         "training": 0
       }
     },
     "backup": {
-      "size": 2,
+      "size": 1,
       "counts": {
         "fresherIT": 0,
         "nonIT": 0,
-        "training": 2,
+        "training": 1,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 0
+        "training": 1
       }
     },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "remaining": 12,
-    "watchlist87": {
-      "visited": 15,
-      "notVisited": 72,
-      "blocked": 1,
-      "visitedCompanies": [
-        "Deloitte",
-        "KPMG",
-        "EY",
-        "PwC",
-        "Accenture",
-        "Cognizant",
-        "Capgemini",
-        "Wipro",
-        "Google",
-        "Microsoft",
-        "Amazon",
-        "Oracle",
-        "Qualcomm",
-        "Citi",
-        "NTT DATA"
-      ],
-      "blockedCompanies": [
-        "NTT DATA"
-      ]
-    },
-    "fallbackEmployersVisited": 17,
-    "uniqueExactEligibleJobIdsFound": 12,
+    "remaining": 11,
     "duplicateExclusions": [
       "12 Nov batch: KPMG 30051254 plus five owner-selected/published candidates",
       "SuperApp 8829824002 (exact requisition already published)",
@@ -740,26 +658,17 @@
       "Qualcomm 3094023 (exact requisition already published)",
       "Endeavor IT Solution 743999651526185 (exact role already published)",
       "State Street R-799807, METRO 744000157778959, Apna 357CEB0335 and Capgemini 530902 (already published)",
-      "Enterpret 7847134003, Hevo 993a3ed3-3014-432f-b0f4-28d300d58d9a, Sigmoid 8927991002, Merkle 20675 and Synopsys 102584 (prior published/reviewed exact postings)"
+      "Enterpret 7847134003, Hevo 993a3ed3-3014-432f-b0f4-28d300d58d9a, Sigmoid 8927991002, Merkle 20675 and Synopsys 102584 (prior published/reviewed exact postings)",
+      {
+        "id": "karya-5469564008",
+        "company": "Karya",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
+      }
     ],
-    "excludedCount": 21,
-    "heldOrIneligible": [
-      "Amazon SDE I and Safe Security SDE I: minimum 1+ years",
-      "Google PhD early-career roles: official level and experience language not zero-experience clear",
-      "MassMutual operations roles: 1–4+ years",
-      "JLL finance roles: 1–3+ years",
-      "Accenture P2P role: 1–3 years despite a search headline",
-      "Branch Staff Accountant: 1–2 years",
-      "Black Duck SDET 1: 1–2 years",
-      "Cleo Software Engineer: official mid-level classification",
-      "bswift Software Engineer: current description lacks usable eligibility details",
-      "Xylem Graduate Engineer Trainee and Konecranes GET: training-bucket roles; training quota already filled",
-      "Wipro Problem Analyst L1: zero-experience eligibility not stated",
-      "Lalamove Accounting Associate: official location is Bangkok, not India"
-    ],
-    "heldCount": 12,
+    "excludedCount": 10,
     "needsFreshDiscovery": true,
-    "note": "Priority meets 6/2/2. Backup contains only two confirmed internships; six technical and two non-technical backup slots remain empty rather than using duplicates, experienced roles or unclear sources."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
