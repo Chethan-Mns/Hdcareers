@@ -1,616 +1,668 @@
 {
-  "batchId": "2026-11-13-0900-ist",
-  "generatedAt": "2026-11-13T03:30:00.000Z",
+  "batchId": "2026-11-14-0900-ist",
+  "generatedAt": "2026-11-14T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-13T03:30:00.000Z",
+  "updatedAt": "2026-11-14T03:30:00.000Z",
   "priority": [
     {
-      "id": "deloitte-116959",
+      "id": "deloitte-116858",
       "company": "Deloitte",
-      "role": "Analyst – Finance AI Implementation",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-Finance-AI-Implementation-Bengaluru-Finance-Transformation-Finance-Strategy/61496144/",
+      "role": "Product Support Specialist – SMB",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-T%26T-Customer-CSAD-Customer-Exp-Associate-Bangalore/61342544/",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years preferred",
+      "expYears": "0–1 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Deloitte requisition 116959 is a full-time Finance AI implementation role and lists 0–2 years as preferred, not required.",
+      "verificationReason": "Official Deloitte requisition 116858 lists a bachelor’s degree and 0–1 years for an analyst-level product support role.",
       "postedDate": "Not Specified",
       "job": {
         "company": "Deloitte",
-        "role": "Analyst – Finance AI Implementation",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-Analyst-Finance-AI-Implementation-Bengaluru-Finance-Transformation-Finance-Strategy/61496144/",
+        "role": "Product Support Specialist – SMB",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Bengaluru-T%26T-Customer-CSAD-Customer-Exp-Associate-Bangalore/61342544/",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years preferred",
+        "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
         "sourceName": "Deloitte South Asia Careers",
-        "desc": "Entry-level finance-transformation analyst role helping implement AI-enabled digital finance solutions.",
-        "elig": "Undergraduate engineering degree from a Tier 1 institution; 0–2 years is listed as preferred.",
+        "desc": "Entry-level product support role handling voice, chat and email cases, product troubleshooting, documentation and adoption support.",
+        "elig": "Bachelor’s degree; 0–1 years in product, SaaS or customer support. Commerce or finance is preferred.",
         "resp": [
-          "Support finance AI and digital-transformation implementations.",
-          "Analyze finance processes and translate requirements into solutions.",
-          "Assist testing, documentation and stakeholder coordination."
+          "Handle customer interactions across voice, chat and email.",
+          "Troubleshoot product workflows and installation questions.",
+          "Own and document cases while meeting quality and service standards."
         ],
         "skills": [
-          "Artificial intelligence",
-          "Finance transformation",
-          "Business analysis",
-          "Implementation"
+          "Product troubleshooting",
+          "CRM",
+          "Customer support",
+          "Accounting basics"
         ],
         "workMode": "Not Specified",
-        "jobId": "116959",
+        "jobId": "116858",
         "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Deloitte South Asia page showed requisition 116959, Bengaluru, Apply now, undergraduate engineering eligibility and 0–2 years preferred."
+        "officialEvidence": "The exact Deloitte page showed requisition 116858, Hyderabad work location, an Apply route, bachelor’s qualification and 0–1 years."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "citi-261001786",
-      "company": "Citi",
-      "role": "Data Analyst with SQL/Python/Data Visualization",
-      "loc": "Gurgaon, Haryana, India",
-      "apply": "https://jobs.citi.com/job/gurgaon/data-analyst-with-sql-python-data-visualization/287/102455431792",
+      "id": "stripe-8130876",
+      "company": "Stripe",
+      "role": "Software Engineer, New Grad",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years",
+      "expYears": "New graduate; up to 18 months",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Citi requisition 261001786 is a full-time hybrid trainee-professional data role accepting 0–2 years.",
-      "postedDate": "12 Nov 2026",
+      "verificationReason": "Official Stripe listing is a Bengaluru full-time university role for degrees obtained by summer 2027 and no more than 18 months of professional experience.",
+      "postedDate": "Not Specified",
       "job": {
-        "company": "Citi",
-        "role": "Data Analyst with SQL/Python/Data Visualization",
-        "loc": "Gurgaon, Haryana, India",
-        "apply": "https://jobs.citi.com/job/gurgaon/data-analyst-with-sql-python-data-visualization/287/102455431792",
+        "company": "Stripe",
+        "role": "Software Engineer, New Grad",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years",
+        "expYears": "New graduate; up to 18 months",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Citi Careers",
-        "desc": "Data and information management analyst role using SQL, Python and visualization tools to analyze processes and data.",
-        "elig": "Bachelor’s or university degree; 0–2 years with SQL, Python, visualization and Excel.",
+        "sourceName": "Stripe Careers",
+        "desc": "New-graduate engineering role building and operating financial infrastructure used by businesses worldwide.",
+        "elig": "Bachelor’s or master’s in computer science or a directly related field by summer 2027, or equivalent experience; no more than 18 months professional experience excluding internships.",
         "resp": [
-          "Analyze data and processes to identify issues and recommendations.",
-          "Use SQL and Python for data preparation and analysis.",
-          "Create clear visualizations and support data-quality decisions."
+          "Build production software for Stripe products and infrastructure.",
+          "Learn unfamiliar systems and collaborate with mentors and domain experts.",
+          "Review and validate AI-assisted development output."
         ],
         "skills": [
-          "SQL",
+          "Programming fundamentals",
+          "Code review",
+          "Production systems",
+          "Written communication"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "8130876",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The official Stripe page showed Bengaluru, full-time, University team, Apply now, summer 2027 degree eligibility and the 18-month new-grad cap."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "celonis-7665962003",
+      "company": "Celonis",
+      "role": "Associate Deployment Engineer – Galaxy Graduate Program",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Recent graduate or final-year student",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Celonis Greenhouse requisition is a full-time graduate program starting 1 February 2027.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Celonis",
+        "role": "Associate Deployment Engineer – Galaxy Graduate Program",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Recent graduate or final-year student",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Celonis Greenhouse",
+        "desc": "Graduate deployment-engineering role combining process data, Python, SQL, machine learning and customer implementation work.",
+        "elig": "Recent graduate or final-year student in computer science, data science, engineering, business information systems or a related technical field; available full time from 1 February 2027.",
+        "resp": [
+          "Support Celonis platform implementations.",
+          "Transform data with SQL and Python and build AI-forward analyses.",
+          "Document solutions and participate in customer workshops."
+        ],
+        "skills": [
           "Python",
-          "Power BI",
-          "Tableau",
-          "Excel"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "261001786",
-        "postedDate": "12 Nov 2026",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Citi’s exact requisition page showed job 261001786, Gurgaon, posted 12 Nov 2026, hybrid and 0–2 years."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "point72-8893939002",
-      "company": "Point72",
-      "role": "2027 Software Engineer – Campus Graduate Program – IIT Kanpur",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/point72/jobs/8893939002?gh_jid=8893939002",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Campus graduate; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Point72 Greenhouse requisition 8893939002 is a Bengaluru 2027 campus graduate software engineering program.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Point72",
-        "role": "2027 Software Engineer – Campus Graduate Program – IIT Kanpur",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/point72/jobs/8893939002?gh_jid=8893939002",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Campus graduate; no prior experience minimum stated",
-        "salary": "Not Disclosed",
-        "batch": "2027",
-        "status": "unreviewed",
-        "sourceName": "Point72 Careers (Greenhouse)",
-        "desc": "Campus graduate software engineering role building technology for investment and enterprise systems.",
-        "elig": "Students eligible for the named IIT Kanpur 2027 campus graduate program; role is Bengaluru based.",
-        "resp": [
-          "Develop and improve software used across Point72 technology teams.",
-          "Collaborate with engineers on production systems and applications.",
-          "Learn enterprise engineering practices while delivering tested code."
-        ],
-        "skills": [
-          "Software engineering",
-          "Programming",
-          "Data structures",
-          "Problem solving"
+          "SQL",
+          "Machine learning",
+          "Consulting"
         ],
         "workMode": "Not Specified",
-        "jobId": "8893939002",
+        "jobId": "7665962003",
         "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Point72 Greenhouse page showed job 8893939002, Bengaluru and the 2027 Campus Graduate Program for IIT Kanpur."
+        "officialEvidence": "The exact Celonis Greenhouse page remained open and stated recent-graduate/final-year eligibility plus a February 2027 full-time start."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "URLError; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "capgemini-578597",
-      "company": "Capgemini",
-      "role": "Hardware Lab Technician",
-      "loc": "Noida, Uttar Pradesh, India",
-      "apply": "https://careers.capgemini.com/job/Noida-Hardware-Lab-Technician/1448925733/?feedId=388633&tcsource=apply",
+      "id": "trinet-3004263",
+      "company": "TriNet",
+      "role": "Associate Software Engineer",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://fa-etgw-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/3004263/",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "Entry level; limited commercial or technical experience",
+      "expYears": "Typically under 2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Capgemini ref 578597 is a permanent entry-level hardware laboratory role for a graduate with limited experience.",
-      "postedDate": "12 Nov 2026",
+      "verificationReason": "Official TriNet Oracle candidate page lists a full-time associate software role with typically under two years of experience.",
+      "postedDate": "5 Nov 2026",
       "job": {
-        "company": "Capgemini",
-        "role": "Hardware Lab Technician",
-        "loc": "Noida, Uttar Pradesh, India",
-        "apply": "https://careers.capgemini.com/job/Noida-Hardware-Lab-Technician/1448925733/?feedId=388633&tcsource=apply",
+        "company": "TriNet",
+        "role": "Associate Software Engineer",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://fa-etgw-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/3004263/",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Entry level; limited commercial or technical experience",
+        "expYears": "Typically under 2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Capgemini Careers",
-        "desc": "Entry-level technical laboratory role supporting hardware setup, testing, inventory and troubleshooting.",
-        "elig": "Graduate-level candidate with foundational hardware knowledge; the posting describes the grade as entry level with limited commercial or technical experience.",
+        "sourceName": "TriNet Oracle Careers",
+        "desc": "Associate engineering role developing, testing and releasing web applications, platform capabilities and integrations.",
+        "elig": "Bachelor’s degree in computer science, engineering or a related field; typically less than two years developing products or platforms.",
         "resp": [
-          "Set up and maintain laboratory hardware and test equipment.",
-          "Support troubleshooting, testing and inventory control.",
-          "Document lab activity and follow safety and quality procedures."
+          "Develop and enhance products and integrations.",
+          "Write unit tests and automated test scripts.",
+          "Debug applications and build prototypes."
         ],
         "skills": [
-          "Computer hardware",
-          "Troubleshooting",
-          "Laboratory operations",
-          "Documentation"
-        ],
-        "workMode": "On-site",
-        "jobId": "578597",
-        "postedDate": "12 Nov 2026",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Capgemini page showed reference 578597, Noida, permanent contract and entry-level grade language."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "qualcomm-3094020",
-      "company": "Qualcomm",
-      "role": "2027 Campus Hire – Engineer, Hardware",
-      "loc": "Bengaluru / Hyderabad, India",
-      "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire--Engineer--HW_3094020",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "2027 campus graduate; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Qualcomm Workday requisition 3094020 is a full-time 2027 campus hardware engineering role.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Qualcomm",
-        "role": "2027 Campus Hire – Engineer, Hardware",
-        "loc": "Bengaluru / Hyderabad, India",
-        "apply": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/XMLNAME-2027-Campus-Hire--Engineer--HW_3094020",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "2027 campus graduate; no prior experience minimum stated",
-        "salary": "Not Disclosed",
-        "batch": "2027",
-        "status": "unreviewed",
-        "sourceName": "Qualcomm Careers (Workday)",
-        "desc": "Campus hardware engineer role spanning SoC design, verification, validation, RF/analog layout and board or FPGA work.",
-        "elig": "Bachelor’s degree in Computer Science, Electrical/Electronics Engineering or a related field; 2027 campus hire.",
-        "resp": [
-          "Support hardware design, verification or validation activities.",
-          "Work with Verilog/VHDL, C/C++ or engineering tools as applicable.",
-          "Collaborate on SoC, RF, analog, board or FPGA projects."
-        ],
-        "skills": [
-          "Digital design",
-          "Verification",
-          "C/C++",
-          "Verilog/VHDL",
-          "SoC"
+          "Java or Python",
+          "React or Angular",
+          "Testing",
+          "Generative AI"
         ],
         "workMode": "Not Specified",
-        "jobId": "3094020",
-        "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "jobId": "3004263",
+        "postedDate": "5 Nov 2026",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Qualcomm Workday page showed 2027 Campus Hire Engineer HW, locations Bengaluru and Hyderabad, full-time and bachelor’s minimum qualification."
+        "officialEvidence": "The exact Oracle candidate page showed job 3004263, Hyderabad, full-time, bachelor’s eligibility and typically under two years."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "reliaquest-r15081-1",
-      "company": "ReliaQuest",
-      "role": "Associate Software Development Engineer in Test",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Development-Engineer-in-Test_R15081-1",
+      "id": "cin7-c896656f",
+      "company": "Cin7",
+      "role": "Junior Software Engineer",
+      "loc": "Ahmedabad or Pune, India",
+      "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Early career; internships or projects accepted",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Cin7 Lever listing is a junior full-time role and explicitly accepts practical experience from internships, personal projects or university projects.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Cin7",
+        "role": "Junior Software Engineer",
+        "loc": "Ahmedabad or Pune, India",
+        "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Early career; internships or projects accepted",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Cin7 Lever",
+        "desc": "Junior .NET engineering role building cloud inventory software across application, database and frontend layers.",
+        "elig": "Bachelor’s degree in computer science, engineering or a related field, or equivalent experience; residence in Ahmedabad or Pune; practical software experience may come from internships or projects.",
+        "resp": [
+          "Build cloud SaaS features using .NET technologies.",
+          "Write APIs, SQL queries, UI updates and tests.",
+          "Participate in code review and learn from senior engineers."
+        ],
+        "skills": [
+          "C#",
+          ".NET",
+          "SQL",
+          "HTML/CSS/JavaScript"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "c896656f-9a8b-4263-add3-553226c73df4",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Cin7 Lever page showed an active Apply route, full-time status, Ahmedabad/Pune residency, and project or internship experience as acceptable."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "aiprise-41af4efa",
+      "company": "AiPrise",
+      "role": "Software Engineer I, Full Stack (Frontend Focused)",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.ashbyhq.com/aiprise/41af4efa-a550-484e-afde-a9f5f3807eca",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
       "expYears": "0–2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact requisition-bound Workday route and current role evidence identify a Pune associate SDET opening for 0–2 years; automated direct access was blocked, so owner recheck is mandatory.",
+      "verificationReason": "Official AiPrise Ashby requisition is a full-time Bengaluru Software Engineer I role requiring 0–2 years.",
       "postedDate": "Not Specified",
       "job": {
-        "company": "ReliaQuest",
-        "role": "Associate Software Development Engineer in Test",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://reliaquest.wd5.myworkdayjobs.com/ReliaQuest_Careers/job/Pune-India-Office/Associate-Software-Development-Engineer-in-Test_R15081-1",
+        "company": "AiPrise",
+        "role": "Software Engineer I, Full Stack (Frontend Focused)",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.ashbyhq.com/aiprise/41af4efa-a550-484e-afde-a9f5f3807eca",
         "cat": "it",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "ReliaQuest Careers (Workday)",
-        "desc": "Associate test-engineering role building and maintaining automated quality checks for software products.",
-        "elig": "Early-career candidates with 0–2 years and relevant software testing or programming foundations.",
+        "sourceName": "AiPrise Ashby",
+        "desc": "Frontend-focused full-stack role building onboarding flows, web and mobile SDKs, and compliance case-management products.",
+        "elig": "0–2 years of professional software experience with TypeScript, React, HTML/CSS and REST API exposure.",
         "resp": [
-          "Develop and execute automated software tests.",
-          "Investigate defects and collaborate with developers on fixes.",
-          "Improve test coverage, tooling and release quality."
+          "Build customer-facing onboarding and case-management features.",
+          "Develop responsive interfaces and REST-backed functionality.",
+          "Collaborate with product, design and compliance teams."
         ],
         "skills": [
-          "Test automation",
-          "Software testing",
-          "Programming",
-          "Debugging"
+          "TypeScript",
+          "React",
+          "REST APIs",
+          "HTML/CSS"
         ],
         "workMode": "Not Specified",
-        "jobId": "R15081-1",
+        "jobId": "41af4efa-a550-484e-afde-a9f5f3807eca",
         "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "official_route_blocked_owner_recheck_required",
-        "officialEvidence": "Current discovery evidence resolves ReliaQuest requisition R15081-1 to the exact Workday application route and 0–2-year eligibility; the official page blocked automated reading."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "eurofins-744000141900959",
-      "company": "Eurofins",
-      "role": "Trainee – Finance",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/Eurofins/744000141900959-trainee-finance-",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Fresher; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Eurofins SmartRecruiters job 744000141900959 is a full-time finance trainee role with no experience minimum.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Eurofins",
-        "role": "Trainee – Finance",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/Eurofins/744000141900959-trainee-finance-",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher; no prior experience minimum stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Eurofins Careers (SmartRecruiters)",
-        "desc": "Entry-level finance role supporting accounting processes, reconciliations and reporting.",
-        "elig": "B.Com or related Finance/Accounting education; fresher eligibility with no stated prior-experience requirement.",
-        "resp": [
-          "Support routine finance and accounting transactions.",
-          "Prepare reconciliations and maintain accurate records.",
-          "Assist reporting and process documentation."
-        ],
-        "skills": [
-          "Accounting",
-          "Reconciliation",
-          "Excel",
-          "Financial reporting"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000141900959",
-        "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Eurofins SmartRecruiters page showed job 744000141900959, full-time Trainee Finance and commerce/finance qualifications without a minimum experience requirement."
+        "officialEvidence": "The exact AiPrise Ashby page showed Bengaluru, full-time, Apply and a 0–2 year requirement."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "cognizant-00070713951",
-      "company": "Cognizant",
-      "role": "Executive – Accounts Payable",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://careers.cognizant.com/india-en/jobs/00070713951/executive-accounts-payable/",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Cognizant requisition 00070713951 is a new full-time Accounts Payable role; current employer-linked discovery identifies it as fresher level.",
-      "postedDate": "12 Nov 2026",
-      "job": {
-        "company": "Cognizant",
-        "role": "Executive – Accounts Payable",
-        "loc": "Chennai, Tamil Nadu, India",
-        "apply": "https://careers.cognizant.com/india-en/jobs/00070713951/executive-accounts-payable/",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Cognizant Careers",
-        "desc": "Finance and accounting role supporting accounts payable, reconciliations, month-end, tax workings and audit closure.",
-        "elig": "Bachelor’s degree with accounts-payable and accounting fundamentals; current listing is identified as fresher level.",
-        "resp": [
-          "Prepare AP accruals, schedules and journal entries.",
-          "Support month-end close, GST workings and vendor reconciliations.",
-          "Assist audit closure and resolve controllership queries."
-        ],
-        "skills": [
-          "Accounts payable",
-          "Accounting",
-          "GST",
-          "Reconciliation",
-          "Journal entries"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "00070713951",
-        "postedDate": "12 Nov 2026",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Cognizant’s exact page showed requisition 00070713951, Chennai, published 12 Nov 2026 and the Accounts Payable scope; current employer-linked listing evidence classifies it as Fresher."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "qad-744000161284809",
-      "company": "QAD",
-      "role": "Apprentice Engineer",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/QADInc/744000161284809-apprentice-engineer",
-      "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official QAD SmartRecruiters job 744000161284809 is explicitly an Apprentice Engineer opening and states Fresher.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "QAD",
-        "role": "Apprentice Engineer",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/QADInc/744000161284809-apprentice-engineer",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "QAD Careers (SmartRecruiters)",
-        "desc": "Technology apprenticeship supporting engineering work while learning QAD systems and development practices.",
-        "elig": "Relevant IT degree; the official listing states Number of years: Fresher.",
-        "resp": [
-          "Assist engineering tasks under team guidance.",
-          "Learn development, testing and support practices.",
-          "Document work and collaborate with technical colleagues."
-        ],
-        "skills": [
-          "Software fundamentals",
-          "Problem solving",
-          "Testing",
-          "Team collaboration"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000161284809",
-        "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact QAD SmartRecruiters result showed job 744000161284809, Mumbai, Apprentice Engineer and Fresher eligibility."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "mongodb-8127582",
-      "company": "MongoDB",
-      "role": "2027 Winter Software Engineer Intern",
+      "id": "ey-1761018",
+      "company": "EY",
+      "role": "Analyst – Business Consulting Risk, Process & Controls",
       "loc": "Gurugram, Haryana, India",
-      "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/8127582",
-      "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Student; no prior experience minimum stated",
+      "apply": "https://careers.ey.com/ey/job/Gurugram-Analyst-Business-Consulting-Risk-CHS-CNS-Risk-Process-%26-Controls-Gurgaon-HR-122003/1457351933/",
+      "cat": "nonit",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresher",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official MongoDB Greenhouse job 8127582 is a Gurugram 2027 winter software engineering internship.",
-      "postedDate": "Not Specified",
+      "verificationReason": "Official EY requisition 1761018 explicitly lists Fresher experience and BCom/BBA eligibility.",
+      "postedDate": "13 Nov 2026",
       "job": {
-        "company": "MongoDB",
-        "role": "2027 Winter Software Engineer Intern",
+        "company": "EY",
+        "role": "Analyst – Business Consulting Risk, Process & Controls",
         "loc": "Gurugram, Haryana, India",
-        "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/8127582",
-        "cat": "it",
+        "apply": "https://careers.ey.com/ey/job/Gurugram-Analyst-Business-Consulting-Risk-CHS-CNS-Risk-Process-%26-Controls-Gurgaon-HR-122003/1457351933/",
+        "cat": "nonit",
         "expType": "fresher",
-        "expYears": "Student; no prior experience minimum stated",
+        "expYears": "Fresher",
         "salary": "Not Disclosed",
-        "batch": "2027",
+        "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "MongoDB Careers (Greenhouse)",
-        "desc": "Software engineering internship contributing code, tests and technical problem solving with MongoDB teams.",
-        "elig": "Currently pursuing a bachelor’s or master’s degree in Computer Science, Computer Engineering or a related field; no prior experience minimum stated.",
+        "sourceName": "EY Careers",
+        "desc": "Entry-level business consulting risk role supporting process and control work for consumer products and healthcare clients.",
+        "elig": "Bachelor of Commerce or Bachelor of Business Administration; fresher.",
         "resp": [
-          "Build and test software with an engineering team.",
-          "Learn MongoDB systems and production development practices.",
-          "Collaborate on design, debugging and code review."
+          "Support process and controls consulting engagements.",
+          "Analyze issues and prepare practical client solutions.",
+          "Collaborate across client departments while meeting legal and commercial requirements."
         ],
         "skills": [
-          "Programming",
+          "Risk and controls",
+          "Business analysis",
+          "Collaboration",
+          "Communication"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "1761018",
+        "postedDate": "13 Nov 2026",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact EY page showed requisition 1761018, Gurugram, Apply now, BCom/BBA and Experience: Fresher."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "metro-744000157777611",
+      "company": "METRO Global Solution Center",
+      "role": "Associate – Accounts Payable (Fresher)",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
+      "cat": "nonit",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "Fresher; no work experience",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official METRO SmartRecruiters listing explicitly requires a fresher with no work experience.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "METRO Global Solution Center",
+        "role": "Associate – Accounts Payable (Fresher)",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "Fresher; no work experience",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "METRO SmartRecruiters",
+        "desc": "Accounts payable role processing invoices, payments, master data and period-end reports.",
+        "elig": "BCom, BBA, BCA or BSc with MBA in Finance; fresher with no work experience.",
+        "resp": [
+          "Process invoices and payments.",
+          "Maintain master data and prepare SAP FI postings.",
+          "Generate reports and support period-end processing."
+        ],
+        "skills": [
+          "Accounting",
+          "Excel",
+          "SAP FI",
+          "Communication"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "744000157777611",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact SmartRecruiters page showed Pune, full-time, Apply, 0–1 years and specifically a fresher with no work experience."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "meraki-93ff65d2",
+      "company": "Meraki-Labs",
+      "role": "AI Engineer Intern",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.ashbyhq.com/Meraki-Labs/93ff65d2-f0cd-4fd1-b76f-b2e350f2d6c8",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Currently enrolled student",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Ashby listing is an AI Engineer Intern role for students currently pursuing a relevant degree.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Meraki-Labs",
+        "role": "AI Engineer Intern",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.ashbyhq.com/Meraki-Labs/93ff65d2-f0cd-4fd1-b76f-b2e350f2d6c8",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Currently enrolled student",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Meraki-Labs Ashby",
+        "desc": "AI engineering internship assisting with model development, research, data preparation and application integration.",
+        "elig": "Currently pursuing computer science, IT, computer engineering, AI/ML or AI/data science at a listed institution; public GitHub and demonstrable work required.",
+        "resp": [
+          "Assist design and deployment of AI models.",
+          "Prepare and analyze data for projects.",
+          "Document technical work and participate in code review."
+        ],
+        "skills": [
+          "Python",
+          "AI/ML frameworks",
+          "Data analysis",
+          "Open source"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "93ff65d2-f0cd-4fd1-b76f-b2e350f2d6c8",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Meraki-Labs Ashby page showed an active intern application, Bengaluru, and current-student eligibility."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "weekday-a86efff4",
+      "company": "Weekday",
+      "role": "Software Engineer Intern",
+      "loc": "Bengaluru, Karnataka, India (Remote)",
+      "apply": "https://jobs.lever.co/weekdayworks/a86efff4-1c2e-43fc-8ecb-dc8f873db2f1",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "0 years; student or recent graduate",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Weekday Lever listing explicitly states minimum experience 0 years and accepts current students or recent graduates.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Weekday",
+        "role": "Software Engineer Intern",
+        "loc": "Bengaluru, Karnataka, India (Remote)",
+        "apply": "https://jobs.lever.co/weekdayworks/a86efff4-1c2e-43fc-8ecb-dc8f873db2f1",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0 years; student or recent graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Weekday Lever",
+        "desc": "Remote software engineering internship contributing to design, development, testing and debugging of product features.",
+        "elig": "Currently pursuing or recently completed computer science, engineering or a related degree; 0 years minimum experience.",
+        "resp": [
+          "Assist design, development and testing of features.",
+          "Debug issues and improve system performance.",
+          "Learn tools and workflows alongside experienced engineers."
+        ],
+        "skills": [
           "Data structures",
           "Algorithms",
-          "Software engineering"
+          "Python/JavaScript/Java/C++",
+          "Teamwork"
         ],
         "workMode": "Not Specified",
-        "jobId": "8127582",
+        "jobId": "a86efff4-1c2e-43fc-8ecb-dc8f873db2f1",
         "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact MongoDB Greenhouse page showed job 8127582, Gurugram and the 2027 Winter Software Engineer Intern program."
+        "officialEvidence": "The exact Weekday Lever page showed Bengaluru remote, full-time internship details, 0 years minimum experience and student/recent-graduate eligibility."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "backup": [
     {
-      "id": "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24",
-      "company": "Fam",
-      "role": "Security Engineer Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.lever.co/fampay/bbbbbfd2-1855-4991-82d5-84ef57607c24",
+      "id": "zycus-57694",
+      "company": "Zycus",
+      "role": "AI Engineer – Graduates 2026",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://zycus.sensehq.com/careers/jobs/57694",
       "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Internship; no prior experience minimum stated",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "2026 graduate",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Fam Lever requisition is an on-site Bengaluru Security Engineer internship with no prior-experience minimum in the listing.",
+      "verificationReason": "Official Zycus requisition SOF06070 is a graduate full-time AI/software engineering role for the 2026 batch.",
       "postedDate": "Not Specified",
       "job": {
-        "company": "Fam",
-        "role": "Security Engineer Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.lever.co/fampay/bbbbbfd2-1855-4991-82d5-84ef57607c24",
+        "company": "Zycus",
+        "role": "AI Engineer – Graduates 2026",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://zycus.sensehq.com/careers/jobs/57694",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Internship; no prior experience minimum stated",
+        "expYears": "2026 graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Fam Careers (Lever)",
-        "desc": "Security engineering internship supporting application and infrastructure security work.",
-        "elig": "Candidates with security, networking or software foundations; the listing states no minimum years of experience.",
+        "sourceName": "Zycus Careers",
+        "desc": "Graduate AI engineering role developing Java/Spring Boot backend services and AI-aware enterprise software.",
+        "elig": "BE/BTech 2026 graduate in CS, IT, electronics, AI/ML, data science or related branch; minimum 80% throughout and no backlog history.",
         "resp": [
-          "Assist security testing and vulnerability investigation.",
-          "Support monitoring, tooling and remediation work.",
-          "Document findings and collaborate with engineering teams."
+          "Build Java and Spring Boot backend applications.",
+          "Develop REST APIs and microservices.",
+          "Use AI tools for coding, testing and documentation."
         ],
         "skills": [
-          "Cybersecurity",
-          "Networking",
-          "Scripting",
-          "Vulnerability assessment"
+          "Java",
+          "Spring Boot",
+          "REST APIs",
+          "AI-assisted development"
         ],
-        "workMode": "On-site",
-        "jobId": "bbbbbfd2-1855-4991-82d5-84ef57607c24",
+        "workMode": "Not Specified",
+        "jobId": "SOF06070",
         "postedDate": "Not Specified",
-        "verifiedDate": "13 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 13 Nov 2026 and scrubbed against current jobs.json, the submitted 12 Nov review batch, publication selections and the active review queue. Owner review is required before publication."
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-13T03:30:00.000Z",
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Fam Lever page showed the requisition-bound Bengaluru Security Engineer Intern opening."
+        "officialEvidence": "The exact Zycus page showed active job 57694/SOF06070, Mumbai, graduate eligibility and a live application route."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-13T03:41:43.264177+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "endeavor-743999651515530",
+      "company": "Endeavor IT Solution",
+      "role": "Software Engineer – Java – Fresher",
+      "loc": "Indore, Madhya Pradesh, India",
+      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresher",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official SmartRecruiters requisition is explicitly titled Software Engineer – Java – Fresher and is full-time.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Endeavor IT Solution",
+        "role": "Software Engineer – Java – Fresher",
+        "loc": "Indore, Madhya Pradesh, India",
+        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresher",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Endeavor IT Solution SmartRecruiters",
+        "desc": "Fresher Java engineering role developing and maintaining web applications using Java/J2EE and frontend technologies.",
+        "elig": "Fresher with Java, J2EE, JSP, Servlet, JavaScript, HTML/CSS and MySQL knowledge.",
+        "resp": [
+          "Develop Java web applications.",
+          "Analyze requirements and write structured code.",
+          "Work with MySQL and Linux-based environments."
+        ],
+        "skills": [
+          "Java/J2EE",
+          "JavaScript",
+          "MySQL",
+          "Linux"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "743999651515530",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact SmartRecruiters page remained open with a full-time fresher title, Indore location and employer application details."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -631,44 +683,60 @@
       }
     },
     "backup": {
-      "size": 1,
+      "size": 2,
       "counts": {
-        "fresherIT": 0,
+        "fresherIT": 2,
         "nonIT": 0,
-        "training": 1,
+        "training": 0,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 6,
+        "fresherIT": 4,
         "nonIT": 2,
-        "training": 1
+        "training": 2
       }
     },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "remaining": 11,
+    "remaining": 8,
+    "watchlist": {
+      "visited": 12,
+      "notVisited": 75,
+      "blocked": 0,
+      "visitedEmployers": [
+        "Deloitte",
+        "KPMG",
+        "EY",
+        "PwC",
+        "Accenture",
+        "Cognizant",
+        "Capgemini",
+        "Citi",
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "Qualcomm"
+      ],
+      "note": "Visited means an official portal or official ATS result was actually inspected; no employer was counted merely because it appears on the watchlist."
+    },
+    "uniqueExactLiveJobIds": 12,
+    "watchlistCandidates": 3,
+    "fallbackCandidates": 9,
+    "heldSourceUnconfirmedOrExperienced": 9,
+    "expired": 0,
     "duplicateExclusions": [
-      "12 Nov batch: KPMG 30051254 plus five owner-selected/published candidates",
-      "SuperApp 8829824002 (exact requisition already published)",
-      "NTT DATA R-151207 (exact requisition already published)",
-      "Egis Group 744000123769623 (exact requisition already published)",
-      "EY Transfer Pricing (same employer-role identity already published)",
-      "Qualcomm 3094023 (exact requisition already published)",
-      "Endeavor IT Solution 743999651526185 (exact role already published)",
-      "State Street R-799807, METRO 744000157778959, Apna 357CEB0335 and Capgemini 530902 (already published)",
-      "Enterpret 7847134003, Hevo 993a3ed3-3014-432f-b0f4-28d300d58d9a, Sigmoid 8927991002, Merkle 20675 and Synopsys 102584 (prior published/reviewed exact postings)",
-      {
-        "id": "karya-5469564008",
-        "company": "Karya",
-        "reason": "previously_reviewed_official_requisition",
-        "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
-      }
+      "All 11 candidates from the 13 Nov reviewing batch were excluded from reuse.",
+      "Deloitte 113246/59843244, Hevo 6cbbe304-e065-4711-bf3e-756795d2bc2a and 993a3ed3-3014-432f-b0f4-28d300d58d9a, AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6, Enterpret 7847134003, Sigmoid 8927991002, Merkle e663b69b-264a-4bd7-b04d-fb3c0a824a28, Point72 8893939002, Qualcomm 3094023 and Drivetrain d7808cbe-0c2f-47f0-9261-f10f6cfea9aa were excluded as published or previously reviewed exact postings.",
+      "Deloitte Workday 115343 and Full Stack 115818 were held for minimum experience above zero; SAP Security 116265 was held for experienced-only requirements.",
+      "Capgemini 574786 was held because the employer labels it Experienced Professionals.",
+      "Secfix fresh-grad roles were held because they require at least one year through work or internships.",
+      "Generic, third-party and non-requisition application pages were not accepted."
     ],
-    "excludedCount": 10,
+    "excludedCount": 21,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Priority is quota-complete. Backup remains short by 4 technical, 2 non-technical and 2 internship roles; it was not padded with duplicates or doubtful listings."
   },
   "quotaAudit": {
     "priority": {
@@ -695,21 +763,21 @@
         "internshipOrApprenticeship": 2
       },
       "actual": {
-        "fresherTechnicalFullTime": 0,
+        "fresherTechnicalFullTime": 2,
         "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 1
+        "internshipOrApprenticeship": 0
       },
       "shortfall": {
-        "fresherTechnicalFullTime": 6,
+        "fresherTechnicalFullTime": 4,
         "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 1
+        "internshipOrApprenticeship": 2
       }
     },
-    "distinctEmployers": 11
+    "distinctEmployers": 12
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
-    "rankedAt": "2026-11-13T03:30:00.000Z",
+    "rankedAt": "2026-11-14T03:30:00.000Z",
     "target": {
       "fresherIT": 6,
       "nonIT": 2,
@@ -721,9 +789,9 @@
       "training": 2
     },
     "backupSelected": {
-      "fresherIT": 0,
+      "fresherIT": 2,
       "nonIT": 0,
-      "training": 1
+      "training": 0
     },
     "shortfalls": {
       "priority": {
@@ -732,51 +800,71 @@
         "training": 0
       },
       "backup": {
-        "fresherIT": 6,
+        "fresherIT": 4,
         "nonIT": 2,
-        "training": 1
+        "training": 2
       }
     },
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
   },
   "previousBatchReference": {
-    "batchId": "2026-11-12-0900-ist",
-    "status": "submitted",
-    "submittedAt": "2026-11-12T04:49:30.498Z",
-    "publicationRequestId": "92e57bf2eaeb18347e953809",
-    "selectedCandidateIds": [
-      "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-      "cognizant-at-ug3-2026",
-      "icgmedical-5024601101",
-      "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
-      "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+    "batchId": "2026-11-13-0900-ist",
+    "status": "reviewing",
+    "generatedAt": "2026-11-13T03:30:00.000Z",
+    "updatedAt": "2026-11-13T03:30:00.000Z",
+    "candidateIds": [
+      "deloitte-116959",
+      "citi-261001786",
+      "point72-8893939002",
+      "capgemini-578597",
+      "qualcomm-3094020",
+      "reliaquest-r15081-1",
+      "eurofins-744000141900959",
+      "cognizant-00070713951",
+      "qad-744000161284809",
+      "mongodb-8127582",
+      "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
     ],
-    "publication": {
-      "candidateIds": [
+    "priorHistory": {
+      "batchId": "2026-11-12-0900-ist",
+      "status": "submitted",
+      "submittedAt": "2026-11-12T04:49:30.498Z",
+      "publicationRequestId": "92e57bf2eaeb18347e953809",
+      "selectedCandidateIds": [
         "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
         "cognizant-at-ug3-2026",
         "icgmedical-5024601101",
         "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
         "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
       ],
-      "companies": [
-        "AHEAD",
-        "Cognizant",
-        "ICG Medical",
-        "JobTwine",
-        "Paytm Payments Services"
-      ],
-      "urls": [
-        "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-        "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
-        "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
-        "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
-        "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
-      ],
-      "requestId": "92e57bf2eaeb18347e953809",
-      "count": 5,
-      "submittedAt": "2026-11-12T04:49:30.498Z"
+      "publication": {
+        "candidateIds": [
+          "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+          "cognizant-at-ug3-2026",
+          "icgmedical-5024601101",
+          "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
+          "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+        ],
+        "companies": [
+          "AHEAD",
+          "Cognizant",
+          "ICG Medical",
+          "JobTwine",
+          "Paytm Payments Services"
+        ],
+        "urls": [
+          "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+          "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
+          "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
+          "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
+          "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+        ],
+        "requestId": "92e57bf2eaeb18347e953809",
+        "count": 5,
+        "submittedAt": "2026-11-12T04:49:30.498Z"
+      },
+      "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
     },
-    "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
+    "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
   }
 }
