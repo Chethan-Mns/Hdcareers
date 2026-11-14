@@ -55,7 +55,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -110,7 +110,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -165,7 +165,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -220,7 +220,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -275,7 +275,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -328,9 +328,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Stripe page showed an active Apply route, full-time early-career role, summer 2026 degree eligibility, 18-month cap and start-before-1-December condition."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -384,8 +384,8 @@
         "officialEvidence": "The exact EY page showed requisition 1761018, Gurugram, Apply now, BCom/BBA and Experience: Fresher."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "HTTP 503; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckReason": "TimeoutError; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -438,9 +438,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Accenture page showed Noida, full-time, job AIOC-S01651251, BCom qualification and 0–1 years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Redirected source requires browser/ATS verification",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -495,7 +495,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -550,7 +550,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "precheckCheckedAt": "2026-11-14T03:37:29.665462+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -590,27 +590,6 @@
       "backup": 10
     },
     "remaining": 10,
-    "watchlist": {
-      "visited": 8,
-      "notVisited": 79,
-      "blocked": 0,
-      "visitedEmployers": [
-        "Deloitte",
-        "KPMG",
-        "EY",
-        "PwC",
-        "Accenture",
-        "Cognizant",
-        "Capgemini",
-        "Cisco"
-      ],
-      "note": "Visited means an official portal or official ATS result was actually inspected; no employer was counted merely because it appears on the watchlist."
-    },
-    "uniqueExactLiveJobIds": 10,
-    "watchlistCandidates": 4,
-    "fallbackCandidates": 6,
-    "heldSourceUnconfirmedOrExperienced": 9,
-    "expired": 0,
     "duplicateExclusions": [
       "All 11 candidates from the 13 Nov reviewing batch were excluded from reuse.",
       "Deloitte 113246/59843244, Hevo 6cbbe304-e065-4711-bf3e-756795d2bc2a and 993a3ed3-3014-432f-b0f4-28d300d58d9a, AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6, Enterpret 7847134003, Sigmoid 8927991002, Merkle e663b69b-264a-4bd7-b04d-fb3c0a824a28, Point72 8893939002, Qualcomm 3094023 and Drivetrain d7808cbe-0c2f-47f0-9261-f10f6cfea9aa were excluded as published or previously reviewed exact postings.",
@@ -643,9 +622,9 @@
         "officialUrl": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-"
       }
     ],
-    "excludedCount": 25,
+    "excludedCount": 10,
     "needsFreshDiscovery": true,
-    "note": "Priority is quota-complete after the independent scrub removed four published/previously reviewed postings. Backup remains empty rather than being padded with duplicates or doubtful listings."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
