@@ -170,6 +170,171 @@
       "reviewedBy": null
     },
     {
+      "id": "zycus-57694",
+      "company": "Zycus",
+      "role": "AI Engineer – Graduates 2026",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://zycus.sensehq.com/careers/jobs/57694",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "2026 graduate",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Zycus requisition SOF06070 is a graduate full-time AI/software engineering role for the 2026 batch.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Zycus",
+        "role": "AI Engineer – Graduates 2026",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://zycus.sensehq.com/careers/jobs/57694",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "2026 graduate",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Zycus Careers",
+        "desc": "Graduate AI engineering role developing Java/Spring Boot backend services and AI-aware enterprise software.",
+        "elig": "BE/BTech 2026 graduate in CS, IT, electronics, AI/ML, data science or related branch; minimum 80% throughout and no backlog history.",
+        "resp": [
+          "Build Java and Spring Boot backend applications.",
+          "Develop REST APIs and microservices.",
+          "Use AI tools for coding, testing and documentation."
+        ],
+        "skills": [
+          "Java",
+          "Spring Boot",
+          "REST APIs",
+          "AI-assisted development"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "SOF06070",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Zycus page showed active job 57694/SOF06070, Mumbai, graduate eligibility and a live application route."
+      },
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "endeavor-743999651515530",
+      "company": "Endeavor IT Solution",
+      "role": "Software Engineer – Java – Fresher",
+      "loc": "Indore, Madhya Pradesh, India",
+      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresher",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official SmartRecruiters requisition is explicitly titled Software Engineer – Java – Fresher and is full-time.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Endeavor IT Solution",
+        "role": "Software Engineer – Java – Fresher",
+        "loc": "Indore, Madhya Pradesh, India",
+        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresher",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Endeavor IT Solution SmartRecruiters",
+        "desc": "Fresher Java engineering role developing and maintaining web applications using Java/J2EE and frontend technologies.",
+        "elig": "Fresher with Java, J2EE, JSP, Servlet, JavaScript, HTML/CSS and MySQL knowledge.",
+        "resp": [
+          "Develop Java web applications.",
+          "Analyze requirements and write structured code.",
+          "Work with MySQL and Linux-based environments."
+        ],
+        "skills": [
+          "Java/J2EE",
+          "JavaScript",
+          "MySQL",
+          "Linux"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "743999651515530",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact SmartRecruiters page remained open with a full-time fresher title, Indore location and employer application details."
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "stripe-8212517",
+      "company": "Stripe",
+      "role": "Software Engineer, Early Career — Immediate Start",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://stripe.com/careers/listing/software-engineer-early-career-immediate-start/8212517",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "New graduate; up to 18 months",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Stripe early-career requisition is full-time, accepts summer 2026 graduates with no more than 18 months’ professional experience, and requires availability before 1 December 2026.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Stripe",
+        "role": "Software Engineer, Early Career — Immediate Start",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://stripe.com/careers/listing/software-engineer-early-career-immediate-start/8212517",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "New graduate; up to 18 months",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Stripe Careers",
+        "desc": "Immediate-start early-career engineering role contributing production software across Stripe’s stack.",
+        "elig": "Bachelor’s or master’s in computer science or a related field by summer 2026, or equivalent experience; no more than 18 months professional experience excluding internships; available before 1 December 2026.",
+        "resp": [
+          "Build and ship production software across Stripe systems.",
+          "Collaborate on code review and technical design.",
+          "Use AI tools with rigorous validation and professional judgment."
+        ],
+        "skills": [
+          "Programming fundamentals",
+          "Production systems",
+          "Code review",
+          "Written communication"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "8212517",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Stripe page showed an active Apply route, full-time early-career role, summer 2026 degree eligibility, 18-month cap and start-before-1-December condition."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
       "id": "ey-1761018",
       "company": "EY",
       "role": "Analyst – Business Consulting Risk, Process & Controls",
@@ -221,6 +386,61 @@
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 503; availability unconfirmed",
       "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "accenture-aioc-s01651251",
+      "company": "Accenture",
+      "role": "Record to Report Operations New Associate",
+      "loc": "Noida, Uttar Pradesh, India",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01651251_en",
+      "cat": "nonit",
+      "slotType": "fresherNonTechnicalFullTime",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Accenture requisition AIOC-S01651251 is a full-time New Associate role for BCom candidates with 0–1 years.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Accenture",
+        "role": "Record to Report Operations New Associate",
+        "loc": "Noida, Uttar Pradesh, India",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01651251_en",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Accenture Careers",
+        "desc": "Entry-level record-to-report operations role focused on account reconciliations and finance process support.",
+        "elig": "BCom; 0–1 years of experience.",
+        "resp": [
+          "Support record-to-report accounting operations.",
+          "Perform account reconciliation activities.",
+          "Follow finance process controls and documentation requirements."
+        ],
+        "skills": [
+          "Account reconciliation",
+          "Record to report",
+          "Accounting",
+          "Process operations"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "AIOC-S01651251",
+        "postedDate": "Not Specified",
+        "verifiedDate": "14 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-14T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Accenture page showed Noida, full-time, job AIOC-S01651251, BCom qualification and 0–1 years."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -335,143 +555,32 @@
       "reviewedBy": null
     }
   ],
-  "backup": [
-    {
-      "id": "zycus-57694",
-      "company": "Zycus",
-      "role": "AI Engineer – Graduates 2026",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://zycus.sensehq.com/careers/jobs/57694",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "2026 graduate",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Zycus requisition SOF06070 is a graduate full-time AI/software engineering role for the 2026 batch.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Zycus",
-        "role": "AI Engineer – Graduates 2026",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://zycus.sensehq.com/careers/jobs/57694",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "2026 graduate",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Zycus Careers",
-        "desc": "Graduate AI engineering role developing Java/Spring Boot backend services and AI-aware enterprise software.",
-        "elig": "BE/BTech 2026 graduate in CS, IT, electronics, AI/ML, data science or related branch; minimum 80% throughout and no backlog history.",
-        "resp": [
-          "Build Java and Spring Boot backend applications.",
-          "Develop REST APIs and microservices.",
-          "Use AI tools for coding, testing and documentation."
-        ],
-        "skills": [
-          "Java",
-          "Spring Boot",
-          "REST APIs",
-          "AI-assisted development"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "SOF06070",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Zycus page showed active job 57694/SOF06070, Mumbai, graduate eligibility and a live application route."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "endeavor-743999651515530",
-      "company": "Endeavor IT Solution",
-      "role": "Software Engineer – Java – Fresher",
-      "loc": "Indore, Madhya Pradesh, India",
-      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official SmartRecruiters requisition is explicitly titled Software Engineer – Java – Fresher and is full-time.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Endeavor IT Solution",
-        "role": "Software Engineer – Java – Fresher",
-        "loc": "Indore, Madhya Pradesh, India",
-        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999651515530-software-engineer-java-fresher",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Endeavor IT Solution SmartRecruiters",
-        "desc": "Fresher Java engineering role developing and maintaining web applications using Java/J2EE and frontend technologies.",
-        "elig": "Fresher with Java, J2EE, JSP, Servlet, JavaScript, HTML/CSS and MySQL knowledge.",
-        "resp": [
-          "Develop Java web applications.",
-          "Analyze requirements and write structured code.",
-          "Work with MySQL and Linux-based environments."
-        ],
-        "skills": [
-          "Java/J2EE",
-          "JavaScript",
-          "MySQL",
-          "Linux"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "743999651515530",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact SmartRecruiters page remained open with a full-time fresher title, Indore location and employer application details."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    }
-  ],
+  "backup": [],
   "discoveryAudit": {
     "priority": {
-      "size": 6,
+      "size": 10,
       "counts": {
-        "fresherIT": 3,
-        "nonIT": 1,
+        "fresherIT": 6,
+        "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 3,
-        "nonIT": 1,
+        "fresherIT": 0,
+        "nonIT": 0,
         "training": 0
       }
     },
     "backup": {
-      "size": 2,
+      "size": 0,
       "counts": {
-        "fresherIT": 2,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 4,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2
       }
@@ -480,7 +589,28 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 8,
+    "remaining": 10,
+    "watchlist": {
+      "visited": 8,
+      "notVisited": 79,
+      "blocked": 0,
+      "visitedEmployers": [
+        "Deloitte",
+        "KPMG",
+        "EY",
+        "PwC",
+        "Accenture",
+        "Cognizant",
+        "Capgemini",
+        "Cisco"
+      ],
+      "note": "Visited means an official portal or official ATS result was actually inspected; no employer was counted merely because it appears on the watchlist."
+    },
+    "uniqueExactLiveJobIds": 10,
+    "watchlistCandidates": 4,
+    "fallbackCandidates": 6,
+    "heldSourceUnconfirmedOrExperienced": 9,
+    "expired": 0,
     "duplicateExclusions": [
       "All 11 candidates from the 13 Nov reviewing batch were excluded from reuse.",
       "Deloitte 113246/59843244, Hevo 6cbbe304-e065-4711-bf3e-756795d2bc2a and 993a3ed3-3014-432f-b0f4-28d300d58d9a, AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6, Enterpret 7847134003, Sigmoid 8927991002, Merkle e663b69b-264a-4bd7-b04d-fb3c0a824a28, Point72 8893939002, Qualcomm 3094023 and Drivetrain d7808cbe-0c2f-47f0-9261-f10f6cfea9aa were excluded as published or previously reviewed exact postings.",
@@ -513,9 +643,9 @@
         "officialUrl": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-"
       }
     ],
-    "excludedCount": 10,
+    "excludedCount": 25,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Priority is quota-complete after the independent scrub removed four published/previously reviewed postings. Backup remains empty rather than being padded with duplicates or doubtful listings."
   },
   "quotaAudit": {
     "priority": {
@@ -542,17 +672,17 @@
         "internshipOrApprenticeship": 2
       },
       "actual": {
-        "fresherTechnicalFullTime": 2,
+        "fresherTechnicalFullTime": 0,
         "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
       },
       "shortfall": {
-        "fresherTechnicalFullTime": 4,
+        "fresherTechnicalFullTime": 6,
         "fresherNonTechnicalFullTime": 2,
         "internshipOrApprenticeship": 2
       }
     },
-    "distinctEmployers": 12
+    "distinctEmployers": 10
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
@@ -568,7 +698,7 @@
       "training": 2
     },
     "backupSelected": {
-      "fresherIT": 2,
+      "fresherIT": 0,
       "nonIT": 0,
       "training": 0
     },
@@ -579,7 +709,7 @@
         "training": 0
       },
       "backup": {
-        "fresherIT": 4,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2
       }
