@@ -53,119 +53,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Deloitte page showed requisition 116858, Hyderabad work location, an Apply route, bachelor’s qualification and 0–1 years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "stripe-8130876",
-      "company": "Stripe",
-      "role": "Software Engineer, New Grad",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "New graduate; up to 18 months",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Stripe listing is a Bengaluru full-time university role for degrees obtained by summer 2027 and no more than 18 months of professional experience.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Stripe",
-        "role": "Software Engineer, New Grad",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "New graduate; up to 18 months",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Stripe Careers",
-        "desc": "New-graduate engineering role building and operating financial infrastructure used by businesses worldwide.",
-        "elig": "Bachelor’s or master’s in computer science or a directly related field by summer 2027, or equivalent experience; no more than 18 months professional experience excluding internships.",
-        "resp": [
-          "Build production software for Stripe products and infrastructure.",
-          "Learn unfamiliar systems and collaborate with mentors and domain experts.",
-          "Review and validate AI-assisted development output."
-        ],
-        "skills": [
-          "Programming fundamentals",
-          "Code review",
-          "Production systems",
-          "Written communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "8130876",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The official Stripe page showed Bengaluru, full-time, University team, Apply now, summer 2027 degree eligibility and the 18-month new-grad cap."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "celonis-7665962003",
-      "company": "Celonis",
-      "role": "Associate Deployment Engineer – Galaxy Graduate Program",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Recent graduate or final-year student",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Celonis Greenhouse requisition is a full-time graduate program starting 1 February 2027.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Celonis",
-        "role": "Associate Deployment Engineer – Galaxy Graduate Program",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Recent graduate or final-year student",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Celonis Greenhouse",
-        "desc": "Graduate deployment-engineering role combining process data, Python, SQL, machine learning and customer implementation work.",
-        "elig": "Recent graduate or final-year student in computer science, data science, engineering, business information systems or a related technical field; available full time from 1 February 2027.",
-        "resp": [
-          "Support Celonis platform implementations.",
-          "Transform data with SQL and Python and build AI-forward analyses.",
-          "Document solutions and participate in customer workshops."
-        ],
-        "skills": [
-          "Python",
-          "SQL",
-          "Machine learning",
-          "Consulting"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "7665962003",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Celonis Greenhouse page remained open and stated recent-graduate/final-year eligibility plus a February 2027 full-time start."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -218,64 +108,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Oracle candidate page showed job 3004263, Hyderabad, full-time, bachelor’s eligibility and typically under two years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "cin7-c896656f",
-      "company": "Cin7",
-      "role": "Junior Software Engineer",
-      "loc": "Ahmedabad or Pune, India",
-      "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Early career; internships or projects accepted",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Cin7 Lever listing is a junior full-time role and explicitly accepts practical experience from internships, personal projects or university projects.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Cin7",
-        "role": "Junior Software Engineer",
-        "loc": "Ahmedabad or Pune, India",
-        "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Early career; internships or projects accepted",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Cin7 Lever",
-        "desc": "Junior .NET engineering role building cloud inventory software across application, database and frontend layers.",
-        "elig": "Bachelor’s degree in computer science, engineering or a related field, or equivalent experience; residence in Ahmedabad or Pune; practical software experience may come from internships or projects.",
-        "resp": [
-          "Build cloud SaaS features using .NET technologies.",
-          "Write APIs, SQL queries, UI updates and tests.",
-          "Participate in code review and learn from senior engineers."
-        ],
-        "skills": [
-          "C#",
-          ".NET",
-          "SQL",
-          "HTML/CSS/JavaScript"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "c896656f-9a8b-4263-add3-553226c73df4",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Cin7 Lever page showed an active Apply route, full-time status, Ahmedabad/Pune residency, and project or internship experience as acceptable."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -328,9 +163,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact AiPrise Ashby page showed Bengaluru, full-time, Apply and a 0–2 year requirement."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Ashby public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -383,64 +218,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact EY page showed requisition 1761018, Gurugram, Apply now, BCom/BBA and Experience: Fresher."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "metro-744000157777611",
-      "company": "METRO Global Solution Center",
-      "role": "Associate – Accounts Payable (Fresher)",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Fresher; no work experience",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official METRO SmartRecruiters listing explicitly requires a fresher with no work experience.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "METRO Global Solution Center",
-        "role": "Associate – Accounts Payable (Fresher)",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher; no work experience",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "METRO SmartRecruiters",
-        "desc": "Accounts payable role processing invoices, payments, master data and period-end reports.",
-        "elig": "BCom, BBA, BCA or BSc with MBA in Finance; fresher with no work experience.",
-        "resp": [
-          "Process invoices and payments.",
-          "Maintain master data and prepare SAP FI postings.",
-          "Generate reports and support period-end processing."
-        ],
-        "skills": [
-          "Accounting",
-          "Excel",
-          "SAP FI",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000157777611",
-        "postedDate": "Not Specified",
-        "verifiedDate": "14 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 14 Nov 2026 and scrubbed against current jobs.json, the 13 Nov review batch, prior publication selections and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-14T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact SmartRecruiters page showed Pune, full-time, Apply, 0–1 years and specifically a fresher with no work experience."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 503; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -493,9 +273,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Meraki-Labs Ashby page showed an active intern application, Bengaluru, and current-student eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Ashby public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -548,9 +328,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Weekday Lever page showed Bengaluru remote, full-time internship details, 0 years minimum experience and student/recent-graduate eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -605,9 +385,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Zycus page showed active job 57694/SOF06070, Mumbai, graduate eligibility and a live application route."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -660,25 +440,25 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact SmartRecruiters page remained open with a full-time fresher title, Indore location and employer application details."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-14T03:35:12.630063+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 10,
+      "size": 6,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
+        "fresherIT": 3,
+        "nonIT": 1,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
+        "fresherIT": 3,
+        "nonIT": 1,
         "training": 0
       }
     },
@@ -701,42 +481,41 @@
       "backup": 10
     },
     "remaining": 8,
-    "watchlist": {
-      "visited": 12,
-      "notVisited": 75,
-      "blocked": 0,
-      "visitedEmployers": [
-        "Deloitte",
-        "KPMG",
-        "EY",
-        "PwC",
-        "Accenture",
-        "Cognizant",
-        "Capgemini",
-        "Citi",
-        "Amazon",
-        "Google",
-        "Microsoft",
-        "Qualcomm"
-      ],
-      "note": "Visited means an official portal or official ATS result was actually inspected; no employer was counted merely because it appears on the watchlist."
-    },
-    "uniqueExactLiveJobIds": 12,
-    "watchlistCandidates": 3,
-    "fallbackCandidates": 9,
-    "heldSourceUnconfirmedOrExperienced": 9,
-    "expired": 0,
     "duplicateExclusions": [
       "All 11 candidates from the 13 Nov reviewing batch were excluded from reuse.",
       "Deloitte 113246/59843244, Hevo 6cbbe304-e065-4711-bf3e-756795d2bc2a and 993a3ed3-3014-432f-b0f4-28d300d58d9a, AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6, Enterpret 7847134003, Sigmoid 8927991002, Merkle e663b69b-264a-4bd7-b04d-fb3c0a824a28, Point72 8893939002, Qualcomm 3094023 and Drivetrain d7808cbe-0c2f-47f0-9261-f10f6cfea9aa were excluded as published or previously reviewed exact postings.",
       "Deloitte Workday 115343 and Full Stack 115818 were held for minimum experience above zero; SAP Security 116265 was held for experienced-only requirements.",
       "Capgemini 574786 was held because the employer labels it Experienced Professionals.",
       "Secfix fresh-grad roles were held because they require at least one year through work or internships.",
-      "Generic, third-party and non-requisition application pages were not accepted."
+      "Generic, third-party and non-requisition application pages were not accepted.",
+      {
+        "id": "stripe-8130876",
+        "company": "Stripe",
+        "reason": "already_published",
+        "officialUrl": "https://stripe.com/careers/listing/software-engineer-new-grad/8130876"
+      },
+      {
+        "id": "celonis-7665962003",
+        "company": "Celonis",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://job-boards.greenhouse.io/celonis/jobs/7665962003?gh_jid=7665962003"
+      },
+      {
+        "id": "cin7-c896656f",
+        "company": "Cin7",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4"
+      },
+      {
+        "id": "metro-744000157777611",
+        "company": "METRO Global Solution Center",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-"
+      }
     ],
-    "excludedCount": 21,
+    "excludedCount": 10,
     "needsFreshDiscovery": true,
-    "note": "Priority is quota-complete. Backup remains short by 4 technical, 2 non-technical and 2 internship roles; it was not padded with duplicates or doubtful listings."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
