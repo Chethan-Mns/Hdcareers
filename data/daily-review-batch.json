@@ -2,7 +2,7 @@
   "batchId": "2026-11-15-0900-ist",
   "generatedAt": "2026-11-15T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-15T03:30:00.000Z",
+  "updatedAt": "2026-11-15T03:35:00.000Z",
   "priority": [
     {
       "id": "deloitte-116227",
@@ -225,45 +225,45 @@
       "reviewedBy": null
     },
     {
-      "id": "intuit-24470",
-      "company": "Intuit",
-      "role": "Software Engineer 1",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.intuit.com/en/job/bengaluru/software-engineer-1/27595/103192433072",
+      "id": "prepsmarter-743999665738758",
+      "company": "PrepSmarter, Inc.",
+      "role": "Ruby on Rails Developer",
+      "loc": "Gurugram, Haryana, India",
+      "apply": "https://jobs.smartrecruiters.com/PrepSmarterInc/743999665738758-ruby-on-rails-ror-developer-freshers-welcome-",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "Less than 2 years",
+      "expYears": "Freshers welcome",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Intuit careers page showed job ID 24470 in Bengaluru and explicitly described the role for candidates with less than two years of industry experience.",
+      "verificationReason": "The exact official SmartRecruiters requisition 743999665738758 showed a full-time Gurugram Ruby on Rails role and explicitly stated Freshers welcome.",
       "postedDate": "Not Specified",
       "job": {
-        "company": "Intuit",
-        "role": "Software Engineer 1",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.intuit.com/en/job/bengaluru/software-engineer-1/27595/103192433072",
+        "company": "PrepSmarter, Inc.",
+        "role": "Ruby on Rails Developer",
+        "loc": "Gurugram, Haryana, India",
+        "apply": "https://jobs.smartrecruiters.com/PrepSmarterInc/743999665738758-ruby-on-rails-ror-developer-freshers-welcome-",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Less than 2 years",
+        "expYears": "Freshers welcome",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Intuit Careers",
-        "desc": "Early-career software engineering role for candidates beginning their professional journey and joining a team aligned to their skills and interests.",
-        "elig": "Candidates at the start of their professional journey with less than two years of industry experience.",
+        "sourceName": "PrepSmarter / SmartRecruiters",
+        "desc": "Full-time Ruby on Rails development role welcoming fresh graduates to build and improve web applications.",
+        "elig": "Freshers are explicitly welcome; candidates should have programming fundamentals and interest in Ruby on Rails web development.",
         "resp": [
-          "Build and improve software with an assigned engineering team.",
-          "Learn and apply Intuit engineering practices.",
-          "Contribute code, tests and problem-solving to customer-facing products."
+          "Develop and maintain Ruby on Rails application features.",
+          "Write, test and review web application code.",
+          "Collaborate with product and engineering teammates."
         ],
         "skills": [
-          "Software development",
-          "Testing",
-          "Problem solving",
-          "Team collaboration"
+          "Ruby on Rails",
+          "Web development",
+          "Databases",
+          "Git"
         ],
-        "workMode": "Not Specified",
-        "jobId": "24470",
+        "workMode": "On-site",
+        "jobId": "743999665738758",
         "postedDate": "Not Specified",
         "verifiedDate": "15 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
@@ -271,54 +271,54 @@
       "sourceEvidence": {
         "currentCheckAt": "2026-11-15T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Intuit careers page showed job ID 24470 in Bengaluru and explicitly described the role for candidates with less than two years of industry experience."
+        "officialEvidence": "The exact official SmartRecruiters requisition 743999665738758 showed a full-time Gurugram Ruby on Rails role and explicitly stated Freshers welcome."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "HTTP 404; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "united-ggn00002194",
-      "company": "United Airlines",
-      "role": "Associate – Data Scientist",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://careers.united.com/us/en/job/UAIUADUSGGN00002194EXTERNALENUSTALEO/Associate-Data-Scientist",
+      "id": "rigelsoft-743999832787600",
+      "company": "RigelSoft Technologies",
+      "role": "Flutter Developer",
+      "loc": "Coimbatore, Tamil Nadu, India",
+      "apply": "https://jobs.smartrecruiters.com/RigelSoftTechnologies/743999832787600-flutter-developer",
       "cat": "it",
       "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–3 years",
+      "expYears": "Fresher",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact United careers page showed job ID GGN00002194, Gurugram, full-time employment and 0–3 years of relevant experience.",
+      "verificationReason": "The exact official SmartRecruiters requisition 743999832787600 showed Coimbatore, full-time employment and explicitly requested freshers for Flutter development.",
       "postedDate": "Not Specified",
       "job": {
-        "company": "United Airlines",
-        "role": "Associate – Data Scientist",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://careers.united.com/us/en/job/UAIUADUSGGN00002194EXTERNALENUSTALEO/Associate-Data-Scientist",
+        "company": "RigelSoft Technologies",
+        "role": "Flutter Developer",
+        "loc": "Coimbatore, Tamil Nadu, India",
+        "apply": "https://jobs.smartrecruiters.com/RigelSoftTechnologies/743999832787600-flutter-developer",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–3 years",
+        "expYears": "Fresher",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "United Airlines Careers",
-        "desc": "Associate data-science role building and deploying analytics, machine-learning and generative-AI solutions for airline operations.",
-        "elig": "BTech or bachelor's degree in Engineering, Technology, Computer Science, Statistics, Operations Research, Applied Mathematics or Economics; 0–3 years, with full-time or internship analytics/data-science exposure.",
+        "sourceName": "RigelSoft Technologies / SmartRecruiters",
+        "desc": "Full-time Flutter development role for freshers contributing to mobile-application architecture, implementation and delivery.",
+        "elig": "The official requisition states the employer is looking for freshers with basic mobile-application knowledge, preferably native application exposure.",
         "resp": [
-          "Analyze operational data and build machine-learning solutions.",
-          "Develop data pipelines, models and monitoring.",
-          "Communicate findings to business and technology stakeholders."
+          "Contribute Flutter code for mobile applications.",
+          "Participate in architecture and sprint planning.",
+          "Collaborate with designers, QA and other developers."
         ],
         "skills": [
-          "Python or R",
-          "SQL",
-          "Machine learning",
-          "Statistics"
+          "Flutter",
+          "Dart",
+          "Mobile applications",
+          "Agile development"
         ],
-        "workMode": "Not Specified",
-        "jobId": "GGN00002194",
+        "workMode": "On-site",
+        "jobId": "743999832787600",
         "postedDate": "Not Specified",
         "verifiedDate": "15 Nov 2026",
         "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
@@ -326,11 +326,11 @@
       "sourceEvidence": {
         "currentCheckAt": "2026-11-15T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact United careers page showed job ID GGN00002194, Gurugram, full-time employment and 0–3 years of relevant experience."
+        "officialEvidence": "The exact official SmartRecruiters requisition 743999832787600 showed Coimbatore, full-time employment and explicitly requested freshers for Flutter development."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "HTTP 410; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -594,11 +594,12 @@
       "All 10 candidates from the 14 Nov reviewing batch and all 11 candidates from the preserved 13 Nov reviewing batch were excluded from reuse.",
       "Stripe 8130876, Point72 8893936002, Celonis 7665962003 and Wipro IND-122016 were excluded as already published, previously reviewed or owner-expired exact requisitions.",
       "Deloitte OFSAA EPM 114982, EY 1745575, Accenture AIOC-S01674482, Cognizant 00071004881, Micron JR105933, Secfix 583140f4-b26c-47b4-a9be-c7a88dc3c0f5, ServiceNow JB0075721 and experienced Capgemini/PwC results were held for minimum experience, conflicting eligibility or insufficient requisition-bound fresher evidence.",
-      "Generic careers pages, third-party-only application routes and non-requisition listings were not accepted."
+      "Generic careers pages, third-party-only application routes and non-requisition listings were not accepted.",
+      "Intuit 24470 and United GGN00002194 were removed after the repository checker returned HTTP 404 and HTTP 410 respectively; neither was asserted Live or retained to fill quota."
     ],
     "excludedCount": 4,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Priority remains complete at 6/2/2 after replacing two checker-inconclusive routes. Backup remains empty and is not padded."
   },
   "quotaAudit": {
     "priority": {
