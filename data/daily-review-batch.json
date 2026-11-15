@@ -53,9 +53,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official Deloitte page showed requisition 116227, Hyderabad, Graduate/Post Graduate qualification, internship title and an active Apply route."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -108,9 +108,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official SmartRecruiters requisition 744000161242645 showed Bengaluru, full-time IT product support and fresher/0–1-year eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -163,9 +163,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Citi careers page showed job requisition 261004756, Chennai, full-time employment and 0–2 years of experience."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -218,9 +218,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Micron careers page showed job ID JR105741, Gujarat, 0–3 years and explicitly welcomed fresh graduates with relevant internship experience."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -273,9 +273,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Intuit careers page showed job ID 24470 in Bengaluru and explicitly described the role for candidates with less than two years of industry experience."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 404; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -328,9 +328,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact United careers page showed job ID GGN00002194, Gurugram, full-time employment and 0–3 years of relevant experience."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 410; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -383,9 +383,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Emerson Oracle Careers requisition 26011142 showed Chennai, full-time Applications Engineer I; Emerson's official India inventory classified the opening as entry-level."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -438,9 +438,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact EY careers page showed requisition 1752870, Pune, B.Com qualification and Experience: Fresher."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -493,9 +493,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Omnicom Greenhouse page showed requisition 6226452004, Mumbai, a one-year contractual role and explicit Recent Graduate Fresher eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -548,9 +548,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Genpact campus Workday requisition JR10030422 showed Hyderabad, an active internship and current bachelor's/master's student eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -590,30 +590,15 @@
       "backup": 10
     },
     "remaining": 10,
-    "watchlistCoverage": {
-      "visited": 18,
-      "notVisited": 69,
-      "blocked": 0,
-      "acceptedCandidates": 6
-    },
-    "fallbackEmployersVisited": 4,
-    "fallbackCandidatesAccepted": 4,
-    "distinctEmployers": 10,
-    "uniqueExactLiveJobIdsFound": 10,
-    "verifiedAccepted": 10,
-    "heldUnconfirmedOrExperienced": 8,
-    "expiredFound": 1,
-    "duplicatePostingsExcluded": 25,
     "duplicateExclusions": [
       "All 10 candidates from the 14 Nov reviewing batch and all 11 candidates from the preserved 13 Nov reviewing batch were excluded from reuse.",
       "Stripe 8130876, Point72 8893936002, Celonis 7665962003 and Wipro IND-122016 were excluded as already published, previously reviewed or owner-expired exact requisitions.",
       "Deloitte OFSAA EPM 114982, EY 1745575, Accenture AIOC-S01674482, Cognizant 00071004881, Micron JR105933, Secfix 583140f4-b26c-47b4-a9be-c7a88dc3c0f5, ServiceNow JB0075721 and experienced Capgemini/PwC results were held for minimum experience, conflicting eligibility or insufficient requisition-bound fresher evidence.",
       "Generic careers pages, third-party-only application routes and non-requisition listings were not accepted."
     ],
-    "excludedCount": 25,
+    "excludedCount": 4,
     "needsFreshDiscovery": true,
-    "employerVisitNote": "Official or employer-controlled pages were inspected for Deloitte, KPMG, EY, PwC, Accenture, Cognizant, Capgemini, Citi, Genpact, Honeywell, Siemens, Qualcomm, Micron Technology, Deutsche Bank, Stripe, ServiceNow, Intuit and Wipro. KPMG returned campus/search guidance but no new exact requisition; blocked count is zero.",
-    "note": "Priority is complete at 6/2/2. Backup remains empty because a second independently verified 6/2/2 set was not completed before cutoff; it was not padded with doubtful, duplicate, experienced or internship-substituted jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
