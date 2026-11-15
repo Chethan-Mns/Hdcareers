@@ -55,7 +55,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -110,7 +110,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -165,7 +165,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -220,7 +220,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -273,9 +273,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official SmartRecruiters requisition 743999665738758 showed a full-time Gurugram Ruby on Rails role and explicitly stated Freshers welcome."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -328,9 +328,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact official SmartRecruiters requisition 743999832787600 showed Coimbatore, full-time employment and explicitly requested freshers for Flutter development."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -385,7 +385,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -440,7 +440,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -495,7 +495,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -550,7 +550,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-15T03:33:13.283118+00:00",
+      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -597,9 +597,9 @@
       "Generic careers pages, third-party-only application routes and non-requisition listings were not accepted.",
       "Intuit 24470 and United GGN00002194 were removed after the repository checker returned HTTP 404 and HTTP 410 respectively; neither was asserted Live or retained to fill quota."
     ],
-    "excludedCount": 4,
+    "excludedCount": 5,
     "needsFreshDiscovery": true,
-    "note": "Priority remains complete at 6/2/2 after replacing two checker-inconclusive routes. Backup remains empty and is not padded."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "priority": {
