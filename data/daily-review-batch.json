@@ -2,7 +2,7 @@
   "batchId": "2026-11-16-0900-ist",
   "generatedAt": "2026-11-16T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-16T03:30:00.000Z",
+  "updatedAt": "2026-11-16T03:39:00.000Z",
   "priority": [
     {
       "id": "ey-1745853",
@@ -55,9 +55,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact EY page loaded on 16 Nov, showed requisition 1745853, Hyderabad, date 10 Nov 2026, Level 1 / entry-level status and an explicit 0–3 year range with an Apply route."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review duplicate and availability checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Repository availability checker loaded the exact source and found active role/application evidence.",
+      "precheckCheckedAt": "2026-11-16T03:37:54.777Z",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -112,9 +112,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact employer ATS page loaded on 16 Nov, showed a live Apply action, Remote India/Hyderabad, full-time status, fresher wording, posted 8 Nov 2026 and apply-by date 25 Nov 2026."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review duplicate and availability checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Repository availability checker loaded the exact source and found active role/application evidence.",
+      "precheckCheckedAt": "2026-11-16T03:37:54.777Z",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -211,7 +211,14 @@
     ],
     "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. The newest exact official fresher internship found was requisition 116227, already present in the 15 Nov reviewing batch, so it was not reused.",
     "needsFreshDiscovery": true,
-    "note": "The fixed 20 Oct owner-verified sample was not reused. Incomplete shortlists are reported and not padded with duplicate, experienced or source-inconclusive jobs."
+    "note": "The fixed 20 Oct owner-verified sample was not reused. Incomplete shortlists are reported and not padded with duplicate, experienced or source-inconclusive jobs.",
+    "repositoryPrecheck": {
+      "runId": 43799321527,
+      "duplicateScrub": "0 additional duplicates removed; 2/20 unique candidates remained",
+      "availability": "2 source-active, 0 source-closed, 0 unsure",
+      "contentReadiness": "2/2 complete; 0 need source recovery",
+      "workflowConclusion": "failure after successful validation because github-actions[bot] lacked permission to push the checker-generated enrichment commit (HTTP 403)"
+    }
   },
   "quotaAudit": {
     "priority": {
