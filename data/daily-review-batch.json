@@ -1,556 +1,120 @@
 {
-  "batchId": "2026-11-15-0900-ist",
-  "generatedAt": "2026-11-15T03:30:00.000Z",
+  "batchId": "2026-11-16-0900-ist",
+  "generatedAt": "2026-11-16T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-15T03:35:00.000Z",
+  "updatedAt": "2026-11-16T03:30:00.000Z",
   "priority": [
     {
-      "id": "deloitte-116227",
-      "company": "Deloitte",
-      "role": "Intern – Global Mobility Tax",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Global-mobility-tax-Hyderabad-GES-Mobility/61459844/",
-      "cat": "nonit",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Internship; zero-experience eligible",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact official Deloitte page showed requisition 116227, Hyderabad, Graduate/Post Graduate qualification, internship title and an active Apply route.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Deloitte",
-        "role": "Intern – Global Mobility Tax",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Hyderabad-Intern-Global-mobility-tax-Hyderabad-GES-Mobility/61459844/",
-        "cat": "nonit",
-        "expType": "internship",
-        "expYears": "Internship; zero-experience eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Deloitte South Asia Careers",
-        "desc": "Global mobility tax internship supporting transfer-pricing and mobility-tax compliance work in Hyderabad.",
-        "elig": "Graduate or postgraduate candidates; the official requisition is an internship and does not state a minimum professional-experience requirement.",
-        "resp": [
-          "Support global mobility tax and transfer-pricing assignments.",
-          "Prepare working papers and documentation under team guidance.",
-          "Assist with research, compliance and client-delivery tasks."
-        ],
-        "skills": [
-          "Tax research",
-          "Transfer pricing basics",
-          "Documentation",
-          "Analytical skills"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "116227",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact official Deloitte page showed requisition 116227, Hyderabad, Graduate/Post Graduate qualification, internship title and an active Apply route."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "eurofins-744000161242645",
-      "company": "Eurofins",
-      "role": "IT Product Support",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/Eurofins/744000161242645-it-product-support",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact official SmartRecruiters requisition 744000161242645 showed Bengaluru, full-time IT product support and fresher/0–1-year eligibility.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Eurofins",
-        "role": "IT Product Support",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/Eurofins/744000161242645-it-product-support",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Eurofins / SmartRecruiters",
-        "desc": "Entry-level financial-systems and IT product-support role handling incidents, user support and application troubleshooting.",
-        "elig": "Bachelor's degree in Computer Science, IT, Computer Applications, Finance or Accounting; fresher or up to one year of experience.",
-        "resp": [
-          "Support users of financial and business applications.",
-          "Investigate incidents and coordinate fixes.",
-          "Document resolutions and maintain service quality."
-        ],
-        "skills": [
-          "Application support",
-          "Incident management",
-          "SQL basics",
-          "Financial systems"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "744000161242645",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact official SmartRecruiters requisition 744000161242645 showed Bengaluru, full-time IT product support and fresher/0–1-year eligibility."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "citi-261004756",
-      "company": "Citi",
-      "role": "Full Stack Java and Angular Developer",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://jobs.citi.com/job/-/-/287/103245945984",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Citi careers page showed job requisition 261004756, Chennai, full-time employment and 0–2 years of experience.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Citi",
-        "role": "Full Stack Java and Angular Developer",
-        "loc": "Chennai, Tamil Nadu, India",
-        "apply": "https://jobs.citi.com/job/-/-/287/103245945984",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Citi Careers",
-        "desc": "Entry-level full-stack engineering role developing and supporting Java, Spring Boot and Angular applications.",
-        "elig": "Candidates with 0–2 years of relevant experience and the programming fundamentals stated in the official requisition.",
-        "resp": [
-          "Develop Java and Angular application components.",
-          "Write, test and debug code within the delivery team.",
-          "Support application reliability and engineering documentation."
-        ],
-        "skills": [
-          "Java",
-          "Spring Boot",
-          "Angular",
-          "REST APIs"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "261004756",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Citi careers page showed job requisition 261004756, Chennai, full-time employment and 0–2 years of experience."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "micron-jr105741",
-      "company": "Micron Technology",
-      "role": "PDE CEM Graduate Engineering Technician",
-      "loc": "Sanand, Gujarat, India",
-      "apply": "https://careers.micron.com/careers?domain=micron.com&pid=44039201&query=Graduate&sort_by=relevance&start=0",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "0–3 years; fresh graduates welcome",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Micron careers page showed job ID JR105741, Gujarat, 0–3 years and explicitly welcomed fresh graduates with relevant internship experience.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Micron Technology",
-        "role": "PDE CEM Graduate Engineering Technician",
-        "loc": "Sanand, Gujarat, India",
-        "apply": "https://careers.micron.com/careers?domain=micron.com&pid=44039201&query=Graduate&sort_by=relevance&start=0",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–3 years; fresh graduates welcome",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Micron Careers",
-        "desc": "Graduate engineering-support role combining technical documentation, project coordination, data analysis and AI-enabled manufacturing support.",
-        "elig": "Diploma or bachelor's degree in Engineering, Business Administration, Office Management or a related field; 0–3 years, with fresh graduates having relevant internship exposure explicitly welcomed.",
-        "resp": [
-          "Maintain engineering documents and change-control records.",
-          "Track engineering projects, KPIs and technical work packages.",
-          "Use analytics and AI/ML tools to support process insights."
-        ],
-        "skills": [
-          "Engineering documentation",
-          "Data analytics",
-          "Python or SQL exposure",
-          "Project coordination"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR105741",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Micron careers page showed job ID JR105741, Gujarat, 0–3 years and explicitly welcomed fresh graduates with relevant internship experience."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "prepsmarter-743999665738758",
-      "company": "PrepSmarter, Inc.",
-      "role": "Ruby on Rails Developer",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://jobs.smartrecruiters.com/PrepSmarterInc/743999665738758-ruby-on-rails-ror-developer-freshers-welcome-",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Freshers welcome",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact official SmartRecruiters requisition 743999665738758 showed a full-time Gurugram Ruby on Rails role and explicitly stated Freshers welcome.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "PrepSmarter, Inc.",
-        "role": "Ruby on Rails Developer",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://jobs.smartrecruiters.com/PrepSmarterInc/743999665738758-ruby-on-rails-ror-developer-freshers-welcome-",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Freshers welcome",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "PrepSmarter / SmartRecruiters",
-        "desc": "Full-time Ruby on Rails development role welcoming fresh graduates to build and improve web applications.",
-        "elig": "Freshers are explicitly welcome; candidates should have programming fundamentals and interest in Ruby on Rails web development.",
-        "resp": [
-          "Develop and maintain Ruby on Rails application features.",
-          "Write, test and review web application code.",
-          "Collaborate with product and engineering teammates."
-        ],
-        "skills": [
-          "Ruby on Rails",
-          "Web development",
-          "Databases",
-          "Git"
-        ],
-        "workMode": "On-site",
-        "jobId": "743999665738758",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact official SmartRecruiters requisition 743999665738758 showed a full-time Gurugram Ruby on Rails role and explicitly stated Freshers welcome."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "rigelsoft-743999832787600",
-      "company": "RigelSoft Technologies",
-      "role": "Flutter Developer",
-      "loc": "Coimbatore, Tamil Nadu, India",
-      "apply": "https://jobs.smartrecruiters.com/RigelSoftTechnologies/743999832787600-flutter-developer",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact official SmartRecruiters requisition 743999832787600 showed Coimbatore, full-time employment and explicitly requested freshers for Flutter development.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "RigelSoft Technologies",
-        "role": "Flutter Developer",
-        "loc": "Coimbatore, Tamil Nadu, India",
-        "apply": "https://jobs.smartrecruiters.com/RigelSoftTechnologies/743999832787600-flutter-developer",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "RigelSoft Technologies / SmartRecruiters",
-        "desc": "Full-time Flutter development role for freshers contributing to mobile-application architecture, implementation and delivery.",
-        "elig": "The official requisition states the employer is looking for freshers with basic mobile-application knowledge, preferably native application exposure.",
-        "resp": [
-          "Contribute Flutter code for mobile applications.",
-          "Participate in architecture and sprint planning.",
-          "Collaborate with designers, QA and other developers."
-        ],
-        "skills": [
-          "Flutter",
-          "Dart",
-          "Mobile applications",
-          "Agile development"
-        ],
-        "workMode": "On-site",
-        "jobId": "743999832787600",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact official SmartRecruiters requisition 743999832787600 showed Coimbatore, full-time employment and explicitly requested freshers for Flutter development."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "emerson-26011142",
-      "company": "Emerson",
-      "role": "Applications Engineer I",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26011142",
-      "cat": "it",
-      "slotType": "fresherTechnicalFullTime",
-      "expYears": "Entry-level",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Emerson Oracle Careers requisition 26011142 showed Chennai, full-time Applications Engineer I; Emerson's official India inventory classified the opening as entry-level.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Emerson",
-        "role": "Applications Engineer I",
-        "loc": "Chennai, Tamil Nadu, India",
-        "apply": "https://hdjq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26011142",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Entry-level",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Emerson Career Site",
-        "desc": "Entry-level applications-engineering role preparing technical product selections, quotations, drawings and engineering responses.",
-        "elig": "Engineering candidates matching the official technical and communication requirements; the employer's India job inventory classifies this opening as entry-level.",
-        "resp": [
-          "Review specifications and prepare technical quotations.",
-          "Generate reports, drawings and product selections.",
-          "Resolve technical clarifications with sales and factory teams."
-        ],
-        "skills": [
-          "Applications engineering",
-          "Technical quotations",
-          "Engineering drawings",
-          "Customer requirements"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "26011142",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Emerson Oracle Careers requisition 26011142 showed Chennai, full-time Applications Engineer I; Emerson's official India inventory classified the opening as entry-level."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "ey-1752870",
+      "id": "ey-1745853",
       "company": "EY",
-      "role": "Analyst – TAX, GCR",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Pune-MH-411006/1447904533/",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Fresher",
+      "role": "Access Management Technology Analyst",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://careers.ey.com/ey/job/Hyderabad-Access-Management-Technology-Analyst-TG-500081/1455835933/",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "0–3 years; entry-level and zero-experience eligible",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact EY careers page showed requisition 1752870, Pune, B.Com qualification and Experience: Fresher.",
-      "postedDate": "Not Specified",
+      "verificationReason": "The exact EY page loaded on 16 Nov, showed requisition 1745853, Hyderabad, date 10 Nov 2026, Level 1 / entry-level status and an explicit 0–3 year range with an Apply route.",
+      "postedDate": "10 Nov 2026",
       "job": {
         "company": "EY",
-        "role": "Analyst – TAX, GCR",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://careers.ey.com/ey/job/Pune-Analyst-TAX-National-TAX-GCR-Global-Compliance-%26-Reporting-Pune-MH-411006/1447904533/",
-        "cat": "nonit",
+        "role": "Access Management Technology Analyst",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://careers.ey.com/ey/job/Hyderabad-Access-Management-Technology-Analyst-TG-500081/1455835933/",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "Fresher",
+        "expYears": "0–3 years; entry-level and zero-experience eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
         "sourceName": "EY Careers",
-        "desc": "Fresher tax-compliance analyst role supporting Global Compliance and Reporting work in Pune.",
-        "elig": "B.Com qualification; the official requisition states Experience: Fresher.",
+        "desc": "Entry-level identity and access management operations role supporting SailPoint provisioning, ServiceNow requests and joiner-mover-leaver access workflows.",
+        "elig": "Bachelor's degree in IT, Computer Science, Cybersecurity or a related field is preferred. The official role is Level 1 / entry-level and explicitly accepts 0–3 years.",
         "resp": [
-          "Support tax compliance and reporting assignments.",
-          "Prepare and review workpapers and supporting data.",
-          "Coordinate with engagement teams on deliverables."
+          "Process approved access provisioning, modification and revocation requests.",
+          "Handle SailPoint work items and investigate failed provisioning requests.",
+          "Support employee onboarding access and maintain ServiceNow ticket records.",
+          "Follow IAM, compliance and audit-control procedures."
         ],
         "skills": [
-          "Tax compliance",
-          "Accounting fundamentals",
-          "Excel",
-          "Attention to detail"
+          "SailPoint fundamentals",
+          "ServiceNow",
+          "Identity and access management",
+          "Active Directory and LDAP",
+          "Troubleshooting"
         ],
         "workMode": "Not Specified",
-        "jobId": "1752870",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
+        "jobId": "1745853",
+        "postedDate": "10 Nov 2026",
+        "verifiedDate": "16 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 16 Nov 2026 and scrubbed against current jobs.json, active and archived review batches, employer/role aliases and known publication records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
+        "currentCheckAt": "2026-11-16T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact EY careers page showed requisition 1752870, Pune, B.Com qualification and Experience: Fresher."
+        "officialEvidence": "The exact EY page loaded on 16 Nov, showed requisition 1745853, Hyderabad, date 10 Nov 2026, Level 1 / entry-level status and an explicit 0–3 year range with an Apply route."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review duplicate and availability checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "omnicom-6226452004",
-      "company": "Omnicom",
-      "role": "Finance Executive",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://job-boards.greenhouse.io/omccorp/jobs/6226452004",
-      "cat": "nonit",
-      "slotType": "fresherNonTechnicalFullTime",
-      "expYears": "Recent graduate fresher",
+      "id": "sphinxhire-3",
+      "company": "SphinxHire",
+      "role": "Full Stack Developer (Fresher)",
+      "loc": "Remote (India) / Hyderabad, Telangana",
+      "apply": "https://ats.sphinxhireai.com/careers/sphinxhire/jobs/3-full-stack-developer-fresher",
+      "cat": "it",
+      "slotType": "fresherTechnicalFullTime",
+      "expYears": "Fresher; listing range 0–3 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Omnicom Greenhouse page showed requisition 6226452004, Mumbai, a one-year contractual role and explicit Recent Graduate Fresher eligibility.",
-      "postedDate": "Not Specified",
+      "verificationReason": "The exact employer ATS page loaded on 16 Nov, showed a live Apply action, Remote India/Hyderabad, full-time status, fresher wording, posted 8 Nov 2026 and apply-by date 25 Nov 2026.",
+      "postedDate": "8 Nov 2026",
       "job": {
-        "company": "Omnicom",
-        "role": "Finance Executive",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://job-boards.greenhouse.io/omccorp/jobs/6226452004",
-        "cat": "nonit",
+        "company": "SphinxHire",
+        "role": "Full Stack Developer (Fresher)",
+        "loc": "Remote (India) / Hyderabad, Telangana",
+        "apply": "https://ats.sphinxhireai.com/careers/sphinxhire/jobs/3-full-stack-developer-fresher",
+        "cat": "it",
         "expType": "fresher",
-        "expYears": "Recent graduate fresher",
+        "expYears": "Fresher; listing range 0–3 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Omnicom / Greenhouse",
-        "desc": "One-year contractual finance-operations role handling client billing, reconciliations, adjustments and month-end support.",
-        "elig": "Graduate qualification; the official posting explicitly states Recent Graduate Fresher.",
+        "sourceName": "SphinxHire Careers ATS",
+        "desc": "Entry-level full-stack development role building responsive interfaces, backend services, REST APIs and database-backed web applications.",
+        "elig": "B.E./B.Tech, MCA, BCA, B.Sc or M.Sc in Computer Science, IT or a related field. The listing specifically invites freshers and recent graduates and requires an academic or personal full-stack project.",
         "resp": [
-          "Prepare and verify client invoices.",
-          "Process billing adjustments and account reconciliations.",
-          "Support month-end reporting and audit requests."
+          "Build responsive user interfaces with JavaScript and React.",
+          "Develop backend services and REST APIs using Node.js, Java or Python.",
+          "Design database tables and integrate front-end and back-end features.",
+          "Write tests, fix bugs and contribute to code reviews and deployments."
         ],
         "skills": [
-          "Client billing",
-          "Reconciliation",
-          "Accounting systems",
-          "Excel"
+          "JavaScript and React",
+          "Node.js, Java or Python",
+          "REST APIs and JSON",
+          "SQL or MongoDB",
+          "Git"
         ],
-        "workMode": "Not Specified",
-        "jobId": "6226452004",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
+        "workMode": "Remote",
+        "jobId": "3",
+        "postedDate": "8 Nov 2026",
+        "verifiedDate": "16 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 16 Nov 2026 and scrubbed against current jobs.json, active and archived review batches, employer/role aliases and known publication records. Owner review is required before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
+        "currentCheckAt": "2026-11-16T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Omnicom Greenhouse page showed requisition 6226452004, Mumbai, a one-year contractual role and explicit Recent Graduate Fresher eligibility."
+        "officialEvidence": "The exact employer ATS page loaded on 16 Nov, showed a live Apply action, Remote India/Hyderabad, full-time status, fresher wording, posted 8 Nov 2026 and apply-by date 25 Nov 2026."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "genpact-jr10030422",
-      "company": "Genpact",
-      "role": "Intern",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://genpact.wd108.myworkdayjobs.com/en-US/campussite/job/Interns_JR10030422",
-      "cat": "nonit",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Current student internship",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Genpact campus Workday requisition JR10030422 showed Hyderabad, an active internship and current bachelor's/master's student eligibility.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Genpact",
-        "role": "Intern",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://genpact.wd108.myworkdayjobs.com/en-US/campussite/job/Interns_JR10030422",
-        "cat": "nonit",
-        "expType": "internship",
-        "expYears": "Current student internship",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Genpact Campus Careers / Workday",
-        "desc": "Campus internship offering project support and business exposure for students across business, finance, computer science and engineering disciplines.",
-        "elig": "Currently pursuing a bachelor's or master's degree in business, finance, computer science, engineering or a related field.",
-        "resp": [
-          "Support assigned project and analysis work.",
-          "Collaborate with team members on business deliverables.",
-          "Document findings and present work clearly."
-        ],
-        "skills": [
-          "Analysis",
-          "Communication",
-          "Microsoft Office",
-          "Team collaboration"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "JR10030422",
-        "postedDate": "Not Specified",
-        "verifiedDate": "15 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 15 Nov 2026 and scrubbed against current jobs.json, the 14 Nov and 13 Nov review batches, preserved publication history and active queue records. Owner review is required before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-15T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Genpact campus Workday requisition JR10030422 showed Hyderabad, an active internship and current bachelor's/master's student eligibility."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-15T03:34:57.904645+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review duplicate and availability checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -558,17 +122,17 @@
   "backup": [],
   "discoveryAudit": {
     "priority": {
-      "size": 10,
+      "size": 2,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 2,
+        "fresherIT": 2,
+        "nonIT": 0,
+        "training": 0,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 0
+        "fresherIT": 4,
+        "nonIT": 2,
+        "training": 2
       }
     },
     "backup": {
@@ -589,17 +153,65 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 10,
+    "remaining": 18,
+    "watchlistCoverage": {
+      "total": 87,
+      "visited": 12,
+      "notVisited": 75,
+      "blocked": 0,
+      "visitedEmployers": [
+        "Deloitte",
+        "KPMG",
+        "EY",
+        "PwC",
+        "Accenture",
+        "Cognizant",
+        "Capgemini",
+        "Genpact",
+        "Cisco",
+        "Salesforce",
+        "Barclays",
+        "Zensar"
+      ]
+    },
+    "fallbackCoverage": {
+      "visited": 13,
+      "visitedEmployers": [
+        "Celonis",
+        "Endeavor IT Solution",
+        "Hevo Data",
+        "AiPrise",
+        "SphinxHire",
+        "Boeing",
+        "Playto Labs",
+        "Sutherland",
+        "WNS Global Services",
+        "Drivetrain",
+        "Fam",
+        "Konecranes",
+        "Acedezines"
+      ]
+    },
+    "distinctEmployersInvestigated": 25,
+    "uniqueExactJobIdsFound": 32,
+    "verifiedAccepted": 2,
+    "duplicateExclusionsCount": 15,
+    "expiredOrClosedCount": 5,
+    "heldUnconfirmedOrIneligibleCount": 10,
     "duplicateExclusions": [
-      "All 10 candidates from the 14 Nov reviewing batch and all 11 candidates from the preserved 13 Nov reviewing batch were excluded from reuse.",
-      "Stripe 8130876, Point72 8893936002, Celonis 7665962003 and Wipro IND-122016 were excluded as already published, previously reviewed or owner-expired exact requisitions.",
-      "Deloitte OFSAA EPM 114982, EY 1745575, Accenture AIOC-S01674482, Cognizant 00071004881, Micron JR105933, Secfix 583140f4-b26c-47b4-a9be-c7a88dc3c0f5, ServiceNow JB0075721 and experienced Capgemini/PwC results were held for minimum experience, conflicting eligibility or insufficient requisition-bound fresher evidence.",
-      "Generic careers pages, third-party-only application routes and non-requisition listings were not accepted.",
-      "Intuit 24470 and United GGN00002194 were removed after the repository checker returned HTTP 404 and HTTP 410 respectively; neither was asserted Live or retained to fill quota."
+      "Excluded near-duplicate employer/role variants for Celonis, Endeavor, AiPrise, Playto Labs and Konecranes even where a changed requisition ID was visible.",
+      "Excluded already-published exact Hevo Data 993a3ed3 and 6cbbe304, Drivetrain edb8a8f7, Fam bbbbbfd2, Weekday a86efff4 and WNS 744000111543195 postings.",
+      "Excluded all candidates in the 15 Nov reviewing batch and preserved 14 Nov/13 Nov review history."
     ],
-    "excludedCount": 5,
+    "expiredOrHeld": [
+      "Genpact JR10017720, JR10023279 and JR10023635 had application end dates in September/October 2026.",
+      "Citi 261004154 returned 404 and an Accenture Record-to-Report route redirected to a generic search page.",
+      "Boeing JR2026528301 and Cisco 57066 required multiple years of experience; Sutherland 744000150496488 required 2+ years.",
+      "Accenture HR AIOC-S01646722 contained contradictory 10+ years text; generic or source-inconclusive KPMG, PwC, Cognizant, Barclays and Zensar results were not staged."
+    ],
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. The newest exact official fresher internship found was requisition 116227, already present in the 15 Nov reviewing batch, so it was not reused.",
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "The fixed 20 Oct owner-verified sample was not reused. Incomplete shortlists are reported and not padded with duplicate, experienced or source-inconclusive jobs."
   },
   "quotaAudit": {
     "priority": {
@@ -609,14 +221,14 @@
         "internshipOrApprenticeship": 2
       },
       "actual": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      },
-      "shortfall": {
-        "fresherTechnicalFullTime": 0,
+        "fresherTechnicalFullTime": 2,
         "fresherNonTechnicalFullTime": 0,
         "internshipOrApprenticeship": 0
+      },
+      "shortfall": {
+        "fresherTechnicalFullTime": 4,
+        "fresherNonTechnicalFullTime": 2,
+        "internshipOrApprenticeship": 2
       }
     },
     "backup": {
@@ -636,20 +248,20 @@
         "internshipOrApprenticeship": 2
       }
     },
-    "distinctEmployers": 10
+    "distinctEmployers": 2
   },
   "ranking": {
     "method": "official-evidence-6-2-2-v3",
-    "rankedAt": "2026-11-15T03:30:00.000Z",
+    "rankedAt": "2026-11-16T03:30:00.000Z",
     "target": {
       "fresherIT": 6,
       "nonIT": 2,
       "training": 2
     },
     "selected": {
-      "fresherIT": 6,
-      "nonIT": 2,
-      "training": 2
+      "fresherIT": 2,
+      "nonIT": 0,
+      "training": 0
     },
     "backupSelected": {
       "fresherIT": 0,
@@ -658,9 +270,9 @@
     },
     "shortfalls": {
       "priority": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 0
+        "fresherIT": 4,
+        "nonIT": 2,
+        "training": 2
       },
       "backup": {
         "fresherIT": 6,
@@ -671,82 +283,101 @@
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
   },
   "previousBatchReference": {
-    "batchId": "2026-11-14-0900-ist",
+    "batchId": "2026-11-15-0900-ist",
     "status": "reviewing",
-    "generatedAt": "2026-11-14T03:30:00.000Z",
-    "updatedAt": "2026-11-14T03:30:00.000Z",
+    "generatedAt": "2026-11-15T03:30:00.000Z",
+    "updatedAt": "2026-11-15T03:35:00.000Z",
     "candidateIds": [
-      "deloitte-116858",
-      "trinet-3004263",
-      "aiprise-41af4efa",
-      "zycus-57694",
-      "endeavor-743999651515530",
-      "stripe-8212517",
-      "ey-1761018",
-      "accenture-aioc-s01651251",
-      "meraki-93ff65d2",
-      "weekday-a86efff4"
+      "deloitte-116227",
+      "eurofins-744000161242645",
+      "citi-261004756",
+      "micron-jr105741",
+      "prepsmarter-743999665738758",
+      "rigelsoft-743999832787600",
+      "emerson-26011142",
+      "ey-1752870",
+      "omnicom-6226452004",
+      "genpact-jr10030422"
     ],
     "priorHistory": {
-      "batchId": "2026-11-13-0900-ist",
+      "batchId": "2026-11-14-0900-ist",
       "status": "reviewing",
-      "generatedAt": "2026-11-13T03:30:00.000Z",
-      "updatedAt": "2026-11-13T03:30:00.000Z",
+      "generatedAt": "2026-11-14T03:30:00.000Z",
+      "updatedAt": "2026-11-14T03:30:00.000Z",
       "candidateIds": [
-        "deloitte-116959",
-        "citi-261001786",
-        "point72-8893939002",
-        "capgemini-578597",
-        "qualcomm-3094020",
-        "reliaquest-r15081-1",
-        "eurofins-744000141900959",
-        "cognizant-00070713951",
-        "qad-744000161284809",
-        "mongodb-8127582",
-        "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
+        "deloitte-116858",
+        "trinet-3004263",
+        "aiprise-41af4efa",
+        "zycus-57694",
+        "endeavor-743999651515530",
+        "stripe-8212517",
+        "ey-1761018",
+        "accenture-aioc-s01651251",
+        "meraki-93ff65d2",
+        "weekday-a86efff4"
       ],
       "priorHistory": {
-        "batchId": "2026-11-12-0900-ist",
-        "status": "submitted",
-        "submittedAt": "2026-11-12T04:49:30.498Z",
-        "publicationRequestId": "92e57bf2eaeb18347e953809",
-        "selectedCandidateIds": [
-          "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-          "cognizant-at-ug3-2026",
-          "icgmedical-5024601101",
-          "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
-          "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+        "batchId": "2026-11-13-0900-ist",
+        "status": "reviewing",
+        "generatedAt": "2026-11-13T03:30:00.000Z",
+        "updatedAt": "2026-11-13T03:30:00.000Z",
+        "candidateIds": [
+          "deloitte-116959",
+          "citi-261001786",
+          "point72-8893939002",
+          "capgemini-578597",
+          "qualcomm-3094020",
+          "reliaquest-r15081-1",
+          "eurofins-744000141900959",
+          "cognizant-00070713951",
+          "qad-744000161284809",
+          "mongodb-8127582",
+          "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
         ],
-        "publication": {
-          "candidateIds": [
+        "priorHistory": {
+          "batchId": "2026-11-12-0900-ist",
+          "status": "submitted",
+          "submittedAt": "2026-11-12T04:49:30.498Z",
+          "publicationRequestId": "92e57bf2eaeb18347e953809",
+          "selectedCandidateIds": [
             "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
             "cognizant-at-ug3-2026",
             "icgmedical-5024601101",
             "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
             "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
           ],
-          "companies": [
-            "AHEAD",
-            "Cognizant",
-            "ICG Medical",
-            "JobTwine",
-            "Paytm Payments Services"
-          ],
-          "urls": [
-            "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-            "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
-            "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
-            "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
-            "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
-          ],
-          "requestId": "92e57bf2eaeb18347e953809",
-          "count": 5,
-          "submittedAt": "2026-11-12T04:49:30.498Z"
+          "publication": {
+            "candidateIds": [
+              "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+              "cognizant-at-ug3-2026",
+              "icgmedical-5024601101",
+              "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
+              "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+            ],
+            "companies": [
+              "AHEAD",
+              "Cognizant",
+              "ICG Medical",
+              "JobTwine",
+              "Paytm Payments Services"
+            ],
+            "urls": [
+              "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+              "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
+              "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
+              "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
+              "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+            ],
+            "requestId": "92e57bf2eaeb18347e953809",
+            "count": 5,
+            "submittedAt": "2026-11-12T04:49:30.498Z"
+          },
+          "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
         },
-        "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
+        "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
       },
-      "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+      "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
     },
-    "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+    "note": "Preserved 15 Nov review batch and earlier approval/history chain; no publication or Telegram receipts were modified."
   }
 }
