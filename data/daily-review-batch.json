@@ -153,15 +153,96 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 2,
+    "remaining": 18,
+    "watchlistCoverage": {
+      "total": 87,
+      "visited": 23,
+      "notVisited": 64,
+      "blocked": 0,
+      "visitedEmployers": [
+        "Deloitte",
+        "KPMG",
+        "EY",
+        "PwC",
+        "Accenture",
+        "Cognizant",
+        "Capgemini",
+        "Infosys",
+        "Tata Consultancy Services (TCS)",
+        "Tech Mahindra",
+        "Wipro",
+        "HCLTech",
+        "IBM",
+        "NTT DATA",
+        "CGI",
+        "LTIMindtree",
+        "L&T Technology Services (LTTS)",
+        "Mphasis",
+        "Persistent Systems",
+        "Coforge",
+        "DXC Technology",
+        "UST",
+        "Genpact"
+      ]
+    },
+    "fallbackCoverage": {
+      "visited": 17,
+      "visitedEmployers": [
+        "Cin7",
+        "Egis Group",
+        "Tieto",
+        "WNS Global Services",
+        "Paytm",
+        "HighLevel",
+        "QAD",
+        "Weekday",
+        "EJOBS",
+        "Jobgether",
+        "Applied Intuition",
+        "Endeavor IT Solution",
+        "Konecranes",
+        "Connectionphase",
+        "Fretron",
+        "AHEAD",
+        "Instawork"
+      ]
+    },
+    "distinctEmployersInvestigated": 40,
+    "uniqueExactListingsEvaluated": 38,
+    "uniqueExactLiveJobIdsFound": 13,
+    "verifiedAccepted": 2,
+    "duplicateExclusionsCount": 11,
+    "expiredOrClosedCount": 4,
+    "heldUnconfirmedOrIneligibleCount": 21,
     "duplicateExclusions": [
       "Repository scrub removed four already-published exact postings: Cin7 c896656f, Egis 744000123769623, EY 1727886 / careers route 1416906133, and WNS 743999903984093.",
       "Excluded published or previously reviewed routes for Cognizant AT-UG3-2026, AHEAD 3bfeee5c, QAD 744000161284809, Weekday a86efff4 and Fretron 743999812282138.",
       "Excluded Endeavor and Konecranes employer-role variants after alias/role deduplication against prior repository records."
     ],
-    "excludedCount": 3,
+    "expiredOrHeld": [
+      "TCS All India NQT showed Registration Status: Closed; NTT R-146793 and two Monzo internships had passed application deadlines.",
+      "Deloitte 60808644 was held as the same employer-role family as owner-reviewed 60805744; Deloitte 61327244 required 3–6 years and 61544444 lacked sufficient zero-experience evidence.",
+      "Capgemini results were experienced or required more than one year; Cognizant AT-UG3-2026 was already published and other Cognizant listings were experienced or ambiguous.",
+      "Generic KPMG, PwC, Infosys, Wipro, HCLTech, IBM, CGI, LTIMindtree, LTTS, Mphasis, Persistent, Coforge, DXC, UST and Genpact program/search pages were not treated as requisition-bound live jobs.",
+      "Paytm wording was ambiguous; EJOBS and Jobgether obscured the hiring employer; international-only new-grad roles were held."
+    ],
+    "deloitteOutcome": "Deloitte: no new distinct verified fresher-eligible role. Requisition 60808644 was active and zero-experience eligible but held as the same Deloitte Intern - Income Tax Laws employer-role family as owner-reviewed requisition 60805744; 61327244 required 3–6 years and 61544444 lacked clear zero-experience evidence.",
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Final post-scrub 17 Nov review batch contains two new training candidates only. Four initially staged full-time roles were removed as already published. No website, data/jobs.json or Telegram action was authorized or performed.",
+    "repositoryPrecheck": {
+      "runId": 44011802149,
+      "duplicateScrub": "4 already-published exact postings removed; 2/20 unique candidates remained.",
+      "availability": "2 source-active, 0 source-closed, 0 unsure.",
+      "contentReadiness": "2/2 complete.",
+      "workflowConclusion": "success; validation, dedup, category, availability and content-preflight steps completed."
+    },
+    "notificationEvidence": {
+      "workflowRunId": 44011802154,
+      "workflowConclusion": "success",
+      "firebaseSendStep": "skipped",
+      "status": "not sent",
+      "reason": "The workflow verified the reviewing batch, but 'Notify registered admin devices and record result' was skipped; workflow success is not treated as delivery."
+    }
   },
   "quotaAudit": {
     "priority": {
