@@ -1,425 +1,478 @@
 {
-  "batchId": "2026-11-17-0900-ist",
-  "generatedAt": "2026-11-17T03:30:00.000Z",
+  "batchId": "2026-11-18-0900-ist",
+  "generatedAt": "2026-11-18T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-17T03:40:00.000Z",
+  "updatedAt": "2026-11-18T03:30:00.000Z",
   "priority": [
     {
-      "id": "tieto-744000161430139",
-      "company": "Tieto",
-      "role": "Apprentice - Telecom Tech Consulting",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/Tieto2/744000161430139",
+      "id": "hp-3166324",
+      "company": "HP Inc.",
+      "role": "Field Technical Support Associate",
+      "loc": "Mumbai / Pune, Maharashtra, India",
+      "apply": "https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Field-Technical-support-Associate_3166324",
       "cat": "it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Fresh graduate apprenticeship; 2025 or 2026 pass-outs",
+      "slotType": "fresherIT",
+      "expYears": "0–2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact Tieto SmartRecruiters page loaded on 17 Nov with a 12-month Apprentice role, Bengaluru hybrid location, fresh-graduate wording and explicit 2025/2026 education eligibility.",
-      "postedDate": "Not Specified",
+      "verificationReason": "The exact HP Workday requisition 3166324 loaded on 18 Nov as a full-time Mumbai/Pune role and explicitly states typically 0–2 years of experience.",
+      "postedDate": "Posted 4 days before 18 Nov 2026",
       "job": {
-        "company": "Tieto",
-        "role": "Apprentice - Telecom Tech Consulting",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/Tieto2/744000161430139",
+        "company": "HP Inc.",
+        "role": "Field Technical Support Associate",
+        "loc": "Mumbai / Pune, Maharashtra, India",
+        "apply": "https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Field-Technical-support-Associate_3166324",
         "cat": "it",
-        "expType": "internship/apprenticeship",
-        "expYears": "Fresh graduate apprenticeship; 2025 or 2026 pass-outs",
+        "expType": "fresher full-time",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
-        "batch": "2025/2026",
+        "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Tieto SmartRecruiters",
-        "desc": "Twelve-month telecom technology apprenticeship providing hands-on work in C/C++, embedded and Linux fundamentals within digital engineering and consulting projects.",
-        "elig": "B.E./B.Tech in EC/EE or M.E./M.Tech in EC/EEE, 2025 or 2026 pass-out, with 65% throughout education.",
+        "sourceName": "HP Workday",
+        "desc": "Entry-level field technical support role installing, maintaining and repairing customer equipment while diagnosing IT issues and documenting service work.",
+        "elig": "Higher Secondary education, a diploma, or equivalent demonstrated competence; the posting states typically 0–2 years of relevant technical/customer-support experience.",
         "resp": [
-          "Apply C or C++ fundamentals to apprentice engineering tasks.",
-          "Learn and contribute to embedded, operating-system and Linux work.",
-          "Debug programs and solve technical problems with guidance.",
-          "Support technology implementation, analysis and client-facing project work."
+          "Install, maintain and repair customer equipment to service standards.",
+          "Diagnose IT and equipment issues and provide on-site technical support.",
+          "Document service activity and follow quality and confidentiality procedures.",
+          "Engage customers to clarify needs and improve service satisfaction."
         ],
         "skills": [
-          "C and C++",
-          "Data structures",
-          "Operating systems and Linux",
-          "Embedded systems fundamentals",
-          "Problem solving"
+          "Technical troubleshooting",
+          "Customer support",
+          "Equipment installation and maintenance",
+          "Documentation",
+          "IT support"
         ],
-        "workMode": "Hybrid (three office days)",
-        "jobId": "744000161430139",
-        "postedDate": "Not Specified",
-        "verifiedDate": "17 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 17 Nov 2026 and independently searched against current repository records, active/archived review history, employer-role aliases and known publication records. Owner review remains mandatory before publication."
+        "workMode": "Not Specified",
+        "jobId": "3166324",
+        "postedDate": "Posted 4 days before 18 Nov 2026",
+        "verifiedDate": "18 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-17T03:30:00.000Z",
+        "currentCheckAt": "2026-11-18T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact Tieto SmartRecruiters page loaded on 17 Nov with a 12-month Apprentice role, Bengaluru hybrid location, fresh-graduate wording and explicit 2025/2026 education eligibility."
+        "officialEvidence": "The exact HP Workday requisition 3166324 loaded on 18 Nov as a full-time Mumbai/Pune role and explicitly states typically 0–2 years of experience."
       },
       "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-17T03:40:12.507318+00:00",
+      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
+      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "highlevel-65ab785e",
-      "company": "HighLevel",
-      "role": "Performance Marketing Apprentice",
-      "loc": "Remote - India",
-      "apply": "https://jobs.lever.co/gohighlevel/65ab785e-d3a4-4c3b-9991-3b35f369b24d",
+      "id": "deloitte-116580",
+      "company": "Deloitte",
+      "role": "Intern - Compliance, Assessment & Research, Advisory Services & Tax Controversy Management",
+      "loc": "Delhi, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Delhi-Intern-Compliance%2C-Assessment-%26-Research%2C-Advisory-Services-%26-Tax-Controversy-Management%2C-Litigati/61610244/",
       "cat": "non-it",
       "slotType": "internshipOrApprenticeship",
-      "expYears": "Entry-level apprenticeship; no prior full-time employment required",
+      "expYears": "Internship; no prior experience requirement stated",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact HighLevel Lever application form loaded on 17 Nov with an active Submit application action, India remote apprenticeship status, graduation-year questions, a no-prior-full-time-work option, six-month commitment and November 2026 start.",
-      "postedDate": "Not Specified",
+      "verificationReason": "The exact Deloitte South Asia requisition 116580 loaded on 18 Nov with an Apply route, Delhi location, internship duties and graduate/postgraduate eligibility; it states no prior-experience minimum.",
+      "postedDate": "17 Nov 2026",
       "job": {
-        "company": "HighLevel",
-        "role": "Performance Marketing Apprentice",
-        "loc": "Remote - India",
-        "apply": "https://jobs.lever.co/gohighlevel/65ab785e-d3a4-4c3b-9991-3b35f369b24d",
-        "cat": "nonit",
+        "company": "Deloitte",
+        "role": "Intern - Compliance, Assessment & Research, Advisory Services & Tax Controversy Management",
+        "loc": "Delhi, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Delhi-Intern-Compliance%2C-Assessment-%26-Research%2C-Advisory-Services-%26-Tax-Controversy-Management%2C-Litigati/61610244/",
+        "cat": "non-it",
         "expType": "internship/apprenticeship",
-        "expYears": "Entry-level apprenticeship; no prior full-time employment required",
-        "salary": "₹40,000 per month",
-        "batch": "Graduation year 2024, 2025, 2026 or 2027+ accepted",
+        "expYears": "Internship; no prior experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "HighLevel Lever Careers",
-        "desc": "Six-month remote India apprenticeship supporting paid-media campaign reporting, analysis, quality assurance, research and marketing operations.",
-        "elig": "Applicants legally authorized to work in India who can commit full-time for six months. The form accepts graduation years from 2024 through 2027+ and explicitly accommodates applicants who have never held full-time employment.",
+        "sourceName": "Deloitte South Asia Careers",
+        "desc": "Business Tax internship supporting direct-tax compliance, assessments, advisory research and litigation documentation.",
+        "elig": "Graduate or postgraduate in Commerce, Accounting, Finance or a related discipline, with basic direct-tax and accounting understanding.",
         "resp": [
-          "Support daily campaign reporting and performance analysis.",
-          "Assist with campaign quality assurance, research and documentation.",
-          "Prepare recurring performance reports across paid-media channels.",
-          "Learn and use advertising, analytics and AI-enabled marketing tools."
+          "Assist with tax compliance, assessments and documentation.",
+          "Research tax laws, regulations, circulars and judicial precedents.",
+          "Support responses and submissions for assessment and litigation matters.",
+          "Prepare research notes, presentations and client deliverables."
         ],
         "skills": [
-          "Digital advertising fundamentals",
-          "Campaign reporting",
-          "Performance analysis",
-          "Google Ads and Meta Ads exposure",
-          "Documentation and research"
+          "Direct taxation fundamentals",
+          "Accounting principles",
+          "Research and analysis",
+          "Excel and PowerPoint",
+          "Written communication"
         ],
-        "workMode": "Remote; 6:30 PM to 3:30 AM IST",
-        "jobId": "65ab785e-d3a4-4c3b-9991-3b35f369b24d",
-        "postedDate": "Not Specified",
-        "verifiedDate": "17 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 17 Nov 2026 and independently searched against current repository records, active/archived review history, employer-role aliases and known publication records. Owner review remains mandatory before publication."
+        "workMode": "Not Specified",
+        "jobId": "116580",
+        "postedDate": "17 Nov 2026",
+        "verifiedDate": "18 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-17T03:30:00.000Z",
+        "currentCheckAt": "2026-11-18T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact HighLevel Lever application form loaded on 17 Nov with an active Submit application action, India remote apprenticeship status, graduation-year questions, a no-prior-full-time-work option, six-month commitment and November 2026 start."
+        "officialEvidence": "The exact Deloitte South Asia requisition 116580 loaded on 18 Nov with an Apply route, Delhi location, internship duties and graduate/postgraduate eligibility; it states no prior-experience minimum."
       },
       "precheckStatus": "source-active",
-      "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-17T03:40:12.507318+00:00",
+      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
+      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "citi-102161079536",
+      "company": "Citi",
+      "role": "Young Apprentice - C00",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://jobs.citi.com/job/chennai/young-apprentice-c00/287/102161079536",
+      "cat": "non-it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Apprenticeship; previous experience preferred, not required",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "The exact Citi Careers page loaded on 18 Nov with an active apprenticeship description, Chennai operations duties, high-school/equivalent education and previous experience marked preferred rather than required.",
+      "postedDate": "13 Nov 2026",
+      "job": {
+        "company": "Citi",
+        "role": "Young Apprentice - C00",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://jobs.citi.com/job/chennai/young-apprentice-c00/287/102161079536",
+        "cat": "non-it",
+        "expType": "internship/apprenticeship",
+        "expYears": "Apprenticeship; previous experience preferred, not required",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Citi Careers",
+        "desc": "Operations apprenticeship supporting US Consumer Cards business processes, customer service, records accuracy and routine issue resolution.",
+        "elig": "High school diploma or equivalent experience; willingness to work rotating shifts. The posting lists prior experience as preferred rather than mandatory.",
+        "resp": [
+          "Support daily operational activities and established business processes.",
+          "Maintain accurate records and complete tasks on time.",
+          "Resolve basic customer or process issues under guidance.",
+          "Coordinate with team members and stakeholders while building professional skills."
+        ],
+        "skills": [
+          "Clear written and verbal communication",
+          "Attention to detail",
+          "Task prioritization",
+          "Customer service",
+          "Operational accuracy"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "102161079536",
+        "postedDate": "13 Nov 2026",
+        "verifiedDate": "18 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-18T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Citi Careers page loaded on 18 Nov with an active apprenticeship description, Chennai operations duties, high-school/equivalent education and previous experience marked preferred rather than required."
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
+      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
-  "backup": [],
-  "discoveryAudit": {
-    "priority": {
-      "size": 2,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 0
+  "backup": [
+    {
+      "id": "honeywell-160864",
+      "company": "Honeywell",
+      "role": "Intern Bachelors Software Eng",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160864",
+      "cat": "it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Current bachelor's student; no prior experience requirement stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "The exact Honeywell requisition 160864 loaded on 18 Nov with Pune location, 17 Nov posting date, full-time internship schedule and current-bachelor's eligibility.",
+      "postedDate": "17 Nov 2026",
+      "job": {
+        "company": "Honeywell",
+        "role": "Intern Bachelors Software Eng",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://careers.honeywell.com/en/sites/Honeywell/job/160864",
+        "cat": "it",
+        "expType": "internship/apprenticeship",
+        "expYears": "Current bachelor's student; no prior experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Honeywell Careers",
+        "desc": "Software-engineering internship contributing to real development work, code reviews and cross-functional solution design while learning from experienced engineers.",
+        "elig": "Currently enrolled in a bachelor's program in Software Engineering or a related field, with a basic understanding of software-development principles.",
+        "resp": [
+          "Learn and apply software-engineering principles.",
+          "Participate in code reviews and software development.",
+          "Collaborate across teams to design and develop solutions.",
+          "Build exposure to programming languages, tools and technologies."
+        ],
+        "skills": [
+          "Software development fundamentals",
+          "Java, Python or C++",
+          "Problem solving",
+          "Code review",
+          "Cross-functional collaboration"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "160864",
+        "postedDate": "17 Nov 2026",
+        "verifiedDate": "18 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
       },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 0,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 0,
-        "unclassified": 0
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-18T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact Honeywell requisition 160864 loaded on 18 Nov with Pune location, 17 Nov posting date, full-time internship schedule and current-bachelor's eligibility."
       },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 2
-      }
+      "precheckStatus": "source-active",
+      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
+      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "reviewedAt": null,
+      "reviewedBy": null
     },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 18,
-    "watchlistCoverage": {
-      "total": 87,
-      "visited": 23,
-      "notVisited": 64,
-      "blocked": 0,
-      "visitedEmployers": [
-        "Deloitte",
-        "KPMG",
-        "EY",
-        "PwC",
-        "Accenture",
-        "Cognizant",
-        "Capgemini",
-        "Infosys",
-        "Tata Consultancy Services (TCS)",
-        "Tech Mahindra",
-        "Wipro",
-        "HCLTech",
-        "IBM",
-        "NTT DATA",
-        "CGI",
-        "LTIMindtree",
-        "L&T Technology Services (LTTS)",
-        "Mphasis",
-        "Persistent Systems",
-        "Coforge",
-        "DXC Technology",
-        "UST",
-        "Genpact"
-      ]
-    },
-    "fallbackCoverage": {
-      "visited": 17,
-      "visitedEmployers": [
-        "Cin7",
-        "Egis Group",
-        "Tieto",
-        "WNS Global Services",
-        "Paytm",
-        "HighLevel",
-        "QAD",
-        "Weekday",
-        "EJOBS",
-        "Jobgether",
-        "Applied Intuition",
-        "Endeavor IT Solution",
-        "Konecranes",
-        "Connectionphase",
-        "Fretron",
-        "AHEAD",
-        "Instawork"
-      ]
-    },
-    "distinctEmployersInvestigated": 40,
-    "uniqueExactListingsEvaluated": 38,
-    "uniqueExactLiveJobIdsFound": 13,
-    "verifiedAccepted": 2,
-    "duplicateExclusionsCount": 11,
-    "expiredOrClosedCount": 4,
-    "heldUnconfirmedOrIneligibleCount": 21,
-    "duplicateExclusions": [
-      "Repository scrub removed four already-published exact postings: Cin7 c896656f, Egis 744000123769623, EY 1727886 / careers route 1416906133, and WNS 743999903984093.",
-      "Excluded published or previously reviewed routes for Cognizant AT-UG3-2026, AHEAD 3bfeee5c, QAD 744000161284809, Weekday a86efff4 and Fretron 743999812282138.",
-      "Excluded Endeavor and Konecranes employer-role variants after alias/role deduplication against prior repository records."
-    ],
-    "expiredOrHeld": [
-      "TCS All India NQT showed Registration Status: Closed; NTT R-146793 and two Monzo internships had passed application deadlines.",
-      "Deloitte 60808644 was held as the same employer-role family as owner-reviewed 60805744; Deloitte 61327244 required 3–6 years and 61544444 lacked sufficient zero-experience evidence.",
-      "Capgemini results were experienced or required more than one year; Cognizant AT-UG3-2026 was already published and other Cognizant listings were experienced or ambiguous.",
-      "Generic KPMG, PwC, Infosys, Wipro, HCLTech, IBM, CGI, LTIMindtree, LTTS, Mphasis, Persistent, Coforge, DXC, UST and Genpact program/search pages were not treated as requisition-bound live jobs.",
-      "Paytm wording was ambiguous; EJOBS and Jobgether obscured the hiring employer; international-only new-grad roles were held."
-    ],
-    "deloitteOutcome": "Deloitte: no new distinct verified fresher-eligible role. Requisition 60808644 was active and zero-experience eligible but held as the same Deloitte Intern - Income Tax Laws employer-role family as owner-reviewed requisition 60805744; 61327244 required 3–6 years and 61544444 lacked clear zero-experience evidence.",
-    "needsFreshDiscovery": true,
-    "note": "Final post-scrub 17 Nov review batch contains two new training candidates only. Four initially staged full-time roles were removed as already published. No website, data/jobs.json or Telegram action was authorized or performed.",
-    "repositoryPrecheck": {
-      "runId": 44011802149,
-      "duplicateScrub": "4 already-published exact postings removed; 2/20 unique candidates remained.",
-      "availability": "2 source-active, 0 source-closed, 0 unsure.",
-      "contentReadiness": "2/2 complete.",
-      "workflowConclusion": "success; validation, dedup, category, availability and content-preflight steps completed."
-    },
-    "notificationEvidence": {
-      "workflowRunId": 44011802154,
-      "workflowConclusion": "success",
-      "firebaseSendStep": "skipped",
-      "status": "not sent",
-      "reason": "The workflow verified the reviewing batch, but 'Notify registered admin devices and record result' was skipped; workflow success is not treated as delivery."
+    {
+      "id": "amex-26016405",
+      "company": "American Express",
+      "role": "Apprentice",
+      "loc": "Gurugram, Haryana, India (Hybrid)",
+      "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405",
+      "cat": "non-it",
+      "slotType": "internshipOrApprenticeship",
+      "expYears": "Apprenticeship; no prior experience requirement stated",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "The exact American Express requisition 26016405 loaded on 18 Nov with Gurugram hybrid location, bachelor's degree level, apprentice title and an apply-before time of 19 Nov 2026 6:30 PM.",
+      "postedDate": "11 Nov 2026",
+      "job": {
+        "company": "American Express",
+        "role": "Apprentice",
+        "loc": "Gurugram, Haryana, India (Hybrid)",
+        "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405",
+        "cat": "non-it",
+        "expType": "internship/apprenticeship",
+        "expYears": "Apprenticeship; no prior experience requirement stated",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "American Express Careers",
+        "desc": "Customer-service apprenticeship in Banking Servicing Network focused on resolving inquiries accurately through chat and supporting operational excellence.",
+        "elig": "Bachelor's degree; basic computer proficiency and ability to work effectively in a team. Applications close 19 Nov 2026 at 6:30 PM on the official page.",
+        "resp": [
+          "Resolve banking customer inquiries through chat.",
+          "Own customer issues through first-resolution efforts.",
+          "Use basic computer applications accurately.",
+          "Work with teammates while following service and risk controls."
+        ],
+        "skills": [
+          "Customer service",
+          "Written communication",
+          "Microsoft Office basics",
+          "Teamwork",
+          "Problem resolution"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "26016405",
+        "postedDate": "11 Nov 2026",
+        "verifiedDate": "18 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-18T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "The exact American Express requisition 26016405 loaded on 18 Nov with Gurugram hybrid location, bachelor's degree level, apprentice title and an apply-before time of 19 Nov 2026 6:30 PM."
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
+      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "reviewedAt": null,
+      "reviewedBy": null
     }
+  ],
+  "discoveryAudit": {
+    "runDate": "2026-11-18",
+    "timezone": "Asia/Kolkata",
+    "watchlistTotal": 87,
+    "watchlistVisited": 87,
+    "watchlistNotVisited": 0,
+    "watchlistBlocked": 3,
+    "fallbackEmployersVisited": 7,
+    "watchlistCandidatesAccepted": 5,
+    "fallbackCandidatesAccepted": 0,
+    "distinctEmployers": 5,
+    "uniqueExactLiveJobIdsFound": 9,
+    "verifiedForOwnerReview": 5,
+    "held": 12,
+    "expired": 3,
+    "duplicatesExcluded": 3,
+    "deloitteOutcome": "One new verified fresher-eligible Deloitte role reserved in Priority: requisition 116580, Business Tax internship in Delhi.",
+    "coverageNote": "All 87 named watchlist employers were individually queried in Deloitte-first order. Exact official pages were opened when surfaced; blocked or generic-only results were not counted as verified jobs.",
+    "exclusions": [
+      "Deloitte ITSM requisition 61600544 held: page says 0–2 years near the top but 4–5 years under Required Experience.",
+      "EY requisition 1749819 excluded as already present in repository review/publication history.",
+      "Micron JR105741 excluded as previously reviewed in the 15 Nov batch history.",
+      "NTT DATA R-151689 discarded because the exact official apply route returned 410 Gone.",
+      "Citi Gurugram apprentice 102940386720 discarded because the exact official route returned 404.",
+      "IKEA trainee 101079401088 discarded because the exact official route returned 404.",
+      "LTTS Superset campaign held because the surfaced route was a generic join page without a requisition-bound official posting.",
+      "Walmart R-2509924 held because the official Workday route remained inconclusive during the current check."
+    ],
+    "note": "No 20 October sample link was reused. This is a fresh 18 November discovery run. No publication, data/jobs.json, website or Telegram action is authorized."
   },
   "quotaAudit": {
-    "priority": {
-      "target": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      },
-      "actual": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 2
-      },
-      "shortfall": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 0
-      }
-    },
-    "backup": {
-      "target": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      },
-      "actual": {
-        "fresherTechnicalFullTime": 0,
-        "fresherNonTechnicalFullTime": 0,
-        "internshipOrApprenticeship": 0
-      },
-      "shortfall": {
-        "fresherTechnicalFullTime": 6,
-        "fresherNonTechnicalFullTime": 2,
-        "internshipOrApprenticeship": 2
-      }
-    },
-    "distinctEmployers": 2
-  },
-  "ranking": {
-    "method": "official-evidence-6-2-2-v3",
-    "rankedAt": "2026-11-17T03:30:00.000Z",
-    "target": {
+    "requiredPerList": {
       "fresherIT": 6,
       "nonIT": 2,
       "training": 2
     },
-    "selected": {
-      "fresherIT": 0,
+    "prioritySelected": {
+      "fresherIT": 1,
       "nonIT": 0,
       "training": 2
     },
     "backupSelected": {
       "fresherIT": 0,
       "nonIT": 0,
-      "training": 0
+      "training": 2
     },
     "shortfalls": {
       "priority": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
         "training": 0
       },
       "backup": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 2
+        "training": 0
       }
     },
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
   },
+  "ranking": {
+    "method": "Deloitte-first watchlist search, exact-source verification, independent duplicate scrub, quota audit and honest shortfall preservation",
+    "preferenceLearning": "Only the owner's final selection among owner-verified Live candidates may train ranking preference; Live/Expired/Unsure tagging alone must not."
+  },
   "previousBatchReference": {
-    "batchId": "2026-11-16-0900-ist",
+    "batchId": "2026-11-17-0900-ist",
     "status": "reviewing",
-    "generatedAt": "2026-11-16T03:30:00.000Z",
-    "updatedAt": "2026-11-16T03:39:00.000Z",
+    "generatedAt": "2026-11-17T03:30:00.000Z",
+    "updatedAt": "2026-11-17T03:40:00.000Z",
     "candidateIds": [
-      "ey-1745853",
-      "sphinxhire-3"
+      "tieto-744000161430139",
+      "highlevel-65ab785e"
     ],
     "priorHistory": {
-      "batchId": "2026-11-15-0900-ist",
+      "batchId": "2026-11-16-0900-ist",
       "status": "reviewing",
-      "generatedAt": "2026-11-15T03:30:00.000Z",
-      "updatedAt": "2026-11-15T03:35:00.000Z",
+      "generatedAt": "2026-11-16T03:30:00.000Z",
+      "updatedAt": "2026-11-16T03:39:00.000Z",
       "candidateIds": [
-        "deloitte-116227",
-        "eurofins-744000161242645",
-        "citi-261004756",
-        "micron-jr105741",
-        "prepsmarter-743999665738758",
-        "rigelsoft-743999832787600",
-        "emerson-26011142",
-        "ey-1752870",
-        "omnicom-6226452004",
-        "genpact-jr10030422"
+        "ey-1745853",
+        "sphinxhire-3"
       ],
       "priorHistory": {
-        "batchId": "2026-11-14-0900-ist",
+        "batchId": "2026-11-15-0900-ist",
         "status": "reviewing",
-        "generatedAt": "2026-11-14T03:30:00.000Z",
-        "updatedAt": "2026-11-14T03:30:00.000Z",
+        "generatedAt": "2026-11-15T03:30:00.000Z",
+        "updatedAt": "2026-11-15T03:35:00.000Z",
         "candidateIds": [
-          "deloitte-116858",
-          "trinet-3004263",
-          "aiprise-41af4efa",
-          "zycus-57694",
-          "endeavor-743999651515530",
-          "stripe-8212517",
-          "ey-1761018",
-          "accenture-aioc-s01651251",
-          "meraki-93ff65d2",
-          "weekday-a86efff4"
+          "deloitte-116227",
+          "eurofins-744000161242645",
+          "citi-261004756",
+          "micron-jr105741",
+          "prepsmarter-743999665738758",
+          "rigelsoft-743999832787600",
+          "emerson-26011142",
+          "ey-1752870",
+          "omnicom-6226452004",
+          "genpact-jr10030422"
         ],
         "priorHistory": {
-          "batchId": "2026-11-13-0900-ist",
+          "batchId": "2026-11-14-0900-ist",
           "status": "reviewing",
-          "generatedAt": "2026-11-13T03:30:00.000Z",
-          "updatedAt": "2026-11-13T03:30:00.000Z",
+          "generatedAt": "2026-11-14T03:30:00.000Z",
+          "updatedAt": "2026-11-14T03:30:00.000Z",
           "candidateIds": [
-            "deloitte-116959",
-            "citi-261001786",
-            "point72-8893939002",
-            "capgemini-578597",
-            "qualcomm-3094020",
-            "reliaquest-r15081-1",
-            "eurofins-744000141900959",
-            "cognizant-00070713951",
-            "qad-744000161284809",
-            "mongodb-8127582",
-            "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
+            "deloitte-116858",
+            "trinet-3004263",
+            "aiprise-41af4efa",
+            "zycus-57694",
+            "endeavor-743999651515530",
+            "stripe-8212517",
+            "ey-1761018",
+            "accenture-aioc-s01651251",
+            "meraki-93ff65d2",
+            "weekday-a86efff4"
           ],
           "priorHistory": {
-            "batchId": "2026-11-12-0900-ist",
-            "status": "submitted",
-            "submittedAt": "2026-11-12T04:49:30.498Z",
-            "publicationRequestId": "92e57bf2eaeb18347e953809",
-            "selectedCandidateIds": [
-              "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-              "cognizant-at-ug3-2026",
-              "icgmedical-5024601101",
-              "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
-              "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+            "batchId": "2026-11-13-0900-ist",
+            "status": "reviewing",
+            "generatedAt": "2026-11-13T03:30:00.000Z",
+            "updatedAt": "2026-11-13T03:30:00.000Z",
+            "candidateIds": [
+              "deloitte-116959",
+              "citi-261001786",
+              "point72-8893939002",
+              "capgemini-578597",
+              "qualcomm-3094020",
+              "reliaquest-r15081-1",
+              "eurofins-744000141900959",
+              "cognizant-00070713951",
+              "qad-744000161284809",
+              "mongodb-8127582",
+              "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
             ],
-            "publication": {
-              "candidateIds": [
+            "priorHistory": {
+              "batchId": "2026-11-12-0900-ist",
+              "status": "submitted",
+              "submittedAt": "2026-11-12T04:49:30.498Z",
+              "publicationRequestId": "92e57bf2eaeb18347e953809",
+              "selectedCandidateIds": [
                 "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
                 "cognizant-at-ug3-2026",
                 "icgmedical-5024601101",
                 "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
                 "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
               ],
-              "companies": [
-                "AHEAD",
-                "Cognizant",
-                "ICG Medical",
-                "JobTwine",
-                "Paytm Payments Services"
-              ],
-              "urls": [
-                "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-                "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
-                "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
-                "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
-                "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
-              ],
-              "requestId": "92e57bf2eaeb18347e953809",
-              "count": 5,
-              "submittedAt": "2026-11-12T04:49:30.498Z"
+              "publication": {
+                "candidateIds": [
+                  "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+                  "cognizant-at-ug3-2026",
+                  "icgmedical-5024601101",
+                  "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
+                  "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+                ],
+                "companies": [
+                  "AHEAD",
+                  "Cognizant",
+                  "ICG Medical",
+                  "JobTwine",
+                  "Paytm Payments Services"
+                ],
+                "urls": [
+                  "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+                  "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
+                  "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
+                  "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
+                  "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+                ],
+                "requestId": "92e57bf2eaeb18347e953809",
+                "count": 5,
+                "submittedAt": "2026-11-12T04:49:30.498Z"
+              },
+              "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
             },
-            "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
+            "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
           },
-          "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+          "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
         },
-        "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+        "note": "Preserved 15 Nov review batch and earlier approval/history chain; no publication or Telegram receipts were modified."
       },
-      "note": "Preserved 15 Nov review batch and earlier approval/history chain; no publication or Telegram receipts were modified."
-    },
-    "note": "Preserved the 16 Nov review batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
+      "note": "Preserved the 16 Nov review batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
+    }
   }
 }
