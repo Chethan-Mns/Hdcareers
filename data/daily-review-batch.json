@@ -55,9 +55,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact HP Workday requisition 3166324 loaded on 18 Nov as a full-time Mumbai/Pune role and explicitly states typically 0–2 years of experience."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
-      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-18T03:31:24.088116+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -79,7 +79,7 @@
         "role": "Intern - Compliance, Assessment & Research, Advisory Services & Tax Controversy Management",
         "loc": "Delhi, India",
         "apply": "https://southasiacareers.deloitte.com/job/Delhi-Intern-Compliance%2C-Assessment-%26-Research%2C-Advisory-Services-%26-Tax-Controversy-Management%2C-Litigati/61610244/",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "internship/apprenticeship",
         "expYears": "Internship; no prior experience requirement stated",
         "salary": "Not Disclosed",
@@ -112,9 +112,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Deloitte South Asia requisition 116580 loaded on 18 Nov with an Apply route, Delhi location, internship duties and graduate/postgraduate eligibility; it states no prior-experience minimum."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
-      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-18T03:31:24.088116+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -136,7 +136,7 @@
         "role": "Young Apprentice - C00",
         "loc": "Chennai, Tamil Nadu, India",
         "apply": "https://jobs.citi.com/job/chennai/young-apprentice-c00/287/102161079536",
-        "cat": "non-it",
+        "cat": "nonit",
         "expType": "internship/apprenticeship",
         "expYears": "Apprenticeship; previous experience preferred, not required",
         "salary": "Not Disclosed",
@@ -169,9 +169,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Citi Careers page loaded on 18 Nov with an active apprenticeship description, Chennai operations duties, high-school/equivalent education and previous experience marked preferred rather than required."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
-      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-18T03:31:24.088116+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -228,99 +228,58 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "The exact Honeywell requisition 160864 loaded on 18 Nov with Pune location, 17 Nov posting date, full-time internship schedule and current-bachelor's eligibility."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
-      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "amex-26016405",
-      "company": "American Express",
-      "role": "Apprentice",
-      "loc": "Gurugram, Haryana, India (Hybrid)",
-      "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405",
-      "cat": "non-it",
-      "slotType": "internshipOrApprenticeship",
-      "expYears": "Apprenticeship; no prior experience requirement stated",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "The exact American Express requisition 26016405 loaded on 18 Nov with Gurugram hybrid location, bachelor's degree level, apprentice title and an apply-before time of 19 Nov 2026 6:30 PM.",
-      "postedDate": "11 Nov 2026",
-      "job": {
-        "company": "American Express",
-        "role": "Apprentice",
-        "loc": "Gurugram, Haryana, India (Hybrid)",
-        "apply": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405",
-        "cat": "non-it",
-        "expType": "internship/apprenticeship",
-        "expYears": "Apprenticeship; no prior experience requirement stated",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "American Express Careers",
-        "desc": "Customer-service apprenticeship in Banking Servicing Network focused on resolving inquiries accurately through chat and supporting operational excellence.",
-        "elig": "Bachelor's degree; basic computer proficiency and ability to work effectively in a team. Applications close 19 Nov 2026 at 6:30 PM on the official page.",
-        "resp": [
-          "Resolve banking customer inquiries through chat.",
-          "Own customer issues through first-resolution efforts.",
-          "Use basic computer applications accurately.",
-          "Work with teammates while following service and risk controls."
-        ],
-        "skills": [
-          "Customer service",
-          "Written communication",
-          "Microsoft Office basics",
-          "Teamwork",
-          "Problem resolution"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "26016405",
-        "postedDate": "11 Nov 2026",
-        "verifiedDate": "18 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 18 Nov 2026 and independently searched against current data/jobs.json, the active batch, archived review batches, employer-role aliases, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-18T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "The exact American Express requisition 26016405 loaded on 18 Nov with Gurugram hybrid location, bachelor's degree level, apprentice title and an apply-before time of 19 Nov 2026 6:30 PM."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Exact official requisition page is currently reachable and contains quota-relevant eligibility evidence; no matching saved/reviewed/published/queued/Telegram record was found in the fresh scrub.",
-      "precheckCheckedAt": "2026-11-18T03:30:00.000Z",
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-18T03:31:24.088116+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
-    "runDate": "2026-11-18",
-    "timezone": "Asia/Kolkata",
-    "watchlistTotal": 87,
-    "watchlistVisited": 87,
-    "watchlistNotVisited": 0,
-    "watchlistBlocked": 3,
-    "fallbackEmployersVisited": 7,
-    "watchlistCandidatesAccepted": 5,
-    "fallbackCandidatesAccepted": 0,
-    "distinctEmployers": 5,
-    "uniqueExactLiveJobIdsFound": 9,
-    "verifiedForOwnerReview": 5,
-    "held": 12,
-    "expired": 3,
-    "duplicatesExcluded": 3,
-    "deloitteOutcome": "One new verified fresher-eligible Deloitte role reserved in Priority: requisition 116580, Business Tax internship in Delhi.",
-    "coverageNote": "All 87 named watchlist employers were individually queried in Deloitte-first order. Exact official pages were opened when surfaced; blocked or generic-only results were not counted as verified jobs.",
-    "exclusions": [
-      "Deloitte ITSM requisition 61600544 held: page says 0–2 years near the top but 4–5 years under Required Experience.",
-      "EY requisition 1749819 excluded as already present in repository review/publication history.",
-      "Micron JR105741 excluded as previously reviewed in the 15 Nov batch history.",
-      "NTT DATA R-151689 discarded because the exact official apply route returned 410 Gone.",
-      "Citi Gurugram apprentice 102940386720 discarded because the exact official route returned 404.",
-      "IKEA trainee 101079401088 discarded because the exact official route returned 404.",
-      "LTTS Superset campaign held because the surfaced route was a generic join page without a requisition-bound official posting.",
-      "Walmart R-2509924 held because the official Workday route remained inconclusive during the current check."
+    "priority": {
+      "size": 3,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 1
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 1,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 1,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 1
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 4,
+    "duplicateExclusions": [
+      {
+        "id": "amex-26016405",
+        "company": "American Express",
+        "reason": "already_published",
+        "officialUrl": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405"
+      }
     ],
-    "note": "No 20 October sample link was reused. This is a fresh 18 November discovery run. No publication, data/jobs.json, website or Telegram action is authorized."
+    "excludedCount": 1,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
