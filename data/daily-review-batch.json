@@ -236,16 +236,33 @@
     }
   ],
   "discoveryAudit": {
+    "runDate": "2026-11-18",
+    "timezone": "Asia/Kolkata",
+    "watchlistTotal": 87,
+    "watchlistVisited": 87,
+    "watchlistNotVisited": 0,
+    "watchlistBlocked": 3,
+    "fallbackEmployersVisited": 7,
+    "watchlistCandidatesAccepted": 4,
+    "fallbackCandidatesAccepted": 0,
+    "distinctEmployers": 4,
+    "uniqueExactLiveJobIdsFound": 9,
+    "stagedForOwnerRecheck": 4,
+    "held": 12,
+    "expired": 3,
+    "duplicatesExcluded": 4,
+    "deloitteOutcome": "One new Deloitte role retained in Priority: requisition 116580, Business Tax internship in Delhi. The repository checker marked it Unsure because it could not prove the application route from its own probe; the official page content was independently readable on 18 Nov and it remains for owner recheck, not asserted as owner-verified Live.",
+    "coverageNote": "All 87 named watchlist employers were individually queried in Deloitte-first order. Exact official pages were opened when surfaced; blocked, contradictory, generic-only or experience-only results were not promoted.",
     "priority": {
       "size": 3,
       "counts": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
         "training": 0
       }
@@ -268,7 +285,8 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 4,
+    "remaining": 16,
+    "needsFreshDiscovery": true,
     "duplicateExclusions": [
       {
         "id": "amex-26016405",
@@ -277,9 +295,14 @@
         "officialUrl": "https://careers.americanexpress.com/en/sites/CX_1/job/26016405"
       }
     ],
-    "excludedCount": 1,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "exclusions": [
+      "American Express 26016405 removed by the repository scrub as already published.",
+      "Deloitte ITSM 61600544 held: contradictory 0–2 and 4–5 year requirements.",
+      "EY 1749819 and Micron JR105741 excluded as prior records.",
+      "NTT DATA R-151689, Citi 102940386720 and IKEA 101079401088 discarded after 410/404 current routes.",
+      "LTTS generic Superset route and Walmart R-2509924 held as inconclusive."
+    ],
+    "note": "Fresh 18 November discovery only; no 20 October sample reuse. Incomplete shortlists are reported, never padded. No publication, data/jobs.json, website or Telegram action is authorized."
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -295,7 +318,7 @@
     "backupSelected": {
       "fresherIT": 0,
       "nonIT": 0,
-      "training": 2
+      "training": 1
     },
     "shortfalls": {
       "priority": {
@@ -306,7 +329,7 @@
       "backup": {
         "fresherIT": 6,
         "nonIT": 2,
-        "training": 0
+        "training": 1
       }
     },
     "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
