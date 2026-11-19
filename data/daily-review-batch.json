@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:10:53.448Z",
+  "updatedAt": "2026-11-19T06:11:18.003Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -369,7 +369,7 @@
       "cat": "it",
       "slotType": "fresherIT",
       "expYears": "0–2 years; fresh graduates eligible",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact employer ATS posting 366216 loaded on 19 Nov as a remote India entry-level full-stack role explicitly open to fresh graduates and candidates with 0–2 years.",
       "postedDate": "Open on 19 Nov 2026",
@@ -383,7 +383,7 @@
         "expYears": "0–2 years; fresh graduates eligible",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "Bornwest PyjamaHR",
         "desc": "Entry-level full-stack software role building customer-facing product features across Ruby on Rails, REST APIs, PostgreSQL and React.",
         "elig": "B.Tech, BCA or B.Sc in Computer Science, IT, ECE or a related field; fresh graduates or candidates with 0–2 years are eligible.",
@@ -404,7 +404,9 @@
         "jobId": "366216",
         "postedDate": "Open on 19 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:11:18.003Z",
+        "browserVerifiedAt": "2026-11-19T06:11:18.003Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -414,8 +416,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "Redirected source requires browser/ATS verification",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:11:18.003Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "citi-26993290",
