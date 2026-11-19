@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:12:08.960Z",
+  "updatedAt": "2026-11-19T06:12:22.555Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -485,7 +485,7 @@
       "cat": "non-it",
       "slotType": "nonIT",
       "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact HP Workday requisition 3165405 loaded on 19 Nov as a full-time Bengaluru Financial Analyst role explicitly listing 0–2 years.",
       "postedDate": "Posted about 20 days before 19 Nov 2026",
@@ -499,7 +499,7 @@
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "expired",
         "sourceName": "HP Workday",
         "desc": "Entry-level finance role analyzing results, supporting budgeting and forecasting, reconciling reports and providing stakeholder insights.",
         "elig": "Four-year degree in Business Administration, Economics, Finance or a related discipline, with 0–2 years of experience.",
@@ -530,8 +530,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 429; availability unconfirmed",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:12:22.555Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "gehealthcare-r4045952",
