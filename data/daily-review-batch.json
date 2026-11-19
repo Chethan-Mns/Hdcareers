@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:10:27.186Z",
+  "updatedAt": "2026-11-19T06:10:41.289Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -249,7 +249,7 @@
       "cat": "non-it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Apprenticeship; student/recent-graduate pathway",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact American Express requisition 26016754 loaded on 19 Nov as a Bengaluru hybrid Finance apprenticeship posted 18 Nov, with applications listed through 25 Nov.",
       "postedDate": "18 Nov 2026",
@@ -263,7 +263,7 @@
         "expYears": "Apprenticeship; student/recent-graduate pathway",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "American Express Careers",
         "desc": "Finance apprenticeship offering structured entry-level experience supporting reporting, analysis and operational finance activities.",
         "elig": "Applicants eligible for the listed apprenticeship pathway; the exact posting is open through the stated 25 Nov deadline and does not impose a 1+ year experience minimum.",
@@ -284,7 +284,9 @@
         "jobId": "26016754",
         "postedDate": "18 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:10:41.289Z",
+        "browserVerifiedAt": "2026-11-19T06:10:41.289Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -294,8 +296,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:10:41.289Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "google-96299220855595718",
