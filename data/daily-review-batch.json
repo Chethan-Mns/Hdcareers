@@ -635,39 +635,22 @@
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 6,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 2,
-        "training": 2,
-        "unclassified": 2
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 0,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 5,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 2,
-        "training": 2,
-        "unclassified": 1
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 0,
-        "training": 0
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 11,
+    "runDate": "2026-11-19",
+    "timezone": "Asia/Kolkata",
+    "watchlistTotal": 87,
+    "watchlistVisited": 87,
+    "watchlistNotVisited": 0,
+    "watchlistBlocked": 3,
+    "fallbackEmployersVisited": 11,
+    "watchlistCandidatesAccepted": 8,
+    "fallbackCandidatesAccepted": 3,
+    "distinctEmployers": 11,
+    "uniqueExactLiveJobIdsFound": 29,
+    "stagedForOwnerRecheck": 11,
+    "held": 10,
+    "expired": 1,
+    "duplicatesExcluded": 8,
+    "deloitteOutcome": "One new Deloitte role retained in Priority: requisition 114836, A&A Analyst - External Audit CEC in Kolkata. The exact official posting is fresher-compatible and no second Deloitte alias is included.",
     "duplicateExclusions": [
       "Micron Technology JR112672",
       "AiPrise 3763c791-a387-4078-9ca4-00cbfbf9b1a6",
@@ -678,9 +661,30 @@
       "Amazon 10498163",
       "Amazon 10541345"
     ],
-    "excludedCount": 8,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "expiredExclusions": [
+      {
+        "id": "nttdata-r151690",
+        "company": "NTT DATA",
+        "reason": "exact_official_route_410_gone",
+        "officialUrl": "https://careers.nttdata.com/global/en/job/R-151690"
+      }
+    ],
+    "heldExclusions": [
+      "Deloitte 115670 held because zero-experience eligibility was not explicit enough for a technical slot.",
+      "Deloitte 112915 rejected for a 2–4 year requirement.",
+      "Caterpillar R0000405454 rejected for a 7+ year requirement.",
+      "Nokia Applied R&D Engineer held because the exact role described experienced L2/L3 networking work.",
+      "Experian 744000141837249 held because the current country/location could not be confirmed as India.",
+      "HackerRank AI Researcher Intern held for a stated 2–3 years of experience.",
+      "GE HealthCare R4048338, R4044668 and R4044790 held by the one-employer rule after selecting R4045952.",
+      "Oracle 350288 held behind stronger non-tech candidates and because it is a contractor role."
+    ],
+    "exclusions": [
+      "The independent scrub covered normalized exact URLs, ATS requisition IDs, employer aliases plus role, current and expired published jobs, archived reviews, queued publications and Telegram receipts.",
+      "NTT DATA R-151690 was not mislabeled from an aggregator snapshot; its exact official route returned 410 Gone and was excluded.",
+      "No technical shortage was filled with an internship, apprenticeship, trainee title, duplicate or 1+ year role."
+    ],
+    "note": "Fresh 19 November discovery only; no 20 October sample reuse. Incomplete technical shortlists are reported, never padded. No publication, data/jobs.json, website or Telegram action is authorized."
   },
   "quotaAudit": {
     "requiredPerList": {
