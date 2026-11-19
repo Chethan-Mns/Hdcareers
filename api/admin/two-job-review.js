@@ -1,3 +1,4 @@
+import {decodeGitHubJSON} from "../../lib/github-large-json.js";
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import {redis,audit} from "../../lib/admin-store.js";
 import crypto from "node:crypto";
@@ -12,7 +13,11 @@ async function readStaged(){
  const r=await fetch(ROOT+"/contents/"+SOURCE+"?ref=main",{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(8000)});
  if(!r.ok)throw Error("Staged job draft unavailable: "+r.status);
  const file=await r.json();
- const data=JSON.parse(Buffer.from(file.content.split(String.fromCharCode(10)).join(""),"base64").toString());
+ const data=await decodeGitHubJSON(file,async sha=>{
+   const blob=await fetch(ROOT+"/git/blobs/"+encodeURIComponent(sha),{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(12000)});
+   if(!blob.ok)throw Error("Staged source blob unavailable: "+blob.status);
+   return blob.json();
+ },SOURCE);
  if(!Array.isArray(data.jobs)||data.jobs.length!==2||data.publishAuthorized!==false)throw Error("Invalid staging snapshot");
  return data;
 }
@@ -42,7 +47,12 @@ export default async function handler(req,res){
    const source=async path=>{
     const r=await fetch(ROOT+"/contents/"+path+"?ref=main",{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(8000)});
     if(!r.ok)throw Error("Could not read "+path);
-    const v=await r.json();return JSON.parse(Buffer.from(v.content.split(String.fromCharCode(10)).join(""),"base64").toString());
+    const v=await r.json();
+    return decodeGitHubJSON(v,async sha=>{
+      const blob=await fetch(ROOT+"/git/blobs/"+encodeURIComponent(sha),{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"},signal:AbortSignal.timeout(12000)});
+      if(!blob.ok)throw Error("Could not read full "+path+" blob: "+blob.status);
+      return blob.json();
+    },path);
    };
    try{
     const [jobs,ledger]=await Promise.all([source("data/jobs.json"),source("data/telegram-deliveries.json")]);

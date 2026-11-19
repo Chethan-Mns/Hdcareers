@@ -1,3 +1,4 @@
+import {decodeGitHubJSON} from "../../lib/github-large-json.js";
 import {requireAdmin} from "../../lib/admin-auth.js";
 
 const REPO="Chethan-Mns/Hdcareers";
@@ -27,7 +28,7 @@ async function github(path,token,options={}){
   }
   return data;
 }
-function decode(file){return JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"))}
+async function decode(file,label,token){return decodeGitHubJSON(file,sha=>github("/git/blobs/"+encodeURIComponent(sha),token),label)}
 function validJob(j){
   return !!(j&&Number.isInteger(Number(j.id))&&j.status==="active"&&
     /^jobs\/[a-z0-9][a-z0-9/_-]*\.html$/i.test(String(j.page||""))&&
@@ -40,8 +41,8 @@ async function load(base,token){
     github("/contents/"+JOBS+"?ref="+encodeURIComponent(base),token),
     github("/contents/"+PICK+"?ref="+encodeURIComponent(base),token)
   ]);
-  const jobs=decode(jobsFile).filter(validJob).sort((a,b)=>Number(b.id)-Number(a.id));
-  const selection=decode(pickFile);
+  const jobs=(await decode(jobsFile,JOBS,token)).filter(validJob).sort((a,b)=>Number(b.id)-Number(a.id));
+  const selection=await decode(pickFile,PICK,token);
   return {jobs,selection:selection&&typeof selection==="object"?selection:empty(),sha:pickFile.sha};
 }
 function cleanSelection(selection,jobs){

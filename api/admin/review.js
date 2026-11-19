@@ -1,3 +1,4 @@
+import {decodeGitHubJSON} from "../../lib/github-large-json.js";
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO="Chethan-Mns/Hdcareers";
@@ -36,8 +37,8 @@ async function github(path,token,options={}){
   return data;
 }
 
-function decode(file){
-  return JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
+async function decode(file,label,token){
+  return decodeGitHubJSON(file,sha=>github("/git/blobs/"+encodeURIComponent(sha),token),label);
 }
 
 function recompute(summary){
@@ -93,9 +94,9 @@ async function readState(base,token){
 
   return {
     headSha,
-    jobs:decode(jobsFile),
-    summary:decode(statusFile),
-    reviewQueue:decode(reviewFile)
+    jobs:await decode(jobsFile,JOBS_PATH,token),
+    summary:await decode(statusFile,STATUS_PATH,token),
+    reviewQueue:await decode(reviewFile,REVIEW_PATH,token)
   };
 }
 

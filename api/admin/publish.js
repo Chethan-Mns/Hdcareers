@@ -1,3 +1,4 @@
+import {decodeGitHubJSON} from "../../lib/github-large-json.js";
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 import {selectCandidates,employerKey} from "../../lib/review-rules.js";
 import {attachReviewedProof} from "../../lib/review-publish-proof.js";
@@ -184,7 +185,7 @@ export default async function handler(req,res){
     const readJson=async(path,defaultValue)=>{
       try{
         const doc=await github("/contents/"+path+"?ref="+encodeURIComponent(base),token);
-        return JSON.parse(Buffer.from(String(doc.content||"").replace(/\n/g,""),"base64").toString("utf8"));
+        return await decodeGitHubJSON(doc,sha=>github("/git/blobs/"+encodeURIComponent(sha),token),path);
       }catch(e){if(e.status===404&&defaultValue!==undefined)return defaultValue;throw e}
     };
     if(req.method==="GET"){
@@ -351,8 +352,7 @@ export default async function handler(req,res){
     const reviewed=fromReview?attachReviewedProof(normalized,reviewBatch,selectedIds):normalized;
     reviewed.forEach(validateJob);
 
-    const file=await github("/contents/data/jobs.json?ref="+encodeURIComponent(base),token);
-    const current=JSON.parse(Buffer.from(String(file.content||"").replace(/\n/g,""),"base64").toString("utf8"));
+    const current=await readJson("data/jobs.json");
     if(!Array.isArray(current))throw new Error("data/jobs.json is not a JSON array.");
 
     const existingUrls=new Set(current.map(j=>normalizeUrl(j.apply)));

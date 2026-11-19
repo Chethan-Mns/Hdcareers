@@ -1,3 +1,4 @@
+import {decodeGitHubJSON} from "../../lib/github-large-json.js";
 import {requireAdmin,auditMutation} from "../../lib/admin-auth.js";
 
 const DEFAULT_REPO="Chethan-Mns/Hdcareers";
@@ -118,7 +119,7 @@ export default async function handler(req,res){
     const trigger=file?decodeFile(file):{};
     const checker=statusFile?decodeFile(statusFile):{};
     const reviewQueue=reviewFile?decodeFile(reviewFile):[];
-    const jobs=jobsFile?decodeFile(jobsFile):[];
+    const jobs=jobsFile?await decodeGitHubJSON(jobsFile,sha=>github("/git/blobs/"+encodeURIComponent(sha),token),"data/jobs.json"):[];
     const publishedUrls=new Set((Array.isArray(jobs)?jobs:[])
       .map(j=>String(j.apply||"").trim().toLowerCase()).filter(Boolean));
     const pendingReviews=(Array.isArray(reviewQueue)?reviewQueue:[])
