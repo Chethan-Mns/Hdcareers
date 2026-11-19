@@ -1997,25 +1997,27 @@
     {
       "page": "jobs/american-express-apprentice-finance.html",
       "batchId": "admin-44493109210",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-19T09:05:05.354189+00:00",
       "dueAt": "2026-11-19T09:05:05.354189+00:00",
       "claimId": "44493109210",
-      "claimedAt": "2026-11-19T09:05:39.773966+00:00"
+      "claimedAt": "2026-11-19T09:05:39.773966+00:00",
+      "messageId": 723,
+      "deliveredAt": "2026-11-19T09:06:04.455978+00:00"
     },
     {
       "page": "jobs/deloitte-a-a-analyst-external-audit-cec.html",
       "batchId": "admin-44493109210",
       "status": "pending",
       "queuedAt": "2026-11-19T09:05:05.354189+00:00",
-      "dueAt": "2026-11-19T09:05:05.354189+00:00"
+      "dueAt": "2026-11-19T10:06:04.455978+00:00"
     },
     {
       "page": "jobs/ey-associate-analyst-transfer-pricing-2.html",
       "batchId": "admin-44493109210",
       "status": "pending",
       "queuedAt": "2026-11-19T09:05:05.354189+00:00",
-      "dueAt": "2026-11-19T09:05:05.354189+00:00"
+      "dueAt": "2026-11-19T11:06:04.455978+00:00"
     }
   ]
 }
