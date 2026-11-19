@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "12 November 2026",
-  "active": 223,
+  "verifiedThrough": "19 November 2026",
+  "active": 226,
   "employers": 144,
-  "freshers": 204,
+  "freshers": 207,
   "experienced": 16,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 76
+      "count": 78
     },
     {
       "label": "Hyderabad",
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 76
+      "count": 78
     },
     {
       "city": "Hyderabad",
@@ -94,6 +94,12 @@
       "count": 5
     },
     {
+      "city": "Kolkata",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "count": 3
+    },
+    {
       "city": "Chennai",
       "lat": 13.0827,
       "lng": 80.2707,
@@ -110,12 +116,6 @@
       "lat": 9.9252,
       "lng": 78.1198,
       "count": 3
-    },
-    {
-      "city": "Kolkata",
-      "lat": 22.5726,
-      "lng": 88.3639,
-      "count": 2
     },
     {
       "city": "Jaipur",
@@ -139,7 +139,7 @@
   "topCompanies": [
     {
       "name": "EY",
-      "count": 11,
+      "count": 12,
       "logo": "assets/company-approved/ey.webp"
     },
     {
@@ -148,14 +148,14 @@
       "logo": "assets/company-approved/amazon-owner-20261019.png"
     },
     {
+      "name": "Deloitte",
+      "count": 9,
+      "logo": "assets/company-icons/deloitte-b9f6b19.png"
+    },
+    {
       "name": "Accenture",
       "count": 9,
       "logo": "assets/company-icons/accenture-05dffab.png"
-    },
-    {
-      "name": "Deloitte",
-      "count": 8,
-      "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
       "name": "HCLTech",
@@ -213,7 +213,7 @@
     },
     {
       "label": "Communication",
-      "count": 20
+      "count": 22
     },
     {
       "label": "REST APIs",
@@ -236,8 +236,12 @@
       "count": 13
     },
     {
+      "label": "Excel",
+      "count": 12
+    },
+    {
       "label": "Documentation",
-      "count": 11
+      "count": 12
     },
     {
       "label": "C++",
@@ -248,11 +252,7 @@
       "count": 11
     },
     {
-      "label": "Excel",
-      "count": 11
-    },
-    {
-      "label": "English communication",
+      "label": "Attention to detail",
       "count": 9
     }
   ],
@@ -263,7 +263,7 @@
     },
     {
       "label": "nonit",
-      "count": 56
+      "count": 59
     },
     {
       "label": "internship",
@@ -438,6 +438,10 @@
     {
       "date": "2026-11-12",
       "count": 5
+    },
+    {
+      "date": "2026-11-19",
+      "count": 3
     }
   ]
 }
