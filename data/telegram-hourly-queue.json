@@ -2018,9 +2018,11 @@
     {
       "page": "jobs/ey-associate-analyst-transfer-pricing-2.html",
       "batchId": "admin-44493109210",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-19T09:05:05.354189+00:00",
-      "dueAt": "2026-11-19T11:06:23.527124+00:00"
+      "dueAt": "2026-11-19T11:06:23.527124+00:00",
+      "claimId": "44511769946",
+      "claimedAt": "2026-11-19T11:06:33.197433+00:00"
     }
   ]
 }
