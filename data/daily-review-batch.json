@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:09:57.107Z",
+  "updatedAt": "2026-11-19T06:10:27.186Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -190,7 +190,7 @@
       "cat": "non-it",
       "slotType": "nonIT",
       "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact EY requisition 1760671 loaded on 19 Nov with a 12 Nov posting date, Bachelor of Commerce requirement and explicit 0–1 years eligibility.",
       "postedDate": "12 Nov 2026",
@@ -204,7 +204,7 @@
         "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "EY Careers",
         "desc": "Entry-level tax analyst role supporting transfer-pricing documentation, financial analysis, benchmarking and compliance work.",
         "elig": "Bachelor of Commerce with 0–1 years of experience and foundational accounting, taxation and transfer-pricing knowledge.",
@@ -225,7 +225,9 @@
         "jobId": "1760671",
         "postedDate": "12 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:10:27.186Z",
+        "browserVerifiedAt": "2026-11-19T06:10:27.186Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -235,8 +237,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:10:27.186Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "amex-26016754",
