@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:11:36.406Z",
+  "updatedAt": "2026-11-19T06:11:46.097Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -426,7 +426,7 @@
       "cat": "non-it",
       "slotType": "nonIT",
       "expYears": "Entry level; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact Citi requisition 26993290 loaded on 19 Nov as a Chennai hybrid entry-level Operations Support Analyst role posted 11 Nov, with no stated prior-experience minimum.",
       "postedDate": "11 Nov 2026",
@@ -440,7 +440,7 @@
         "expYears": "Entry level; no prior experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "Citi Careers",
         "desc": "Entry-level operations role supporting records, account maintenance, imaging and day-to-day service processes.",
         "elig": "Entry-level applicants able to follow operations controls, maintain records and communicate with internal stakeholders; no 1+ year experience minimum is stated.",
@@ -461,7 +461,9 @@
         "jobId": "26993290",
         "postedDate": "11 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:11:46.097Z",
+        "browserVerifiedAt": "2026-11-19T06:11:46.097Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -471,8 +473,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:11:46.097Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "hp-3165405",
