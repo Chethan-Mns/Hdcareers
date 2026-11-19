@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:12:22.555Z",
+  "updatedAt": "2026-11-19T06:12:41.696Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -599,7 +599,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Current bachelor's student; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact Honeywell requisition 160484 loaded on 19 Nov with Bengaluru location, full-time schedule and current-bachelor's eligibility; it is distinct from previously reviewed Honeywell requisition 160864.",
       "postedDate": "26 Oct 2026",
@@ -613,7 +613,7 @@
         "expYears": "Current bachelor's student; no prior experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "Honeywell Careers",
         "desc": "Software-engineering internship contributing to development work, code reviews and cross-functional solution design.",
         "elig": "Currently enrolled in a bachelor's program in Software Engineering or a related field with a basic understanding of software-development principles.",
@@ -634,7 +634,9 @@
         "jobId": "160484",
         "postedDate": "26 Oct 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:12:41.696Z",
+        "browserVerifiedAt": "2026-11-19T06:12:41.696Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -644,8 +646,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:12:41.696Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "discoveryAudit": {
