@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:11:46.097Z",
+  "updatedAt": "2026-11-19T06:12:08.960Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -542,7 +542,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Current B.Tech/M.Tech student; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "expired",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact GE HealthCare requisition R4045952 loaded on 19 Nov as a Bengaluru Digital Technology internship for eligible B.Tech/M.Tech students with academic criteria and no prior-experience minimum.",
       "postedDate": "Open on 19 Nov 2026",
@@ -556,7 +556,7 @@
         "expYears": "Current B.Tech/M.Tech student; no prior experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "expired",
         "sourceName": "GE HealthCare Careers",
         "desc": "Digital-technology internship supporting software, data or IT initiatives while applying computer-science and AI/ML coursework in a healthcare environment.",
         "elig": "B.Tech or M.Tech in Computer Science, AI/ML or a related field with at least 70% or 7 CGPA and no active backlogs.",
@@ -587,8 +587,8 @@
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 410; availability unconfirmed",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:12:08.960Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "honeywell-160484",
