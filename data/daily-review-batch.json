@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:09:38.301Z",
+  "updatedAt": "2026-11-19T06:09:45.863Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -72,7 +72,7 @@
       "cat": "it",
       "slotType": "fresherIT",
       "expYears": "Entry level; no prior experience minimum stated",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact Hevo Lever requisition loaded on 19 Nov as a full-time Associate SDE role requiring foundational programming, APIs and data-structure knowledge without a prior-experience minimum.",
       "postedDate": "Open on 19 Nov 2026",
@@ -86,7 +86,7 @@
         "expYears": "Entry level; no prior experience minimum stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "Hevo Data Lever",
         "desc": "Entry-level backend engineering role implementing SaaS connectors, REST components, tests and internal tools under mentorship.",
         "elig": "B.Tech in Computer Science or equivalent, object-oriented programming fundamentals, Java/TypeScript/Python and foundational REST/API knowledge; no prior-experience minimum is stated.",
@@ -107,7 +107,9 @@
         "jobId": "4eccaf98-ba19-42ea-b040-e0976d4dadfe",
         "postedDate": "Open on 19 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:09:45.862Z",
+        "browserVerifiedAt": "2026-11-19T06:09:45.862Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -117,8 +119,8 @@
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:09:45.862Z",
+      "reviewedBy": "HD Careers Admin"
     },
     {
       "id": "deloitte-114836",
