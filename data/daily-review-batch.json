@@ -1,8 +1,8 @@
 {
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
-  "status": "reviewing",
-  "updatedAt": "2026-11-19T08:59:12.279Z",
+  "status": "submitted",
+  "updatedAt": "2026-11-19T09:04:46.174Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -867,5 +867,26 @@
       }
     },
     "note": "Preserved the 18 Nov reviewing batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
+  },
+  "submittedAt": "2026-11-19T09:04:46.174Z",
+  "publication": {
+    "candidateIds": [
+      "amex-26016754",
+      "deloitte-114836",
+      "ey-1760671"
+    ],
+    "companies": [
+      "American Express",
+      "Deloitte",
+      "EY"
+    ],
+    "urls": [
+      "https://careers.americanexpress.com/en/sites/CX_1/job/26016754/",
+      "https://southasiacareers.deloitte.com/job/Kolkata-A%26A-Analyst-Ext-Audit-CEC-Kolkata-External-Audit/60548244/",
+      "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456886433/"
+    ],
+    "requestId": "68125da99640c1914ff41709",
+    "count": 3,
+    "submittedAt": "2026-11-19T09:04:46.174Z"
   }
 }
