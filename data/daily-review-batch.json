@@ -2,7 +2,7 @@
   "batchId": "2026-11-19-0900-ist",
   "generatedAt": "2026-11-19T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-19T06:10:41.289Z",
+  "updatedAt": "2026-11-19T06:10:53.448Z",
   "priority": [
     {
       "id": "clarivate-jreq136989",
@@ -308,7 +308,7 @@
       "cat": "it",
       "slotType": "internshipOrApprenticeship",
       "expYears": "Penultimate-year bachelor's or master's student",
-      "reviewedStatus": "unreviewed",
+      "reviewedStatus": "live",
       "verificationVerdict": "pending_owner_review",
       "verificationReason": "The exact Google Careers route loaded on 19 Nov as a Bengaluru 2027 internship for penultimate-year bachelor's or master's students in computer science, engineering or a related field.",
       "postedDate": "Open on 19 Nov 2026",
@@ -322,7 +322,7 @@
         "expYears": "Penultimate-year bachelor's or master's student",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
-        "status": "unreviewed",
+        "status": "active",
         "sourceName": "Google Careers",
         "desc": "Cloud and AI engineering internship building production-grade agentic solutions, APIs, data pipelines and evaluation frameworks with customer engineering teams.",
         "elig": "Currently pursuing a bachelor's or master's degree in a related technical field and enrolled in the penultimate academic year; Python, data structures and algorithms are required.",
@@ -343,7 +343,9 @@
         "jobId": "96299220855595718",
         "postedDate": "Open on 19 Nov 2026",
         "verifiedDate": "19 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication."
+        "sourceVerificationMethod": "Exact official employer/ATS evidence was checked on 19 Nov 2026 and independently deduplicated against current data/jobs.json, the active review batch, archived review batches, published/queued records and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": "2026-11-19T06:10:53.448Z",
+        "browserVerifiedAt": "2026-11-19T06:10:53.448Z"
       },
       "sourceEvidence": {
         "currentCheckAt": "2026-11-19T03:30:00.000Z",
@@ -353,8 +355,8 @@
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
       "precheckCheckedAt": "2026-11-19T03:40:10.438696+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "reviewedAt": "2026-11-19T06:10:53.448Z",
+      "reviewedBy": "HD Careers Admin"
     }
   ],
   "backup": [
