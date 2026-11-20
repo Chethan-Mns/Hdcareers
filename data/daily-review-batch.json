@@ -834,39 +834,22 @@
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 7,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 5
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 7,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 0,
-        "training": 2,
-        "unclassified": 5
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 2,
-        "training": 0
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 14,
+    "runDate": "20 Nov 2026",
+    "timezone": "Asia/Kolkata",
+    "watchlistTotal": 87,
+    "watchlistVisited": 87,
+    "watchlistNotVisited": 0,
+    "watchlistBlocked": 4,
+    "fallbackEmployersVisited": 12,
+    "watchlistCandidatesAccepted": 11,
+    "fallbackCandidatesAccepted": 3,
+    "distinctEmployers": 14,
+    "uniqueExactLiveJobIdsFound": 0,
+    "stagedForOwnerRecheck": 14,
+    "held": 6,
+    "expired": 7,
+    "duplicatesExcluded": 7,
+    "deloitteOutcome": "Deloitte: exact-source fresher-eligible candidate 60887144 was found and reserved in Priority; the repository precheck marked it Unsure, so current Live status remains for owner recheck.",
     "duplicateExclusions": [
       "Adobe R173016 — already present in review/publication history.",
       "Cisco 2015227 — already present in review/publication history.",
@@ -876,9 +859,45 @@
       "ION 6f66cbb4-c882-4234-b84e-68baea56e1ea — already reviewed.",
       "Sutherland 744000151046829 — previously reviewed exact requisition."
     ],
-    "excludedCount": 7,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "expiredExclusions": [
+      "Citi Young Apprentice 26990116 — exact official route returned 404 on 20 Nov.",
+      "Walmart R-2557935 — exact official route redirected to job-not-found.",
+      "Bank of America JR-26039582 — exact official route returned 404.",
+      "KPMG 30049804 — stated application deadline passed on 25 Oct 2026.",
+      "Salesforce JR307116 — stated application deadline passed on 3 Nov 2026.",
+      "Google Software Engineer, University Graduate 2026 — source stated no longer accepting applications.",
+      "Caterpillar apprentice postings checked — stated application deadlines had passed."
+    ],
+    "heldExclusions": [
+      "Qualcomm 446721997186 — exact official route redirected but was inaccessible; current Live status not asserted.",
+      "HP 3170387 — exact official Workday route was inaccessible; held despite fresh third-party evidence.",
+      "Salesforce JR368441 — exact Workday page returned no readable content and a reported 19 Nov deadline; held as inconclusive.",
+      "Google 73379279982731974 — current official inventory listed the role but its exact page said job not found; held as inconclusive.",
+      "Honeywell 156990 — exact page open but zero-experience eligibility was not explicit enough for this batch.",
+      "Stripe 8212508 — exact new-grad role was limited to US locations and did not establish India/international applicant eligibility."
+    ],
+    "exclusions": [
+      "Additional otherwise-live roles from already selected employers were not staged because one employer is allowed across the full Priority and Backup set.",
+      "Experienced-only roles, generic career pages and source-unconfirmed listings were not used to fill technical shortages.",
+      "Blocked/inconclusive portals counted: NTT Workday, Qualcomm Eightfold, Salesforce Workday and HP Workday; indexed exact evidence was used only where the official source still established the required facts."
+    ],
+    "note": "Fresh 20 Nov discovery; the 19 Oct/20 Oct fixed sample was not reused. All 87 watchlist employers were attempted before 12 fallback employers. The final batch stages 14 distinct employers for owner recheck and honest technical shortfalls; no internship was counted as technical full-time. This write is review-only and does not authorize publication, data/jobs.json edits, site generation or Telegram delivery. The repository ranking/precheck workflow completed successfully but classified all 14 staged candidates Unsure; Firebase dispatch was therefore skipped.",
+    "automatedPrecheck": {
+      "checkedAt": "2026-11-20T03:40:57.680139+00:00",
+      "live": 0,
+      "unsure": 14,
+      "expired": 0,
+      "note": "The repository pre-review availability checker classified all 14 staged candidates as Unsure (including 403/429/redirect/insufficient-evidence results). This does not override the source evidence recorded per candidate and is not a fresh Live assertion; owner link review is required."
+    },
+    "pipelineAudit": {
+      "rankingWorkflowRunId": 44669333605,
+      "rankingConclusion": "success",
+      "androidWorkflowRunId": 44669333504,
+      "androidWorkflowConclusion": "success",
+      "firebaseDispatchStep": "skipped",
+      "firebaseStatus": "not sent — live-only notification gate was not satisfied"
+    },
+    "uniqueExactSourceCandidateIdsEvaluated": 22
   },
   "quotaAudit": {
     "requiredPerList": {
