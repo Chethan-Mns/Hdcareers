@@ -5,63 +5,6 @@
   "updatedAt": "2026-11-21T03:30:00.000Z",
   "priority": [
     {
-      "id": "deloitte-114743",
-      "company": "Deloitte",
-      "role": "Cyber Analyst – Incident Response & Handling",
-      "loc": "Delhi, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Delhi-T%26T-Cyber-D%26R-Analyst-Incident-Response-%26-Handling-Delhi/60941544/",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–2 years, including internships, projects or labs",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Deloitte requisition 114743/60941544 states 0–2 years and counts internship, project or lab exposure.",
-      "postedDate": "21 Nov 2026",
-      "job": {
-        "company": "Deloitte",
-        "role": "Cyber Analyst – Incident Response & Handling",
-        "loc": "Delhi, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Delhi-T%26T-Cyber-D%26R-Analyst-Incident-Response-%26-Handling-Delhi/60941544/",
-        "cat": "it",
-        "expType": "fresher technical full-time",
-        "expYears": "0–2 years, including internships, projects or labs",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Deloitte South Asia Careers",
-        "desc": "Entry-level cyber incident-response role supporting security monitoring, investigation, containment and recovery.",
-        "elig": "Relevant bachelor's degree; 0–2 years including internships, academic projects or lab experience.",
-        "resp": [
-          "Monitor and triage security incidents.",
-          "Support investigation, containment and recovery.",
-          "Document findings and collaborate with cyber teams."
-        ],
-        "skills": [
-          "Incident response",
-          "Security monitoring",
-          "Networking",
-          "Documentation"
-        ],
-        "workMode": "On-site/Hybrid as specified by employer",
-        "jobId": "114743",
-        "postedDate": "21 Nov 2026",
-        "verifiedDate": "21 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-21T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Official Deloitte page displayed the exact Analyst role, Delhi location, requisition and 0–2 year eligibility."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
       "id": "microsoft-1970393557069836",
       "company": "Microsoft",
       "role": "Software Engineering IC2",
@@ -112,9 +55,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Microsoft requisition-bound page loaded with the Software Engineering IC2 title and Hyderabad location."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -169,9 +112,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official SAP SmartRecruiters page displayed the exact Associate Consultant requisition and Bengaluru location."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -226,9 +169,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Synopsys careers result showed Job ID 18521, Noida, posted 18 Nov and 0–2 years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Redirected source requires browser/ATS verification",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -283,9 +226,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official HCLTech careers page displayed Campus-Beginner, requisition 189023 and Bhubaneswar."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -340,9 +283,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Qualcomm requisition-bound application page loaded for Engineer – Camera in Hyderabad."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -397,66 +340,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Accenture job detail showed HR Service Delivery New Associate, Bengaluru, Any Graduation and 0–1 year."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "procdna-743999738938617",
-      "company": "ProcDNA",
-      "role": "Business Analyst",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
-      "cat": "non-it",
-      "slotType": "nonIT",
-      "expYears": "0–1 year",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official ProcDNA SmartRecruiters posting explicitly accepts 0–1 year for a full-time Business Analyst.",
-      "postedDate": "20 Nov 2026",
-      "job": {
-        "company": "ProcDNA",
-        "role": "Business Analyst",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst",
-        "cat": "nonit",
-        "expType": "fresher non-technical full-time",
-        "expYears": "0–1 year",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "ProcDNA / SmartRecruiters",
-        "desc": "Business analysis role supporting client requirements, data-driven insights and project delivery.",
-        "elig": "Graduate with analytical and communication skills; 0–1 year of experience.",
-        "resp": [
-          "Gather and document business requirements.",
-          "Analyze data and prepare insights.",
-          "Coordinate with client and delivery teams."
-        ],
-        "skills": [
-          "Business analysis",
-          "Excel",
-          "Communication",
-          "Problem solving"
-        ],
-        "workMode": "On-site/Hybrid as specified by employer",
-        "jobId": "743999738938617",
-        "postedDate": "20 Nov 2026",
-        "verifiedDate": "21 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-21T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Official SmartRecruiters page displayed ProcDNA Business Analyst in Gurugram with 0–1 year eligibility."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -511,9 +397,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Honeywell careers page showed Job ID 161636, Bengaluru, posted 18 Nov and bachelor's-student eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -568,9 +454,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Amex page showed a 12-month paid apprenticeship in Bengaluru, Job ID 26016647, apply-before 25 Nov 2026."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -627,66 +513,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Intel Workday requisition JR0288677 loaded for Bengaluru; eligibility includes a no-prior-experience master's pathway."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "infineon-technologies-563808971970202",
-      "company": "Infineon Technologies",
-      "role": "Trainee Engineer – Digital Design Verification",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.infineon.com/careers/job/563808971970202",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–1 year / recent graduate",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Infineon requisition explicitly targets recent graduates with 0–1 year for digital design verification.",
-      "postedDate": "20 Nov 2026",
-      "job": {
-        "company": "Infineon Technologies",
-        "role": "Trainee Engineer – Digital Design Verification",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.infineon.com/careers/job/563808971970202",
-        "cat": "it",
-        "expType": "fresher technical full-time",
-        "expYears": "0–1 year / recent graduate",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Infineon Careers",
-        "desc": "Trainee engineering role supporting verification of digital semiconductor designs.",
-        "elig": "Recent graduate in Electronics, Electrical or related engineering; 0–1 year.",
-        "resp": [
-          "Develop and run verification tests.",
-          "Debug design and simulation issues.",
-          "Document verification coverage and results."
-        ],
-        "skills": [
-          "SystemVerilog",
-          "Digital design",
-          "Verification",
-          "Debugging"
-        ],
-        "workMode": "On-site/Hybrid as specified by employer",
-        "jobId": "563808971970202",
-        "postedDate": "20 Nov 2026",
-        "verifiedDate": "21 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-21T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Official Infineon application page loaded the Trainee Engineer requisition in Bengaluru."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -741,9 +570,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Eaton Eightfold requisition loaded for Engineer – Electromagnetics in Pune with 0–2 years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -798,9 +627,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official HPE Workday requisition 1218507 loaded for Bengaluru."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -855,66 +684,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Pragma Edge Zoho Recruit page loaded the exact IBM Maximo Trainee (Fresher), Bangalore, 0–1 Years route."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "avnet-JR-024615",
-      "company": "Avnet",
-      "role": "Cybersecurity Analyst I",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Avnet Workday requisition is an Analyst I cybersecurity opening identified as 0–2 years.",
-      "postedDate": "20 Nov 2026",
-      "job": {
-        "company": "Avnet",
-        "role": "Cybersecurity Analyst I",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615",
-        "cat": "it",
-        "expType": "fresher technical full-time",
-        "expYears": "0–2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Avnet Careers / Workday",
-        "desc": "Entry-level cybersecurity operations role monitoring controls, analyzing alerts and supporting incident processes.",
-        "elig": "Relevant degree and 0–2 years of cybersecurity or related experience.",
-        "resp": [
-          "Monitor and analyze security alerts.",
-          "Support vulnerability and incident workflows.",
-          "Maintain security records and reports."
-        ],
-        "skills": [
-          "Cybersecurity fundamentals",
-          "SIEM",
-          "Incident handling",
-          "Documentation"
-        ],
-        "workMode": "On-site/Hybrid as specified by employer",
-        "jobId": "JR-024615",
-        "postedDate": "20 Nov 2026",
-        "verifiedDate": "21 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-21T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Official Avnet Workday requisition JR-024615 loaded for Cybersecurity Analyst I in Bangalore."
-      },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -969,9 +741,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Swiss Re page displayed TA & CL Operations Analyst I, Bengaluru and reference code 139951."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1026,9 +798,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Paytm Payments Lever page showed an on-roll Noida role, 0–2 years and explicit fresher eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1083,9 +855,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Thales page displayed Software Intern, Bangalore, posted 10 Nov and Job ID R0347867."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1140,66 +912,76 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official SmartRecruiters page displayed the 12-month Tieto apprenticeship, Bengaluru and 2025/2026 fresher criteria."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
-    "directiveDate": "2026-10-19",
-    "runDate": "2026-11-21",
-    "special20OctSampleReused": false,
-    "deloitteOutcome": "Deloitte: new verified fresher-eligible role found — Cyber Analyst, Incident Response & Handling (requisition 114743/60941544) reserved once in Priority technical.",
-    "watchlistEmployersTotal": 87,
-    "watchlistEmployersVisited": 87,
-    "watchlistEmployersNotVisited": 0,
-    "watchlistPortalSearchFailures": 0,
-    "fallbackEmployersVisited": 14,
-    "selectedFromWatchlist": 10,
-    "selectedFromFallback": 10,
-    "distinctEmployersSelected": 20,
-    "uniqueExactLiveJobIdsSelected": 20,
-    "uniqueExactSourceCandidateIdsEvaluated": 26,
-    "duplicatePostingsExcluded": 0,
-    "expiredPostingsExcluded": 1,
-    "sourceUnconfirmedOrExperiencedHeld": 5,
-    "exclusionDetails": [
+    "priority": {
+      "size": 8,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 1,
+        "training": 2,
+        "unclassified": 5
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 1,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 8,
+      "counts": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 1,
+        "unclassified": 5
+      },
+      "shortfalls": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 1
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 16,
+    "duplicateExclusions": [
       {
-        "company": "Commvault",
-        "role": "Engineer, Development",
-        "reason": "Exact Greenhouse route redirected to the employer inventory error page and the requisition was absent from the current official inventory; treated as expired, not staged."
+        "id": "deloitte-114743",
+        "company": "Deloitte",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://southasiacareers.deloitte.com/job/Delhi-T%26T-Cyber-D%26R-Analyst-Incident-Response-%26-Handling-Delhi/60941544/"
       },
       {
-        "company": "EY",
-        "role": "Analyst – TAX FS GCR",
-        "reason": "Held because the official posting did not provide sufficiently explicit zero-experience eligibility for this run."
+        "id": "procdna-743999738938617",
+        "company": "ProcDNA",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst"
       },
       {
-        "company": "State Street",
-        "role": "Apprentice R-799731",
-        "reason": "Held because the official feed evidence conflicted with removal-tracker evidence; not staged as currently live."
+        "id": "infineon-technologies-563808971970202",
+        "company": "Infineon Technologies",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://jobs.infineon.com/careers/job/563808971970202"
       },
       {
-        "company": "QAD",
-        "role": "Apprentice – Engineer",
-        "reason": "Excluded as a previously reviewed exact requisition already present in repository history."
-      },
-      {
-        "company": "Microsoft",
-        "role": "Apprenticeship",
-        "reason": "Withheld to enforce one employer across the full 20 after selecting Microsoft's full-time Software Engineering IC2 role."
-      },
-      {
-        "company": "Synopsys",
-        "role": "Apprenticeship",
-        "reason": "Withheld to enforce one employer across the full 20 after selecting Synopsys R&D Engineer, IP Quality."
+        "id": "avnet-JR-024615",
+        "company": "Avnet",
+        "reason": "already_published",
+        "officialUrl": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615"
       }
     ],
-    "duplicateScrub": "All 20 selected requisition IDs returned zero repository code-search matches before staging. Employer aliases and one-employer-across-both-lists were audited independently.",
-    "currentPublishedJobsCheck": "Fresh main-branch repository code search and active/archived review references were checked before selection; no selected exact requisition ID was found.",
-    "notes": "The 19 Oct owner-verified sample was not reused because its one-day exception applied only to 20 Oct. Discovery resumed from fresh official routes."
+    "excludedCount": 4,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
