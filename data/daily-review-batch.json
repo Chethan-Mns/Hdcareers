@@ -57,7 +57,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -114,7 +114,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,7 +171,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Redirected source requires browser/ATS verification",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -228,7 +228,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -285,7 +285,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -342,7 +342,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -399,7 +399,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -456,7 +456,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -511,9 +511,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Hevo Data Lever page was active and explicitly stated that freshers are eligible."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -568,9 +568,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official SmartRecruiters page displayed Associate – Accounts Payable (Fresher), Pune, full-time, with explicit no-work-experience eligibility."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -628,8 +628,8 @@
         "officialEvidence": "Official Intel Workday requisition JR0288677 loaded for Bengaluru; eligibility includes a no-prior-experience master's pathway."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "HTTP 429; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -686,7 +686,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -743,7 +743,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 429; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -800,7 +800,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -857,7 +857,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -914,7 +914,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -971,7 +971,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1028,7 +1028,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1083,9 +1083,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Western Digital SmartRecruiters page explicitly described early-career talent, 0–2 years and recent graduates without full-time experience."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1140,31 +1140,47 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Bank of America page displayed JR-26030448, full-time, multiple India locations and Experience Range: Fresher / 0 years."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
+      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
-    "directiveDate": "2026-10-19",
-    "runDate": "2026-11-21",
-    "special20OctSampleReused": false,
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Requisition 114743/60941544 was source-active but the repository independent scrub identified it as previously reviewed, so it was excluded and not replaced by another Deloitte alias.",
-    "watchlistEmployersTotal": 87,
-    "watchlistEmployersVisited": 87,
-    "watchlistEmployersNotVisited": 0,
-    "watchlistPortalSearchFailures": 0,
-    "fallbackEmployersVisited": 18,
-    "selectedFromWatchlist": 10,
-    "selectedFromFallback": 10,
-    "distinctEmployersSelected": 20,
-    "uniqueExactLiveJobIdsSelected": 20,
-    "uniqueExactSourceCandidateIdsEvaluated": 30,
-    "duplicatePostingsExcluded": 4,
-    "expiredPostingsExcluded": 1,
-    "sourceUnconfirmedOrExperiencedHeld": 5,
+    "priority": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 0,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 10,
+      "counts": {
+        "fresherIT": 5,
+        "nonIT": 2,
+        "training": 2,
+        "unclassified": 1
+      },
+      "shortfalls": {
+        "fresherIT": 1,
+        "nonIT": 0,
+        "training": 0
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 20,
     "duplicateExclusions": [
       {
         "company": "Deloitte",
@@ -1187,63 +1203,9 @@
         "reason": "already_published"
       }
     ],
-    "exclusionDetails": [
-      {
-        "company": "Commvault",
-        "role": "Engineer, Development",
-        "reason": "Expired: exact Greenhouse route redirected to the employer inventory error page and the requisition was absent from current official inventory."
-      },
-      {
-        "company": "EY",
-        "role": "Analyst – TAX FS GCR",
-        "reason": "Held: official posting did not give sufficiently explicit zero-experience eligibility."
-      },
-      {
-        "company": "State Street",
-        "role": "Apprentice R-799731",
-        "reason": "Held: current-source evidence conflicted with removal evidence."
-      },
-      {
-        "company": "QAD",
-        "role": "Apprentice – Engineer",
-        "reason": "Duplicate: previously reviewed exact requisition."
-      },
-      {
-        "company": "Microsoft",
-        "role": "Apprenticeship",
-        "reason": "Withheld to enforce one employer across the full 20."
-      },
-      {
-        "company": "Synopsys",
-        "role": "Apprenticeship",
-        "reason": "Withheld to enforce one employer across the full 20."
-      }
-    ],
-    "replacementDetails": [
-      {
-        "removed": "Deloitte Cyber Analyst",
-        "replacement": "Hevo Data Associate Software Development Engineer",
-        "category": "technical"
-      },
-      {
-        "removed": "ProcDNA Business Analyst",
-        "replacement": "METRO/MAKRO Associate – Accounts Payable (Fresher)",
-        "category": "nonIT"
-      },
-      {
-        "removed": "Infineon Trainee Engineer",
-        "replacement": "Western Digital AI Application Engineer",
-        "category": "technical"
-      },
-      {
-        "removed": "Avnet Cybersecurity Analyst I",
-        "replacement": "Bank of America Assistant Manager – Analytics",
-        "category": "technical"
-      }
-    ],
-    "duplicateScrub": "Repository independent workflow exclusions were honored. Replacement requisition IDs returned zero repository code-search matches before restaging.",
-    "currentPublishedJobsCheck": "Fresh main-branch repository code search plus the repository workflow's deeper published, archived and requisition checks were applied before final selection.",
-    "notes": "The 19 Oct owner-verified sample was not reused because its one-day exception applied only to 20 Oct. Discovery resumed from fresh official routes."
+    "excludedCount": 4,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
