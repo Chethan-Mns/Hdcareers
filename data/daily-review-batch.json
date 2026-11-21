@@ -2,7 +2,7 @@
   "batchId": "2026-11-21-0900-ist",
   "generatedAt": "2026-11-21T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-21T04:15:00.000Z",
+  "updatedAt": "2026-11-21T04:20:00.000Z",
   "priority": [
     {
       "id": "microsoft-1970393557069836",
@@ -993,7 +993,7 @@
         "role": "Apprentices Program – Telecom",
         "loc": "Bengaluru, Karnataka, India",
         "apply": "https://jobs.smartrecruiters.com/Tieto2/744000161430139-apprentices-program-telecom-tieto-tech-consulting-m-f-d-",
-        "cat": "it",
+        "cat": "apprenticeship",
         "expType": "internship/apprenticeship",
         "expYears": "2025/2026 fresh graduates",
         "salary": "Not Disclosed",
@@ -1280,7 +1280,7 @@
   "ranking": {
     "status": "awaiting_recheck",
     "model": "repository rank-review-batch workflow",
-    "note": "Technical expType labels normalized to the repository's strict fresher contract; owner review remains pending."
+    "note": "Tieto training category normalized to the strict apprenticeship contract; owner review remains pending."
   },
   "previousBatchReference": {
     "batchId": "2026-11-20-0900-ist",
