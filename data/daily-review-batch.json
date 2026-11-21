@@ -57,7 +57,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -114,7 +114,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,7 +171,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Redirected source requires browser/ATS verification",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -228,7 +228,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -285,7 +285,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -342,7 +342,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -399,7 +399,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -456,7 +456,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -513,7 +513,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -570,7 +570,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -629,7 +629,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -686,7 +686,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -741,9 +741,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official HPE Workday requisition 1218507 loaded for Bengaluru."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "HTTP 429; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -800,7 +800,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -857,7 +857,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -914,7 +914,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -971,7 +971,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1028,7 +1028,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1085,7 +1085,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1140,9 +1140,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Official Vestas page displayed Requisition 80495, Chennai, full-time, 0–2 years and an apply-by date of 30 Nov 2026."
       },
-      "precheckStatus": "pending",
-      "precheckReason": "Awaiting repository independent pre-review checker",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-21T03:40:09.426890+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -1165,13 +1165,13 @@
     "backup": {
       "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0
       }
@@ -1204,7 +1204,7 @@
       }
     ],
     "excludedCount": 4,
-    "needsFreshDiscovery": true,
+    "needsFreshDiscovery": false,
     "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
