@@ -2,7 +2,7 @@
   "batchId": "2026-11-21-0900-ist",
   "generatedAt": "2026-11-21T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-21T03:30:00.000Z",
+  "updatedAt": "2026-11-21T04:05:00.000Z",
   "priority": [
     {
       "id": "microsoft-1970393557069836",
@@ -457,6 +457,120 @@
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
       "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "hevo-data-4eccaf98",
+      "company": "Hevo Data",
+      "role": "Associate Software Development Engineer",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.lever.co/hevodata/4eccaf98-ba19-42ea-b040-e0976d4dadfe",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "Freshers explicitly eligible",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Hevo Data Lever posting explicitly welcomes freshers with software-development exposure.",
+      "postedDate": "21 Nov 2026",
+      "job": {
+        "company": "Hevo Data",
+        "role": "Associate Software Development Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.lever.co/hevodata/4eccaf98-ba19-42ea-b040-e0976d4dadfe",
+        "cat": "it",
+        "expType": "fresher technical full-time",
+        "expYears": "Freshers explicitly eligible",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Hevo Data / Lever",
+        "desc": "Entry-level software engineering role building and maintaining connectors and data-platform components.",
+        "elig": "BTech in Computer Science or equivalent; freshers explicitly eligible, with internships or project experience preferred.",
+        "resp": [
+          "Build and maintain application connectors.",
+          "Implement and test API components.",
+          "Debug data-pipeline and integration issues."
+        ],
+        "skills": [
+          "Java, TypeScript or Python",
+          "REST APIs",
+          "Object-oriented programming",
+          "Data structures"
+        ],
+        "workMode": "On-site",
+        "jobId": "4eccaf98-ba19-42ea-b040-e0976d4dadfe",
+        "postedDate": "21 Nov 2026",
+        "verifiedDate": "21 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-21T04:05:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Official Hevo Data Lever page was active and explicitly stated that freshers are eligible."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "metro-makro-744000157777611",
+      "company": "METRO/MAKRO",
+      "role": "Associate – Accounts Payable (Fresher)",
+      "loc": "Pune, Maharashtra, India",
+      "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
+      "cat": "non-it",
+      "slotType": "nonIT",
+      "expYears": "Fresher / 0–1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official METRO/MAKRO SmartRecruiters posting explicitly requires a fresher with no work experience and states 0–1 year.",
+      "postedDate": "21 Nov 2026",
+      "job": {
+        "company": "METRO/MAKRO",
+        "role": "Associate – Accounts Payable (Fresher)",
+        "loc": "Pune, Maharashtra, India",
+        "apply": "https://jobs.smartrecruiters.com/METROMAKRO/744000157777611-associate-accounts-payable-fresher-",
+        "cat": "nonit",
+        "expType": "fresher non-technical full-time",
+        "expYears": "Fresher / 0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "METRO/MAKRO / SmartRecruiters",
+        "desc": "Entry-level accounts-payable role handling invoices, master data, payments and reporting.",
+        "elig": "BCom, BBA, BCA or BSc with MBA Finance; fresher with no work experience / 0–1 year.",
+        "resp": [
+          "Process invoices and maintain master data.",
+          "Prepare postings and payments in SAP FI.",
+          "Generate reports and support period-end processing."
+        ],
+        "skills": [
+          "Accounting",
+          "Microsoft Excel",
+          "SAP FI fundamentals",
+          "Communication"
+        ],
+        "workMode": "Hybrid",
+        "jobId": "744000157777611",
+        "postedDate": "21 Nov 2026",
+        "verifiedDate": "21 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-21T04:05:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Official SmartRecruiters page displayed Associate – Accounts Payable (Fresher), Pune, full-time, with explicit no-work-experience eligibility."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -917,71 +1031,219 @@
       "precheckCheckedAt": "2026-11-21T03:34:40.032312+00:00",
       "reviewedAt": null,
       "reviewedBy": null
+    },
+    {
+      "id": "western-digital-744000161459261",
+      "company": "Western Digital",
+      "role": "AI Application Engineer, Product Engineering",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.smartrecruiters.com/westerndigital/744000161459261-ai-application-engineer-product-engineering",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "0–2 years; recent graduates welcome",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Western Digital SmartRecruiters posting explicitly welcomes recent graduates without full-time experience and accepts 0–2 years.",
+      "postedDate": "20 Nov 2026",
+      "job": {
+        "company": "Western Digital",
+        "role": "AI Application Engineer, Product Engineering",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.smartrecruiters.com/westerndigital/744000161459261-ai-application-engineer-product-engineering",
+        "cat": "it",
+        "expType": "fresher technical full-time",
+        "expYears": "0–2 years; recent graduates welcome",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Western Digital / SmartRecruiters",
+        "desc": "Early-career AI application engineering role applying machine learning and automation to product-engineering workflows.",
+        "elig": "Relevant engineering or technical degree; recent graduates and 0–2 years accepted.",
+        "resp": [
+          "Develop AI-enabled engineering applications.",
+          "Integrate data and model workflows.",
+          "Test, document and improve product-engineering tools."
+        ],
+        "skills": [
+          "Python",
+          "Machine learning",
+          "Data engineering",
+          "Software development"
+        ],
+        "workMode": "On-site/Hybrid as specified by employer",
+        "jobId": "744000161459261",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "21 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-21T04:05:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Official Western Digital SmartRecruiters page explicitly described early-career talent, 0–2 years and recent graduates without full-time experience."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "bank-of-america-26030448",
+      "company": "Bank of America",
+      "role": "Assistant Manager – Analytics",
+      "loc": "Mumbai, Gurugram, Hyderabad or Gandhinagar, India",
+      "apply": "https://careers.bankofamerica.com/en-us/job-detail/26030448/assistant-manager-multiple-locations",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "Fresher / 0 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Official Bank of America JR-26030448 explicitly states Experience Range: Fresher / 0 years.",
+      "postedDate": "19 Nov 2026",
+      "job": {
+        "company": "Bank of America",
+        "role": "Assistant Manager – Analytics",
+        "loc": "Mumbai, Gurugram, Hyderabad or Gandhinagar, India",
+        "apply": "https://careers.bankofamerica.com/en-us/job-detail/26030448/assistant-manager-multiple-locations",
+        "cat": "it",
+        "expType": "fresher technical full-time",
+        "expYears": "Fresher / 0 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Bank of America Careers",
+        "desc": "Entry-level analytics role supporting banking strategy through data management, dashboards, risk analysis and modelling.",
+        "elig": "MBA/PGDM or master's in Economics, quantitative techniques, Mathematics, Statistics or Data Science; fresher / 0 years.",
+        "resp": [
+          "Analyze banking datasets and portfolio trends.",
+          "Build and automate reports and dashboards.",
+          "Support statistical, risk and machine-learning analysis."
+        ],
+        "skills": [
+          "Data analytics",
+          "Excel",
+          "Statistics",
+          "Machine learning fundamentals"
+        ],
+        "workMode": "In-office with role-specific flexibility",
+        "jobId": "JR-26030448",
+        "postedDate": "19 Nov 2026",
+        "verifiedDate": "21 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-21T04:05:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Official Bank of America page displayed JR-26030448, full-time, multiple India locations and Experience Range: Fresher / 0 years."
+      },
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
     }
   ],
   "discoveryAudit": {
-    "priority": {
-      "size": 8,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 1,
-        "training": 2,
-        "unclassified": 5
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 1,
-        "training": 0
-      }
-    },
-    "backup": {
-      "size": 8,
-      "counts": {
-        "fresherIT": 0,
-        "nonIT": 2,
-        "training": 1,
-        "unclassified": 5
-      },
-      "shortfalls": {
-        "fresherIT": 6,
-        "nonIT": 0,
-        "training": 1
-      }
-    },
-    "target": {
-      "priority": 10,
-      "backup": 10
-    },
-    "remaining": 16,
+    "directiveDate": "2026-10-19",
+    "runDate": "2026-11-21",
+    "special20OctSampleReused": false,
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Requisition 114743/60941544 was source-active but the repository independent scrub identified it as previously reviewed, so it was excluded and not replaced by another Deloitte alias.",
+    "watchlistEmployersTotal": 87,
+    "watchlistEmployersVisited": 87,
+    "watchlistEmployersNotVisited": 0,
+    "watchlistPortalSearchFailures": 0,
+    "fallbackEmployersVisited": 18,
+    "selectedFromWatchlist": 10,
+    "selectedFromFallback": 10,
+    "distinctEmployersSelected": 20,
+    "uniqueExactLiveJobIdsSelected": 20,
+    "uniqueExactSourceCandidateIdsEvaluated": 30,
+    "duplicatePostingsExcluded": 4,
+    "expiredPostingsExcluded": 1,
+    "sourceUnconfirmedOrExperiencedHeld": 5,
     "duplicateExclusions": [
       {
-        "id": "deloitte-114743",
         "company": "Deloitte",
-        "reason": "previously_reviewed_official_requisition",
-        "officialUrl": "https://southasiacareers.deloitte.com/job/Delhi-T%26T-Cyber-D%26R-Analyst-Incident-Response-%26-Handling-Delhi/60941544/"
+        "jobId": "114743/60941544",
+        "reason": "previously_reviewed_official_requisition"
       },
       {
-        "id": "procdna-743999738938617",
         "company": "ProcDNA",
-        "reason": "already_published",
-        "officialUrl": "https://jobs.smartrecruiters.com/ProcDNA/743999738938617-business-analyst"
+        "jobId": "743999738938617",
+        "reason": "already_published"
       },
       {
-        "id": "infineon-technologies-563808971970202",
         "company": "Infineon Technologies",
-        "reason": "previously_reviewed_official_requisition",
-        "officialUrl": "https://jobs.infineon.com/careers/job/563808971970202"
+        "jobId": "563808971970202",
+        "reason": "previously_reviewed_official_requisition"
       },
       {
-        "id": "avnet-JR-024615",
         "company": "Avnet",
-        "reason": "already_published",
-        "officialUrl": "https://avnet.wd1.myworkdayjobs.com/external/job/Bangalore-India/Cybersecurity-Analyst-I_JR-024615"
+        "jobId": "JR-024615",
+        "reason": "already_published"
       }
     ],
-    "excludedCount": 4,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "exclusionDetails": [
+      {
+        "company": "Commvault",
+        "role": "Engineer, Development",
+        "reason": "Expired: exact Greenhouse route redirected to the employer inventory error page and the requisition was absent from current official inventory."
+      },
+      {
+        "company": "EY",
+        "role": "Analyst – TAX FS GCR",
+        "reason": "Held: official posting did not give sufficiently explicit zero-experience eligibility."
+      },
+      {
+        "company": "State Street",
+        "role": "Apprentice R-799731",
+        "reason": "Held: current-source evidence conflicted with removal evidence."
+      },
+      {
+        "company": "QAD",
+        "role": "Apprentice – Engineer",
+        "reason": "Duplicate: previously reviewed exact requisition."
+      },
+      {
+        "company": "Microsoft",
+        "role": "Apprenticeship",
+        "reason": "Withheld to enforce one employer across the full 20."
+      },
+      {
+        "company": "Synopsys",
+        "role": "Apprenticeship",
+        "reason": "Withheld to enforce one employer across the full 20."
+      }
+    ],
+    "replacementDetails": [
+      {
+        "removed": "Deloitte Cyber Analyst",
+        "replacement": "Hevo Data Associate Software Development Engineer",
+        "category": "technical"
+      },
+      {
+        "removed": "ProcDNA Business Analyst",
+        "replacement": "METRO/MAKRO Associate – Accounts Payable (Fresher)",
+        "category": "nonIT"
+      },
+      {
+        "removed": "Infineon Trainee Engineer",
+        "replacement": "Western Digital AI Application Engineer",
+        "category": "technical"
+      },
+      {
+        "removed": "Avnet Cybersecurity Analyst I",
+        "replacement": "Bank of America Assistant Manager – Analytics",
+        "category": "technical"
+      }
+    ],
+    "duplicateScrub": "Repository independent workflow exclusions were honored. Replacement requisition IDs returned zero repository code-search matches before restaging.",
+    "currentPublishedJobsCheck": "Fresh main-branch repository code search plus the repository workflow's deeper published, archived and requisition checks were applied before final selection.",
+    "notes": "The 19 Oct owner-verified sample was not reused because its one-day exception applied only to 20 Oct. Discovery resumed from fresh official routes."
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -1016,9 +1278,9 @@
     "categoryAuditPassed": true
   },
   "ranking": {
-    "status": "awaiting_workflow",
+    "status": "awaiting_recheck",
     "model": "repository rank-review-batch workflow",
-    "note": "Ranking/pre-review workflow must run before owner review; no selection preference is learned from Live/Expired tagging."
+    "note": "Replacement candidates require the same independent pre-review check; no owner-selection preference has been learned."
   },
   "previousBatchReference": {
     "batchId": "2026-11-20-0900-ist",
