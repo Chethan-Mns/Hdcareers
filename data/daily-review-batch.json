@@ -2,7 +2,7 @@
   "batchId": "2026-11-21-0900-ist",
   "generatedAt": "2026-11-21T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-21T04:20:00.000Z",
+  "updatedAt": "2026-11-21T04:30:00.000Z",
   "priority": [
     {
       "id": "microsoft-1970393557069836",
@@ -1090,59 +1090,59 @@
       "reviewedBy": null
     },
     {
-      "id": "bank-of-america-26030448",
-      "company": "Bank of America",
-      "role": "Assistant Manager – Analytics",
-      "loc": "Mumbai, Gurugram, Hyderabad or Gandhinagar, India",
-      "apply": "https://careers.bankofamerica.com/en-us/job-detail/26030448/assistant-manager-multiple-locations",
+      "id": "vestas-80495",
+      "company": "Vestas",
+      "role": "Graduate Engineer Trainee",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://careers.vestas.com/job/Chennai-Graduate-Engineer-Trainee-TN-600-117/1457382033",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "Fresher / 0 years",
+      "expYears": "0–2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Official Bank of America JR-26030448 explicitly states Experience Range: Fresher / 0 years.",
-      "postedDate": "19 Nov 2026",
+      "verificationReason": "Official Vestas Requisition 80495 is a full-time Graduate Engineer Trainee opening and explicitly accepts 0–2 years.",
+      "postedDate": "21 Nov 2026",
       "job": {
-        "company": "Bank of America",
-        "role": "Assistant Manager – Analytics",
-        "loc": "Mumbai, Gurugram, Hyderabad or Gandhinagar, India",
-        "apply": "https://careers.bankofamerica.com/en-us/job-detail/26030448/assistant-manager-multiple-locations",
+        "company": "Vestas",
+        "role": "Graduate Engineer Trainee",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://careers.vestas.com/job/Chennai-Graduate-Engineer-Trainee-TN-600-117/1457382033",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Fresher / 0 years",
+        "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Bank of America Careers",
-        "desc": "Entry-level analytics role supporting banking strategy through data management, dashboards, risk analysis and modelling.",
-        "elig": "MBA/PGDM or master's in Economics, quantitative techniques, Mathematics, Statistics or Data Science; fresher / 0 years.",
+        "sourceName": "Vestas Careers",
+        "desc": "Full-time graduate engineering role learning turbine-performance reporting, data verification and technical operations under supervision.",
+        "elig": "Bachelor's degree in listed engineering, statistics or data disciplines; 0–2 years in analytics, reporting or operations; willing to work rotational shifts.",
         "resp": [
-          "Analyze banking datasets and portfolio trends.",
-          "Build and automate reports and dashboards.",
-          "Support statistical, risk and machine-learning analysis."
+          "Prepare and verify turbine and service data.",
+          "Support calculations and monthly performance reports.",
+          "Document operational cases and complete structured technical learning."
         ],
         "skills": [
-          "Data analytics",
-          "Excel",
-          "Statistics",
-          "Machine learning fundamentals"
+          "Microsoft Excel",
+          "Data analysis",
+          "Power BI or SQL or Python fundamentals",
+          "Technical reporting"
         ],
-        "workMode": "In-office with role-specific flexibility",
-        "jobId": "JR-26030448",
-        "postedDate": "19 Nov 2026",
+        "workMode": "On-site",
+        "jobId": "80495",
+        "postedDate": "21 Nov 2026",
         "verifiedDate": "21 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "sourceVerificationMethod": "Exact official Vestas requisition 80495 was checked on 21 Nov 2026 and independently deduplicated by requisition ID and official URL against current repository code, active/archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-21T04:05:00.000Z",
+        "currentCheckAt": "2026-11-21T04:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Official Bank of America page displayed JR-26030448, full-time, multiple India locations and Experience Range: Fresher / 0 years."
+        "officialEvidence": "Official Vestas page displayed Requisition 80495, Chennai, full-time, 0–2 years and an apply-by date of 30 Nov 2026."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Exact official JobPosting structured data exists, but a live application route is still required",
-      "precheckCheckedAt": "2026-11-21T03:38:41.874857+00:00",
+      "precheckStatus": "pending",
+      "precheckReason": "Awaiting repository independent pre-review checker",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -1242,7 +1242,7 @@
   "ranking": {
     "status": "awaiting_recheck",
     "model": "repository rank-review-batch workflow",
-    "note": "Tieto training category normalized to the strict apprenticeship contract; owner review remains pending."
+    "note": "Vestas replacement requires independent pre-review; owner review remains pending."
   },
   "previousBatchReference": {
     "batchId": "2026-11-20-0900-ist",
@@ -1720,5 +1720,30 @@
       "note": "Preserved the 19 Nov batch identity, submission/publication metadata, owner-review states and prior nested history unchanged. Independent Telegram receipt files were not modified."
     },
     "note": "Prior review batch preserved before the 21 Nov 2026 fresh review. No prior approval, publication state or Telegram receipt is discarded."
+  },
+  "discoverySummary": {
+    "watchlistEmployersTotal": 87,
+    "watchlistEmployersVisited": 87,
+    "watchlistEmployersNotVisited": 0,
+    "watchlistPortalSearchFailures": 0,
+    "fallbackEmployersVisited": 19,
+    "selectedFromWatchlist": 9,
+    "selectedFromFallback": 11,
+    "distinctEmployers": 20,
+    "uniqueExactSourceCandidateIdsEvaluated": 31,
+    "duplicatesExcluded": 4,
+    "expiredExcluded": 1,
+    "heldOrUnconfirmedExcluded": 5,
+    "liveSelected": 0,
+    "shortfall": "No shortlist shortfall.",
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Requisition 114743/60941544 was excluded as a previously reviewed exact requisition.",
+    "special20OctSampleReused": false,
+    "replacements": [
+      "Deloitte Cyber Analyst -> Hevo Data Associate Software Development Engineer (technical)",
+      "ProcDNA Business Analyst -> METRO/MAKRO Accounts Payable Associate (non-IT)",
+      "Infineon Trainee Engineer -> Western Digital AI Application Engineer (technical)",
+      "Avnet Cybersecurity Analyst I -> Vestas Graduate Engineer Trainee (technical)"
+    ],
+    "note": "The 19 Oct owner-verified list was not reused; its one-day exception applied only to 20 Oct."
   }
 }
