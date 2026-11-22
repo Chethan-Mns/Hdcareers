@@ -1,0 +1,59 @@
+name: HD Careers Read-Only WhatsApp Post History Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-post-history-check.json
+
+permissions:
+  contents: read
+
+jobs:
+  check-channel-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read HD Career Updates history without publishing
+        run: |
+          python3 - <<'PY'
+          import json,os,sys
+          sys.path.insert(0,"scripts")
+          import whapi_channel_relay as api
+          import whatsapp_channel_relay as shared
+          cid="120363419928883930@newsletter"
+          assert api.channel_id()==cid,"Unexpected destination"
+          data=api.api("/newsletters/"+cid+"/messages?count=50")
+          records=data.get("messages",data.get("data",data.get("items",[])))
+          if isinstance(records,dict):records=records.get("messages",records.get("items",[]))
+          if not isinstance(records,list):records=[]
+          ledger=shared.load(shared.LEDGER,{})
+          targets=[
+             "jobs/chaosology-technologies-junior-software-developer.html",
+             "jobs/brillio-associate-engineer-applications-platforms.html",
+          ]
+          def strings(x):
+              if isinstance(x,str):return [x]
+              if isinstance(x,dict):return sum((strings(v) for v in x.values()),[])
+              if isinstance(x,list):return sum((strings(v) for v in x),[])
+              return []
+          print("Whapi Channel history records returned:",len(records))
+          ok=True
+          for page in targets:
+              receipt=ledger.get("items",{}).get(page,{})
+              mid=receipt.get("providerMessageId","")
+              found=any(mid in strings(row) or
+                        "https://hdcareers.in/"+page in strings(row)
+                        for row in records)
+              print("MATCH" if found else "NOT CONFIRMED","- ",page)
+              ok=ok and found
+          if not ok:
+              print("Provider accepted the messages but Channel-history visibility was not confirmed by this read-only lookup.")
+          PY
