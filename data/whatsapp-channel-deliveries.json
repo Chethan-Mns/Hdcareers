@@ -3,14 +3,17 @@
   "activationAt": null,
   "items": {
     "jobs/chaosology-technologies-junior-software-developer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45009727922",
       "at": "2026-11-22T09:53:39.510947+00:00",
       "testOnly": true,
       "requestId": "hd-whapi-single-test-20261122-01",
       "telegramMessageId": 727,
       "telegramDeliveredAt": "2026-11-22T08:36:24.902428+00:00",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspNYUqraGPEBpA-1.8Bq53kiM_y2g-Aj8",
+      "acceptedAt": "2026-11-22T09:53:54.438575+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
