@@ -29,13 +29,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/vijnoratech-software-engineer-graduate.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45013308434",
       "at": "2026-11-22T10:37:13.009865+00:00",
       "telegramMessageId": 729,
       "telegramDeliveredAt": "2026-11-22T10:36:54.578317+00:00",
       "telegramDateIst": "2026-11-22",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "Psrwn27VfrHGUBc-1woBq53kiM_y2g-AkE",
+      "acceptedAt": "2026-11-22T10:37:20.547808+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
