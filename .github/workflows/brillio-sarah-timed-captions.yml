@@ -1,0 +1,72 @@
+name: Brillio Sarah Exact Word Timing
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/brillio-sarah-timed-captions.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Sarah voice with exact audio-aligned word timestamps
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/sarah-alignment
+          python3 - <<'PY'
+          import base64,json,os,pathlib,re,sys
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError
+          target=pathlib.Path("artifacts/sarah-alignment")
+          key=os.getenv("ELEVENLABS_API_KEY","")
+          if not key:
+              raise SystemExit("ElevenLabs API key not available")
+          script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly."
+          voice_id="EXAVITQu4vr4xnSDxMaL"
+          req=Request(
+              "https://api.elevenlabs.io/v1/text-to-speech/"+voice_id+"/with-timestamps?output_format=mp3_44100_128",
+              data=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode("utf-8"),
+              headers={"xi-api-key":key,"Content-Type":"application/json","Accept":"application/json"},method="POST")
+          try:
+              with urlopen(req,timeout=60) as response:
+                  result=json.load(response)
+          except HTTPError as e:
+              raise SystemExit("Voice with timestamps returned HTTP "+str(e.code)) from None
+          alignment=result.get("alignment") or result.get("normalized_alignment")
+          if not alignment:raise SystemExit("ElevenLabs returned no alignment")
+          chars=alignment.get("characters") or []
+          begins=alignment.get("character_start_times_seconds") or []
+          ends=alignment.get("character_end_times_seconds") or []
+          if not len(chars)==len(begins)==len(ends) or len(chars)<80:
+              raise SystemExit("Incomplete alignment; refusing to render unsynchronized captions")
+          aligned_text="".join(chars)
+          if re.sub(r"\s+","",aligned_text).lower()!=re.sub(r"\s+","",script).lower():
+              raise SystemExit("Alignment does not correspond to exact Brillio script")
+          words=[]
+          for match in re.finditer(r"\S+",aligned_text):
+              start,end=match.span()
+              words.append({"text":match.group(),"start":round(float(begins[start]),3),
+                            "end":round(float(ends[end-1]),3)})
+          if len(words)<18 or any(w["end"]<=w["start"] for w in words):
+              raise SystemExit("Invalid word alignment")
+          audio=base64.b64decode(result.get("audio_base64") or "")
+          if len(audio)<15000:raise SystemExit("Audio missing or too small")
+          (target/"Sarah_Brillio_Aligned.mp3").write_bytes(audio)
+          (target/"sarah_words.json").write_text(json.dumps(words,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+          (target/"script.txt").write_text(script+"\n",encoding="utf-8")
+          print("Generated Sarah voice with",len(words),"aligned words; last word end",words[-1]["end"],"seconds")
+          PY
+      - name: Save synchronized voice and words
+        uses: actions/upload-artifact@v4
+        with:
+          name: brillio-sarah-voice-and-timestamps
+          path: artifacts/sarah-alignment/
+          retention-days: 7
+          if-no-files-found: error
