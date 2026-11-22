@@ -1,0 +1,68 @@
+name: HD Careers Reel Pipeline CI
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/reel_factory.py
+      - scripts/reel_video.py
+      - scripts/reel_voice_elevenlabs.py
+      - scripts/reel_preflight.py
+      - scripts/superprofile_reel_bridge.py
+      - tests/test_reel_pipeline.py
+      - tests/test_reel_video_timing.py
+      - .github/workflows/reel-pipeline-ci.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Compile and test
+        run: |
+          python3 -m py_compile scripts/reel_video.py scripts/reel_voice_elevenlabs.py scripts/reel_factory.py scripts/reel_preflight.py scripts/superprofile_reel_bridge.py
+          python3 -m unittest discover -s tests -p test_reel_video_timing.py -v
+          python3 -m unittest discover -s tests -p test_reel_pipeline.py -v
+          python3 -m unittest discover -s tests -p test_reel_factory.py -v
+          python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
+      - name: Test 10s Reel renderer with synthetic CI-only input
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/smoke
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i "testsrc2=size=480x854:rate=15" -t 2 -c:v libx264 -pix_fmt yuv420p artifacts/smoke/test-footage.mp4
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i "sine=frequency=180:sample_rate=44100" -t 3 -c:a libmp3lame artifacts/smoke/test-voice.mp3
+          python3 - <<'PY'
+          import sys,json,subprocess
+          from pathlib import Path
+          sys.path.insert(0,"scripts")
+          from reel_video import render
+          d=Path("artifacts/smoke")
+          tokens="Brillio is hiring freshers for an Associate Engineer role in Chennai".split()
+          words=[{"text":x,"start":round(i*.25,3),"end":round((i+1)*.25,3)} for i,x in enumerate(tokens)]
+          (d/"test-voice.wordtimings.json").write_text(json.dumps(words))
+          job={"company":"Brillio","role":"Associate Engineer","logoPath":"assets/company-approved/brillio.webp"}
+          out=render(d/"test-footage.mp4",job,"Associate Engineer",d/"test-voice.mp3",
+                     d/"test-voice.wordtimings.json",d/"test-reel.mp4",Path("."))
+          assert out["logo"]["companyLogoFound"],"Brillio logo not found"
+          assert out["durationSeconds"]==10.0,out
+          size=Path(d/"test-reel.mp4").stat().st_size
+          print("Synthetic CI-only video generated successfully:",size,"bytes")
+          PY
+      - name: Store CI sample (not for publication)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reel-pipeline-ci-smoke
+          path: artifacts/smoke/test-reel.mp4
+          if-no-files-found: ignore
+          retention-days: 3
