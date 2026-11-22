@@ -660,23 +660,45 @@ const JOBS_PER_PAGE=12;
 let currentPage=1;
 
 function scrollCategories(dir){const el=document.getElementById('filterTabs');if(!el)return;const amount=Math.max(240,Math.floor(el.clientWidth*.72));el.scrollBy({left:dir*amount,behavior:'smooth'})}
+function hdTraining(j){
+  const role=String(j.role||j.roleTag||"");
+  return ["internship","apprenticeship"].includes(String(j.cat||"").toLowerCase())||/\b(intern(ship)?|apprentice(ship)?)\b/i.test(role);
+}
+function hdField(j){
+  const role=String(j.role||j.roleTag||"");
+  if(/\b(bpo|call[ -]?cent(?:er|re)|contact[ -]?cent(?:er|re)|customer[ -]?(?:support|service|care|success)|client[ -]?support|support|service[ -]?desk|help[ -]?desk|sales|business[ -]?development|marketing|recruit(?:ment|er|ing)?|talent[ -]?(?:operations|acquisition)|human[ -]?resources|billing|telecaller|voice[ -]?process|non[ -]?voice|back[ -]?office|tax|audit|accounting|finance|operations[ -]?associate)\b/i.test(role))return "nonit";
+  const skills=Array.isArray(j.skills)?j.skills.join(" "):"";
+  if(/\b(software|developer|engineer|programmer|java(?:script)?|python|c\+\+|typescript|react|angular|sql|database|backend|frontend|full[ -]?stack|devops|cloud|aws|azure|databricks|snowflake|kafka|api|machine[ -]?learning|data[ -]?(?:science|engineer|scientist|analyst)|cyber|networking|linux|qa|automation|embedded|vlsi|cad|technical)\b/i.test(role+" "+skills))return "it";
+  return j.field==="it"||j.cat==="it"?"it":"nonit";
+}
+function hdExperience(j){
+  const years=String(j.expYears||"");
+  const nums=[...years.matchAll(/\b(\d+)\s*(?:[-–—]|to)\s*(\d+)\s*(?:years?|yrs?)\b|\b(\d+)\s*\+?\s*(?:years?|yrs?)\b/gi)].map(m=>Number(m[1]??m[3]));
+  if(nums.length)return Math.min(...nums)===0?"fresher":"experienced";
+  if(/\b(?:less than|under|up to|upto)\s+[1-9]\d*\s*(?:years?|yrs?)\b/i.test(years))return "fresher";
+  if(/\b(freshers?|fresh[ -]?grad(?:uate)?s?|new[ -]?grad(?:uate)?s?|no[ -]?(?:prior[ -]?)?experience|entry[ -]?level|graduate[ -]?trainee|campus[ -]?graduate)\b/i.test(years+" "+j.role))return "fresher";
+  return ["fresher","experienced"].includes(j.expType)?j.expType:"not-specified";
+}
 function jobCategories(j){
-const out=new Set();
-const field=j.field==='it'?'it':j.field==='nonit'?'nonit':j.cat==='it'?'it':j.cat==='nonit'?'nonit':null;
-if(field)out.add(field);
-if(field&&j.expType==='fresher')out.add('fresher-'+field);
-if(field&&j.expType==='experienced')out.add('experienced-'+field);
-const role=String(j.role||'')+' '+String(j.roleTag||'');
-if(j.cat==='internship'||/\bintern(ship)?\b/i.test(role))out.add('internship');
-if(j.cat==='apprenticeship'||/\bapprentice(ship)?\b/i.test(role))out.add('apprenticeship');
-if(j.cat==='walkin')out.add('walkin');
-if(j.cat==='govt')out.add('govt');
-return [...out];
+  const out=new Set();
+  const training=hdTraining(j);
+  const field=hdField(j);
+  if(!training){
+    out.add(field);
+    const level=hdExperience(j);
+    if(level==="fresher"||level==="experienced")out.add(level+"-"+field);
+  }
+  const role=String(j.role||"")+" "+String(j.roleTag||"");
+  if(j.cat==="internship"||/\bintern(ship)?\b/i.test(role))out.add("internship");
+  if(j.cat==="apprenticeship"||/\bapprentice(ship)?\b/i.test(role))out.add("apprenticeship");
+  if(j.cat==="walkin")out.add("walkin");
+  if(j.cat==="govt")out.add("govt");
+  return [...out];
 }
 function careerLabel(j){
-const field=j.field==='it'?'IT':j.field==='nonit'?'Non-IT':'';
-const level=j.expType==='fresher'?'Fresher':j.expType==='experienced'?'Experienced':'Experience not specified';
-return field?level+' '+field:level;
+  if(hdTraining(j))return j.cat==="apprenticeship"||/\bapprentice(ship)?\b/i.test(String(j.role||""))?"Apprenticeship":"Internship";
+  const level=hdExperience(j)==="fresher"?"Fresher":hdExperience(j)==="experienced"?"Experienced":"Experience not specified";
+  return level+" "+(hdField(j)==="it"?"IT":"Non-IT");
 }
 function categoryCount(k){if(k==='all')return JOBS.filter(j=>j.status!=='expired').length;return JOBS.filter(j=>j.status!=='expired'&&jobCategories(j).includes(k)).length}
 function buildTabs(){document.getElementById('filterTabs').innerHTML=CATS.map(c=>`<button data-cat="${c.k}" onclick="setCat('${c.k}')" class="pill px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 whitespace-nowrap ${c.k==='all'?'active':''}">${c.l} <span class="ml-1 opacity-70">(${categoryCount(c.k)})</span></button>`).join('')}
@@ -753,7 +775,7 @@ let filtered=JOBS.filter(j=>{
 const catOk=activeCat==='all'||jobCategories(j).includes(activeCat);
 const text=(j.role+' '+j.roleTag+' '+j.company+' '+j.elig+' '+j.loc+' '+j.batch+' '+j.expType+' '+j.expYears).toLowerCase();
 const termOk=term===''||text.includes(term);
-const expTypeOk=expType==='all'||j.expType===expType;
+const expTypeOk=expType==='all'||(!hdTraining(j)&&hdExperience(j)===expType);
 const expYearsOk=expYears===''||j.expYears.toLowerCase().includes(expYears);
 const roleOk=role===''||(j.roleTag+' '+j.role).toLowerCase().includes(role);
 const companyOk=company===''||(window.hdpExactCompany ? j.company.trim().toLowerCase()===String(window.hdpExactCompany).trim().toLowerCase() : j.company.toLowerCase().includes(company));
@@ -775,7 +797,7 @@ grid.innerHTML=visible.map((j,idx)=>`
 <article class="job-card bg-white rounded-2xl shadow-sm p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center gap-4">
 ${companyLogo(j)}
 <div class="flex-1 min-w-0">
-<div class="flex flex-wrap gap-2 mb-2"><span class="text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-[var(--primary)] px-2.5 py-1 rounded-full"><i class="fa-solid ${CAT_ICON[j.cat]||'fa-briefcase'} mr-1"></i>${careerLabel(j)}</span><span class="text-[10px] font-bold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">${j.salary}</span><span class="${j.expType==='not-specified'?'hidden ':''}text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full">${j.expType==='fresher'?'Fresher':j.expYears}</span>${j._verification_pending?'<span class="text-[10px] font-bold bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full">⚠️ Job may have expired — verify before applying</span>':''}</div>
+<div class="flex flex-wrap gap-2 mb-2"><span class="text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-[var(--primary)] px-2.5 py-1 rounded-full"><i class="fa-solid ${CAT_ICON[j.cat]||'fa-briefcase'} mr-1"></i>${careerLabel(j)}</span><span class="text-[10px] font-bold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">${j.salary}</span><span class="${hdExperience(j)==='not-specified'||hdTraining(j)?'hidden ':''}text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full">${hdExperience(j)==='fresher'?'Fresher':j.expYears}</span>${j._verification_pending?'<span class="text-[10px] font-bold bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full">⚠️ Job may have expired — verify before applying</span>':''}</div>
 <h3 class="font-black text-lg text-[var(--dark)] truncate">${j.company}</h3>
 <p class="text-sm font-semibold text-slate-700 truncate mt-0.5">${j.role}</p>
 <div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-2 text-xs text-slate-500"><span><i class="fa-solid fa-location-dot mr-1 text-slate-400"></i>${j.loc}</span><span><i class="fa-solid fa-graduation-cap mr-1 text-slate-400"></i>${j.batch}</span><span><i class="fa-solid fa-briefcase mr-1 text-slate-400"></i>${j.expYears}</span><span><i class="fa-regular fa-clock mr-1 text-slate-400"></i>${j.date}</span></div>
@@ -810,7 +832,7 @@ function resetFilters(){window.hdpExactCompany=null;currentPage=1;activeCat='all
 const STEPS=["Open the official company career page","Review the role and eligibility","Complete the application on the official site","Save confirmation/details for your reference"];
 function openJob(id){const j=JOBS.find(x=>x.id===id);document.getElementById('jobModalBody').innerHTML=`
 <div class="flex justify-between items-start gap-3"><div class="flex items-center gap-3 min-w-0">${companyLogo(j,'w-14 h-14')}<div class="min-w-0"><h3 class="font-black text-xl leading-tight truncate">${j.company}</h3><p class="text-sm text-slate-500 mt-1">${j.role}</p></div></div><button onclick="closeModal('jobModal')" class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 shrink-0"><i class="fa-solid fa-xmark"></i></button></div>
-<div class="grid grid-cols-2 gap-2 text-xs mt-5"><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Location</p><p class="font-bold mt-0.5">${j.loc}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Posted</p><p class="font-bold mt-0.5">${j.date}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Salary / Stipend</p><p class="font-bold mt-0.5">${j.salary}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Experience</p><p class="font-bold mt-0.5">${j.expYears} • ${j.expType==='fresher'?'Fresher':j.expType==='experienced'?'Experienced':'Not specified'}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Batch</p><p class="font-bold mt-0.5">${j.batch}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Category</p><p class="font-bold mt-0.5">${CAT_LABEL[j.cat]||j.cat}</p></div></div>
+<div class="grid grid-cols-2 gap-2 text-xs mt-5"><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Location</p><p class="font-bold mt-0.5">${j.loc}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Posted</p><p class="font-bold mt-0.5">${j.date}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Salary / Stipend</p><p class="font-bold mt-0.5">${j.salary}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Experience</p><p class="font-bold mt-0.5">${j.expYears} • ${hdTraining(j)?careerLabel(j):hdExperience(j)==='fresher'?'Fresher':hdExperience(j)==='experienced'?'Experienced':'Not specified'}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Batch</p><p class="font-bold mt-0.5">${j.batch}</p></div><div class="bg-slate-50 rounded-xl p-3"><p class="text-slate-400">Category</p><p class="font-bold mt-0.5">${CAT_LABEL[j.cat]||j.cat}</p></div></div>
 <div class="mt-5"><h4 class="font-extrabold text-sm mb-1.5"><i class="fa-solid fa-building text-[var(--primary)] mr-1.5"></i>Role Overview</h4><p class="text-sm text-slate-600 leading-relaxed">${j.desc}</p></div>
 <div class="mt-4"><h4 class="font-extrabold text-sm mb-1.5"><i class="fa-solid fa-clipboard-check text-[var(--primary)] mr-1.5"></i>Eligibility</h4><p class="text-sm text-slate-600 leading-relaxed">${j.elig}</p></div>
 <div class="mt-4"><h4 class="font-extrabold text-sm mb-1.5"><i class="fa-solid fa-list-check text-[var(--primary)] mr-1.5"></i>Responsibilities</h4><ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">${j.resp.map(r=>`<li>${r}</li>`).join('')}</ul></div>
