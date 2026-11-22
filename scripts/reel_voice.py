@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """HD Careers automatic free narration.
 
-Prefer Indian English female Microsoft Edge Neerja neural voice. Edge Read Aloud
+Prefer Microsoft Edge Neerja Expressive Neural for natural Indian-English delivery. Edge Read Aloud
 is an unofficial, best-effort endpoint (no uptime/usage guarantee). If blocked,
 fall back to Google Translate Indian-English (gTTS), clearly labeled in metadata.
 Do not claim the fallback is Neerja or ElevenLabs.
@@ -15,8 +15,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-NEERJA="en-IN-NeerjaNeural"
-DEFAULT_PROVIDER="edge-neerja"
+NEERJA="en-IN-NeerjaExpressiveNeural"
+DEFAULT_PROVIDER="edge-neerja-expressive"
 MAX_WORDS=45
 
 
@@ -64,7 +64,7 @@ def _probe_duration(path: Path) -> float:
 
 
 def generate(text: str, output: str | Path, *, engine: str="auto",
-             allow_fallback: bool=True, rate: str="+10%") -> dict:
+             allow_fallback: bool=False, rate: str="-3%") -> dict:
     text=validate_script(text)
     output=Path(output)
     output.parent.mkdir(parents=True,exist_ok=True)
@@ -75,7 +75,7 @@ def generate(text: str, output: str | Path, *, engine: str="auto",
     if engine in ("auto","edge"):
         try:
             asyncio.run(_edge_speech(text,output,rate))
-            selected=("edge-neerja",NEERJA)
+            selected=("edge-neerja-expressive",NEERJA)
         except Exception as exc:
             errors.append("Neerja synthesis unavailable: "+type(exc).__name__)
             if engine=="edge" or not allow_fallback:
@@ -94,8 +94,8 @@ def generate(text: str, output: str | Path, *, engine: str="auto",
     if duration < 2 or duration > 28:
         raise RuntimeError("Generated voice duration out of bounds")
     return {"engine":selected[0],"voice":selected[1],
-            "neerja_expressive_exact":False,"durationSeconds":round(duration,3),
-            "text":text,"fallbackUsed":selected[0]!="edge-neerja"}
+            "neerja_expressive_exact":True,"speechma_preset_verified":False,"durationSeconds":round(duration,3),
+            "text":text,"fallbackUsed":selected[0]!="edge-neerja-expressive"}
 
 
 def main():
@@ -105,7 +105,7 @@ def main():
     parser.add_argument("--output",default="artifacts/reel/voice.mp3")
     parser.add_argument("--engine",choices=("auto","edge","gtts"),default="auto")
     parser.add_argument("--no-fallback",action="store_true")
-    parser.add_argument("--rate",default="+10%")
+    parser.add_argument("--rate",default="-3%")
     args=parser.parse_args()
     text=Path(args.text_file).read_text(encoding="utf8").strip() if args.text_file else args.text
     result=generate(text,args.output,engine=args.engine,allow_fallback=not args.no_fallback,rate=args.rate)
