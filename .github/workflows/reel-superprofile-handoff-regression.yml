@@ -1,0 +1,29 @@
+name: Reel SuperProfile Auto-DM Handoff Regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/reel_superprofile_handoff.py
+      - tests/test_reel_superprofile_handoff.py
+      - scripts/reel_factory.py
+      - tests/test_reel_factory.py
+      - .github/workflows/reel-superprofile-handoff-regression.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check Python source syntax
+        run: |
+          python3 -m py_compile scripts/reel_superprofile_handoff.py scripts/reel_factory.py
+      - name: Test Reel to SuperProfile job link, any comment and 30 second delay
+        run: |
+          python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
+          python3 -m unittest discover -s tests -p test_reel_factory.py -v
