@@ -27,8 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      HD_REEL_VOICE_ENGINE: auto
+      HD_REEL_VOICE_ENGINE: elevenlabs-sarah
       HD_REEL_FREE_VOICE_FALLBACK: "false"
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      HD_REEL_AUDIO_COMMERCIAL_LICENSE_CONFIRMED: ${{ vars.HD_REEL_AUDIO_COMMERCIAL_LICENSE_CONFIRMED }}
       HD_REEL_VOICE_RATE: "-3%"
       BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
@@ -50,10 +52,11 @@ jobs:
           python3 -m pip install --disable-pip-version-check "Pillow>=11,<13" "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
       - name: Run safety tests and compile scripts
         run: |
-          python3 -m py_compile scripts/reel_voice.py scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
+          python3 -m py_compile scripts/reel_voice.py scripts/reel_voice_elevenlabs.py scripts/reel_video.py scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
           node --check scripts/reel_upload.mjs
           python3 -m unittest discover -s tests -p test_reel_factory.py -v
           python3 -m unittest discover -s tests -p test_reel_voice.py -v
+          python3 -m unittest discover -s tests -p test_reel_video_timing.py -v
           python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
       - name: Prepare script, caption, employer card and Reel where configured
         env:
@@ -70,7 +73,7 @@ jobs:
             python3 scripts/reel_factory.py --render
           fi
           if [ -f artifacts/reel/status.json ]; then cat artifacts/reel/status.json; fi
-      - name: Prepare SuperProfile keyword Auto-DM draft (NO MESSAGES)
+      - name: Prepare per-Reel any-comment SuperProfile Auto-DM specification (NO MESSAGES)
         shell: bash
         run: |
           if [ -s artifacts/reel/manifest.json ]; then
@@ -99,6 +102,9 @@ jobs:
             echo "::warning::No completed Reel. Nothing posted."
             exit 0
           fi
+          # Safety: never publish unsynced captions, unverified logo, unlicensed
+          # ElevenLabs promotional audio, or a Reel without a per-post DM receipt.
+          python3 scripts/reel_preflight.py --manifest artifacts/reel/manifest.json --status artifacts/reel/status.json --video artifacts/reel/reel.mp4 --require-commercial-license --require-superprofile-binding artifacts/reel/superprofile-post-receipt.json
           if [ -z "$BLOB_READ_WRITE_TOKEN" ] || [ -z "$INSTAGRAM_ACCESS_TOKEN" ] || [ -z "$INSTAGRAM_ACCOUNT_ID" ]; then
             echo "::warning::Publishing credentials missing. Nothing posted."
             exit 0
