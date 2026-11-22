@@ -33,3 +33,8 @@ jobs:
           PY
       - name: Run authenticated Reel selection regressions
         run: node --test tests/reel-kit.test.mjs
+      - name: Validate preview-only SuperProfile Auto-DM handoff
+        run: |
+          python3 -m py_compile scripts/reel_factory.py scripts/reel_superprofile_handoff.py
+          python3 -m unittest discover -s tests -p test_reel_factory.py -v
+          python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
