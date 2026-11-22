@@ -116,20 +116,42 @@ def verify_admin():
 
 
 def fmt(job):
-    page=str(job.get("page") or "")
-    if not PAGE_RE.fullmatch(page):raise ValueError("Invalid published job page")
-    compact=lambda v,limit:re.sub(r"\s+"," ",str(v or "")).strip()[:limit]
-    sal=str(job.get("salary") or "").strip()
-    pay=("\n💰 Pay: "+compact(sal,70)) if sal.lower() not in ("","not disclosed","not specified","n/a","na") else ""
-    cat="IT" if job.get("field")=="it" else "Non-IT" if job.get("field")=="nonit" else "Fresher"
-    return (f"🚨 *{compact(job.get('company'),80).upper()} HIRING*\n\n"
-            f"💼 Role: {compact(job.get('role'),130)}\n"
-            f"📍 Location: {compact(job.get('loc') or 'India',90)}\n"
-            f"🎓 Experience: {compact(job.get('expYears') or 'Refer to eligibility',70)}\n"
-            f"💻 Category: {cat}"+pay+
-            f"\n\n🔗 Job details and official apply link:\nhttps://hdcareers.in/{page}\n\n"
-            "⚠️ Application status can change. Confirm current eligibility with the employer.\n"
-            "Follow HD Careers for more verified fresher jobs.")
+    """Owner-approved WhatsApp post format, without invented fields or extra promos."""
+    page = str(job.get("page") or "")
+    if not PAGE_RE.fullmatch(page):
+        raise ValueError("Invalid published job page")
+    def clean(value, limit=160):
+        return re.sub(r"\s+", " ", str(value or "")).strip()[:limit]
+    company = clean(job.get("company"), 80).replace("*", "")
+    role = clean(job.get("role"), 150)
+    if not company or not role:
+        raise ValueError("Company and role are required")
+    qualification = clean(job.get("qualification"), 140)
+    if not qualification or qualification.casefold() in ("n/a", "na", "not specified"):
+        # Same eligibility extraction already used by the verified Telegram publisher.
+        from post_telegram import compact_qualification
+        qualification = clean(compact_qualification(job), 140)
+    if not qualification:
+        qualification = "Refer to official job eligibility"
+    experience = clean(job.get("expYears"), 160)
+    if not experience or experience.casefold() in ("n/a", "na", "not specified"):
+        experience = ("Freshers eligible" if
+                      str(job.get("expType") or "").lower() == "fresher"
+                      else "Refer to official job posting")
+    location = clean(job.get("loc"), 120) or "Refer to official job posting"
+    return "\n".join([
+        f"*{company} is Hiring ✅*",
+        "",
+        f"Role: {role}",
+        f"Qualification: {qualification}",
+        f"Experience: {experience}",
+        f"Location: {location}",
+        "",
+        f"Apply Link: https://hdcareers.in/{page}",
+        "",
+        "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+        "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers",
+    ])
 
 
 def select(doc,tg,jobs,at,run_id):
