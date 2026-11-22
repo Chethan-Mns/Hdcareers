@@ -25,7 +25,7 @@ class FreeReelVoiceTests(unittest.TestCase):
             with patch.object(reel_voice,"_edge_speech",side_effect=RuntimeError("403")), \
                  patch.object(reel_voice,"_gtts_speech",side_effect=write_audio), \
                  patch.object(reel_voice,"_probe_duration",return_value=9.3):
-                info=reel_voice.generate("Brillio is hiring freshers",audio)
+                info=reel_voice.generate("Brillio is hiring freshers",audio,allow_fallback=True)
             self.assertEqual(info["engine"],"google-indian-english")
             self.assertTrue(info["fallbackUsed"])
             self.assertFalse(info["neerja_expressive_exact"])
