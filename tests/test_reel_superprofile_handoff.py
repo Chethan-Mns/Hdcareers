@@ -14,17 +14,19 @@ class SuperProfileHandoffTests(unittest.TestCase):
             "role": "Associate Analyst",
             "page": "jobs/deloitte-associate-analyst.html",
             "jobUrl": "https://hdcareers.in/jobs/deloitte-associate-analyst.html",
-            "caption": "Deloitte is hiring freshers. Comment APPLY for the job link.",
+            "caption": "Deloitte is hiring freshers. Comment below for the job link.",
         }
 
-    def test_exact_job_specific_link_and_keyword(self):
+    def test_exact_job_specific_link_and_any_comment(self):
         d = draft(self.manifest)
         self.assertEqual(d["jobUrl"], d["buttonUrl"])
-        self.assertEqual(d["keyword"], "APPLY")
+        self.assertEqual(d["matchMode"], "any")
+        self.assertIsNone(d["keyword"])
+        self.assertEqual(d["delaySeconds"], 30)
         self.assertEqual(d["postScope"], "specific_reel")
         self.assertEqual(d["state"], "draft_not_connected")
         self.assertFalse(d["automatedMessageEnabled"])
-        self.assertFalse(d["followGate"])
+        self.assertTrue(d["followGate"])
         self.assertIn("official application link", d["openingMessage"])
 
     def test_reject_external_or_mismatched_urls(self):
@@ -39,9 +41,9 @@ class SuperProfileHandoffTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     draft(dict(self.manifest, jobUrl=bad))
 
-    def test_requires_matching_caption_and_job_identity(self):
+    def test_requires_comment_invitation_and_job_identity(self):
         with self.assertRaises(ValueError):
-            draft(dict(self.manifest, caption="No keyword here"))
+            draft(dict(self.manifest, caption="New opening announced today"))
         with self.assertRaises(ValueError):
             draft(dict(self.manifest, jobId=None))
         with self.assertRaises(ValueError):
