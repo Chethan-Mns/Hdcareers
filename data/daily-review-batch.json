@@ -57,7 +57,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -115,7 +115,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -173,7 +173,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -232,7 +232,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -291,7 +291,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -349,7 +349,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -406,7 +406,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -464,7 +464,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -522,7 +522,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -578,9 +578,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Weekday Lever posting is active, full-time, remote in India, and explicitly accepts fresh graduates or candidates with 0–1 year."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -640,7 +640,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -698,7 +698,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -755,7 +755,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -812,7 +812,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -871,7 +871,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -928,7 +928,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -986,7 +986,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1045,7 +1045,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1104,7 +1104,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1162,23 +1162,23 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 404; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 9,
+      "size": 10,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 1,
+        "nonIT": 2,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 1,
+        "nonIT": 0,
         "training": 0
       }
     },
@@ -1200,7 +1200,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 19,
+    "remaining": 20,
     "duplicateExclusions": [
       {
         "id": "ey-1760652",
@@ -1240,13 +1240,8 @@
       }
     ],
     "excludedCount": 6,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
-    "finalReplacement": {
-      "removed": "Paytm Payments d63d3620 (already published)",
-      "added": "Weekday 69bc9e94",
-      "dedupSearch": "No exact repository match before staging."
-    }
+    "needsFreshDiscovery": false,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
