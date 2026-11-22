@@ -1,0 +1,38 @@
+name: HD Careers Whapi Daily Pipeline CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/whatsapp_channel_relay.py
+      - scripts/whapi_channel_relay.py
+      - tests/test_whatsapp_channel_relay.py
+      - tests/test_whapi_channel_relay.py
+      - tests/test_whapi_daily_pipeline.py
+      - data/whapi-channel-config.json
+      - .github/workflows/whapi-channel-mirror.yml
+      - .github/workflows/admin-job-generator.yml
+      - .github/workflows/hourly-telegram-queue.yml
+      - .github/workflows/whapi-daily-ci.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: |
+          python3 -m py_compile scripts/whatsapp_channel_relay.py scripts/whapi_channel_relay.py
+          node --check api/whatsapp/latest.js
+      - name: Confirm WhatsApp exact template and daily pipeline safety
+        run: |
+          python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
+          python3 -m unittest discover -s tests -p test_whapi_channel_relay.py -v
+          python3 -m unittest discover -s tests -p test_whapi_daily_pipeline.py -v
