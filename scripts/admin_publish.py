@@ -150,7 +150,7 @@ def main() -> None:
         if result["state"] == "active":
             verified.append(job)
         elif result["state"] == "review":
-            if url not in pending_urls and pair not in pending_pairs:
+            if not job.get("autoVerified") and url not in pending_urls and pair not in pending_pairs:
                 enqueue_review(review_queue, job, result, pos)
                 pending_urls.add(url); pending_pairs.add(pair)
             held.append(job)
@@ -191,7 +191,7 @@ def main() -> None:
 
     if prepared:
         DATA_FILE.write_text(json.dumps(prepared + current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        manifest = {"approved": True, "batchId": "admin-" + os.environ.get("GITHUB_RUN_ID", str(int(time.time()))), "pages": [j["page"] for j in prepared], "approvedBy": "HD Careers Admin"}
+        manifest = {"approved": True, "batchId": "admin-" + os.environ.get("GITHUB_RUN_ID", str(int(time.time()))), "pages": [j["page"] for j in prepared], "approvedBy": "HD Careers Verified Automation" if all(j.get("autoVerified") for j in prepared) else "HD Careers Admin"}
         APPROVED_BATCH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     REVIEW_FILE.write_text(json.dumps(review_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

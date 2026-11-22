@@ -1,0 +1,87 @@
+name: HD Careers Verified Auto-Publish
+on:
+  schedule:
+    - cron: "0 6 * * *" # 11:30 AM IST
+  push:
+    branches: [main]
+    paths:
+      - data/daily-review-batch.json
+      - data/auto-publish-kick.json
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: hd-verified-auto-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: >-
+      github.event_name != 'push' ||
+      startsWith(github.event.head_commit.message, 'Rank and enrich daily shortlist') ||
+      startsWith(github.event.head_commit.message, 'Trigger verified auto-publish')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Load latest data
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Verify auto-publishing safeguards
+        run: python3 -m unittest discover -s tests -p test_auto_verified_publish.py -v
+      - name: Select exact-source verified jobs
+        id: selected
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/select_auto_verified_jobs.py --event /tmp/hd-auto-event.json --report /tmp/hd-auto-report.json
+          if [ -s /tmp/hd-auto-event.json ]; then echo "found=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Commit idempotent batch claim before dispatch
+        if: steps.selected.outputs.found == 'true'
+        id: claim
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime,timezone
+          f=Path('data/auto-publish-ledger.json');ledger=json.loads(f.read_text())
+          event=json.loads(Path('/tmp/hd-auto-event.json').read_text())['client_payload']
+          report=json.loads(Path('/tmp/hd-auto-report.json').read_text())
+          batch=event['autoVerifiedBatchId']
+          if any(x.get('batchId')==batch for x in ledger['batches']):
+              raise SystemExit('This batch was already claimed; nothing dispatched')
+          ledger['batches'].append({'batchId':batch,'requestId':event['requestId'],
+               'candidateIds':report['candidateIds'],'status':'claimed_before_dispatch',
+               'claimedAt':datetime.now(timezone.utc).isoformat()})
+          f.write_text(json.dumps(ledger,ensure_ascii=False,indent=2)+'\n')
+          PY
+          git config user.name "HD Careers Auto Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/auto-publish-ledger.json
+          git commit -m "Claim source-verified daily publishing batch"
+          git push origin HEAD:main
+          echo "claimed=true" >> "$GITHUB_OUTPUT"
+      - name: Dispatch existing website and hourly Telegram publisher
+        if: steps.claim.outputs.claimed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh api --method POST "repos/$GITHUB_REPOSITORY/dispatches" --input /tmp/hd-auto-event.json
+      - name: Retain non-sensitive selection report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-publish-evidence
+          path: /tmp/hd-auto-report.json
+          if-no-files-found: ignore
+          retention-days: 14
