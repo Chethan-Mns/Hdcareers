@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = "jobs/synopsys-cad-design-support-apprenticeship.html"
@@ -115,7 +115,15 @@ def render(job, logo_path, output: Path):
                         fill="#ffffff", outline="#c9e1fb", width=3)
     with Image.open(logo_path) as raw:
         logo = raw.convert("RGBA")
-        logo.thumbnail((380, 132), Image.Resampling.LANCZOS)
+        # Official logo assets sometimes contain substantial white padding.
+        # Trim only that background so the REAL employer logo remains readable
+        # when WhatsApp center-crops the 1200x630 preview into a square.
+        rgb = logo.convert("RGB")
+        difference = ImageChops.difference(rgb, Image.new("RGB", rgb.size, "white")).convert("L")
+        bounds = difference.point(lambda v: 255 if v > 26 else 0).getbbox()
+        if bounds:
+            logo = logo.crop(bounds)
+        logo.thumbnail((380, 130), Image.Resampling.LANCZOS)
         image.paste(logo, ((1200 - logo.width)//2, 107 - logo.height//2), logo)
     d = ImageDraw.Draw(image)
     d.rounded_rectangle((481, 205, 719, 258), radius=27, fill="#0668dc")
@@ -200,5 +208,36 @@ def main():
     print("Prepared ONE job page, no WhatsApp/Telegram post was sent")
 
 
+def refine_once():
+    """Update ONLY the still-pending Synopsys OG card to a larger official logo."""
+    job, logo = load_job_and_logo()
+    check_next_job()
+    pagefile = ROOT / PAGE
+    old_html = pagefile.read_text(encoding="utf-8")
+    if old_html.count(PUBLIC_IMAGE) != 3:
+        raise RuntimeError("Expected three original premium OG image URL references")
+    refined_rel = IMAGE.replace(".png", "-v2.png")
+    refined_url = "https://hdcareers.in/" + refined_rel
+    if refined_url in old_html:
+        raise RuntimeError("The refined preview was already installed")
+    trialfile = ROOT / TRIAL
+    trial = json.loads(trialfile.read_text(encoding="utf-8"))
+    if trial.get("globalRollout") is not False or trial.get("jobPage") != PAGE:
+        raise RuntimeError("One-job approval gate missing")
+    render(job, logo, ROOT / refined_rel)
+    pagefile.write_text(old_html.replace(PUBLIC_IMAGE, refined_url), encoding="utf-8")
+    trial.update(imagePath=refined_rel, previewImageUrl=refined_url,
+                 status="refined_card_committed_pending_public_deployment",
+                 revision=2)
+    trialfile.write_text(json.dumps(trial, indent=2)+"\n", encoding="utf-8")
+    print("Refined only Synopsys branded preview with enlarged official logo")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if sys.argv[1:] == ["--refine"]:
+        refine_once()
+    elif not sys.argv[1:]:
+        main()
+    else:
+        raise SystemExit("Usage: whapi_premium_preview_trial.py [--refine]")
