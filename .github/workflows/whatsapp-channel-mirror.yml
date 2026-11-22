@@ -1,13 +1,13 @@
-name: HD Careers WhatsApp Channel Mirror
+name: HD Careers WhatsApp Channel Mirror (WAHA)
 
 on:
   schedule:
-    # Five-minute fallback if an immediate GitHub dispatch is missed.
+    # Backup relay; confirmed Telegram sends also dispatch this workflow directly.
     - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       verify_only:
-        description: "Verify dedicated WhatsApp number has Channel ADMIN role; do not send"
+        description: "Check WAHA HTTPS and WhatsApp Channel admin role without posting"
         type: boolean
         required: false
         default: false
@@ -21,14 +21,16 @@ concurrency:
 
 jobs:
   mirror:
-    # Avoid running paid Actions minutes every 5 minutes until owner opts in.
-    if: vars.WHATSAPP_CHANNEL_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.verify_only == true)
+    # Prevent 5-minute runners from consuming Actions minutes before onboarding.
+    if: vars.WAHA_CHANNEL_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.verify_only == true)
     runs-on: ubuntu-latest
     timeout-minutes: 9
     env:
-      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
-      WHATSAPP_CHANNEL_ID: ${{ secrets.WHATSAPP_CHANNEL_ID }}
-      WHATSAPP_CHANNEL_ENABLED: ${{ vars.WHATSAPP_CHANNEL_ENABLED }}
+      WAHA_BASE_URL: ${{ secrets.WAHA_BASE_URL }}
+      WAHA_API_KEY: ${{ secrets.WAHA_API_KEY }}
+      WAHA_CHANNEL_ID: ${{ secrets.WAHA_CHANNEL_ID }}
+      WAHA_SESSION: default
+      WAHA_CHANNEL_ENABLED: ${{ vars.WAHA_CHANNEL_ENABLED }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,55 +39,58 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate channel relay safeguards
-        run: python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
-      - name: Refresh latest Telegram delivery receipts
+      - name: Validate safety and WAHA API contract
+        run: |
+          python3 -m py_compile scripts/whatsapp_channel_relay.py
+          python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
+      - name: Refresh current Telegram and job ledgers
         run: |
           git fetch origin main
           git reset --hard origin/main
-      - name: Validate dedicated Channel admin permissions (no posting)
+      - name: Verify WAHA and Channel admin permissions without posting
         if: github.event_name == 'workflow_dispatch' && inputs.verify_only == true
         run: python3 scripts/whatsapp_channel_relay.py verify
-      - name: Check explicit owner opt-in and credentials
-        id: configured
+      - name: Check explicit owner opt-in and WAHA credentials
         if: inputs.verify_only != true
+        id: configured
+        shell: bash
         run: |
-          if [ "$WHATSAPP_CHANNEL_ENABLED" = "true" ] && [ -n "$WHAPI_TOKEN" ] && [ -n "$WHATSAPP_CHANNEL_ID" ]; then
+          if [ "$WAHA_CHANNEL_ENABLED" = "true" ] && [ -n "$WAHA_BASE_URL" ] && [ -n "$WAHA_API_KEY" ] && [ -n "$WAHA_CHANNEL_ID" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
-            echo "WhatsApp Channel mirror disabled/unconfigured. Nothing will be posted."
+            echo "WAHA bridge unconfigured; no external messages sent."
           fi
-      - name: Claim next new Telegram-confirmed job BEFORE external API posting
-        id: claim
+      - name: Precommit exactly one new Telegram-confirmed Channel claim
         if: steps.configured.outputs.enabled == 'true'
+        id: claim
         shell: bash
         run: |
           set -euo pipefail
           python3 scripts/whatsapp_channel_relay.py claim
-          git config user.name "HD Careers WhatsApp Mirror"
+          git config user.name "HD Careers WAHA Mirror"
           git config user.email "actions@users.noreply.github.com"
           git add data/whatsapp-channel-deliveries.json
           if ! git diff --cached --quiet; then
-            git commit -m "Persist pre-send WhatsApp Channel claim"
+            git commit -m "Persist WAHA pre-send claim"
             git push origin HEAD:main
           fi
-      - name: Post only when employer source and public job page are live
+      - name: Recheck employer, live page and Channel admin; send via WAHA
         if: steps.claim.outputs.claimed == 'true'
         run: python3 scripts/whatsapp_channel_relay.py send
-      - name: Save provider response or uncertain outcome
+      - name: Persist accepted, skipped or uncertain outcome without blind resend
         if: always() && steps.claim.outputs.claimed == 'true'
         shell: bash
         run: |
           set -euo pipefail
           git add data/whatsapp-channel-deliveries.json
           if ! git diff --cached --quiet; then
-            git commit -m "Record WhatsApp Channel posting outcome"
+            git commit -m "Record WAHA Channel posting outcome"
             git push origin HEAD:main
           fi
-      - name: Preserve reconciliation evidence
+      - name: Preserve outcome for manual reconciliation
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: hd-whatsapp-channel-outcome
+          name: hd-waha-channel-outcome
           path: data/whatsapp-channel-deliveries.json
           retention-days: 30
