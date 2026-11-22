@@ -676,45 +676,55 @@ def job_posting_schema(job: dict, canonical: str) -> str:
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + "</script>"
 
 
-def _one_off_whatsapp_preview_meta(job: dict, html: str) -> str:
-    """Preserve ONLY the owner-authorized Synopsys preview trial during page rebuilds.
+def _company_logo_preview_source(job: dict) -> tuple[str, str, str]:
+    """Use the existing approved employer logo asset; never generate a new image.
 
-    The permanent company-card rollout is intentionally NOT enabled.
+    Only repository-hosted images are eligible: social crawlers should not rely on
+    remote favicon services or an ATS provider's logo. The approved job-page logo
+    priority remains unchanged.
     """
-    page = "jobs/synopsys-cad-design-support-apprenticeship.html"
-    if str(job.get("page", "")) != page:
-        return html
-    state_path = ROOT / "data/whapi-preview-trial.json"
-    if not state_path.is_file():
-        return html
-    try:
-        state = json.loads(state_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        raise RuntimeError("Single-job WhatsApp trial state is unreadable")
-    images = {
-        "assets/job-previews/synopsys-cad-design-support-apprenticeship.png",
-        "assets/job-previews/synopsys-cad-design-support-apprenticeship-v2.png",
+    formats = {
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".webp": "image/webp",
     }
-    if state.get("jobPage") != page or state.get("globalRollout") is not False:
-        raise RuntimeError("Unapproved WhatsApp preview trial configuration")
-    image_rel = str(state.get("imagePath", ""))
-    if image_rel not in images or not (ROOT / image_rel).is_file():
-        raise RuntimeError("Unapproved or missing single-job WhatsApp preview PNG")
-    image_url = "https://hdcareers.in/" + image_rel
+    for candidate in logo_candidates(job):
+        if not candidate.startswith("../assets/"):
+            continue
+        relative = candidate.removeprefix("../")
+        if not re.fullmatch(r"assets/[A-Za-z0-9_./-]+", relative) or ".." in Path(relative).parts:
+            continue
+        path = ROOT / relative
+        mime = formats.get(path.suffix.lower())
+        if not mime or not path.is_file():
+            continue
+        if not 250 <= path.stat().st_size <= 800_000:
+            # An empty/oversized asset is worse than the known-good brand fallback.
+            continue
+        return "https://hdcareers.in/" + relative, mime, str(job.get("company") or "") + " logo"
+    return "https://hdcareers.in/assets/hd-careers-logo.png", "image/png", "HD Careers logo"
+
+
+def _company_logo_og_meta(job: dict, html: str) -> str:
+    """Set a logo-only social link preview for every generated HD Careers job page."""
+    page = str(job.get("page") or "")
+    if not re.fullmatch(r"jobs/[a-z0-9-]+\.html", page):
+        raise RuntimeError("Unrecognized job page for OG image")
     canonical = "https://hdcareers.in/" + page
     anchor = '<meta property="og:url" content="' + canonical + '">'
     if html.count(anchor) != 1:
-        raise RuntimeError("Synopsys page is missing its unique OG canonical")
+        raise RuntimeError("Missing unique OG canonical for job preview")
+    if 'property="og:image"' in html:
+        raise RuntimeError("Unexpected duplicate social preview image")
+    image, mime, alt = _company_logo_preview_source(job)
     tags = "\n".join([
-        "<!-- One-post premium WhatsApp trial; owner approval needed before a global rollout -->",
-        '<meta property="og:image" content="' + image_url + '">',
-        '<meta property="og:image:secure_url" content="' + image_url + '">',
-        '<meta property="og:image:type" content="image/png">',
-        '<meta property="og:image:width" content="1200">',
-        '<meta property="og:image:height" content="630">',
-        '<meta property="og:image:alt" content="Synopsys CAD / Design Support Apprenticeship hiring card by HD Careers">',
-        '<meta name="twitter:card" content="summary_large_image">',
-        '<meta name="twitter:image" content="' + image_url + '">',
+        '<meta property="og:image" content="' + esc(image) + '">',
+        '<meta property="og:image:secure_url" content="' + esc(image) + '">',
+        '<meta property="og:image:type" content="' + mime + '">',
+        '<meta property="og:image:alt" content="' + esc(alt) + '">',
+        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:image" content="' + esc(image) + '">',
     ])
     return html.replace(anchor, anchor + "\n" + tags, 1)
 
@@ -911,7 +921,7 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
         "share_text": json.dumps(share_text, ensure_ascii=False),
     }
 
-    return _one_off_whatsapp_preview_meta(job, PAGE_TEMPLATE.substitute(values))
+    return _company_logo_og_meta(job, PAGE_TEMPLATE.substitute(values))
 
 
 def update_index(jobs: list[dict], dry_run: bool) -> bool:
