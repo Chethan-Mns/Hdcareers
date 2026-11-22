@@ -19,7 +19,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: hd-daily-reel-factory
+  group: hd-superprofile-reel-credentials
   cancel-in-progress: false
 
 jobs:
