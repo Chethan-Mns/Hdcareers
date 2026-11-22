@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+from zoneinfo import ZoneInfo
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -17,12 +18,17 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 import whatsapp_channel_relay as shared
 
 API_BASE = "https://gate.whapi.cloud"
+APPROVED_CHANNEL = "120363419928883930@newsletter"  # HD Career Updates only
+MAX_DAILY_POSTS = 10
+IST = ZoneInfo("Asia/Kolkata")
 
 
 def channel_id():
     cid = os.getenv("WHAPI_CHANNEL_ID", "").strip()
     if not shared.CHANNEL_RE.fullmatch(cid):
         raise ValueError("WHAPI_CHANNEL_ID must be the exact @newsletter ID, not an invite link")
+    if os.getenv("WHAPI_CHANNEL_ENABLED", "").lower() == "true" and cid != APPROVED_CHANNEL:
+        raise RuntimeError("Posting blocked: target is not HD Career Updates")
     return cid
 
 
@@ -83,6 +89,42 @@ def must_be_enabled():
         raise RuntimeError("Disable old WAHA relay before enabling Whapi")
 
 
+def telegram_ist_day(iso_time):
+    stamp = shared.parse(iso_time)
+    return stamp.astimezone(IST).date().isoformat() if stamp else None
+
+
+def claim_limited(doc, tg, jobs, at, run):
+    """Select exactly one confirmed Telegram receipt, at most 10 claims per IST day.
+
+    Count uncertain sends as consumed to prevent re-posting when provider response is lost.
+    Never backfill historical Telegram posts before activation.
+    """
+    for _ in range(250):
+        page = shared.select(doc, tg, jobs, at, run)
+        if not page:
+            return None
+        item = doc["items"][page]
+        day = telegram_ist_day(item.get("telegramDeliveredAt"))
+        if not day:
+            item.update(status="skipped_missing_date", checkedAt=at)
+            continue
+        count = sum(
+            1 for x in doc["items"].values()
+            if isinstance(x, dict)
+            and x.get("status") in ("sending", "uncertain", "provider_accepted")
+            and telegram_ist_day(x.get("telegramDeliveredAt")) == day
+            and x.get("channelId", APPROVED_CHANNEL) == APPROVED_CHANNEL
+        )
+        if count > MAX_DAILY_POSTS:
+            item.update(status="skipped_daily_cap", checkedAt=at, telegramDateIst=day)
+            continue
+        item["telegramDateIst"] = day
+        item["channelId"] = APPROVED_CHANNEL
+        return page
+    raise RuntimeError("More than 250 pending WhatsApp receipts; needs manual review")
+
+
 def claim():
     must_be_enabled()
     channel_id()
@@ -96,12 +138,12 @@ def claim():
         str(job.get("page")): job
         for job in shared.load(shared.JOBS, []) if isinstance(job, dict)
     }
-    page = shared.select(doc, shared.load(shared.TG, {}), jobs, shared.utc(), run)
+    page = claim_limited(doc, shared.load(shared.TG, {}), jobs, shared.utc(), run)
     shared.save(shared.LEDGER, doc)
     if os.getenv("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
             f.write("claimed=" + ("true" if page else "false") + "\n")
-    print("Whapi selected:", page or "none (activated or no new Telegram receipt)")
+    print("Whapi selected:", page or "none (activated or no eligible Telegram receipt)")
 
 
 def message_id(result):
