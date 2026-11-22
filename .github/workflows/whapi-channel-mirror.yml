@@ -1,0 +1,99 @@
+name: HD Careers WhatsApp Channel Mirror (Whapi.Cloud)
+
+on:
+  schedule:
+    # Mirror Telegram-confirmed deliveries. GitHub cron may be delayed.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      verify_only:
+        description: "Check Whapi connection and Channel ADMIN/OWNER role without posting"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    # Never send until the owner explicitly enables the Whapi integration.
+    if: vars.WHAPI_CHANNEL_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.verify_only == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    env:
+      WHAPI_TOKEN: {{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: {{ secrets.WHAPI_CHANNEL_ID }}
+      WHAPI_CHANNEL_ENABLED: {{ vars.WHAPI_CHANNEL_ENABLED }}
+      WAHA_CHANNEL_ENABLED: {{ vars.WAHA_CHANNEL_ENABLED }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate safety and Whapi API contract
+        run: |
+          python3 -m py_compile scripts/whapi_channel_relay.py
+          python3 -m unittest discover -s tests -p test_whapi_channel_relay.py -v
+          python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
+      - name: Refresh newest published Telegram/job ledger
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Verify Channel admin permission without posting
+        if: github.event_name == 'workflow_dispatch' && inputs.verify_only == true
+        run: python3 scripts/whapi_channel_relay.py verify
+      - name: Check owner opt-in and Whapi credentials
+        if: inputs.verify_only != true
+        id: configured
+        shell: bash
+        run: |
+          if [ "$WHAPI_CHANNEL_ENABLED" = "true" ] &&
+             [ "$WAHA_CHANNEL_ENABLED" != "true" ] &&
+             [ -n "$WHAPI_TOKEN" ] &&
+             [ -n "$WHAPI_CHANNEL_ID" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Whapi not enabled or old WAHA is still enabled; nothing sent."
+          fi
+      - name: Precommit exactly one Telegram-confirmed WhatsApp claim
+        if: steps.configured.outputs.enabled == 'true'
+        id: claim
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/whapi_channel_relay.py claim
+          git config user.name "HD Careers Whapi Mirror"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/whatsapp-channel-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist Whapi pre-send Channel claim"
+            git push origin HEAD:main
+          fi
+      - name: Recheck official source, live job page and Channel admin; send
+        if: steps.claim.outputs.claimed == 'true'
+        run: python3 scripts/whapi_channel_relay.py send
+      - name: Persist accepted, skipped or uncertain outcome
+        if: always() && steps.claim.outputs.claimed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add data/whatsapp-channel-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Whapi Channel posting outcome"
+            git push origin HEAD:main
+          fi
+      - name: Preserve evidence for manual reconciliation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-whapi-channel-outcome
+          path: data/whatsapp-channel-deliveries.json
+          retention-days: 30
