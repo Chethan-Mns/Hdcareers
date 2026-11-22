@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/free-reel-voice-smoke.yml"
+      - "scripts/reel_voice.py"
+      - "tests/test_reel_voice.py"
   workflow_dispatch:
 permissions:
   contents: write
