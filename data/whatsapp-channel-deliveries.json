@@ -41,13 +41,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/synopsys-cad-design-support-apprenticeship.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45018214164",
       "at": "2026-11-22T11:37:26.280643+00:00",
       "telegramMessageId": 730,
       "telegramDeliveredAt": "2026-11-22T11:37:07.664107+00:00",
       "telegramDateIst": "2026-11-22",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsocU8Qp.2xLgiU-18wBq53kiM_y2g-AkI",
+      "acceptedAt": "2026-11-22T11:37:34.340773+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
