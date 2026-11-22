@@ -62,7 +62,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [ -n "$CI_SUPERPROFILE_TOKEN_FILE" ]; then
+          if [ -n "${CI_SUPERPROFILE_TOKEN_FILE:-}" ]; then
             export SUPERPROFILE_MCP_ACCESS_TOKEN="$(cat "$CI_SUPERPROFILE_TOKEN_FILE")"
           fi
           python3 scripts/reel_reconcile.py
