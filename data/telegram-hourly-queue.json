@@ -2109,9 +2109,11 @@
     {
       "page": "jobs/secfix-backend-engineer-gtm-engineering-fresh-grad-india.html",
       "batchId": "admin-44998841244",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T15:38:14.541227+00:00"
+      "dueAt": "2026-11-22T15:38:14.541227+00:00",
+      "claimId": "45039414880",
+      "claimedAt": "2026-11-22T15:38:23.673368+00:00"
     },
     {
       "page": "jobs/endeavor-it-solution-junior-software-engineer.html",
