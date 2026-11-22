@@ -2039,9 +2039,11 @@
     {
       "page": "jobs/chaosology-technologies-junior-software-developer.html",
       "batchId": "admin-44998841244",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T08:35:57.956528+00:00"
+      "dueAt": "2026-11-22T08:35:57.956528+00:00",
+      "claimId": "45003566939",
+      "claimedAt": "2026-11-22T08:36:08.128010+00:00"
     },
     {
       "page": "jobs/qualcomm-cpu-software-engineer.html",
