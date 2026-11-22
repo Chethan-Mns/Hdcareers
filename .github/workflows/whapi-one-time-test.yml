@@ -1,0 +1,75 @@
+name: HD Careers One-Time WhatsApp Channel Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-test-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  send-one-approved-telegram-job:
+    if: startsWith(github.event.head_commit.message, 'Run single owner-approved Whapi test')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+      WAHA_CHANNEL_ENABLED: ${{ vars.WAHA_CHANNEL_ENABLED }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run offline Whapi safety checks
+        run: |
+          python3 -m py_compile scripts/whapi_channel_relay.py scripts/whapi_channel_test.py
+          python3 -m unittest discover -s tests -p test_whapi_channel_relay.py -v
+      - name: Refresh latest Telegram and job data
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Verify exact HD Career Updates Channel without posting
+        run: python3 scripts/whapi_channel_relay.py verify
+      - name: Claim exactly one preapproved already-posted Telegram job
+        id: claim
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/whapi_channel_test.py claim
+          git config user.name "HD Careers Whapi Test"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/whatsapp-channel-deliveries.json
+          git commit -m "Claim single test WhatsApp post before provider call"
+          git push origin HEAD:main
+      - name: Test send with fresh official-source check, without enabling normal automation
+        if: steps.claim.outputs.claimed == 'true'
+        env:
+          WHAPI_CHANNEL_ENABLED: "true"
+        run: python3 scripts/whapi_channel_relay.py send
+      - name: Persist provider acceptance, skipped or uncertain status
+        if: always() && steps.claim.outputs.claimed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add data/whatsapp-channel-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record one-time Whapi Channel test outcome"
+            git push origin HEAD:main
+          fi
+      - name: Save evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: whatsapp-one-time-test
+          path: data/whatsapp-channel-deliveries.json
+          retention-days: 30
