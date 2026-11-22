@@ -1,0 +1,89 @@
+name: HD Careers WhatsApp Channel Mirror
+
+on:
+  schedule:
+    # Five-minute fallback if an immediate GitHub dispatch is missed.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      verify_only:
+        description: "Verify dedicated WhatsApp number has Channel ADMIN role; do not send"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHATSAPP_CHANNEL_ID: ${{ secrets.WHATSAPP_CHANNEL_ID }}
+      WHATSAPP_CHANNEL_ENABLED: ${{ vars.WHATSAPP_CHANNEL_ENABLED }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate channel relay safeguards
+        run: python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
+      - name: Refresh latest Telegram delivery receipts
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Validate dedicated Channel admin permissions (no posting)
+        if: github.event_name == 'workflow_dispatch' && inputs.verify_only == true
+        run: python3 scripts/whatsapp_channel_relay.py verify
+      - name: Check explicit owner opt-in and credentials
+        id: configured
+        if: inputs.verify_only != true
+        run: |
+          if [ "$WHATSAPP_CHANNEL_ENABLED" = "true" ] && [ -n "$WHAPI_TOKEN" ] && [ -n "$WHATSAPP_CHANNEL_ID" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "WhatsApp Channel mirror disabled/unconfigured. Nothing will be posted."
+          fi
+      - name: Claim next new Telegram-confirmed job BEFORE external API posting
+        id: claim
+        if: steps.configured.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/whatsapp_channel_relay.py claim
+          git config user.name "HD Careers WhatsApp Mirror"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/whatsapp-channel-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist pre-send WhatsApp Channel claim"
+            git push origin HEAD:main
+          fi
+      - name: Post only when employer source and public job page are live
+        if: steps.claim.outputs.claimed == 'true'
+        run: python3 scripts/whatsapp_channel_relay.py send
+      - name: Save provider response or uncertain outcome
+        if: always() && steps.claim.outputs.claimed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add data/whatsapp-channel-deliveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record WhatsApp Channel posting outcome"
+            git push origin HEAD:main
+          fi
+      - name: Preserve reconciliation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-whatsapp-channel-outcome
+          path: data/whatsapp-channel-deliveries.json
+          retention-days: 30
