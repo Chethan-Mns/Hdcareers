@@ -2049,9 +2049,11 @@
     {
       "page": "jobs/qualcomm-cpu-software-engineer.html",
       "batchId": "admin-44998841244",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T09:36:24.902428+00:00"
+      "dueAt": "2026-11-22T09:36:24.902428+00:00",
+      "claimId": "45008372385",
+      "claimedAt": "2026-11-22T09:36:36.604050+00:00"
     },
     {
       "page": "jobs/vijnoratech-software-engineer-graduate.html",
