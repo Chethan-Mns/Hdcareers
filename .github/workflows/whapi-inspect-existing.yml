@@ -1,0 +1,54 @@
+name: Inspect Existing Whapi Post Structure (Read Only)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-existing-message-inspect-request.json
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect two known message content paths without exposing text
+        run: |
+          python3 - <<'PY'
+          import sys,json
+          sys.path.insert(0,'scripts')
+          import whapi_channel_relay as api
+          import whatsapp_channel_relay as shared
+          from edit_whapi_legacy_footer import flatten_strings,lists_from,OLD,NEW
+          cid='120363419928883930@newsletter'
+          assert api.channel_id()==cid
+          data=api.api('/newsletters/'+cid+'/messages?count=50')
+          rows=lists_from(data)
+          ledger=shared.load(shared.LEDGER,{})
+          for page in ('jobs/chaosology-technologies-junior-software-developer.html','jobs/brillio-associate-engineer-applications-platforms.html'):
+            mid=ledger['items'][page]['providerMessageId']
+            matches=[r for r in rows if isinstance(r,dict) and mid in flatten_strings(r)]
+            print('JOB',page,'MATCHES',len(matches))
+            if not matches:continue
+            def walk(x,path='',depth=0):
+              if depth>8:return
+              if isinstance(x,dict):
+                for k,v in x.items():walk(v,path+'/'+str(k),depth+1)
+              elif isinstance(x,list):
+                for i,v in enumerate(x[:100]):walk(v,path+'/'+str(i),depth+1)
+              elif isinstance(x,str):
+                s=x
+                if 'hdcareers.in' in s or 'Application status' in s or 'Follow HD Careers' in s or ('is Hiring' in s):
+                  print('FIELD',path,'length',len(s),'url',('hdcareers.in/jobs/' in s),'oldFooter',OLD in s,'warning',('Application status' in s),'newFooter',NEW in s)
+            walk(matches[0])
+            print('ROOT_KEYS',sorted(matches[0].keys()))
+          PY
