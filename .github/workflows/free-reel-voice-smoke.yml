@@ -1,0 +1,57 @@
+name: Free Brillio Reel Voice Proof
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/free-reel-voice-smoke.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install free Indian English voice engines
+        run: |
+          python3 -m pip install --disable-pip-version-check "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
+      - name: Run narrator regression tests
+        run: python3 -m unittest discover -s tests -p test_reel_voice.py -v
+      - name: Generate Brillio narration automatically, no ElevenLabs charges
+        shell: bash
+        run: |
+          mkdir -p artifacts/brillio-free
+          cat > artifacts/brillio-free/script.txt <<'EOF'
+          Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly.
+          EOF
+          python3 scripts/reel_voice.py --text-file artifacts/brillio-free/script.txt --output artifacts/brillio-free/voice.mp3
+          cat artifacts/brillio-free/voice.voice.json
+      - name: Upload audio preview and provider evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: free-brillio-narration
+          path: artifacts/brillio-free/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Preserve compact audio as a reusable GitHub release input
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .github/generated
+          ffmpeg -v error -y -i artifacts/brillio-free/voice.mp3 -c:a libopus -b:a 28k .github/generated/brillio-382-free-voice.ogg
+          cp artifacts/brillio-free/voice.voice.json .github/generated/brillio-382-free-voice.json
+          git config user.name "HD Careers Reel Factory"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/generated/brillio-382-free-voice.ogg .github/generated/brillio-382-free-voice.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Store generated Brillio narration from free voice engine"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
