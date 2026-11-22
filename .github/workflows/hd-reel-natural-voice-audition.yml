@@ -1,0 +1,63 @@
+name: HD Careers natural voice audition
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/hd-reel-natural-voice-audition.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install free neural voice library
+        run: python3 -m pip install --disable-pip-version-check "edge-tts>=7.3.1,<8"
+      - name: Generate natural Indian-English Brillio voice comparisons
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/natural-voice
+          python3 - <<'PY'
+          import asyncio,json
+          from pathlib import Path
+          import edge_tts
+          out=Path("artifacts/natural-voice")
+          script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I'll share the application link directly."
+          plans=[
+            ("Neerja_Expressive", "en-IN-NeerjaExpressiveNeural","-3%"),
+            ("Neerja_Neutral_Slow", "en-IN-NeerjaNeural","-3%"),
+          ]
+          results=[]
+          async def main():
+              offered={v["ShortName"] for v in await edge_tts.list_voices()}
+              for name,voice,rate in plans:
+                  if voice not in offered:
+                      results.append({"name":name,"voice":voice,"status":"not_in_catalog"});continue
+                  try:
+                      await asyncio.wait_for(edge_tts.Communicate(script,voice,rate=rate).save(str(out/(name+".mp3"))),timeout=70)
+                      audio=out/(name+".mp3")
+                      if audio.stat().st_size<4000:raise ValueError("Audio too small")
+                      results.append({"name":name,"voice":voice,"rate":rate,"status":"created","bytes":audio.stat().st_size})
+                  except Exception as e:
+                      results.append({"name":name,"voice":voice,"status":"failed","error_type":type(e).__name__})
+          asyncio.run(main())
+          (out/"script.txt").write_text(script+"\n",encoding="utf8")
+          (out/"results.json").write_text(json.dumps(results,indent=2)+"\n",encoding="utf8")
+          print(json.dumps(results,indent=2))
+          if not any(x["status"]=="created" for x in results):
+              raise SystemExit("No voice samples generated; no voice replaced.")
+          PY
+      - name: Keep sample MP3 files and source metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-brillio-natural-voices
+          path: artifacts/natural-voice/
+          retention-days: 14
+          if-no-files-found: warn
