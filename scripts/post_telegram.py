@@ -20,21 +20,21 @@ MAX_WAIT_SECONDS = 240
 POLL_SECONDS = 10
 
 DEGREE_TERMS = [
-    r"B\.?E\.?\s*/?\s*B\.?Tech",
-    r"B\.?Tech",
-    r"M\.?Tech",
-    r"MCA",
-    r"BCA",
-    r"MBA",
-    r"BSc",
-    r"MSc",
-    r"Diploma",
-    r"Bachelor(?:'s)? degree",
-    r"Master(?:'s)? degree",
-    r"Graduate",
-    r"Postgraduate",
+    (r"\bB\.?E\.?\s*(?:/|or)\s*B\.?Tech\b", "B.E./B.Tech"),
+    (r"\bB\.?Tech\b", "B.Tech"),
+    (r"\bB\.?E\.?(?!\w)", "B.E."),
+    (r"\bM\.?Tech\b", "M.Tech"),
+    (r"\bMCA\b", "MCA"),
+    (r"\bBCA\b", "BCA"),
+    (r"\bMBA\b", "MBA"),
+    (r"\bB\.?Sc\b", "B.Sc"),
+    (r"\bM\.?Sc\b", "M.Sc"),
+    (r"\bDiploma\b", "Diploma"),
+    (r"\bBachelor(?:'s)?\s+degree\b", "Bachelor's degree"),
+    (r"\bMaster(?:'s)?\s+degree\b", "Master's degree"),
+    (r"\bPost\s*graduate\b", "Postgraduate"),
+    (r"\bGraduate\b", "Graduate"),
 ]
-
 
 def normalize_url(value: str) -> str:
     return str(value or "").strip().rstrip("/").lower()
@@ -110,26 +110,39 @@ def jobs_for_event(event: dict, current: list[dict]) -> list[dict]:
 
 
 def compact_qualification(job: dict) -> str:
-    explicit = str(job.get("qualification", "") or "").strip()
-    if explicit:
-        return explicit
+    """Keep the eligibility line brief without inventing accepted degrees."""
+    raw = re.sub(r"\s+", " ", str(job.get("qualification") or job.get("elig") or "")).strip()
+    if not raw:
+        return "See official eligibility"
 
-    elig = re.sub(r"\s+", " ", str(job.get("elig", "") or "")).strip()
-    if not elig:
-        return "Refer official job eligibility"
-
+    matches = sorted(
+        ((m.start(), m.end(), label)
+         for pattern, label in DEGREE_TERMS
+         for m in re.finditer(pattern, raw, re.I)),
+        key=lambda item: (item[0], -(item[1] - item[0])),
+    )
+    accepted = []
     found = []
-    for pattern in DEGREE_TERMS:
-        for match in re.finditer(pattern, elig, flags=re.I):
-            value = match.group(0).strip()
-            if value.lower() not in {x.lower() for x in found}:
-                found.append(value)
+    for start, end, label in matches:
+        if label in found or any(start >= a and end <= b for a, b in accepted):
+            continue
+        found.append(label)
+        accepted.append((start, end))
+
+    if "B.E./B.Tech" in found:
+        found = [label for label in found if label not in ("B.Tech", "B.E.")]
+    if "Graduate" in found and "Postgraduate" in found:
+        first_index = min(found.index("Graduate"), found.index("Postgraduate"))
+        found = [label for label in found if label not in ("Graduate", "Postgraduate")]
+        found.insert(first_index, "Graduate/Postgraduate")
+
     if found:
-        return " / ".join(found[:4])
+        return " / ".join(found[:2]) + (" + more" if len(found) > 2 else "")
 
-    first = re.split(r"[•.;]|\s+-\s+", elig, maxsplit=1)[0].strip()
-    return (first or elig)[:140].rstrip()
-
+    first = re.split(r"[•;]|\s+-\s+", raw, maxsplit=1)[0].strip()
+    if len(first) > 65:
+        first = first[:65].rsplit(" ", 1)[0].rstrip(" ,/") + "…"
+    return first or "See official eligibility"
 
 def should_include_batch(job: dict) -> bool:
     if str(job.get("expType", "")).lower() != "fresher":
@@ -182,6 +195,7 @@ def message_for(job: dict) -> str:
         f"Apply Link: {html_escape(apply_url)}",
         "",
         "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+        "",
         "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers",
     ])
     return "\n".join(lines)
