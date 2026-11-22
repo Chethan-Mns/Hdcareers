@@ -86,10 +86,16 @@ class WorkflowSafetyTests(unittest.TestCase):
         self.assertIn("group: main-job-data-publish", content)
         self.assertNotIn("git add -A", content)
 
-    def test_telegram_approval_sender_is_manual_fallback_only(self):
+    def test_telegram_approval_sender_has_only_owner_approved_retry_trigger(self):
         content = self.read("publish-verified-telegram.yml")
         self.assertIn("workflow_dispatch:", content)
-        self.assertNotIn("  push:", content)
+        # The explicitly owner-reviewed retry manifest is the only push trigger.
+        self.assertIn("  push:", content)
+        self.assertIn("      - data/telegram-retry-request.json", content)
+        self.assertNotIn("      - data/jobs.json", content)
+        self.assertIn('retry.get("approvedBy")=="HD Careers Owner"', content)
+        self.assertIn('retry["batchId"]==manifest.get("batchId")', content)
+        self.assertIn('len(retry["pages"])==5', content)
         self.assertIn("group: main-job-data-publish", content)
 
     def test_unsafe_legacy_sender_retired(self):
