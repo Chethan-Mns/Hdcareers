@@ -72,6 +72,7 @@ def generate(text: str, output: str | Path, *, engine: str="auto",
             raise RuntimeError("; ".join(errors)) from None
     if not output.exists() or output.stat().st_size < 3000:
         raise RuntimeError("Voice generator returned missing or too-small audio")
+    print("Narration synthesis completed with",selected[0],"("+str(output.stat().st_size)+" bytes)")
     duration=_probe_duration(output)
     if duration < 2 or duration > 28:
         raise RuntimeError("Generated voice duration out of bounds")
