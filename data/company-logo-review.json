@@ -369,5 +369,33 @@
     "officialDomain": "paytmpayments.com",
     "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
     "jobPage": "jobs/paytm-payments-services-associate-merchant-onboarding-631.html"
+  },
+  "Jansoft Global": {
+    "status": "quality_upgrade",
+    "company": "Jansoft Global",
+    "officialDomain": "jansoftglobal.zohorecruit.in",
+    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
+    "logoPath": "assets/company-icons/jansoft-global-30daf9d-97063d47c0.png"
+  },
+  "Stable Money": {
+    "status": "needs_review",
+    "company": "Stable Money",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/stable-money-business-associate-fd.html"
+  },
+  "VijnoraTech": {
+    "status": "needs_review",
+    "company": "VijnoraTech",
+    "officialDomain": "vijnoratech.com",
+    "reason": "no quality-approved corporate logo or employer-uploaded careers brand found",
+    "jobPage": "jobs/vijnoratech-software-engineer-graduate.html"
+  },
+  "Weekday": {
+    "status": "needs_review",
+    "company": "Weekday",
+    "officialDomain": null,
+    "reason": "no trusted official domain or employer-branded careers logo",
+    "jobPage": "jobs/weekday-talent-operations-associate.html"
   }
 }

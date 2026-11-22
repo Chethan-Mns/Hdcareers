@@ -1790,5 +1790,44 @@
     "needsQualityUpgrade": false,
     "qualityScore": 492,
     "bytes": 4798
+  },
+  "Chaosology Technologies": {
+    "officialDomain": "chaosology.zohorecruit.com",
+    "sourceUrl": "https://chaosology.zohorecruit.com/recruit/viewImage?fileId=sdyaxbab57033f2b14267bd280f5fa4d6f034&zgId=703311390",
+    "sourceType": "official employer-site icon",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/chaosology-technologies-70dabfa-7402022fc1.png",
+    "sourceDimensions": [
+      523,
+      469
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 873,
+    "bytes": 30911
+  },
+  "Jansoft Global": {
+    "officialDomain": "jansoftglobal.zohorecruit.in",
+    "sourceUrl": "https://jansoftglobal.zohorecruit.in/favicon.ico",
+    "sourceType": "favicon ICO default",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/jansoft-global-30daf9d-97063d47c0.png",
+    "sourceDimensions": [
+      48,
+      48
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 138,
+    "bytes": 3273
+  },
+  "Secfix": {
+    "officialDomain": "secfix.com",
+    "sourceUrl": "https://cdn.prod.website-files.com/612de79d03705b227abe213d/6133725beb2b4f7575b46578_icon%20logo.svg",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/secfix-8782052-afffd812ba.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1700,
+    "bytes": 9658
   }
 }
