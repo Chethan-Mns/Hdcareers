@@ -229,7 +229,7 @@ def refine_once():
     trial.update(imagePath=refined_rel, previewImageUrl=refined_url,
                  status="refined_card_committed_pending_public_deployment",
                  revision=2)
-    trialfile.write_text(json.dumps(trial, indent=2)+"\\n", encoding="utf-8")
+    trialfile.write_text(json.dumps(trial, indent=2)+"\n", encoding="utf-8")
     print("Refined only Synopsys branded preview with enlarged official logo")
 
 
