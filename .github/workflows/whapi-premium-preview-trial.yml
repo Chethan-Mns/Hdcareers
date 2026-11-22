@@ -1,0 +1,121 @@
+name: Prepare One Synopsys WhatsApp Premium Preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-preview-trial-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  one-job-preview:
+    if: startsWith(github.event.head_commit.message, 'Prepare one Synopsys WhatsApp premium preview')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Pillow
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Validate verified official-logo premium preview generator
+        run: |
+          python3 -m unittest discover -s tests -p test_whapi_premium_preview_trial.py -v
+          python3 -m py_compile scripts/whapi_premium_preview_trial.py
+      - name: Recheck only-one-job request and current next scheduled job
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          req=json.loads(Path('data/whapi-preview-trial-request.json').read_text())
+          assert req == {'requestId':'whapi-synopsys-og-test-20261122',
+             'previewOnly':True,
+             'jobPage':'jobs/synopsys-cad-design-support-apprenticeship.html',
+             'globalRollout':False}
+          print('Exact owner-authorized single preview test request accepted')
+          PY
+      - name: Render PNG and add Open Graph preview to Synopsys page only
+        run: python3 scripts/whapi_premium_preview_trial.py
+      - name: Publish image and metadata before the scheduled WhatsApp post
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers Preview Trial"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/job-previews/synopsys-cad-design-support-apprenticeship.png
+          git add jobs/synopsys-cad-design-support-apprenticeship.html
+          git add data/whapi-preview-trial.json
+          git commit -m "Publish one official-logo Synopsys OG image for next WhatsApp post trial"
+          git push origin HEAD:main
+      - name: Verify new image and OG metadata are publicly deployed
+        id: public
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import time
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          from urllib.error import URLError,HTTPError
+          from whapi_premium_preview_trial import PUBLIC_JOB,PUBLIC_IMAGE
+          errors=[]
+          for attempt in range(1,27):
+              try:
+                  req=Request(PUBLIC_JOB,headers={'Cache-Control':'no-cache','User-Agent':'HDCareers-PreviewTrialVerifier/1.0'})
+                  with urlopen(req,timeout=15) as response:
+                      doc=response.read(700000).decode('utf-8','replace')
+                  assert '<meta property="og:image" content="'+PUBLIC_IMAGE+'">' in doc
+                  with urlopen(Request(PUBLIC_IMAGE,headers={'Cache-Control':'no-cache','User-Agent':'HDCareers-PreviewTrialVerifier/1.0'}),timeout=15) as response:
+                      image=response.read(850000)
+                      mime=response.headers.get('Content-Type','')
+                  assert len(image)>5000 and image[:8]==b'\x89PNG\r\n\x1a\n', 'Public card did not return PNG bytes'
+                  assert 'image' in mime, 'Public image Content-Type is wrong'
+                  print('Verified public Synopsys job OG metadata and official-logo PNG. Safe for next WhatsApp posting.')
+                  Path('/tmp/hd-whapi-preview-public-ready').write_text('ready\n')
+                  break
+              except (AssertionError,URLError,HTTPError,TimeoutError,ValueError) as exc:
+                  errors.append(type(exc).__name__)
+                  print('Public preview not ready; check',attempt,'of 26:',type(exc).__name__)
+                  time.sleep(10)
+          else:
+              raise SystemExit('Public OG preview was not confirmed yet; the public site may still be deploying')
+          PY
+        env:
+          PYTHONPATH: scripts
+      - name: Record public verification result without activating any global rollout
+        if: success()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('data/whapi-preview-trial.json')
+          a=json.loads(p.read_text())
+          assert a['jobPage']=='jobs/synopsys-cad-design-support-apprenticeship.html'
+          assert a['globalRollout'] is False
+          a['status']='public_og_verified_waiting_for_whatsapp_post'
+          p.write_text(json.dumps(a,indent=2)+'\n')
+          PY
+          git add data/whapi-preview-trial.json
+          git commit -m "Record public verification for one-off WhatsApp preview"
+          git push origin HEAD:main
+      - name: Preserve debug info
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-post-whatsapp-og-preview-trial
+          path: |
+            assets/job-previews/synopsys-cad-design-support-apprenticeship.png
+            data/whapi-preview-trial.json
+          if-no-files-found: ignore
+          retention-days: 14
