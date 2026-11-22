@@ -1,4 +1,23 @@
 {
   "version": 1,
-  "batches": []
+  "batches": [
+    {
+      "batchId": "2026-11-22-0900-ist",
+      "requestId": "7a7b1caecb1d459fbf7f27c5",
+      "candidateIds": [
+        "brillio-r01573613",
+        "chaosology-569149000008791001",
+        "qualcomm-446722234783",
+        "vijnoratech-software-engineer-graduate",
+        "synopsys-19297",
+        "stable-money-81f4c801",
+        "weekday-69bc9e94",
+        "jansoft-201027000004121577",
+        "secfix-583140f4",
+        "endeavor-95365885"
+      ],
+      "status": "claimed_before_dispatch",
+      "claimedAt": "2026-11-22T07:34:14.117313+00:00"
+    }
+  ]
 }
