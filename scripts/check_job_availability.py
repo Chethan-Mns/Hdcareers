@@ -16,6 +16,8 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 REVIEW_QUEUE = ROOT / 'data' / 'review-queue.json'
+EXPIRY_EVIDENCE = ROOT / 'data' / 'expiry-evidence.json'
+RECHECK_DELAY = timedelta(minutes=30)
 CLOSED = re.compile(r'\b(?:this (?:job|position|vacancy) (?:is no longer available|has been filled|has expired|is closed)|no longer accepting applications|applications (?:are |have )?closed|job not found)\b', re.I)
 APPLY = re.compile(r'\b(?:apply now|apply for (?:this|the) (?:job|role|position)|apply to (?:this|the) job|submit(?: application| response| form)?)\b', re.I)
 BLOCKED = re.compile(r'\b(?:access denied|verify (?:that )?you are human|checking your browser|complete (?:the )?captcha|captcha (?:required|challenge)|security verification required)\b', re.I)
@@ -406,7 +408,9 @@ def guard_automatic_expiry(job, result, candidates, now):
         since = datetime.fromisoformat(str(last.get('firstSeenAt', '')).replace('Z', '+00:00'))
     except (ValueError, TypeError):
         since = None
-    if since is not None and since.tzinfo is not None and last.get('apply') == source and RECHECK_DELAY <= now - since <= timedelta(days=14):
+    if (since is not None and since.tzinfo is not None
+        and last.get('apply') == source and last.get('reason') == reason
+        and RECHECK_DELAY <= now - since <= timedelta(days=14)):
         candidates.pop(key, None)
         return result, True
     candidates[key] = {'firstSeenAt': now.isoformat(), 'apply': source, 'reason': reason}
