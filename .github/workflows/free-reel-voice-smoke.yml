@@ -19,6 +19,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install FFmpeg for MP3 timing and reusable audio export
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
       - name: Install free Indian English voice engines
         run: |
           python3 -m pip install --disable-pip-version-check "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
