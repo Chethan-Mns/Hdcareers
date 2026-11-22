@@ -23,7 +23,8 @@ class AutomaticPublishing(unittest.TestCase):
  def test_accepts_verified_internship(self):
   selected=self.run_select()
   self.assertEqual(len(selected),1)
-  self.assertEqual(selected[0][1]["expType"],"internship/apprenticeship")
+  self.assertEqual(selected[0][1]["expType"],"fresher")
+  self.assertEqual(selected[0][1]["cat"],"internship")
   self.assertTrue(selected[0][1]["autoVerified"])
   self.assertNotIn("manualLiveVerifiedAt",selected[0][1])
  def test_uncertain_holds(self):
