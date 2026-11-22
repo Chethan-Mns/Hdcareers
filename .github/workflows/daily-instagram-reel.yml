@@ -27,8 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-      ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+      HD_REEL_VOICE_ENGINE: auto
+      HD_REEL_FREE_VOICE_FALLBACK: "true"
+      HD_REEL_VOICE_RATE: "+10%"
       BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
       INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
@@ -42,13 +43,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install image rendering dependency
-        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Install free voice engines, FFmpeg and image rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python3 -m pip install --disable-pip-version-check "Pillow>=11,<13" "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
       - name: Run safety tests and compile scripts
         run: |
-          python3 -m py_compile scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
+          python3 -m py_compile scripts/reel_voice.py scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
           node --check scripts/reel_upload.mjs
           python3 -m unittest discover -s tests -p test_reel_factory.py -v
+          python3 -m unittest discover -s tests -p test_reel_voice.py -v
           python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
       - name: Prepare script, caption, employer card and Reel where configured
         env:
