@@ -1,4 +1,4 @@
-name: Check ElevenLabs free default voice API
+name: Audit Indian Female ElevenLabs Free API Voices
 on:
   push:
     branches: [main]
@@ -10,60 +10,132 @@ permissions:
   contents: read
 
 jobs:
-  test-default-voice:
+  verify-indian-voice:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 8
     env:
       ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
     steps:
       - uses: actions/checkout@v4
-      - name: Check built-in default voices on existing ElevenLabs free account
+      - name: Inspect account default voices and verify Indian female access
         shell: bash
         run: |
-          mkdir -p artifacts/elevenlabs-default
+          mkdir -p artifacts/elevenlabs-indian-female
           python3 - <<'PY'
-          import json, os, pathlib
-          from urllib.request import Request, urlopen
-          from urllib.error import HTTPError, URLError
-          key = os.getenv("ELEVENLABS_API_KEY", "")
-          out = pathlib.Path("artifacts/elevenlabs-default")
-          result = {"apiKeyConfigured":bool(key), "voices":[], "generated":False, "note":"Only accounts created before March 2026 may have older Default voices; they expire 2026-12-31."}
-          if not key:
-              print("ElevenLabs API key missing; no test.")
+          import json,os,pathlib,re
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError,URLError
+          from urllib.parse import urlencode
+          api=os.getenv("ELEVENLABS_API_KEY","").strip()
+          out=pathlib.Path("artifacts/elevenlabs-indian-female")
+          result={"keyConfigured":bool(api),"defaultFemaleVoices":[],"indianFemaleDefaultVoices":[],
+                  "indianFemaleOtherVoices":[],"testResults":[],"selected":None,
+                  "commercialUsageVerified":False}
+          def get_json(url):
+              req=Request(url,headers={"xi-api-key":api,"Accept":"application/json"})
+              with urlopen(req,timeout=30) as response:
+                  return json.load(response)
+          def inspect_voice(v):
+              labels=v.get("labels") or {}
+              accent=str(labels.get("accent") or v.get("accent") or "")
+              gender=str(labels.get("gender") or v.get("gender") or "")
+              name=str(v.get("name") or "")
+              description=str(v.get("description") or "")
+              return {"name":name,"id":v.get("voice_id"),
+                      "accent":accent,"gender":gender,
+                      "category":str(v.get("category") or v.get("voice_type") or ""),
+                      "indian":bool(re.search(r"\bindia[n]?\b|\bhinglish\b",accent+" "+name+" "+description,re.I)),
+                      "female":gender.lower()=="female"}
+          if not api:
+              result["error"]="API key not configured"
           else:
-              # Public ElevenLabs legacy Default voice IDs, not voice-library IDs.
-              defaults=[("Jessica","cgSgspJ2msm6clMCkdW9"),("Sarah","EXAVITQu4vr4xnSDxMaL"),("Alice","Xb7hH8MSUJpSbSDYk0k2")]
-              for name, voice_id in defaults:
-                  script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly."
-                  url=f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128"
-                  payload=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode()
-                  req=Request(url,data=payload,method="POST",headers={"xi-api-key":key,"Content-Type":"application/json","Accept":"audio/mpeg"})
+              defaults=[]
+              try:
+                  page=None
+                  for _ in range(5):
+                      query={"voice_type":"default","gender":"female","page_size":100}
+                      if page:query["next_page_token"]=page
+                      data=get_json("https://api.elevenlabs.io/v2/voices?"+urlencode(query))
+                      defaults.extend(data.get("voices") or [])
+                      if not data.get("has_more") or not data.get("next_page_token"):break
+                      page=data["next_page_token"]
+                  result["v2DefaultCount"]=len(defaults)
+                  print("Female default voices returned by account:",len(defaults))
+              except HTTPError as e:
+                  result["v2ErrorCode"]=e.code
+                  print("ElevenLabs voice catalog HTTP",e.code)
+              except Exception as e:
+                  result["v2ErrorType"]=type(e).__name__
+                  print("ElevenLabs voice catalog error",type(e).__name__)
+              default_ids=set()
+              for voice in defaults:
+                  info=inspect_voice(voice)
+                  if not info["female"]:continue
+                  default_ids.add(info["id"])
+                  result["defaultFemaleVoices"].append({"name":info["name"],"accent":info["accent"]})
+                  if info["indian"]:
+                      result["indianFemaleDefaultVoices"].append(info)
+              try:
+                  other=get_json("https://api.elevenlabs.io/v1/voices")
+                  voices=other.get("voices") or []
+                  print("Total voices visible to account:",len(voices))
+                  for voice in voices:
+                      info=inspect_voice(voice)
+                      if not info["indian"] or not info["female"]:continue
+                      if info["id"] in default_ids or info["category"].lower() in ("default","premade"):
+                          if info["id"] not in {x["id"] for x in result["indianFemaleDefaultVoices"]}:
+                              result["indianFemaleDefaultVoices"].append(info)
+                      else:
+                          result["indianFemaleOtherVoices"].append(info)
+              except HTTPError as e:
+                  result["v1ErrorCode"]=e.code
+                  print("Legacy voice list HTTP",e.code)
+              except Exception as e:
+                  result["v1ErrorType"]=type(e).__name__
+                  print("Legacy voice list error",type(e).__name__)
+              candidates=[(x["name"],x["id"],"account-default") for x in result["indianFemaleDefaultVoices"]]
+              # These three voices are externally identified Indian female voices.
+              # They may be Voice Library voices and restricted on the Free plan.
+              names={name.lower() for name,_,_ in candidates}
+              for name,vid in [("Anushri","zFLlkq72ysbq1TWCOmlx"),("Monika","ZUrEGyu8GFMwnHbVLhv2"),("Tara","P7vsEyTOpZ6YUTulin8m")]:
+                  if name.lower() not in names:
+                      candidates.append((name,vid,"public-library-candidate"))
+              script="Brillio is hiring freshers in Chennai. Comment below and I'll share the application link directly."
+              for name,vid,typ in candidates[:8]:
+                  if not vid:continue
+                  request=Request(
+                      "https://api.elevenlabs.io/v1/text-to-speech/"+vid+"?output_format=mp3_44100_128",
+                      data=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode(),
+                      method="POST",headers={"xi-api-key":api,"Content-Type":"application/json","Accept":"audio/mpeg"})
+                  )
                   try:
-                      with urlopen(req,timeout=40) as response:
-                          audio=response.read(5_000_000)
-                      if len(audio) < 3000 or audio.lstrip().startswith(b"{"):
-                          raise ValueError("No MP3 returned")
-                      path=out/(name.lower()+".mp3")
-                      path.write_bytes(audio)
-                      result["voices"].append({"name":name,"http":200,"available":True,"bytes":len(audio)})
-                      result["generated"]=True
-                      print("Available free Default voice:",name)
-                  except HTTPError as e:
-                      # Only status code, never print auth headers or token.
-                      result["voices"].append({"name":name,"http":e.code,"available":False})
-                      print("Default voice test",name,"HTTP",e.code)
-                      if e.code in (401,429):
-                          break
-                  except (URLError,ValueError) as e:
-                      result["voices"].append({"name":name,"error":type(e).__name__,"available":False})
-                      print("Default voice test",name,"error",type(e).__name__)
+                      with urlopen(request,timeout=35) as response:
+                          audio=response.read(1000000)
+                      if len(audio)<3000 or audio.lstrip().startswith(b"{"):
+                          raise ValueError("non-audio response")
+                      safe=re.sub(r"[^a-z0-9]+","-",name.lower()).strip("-")
+                      (out/(safe+".mp3")).write_bytes(audio)
+                      result["testResults"].append({"voice":name,"source":typ,"status":"accessible","bytes":len(audio)})
+                      result["selected"]=name
+                      print("INDIAN FEMALE ELEVENLABS VOICE WORKS:",name,"source:",typ)
                       break
-          (out/"results.json").write_text(json.dumps(result,indent=2)+"\n")
+                  except HTTPError as e:
+                      result["testResults"].append({"voice":name,"source":typ,"status":"not_available","http":e.code})
+                      print("Indian voice",name,"HTTP",e.code)
+                      if e.code in (401,429):break
+                  except Exception as e:
+                      result["testResults"].append({"voice":name,"source":typ,"status":"failed","type":type(e).__name__})
+                      print("Indian voice",name,"failed",type(e).__name__)
+              print("Indian female default matches:",len(result["indianFemaleDefaultVoices"]))
+              print("Indian female non-default matches:",len(result["indianFemaleOtherVoices"]))
+              if not result["selected"]:
+                  print("No API-accessible Indian female voice confirmed on current free account.")
+          (out/"results.json").write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf8")
           PY
-      - name: Save results and any successfully generated voice
+      - name: Save account-filter results and audio if permitted
         uses: actions/upload-artifact@v4
         with:
-          name: hd-elevenlabs-free-voice-check
-          path: artifacts/elevenlabs-default/
+          name: hd-elevenlabs-indian-free-audit
+          path: artifacts/elevenlabs-indian-female/
           retention-days: 7
           if-no-files-found: error
