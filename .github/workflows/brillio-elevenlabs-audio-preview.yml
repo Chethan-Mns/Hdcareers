@@ -23,11 +23,23 @@ jobs:
         id: enabled
         shell: bash
         run: |
-          if [ -z "$ELEVENLABS_API_KEY" ] || [ -z "$ELEVENLABS_VOICE_ID" ]; then
-            echo "::warning::ElevenLabs key or voice ID is not configured"
-            echo "ready=false" >> "$GITHUB_OUTPUT"
+          missing=0
+          if [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "::warning::ELEVENLABS_API_KEY is not visible to this workflow. Verify repository-level Actions secrets."
+            missing=1
           else
+            echo "::notice::ElevenLabs API key is configured (value hidden)."
+          fi
+          if [ -z "$ELEVENLABS_VOICE_ID" ]; then
+            echo "::warning::ELEVENLABS_VOICE_ID is missing. Set it to the Tripti voice ID under Actions secrets."
+            missing=1
+          else
+            echo "::notice::ElevenLabs voice ID is configured (value hidden)."
+          fi
+          if [ "$missing" -eq 0 ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Generate narration with the owner's configured ElevenLabs voice
         if: steps.enabled.outputs.ready == 'true'
