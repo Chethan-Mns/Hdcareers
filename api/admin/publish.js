@@ -4,6 +4,7 @@ import {selectCandidates,employerKey} from "../../lib/review-rules.js";
 import {attachReviewedProof} from "../../lib/review-publish-proof.js";
 import {redis} from "../../lib/admin-store.js";
 import crypto from "node:crypto";
+import {classifyJob} from "../../lib/job-classification.js";
 
 const DEFAULT_REPO = "Chethan-Mns/Hdcareers";
 const DEFAULT_BASE = "main";
@@ -63,12 +64,15 @@ function canonicalJob(input){
   const cat=CAT_FROM_LABEL[catRaw]||catRaw;
   const sourceLogo=Array.isArray(source.logo)&&source.logo.length===2?source.logo:null;
   const publishStatus=String(input.publishStatus||input.status||source.status||"active").trim().toLowerCase();
-  const entryLevel=/(?:\b0\s*[-–]\s*[123]\s*years?\b|\b0\s*years?\b|fresher|no prior experience|student|campus|intern|apprentice|new grad|graduate trainee)/i.test(expYears+" "+role);
-  const expType=entryLevel?"fresher":(["experienced","fresher","not-specified"].includes(source.expType)
-    ?source.expType:"not-specified");
-  const field=source.field==="it"||source.field==="nonit"?source.field:
-    cat==="it"?"it":cat==="nonit"?"nonit":
-    /\b(software|engineer|developer|programmer|cloud|cyber|data science|it support|qa|technical|system administrator)\b/i.test(role)?"it":"nonit";
+  const classified=classifyJob({
+    ...source,...input,role,cat,expYears,
+    skills:Array.isArray(input.skills)?input.skills:source.skills,
+    expType:input.expType||source.expType,
+    elig:input.elig||source.elig
+  });
+  const expType=classified.expType;
+  const field=classified.field;
+  const category=classified.cat;
 
   return {
     page:String(source.page||input.page||"").trim(),
@@ -83,7 +87,7 @@ function canonicalJob(input){
     locationFilter:String(source.locationFilter||input.locationFilter||loc).trim(),
     batch:String(input.batch||source.batch||"Not Specified").trim()||"Not Specified",
     elig:String(input.elig||source.elig||"").trim(),
-    cat,
+    cat:category,
     field,
     expType,
     expYears,
