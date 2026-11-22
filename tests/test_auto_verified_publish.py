@@ -123,7 +123,7 @@ class StrictQuotaSelection(unittest.TestCase):
   self.assertEqual([job["company"] for _,job in chosen if publication_bucket(job)=="internshipOrApprenticeship"],
                    ["Company 13"])
 
- def test_deny_training_mislabelled_as_it_or_full_time(self):
+ def test_deny_training_wrongly_tagged_it_but_accept_fresher_typed_training(self):
   rows=[self.row(1,"it","internship/apprenticeship",role="Software Intern"),
         self.row(2,"internship","fresher",role="Software Intern"),
         self.row(3,"it","fresher",role="Software Intern"),
@@ -133,8 +133,8 @@ class StrictQuotaSelection(unittest.TestCase):
         self.row(7,"apprenticeship","internship/apprenticeship")]
   self.batch["priority"]=rows
   chosen=self.choose()
-  self.assertEqual([id for id,_ in chosen],["verified-6","verified-7"])
-  self.assertEqual(self.counts(chosen)["internshipOrApprenticeship"],1)
+  self.assertEqual([id for id,_ in chosen],["verified-2","verified-6","verified-7"])
+  self.assertEqual(self.counts(chosen)["internshipOrApprenticeship"],2)
   self.assertEqual(chosen[-1][1]["expType"],"internship/apprenticeship")
 
  def test_no_double_counting_same_employer_across_categories(self):
