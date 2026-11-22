@@ -51,26 +51,43 @@ function disclosed(value){
   return s&&!/^(not disclosed|not specified|n\/?a|na)$/i.test(s);
 }
 
+function jobCategory(job){
+  const field=String(job.field||"").trim().toLowerCase();
+  if(field==="it")return "IT";
+  if(field==="nonit")return "Non-IT";
+  const labels={it:"IT",nonit:"Non-IT",internship:"Internship",apprenticeship:"Apprenticeship",
+    govt:"Government",campus:"Off-Campus",walkin:"Walk-in",remote:"Remote / WFH"};
+  const cat=String(job.cat||"").trim().toLowerCase();
+  if(labels[cat])return labels[cat];
+  for(const raw of Array.isArray(job.categories)?job.categories:[]){
+    const category=String(raw||"").trim().toLowerCase();
+    if(labels[category])return labels[category];
+  }
+  return "Not specified";
+}
+
 function message(job){
   const safe=(s,max=160)=>String(s||"").replace(/\s+/g," ").trim().slice(0,max);
-  const qual=safe(qualification(job),140);
+  const company=safe(job.company,80).replace(/\*/g,"").toUpperCase();
+  const role=safe(job.role,150);
+  if(!company||!role)throw new Error("Company and role are required");
   const exp=safe(job.expYears,160);
   const experience=exp&&!/^(not specified|n\/?a|na)$/i.test(exp)?exp:
-    (String(job.expType||"").toLowerCase()==="fresher"?"Freshers eligible":"Refer to official job posting");
-  const page=String(job.page||"").replace(/^\/+/, "");
+    (String(job.expType||"").toLowerCase()==="fresher"?"Freshers eligible":"Refer to official posting");
+  const page=String(job.page||"");
   if(!/^jobs\/[a-z0-9-]+\.html$/.test(page))throw new Error("Invalid published job URL");
   return [
-    `*${safe(job.company,80).replace(/\*/g,"")} is Hiring ✅*`,
+    `🚨 *${company} HIRING*`,
     "",
-    `Role: ${safe(job.role,150)}`,
-    `Qualification: ${qual}`,
-    `Experience: ${experience}`,
-    `Location: ${safe(job.loc,120)||"Refer to official job posting"}`,
+    `💼 Role: ${role}`,
+    `📍 Location: ${safe(job.loc,120)||"Refer to official posting"}`,
+    `🎓 Experience: ${experience}`,
+    `💻 Category: ${jobCategory(job)}`,
     "",
-    `Apply Link: ${SITE_BASE+page}`,
+    `🔗 Apply Link: ${SITE_BASE+page}`,
     "",
-    `💚 *WhatsApp:* ${WHATSAPP_CHANNEL}`,
-    `✈️ *Telegram:* ${TELEGRAM_CHANNEL}`,
+    `💚 WhatsApp: ${WHATSAPP_CHANNEL}`,
+    `✈️ Telegram: ${TELEGRAM_CHANNEL}`,
   ].join("\n");
 }
 
