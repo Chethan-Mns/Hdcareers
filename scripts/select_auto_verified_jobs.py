@@ -15,6 +15,43 @@ BAD_HOSTS=("naukri.com","indeed.com","linkedin.com","glassdoor.com","shine.com",
 REQUIRED=("company","role","loc","elig","desc","apply","sourceName")
 TYPES=("fresher","internship/apprenticeship")
 CATS=("it","nonit","internship","apprenticeship","campus","remote","walkin")
+# Explicit independent publication buckets; never use an IT job to fill a missing internship.
+CATEGORY_TARGETS={"technicalFullTime":6,"nonTechFullTime":2,"internshipOrApprenticeship":2}
+TRAINING_CATEGORIES={"internship","apprenticeship"}
+TECHNICAL_CATEGORIES={"it","campus","remote","walkin"}
+TRAINING_ROLE=re.compile(r"\b(intern|internship|apprentice|apprenticeship)\b",re.I)
+
+def publication_bucket(job):
+ """Match verified publication data to one and only one quota category.
+
+ A training role is never counted as full-time (even when labelled IT).
+ Contradictory category/type/field labels are excluded rather than guessed.
+ """
+ cat=str(job.get("cat") or "").strip().lower()
+ cat={"non-it":"nonit","non it":"nonit"}.get(cat,cat)
+ exp_type=str(job.get("expType") or "").strip().lower()
+ field=str(job.get("field") or "").strip().lower()
+ title=str(job.get("role") or "")
+ if exp_type=="internship/apprenticeship":
+  return "internshipOrApprenticeship" if cat in TRAINING_CATEGORIES else None
+ if exp_type!="fresher" or cat in TRAINING_CATEGORIES or TRAINING_ROLE.search(title):
+  return None
+ if cat=="nonit" and field!="it":
+  return "nonTechFullTime"
+ if cat in TECHNICAL_CATEGORIES and field!="nonit":
+  # Generic campus/remote/walk-in categories need positive IT classification.
+  return "technicalFullTime" if cat=="it" or field=="it" else None
+ return None
+
+def category_counts(chosen):
+ counts={name:0 for name in CATEGORY_TARGETS}
+ for _,job in chosen:
+  bucket=publication_bucket(job)
+  if bucket in counts:counts[bucket]+=1
+ return counts
+
+def category_shortfalls(counts):
+ return {name:max(0,target-counts.get(name,0)) for name,target in CATEGORY_TARGETS.items()}
 def load(path,default):return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 def parse(raw):
  try:
@@ -45,6 +82,7 @@ def eligible(row):
  if cat in ("non-it","non it"):cat="nonit"
  if cat not in CATS:return False
  if j.get("expType")=="internship/apprenticeship" and cat not in ("internship","apprenticeship"):return False
+ if publication_bucket(j) is None:return False
  if re.search(r"\b(senior|lead engineer|principal|manager|director|architect|head of)\b",str(j.get("role") or ""),re.I):return False
  if re.search(r"\b(?:minimum|at least)?\s*[4-9]\+?\s*(?:years|yrs)\s*(?:of)?\s*experience",str(j.get("expYears") or ""),re.I):return False
  try:
@@ -58,7 +96,7 @@ def normalize(row,now):
  cat=str(j["cat"]).lower()
  j["cat"]={"non-it":"nonit","non it":"nonit"}.get(cat,cat)
  j["field"]=j["field"] if j.get("field") in ("it","nonit") else ("nonit" if j["cat"]=="nonit" else "it")
- j["status"]="active";j["expType"]="fresher"
+ j["status"]="active"  # Preserve original experience type, including training roles.
  j["roleTag"]=j.get("roleTag") or role
  j["locationFilter"]=j.get("locationFilter") or j["loc"]
  j["domain"]=j.get("domain") or (urlsplit(j["apply"]).hostname or "")
@@ -92,13 +130,15 @@ def select(batch,published,pending,ledger,now=None,limit=10):
  for x in pending:
   if x.get("state") in ("ready","review") and isinstance(x.get("job"),dict):
    urls.add(key(x["job"].get("apply")))
- seen=set();companies=set();selected=[]
+ seen=set();companies=set();selected=[];counts={name:0 for name in CATEGORY_TARGETS}
  for row in list(batch.get("priority") or [])+list(batch.get("backup") or []):
   if not evidence(row,now) or not eligible(row):continue
   j=row["job"];u=key(j["apply"]);e=employer(j["company"]);pair=(e,str(j["role"]).casefold())
   if not u or u in urls or ("url",u) in seen or pair in pairs or ("pair",pair) in seen or e in companies:continue
+  bucket=publication_bucket(j)
+  if bucket is None or counts[bucket]>=CATEGORY_TARGETS[bucket]:continue
   job=normalize(row,now);job["autoVerifiedBatchId"]=bid
-  selected.append((str(row["id"]),job));seen.update({("url",u),("pair",pair)});companies.add(e)
+  selected.append((str(row["id"]),job));seen.update({("url",u),("pair",pair)});companies.add(e);counts[bucket]+=1
   if len(selected)>=limit:break
  return selected,("selected" if selected else "no new jobs met verification and content criteria")
 def main():
@@ -107,7 +147,11 @@ def main():
  reviews=load(d/"review-queue.json",[]);ledger=load(d/"auto-publish-ledger.json",{"batches":[]})
  chosen,reason=select(batch,existing,reviews,ledger)
  summary={"batchId":batch.get("batchId"),"selected":len(chosen),"candidateIds":[i for i,_ in chosen],
-  "companies":[x["company"] for _,x in chosen],"reason":reason}
+  "companies":[x["company"] for _,x in chosen],"reason":reason,
+  "categoryTargets":CATEGORY_TARGETS,
+  "categoryCounts":category_counts(chosen),
+  "categoryShortfalls":category_shortfalls(category_counts(chosen)),
+  "quotaMode":"no-fillers; only exact-source-confirmed jobs within 6/2/2 caps"}
  if chosen:
   request=hashlib.sha256((str(batch["batchId"])+"|"+",".join(i for i,_ in chosen)).encode()).hexdigest()[:24]
   summary["requestId"]=request
