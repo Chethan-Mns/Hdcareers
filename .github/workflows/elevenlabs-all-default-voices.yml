@@ -1,0 +1,90 @@
+name: ElevenLabs free API default voice catalog
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/elevenlabs-all-default-voices.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: List all default voices and verify which respond using free API
+        shell: bash
+        run: |
+          mkdir -p artifacts/elevenlabs-voice-catalog
+          python3 - <<'PY'
+          import json,os,pathlib,time
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError,URLError
+          from urllib.parse import urlencode
+          key=os.environ.get("ELEVENLABS_API_KEY","").strip()
+          result={"apiKeyConfigured":bool(key),"voices":[],"testedAtUTC":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())}
+          if not key:
+              result["error"]="ElevenLabs API key missing"
+          else:
+              page=None
+              entries=[]
+              for n in range(5):
+                  params={"voice_type":"default","page_size":100}
+                  if page:params["next_page_token"]=page
+                  url="https://api.elevenlabs.io/v2/voices?"+urlencode(params)
+                  req=Request(url,headers={"xi-api-key":key,"Accept":"application/json"})
+                  try:
+                      with urlopen(req,timeout=25) as response:data=json.load(response)
+                  except HTTPError as err:
+                      result["catalogHttpError"]=err.code
+                      print("Voice catalog HTTP",err.code)
+                      break
+                  entries.extend(data.get("voices") or [])
+                  if not data.get("has_more") or not data.get("next_page_token"):break
+                  page=data.get("next_page_token")
+              print("Default voices in account:",len(entries))
+              seen=set()
+              for v in entries:
+                  vid=v.get("voice_id")
+                  if not vid or vid in seen:continue
+                  seen.add(vid)
+                  labels=v.get("labels") or {}
+                  item={"name":v.get("name",""),"gender":labels.get("gender","unspecified"),
+                        "accent":labels.get("accent","unspecified"),
+                        "category":v.get("category") or v.get("voice_type") or "default",
+                        "status":"untested"}
+                  # Test minimal speech to verify API access without wasting credits.
+                  payload=json.dumps({"text":"Hello from HD Careers.","model_id":"eleven_flash_v2_5"}).encode()
+                  req=Request(
+                      "https://api.elevenlabs.io/v1/text-to-speech/"+vid+"?output_format=mp3_44100_128",
+                      data=payload,method="POST",
+                      headers={"xi-api-key":key,"Content-Type":"application/json","Accept":"audio/mpeg"})
+                  try:
+                      with urlopen(req,timeout=25) as response:audio=response.read(500000)
+                      if len(audio)>1000 and not audio.lstrip().startswith(b"{"):
+                          item["status"]="working"
+                      else:item["status"]="unexpected_response"
+                  except HTTPError as err:
+                      item["status"]="blocked"
+                      item["httpStatus"]=err.code
+                  except (URLError,TimeoutError) as err:
+                      item["status"]="network_error"
+                      item["errorType"]=type(err).__name__
+                  result["voices"].append(item)
+                  print(item["gender"],item["name"],item["accent"],item["status"],item.get("httpStatus",""))
+          out=pathlib.Path("artifacts/elevenlabs-voice-catalog/results.json")
+          out.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf8")
+          print("Total voices tested:",len(result["voices"]))
+          PY
+      - name: Save voice catalog
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-elevenlabs-default-voice-catalog
+          path: artifacts/elevenlabs-voice-catalog/
+          retention-days: 7
+          if-no-files-found: error
