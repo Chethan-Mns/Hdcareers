@@ -47,7 +47,8 @@ def flatten_strings(x):
 
 def find_text(row):
     candidates = [
-        row.get("body"), row.get("text"), row.get("content"), row.get("message")
+        row.get("body"), row.get("text"), row.get("content"), row.get("message"),
+        row.get("link_preview")
     ]
     for value in candidates:
         if isinstance(value, str) and "hdcareers.in/jobs/" in value:
@@ -94,8 +95,14 @@ def claim():
 def edit():
     assert_config()
     doc = shared.load(AUDIT, {})
-    if doc.get("claimId") != os.getenv("GITHUB_RUN_ID", ""):
-        raise RuntimeError("Precommitted edit claim does not belong to this run")
+    run = os.getenv("GITHUB_RUN_ID", "")
+    if doc.get("claimId") != run:
+        resume = os.getenv("WHAPI_EDIT_RESUME_CLAIM_ID", "")
+        if resume != "45014694619" or doc.get("claimId") != resume:
+            raise RuntimeError("Precommitted edit claim does not belong to this run")
+        if any(entry.get("status") != "claimed_before_edit" for entry in doc.get("items", {}).values()):
+            raise RuntimeError("Resume blocked: previous edit attempt state changed")
+        print("Resuming only preclaimed edits after read-only field-shape inspection; no post was attempted previously")
     whapi.verify_admin()
     response = whapi.api("/newsletters/" + CHANNEL + "/messages?count=50")
     records = lists_from(response)
