@@ -1,0 +1,74 @@
+name: Brillio ElevenLabs narration preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/brillio-elevenlabs-audio-preview.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Validate existing ElevenLabs connection
+        id: enabled
+        shell: bash
+        run: |
+          if [ -z "$ELEVENLABS_API_KEY" ] || [ -z "$ELEVENLABS_VOICE_ID" ]; then
+            echo "::warning::ElevenLabs key or voice ID is not configured"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Generate narration with the owner's configured ElevenLabs voice
+        if: steps.enabled.outputs.ready == 'true'
+        shell: bash
+        run: |
+          mkdir -p artifacts/brillio-voice
+          python3 - <<'PY'
+          import json,os
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError
+          script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Follow our page and comment APPLY for the job link!"
+          url="https://api.elevenlabs.io/v1/text-to-speech/"+os.environ["ELEVENLABS_VOICE_ID"]+"?output_format=mp3_44100_128"
+          body=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode()
+          req=Request(url,data=body,headers={"xi-api-key":os.environ["ELEVENLABS_API_KEY"],"Content-Type":"application/json","Accept":"audio/mpeg"},method="POST")
+          try:
+            with urlopen(req,timeout=55) as response:
+              data=response.read()
+          except HTTPError as error:
+            raise SystemExit("ElevenLabs HTTP "+str(error.code))
+          if len(data)<1024:raise SystemExit("ElevenLabs response too short")
+          open("artifacts/brillio-voice/voice.mp3","wb").write(data)
+          print("ElevenLabs narration generated")
+          PY
+          ffmpeg -v error -y -i artifacts/brillio-voice/voice.mp3 -c:a libopus -b:a 20k artifacts/brillio-voice/voice.opus
+      - name: Save voice as owner-accessible artifact
+        if: steps.enabled.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: brillio-elevenlabs-voice
+          path: artifacts/brillio-voice/
+          retention-days: 7
+      - name: Store reusable ElevenLabs preview to repo
+        if: steps.enabled.outputs.ready == 'true'
+        shell: bash
+        run: |
+          mkdir -p .github/generated
+          cp artifacts/brillio-voice/voice.opus .github/generated/brillio-382-elevenlabs.opus
+          git config user.name "HD Careers Reel Factory"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/generated/brillio-382-elevenlabs.opus
+          if ! git diff --cached --quiet; then
+            git commit -m "Store Brillio ElevenLabs voice preview"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
