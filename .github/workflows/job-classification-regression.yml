@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - lib/job-classification.js
+      - lib/review-rules.js
+      - tests/review-rules.test.mjs
       - scripts/job_classification.py
       - scripts/select_auto_verified_jobs.py
       - api/admin/extract-job.js
@@ -37,7 +39,7 @@ jobs:
           node --check api/admin/publish.js
       - name: Test every experience, IT and training rule
         run: |
-          node --test tests/job-classification.test.mjs
+          node --test tests/job-classification.test.mjs tests/review-rules.test.mjs
           python3 -m unittest discover -s tests -p test_job_classification.py -v
           python3 -m unittest discover -s tests -p test_auto_verified_publish.py -v
       - name: Verify freshly generated job classifications
