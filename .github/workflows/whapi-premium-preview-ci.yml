@@ -1,0 +1,38 @@
+name: One-Post WhatsApp Premium OG Preview Trial CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/whapi_premium_preview_trial.py
+      - tests/test_whapi_premium_preview_trial.py
+      - .github/workflows/whapi-premium-preview-ci.yml
+      - .github/workflows/whapi-premium-preview-trial.yml
+
+permissions:
+  contents: read
+
+jobs:
+  preview-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install image library
+        run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Verify one-off preview generator and no global rollout
+        run: |
+          python3 -m py_compile scripts/whapi_premium_preview_trial.py
+          python3 -m unittest discover -s tests -p test_whapi_premium_preview_trial.py -v
+          python3 - <<'PY'
+          from pathlib import Path
+          src=Path('scripts/whapi_premium_preview_trial.py').read_text()
+          assert 'PAGE = "jobs/synopsys-cad-design-support-apprenticeship.html"' in src
+          assert 'globalRollout": False' in src
+          assert 'def check_next_job(' in src
+          assert 'def render(' in src
+          print('One-post-only guard confirmed')
+          PY
