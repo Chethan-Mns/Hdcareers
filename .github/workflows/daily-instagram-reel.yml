@@ -46,9 +46,10 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
       - name: Run safety tests and compile scripts
         run: |
-          python3 -m py_compile scripts/reel_factory.py scripts/instagram_reel_publish.py
+          python3 -m py_compile scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
           node --check scripts/reel_upload.mjs
           python3 -m unittest discover -s tests -p test_reel_factory.py -v
+          python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
       - name: Prepare script, caption, employer card and Reel where configured
         env:
           PICK_ID: ${{ inputs.job_id }}
@@ -64,6 +65,14 @@ jobs:
             python3 scripts/reel_factory.py --render
           fi
           if [ -f artifacts/reel/status.json ]; then cat artifacts/reel/status.json; fi
+      - name: Prepare SuperProfile keyword Auto-DM draft (NO MESSAGES)
+        shell: bash
+        run: |
+          if [ -s artifacts/reel/manifest.json ]; then
+            python3 scripts/reel_superprofile_handoff.py
+          else
+            echo "No verified Reel selected; no SuperProfile draft created."
+          fi
       - name: Preserve preview assets
         if: always()
         uses: actions/upload-artifact@v4
