@@ -71,6 +71,7 @@ class WAHAChannelBridgeTests(unittest.TestCase):
    "🔗 Apply Link: https://hdcareers.in/jobs/brillio-associate-engineer-applications-platforms.html",
    "",
    "💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+   "",
    "✈️ Telegram: https://t.me/HD_Careers",
   ])
   self.assertEqual(m.fmt(brillio),expected)
@@ -84,6 +85,7 @@ class WAHAChannelBridgeTests(unittest.TestCase):
   self.assertIn("🔗 Apply Link: https://hdcareers.in/"+self.page,actual)
   self.assertIn("💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",actual)
   self.assertIn("✈️ Telegram: https://t.me/HD_Careers",actual)
+  self.assertIn("💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z\n\n✈️ Telegram:",actual)
   self.assertNotIn("Qualification:",actual)
   self.assertNotIn("Package:",actual)
   self.assertNotIn("Application status can change",actual)
