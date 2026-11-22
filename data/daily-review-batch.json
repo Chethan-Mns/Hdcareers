@@ -57,7 +57,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -115,7 +115,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -173,7 +173,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -232,7 +232,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -291,7 +291,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -349,7 +349,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -406,7 +406,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -464,65 +464,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "paytm-payments-d63d3620",
-      "company": "Paytm Payments Services",
-      "role": "Associate - Merchant Onboarding 631",
-      "loc": "Noida, Uttar Pradesh, India",
-      "apply": "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Paytm Payments Services Lever requisition is active, on-roll, and states 0–1 years.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Paytm Payments Services",
-        "role": "Associate - Merchant Onboarding 631",
-        "loc": "Noida, Uttar Pradesh, India",
-        "apply": "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Paytm Payments Services Careers (Lever)",
-        "desc": "Merchant onboarding operations role reviewing applications, completing KYC/KYB checks and assessing business risk.",
-        "elig": "Bachelor's degree in Finance, Business Administration, Risk Management or related field; 0–1 years.",
-        "resp": [
-          "Review merchant onboarding requests for completeness.",
-          "Perform KYC and KYB verification checks.",
-          "Assess business legitimacy and onboarding risk."
-        ],
-        "skills": [
-          "Merchant onboarding",
-          "KYC",
-          "KYB",
-          "Risk review",
-          "Attention to detail"
-        ],
-        "workMode": "On-site",
-        "jobId": "d63d3620-1543-47dc-b1c0-6197e88d293a",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and deduplicated by exact requisition and official URL against current and archived repository records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:47:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Paytm Payments Services Lever requisition is active, on-roll, and states 0–1 years."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -578,9 +520,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Stable Money Lever posting is active, full-time/permanent, and accepts 0–1 years with internships counted."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -640,7 +582,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -698,7 +640,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -755,7 +697,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -812,7 +754,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -871,7 +813,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -928,7 +870,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -986,7 +928,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1043,9 +985,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Cisco Talent Bridge job 54987 is active for Ingram Micro, full-time, and limited to 2026 technology graduates in Chennai or Mumbai."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1102,9 +1044,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact MongoDB Greenhouse job 8127582 is active for a full-time 24-week winter internship in Gurugram."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1160,47 +1102,47 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Sarvam Ashby posting is active, full-time, and accepts candidates currently pursuing or recently completing a degree in any discipline."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 404; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 8,
+      "size": 9,
       "counts": {
         "fresherIT": 6,
-        "nonIT": 0,
+        "nonIT": 1,
         "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
         "fresherIT": 0,
-        "nonIT": 2,
+        "nonIT": 1,
         "training": 0
       }
     },
     "backup": {
-      "size": 7,
+      "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
-        "training": 0,
+        "training": 2,
         "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
-        "training": 2
+        "training": 0
       }
     },
     "target": {
       "priority": 10,
       "backup": 10
     },
-    "remaining": 15,
+    "remaining": 19,
     "duplicateExclusions": [
       {
         "id": "ey-1760652",
@@ -1231,29 +1173,17 @@
         "company": "Karya",
         "reason": "previously_reviewed_official_requisition",
         "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
+      },
+      {
+        "id": "paytm-payments-d63d3620",
+        "company": "Paytm Payments Services",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
       }
     ],
-    "excludedCount": 5,
+    "excludedCount": 6,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
-    "replacementDiscovery": {
-      "trigger": "Independent repository scrub removed five historical records.",
-      "removed": [
-        "EY 1760652",
-        "WNS 744000111543195",
-        "Cin7 c896656f",
-        "Drivetrain bc1c17bc",
-        "Karya 5469564008"
-      ],
-      "added": [
-        "Paytm Payments d63d3620",
-        "Stable Money 81f4c801",
-        "Ingram Micro 54987",
-        "MongoDB 8127582",
-        "Sarvam 6a5df2a7"
-      ],
-      "dedupSearch": "No exact requisition matches found before restaging."
-    }
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
