@@ -28,9 +28,9 @@ class SuperProfileOAuthTests(unittest.TestCase):
             access=Path(dir)/"short-lived-access.txt"
             pack({"client_id":"ci-worker","refresh_token":"rotating-old",
                   "token_endpoint":"https://mcp.superprofile.bio/oauth/token"},key,store)
-            def provider(url,form=None,*,form_unused=None,**kwargs):
-                if form is None:return {"token_endpoint":"https://mcp.superprofile.bio/oauth/token"}
-                self.assertEqual(form["refresh_token"],"rotating-old")
+            def provider(url,payload=None,*,form=False,**kwargs):
+                if payload is None:return {"token_endpoint":"https://mcp.superprofile.bio/oauth/token"}
+                self.assertEqual(payload["refresh_token"],"rotating-old")
                 return {"access_token":"access-token-only-in-temp-file","refresh_token":"rotating-new"}
             with patch("superprofile_oauth.req_json",side_effect=provider):
                 refresh(store,access,key=key)
