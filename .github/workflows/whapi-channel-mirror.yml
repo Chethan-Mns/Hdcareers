@@ -26,10 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 9
     env:
-      WHAPI_TOKEN: {{ secrets.WHAPI_TOKEN }}
-      WHAPI_CHANNEL_ID: {{ secrets.WHAPI_CHANNEL_ID }}
-      WHAPI_CHANNEL_ENABLED: {{ vars.WHAPI_CHANNEL_ENABLED }}
-      WAHA_CHANNEL_ENABLED: {{ vars.WAHA_CHANNEL_ENABLED }}
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+      WHAPI_CHANNEL_ENABLED: ${{ vars.WHAPI_CHANNEL_ENABLED }}
+      WAHA_CHANNEL_ENABLED: ${{ vars.WAHA_CHANNEL_ENABLED }}
     steps:
       - uses: actions/checkout@v4
         with:
