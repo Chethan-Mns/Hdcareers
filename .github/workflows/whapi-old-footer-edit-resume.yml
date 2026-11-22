@@ -1,0 +1,73 @@
+name: Resume Two Preclaimed Whapi Existing-Post Edits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-old-footer-edit-resume-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  resume-once:
+    if: startsWith(github.event.head_commit.message, 'Resume exact two legacy Whapi message edits')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+      WHAPI_EDIT_RESUME_CLAIM_ID: "45014694619"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact request, old claims, and source syntax before touching Channel
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          python3 -m py_compile scripts/edit_whapi_legacy_footer.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          doc=json.loads(Path('data/whapi-old-footer-edit-resume-request.json').read_text())
+          assert doc == {'requestId':'hd-whapi-resume-edit-20261122',
+              'editOnly':True,
+              'priorRunId':'45014694619',
+              'reason':'old messages store body in link_preview.body'}
+          data=json.loads(Path('data/whapi-old-footer-edits.json').read_text())
+          assert data.get('claimId')=='45014694619'
+          assert len(data['items'])==2
+          assert all(v['status']=='claimed_before_edit' for v in data['items'].values())
+          print('Verified two existing edits remain unattempted')
+          PY
+      - name: Edit exactly the two existing posts, never send new ones
+        id: edit
+        run: python3 scripts/edit_whapi_legacy_footer.py edit
+      - name: Save edit outcomes even if provider rejects edits
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'HD Careers Whapi Footer Editor'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/whapi-old-footer-edits.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record resumed original WhatsApp post edit outcomes'
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: whapi-original-edits-resumed
+          path: data/whapi-old-footer-edits.json
+          retention-days: 30
