@@ -30,7 +30,24 @@ def validate_script(text: str) -> str:
 async def _edge_speech(text: str, output: Path, rate: str) -> None:
     import edge_tts
     speech=edge_tts.Communicate(text, voice=NEERJA, rate=rate)
-    await asyncio.wait_for(speech.save(str(output)), timeout=70)
+    async def collect():
+        maker=edge_tts.SubMaker()
+        word_timings=[]
+        with output.open("wb") as fp:
+            async for msg in speech.stream():
+                if msg["type"]=="audio":
+                    fp.write(msg["data"])
+                elif msg["type"]=="WordBoundary":
+                    maker.feed(msg)
+                    word_timings.append({
+                        "word":msg["text"],
+                        "start":round(msg["offset"]/10_000_000,4),
+                        "end":round((msg["offset"]+msg["duration"])/10_000_000,4)})
+        if word_timings:
+            output.with_suffix(".wordtimings.json").write_text(
+                json.dumps(word_timings,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+            output.with_suffix(".srt").write_text(maker.get_srt(),encoding="utf8")
+    await asyncio.wait_for(collect(), timeout=70)
 
 
 def _gtts_speech(text: str, output: Path) -> None:
