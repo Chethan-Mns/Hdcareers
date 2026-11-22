@@ -1,0 +1,5 @@
+.env
+.waha-api-key.secret
+.sessions/
+*.log
+.DS_Store

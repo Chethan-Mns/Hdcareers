@@ -1,0 +1,25 @@
+# Local Apple Silicon WAHA. Public requests require ngrok HTTPS tunnel.
+services:
+  waha:
+    image: devlikeapro/waha:noweb-arm
+    platform: linux/arm64
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      WHATSAPP_DEFAULT_ENGINE: NOWEB
+      WAHA_API_KEY: ${WAHA_API_KEY:?run bootstrap.sh first}
+      WAHA_DASHBOARD_USERNAME: ${WAHA_DASHBOARD_USERNAME:?run bootstrap.sh first}
+      WAHA_DASHBOARD_PASSWORD: ${WAHA_DASHBOARD_PASSWORD:?run bootstrap.sh first}
+      WHATSAPP_SWAGGER_USERNAME: ${WAHA_DASHBOARD_USERNAME:?run bootstrap.sh first}
+      WHATSAPP_SWAGGER_PASSWORD: ${WAHA_DASHBOARD_PASSWORD:?run bootstrap.sh first}
+      WAHA_RESTART_ALL_SESSIONS: "true"
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./.sessions:/app/.sessions
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
