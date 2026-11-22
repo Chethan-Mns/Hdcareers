@@ -16,6 +16,8 @@ import re
 import subprocess
 import sys
 from reel_voice import generate as generate_free_narration
+from reel_voice_elevenlabs import generate as generate_elevenlabs_narration
+from reel_video import render as render_reference_reel
 from job_classification import classified
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -182,12 +184,15 @@ def draw_card(job, plan, dest):
 
 
 def voiceover(plan, path):
-    """Generate real narration automatically without a paid ElevenLabs account."""
-    allow_fallback = os.getenv("HD_REEL_FREE_VOICE_FALLBACK", "true").lower() in ("true", "1", "yes")
-    return generate_free_narration(plan["script"], path,
-                                  engine=os.getenv("HD_REEL_VOICE_ENGINE", "auto"),
+    """Preferred Sarah narration includes the SAME word alignment as the audio."""
+    engine=os.getenv("HD_REEL_VOICE_ENGINE","elevenlabs-sarah")
+    if engine=="elevenlabs-sarah":
+        return generate_elevenlabs_narration(plan["script"],path)
+    allow_fallback=os.getenv("HD_REEL_FREE_VOICE_FALLBACK","false").lower() in ("true","1","yes")
+    return generate_free_narration(plan["script"],path,
+                                  engine=engine if engine in ("auto","edge","gtts") else "auto",
                                   allow_fallback=allow_fallback,
-                                  rate=os.getenv("HD_REEL_VOICE_RATE", "+10%"))
+                                  rate=os.getenv("HD_REEL_VOICE_RATE","-3%"))
 
 
 def audio_duration(path):
@@ -247,24 +252,39 @@ def main():
             "reason": str(exc)[:200]}, indent=2) + "\n")
         print("Free voice generation failed; no Reel will be published:", type(exc).__name__)
         return
-    plan["voiceEngine"] = voice_result["engine"]
-    plan["voiceName"] = voice_result["voice"]
+    voice_provider=voice_result.get("provider") or voice_result.get("engine","unknown")
+    plan["voiceEngine"] = voice_provider
+    plan["voiceName"] = voice_result.get("voice","unknown")
+    plan["wordTimedCaptions"] = voice_provider=="elevenlabs"
     (out / "manifest.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2) + "\n")
     clips = sorted(p for p in Path(args.footage_dir).glob("*") if p.suffix.lower() in ALLOWED_EXTS and p.is_file())
     if not clips:
         (out / "status.json").write_text(json.dumps({
             "status": "needs_footage", "voiceGenerated": True,
-            "voiceEngine": voice_result["engine"],
-            "message": "Add owner footage to assets/reel-footage/ to render a video"}, indent=2) + "\n")
-        print("Narration ready; no approved reusable footage in repository.")
+            "voiceEngine": voice_provider,
+            "message": "Upload licensed owner footage once to assets/reel-footage/ (or sync footage through CI)."}, indent=2) + "\n")
+        print("Narration ready; no licensed reusable footage in repository.")
         return
-    from PIL import Image  # dependency check before billable voice request
+    from PIL import Image  # fail early if image dependency is missing
     clip_index = int(hashlib.sha256(str(job["id"]).encode()).hexdigest()[:8], 16) % len(clips)
-    card = out / "card.png"
-    draw_card(job, plan, card)
-    make_video(clips[clip_index], card, voice, out / "reel.mp4")
-    (out / "status.json").write_text(json.dumps({"status": "rendered", "jobId": job["id"], "voiceEngine": voice_result["engine"]}, indent=2))
-    print("Rendered reel.mp4 for job", job["id"], "using", clips[clip_index].name)
+    if voice_provider!="elevenlabs":
+        (out/"status.json").write_text(json.dumps({
+            "status":"voice_not_word_aligned", "jobId":job["id"],
+            "message":"Publishing held until a precisely timed voice and caption track is available"},indent=2)+"\n")
+        print("No exact voice alignment. Holding Reel rather than publishing unsynchronized captions.")
+        return
+    result=render_reference_reel(clips[clip_index],job,plan["role"],voice,
+                                 voice.with_suffix(".wordtimings.json"),out/"reel.mp4",ROOT)
+    plan["video"]={"bytes":result["bytes"],"durationSeconds":result["durationSeconds"],
+                   "logo":result["logo"],"captions":result["captions"],"footage":result["footage"]}
+    (out/"manifest.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n")
+    (out / "status.json").write_text(json.dumps({
+       "status":"rendered", "jobId":job["id"],"voiceEngine":voice_provider,
+       "captionSync":"source_word_timestamps",
+       "audioCommercialRightsVerified":bool(voice_result.get("commercialRightsVerified",False)),
+       "employerLogoFound":result["logo"]["companyLogoFound"],
+       "durationSeconds":result["durationSeconds"]},indent=2)+"\n")
+    print("Rendered synchronized Reel for job",job["id"],"using",clips[clip_index].name)
 
 if __name__ == "__main__":
     main()
