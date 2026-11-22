@@ -69,15 +69,22 @@ jobs:
             git commit -m "Record hourly Telegram delivery result"
             git push origin HEAD:main
           fi
-      - name: Wake WhatsApp Channel mirror after confirmed Telegram send
+      - name: Wake enabled WhatsApp Channel mirror after confirmed Telegram send
         if: success() && steps.claim.outputs.claimed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WHAPI_ENABLED: ${{ vars.WHAPI_CHANNEL_ENABLED }}
+          WAHA_ENABLED: ${{ vars.WAHA_CHANNEL_ENABLED }}
         shell: bash
         run: |
-          # Independent Channel relay holds its own source and admin checks.
-          gh workflow run whatsapp-channel-mirror.yml --ref main ||
-            echo "::warning::WhatsApp wake not dispatched; scheduled fallback remains active."
+          # Preserve WAHA fallback while Whapi can be explicitly opted into.
+          if [ "$WHAPI_ENABLED" = "true" ]; then
+            gh workflow run whapi-channel-mirror.yml --ref main ||
+              echo "::warning::Whapi wake not dispatched; scheduled fallback remains active."
+          elif [ "$WAHA_ENABLED" = "true" ]; then
+            gh workflow run whatsapp-channel-mirror.yml --ref main ||
+              echo "::warning::WAHA wake not dispatched; scheduled fallback remains active."
+          fi
       - name: Notify Android about confirmed Telegram job delivery
         if: success() && steps.claim.outputs.claimed == 'true'
         env:
