@@ -36,6 +36,16 @@ class ExpiryGuardTests(unittest.TestCase):
         _,closed=guard_automatic_expiry(self.job,e,c,self.now+timedelta(hours=12))
         self.assertFalse(closed)
 
+    def test_changed_closure_reason_needs_new_confirmation(self):
+        c={}
+        first={"state":"expired","reason":"Greenhouse inventory inactive"}
+        second={"state":"expired","reason":"Different ambiguous closure source"}
+        guard_automatic_expiry(self.job,first,c,self.now)
+        r,closed=guard_automatic_expiry(self.job,second,c,self.now+timedelta(hours=12))
+        self.assertFalse(closed)
+        self.assertEqual(r["state"],"review")
+        self.assertEqual(c["42"]["reason"],second["reason"])
+
     def test_deadline_expires_immediately(self):
         r,c=guard_automatic_expiry(self.job,{"state":"expired","reason":"Official closingAt deadline passed"},{},self.now)
         self.assertTrue(c)
