@@ -107,7 +107,7 @@ jobs:
                       "https://api.elevenlabs.io/v1/text-to-speech/"+vid+"?output_format=mp3_44100_128",
                       data=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode(),
                       method="POST",headers={"xi-api-key":api,"Content-Type":"application/json","Accept":"audio/mpeg"})
-                  )
+                  
                   try:
                       with urlopen(request,timeout=35) as response:
                           audio=response.read(1000000)
