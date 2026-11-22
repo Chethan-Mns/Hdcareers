@@ -9,6 +9,7 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from string import Template
+from scripts.job_classification import classified
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "jobs.json"
@@ -734,11 +735,14 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     role = str(job["role"])
     heading = f"{company} {role}"
     page_title = f"{heading} | HD Careers"
-    candidate = {"fresher": "Fresher", "experienced": "Experienced", "not-specified": "Experience not specified"}[job["expType"]]
-    field_label = "IT" if job.get("field") == "it" else "Non-IT" if job.get("field") == "nonit" else None
-    if field_label:
+    classification = classified(job)
+    candidate = {"fresher": "Fresher", "experienced": "Experienced", "not-specified": "Experience not specified"}[classification["expType"]]
+    field_label = "IT" if classification["field"] == "it" else "Non-IT"
+    cat = classification["cat"]
+    if classification["training"]:
+        candidate = "Apprenticeship" if cat == "apprenticeship" else "Internship"
+    else:
         candidate = candidate + " " + field_label
-    cat = str(job["cat"])
     status = str(job.get("status", "active"))
     pending = status == "active" and bool(job.get("_verification_pending"))
     status_label = "Verification pending" if pending else "Active" if status == "active" else "Expired / Closed"
@@ -941,7 +945,11 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if end == -1:
         raise SystemExit("Could not find the end of the JOBS array in index.html")
 
-    active_jobs = [job for job in jobs if job.get("status") == "active"]
+    # Normalize homepage classification at generation time, including historical roles.
+    # Preserve the verified source records; only public display metadata is updated.
+    active_jobs = [dict(job, **{key: value for key, value in classified(job).items()
+                               if key in ("cat", "field", "expType")})
+                   for job in jobs if job.get("status") == "active"]
     # Keep only card/search/modal fields in the homepage payload; full verified
     # job records stay in data/jobs.json and detailed job pages.
     public_fields = ("id", "company", "role", "roleTag", "loc", "locationFilter",
