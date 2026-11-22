@@ -1,0 +1,43 @@
+name: Regenerate Expiry Notices on Fix Branch
+on:
+  push:
+    branches:
+      - fix/automatic-expiry-and-uncertain-notice-20261122
+    paths:
+      - .github/workflows/pr-expiry-notice-regenerate.yml
+permissions:
+  contents: write
+concurrency:
+  group: fix-expiry-regenerate
+  cancel-in-progress: false
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/automatic-expiry-and-uncertain-notice-20261122
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test automatic closure safety and page banners
+        run: |
+          python3 -m py_compile generate.py scripts/check_job_availability.py
+          python3 -m unittest discover -s tests -p test_expiry_guard.py -v
+          python3 -m unittest discover -s tests -p test_job_hero.py -v
+      - name: Regenerate HTML using exact published statuses, no changes to job data
+        run: |
+          python3 generate.py
+          git diff --check
+      - name: Commit only regenerated job page UI, not any new jobs
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers Expiry Safety"
+          git config user.email "actions@users.noreply.github.com"
+          git add jobs/*.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Show may-have-expired warning on published expired and uncertain job pages"
+            git push origin HEAD:fix/automatic-expiry-and-uncertain-notice-20261122
+          fi
