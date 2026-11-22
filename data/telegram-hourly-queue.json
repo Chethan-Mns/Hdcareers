@@ -2119,11 +2119,12 @@
     {
       "page": "jobs/endeavor-it-solution-junior-software-engineer.html",
       "batchId": "admin-44998841244",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T16:38:26.534116+00:00",
       "claimId": "45044970200",
-      "claimedAt": "2026-11-22T16:38:40.435134+00:00"
+      "claimedAt": "2026-11-22T16:38:40.435134+00:00",
+      "messageId": 735,
+      "deliveredAt": "2026-11-22T16:38:43.656085+00:00"
     }
   ]
 }
