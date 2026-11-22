@@ -32,10 +32,7 @@ jobs:
       ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       HD_REEL_AUDIO_COMMERCIAL_LICENSE_CONFIRMED: ${{ vars.HD_REEL_AUDIO_COMMERCIAL_LICENSE_CONFIRMED }}
       HD_REEL_VOICE_RATE: "-3%"
-      BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-      INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
-      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+      SUPERPROFILE_MCP_ACCESS_TOKEN: ${{ secrets.SUPERPROFILE_MCP_ACCESS_TOKEN }}
       SHOULD_PUBLISH: ${{ (github.event_name == 'workflow_dispatch' && inputs.publish == true) || (github.event_name == 'schedule' && vars.HD_REELS_AUTOPUBLISH == 'true') }}
     steps:
       - uses: actions/checkout@v4
@@ -52,11 +49,12 @@ jobs:
           python3 -m pip install --disable-pip-version-check "Pillow>=11,<13" "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
       - name: Run safety tests and compile scripts
         run: |
-          python3 -m py_compile scripts/reel_voice.py scripts/reel_voice_elevenlabs.py scripts/reel_video.py scripts/reel_factory.py scripts/instagram_reel_publish.py scripts/reel_superprofile_handoff.py
+          python3 -m py_compile scripts/reel_voice.py scripts/reel_voice_elevenlabs.py scripts/reel_video.py scripts/reel_factory.py scripts/reel_preflight.py scripts/superprofile_reel_bridge.py scripts/reel_superprofile_handoff.py
           node --check scripts/reel_upload.mjs
           python3 -m unittest discover -s tests -p test_reel_factory.py -v
           python3 -m unittest discover -s tests -p test_reel_voice.py -v
           python3 -m unittest discover -s tests -p test_reel_video_timing.py -v
+          python3 -m unittest discover -s tests -p test_reel_pipeline.py -v
           python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
       - name: Prepare script, caption, employer card and Reel where configured
         env:
@@ -89,51 +87,65 @@ jobs:
           path: artifacts/reel/
           if-no-files-found: ignore
           retention-days: 14
-      - name: Publish to Instagram only after owner enabled it
-        id: publish
+      - name: Schedule only when licensed, complete and connected to SuperProfile
+        id: superprofile
         shell: bash
         run: |
           set -euo pipefail
           if [ "$SHOULD_PUBLISH" != "true" ]; then
-            echo "Preview mode. No Instagram publishing."
+            echo "Preview only: Instagram Reel and DM are NOT live."
             exit 0
+          fi
+          if [ -z "$SUPERPROFILE_MCP_ACCESS_TOKEN" ]; then
+            echo "::error::SuperProfile GitHub worker OAuth is missing. ChatGPT's connection cannot be silently reused."
+            exit 1
           fi
           if [ ! -s artifacts/reel/reel.mp4 ]; then
-            echo "::warning::No completed Reel. Nothing posted."
+            echo "::warning::Missing approved footage or aligned narration. No Reel scheduled."
             exit 0
           fi
-          # Safety: never publish unsynced captions, unverified logo, unlicensed
-          # ElevenLabs promotional audio, or a Reel without a per-post DM receipt.
-          python3 scripts/reel_preflight.py --manifest artifacts/reel/manifest.json --status artifacts/reel/status.json --video artifacts/reel/reel.mp4 --require-commercial-license --require-superprofile-binding artifacts/reel/superprofile-post-receipt.json
-          if [ -z "$BLOB_READ_WRITE_TOKEN" ] || [ -z "$INSTAGRAM_ACCESS_TOKEN" ] || [ -z "$INSTAGRAM_ACCOUNT_ID" ]; then
-            echo "::warning::Publishing credentials missing. Nothing posted."
-            exit 0
-          fi
-          npm install --no-save --no-package-lock @vercel/blob
-          node scripts/reel_upload.mjs artifacts/reel/reel.mp4 > artifacts/reel/public-video-url.txt
-          VIDEO_URL="$(cat artifacts/reel/public-video-url.txt)"
-          python3 scripts/instagram_reel_publish.py --video-url "$VIDEO_URL"
-          echo "published=true" >> "$GITHUB_OUTPUT"
-      - name: Persist successful Instagram post receipt for deduplication
-        if: steps.publish.outputs.published == 'true'
+          python3 scripts/reel_preflight.py \
+            --manifest artifacts/reel/manifest.json \
+            --status artifacts/reel/status.json \
+            --video artifacts/reel/reel.mp4 \
+            --require-commercial-license
+          python3 scripts/superprofile_reel_bridge.py \
+            --manifest artifacts/reel/manifest.json \
+            --status artifacts/reel/status.json \
+            --video artifacts/reel/reel.mp4
+          echo "scheduled=true" >> "$GITHUB_OUTPUT"
+      - name: Record the confirmed SuperProfile schedule to prevent duplicate Reels
+        if: steps.superprofile.outputs.scheduled == 'true'
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          file=Path("data/reel-posts.json")
-          known=json.loads(file.read_text())
-          receipt=json.loads(Path("artifacts/reel/instagram-receipt.json").read_text())
-          if receipt.get("status")!="posted" or not receipt.get("instagramMediaId"):
-              raise SystemExit("No confirmed Instagram receipt")
-          if not any(str(x.get("jobId"))==str(receipt["jobId"]) for x in known):
-              known.append(receipt)
-          file.write_text(json.dumps(known,ensure_ascii=False,indent=2)+"\n")
+          path=Path("data/reel-posts.json")
+          known=json.loads(path.read_text(encoding="utf8"))
+          r=json.loads(Path("artifacts/reel/superprofile-post-receipt.json").read_text(encoding="utf8"))
+          if r.get("state")!="scheduled" or not r.get("postId") or not r.get("autoDm",{}).get("autoDmId"):
+              raise SystemExit("Schedule was not confirmed with an attached job Auto-DM")
+          if any(str(p.get("jobId"))==str(r["jobId"]) for p in known):
+              raise SystemExit("Duplicate Reel ledger entry; check provider before further publishing")
+          known.append({"jobId":r["jobId"],"status":"scheduled","provider":"superprofile",
+                        "superprofilePostId":r["postId"],"superprofileAutoDmId":r["autoDm"]["autoDmId"],
+                        "scheduledAt":r["scheduledAt"],"jobUrl":r["jobUrl"]})
+          path.write_text(json.dumps(known,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
           PY
           git config user.name "HD Careers Reel Factory"
           git config user.email "actions@users.noreply.github.com"
           git add data/reel-posts.json
-          git commit -m "Record confirmed Instagram Reel publication"
+          git diff --cached --quiet && exit 0
+          git commit -m "Track SuperProfile scheduled Reel and job-specific Auto-DM"
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Preserve SuperProfile publication handoff receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-reel-delivery-${{ github.run_id }}
+          path: artifacts/reel/superprofile-post-receipt.json
+          if-no-files-found: ignore
+          retention-days: 30
