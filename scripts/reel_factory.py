@@ -228,7 +228,7 @@ def main():
     jobs = read_json(ROOT / "data/jobs.json", [])
     availability = read_json(ROOT / "data/availability-status.json", {})
     posted = read_json(ROOT / "data/reel-posts.json", [])
-    already = {str(x.get("jobId")) for x in posted if x.get("status") in ("posted", "uncertain")}
+    already = {str(x.get("jobId")) for x in posted if x.get("status") in ("posted", "scheduled", "publishing", "uncertain")}
     job = choose_job(jobs, availability, already, args.job_id)
     if job is None:
         (out / "status.json").write_text(json.dumps({"status": "no_eligible_verified_job",
