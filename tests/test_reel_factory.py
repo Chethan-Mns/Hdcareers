@@ -28,7 +28,7 @@ class ReelFactoryTests(unittest.TestCase):
     def test_caption(self):
         p=storyboard(self.job)
         self.assertIn("Comment below and I\'ll share the application link directly.",p["script"])
-        self.assertIn("Comment APPLY",p["caption"])
+        self.assertIn("Comment below and follow for the application link.",p["caption"])
         self.assertIn("https://hdcareers.in/jobs/deloitte.html",p["caption"])
         self.assertLessEqual(len(p["script"].split()),40)
 
