@@ -94,7 +94,7 @@ def generate(text: str, output: str | Path, *, engine: str="auto",
     if duration < 2 or duration > 28:
         raise RuntimeError("Generated voice duration out of bounds")
     return {"engine":selected[0],"voice":selected[1],
-            "neerja_expressive_exact":True,"speechma_preset_verified":False,"durationSeconds":round(duration,3),
+            "neerja_expressive_exact":selected[0]=="edge-neerja-expressive","speechma_preset_verified":False,"durationSeconds":round(duration,3),
             "text":text,"fallbackUsed":selected[0]!="edge-neerja-expressive"}
 
 
