@@ -199,7 +199,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
-          gh workflow run whatsapp-channel-mirror.yml --ref main ||
+          gh workflow run whapi-channel-mirror.yml --ref main ||
             echo "::warning::WhatsApp wake not dispatched; scheduled fallback remains active."
       - name: Arm reliable follow-up wake after the first confirmed Telegram post
         if: success() && steps.hourly.outputs.deferred == 'true' && steps.first_claim.outputs.claimed == 'true'

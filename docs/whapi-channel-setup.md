@@ -1,47 +1,64 @@
-# HD Careers — Whapi.Cloud WhatsApp Channel relay
+# HD Careers — Whapi.Cloud daily WhatsApp Channel publishing
 
-**Status:** Integration code prepared, but DISABLED. No messages are sent until the owner links their WhatsApp account, verifies the existing Channel and opts in using GitHub Actions.
+## Current integration
 
-This removes the requirement for Oracle hosting or a MacBook running WAHA. Whapi.Cloud uses an **unofficial linked-device WhatsApp session**, not Meta's official WhatsApp Business API. Prefer a dedicated HD Careers number with ADMIN rights on the existing Channel, retaining the original OWNER account.
+HD Careers approved jobs publish to the website first. Only confirmed Telegram @HD_Careers message receipts are eligible for the Whapi.Cloud relay. The destination is the existing **HD Career Updates** WhatsApp Channel, ID **120363419928883930@newsletter**. The original **HD Careers** Channel is deliberately excluded.
 
-## Publishing behavior
+Whapi.Cloud is an unofficial WhatsApp linked-device provider, not Meta's official WhatsApp Cloud API. The account was manually switched by Whapi support to its free Sandbox on 22 November 2026. Free Sandbox messages are subject to provider fair use and restrictions; it is not a guaranteed production SLA. No MacBook, Oracle VM or Docker host is required.
 
-- Mirror only **confirmed Telegram @HD_Careers deliveries** after owner approval, never all jobs indiscriminately.
-- Require the job to remain active, pass a fresh official-source check, and have a reachable HD Careers job page.
-- Require OWNER or ADMIN role of the exact configured WhatsApp Channel, checked immediately before sending.
-- Persist a pre-send claim to prevent duplicate posts; ambiguous results are held for manual reconciliation.
-- Store Whapi acceptance and message ID, not an unverified claim of subscriber delivery.
-- No historical Telegram deliveries are backfilled on first activation.
-- GitHub Actions runs without keeping your MacBook online.
+## Exactly what gets posted
 
-## Owner setup
+The message is formatted using `scripts/whatsapp_channel_relay.py:fmt`, shared by WAHA and Whapi, with a consistent Vercel preview from `api/whatsapp/latest.js`. Every message uses exactly these sections (only real job data is inserted):
 
-1. Open https://panel.whapi.cloud/ and register for the **Developer Sandbox**. Whapi describes a no-expiry development-only Sandbox with limits: 5 conversations/month, 150 messages/day and 1,000 requests/month. Onboarding may begin with a 5-day trial: confirm your channel's mode is Sandbox afterward.
-2. Scan the pairing QR from your phone: WhatsApp > Settings > Linked devices > Link a device. Prefer a dedicated number. If the existing HD Careers Channel belongs to another number, invite the connected account as Channel **ADMIN** and accept.
-3. Use Whapi's GET /newsletters API to obtain the **exact Channel ID ending in @newsletter**. The public WhatsApp Channel invite URL is not the API ID.
-4. Add GitHub repository Actions **secrets** at https://github.com/Chethan-Mns/Hdcareers/settings/secrets/actions :
-   - WHAPI_TOKEN: Whapi dashboard API bearer token (keep private)
-   - WHAPI_CHANNEL_ID: exact existing WhatsApp Channel ID ending in @newsletter
-5. Leave GitHub Actions variable WHAPI_CHANNEL_ENABLED unset/false and set WAHA_CHANNEL_ENABLED=false. The two relays must not be enabled simultaneously.
-6. Review and merge the Whapi integration PR. Under GitHub Actions choose **HD Careers WhatsApp Channel Mirror (Whapi.Cloud)**, select Run workflow with verify_only=true. It checks the Channel role without posting.
-7. After successful verification set repository Actions variable WHAPI_CHANNEL_ENABLED=true. The first enabled run records the activation time and skips historical Telegram posts.
-8. Observe the next newly approved job in Telegram and in the WhatsApp Channel. Confirm its delivery manually before relying on the setup.
+```text
+*Deloitte is Hiring ✅*
 
-## Safeguards and free-plan boundaries
+Role: Executive - Data Analysis (MS Excel)
+Qualification: Graduate
+Experience: Zero-experience eligible; no minimum experience stated
+Location: Delhi/NCR, India
 
-- WHAPI_CHANNEL_ENABLED=false pauses future WhatsApp posts without changing HD Careers website or Telegram.
-- Unknown API responses become uncertain; review the Channel and ledger before manual reconciliation. Never blindly retry.
-- At 10 posts/day, one role-check and one post each is about 600 API calls/month, before any other API use. Stay below the 1,000-call cap.
-- A free developer Sandbox may not be suitable for unattended production broadcasting. Published limits are not a production SLA.
-- Both Whapi and WAHA rely on unofficial sessions and carry WhatsApp account-restriction and outage risk.
-- GitHub Actions scheduled workflows may be delayed.
-- The shared WhatsApp ledger is data/whatsapp-channel-deliveries.json; avoid enabling both providers together.
-- Never share the token, pairing QR, passwords or session credentials in a public repo or chat.
+Apply Link: https://hdcareers.in/jobs/deloitte-executive-data-analysis-ms-excel.html
 
-## Provider references
+𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z
+𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers
+```
 
-https://support.whapi.cloud/help-desk/getting-started/pricing
+No invented salaries, package estimates, category, unnecessary emojis or extra promotions. Qualification and experience are taken from the job data when provided; otherwise the sender clearly labels eligibility or uses supported fresher classification.
+
+## Automation path
+
+1. Owner approves eligible fresher jobs in the admin review pipeline.
+2. Website deploys approved jobs and records an active public job page.
+3. Telegram sends the first job immediately and remaining jobs through the hourly queue; receipt + message ID are written to `data/telegram-deliveries.json`.
+4. Both the initial admin publisher and hourly Telegram workflow dispatch `whapi-channel-mirror.yml` after confirmed Telegram receipts.
+5. Whapi workflow checks owner opt-in at `data/whapi-channel-config.json`, exact Channel ID, and private GitHub Actions secrets.
+6. The relay claims only unposted Telegram receipts AFTER `activationAt` in `data/whatsapp-channel-deliveries.json`, at most 10 per India-calendar day.
+7. Before sending it verifies the job remains active, the exact official application source is live, the HD Careers public page is active, and the linked account remains Channel ADMIN/OWNER.
+8. The Whapi API accepts the message, returns a message ID and the ledger persists provider acceptance; unknown outcomes are held for manual reconciliation.
+9. A 15-minute backup schedule catches missed dispatches; GitHub scheduled workflows may be delayed.
+
+## Configuration and operations
+
+- `WHAPI_TOKEN` and `WHAPI_CHANNEL_ID` are GitHub Actions **secrets**, NOT checked into the repository.
+- `data/whapi-channel-config.json` is the owner-controlled config. `enabled: false` pauses posting. `enabled: true` activates the verified Telegram receipt mirror.
+- The actual approved Channel ID must equal `120363419928883930@newsletter`. A mismatch blocks sending.
+- The legacy `WAHA_CHANNEL_ENABLED` GitHub Actions variable must be absent/false; the Whapi workflow refuses simultaneous operation.
+- Initialize `data/whatsapp-channel-deliveries.json` `activationAt` immediately BEFORE enabling to avoid historical Telegram reposts. Preserve old test receipts.
+- `MAX_DAILY_POSTS=10` limits API consumption and avoids exceeding free Sandbox quotas. A blocked or uncertain job is NEVER automatically re-sent.
+- The free Sandbox has reported limits of 150 messages/day, 5 conversations/month, 30 WhatsApp checks/day and 1,000 API calls/month. Ten posts/day with one per-post admin check use roughly 600 API requests/month, excluding setup and other operations.
+- The existing Channel is treated as one conversation, but Sandbox use for ongoing business production remains subject to Whapi's policies and availability.
+- Inspect GitHub Actions workflow results and the `data/whatsapp-channel-deliveries.json` ledger for acceptance. A provider message ID is not guaranteed follower delivery.
+
+## Disable or investigate
+
+- To stop future posts: change `data/whapi-channel-config.json` to `enabled: false` on main.
+- For uncertain results: inspect the Channel and GitHub ledger. Do not erase the claim and blindly retry.
+- For lost Whapi connectivity: check paired account sessions and Channel Admin rights. Never publish a QR, token or linked-device credentials.
+- When needed, use `workflow_dispatch` with `verify_only: true` to check Channel access without publishing.
+
+## Official API references
+
 https://support.whapi.cloud/help-desk/channels/send-post-to-whatsapp-channel-newsletter
-https://whapi.readme.io/reference/getnewsletters
 https://whapi.readme.io/reference/getnewsletter
 https://whapi.readme.io/reference/sendmessagetext

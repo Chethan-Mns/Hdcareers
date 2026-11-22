@@ -51,11 +51,37 @@ class WAHAChannelBridgeTests(unittest.TestCase):
   self.assertEqual(m.provider_message_id({"id":"true_123@newsletter_ABC"}),"true_123@newsletter_ABC")
   self.assertEqual(m.provider_message_id({"id":{"_serialized":"true_123@newsletter_ABC"}}),"true_123@newsletter_ABC")
   self.assertIsNone(m.provider_message_id({"ack":1}))
- def test_no_fabricated_pay_in_post(self):
-  result=m.fmt(self.job)
-  self.assertIn("https://hdcareers.in/"+self.page,result)
-  self.assertIn("IT",result)
-  self.assertNotIn("Pay:",result)
+ def test_user_requested_whatsapp_template_exact(self):
+  deloitte={
+   "company":"Deloitte",
+   "role":"Executive - Data Analysis (MS Excel)",
+   "qualification":"Graduate",
+   "expYears":"Zero-experience eligible; no minimum experience stated",
+   "loc":"Delhi/NCR, India",
+   "page":"jobs/deloitte-executive-data-analysis-ms-excel.html",
+  }
+  actual=m.fmt(deloitte)
+  expected="\n".join([
+   "*Deloitte is Hiring ✅*",
+   "",
+   "Role: Executive - Data Analysis (MS Excel)",
+   "Qualification: Graduate",
+   "Experience: Zero-experience eligible; no minimum experience stated",
+   "Location: Delhi/NCR, India",
+   "",
+   "Apply Link: https://hdcareers.in/jobs/deloitte-executive-data-analysis-ms-excel.html",
+   "",
+   "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+   "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers",
+  ])
+  self.assertEqual(actual,expected)
+ def test_only_disclosed_fields_no_fabricated_package(self):
+  actual=m.fmt(self.job)
+  self.assertIn("Role: Junior Developer",actual)
+  self.assertIn("Experience: 0–1 years",actual)
+  self.assertIn("Apply Link: https://hdcareers.in/"+self.page,actual)
+  self.assertNotIn("Package:",actual)
+  self.assertNotIn("Category:",actual)
  def test_traversal_page_rejected(self):
   with self.assertRaises(ValueError):m.fmt(dict(self.job,page="../../private"))
  def test_requires_https_no_redirect_to_another_host(self):

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "enabled": false,
+  "provider": "Whapi.Cloud",
+  "channelName": "HD Career Updates",
+  "channelId": "120363419928883930@newsletter",
+  "maxPostsPerDay": 10,
+  "note": "Owner-approved daily mirror. Secret token remains in GitHub Actions Secrets. Enable only after CI and first activation timestamp are stored."
+}
