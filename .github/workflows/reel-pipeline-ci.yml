@@ -10,6 +10,8 @@ on:
       - scripts/superprofile_reel_bridge.py
       - scripts/superprofile_oauth.py
       - tests/test_superprofile_oauth.py
+      - scripts/reel_reconcile.py
+      - tests/test_reel_reconcile.py
       - tests/test_reel_pipeline.py
       - tests/test_reel_video_timing.py
       - .github/workflows/reel-pipeline-ci.yml
@@ -32,10 +34,11 @@ jobs:
           python3 -m pip install --disable-pip-version-check "Pillow>=11,<13" "cryptography>=44,<48"
       - name: Compile and test
         run: |
-          python3 -m py_compile scripts/reel_video.py scripts/reel_voice_elevenlabs.py scripts/reel_factory.py scripts/reel_preflight.py scripts/superprofile_reel_bridge.py scripts/superprofile_oauth.py
+          python3 -m py_compile scripts/reel_video.py scripts/reel_voice_elevenlabs.py scripts/reel_factory.py scripts/reel_preflight.py scripts/superprofile_reel_bridge.py scripts/superprofile_oauth.py scripts/reel_reconcile.py
           python3 -m unittest discover -s tests -p test_reel_video_timing.py -v
           python3 -m unittest discover -s tests -p test_reel_pipeline.py -v
           python3 -m unittest discover -s tests -p test_superprofile_oauth.py -v
+          python3 -m unittest discover -s tests -p test_reel_reconcile.py -v
           python3 -m unittest discover -s tests -p test_reel_factory.py -v
           python3 -m unittest discover -s tests -p test_reel_superprofile_handoff.py -v
       - name: Test 10s Reel renderer with synthetic CI-only input
