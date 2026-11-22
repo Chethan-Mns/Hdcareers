@@ -14,7 +14,8 @@ class FreeReelVoiceTests(unittest.TestCase):
     def test_compacts_whitespace(self):
         self.assertEqual(reel_voice.validate_script("Brillio  is \n hiring"),"Brillio is hiring")
     def test_preferred_neerja_voice(self):
-        self.assertEqual(reel_voice.NEERJA,"en-IN-NeerjaNeural")
+        self.assertEqual(reel_voice.NEERJA,"en-IN-NeerjaExpressiveNeural")
+        self.assertEqual(reel_voice.DEFAULT_PROVIDER,"edge-neerja-expressive")
     def test_fallback_explicitly_disclosed(self):
         from tempfile import TemporaryDirectory
         with TemporaryDirectory() as tmp:
