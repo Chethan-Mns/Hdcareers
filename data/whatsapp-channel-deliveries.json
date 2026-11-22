@@ -16,14 +16,17 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/brillio-associate-engineer-applications-platforms.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45009788350",
       "at": "2026-11-22T09:54:23.469829+00:00",
       "testOnly": true,
       "requestId": "hd-whapi-single-test-20261122-02",
       "telegramMessageId": 726,
       "telegramDeliveredAt": "2026-11-22T07:35:57.956528+00:00",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsoyMjj7Vs2LXoM-11wBq53kiM_y2g-AkA",
+      "acceptedAt": "2026-11-22T09:54:31.347832+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
