@@ -98,7 +98,7 @@ def storyboard(job):
                + "\U0001f4cd Location: " + str(job.get("loc") or "India") + "\n"
                + "\U0001f4bc " + salary_text + "\n"
                + "\U0001f4bb " + ("IT" if job.get("field") == "it" else "Non-IT") + " opportunity\n\n"
-               + "Comment APPLY for the job link.\n"
+               + "Comment below and follow for the application link.\n"
                + "Verify your exact eligibility before applying.\n\n"
                + url + "\n\n"
                + "#FresherJobs #OffCampusDrive #JobAlert #IndiaJobs #HDCareers")
@@ -176,7 +176,7 @@ def draw_card(job, plan, dest):
             draw.text((390, y + index * 37), txt, font=value, fill="#263852")
         y += max(72, 30 + len(val_lines[:2]) * 35)
     draw.text((110, 1262), "Official eligibility applies", font=font(26), fill="#3a506f")
-    draw.text((120, 1355), "Comment 'APPLY' for the link", font=font(35, bold=True), fill=blue)
+    draw.text((120, 1355), "Comment below for the link", font=font(35, bold=True), fill=blue)
     dest.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(dest)
 
