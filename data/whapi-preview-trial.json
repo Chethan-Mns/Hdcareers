@@ -1,14 +1,14 @@
 {
   "version": 1,
   "mode": "one-post-preview-trial",
-  "status": "public_og_verified_waiting_for_whatsapp_post",
+  "status": "superseded_by_direct_company_logo_open_graph",
   "jobPage": "jobs/synopsys-cad-design-support-apprenticeship.html",
   "company": "Synopsys",
   "imagePath": "assets/job-previews/synopsys-cad-design-support-apprenticeship-v2.png",
   "previewImageUrl": "https://hdcareers.in/assets/job-previews/synopsys-cad-design-support-apprenticeship-v2.png",
   "scheduledTelegramDueAt": "2026-11-22T11:36:54.578317+00:00",
   "globalRollout": false,
-  "approvalRequired": true,
-  "note": "Only the Synopsys link preview is changed. Whapi message text and all other job pages remain untouched.",
+  "approvalRequired": false,
+  "note": "Owner replaced generated hiring cards with direct original company logos in the OG link previews. Original preview PNG remains as archival asset only; automatic WhatsApp posting text and dedupe are unchanged.",
   "revision": 2
 }
