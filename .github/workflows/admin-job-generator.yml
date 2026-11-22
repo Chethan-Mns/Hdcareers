@@ -193,6 +193,14 @@ jobs:
           done
           echo "::error::Could not persist Telegram receipts; download workflow evidence before retry."
           exit 1
+      - name: Wake WhatsApp Channel mirror after saving Telegram delivery receipts
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          gh workflow run whatsapp-channel-mirror.yml --ref main ||
+            echo "::warning::WhatsApp wake not dispatched; scheduled fallback remains active."
       - name: Arm reliable follow-up wake after the first confirmed Telegram post
         if: success() && steps.hourly.outputs.deferred == 'true' && steps.first_claim.outputs.claimed == 'true'
         env:
