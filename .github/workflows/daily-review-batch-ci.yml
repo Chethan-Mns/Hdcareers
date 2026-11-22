@@ -69,6 +69,7 @@ jobs:
               assert len(jobs)==10 and len({j["apply"] for j in jobs})==10
           PY
           python3 -m unittest discover -s tests -p test_daily_review_batch.py -v
+          python3 -m unittest discover -s tests -p test_auto_verified_publish.py -v
           python3 -m unittest discover -s tests -p test_approved_nine_publication.py -v
       - name: Dry-run recovery of exact owner-reviewed October 13 batch
         run: |
