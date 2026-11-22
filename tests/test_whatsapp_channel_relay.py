@@ -51,37 +51,51 @@ class WAHAChannelBridgeTests(unittest.TestCase):
   self.assertEqual(m.provider_message_id({"id":"true_123@newsletter_ABC"}),"true_123@newsletter_ABC")
   self.assertEqual(m.provider_message_id({"id":{"_serialized":"true_123@newsletter_ABC"}}),"true_123@newsletter_ABC")
   self.assertIsNone(m.provider_message_id({"ack":1}))
- def test_user_requested_whatsapp_template_exact(self):
-  deloitte={
-   "company":"Deloitte",
-   "role":"Executive - Data Analysis (MS Excel)",
-   "qualification":"Graduate",
-   "expYears":"Zero-experience eligible; no minimum experience stated",
-   "loc":"Delhi/NCR, India",
-   "page":"jobs/deloitte-executive-data-analysis-ms-excel.html",
+ def test_owner_approved_brillio_hiring_alert_exact(self):
+  brillio={
+   "company":"Brillio",
+   "role":"Associate Engineer, Applications & Platforms",
+   "loc":"Chennai, Tamil Nadu, India",
+   "expYears":"Entry level; up to 2 years",
+   "field":"it",
+   "page":"jobs/brillio-associate-engineer-applications-platforms.html",
   }
-  actual=m.fmt(deloitte)
   expected="\n".join([
-   "*Deloitte is Hiring ✅*",
+   "🚨 *BRILLIO HIRING*",
    "",
-   "Role: Executive - Data Analysis (MS Excel)",
-   "Qualification: Graduate",
-   "Experience: Zero-experience eligible; no minimum experience stated",
-   "Location: Delhi/NCR, India",
+   "💼 Role: Associate Engineer, Applications & Platforms",
+   "📍 Location: Chennai, Tamil Nadu, India",
+   "🎓 Experience: Entry level; up to 2 years",
+   "💻 Category: IT",
    "",
-   "Apply Link: https://hdcareers.in/jobs/deloitte-executive-data-analysis-ms-excel.html",
+   "🔗 Apply Link: https://hdcareers.in/jobs/brillio-associate-engineer-applications-platforms.html",
    "",
-   "💚 *WhatsApp:* https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
-   "✈️ *Telegram:* https://t.me/HD_Careers",
+   "💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+   "✈️ Telegram: https://t.me/HD_Careers",
   ])
-  self.assertEqual(actual,expected)
- def test_only_disclosed_fields_no_fabricated_package(self):
+  self.assertEqual(m.fmt(brillio),expected)
+ def test_verified_job_details_and_short_footer(self):
   actual=m.fmt(self.job)
-  self.assertIn("Role: Junior Developer",actual)
-  self.assertIn("Experience: 0–1 years",actual)
-  self.assertIn("Apply Link: https://hdcareers.in/"+self.page,actual)
+  self.assertTrue(actual.startswith("🚨 *EXAMPLE SOFTWARE HIRING*"))
+  self.assertIn("💼 Role: Junior Developer",actual)
+  self.assertIn("📍 Location: Bengaluru",actual)
+  self.assertIn("🎓 Experience: 0–1 years",actual)
+  self.assertIn("💻 Category: IT",actual)
+  self.assertIn("🔗 Apply Link: https://hdcareers.in/"+self.page,actual)
+  self.assertIn("💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",actual)
+  self.assertIn("✈️ Telegram: https://t.me/HD_Careers",actual)
+  self.assertNotIn("Qualification:",actual)
   self.assertNotIn("Package:",actual)
-  self.assertNotIn("Category:",actual)
+  self.assertNotIn("Application status can change",actual)
+ def test_category_only_from_declared_classification(self):
+  self.assertEqual(m.job_category({"field":"it"}),"IT")
+  self.assertEqual(m.job_category({"field":"nonit"}),"Non-IT")
+  self.assertEqual(m.job_category({"cat":"apprenticeship"}),"Apprenticeship")
+  self.assertEqual(m.job_category({"categories":["internship"]}),"Internship")
+  self.assertEqual(m.job_category({"field":"unknown","cat":"unknown"}),"Not specified")
+ def test_fresher_experience_without_invented_numbers(self):
+  job=dict(self.job,expYears="Not specified",expType="fresher")
+  self.assertIn("🎓 Experience: Freshers eligible",m.fmt(job))
  def test_traversal_page_rejected(self):
   with self.assertRaises(ValueError):m.fmt(dict(self.job,page="../../private"))
  def test_requires_https_no_redirect_to_another_host(self):
