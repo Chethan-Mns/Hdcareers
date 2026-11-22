@@ -11,21 +11,22 @@ Whapi.Cloud is an unofficial WhatsApp linked-device provider, not Meta's officia
 The message is formatted using `scripts/whatsapp_channel_relay.py:fmt`, shared by WAHA and Whapi, with a consistent Vercel preview from `api/whatsapp/latest.js`. Every message uses exactly these sections (only real job data is inserted):
 
 ```text
-*Deloitte is Hiring ✅*
+🚨 *BRILLIO HIRING*
 
-Role: Executive - Data Analysis (MS Excel)
-Qualification: Graduate
-Experience: Zero-experience eligible; no minimum experience stated
-Location: Delhi/NCR, India
+💼 Role: Associate Engineer, Applications & Platforms
+📍 Location: Chennai, Tamil Nadu, India
+🎓 Experience: Entry level; up to 2 years
+💻 Category: IT
 
-Apply Link: https://hdcareers.in/jobs/deloitte-executive-data-analysis-ms-excel.html
+🔗 Apply Link: https://hdcareers.in/jobs/brillio-associate-engineer-applications-platforms.html
 
-𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z
-𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers
+💚 WhatsApp: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z
+✈️ Telegram: https://t.me/HD_Careers
 ```
 
-No invented salaries, package estimates, category, unnecessary emojis or extra promotions. Qualification and experience are taken from the job data when provided; otherwise the sender clearly labels eligibility or uses supported fresher classification.
+**Preview image:** Each published job page uses the existing local, verified company logo in its `og:image` metadata, or the HD Careers logo when none is compatible. No hiring-card images are generated. WhatsApp controls image preview caching.
 
+**Content rules:** Company, role, location, disclosed experience, and category come from the same approved job record; never invent salary, qualifications, a category, or experience. If a field is missing, explicitly show a safe fallback. Keep both Channel URLs in the short footer and the existing deduplication/10-per-day limits unchanged.
 ## Automation path
 
 1. Owner approves eligible fresher jobs in the admin review pipeline.

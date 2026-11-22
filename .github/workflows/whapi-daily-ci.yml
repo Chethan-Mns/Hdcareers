@@ -7,6 +7,8 @@ on:
       - scripts/whatsapp_channel_relay.py
       - scripts/whapi_channel_relay.py
       - tests/test_whatsapp_channel_relay.py
+      - tests/whatsapp-preview-template.test.mjs
+      - api/whatsapp/latest.js
       - tests/test_whapi_channel_relay.py
       - tests/test_whapi_daily_pipeline.py
       - data/whapi-channel-config.json
@@ -31,6 +33,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/whatsapp_channel_relay.py scripts/whapi_channel_relay.py
           node --check api/whatsapp/latest.js
+          node --test tests/whatsapp-preview-template.test.mjs
       - name: Confirm WhatsApp exact template and daily pipeline safety
         run: |
           python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
