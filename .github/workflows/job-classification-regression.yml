@@ -1,0 +1,47 @@
+name: Job Classification Regression
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - lib/job-classification.js
+      - scripts/job_classification.py
+      - scripts/select_auto_verified_jobs.py
+      - api/admin/extract-job.js
+      - api/admin/publish.js
+      - generate.py
+      - index.html
+      - tests/job-classification.test.mjs
+      - tests/test_job_classification.py
+      - tests/test_auto_verified_publish.py
+      - .github/workflows/job-classification-regression.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check Python and Node syntax
+        run: |
+          python3 -m py_compile scripts/job_classification.py scripts/select_auto_verified_jobs.py generate.py
+          node --check lib/job-classification.js
+          node --check api/admin/extract-job.js
+          node --check api/admin/publish.js
+      - name: Test every experience, IT and training rule
+        run: |
+          node --test tests/job-classification.test.mjs
+          python3 -m unittest discover -s tests -p test_job_classification.py -v
+          python3 -m unittest discover -s tests -p test_auto_verified_publish.py -v
+      - name: Verify freshly generated job classifications
+        run: |
+          python3 generate.py
+          python3 generate.py --dry-run
+          python3 -m unittest discover -s tests -p test_job_company_logo_og.py -v
