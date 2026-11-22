@@ -2,7 +2,7 @@
   "batchId": "2026-11-22-0900-ist",
   "generatedAt": "2026-11-22T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-22T03:47:00.000Z",
+  "updatedAt": "2026-11-22T03:51:00.000Z",
   "priority": [
     {
       "id": "exl-22896",
@@ -523,6 +523,64 @@
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
       "precheckCheckedAt": "2026-11-22T03:44:40.707624+00:00",
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "weekday-69bc9e94",
+      "company": "Weekday",
+      "role": "Talent Operations Associate",
+      "loc": "Remote - India",
+      "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "Fresh graduates or 0–1 year",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Exact Weekday Lever posting is active, full-time, remote in India, and explicitly accepts fresh graduates or candidates with 0–1 year.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Weekday",
+        "role": "Talent Operations Associate",
+        "loc": "Remote - India",
+        "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "Fresh graduates or 0–1 year",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Weekday Careers (Lever)",
+        "desc": "Talent operations role conducting structured candidate screening calls, documenting assessments and coordinating follow-ups.",
+        "elig": "Completed graduation with 0–1 year of experience; fresh graduates who pass the assessment are eligible; current students are not eligible.",
+        "resp": [
+          "Conduct structured candidate screening calls.",
+          "Document evaluation notes and maintain records.",
+          "Coordinate candidate follow-ups and status updates."
+        ],
+        "skills": [
+          "Communication",
+          "Candidate screening",
+          "Research",
+          "Documentation",
+          "Attention to detail"
+        ],
+        "workMode": "Remote",
+        "jobId": "69bc9e94-a6c5-4166-a50b-95dba61d763a",
+        "postedDate": "Not Specified",
+        "verifiedDate": "22 Nov 2026",
+        "sourceVerificationMethod": "Exact official Lever posting was checked on 22 Nov 2026 and returned no exact requisition match in repository code search before staging. Owner review remains mandatory before publication.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-22T03:51:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Exact Weekday Lever posting is active, full-time, remote in India, and explicitly accepts fresh graduates or candidates with 0–1 year."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -1183,7 +1241,12 @@
     ],
     "excludedCount": 6,
     "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "finalReplacement": {
+      "removed": "Paytm Payments d63d3620 (already published)",
+      "added": "Weekday 69bc9e94",
+      "dedupSearch": "No exact repository match before staging."
+    }
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -1220,7 +1283,7 @@
   "ranking": {
     "status": "awaiting_repository_rerun",
     "model": "repository rank-review-batch workflow",
-    "note": "Five category-matched replacements added after the first independent scrub; rerun required."
+    "note": "Final non-tech replacement added after Paytm duplicate exclusion."
   },
   "previousBatchReference": {
     "batchId": "2026-11-21-0900-ist",
@@ -1969,5 +2032,5 @@
     },
     "note": "Previous batch preserved as history; no approval, publication, site generation, data/jobs.json edit or Telegram dispatch is authorized by this review batch."
   },
-  "discoverySummary": "Fresh 22 Nov 2026 review after repository scrub and replacement discovery: 87/87 watchlisted employers searched. Five hidden historical duplicates were removed by the repository workflow and replaced with new exact requisitions from five distinct employers. Both Priority and Backup again contain 6 technical full-time, 2 non-tech full-time and 2 training roles. Deloitte: no new verified fresher-eligible role. Owner review is mandatory; nothing is published or queued."
+  "discoverySummary": "Fresh 22 Nov 2026 review: 87/87 watchlisted employers searched. The repository scrub removed six hidden historical records in total; each category gap was filled with a new exact requisition from a distinct employer. Both lists are restored to 6 technical full-time, 2 non-tech full-time and 2 training roles before the final rerun. Deloitte: no new verified fresher-eligible role. Owner review is mandatory; nothing is published or queued."
 }
