@@ -6,6 +6,9 @@ on:
     paths:
       - 'scripts/publish_approved_telegram.py'
       - 'scripts/post_telegram.py'
+      - 'scripts/whatsapp_channel_relay.py'
+      - 'tests/test_telegram_message_format.py'
+      - 'tests/test_whatsapp_channel_relay.py'
       - 'scripts/publish_verified_telegram.py'
       - 'scripts/admin_publish.py'
       - 'tests/test_telegram_approval.py'
@@ -31,5 +34,9 @@ jobs:
         run: node --check api/admin/publish.js
       - name: Run Telegram receipt and retry tests
         run: python3 -m unittest discover -s tests -p test_telegram_approval.py -v
+      - name: Validate concise Telegram and WhatsApp message layouts
+        run: |
+          python3 -m unittest discover -s tests -p test_telegram_message_format.py -v
+          python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
       - name: Dry-run ten-job approval to manifest handoff
         run: python3 -m unittest discover -s tests -p test_admin_batch_handoff.py -v
