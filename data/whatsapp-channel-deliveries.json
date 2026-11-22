@@ -89,13 +89,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/secfix-backend-engineer-gtm-engineering-fresh-grad-india.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45039436836",
       "at": "2026-11-22T15:38:51.008594+00:00",
       "telegramMessageId": 734,
       "telegramDeliveredAt": "2026-11-22T15:38:26.534116+00:00",
       "telegramDateIst": "2026-11-22",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsoXGWT55LpMJF0-12wBq53kiM_y2g-AkY",
+      "acceptedAt": "2026-11-22T15:38:57.567554+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
