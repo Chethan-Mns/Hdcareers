@@ -2059,9 +2059,11 @@
     {
       "page": "jobs/vijnoratech-software-engineer-graduate.html",
       "batchId": "admin-44998841244",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T10:36:40.015926+00:00"
+      "dueAt": "2026-11-22T10:36:40.015926+00:00",
+      "claimId": "45013290013",
+      "claimedAt": "2026-11-22T10:36:51.058461+00:00"
     },
     {
       "page": "jobs/synopsys-cad-design-support-apprenticeship.html",
