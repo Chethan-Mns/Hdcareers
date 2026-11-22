@@ -1,8 +1,9 @@
 {
-  "engine": "edge-neerja",
-  "voice": "en-IN-NeerjaNeural",
-  "neerja_expressive_exact": false,
-  "durationSeconds": 10.68,
+  "engine": "edge-neerja-expressive",
+  "voice": "en-IN-NeerjaExpressiveNeural",
+  "neerja_expressive_exact": true,
+  "speechma_preset_verified": false,
+  "durationSeconds": 11.112,
   "text": "Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly.",
   "fallbackUsed": false
 }
