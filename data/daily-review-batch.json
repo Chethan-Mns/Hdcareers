@@ -55,9 +55,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact EXL Oracle requisition 22896 is active and states 0–2 years in the qualifications."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -113,9 +113,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Brillio job 21278 / requisition R01573613 is active and labels the role entry-level with up to two years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,9 +171,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact AiPrise Ashby requisition is active for a full-time Bengaluru role and states 0–2 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Ashby public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -230,9 +230,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact employer Zoho Recruit posting is active; the role is full-time and accepts freshers with 0–1 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -289,9 +289,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Qualcomm requisition 446722234783 remains active; the current role evidence identifies a Bengaluru CPU software opening for freshers with 0–1 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -347,123 +347,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact employer career page is active for a full-time Hyderabad graduate software engineer role and accepts project or coursework evidence."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "ey-1760652",
-      "company": "EY",
-      "role": "Associate Analyst - Transfer Pricing",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456872433/",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "0–1 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact EY requisition 1760652 is active and explicitly states 0–1 years and a Bachelor of Commerce qualification.",
-      "postedDate": "12 Nov 2026",
-      "job": {
-        "company": "EY",
-        "role": "Associate Analyst - Transfer Pricing",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456872433/",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level tax and transfer-pricing analyst role supporting financial analysis, documentation and compliance work.",
-        "elig": "Bachelor of Commerce with 0–1 years of experience; zero-experience graduates are eligible.",
-        "resp": [
-          "Support transfer-pricing analysis and documentation.",
-          "Interpret financial data and apply tax principles.",
-          "Collaborate with client service teams."
-        ],
-        "skills": [
-          "Accounting",
-          "Taxation",
-          "Financial analysis",
-          "Transfer pricing"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1760652",
-        "postedDate": "12 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact EY requisition 1760652 is active and explicitly states 0–1 years and a Bachelor of Commerce qualification."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "wns-744000111543195",
-      "company": "WNS Global Services",
-      "role": "Associate - Operations",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "No prior work experience required; freshers can apply",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact WNS SmartRecruiters posting is active and says no prior work experience is required and freshers can apply.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "WNS Global Services",
-        "role": "Associate - Operations",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "No prior work experience required; freshers can apply",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "WNS Careers (SmartRecruiters)",
-        "desc": "Back-office operations role handling written communication, transaction processing and shift-based support.",
-        "elig": "Graduate in any stream; no prior experience required; freshers eligible.",
-        "resp": [
-          "Process back-office operational tasks.",
-          "Maintain written accuracy and service quality.",
-          "Work assigned office shifts and meet process targets."
-        ],
-        "skills": [
-          "Written communication",
-          "Typing accuracy",
-          "Operations",
-          "Attention to detail"
-        ],
-        "workMode": "On-site",
-        "jobId": "744000111543195",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact WNS SmartRecruiters posting is active and says no prior work experience is required and freshers can apply."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -518,9 +404,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Synchrony requisition 2603082 is active for an Analytics Intern in India."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -576,9 +462,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Synopsys job 19297 is active for a 12-month apprenticeship and limits eligibility to 2025/2026 fresh graduates not in full-time employment."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -636,67 +522,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact employer Zoho Recruit posting is active and accepts freshers and candidates with 0–2 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "cin7-c896656f",
-      "company": "Cin7",
-      "role": "Junior Software Engineer",
-      "loc": "Pune, Maharashtra, India",
-      "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "Junior role; internships and projects accepted",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Cin7 Lever requisition is indexed as active; direct retrieval was access-restricted, so owner recheck is required. The posting accepts practical experience through internships or projects.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Cin7",
-        "role": "Junior Software Engineer",
-        "loc": "Pune, Maharashtra, India",
-        "apply": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Junior role; internships and projects accepted",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Cin7 Careers (Lever)",
-        "desc": "Junior software engineering role contributing application code, testing and team delivery.",
-        "elig": "Early-career candidates with software fundamentals and practical exposure through internships, coursework or projects.",
-        "resp": [
-          "Implement and test product features.",
-          "Debug application issues.",
-          "Collaborate in code reviews and delivery."
-        ],
-        "skills": [
-          "Software development",
-          "APIs",
-          "Testing",
-          "Git",
-          "Problem solving"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "c896656f-9a8b-4263-add3-553226c73df4",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Cin7 Lever requisition is indexed as active; direct retrieval was access-restricted, so owner recheck is required. The posting accepts practical experience through internships or projects."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -752,9 +580,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Secfix Ashby requisition is active for India and explicitly targets recent graduates with 0–2 years; required backend exposure may come from internships."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Ashby public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -809,9 +637,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact SmartRecruiters role is active and explicitly accepts freshers with 0–1 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -866,9 +694,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Weblee SmartRecruiters posting is active, full-time, and states fresher or not more than two years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -925,9 +753,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact VMax application route is active for job 403451 and explicitly offers a fresher/0–1-year application path."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -982,9 +810,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact Playto Labs SmartRecruiters posting is active, full-time, freshers-only, and states no prior experience is required."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1040,188 +868,82 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Exact TSS SmartRecruiters posting is active and explicitly encourages fresh graduates within its 0–3-year range."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "drivetrain-bc1c17bc",
-      "company": "Drivetrain",
-      "role": "Engineering Intern - Gen AI for FP&A Platform",
-      "loc": "Remote - India",
-      "apply": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
-      "cat": "internship",
-      "slotType": "training",
-      "expYears": "Current student or recently completed degree",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Drivetrain Lever internship is active for India and accepts current students or recent graduates.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Drivetrain",
-        "role": "Engineering Intern - Gen AI for FP&A Platform",
-        "loc": "Remote - India",
-        "apply": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
-        "cat": "internship",
-        "expType": "internship/apprenticeship",
-        "expYears": "Current student or recently completed degree",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Drivetrain Careers (Lever)",
-        "desc": "Generative-AI engineering internship prototyping RAG, agentic and LLM features for an FP&A platform.",
-        "elig": "Currently pursuing or recently completed a Computer Science or related degree with strong DSA and AI/ML project fundamentals.",
-        "resp": [
-          "Prototype RAG and agentic AI solutions.",
-          "Integrate AI features with product and engineering teams.",
-          "Document and present end-to-end projects."
-        ],
-        "skills": [
-          "Generative AI",
-          "RAG",
-          "LLMs",
-          "Algorithms",
-          "System design"
-        ],
-        "workMode": "Remote",
-        "jobId": "bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Drivetrain Lever internship is active for India and accepts current students or recent graduates."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "karya-5469564008",
-      "company": "Karya",
-      "role": "Research Engineering Intern, AI Evaluations",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/karya/jobs/5469564008",
-      "cat": "internship",
-      "slotType": "training",
-      "expYears": "Current student or recently completed degree",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Karya Greenhouse requisition is active and accepts candidates currently pursuing or recently completing a relevant degree.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Karya",
-        "role": "Research Engineering Intern, AI Evaluations",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/karya/jobs/5469564008",
-        "cat": "internship",
-        "expType": "internship/apprenticeship",
-        "expYears": "Current student or recently completed degree",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Karya Careers (Greenhouse)",
-        "desc": "Research engineering internship building and operating AI evaluation datasets, inference pipelines, quality checks and analysis.",
-        "elig": "Current or recent Bachelor's or Master's student in Computer Science, Machine Learning, NLP or related field.",
-        "resp": [
-          "Prepare evaluation datasets and run model inference.",
-          "Monitor pipelines and reproduce technical issues.",
-          "Analyze results and build quality-control tooling."
-        ],
-        "skills": [
-          "Python",
-          "Pandas",
-          "LLMs",
-          "Statistics",
-          "Debugging"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "5469564008",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Karya Greenhouse requisition is active and accepts candidates currently pursuing or recently completing a relevant degree."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository duplicate and source precheck workflow.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-22T03:42:43.832927+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
-    "runDate": "22 Nov 2026",
-    "timezone": "Asia/Kolkata",
-    "watchlistTotal": 87,
-    "watchlistVisited": 87,
-    "watchlistNotVisited": 0,
-    "watchlistBlocked": 0,
-    "watchlistCandidatesAccepted": 2,
-    "fallbackCandidatesAccepted": 18,
-    "distinctEmployers": 20,
-    "exactOfficialLiveJobIdsAccepted": 20,
-    "duplicatesExcluded": 2,
-    "expiredExcluded": 1,
-    "heldForExperienceOrSourceUncertainty": 2,
-    "ineligibleOrOutOfScopeExcluded": 3,
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role",
-    "exclusions": [
+    "priority": {
+      "size": 8,
+      "counts": {
+        "fresherIT": 6,
+        "nonIT": 0,
+        "training": 2,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 0,
+        "nonIT": 2,
+        "training": 0
+      }
+    },
+    "backup": {
+      "size": 7,
+      "counts": {
+        "fresherIT": 5,
+        "nonIT": 2,
+        "training": 0,
+        "unclassified": 0
+      },
+      "shortfalls": {
+        "fresherIT": 1,
+        "nonIT": 0,
+        "training": 2
+      }
+    },
+    "target": {
+      "priority": 10,
+      "backup": 10
+    },
+    "remaining": 15,
+    "duplicateExclusions": [
       {
-        "company": "Apple",
-        "jobId": "200694892-1052",
-        "reason": "Previously reviewed exact requisition in the 20 Nov archived batch."
+        "id": "ey-1760652",
+        "company": "EY",
+        "reason": "already_published",
+        "officialUrl": "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456872433/"
       },
       {
-        "company": "Pragma Edge",
-        "jobId": "27074000049076008",
-        "reason": "Previously reviewed exact requisition in the 21 Nov batch."
+        "id": "wns-744000111543195",
+        "company": "WNS Global Services",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195"
       },
       {
-        "company": "WEX",
-        "jobId": "R22746",
-        "reason": "Official requisition returned HTTP 410 Gone."
+        "id": "cin7-c896656f",
+        "company": "Cin7",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4"
       },
       {
-        "company": "Falcon",
-        "jobId": "171032",
-        "reason": "Held: description conflicts with its 0–2 label by requiring two years of hands-on test automation."
+        "id": "drivetrain-bc1c17bc",
+        "company": "Drivetrain",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc"
       },
       {
-        "company": "Cummins",
-        "jobId": "2435232",
-        "reason": "Held: official route did not establish explicit zero-experience eligibility."
-      },
-      {
-        "company": "Wipro",
-        "jobId": "160017",
-        "reason": "Excluded as US-only rather than an attainable India opportunity."
-      },
-      {
-        "company": "Experian",
-        "jobId": "744000141837249",
-        "reason": "Excluded because the role is in Malaysia, not India."
-      },
-      {
-        "company": "Stripe",
-        "jobId": "8157838",
-        "reason": "Excluded because the exact new-grad requisition is Toronto-based."
+        "id": "karya-5469564008",
+        "company": "Karya",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
       }
     ],
-    "specialInstruction": "The historical 20 Oct owner-verified sample was not reused; this is a fresh 22 Nov discovery run."
+    "excludedCount": 5,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
