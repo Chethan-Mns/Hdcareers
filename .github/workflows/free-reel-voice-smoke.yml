@@ -6,6 +6,8 @@ on:
       - ".github/workflows/free-reel-voice-smoke.yml"
       - "scripts/reel_voice.py"
       - "tests/test_reel_voice.py"
+      - "scripts/reel_factory.py"
+      - "tests/test_reel_factory.py"
   workflow_dispatch:
 permissions:
   contents: write
@@ -28,8 +30,11 @@ jobs:
       - name: Install free Indian English voice engines
         run: |
           python3 -m pip install --disable-pip-version-check "edge-tts>=7.3.1,<8" "gTTS>=2.5,<3"
-      - name: Run narrator regression tests
-        run: python3 -m unittest discover -s tests -p test_reel_voice.py -v
+      - name: Check narrator and entire daily Reel factory
+        run: |
+          python3 -m py_compile scripts/reel_voice.py scripts/reel_factory.py
+          python3 -m unittest discover -s tests -p test_reel_voice.py -v
+          python3 -m unittest discover -s tests -p test_reel_factory.py -v
       - name: Generate Brillio narration automatically, no ElevenLabs charges
         shell: bash
         run: |
