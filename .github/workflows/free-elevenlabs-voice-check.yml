@@ -1,0 +1,70 @@
+name: Check ElevenLabs free default voice API
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/free-elevenlabs-voice-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-default-voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check built-in default voices on existing ElevenLabs free account
+        shell: bash
+        run: |
+          mkdir -p artifacts/elevenlabs-default
+          python3 - <<'PY'
+          import json, os, pathlib
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+          key = os.getenv("ELEVENLABS_API_KEY", "")
+          out = pathlib.Path("artifacts/elevenlabs-default")
+          result = {"apiKeyConfigured":bool(key), "voices":[], "generated":False, "note":"Only accounts created before March 2026 may have older Default voices; they expire 2026-12-31."}
+          if not key:
+              print("ElevenLabs API key missing; no test.")
+          else:
+              # Public ElevenLabs legacy Default voice IDs, not voice-library IDs.
+              defaults=[("Jessica","cgSgspJ2msm6clMCkdW9"),("Sarah","EXAVITQu4vr4xnSDxMaL"),("Alice","Xb7hH8MSUJpSbSDYk0k2")]
+              for name, voice_id in defaults:
+                  script="Brillio is hiring freshers in Chennai. Comment below for the application link."
+                  url=f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128"
+                  payload=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode()
+                  req=Request(url,data=payload,method="POST",headers={"xi-api-key":key,"Content-Type":"application/json","Accept":"audio/mpeg"})
+                  try:
+                      with urlopen(req,timeout=40) as response:
+                          audio=response.read(5_000_000)
+                      if len(audio) < 3000 or audio.lstrip().startswith(b"{"):
+                          raise ValueError("No MP3 returned")
+                      path=out/(name.lower()+".mp3")
+                      path.write_bytes(audio)
+                      result["voices"].append({"name":name,"http":200,"available":True,"bytes":len(audio)})
+                      result["generated"]=True
+                      print("Available free Default voice:",name)
+                      break
+                  except HTTPError as e:
+                      # Only status code, never print auth headers or token.
+                      result["voices"].append({"name":name,"http":e.code,"available":False})
+                      print("Default voice test",name,"HTTP",e.code)
+                      if e.code in (401,429):
+                          break
+                  except (URLError,ValueError) as e:
+                      result["voices"].append({"name":name,"error":type(e).__name__,"available":False})
+                      print("Default voice test",name,"error",type(e).__name__)
+                      break
+          (out/"results.json").write_text(json.dumps(result,indent=2)+"\n")
+          PY
+      - name: Save results and any successfully generated voice
+        uses: actions/upload-artifact@v4
+        with:
+          name: hd-elevenlabs-free-voice-check
+          path: artifacts/elevenlabs-default/
+          retention-days: 7
+          if-no-files-found: error
