@@ -95,8 +95,9 @@ def normalize(row,now):
  info=classified(j)
  j["cat"]=info["cat"]
  j["field"]=info["field"]
- if not info["training"]:
-  j["expType"]=info["expType"]
+ # Site generator uses fresher/experienced/not-specified for experience;
+ # apprenticeship/internship identity is carried by its own category.
+ j["expType"]="fresher" if info["training"] else info["expType"]
  j["status"]="active"  # Preserve original experience type, including training roles.
  j["roleTag"]=j.get("roleTag") or role
  j["locationFilter"]=j.get("locationFilter") or j["loc"]
