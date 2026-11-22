@@ -1,0 +1,84 @@
+name: Brillio Seven Female ElevenLabs Voice Samples
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/brillio-all-female-elevenlabs-voice-samples.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create seven matching Brillio voice comparisons
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/brillio-seven-voices
+          python3 - <<'PY'
+          import json, os, pathlib, re
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError,URLError
+          from urllib.parse import urlencode
+          key=os.environ.get("ELEVENLABS_API_KEY","").strip()
+          if not key:
+              raise SystemExit("ElevenLabs API key is not configured, no audio generated")
+          output=pathlib.Path("artifacts/brillio-seven-voices")
+          script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly."
+          (output/"script.txt").write_text(script+"\n",encoding="utf8")
+          voices=[]
+          next_page=None
+          for _ in range(4):
+              params={"voice_type":"default","gender":"female","page_size":100}
+              if next_page:params["next_page_token"]=next_page
+              request=Request("https://api.elevenlabs.io/v2/voices?"+urlencode(params),headers={"xi-api-key":key,"Accept":"application/json"})
+              with urlopen(request,timeout=30) as response:listing=json.load(response)
+              voices.extend(v for v in listing.get("voices",[]) if str((v.get("labels") or {}).get("gender") or v.get("gender") or "").lower()=="female")
+              next_page=listing.get("next_page_token") if listing.get("has_more") else None
+              if not next_page:break
+          names=["Bella","Sarah","Laura","Alice","Matilda","Jessica","Lily"]
+          catalog={v["name"].split(" - ",1)[0].strip().lower():v for v in voices if v.get("name") and v.get("voice_id")}
+          findings=[]
+          for idx,name in enumerate(names,1):
+              item=catalog.get(name.lower())
+              if not item:
+                  findings.append({"voice":name,"status":"missing_default_voice"})
+                  print("Missing female Default voice:",name)
+                  continue
+              payload=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode("utf8")
+              url="https://api.elevenlabs.io/v1/text-to-speech/"+item["voice_id"]+"?output_format=mp3_44100_128"
+              request=Request(url,data=payload,method="POST",headers={
+                  "xi-api-key":key,"Content-Type":"application/json","Accept":"audio/mpeg"})
+              try:
+                  with urlopen(request,timeout=40) as response:audio=response.read(1000000)
+                  if len(audio)<3000 or audio.lstrip().startswith(b"{"):
+                      raise ValueError("No valid MP3 returned")
+                  filename=f"{idx:02d}_{name}.mp3"
+                  (output/filename).write_bytes(audio)
+                  findings.append({"voice":name,"filename":filename,"status":"generated","bytes":len(audio),
+                                   "accent":(item.get("labels") or {}).get("accent","unspecified")})
+                  print("Generated female default voice:",name,"size:",len(audio))
+              except HTTPError as error:
+                  findings.append({"voice":name,"status":"api_blocked","httpStatus":error.code})
+                  print("Voice generation HTTP",error.code,"for",name)
+              except (URLError,ValueError) as error:
+                  findings.append({"voice":name,"status":"generation_failed","errorType":type(error).__name__})
+                  print("Voice generation failed for",name,type(error).__name__)
+          (output/"results.json").write_text(json.dumps(findings,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          count=sum(v["status"]=="generated" for v in findings)
+          print("Generated",count,"of 7 requested female voice previews")
+          if count!=7:raise SystemExit("Not all seven voices generated. Review results and retry only after checking API access.")
+          PY
+      - name: Preserve all seven individual MP3s for comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brillio-seven-female-voices
+          path: artifacts/brillio-seven-voices/
+          retention-days: 14
+          if-no-files-found: error
