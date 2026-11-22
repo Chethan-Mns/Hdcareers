@@ -1,0 +1,112 @@
+name: Refine One Synopsys WhatsApp Premium Preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-preview-refine-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-job-data-publish
+  cancel-in-progress: false
+
+jobs:
+  one-job-logo-fix:
+    if: startsWith(github.event.head_commit.message, 'Enlarge official Synopsys logo in the one-post preview')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PNG renderer and run its safety tests
+        run: |
+          python3 -m pip install --disable-pip-version-check "Pillow>=11,<13"
+          python3 -m unittest discover -s tests -p test_whapi_premium_preview_trial.py -v
+      - name: Confirm exactly one allowed refinement while Synopsys is pending
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          req=json.loads(Path('data/whapi-preview-refine-request.json').read_text())
+          assert req=={'requestId':'refine-synopsys-premium-preview-20261122',
+                       'jobPage':'jobs/synopsys-cad-design-support-apprenticeship.html',
+                       'globalRollout':False,
+                       'existingPreviewOnly':True}
+          original=json.loads(Path('data/whapi-preview-trial.json').read_text())
+          assert original['jobPage']==req['jobPage'] and original['globalRollout'] is False
+          assert original['previewImageUrl'].endswith('synopsys-cad-design-support-apprenticeship.png')
+          PY
+      - name: Render enlarged official logo and replace exactly one job page OG image
+        run: python3 scripts/whapi_premium_preview_trial.py --refine
+      - name: Commit only the single new PNG, job page and trial record
+        run: |
+          set -euo pipefail
+          git config user.name "HD Careers OG Preview Trial"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/job-previews/synopsys-cad-design-support-apprenticeship-v2.png
+          git add jobs/synopsys-cad-design-support-apprenticeship.html
+          git add data/whapi-preview-trial.json
+          git commit -m "Enlarge official Synopsys logo for one approved WhatsApp preview trial"
+          git push origin HEAD:main
+      - name: Wait for Vercel public image v2 and job OG tag
+        run: |
+          PYTHONPATH=scripts python3 - <<'PY'
+          from urllib.request import urlopen,Request
+          from urllib.error import HTTPError,URLError
+          import time
+          from whapi_premium_preview_trial import PUBLIC_JOB,IMAGE
+          png='https://hdcareers.in/'+IMAGE.replace('.png','-v2.png')
+          for i in range(26):
+              try:
+                  with urlopen(Request(PUBLIC_JOB,headers={'Cache-Control':'no-cache'}),timeout=14) as res:
+                      html=res.read(700000).decode('utf-8','replace')
+                  assert '<meta property="og:image" content="'+png+'">' in html
+                  with urlopen(Request(png,headers={'Cache-Control':'no-cache'}),timeout=14) as res:
+                      image=res.read(850000)
+                      ctype=res.headers.get('Content-Type','')
+                  assert image[:8]==b'\x89PNG\r\n\x1a\n' and len(image)>5000
+                  assert 'image/' in ctype
+                  print('Verified public premium preview v2 before next WhatsApp post.')
+                  break
+              except (AssertionError,HTTPError,URLError,TimeoutError,ValueError) as exc:
+                  print('Preview image deployment pending:',i+1,type(exc).__name__)
+                  time.sleep(10)
+          else:
+              raise SystemExit('Public revised image not ready; do not claim guaranteed WhatsApp thumbnail')
+          PY
+      - name: Record public single-post refinement readiness
+        if: success()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/whapi-preview-trial.json')
+          j=json.loads(p.read_text())
+          assert j['revision']==2 and j['globalRollout'] is False
+          j['status']='public_og_verified_waiting_for_whatsapp_post'
+          p.write_text(json.dumps(j,indent=2)+'\n',encoding='utf-8')
+          PY
+          git add data/whapi-preview-trial.json
+          git commit -m "Verify revised Synopsys one-post OG image is live"
+          git push origin HEAD:main
+      - name: Preserve branded preview asset
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synopsys-og-preview-refinement
+          path: |
+            assets/job-previews/synopsys-cad-design-support-apprenticeship-v2.png
+            data/whapi-preview-trial.json
+          if-no-files-found: ignore
+          retention-days: 14
