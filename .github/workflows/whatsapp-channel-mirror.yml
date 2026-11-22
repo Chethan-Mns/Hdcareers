@@ -21,6 +21,8 @@ concurrency:
 
 jobs:
   mirror:
+    # Avoid running paid Actions minutes every 5 minutes until owner opts in.
+    if: vars.WHATSAPP_CHANNEL_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.verify_only == true)
     runs-on: ubuntu-latest
     timeout-minutes: 9
     env:
