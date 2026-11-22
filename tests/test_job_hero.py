@@ -45,6 +45,25 @@ class SharedHeroTests(unittest.TestCase):
                 self.assertLess(body.index('class="hdj3-hero"'), body.index('id="resumeMatch"'))
                 self.assertIn(job["company"], body)
 
+    def test_expired_and_uncertain_pages_warn_before_applying(self):
+        job = next(j for j in self.jobs if j.get("status") == "active")
+        pending_job = dict(job, _verification_pending=True)
+        pending_body = generate.render_job_page(pending_job, self.jobs)
+        self.assertIn("Job may have expired — verify before applying.", pending_body)
+        self.assertIn("The latest automated check could not confirm availability", pending_body)
+        self.assertIn("RECHECK AVAILABILITY", pending_body)
+        self.assertNotIn("Application Closed", pending_body)
+
+        expired_job = dict(job, status="expired")
+        expired_body = generate.render_job_page(expired_job, self.jobs)
+        self.assertIn("Job may have expired — verify before applying.", expired_body)
+        self.assertIn("listing is marked expired or closed", expired_body)
+        self.assertIn("Application Closed", expired_body)
+        self.assertNotIn('data-hd-track="job_apply_click"', expired_body)
+
+        live_body = generate.render_job_page(job, self.jobs)
+        self.assertNotIn("Job may have expired — verify before applying.", live_body)
+
     def test_status_does_not_get_upgraded_by_hero(self):
         for job in self.jobs:
             body = generate.render_job_page(job, self.jobs)
