@@ -1,0 +1,30 @@
+name: HD Careers Whapi Read-Only Connection Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-verify-kick.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      WHAPI_TOKEN: ${{ secrets.WHAPI_TOKEN }}
+      WHAPI_CHANNEL_ID: ${{ secrets.WHAPI_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check offline Whapi safety tests
+        run: |
+          python3 -m py_compile scripts/whapi_channel_relay.py
+          python3 -m unittest discover -s tests -p 'test_whapi_channel_relay.py' -v
+      - name: Verify exact existing WhatsApp Channel and admin role (NO POSTS)
+        run: python3 scripts/whapi_channel_relay.py verify
