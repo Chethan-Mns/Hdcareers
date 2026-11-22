@@ -1,0 +1,51 @@
+# WAHA on OCI Ampere A1 ARM64. Port 3000 stays private.
+services:
+  waha:
+    image: devlikeapro/waha:noweb-arm
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      WHATSAPP_DEFAULT_ENGINE: NOWEB
+      WAHA_API_KEY: ${WAHA_API_KEY:?configure .env}
+      WAHA_DASHBOARD_USERNAME: ${WAHA_DASHBOARD_USERNAME:?configure .env}
+      WAHA_DASHBOARD_PASSWORD: ${WAHA_DASHBOARD_PASSWORD:?configure .env}
+      WHATSAPP_SWAGGER_USERNAME: ${WAHA_DASHBOARD_USERNAME:?configure .env}
+      WHATSAPP_SWAGGER_PASSWORD: ${WAHA_DASHBOARD_PASSWORD:?configure .env}
+    volumes:
+      - ./.sessions:/app/.sessions
+    expose:
+      - "3000"
+    networks:
+      - wa_private
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - waha
+    environment:
+      WAHA_DOMAIN: ${WAHA_DOMAIN:?configure .env}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - wa_private
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+networks:
+  wa_private:
+volumes:
+  caddy_data:
+  caddy_config:
