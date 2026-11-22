@@ -1,0 +1,77 @@
+name: HD Careers Instagram Reel Publication Reconciliation
+on:
+  schedule:
+    - cron: "30 2,14 * * *" # 8:00 AM and 8:00 PM IST
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hd-superprofile-reel-credentials
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SUPERPROFILE_MCP_ACCESS_TOKEN: ${{ secrets.SUPERPROFILE_MCP_ACCESS_TOKEN }}
+      SUPERPROFILE_FERNET_KEY: ${{ secrets.SUPERPROFILE_FERNET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check whether any SuperProfile Reels still need confirmation
+        id: pending
+        run: |
+          if python3 - <<'PY'
+          import json
+          data=json.load(open("data/reel-posts.json"))
+          assert any(x.get("provider")=="superprofile" and x.get("status") in ("scheduled","publishing","uncertain") for x in data)
+          PY
+          then echo "pending=true" >> "$GITHUB_OUTPUT"
+          else echo "No pending Reels." ; fi
+      - name: Install OAuth crypto dependency
+        if: steps.pending.outputs.pending == 'true'
+        run: python3 -m pip install --disable-pip-version-check "cryptography>=44,<48"
+      - name: Refresh the independent SuperProfile CI OAuth token
+        if: steps.pending.outputs.pending == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f data/integrations/superprofile-oauth.enc.json ]; then
+            test -n "$SUPERPROFILE_FERNET_KEY"
+            python3 scripts/superprofile_oauth.py refresh --access-file /tmp/hd-superprofile-token
+            git config user.name "HD Careers Reel Factory"
+            git config user.email "actions@users.noreply.github.com"
+            git add data/integrations/superprofile-oauth.enc.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Rotate encrypted SuperProfile OAuth token for publication reconciliation"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+            echo "CI_SUPERPROFILE_TOKEN_FILE=/tmp/hd-superprofile-token" >> "$GITHUB_ENV"
+          elif [ -z "$SUPERPROFILE_MCP_ACCESS_TOKEN" ]; then
+            echo "::warning::SuperProfile CI OAuth missing; status reconciliation cannot run."
+            exit 1
+          fi
+      - name: Update Reel ledger with confirmed Meta publishing results
+        if: steps.pending.outputs.pending == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$CI_SUPERPROFILE_TOKEN_FILE" ]; then
+            export SUPERPROFILE_MCP_ACCESS_TOKEN="$(cat "$CI_SUPERPROFILE_TOKEN_FILE")"
+          fi
+          python3 scripts/reel_reconcile.py
+          rm -f /tmp/hd-superprofile-token
+          git config user.name "HD Careers Reel Factory"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/reel-posts.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Reconcile Instagram Reel publication receipts"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
