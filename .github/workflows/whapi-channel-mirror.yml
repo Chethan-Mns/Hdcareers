@@ -1,6 +1,10 @@
 name: HD Careers WhatsApp Channel Mirror (Whapi.Cloud)
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - data/whapi-channel-config.json
   schedule:
     # Mirror Telegram-confirmed deliveries. GitHub cron may be delayed.
     - cron: "*/15 * * * *"
