@@ -1,6 +1,7 @@
 import {requireAdmin} from "../../lib/admin-auth.js";
 import dns from "node:dns/promises";
 import net from "node:net";
+import {classifyJob,experienceLevel} from "../../lib/job-classification.js";
 
 export const config={maxDuration:30};
 
@@ -772,15 +773,21 @@ function cleanTitle(raw,company){
   if(company)x=x.replace(new RegExp("\\s+[|–—-]\\s+"+escapeRegExp(company)+".*$","i"),"");
   return x.trim();
 }
-function detectExperienceText(text){
+function detectExperienceText(text,title=""){
   const raw=stripHtml(text);
-  let m=raw.match(/(?:minimum(?: of)?|at least|more than|over)?\s*(\d+)\s*(?:\+|plus)?\s*(?:-|–|to)\s*(\d+)\s*years?(?:\s+of)?\s+experience/i);
-  if(!m)m=raw.match(/(\d+)\s*(?:-|–|to)\s*(\d+)\s*years?/i);
-  if(m)return {known:true,type:Number(m[1])>0?"experienced":"fresher",years:m[1]+"-"+m[2]+" years"};
+  let m=raw.match(/(?:minimum(?: of)?|at least|more than|over)?\s*(\d+)\s*(?:\+|plus)?\s*(?:-|–|to)\s*(\d+)\s*years?(?:\s+of)?\s+experience/i)
+    ||raw.match(/(\d+)\s*(?:-|–|to)\s*(\d+)\s*years?/i);
+  if(m){
+    const years=m[1]+"-"+m[2]+" years";
+    return {known:true,type:experienceLevel({expYears:raw,role:title}),years};
+  }
   m=raw.match(/(?:minimum(?: of)?|at least|more than|over)?\s*(\d+)\s*(?:\+|plus)?\s*years?(?:\s+of)?\s+experience/i);
-  if(m)return {known:true,type:Number(m[1])>0?"experienced":"fresher",years:m[1]+"+ years"};
-  if(/\b(fresher|freshers|entry[- ]level|no experience required|0\s*(?:-|to)\s*1\s*year)/i.test(raw))return {known:true,type:"fresher",years:"0 years"};
-  return {known:false,type:"fresher",years:"Not Specified"};
+  if(m){
+    const years=m[1]+"+ years";
+    return {known:true,type:experienceLevel({expYears:raw,role:title}),years};
+  }
+  const type=experienceLevel({expYears:raw,role:title});
+  return {known:type!=="not-specified",type,years:type==="fresher"?"Freshers eligible":"Not Specified"};
 }
 function readerFields(reader){
   const md=reader&&reader.content||"";
@@ -880,7 +887,8 @@ function whoShouldApply(exp,eligibility){
   if(exp&&exp.type==="fresher"){
     return "Freshers and early-career candidates who match the education and skill requirements in the official posting should review this opportunity. Experience listed: "+years+".";
   }
-  return "Experienced candidates whose background matches the official education, skill and experience requirements should review this opportunity. Experience listed: "+years+".";
+  if(exp&&exp.type==="experienced")return "Experienced candidates whose background matches the official education, skill and experience requirements should review this opportunity. Experience listed: "+years+".";
+  return "Applicants should check the official education and experience requirements before applying.";
 }
 
 export async function extractOfficialJob(input) {
@@ -927,7 +935,7 @@ export async function extractOfficialJob(input) {
     let description=cleanDescription(rawDescription,title,company);
     let responsibilities=splitResponsibilities(rawResponsibilities);
     let eligibility=cleanEligibility(rawEligibility,rawDescription);
-    let exp=detectExperienceText([textValue(structured&&structured.experienceRequirements),rawEligibility,rawDescription,pageText.slice(0,25000)].filter(Boolean).join(" "));
+    let exp=detectExperienceText([textValue(structured&&structured.experienceRequirements),rawEligibility,rawDescription,pageText.slice(0,25000)].filter(Boolean).join(" "),title);
 
     const sparse=!(title&&company&&location&&description&&responsibilities.length>=3&&eligibility);
     let reader=null;
@@ -952,7 +960,7 @@ export async function extractOfficialJob(input) {
         description=cleanDescription(rawDescription,title,company);
         eligibility=cleanEligibility(rawEligibility,rawDescription);
         responsibilities=splitResponsibilities(rawResponsibilities);
-        exp=detectExperienceText([rf.experience,rawEligibility,rawDescription].filter(Boolean).join(" "));
+        exp=detectExperienceText([rf.experience,rawEligibility,rawDescription].filter(Boolean).join(" "),title);
       }
     }
 
@@ -974,7 +982,11 @@ export async function extractOfficialJob(input) {
     if(!responsibilities.length)responsibilities=["Review the official job description for role-specific responsibilities before applying."];
     salary=normalizeSpace(salary)||"Not Disclosed";
 
-    const category=inferCategory(title,description,domain,exp);
+    const skills=extractSkills([rawEligibility,rawDescription].filter(Boolean).join(" "));
+    const inferredCategory=inferCategory(title,description,domain,exp);
+    const classified=classifyJob({role:title,cat:inferredCategory,expYears:exp.years,expType:exp.type,elig:eligibility,skills});
+    const category=classified.cat;
+    exp={...exp,type:classified.expType};
     const structuredOk=Boolean(structured);
     const confidence=qualityScore({title:title!=="Job Opening",company:company!=="Company Not Identified",location,description,responsibilities,eligibility,experience:exp.known,structured:structuredOk});
 
@@ -993,7 +1005,7 @@ export async function extractOfficialJob(input) {
       batch:"Not Specified",
       elig:eligibility,
       cat:category,
-      field:inferField(title,category),
+      field:classified.field,
       expType:exp.type,
       expYears:exp.years,
       date:formatDate(posted),
@@ -1004,7 +1016,7 @@ export async function extractOfficialJob(input) {
       status:"active",
       verifiedDate:formatDate(new Date().toISOString()),
       sourceName:"Official "+company+" careers page",
-      skills:extractSkills([rawEligibility,rawDescription].filter(Boolean).join(" ")),
+      skills,
       who:whoShouldApply(exp,eligibility),
       workMode:inferWorkMode([rawDescription,pageText.slice(0,12000)].filter(Boolean).join(" "),location),
       companyOverview:orgDetails.companyOverview,
