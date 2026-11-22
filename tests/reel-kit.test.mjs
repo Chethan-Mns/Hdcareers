@@ -24,8 +24,8 @@ globalThis.fetch=async(url,options={})=>{
   if(storeReply)return storeReply;
   const path=String(url);const method=options.method||"GET";
   let result={};
-  if(method==="GET"&&path.includes("/contents/data/jobs.json"))result={content:Buffer.from(JSON.stringify([good,expired])).toString("base64"),sha:"jobs-sha"};
-  else if(method==="GET"&&path.includes("/contents/data/reel-selection.json"))result={content:Buffer.from(JSON.stringify(selection)).toString("base64"),sha:"selection-sha"};
+  if(method==="GET"&&path.includes("/contents/data/jobs.json"))result={encoding:"base64",content:Buffer.from(JSON.stringify([good,expired])).toString("base64"),sha:"jobs-sha"};
+  else if(method==="GET"&&path.includes("/contents/data/reel-selection.json"))result={encoding:"base64",content:Buffer.from(JSON.stringify(selection)).toString("base64"),sha:"selection-sha"};
   else if(method==="PUT"&&path.includes("/contents/data/reel-selection.json")){
     const body=JSON.parse(options.body);assert.equal(body.branch,"main");
     assert.equal(body.sha,"selection-sha");
