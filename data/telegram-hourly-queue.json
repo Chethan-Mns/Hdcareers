@@ -2099,9 +2099,11 @@
     {
       "page": "jobs/jansoft-global-software-developer.html",
       "batchId": "admin-44998841244",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-22T07:34:47.707227+00:00",
-      "dueAt": "2026-11-22T14:37:45.499978+00:00"
+      "dueAt": "2026-11-22T14:37:45.499978+00:00",
+      "claimId": "45033855515",
+      "claimedAt": "2026-11-22T14:38:00.598203+00:00"
     },
     {
       "page": "jobs/secfix-backend-engineer-gtm-engineering-fresh-grad-india.html",
