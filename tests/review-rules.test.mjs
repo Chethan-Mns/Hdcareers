@@ -56,7 +56,9 @@ test("Expired, unsure, unreviewed or incomplete records must never publish",()=>
 });
 test("80 percent preference is based on verified fresher IT category",()=>{
  assert.equal(isFresherIT(candidate("f","Google")),true);
- assert.equal(isFresherIT(candidate("n","EY","nonit")),false);
+ const nonit=candidate("n","EY","nonit");nonit.job.role="Customer Support Associate";
+ assert.equal(isFresherIT(nonit),false);
+ assert.equal(isFresherIT(candidate("technical-mislabeled","EY","nonit")),true);
  assert.equal(isFresherIT(candidate("e","Amazon","it","experienced")),false);
 });
 test("Counters separate reviewed readiness, incompleteness and expiry",()=>{
