@@ -129,8 +129,10 @@ def exact_dm(manifest:dict)->dict:
 
 
 def _posts(payload:dict)->list[dict]:
-    data=payload.get("posts") or payload.get("items") or payload.get("data") or []
-    return data if isinstance(data,list) else []
+    # SuperProfile keeps unscheduled drafts separately from scheduled posts.
+    posts=payload.get("posts") or payload.get("items") or payload.get("data") or []
+    drafts=payload.get("drafts") or []
+    return (posts if isinstance(posts,list) else []) + (drafts if isinstance(drafts,list) else [])
 
 
 def matching_draft(posts:list[dict],manifest:dict,ig_user_id:str)->dict|None:
