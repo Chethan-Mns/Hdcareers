@@ -5,6 +5,7 @@ from datetime import datetime,timedelta,timezone
 from pathlib import Path
 from urllib.parse import urlsplit,parse_qsl,urlencode,urlunsplit
 from zoneinfo import ZoneInfo
+from job_classification import classified
 ROOT=Path(__file__).resolve().parents[1]
 IST=ZoneInfo("Asia/Kolkata")
 ATS=("greenhouse.io","lever.co","ashbyhq.com","smartrecruiters.com")
@@ -22,24 +23,20 @@ TECHNICAL_CATEGORIES={"it","campus","remote","walkin"}
 TRAINING_ROLE=re.compile(r"\b(intern|internship|apprentice|apprenticeship)\b",re.I)
 
 def publication_bucket(job):
- """Match verified publication data to one and only one quota category.
-
- A training role is never counted as full-time (even when labelled IT).
- Contradictory category/type/field labels are excluded rather than guessed.
- """
+ """Select one independent category, validating source labels against role evidence."""
  cat=str(job.get("cat") or "").strip().lower()
  cat={"non-it":"nonit","non it":"nonit"}.get(cat,cat)
  exp_type=str(job.get("expType") or "").strip().lower()
  field=str(job.get("field") or "").strip().lower()
- title=str(job.get("role") or "")
- if exp_type=="internship/apprenticeship":
-  return "internshipOrApprenticeship" if cat in TRAINING_CATEGORIES else None
- if exp_type!="fresher" or cat in TRAINING_CATEGORIES or TRAINING_ROLE.search(title):
+ info=classified(job)
+ if info["training"]:
+  return ("internshipOrApprenticeship" if cat in TRAINING_CATEGORIES
+          and exp_type in ("fresher","internship/apprenticeship") else None)
+ if exp_type!="fresher" or info["expType"]!="fresher":
   return None
- if cat=="nonit" and field!="it":
+ if cat=="nonit" and info["field"]=="nonit" and field!="it":
   return "nonTechFullTime"
- if cat in TECHNICAL_CATEGORIES and field!="nonit":
-  # Generic campus/remote/walk-in categories need positive IT classification.
+ if cat in TECHNICAL_CATEGORIES and info["field"]=="it" and field!="nonit":
   return "technicalFullTime" if cat=="it" or field=="it" else None
  return None
 
@@ -95,7 +92,11 @@ def normalize(row,now):
  j=dict(row["job"]);company=str(j["company"]).strip();role=str(j["role"]).strip()
  cat=str(j["cat"]).lower()
  j["cat"]={"non-it":"nonit","non it":"nonit"}.get(cat,cat)
- j["field"]=j["field"] if j.get("field") in ("it","nonit") else ("nonit" if j["cat"]=="nonit" else "it")
+ info=classified(j)
+ j["cat"]=info["cat"]
+ j["field"]=info["field"]
+ if not info["training"]:
+  j["expType"]=info["expType"]
  j["status"]="active"  # Preserve original experience type, including training roles.
  j["roleTag"]=j.get("roleTag") or role
  j["locationFilter"]=j.get("locationFilter") or j["loc"]
