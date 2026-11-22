@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Create a per-Reel SuperProfile Auto-DM handoff draft; never publish or send.
+"""Prepare a paid-plan SuperProfile Auto-DM configuration for each Reel.
 
-SuperProfile scheduling with attached post-specific Auto-DM currently requires
-a paid plan. This artifact works as a prepared, reviewable manual handoff
-for the free comment-to-DM product too.
+Trigger on any comment on the specific Reel; request a follow, and deliver the
+matching HD Careers job URL. Desired initial reply delay is 30 seconds.
+This script only writes a draft: it never connects, activates, or sends a DM.
 """
 from __future__ import annotations
 
@@ -28,12 +28,12 @@ def draft(manifest: dict) -> dict:
         or p.path != "/" + page or p.query or p.fragment
     ):
         raise ValueError("SuperProfile link must be the verified HD Careers job page")
-    if not str(manifest.get("caption") or "").find("APPLY") >= 0:
-        raise ValueError("Reel caption must invite the matching APPLY keyword")
+    if not re.search(r"comment\b", str(manifest.get("caption") or ""), re.IGNORECASE):
+        raise ValueError("Reel caption must invite comments for the job link")
     if not manifest.get("jobId") or not manifest.get("company") or not manifest.get("role"):
         raise ValueError("Reel manifest is missing job identity")
     return {
-        "version": 1,
+        "version": 2,
         "state": "draft_not_connected",
         "platform": "instagram",
         "postType": "reel",
@@ -41,20 +41,24 @@ def draft(manifest: dict) -> dict:
         "company": manifest["company"],
         "role": manifest["role"],
         "jobUrl": url,
-        "matchMode": "keywords",
-        "keyword": "APPLY",
+        "matchMode": "any",
+        "keyword": None,
+        "delaySeconds": 30,
         "postScope": "specific_reel",
         "openingMessage": "Thanks for checking out this job on HD Careers! Tap below for the job details and official application link.",
         "buttonText": "View Job",
         "buttonUrl": url,
-        "followGate": False,
+        "followGate": True,
         "automatedMessageEnabled": False,
         "instructions": [
             "Review this draft alongside the approved Instagram Reel.",
-            "Connect the HD Careers Instagram professional account to SuperProfile Auto-DM.",
-            "On SuperProfile free: attach APPLY keyword to this exact published Reel and paste this job-specific link manually.",
-            "On paid SuperProfile scheduling: attach the Auto-DM draft to the scheduled Reel before publishing.",
-            "Test with an opted-in Instagram account before activating. Never assume a DM was delivered.",
+            "Connect the HD Careers Instagram professional account to paid SuperProfile Auto-DM.",
+            "Choose this exact Brillio/job Reel; never use an all-posts trigger, because every job has a different application URL.",
+            "Select Any comment (no keyword requirement), and set the initial DM time delay to 30 seconds, not 1 minute.",
+            "Enable Ask to Follow before sending the job-link button, as requested by the owner.",
+            "Attach the configuration before scheduling the Reel or edit the automation for an already-published Reel.",
+            "A 30-second configured delay is not a guaranteed delivery SLA: Meta and SuperProfile can queue messages.",
+            "Test with a consenting second Instagram account before activating; never assume a DM was delivered.",
         ],
     }
 
