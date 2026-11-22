@@ -34,7 +34,7 @@ jobs:
               # Public ElevenLabs legacy Default voice IDs, not voice-library IDs.
               defaults=[("Jessica","cgSgspJ2msm6clMCkdW9"),("Sarah","EXAVITQu4vr4xnSDxMaL"),("Alice","Xb7hH8MSUJpSbSDYk0k2")]
               for name, voice_id in defaults:
-                  script="Brillio is hiring freshers in Chennai. Comment below for the application link."
+                  script="Hey guys! Brillio is hiring freshers for an Associate Engineer role in Chennai. Comment below and I’ll share the application link directly."
                   url=f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128"
                   payload=json.dumps({"text":script,"model_id":"eleven_flash_v2_5"}).encode()
                   req=Request(url,data=payload,method="POST",headers={"xi-api-key":key,"Content-Type":"application/json","Accept":"audio/mpeg"})
@@ -48,7 +48,6 @@ jobs:
                       result["voices"].append({"name":name,"http":200,"available":True,"bytes":len(audio)})
                       result["generated"]=True
                       print("Available free Default voice:",name)
-                      break
                   except HTTPError as e:
                       # Only status code, never print auth headers or token.
                       result["voices"].append({"name":name,"http":e.code,"available":False})
