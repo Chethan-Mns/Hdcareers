@@ -149,8 +149,8 @@ def fmt(job):
         "",
         f"Apply Link: https://hdcareers.in/{page}",
         "",
-        "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
-        "𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: https://t.me/HD_Careers",
+        "💚 *WhatsApp:* https://whatsapp.com/channel/0029VbAxOna7NoZvhuKX362z",
+        "✈️ *Telegram:* https://t.me/HD_Careers",
     ])
 
 

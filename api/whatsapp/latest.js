@@ -69,8 +69,8 @@ function message(job){
     "",
     `Apply Link: ${SITE_BASE+page}`,
     "",
-    `𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: ${WHATSAPP_CHANNEL}`,
-    `𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: ${TELEGRAM_CHANNEL}`,
+    `💚 *WhatsApp:* ${WHATSAPP_CHANNEL}`,
+    `✈️ *Telegram:* ${TELEGRAM_CHANNEL}`,
   ].join("\n");
 }
 
