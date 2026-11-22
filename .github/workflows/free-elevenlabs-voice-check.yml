@@ -94,9 +94,10 @@ jobs:
                   result["v1ErrorType"]=type(e).__name__
                   print("Legacy voice list error",type(e).__name__)
               candidates=[(x["name"],x["id"],"account-default") for x in result["indianFemaleDefaultVoices"]]
+              candidates.extend((x["name"],x["id"],"account-non-default") for x in result["indianFemaleOtherVoices"])
               # These three voices are externally identified Indian female voices.
               # They may be Voice Library voices and restricted on the Free plan.
-              names={name.lower() for name,_,_ in candidates}
+              names={name.split(" - ",1)[0].lower() for name,_,_ in candidates}
               for name,vid in [("Anushri","zFLlkq72ysbq1TWCOmlx"),("Monika","ZUrEGyu8GFMwnHbVLhv2"),("Tara","P7vsEyTOpZ6YUTulin8m")]:
                   if name.lower() not in names:
                       candidates.append((name,vid,"public-library-candidate"))
