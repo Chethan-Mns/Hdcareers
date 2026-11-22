@@ -52,38 +52,26 @@ function disclosed(value){
 }
 
 function message(job){
-  const lines=[
-    `${job.company} is Hiring ✅`,
-    "",
-    `*Role:* ${job.role}`
-  ];
-
-  if(String(job.expType||"").toLowerCase()==="fresher"){
-    lines.push(`*Batch:* ${disclosed(job.batch)?job.batch:"Not specified"}`);
-  }
-
-  lines.push(`*Qualification:* ${qualification(job)}`);
-
-  if(String(job.expType||"").toLowerCase()==="experienced"&&disclosed(job.expYears)){
-    lines.push(`*Experience:* ${job.expYears}`);
-  }
-
-  lines.push(`*Location:* ${job.loc||"Not specified"}`);
-
-  if(disclosed(job.salary))lines.push(`*Package:* ${job.salary}`);
-
+  const safe=(s,max=160)=>String(s||"").replace(/\s+/g," ").trim().slice(0,max);
+  const qual=safe(qualification(job),140);
+  const exp=safe(job.expYears,160);
+  const experience=exp&&!/^(not specified|n\/?a|na)$/i.test(exp)?exp:
+    (String(job.expType||"").toLowerCase()==="fresher"?"Freshers eligible":"Refer to official job posting");
   const page=String(job.page||"").replace(/^\/+/, "");
-  const apply=page?SITE_BASE+page:String(job.apply||"");
-
-  lines.push(
+  if(!/^jobs\/[a-z0-9-]+\.html$/.test(page))throw new Error("Invalid published job URL");
+  return [
+    `*${safe(job.company,80).replace(/\*/g,"")} is Hiring ✅*`,
     "",
-    `Apply Link: ${apply}`,
+    `Role: ${safe(job.role,150)}`,
+    `Qualification: ${qual}`,
+    `Experience: ${experience}`,
+    `Location: ${safe(job.loc,120)||"Refer to official job posting"}`,
+    "",
+    `Apply Link: ${SITE_BASE+page}`,
     "",
     `𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽: ${WHATSAPP_CHANNEL}`,
-    `𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: ${TELEGRAM_CHANNEL}`
-  );
-
-  return lines.join("\n");
+    `𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: ${TELEGRAM_CHANNEL}`,
+  ].join("\n");
 }
 
 export default async function handler(req,res){
