@@ -2,7 +2,7 @@
 """HD Careers daily Reel factory: verified-job selection and media rendering.
 
 Safe default: create a storyboard and caption only. Rendering requires owner
-footage and ElevenLabs credentials; publishing is handled separately.
+footage and a free voice engine; publishing is handled separately.
 """
 from __future__ import annotations
 
@@ -15,7 +15,8 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-from urllib.request import Request, urlopen
+from reel_voice import generate as generate_free_narration
+from job_classification import classified
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://hdcareers.in/"
@@ -42,7 +43,7 @@ def choose_job(jobs, availability, already, requested=None, now=None):
     checked = {str(x.get("id")): x for x in availability.get("items", [])}
     eligible = []
     for job in jobs:
-        if job.get("status") != "active" or job.get("expType") != "fresher":
+        if job.get("status") != "active" or classified(job)["expType"] != "fresher":
             continue
         if job.get("field") not in ("it", "nonit"):
             continue
@@ -85,10 +86,10 @@ def storyboard(job):
     company = str(job["company"])
     role = short_role(job)
     place = city_for(job)
-    script = f"Hey guys! {company} is hiring freshers for a {role} role in {place}. Check the eligibility and comment APPLY below for the job link!"
-    # Guard spoken duration; word count is an estimate, not a promise.
+    article = "an" if role[:1].lower() in "aeiou" else "a"
+    script = f"Hey guys! {company} is hiring freshers for {article} {role} role in {place}. Comment below and I'll share the application link directly."
     if len(script.split()) > 34:
-        script = f"Hey guys! {company} is hiring freshers for {role} in {place}. Interested? Comment APPLY below for the application link!"
+        script = f"Hey guys! {company} is hiring freshers for {role} in {place}. Comment below and I'll share the application link directly."
     url = SITE + str(job["page"]).lstrip("/")
     salary = str(job.get("salary") or "Not Disclosed")
     salary_text = "Salary: " + salary if salary.lower() not in ("not disclosed", "not specified", "n/a") else "Salary: Not disclosed"
@@ -181,21 +182,12 @@ def draw_card(job, plan, dest):
 
 
 def voiceover(plan, path):
-    key = os.getenv("ELEVENLABS_API_KEY", "").strip()
-    voice = os.getenv("ELEVENLABS_VOICE_ID", "").strip()
-    if not key or not voice:
-        raise RuntimeError("ElevenLabs API key or voice ID is not configured")
-    body = json.dumps({"text": plan["script"], "model_id": "eleven_flash_v2_5"}).encode("utf-8")
-    req = Request("https://api.elevenlabs.io/v1/text-to-speech/" + voice + "?output_format=mp3_44100_128",
-                  data=body, method="POST",
-                  headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"})
-    with urlopen(req, timeout=75) as response:
-        data = response.read(10_000_000)
-    if not data.startswith(b"ID3") and data[:2] != b"\xff\xfb":
-        # Some MP3s start with other MPEG frame headers; a minimum size still protects against JSON errors.
-        if len(data) < 4096 or data.lstrip().startswith(b"{"):
-            raise RuntimeError("ElevenLabs did not return playable audio")
-    path.write_bytes(data)
+    """Generate real narration automatically without a paid ElevenLabs account."""
+    allow_fallback = os.getenv("HD_REEL_FREE_VOICE_FALLBACK", "true").lower() in ("true", "1", "yes")
+    return generate_free_narration(plan["script"], path,
+                                  engine=os.getenv("HD_REEL_VOICE_ENGINE", "auto"),
+                                  allow_fallback=allow_fallback,
+                                  rate=os.getenv("HD_REEL_VOICE_RATE", "+10%"))
 
 
 def audio_duration(path):
@@ -246,23 +238,32 @@ def main():
     if not args.render:
         print("Prepared storyboard, script and caption for job", job["id"])
         return
+    voice = out / "voice.mp3"
+    try:
+        voice_result = voiceover(plan, voice)
+    except Exception as exc:
+        (out / "status.json").write_text(json.dumps({
+            "status": "voice_generation_failed",
+            "reason": str(exc)[:200]}, indent=2) + "\n")
+        print("Free voice generation failed; no Reel will be published:", type(exc).__name__)
+        return
+    plan["voiceEngine"] = voice_result["engine"]
+    plan["voiceName"] = voice_result["voice"]
+    (out / "manifest.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2) + "\n")
     clips = sorted(p for p in Path(args.footage_dir).glob("*") if p.suffix.lower() in ALLOWED_EXTS and p.is_file())
     if not clips:
-        (out / "status.json").write_text(json.dumps({"status": "needs_footage", "message": "Upload a reusable MP4/MOV to assets/reel-footage/"}, indent=2))
-        print("No reusable footage. Storyboard ready, no video rendered.")
-        return
-    if not os.getenv("ELEVENLABS_API_KEY") or not os.getenv("ELEVENLABS_VOICE_ID"):
-        (out / "status.json").write_text(json.dumps({"status": "needs_elevenlabs_credentials"}, indent=2))
-        print("ElevenLabs not configured. No voice generated and no post attempted.")
+        (out / "status.json").write_text(json.dumps({
+            "status": "needs_footage", "voiceGenerated": True,
+            "voiceEngine": voice_result["engine"],
+            "message": "Add owner footage to assets/reel-footage/ to render a video"}, indent=2) + "\n")
+        print("Narration ready; no approved reusable footage in repository.")
         return
     from PIL import Image  # dependency check before billable voice request
     clip_index = int(hashlib.sha256(str(job["id"]).encode()).hexdigest()[:8], 16) % len(clips)
     card = out / "card.png"
-    voice = out / "voice.mp3"
     draw_card(job, plan, card)
-    voiceover(plan, voice)
     make_video(clips[clip_index], card, voice, out / "reel.mp4")
-    (out / "status.json").write_text(json.dumps({"status": "rendered", "jobId": job["id"]}, indent=2))
+    (out / "status.json").write_text(json.dumps({"status": "rendered", "jobId": job["id"], "voiceEngine": voice_result["engine"]}, indent=2))
     print("Rendered reel.mp4 for job", job["id"], "using", clips[clip_index].name)
 
 if __name__ == "__main__":
