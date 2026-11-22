@@ -136,7 +136,8 @@ class StrictQuotaSelection(unittest.TestCase):
   chosen=self.choose()
   self.assertEqual([id for id,_ in chosen],["verified-2","verified-6","verified-7"])
   self.assertEqual(self.counts(chosen)["internshipOrApprenticeship"],2)
-  self.assertEqual(chosen[-1][1]["expType"],"internship/apprenticeship")
+  self.assertEqual(chosen[-1][1]["expType"],"fresher")
+  self.assertEqual(chosen[-1][1]["cat"],"apprenticeship")
 
  def test_no_double_counting_same_employer_across_categories(self):
   first=self.row(1,"it")
