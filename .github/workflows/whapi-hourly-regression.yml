@@ -1,0 +1,28 @@
+name: HD Careers WhatsApp Hourly Queue CI
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/whapi_channel_relay.py
+      - scripts/whatsapp_channel_relay.py
+      - tests/test_whapi_channel_relay.py
+      - tests/test_whatsapp_channel_relay.py
+      - .github/workflows/whapi-hourly-regression.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-one-per-hour:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile code and verify verified-source only WhatsApp hourly logic (NO POSTS)
+        run: |
+          python3 -m py_compile scripts/whapi_channel_relay.py scripts/whatsapp_channel_relay.py
+          python3 -m unittest discover -s tests -p test_whapi_channel_relay.py -v
+          python3 -m unittest discover -s tests -p test_whatsapp_channel_relay.py -v
+          python3 -m unittest discover -s tests -p test_whapi_daily_pipeline.py -v
