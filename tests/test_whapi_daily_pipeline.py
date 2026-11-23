@@ -15,8 +15,8 @@ import whapi_channel_relay as m
 
 class WhapiDailyPipelineTests(unittest.TestCase):
     def setUp(self):
-        self.start = datetime(2026, 11, 22, 9, tzinfo=timezone.utc)
-        self.base = datetime(2026, 11, 22, 10, tzinfo=timezone.utc)
+        self.base = datetime(2026, 11, 24, 3, 30, tzinfo=timezone.utc)
+        self.start = self.base - timedelta(hours=2)
         self.doc = {"version": 1, "activationAt": self.start.isoformat(), "items": {}}
         self.tg = {}
         self.jobs = {}
@@ -36,25 +36,28 @@ class WhapiDailyPipelineTests(unittest.TestCase):
     def test_max_ten_per_ist_day(self):
         claims = []
         for i in range(10):
+            at=(self.base+timedelta(minutes=15,hours=i)).isoformat()
             page = m.claim_limited(self.doc, self.tg, self.jobs,
-                                   self.base.isoformat(), f"run{i}")
+                                   at, f"run{i}")
             self.assertIsNotNone(page)
             claims.append(page)
-            self.doc["items"][page]["status"] = "provider_accepted"
+            self.doc["items"][page].update(status="provider_accepted",acceptedAt=at)
         self.assertEqual(len(set(claims)), 10)
         self.assertIsNone(m.claim_limited(self.doc, self.tg, self.jobs,
-                                          self.base.isoformat(), "next"))
+                     (self.base+timedelta(minutes=15,hours=10)).isoformat(), "next"))
         self.assertEqual(sum(v["status"] == "skipped_daily_cap"
                              for v in self.doc["items"].values()), 2)
 
     def test_skip_unverified_not_counted_in_quota(self):
-        first = m.claim_limited(self.doc, self.tg, self.jobs, self.base.isoformat(), "1")
+        first = m.claim_limited(self.doc, self.tg, self.jobs,
+                                (self.base+timedelta(minutes=15)).isoformat(), "1")
         self.doc["items"][first]["status"] = "skipped_unverified"
         for i in range(10):
+            at=(self.base+timedelta(minutes=15,hours=i)).isoformat()
             page = m.claim_limited(self.doc, self.tg, self.jobs,
-                                   self.base.isoformat(), f"run{i+2}")
+                                   at, f"run{i+2}")
             self.assertIsNotNone(page)
-            self.doc["items"][page]["status"] = "provider_accepted"
+            self.doc["items"][page].update(status="provider_accepted",acceptedAt=at)
         self.assertEqual(sum(v["status"] == "provider_accepted"
                              for v in self.doc["items"].values()), 10)
 
