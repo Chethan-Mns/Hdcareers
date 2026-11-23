@@ -2129,58 +2129,66 @@
     {
       "page": "jobs/amazon-associate-quality-services.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:37.229490+00:00",
+      "messageId": 736
     },
     {
       "page": "jobs/ford-motor-company-software-engineer.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:37.719810+00:00",
+      "messageId": 737
     },
     {
       "page": "jobs/zinfi-technologies-fresher-software-engineer.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:38.437415+00:00",
+      "messageId": 738
     },
     {
       "page": "jobs/eurofins-software-engineer.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:39.108232+00:00",
+      "messageId": 739
     },
     {
       "page": "jobs/endeavor-it-solution-java-multi-technology-developer.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:39.774701+00:00",
+      "messageId": 740
     },
     {
       "page": "jobs/accenture-hr-service-delivery-new-associate.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:43.667538+00:00",
+      "messageId": 741
     },
     {
       "page": "jobs/phonepe-customer-experience-specialist-operations-lending.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:44.185595+00:00",
+      "messageId": 742
     },
     {
       "page": "jobs/veeva-systems-netsuite-developer.html",
       "batchId": "admin-45113154019",
-      "status": "pending",
+      "status": "already-delivered",
       "queuedAt": "2026-11-23T04:39:37.041139+00:00",
-      "dueAt": "2026-11-23T04:39:37.041139+00:00"
+      "deliveredAt": "2026-11-23T04:43:44.838057+00:00",
+      "messageId": 743
     }
   ]
 }
