@@ -462,59 +462,59 @@
       "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00"
     },
     {
-      "id": "deloitte-61698544",
-      "company": "Deloitte",
-      "role": "Intern – Regulatory & Financial Risk",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/",
+      "id": "instawork-4686783006",
+      "company": "Instawork",
+      "role": "HR Intern",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
       "cat": "internship",
       "slotType": "training",
-      "expYears": "Undergraduate or recent graduate",
+      "expYears": "Fresher (0–1 year)",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Deloitte exact posting 61698544 is active, dated 20 Nov 2026, titled Intern | Fresher and accepts undergraduates or recent graduates.",
-      "postedDate": "20 Nov 2026",
+      "verificationReason": "Exact Greenhouse posting 4686783006 is active with an application form and explicitly labels the role fresher (0–1 year); prior HR experience is preferred, not mandatory.",
+      "postedDate": "Not Specified",
       "job": {
-        "company": "Deloitte",
-        "role": "Intern – Regulatory & Financial Risk",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/",
+        "company": "Instawork",
+        "role": "HR Intern",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
         "cat": "internship",
         "expType": "internship",
-        "expYears": "Undergraduate or recent graduate",
-        "salary": "Not Disclosed",
+        "expYears": "Fresher (0–1 year)",
+        "salary": "₹20,000 per month plus ₹200/day food allowance",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Deloitte South Asia Careers",
-        "desc": "Risk-advisory internship supporting financial-sector research, analysis and reporting.",
-        "elig": "Undergraduate or recent graduate with quantitative, accounting and communication fundamentals.",
+        "sourceName": "Instawork (Greenhouse)",
+        "desc": "Three-month talent-acquisition internship supporting high-volume sourcing, screening, interview scheduling and candidate records.",
+        "elig": "Fresher with 0–1 year; strong verbal communication and organization; prior HR or recruitment exposure is preferred but not mandatory.",
         "resp": [
-          "Support risk-advisory assignments.",
-          "Research and process accounting information.",
-          "Prepare meeting notes and analytical support."
+          "Support end-to-end recruitment and candidate outreach.",
+          "Schedule interviews and maintain candidate records.",
+          "Follow up with applicants and hiring teams."
         ],
         "skills": [
-          "Accounting basics",
-          "Financial analysis",
-          "Microsoft Office",
-          "Communication"
+          "Recruitment coordination",
+          "Communication",
+          "Organization",
+          "Data management"
         ],
-        "workMode": "Not Specified",
-        "jobId": "61698544",
-        "postedDate": "20 Nov 2026",
+        "workMode": "On-site",
+        "jobId": "4686783006",
+        "postedDate": "Not Specified",
         "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "sourceVerificationMethod": "Exact public Greenhouse posting and application form were checked on 23 Nov 2026; the listing explicitly states fresher (0–1 year).",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T04:45:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Deloitte exact posting 61698544 is active, dated 20 Nov 2026, titled Intern | Fresher and accepts undergraduates or recent graduates."
+        "officialEvidence": "Greenhouse exact posting 4686783006 is active with an application form and explicitly states fresher (0–1 year)."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry (this position has been filled)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckStatus": "source-active",
+      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-23T04:45:00.000Z",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1152,13 +1152,13 @@
     "priority": {
       "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0
       }
@@ -1166,13 +1166,13 @@
     "backup": {
       "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0
       }
@@ -1260,11 +1260,18 @@
         "company": "Quantiq",
         "reason": "previously_reviewed_official_requisition",
         "officialUrl": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009"
+      },
+      {
+        "id": "deloitte-61698544",
+        "company": "Deloitte",
+        "reason": "position_filled_current_official_render",
+        "officialUrl": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/"
       }
     ],
-    "excludedCount": 13,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "excludedCount": 14,
+    "needsFreshDiscovery": false,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
+    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Requisition 61698544 was removed after both automated official-page renders indicated the position had been filled."
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -2195,5 +2202,5 @@
     },
     "note": "Preserved 22 Nov review batch and its prior history; no approval, publication or Telegram state was changed."
   },
-  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Two repository scrub passes excluded five historical requisitions; fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
+  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Independent scrub and availability checks removed historical duplicates and Deloitte 61698544 after current renders indicated it was filled. Fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
 }
