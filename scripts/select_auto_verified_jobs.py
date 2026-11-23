@@ -67,7 +67,10 @@ def evidence(row,now):
 def eligible(row):
  j=row.get("job")
  if not isinstance(j,dict) or any(len(str(j.get(k) or "").strip())<3 for k in REQUIRED):return False
- if len(str(j["desc"]).strip())<100 or len(str(j["elig"]).strip())<25:return False
+ # Editorial preflight already validates the full posting (eligibility, responsibilities, skills).
+ # A meaningful 70+ character official-source summary should not be rejected solely
+ # for falling short of the obsolete 100-character auto-publisher threshold.
+ if len(str(j["desc"]).strip())<70 or len(str(j["elig"]).strip())<25:return False
  if not isinstance(j.get("resp"),list) or not any(str(v).strip() for v in j["resp"]):return False
  if not isinstance(j.get("skills"),list) or not j["skills"]:return False
  if row.get("reviewedStatus") in ("expired","unsure"):return False
