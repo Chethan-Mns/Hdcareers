@@ -72,6 +72,29 @@ class HourlyTelegramTests(unittest.TestCase):
         self.assertEqual([x["status"] for x in h.queue()["items"]].count("sending"),1)
         self.assertEqual([x["status"] for x in h.queue()["items"]].count("pending"),9)
 
+    def test_new_batch_waits_one_hour_after_previous_batch_delivery(self):
+        t=datetime(2026,11,23,4,43,tzinfo=timezone.utc)
+        items=[
+          {"page":"jobs/test-00.html","batchId":"admin-old",
+           "status":"delivered","deliveredAt":h.stamp(t),"messageId":736},
+          {"page":"jobs/test-01.html","batchId":"admin-7777",
+           "status":"pending","queuedAt":h.stamp(t+timedelta(minutes=5))},
+          {"page":"jobs/test-02.html","batchId":"admin-7777",
+           "status":"pending","queuedAt":h.stamp(t+timedelta(minutes=5))},
+        ]
+        h.save(h.QUEUE,{"version":1,"intervalMinutes":60,"items":items})
+        h.save(h.MANIFEST,{"approved":True,"batchId":"admin-7777",
+                            "pages":["jobs/test-01.html","jobs/test-02.html"]})
+        with patch.object(h,"datetime") as clock:
+            clock.now.return_value=t+timedelta(minutes=10)
+            h.claim(prime=True,now=t+timedelta(minutes=10))
+        q=h.queue()
+        self.assertFalse(any(x["status"]=="sending" for x in q["items"]))
+        self.assertEqual(h.parse(q["items"][1]["dueAt"]),t+timedelta(hours=1))
+        self.assertEqual(h.parse(q["items"][2]["dueAt"]),t+timedelta(hours=2))
+        h.claim(now=t+timedelta(hours=1))
+        self.assertEqual(h.queue()["items"][1]["status"],"sending")
+
     def test_no_second_prime_or_duplicate_claim(self):
         h.enqueue(self.event)
         h.claim(prime=True)
