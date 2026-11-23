@@ -113,13 +113,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/amazon-associate-quality-services.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45113570936",
       "at": "2026-11-23T04:44:03.490984+00:00",
       "telegramMessageId": 736,
       "telegramDeliveredAt": "2026-11-23T04:43:37.229490+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspOotjjAfx_flI-1_wBq53kiM_y2g-Akg",
+      "acceptedAt": "2026-11-23T04:44:11.781741+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
