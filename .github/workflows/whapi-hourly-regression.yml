@@ -6,6 +6,7 @@ on:
       - scripts/whapi_channel_relay.py
       - scripts/whatsapp_channel_relay.py
       - tests/test_whapi_channel_relay.py
+      - tests/test_whapi_daily_pipeline.py
       - tests/test_whatsapp_channel_relay.py
       - .github/workflows/whapi-hourly-regression.yml
   workflow_dispatch:
