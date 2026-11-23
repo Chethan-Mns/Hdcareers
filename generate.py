@@ -928,6 +928,52 @@ def render_job_page(job: dict, jobs: list[dict]) -> str:
     return _company_logo_og_meta(job, PAGE_TEMPLATE.substitute(values))
 
 
+def find_jobs_array_end(source: str, open_index: int) -> int:
+    """Find the closing bracket, ignoring string contents and JS comments."""
+    if source[open_index:open_index+1] != "[":
+        raise SystemExit("Homepage JOBS array opening bracket not found")
+    depth = 0
+    quote = None
+    escaped = False
+    comment = None
+    i = open_index
+    while i < len(source):
+        char = source[i]
+        nxt = source[i+1] if i+1 < len(source) else ""
+        if comment == "line":
+            if char == "\n":
+                comment = None
+        elif comment == "block":
+            if char == "*" and nxt == "/":
+                comment = None
+                i += 1
+        elif quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+        elif char == "/" and nxt in ("/", "*"):
+            comment = "line" if nxt == "/" else "block"
+            i += 1
+        elif char in ('"', "'", chr(96)):
+            quote = char
+        elif char == "[":
+            depth += 1
+        elif char == "]":
+            depth -= 1
+            if depth == 0:
+                end = i + 1
+                if not re.search(r"\bconst\s+CATS\s*=", source[end:end+800]):
+                    raise SystemExit("Homepage JOBS array is not followed by const CATS")
+                return end
+            if depth < 0:
+                break
+        i += 1
+    raise SystemExit("Could not find the end of the JOBS array in index.html")
+
+
 def update_index(jobs: list[dict], dry_run: bool) -> bool:
     source = INDEX_FILE.read_text(encoding="utf-8")
     source = source.replace('</script>\\n</head>', '</script>\n</head>')
@@ -937,13 +983,8 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
     if start == -1:
         raise SystemExit("Could not find 'const JOBS = [' in index.html")
 
-    end = source.find("\n]\n\nconst CATS=", start)
-    skip = 2
-    if end == -1:
-        end = source.find("\n];\n\nconst CATS=", start)
-        skip = 3
-    if end == -1:
-        raise SystemExit("Could not find the end of the JOBS array in index.html")
+    # Formatting around the JOBS array is independent of its payload.
+    end = find_jobs_array_end(source, start + len(start_marker) - 1)
 
     # Normalize homepage classification at generation time, including historical roles.
     # Preserve the verified source records; only public display metadata is updated.
@@ -964,7 +1005,7 @@ def update_index(jobs: list[dict], dry_run: bool) -> bool:
         for job in active_jobs
     ) + "\n]"
     replacement = "const JOBS = " + jobs_json
-    updated = source[:start] + replacement + source[end + skip:]
+    updated = source[:start] + replacement + source[end:]
     # Real HTML job links remain discoverable when the interactive JavaScript UI fails.
     link_rows = "".join(
         '<li class="rounded-lg border border-slate-200 p-3">'
