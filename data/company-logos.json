@@ -1829,5 +1829,33 @@
     "needsQualityUpgrade": false,
     "qualityScore": 1700,
     "bytes": 9658
+  },
+  "Ford Motor Company": {
+    "officialDomain": "ford.com",
+    "sourceUrl": "https://www.ford.com/favicon.ico",
+    "sourceType": "favicon ICO default",
+    "verificationStatus": "official-domain-icon-auto",
+    "localPath": "assets/company-icons/ford-motor-company-b12e39c-b58ebd3d88.png",
+    "sourceDimensions": [
+      64,
+      64
+    ],
+    "needsQualityUpgrade": true,
+    "qualityScore": 154,
+    "bytes": 5181
+  },
+  "ZINFI Technologies": {
+    "officialDomain": "zinfi.com",
+    "sourceUrl": "https://www.zinfi.com/wp-content/uploads/2026/04/ZINFI-Logo-512x512-1.png",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/zinfi-technologies-82ba935-1b177e05ca.png",
+    "sourceDimensions": [
+      512,
+      512
+    ],
+    "needsQualityUpgrade": false,
+    "qualityScore": 1632,
+    "bytes": 26138
   }
 }

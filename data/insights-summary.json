@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "22 November 2026",
-  "active": 236,
-  "employers": 151,
-  "freshers": 217,
+  "verifiedThrough": "23 November 2026",
+  "active": 244,
+  "employers": 154,
+  "freshers": 225,
   "experienced": 16,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 80
+      "count": 83
     },
     {
       "label": "Hyderabad",
-      "count": 19
+      "count": 20
     },
     {
       "label": "Mumbai",
@@ -26,15 +26,15 @@
       "count": 8
     },
     {
+      "label": "Indore",
+      "count": 7
+    },
+    {
       "label": "Noida",
       "count": 7
     },
     {
-      "label": "Indore",
-      "count": 6
-    },
-    {
-      "label": "Delhi",
+      "label": "Chennai",
       "count": 6
     }
   ],
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 80
+      "count": 83
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 19
+      "count": 20
     },
     {
       "city": "Mumbai",
@@ -70,15 +70,21 @@
       "count": 8
     },
     {
+      "city": "Indore",
+      "lat": 22.7196,
+      "lng": 75.8577,
+      "count": 7
+    },
+    {
       "city": "Noida",
       "lat": 28.5355,
       "lng": 77.391,
       "count": 7
     },
     {
-      "city": "Indore",
-      "lat": 22.7196,
-      "lng": 75.8577,
+      "city": "Chennai",
+      "lat": 13.0827,
+      "lng": 80.2707,
       "count": 6
     },
     {
@@ -94,16 +100,10 @@
       "count": 5
     },
     {
-      "city": "Chennai",
-      "lat": 13.0827,
-      "lng": 80.2707,
-      "count": 4
-    },
-    {
       "city": "Kolkata",
       "lat": 22.5726,
       "lng": 88.3639,
-      "count": 3
+      "count": 4
     },
     {
       "city": "Ahmedabad",
@@ -144,8 +144,13 @@
     },
     {
       "name": "Amazon",
-      "count": 10,
+      "count": 11,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
+    },
+    {
+      "name": "Accenture",
+      "count": 10,
+      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Deloitte",
@@ -153,14 +158,14 @@
       "logo": "assets/company-icons/deloitte-b9f6b19.png"
     },
     {
-      "name": "Accenture",
-      "count": 9,
-      "logo": "assets/company-icons/accenture-05dffab.png"
-    },
-    {
       "name": "HCLTech",
       "count": 7,
       "logo": "assets/company-icons/hcltech-4735861.png"
+    },
+    {
+      "name": "Endeavor IT Solution",
+      "count": 5,
+      "logo": "assets/company-owner/endeavor-it-solution.png"
     },
     {
       "name": "Google",
@@ -171,11 +176,6 @@
       "name": "Qualcomm",
       "count": 4,
       "logo": "assets/company-approved/qualcomm.webp"
-    },
-    {
-      "name": "Endeavor IT Solution",
-      "count": 4,
-      "logo": "assets/company-owner/endeavor-it-solution.png"
     },
     {
       "name": "Cognizant",
@@ -205,15 +205,15 @@
     },
     {
       "label": "SQL",
-      "count": 36
+      "count": 37
     },
     {
       "label": "Java",
-      "count": 31
+      "count": 32
     },
     {
       "label": "Communication",
-      "count": 23
+      "count": 24
     },
     {
       "label": "REST APIs",
@@ -221,15 +221,15 @@
     },
     {
       "label": "Git",
-      "count": 18
+      "count": 19
     },
     {
       "label": "JavaScript",
-      "count": 17
+      "count": 18
     },
     {
       "label": "Problem solving",
-      "count": 17
+      "count": 18
     },
     {
       "label": "Linux",
@@ -248,22 +248,22 @@
       "count": 12
     },
     {
-      "label": "Algorithms",
+      "label": "Attention to detail",
       "count": 11
     },
     {
-      "label": "Attention to detail",
-      "count": 10
+      "label": "Algorithms",
+      "count": 11
     }
   ],
   "categories": [
     {
       "label": "it",
-      "count": 118
+      "count": 124
     },
     {
       "label": "nonit",
-      "count": 61
+      "count": 63
     },
     {
       "label": "internship",
@@ -446,6 +446,10 @@
     {
       "date": "2026-11-22",
       "count": 10
+    },
+    {
+      "date": "2026-11-23",
+      "count": 8
     }
   ]
 }
