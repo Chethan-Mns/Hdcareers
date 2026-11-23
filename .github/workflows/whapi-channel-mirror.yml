@@ -26,6 +26,8 @@ concurrency:
 jobs:
   mirror:
     # Posting is gated by the owner configuration below.
+    outputs:
+      enabled: ${{ steps.configured.outputs.enabled }}
     runs-on: ubuntu-latest
     timeout-minutes: 9
     env:
@@ -122,3 +124,41 @@ jobs:
           name: hd-whapi-channel-outcome
           path: data/whatsapp-channel-deliveries.json
           retention-days: 30
+
+  wake-next:
+    needs: mirror
+    if: ${{ needs.mirror.result == 'success' && needs.mirror.outputs.enabled == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 67
+    concurrency:
+      group: whapi-hourly-wake
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Refresh saved channel receipts
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Find the next eligible WhatsApp delivery slot
+        id: due
+        run: python3 scripts/whapi_channel_relay.py wake
+      - name: Wake even when the last check was seconds too early
+        if: steps.due.outputs.armed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DELAY_SECONDS: ${{ steps.due.outputs.delay_seconds }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! [[ "$DELAY_SECONDS" =~ ^[0-9]+$ ]] || (( DELAY_SECONDS > 3600 )); then
+            echo "::error::Unsafe Whapi queue delay"
+            exit 1
+          fi
+          sleep "$DELAY_SECONDS"
+          gh workflow run whapi-channel-mirror.yml --ref main
+          echo "Dispatched next receipt-based WhatsApp delivery check."
