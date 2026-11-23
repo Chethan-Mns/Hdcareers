@@ -149,13 +149,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/eurofins-software-engineer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45141116100",
       "at": "2026-11-23T08:45:09.802847+00:00",
       "telegramMessageId": 739,
       "telegramDeliveredAt": "2026-11-23T04:43:39.108232+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspBZVavZ13O_Us-1yYBq53kiM_y2g-Aks",
+      "acceptedAt": "2026-11-23T08:45:16.409580+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
