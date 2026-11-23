@@ -77,21 +77,35 @@ def enqueue(event_path):
     valid_pages = {j.get("page") for j in load(JOBS, []) if j.get("status", "active") == "active"}
     q = queue()
     ledger = load(LEDGER, {})
-    known = {x["page"] for x in q["items"]}
+    known = {x["page"]: x for x in q["items"]}
     added = []
+    rearmed = []
     now = stamp()
     for page in pages:
         if not isinstance(page, str) or not page.startswith("jobs/") or not page.endswith(".html") or page not in valid_pages:
             raise ValueError("Approved page missing from verified website job data: " + str(page))
-        if page in known or any(v.get("page") == page and v.get("status") == "delivered" for v in ledger.values()):
+        if any(v.get("page") == page and v.get("status") == "delivered" for v in ledger.values()):
             continue
-        q["items"].append({"page": page, "batchId": batch_id, "status": "pending", "queuedAt": now})
-        known.add(page)
+        if page in known:
+            prior = known[page]
+            # A failed *pre-publication* workflow can leave a queue claim for the
+            # same page under its previous run ID. Re-bind ONLY pending messages;
+            # never resend delivered, sending, or uncertain ones.
+            if prior.get("status") == "pending":
+                prior["batchId"] = batch_id
+                prior.pop("dueAt", None)
+                rearmed.append(page)
+            continue
+        item = {"page": page, "batchId": batch_id, "status": "pending", "queuedAt": now}
+        q["items"].append(item)
+        known[page] = item
         added.append(page)
-    if added:
+    if added or rearmed:
         save(QUEUE, q)
-    print("Queued", len(added), "verified pages for immediate-first hourly delivery:", added)
-    output("deferred", "true" if added else "false")
+    print("Hourly queue:", len(added), "new, ", len(rearmed), "pending items safely rearmed")
+    # IMPORTANT: a multi-job batch may NEVER fall back to bulk Telegram when
+    # all pages are already queued. It remains deferred until a receipt exists.
+    output("deferred", "true" if (added or rearmed) else "false")
 
 
 def reconcile(q, ledger):
