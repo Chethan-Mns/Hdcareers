@@ -52,7 +52,7 @@ class AutomaticPublishing(unittest.TestCase):
  def test_credible_short_description_with_full_structured_fields_passes(self):
   # The official-source content preflight already verifies eligibility,
   # responsibilities and skill lists; 70-99 characters is acceptable.
-  self.job["desc"]="Write software, test changes, support colleagues and document fixes."
+  self.job["desc"]="Write software, test changes, support colleagues and document fixes quickly."
   self.assertGreaterEqual(len(self.job["desc"]),70)
   self.assertLess(len(self.job["desc"]),100)
   self.assertEqual(len(self.run_select()),1)
