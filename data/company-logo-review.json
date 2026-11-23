@@ -11,7 +11,7 @@
     "company": "Connectionphase",
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
-    "jobPage": "jobs/connectionphase-hr-executive.html"
+    "jobPage": "jobs/connectionphase-finance-intern.html"
   },
   "EJOBS HR Solutions": {
     "status": "needs_review",
@@ -390,12 +390,5 @@
     "officialDomain": null,
     "reason": "no trusted official domain or employer-branded careers logo",
     "jobPage": "jobs/weekday-talent-operations-associate.html"
-  },
-  "Ford Motor Company": {
-    "status": "quality_upgrade",
-    "company": "Ford Motor Company",
-    "officialDomain": "ford.com",
-    "reason": "Verified official image is below 96 px; replace with a larger brand asset when possible",
-    "logoPath": "assets/company-icons/ford-motor-company-b12e39c-b58ebd3d88.png"
   }
 }

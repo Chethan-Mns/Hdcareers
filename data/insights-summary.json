@@ -1,8 +1,8 @@
 {
   "verifiedThrough": "23 November 2026",
-  "active": 244,
-  "employers": 154,
-  "freshers": 225,
+  "active": 246,
+  "employers": 155,
+  "freshers": 227,
   "experienced": 16,
   "locations": [
     {
@@ -94,22 +94,22 @@
       "count": 6
     },
     {
+      "city": "Kolkata",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "count": 5
+    },
+    {
       "city": "Navi Mumbai",
       "lat": 19.033,
       "lng": 73.0297,
       "count": 5
     },
     {
-      "city": "Kolkata",
-      "lat": 22.5726,
-      "lng": 88.3639,
-      "count": 4
-    },
-    {
       "city": "Ahmedabad",
       "lat": 23.0225,
       "lng": 72.5714,
-      "count": 3
+      "count": 4
     },
     {
       "city": "Madurai",
@@ -217,7 +217,7 @@
     },
     {
       "label": "REST APIs",
-      "count": 21
+      "count": 22
     },
     {
       "label": "Git",
@@ -267,7 +267,7 @@
     },
     {
       "label": "internship",
-      "count": 46
+      "count": 47
     },
     {
       "label": "experienced",
@@ -275,7 +275,7 @@
     },
     {
       "label": "apprenticeship",
-      "count": 3
+      "count": 4
     },
     {
       "label": "campus",
@@ -449,7 +449,7 @@
     },
     {
       "date": "2026-11-23",
-      "count": 8
+      "count": 10
     }
   ]
 }
