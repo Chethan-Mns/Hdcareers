@@ -185,13 +185,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/phonepe-customer-experience-specialist-operations-lending.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45168140125",
       "at": "2026-11-23T11:46:29.681288+00:00",
       "telegramMessageId": 742,
       "telegramDeliveredAt": "2026-11-23T04:43:44.185595+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspFrtXHsbuPJMQ-17oBq53kiM_y2g-Ak4",
+      "acceptedAt": "2026-11-23T11:46:37.036690+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
