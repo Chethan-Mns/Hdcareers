@@ -56,8 +56,8 @@
         "officialEvidence": "HPE Workday requisition 1217776 is active and explicitly lists typically 0–2 years."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -114,7 +114,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,7 +171,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -228,7 +228,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -285,7 +285,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -345,7 +345,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00"
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00"
     },
     {
       "id": "accenture-aioc-s01672656",
@@ -400,7 +400,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -459,64 +459,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00"
-    },
-    {
-      "id": "instawork-4686783006",
-      "company": "Instawork",
-      "role": "HR Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
-      "cat": "internship",
-      "slotType": "training",
-      "expYears": "Fresher (0–1 year)",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Greenhouse posting 4686783006 is active with an application form and explicitly labels the role fresher (0–1 year); prior HR experience is preferred, not mandatory.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Instawork",
-        "role": "HR Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://job-boards.greenhouse.io/instawork/jobs/4686783006",
-        "cat": "internship",
-        "expType": "internship",
-        "expYears": "Fresher (0–1 year)",
-        "salary": "₹20,000 per month plus ₹200/day food allowance",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Instawork (Greenhouse)",
-        "desc": "Three-month talent-acquisition internship supporting high-volume sourcing, screening, interview scheduling and candidate records.",
-        "elig": "Fresher with 0–1 year; strong verbal communication and organization; prior HR or recruitment exposure is preferred but not mandatory.",
-        "resp": [
-          "Support end-to-end recruitment and candidate outreach.",
-          "Schedule interviews and maintain candidate records.",
-          "Follow up with applicants and hiring teams."
-        ],
-        "skills": [
-          "Recruitment coordination",
-          "Communication",
-          "Organization",
-          "Data management"
-        ],
-        "workMode": "On-site",
-        "jobId": "4686783006",
-        "postedDate": "Not Specified",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact public Greenhouse posting and application form were checked on 23 Nov 2026; the listing explicitly states fresher (0–1 year).",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T04:45:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Greenhouse exact posting 4686783006 is active with an application form and explicitly states fresher (0–1 year)."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T04:45:00.000Z",
-      "reviewedAt": null,
-      "reviewedBy": null
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00"
     },
     {
       "id": "cdot-paid-internship-winter-2027",
@@ -571,7 +514,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -630,7 +573,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -687,7 +630,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -742,9 +685,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Qualcomm requisition 3098178 is currently listed for fresh graduates and early-career applicants in Software Engineering."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -801,7 +744,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 403; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -858,7 +801,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -915,7 +858,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -972,7 +915,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1031,7 +974,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00"
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00"
     },
     {
       "id": "cloudkaptan-125786",
@@ -1086,7 +1029,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1143,36 +1086,36 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:38:57.629853+00:00",
+      "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
-        "training": 2,
-        "unclassified": 0
+        "training": 1,
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
-        "training": 0
+        "training": 1
       }
     },
     "backup": {
       "size": 10,
       "counts": {
-        "fresherIT": 6,
+        "fresherIT": 5,
         "nonIT": 2,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
+        "fresherIT": 1,
         "nonIT": 0,
         "training": 0
       }
@@ -1181,7 +1124,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 20,
+    "remaining": 19,
     "duplicateExclusions": [
       {
         "id": "google-125423735539671750",
@@ -1266,12 +1209,17 @@
         "company": "Deloitte",
         "reason": "position_filled_current_official_render",
         "officialUrl": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/"
+      },
+      {
+        "id": "instawork-4686783006",
+        "company": "Instawork",
+        "reason": "already_published",
+        "officialUrl": "https://job-boards.greenhouse.io/instawork/jobs/4686783006"
       }
     ],
-    "excludedCount": 14,
-    "needsFreshDiscovery": false,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs.",
-    "deloitteOutcome": "Deloitte: no new verified fresher-eligible role. Requisition 61698544 was removed after both automated official-page renders indicated the position had been filled."
+    "excludedCount": 15,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
