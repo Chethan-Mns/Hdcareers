@@ -517,6 +517,63 @@
       "precheckCheckedAt": "2026-11-23T03:41:22.721830+00:00",
       "reviewedAt": null,
       "reviewedBy": null
+    },
+    {
+      "id": "connectionphase-109803550",
+      "company": "Connectionphase",
+      "role": "Finance Intern",
+      "loc": "Ahmedabad, Gujarat, India",
+      "apply": "https://jobs.smartrecruiters.com/Connectionphase/109803550-finance-interns",
+      "cat": "internship",
+      "slotType": "training",
+      "expYears": "Fresher",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Exact SmartRecruiters posting 109803550 is active, explicitly calls for freshers and provides finance/accounts training; the posting states the training period is unpaid.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "Connectionphase",
+        "role": "Finance Intern",
+        "loc": "Ahmedabad, Gujarat, India",
+        "apply": "https://jobs.smartrecruiters.com/Connectionphase/109803550-finance-interns",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Fresher",
+        "salary": "Unpaid training period (source stated)",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Connectionphase (SmartRecruiters)",
+        "desc": "Fresher finance internship supporting accounts payable, receivables, reporting and financial-data reconciliation.",
+        "elig": "Fresher with accounting and finance interest; exact posting states training is provided and the training period is unpaid.",
+        "resp": [
+          "Support accounts payable and receivable processing.",
+          "Assist with financial reports and reconciliations.",
+          "Review financial data and help maintain reporting records."
+        ],
+        "skills": [
+          "Accounting basics",
+          "Financial reporting",
+          "Reconciliation",
+          "Data accuracy"
+        ],
+        "workMode": "On-site",
+        "jobId": "109803550",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact public SmartRecruiters posting and application route were checked on 23 Nov 2026; the listing explicitly requests freshers.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T05:00:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "SmartRecruiters exact posting 109803550 is active and explicitly calls for freshers; unpaid training is disclosed."
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-23T05:00:00.000Z",
+      "reviewedAt": null,
+      "reviewedBy": null
     }
   ],
   "backup": [
@@ -1093,29 +1150,29 @@
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 9,
+      "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
-        "training": 1,
-        "unclassified": 1
+        "training": 2,
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
-        "training": 1
+        "training": 0
       }
     },
     "backup": {
       "size": 10,
       "counts": {
-        "fresherIT": 5,
+        "fresherIT": 6,
         "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
+        "fresherIT": 0,
         "nonIT": 0,
         "training": 0
       }
@@ -1218,8 +1275,8 @@
       }
     ],
     "excludedCount": 15,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "needsFreshDiscovery": false,
+    "note": "Independent scrub and current-source checks excluded historical requisitions plus a filled Deloitte posting. Fresh exact-source replacements restored both 6/2/2 lists without padding."
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -2150,5 +2207,5 @@
     },
     "note": "Preserved 22 Nov review batch and its prior history; no approval, publication or Telegram state was changed."
   },
-  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Independent scrub and availability checks removed historical duplicates and Deloitte 61698544 after current renders indicated it was filled. Fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
+  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Independent scrub and availability checks removed historical requisitions and Deloitte 61698544 after current renders indicated it was filled. Fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
 }
