@@ -1,6 +1,13 @@
 name: Telegram hourly delivery regression tests
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/hourly_telegram.py'
+      - 'tests/test_hourly_telegram.py'
+      - 'tests/test_hourly_telegram_queue.py'
+      - '.github/workflows/telegram-hourly-regression.yml'
   pull_request:
     branches: [main]
     paths:
@@ -26,5 +33,6 @@ jobs:
         run: |
           python3 -m py_compile scripts/hourly_telegram.py
           python3 -m unittest discover -s tests -p test_hourly_telegram_queue.py -v
+          python3 -m unittest discover -s tests -p test_hourly_telegram.py -v
       - name: Validate admin publisher intake
         run: node --check api/admin/publish.js
