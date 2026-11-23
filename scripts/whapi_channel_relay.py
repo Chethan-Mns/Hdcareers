@@ -159,6 +159,64 @@ def claim_limited(doc, tg, jobs, at, run):
     raise RuntimeError("More than 250 pending WhatsApp receipts; needs manual review")
 
 
+def next_wake_seconds(doc, tg, jobs, at):
+    """Find next eligible WhatsApp slot from confirmed Telegram receipts.
+
+    Never arm a repeated wake for already-accepted or uncertain jobs, and never
+    carry yesterday's channel backlog into a new IST day.
+    """
+    now=shared.parse(at)
+    if now is None:
+        raise ValueError("Invalid wake clock")
+    if any(isinstance(v,dict) and v.get("status")=="sending"
+           for v in doc.get("items",{}).values()):
+        return None
+    activation=shared.parse(doc.get("activationAt"))
+    if activation is None:
+        return None
+    today=now.astimezone(IST).date().isoformat()
+    items=doc.get("items") or {}
+    spent=sum(1 for v in items.values() if isinstance(v,dict)
+              and v.get("status") in ("sending","uncertain","provider_accepted")
+              and telegram_ist_day(v.get("telegramDeliveredAt"))==today
+              and v.get("channelId",APPROVED_CHANNEL)==APPROVED_CHANNEL)
+    if spent>=MAX_DAILY_POSTS:
+        return None
+    pending=False
+    for row in tg.values():
+        if not isinstance(row,dict) or row.get("status")!="delivered" \
+           or row.get("channel")!="@HD_Careers" or not row.get("messageId"):
+            continue
+        page=str(row.get("page") or "")
+        stamp=shared.parse(row.get("deliveredAt"))
+        if not stamp or stamp<=activation or telegram_ist_day(row.get("deliveredAt"))!=today:
+            continue
+        if page in items or not shared.PAGE_RE.fullmatch(page):
+            continue
+        job=jobs.get(page)
+        if job and job.get("status")=="active":
+            pending=True
+            break
+    if not pending:
+        return None
+    due=next_channel_due(doc)
+    return max(0,int((due-now).total_seconds()+0.9999)) if due else 0
+
+
+def wake():
+    """Emit a bounded, durable next-hour wake rather than silently ending early."""
+    doc=shared.load(shared.LEDGER,{"version":1,"activationAt":None,"items":{}})
+    tg=shared.load(shared.TG,{})
+    jobs={str(j.get("page")):j for j in shared.load(shared.JOBS,[])
+          if isinstance(j,dict)}
+    seconds=next_wake_seconds(doc,tg,jobs,shared.utc())
+    if os.getenv("GITHUB_OUTPUT") and seconds is not None:
+        with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf8") as output:
+            output.write(f"armed=true\n")
+            output.write(f"delay_seconds={min(seconds+2,3600)}\n")
+    print("Whapi next wake:", "none" if seconds is None else f"{seconds} seconds")
+
+
 def claim():
     must_be_enabled()
     channel_id()
@@ -251,6 +309,6 @@ def send():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2 or sys.argv[1] not in ("verify", "claim", "send"):
-        raise SystemExit("Usage: whapi_channel_relay.py verify|claim|send")
-    {"verify": verify_admin, "claim": claim, "send": send}[sys.argv[1]]()
+    if len(sys.argv) != 2 or sys.argv[1] not in ("verify", "claim", "send", "wake"):
+        raise SystemExit("Usage: whapi_channel_relay.py verify|claim|send|wake")
+    {"verify": verify_admin, "claim": claim, "send": send, "wake": wake}[sys.argv[1]]()
