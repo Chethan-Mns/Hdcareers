@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "sourceBatchId": "2026-11-23-0900-ist",
+  "quota": "internshipOrApprenticeship",
+  "maxJobs": 2,
+  "expectedSourceActiveCandidates": [
+    "connectionphase-109803550",
+    "cloudkaptan-125786"
+  ],
+  "excludeUnsure": true,
+  "allowUnverified": false,
+  "requestedBy": "HD Careers owner automated daily 6/2/2 policy",
+  "reason": "Recover exactly two independently source-confirmed internship/apprenticeship slots after the 8 full-time jobs were published. Preserve 60-minute channel delivery spacing and do not repost jobs."
+}
