@@ -121,23 +121,38 @@ def reconcile(q, ledger):
 
 
 def refresh_due(q):
-    """Schedule next items from confirmed Telegram receipts, not from a cron tick."""
-    batches = {x.get("batchId") or "__legacy" for x in q["items"]}
-    for batch_id in batches:
-        members = [x for x in q["items"] if (x.get("batchId") or "__legacy") == batch_id]
-        last = [parse(x["deliveredAt"]) for x in members
-                if x.get("status") in DONE and x.get("deliveredAt")]
-        if not last:
-            for item in members:
-                if item.get("status") == "pending":
-                    item["dueAt"] = item.get("queuedAt") or stamp(datetime.now(timezone.utc) - timedelta(seconds=1))
+    """Enforce one Telegram delivery per hour ACROSS all approved batches.
+
+    The previous implementation spaced only messages within a batch. A fresh
+    verified batch could therefore post immediately even when a different batch
+    had just sent. The global cursor also spaces multiple queued jobs before
+    their first receipt; the cursor is anchored to actual confirmed delivery.
+    """
+    batches = {}
+    all_delivered = []
+    for item in q["items"]:
+        if item.get("status") in DONE and item.get("deliveredAt"):
+            t = parse(item["deliveredAt"])
+            if t is not None:
+                key = item.get("batchId") or "__legacy"
+                batches.setdefault(key, []).append(t)
+                all_delivered.append(t)
+    cursor = max(all_delivered) + INTERVAL if all_delivered else None
+    positions = {}
+    for item in q["items"]:
+        if item.get("status") != "pending":
             continue
-        base = max(last)
-        position = 0
-        for item in members:
-            if item.get("status") == "pending":
-                position += 1
-                item["dueAt"] = stamp(base + INTERVAL * position)
+        key = item.get("batchId") or "__legacy"
+        positions[key] = positions.get(key, 0) + 1
+        local = batches.get(key) or []
+        if local:
+            due = max(local) + INTERVAL * positions[key]
+        else:
+            due = parse(item.get("queuedAt")) or datetime.now(timezone.utc) - timedelta(seconds=1)
+        if cursor is not None:
+            due = max(due, cursor)
+        item["dueAt"] = stamp(due)
+        cursor = due + INTERVAL
 
 
 def claim(prime=False, now=None):
@@ -159,7 +174,12 @@ def claim(prime=False, now=None):
     if prime:
         batch_id, approved = approved_batch()
         candidates = [x for x in q["items"] if x.get("batchId") == batch_id and x.get("page") in approved]
-        if batch_id and not any(x.get("status") in DONE | {"uncertain"} for x in candidates):
+        # The first post of a new batch also respects the last Telegram receipt
+        # from any previous batch. Do not bypass the owner's 1-hour cadence.
+        recent = [parse(x["deliveredAt"]) for x in q["items"]
+                  if x.get("status") in DONE and x.get("deliveredAt")]
+        within_global_cooldown = bool(recent) and now < max(recent) + INTERVAL
+        if batch_id and not within_global_cooldown and not any(x.get("status") in DONE | {"uncertain"} for x in candidates):
             chosen = next((x for x in candidates if x.get("status") == "pending"), None)
     else:
         candidates = []
