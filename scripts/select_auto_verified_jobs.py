@@ -147,9 +147,18 @@ def select(batch,published,pending,ledger,now=None,limit=10):
   if len(selected)>=limit:break
  return selected,("selected" if selected else "no new jobs met verification and content criteria")
 def main():
- ap=argparse.ArgumentParser();ap.add_argument("--event",required=True);ap.add_argument("--report",required=True);args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument("--event",required=True);ap.add_argument("--report",required=True);ap.add_argument("--training-topup",action="store_true");args=ap.parse_args()
  d=ROOT/"data";batch=load(d/"daily-review-batch.json",{});existing=load(d/"jobs.json",[])
  reviews=load(d/"review-queue.json",[]);ledger=load(d/"auto-publish-ledger.json",{"batches":[]})
+ if args.training_topup:
+  # A separate audited batch can recover only the missing training slots
+  # after a full-time daily batch was already claimed/published. Recheck
+  # source proof, content, duplicate URLs and the original review verdicts.
+  original_id=str(batch.get("batchId") or "")
+  original_rows=list(batch.get("priority") or [])+list(batch.get("backup") or [])
+  trainings=[r for r in original_rows if isinstance(r.get("job"),dict)
+             and publication_bucket(r["job"])=="internshipOrApprenticeship"]
+  batch=dict(batch,batchId=original_id+"-training-topup",priority=trainings,backup=[])
  chosen,reason=select(batch,existing,reviews,ledger)
  summary={"batchId":batch.get("batchId"),"selected":len(chosen),"candidateIds":[i for i,_ in chosen],
   "companies":[x["company"] for _,x in chosen],"reason":reason,
