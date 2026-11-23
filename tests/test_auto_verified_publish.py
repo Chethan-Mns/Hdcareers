@@ -20,6 +20,14 @@ class AutomaticPublishing(unittest.TestCase):
               "status":"reviewing","priority":[self.item],"backup":[]}
  def run_select(self,old=None,pending=None,ledger=None):
   return select(self.batch,old or [],pending or [],ledger or {"batches":[]},now=self.now)[0]
+ def test_distinct_internship_experience_label_is_eligible(self):
+  self.job["expType"]="internship"
+  self.assertEqual(len(self.run_select()),1)
+ def test_distinct_apprenticeship_experience_label_is_eligible(self):
+  self.job["role"]="Software Engineering Apprentice"
+  self.job["cat"]="apprenticeship"
+  self.job["expType"]="apprenticeship"
+  self.assertEqual(len(self.run_select()),1)
  def test_accepts_verified_internship(self):
   selected=self.run_select()
   self.assertEqual(len(selected),1)
