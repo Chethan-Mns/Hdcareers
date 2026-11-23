@@ -2203,11 +2203,12 @@
     {
       "page": "jobs/cloudkaptan-software-development-apprentice.html",
       "batchId": "admin-45114151230",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-23T04:50:11.732125+00:00",
-      "dueAt": "2026-11-23T06:44:04.617779+00:00",
       "claimId": "45126109793",
-      "claimedAt": "2026-11-23T06:44:15.662895+00:00"
+      "claimedAt": "2026-11-23T06:44:15.662895+00:00",
+      "messageId": 745,
+      "deliveredAt": "2026-11-23T06:44:19.147156+00:00"
     }
   ]
 }
