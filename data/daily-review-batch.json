@@ -5,63 +5,6 @@
   "updatedAt": "2026-11-23T03:30:00.000Z",
   "priority": [
     {
-      "id": "cisco-2025113",
-      "company": "Cisco",
-      "role": "Software Engineer",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025113EXTERNALENGLOBAL/Software-Engineer",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0 years; no previous work experience required",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Cisco entry-level requisition 2025113 is listed with a bachelor's degree and 0 years of previous experience.",
-      "postedDate": "17 Nov 2026",
-      "job": {
-        "company": "Cisco",
-        "role": "Software Engineer",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025113EXTERNALENGLOBAL/Software-Engineer",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0 years; no previous work experience required",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Cisco Careers",
-        "desc": "Entry-level front-end software engineering role building secure, user-focused product features.",
-        "elig": "Bachelor's degree; coursework or internship exposure is accepted and no previous work experience is required.",
-        "resp": [
-          "Build and test small front-end features.",
-          "Translate requirements and designs into working code.",
-          "Debug issues and document technical changes."
-        ],
-        "skills": [
-          "JavaScript",
-          "React",
-          "Software testing",
-          "Secure coding"
-        ],
-        "workMode": "Hybrid",
-        "jobId": "2025113",
-        "postedDate": "17 Nov 2026",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Cisco entry-level requisition 2025113 is listed with a bachelor's degree and 0 years of previous experience."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
       "id": "hpe-1217776",
       "company": "Hewlett Packard Enterprise",
       "role": "Technical Support Engineer Associate",
@@ -112,9 +55,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "HPE Workday requisition 1217776 is active and explicitly lists typically 0–2 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -169,9 +112,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Amazon job 10547060 remains active; basic qualifications require a bachelor's degree and QA knowledge without a minimum work-experience requirement."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -226,9 +169,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Ford requisition 71849 is active and frames the requirements around degree, programming basics and academic project exposure, with no minimum experience."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -283,9 +226,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "ZINFI's exact careers page is active and explicitly lists 0–1 years for the Fresher Software Engineer role."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -340,66 +283,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Eurofins SmartRecruiters posting 744000154046429 is active and explicitly accepts 0–12 months of IT-industry experience."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "ey-1759710",
-      "company": "EY",
-      "role": "Analyst – Global Compliance & Reporting",
-      "loc": "New Delhi, India",
-      "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-ami-tax-gcr-global-compliance-%26-reporting-new-delhi-nati-110037/1455391333",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "Fresher",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "EY requisition 1759710 is active and explicitly lists Chartered Accountant qualification with fresher experience.",
-      "postedDate": "7 Nov 2026",
-      "job": {
-        "company": "EY",
-        "role": "Analyst – Global Compliance & Reporting",
-        "loc": "New Delhi, India",
-        "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-ami-tax-gcr-global-compliance-%26-reporting-new-delhi-nati-110037/1455391333",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "EY Careers",
-        "desc": "Entry-level tax compliance and reporting analyst role supporting client engagements.",
-        "elig": "Qualified Chartered Accountant; fresher.",
-        "resp": [
-          "Support tax compliance and reporting work.",
-          "Analyze client information and documentation.",
-          "Collaborate across engagement teams."
-        ],
-        "skills": [
-          "Tax compliance",
-          "Financial reporting",
-          "Analysis",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "1759710",
-        "postedDate": "7 Nov 2026",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "EY requisition 1759710 is active and explicitly lists Chartered Accountant qualification with fresher experience."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -454,9 +340,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Accenture job AIOC-S01672656 is active and explicitly states any graduation and 0–1 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -511,9 +397,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Deloitte exact posting 61698544 is active, dated 20 Nov 2026, titled Intern | Fresher and accepts undergraduates or recent graduates."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry (this position has been filled)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -568,9 +454,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "C-DOT's official paid-internship notice states the application portal is open from 19 to 30 Nov 2026 for the Winter 2027 batch."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -627,9 +513,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Apple role 200694886-0321 is active on the India careers search, dated 20 Nov 2026 and explicitly junior with no minimum years shown."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -684,9 +570,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Veeva's exact Lever application remains active and explicitly includes a 0–1 years experience option for the Hyderabad NetSuite Developer role."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Lever public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -741,9 +627,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Qualcomm requisition 3098178 is currently listed for fresh graduates and early-career applicants in Software Engineering."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -798,9 +684,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Virtusa requisition CREQ264555 is active and explicitly states 0–2 years for the QA Automation Engineer role."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "HTTP 403; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -855,9 +741,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "SIONIQ exact Keka posting 164468 is active and explicitly targets freshers from 2024 and later batches."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -912,9 +798,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "SQ1's exact Zoho Recruit requisition is active and targets fresher 2025/2026 graduates for a full-time graduate engineer trainee role."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -969,66 +855,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Capgemini reference 559285 is active, dated 20 Nov 2026 and explicitly accepts CA freshers with 0–1 years."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "wns-743999903984093",
-      "company": "WNS Global Services",
-      "role": "Associate – Operations",
-      "loc": "Mumbai, Maharashtra, India",
-      "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "Fresher eligible",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "WNS SmartRecruiters posting 743999903984093 is active and explicitly accepts non-technical graduates who are freshers.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "WNS Global Services",
-        "role": "Associate – Operations",
-        "loc": "Mumbai, Maharashtra, India",
-        "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresher eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "WNS Global Services (SmartRecruiters)",
-        "desc": "Back-office operations role supporting non-voice processes for travel, insurance and banking clients.",
-        "elig": "Non-technical graduates; freshers eligible; basic computer knowledge and good English.",
-        "resp": [
-          "Handle back-office customer processes.",
-          "Resolve routine non-voice service requests.",
-          "Maintain accuracy and process compliance."
-        ],
-        "skills": [
-          "Customer support",
-          "Basic computer skills",
-          "English communication",
-          "Process operations"
-        ],
-        "workMode": "On-site",
-        "jobId": "743999903984093",
-        "postedDate": "Not Specified",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "WNS SmartRecruiters posting 743999903984093 is active and explicitly accepts non-technical graduates who are freshers."
-      },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1083,9 +912,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "CloudKaptan exact Keka posting 125786 is active for 2026 BTech/MCA graduates and states a six-month apprenticeship."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1140,39 +969,39 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Zebra Workday requisition JR103863 is an exact six-month software-engineering internship route for Bengaluru and states 0+ years with concurrent degree enrollment."
       },
-      "precheckStatus": "pending-repository-precheck",
-      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
-      "precheckCheckedAt": null,
+      "precheckStatus": "unsure",
+      "precheckReason": "Official page loaded but role/application evidence was insufficient",
+      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 10,
+      "size": 8,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
+        "fresherIT": 4,
+        "nonIT": 1,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
+        "fresherIT": 2,
+        "nonIT": 1,
         "training": 0
       }
     },
     "backup": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
+        "fresherIT": 5,
+        "nonIT": 1,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
+        "fresherIT": 1,
+        "nonIT": 1,
         "training": 0
       }
     },
@@ -1180,12 +1009,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 20,
-    "watchlistEmployersVisited": 22,
-    "watchlistEmployersNotVisited": 65,
-    "watchlistEmployersBlocked": 0,
-    "fallbackEmployersRepresented": 9,
-    "uniqueExactLiveJobIdsFound": 28,
+    "remaining": 17,
     "duplicateExclusions": [
       {
         "id": "google-125423735539671750",
@@ -1234,13 +1058,29 @@
         "company": "Agoda",
         "reason": "application_deadline_passed",
         "officialUrl": "https://job-boards.greenhouse.io/agoda/jobs/6323041"
+      },
+      {
+        "id": "cisco-2025113",
+        "company": "Cisco",
+        "reason": "already_published",
+        "officialUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025113EXTERNALENGLOBAL/Software-Engineer"
+      },
+      {
+        "id": "ey-1759710",
+        "company": "EY",
+        "reason": "already_published",
+        "officialUrl": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-ami-tax-gcr-global-compliance-%26-reporting-new-delhi-nati-110037/1455391333"
+      },
+      {
+        "id": "wns-743999903984093",
+        "company": "WNS Global Services",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations"
       }
     ],
-    "excludedCount": 8,
-    "heldSourceUnconfirmedOrExperienced": 0,
-    "needsFreshDiscovery": false,
-    "deloitteOutcome": "Deloitte: one new verified fresher-eligible internship reserved in Priority (requisition 61698544).",
-    "note": "20 distinct employers. Search evidence directly covered 22 of 87 watchlist employers; 65 were not individually opened because all quota slots were filled. No employer is counted as visited solely for appearing on the watchlist."
+    "excludedCount": 11,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
