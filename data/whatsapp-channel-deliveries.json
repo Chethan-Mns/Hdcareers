@@ -197,13 +197,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/veeva-systems-netsuite-developer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45177509616",
       "at": "2026-11-23T12:46:52.919397+00:00",
       "telegramMessageId": 743,
       "telegramDeliveredAt": "2026-11-23T04:43:44.838057+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsqZUKUqIo9uWsU-10IBq53kiM_y2g-Ak8",
+      "acceptedAt": "2026-11-23T12:47:00.112835+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
