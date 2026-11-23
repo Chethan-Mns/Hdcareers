@@ -57,7 +57,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 429; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -114,7 +114,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,7 +171,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -228,7 +228,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -285,7 +285,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -342,7 +342,10 @@
         "currentCheckAt": "2026-11-23T04:10:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "SmartRecruiters exact posting is active and explicitly states 0–1 years."
-      }
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00"
     },
     {
       "id": "accenture-aioc-s01672656",
@@ -397,63 +400,9 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
-    },
-    {
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "id": "stable-money-81f4c801",
-      "company": "Stable Money",
-      "role": "Business Associate – Fixed Deposits",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.lever.co/stable-money1/81f4c801-8444-4793-a46b-dd1394044cd9",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "0–1 years (internships count)",
-      "verificationReason": "Exact Lever posting 81f4c801-8444-4793-a46b-dd1394044cd9 is active and explicitly accepts 0–1 years, including internships.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Stable Money",
-        "role": "Business Associate – Fixed Deposits",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.lever.co/stable-money1/81f4c801-8444-4793-a46b-dd1394044cd9",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–1 years (internships count)",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Stable Money (Lever)",
-        "desc": "Entry-level business role supporting fixed-deposit operations, analysis and product initiatives.",
-        "elig": "Bachelor's degree with 0–1 years in operations, consulting, analytics, product or strategy; internships count.",
-        "resp": [
-          "Support fixed-deposit business operations.",
-          "Analyze data and business performance.",
-          "Coordinate product and process improvements."
-        ],
-        "skills": [
-          "Excel or Google Sheets",
-          "Business analysis",
-          "Operations",
-          "Communication"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "81f4c801-8444-4793-a46b-dd1394044cd9",
-        "postedDate": "Not Specified",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact public Lever posting was checked on 23 Nov 2026 and explicitly accepts 0–1 years, including internships.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T04:10:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Lever exact posting is active and explicitly accepts 0–1 years, including internships."
-      }
     },
     {
       "id": "deloitte-61698544",
@@ -508,7 +457,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Closure text appeared in both automated HTTP renders but requires ATS/rendered-browser confirmation before expiry (this position has been filled)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -565,7 +514,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -624,7 +573,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -681,7 +630,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -736,9 +685,9 @@
         "currentVerdict": "source_active_for_owner_recheck",
         "officialEvidence": "Qualcomm requisition 3098178 is currently listed for fresh graduates and early-career applicants in Software Engineering."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "HTTP 429; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -795,7 +744,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 403; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -852,7 +801,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -909,7 +858,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -966,63 +915,9 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
-    },
-    {
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "id": "quantiq-4366797009",
-      "company": "Quantiq",
-      "role": "Market Operations Analyst",
-      "loc": "Gurugram, Haryana, India",
-      "apply": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "Zero experience allowed; 1+ years is preferred only",
-      "verificationReason": "Exact Greenhouse posting 4366797009 is active; required qualifications contain no minimum experience, while 1+ years appears only under preferred qualifications.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Quantiq",
-        "role": "Market Operations Analyst",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Zero experience allowed; 1+ years is preferred only",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Quantiq (Greenhouse)",
-        "desc": "Market-operations role monitoring live trading activity and supporting analytical and operational decisions.",
-        "elig": "Attention to detail, communication, adaptability and advanced Excel; 1+ years is preferred, not required.",
-        "resp": [
-          "Monitor live trading activity.",
-          "Calculate daily profit-and-loss and position balances.",
-          "Analyze markets and document unusual production behavior."
-        ],
-        "skills": [
-          "Excel",
-          "Market analysis",
-          "Operational monitoring",
-          "Communication"
-        ],
-        "workMode": "Shift-based",
-        "jobId": "4366797009",
-        "postedDate": "Not Specified",
-        "verifiedDate": "23 Nov 2026",
-        "sourceVerificationMethod": "Exact public Greenhouse posting and application route were checked on 23 Nov 2026; no minimum experience appears in required qualifications.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-23T04:10:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Greenhouse exact posting and Apply form are active; 1+ years is preferred only."
-      }
     },
     {
       "id": "cloudkaptan-125786",
@@ -1077,7 +972,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1134,37 +1029,37 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:34:19.767092+00:00",
+      "precheckCheckedAt": "2026-11-23T03:37:12.988869+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
+        "fresherIT": 5,
+        "nonIT": 1,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
+        "fresherIT": 1,
+        "nonIT": 1,
         "training": 0
       }
     },
     "backup": {
-      "size": 10,
+      "size": 9,
       "counts": {
-        "fresherIT": 6,
-        "nonIT": 2,
+        "fresherIT": 5,
+        "nonIT": 1,
         "training": 2,
-        "unclassified": 0
+        "unclassified": 1
       },
       "shortfalls": {
-        "fresherIT": 0,
-        "nonIT": 0,
+        "fresherIT": 1,
+        "nonIT": 1,
         "training": 0
       }
     },
@@ -1172,7 +1067,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 20,
+    "remaining": 18,
     "duplicateExclusions": [
       {
         "id": "google-125423735539671750",
@@ -1239,28 +1134,23 @@
         "company": "WNS Global Services",
         "reason": "already_published",
         "officialUrl": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations"
+      },
+      {
+        "id": "stable-money-81f4c801",
+        "company": "Stable Money",
+        "reason": "already_published",
+        "officialUrl": "https://jobs.lever.co/stable-money1/81f4c801-8444-4793-a46b-dd1394044cd9"
+      },
+      {
+        "id": "quantiq-4366797009",
+        "company": "Quantiq",
+        "reason": "previously_reviewed_official_requisition",
+        "officialUrl": "https://job-boards.greenhouse.io/quantiq/jobs/4366797009"
       }
     ],
-    "excludedCount": 11,
-    "needsFreshDiscovery": false,
-    "note": "Independent scrub removed Cisco 2025113, EY 1759710 and WNS 743999903984093 as already published. Fresh exact-source replacements from three distinct employers restored both 6/2/2 lists without padding.",
-    "replacementDiscovery": [
-      {
-        "removed": "Cisco 2025113",
-        "replacement": "Endeavor IT Solution 743999653242484",
-        "slot": "Priority technical"
-      },
-      {
-        "removed": "EY 1759710",
-        "replacement": "Stable Money 81f4c801-8444-4793-a46b-dd1394044cd9",
-        "slot": "Priority non-tech"
-      },
-      {
-        "removed": "WNS 743999903984093",
-        "replacement": "Quantiq 4366797009",
-        "slot": "Backup non-tech"
-      }
-    ]
+    "excludedCount": 13,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
