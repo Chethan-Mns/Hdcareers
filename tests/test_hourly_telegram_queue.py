@@ -55,6 +55,23 @@ class HourlyTelegramTests(unittest.TestCase):
         h.claim(now=t + timedelta(hours=1))
         self.assertEqual(h.queue()["items"][1]["status"], "sending")
 
+    def test_recovered_pending_jobs_stay_hourly_not_bulk(self):
+        h.save(h.QUEUE,{"version":1,"intervalMinutes":60,"items":[
+            {"page":"jobs/test-%02d.html" % i,
+             "batchId":"admin-failed-old-run","status":"pending",
+             "queuedAt":"2026-11-23T04:39:37Z"}
+            for i in range(10)]})
+        output_file=h.QUEUE.parent/"recovered-output"
+        with patch.dict(os.environ,{"GITHUB_OUTPUT":str(output_file)},clear=False):
+            h.enqueue(self.event)
+        q=h.queue()
+        self.assertEqual(len(q["items"]),10)
+        self.assertTrue(all(x["batchId"]=="admin-7777" for x in q["items"]))
+        self.assertIn("deferred=true",output_file.read_text())
+        h.claim(prime=True)
+        self.assertEqual([x["status"] for x in h.queue()["items"]].count("sending"),1)
+        self.assertEqual([x["status"] for x in h.queue()["items"]].count("pending"),9)
+
     def test_no_second_prime_or_duplicate_claim(self):
         h.enqueue(self.event)
         h.claim(prime=True)
