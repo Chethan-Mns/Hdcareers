@@ -92,6 +92,38 @@ class WhapiChannelRelayTests(unittest.TestCase):
                  "messageId":123,"deliveredAt":t.isoformat()}}
         self.assertIsNone(m.claim_limited(doc,tg,{"jobs/other.html":{"page":"jobs/other.html","status":"active"}},t.isoformat(),"new"))
 
+    def test_wake_recovers_four_seconds_early_check(self):
+        ford=datetime(2026,11,23,5,44,41,tzinfo=timezone.utc)
+        early=ford+timedelta(minutes=59,seconds=56)
+        page="jobs/zinfi-technologies-fresher-software-engineer.html"
+        doc={"version":1,"activationAt":(ford-timedelta(days=1)).isoformat(),
+             "items":{"jobs/ford-motor-company-software-engineer.html":{
+                "status":"provider_accepted",
+                "acceptedAt":ford.isoformat(),
+                "telegramDeliveredAt":(ford-timedelta(hours=1)).isoformat(),
+                "channelId":m.APPROVED_CHANNEL}}}
+        tg={"zinfi":{"page":page,"channel":"@HD_Careers","status":"delivered",
+                     "messageId":738,"deliveredAt":(ford-timedelta(hours=1)).isoformat()}}
+        jobs={page:{"page":page,"status":"active"}}
+        self.assertEqual(m.next_wake_seconds(doc,tg,jobs,early.isoformat()),4)
+        self.assertEqual(m.next_wake_seconds(doc,tg,jobs,(early+timedelta(seconds=4)).isoformat()),0)
+        doc["items"][page]={"status":"provider_accepted","telegramDeliveredAt":tg["zinfi"]["deliveredAt"],
+                             "channelId":m.APPROVED_CHANNEL,"acceptedAt":(early+timedelta(seconds=5)).isoformat()}
+        self.assertIsNone(m.next_wake_seconds(doc,tg,jobs,(early+timedelta(seconds=6)).isoformat()))
+
+    def test_wake_does_not_replay_previous_day_or_inflight(self):
+        now=datetime(2026,11,24,7,0,tzinfo=timezone.utc)
+        old=now-timedelta(hours=22)
+        page="jobs/zinfi-technologies-fresher-software-engineer.html"
+        tg={"old":{"page":page,"channel":"@HD_Careers","status":"delivered",
+                   "messageId":738,"deliveredAt":old.isoformat()}}
+        jobs={page:{"page":page,"status":"active"}}
+        d={"version":1,"activationAt":(old-timedelta(hours=1)).isoformat(),"items":{}}
+        self.assertIsNone(m.next_wake_seconds(d,tg,jobs,now.isoformat()))
+        tg["old"]["deliveredAt"]=now.isoformat()
+        d["items"]["jobs/other.html"]={"status":"sending","claimId":"run"}
+        self.assertIsNone(m.next_wake_seconds(d,tg,jobs,now.isoformat()))
+
     def test_untrusted_path_rejected(self):
         with self.assertRaises(ValueError):
             m.api("//evil.example/messages/text")
