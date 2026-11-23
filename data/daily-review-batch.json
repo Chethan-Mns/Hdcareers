@@ -56,8 +56,8 @@
         "officialEvidence": "HPE Workday requisition 1217776 is active and explicitly lists typically 0–2 years."
       },
       "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckReason": "HTTP 429; availability unconfirmed",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -114,7 +114,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -171,7 +171,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -228,7 +228,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -285,7 +285,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -345,7 +345,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00"
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00"
     },
     {
       "id": "accenture-aioc-s01672656",
@@ -400,7 +400,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -459,7 +459,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00"
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00"
     },
     {
       "id": "cdot-paid-internship-winter-2027",
@@ -514,7 +514,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Generic careers portal URL; exact official requisition and Apply route required",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -571,7 +571,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -630,7 +630,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -687,7 +687,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -744,7 +744,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -801,7 +801,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "HTTP 403; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -858,7 +858,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -915,7 +915,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -972,7 +972,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1031,7 +1031,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00"
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00"
     },
     {
       "id": "cloudkaptan-125786",
@@ -1086,7 +1086,7 @@
       },
       "precheckStatus": "source-active",
       "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     },
@@ -1143,7 +1143,7 @@
       },
       "precheckStatus": "unsure",
       "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-23T03:42:39.903464+00:00",
+      "precheckCheckedAt": "2026-11-23T04:42:05.244339+00:00",
       "reviewedAt": null,
       "reviewedBy": null
     }
