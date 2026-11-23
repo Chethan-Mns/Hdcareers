@@ -221,13 +221,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/cloudkaptan-software-development-apprentice.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45197974054",
       "at": "2026-11-23T14:47:39.577788+00:00",
       "telegramMessageId": 745,
       "telegramDeliveredAt": "2026-11-23T06:44:19.147156+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsoEIpALWDBdnPc-13UBq53kiM_y2g-AlE",
+      "acceptedAt": "2026-11-23T14:47:47.139633+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
