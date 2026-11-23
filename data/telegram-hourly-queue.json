@@ -2194,13 +2194,15 @@
       "page": "jobs/connectionphase-finance-intern.html",
       "batchId": "admin-45114151230",
       "status": "pending",
-      "queuedAt": "2026-11-23T04:50:11.732125+00:00"
+      "queuedAt": "2026-11-23T04:50:11.732125+00:00",
+      "dueAt": "2026-11-23T05:43:44.838057+00:00"
     },
     {
       "page": "jobs/cloudkaptan-software-development-apprentice.html",
       "batchId": "admin-45114151230",
       "status": "pending",
-      "queuedAt": "2026-11-23T04:50:11.732125+00:00"
+      "queuedAt": "2026-11-23T04:50:11.732125+00:00",
+      "dueAt": "2026-11-23T06:43:44.838057+00:00"
     }
   ]
 }
