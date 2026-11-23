@@ -2193,9 +2193,11 @@
     {
       "page": "jobs/connectionphase-finance-intern.html",
       "batchId": "admin-45114151230",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-23T04:50:11.732125+00:00",
-      "dueAt": "2026-11-23T05:43:44.838057+00:00"
+      "dueAt": "2026-11-23T05:43:44.838057+00:00",
+      "claimId": "45119589644",
+      "claimedAt": "2026-11-23T05:44:01.176377+00:00"
     },
     {
       "page": "jobs/cloudkaptan-software-development-apprentice.html",
