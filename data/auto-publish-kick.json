@@ -3,6 +3,7 @@
   "requestedBatchId": "2026-11-23-0900-ist",
   "mode": "source-confirmed-fresher-only",
   "requestedBy": "HD Careers owner",
-  "reason": "Recover 23 Nov 9AM missed automatic posting using verified official sources; enforce no duplicates and exact 6/2/2 buckets; launch existing hourly Telegram and WhatsApp flow.",
-  "allowUnverified": false
+  "reason": "Verified same-day recovery retry after homepage JOBS parser bug was fixed; previous Admin Direct Publish run 45113154019 failed before publication. Strict fresh source / dedup / category safeguards unchanged.",
+  "allowUnverified": false,
+  "recoveryForRun": 45113154019
 }
