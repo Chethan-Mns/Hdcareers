@@ -149,15 +149,22 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 scripts/hourly_telegram.py send
-      - name: Deliver admin-approved jobs to Telegram after deployment
+      - name: Deliver one-off VIP Telegram or wake multi-job hourly queue
         if: steps.hourly.outputs.deferred != 'true'
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
+          set -euo pipefail
           if python3 -c 'import json,os; p=json.load(open("data/telegram-approved-batch.json")); exit(0 if p.get("batchId") == "admin-"+os.environ["GITHUB_RUN_ID"] else 1)'; then
-            python3 scripts/publish_approved_telegram.py
+            if python3 -c 'import json; p=json.load(open("data/telegram-approved-batch.json")); exit(0 if len(p.get("pages",[])) > 1 else 1)'; then
+              echo "::warning::Multi-job batch cannot use direct Telegram sender. Waking durable hourly queue instead."
+              gh workflow run hourly-telegram-queue.yml --ref main --field relay=true
+            else
+              python3 scripts/publish_approved_telegram.py
+            fi
           else
             echo "No newly approved jobs to send."
           fi
