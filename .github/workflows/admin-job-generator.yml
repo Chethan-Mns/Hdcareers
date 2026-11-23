@@ -208,15 +208,18 @@ jobs:
         run: |
           gh workflow run whapi-channel-mirror.yml --ref main ||
             echo "::warning::WhatsApp wake not dispatched; scheduled fallback remains active."
-      - name: Arm reliable follow-up wake after the first confirmed Telegram post
-        if: success() && steps.hourly.outputs.deferred == 'true' && steps.first_claim.outputs.claimed == 'true'
+      - name: Arm hourly wake even when an older batch is within its 60-minute cooldown
+        if: success() && steps.hourly.outputs.deferred == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIRST_CLAIMED: ${{ steps.first_claim.outputs.claimed }}
         shell: bash
         run: |
           set -euo pipefail
-          # Do not re-publish anything here: dispatch a clock/wakeup only.
-          # The new workflow rechecks the actual saved receipt and dueAt.
+          # This dispatch only wakes the clock: it never sends a message.
+          # When global spacing blocks the first post, the sender remains idle
+          # and the follow-up clock wakes at the next receipt-based dueAt.
+          if [ "$FIRST_CLAIMED" == "true" ]; then
           python3 - <<'PY'
           import json,os
           batch="admin-"+os.environ["GITHUB_RUN_ID"]
@@ -226,6 +229,7 @@ jobs:
               raise SystemExit("First post not durably confirmed; do not arm hourly relay")
           print("Confirmed first delivery:", delivered[0]["page"],delivered[0]["messageId"])
           PY
+          fi
           for attempt in 1 2 3 4 5; do
             if gh workflow run hourly-telegram-queue.yml --ref main --field relay=true; then
               echo "Hourly follow-up relay armed."
