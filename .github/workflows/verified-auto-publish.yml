@@ -8,6 +8,7 @@ on:
     paths:
       - data/daily-review-batch.json
       - data/auto-publish-kick.json
+      - data/auto-publish-training-kick.json
   workflow_dispatch:
 permissions:
   contents: write
@@ -42,7 +43,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/select_auto_verified_jobs.py --event /tmp/hd-auto-event.json --report /tmp/hd-auto-report.json
+          # A training-only recovery uses a separate idempotent batch key. It
+          # cannot republish the eight full-time jobs already claimed today.
+          if [ "$GITHUB_EVENT_NAME" = "push" ] &&
+             git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" |
+               grep -qx 'data/auto-publish-training-kick.json'; then
+            python3 scripts/select_auto_verified_jobs.py --training-topup --event /tmp/hd-auto-event.json --report /tmp/hd-auto-report.json
+          else
+            python3 scripts/select_auto_verified_jobs.py --event /tmp/hd-auto-event.json --report /tmp/hd-auto-report.json
+          fi
           if [ -s /tmp/hd-auto-event.json ]; then echo "found=true" >> "$GITHUB_OUTPUT"; fi
       - name: Commit idempotent batch claim before dispatch
         if: steps.selected.outputs.found == 'true'
