@@ -1,1168 +1,1148 @@
 {
-  "batchId": "2026-11-22-0900-ist",
-  "generatedAt": "2026-11-22T03:30:00.000Z",
+  "batchId": "2026-11-23-0900-ist",
+  "generatedAt": "2026-11-23T03:30:00.000Z",
   "status": "reviewing",
-  "updatedAt": "2026-11-22T03:51:00.000Z",
+  "updatedAt": "2026-11-23T03:30:00.000Z",
   "priority": [
     {
-      "id": "exl-22896",
-      "company": "EXL",
-      "role": "Associate - LCNC Engineer",
-      "loc": "Noida, Uttar Pradesh, India",
-      "apply": "https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/22896",
+      "id": "cisco-2025113",
+      "company": "Cisco",
+      "role": "Software Engineer",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025113EXTERNALENGLOBAL/Software-Engineer",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "0–2 years; fresh graduates eligible",
+      "expYears": "0 years; no previous work experience required",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact EXL Oracle requisition 22896 is active and states 0–2 years in the qualifications.",
-      "postedDate": "20 Nov 2026",
+      "verificationReason": "Cisco entry-level requisition 2025113 is listed with a bachelor's degree and 0 years of previous experience.",
+      "postedDate": "17 Nov 2026",
       "job": {
-        "company": "EXL",
-        "role": "Associate - LCNC Engineer",
-        "loc": "Noida, Uttar Pradesh, India",
-        "apply": "https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/22896",
+        "company": "Cisco",
+        "role": "Software Engineer",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025113EXTERNALENGLOBAL/Software-Engineer",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years; fresh graduates eligible",
+        "expYears": "0 years; no previous work experience required",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "EXL Careers (Oracle Recruiting)",
-        "desc": "Entry-level low-code/no-code engineering role supporting application development, configuration and delivery.",
-        "elig": "Graduate candidates with 0–2 years of relevant experience; zero-experience applicants are eligible.",
+        "sourceName": "Cisco Careers",
+        "desc": "Entry-level front-end software engineering role building secure, user-focused product features.",
+        "elig": "Bachelor's degree; coursework or internship exposure is accepted and no previous work experience is required.",
         "resp": [
-          "Build and configure low-code/no-code solutions.",
-          "Support testing, troubleshooting and delivery.",
-          "Collaborate with engineering and business teams."
+          "Build and test small front-end features.",
+          "Translate requirements and designs into working code.",
+          "Debug issues and document technical changes."
         ],
         "skills": [
-          "Low-code platforms",
-          "Application development",
-          "Testing",
-          "Problem solving"
+          "JavaScript",
+          "React",
+          "Software testing",
+          "Secure coding"
         ],
-        "workMode": "Not Specified",
-        "jobId": "22896",
-        "postedDate": "20 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "workMode": "Hybrid",
+        "jobId": "2025113",
+        "postedDate": "17 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact EXL Oracle requisition 22896 is active and states 0–2 years in the qualifications."
+        "officialEvidence": "Cisco entry-level requisition 2025113 is listed with a bachelor's degree and 0 years of previous experience."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "brillio-r01573613",
-      "company": "Brillio",
-      "role": "Associate Engineer, Applications & Platforms",
-      "loc": "Chennai, Tamil Nadu, India",
-      "apply": "https://careers.brillio.com/job-details/?job-id=21278",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "Entry level; up to 2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Brillio job 21278 / requisition R01573613 is active and labels the role entry-level with up to two years.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Brillio",
-        "role": "Associate Engineer, Applications & Platforms",
-        "loc": "Chennai, Tamil Nadu, India",
-        "apply": "https://careers.brillio.com/job-details/?job-id=21278",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Entry level; up to 2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Brillio Careers",
-        "desc": "Associate engineering role developing and supporting Java applications, APIs, databases and middleware platforms.",
-        "elig": "Bachelor's degree in Computer Science, IT, Software Engineering or related discipline; entry-level candidates with up to two years.",
-        "resp": [
-          "Develop and maintain Java and Spring Boot applications.",
-          "Design REST APIs and support databases and middleware.",
-          "Troubleshoot application and platform issues."
-        ],
-        "skills": [
-          "Java",
-          "Spring Boot",
-          "REST APIs",
-          "SQL",
-          "Git"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "R01573613",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Brillio job 21278 / requisition R01573613 is active and labels the role entry-level with up to two years."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "aiprise-4994f7fc",
-      "company": "AiPrise",
-      "role": "Software Engineer I, Frontend",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.ashbyhq.com/aiprise/4994f7fc-b974-420f-9823-32d6c493f5c2/",
+      "id": "hpe-1217776",
+      "company": "Hewlett Packard Enterprise",
+      "role": "Technical Support Engineer Associate",
+      "loc": "Chennai / Bengaluru, India",
+      "apply": "https://hpe.wd5.myworkdayjobs.com/Jobsathpe/job/Chennai-Tamil-Nadu-India/Technical-Support-Engineer-Associate_1217776-2",
       "cat": "it",
       "slotType": "technical",
       "expYears": "0–2 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact AiPrise Ashby requisition is active for a full-time Bengaluru role and states 0–2 years.",
-      "postedDate": "Not Specified",
+      "verificationReason": "HPE Workday requisition 1217776 is active and explicitly lists typically 0–2 years.",
+      "postedDate": "20 Nov 2026",
       "job": {
-        "company": "AiPrise",
-        "role": "Software Engineer I, Frontend",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.ashbyhq.com/aiprise/4994f7fc-b974-420f-9823-32d6c493f5c2/",
+        "company": "Hewlett Packard Enterprise",
+        "role": "Technical Support Engineer Associate",
+        "loc": "Chennai / Bengaluru, India",
+        "apply": "https://hpe.wd5.myworkdayjobs.com/Jobsathpe/job/Chennai-Tamil-Nadu-India/Technical-Support-Engineer-Associate_1217776-2",
         "cat": "it",
         "expType": "fresher",
         "expYears": "0–2 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "AiPrise Careers (Ashby)",
-        "desc": "Frontend engineering role owning onboarding experiences and embedded web and mobile SDK interfaces.",
-        "elig": "Candidates with 0–2 years building web products and strong JavaScript, TypeScript and React fundamentals.",
+        "sourceName": "HPE Careers (Workday)",
+        "desc": "Associate engineering role supporting design, validation and troubleshooting of Aruba products and solutions.",
+        "elig": "Bachelor's or Master's in engineering, computer science or equivalent; typically 0–2 years.",
         "resp": [
-          "Build onboarding flows and customer-facing interfaces.",
-          "Develop and maintain web and mobile SDK components.",
-          "Improve performance, reliability and cross-browser behavior."
+          "Design portions of engineering solutions.",
+          "Execute established test and validation plans.",
+          "Work with engineering partners to troubleshoot issues."
         ],
         "skills": [
-          "JavaScript",
-          "TypeScript",
-          "React",
-          "HTML",
-          "CSS"
+          "Engineering fundamentals",
+          "Testing",
+          "Problem solving",
+          "Technical communication"
         ],
-        "workMode": "On-site",
-        "jobId": "4994f7fc-b974-420f-9823-32d6c493f5c2",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact AiPrise Ashby requisition is active for a full-time Bengaluru role and states 0–2 years."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "chaosology-569149000008791001",
-      "company": "Chaosology Technologies",
-      "role": "Junior Software Developer",
-      "loc": "Tirunelveli, Tamil Nadu, India",
-      "apply": "https://chaosology.zohorecruit.com/jobs/Careers/569149000008791001/Junior-Software-developer?source=CareerSite",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–1 years; freshers eligible",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact employer Zoho Recruit posting is active; the role is full-time and accepts freshers with 0–1 years.",
-      "postedDate": "21 Nov 2026",
-      "job": {
-        "company": "Chaosology Technologies",
-        "role": "Junior Software Developer",
-        "loc": "Tirunelveli, Tamil Nadu, India",
-        "apply": "https://chaosology.zohorecruit.com/jobs/Careers/569149000008791001/Junior-Software-developer?source=CareerSite",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years; freshers eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Chaosology Technologies Careers (Zoho Recruit)",
-        "desc": "Junior development role writing, testing and maintaining software applications with senior guidance.",
-        "elig": "Bachelor's degree in Computer Science, IT, Software Engineering or related field; 0–1 years, with internships or projects accepted.",
-        "resp": [
-          "Develop and test software applications.",
-          "Write clean code and debug issues.",
-          "Contribute to team development projects."
-        ],
-        "skills": [
-          "Python",
-          "Java",
-          "OOP",
-          "Git",
-          "SQL",
-          "REST APIs"
-        ],
-        "workMode": "On-site",
-        "jobId": "569149000008791001",
-        "postedDate": "21 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact employer Zoho Recruit posting is active; the role is full-time and accepts freshers with 0–1 years."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "qualcomm-446722234783",
-      "company": "Qualcomm",
-      "role": "CPU Software Engineer",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://careers.qualcomm.com/careers/job/446722234783",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–1 years; freshers eligible",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Qualcomm requisition 446722234783 remains active; the current role evidence identifies a Bengaluru CPU software opening for freshers with 0–1 years.",
-      "postedDate": "20 Nov 2026",
-      "job": {
-        "company": "Qualcomm",
-        "role": "CPU Software Engineer",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://careers.qualcomm.com/careers/job/446722234783",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years; freshers eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Qualcomm Careers",
-        "desc": "Entry-level CPU software engineering role contributing to systems software, development and validation work.",
-        "elig": "Engineering graduates with software fundamentals; freshers and applicants with up to one year are eligible.",
-        "resp": [
-          "Develop and validate CPU-related software components.",
-          "Debug software and integration issues.",
-          "Collaborate with hardware and software engineering teams."
-        ],
-        "skills": [
-          "C",
-          "C++",
-          "Python",
-          "Java",
-          "Git",
-          "APIs"
-        ],
-        "workMode": "Not Specified",
-        "jobId": "446722234783",
+        "workMode": "Hybrid",
+        "jobId": "1217776",
         "postedDate": "20 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Qualcomm requisition 446722234783 remains active; the current role evidence identifies a Bengaluru CPU software opening for freshers with 0–1 years."
+        "officialEvidence": "HPE Workday requisition 1217776 is active and explicitly lists typically 0–2 years."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "vijnoratech-software-engineer-graduate",
-      "company": "VijnoraTech",
-      "role": "Software Engineer (Graduate)",
-      "loc": "Hyderabad, Telangana, India",
-      "apply": "https://vijnoratech.com/careers/software-engineer-graduate",
+      "id": "amazon-10547060",
+      "company": "Amazon",
+      "role": "Associate, Quality Services",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://amazon.jobs/en/jobs/10547060/associate-quality-services",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "Graduate entry role; projects or coursework accepted",
+      "expYears": "No prior experience stated; bachelor's degree required",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact employer career page is active for a full-time Hyderabad graduate software engineer role and accepts project or coursework evidence.",
+      "verificationReason": "Amazon job 10547060 remains active; basic qualifications require a bachelor's degree and QA knowledge without a minimum work-experience requirement.",
+      "postedDate": "16 Sep 2026",
+      "job": {
+        "company": "Amazon",
+        "role": "Associate, Quality Services",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://amazon.jobs/en/jobs/10547060/associate-quality-services",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "No prior experience stated; bachelor's degree required",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Amazon Jobs",
+        "desc": "Entry-level quality-services role executing manual tests for Amazon products and reporting results.",
+        "elig": "Bachelor's degree and knowledge of QA methodology and tools; no minimum professional experience is stated.",
+        "resp": [
+          "Execute documented manual test instructions.",
+          "Record and report test results and deviations.",
+          "Follow quality processes and productivity targets."
+        ],
+        "skills": [
+          "Manual testing",
+          "QA methodology",
+          "Defect reporting",
+          "Attention to detail"
+        ],
+        "workMode": "On-site",
+        "jobId": "10547060",
+        "postedDate": "16 Sep 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Amazon job 10547060 remains active; basic qualifications require a bachelor's degree and QA knowledge without a minimum work-experience requirement."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "ford-71849",
+      "company": "Ford Motor Company",
+      "role": "Software Engineer",
+      "loc": "Chennai, Tamil Nadu, India",
+      "apply": "https://www.careers.ford.com/en/job/-/-/48560/101614262848",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "Entry level; academic projects accepted",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Ford requisition 71849 is active and frames the requirements around degree, programming basics and academic project exposure, with no minimum experience.",
+      "postedDate": "18 Nov 2026",
+      "job": {
+        "company": "Ford Motor Company",
+        "role": "Software Engineer",
+        "loc": "Chennai, Tamil Nadu, India",
+        "apply": "https://www.careers.ford.com/en/job/-/-/48560/101614262848",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Entry level; academic projects accepted",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Ford Careers",
+        "desc": "Entry-level automation software role supporting finance processes with RPA and programming.",
+        "elig": "Bachelor's in CS, IT, electronics or related field; programming basics and academic RPA exposure are accepted.",
+        "resp": [
+          "Build simple automation workflows.",
+          "Test and debug automation scripts.",
+          "Document solutions and support deployed bots."
+        ],
+        "skills": [
+          "C#",
+          ".NET",
+          "Java or Python",
+          "RPA"
+        ],
+        "workMode": "On-site",
+        "jobId": "71849",
+        "postedDate": "18 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Ford requisition 71849 is active and frames the requirements around degree, programming basics and academic project exposure, with no minimum experience."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "zinfi-fresher-software-engineer",
+      "company": "ZINFI Technologies",
+      "role": "Fresher Software Engineer",
+      "loc": "Kolkata, West Bengal, India",
+      "apply": "https://careers.zinfi.com/fresher-software-engineer/",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "ZINFI's exact careers page is active and explicitly lists 0–1 years for the Fresher Software Engineer role.",
       "postedDate": "Not Specified",
       "job": {
-        "company": "VijnoraTech",
-        "role": "Software Engineer (Graduate)",
-        "loc": "Hyderabad, Telangana, India",
-        "apply": "https://vijnoratech.com/careers/software-engineer-graduate",
+        "company": "ZINFI Technologies",
+        "role": "Fresher Software Engineer",
+        "loc": "Kolkata, West Bengal, India",
+        "apply": "https://careers.zinfi.com/fresher-software-engineer/",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "Graduate entry role; projects or coursework accepted",
+        "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "VijnoraTech Careers",
-        "desc": "Graduate engineering role contributing production code, tests and documentation on client engagements with senior mentorship.",
-        "elig": "Degree in computer science, engineering or related field, or equivalent demonstrable work; completed coursework, open source or personal projects accepted.",
+        "sourceName": "ZINFI Careers",
+        "desc": "Fresher product-development role writing and supporting software modules.",
+        "elig": "Bachelor's in CS, IT, data science or related; 0–1 years.",
         "resp": [
-          "Contribute production code on client engagements.",
-          "Write tests and technical documentation.",
-          "Present work in engineering reviews."
+          "Write and maintain software programs.",
+          "Support assigned product-development work.",
+          "Follow coding and quality standards."
         ],
         "skills": [
-          "TypeScript",
-          "Python",
-          "Java",
+          "ASP.NET",
           "C#",
-          "Testing"
+          "SQL Server",
+          "Object-oriented design"
         ],
         "workMode": "Not Specified",
-        "jobId": "software-engineer-graduate",
+        "jobId": "fresher-software-engineer",
         "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact employer career page is active for a full-time Hyderabad graduate software engineer role and accepts project or coursework evidence."
+        "officialEvidence": "ZINFI's exact careers page is active and explicitly lists 0–1 years for the Fresher Software Engineer role."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "synchrony-2603082",
-      "company": "Synchrony",
-      "role": "Intern - Analytics",
-      "loc": "Multiple India locations",
-      "apply": "https://www.synchronycareers.com/en/job/telangana/intern-analytics/49398/103449442480",
-      "cat": "internship",
-      "slotType": "training",
-      "expYears": "Student or recent-graduate internship",
+      "id": "eurofins-744000154046429",
+      "company": "Eurofins",
+      "role": "Software Engineer",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.smartrecruiters.com/Eurofins/744000154046429-software-engineer",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "0–12 months",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Synchrony requisition 2603082 is active for an Analytics Intern in India.",
-      "postedDate": "17 Nov 2026",
+      "verificationReason": "Eurofins SmartRecruiters posting 744000154046429 is active and explicitly accepts 0–12 months of IT-industry experience.",
+      "postedDate": "Not Specified",
       "job": {
-        "company": "Synchrony",
-        "role": "Intern - Analytics",
-        "loc": "Multiple India locations",
-        "apply": "https://www.synchronycareers.com/en/job/telangana/intern-analytics/49398/103449442480",
-        "cat": "internship",
-        "expType": "internship/apprenticeship",
-        "expYears": "Student or recent-graduate internship",
+        "company": "Eurofins",
+        "role": "Software Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.smartrecruiters.com/Eurofins/744000154046429-software-engineer",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–12 months",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Synchrony Careers",
-        "desc": "Analytics internship supporting data analysis, reporting and business insights with Synchrony teams.",
-        "elig": "Students or recent graduates meeting the degree and location requirements stated on the official posting.",
+        "sourceName": "Eurofins (SmartRecruiters)",
+        "desc": "Junior software role developing components, integrations, scripts and automation solutions.",
+        "elig": "BE/BTech in CS/IS/EC/EEE, MCA, MS or BSc CS/IT; 0–12 months; 60% and no backlogs.",
         "resp": [
-          "Analyze business data and prepare insights.",
-          "Support reporting and analytical projects.",
-          "Collaborate with analytics stakeholders."
+          "Develop small software components and scripts.",
+          "Work with APIs, databases and integrations.",
+          "Support testing and troubleshooting."
         ],
         "skills": [
-          "Data analysis",
-          "Reporting",
-          "Problem solving",
+          "APIs",
+          "SQL",
+          "Git",
+          "CI/CD"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "744000154046429",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Eurofins SmartRecruiters posting 744000154046429 is active and explicitly accepts 0–12 months of IT-industry experience."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "ey-1759710",
+      "company": "EY",
+      "role": "Analyst – Global Compliance & Reporting",
+      "loc": "New Delhi, India",
+      "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-ami-tax-gcr-global-compliance-%26-reporting-new-delhi-nati-110037/1455391333",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "Fresher",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "EY requisition 1759710 is active and explicitly lists Chartered Accountant qualification with fresher experience.",
+      "postedDate": "7 Nov 2026",
+      "job": {
+        "company": "EY",
+        "role": "Analyst – Global Compliance & Reporting",
+        "loc": "New Delhi, India",
+        "apply": "https://careers.ey.com/ey/job/new-delhi-analyst-tax-ami-tax-gcr-global-compliance-%26-reporting-new-delhi-nati-110037/1455391333",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "Fresher",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "EY Careers",
+        "desc": "Entry-level tax compliance and reporting analyst role supporting client engagements.",
+        "elig": "Qualified Chartered Accountant; fresher.",
+        "resp": [
+          "Support tax compliance and reporting work.",
+          "Analyze client information and documentation.",
+          "Collaborate across engagement teams."
+        ],
+        "skills": [
+          "Tax compliance",
+          "Financial reporting",
+          "Analysis",
           "Communication"
         ],
         "workMode": "Not Specified",
-        "jobId": "2603082",
-        "postedDate": "17 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "jobId": "1759710",
+        "postedDate": "7 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Synchrony requisition 2603082 is active for an Analytics Intern in India."
+        "officialEvidence": "EY requisition 1759710 is active and explicitly lists Chartered Accountant qualification with fresher experience."
       },
-      "precheckStatus": "unsure",
-      "precheckReason": "Official page loaded but role/application evidence was insufficient",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "synopsys-19297",
-      "company": "Synopsys",
-      "role": "CAD / Design Support Apprenticeship",
-      "loc": "Noida, Uttar Pradesh, India",
-      "apply": "https://careers.synopsys.com/job/noida/cad-design-support-apprenticeship/44408/103503574304",
-      "cat": "apprenticeship",
-      "slotType": "training",
-      "expYears": "2025 or 2026 fresh graduates; full-time employment not allowed",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Synopsys job 19297 is active for a 12-month apprenticeship and limits eligibility to 2025/2026 fresh graduates not in full-time employment.",
-      "postedDate": "18 Nov 2026",
-      "job": {
-        "company": "Synopsys",
-        "role": "CAD / Design Support Apprenticeship",
-        "loc": "Noida, Uttar Pradesh, India",
-        "apply": "https://careers.synopsys.com/job/noida/cad-design-support-apprenticeship/44408/103503574304",
-        "cat": "apprenticeship",
-        "expType": "internship/apprenticeship",
-        "expYears": "2025 or 2026 fresh graduates; full-time employment not allowed",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Synopsys Careers",
-        "desc": "Twelve-month CAD and engineering design-support apprenticeship assisting R&D workflows, testing, documentation and automation.",
-        "elig": "Completed B.E./B.Tech in ECE or related field; 2025 or 2026 graduate; not enrolled in postgraduate study or full-time employment.",
-        "resp": [
-          "Support CAD and engineering workflows.",
-          "Investigate and document technical issues.",
-          "Assist testing, validation and small automation improvements."
-        ],
-        "skills": [
-          "Electronics fundamentals",
-          "Python or C/C++",
-          "Linux",
-          "Testing",
-          "Documentation"
-        ],
-        "workMode": "On-site",
-        "jobId": "19297",
-        "postedDate": "18 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Synopsys job 19297 is active for a 12-month apprenticeship and limits eligibility to 2025/2026 fresh graduates not in full-time employment."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "stable-money-81f4c801",
-      "company": "Stable Money",
-      "role": "Business Associate - FD",
+      "id": "accenture-aioc-s01672656",
+      "company": "Accenture",
+      "role": "HR Service Delivery New Associate",
       "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.lever.co/stable-money1/81f4c801-8444-4793-a46b-dd1394044cd9",
+      "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672656_en",
       "cat": "nonit",
       "slotType": "nontech",
-      "expYears": "0–1 years; internships count",
+      "expYears": "0–1 years",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Stable Money Lever posting is active, full-time/permanent, and accepts 0–1 years with internships counted.",
-      "postedDate": "Not Specified",
+      "verificationReason": "Accenture job AIOC-S01672656 is active and explicitly states any graduation and 0–1 years.",
+      "postedDate": "21 Nov 2026",
       "job": {
-        "company": "Stable Money",
-        "role": "Business Associate - FD",
+        "company": "Accenture",
+        "role": "HR Service Delivery New Associate",
         "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.lever.co/stable-money1/81f4c801-8444-4793-a46b-dd1394044cd9",
+        "apply": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01672656_en",
         "cat": "nonit",
         "expType": "fresher",
-        "expYears": "0–1 years; internships count",
+        "expYears": "0–1 years",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Stable Money Careers (Lever)",
-        "desc": "Business operations and analytics role supporting strategic initiatives, growth, product decisions and process improvement.",
-        "elig": "Candidates with 0–1 years in business operations, consulting, analytics, product or strategy; internships count.",
+        "sourceName": "Accenture Careers",
+        "desc": "Entry-level HR service-delivery role supporting time, attendance and employee operations.",
+        "elig": "Any graduation; 0–1 years.",
         "resp": [
-          "Execute cross-functional business initiatives.",
-          "Analyze KPIs and customer funnels.",
-          "Build reports and recommend process improvements."
+          "Resolve routine HR service requests.",
+          "Validate attendance and timekeeping data.",
+          "Maintain accurate operational records."
         ],
         "skills": [
-          "Business analysis",
-          "Excel",
-          "SQL",
-          "Operations",
-          "Project management"
+          "HR operations",
+          "Case management",
+          "Reporting",
+          "Customer service"
         ],
-        "workMode": "On-site",
-        "jobId": "81f4c801-8444-4793-a46b-dd1394044cd9",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and deduplicated by exact requisition and official URL against current and archived repository records. Owner review remains mandatory before publication.",
+        "workMode": "Rotational shifts",
+        "jobId": "AIOC-S01672656",
+        "postedDate": "21 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:47:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Stable Money Lever posting is active, full-time/permanent, and accepts 0–1 years with internships counted."
+        "officialEvidence": "Accenture job AIOC-S01672656 is active and explicitly states any graduation and 0–1 years."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "weekday-69bc9e94",
-      "company": "Weekday",
-      "role": "Talent Operations Associate",
-      "loc": "Remote - India",
-      "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "Fresh graduates or 0–1 year",
+      "id": "deloitte-61698544",
+      "company": "Deloitte",
+      "role": "Intern – Regulatory & Financial Risk",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/",
+      "cat": "internship",
+      "slotType": "training",
+      "expYears": "Undergraduate or recent graduate",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Weekday Lever posting is active, full-time, remote in India, and explicitly accepts fresh graduates or candidates with 0–1 year.",
-      "postedDate": "Not Specified",
+      "verificationReason": "Deloitte exact posting 61698544 is active, dated 20 Nov 2026, titled Intern | Fresher and accepts undergraduates or recent graduates.",
+      "postedDate": "20 Nov 2026",
       "job": {
-        "company": "Weekday",
-        "role": "Talent Operations Associate",
-        "loc": "Remote - India",
-        "apply": "https://jobs.lever.co/weekdayworks/69bc9e94-a6c5-4166-a50b-95dba61d763a",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Fresh graduates or 0–1 year",
+        "company": "Deloitte",
+        "role": "Intern – Regulatory & Financial Risk",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://southasiacareers.deloitte.com/job/Mumbai-Intern-Fresher-Mumbai-Regulatory-%26-Financial-Risk/61698544/",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Undergraduate or recent graduate",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Weekday Careers (Lever)",
-        "desc": "Talent operations role conducting structured candidate screening calls, documenting assessments and coordinating follow-ups.",
-        "elig": "Completed graduation with 0–1 year of experience; fresh graduates who pass the assessment are eligible; current students are not eligible.",
+        "sourceName": "Deloitte South Asia Careers",
+        "desc": "Risk-advisory internship supporting financial-sector research, analysis and reporting.",
+        "elig": "Undergraduate or recent graduate with quantitative, accounting and communication fundamentals.",
         "resp": [
-          "Conduct structured candidate screening calls.",
-          "Document evaluation notes and maintain records.",
-          "Coordinate candidate follow-ups and status updates."
+          "Support risk-advisory assignments.",
+          "Research and process accounting information.",
+          "Prepare meeting notes and analytical support."
         ],
         "skills": [
-          "Communication",
-          "Candidate screening",
-          "Research",
-          "Documentation",
-          "Attention to detail"
+          "Accounting basics",
+          "Financial analysis",
+          "Microsoft Office",
+          "Communication"
         ],
-        "workMode": "Remote",
-        "jobId": "69bc9e94-a6c5-4166-a50b-95dba61d763a",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official Lever posting was checked on 22 Nov 2026 and returned no exact requisition match in repository code search before staging. Owner review remains mandatory before publication.",
+        "workMode": "Not Specified",
+        "jobId": "61698544",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:51:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Weekday Lever posting is active, full-time, remote in India, and explicitly accepts fresh graduates or candidates with 0–1 year."
+        "officialEvidence": "Deloitte exact posting 61698544 is active, dated 20 Nov 2026, titled Intern | Fresher and accepts undergraduates or recent graduates."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Lever public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "cdot-paid-internship-winter-2027",
+      "company": "C-DOT",
+      "role": "Paid Internship Programme – Winter 2027",
+      "loc": "New Delhi / Bengaluru, India",
+      "apply": "https://paid-internship.cdot.in",
+      "cat": "internship",
+      "slotType": "training",
+      "expYears": "Current eligible students",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "C-DOT's official paid-internship notice states the application portal is open from 19 to 30 Nov 2026 for the Winter 2027 batch.",
+      "postedDate": "19 Nov 2026",
+      "job": {
+        "company": "C-DOT",
+        "role": "Paid Internship Programme – Winter 2027",
+        "loc": "New Delhi / Bengaluru, India",
+        "apply": "https://paid-internship.cdot.in",
+        "cat": "internship",
+        "expType": "internship",
+        "expYears": "Current eligible students",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "C-DOT Paid Internship Portal",
+        "desc": "Government telecom R&D paid internship providing project exposure at C-DOT.",
+        "elig": "Eligible students must meet the degree, semester and academic criteria in the official Winter 2027 notice.",
+        "resp": [
+          "Work on assigned telecom or software R&D projects.",
+          "Apply academic knowledge in a professional lab environment.",
+          "Document and present assigned work."
+        ],
+        "skills": [
+          "Engineering fundamentals",
+          "Research",
+          "Problem solving",
+          "Technical documentation"
+        ],
+        "workMode": "On-site",
+        "jobId": "C-DOT-WINTER-2027",
+        "postedDate": "19 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "C-DOT's official paid-internship notice states the application portal is open from 19 to 30 Nov 2026 for the Winter 2027 batch."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
   ],
   "backup": [
     {
-      "id": "jansoft-201027000004121577",
-      "company": "Jansoft Global",
-      "role": "Software Developer",
-      "loc": "Ahmedabad, Gujarat, India / Remote",
-      "apply": "https://jansoftglobal.zohorecruit.in/jobs/Careers/201027000004121577/Software-Developer?source=CareerSite",
+      "id": "apple-200694886-0321",
+      "company": "Apple",
+      "role": "Junior Software Development Engineer in Test, Sales Engineering",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.apple.com/en-us/details/200694886-0321/junior-software-development-engineer-in-test-sales-engineering?team=SFTWR",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "0–2 years; freshers eligible",
+      "expYears": "Junior role; no minimum years stated",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact employer Zoho Recruit posting is active and accepts freshers and candidates with 0–2 years.",
-      "postedDate": "21 Nov 2026",
+      "verificationReason": "Apple role 200694886-0321 is active on the India careers search, dated 20 Nov 2026 and explicitly junior with no minimum years shown.",
+      "postedDate": "20 Nov 2026",
       "job": {
-        "company": "Jansoft Global",
-        "role": "Software Developer",
-        "loc": "Ahmedabad, Gujarat, India / Remote",
-        "apply": "https://jansoftglobal.zohorecruit.in/jobs/Careers/201027000004121577/Software-Developer?source=CareerSite",
+        "company": "Apple",
+        "role": "Junior Software Development Engineer in Test, Sales Engineering",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.apple.com/en-us/details/200694886-0321/junior-software-development-engineer-in-test-sales-engineering?team=SFTWR",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–2 years; freshers eligible",
+        "expYears": "Junior role; no minimum years stated",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Jansoft Global Careers (Zoho Recruit)",
-        "desc": "Software development role building, testing, maintaining and debugging applications for client projects.",
-        "elig": "B.E./B.Tech, BCA, MCA, B.Sc IT or equivalent; freshers and applicants with up to two years.",
+        "sourceName": "Apple Careers",
+        "desc": "Junior test-engineering role supporting software quality for sales engineering systems.",
+        "elig": "Early-career software/test candidates meeting the exact technical qualifications on Apple's listing; no minimum years are stated.",
         "resp": [
-          "Develop and maintain software applications.",
-          "Write clean code and resolve defects.",
-          "Work with development teams on assigned projects."
+          "Develop and execute software tests.",
+          "Automate quality checks and investigate defects.",
+          "Collaborate with sales-engineering development teams."
         ],
         "skills": [
-          "Java",
-          "Python",
-          "JavaScript",
-          "C#",
-          "SQL"
-        ],
-        "workMode": "Remote",
-        "jobId": "201027000004121577",
-        "postedDate": "21 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact employer Zoho Recruit posting is active and accepts freshers and candidates with 0–2 years."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "secfix-583140f4",
-      "company": "Secfix",
-      "role": "Backend Engineer - GTM Engineering (Fresh grad, India)",
-      "loc": "Remote - India",
-      "apply": "https://jobs.ashbyhq.com/secfix/583140f4-b26c-47b4-a9be-c7a88dc3c0f5/",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–2 years; internship experience can satisfy backend exposure",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Secfix Ashby requisition is active for India and explicitly targets recent graduates with 0–2 years; required backend exposure may come from internships.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Secfix",
-        "role": "Backend Engineer - GTM Engineering (Fresh grad, India)",
-        "loc": "Remote - India",
-        "apply": "https://jobs.ashbyhq.com/secfix/583140f4-b26c-47b4-a9be-c7a88dc3c0f5/",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–2 years; internship experience can satisfy backend exposure",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Secfix Careers (Ashby)",
-        "desc": "Fresh-graduate backend engineering role building reliable GTM systems, APIs, pipelines and internal tools.",
-        "elig": "Recent graduate in Computer Science or related engineering field with 0–2 years; at least one year of backend exposure may be through internships.",
-        "resp": [
-          "Build backend services and data pipelines.",
-          "Develop and consume APIs and webhooks.",
-          "Operate, test and debug production systems."
-        ],
-        "skills": [
-          "Python",
-          "SQL",
-          "REST APIs",
-          "Webhooks",
-          "Git"
-        ],
-        "workMode": "Remote",
-        "jobId": "583140f4-b26c-47b4-a9be-c7a88dc3c0f5",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Secfix Ashby requisition is active for India and explicitly targets recent graduates with 0–2 years; required backend exposure may come from internships."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "Ashby public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "endeavor-95365885",
-      "company": "Endeavor IT Solution",
-      "role": "Junior Software Engineer",
-      "loc": "Indore, Madhya Pradesh, India",
-      "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution10/95365885-walk-in-for-junior-software-engineer",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "0–1 years; freshers eligible",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact SmartRecruiters role is active and explicitly accepts freshers with 0–1 years.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Endeavor IT Solution",
-        "role": "Junior Software Engineer",
-        "loc": "Indore, Madhya Pradesh, India",
-        "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution10/95365885-walk-in-for-junior-software-engineer",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "0–1 years; freshers eligible",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Endeavor IT Solution (SmartRecruiters)",
-        "desc": "Junior engineering role working on object-oriented applications, SQL-backed systems and web development.",
-        "elig": "BE/BTech in Computer Science or related field, MSc Computer Science, MCA or equivalent; freshers can apply.",
-        "resp": [
-          "Develop and troubleshoot software applications.",
-          "Apply object-oriented programming concepts.",
-          "Work with SQL and web technologies."
-        ],
-        "skills": [
-          "OOP",
-          "SQL",
+          "Software testing",
+          "Test automation",
           "Programming",
-          "Web development"
-        ],
-        "workMode": "On-site",
-        "jobId": "95365885",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact SmartRecruiters role is active and explicitly accepts freshers with 0–1 years."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "weblee-743999657251079",
-      "company": "Weblee Technologies",
-      "role": "Software Engineer",
-      "loc": "Kolkata / Pan India",
-      "apply": "https://jobs.smartrecruiters.com/WebleeTechnologies/743999657251079-software-engineer",
-      "cat": "it",
-      "slotType": "technical",
-      "expYears": "Fresher to 2 years",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Weblee SmartRecruiters posting is active, full-time, and states fresher or not more than two years.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Weblee Technologies",
-        "role": "Software Engineer",
-        "loc": "Kolkata / Pan India",
-        "apply": "https://jobs.smartrecruiters.com/WebleeTechnologies/743999657251079-software-engineer",
-        "cat": "it",
-        "expType": "fresher",
-        "expYears": "Fresher to 2 years",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Weblee Technologies (SmartRecruiters)",
-        "desc": "Entry-level software engineering role supporting website and application development projects.",
-        "elig": "Higher secondary, graduate, diploma or B.Tech; freshers and candidates with no more than two years in the field.",
-        "resp": [
-          "Develop and maintain web or software solutions.",
-          "Test and troubleshoot assigned functionality.",
-          "Collaborate on client delivery work."
-        ],
-        "skills": [
-          "Programming",
-          "Web development",
-          "Testing",
-          "Problem solving"
+          "Debugging"
         ],
         "workMode": "Not Specified",
-        "jobId": "743999657251079",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "jobId": "200694886-0321",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Weblee SmartRecruiters posting is active, full-time, and states fresher or not more than two years."
+        "officialEvidence": "Apple role 200694886-0321 is active on the India careers search, dated 20 Nov 2026 and explicitly junior with no minimum years shown."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "vmax-403451",
-      "company": "VMax Wellness",
-      "role": "Full Stack Developer - Freshers - Onsite",
-      "loc": "Coimbatore, Tamil Nadu, India",
-      "apply": "https://jobs.pyjamahr.com/vmax-wellness/full-stack-developer-freshers-onsite/apply?source=LINKEDIN",
+      "id": "veeva-a89d4ff8",
+      "company": "Veeva Systems",
+      "role": "NetSuite Developer",
+      "loc": "Hyderabad, India",
+      "apply": "https://jobs.lever.co/veeva/a89d4ff8-b50b-4e56-9b74-0823d2751c66",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "0–1 years; fresh graduates eligible",
+      "expYears": "0–1 years option accepted",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact VMax application route is active for job 403451 and explicitly offers a fresher/0–1-year application path.",
-      "postedDate": "13 Nov 2026",
+      "verificationReason": "Veeva's exact Lever application remains active and explicitly includes a 0–1 years experience option for the Hyderabad NetSuite Developer role.",
+      "postedDate": "Not Specified",
       "job": {
-        "company": "VMax Wellness",
-        "role": "Full Stack Developer - Freshers - Onsite",
-        "loc": "Coimbatore, Tamil Nadu, India",
-        "apply": "https://jobs.pyjamahr.com/vmax-wellness/full-stack-developer-freshers-onsite/apply?source=LINKEDIN",
+        "company": "Veeva Systems",
+        "role": "NetSuite Developer",
+        "loc": "Hyderabad, India",
+        "apply": "https://jobs.lever.co/veeva/a89d4ff8-b50b-4e56-9b74-0823d2751c66",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "0–1 years; fresh graduates eligible",
+        "expYears": "0–1 years option accepted",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "VMax Wellness Careers (PyjamaHR)",
-        "desc": "Fresher full-stack development role building React and Node.js product features for a health-technology platform.",
-        "elig": "Fresh graduate in CS, IT, Engineering or Computer Applications with a recognized full-stack certification and at least one project.",
+        "sourceName": "Veeva Systems (Lever)",
+        "desc": "Entry-level enterprise applications role supporting NetSuite development and business systems.",
+        "elig": "Candidates with 0–1 years of NetSuite experience may apply through the exact active form.",
         "resp": [
-          "Build React and Node.js application features.",
-          "Develop REST APIs and database integrations.",
-          "Test, debug and document product code."
+          "Develop and support NetSuite customizations.",
+          "Troubleshoot application and integration issues.",
+          "Collaborate with business and IT teams."
         ],
         "skills": [
-          "React",
-          "Node.js",
+          "NetSuite",
           "JavaScript",
-          "MySQL",
-          "REST APIs",
-          "Git"
+          "ERP systems",
+          "Problem solving"
         ],
-        "workMode": "On-site",
-        "jobId": "403451",
-        "postedDate": "13 Nov 2026",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
+        "workMode": "Remote",
+        "jobId": "a89d4ff8-b50b-4e56-9b74-0823d2751c66",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact VMax application route is active for job 403451 and explicitly offers a fresher/0–1-year application path."
+        "officialEvidence": "Veeva's exact Lever application remains active and explicitly includes a 0–1 years experience option for the Hyderabad NetSuite Developer role."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "playto-744000139273980",
-      "company": "Playto Labs",
-      "role": "Business Development Associate (Freshers)",
+      "id": "qualcomm-3098178",
+      "company": "Qualcomm",
+      "role": "Associate Engineer",
       "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.smartrecruiters.com/PlaytoLabs/744000139273980-business-development-associate-fresher",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "Freshers only; no prior experience required",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Playto Labs SmartRecruiters posting is active, full-time, freshers-only, and states no prior experience is required.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Playto Labs",
-        "role": "Business Development Associate (Freshers)",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.smartrecruiters.com/PlaytoLabs/744000139273980-business-development-associate-fresher",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "Freshers only; no prior experience required",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Playto Labs (SmartRecruiters)",
-        "desc": "Entry-level pre-sales role researching prospects, qualifying leads, coordinating demos and maintaining CRM records.",
-        "elig": "Bachelor's degree in Business, Marketing, Commerce or related field; 2024, 2025 and 2026 graduates; freshers only.",
-        "resp": [
-          "Research and qualify prospective customers.",
-          "Coordinate demos, meetings and follow-ups.",
-          "Maintain lead and opportunity records in CRM."
-        ],
-        "skills": [
-          "Communication",
-          "Lead qualification",
-          "CRM",
-          "Research"
-        ],
-        "workMode": "On-site",
-        "jobId": "744000139273980",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Playto Labs SmartRecruiters posting is active, full-time, freshers-only, and states no prior experience is required."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "tss-744000158666720",
-      "company": "TSS Consultancy",
-      "role": "Associate Data Research Analyst",
-      "loc": "Rajkot, Gujarat, India",
-      "apply": "https://jobs.smartrecruiters.com/tssconsultancypvtltd/744000158666720-associate-data-research-analyst-rajkot",
-      "cat": "nonit",
-      "slotType": "nontech",
-      "expYears": "0–3 years; fresh graduates encouraged",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact TSS SmartRecruiters posting is active and explicitly encourages fresh graduates within its 0–3-year range.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "TSS Consultancy",
-        "role": "Associate Data Research Analyst",
-        "loc": "Rajkot, Gujarat, India",
-        "apply": "https://jobs.smartrecruiters.com/tssconsultancypvtltd/744000158666720-associate-data-research-analyst-rajkot",
-        "cat": "nonit",
-        "expType": "fresher",
-        "expYears": "0–3 years; fresh graduates encouraged",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "TSS Consultancy (SmartRecruiters)",
-        "desc": "Research and business-data role collecting, validating, analyzing and documenting information for fintech and regtech operations.",
-        "elig": "Bachelor's degree in any discipline; 0–3 years in research, analysis or business operations; fresh graduates encouraged.",
-        "resp": [
-          "Research and validate information from credible sources.",
-          "Clean and analyze datasets and prepare reports.",
-          "Maintain data quality and documentation."
-        ],
-        "skills": [
-          "Internet research",
-          "Excel",
-          "Data validation",
-          "Reporting",
-          "Attention to detail"
-        ],
-        "workMode": "On-site",
-        "jobId": "744000158666720",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and independently deduplicated by requisition ID and official URL against current data/jobs.json, current and archived review records, published or queued jobs, and Telegram delivery records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:30:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact TSS SmartRecruiters posting is active and explicitly encourages fresh graduates within its 0–3-year range."
-      },
-      "precheckStatus": "source-active",
-      "precheckReason": "SmartRecruiters public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "ingram-micro-54987",
-      "company": "Ingram Micro",
-      "role": "Graduate Engineer Trainee",
-      "loc": "Chennai or Mumbai, India",
-      "apply": "https://talentbridge.cisco.com/en/job/graduate-engineer-trainee-54987",
+      "apply": "https://qualcomm.wd12.myworkdayjobs.com/External/job/Bangalore-IND/Associate-Engineer_3098178",
       "cat": "it",
       "slotType": "technical",
-      "expYears": "2026 technology graduates; no prior experience required",
+      "expYears": "Fresh graduate / early career",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Cisco Talent Bridge job 54987 is active for Ingram Micro, full-time, and limited to 2026 technology graduates in Chennai or Mumbai.",
-      "postedDate": "Not Specified",
+      "verificationReason": "Qualcomm requisition 3098178 is currently listed for fresh graduates and early-career applicants in Software Engineering.",
+      "postedDate": "18 Nov 2026",
       "job": {
-        "company": "Ingram Micro",
-        "role": "Graduate Engineer Trainee",
-        "loc": "Chennai or Mumbai, India",
-        "apply": "https://talentbridge.cisco.com/en/job/graduate-engineer-trainee-54987",
+        "company": "Qualcomm",
+        "role": "Associate Engineer",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://qualcomm.wd12.myworkdayjobs.com/External/job/Bangalore-IND/Associate-Engineer_3098178",
         "cat": "it",
         "expType": "fresher",
-        "expYears": "2026 technology graduates; no prior experience required",
+        "expYears": "Fresh graduate / early career",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "Cisco Talent Bridge / Ingram Micro",
-        "desc": "Graduate technology trainee role combining structured onboarding with live software and enterprise technology projects.",
-        "elig": "B.E./B.Tech 2026 graduates based locally in Chennai or Mumbai with programming, data-structure and database fundamentals.",
+        "sourceName": "Qualcomm Careers (Workday)",
+        "desc": "Associate embedded and cloud-edge software engineering role.",
+        "elig": "Bachelor's in engineering, information systems, computer science or related; fresher/early-career eligibility.",
         "resp": [
-          "Complete structured technical onboarding.",
-          "Contribute to live software and enterprise projects.",
-          "Learn modern development and platform technologies."
+          "Implement small software features.",
+          "Assist with unit tests and debugging.",
+          "Collaborate with systems, hardware and test teams."
         ],
         "skills": [
-          "OOP",
-          "Data structures",
-          "Java",
-          "Python",
-          "JavaScript",
-          "SQL"
+          "C/C++",
+          "Embedded systems",
+          "Software testing",
+          "Debugging"
         ],
-        "workMode": "On-site",
-        "jobId": "54987",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and deduplicated by exact requisition and official URL against current and archived repository records. Owner review remains mandatory before publication.",
+        "workMode": "On-site / Hybrid",
+        "jobId": "3098178",
+        "postedDate": "18 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:47:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Cisco Talent Bridge job 54987 is active for Ingram Micro, full-time, and limited to 2026 technology graduates in Chennai or Mumbai."
+        "officialEvidence": "Qualcomm requisition 3098178 is currently listed for fresh graduates and early-career applicants in Software Engineering."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     },
     {
-      "id": "mongodb-8127582",
-      "company": "MongoDB",
-      "role": "2027 Winter Software Engineer Intern",
+      "id": "virtusa-creq264555",
+      "company": "Virtusa",
+      "role": "Associate – QA Automation Engineer",
+      "loc": "Hyderabad, Telangana, India",
+      "apply": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ264555/Associate",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "0–2 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Virtusa requisition CREQ264555 is active and explicitly states 0–2 years for the QA Automation Engineer role.",
+      "postedDate": "22 Nov 2026",
+      "job": {
+        "company": "Virtusa",
+        "role": "Associate – QA Automation Engineer",
+        "loc": "Hyderabad, Telangana, India",
+        "apply": "https://www.virtusa.com/careers/job-search/global/en/job/CREQ264555/Associate",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Virtusa Careers",
+        "desc": "Junior QA automation role testing web applications and performance.",
+        "elig": "Bachelor's in a relevant technical field; 0–2 years.",
+        "resp": [
+          "Develop Selenium automation scripts.",
+          "Execute performance tests with JMeter.",
+          "Track defects and collaborate with developers."
+        ],
+        "skills": [
+          "Selenium",
+          "JMeter",
+          "Automation testing",
+          "Defect tracking"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "CREQ264555",
+        "postedDate": "22 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Virtusa requisition CREQ264555 is active and explicitly states 0–2 years for the QA Automation Engineer role."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "sioniq-164468",
+      "company": "SIONIQ",
+      "role": "Associate Database Developer (Fresher)",
+      "loc": "Kochi, Kerala, India",
+      "apply": "https://sioniq.keka.com/careers/jobdetails/164468",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "Fresher; 2024 and later graduates",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "SIONIQ exact Keka posting 164468 is active and explicitly targets freshers from 2024 and later batches.",
+      "postedDate": "20 Nov 2026",
+      "job": {
+        "company": "SIONIQ",
+        "role": "Associate Database Developer (Fresher)",
+        "loc": "Kochi, Kerala, India",
+        "apply": "https://sioniq.keka.com/careers/jobdetails/164468",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresher; 2024 and later graduates",
+        "salary": "₹25,000 CTC per month; variable pay stated",
+        "batch": "2024/2025/2026",
+        "status": "unreviewed",
+        "sourceName": "SIONIQ Careers (Keka)",
+        "desc": "Fresher database-development role designing ERP schemas, queries and data models.",
+        "elig": "Bachelor's in CS, IT or related; 2024 or later; no backlogs.",
+        "resp": [
+          "Design tables, relationships and constraints.",
+          "Write query-logic documentation and ER diagrams.",
+          "Support .NET developers with schema mapping."
+        ],
+        "skills": [
+          "SQL",
+          "RDBMS",
+          "ER modelling",
+          "SQL Server"
+        ],
+        "workMode": "On-site",
+        "jobId": "164468",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "SIONIQ exact Keka posting 164468 is active and explicitly targets freshers from 2024 and later batches."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "sq1-166747000004341383",
+      "company": "SQ1 Security Technology",
+      "role": "Graduate Engineer Trainee – Cybersecurity GRC",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://sq1.zohorecruit.in/jobs/Careers/166747000004341383/Graduate-Engineer-Trainee-GET-Cybersecurity-GRC?source=CareerSite",
+      "cat": "it",
+      "slotType": "technical",
+      "expYears": "Fresher; 2025/2026 batch",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "SQ1's exact Zoho Recruit requisition is active and targets fresher 2025/2026 graduates for a full-time graduate engineer trainee role.",
+      "postedDate": "20 Nov 2026",
+      "job": {
+        "company": "SQ1 Security Technology",
+        "role": "Graduate Engineer Trainee – Cybersecurity GRC",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://sq1.zohorecruit.in/jobs/Careers/166747000004341383/Graduate-Engineer-Trainee-GET-Cybersecurity-GRC?source=CareerSite",
+        "cat": "it",
+        "expType": "fresher",
+        "expYears": "Fresher; 2025/2026 batch",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "SQ1 Security Technology (Zoho Recruit)",
+        "desc": "Graduate cybersecurity GRC role supporting security compliance and risk-assessment work.",
+        "elig": "2025/2026 engineering graduates meeting the official academic criteria; freshers welcome.",
+        "resp": [
+          "Support security risk and compliance assessments.",
+          "Maintain GRC evidence and documentation.",
+          "Assist with ISO 27001 and privacy-control work."
+        ],
+        "skills": [
+          "ISO 27001",
+          "Risk assessment",
+          "GRC",
+          "Data protection"
+        ],
+        "workMode": "On-site",
+        "jobId": "166747000004341383",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "SQ1's exact Zoho Recruit requisition is active and targets fresher 2025/2026 graduates for a full-time graduate engineer trainee role."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "capgemini-559285",
+      "company": "Capgemini",
+      "role": "Corporate Tax (CA Fresher)",
       "loc": "Gurugram, Haryana, India",
-      "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/8127582",
+      "apply": "https://careers.capgemini.com/job/Gurgaon-Corporate-Tax-%28CA-Fresher%29/1448794733/",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "0–1 years",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "Capgemini reference 559285 is active, dated 20 Nov 2026 and explicitly accepts CA freshers with 0–1 years.",
+      "postedDate": "20 Nov 2026",
+      "job": {
+        "company": "Capgemini",
+        "role": "Corporate Tax (CA Fresher)",
+        "loc": "Gurugram, Haryana, India",
+        "apply": "https://careers.capgemini.com/job/Gurgaon-Corporate-Tax-%28CA-Fresher%29/1448794733/",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "0–1 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "Capgemini Careers",
+        "desc": "Corporate-tax fresher role supporting returns, compliance and tax proceedings.",
+        "elig": "Qualified CA from 2025/2026; 0–1 years; immediate joiner.",
+        "resp": [
+          "Prepare tax computations and returns.",
+          "Support TDS and transfer-pricing compliance.",
+          "Assist with tax notices and litigation documentation."
+        ],
+        "skills": [
+          "Corporate tax",
+          "TDS",
+          "Transfer pricing",
+          "Tax compliance"
+        ],
+        "workMode": "Not Specified",
+        "jobId": "559285",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "Capgemini reference 559285 is active, dated 20 Nov 2026 and explicitly accepts CA freshers with 0–1 years."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "wns-743999903984093",
+      "company": "WNS Global Services",
+      "role": "Associate – Operations",
+      "loc": "Mumbai, Maharashtra, India",
+      "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "Fresher eligible",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "WNS SmartRecruiters posting 743999903984093 is active and explicitly accepts non-technical graduates who are freshers.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "WNS Global Services",
+        "role": "Associate – Operations",
+        "loc": "Mumbai, Maharashtra, India",
+        "apply": "https://jobs.smartrecruiters.com/WNSGlobalServices144/743999903984093-associate-sr-associate-operations",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "Fresher eligible",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "WNS Global Services (SmartRecruiters)",
+        "desc": "Back-office operations role supporting non-voice processes for travel, insurance and banking clients.",
+        "elig": "Non-technical graduates; freshers eligible; basic computer knowledge and good English.",
+        "resp": [
+          "Handle back-office customer processes.",
+          "Resolve routine non-voice service requests.",
+          "Maintain accuracy and process compliance."
+        ],
+        "skills": [
+          "Customer support",
+          "Basic computer skills",
+          "English communication",
+          "Process operations"
+        ],
+        "workMode": "On-site",
+        "jobId": "743999903984093",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "WNS SmartRecruiters posting 743999903984093 is active and explicitly accepts non-technical graduates who are freshers."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "cloudkaptan-125786",
+      "company": "CloudKaptan",
+      "role": "Software Development Apprentice",
+      "loc": "Kolkata, West Bengal, India",
+      "apply": "https://cloudkaptan.keka.com/careers/jobdetails/125786",
+      "cat": "apprenticeship",
+      "slotType": "training",
+      "expYears": "2026 graduate; apprenticeship",
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "verificationReason": "CloudKaptan exact Keka posting 125786 is active for 2026 BTech/MCA graduates and states a six-month apprenticeship.",
+      "postedDate": "20 Nov 2026",
+      "job": {
+        "company": "CloudKaptan",
+        "role": "Software Development Apprentice",
+        "loc": "Kolkata, West Bengal, India",
+        "apply": "https://cloudkaptan.keka.com/careers/jobdetails/125786",
+        "cat": "apprenticeship",
+        "expType": "apprenticeship",
+        "expYears": "2026 graduate; apprenticeship",
+        "salary": "₹25,000 per month stipend",
+        "batch": "2026",
+        "status": "unreviewed",
+        "sourceName": "CloudKaptan Careers (Keka)",
+        "desc": "Six-month software development apprenticeship across full-stack, cloud, data and AI work.",
+        "elig": "2026 BTech/MCA in CSE, IT, ECE or MCA; 60% in X/XII, 7 CGPA, no backlogs.",
+        "resp": [
+          "Build frontend and backend application features.",
+          "Support AWS, Salesforce or data-engineering work.",
+          "Use testing and version-control practices."
+        ],
+        "skills": [
+          "Java or JavaScript",
+          "React/Angular/Vue",
+          "REST APIs",
+          "AWS"
+        ],
+        "workMode": "On-site",
+        "jobId": "125786",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "CloudKaptan exact Keka posting 125786 is active for 2026 BTech/MCA graduates and states a six-month apprenticeship."
+      },
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
+      "reviewedAt": null,
+      "reviewedBy": null
+    },
+    {
+      "id": "zebra-jr103863",
+      "company": "Zebra Technologies",
+      "role": "2027 Six-Month Internship – Software Engineering",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://zebra.wd501.myworkdayjobs.com/Zebra_careers/job/Bengaluru-India/XMLNAME-2027--6-Month--Internship----Bengaluru--Software-Engineering_JR103863",
       "cat": "internship",
       "slotType": "training",
-      "expYears": "Current student graduating Fall 2027 through Spring 2029",
+      "expYears": "0+ years; currently enrolled student",
       "reviewedStatus": "unreviewed",
       "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact MongoDB Greenhouse job 8127582 is active for a full-time 24-week winter internship in Gurugram.",
-      "postedDate": "Not Specified",
+      "verificationReason": "Zebra Workday requisition JR103863 is an exact six-month software-engineering internship route for Bengaluru and states 0+ years with concurrent degree enrollment.",
+      "postedDate": "20 Nov 2026",
       "job": {
-        "company": "MongoDB",
-        "role": "2027 Winter Software Engineer Intern",
-        "loc": "Gurugram, Haryana, India",
-        "apply": "https://job-boards.greenhouse.io/mdbgeneralreferrals/jobs/8127582",
+        "company": "Zebra Technologies",
+        "role": "2027 Six-Month Internship – Software Engineering",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://zebra.wd501.myworkdayjobs.com/Zebra_careers/job/Bengaluru-India/XMLNAME-2027--6-Month--Internship----Bengaluru--Software-Engineering_JR103863",
         "cat": "internship",
-        "expType": "internship/apprenticeship",
-        "expYears": "Current student graduating Fall 2027 through Spring 2029",
+        "expType": "internship",
+        "expYears": "0+ years; currently enrolled student",
         "salary": "Not Disclosed",
         "batch": "Not Specified",
         "status": "unreviewed",
-        "sourceName": "MongoDB Careers (Greenhouse)",
-        "desc": "Software engineering internship contributing production code within MongoDB product and technology teams.",
-        "elig": "Bachelor's or Master's student in CS, Computer Engineering or related field with at least one semester remaining after the internship; graduation Fall 2027 to Spring 2029.",
+        "sourceName": "Zebra Technologies Careers (Workday)",
+        "desc": "Six-month student internship providing software-engineering exposure, mentorship and team assignments.",
+        "elig": "Currently enrolled in a degree-seeking post-secondary institution; 0+ years.",
         "resp": [
-          "Develop production-level software with engineering teams.",
-          "Apply algorithms and software design fundamentals.",
-          "Collaborate with mentors and cross-functional peers."
+          "Complete team-based software assignments.",
+          "Build technology and organizational skills.",
+          "Participate in mentorship and development activities."
         ],
         "skills": [
-          "Java",
-          "Python",
-          "Go",
-          "C++",
-          "JavaScript",
-          "Algorithms"
+          "Software engineering fundamentals",
+          "Planning",
+          "Teamwork",
+          "Microsoft Office"
         ],
         "workMode": "Hybrid",
-        "jobId": "8127582",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and deduplicated by exact requisition and official URL against current and archived repository records. Owner review remains mandatory before publication.",
+        "jobId": "JR103863",
+        "postedDate": "20 Nov 2026",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
         "manualLiveVerifiedAt": null,
         "browserVerifiedAt": null
       },
       "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:47:00.000Z",
+        "currentCheckAt": "2026-11-23T03:30:00.000Z",
         "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact MongoDB Greenhouse job 8127582 is active for a full-time 24-week winter internship in Gurugram."
+        "officialEvidence": "Zebra Workday requisition JR103863 is an exact six-month software-engineering internship route for Bengaluru and states 0+ years with concurrent degree enrollment."
       },
-      "precheckStatus": "source-active",
-      "precheckReason": "Greenhouse public posting inventory contains the exact published job",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
-      "reviewedAt": null,
-      "reviewedBy": null
-    },
-    {
-      "id": "sarvam-6a5df2a7",
-      "company": "Sarvam",
-      "role": "Product Operations & Analytics Intern",
-      "loc": "Bengaluru, Karnataka, India",
-      "apply": "https://jobs.ashbyhq.com/sarvam/6a5df2a7-5335-41b7-9b50-7f2f5de26d18",
-      "cat": "internship",
-      "slotType": "training",
-      "expYears": "Current student or recently completed degree",
-      "reviewedStatus": "unreviewed",
-      "verificationVerdict": "pending_owner_review",
-      "verificationReason": "Exact Sarvam Ashby posting is active, full-time, and accepts candidates currently pursuing or recently completing a degree in any discipline.",
-      "postedDate": "Not Specified",
-      "job": {
-        "company": "Sarvam",
-        "role": "Product Operations & Analytics Intern",
-        "loc": "Bengaluru, Karnataka, India",
-        "apply": "https://jobs.ashbyhq.com/sarvam/6a5df2a7-5335-41b7-9b50-7f2f5de26d18",
-        "cat": "internship",
-        "expType": "internship/apprenticeship",
-        "expYears": "Current student or recently completed degree",
-        "salary": "Not Disclosed",
-        "batch": "Not Specified",
-        "status": "unreviewed",
-        "sourceName": "Sarvam Careers (Ashby)",
-        "desc": "Product operations internship analyzing usage, feedback and issue data to help product and development teams prioritize improvements.",
-        "elig": "Currently pursuing or recently completed a degree in any discipline; strong judgment, writing and analytical rigor.",
-        "resp": [
-          "Analyze product usage and user feedback.",
-          "Maintain clear issue and request records.",
-          "Translate findings into actionable product input."
-        ],
-        "skills": [
-          "Product operations",
-          "Analytics",
-          "Spreadsheets",
-          "Written communication",
-          "SQL basics"
-        ],
-        "workMode": "On-site",
-        "jobId": "6a5df2a7-5335-41b7-9b50-7f2f5de26d18",
-        "postedDate": "Not Specified",
-        "verifiedDate": "22 Nov 2026",
-        "sourceVerificationMethod": "Exact official employer or ATS evidence was checked on 22 Nov 2026 and deduplicated by exact requisition and official URL against current and archived repository records. Owner review remains mandatory before publication.",
-        "manualLiveVerifiedAt": null,
-        "browserVerifiedAt": null
-      },
-      "sourceEvidence": {
-        "currentCheckAt": "2026-11-22T03:47:00.000Z",
-        "currentVerdict": "source_active_for_owner_recheck",
-        "officialEvidence": "Exact Sarvam Ashby posting is active, full-time, and accepts candidates currently pursuing or recently completing a degree in any discipline."
-      },
-      "precheckStatus": "unsure",
-      "precheckReason": "HTTP 404; availability unconfirmed",
-      "precheckCheckedAt": "2026-11-22T03:45:45.150397+00:00",
+      "precheckStatus": "pending-repository-precheck",
+      "precheckReason": "Awaiting independent repository rank and duplicate scrub.",
+      "precheckCheckedAt": null,
       "reviewedAt": null,
       "reviewedBy": null
     }
@@ -1201,47 +1181,66 @@
       "backup": 10
     },
     "remaining": 20,
+    "watchlistEmployersVisited": 22,
+    "watchlistEmployersNotVisited": 65,
+    "watchlistEmployersBlocked": 0,
+    "fallbackEmployersRepresented": 9,
+    "uniqueExactLiveJobIdsFound": 28,
     "duplicateExclusions": [
       {
-        "id": "ey-1760652",
-        "company": "EY",
+        "id": "google-125423735539671750",
+        "company": "Google",
         "reason": "already_published",
-        "officialUrl": "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456872433/"
+        "officialUrl": "https://www.google.com/about/careers/applications/jobs/results/125423735539671750-student-researcher-2027"
       },
       {
-        "id": "wns-744000111543195",
-        "company": "WNS Global Services",
+        "id": "qualcomm-3094023",
+        "company": "Qualcomm",
         "reason": "already_published",
-        "officialUrl": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195"
+        "officialUrl": "https://qualcomm.wd12.myworkdayjobs.com/External/job/Hyderabad-IND/XMLNAME-2027-Campus-Hire-Associate-Engineer-SW_3094023"
       },
       {
-        "id": "cin7-c896656f",
-        "company": "Cin7",
+        "id": "instawork-4706444006",
+        "company": "Instawork",
         "reason": "already_published",
-        "officialUrl": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4"
+        "officialUrl": "https://job-boards.greenhouse.io/instawork/jobs/4706444006"
       },
       {
-        "id": "drivetrain-bc1c17bc",
-        "company": "Drivetrain",
+        "id": "hevo-6cbbe304",
+        "company": "Hevo Data",
         "reason": "already_published",
-        "officialUrl": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc"
+        "officialUrl": "https://jobs.lever.co/hevodata/6cbbe304-e065-4711-bf3e-756795d2bc2a"
       },
       {
-        "id": "karya-5469564008",
-        "company": "Karya",
-        "reason": "previously_reviewed_official_requisition",
-        "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
+        "id": "crowe-r-52653",
+        "company": "Crowe",
+        "reason": "application_deadline_passed",
+        "officialUrl": "https://crowe.wd12.myworkdayjobs.com/External_Careers/job/Hyderabad-Telangana-India/Junior-Software-Engineer-1_R-52653"
       },
       {
-        "id": "paytm-payments-d63d3620",
-        "company": "Paytm Payments Services",
-        "reason": "already_published",
-        "officialUrl": "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+        "id": "amex-26015127",
+        "company": "American Express",
+        "reason": "application_deadline_passed",
+        "officialUrl": "https://careers.americanexpress.com/en/sites/CX_1/job/26015127"
+      },
+      {
+        "id": "salesforce-jr367594",
+        "company": "Salesforce",
+        "reason": "application_deadline_passed_or_conflicting",
+        "officialUrl": "https://www.salesforce.com/company/careers/jobs/JR367594/system-analyst/"
+      },
+      {
+        "id": "agoda-6323041",
+        "company": "Agoda",
+        "reason": "application_deadline_passed",
+        "officialUrl": "https://job-boards.greenhouse.io/agoda/jobs/6323041"
       }
     ],
-    "excludedCount": 6,
+    "excludedCount": 8,
+    "heldSourceUnconfirmedOrExperienced": 0,
     "needsFreshDiscovery": false,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "deloitteOutcome": "Deloitte: one new verified fresher-eligible internship reserved in Priority (requisition 61698544).",
+    "note": "20 distinct employers. Search evidence directly covered 22 of 87 watchlist employers; 65 were not individually opened because all quota slots were filled. No employer is counted as visited solely for appearing on the watchlist."
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -1278,177 +1277,36 @@
   "ranking": {
     "status": "awaiting_repository_rerun",
     "model": "repository rank-review-batch workflow",
-    "note": "Final non-tech replacement added after Paytm duplicate exclusion."
+    "note": "Initial ordered shortlist from exact official evidence; final ordering and independent duplicate scrub must run before owner review."
   },
   "previousBatchReference": {
-    "batchId": "2026-11-21-0900-ist",
+    "batchId": "2026-11-22-0900-ist",
     "status": "reviewing",
-    "generatedAt": "2026-11-21T03:30:00.000Z",
-    "updatedAt": "2026-11-21T04:30:00.000Z",
+    "generatedAt": "2026-11-22T03:30:00.000Z",
+    "updatedAt": "2026-11-22T03:51:00.000Z",
     "candidateIds": [
-      "microsoft-1970393557069836",
-      "sap-744000162659720",
-      "synopsys-18521",
-      "hcltech-189023",
-      "qualcomm-446720848928",
-      "accenture-AIOC-S01663367",
-      "honeywell-161636",
-      "american-express-26016647",
-      "hevo-data-4eccaf98",
-      "metro-makro-744000157777611",
-      "intel-JR0288677",
-      "eaton-687239995759",
-      "hewlett-packard-enterprise-1218507",
-      "pragma-edge-27074000049076008",
-      "swiss-re-139951",
-      "paytm-payments-services-3e92fb8a-7a47-4630-ba74-75521270a0ef",
-      "thales-R0347867",
-      "tieto-744000161430139",
-      "western-digital-744000161459261",
-      "vestas-80495"
+      "exl-22896",
+      "brillio-r01573613",
+      "aiprise-4994f7fc",
+      "chaosology-569149000008791001",
+      "qualcomm-446722234783",
+      "vijnoratech-software-engineer-graduate",
+      "synchrony-2603082",
+      "synopsys-19297",
+      "stable-money-81f4c801",
+      "weekday-69bc9e94",
+      "jansoft-201027000004121577",
+      "secfix-583140f4",
+      "endeavor-95365885",
+      "weblee-743999657251079",
+      "vmax-403451",
+      "playto-744000139273980",
+      "tss-744000158666720",
+      "ingram-micro-54987",
+      "mongodb-8127582",
+      "sarvam-6a5df2a7"
     ],
-    "ownerReview": [
-      {
-        "id": "microsoft-1970393557069836",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "sap-744000162659720",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "synopsys-18521",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "hcltech-189023",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "qualcomm-446720848928",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "accenture-AIOC-S01663367",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "honeywell-161636",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "american-express-26016647",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "hevo-data-4eccaf98",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "metro-makro-744000157777611",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "intel-JR0288677",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "eaton-687239995759",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "hewlett-packard-enterprise-1218507",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "pragma-edge-27074000049076008",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "swiss-re-139951",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "paytm-payments-services-3e92fb8a-7a47-4630-ba74-75521270a0ef",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "thales-R0347867",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "tieto-744000161430139",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "western-digital-744000161459261",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      },
-      {
-        "id": "vestas-80495",
-        "reviewedStatus": "unreviewed",
-        "verificationVerdict": "pending_owner_review",
-        "reviewedAt": null,
-        "reviewedBy": null
-      }
-    ],
+    "ownerReview": null,
     "discoveryAudit": {
       "priority": {
         "size": 10,
@@ -1485,170 +1343,150 @@
       "remaining": 20,
       "duplicateExclusions": [
         {
-          "company": "Deloitte",
-          "jobId": "114743/60941544",
-          "reason": "previously_reviewed_official_requisition"
+          "id": "ey-1760652",
+          "company": "EY",
+          "reason": "already_published",
+          "officialUrl": "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456872433/"
         },
         {
-          "company": "ProcDNA",
-          "jobId": "743999738938617",
-          "reason": "already_published"
+          "id": "wns-744000111543195",
+          "company": "WNS Global Services",
+          "reason": "already_published",
+          "officialUrl": "https://jobs.smartrecruiters.com/WNSGlobalServices144/744000111543195"
         },
         {
-          "company": "Infineon Technologies",
-          "jobId": "563808971970202",
-          "reason": "previously_reviewed_official_requisition"
+          "id": "cin7-c896656f",
+          "company": "Cin7",
+          "reason": "already_published",
+          "officialUrl": "https://jobs.lever.co/cin7/c896656f-9a8b-4263-add3-553226c73df4"
         },
         {
-          "company": "Avnet",
-          "jobId": "JR-024615",
-          "reason": "already_published"
+          "id": "drivetrain-bc1c17bc",
+          "company": "Drivetrain",
+          "reason": "already_published",
+          "officialUrl": "https://jobs.lever.co/drivetrain/bc1c17bc-86ac-4f00-a1e3-0eb85aae4fdc"
+        },
+        {
+          "id": "karya-5469564008",
+          "company": "Karya",
+          "reason": "previously_reviewed_official_requisition",
+          "officialUrl": "https://job-boards.greenhouse.io/karya/jobs/5469564008"
+        },
+        {
+          "id": "paytm-payments-d63d3620",
+          "company": "Paytm Payments Services",
+          "reason": "already_published",
+          "officialUrl": "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
         }
       ],
-      "excludedCount": 4,
+      "excludedCount": 6,
       "needsFreshDiscovery": false,
       "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
     },
     "quotaAudit": {
       "requiredPerList": {
-        "technical": 6,
-        "nonIT": 2,
+        "technicalFullTime": 6,
+        "nonTechFullTime": 2,
         "internshipOrApprenticeship": 2,
         "total": 10
       },
       "priority": {
-        "technical": 6,
-        "nonIT": 2,
+        "technicalFullTime": 6,
+        "nonTechFullTime": 2,
         "internshipOrApprenticeship": 2,
         "total": 10,
         "shortfalls": {
-          "technical": 0,
-          "nonIT": 0,
+          "technicalFullTime": 0,
+          "nonTechFullTime": 0,
           "internshipOrApprenticeship": 0
         }
       },
       "backup": {
-        "technical": 6,
-        "nonIT": 2,
+        "technicalFullTime": 6,
+        "nonTechFullTime": 2,
         "internshipOrApprenticeship": 2,
         "total": 10,
         "shortfalls": {
-          "technical": 0,
-          "nonIT": 0,
+          "technicalFullTime": 0,
+          "nonTechFullTime": 0,
           "internshipOrApprenticeship": 0
         }
       },
-      "oneEmployerAcrossFullBatch": true,
-      "categoryAuditPassed": true
+      "distinctEmployers": 20,
+      "oneEmployerPerCandidate": true
     },
     "ranking": {
-      "status": "awaiting_recheck",
+      "status": "awaiting_repository_rerun",
       "model": "repository rank-review-batch workflow",
-      "note": "Vestas replacement requires independent pre-review; owner review remains pending."
+      "note": "Final non-tech replacement added after Paytm duplicate exclusion."
     },
     "publication": null,
     "telegramReceipts": [],
     "priorHistory": {
-      "batchId": "2026-11-20-0900-ist",
+      "batchId": "2026-11-21-0900-ist",
       "status": "reviewing",
-      "generatedAt": "2026-11-20T03:30:00.000Z",
-      "updatedAt": "2026-11-20T03:30:00.000Z",
+      "generatedAt": "2026-11-21T03:30:00.000Z",
+      "updatedAt": "2026-11-21T04:30:00.000Z",
       "candidateIds": [
-        "deloitte-60887144",
-        "apple-200694892-1052",
-        "rtx-01889499",
-        "accenture-aioc-s01657091",
-        "ey-1760080",
-        "walmart-r-2580222",
-        "hsbc-1377334357",
-        "global-payments-r0077227",
-        "ntt-r-146225",
-        "synopsys-18486",
-        "bank-of-america-26036895",
-        "amazon-10593241",
+        "microsoft-1970393557069836",
+        "sap-744000162659720",
+        "synopsys-18521",
+        "hcltech-189023",
+        "qualcomm-446720848928",
+        "accenture-AIOC-S01663367",
         "honeywell-161636",
-        "standard-chartered-56452"
+        "american-express-26016647",
+        "hevo-data-4eccaf98",
+        "metro-makro-744000157777611",
+        "intel-JR0288677",
+        "eaton-687239995759",
+        "hewlett-packard-enterprise-1218507",
+        "pragma-edge-27074000049076008",
+        "swiss-re-139951",
+        "paytm-payments-services-3e92fb8a-7a47-4630-ba74-75521270a0ef",
+        "thales-R0347867",
+        "tieto-744000161430139",
+        "western-digital-744000161459261",
+        "vestas-80495"
       ],
       "ownerReview": [
         {
-          "id": "deloitte-60887144",
+          "id": "microsoft-1970393557069836",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
           "reviewedBy": null
         },
         {
-          "id": "apple-200694892-1052",
+          "id": "sap-744000162659720",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
           "reviewedBy": null
         },
         {
-          "id": "rtx-01889499",
+          "id": "synopsys-18521",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
           "reviewedBy": null
         },
         {
-          "id": "accenture-aioc-s01657091",
+          "id": "hcltech-189023",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
           "reviewedBy": null
         },
         {
-          "id": "ey-1760080",
+          "id": "qualcomm-446720848928",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
           "reviewedBy": null
         },
         {
-          "id": "walmart-r-2580222",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "hsbc-1377334357",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "global-payments-r0077227",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "ntt-r-146225",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "synopsys-18486",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "bank-of-america-26036895",
-          "reviewedStatus": "unreviewed",
-          "verificationVerdict": "pending_owner_review",
-          "reviewedAt": null,
-          "reviewedBy": null
-        },
-        {
-          "id": "amazon-10593241",
+          "id": "accenture-AIOC-S01663367",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
@@ -1662,7 +1500,91 @@
           "reviewedBy": null
         },
         {
-          "id": "standard-chartered-56452",
+          "id": "american-express-26016647",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "hevo-data-4eccaf98",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "metro-makro-744000157777611",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "intel-JR0288677",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "eaton-687239995759",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "hewlett-packard-enterprise-1218507",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "pragma-edge-27074000049076008",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "swiss-re-139951",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "paytm-payments-services-3e92fb8a-7a47-4630-ba74-75521270a0ef",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "thales-R0347867",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "tieto-744000161430139",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "western-digital-744000161459261",
+          "reviewedStatus": "unreviewed",
+          "verificationVerdict": "pending_owner_review",
+          "reviewedAt": null,
+          "reviewedBy": null
+        },
+        {
+          "id": "vestas-80495",
           "reviewedStatus": "unreviewed",
           "verificationVerdict": "pending_owner_review",
           "reviewedAt": null,
@@ -1670,362 +1592,584 @@
         }
       ],
       "discoveryAudit": {
-        "runDate": "20 Nov 2026",
-        "timezone": "Asia/Kolkata",
-        "watchlistTotal": 87,
-        "watchlistVisited": 87,
-        "watchlistNotVisited": 0,
-        "watchlistBlocked": 4,
-        "fallbackEmployersVisited": 12,
-        "watchlistCandidatesAccepted": 11,
-        "fallbackCandidatesAccepted": 3,
-        "distinctEmployers": 14,
-        "uniqueExactLiveJobIdsFound": 0,
-        "stagedForOwnerRecheck": 14,
-        "held": 6,
-        "expired": 7,
-        "duplicatesExcluded": 7,
-        "deloitteOutcome": "Deloitte: exact-source fresher-eligible candidate 60887144 was found and reserved in Priority; the repository precheck marked it Unsure, so current Live status remains for owner recheck.",
+        "priority": {
+          "size": 10,
+          "counts": {
+            "fresherIT": 6,
+            "nonIT": 2,
+            "training": 2,
+            "unclassified": 0
+          },
+          "shortfalls": {
+            "fresherIT": 0,
+            "nonIT": 0,
+            "training": 0
+          }
+        },
+        "backup": {
+          "size": 10,
+          "counts": {
+            "fresherIT": 6,
+            "nonIT": 2,
+            "training": 2,
+            "unclassified": 0
+          },
+          "shortfalls": {
+            "fresherIT": 0,
+            "nonIT": 0,
+            "training": 0
+          }
+        },
+        "target": {
+          "priority": 10,
+          "backup": 10
+        },
+        "remaining": 20,
         "duplicateExclusions": [
-          "Adobe R173016 — already present in review/publication history.",
-          "Cisco 2015227 — already present in review/publication history.",
-          "Meesho 1de2fc88-e203-4f1a-8046-55df700de4be — already reviewed.",
-          "Amazon 10506542 — already present in repository history.",
-          "Micron JR105741 — already present in repository history.",
-          "ION 6f66cbb4-c882-4234-b84e-68baea56e1ea — already reviewed.",
-          "Sutherland 744000151046829 — previously reviewed exact requisition."
+          {
+            "company": "Deloitte",
+            "jobId": "114743/60941544",
+            "reason": "previously_reviewed_official_requisition"
+          },
+          {
+            "company": "ProcDNA",
+            "jobId": "743999738938617",
+            "reason": "already_published"
+          },
+          {
+            "company": "Infineon Technologies",
+            "jobId": "563808971970202",
+            "reason": "previously_reviewed_official_requisition"
+          },
+          {
+            "company": "Avnet",
+            "jobId": "JR-024615",
+            "reason": "already_published"
+          }
         ],
-        "expiredExclusions": [
-          "Citi Young Apprentice 26990116 — exact official route returned 404 on 20 Nov.",
-          "Walmart R-2557935 — exact official route redirected to job-not-found.",
-          "Bank of America JR-26039582 — exact official route returned 404.",
-          "KPMG 30049804 — stated application deadline passed on 25 Oct 2026.",
-          "Salesforce JR307116 — stated application deadline passed on 3 Nov 2026.",
-          "Google Software Engineer, University Graduate 2026 — source stated no longer accepting applications.",
-          "Caterpillar apprentice postings checked — stated application deadlines had passed."
-        ],
-        "heldExclusions": [
-          "Qualcomm 446721997186 — exact official route redirected but was inaccessible; current Live status not asserted.",
-          "HP 3170387 — exact official Workday route was inaccessible; held despite fresh third-party evidence.",
-          "Salesforce JR368441 — exact Workday page returned no readable content and a reported 19 Nov deadline; held as inconclusive.",
-          "Google 73379279982731974 — current official inventory listed the role but its exact page said job not found; held as inconclusive.",
-          "Honeywell 156990 — exact page open but zero-experience eligibility was not explicit enough for this batch.",
-          "Stripe 8212508 — exact new-grad role was limited to US locations and did not establish India/international applicant eligibility."
-        ],
-        "exclusions": [
-          "Additional otherwise-live roles from already selected employers were not staged because one employer is allowed across the full Priority and Backup set.",
-          "Experienced-only roles, generic career pages and source-unconfirmed listings were not used to fill technical shortages.",
-          "Blocked/inconclusive portals counted: NTT Workday, Qualcomm Eightfold, Salesforce Workday and HP Workday; indexed exact evidence was used only where the official source still established the required facts."
-        ],
-        "note": "Fresh 20 Nov discovery; the 19 Oct/20 Oct fixed sample was not reused. All 87 watchlist employers were attempted before 12 fallback employers. The final batch stages 14 distinct employers for owner recheck and honest technical shortfalls; no internship was counted as technical full-time. This write is review-only and does not authorize publication, data/jobs.json edits, site generation or Telegram delivery. The repository ranking/precheck workflow completed successfully but classified all 14 staged candidates Unsure; Firebase dispatch was therefore skipped.",
-        "automatedPrecheck": {
-          "checkedAt": "2026-11-20T03:40:57.680139+00:00",
-          "live": 0,
-          "unsure": 14,
-          "expired": 0,
-          "note": "The repository pre-review availability checker classified all 14 staged candidates as Unsure (including 403/429/redirect/insufficient-evidence results). This does not override the source evidence recorded per candidate and is not a fresh Live assertion; owner link review is required."
-        },
-        "pipelineAudit": {
-          "rankingWorkflowRunId": 44669333605,
-          "rankingConclusion": "success",
-          "androidWorkflowRunId": 44669333504,
-          "androidWorkflowConclusion": "success",
-          "firebaseDispatchStep": "skipped",
-          "firebaseStatus": "not sent — live-only notification gate was not satisfied"
-        },
-        "uniqueExactSourceCandidateIdsEvaluated": 22
+        "excludedCount": 4,
+        "needsFreshDiscovery": false,
+        "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
       },
       "quotaAudit": {
         "requiredPerList": {
-          "fresherIT": 6,
+          "technical": 6,
           "nonIT": 2,
-          "training": 2
+          "internshipOrApprenticeship": 2,
+          "total": 10
         },
-        "prioritySelected": {
-          "fresherIT": 3,
+        "priority": {
+          "technical": 6,
           "nonIT": 2,
-          "training": 2
-        },
-        "backupSelected": {
-          "fresherIT": 3,
-          "nonIT": 2,
-          "training": 2
-        },
-        "shortfalls": {
-          "priority": {
-            "fresherIT": 3,
+          "internshipOrApprenticeship": 2,
+          "total": 10,
+          "shortfalls": {
+            "technical": 0,
             "nonIT": 0,
-            "training": 0
-          },
-          "backup": {
-            "fresherIT": 3,
-            "nonIT": 0,
-            "training": 0
+            "internshipOrApprenticeship": 0
           }
         },
-        "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
+        "backup": {
+          "technical": 6,
+          "nonIT": 2,
+          "internshipOrApprenticeship": 2,
+          "total": 10,
+          "shortfalls": {
+            "technical": 0,
+            "nonIT": 0,
+            "internshipOrApprenticeship": 0
+          }
+        },
+        "oneEmployerAcrossFullBatch": true,
+        "categoryAuditPassed": true
       },
       "ranking": {
-        "method": "Deloitte-first full 87-employer watchlist search, then fallback discovery, exact-source verification, independent duplicate scrub, quota audit and honest shortfall preservation",
-        "preferenceLearning": "Only the owner's final selection among owner-verified Live candidates may train ranking preference; Live/Expired/Unsure tagging alone must not."
+        "status": "awaiting_recheck",
+        "model": "repository rank-review-batch workflow",
+        "note": "Vestas replacement requires independent pre-review; owner review remains pending."
       },
       "publication": null,
-      "telegramReceipts": null,
+      "telegramReceipts": [],
       "priorHistory": {
-        "batchId": "2026-11-19-0900-ist",
-        "status": "submitted",
-        "generatedAt": "2026-11-19T03:30:00.000Z",
-        "updatedAt": "2026-11-19T09:04:46.174Z",
-        "submittedAt": "2026-11-19T09:04:46.174Z",
-        "publication": {
-          "candidateIds": [
-            "amex-26016754",
-            "deloitte-114836",
-            "ey-1760671"
-          ],
-          "companies": [
-            "American Express",
-            "Deloitte",
-            "EY"
-          ],
-          "urls": [
-            "https://careers.americanexpress.com/en/sites/CX_1/job/26016754/",
-            "https://southasiacareers.deloitte.com/job/Kolkata-A%26A-Analyst-Ext-Audit-CEC-Kolkata-External-Audit/60548244/",
-            "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456886433/"
-          ],
-          "requestId": "68125da99640c1914ff41709",
-          "count": 3,
-          "submittedAt": "2026-11-19T09:04:46.174Z"
-        },
+        "batchId": "2026-11-20-0900-ist",
+        "status": "reviewing",
+        "generatedAt": "2026-11-20T03:30:00.000Z",
+        "updatedAt": "2026-11-20T03:30:00.000Z",
         "candidateIds": [
-          "clarivate-jreq136989",
-          "hevo-4eccaf98",
-          "deloitte-114836",
-          "ey-1760671",
-          "amex-26016754",
-          "google-96299220855595718",
-          "bornwest-366216",
-          "citi-26993290",
-          "hp-3165405",
-          "gehealthcare-r4045952",
-          "honeywell-160484"
+          "deloitte-60887144",
+          "apple-200694892-1052",
+          "rtx-01889499",
+          "accenture-aioc-s01657091",
+          "ey-1760080",
+          "walmart-r-2580222",
+          "hsbc-1377334357",
+          "global-payments-r0077227",
+          "ntt-r-146225",
+          "synopsys-18486",
+          "bank-of-america-26036895",
+          "amazon-10593241",
+          "honeywell-161636",
+          "standard-chartered-56452"
         ],
         "ownerReview": [
           {
-            "id": "clarivate-jreq136989",
-            "reviewedStatus": "live",
+            "id": "deloitte-60887144",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:09:38.301Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "hevo-4eccaf98",
-            "reviewedStatus": "live",
+            "id": "apple-200694892-1052",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:09:45.862Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "deloitte-114836",
-            "reviewedStatus": "live",
+            "id": "rtx-01889499",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T08:59:12.251Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "ey-1760671",
-            "reviewedStatus": "live",
+            "id": "accenture-aioc-s01657091",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:10:27.186Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "amex-26016754",
-            "reviewedStatus": "live",
+            "id": "ey-1760080",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:10:41.289Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "google-96299220855595718",
-            "reviewedStatus": "live",
+            "id": "walmart-r-2580222",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:10:53.448Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "bornwest-366216",
-            "reviewedStatus": "expired",
+            "id": "hsbc-1377334357",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:11:36.406Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "citi-26993290",
-            "reviewedStatus": "live",
+            "id": "global-payments-r0077227",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:11:46.097Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "hp-3165405",
-            "reviewedStatus": "expired",
+            "id": "ntt-r-146225",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:12:22.555Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "gehealthcare-r4045952",
-            "reviewedStatus": "expired",
+            "id": "synopsys-18486",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:12:08.960Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
           },
           {
-            "id": "honeywell-160484",
-            "reviewedStatus": "live",
+            "id": "bank-of-america-26036895",
+            "reviewedStatus": "unreviewed",
             "verificationVerdict": "pending_owner_review",
-            "reviewedAt": "2026-11-19T06:12:41.696Z",
-            "reviewedBy": "HD Careers Admin"
+            "reviewedAt": null,
+            "reviewedBy": null
+          },
+          {
+            "id": "amazon-10593241",
+            "reviewedStatus": "unreviewed",
+            "verificationVerdict": "pending_owner_review",
+            "reviewedAt": null,
+            "reviewedBy": null
+          },
+          {
+            "id": "honeywell-161636",
+            "reviewedStatus": "unreviewed",
+            "verificationVerdict": "pending_owner_review",
+            "reviewedAt": null,
+            "reviewedBy": null
+          },
+          {
+            "id": "standard-chartered-56452",
+            "reviewedStatus": "unreviewed",
+            "verificationVerdict": "pending_owner_review",
+            "reviewedAt": null,
+            "reviewedBy": null
           }
         ],
+        "discoveryAudit": {
+          "runDate": "20 Nov 2026",
+          "timezone": "Asia/Kolkata",
+          "watchlistTotal": 87,
+          "watchlistVisited": 87,
+          "watchlistNotVisited": 0,
+          "watchlistBlocked": 4,
+          "fallbackEmployersVisited": 12,
+          "watchlistCandidatesAccepted": 11,
+          "fallbackCandidatesAccepted": 3,
+          "distinctEmployers": 14,
+          "uniqueExactLiveJobIdsFound": 0,
+          "stagedForOwnerRecheck": 14,
+          "held": 6,
+          "expired": 7,
+          "duplicatesExcluded": 7,
+          "deloitteOutcome": "Deloitte: exact-source fresher-eligible candidate 60887144 was found and reserved in Priority; the repository precheck marked it Unsure, so current Live status remains for owner recheck.",
+          "duplicateExclusions": [
+            "Adobe R173016 — already present in review/publication history.",
+            "Cisco 2015227 — already present in review/publication history.",
+            "Meesho 1de2fc88-e203-4f1a-8046-55df700de4be — already reviewed.",
+            "Amazon 10506542 — already present in repository history.",
+            "Micron JR105741 — already present in repository history.",
+            "ION 6f66cbb4-c882-4234-b84e-68baea56e1ea — already reviewed.",
+            "Sutherland 744000151046829 — previously reviewed exact requisition."
+          ],
+          "expiredExclusions": [
+            "Citi Young Apprentice 26990116 — exact official route returned 404 on 20 Nov.",
+            "Walmart R-2557935 — exact official route redirected to job-not-found.",
+            "Bank of America JR-26039582 — exact official route returned 404.",
+            "KPMG 30049804 — stated application deadline passed on 25 Oct 2026.",
+            "Salesforce JR307116 — stated application deadline passed on 3 Nov 2026.",
+            "Google Software Engineer, University Graduate 2026 — source stated no longer accepting applications.",
+            "Caterpillar apprentice postings checked — stated application deadlines had passed."
+          ],
+          "heldExclusions": [
+            "Qualcomm 446721997186 — exact official route redirected but was inaccessible; current Live status not asserted.",
+            "HP 3170387 — exact official Workday route was inaccessible; held despite fresh third-party evidence.",
+            "Salesforce JR368441 — exact Workday page returned no readable content and a reported 19 Nov deadline; held as inconclusive.",
+            "Google 73379279982731974 — current official inventory listed the role but its exact page said job not found; held as inconclusive.",
+            "Honeywell 156990 — exact page open but zero-experience eligibility was not explicit enough for this batch.",
+            "Stripe 8212508 — exact new-grad role was limited to US locations and did not establish India/international applicant eligibility."
+          ],
+          "exclusions": [
+            "Additional otherwise-live roles from already selected employers were not staged because one employer is allowed across the full Priority and Backup set.",
+            "Experienced-only roles, generic career pages and source-unconfirmed listings were not used to fill technical shortages.",
+            "Blocked/inconclusive portals counted: NTT Workday, Qualcomm Eightfold, Salesforce Workday and HP Workday; indexed exact evidence was used only where the official source still established the required facts."
+          ],
+          "note": "Fresh 20 Nov discovery; the 19 Oct/20 Oct fixed sample was not reused. All 87 watchlist employers were attempted before 12 fallback employers. The final batch stages 14 distinct employers for owner recheck and honest technical shortfalls; no internship was counted as technical full-time. This write is review-only and does not authorize publication, data/jobs.json edits, site generation or Telegram delivery. The repository ranking/precheck workflow completed successfully but classified all 14 staged candidates Unsure; Firebase dispatch was therefore skipped.",
+          "automatedPrecheck": {
+            "checkedAt": "2026-11-20T03:40:57.680139+00:00",
+            "live": 0,
+            "unsure": 14,
+            "expired": 0,
+            "note": "The repository pre-review availability checker classified all 14 staged candidates as Unsure (including 403/429/redirect/insufficient-evidence results). This does not override the source evidence recorded per candidate and is not a fresh Live assertion; owner link review is required."
+          },
+          "pipelineAudit": {
+            "rankingWorkflowRunId": 44669333605,
+            "rankingConclusion": "success",
+            "androidWorkflowRunId": 44669333504,
+            "androidWorkflowConclusion": "success",
+            "firebaseDispatchStep": "skipped",
+            "firebaseStatus": "not sent — live-only notification gate was not satisfied"
+          },
+          "uniqueExactSourceCandidateIdsEvaluated": 22
+        },
+        "quotaAudit": {
+          "requiredPerList": {
+            "fresherIT": 6,
+            "nonIT": 2,
+            "training": 2
+          },
+          "prioritySelected": {
+            "fresherIT": 3,
+            "nonIT": 2,
+            "training": 2
+          },
+          "backupSelected": {
+            "fresherIT": 3,
+            "nonIT": 2,
+            "training": 2
+          },
+          "shortfalls": {
+            "priority": {
+              "fresherIT": 3,
+              "nonIT": 0,
+              "training": 0
+            },
+            "backup": {
+              "fresherIT": 3,
+              "nonIT": 0,
+              "training": 0
+            }
+          },
+          "warning": "Review only. Owner must verify each link, mark Live/Expired/Unsure, select final jobs and explicitly tap Verify & Publish before any website, data/jobs.json or Telegram action."
+        },
+        "ranking": {
+          "method": "Deloitte-first full 87-employer watchlist search, then fallback discovery, exact-source verification, independent duplicate scrub, quota audit and honest shortfall preservation",
+          "preferenceLearning": "Only the owner's final selection among owner-verified Live candidates may train ranking preference; Live/Expired/Unsure tagging alone must not."
+        },
+        "publication": null,
+        "telegramReceipts": null,
         "priorHistory": {
-          "batchId": "2026-11-18-0900-ist",
-          "status": "reviewing",
-          "generatedAt": "2026-11-18T03:30:00.000Z",
-          "updatedAt": "2026-11-18T03:30:00.000Z",
+          "batchId": "2026-11-19-0900-ist",
+          "status": "submitted",
+          "generatedAt": "2026-11-19T03:30:00.000Z",
+          "updatedAt": "2026-11-19T09:04:46.174Z",
+          "submittedAt": "2026-11-19T09:04:46.174Z",
+          "publication": {
+            "candidateIds": [
+              "amex-26016754",
+              "deloitte-114836",
+              "ey-1760671"
+            ],
+            "companies": [
+              "American Express",
+              "Deloitte",
+              "EY"
+            ],
+            "urls": [
+              "https://careers.americanexpress.com/en/sites/CX_1/job/26016754/",
+              "https://southasiacareers.deloitte.com/job/Kolkata-A%26A-Analyst-Ext-Audit-CEC-Kolkata-External-Audit/60548244/",
+              "https://careers.ey.com/ey/job/Bengaluru-Associate-Analyst-TAX-TMT-TAX-ITTS-Transfer-Pricing-Bangalore-KA-560001/1456886433/"
+            ],
+            "requestId": "68125da99640c1914ff41709",
+            "count": 3,
+            "submittedAt": "2026-11-19T09:04:46.174Z"
+          },
           "candidateIds": [
-            "hp-3166324",
-            "deloitte-116580",
-            "citi-102161079536",
-            "honeywell-160864"
+            "clarivate-jreq136989",
+            "hevo-4eccaf98",
+            "deloitte-114836",
+            "ey-1760671",
+            "amex-26016754",
+            "google-96299220855595718",
+            "bornwest-366216",
+            "citi-26993290",
+            "hp-3165405",
+            "gehealthcare-r4045952",
+            "honeywell-160484"
+          ],
+          "ownerReview": [
+            {
+              "id": "clarivate-jreq136989",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:09:38.301Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "hevo-4eccaf98",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:09:45.862Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "deloitte-114836",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T08:59:12.251Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "ey-1760671",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:10:27.186Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "amex-26016754",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:10:41.289Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "google-96299220855595718",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:10:53.448Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "bornwest-366216",
+              "reviewedStatus": "expired",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:11:36.406Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "citi-26993290",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:11:46.097Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "hp-3165405",
+              "reviewedStatus": "expired",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:12:22.555Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "gehealthcare-r4045952",
+              "reviewedStatus": "expired",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:12:08.960Z",
+              "reviewedBy": "HD Careers Admin"
+            },
+            {
+              "id": "honeywell-160484",
+              "reviewedStatus": "live",
+              "verificationVerdict": "pending_owner_review",
+              "reviewedAt": "2026-11-19T06:12:41.696Z",
+              "reviewedBy": "HD Careers Admin"
+            }
           ],
           "priorHistory": {
-            "batchId": "2026-11-17-0900-ist",
+            "batchId": "2026-11-18-0900-ist",
             "status": "reviewing",
-            "generatedAt": "2026-11-17T03:30:00.000Z",
-            "updatedAt": "2026-11-17T03:40:00.000Z",
+            "generatedAt": "2026-11-18T03:30:00.000Z",
+            "updatedAt": "2026-11-18T03:30:00.000Z",
             "candidateIds": [
-              "tieto-744000161430139",
-              "highlevel-65ab785e"
+              "hp-3166324",
+              "deloitte-116580",
+              "citi-102161079536",
+              "honeywell-160864"
             ],
             "priorHistory": {
-              "batchId": "2026-11-16-0900-ist",
+              "batchId": "2026-11-17-0900-ist",
               "status": "reviewing",
-              "generatedAt": "2026-11-16T03:30:00.000Z",
-              "updatedAt": "2026-11-16T03:39:00.000Z",
+              "generatedAt": "2026-11-17T03:30:00.000Z",
+              "updatedAt": "2026-11-17T03:40:00.000Z",
               "candidateIds": [
-                "ey-1745853",
-                "sphinxhire-3"
+                "tieto-744000161430139",
+                "highlevel-65ab785e"
               ],
               "priorHistory": {
-                "batchId": "2026-11-15-0900-ist",
+                "batchId": "2026-11-16-0900-ist",
                 "status": "reviewing",
-                "generatedAt": "2026-11-15T03:30:00.000Z",
-                "updatedAt": "2026-11-15T03:35:00.000Z",
+                "generatedAt": "2026-11-16T03:30:00.000Z",
+                "updatedAt": "2026-11-16T03:39:00.000Z",
                 "candidateIds": [
-                  "deloitte-116227",
-                  "eurofins-744000161242645",
-                  "citi-261004756",
-                  "micron-jr105741",
-                  "prepsmarter-743999665738758",
-                  "rigelsoft-743999832787600",
-                  "emerson-26011142",
-                  "ey-1752870",
-                  "omnicom-6226452004",
-                  "genpact-jr10030422"
+                  "ey-1745853",
+                  "sphinxhire-3"
                 ],
                 "priorHistory": {
-                  "batchId": "2026-11-14-0900-ist",
+                  "batchId": "2026-11-15-0900-ist",
                   "status": "reviewing",
-                  "generatedAt": "2026-11-14T03:30:00.000Z",
-                  "updatedAt": "2026-11-14T03:30:00.000Z",
+                  "generatedAt": "2026-11-15T03:30:00.000Z",
+                  "updatedAt": "2026-11-15T03:35:00.000Z",
                   "candidateIds": [
-                    "deloitte-116858",
-                    "trinet-3004263",
-                    "aiprise-41af4efa",
-                    "zycus-57694",
-                    "endeavor-743999651515530",
-                    "stripe-8212517",
-                    "ey-1761018",
-                    "accenture-aioc-s01651251",
-                    "meraki-93ff65d2",
-                    "weekday-a86efff4"
+                    "deloitte-116227",
+                    "eurofins-744000161242645",
+                    "citi-261004756",
+                    "micron-jr105741",
+                    "prepsmarter-743999665738758",
+                    "rigelsoft-743999832787600",
+                    "emerson-26011142",
+                    "ey-1752870",
+                    "omnicom-6226452004",
+                    "genpact-jr10030422"
                   ],
                   "priorHistory": {
-                    "batchId": "2026-11-13-0900-ist",
+                    "batchId": "2026-11-14-0900-ist",
                     "status": "reviewing",
-                    "generatedAt": "2026-11-13T03:30:00.000Z",
-                    "updatedAt": "2026-11-13T03:30:00.000Z",
+                    "generatedAt": "2026-11-14T03:30:00.000Z",
+                    "updatedAt": "2026-11-14T03:30:00.000Z",
                     "candidateIds": [
-                      "deloitte-116959",
-                      "citi-261001786",
-                      "point72-8893939002",
-                      "capgemini-578597",
-                      "qualcomm-3094020",
-                      "reliaquest-r15081-1",
-                      "eurofins-744000141900959",
-                      "cognizant-00070713951",
-                      "qad-744000161284809",
-                      "mongodb-8127582",
-                      "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
+                      "deloitte-116858",
+                      "trinet-3004263",
+                      "aiprise-41af4efa",
+                      "zycus-57694",
+                      "endeavor-743999651515530",
+                      "stripe-8212517",
+                      "ey-1761018",
+                      "accenture-aioc-s01651251",
+                      "meraki-93ff65d2",
+                      "weekday-a86efff4"
                     ],
                     "priorHistory": {
-                      "batchId": "2026-11-12-0900-ist",
-                      "status": "submitted",
-                      "submittedAt": "2026-11-12T04:49:30.498Z",
-                      "publicationRequestId": "92e57bf2eaeb18347e953809",
-                      "selectedCandidateIds": [
-                        "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-                        "cognizant-at-ug3-2026",
-                        "icgmedical-5024601101",
-                        "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
-                        "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+                      "batchId": "2026-11-13-0900-ist",
+                      "status": "reviewing",
+                      "generatedAt": "2026-11-13T03:30:00.000Z",
+                      "updatedAt": "2026-11-13T03:30:00.000Z",
+                      "candidateIds": [
+                        "deloitte-116959",
+                        "citi-261001786",
+                        "point72-8893939002",
+                        "capgemini-578597",
+                        "qualcomm-3094020",
+                        "reliaquest-r15081-1",
+                        "eurofins-744000141900959",
+                        "cognizant-00070713951",
+                        "qad-744000161284809",
+                        "mongodb-8127582",
+                        "fam-bbbbbfd2-1855-4991-82d5-84ef57607c24"
                       ],
-                      "publication": {
-                        "candidateIds": [
+                      "priorHistory": {
+                        "batchId": "2026-11-12-0900-ist",
+                        "status": "submitted",
+                        "submittedAt": "2026-11-12T04:49:30.498Z",
+                        "publicationRequestId": "92e57bf2eaeb18347e953809",
+                        "selectedCandidateIds": [
                           "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
                           "cognizant-at-ug3-2026",
                           "icgmedical-5024601101",
                           "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
                           "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
                         ],
-                        "companies": [
-                          "AHEAD",
-                          "Cognizant",
-                          "ICG Medical",
-                          "JobTwine",
-                          "Paytm Payments Services"
-                        ],
-                        "urls": [
-                          "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
-                          "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
-                          "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
-                          "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
-                          "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
-                        ],
-                        "requestId": "92e57bf2eaeb18347e953809",
-                        "count": 5,
-                        "submittedAt": "2026-11-12T04:49:30.498Z"
+                        "publication": {
+                          "candidateIds": [
+                            "ahead-3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+                            "cognizant-at-ug3-2026",
+                            "icgmedical-5024601101",
+                            "jobtwine-582a153b-575c-495c-8897-31b9d8a62bdb",
+                            "paytmpayments-d63d3620-1543-47dc-b1c0-6197e88d293a"
+                          ],
+                          "companies": [
+                            "AHEAD",
+                            "Cognizant",
+                            "ICG Medical",
+                            "JobTwine",
+                            "Paytm Payments Services"
+                          ],
+                          "urls": [
+                            "https://jobs.lever.co/thinkahead/3bfeee5c-f9a4-4665-a158-b2b8c9b62d27",
+                            "https://app.joinsuperset.com/company/cognizant/AT-UG3-2026.html",
+                            "https://job-boards.eu.greenhouse.io/icgmedical/jobs/5024601101",
+                            "https://jobs.lever.co/jobtwine/582a153b-575c-495c-8897-31b9d8a62bdb",
+                            "https://jobs.lever.co/paytmpayments/d63d3620-1543-47dc-b1c0-6197e88d293a"
+                          ],
+                          "requestId": "92e57bf2eaeb18347e953809",
+                          "count": 5,
+                          "submittedAt": "2026-11-12T04:49:30.498Z"
+                        },
+                        "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
                       },
-                      "note": "The 12 Nov submitted batch approval/publication request is preserved here unchanged. Independent website, data/jobs.json and Telegram records were not modified."
+                      "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
                     },
-                    "note": "The 13 Nov reviewing batch and its preserved 12 Nov submitted/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+                    "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
                   },
-                  "note": "The 14 Nov reviewing batch and all nested prior approval/publication history remain referenced unchanged. No website, data/jobs.json or Telegram record was modified."
+                  "note": "Preserved 15 Nov review batch and earlier approval/history chain; no publication or Telegram receipts were modified."
                 },
-                "note": "Preserved 15 Nov review batch and earlier approval/history chain; no publication or Telegram receipts were modified."
-              },
-              "note": "Preserved the 16 Nov review batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
-            }
+                "note": "Preserved the 16 Nov review batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
+              }
+            },
+            "note": "Preserved the 18 Nov reviewing batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
           },
-          "note": "Preserved the 18 Nov reviewing batch and its full nested approval/publication history unchanged; no publication, data/jobs.json, website or Telegram receipt was modified."
+          "note": "Preserved the 19 Nov batch identity, submission/publication metadata, owner-review states and prior nested history unchanged. Independent Telegram receipt files were not modified."
         },
-        "note": "Preserved the 19 Nov batch identity, submission/publication metadata, owner-review states and prior nested history unchanged. Independent Telegram receipt files were not modified."
+        "note": "Prior review batch preserved before the 21 Nov 2026 fresh review. No prior approval, publication state or Telegram receipt is discarded."
       },
-      "note": "Prior review batch preserved before the 21 Nov 2026 fresh review. No prior approval, publication state or Telegram receipt is discarded."
+      "note": "Previous batch preserved as history; no approval, publication, site generation, data/jobs.json edit or Telegram dispatch is authorized by this review batch."
     },
-    "note": "Previous batch preserved as history; no approval, publication, site generation, data/jobs.json edit or Telegram dispatch is authorized by this review batch."
+    "note": "Preserved 22 Nov review batch and its prior history; no approval, publication or Telegram state was changed."
   },
-  "discoverySummary": "Fresh 22 Nov 2026 review: 87/87 watchlisted employers searched. The repository scrub removed six hidden historical records in total; each category gap was filled with a new exact requisition from a distinct employer. Both lists are restored to 6 technical full-time, 2 non-tech full-time and 2 training roles before the final rerun. Deloitte: no new verified fresher-eligible role. Owner review is mandatory; nothing is published or queued."
+  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Staged for owner review only; no publication or Telegram dispatch authorized."
 }
