@@ -15,6 +15,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: hd-daily-review-ranking
   cancel-in-progress: false
@@ -103,3 +104,15 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Rank and enrich daily shortlist from official sources"
           git push origin HEAD:main
+      - name: Dispatch verified auto-publisher after official evidence is updated
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # A push using GITHUB_TOKEN does NOT trigger another Actions workflow.
+          # Explicit workflow_dispatch bridges today's ranking -> publication.
+          # The downstream selector still requires fresh source-active evidence,
+          # sufficient content, no duplicates, and independent 6/2/2 buckets.
+          gh workflow run verified-auto-publish.yml --ref main
+          echo "Verified auto-publisher dispatched after official-source preflight."
