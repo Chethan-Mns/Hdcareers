@@ -49,6 +49,17 @@ class AutomaticPublishing(unittest.TestCase):
   self.job["expYears"]="Minimum 4 years experience";self.assertEqual(self.run_select(),[])
  def test_missing_description_holds(self):
   self.job["desc"]="";self.assertEqual(self.run_select(),[])
+ def test_credible_short_description_with_full_structured_fields_passes(self):
+  # The official-source content preflight already verifies eligibility,
+  # responsibilities and skill lists; 70-99 characters is acceptable.
+  self.job["desc"]="Write software, test changes, support colleagues and document fixes."
+  self.assertGreaterEqual(len(self.job["desc"]),70)
+  self.assertLess(len(self.job["desc"]),100)
+  self.assertEqual(len(self.run_select()),1)
+ def test_insufficient_brief_description_holds(self):
+  self.job["desc"]="Brief opening."
+  self.assertEqual(self.run_select(),[])
+
  def test_one_job_per_employer(self):
   second=dict(self.item,id="ex-2",job=dict(self.job,role="Junior Software Engineer"))
   second["apply"]="https://jobs.ashbyhq.com/abc/22345678-1234-1234-1234-123456789123"
