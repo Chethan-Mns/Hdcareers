@@ -5,5 +5,7 @@
   "channelName": "HD Career Updates",
   "channelId": "120363419928883930@newsletter",
   "maxPostsPerDay": 10,
-  "note": "Enabled for owner-approved daily fresher jobs after Telegram receipt; no historical backfill, 10-post IST-day cap, fresh official-source checks and deduplication."
+  "note": "Enabled for owner-approved daily fresher jobs after Telegram receipt; no historical backfill, 10-post IST-day cap, fresh official-source checks and deduplication.",
+  "wakeRecoveryId": "2026-11-23-after-ford-missed-4-second-slot",
+  "wakeRecoveryReason": "Trigger a one-job Whapi delivery check after Ford; keep official-source and receipt-based 60-minute checks; self-wake remaining jobs."
 }
