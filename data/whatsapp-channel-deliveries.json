@@ -161,13 +161,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/endeavor-it-solution-java-multi-technology-developer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45149883671",
       "at": "2026-11-23T09:45:32.552690+00:00",
       "telegramMessageId": 740,
       "telegramDeliveredAt": "2026-11-23T04:43:39.774701+00:00",
       "telegramDateIst": "2026-11-23",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsorKVqgH8u4w3U-15sBq53kiM_y2g-Akw",
+      "acceptedAt": "2026-11-23T09:45:40.787584+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
