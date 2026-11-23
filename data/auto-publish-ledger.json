@@ -34,6 +34,16 @@
       ],
       "status": "claimed_before_dispatch",
       "claimedAt": "2026-11-23T04:42:19.438272+00:00"
+    },
+    {
+      "batchId": "2026-11-23-0900-ist-training-topup",
+      "requestId": "a10f359373a21dad0a023eb5",
+      "candidateIds": [
+        "connectionphase-109803550",
+        "cloudkaptan-125786"
+      ],
+      "status": "claimed_before_dispatch",
+      "claimedAt": "2026-11-23T04:49:50.190186+00:00"
     }
   ],
   "recoveryHistory": [
