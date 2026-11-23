@@ -148,7 +148,7 @@ def refresh_due(q):
         if local:
             due = max(local) + INTERVAL * positions[key]
         else:
-            due = parse(item.get("queuedAt")) or datetime.now(timezone.utc) - timedelta(seconds=1)
+            due = (parse(item["queuedAt"]) if item.get("queuedAt") else None) or datetime.now(timezone.utc) - timedelta(seconds=1)
         if cursor is not None:
             due = max(due, cursor)
         item["dueAt"] = stamp(due)
