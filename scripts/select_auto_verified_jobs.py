@@ -14,7 +14,7 @@ CONFIRMED=("public posting inventory contains the exact published job",
  "verification terms and registration/submit control found on official url")
 BAD_HOSTS=("naukri.com","indeed.com","linkedin.com","glassdoor.com","shine.com","internshala.com","talentbridge.cisco.com")
 REQUIRED=("company","role","loc","elig","desc","apply","sourceName")
-TYPES=("fresher","internship/apprenticeship")
+TYPES=("fresher","internship","apprenticeship","internship/apprenticeship")
 CATS=("it","nonit","internship","apprenticeship","campus","remote","walkin")
 # Explicit independent publication buckets; never use an IT job to fill a missing internship.
 CATEGORY_TARGETS={"technicalFullTime":6,"nonTechFullTime":2,"internshipOrApprenticeship":2}
@@ -31,7 +31,7 @@ def publication_bucket(job):
  info=classified(job)
  if info["training"]:
   return ("internshipOrApprenticeship" if cat in TRAINING_CATEGORIES
-          and exp_type in ("fresher","internship/apprenticeship") else None)
+          and exp_type in TYPES else None)
  if exp_type!="fresher" or info["expType"]!="fresher":
   return None
  if cat=="nonit" and info["field"]=="nonit" and field!="it":
