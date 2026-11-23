@@ -1,7 +1,8 @@
 name: HD Careers Verified Auto-Publish
 on:
   schedule:
-    - cron: "0 6 * * *" # 11:30 AM IST
+    - cron: "30 3 * * *" # 9:00 AM IST; only acts if fresh verified batch exists
+    - cron: "50 3 * * *" # 9:20 AM IST fallback after 9AM discovery/preflight
   push:
     branches: [main]
     paths:
