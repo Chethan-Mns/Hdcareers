@@ -11,6 +11,7 @@ import json
 import os
 import sys
 from zoneinfo import ZoneInfo
+from datetime import timedelta
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -94,12 +95,42 @@ def telegram_ist_day(iso_time):
     return stamp.astimezone(IST).date().isoformat() if stamp else None
 
 
-def claim_limited(doc, tg, jobs, at, run):
-    """Select exactly one confirmed Telegram receipt, at most 10 claims per IST day.
+def next_channel_due(doc):
+    """Receipt-based channel cooldown; independent of the Telegram queue.
 
-    Count uncertain sends as consumed to prevent re-posting when provider response is lost.
-    Never backfill historical Telegram posts before activation.
+    An ambiguous Whapi send consumes its slot, preventing an accidental burst
+    if the provider accepted the post but its response was lost.
     """
+    accepted = []
+    for item in doc.get("items", {}).values():
+        if not isinstance(item, dict):
+            continue
+        if item.get("status") not in ("provider_accepted", "uncertain"):
+            continue
+        time = shared.parse(item.get("acceptedAt") or item.get("failedAt") or item.get("at"))
+        if time:
+            accepted.append(time)
+    return max(accepted) + timedelta(hours=1) if accepted else None
+
+
+def claim_limited(doc, tg, jobs, at, run):
+    """Mirror one live job per hour, only on its Telegram receipt's IST date.
+
+    No previous-day backlog, no simultaneous in-flight claims, and no bulk
+    backfill if Telegram sent several jobs in one short period.
+    """
+    now = shared.parse(at)
+    if now is None:
+        raise ValueError("Whapi claim timestamp missing")
+    if any(isinstance(x, dict) and x.get("status") == "sending"
+           for x in doc.get("items", {}).values()):
+        print("WhatsApp previous claim still in-flight; no additional send")
+        return None
+    due = next_channel_due(doc)
+    if due and now < due:
+        print("WhatsApp hourly slot not due until", due.isoformat())
+        return None
+    today = now.astimezone(IST).date().isoformat()
     for _ in range(250):
         page = shared.select(doc, tg, jobs, at, run)
         if not page:
@@ -108,6 +139,9 @@ def claim_limited(doc, tg, jobs, at, run):
         day = telegram_ist_day(item.get("telegramDeliveredAt"))
         if not day:
             item.update(status="skipped_missing_date", checkedAt=at)
+            continue
+        if day != today:
+            item.update(status="skipped_previous_day", checkedAt=at, telegramDateIst=day)
             continue
         count = sum(
             1 for x in doc["items"].values()
