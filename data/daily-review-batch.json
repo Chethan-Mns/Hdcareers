@@ -405,6 +405,60 @@
       "reviewedBy": null
     },
     {
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "id": "phonepe-1000000000006390",
+      "company": "PhonePe",
+      "role": "Customer Experience Specialist – Operations, Lending",
+      "loc": "Bengaluru, Karnataka, India",
+      "apply": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000006390-customer-experience-specialist-operations-lending",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "0–2 years",
+      "verificationReason": "Exact PhonePe SmartRecruiters posting 1000000000006390 is active and requires graduation plus 0–2 years in a customer-facing role.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "PhonePe",
+        "role": "Customer Experience Specialist – Operations, Lending",
+        "loc": "Bengaluru, Karnataka, India",
+        "apply": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000006390-customer-experience-specialist-operations-lending",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "PhonePe (SmartRecruiters)",
+        "desc": "Entry-level lending-operations role coordinating customer resolutions, ticket aging and fraud-governance follow-up.",
+        "elig": "Graduation (10+2+3) is mandatory; 0–2 years in a customer-facing role.",
+        "resp": [
+          "Track and drive resolution of customer tickets.",
+          "Coordinate with lending and internal support teams.",
+          "Maintain fraud-case and turnaround-time governance."
+        ],
+        "skills": [
+          "Customer operations",
+          "Case management",
+          "Communication",
+          "Process improvement"
+        ],
+        "workMode": "On-site",
+        "jobId": "1000000000006390",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact public SmartRecruiters posting and application route were checked on 23 Nov 2026; the posting explicitly accepts 0–2 years.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T04:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "PhonePe SmartRecruiters exact posting is active and explicitly accepts 0–2 years."
+      }
+    },
+    {
       "id": "deloitte-61698544",
       "company": "Deloitte",
       "role": "Intern – Regulatory & Financial Risk",
@@ -920,6 +974,60 @@
       "reviewedBy": null
     },
     {
+      "reviewedStatus": "unreviewed",
+      "verificationVerdict": "pending_owner_review",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "id": "vizexperts-102590370",
+      "company": "VizExperts India",
+      "role": "Finance Executive",
+      "loc": "Delhi NCR, India",
+      "apply": "https://jobs.smartrecruiters.com/VizExperts/102590370-finance-executive",
+      "cat": "nonit",
+      "slotType": "nontech",
+      "expYears": "0–2 years",
+      "verificationReason": "Exact VizExperts SmartRecruiters posting 102590370 is active and explicitly lists 0–2 years in finance/accounts.",
+      "postedDate": "Not Specified",
+      "job": {
+        "company": "VizExperts India",
+        "role": "Finance Executive",
+        "loc": "Delhi NCR, India",
+        "apply": "https://jobs.smartrecruiters.com/VizExperts/102590370-finance-executive",
+        "cat": "nonit",
+        "expType": "fresher",
+        "expYears": "0–2 years",
+        "salary": "Not Disclosed",
+        "batch": "Not Specified",
+        "status": "unreviewed",
+        "sourceName": "VizExperts (SmartRecruiters)",
+        "desc": "Entry-level finance and accounts role supporting ledgers, reconciliations, reporting and taxation records.",
+        "elig": "Bachelor's in Commerce or master's in Commerce/Finance; 0–2 years in finance/accounts.",
+        "resp": [
+          "Maintain and reconcile accounting records.",
+          "Support budgets, financial statements and audits.",
+          "Process invoices and assist with accounts and taxation."
+        ],
+        "skills": [
+          "Accounting",
+          "Bank reconciliation",
+          "Excel",
+          "Financial reporting"
+        ],
+        "workMode": "On-site",
+        "jobId": "102590370",
+        "postedDate": "Not Specified",
+        "verifiedDate": "23 Nov 2026",
+        "sourceVerificationMethod": "Exact public SmartRecruiters posting and application route were checked on 23 Nov 2026; the posting explicitly accepts 0–2 years.",
+        "manualLiveVerifiedAt": null,
+        "browserVerifiedAt": null
+      },
+      "sourceEvidence": {
+        "currentCheckAt": "2026-11-23T04:30:00.000Z",
+        "currentVerdict": "source_active_for_owner_recheck",
+        "officialEvidence": "VizExperts SmartRecruiters exact posting is active and explicitly accepts 0–2 years."
+      }
+    },
+    {
       "id": "cloudkaptan-125786",
       "company": "CloudKaptan",
       "role": "Software Development Apprentice",
@@ -1036,30 +1144,30 @@
   ],
   "discoveryAudit": {
     "priority": {
-      "size": 9,
+      "size": 10,
       "counts": {
-        "fresherIT": 5,
-        "nonIT": 1,
+        "fresherIT": 6,
+        "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
-        "nonIT": 1,
+        "fresherIT": 0,
+        "nonIT": 0,
         "training": 0
       }
     },
     "backup": {
-      "size": 9,
+      "size": 10,
       "counts": {
-        "fresherIT": 5,
-        "nonIT": 1,
+        "fresherIT": 6,
+        "nonIT": 2,
         "training": 2,
-        "unclassified": 1
+        "unclassified": 0
       },
       "shortfalls": {
-        "fresherIT": 1,
-        "nonIT": 1,
+        "fresherIT": 0,
+        "nonIT": 0,
         "training": 0
       }
     },
@@ -1067,7 +1175,7 @@
       "priority": 10,
       "backup": 10
     },
-    "remaining": 18,
+    "remaining": 20,
     "duplicateExclusions": [
       {
         "id": "google-125423735539671750",
@@ -1149,8 +1257,25 @@
       }
     ],
     "excludedCount": 13,
-    "needsFreshDiscovery": true,
-    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
+    "needsFreshDiscovery": false,
+    "note": "Independent scrub removed five already-published or previously-reviewed requisitions across two passes. Fresh exact-source replacements restored both 6/2/2 lists without padding.",
+    "replacementDiscovery": [
+      {
+        "removed": "Cisco 2025113",
+        "replacement": "Endeavor IT Solution 743999653242484",
+        "slot": "Priority technical"
+      },
+      {
+        "removed": "EY 1759710 and Stable Money 81f4c801",
+        "replacement": "PhonePe 1000000000006390",
+        "slot": "Priority non-tech"
+      },
+      {
+        "removed": "WNS 743999903984093 and Quantiq 4366797009",
+        "replacement": "VizExperts 102590370",
+        "slot": "Backup non-tech"
+      }
+    ]
   },
   "quotaAudit": {
     "requiredPerList": {
@@ -2081,5 +2206,5 @@
     },
     "note": "Preserved 22 Nov review batch and its prior history; no approval, publication or Telegram state was changed."
   },
-  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Repository scrub excluded three additional already-published requisitions; fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
+  "discoverySummary": "23 Nov fresh discovery. The 20 Oct owner-verified sample was not reused. Two repository scrub passes excluded five historical requisitions; fresh exact-source replacements restored 10 Priority and 10 Backup with 6/2/2 quotas. Staged for owner review only; no publication or Telegram dispatch authorized."
 }
