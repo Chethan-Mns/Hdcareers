@@ -38,9 +38,11 @@ class HourlyTelegramTests(unittest.TestCase):
         h.enqueue(self.event)
         self.assertEqual(len(h.queue()["items"]), 10)
         t = datetime(2026, 10, 18, 4, 30, tzinfo=timezone.utc)
-        with patch.object(h, "datetime") as clock:
-            clock.now.return_value = t
-            h.claim(prime=True, now=t)
+        original=h.queue()
+        for item in original["items"]:
+            item["queuedAt"]=h.stamp(t)
+        h.save(h.QUEUE,original)
+        h.claim(prime=True,now=t)
         q = h.queue()
         self.assertEqual(q["items"][0]["status"], "sending")
         self.assertTrue(all(x["status"] == "pending" for x in q["items"][1:]))
@@ -85,9 +87,7 @@ class HourlyTelegramTests(unittest.TestCase):
         h.save(h.QUEUE,{"version":1,"intervalMinutes":60,"items":items})
         h.save(h.MANIFEST,{"approved":True,"batchId":"admin-7777",
                             "pages":["jobs/test-01.html","jobs/test-02.html"]})
-        with patch.object(h,"datetime") as clock:
-            clock.now.return_value=t+timedelta(minutes=10)
-            h.claim(prime=True,now=t+timedelta(minutes=10))
+        h.claim(prime=True,now=t+timedelta(minutes=10))
         q=h.queue()
         self.assertFalse(any(x["status"]=="sending" for x in q["items"]))
         self.assertEqual(h.parse(q["items"][1]["dueAt"]),t+timedelta(hours=1))
