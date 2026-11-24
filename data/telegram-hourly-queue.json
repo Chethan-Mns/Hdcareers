@@ -2244,9 +2244,11 @@
     {
       "page": "jobs/zinnov-intern-employer-branding.html",
       "batchId": "admin-45320648124",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T07:40:27.082386+00:00"
+      "dueAt": "2026-11-24T07:40:27.082386+00:00",
+      "claimId": "45349812906",
+      "claimedAt": "2026-11-24T07:40:39.595326+00:00"
     },
     {
       "page": "jobs/jobtwine-inc-ai-engineer.html",
