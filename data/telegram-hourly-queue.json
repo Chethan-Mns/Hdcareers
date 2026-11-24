@@ -2284,9 +2284,11 @@
     {
       "page": "jobs/capital-aim-financial-advisory-business-analyst-fresher.html",
       "batchId": "admin-45320648124",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T11:41:30.202128+00:00"
+      "dueAt": "2026-11-24T11:41:30.202128+00:00",
+      "claimId": "45386497698",
+      "claimedAt": "2026-11-24T11:41:42.148666+00:00"
     },
     {
       "page": "jobs/kaapro-management-solution-hr-executive-fresher.html",
