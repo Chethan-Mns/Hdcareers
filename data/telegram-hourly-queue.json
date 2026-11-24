@@ -2254,9 +2254,11 @@
     {
       "page": "jobs/jobtwine-inc-ai-engineer.html",
       "batchId": "admin-45320648124",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T08:40:42.768726+00:00"
+      "dueAt": "2026-11-24T08:40:42.768726+00:00",
+      "claimId": "45358220998",
+      "claimedAt": "2026-11-24T08:40:54.660995+00:00"
     },
     {
       "page": "jobs/phonepe-platform-engineer-1.html",
