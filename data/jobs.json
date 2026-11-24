@@ -11112,7 +11112,7 @@
       "Cross-functional communication"
     ],
     "sourceName": "PhonePe Careers (SmartRecruiters)",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "23 Oct 2026",
     "who": "Review the official requirements and apply if your education, experience and skills match the role.",
     "workMode": "Not Specified",
@@ -11120,7 +11120,15 @@
     "id": 226,
     "logoPath": "assets/company-icons/phonepe-1590c80-28a3879cec.svg",
     "logoSourceDomain": "phonepe.com",
-    "field": "nonit"
+    "field": "nonit",
+    "availabilityCheck": {
+      "id": 226,
+      "url": "https://jobs.smartrecruiters.com/PHONEPELIMITED/1000000000002921-operations-executive",
+      "checkedAt": "2026-11-24T23:40:48.489697+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    },
+    "closedAt": "2026-11-24T23:40:49.432283+00:00"
   },
   {
     "apply": "https://jobs.lever.co/Sprinto/b0f52d4a-c9ac-414d-86c9-2f2f35868aef",
