@@ -2264,39 +2264,40 @@
     {
       "page": "jobs/phonepe-platform-engineer-1.html",
       "batchId": "admin-45320648124",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T09:40:58.600161+00:00",
       "claimId": "45367507715",
-      "claimedAt": "2026-11-24T09:41:10.754954+00:00"
+      "claimedAt": "2026-11-24T09:41:10.754954+00:00",
+      "messageId": 751,
+      "deliveredAt": "2026-11-24T09:41:14.419255+00:00"
     },
     {
       "page": "jobs/ignatiuz-software-junior-web-developer.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T10:40:58.600161+00:00"
+      "dueAt": "2026-11-24T10:41:14.419255+00:00"
     },
     {
       "page": "jobs/capital-aim-financial-advisory-business-analyst-fresher.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T11:40:58.600161+00:00"
+      "dueAt": "2026-11-24T11:41:14.419255+00:00"
     },
     {
       "page": "jobs/kaapro-management-solution-hr-executive-fresher.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T12:40:58.600161+00:00"
+      "dueAt": "2026-11-24T12:41:14.419255+00:00"
     },
     {
       "page": "jobs/enterpret-machine-learning-intern.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T13:40:58.600161+00:00"
+      "dueAt": "2026-11-24T13:41:14.419255+00:00"
     }
   ]
 }
