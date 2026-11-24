@@ -233,13 +233,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/brevo-platform-engineer-data-storage.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45327901542",
       "at": "2026-11-24T04:39:49.669752+00:00",
       "telegramMessageId": 746,
       "telegramDeliveredAt": "2026-11-24T03:39:10.994987+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsrY79vFxQi4USo-164Bq53kiM_y2g-AlI",
+      "acceptedAt": "2026-11-24T04:39:56.813347+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
