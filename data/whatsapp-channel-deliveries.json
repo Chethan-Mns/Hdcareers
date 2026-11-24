@@ -305,13 +305,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/ignatiuz-software-junior-web-developer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45377179019",
       "at": "2026-11-24T10:41:50.655231+00:00",
       "telegramMessageId": 752,
       "telegramDeliveredAt": "2026-11-24T10:41:30.202128+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspFobniStPVS6c-18sBq53kiM_y2g-Alg",
+      "acceptedAt": "2026-11-24T10:41:57.787912+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
