@@ -245,13 +245,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/amg-technology-entry-level-applications-developer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45334904594",
       "at": "2026-11-24T05:40:14.385983+00:00",
       "telegramMessageId": 747,
       "telegramDeliveredAt": "2026-11-24T04:39:28.213293+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsoEuHWZp9VPQ44-150Bq53kiM_y2g-AlM",
+      "acceptedAt": "2026-11-24T05:40:21.759371+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
