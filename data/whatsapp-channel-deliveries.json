@@ -281,13 +281,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/jobtwine-inc-ai-engineer.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45358260745",
       "at": "2026-11-24T08:41:17.931951+00:00",
       "telegramMessageId": 750,
       "telegramDeliveredAt": "2026-11-24T08:40:58.600161+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsqiB_yUmE64XtM-14EBq53kiM_y2g-AlY",
+      "acceptedAt": "2026-11-24T08:41:26.264749+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
