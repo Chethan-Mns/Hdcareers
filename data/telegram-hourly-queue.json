@@ -2224,67 +2224,68 @@
     {
       "page": "jobs/amg-technology-entry-level-applications-developer.html",
       "batchId": "admin-45320648124",
-      "status": "sending",
+      "status": "delivered",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T04:39:10.994987+00:00",
       "claimId": "45327870313",
-      "claimedAt": "2026-11-24T04:39:24.753212+00:00"
+      "claimedAt": "2026-11-24T04:39:24.753212+00:00",
+      "messageId": 747,
+      "deliveredAt": "2026-11-24T04:39:28.213293+00:00"
     },
     {
       "page": "jobs/ramboll-tekla-modeller-designer-bim-structures.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T05:39:10.994987+00:00"
+      "dueAt": "2026-11-24T05:39:28.213293+00:00"
     },
     {
       "page": "jobs/zinnov-intern-employer-branding.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T06:39:10.994987+00:00"
+      "dueAt": "2026-11-24T06:39:28.213293+00:00"
     },
     {
       "page": "jobs/jobtwine-inc-ai-engineer.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T07:39:10.994987+00:00"
+      "dueAt": "2026-11-24T07:39:28.213293+00:00"
     },
     {
       "page": "jobs/phonepe-platform-engineer-1.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T08:39:10.994987+00:00"
+      "dueAt": "2026-11-24T08:39:28.213293+00:00"
     },
     {
       "page": "jobs/ignatiuz-software-junior-web-developer.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T09:39:10.994987+00:00"
+      "dueAt": "2026-11-24T09:39:28.213293+00:00"
     },
     {
       "page": "jobs/capital-aim-financial-advisory-business-analyst-fresher.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T10:39:10.994987+00:00"
+      "dueAt": "2026-11-24T10:39:28.213293+00:00"
     },
     {
       "page": "jobs/kaapro-management-solution-hr-executive-fresher.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T11:39:10.994987+00:00"
+      "dueAt": "2026-11-24T11:39:28.213293+00:00"
     },
     {
       "page": "jobs/enterpret-machine-learning-intern.html",
       "batchId": "admin-45320648124",
       "status": "pending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T12:39:10.994987+00:00"
+      "dueAt": "2026-11-24T12:39:28.213293+00:00"
     }
   ]
 }
