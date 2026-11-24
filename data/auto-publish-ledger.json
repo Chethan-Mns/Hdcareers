@@ -44,6 +44,24 @@
       ],
       "status": "claimed_before_dispatch",
       "claimedAt": "2026-11-23T04:49:50.190186+00:00"
+    },
+    {
+      "batchId": "2026-11-24-0900-ist",
+      "requestId": "2327ae0050eec55bff7518e6",
+      "candidateIds": [
+        "brevo-a47f6832",
+        "amg-84257438",
+        "ramboll-744000158460509",
+        "zinnov-4412579009",
+        "jobtwine-c81fe8e0",
+        "phonepe-1000000000006623",
+        "ignatiuz-743999657461569",
+        "capitalaim-104177101",
+        "kaapro-99433196",
+        "enterpret-7723230003"
+      ],
+      "status": "claimed_before_dispatch",
+      "claimedAt": "2026-11-24T03:36:03.842156+00:00"
     }
   ],
   "recoveryHistory": [
