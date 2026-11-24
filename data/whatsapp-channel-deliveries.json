@@ -293,13 +293,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/phonepe-platform-engineer-1.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45367550884",
       "at": "2026-11-24T09:41:34.456653+00:00",
       "telegramMessageId": 751,
       "telegramDeliveredAt": "2026-11-24T09:41:14.419255+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "Psrh.t689yh6Xk4-168Bq53kiM_y2g-Alc",
+      "acceptedAt": "2026-11-24T09:41:42.275935+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
