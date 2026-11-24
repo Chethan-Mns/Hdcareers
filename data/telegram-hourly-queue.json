@@ -2274,9 +2274,11 @@
     {
       "page": "jobs/ignatiuz-software-junior-web-developer.html",
       "batchId": "admin-45320648124",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T10:41:14.419255+00:00"
+      "dueAt": "2026-11-24T10:41:14.419255+00:00",
+      "claimId": "45377142700",
+      "claimedAt": "2026-11-24T10:41:26.573250+00:00"
     },
     {
       "page": "jobs/capital-aim-financial-advisory-business-analyst-fresher.html",
