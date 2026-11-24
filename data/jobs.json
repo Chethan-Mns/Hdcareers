@@ -776,12 +776,20 @@
     ],
     "sourceName": "Eurofins (SmartRecruiters)",
     "sourceVerificationMethod": "Exact official employer or ATS route was checked on 23 Nov 2026 and screened for zero-experience eligibility before repository duplicate review.",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "23 Nov 2026",
     "who": "Applicants meeting the employer's stated eligibility: BE/BTech in CS/IS/EC/EEE, MCA, MS or BSc CS/IT; 0–12 months; 60% and no backlogs.",
     "workMode": "Not Specified",
     "publishedAt": "2026-11-23T04:42:38Z",
-    "id": 395
+    "id": 395,
+    "availabilityCheck": {
+      "id": 395,
+      "url": "https://jobs.smartrecruiters.com/Eurofins/744000154046429-software-engineer",
+      "checkedAt": "2026-11-24T12:55:13.949045+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    },
+    "closedAt": "2026-11-24T12:55:14.382426+00:00"
   },
   {
     "apply": "https://jobs.smartrecruiters.com/EndeavorITSolution/743999653242484-hiring-java-multi-technology-developer",
@@ -16910,7 +16918,7 @@
     "role": "2026/03: HW Developer (PS-DC Projects)",
     "loc": "Bengaluru, Karnataka, India",
     "apply": "https://jobs.smartrecruiters.com/BoschGroup/744000152388899",
-    "status": "active",
+    "status": "expired",
     "cat": "it",
     "expYears": ">3 years",
     "sourceName": "Bosch Careers",
@@ -16957,7 +16965,15 @@
     "editorialOriginalDesc": "Bosch Global Software Technologies is hiring a Hardware Developer in Bengaluru for automotive electronics and PS-DC projects. The role covers low- and high-voltage analog/digital circuit designs, power conversion, BLDC motor-control hardware, PCB layouts, module bring-up and validation.",
     "editorialUpdatedAt": "2026-10-21",
     "editorialMethod": "Source-record summary with clearly separated general application guidance; verify employer listing for latest requirements.",
-    "field": "it"
+    "field": "it",
+    "availabilityCheck": {
+      "id": 137,
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152388899",
+      "checkedAt": "2026-11-24T12:58:56.178303+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    },
+    "closedAt": "2026-11-24T12:58:56.617290+00:00"
   },
   {
     "page": "jobs/google-silicon-engineer-platform-and-devices-university-graduate-2026.html",
