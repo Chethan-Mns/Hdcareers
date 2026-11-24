@@ -329,13 +329,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/kaapro-management-solution-hr-executive-fresher.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "45396047725",
       "at": "2026-11-24T12:42:22.331466+00:00",
       "telegramMessageId": 754,
       "telegramDeliveredAt": "2026-11-24T12:42:00.816319+00:00",
       "telegramDateIst": "2026-11-24",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "Psr1jXwxFGYgf64-19YBq53kiM_y2g-Alo",
+      "acceptedAt": "2026-11-24T12:42:29.854466+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
