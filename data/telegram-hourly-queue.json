@@ -2264,9 +2264,11 @@
     {
       "page": "jobs/phonepe-platform-engineer-1.html",
       "batchId": "admin-45320648124",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-24T03:36:21.345290+00:00",
-      "dueAt": "2026-11-24T09:40:58.600161+00:00"
+      "dueAt": "2026-11-24T09:40:58.600161+00:00",
+      "claimId": "45367507715",
+      "claimedAt": "2026-11-24T09:41:10.754954+00:00"
     },
     {
       "page": "jobs/ignatiuz-software-junior-web-developer.html",
