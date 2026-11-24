@@ -1871,5 +1871,16 @@
     "needsQualityUpgrade": false,
     "qualityScore": 775,
     "bytes": 21549
+  },
+  "Brevo": {
+    "officialDomain": "brevo.com",
+    "sourceUrl": "https://corp-backend.brevo.com/wp-content/uploads/2025/07/Brevo_logo.svg",
+    "sourceType": "matching Organization.logo JSON-LD",
+    "verificationStatus": "official-site-auto",
+    "localPath": "assets/company-icons/brevo-953661f-2c7be504d6.svg",
+    "sourceDimensions": null,
+    "needsQualityUpgrade": false,
+    "qualityScore": 1700,
+    "bytes": 883
   }
 }

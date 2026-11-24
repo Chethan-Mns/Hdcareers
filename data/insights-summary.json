@@ -1,17 +1,17 @@
 {
-  "verifiedThrough": "23 November 2026",
-  "active": 246,
-  "employers": 155,
-  "freshers": 227,
+  "verifiedThrough": "24 November 2026",
+  "active": 256,
+  "employers": 163,
+  "freshers": 237,
   "experienced": 16,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 83
+      "count": 87
     },
     {
       "label": "Hyderabad",
-      "count": 20
+      "count": 21
     },
     {
       "label": "Mumbai",
@@ -22,16 +22,16 @@
       "count": 11
     },
     {
-      "label": "Gurugram",
-      "count": 8
-    },
-    {
       "label": "Indore",
-      "count": 7
+      "count": 10
     },
     {
       "label": "Noida",
-      "count": 7
+      "count": 8
+    },
+    {
+      "label": "Gurugram",
+      "count": 8
     },
     {
       "label": "Chennai",
@@ -43,13 +43,13 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 83
+      "count": 87
     },
     {
       "city": "Hyderabad",
       "lat": 17.385,
       "lng": 78.4867,
-      "count": 20
+      "count": 21
     },
     {
       "city": "Mumbai",
@@ -64,22 +64,22 @@
       "count": 11
     },
     {
-      "city": "Gurugram",
-      "lat": 28.4595,
-      "lng": 77.0266,
-      "count": 8
-    },
-    {
       "city": "Indore",
       "lat": 22.7196,
       "lng": 75.8577,
-      "count": 7
+      "count": 10
     },
     {
       "city": "Noida",
       "lat": 28.5355,
       "lng": 77.391,
-      "count": 7
+      "count": 8
+    },
+    {
+      "city": "Gurugram",
+      "lat": 28.4595,
+      "lng": 77.0266,
+      "count": 8
     },
     {
       "city": "Chennai",
@@ -183,6 +183,11 @@
       "logo": "assets/company-icons/cognizant-8d169ac.png"
     },
     {
+      "name": "PhonePe",
+      "count": 3,
+      "logo": "assets/company-icons/phonepe-1590c80-28a3879cec.svg"
+    },
+    {
       "name": "AHEAD",
       "count": 3,
       "logo": "assets/company-icons/ahead-0918318-afb6ded5a4.png"
@@ -191,17 +196,12 @@
       "name": "Rubrik",
       "count": 3,
       "logo": "assets/company-icons/rubrik-c33fd7a.png"
-    },
-    {
-      "name": "Playto Labs",
-      "count": 3,
-      "logo": "assets/company-icons/playto-labs-0ba3a42-e71d639822.svg"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 48
+      "count": 49
     },
     {
       "label": "SQL",
@@ -213,19 +213,19 @@
     },
     {
       "label": "Communication",
-      "count": 24
+      "count": 26
     },
     {
       "label": "REST APIs",
-      "count": 22
+      "count": 23
+    },
+    {
+      "label": "JavaScript",
+      "count": 19
     },
     {
       "label": "Git",
       "count": 19
-    },
-    {
-      "label": "JavaScript",
-      "count": 18
     },
     {
       "label": "Problem solving",
@@ -233,7 +233,7 @@
     },
     {
       "label": "Linux",
-      "count": 14
+      "count": 15
     },
     {
       "label": "Documentation",
@@ -259,15 +259,15 @@
   "categories": [
     {
       "label": "it",
-      "count": 124
+      "count": 130
     },
     {
       "label": "nonit",
-      "count": 63
+      "count": 65
     },
     {
       "label": "internship",
-      "count": 47
+      "count": 49
     },
     {
       "label": "experienced",
@@ -449,6 +449,10 @@
     },
     {
       "date": "2026-11-23",
+      "count": 10
+    },
+    {
+      "date": "2026-11-24",
       "count": 10
     }
   ]
