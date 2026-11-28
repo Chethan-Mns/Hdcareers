@@ -377,13 +377,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/ge-vernova-co-op-intern-6.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "46144654171",
       "at": "2026-11-28T12:26:40.558327+00:00",
       "telegramMessageId": 758,
       "telegramDeliveredAt": "2026-11-28T12:26:16.224377+00:00",
       "telegramDateIst": "2026-11-28",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PspthZhfmwJ48gA-1xsBq53kiM_y2g-Al4",
+      "acceptedAt": "2026-11-28T12:26:47.777505+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
