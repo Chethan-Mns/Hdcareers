@@ -340,12 +340,20 @@
     ],
     "sourceName": "Ramboll Careers (SmartRecruiters)",
     "sourceVerificationMethod": "Exact official employer or ATS requisition route was checked on 24 Nov 2026; the current page exposed the role/application route and zero-experience, fresher, student or recent-graduate eligibility.",
-    "status": "active",
+    "status": "expired",
     "verifiedDate": "24 Nov 2026",
     "who": "Applicants meeting the employer's stated eligibility: B.Tech/B.E. in Civil or Structural Engineering or related field; 0–1 years.",
     "workMode": "On-site",
     "publishedAt": "2026-11-24T03:36:21Z",
-    "id": 404
+    "id": 404,
+    "availabilityCheck": {
+      "id": 404,
+      "url": "https://jobs.smartrecruiters.com/Ramboll3/744000158460509-tekla-moduler-designer-bim-structures",
+      "checkedAt": "2026-11-28T10:51:48.338561+00:00",
+      "state": "expired",
+      "reason": "SmartRecruiters public posting inventory marks the exact job inactive"
+    },
+    "closedAt": "2026-11-28T10:51:48.593836+00:00"
   },
   {
     "apply": "https://job-boards.greenhouse.io/zinnov/jobs/4412579009",
