@@ -62,6 +62,18 @@
       ],
       "status": "claimed_before_dispatch",
       "claimedAt": "2026-11-24T03:36:03.842156+00:00"
+    },
+    {
+      "batchId": "2026-11-28-0900-ist",
+      "requestId": "210bff2a9c6e0dfdee114ac9",
+      "candidateIds": [
+        "accenture-aioc-s01674390",
+        "cognizant-00071060591",
+        "ge-vernova-r5054938",
+        "cloudepok-platform-operations-engineer-i"
+      ],
+      "status": "claimed_before_dispatch",
+      "claimedAt": "2026-11-28T06:26:15.442075+00:00"
     }
   ],
   "recoveryHistory": [
