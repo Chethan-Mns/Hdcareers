@@ -50,7 +50,10 @@
         "currentCheckAt": "2026-11-28T06:25:45.864Z",
         "currentVerdict": "official_page_checked_pending_independent_preflight",
         "officialEvidence": "Official requisition AIOC-S01674390 displays an Apply for this job link, Mumbai location, and 0–1 year eligibility."
-      }
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-28T06:26:03.280870+00:00"
     },
     {
       "id": "cognizant-00071060591",
@@ -99,7 +102,10 @@
         "currentCheckAt": "2026-11-28T06:25:45.864Z",
         "currentVerdict": "official_page_checked_pending_independent_preflight",
         "officialEvidence": "Exact Cognizant requisition 00071060591, dated 25 November, displays Apply now and explicitly requests freshers with commerce background."
-      }
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-28T06:26:03.280870+00:00"
     },
     {
       "id": "ge-vernova-r5054938",
@@ -150,7 +156,10 @@
         "currentCheckAt": "2026-11-28T06:25:45.864Z",
         "currentVerdict": "official_page_checked_pending_independent_preflight",
         "officialEvidence": "Official posting R5054938 lists an application link and a closing date of 2 December 2026; explicitly no prior work experience."
-      }
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-28T06:26:03.280870+00:00"
     },
     {
       "id": "cloudepok-platform-operations-engineer-i",
@@ -202,16 +211,16 @@
         "currentCheckAt": "2026-11-28T06:25:45.864Z",
         "currentVerdict": "official_page_checked_pending_independent_preflight",
         "officialEvidence": "Exact employer role page contains a role-specific application form with submit control and explicit 0–1 year eligibility."
-      }
+      },
+      "precheckStatus": "source-active",
+      "precheckReason": "Browser-compatible official-page render is active (Exact role and application call-to-action found on official URL)",
+      "precheckCheckedAt": "2026-11-28T06:26:03.280870+00:00"
     }
   ],
   "backup": [],
   "previousBatchReference": "2026-11-24-0900-ist",
   "discoverySummary": "28 Nov manual recovery run. Four new exact official source candidates selected conservatively after duplicate screening and official-page recheck; independent GitHub preflight must confirm availability before automated selection. Search coverage incomplete; no filler candidates. Deloitte title/location conflict held; four previously published morning candidates and Konecranes archived candidate excluded; Amazon same employer/role excluded; Playto same employer/role excluded.",
   "discoveryAudit": {
-    "coverage": "Partial recovery; not all 87 employer portals visited",
-    "publishedRecordsChecked": 393,
-    "archiveFilesChecked": 26,
     "priority": {
       "size": 4,
       "counts": {
@@ -244,7 +253,11 @@
       "priority": 10,
       "backup": 10
     },
-    "needsFreshDiscovery": true
+    "remaining": 4,
+    "duplicateExclusions": [],
+    "excludedCount": 0,
+    "needsFreshDiscovery": true,
+    "note": "Incomplete shortlists are reported, never padded with duplicate or unverified jobs."
   },
   "quotaAudit": {
     "requiredPerList": {
