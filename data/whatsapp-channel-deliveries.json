@@ -353,13 +353,16 @@
       "provider": "Whapi.Cloud"
     },
     "jobs/accenture-web-developer-new-associate.html": {
-      "status": "sending",
+      "status": "provider_accepted",
       "claimId": "46121322750",
       "at": "2026-11-28T07:28:10.661318+00:00",
       "telegramMessageId": 756,
       "telegramDeliveredAt": "2026-11-28T06:27:29.219266+00:00",
       "telegramDateIst": "2026-11-28",
-      "channelId": "120363419928883930@newsletter"
+      "channelId": "120363419928883930@newsletter",
+      "providerMessageId": "PsqtChLNg21v7qU-14wBq53kiM_y2g-Alw",
+      "acceptedAt": "2026-11-28T07:28:17.183046+00:00",
+      "provider": "Whapi.Cloud"
     }
   }
 }
