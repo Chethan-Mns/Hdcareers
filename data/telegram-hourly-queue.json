@@ -2335,9 +2335,11 @@
     {
       "page": "jobs/ge-vernova-co-op-intern-6.html",
       "batchId": "admin-46116599737",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-28T06:26:30.555264+00:00",
-      "dueAt": "2026-11-28T08:27:48.650363+00:00"
+      "dueAt": "2026-11-28T08:27:48.650363+00:00",
+      "claimId": "46144638892",
+      "claimedAt": "2026-11-28T12:26:13.676449+00:00"
     },
     {
       "page": "jobs/cloudepok-platform-operations-engineer-i.html",
