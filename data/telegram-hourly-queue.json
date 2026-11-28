@@ -2314,26 +2314,32 @@
     {
       "page": "jobs/accenture-web-developer-new-associate.html",
       "batchId": "admin-46116599737",
-      "status": "pending",
-      "queuedAt": "2026-11-28T06:26:30.555264+00:00"
+      "status": "sending",
+      "queuedAt": "2026-11-28T06:26:30.555264+00:00",
+      "dueAt": "2026-11-28T06:26:30.555264+00:00",
+      "claimId": "46116599737",
+      "claimedAt": "2026-11-28T06:27:05.320027+00:00"
     },
     {
       "page": "jobs/cognizant-pe-accounts-payable.html",
       "batchId": "admin-46116599737",
       "status": "pending",
-      "queuedAt": "2026-11-28T06:26:30.555264+00:00"
+      "queuedAt": "2026-11-28T06:26:30.555264+00:00",
+      "dueAt": "2026-11-28T07:26:30.555264+00:00"
     },
     {
       "page": "jobs/ge-vernova-co-op-intern-6.html",
       "batchId": "admin-46116599737",
       "status": "pending",
-      "queuedAt": "2026-11-28T06:26:30.555264+00:00"
+      "queuedAt": "2026-11-28T06:26:30.555264+00:00",
+      "dueAt": "2026-11-28T08:26:30.555264+00:00"
     },
     {
       "page": "jobs/cloudepok-platform-operations-engineer-i.html",
       "batchId": "admin-46116599737",
       "status": "pending",
-      "queuedAt": "2026-11-28T06:26:30.555264+00:00"
+      "queuedAt": "2026-11-28T06:26:30.555264+00:00",
+      "dueAt": "2026-11-28T09:26:30.555264+00:00"
     }
   ]
 }
