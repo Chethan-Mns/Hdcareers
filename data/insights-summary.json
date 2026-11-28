@@ -1,13 +1,13 @@
 {
-  "verifiedThrough": "24 November 2026",
-  "active": 256,
-  "employers": 163,
-  "freshers": 237,
-  "experienced": 16,
+  "verifiedThrough": "28 November 2026",
+  "active": 257,
+  "employers": 165,
+  "freshers": 239,
+  "experienced": 15,
   "locations": [
     {
       "label": "Bengaluru",
-      "count": 87
+      "count": 86
     },
     {
       "label": "Hyderabad",
@@ -15,7 +15,7 @@
     },
     {
       "label": "Mumbai",
-      "count": 16
+      "count": 17
     },
     {
       "label": "Pune",
@@ -26,11 +26,11 @@
       "count": 10
     },
     {
-      "label": "Noida",
-      "count": 8
+      "label": "Gurugram",
+      "count": 9
     },
     {
-      "label": "Gurugram",
+      "label": "Noida",
       "count": 8
     },
     {
@@ -43,7 +43,7 @@
       "city": "Bengaluru",
       "lat": 12.9716,
       "lng": 77.5946,
-      "count": 87
+      "count": 86
     },
     {
       "city": "Hyderabad",
@@ -55,7 +55,7 @@
       "city": "Mumbai",
       "lat": 19.076,
       "lng": 72.8777,
-      "count": 16
+      "count": 17
     },
     {
       "city": "Pune",
@@ -70,15 +70,15 @@
       "count": 10
     },
     {
-      "city": "Noida",
-      "lat": 28.5355,
-      "lng": 77.391,
-      "count": 8
-    },
-    {
       "city": "Gurugram",
       "lat": 28.4595,
       "lng": 77.0266,
+      "count": 9
+    },
+    {
+      "city": "Noida",
+      "lat": 28.5355,
+      "lng": 77.391,
       "count": 8
     },
     {
@@ -112,16 +112,16 @@
       "count": 4
     },
     {
+      "city": "Jaipur",
+      "lat": 26.9124,
+      "lng": 75.7873,
+      "count": 3
+    },
+    {
       "city": "Madurai",
       "lat": 9.9252,
       "lng": 78.1198,
       "count": 3
-    },
-    {
-      "city": "Jaipur",
-      "lat": 26.9124,
-      "lng": 75.7873,
-      "count": 2
     },
     {
       "city": "Mohali",
@@ -143,14 +143,14 @@
       "logo": "assets/company-approved/ey.webp"
     },
     {
+      "name": "Accenture",
+      "count": 11,
+      "logo": "assets/company-icons/accenture-05dffab.png"
+    },
+    {
       "name": "Amazon",
       "count": 11,
       "logo": "assets/company-approved/amazon-owner-20261019.png"
-    },
-    {
-      "name": "Accenture",
-      "count": 10,
-      "logo": "assets/company-icons/accenture-05dffab.png"
     },
     {
       "name": "Deloitte",
@@ -161,6 +161,11 @@
       "name": "HCLTech",
       "count": 7,
       "logo": "assets/company-icons/hcltech-4735861.png"
+    },
+    {
+      "name": "Cognizant",
+      "count": 5,
+      "logo": "assets/company-icons/cognizant-8d169ac.png"
     },
     {
       "name": "Endeavor IT Solution",
@@ -178,16 +183,6 @@
       "logo": "assets/company-approved/qualcomm.webp"
     },
     {
-      "name": "Cognizant",
-      "count": 4,
-      "logo": "assets/company-icons/cognizant-8d169ac.png"
-    },
-    {
-      "name": "PhonePe",
-      "count": 3,
-      "logo": "assets/company-icons/phonepe-1590c80-28a3879cec.svg"
-    },
-    {
       "name": "AHEAD",
       "count": 3,
       "logo": "assets/company-icons/ahead-0918318-afb6ded5a4.png"
@@ -196,12 +191,17 @@
       "name": "Rubrik",
       "count": 3,
       "logo": "assets/company-icons/rubrik-c33fd7a.png"
+    },
+    {
+      "name": "Playto Labs",
+      "count": 3,
+      "logo": "assets/company-icons/playto-labs-0ba3a42-e71d639822.svg"
     }
   ],
   "topSkills": [
     {
       "label": "Python",
-      "count": 49
+      "count": 51
     },
     {
       "label": "SQL",
@@ -209,22 +209,22 @@
     },
     {
       "label": "Java",
-      "count": 32
+      "count": 33
     },
     {
       "label": "Communication",
-      "count": 26
+      "count": 27
     },
     {
       "label": "REST APIs",
       "count": 23
     },
     {
-      "label": "JavaScript",
+      "label": "Git",
       "count": 19
     },
     {
-      "label": "Git",
+      "label": "JavaScript",
       "count": 19
     },
     {
@@ -233,18 +233,18 @@
     },
     {
       "label": "Linux",
-      "count": 15
+      "count": 16
     },
     {
       "label": "Documentation",
       "count": 14
     },
     {
-      "label": "Excel",
+      "label": "C++",
       "count": 13
     },
     {
-      "label": "C++",
+      "label": "Excel",
       "count": 12
     },
     {
@@ -267,7 +267,7 @@
     },
     {
       "label": "internship",
-      "count": 49
+      "count": 50
     },
     {
       "label": "experienced",
@@ -333,7 +333,7 @@
     },
     {
       "date": "2026-10-12",
-      "count": 4
+      "count": 3
     },
     {
       "date": "2026-10-13",
@@ -365,7 +365,7 @@
     },
     {
       "date": "2026-10-23",
-      "count": 7
+      "count": 6
     },
     {
       "date": "2026-10-24",
@@ -449,11 +449,15 @@
     },
     {
       "date": "2026-11-23",
-      "count": 10
+      "count": 9
     },
     {
       "date": "2026-11-24",
       "count": 10
+    },
+    {
+      "date": "2026-11-28",
+      "count": 4
     }
   ]
 }
