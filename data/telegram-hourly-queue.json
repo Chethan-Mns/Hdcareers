@@ -2325,9 +2325,11 @@
     {
       "page": "jobs/cognizant-pe-accounts-payable.html",
       "batchId": "admin-46116599737",
-      "status": "pending",
+      "status": "sending",
       "queuedAt": "2026-11-28T06:26:30.555264+00:00",
-      "dueAt": "2026-11-28T07:27:29.219266+00:00"
+      "dueAt": "2026-11-28T07:27:29.219266+00:00",
+      "claimId": "46121296427",
+      "claimedAt": "2026-11-28T07:27:44.035408+00:00"
     },
     {
       "page": "jobs/ge-vernova-co-op-intern-6.html",
